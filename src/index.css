@@ -12,3 +12,69 @@
     @apply font-poppins;
   }
 }
+
+@layer components {
+  .customContainer {
+    @apply w-[1366px] mx-auto px-10;
+  }
+  .btn {
+    @apply inline-block py-4 px-8 rounded-full text-center;
+  }
+  .toggleNav span {
+    @apply block w-[10px] h-[3px] bg-dark transition-all;
+  }
+  .toggleNav span:nth-child(2) {
+    @apply w-[px] absolute top-0 left-[50%] rounded-r-full;
+  }
+  .toggleNav span:nth-child(1) {
+    @apply w-[px] absolute top-0 rounded-l-full;
+  }
+  .toggleNav span:nth-child(4) {
+    @apply w-[px] absolute bottom-0 rounded-l-full;
+  }
+  .toggleNav span:nth-child(3) {
+    @apply w-[20px] my-1 rounded-full;
+  }
+  .toggleNav span:nth-child(5) {
+    @apply w-[10px] absolute bottom-0 left-[50%] rounded-r-full;
+  }
+  .toggleNav.active span:nth-child(5) {
+    @apply w-[13px] absolute bottom-0 rotate-45 -translate-y-[4px]  -translate-x-[1px] left-[50%] rounded-full;
+  }
+  .toggleNav.active span:nth-child(4) {
+    @apply w-[13px] absolute bottom-0 -rotate-45 -translate-y-[4px]   rounded-full;
+  }
+  .toggleNav.active span:nth-child(1) {
+    @apply w-[13px] absolute top-0 rotate-45 translate-y-[4px]   rounded-full;
+  }
+  .toggleNav.active span:nth-child(2) {
+    @apply w-[13px] absolute top-0 -rotate-45 translate-y-[4px]  -translate-x-[1px]  rounded-full;
+  }
+  .toggleNav.active span:nth-child(3) {
+    @apply opacity-0;
+  }
+  .slickNav ul li.slick-active div {
+    @apply !bg-[white] !opacity-100;
+  }
+  .serviceIcon svg {
+    @apply group-hover:fill-[white] fill-[#6a1141];
+  }
+  .addRadialGradient {
+    background: radial-gradient(circle at top 20% left 20%, #6a1141, #ac1e72);
+  }
+  .bgGradientBlack {
+    background: radial-gradient(500px, #585858, #000000);
+  }
+  .footerGradientBlack {
+    background: radial-gradient(300px, #ac1e72, #000000);
+  }
+  .addShadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .customContainer {
+    @apply w-full;
+  }
+}

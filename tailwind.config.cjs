@@ -3,12 +3,11 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
-      primary: "#00D7D4",
-      secondary: "#18A0FB",
+      primary: "#ac1e72",
+      secondary: "#6a1141",
       customGray: "#F5F5F5",
       light: "#ffffff",
       dark: "#2b2b2b",
-      alert: "#af1818",
     },
     extend: {
       fontFamily: {
