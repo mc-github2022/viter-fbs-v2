@@ -7,6 +7,7 @@ import Testimonials from "./Testimonials";
 import Partners from "./Partners";
 import Insights from "./Insights";
 import Footer from "./Footer";
+import MegaMenu from "../../partials/MegaMenu";
 
 const Home = () => {
   return (

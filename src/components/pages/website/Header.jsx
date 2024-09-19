@@ -1,11 +1,18 @@
 import React from "react";
 import logo from "/img/logo.png";
 import { IoMdArrowDropdown } from "react-icons/io";
+import MegaMenu from "../../partials/MegaMenu";
+import { BiSolidDownArrow } from "react-icons/bi";
 
 const Header = () => {
   const [toggleNav, setToggleNav] = React.useState(true);
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
+  };
+
+  const [toggleMenu, setToggleMenu] = React.useState(false);
+  const handleToggleMenu = () => {
+    setToggleMenu(!toggleMenu);
   };
 
   return (
@@ -24,7 +31,19 @@ const Header = () => {
               <ul className="flex [&>li]:py-5 [&>li]:px-5 [&>li]:flex [&>li]:items-center  md:ml-auto lg:m-0">
                 <li>Home</li>
                 <li>
-                  Services <IoMdArrowDropdown className="text-3xl" />
+                  <button
+                    onClick={handleToggleMenu}
+                    className={`${
+                      toggleMenu ? "text-primary " : ""
+                    } flex items-center gap-2`}
+                  >
+                    Services
+                    <BiSolidDownArrow
+                      className={`${
+                        toggleMenu ? "-rotate-180 transition-all" : ""
+                      } transition-all`}
+                    />
+                  </button>
                 </li>
                 <li>Why Us?</li>
               </ul>
@@ -32,7 +51,7 @@ const Header = () => {
             <div className="w-[200px] flex justify-center">
               <a
                 href="#"
-                className="btn bg-secondary text-light my-5  lg:block rounded-full "
+                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
               >
                 Get Started
               </a>
@@ -53,6 +72,7 @@ const Header = () => {
           </div>
         </div>
       </section>
+      {toggleMenu && <MegaMenu />}
     </>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import webLogo from "/web.svg";
-import WebSvg from "../../partials/WebSvg";
-import VASvg from "../../partials/VASvg";
-import AccountingSvg from "../../partials/AccountingSvg";
-import SkillDevSvg from "../../partials/SkillDevSvg";
+import WebSvg from "../../partials/customSVG/WebSvg";
+import VASvg from "../../partials/customSVG/VASvg";
+import AccountingSvg from "../../partials/customSVG/AccountingSvg";
+import SkillDevSvg from "../../partials/customSVG/SkillDevSvg";
 
 const Services = () => {
   return (
