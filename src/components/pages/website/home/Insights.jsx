@@ -9,7 +9,7 @@ const Insights = () => {
           <h3 className="text-[45px] font-semibold  leading-[1.1] mb-24  text-dark text-center">
             Industry Insights
           </h3>
-          <div className="wrapper grid grid-cols-[_1fr_3fr] gap-6">
+          <div className="wrapper lg:grid lg:grid-cols-[_1fr_3fr] gap-6">
             <div>
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold mb-10 text-dark">
@@ -69,8 +69,8 @@ const Insights = () => {
                 </ul>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="blogItem col-span-2 bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[500px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="blogItem md:col-span-2 bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                 <div>
                   <div className="blogTitle relative z-[1]">
                     <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
@@ -85,7 +85,7 @@ const Insights = () => {
                 </div>
                 <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
               </div>
-              <div className="blogItem bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[500px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+              <div className="blogItem bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                 <div>
                   <div className="blogTitle relative z-[1]">
                     <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
@@ -100,7 +100,7 @@ const Insights = () => {
                 </div>
                 <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
               </div>
-              <div className="blogItem bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[500px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+              <div className="blogItem bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                 <div>
                   <div className="blogTitle relative z-[1]">
                     <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">

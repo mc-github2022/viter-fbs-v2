@@ -1,13 +1,12 @@
 import React from "react";
-import Header from "./Header";
 import Banner from "./Banner";
 import Services from "./Services";
 import PartnerWithUs from "./PartnerWithUs";
 import Testimonials from "./Testimonials";
 import Partners from "./Partners";
 import Insights from "./Insights";
-import Footer from "./Footer";
-import MegaMenu from "../../partials/MegaMenu";
+import Header from "../../../partials/Header";
+import Footer from "../../../partials/Footer";
 
 const Home = () => {
   return (

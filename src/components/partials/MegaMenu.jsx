@@ -7,14 +7,21 @@ import {
   FaMoneyBill,
   FaSmile,
 } from "react-icons/fa";
+import { TbArrowBackUp } from "react-icons/tb";
+import { TiArrowBackOutline } from "react-icons/ti";
 
 const MegaMenu = () => {
   return (
     <>
-      <div className="megaMenu  absolute border-t border-t-customGray top-[112px] left-[50%] translate-x-[-50%] z-[11] w-full rounded-br-xl rounded-bl-xl ">
+      <div className="megaMenu">
         <div className="w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl">
           <div className="pt-8 px-8 pb-8 rounded-br-xl rounded-bl-xl">
-            <div className="wrapper flex flex-wrap gap-10 justify-start mb-8">
+            <div className="backArrow absolute top-2 right-9 md:hidden">
+              <button>
+                <TiArrowBackOutline className="text-2xl text-dark" />
+              </button>
+            </div>
+            <div className="wrapper md:flex flex-wrap gap-10 justify-start mb-8">
               <div className="menuItem">
                 <h2 className="font-semibold mb-2">WEB APPLICATIONS</h2>
                 <ul className="ml-3 text-sm ">

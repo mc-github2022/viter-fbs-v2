@@ -5,8 +5,8 @@ const Partners = () => {
     <>
       <section className="partners py-24">
         <div className="customContainer">
-          <div className="wrapper grid grid-cols-[_1fr_1fr]">
-            <div>
+          <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1fr_1fr]">
+            <div className="order-2 lg:order-1">
               <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-10">
                 <li>
                   <img src="../../public/img/logo-avant.png" alt="" />
@@ -34,8 +34,8 @@ const Partners = () => {
                 </li>
               </ul>
             </div>
-            <div className="text-right flex items-center justify-end">
-              <div>
+            <div className="text-right flex items-center justify-end order-1 lg:order-2">
+              <div className="mb-20">
                 <h3 className="text-[45px] font-semibold  leading-[1.1] mb-8  text-dark">
                   They love <br />
                   <span className="text-primary">working with us.</span>

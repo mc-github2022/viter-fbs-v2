@@ -1,10 +1,10 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import webLogo from "/web.svg";
-import WebSvg from "../../partials/customSVG/WebSvg";
-import VASvg from "../../partials/customSVG/VASvg";
-import AccountingSvg from "../../partials/customSVG/AccountingSvg";
-import SkillDevSvg from "../../partials/customSVG/SkillDevSvg";
+import WebSvg from "../../../partials/customSVG/WebSvg";
+import VASvg from "../../../partials/customSVG/VASvg";
+import AccountingSvg from "../../../partials/customSVG/AccountingSvg";
+import SkillDevSvg from "../../../partials/customSVG/SkillDevSvg";
 
 const Services = () => {
   return (
@@ -18,7 +18,7 @@ const Services = () => {
           <p>through our specialized services</p>
         </div>
         <div className="wrapper grid  grid-cols-1 md:grid-cols-2  gap-10 ">
-          <div className="serviceItem  z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-20 transition-all hover:addShadow group">
+          <div className="serviceItem  z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
             <div>
               <div className="serviceName  flex items-center gap-8 mb-6">
                 <WebSvg />
@@ -33,13 +33,13 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-semibold flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
               >
                 Learn More <FaArrowRight />
               </a>
             </div>
           </div>
-          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-20 transition-all hover:addShadow group">
+          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
             <div>
               <div className="serviceName  flex items-center gap-8 mb-6">
                 <VASvg />
@@ -54,13 +54,13 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-semibold flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
               >
                 Learn More <FaArrowRight />
               </a>
             </div>
           </div>
-          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-20 transition-all hover:addShadow group">
+          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
             <div>
               <div className="serviceName  flex items-center gap-8 mb-6">
                 <AccountingSvg />
@@ -75,13 +75,13 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-semibold flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
               >
                 Learn More <FaArrowRight />
               </a>
             </div>
           </div>
-          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-20 transition-all hover:addShadow group">
+          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
             <div>
               <div className="serviceName  flex items-center gap-8 mb-6">
                 <SkillDevSvg />
@@ -96,7 +96,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-semibold flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
               >
                 Learn More <FaArrowRight />
               </a>

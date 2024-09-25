@@ -78,6 +78,17 @@ const BannerSlider = () => {
         }}
       ></div>
     ),
+    responsive: [
+      {
+        breakpoint: 1086,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+        },
+      },
+    ],
   };
 
   return (
@@ -85,21 +96,22 @@ const BannerSlider = () => {
       <div>
         <section
           id="banner"
-          className="banner bg-[#00185a] bg-[url('../../public/img/main-banner-image.png')] bg-cover bg-center"
+          className="banner bg-secondary bg-opacity-80 bg-blend-multiply bg-[url('../../public/img/home-bg.jpg')] bg-cover bg-center"
         >
           <div className="customContainer">
-            <div className="wrapper flex place-items-center h-[60vh] md:h-[90vh] transition-all w-full">
-              <div className="mx-auto md:w-[820px] text-center">
-                <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  md:text-[75px]">
-                  Your Trusted Partner in Managed Services
+            <div className="wrapper flex place-items-center h-[90vh] md:h-[90vh] transition-all w-full">
+              <div className="mx-auto w-full md:w-[865px] text-center">
+                <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  Your Trusted Christian Partner in Managed Services
                 </h1>
                 <p className="text-light text-center mb-10">
-                  We Deliver end-to-end solutions and professional expertise in
+                  We deliver end-to-end solutions and professional expertise in
                   web applications, websites, virtual assistants, and skills
-                  development. Whether you're looking to elevate your digital
-                  presence, streamline operations, or build a more skilled
-                  workforcem our comprehensive services are designed to drive
-                  your success.
+                  development. Rooted in Christian values, we are committed to
+                  integrity and excellence in helping you elevate your digital
+                  presence, streamline operations, and build a more skilled
+                  workforce. Our comprehensive services are designed to drive
+                  your success with a mission to serve with purpose and care.
                 </p>
                 <a href="#" className="btn bg-transparent text-light border-2">
                   Get Started
@@ -112,21 +124,22 @@ const BannerSlider = () => {
       <div>
         <section
           id="banner"
-          className="banner bg-[#00185a] bg-[url('../../public/img/main-banner-image.jpg')] bg-cover bg-center"
+          className="banner bg-secondary bg-opacity-80 bg-blend-multiply bg-[url('../../public/img/home-bg.jpg')] bg-cover bg-center"
         >
           <div className="customContainer">
-            <div className="wrapper flex place-items-center h-[60vh] md:h-[90vh] transition-all w-full">
-              <div className="mx-auto md:w-[820px] text-center">
-                <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  md:text-[75px]">
-                  Your Trusted Partner in Managed Services
+            <div className="wrapper flex place-items-center h-[90vh] md:h-[90vh] transition-all w-full">
+              <div className="mx-auto w-full md:w-[865px] text-center">
+                <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  Your Trusted Christian Partner in Managed Services
                 </h1>
                 <p className="text-light text-center mb-10">
-                  We Deliver end-to-end solutions and professional expertise in
+                  We deliver end-to-end solutions and professional expertise in
                   web applications, websites, virtual assistants, and skills
-                  development. Whether you're looking to elevate your digital
-                  presence, streamline operations, or build a more skilled
-                  workforcem our comprehensive services are designed to drive
-                  your success.
+                  development. Rooted in Christian values, we are committed to
+                  integrity and excellence in helping you elevate your digital
+                  presence, streamline operations, and build a more skilled
+                  workforce. Our comprehensive services are designed to drive
+                  your success with a mission to serve with purpose and care.
                 </p>
                 <a href="#" className="btn bg-transparent text-light border-2">
                   Get Started
@@ -139,21 +152,22 @@ const BannerSlider = () => {
       <div>
         <section
           id="banner"
-          className="banner bg-[#00185a] bg-[url('../../public/img/main-banner-image.jpg')] bg-cover bg-center"
+          className="banner bg-secondary bg-opacity-80 bg-blend-multiply bg-[url('../../public/img/home-bg.jpg')] bg-cover bg-center"
         >
           <div className="customContainer">
-            <div className="wrapper flex place-items-center h-[60vh] md:h-[90vh] transition-all w-full">
-              <div className="mx-auto md:w-[820px] text-center">
-                <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  md:text-[75px]">
-                  Your Trusted Partner in Managed Services
+            <div className="wrapper flex place-items-center h-[90vh] md:h-[90vh] transition-all w-full">
+              <div className="mx-auto w-full md:w-[865px] text-center">
+                <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  Your Trusted Christian Partner in Managed Services
                 </h1>
                 <p className="text-light text-center mb-10">
-                  We Deliver end-to-end solutions and professional expertise in
+                  We deliver end-to-end solutions and professional expertise in
                   web applications, websites, virtual assistants, and skills
-                  development. Whether you're looking to elevate your digital
-                  presence, streamline operations, or build a more skilled
-                  workforcem our comprehensive services are designed to drive
-                  your success.
+                  development. Rooted in Christian values, we are committed to
+                  integrity and excellence in helping you elevate your digital
+                  presence, streamline operations, and build a more skilled
+                  workforce. Our comprehensive services are designed to drive
+                  your success with a mission to serve with purpose and care.
                 </p>
                 <a href="#" className="btn bg-transparent text-light border-2">
                   Get Started

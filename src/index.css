@@ -8,8 +8,23 @@
   * {
     @apply m-0 p-0 box-border;
   }
+  *:focus {
+    outline: none;
+  }
   html {
     @apply font-poppins;
+  }
+  body {
+    @apply overflow-x-hidden;
+  }
+  body .theNav.active {
+    @apply overflow-hidden;
+  }
+  input[type="text"] {
+    @apply bg-customGray h-8 p-1 text-sm text-dark;
+  }
+  textarea {
+    @apply bg-customGray w-full h-20 resize-none;
   }
 }
 
@@ -19,6 +34,9 @@
   }
   .btn {
     @apply inline-block py-4 px-8 rounded-full text-center;
+  }
+  .textGradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent];
   }
   .toggleNav span {
     @apply block w-[10px] h-[3px] bg-dark transition-all;
@@ -53,6 +71,7 @@
   .toggleNav.active span:nth-child(3) {
     @apply opacity-0;
   }
+
   .slickNav ul li.slick-active div {
     @apply !bg-[white] !opacity-100;
   }
@@ -62,14 +81,54 @@
   .addRadialGradient {
     background: radial-gradient(circle at top 20% left 20%, #6a1141, #ac1e72);
   }
+  .bg {
+    color: #4d0d2f;
+  }
   .bgGradientBlack {
     background: radial-gradient(500px, #585858, #000000);
   }
   .footerGradientBlack {
-    background: radial-gradient(300px, #ac1e72, #000000);
+    background: radial-gradient(500px, #ac1e72, #000000);
+  }
+  .radialGradient {
+    background: radial-gradient(200px, #ac1e71b0, #000000);
   }
   .addShadow {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .theNav ul {
+    @apply absolute md:static bg-light right-[-100%] top-[59px] w-full z-[5] transition-all;
+  }
+  .theNav ul li {
+    @apply border-t border-t-customGray border-b-customGray md:border-t-0 cursor-pointer;
+  }
+  .theNav ul li a {
+    @apply py-3 px-11 w-full;
+  }
+  .theNav.active ul {
+    @apply right-0 backdrop-brightness-0 transition-all overflow-hidden;
+  }
+  .megaMenu {
+    @apply fixed h-screen top-[58px]  md:absolute border-t border-t-customGray md:top-[112px] md:left-[50%] md:translate-x-[-50%] z-[11] w-full md:rounded-br-xl md:rounded-bl-xl;
+  }
+
+  .megaMenu .menuItem {
+    @apply overflow-hidden;
+  }
+  .megaMenu .menuItem ul li {
+    @apply mb-1;
+  }
+  .megaMenu .menuItem ul {
+    @apply h-0 md:h-auto;
+  }
+  .megaMenu .menuItem {
+    @apply overflow-hidden;
+  }
+  .addShadow {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .bgGradientRadialButtonleft {
+    background: radial-gradient(500px, #585858, #000000);
   }
 }
 

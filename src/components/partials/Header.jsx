@@ -1,13 +1,15 @@
 import React from "react";
 import logo from "/img/logo.png";
 import { IoMdArrowDropdown } from "react-icons/io";
-import MegaMenu from "../../partials/MegaMenu";
 import { BiSolidDownArrow } from "react-icons/bi";
+import MegaMenu from "./MegaMenu";
+import ModalContact from "./ModalContact";
 
 const Header = () => {
-  const [toggleNav, setToggleNav] = React.useState(true);
+  const [toggleNav, setToggleNav] = React.useState(false);
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
+    setToggleMenu(false);
   };
 
   const [toggleMenu, setToggleMenu] = React.useState(false);
@@ -15,23 +17,36 @@ const Header = () => {
     setToggleMenu(!toggleMenu);
   };
 
+  const [modalContact, setModalContact] = React.useState(false);
+  const handleModalContact = () => {
+    setModalContact(!modalContact);
+  };
+
   return (
     <>
-      <section id="header" className="header text-[15x] py-2 bg-light">
-        <div className="customContainer">
+      <section
+        id="header"
+        className="header text-[15x] py-2 bg-light fixed w-full z-[11] lg:z-[13] shadow-md"
+      >
+        <div
+          className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
+        >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
-              <img src={logo} alt="" />
+              <img src={logo} alt="" className="w-[80%] md:w-full" />
             </div>
             <div
               className={`${
                 toggleNav ? "active" : ""
-              } theNav flex justify-end md:justify-between items-center`}
+              } theNav flex justify-end md:justify-between items-center `}
             >
-              <ul className="flex [&>li]:py-5 [&>li]:px-5 [&>li]:flex [&>li]:items-center  md:ml-auto lg:m-0">
-                <li>Home</li>
+              <ul className="py-10 md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0  h-screen md:h-[96px]">
                 <li>
-                  <button
+                  <a href="#">Home</a>
+                </li>
+                <li>
+                  <a
+                    href="#"
                     onClick={handleToggleMenu}
                     className={`${
                       toggleMenu ? "text-primary " : ""
@@ -40,17 +55,20 @@ const Header = () => {
                     Services
                     <BiSolidDownArrow
                       className={`${
-                        toggleMenu ? "-rotate-180 transition-all" : ""
-                      } transition-all`}
+                        toggleMenu ? "!rotate-180 transition-all" : ""
+                      } transition-all -rotate-90 md:rotate-0 md:block`}
                     />
-                  </button>
+                  </a>
                 </li>
-                <li>Why Us?</li>
+                <li>
+                  <a href="#">Why FBS?</a>
+                </li>
               </ul>
             </div>
-            <div className="w-[200px] flex justify-center">
+            <div className="w-[200px] lg:flex justify-center hidden">
               <a
                 href="#"
+                onClick={handleModalContact}
                 className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
               >
                 Get Started
@@ -72,7 +90,14 @@ const Header = () => {
           </div>
         </div>
       </section>
+
       {toggleMenu && <MegaMenu />}
+      {modalContact && (
+        <ModalContact
+          setModalContact={setModalContact}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };
