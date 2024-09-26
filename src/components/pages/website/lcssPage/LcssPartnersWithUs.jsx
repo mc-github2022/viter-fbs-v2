@@ -17,7 +17,8 @@ const LcssPartnersWithUs = () => {
           <div className="wrapper grid grid-cols-2 gap-12">
             <div>
               <img
-                src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
+                // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
+                src={`../../public/img//lcssBannerImg.jpg`}
                 className="mb-12"
                 alt=""
               />

@@ -11,37 +11,43 @@ const Footer = () => {
   return (
     <>
       <footer className="footer bg-[#000000] pt-14 text-light relative overflow-hidden">
-        <div className="footerGradientBlack absolute h-[700px] w-full top-[-70%] left-[-28%]"></div>
+        <div className="footerGradientBlack top-[-20%] left-[28%] absolute h-[700px] w-full sm:top-[-70%] sm:left-[-28%]"></div>
         <div className="customContainer">
-          <div className="wrapper grid grid-cols-2 relative z-[1]">
-            <div>
+          <div className="wrapper md:grid md:grid-cols-2 relative z-[1]">
+            <div className="text-center sm:text-left">
               <div className="theLogo">
-                <img src="../../public/img/logo-fbs.png" alt="" />
+                <img
+                  src="../../public/img/logo-fbs.png"
+                  className="w-[157px] mx-auto sm:mx-0"
+                  alt=""
+                />
               </div>
               <p className="text-xs my-6">
                 Baloc Road, Brgy. San Ignacio, San Pablo City <br /> Laguna
                 Philippines 4000
               </p>
-              <ul className="flex gap-2 text-3xl">
-                <li>
-                  <FaFacebookSquare />
-                </li>
-                <li>
-                  <FaLinkedin />
-                </li>
-                <li>
-                  <FaYoutubeSquare />
-                </li>
-                <li>
-                  <FaInstagramSquare />
-                </li>
-                <li>
-                  <AiFillTikTok />
-                </li>
-              </ul>
+              <div className="flex justify-center sm:flex-auto sm:justify-start">
+                <ul className="flex gap-2 text-3xl mb-12 md:mb-0">
+                  <li>
+                    <FaFacebookSquare />
+                  </li>
+                  <li>
+                    <FaLinkedin />
+                  </li>
+                  <li>
+                    <FaYoutubeSquare />
+                  </li>
+                  <li>
+                    <FaInstagramSquare />
+                  </li>
+                  <li>
+                    <AiFillTikTok />
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="grid grid-cols-2">
-              <div>
+            <div className="sm:grid sm:grid-cols-2">
+              <div className="mb-12 sm:mb-0 text-center sm:text-left">
                 <div className="contactDetails">
                   <p className="font-semibold">CONTACT US</p>
                 </div>
@@ -55,7 +61,7 @@ const Footer = () => {
                   <p>marketing@frontlinebusiness.com.ph</p>
                 </div>
               </div>
-              <div>
+              <div className="text-center sm:text-left">
                 <p className="font-semibold">QUIKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   <li>Web Solutions</li>
@@ -68,12 +74,12 @@ const Footer = () => {
           </div>
           <hr className="mt-10 relative z-[1]" />
           <div className="py-10 relative z-[1]">
-            <div className="wrapper flex justify-between items-center">
-              <p className="text-sm">
+            <div className="wrapper text-center lg:text-left lg:flex lg:justify-between items-center">
+              <p className="text-xs mb-4 lg:mb-0">
                 Copyright 2024 | Frontline Business Solutions, Inc. All rights
                 reserved.
               </p>
-              <p className="text-sm">
+              <p className="text-xs">
                 Privacy Policy | Terms of Service | EULA
               </p>
             </div>

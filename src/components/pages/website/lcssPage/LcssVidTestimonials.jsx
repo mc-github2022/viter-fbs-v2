@@ -37,7 +37,8 @@ const LcssVidTestimonials = () => {
                 </p>
                 <div className="nameAndSchool flex items-center">
                   <img
-                    src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                    src={`../../public/img/DLSL_Official_logo.png`}
                     className="w-[60px]"
                     alt=""
                   />
@@ -69,7 +70,8 @@ const LcssVidTestimonials = () => {
                 </p>
                 <div className="nameAndSchool flex items-center">
                   <img
-                    src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                    src={`../../public/img/DLSL_Official_logo.png`}
                     className="w-[60px]"
                     alt=""
                   />
@@ -101,7 +103,8 @@ const LcssVidTestimonials = () => {
                 </p>
                 <div className="nameAndSchool flex items-center">
                   <img
-                    src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                    src={`../../public/img/DLSL_Official_logo.png`}
                     className="w-[60px]"
                     alt=""
                   />

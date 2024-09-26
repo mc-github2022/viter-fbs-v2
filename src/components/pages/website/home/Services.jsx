@@ -12,17 +12,17 @@ const Services = () => {
       <div className="customContainer">
         <div className="theTitle leading-1 mb-12">
           <p>We are here</p>
-          <h2 className="text-[45px] font-semibold text-primary leading-[1.1]">
+          <h2 className="text-[clamp(30px,7vw,45px)] font-semibold text-primary leading-[1.1]">
             to grow your business
           </h2>
           <p>through our specialized services</p>
         </div>
         <div className="wrapper grid  grid-cols-1 md:grid-cols-2  gap-10 ">
-          <div className="serviceItem  z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
+          <div className="serviceItem  z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
             <div>
-              <div className="serviceName  flex items-center gap-8 mb-6">
+              <div className="serviceName  flex items-center gap-4 mb-6">
                 <WebSvg />
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                <h3 className="text-[clamp(20px,5vw,30px)] leading-[1.2] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
                   Web App & Website Development
                 </h3>
               </div>
@@ -39,11 +39,11 @@ const Services = () => {
               </a>
             </div>
           </div>
-          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
+          <div className="serviceItem z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
             <div>
-              <div className="serviceName  flex items-center gap-8 mb-6">
+              <div className="serviceName  flex items-center gap-4 mb-6">
                 <VASvg />
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                <h3 className="text-[clamp(20px,5vw,30px)] leading-[1.2] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
                   Virtual Assistant Solutions
                 </h3>
               </div>
@@ -60,11 +60,11 @@ const Services = () => {
               </a>
             </div>
           </div>
-          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
+          <div className="serviceItem z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
             <div>
-              <div className="serviceName  flex items-center gap-8 mb-6">
+              <div className="serviceName  flex items-center gap-4 mb-6">
                 <AccountingSvg />
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                <h3 className="text-[clamp(20px,5vw,30px)] leading-[1.2] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
                   Accouting Solutions
                 </h3>
               </div>

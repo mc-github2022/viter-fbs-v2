@@ -112,51 +112,54 @@ const LcssBatches = () => {
           </div>
           <Slider {...settings}>
             <div>
-              <div className="blogItem addShadow mx-3 bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+              <div className="blogItem addShadow mx-3 bg-[url('../../public/img/Batch-63.jpg')] bg-center bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                 <div>
                   <div className="blogTitle relative z-[1]">
                     <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                      Batch 3
+                      Batch 43
                     </h4>
                   </div>
                   <div className="blogExcerpt p-10 relative z-[1]">
                     <p className="text-light font-bold text-lg">
-                      5 Reasons Your Business Needs a Custom Web Application
+                      CAVITY STATE UNIVERSITY
                     </p>
+                    <p className="text-light">BS Computer Engineering</p>
                   </div>
                 </div>
                 <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
               </div>
             </div>
             <div>
-              <div className="blogItem addShadow mx-3  bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+              <div className="blogItem addShadow mx-3  bg-[url('../../public/img/Batch-62.jpg')] bg-center  bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                 <div>
                   <div className="blogTitle relative z-[1]">
                     <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                      Batch 4
+                      Batch 42
                     </h4>
                   </div>
                   <div className="blogExcerpt p-10 relative z-[1]">
                     <p className="text-light font-bold text-lg">
-                      5 Reasons Your Business Needs a Custom Web Application
+                      Southern Luzon State University
                     </p>
+                    <p className="text-light">BS Computer Science</p>
                   </div>
                 </div>
                 <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
               </div>
             </div>
             <div>
-              <div className="blogItem addShadow mx-3 bg-[url('../../public/img/partnerWithUs.jpg')] bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+              <div className="blogItem addShadow mx-3 bg-[url('../../public/img/Batch-61.jpg')] bg-center  bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                 <div>
                   <div className="blogTitle relative z-[1]">
                     <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                      Batch 5
+                      Batch 41
                     </h4>
                   </div>
                   <div className="blogExcerpt p-10 relative z-[1]">
                     <p className="text-light font-bold text-lg">
-                      5 Reasons Your Business Needs a Custom Web Application
+                      Laguna Sate Polytechnic Univ.
                     </p>
+                    <p className="text-light">BS Information Technology</p>
                   </div>
                 </div>
                 <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>

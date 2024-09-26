@@ -109,7 +109,17 @@
     @apply right-0 backdrop-brightness-0 transition-all overflow-hidden;
   }
   .megaMenu {
-    @apply fixed h-screen top-[58px]  md:absolute border-t border-t-customGray md:top-[112px] md:left-[50%] md:translate-x-[-50%] z-[11] w-full md:rounded-br-xl md:rounded-bl-xl;
+    @apply fixed h-screen right-[-100%] lg:right-auto top-[58px]  transition-all border-t border-t-customGray  md:top-[112px]  lg:left-[50%]  lg:translate-x-[-50%] z-[11] w-full  lg:rounded-br-xl  lg:rounded-bl-xl;
+  }
+  .megaMenu.active {
+    @apply right-0 transition-all duration-200 lg:fixed z-[999];
+  }
+  .megaMenu {
+    @apply h-[100%] lg:h-auto;
+  }
+
+  .megaMenu .holder {
+    @apply h-[100%] lg:h-auto;
   }
 
   .megaMenu .menuItem {
@@ -117,9 +127,6 @@
   }
   .megaMenu .menuItem ul li {
     @apply mb-1;
-  }
-  .megaMenu .menuItem ul {
-    @apply h-0 md:h-auto;
   }
   .megaMenu .menuItem {
     @apply overflow-hidden;
@@ -135,5 +142,11 @@
 @media screen and (max-width: 1366px) {
   .customContainer {
     @apply w-full;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .footerGradientBlack {
+    background: radial-gradient(250px, #ac1e72, #000000);
   }
 }

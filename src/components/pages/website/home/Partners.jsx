@@ -3,7 +3,7 @@ import React from "react";
 const Partners = () => {
   return (
     <>
-      <section className="partners py-24">
+      <section className="partners py-24 lg:pb-24 lg:pt-0">
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1fr_1fr]">
             <div className="order-2 lg:order-1">

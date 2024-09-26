@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -91,12 +92,17 @@ const BannerSlider = () => {
     ],
   };
 
+  console.log(devBaseImgUrl);
   return (
     <Slider {...settings}>
       <div>
         <section
           id="banner"
-          className="banner bg-secondary bg-opacity-80 bg-blend-multiply bg-[url('../../public/img/home-bg.jpg')] bg-cover bg-center"
+          className={`banner  bg-cover bg-center`}
+          style={{
+            // backgroundImage: `url(${devBaseImgUrl}/HomeBanner.jpg)`,
+            backgroundImage: `url(../../public/img/HomeBanner.jpg)`,
+          }}
         >
           <div className="customContainer">
             <div className="wrapper flex place-items-center h-[90vh] md:h-[90vh] transition-all w-full">
@@ -124,7 +130,11 @@ const BannerSlider = () => {
       <div>
         <section
           id="banner"
-          className="banner bg-secondary bg-opacity-80 bg-blend-multiply bg-[url('../../public/img/home-bg.jpg')] bg-cover bg-center"
+          className={`banner bg-cover bg-center`}
+          style={{
+            // backgroundImage: `url(${devBaseImgUrl}/HomeBanner.jpg)`,
+            backgroundImage: `url(../../public/img/HomeBanner.jpg)`,
+          }}
         >
           <div className="customContainer">
             <div className="wrapper flex place-items-center h-[90vh] md:h-[90vh] transition-all w-full">
@@ -152,7 +162,11 @@ const BannerSlider = () => {
       <div>
         <section
           id="banner"
-          className="banner bg-secondary bg-opacity-80 bg-blend-multiply bg-[url('../../public/img/home-bg.jpg')] bg-cover bg-center"
+          className={`banner bg-cover bg-center`}
+          style={{
+            // backgroundImage: `url(${devBaseImgUrl}/HomeBanner.jpg)`,
+            backgroundImage: `url(../../public/img/HomeBanner.jpg)`,
+          }}
         >
           <div className="customContainer">
             <div className="wrapper flex place-items-center h-[90vh] md:h-[90vh] transition-all w-full">

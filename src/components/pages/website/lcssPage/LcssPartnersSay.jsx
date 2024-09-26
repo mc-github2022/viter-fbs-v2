@@ -18,7 +18,8 @@ const LcssPartnersSay = () => {
               <div className="theMessage  relative">
                 <div className="absolute top-[-30px] left-[-40px]">
                   <img
-                    src={`${devBaseImgUrl}/quote-white.png`}
+                    // src={`${devBaseImgUrl}/quote-white.png`}
+                    src={`../../public/img//quote-white.png`}
                     className="w-[80px]"
                     alt=""
                   />
@@ -30,7 +31,8 @@ const LcssPartnersSay = () => {
                 </p>
               </div>
               <img
-                src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                src={`../../public/img//Client_IMG_1.png`}
                 className="absolute bottom-0 w-[355px] right-8"
                 alt=""
               />

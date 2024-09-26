@@ -4,6 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { BiSolidDownArrow } from "react-icons/bi";
 import MegaMenu from "./MegaMenu";
 import ModalContact from "./ModalContact";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [toggleNav, setToggleNav] = React.useState(false);
@@ -26,7 +27,7 @@ const Header = () => {
     <>
       <section
         id="header"
-        className="header text-[15x] py-2 bg-light fixed w-full z-[11] lg:z-[13] shadow-md"
+        className="header text-[15x] py-2 bg-light fixed w-full z-[99] lg:z-[13] shadow-md"
       >
         <div
           className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
@@ -40,9 +41,9 @@ const Header = () => {
                 toggleNav ? "active" : ""
               } theNav flex justify-end md:justify-between items-center `}
             >
-              <ul className="py-10 md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0  h-screen md:h-[96px]">
+              <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0  h-screen md:h-[96px]">
                 <li>
-                  <a href="#">Home</a>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
                   <a
@@ -91,11 +92,14 @@ const Header = () => {
         </div>
       </section>
 
-      {toggleMenu && <MegaMenu />}
+      {toggleMenu && (
+        <MegaMenu toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
+      )}
       {modalContact && (
         <ModalContact
           setModalContact={setModalContact}
           modalContact={modalContact}
+          setToggleMenu={setToggleMenu}
         />
       )}
     </>

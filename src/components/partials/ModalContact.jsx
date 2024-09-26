@@ -18,7 +18,8 @@ import {
 } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 
-const ModalContact = ({ setModalContact }) => {
+const ModalContact = ({ setModalContact, setToggleMenu }) => {
+  setToggleMenu(false);
   return (
     <>
       <div className="ModalContact fixed w-full h-screen bg-dark bg-opacity-50 z-[14] grid place-items-center">

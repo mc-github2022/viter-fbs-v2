@@ -8,23 +8,60 @@ import {
   FaSmile,
 } from "react-icons/fa";
 import { TbArrowBackUp } from "react-icons/tb";
-import { TiArrowBackOutline } from "react-icons/ti";
+import { TiArrowBackOutline, TiGift } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
-const MegaMenu = () => {
+const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
+  const [serviceDropdown, serServiceDropdown] = React.useState(false);
+
+  const [menuIdentifier, setMenuIdentifier] = React.useState("");
+
+  const handleClose = () => {
+    setToggleMenu(false);
+  };
+
+  const [specialOffer, setSpecialOffer] = React.useState(false);
+  const handleSpecialOffer = () => {
+    setSpecialOffer(!specialOffer);
+    console.log("click");
+  };
+
+  const handleServiceDropdown = (item) => {
+    serServiceDropdown(false);
+    serServiceDropdown(true);
+    setMenuIdentifier(item);
+    console.log(item);
+  };
+
   return (
     <>
-      <div className="megaMenu">
-        <div className="w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl">
+      <div className={`${toggleMenu ? "active" : ""} megaMenu`}>
+        <div className="holder w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl">
           <div className="pt-8 px-8 pb-8 rounded-br-xl rounded-bl-xl">
             <div className="backArrow absolute top-2 right-9 md:hidden">
               <button>
-                <TiArrowBackOutline className="text-2xl text-dark" />
+                <TiArrowBackOutline
+                  className="text-2xl text-[gray] "
+                  onClick={handleClose}
+                />
               </button>
             </div>
             <div className="wrapper md:flex flex-wrap gap-10 justify-start mb-8">
-              <div className="menuItem">
-                <h2 className="font-semibold mb-2">WEB APPLICATIONS</h2>
-                <ul className="ml-3 text-sm ">
+              <div className="menuItem mb-3">
+                <h2
+                  className="font-semibold mb-2 cursor-pointer lg:cursor-default "
+                  onClick={() => handleServiceDropdown("webapp")}
+                >
+                  WEB APPLICATIONS
+                </h2>
+                <ul
+                  className={`${
+                    serviceDropdown && menuIdentifier === "webapp"
+                      ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
+                      : "h-0"
+                  } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
+                    [&>li]:lg:!mb-2`}
+                >
                   <li>HR Information System</li>
                   <li>Payroll System</li>
                   <li>Customer Relations Management</li>
@@ -32,19 +69,41 @@ const MegaMenu = () => {
                   <li>Asset Inventory System</li>
                 </ul>
               </div>
-              <div className="menuItem">
-                <h2 className="font-semibold  mb-2">ACCOUNTING SOLUTIONS</h2>
-                <ul className="ml-3 text-sm">
+              <div className="menuItem mb-3">
+                <h2
+                  className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                  onClick={() => handleServiceDropdown("accounting")}
+                >
+                  ACCOUNTING SOLUTIONS
+                </h2>
+                <ul
+                  className={`${
+                    serviceDropdown && menuIdentifier === "accounting"
+                      ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
+                      : "h-0"
+                  } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
+                    [&>li]:lg:!mb-2`}
+                >
                   <li>Business Registration</li>
                   <li>Compliance</li>
                   <li>Bookkeeping</li>
                 </ul>
               </div>
-              <div className="menuItem">
-                <h2 className="font-semibold  mb-2">
+              <div className="menuItem mb-3">
+                <h2
+                  className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                  onClick={() => handleServiceDropdown("va")}
+                >
                   VIRTUAL ASSISTANT SOLUTIONS
                 </h2>
-                <ul className="ml-3 text-sm">
+                <ul
+                  className={`${
+                    serviceDropdown && menuIdentifier === "va"
+                      ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
+                      : "h-0"
+                  } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
+                    [&>li]:lg:!mb-2`}
+                >
                   <li>Administrative Solutions</li>
                   <li>Marketing & Social Media</li>
                   <li>Technical Support</li>
@@ -53,30 +112,74 @@ const MegaMenu = () => {
                   <li>Miscellaneous Services</li>
                 </ul>
               </div>
-              <div className="menuItem">
-                <h2 className="font-semibold  mb-2">
-                  VIRTUAL ASSISTANT SOLUTIONS
+              <div className="menuItem mb-3">
+                <h2
+                  className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                  onClick={() => handleServiceDropdown("lcss")}
+                >
+                  LEARNING CENTER SOLUTIONS
                 </h2>
-                <ul className="ml-3 text-sm">
-                  <li>College On-the-job Training</li>
+                <ul
+                  className={`${
+                    serviceDropdown && menuIdentifier === "lcss"
+                      ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
+                      : "h-0"
+                  } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
+                    [&>li]:lg:!mb-2`}
+                >
+                  <li>
+                    <Link to="/lcss">College On-the-job- Training</Link>
+                  </li>
                   <li>High School Work Immersion</li>
                   <li>Continuing Studies</li>
                 </ul>
               </div>
               <div className="menuItem">
-                <h2 className="font-semibold  mb-2">
+                <h2
+                  className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                  onClick={() => handleServiceDropdown("webDev")}
+                >
                   WEB DESIGN AND DEVELOPMENT
                 </h2>
-                <ul className="ml-3 text-sm">
+                <ul
+                  className={`${
+                    serviceDropdown && menuIdentifier === "webDev"
+                      ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
+                      : "h-0 md:h-auto"
+                  } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
+                  [&>li]:lg:!mb-2`}
+                >
                   <li>WordPress</li>
                   <li>Single Page Website</li>
                   <li>Web Design</li>
                 </ul>
               </div>
             </div>
-            <div className="specialOffer bg-customGray p-3 rounded-2xl">
-              <h3 className="text-xl font-semibold mb-4">Special Offer</h3>
-              <div className="wrapper grid grid-cols-2 lg:grid-cols-5 gap-3">
+            <div
+              className="bg-customGray py-2 grid place-items-center items-center cursor-pointer lg:hidden"
+              onClick={handleSpecialOffer}
+            >
+              <h3 className="text-xl font-bold flex items-center gap-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]">
+                Special Offer <TiGift className="text-xl text-secondary" />
+              </h3>
+            </div>
+            <div
+              className={`${
+                specialOffer ? "!right-0" : ""
+              } absolute top-0 transition-all right-[-100%] lg:static specialOffer bg-customGray p-3 rounded-2xl w-full pt-10`}
+            >
+              <div className="backArrow absolute top-2 right-9 md:hidden">
+                <button>
+                  <TiArrowBackOutline
+                    className="text-2xl text-[gray] "
+                    onClick={handleSpecialOffer}
+                  />
+                </button>
+              </div>
+              <h3 className="text-xl font-semibold mb-4 text-center md:text-left">
+                Special Offer
+              </h3>
+              <div className="wrapper grid grid-cols-1 lg:grid-cols-5 gap-3">
                 <div className="offerItem bg-light p-2 rounded-xl grid place-items-center">
                   <div>
                     <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3">

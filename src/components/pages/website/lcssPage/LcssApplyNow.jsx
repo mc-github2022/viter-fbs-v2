@@ -43,7 +43,8 @@ const LcssApplyNow = () => {
             </div>
             <div className="bgImage absolute top-0 w-[68%] h-full right-0">
               <img
-                src={`${devBaseImgUrl}/ojt-accepted.jpg`}
+                // src={`${devBaseImgUrl}/ojt-accepted.jpg`}
+                src="../../public/img/ojt-accepted.jpg"
                 className="w-full h-full object-cover object-top"
                 alt=""
               />

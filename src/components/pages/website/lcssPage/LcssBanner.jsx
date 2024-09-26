@@ -1,12 +1,18 @@
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
+import { Link } from "react-router-dom";
 
 const LcssBanner = () => {
   return (
     <>
       <section
         id="lcssBanner"
-        className="banner bg-secondary bg-opacity-80 bg-[url('../../public/img/lcssBannerImg.jpg')] bg-cover bg-center pt-[112px] bg-blend-multiply		"
+        className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
+        style={{
+          // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
+          backgroundImage: `url(../../public/img/LCS-Banner.jpg)`,
+        }}
       >
         <div className="customContainer">
           <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">

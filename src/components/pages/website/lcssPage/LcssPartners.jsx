@@ -14,42 +14,112 @@ const LcssPartners = () => {
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
-                src={`${devBaseImgUrl}/aclc.png`}
+                // src={`${devBaseImgUrl}/aclc.png`}
+                src={`../../public/img/aclc.png`}
                 alt=""
               />
             </li>
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
-                src={`${devBaseImgUrl}/dlsl_official_logo.png`}
+                // src={`${devBaseImgUrl}/dlsl_official_logo.png`}
+                src={`../../public/img//dlsl_official_logo.png`}
                 alt=""
               />
             </li>
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
-                src={`${devBaseImgUrl}/csu.png`}
+                // src={`${devBaseImgUrl}/csu.png`}
+                src={`../../public/img/csu.png`}
                 alt=""
               />
             </li>
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
-                src={`${devBaseImgUrl}/bsu.png`}
+                // src={`${devBaseImgUrl}/bsu.png`}
+                src={`../../public/img//bsu.png`}
                 alt=""
               />
             </li>
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
-                src={`${devBaseImgUrl}/letran.png`}
+                // src={`${devBaseImgUrl}/letran.png`}
+                src={`../../public/img//letran.png`}
                 alt=""
               />
             </li>
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
-                src={`${devBaseImgUrl}/lpu.png`}
+                // src={`${devBaseImgUrl}/lpu.png`}
+                src={`../../public/img/lpu.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/Bicol-Univ.png`}
+                src={`../../public/img/Bicol-Univ.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/lspu.png`}
+                src={`../../public/img/lspu.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/pup.png`}
+                src={`../../public/img/pup.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/spc.png`}
+                src={`../../public/img/spc.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/sti.png`}
+                src={`../../public/img/sti.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/tip.png`}
+                src={`../../public/img/tip.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/tmlc.png`}
+                src={`../../public/img/tmlc.png`}
+                alt=""
+              />
+            </li>
+            <li>
+              <img
+                className="w-[120px] h-[120px] object-contain"
+                // src={`${devBaseImgUrl}/ub.png`}
+                src={`../../public/img/ub.png`}
                 alt=""
               />
             </li>

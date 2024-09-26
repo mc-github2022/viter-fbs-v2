@@ -19,7 +19,8 @@ const LcssTeam = () => {
           <div className="wrapper grid grid-cols-2 gap-10">
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/jhonny.png`}
+                // src={`${devBaseImgUrl}/jhonny.png`}
+                src={`../../public/img/jhonny.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />
@@ -36,7 +37,8 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/Thea.png`}
+                // src={`${devBaseImgUrl}/Thea.png`}
+                src={`../../public/img//Thea.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />
@@ -53,7 +55,8 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/roy.png`}
+                // src={`${devBaseImgUrl}/roy.png`}
+                src={`../../public/img/roy.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />
@@ -67,7 +70,8 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/ms.-herlyn.png`}
+                // src={`${devBaseImgUrl}/ms.-herlyn.png`}
+                src={`../../public/img/ms.-herlyn.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />
@@ -81,7 +85,8 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/sir-mon-1.png`}
+                // src={`${devBaseImgUrl}/sir-mon-1.png`}
+                src={`../../public/img/sir-mon-1.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />
@@ -93,7 +98,8 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/mc.png`}
+                // src={`${devBaseImgUrl}/mc.png`}
+                src={`../../public/img/mc.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />
@@ -107,7 +113,8 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/ansbert.png`}
+                // src={`${devBaseImgUrl}/ansbert.png`}
+                src={`../../public/img/ansbert.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />
@@ -121,7 +128,8 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex items-center gap-4">
               <img
-                src={`${devBaseImgUrl}/emman.png`}
+                // src={`${devBaseImgUrl}/emman.png`}
+                src={`../../public/img/emman.png`}
                 className="w-[150px] h-[150px]"
                 alt=""
               />

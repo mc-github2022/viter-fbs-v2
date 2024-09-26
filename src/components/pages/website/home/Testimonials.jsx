@@ -6,8 +6,8 @@ const Testimonials = () => {
   return (
     <>
       <section className="testimonials relative py-24 md:mt-40 lg:mt-0  lg:overflow-hidden bg-[#000] lg:bg-[transparent]">
-        <div className="radialGradient absolute w-[500px] h-[500px] bottom-0"></div>
         <div className="customContainer">
+          <div className="radialGradient absolute left-0  w-[500px] h-[500px] bottom-0 lg:hidden"></div>
           <div className="wrapper grid lg:grid-cols-[_1fr_3fr] lg:h-[700px]">
             <div className="grid place-items-center relative">
               <div className="z-50 text-light mb-20 lg:mb-0">
@@ -21,12 +21,12 @@ const Testimonials = () => {
               </div>
               <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[150px] lg:h-[150px] z-[1]">
                 <img
-                  src="../../public/img/quote.png"
+                  // src={`${devBaseImgUrl}/quote.png`}
+                  src={`../../public/img/quote.png`}
                   className="w-full h-full object-cover object-top block"
                   alt=""
                 />
               </div>
-              <div className="footerGradientBlack absolute w-full bottom-0 right-[-30%]"></div>
             </div>
             <div className="flex justify-end">
               <div className="w-full lg:w-[439px] relative z-[999] text-light text-right">
@@ -54,14 +54,20 @@ const Testimonials = () => {
         </div>
         <div className="testimonialPhoto hidden  lg:block absolute z-[1] left-[52%] translate-x-[-40%] top-[250px] lg:top-[130px] w-[250px] lg:w-[358px]">
           <img
-            src="../../public/img/Rober_han.png"
+            // src={`${devBaseImgUrl}/Rober_han.png`}
+            src={`../../public/img/Rober_han.png`}
             alt=""
             className="rotate-[5deg]"
           />
         </div>
         <div className="hidden lg:block">
           <div className="smPill w-[70%] h-[100px] bg-primary top-[60%] z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg]">
-            <img src="../../public/img/tm_logo.png" alt="" />
+            <img
+              // src={`${devBaseImgUrl}/tm_logo.png`}
+              src={`../../public/img/tm_logo.png`}
+              className="w-[150px] mt-[25px] ml-[50px]"
+              alt=""
+            />
           </div>
         </div>
         <div className="z-0 hidden lg:block">
