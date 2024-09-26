@@ -126,7 +126,7 @@
     @apply overflow-hidden;
   }
   .megaMenu .menuItem ul li {
-    @apply mb-1;
+    @apply mb-1 hover:text-primary transition-all cursor-pointer;
   }
   .megaMenu .menuItem {
     @apply overflow-hidden;

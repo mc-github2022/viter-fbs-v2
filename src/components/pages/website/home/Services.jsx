@@ -65,7 +65,7 @@ const Services = () => {
               <div className="serviceName  flex items-center gap-4 mb-6">
                 <AccountingSvg />
                 <h3 className="text-[clamp(20px,5vw,30px)] leading-[1.2] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  Accouting Solutions
+                  Accounting Solutions
                 </h3>
               </div>
               <p className="mb-6">
