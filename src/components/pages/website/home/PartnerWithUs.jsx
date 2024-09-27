@@ -4,7 +4,7 @@ import { devBaseImgUrl } from "../../../helpers/functions-general";
 const PartnerWithUs = () => {
   return (
     <>
-      <section className="partnerWithUs pt-60 pb-40 md:pt-60 md:pb-20 relative overflow-hidden">
+      <section className="partnerWithUs pt-60 pb-40 md:pt-20 md:pb-20 relative overflow-hidden">
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
             <div className="bg-customGray md:bg-opacity-70 py-20 px-10 z-10 rounded-lg addShadow">

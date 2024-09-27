@@ -22,7 +22,7 @@ const ModalContact = ({ setModalContact, setToggleMenu }) => {
   setToggleMenu(false);
   return (
     <>
-      <div className="ModalContact fixed w-full h-screen bg-dark bg-opacity-50 z-[14] grid place-items-center">
+      <div className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[14] grid place-items-center">
         <div className="theModal bg-customGray pl-10 pt-10 pb-10 pr-[150px] grid grid-cols-2 gap-10 rounded-lg relative addShadow">
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle

@@ -55,7 +55,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const LcssPartnersSay = () => {
+const ServiceHrPartnersSay = () => {
   var partnerSaysSettings = {
     infinite: false,
     speed: 500,
@@ -91,18 +91,18 @@ const LcssPartnersSay = () => {
 
   return (
     <>
-      <section className="partnersSay py-20">
+      <section className="ServiceHrPartnersSay py-20">
         <div className="customContainer">
           <div className="">
-            <p>What our school and university</p>
+            <p>What our</p>
             <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
-              partners say
+              clients say
             </h2>
           </div>
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
               <div>
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative mt-24">
+                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center mt-20 px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -142,7 +142,7 @@ const LcssPartnersSay = () => {
                 </div>
               </div>
               <div>
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative mt-24">
+                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center mt-20 px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -191,4 +191,4 @@ const LcssPartnersSay = () => {
   );
 };
 
-export default LcssPartnersSay;
+export default ServiceHrPartnersSay;

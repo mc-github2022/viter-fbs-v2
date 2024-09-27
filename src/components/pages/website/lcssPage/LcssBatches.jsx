@@ -7,7 +7,6 @@ function SampleNextArrow(props) {
   return (
     <div
       style={{
-        display: "block",
         background: "#ac1e72",
         position: "absolute",
         color: "white",
@@ -16,10 +15,14 @@ function SampleNextArrow(props) {
         fontSize: "3rem",
         cursor: "pointer",
         borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
       }}
       onClick={onClick}
     >
-      <IoIosArrowForward />
+      <IoIosArrowForward className="text-3xl" />
     </div>
   );
 }
@@ -29,7 +32,6 @@ function SamplePrevArrow(props) {
   return (
     <div
       style={{
-        display: "block",
         position: "absolute",
         background: "#ac1e72",
         color: "white",
@@ -39,10 +41,14 @@ function SamplePrevArrow(props) {
         zIndex: "1",
         cursor: "pointer",
         borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
       }}
       onClick={onClick}
     >
-      <IoIosArrowBack />
+      <IoIosArrowBack className="text-3xl" />
     </div>
   );
 }

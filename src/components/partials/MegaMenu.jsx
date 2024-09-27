@@ -62,7 +62,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                     [&>li]:lg:!mb-2`}
                 >
-                  <li>HR Information System</li>
+                  <li>
+                    <Link to="/webapp-hris">Information System HR</Link>
+                  </li>
                   <li>Payroll System</li>
                   <li>Customer Relations Management</li>
                   <li>School Enrollment System</li>
