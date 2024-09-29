@@ -10,7 +10,7 @@ const LcssPartners = () => {
           <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
             school and universities.
           </h2>
-          <ul className="flex flex-wrap justify-center gap-10 items-center">
+          <ul className="flex flex-wrap justify-center gap-14 items-center">
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
