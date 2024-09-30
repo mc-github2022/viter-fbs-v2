@@ -7,12 +7,14 @@ import Partners from "./Partners";
 import Insights from "./Insights";
 import Header from "../../../partials/Header";
 import Footer from "../../../partials/Footer";
+import Process from "./Process";
 
 const Home = () => {
   return (
     <>
       <Header />
       <Banner />
+      <Process />
       <Services />
       <PartnerWithUs />
       <Testimonials />

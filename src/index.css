@@ -109,7 +109,7 @@
     @apply right-0 backdrop-brightness-0 transition-all overflow-hidden;
   }
   .megaMenu {
-    @apply fixed h-screen right-[-100%] lg:right-auto top-[58px]  transition-all border-t border-t-customGray  md:top-[97px]  lg:left-[50%]  lg:translate-x-[-50%] z-[11] w-full  lg:rounded-br-xl  lg:rounded-bl-xl;
+    @apply fixed h-screen right-[-100%] lg:right-auto top-[58px]  transition-all border-t border-t-customGray  md:top-[96px]  lg:left-[50%]  lg:translate-x-[-50%] z-[11] w-full  lg:rounded-br-xl  lg:rounded-bl-xl;
   }
   .megaMenu.active {
     @apply right-0 transition-all duration-200 lg:fixed z-[999];
@@ -154,4 +154,3 @@
 /* .slick-slider .slick-list {
   padding-top: 100px;
 } */
- 

@@ -35,7 +35,8 @@ const ServiceHrScope = () => {
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
                   className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2"
-                  onClick={() => handleAccordion("dassboard")}>
+                  onClick={() => handleAccordion("dassboard")}
+                >
                   <div className="flex items-center gap-4">
                     <MdOutlineDashboard className="text-3xl text-primary" />
                     <p
@@ -43,7 +44,8 @@ const ServiceHrScope = () => {
                         accordion && accordionItem === "dassboard"
                           ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                           : "text-dark"
-                      } text-xl font-semibold cursor-pointer `}>
+                      } text-xl font-semibold cursor-pointer `}
+                    >
                       IntuitiveDashboard
                     </p>
                   </div>
@@ -52,9 +54,10 @@ const ServiceHrScope = () => {
                 <div
                   className={`${
                     accordion && accordionItem === "dassboard"
-                      ? "min-h-[170px] p-4"
+                      ? "min-h-[170px] px-4 pt-4 pb-8"
                       : "h-0 py-0"
-                  } accordionContent `}>
+                  } accordionContent `}
+                >
                   <p className="mb-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Quaerat reprehenderit est amet quisquam autem tempore
@@ -72,7 +75,8 @@ const ServiceHrScope = () => {
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
                   className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-3"
-                  onClick={() => handleAccordion("201file")}>
+                  onClick={() => handleAccordion("201file")}
+                >
                   <div className="flex items-center gap-4">
                     <FaRegFileAlt className="text-3xl text-primary" />
                     <p
@@ -80,7 +84,8 @@ const ServiceHrScope = () => {
                         accordion && accordionItem === "201file"
                           ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                           : "text-dark"
-                      } text-xl font-semibold cursor-pointer `}>
+                      } text-xl font-semibold cursor-pointer `}
+                    >
                       Employee 201 File
                     </p>
                   </div>
@@ -89,9 +94,10 @@ const ServiceHrScope = () => {
                 <div
                   className={`${
                     accordion && accordionItem === "201file"
-                      ? "min-h-[170px] p-4"
+                      ? "min-h-[170px] px-4 pt-4 pb-8"
                       : "h-0 py-0"
-                  } accordionContent`}>
+                  } accordionContent`}
+                >
                   <p className="mb-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Quaerat reprehenderit est amet quisquam autem tempore
@@ -109,7 +115,8 @@ const ServiceHrScope = () => {
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
                   className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-3"
-                  onClick={() => handleAccordion("leave")}>
+                  onClick={() => handleAccordion("leave")}
+                >
                   <div className="flex items-center gap-4">
                     <MdOutlineCalendarToday className="text-3xl text-primary" />
                     <p
@@ -117,7 +124,8 @@ const ServiceHrScope = () => {
                         accordion && accordionItem === "leave"
                           ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                           : "text-dark"
-                      } text-xl font-semibold cursor-pointer `}>
+                      } text-xl font-semibold cursor-pointer `}
+                    >
                       Leave Management
                     </p>
                   </div>
@@ -126,9 +134,10 @@ const ServiceHrScope = () => {
                 <div
                   className={`${
                     accordion && accordionItem === "leave"
-                      ? "min-h-[170px] p-4"
+                      ? "min-h-[170px] px-4 pt-4 pb-8"
                       : "h-0 py-0"
-                  } accordionContent`}>
+                  } accordionContent`}
+                >
                   <p className="mb-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Quaerat reprehenderit est amet quisquam autem tempore
@@ -146,7 +155,8 @@ const ServiceHrScope = () => {
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
                   className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-3"
-                  onClick={() => handleAccordion("overtime")}>
+                  onClick={() => handleAccordion("overtime")}
+                >
                   <div className="flex items-center gap-4">
                     <LuCalendarClock className="text-3xl text-primary" />
                     <p
@@ -154,7 +164,8 @@ const ServiceHrScope = () => {
                         accordion && accordionItem === "overtime"
                           ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                           : "text-dark"
-                      } text-xl font-semibold cursor-pointer `}>
+                      } text-xl font-semibold cursor-pointer `}
+                    >
                       Overtime Management
                     </p>
                   </div>
@@ -163,9 +174,10 @@ const ServiceHrScope = () => {
                 <div
                   className={`${
                     accordion && accordionItem === "overtime"
-                      ? "min-h-[170px] p-4"
+                      ? "min-h-[170px] px-4 pt-4 pb-8"
                       : "h-0 py-0"
-                  } accordionContent`}>
+                  } accordionContent`}
+                >
                   <p className="mb-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Quaerat reprehenderit est amet quisquam autem tempore
@@ -183,7 +195,8 @@ const ServiceHrScope = () => {
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
                   className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-3"
-                  onClick={() => handleAccordion("time")}>
+                  onClick={() => handleAccordion("time")}
+                >
                   <div className="flex items-center gap-4">
                     <LuClock className="text-3xl text-primary" />
                     <p
@@ -191,7 +204,8 @@ const ServiceHrScope = () => {
                         accordion && accordionItem === "time"
                           ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                           : "text-dark"
-                      } text-xl font-semibold cursor-pointer `}>
+                      } text-xl font-semibold cursor-pointer `}
+                    >
                       Task Management with Timer
                     </p>
                   </div>
@@ -200,9 +214,10 @@ const ServiceHrScope = () => {
                 <div
                   className={`${
                     accordion && accordionItem === "time"
-                      ? "min-h-[170px] p-4"
+                      ? "min-h-[170px] px-4 pt-4 pb-8"
                       : "h-0 py-0"
-                  } accordionContent`}>
+                  } accordionContent`}
+                >
                   <p className="mb-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Quaerat reprehenderit est amet quisquam autem tempore
@@ -220,7 +235,8 @@ const ServiceHrScope = () => {
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
                   className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-3"
-                  onClick={() => handleAccordion("client")}>
+                  onClick={() => handleAccordion("client")}
+                >
                   <div className="flex items-center gap-4">
                     <FaBuildingUser className="text-3xl text-primary" />
                     <p
@@ -228,7 +244,8 @@ const ServiceHrScope = () => {
                         accordion && accordionItem === "client"
                           ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                           : "text-dark"
-                      } text-xl font-semibold cursor-pointer `}>
+                      } text-xl font-semibold cursor-pointer `}
+                    >
                       Client Management
                     </p>
                   </div>
@@ -237,9 +254,10 @@ const ServiceHrScope = () => {
                 <div
                   className={`${
                     accordion && accordionItem === "client"
-                      ? "min-h-[170px] p-4"
+                      ? "min-h-[170px] px-4 pt-4 pb-8"
                       : "h-0 py-0"
-                  } accordionContent`}>
+                  } accordionContent`}
+                >
                   <p className="mb-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Quaerat reprehenderit est amet quisquam autem tempore
@@ -257,7 +275,8 @@ const ServiceHrScope = () => {
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
                   className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-3"
-                  onClick={() => handleAccordion("megaphone")}>
+                  onClick={() => handleAccordion("megaphone")}
+                >
                   <div className="flex items-center gap-4">
                     <HiOutlineMegaphone className="text-3xl text-primary" />
                     <p
@@ -265,7 +284,8 @@ const ServiceHrScope = () => {
                         accordion && accordionItem === "megaphone"
                           ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                           : "text-dark"
-                      } text-xl font-semibold cursor-pointer `}>
+                      } text-xl font-semibold cursor-pointer `}
+                    >
                       Announcement Management
                     </p>
                   </div>
@@ -274,9 +294,10 @@ const ServiceHrScope = () => {
                 <div
                   className={`${
                     accordion && accordionItem === "megaphone"
-                      ? "min-h-[170px] p-4"
+                      ? "min-h-[170px] px-4 pt-4 pb-8"
                       : "h-0 py-0"
-                  } accordionContent`}>
+                  } accordionContent`}
+                >
                   <p className="mb-4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Quaerat reprehenderit est amet quisquam autem tempore
@@ -295,11 +316,13 @@ const ServiceHrScope = () => {
             <div
               className={`${
                 accordionItem === "dassboard" ? "block" : "hidden"
-              }`}>
+              }`}
+            >
               <p>image 1</p>
             </div>
             <div
-              className={`${accordionItem === "201file" ? "block" : "hidden"}`}>
+              className={`${accordionItem === "201file" ? "block" : "hidden"}`}
+            >
               <p>image 2</p>
             </div>
           </div>

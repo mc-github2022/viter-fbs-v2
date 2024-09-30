@@ -18,7 +18,8 @@ function SampleNextArrow(props) {
         fontSize: "3rem",
         cursor: "pointer",
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <IoIosArrowForward />
     </div>
   );
@@ -38,7 +39,8 @@ function SamplePrevArrow(props) {
         zIndex: "1",
         cursor: "pointer",
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <IoIosArrowBack />
     </div>
   );
@@ -60,7 +62,8 @@ const WhyUsBanner = () => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "30px",
-        }}>
+        }}
+      >
         <ul style={{ margin: "0px" }}> {dots} </ul>
       </div>
     ),
@@ -73,7 +76,8 @@ const WhyUsBanner = () => {
           background: "#F5F5F5",
           borderRadius: "50%",
           opacity: "50%",
-        }}></div>
+        }}
+      ></div>
     ),
     responsive: [
       {
@@ -98,15 +102,18 @@ const WhyUsBanner = () => {
             style={{
               // backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.jpg)`,
               backgroundImage: `url(../../public/img/whyfbsBanner.jpg)`,
-            }}>
+            }}
+          >
             <div className="customContainer">
               <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
                 <div className="text-left">
                   <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
                     We are
-                    <span className="text-light font-semibold">more than</span>
+                    <span className="text-light font-semibold inline-block ml-3 mr-3">
+                      more than
+                    </span>
                     just a
-                    <span className="text-light font-semibold">
+                    <span className="text-light font-semibold inline-block ml-3 mr-3">
                       managed services provider
                     </span>
                   </h2>
@@ -117,7 +124,8 @@ const WhyUsBanner = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2">
+                    className="btn bg-transparent text-light border-2"
+                  >
                     Get Started
                   </a>
                 </div>
@@ -132,7 +140,8 @@ const WhyUsBanner = () => {
             style={{
               // backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.jpg)`,
               backgroundImage: `url(../../public/img/whyfbsBanner.jpg)`,
-            }}>
+            }}
+          >
             <div className="customContainer">
               <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
                 <div className="text-left">
@@ -151,7 +160,8 @@ const WhyUsBanner = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2">
+                    className="btn bg-transparent text-light border-2"
+                  >
                     SCHEDULE A DEMO
                   </a>
                 </div>

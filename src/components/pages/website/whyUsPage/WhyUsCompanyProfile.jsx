@@ -26,14 +26,16 @@ const WhyUsCompanyProfile = () => {
                 <li>
                   <a
                     href="#"
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     PARTNER WITH US
                   </a>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="flex items-center gap-2 font-bold text-primary">
+                    className="flex items-center gap-2 font-bold text-primary"
+                  >
                     Download Proposal <FaFileDownload />
                   </a>
                 </li>
@@ -90,10 +92,11 @@ const WhyUsCompanyProfile = () => {
                         Customized Solutions
                       </h3>
                       <p>
-                        By gaining insdustry-aligned experience and expert
-                        training, students enhance their employability, making
-                        them more competitive in the job market and ready for
-                        career opportunities.
+                        We understand that no two business are alike. That's why
+                        our services are flexible and scalable, design to meet
+                        your specific requirements. designed to meet your
+                        specific requirements. Whether you need a unique web
+                        solution or specific talent from our skilled workforce.
                       </p>
                     </div>
                   </div>

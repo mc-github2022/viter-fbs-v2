@@ -13,9 +13,16 @@ const Header = () => {
     setToggleMenu(false);
   };
 
+  const [toggleWhyUs, setToggleWhyUs] = React.useState(false);
+  const handdleWhyUs = () => {
+    setToggleWhyUs(!toggleWhyUs);
+    setToggleMenu(false);
+  };
+
   const [toggleMenu, setToggleMenu] = React.useState(false);
   const handleToggleMenu = () => {
     setToggleMenu(!toggleMenu);
+    setToggleWhyUs(false);
   };
 
   const [modalContact, setModalContact] = React.useState(false);
@@ -27,9 +34,11 @@ const Header = () => {
     <>
       <section
         id="header"
-        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[13] shadow-md">
+        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[13] shadow-md"
+      >
         <div
-          className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}>
+          className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
+        >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
               <img src={logo} alt="" className="w-[80%] md:w-full" />
@@ -37,7 +46,8 @@ const Header = () => {
             <div
               className={`${
                 toggleNav ? "active" : ""
-              } theNav flex justify-end md:justify-between items-center `}>
+              } theNav flex justify-end md:justify-between items-center `}
+            >
               <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0  h-screen md:h-[96px]">
                 <li>
                   <Link to="/">Home</Link>
@@ -47,8 +57,9 @@ const Header = () => {
                     href="#"
                     onClick={handleToggleMenu}
                     className={`${
-                      toggleMenu ? "text-primary " : ""
-                    } flex items-center gap-2`}>
+                      toggleMenu ? "text-primary" : ""
+                    } flex items-center gap-2`}
+                  >
                     Services
                     <BiSolidDownArrow
                       className={`${
@@ -57,8 +68,42 @@ const Header = () => {
                     />
                   </a>
                 </li>
-                <li>
-                  <a href="#">Why FBS?</a>
+                <li className="relative ">
+                  <a
+                    href="#"
+                    className={`${
+                      toggleWhyUs ? "text-primary" : ""
+                    } flex items-center gap-2`}
+                    onClick={handdleWhyUs}
+                  >
+                    Why FBS?
+                    <BiSolidDownArrow
+                      className={`${
+                        toggleWhyUs ? "!rotate-180 transition-all" : ""
+                      } transition-all -rotate-90 md:rotate-0 md:block`}
+                    />
+                  </a>
+                  <ul
+                    className={`${
+                      toggleWhyUs ? "!absolute" : "hidden"
+                    } left-0 !top-[96px] !w-[180px] text-sm p-5  [&>li]:mb-2 addShadow rounded-bl-xl rounded-br-xl`}
+                  >
+                    <li>
+                      <Link className="!p-0 hover:text-primary" to="/whyus">
+                        Why Work With Us
+                      </Link>
+                    </li>
+                    <li>
+                      <a className="!p-0 hover:text-primary" href="#">
+                        Events & Activities
+                      </a>
+                    </li>
+                    <li>
+                      <a className="!p-0 hover:text-primary" href="#">
+                        Career
+                      </a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>
@@ -66,7 +111,8 @@ const Header = () => {
               <a
                 href="#"
                 onClick={handleModalContact}
-                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary ">
+                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
+              >
                 Get Started
               </a>
             </div>
@@ -75,7 +121,8 @@ const Header = () => {
               onClick={handdleToggle}
               className={`${
                 toggleNav ? "active" : ""
-              } toggleNav block md:hidden relative w-[20px] h-[20px] ml-auto`}>
+              } toggleNav block md:hidden relative w-[20px] h-[20px] ml-auto`}
+            >
               <span></span>
               <span></span>
               <span></span>

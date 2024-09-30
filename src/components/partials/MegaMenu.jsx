@@ -46,11 +46,12 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 />
               </button>
             </div>
-            <div className="wrapper md:flex flex-wrap gap-10 justify-start mb-8">
+            <div className="wrapper md:flex flex-wrap gap-y-0 gap-x-10 justify-start mb-8">
               <div className="menuItem mb-3">
                 <h2
                   className="font-semibold mb-2 cursor-pointer lg:cursor-default "
-                  onClick={() => handleServiceDropdown("webapp")}>
+                  onClick={() => handleServiceDropdown("webapp")}
+                >
                   WEB APPLICATIONS
                 </h2>
                 <ul
@@ -59,7 +60,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                       ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                       : "h-0"
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                >
                   <li>
                     <Link to="/webapp-hris">Information System HR</Link>
                   </li>
@@ -72,7 +74,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
               <div className="menuItem mb-3">
                 <h2
                   className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
-                  onClick={() => handleServiceDropdown("accounting")}>
+                  onClick={() => handleServiceDropdown("accounting")}
+                >
                   ACCOUNTING SOLUTIONS
                 </h2>
                 <ul
@@ -81,7 +84,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                       ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                       : "h-0"
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                >
                   <li>Business Registration</li>
                   <li>Compliance</li>
                   <li>Bookkeeping</li>
@@ -90,7 +94,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
               <div className="menuItem mb-3">
                 <h2
                   className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
-                  onClick={() => handleServiceDropdown("va")}>
+                  onClick={() => handleServiceDropdown("va")}
+                >
                   VIRTUAL ASSISTANT SOLUTIONS
                 </h2>
                 <ul
@@ -99,7 +104,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                       ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                       : "h-0"
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                >
                   <li>Administrative Solutions</li>
                   <li>Marketing & Social Media</li>
                   <li>Technical Support</li>
@@ -111,7 +117,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
               <div className="menuItem mb-3">
                 <h2
                   className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
-                  onClick={() => handleServiceDropdown("lcss")}>
+                  onClick={() => handleServiceDropdown("lcss")}
+                >
                   LEARNING CENTER SOLUTIONS
                 </h2>
                 <ul
@@ -120,7 +127,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                       ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                       : "h-0"
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                >
                   <li>
                     <Link to="/lcss">College On-the-job- Training</Link>
                   </li>
@@ -131,7 +139,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
               <div className="menuItem">
                 <h2
                   className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
-                  onClick={() => handleServiceDropdown("webDev")}>
+                  onClick={() => handleServiceDropdown("webDev")}
+                >
                   WEB DESIGN AND DEVELOPMENT
                 </h2>
                 <ul
@@ -140,7 +149,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                       ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                       : "h-0 md:h-auto"
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                  [&>li]:lg:!mb-2`}>
+                  [&>li]:lg:!mb-2`}
+                >
                   <li>WordPress</li>
                   <li>Single Page Website</li>
                   <li>Web Design</li>
@@ -149,7 +159,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
             </div>
             <div
               className="bg-customGray py-2 grid place-items-center items-center cursor-pointer lg:hidden"
-              onClick={handleSpecialOffer}>
+              onClick={handleSpecialOffer}
+            >
               <h3 className="text-xl font-bold flex items-center gap-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]">
                 Special Offer <TiGift className="text-xl text-secondary" />
               </h3>
@@ -157,7 +168,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
             <div
               className={`${
                 specialOffer ? "!right-0" : ""
-              } absolute top-0 transition-all right-[-100%] lg:static specialOffer bg-customGray p-3 rounded-2xl w-full pt-10`}>
+              } absolute top-0 transition-all right-[-100%] lg:static specialOffer bg-customGray p-3 rounded-2xl w-full`}
+            >
               <div className="backArrow absolute top-2 right-9 md:hidden">
                 <button>
                   <TiArrowBackOutline
