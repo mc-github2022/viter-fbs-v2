@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+  *:focus {
+    outline: none;
+  }
+  html {
+    @apply font-poppins;
+  }
+  body {
+    @apply overflow-x-hidden;
+  }
+  body .theNav.active {
+    @apply overflow-hidden;
+  }
+  input[type="text"] {
+    @apply bg-customGray h-8 p-1 text-sm text-dark;
+  }
+  textarea {
+    @apply bg-customGray w-full h-20 resize-none;
+  }
+}
+
+@layer components {
+  .customContainer {
+    @apply w-[1366px] mx-auto px-10;
+  }
+  .btn {
+    @apply inline-block py-4 px-8 rounded-full text-center;
+  }
+  .textGradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent];
+  }
+  .toggleNav span {
+    @apply block w-[10px] h-[3px] bg-dark transition-all;
+  }
+  .toggleNav span:nth-child(2) {
+    @apply w-[px] absolute top-0 left-[50%] rounded-r-full;
+  }
+  .toggleNav span:nth-child(1) {
+    @apply w-[px] absolute top-0 rounded-l-full;
+  }
+  .toggleNav span:nth-child(4) {
+    @apply w-[px] absolute bottom-0 rounded-l-full;
+  }
+  .toggleNav span:nth-child(3) {
+    @apply w-[20px] my-1 rounded-full;
+  }
+  .toggleNav span:nth-child(5) {
+    @apply w-[10px] absolute bottom-0 left-[50%] rounded-r-full;
+  }
+  .toggleNav.active span:nth-child(5) {
+    @apply w-[13px] absolute bottom-0 rotate-45 -translate-y-[4px]  -translate-x-[1px] left-[50%] rounded-full;
+  }
+  .toggleNav.active span:nth-child(4) {
+    @apply w-[13px] absolute bottom-0 -rotate-45 -translate-y-[4px]   rounded-full;
+  }
+  .toggleNav.active span:nth-child(1) {
+    @apply w-[13px] absolute top-0 rotate-45 translate-y-[4px]   rounded-full;
+  }
+  .toggleNav.active span:nth-child(2) {
+    @apply w-[13px] absolute top-0 -rotate-45 translate-y-[4px]  -translate-x-[1px]  rounded-full;
+  }
+  .toggleNav.active span:nth-child(3) {
+    @apply opacity-0;
+  }
+
+  .slickNav ul li.slick-active div {
+    @apply !bg-[white] !opacity-100;
+  }
+  .serviceIcon svg {
+    @apply group-hover:fill-[white] fill-[#6a1141];
+  }
+  .addRadialGradient {
+    background: radial-gradient(circle at top 20% left 20%, #6a1141, #ac1e72);
+  }
+  .bg {
+    color: #4d0d2f;
+  }
+  .bgGradientBlack {
+    background: radial-gradient(500px, #585858, #000000);
+  }
+  .footerGradientBlack {
+    background: radial-gradient(500px, #ac1e72, #000000);
+  }
+  .radialGradient {
+    background: radial-gradient(200px, #ac1e71b0, #000000);
+  }
+  .addShadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .theNav ul {
+    @apply absolute md:static bg-light right-[-100%] top-[59px] w-full z-[5] transition-all;
+  }
+  .theNav ul li {
+    @apply border-t border-t-customGray border-b-customGray md:border-t-0 cursor-pointer;
+  }
+  .theNav ul li a {
+    @apply py-3 px-11 w-full;
+  }
+  .theNav.active ul {
+    @apply right-0 backdrop-brightness-0 transition-all overflow-hidden;
+  }
+  .megaMenu {
+    @apply fixed h-screen right-[-100%] lg:right-auto top-[58px]  transition-all border-t border-t-customGray  md:top-[96px]  lg:left-[50%]  lg:translate-x-[-50%] z-[11] w-full  lg:rounded-br-xl  lg:rounded-bl-xl;
+  }
+  .megaMenu.active {
+    @apply right-0 transition-all duration-200 lg:fixed z-[999];
+  }
+  .megaMenu {
+    @apply h-[100%] lg:h-auto;
+  }
+
+  .megaMenu .holder {
+    @apply h-[100%] lg:h-auto;
+  }
+
+  .megaMenu .menuItem {
+    @apply overflow-hidden;
+  }
+  .megaMenu .menuItem ul li {
+    @apply mb-1 hover:text-primary transition-all cursor-pointer;
+  }
+  .megaMenu .menuItem {
+    @apply overflow-hidden;
+  }
+  .addShadow {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .bgGradientRadialButtonleft {
+    background: radial-gradient(500px, #585858, #000000);
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .customContainer {
+    @apply w-full;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .footerGradientBlack {
+    background: radial-gradient(250px, #ac1e72, #000000);
+  }
+}
+
+/* .slick-slider .slick-list {
+  padding-top: 100px;
+} */
