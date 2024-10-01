@@ -1,7 +1,10 @@
 import { devNavUrl } from "../components/helpers/functions-general";
+import SinglePage from "../components/pages/website/events/SinglePage";
+import EventsAndAct from "../components/pages/website/events/SinglePage";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import ServiceHrPage from "../components/pages/website/serviceHr/ServiceHrPage";
+import VaPage from "../components/pages/website/vaPage/VaPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
 
 export const routesDeveloper = [
@@ -20,5 +23,13 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/whyus`,
     element: <WhyUsPage />,
+  },
+  {
+    path: `${devNavUrl}/singlepage`,
+    element: <SinglePage />,
+  },
+  {
+    path: `${devNavUrl}/va`,
+    element: <VaPage />,
   },
 ];

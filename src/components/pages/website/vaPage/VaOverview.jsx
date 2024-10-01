@@ -3,43 +3,25 @@ import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 
-const ServiceHrOverview = () => {
+const VaOverview = () => {
   return (
     <>
-      <section className="ServiceHrOverview py-20 bg-customGray">
+      <section className="partnersWithUs py-20 ">
         <div className="customContainer">
-          <p> Our web Applications is perfect</p>
+          <p> Here's why we're the</p>
           <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              for your HR specific needs.
+              right choice for your VA needs.
             </span>
           </h2>
-          <div className="wrapper grid grid-cols-2 gap-12">
+          <div className="wrapper grid grid-cols-2 gap-12 items-center">
             <div>
               <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`../../public/img/HRISscreenShot.png`}
-                className="mb-12"
+                // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
+                src={`../../public/img/vaOverviewImage.jpg`}
+                className="mb-12 md:mb-0 h-full object-cover"
                 alt=""
               />
-              <ul className="flex items-center gap-12">
-                <li>
-                  <a
-                    href="#"
-                    className="btn bg-primary text-light font-semibold"
-                  >
-                    SCHEDULE A DEMO
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 font-bold text-primary"
-                  >
-                    Download Proposal <FaFileDownload />
-                  </a>
-                </li>
-              </ul>
             </div>
             <div>
               <ul>
@@ -50,12 +32,11 @@ const ServiceHrOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        Compatibility
+                        Fast turnaround time
                       </h3>
                       <p>
-                        Compatible with various timekeeping tools and terminals,
-                        both biometric and non-biometric, for easu customization
-                        of importing and extracting exployee time data.
+                        We deliver websites quickly, ensuring your project meets
+                        deadlines without compromising quality
                       </p>
                     </div>
                   </div>
@@ -67,11 +48,12 @@ const ServiceHrOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        Flexibility
+                        Optimal Viewing and Interaction
                       </h3>
                       <p>
-                        Accessible anytime and anywhere, and fully mobile-ready
-                        to accommodate the dynamic needs of your organization.
+                        Our responsive designs ensure seamless viewing and
+                        Interaction across all devices for an engaging user
+                        experience.
                       </p>
                     </div>
                   </div>
@@ -83,11 +65,12 @@ const ServiceHrOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        Customizable
+                        High-Quality at Lower Costs
                       </h3>
                       <p>
-                        Allowing it to be tailored to meet the specific
-                        requirements and unique needs of your organization.
+                        We offer high-quality websitels at competitive prices,
+                        delivering excellence results while staying within your
+                        budget.
                       </p>
                     </div>
                   </div>
@@ -101,4 +84,4 @@ const ServiceHrOverview = () => {
   );
 };
 
-export default ServiceHrOverview;
+export default VaOverview;

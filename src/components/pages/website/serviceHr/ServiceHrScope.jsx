@@ -30,7 +30,7 @@ const ServiceHrScope = () => {
               a lifesaver?
             </h2>
           </div>
-          <div className="warpper grid grid-cols-2">
+          <div className="warpper grid grid-cols-2 gap-5">
             <ul>
               <li className="overflow-hidden  border-b border-[#e9e9e9]">
                 <div
@@ -46,7 +46,7 @@ const ServiceHrScope = () => {
                           : "text-dark"
                       } text-xl font-semibold cursor-pointer `}
                     >
-                      IntuitiveDashboard
+                      Intuitive Dashboard
                     </p>
                   </div>
                   <IoChevronDown className="" />
@@ -318,12 +318,72 @@ const ServiceHrScope = () => {
                 accordionItem === "dassboard" ? "block" : "hidden"
               }`}
             >
-              <p>image 1</p>
+              <img
+                className="w-full object-contain"
+                // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
+                src={`../../public/img/hrScopdeSS_overview.jpg`}
+                alt=""
+              />
+            </div>
+            <div
+              className={`${accordionItem === "leave" ? "block" : "hidden"}`}
+            >
+              <img
+                className="w-full object-contain"
+                // src={`${devBaseImgUrl}/hrScopdeSS_leave-application.jpg`}
+                src={`../../public/img/hrScopdeSS_leave-application.jpg`}
+                alt=""
+              />
+            </div>
+            <div
+              className={`${accordionItem === "overtime" ? "block" : "hidden"}`}
+            >
+              <img
+                className="w-full object-contain"
+                // src={`${devBaseImgUrl}/hrScopdeSS_overtime.jpg`}
+                src={`../../public/img/hrScopdeSS_overtime.jpg`}
+                alt=""
+              />
+            </div>
+            <div className={`${accordionItem === "time" ? "block" : "hidden"}`}>
+              <img
+                className="w-full object-contain"
+                // src={`${devBaseImgUrl}/hrScopdeSS_tasks.jpg`}
+                src={`../../public/img/hrScopdeSS_tasks.jpg`}
+                alt=""
+              />
+            </div>
+            <div
+              className={`${accordionItem === "client" ? "block" : "hidden"}`}
+            >
+              <img
+                className="w-full object-contain"
+                // src={`${devBaseImgUrl}/hrScopdeSS_client.jpg`}
+                src={`../../public/img/hrScopdeSS_client.jpg`}
+                alt=""
+              />
+            </div>
+            <div
+              className={`${
+                accordionItem === "megaphone" ? "block" : "hidden"
+              }`}
+            >
+              <img
+                className="w-full object-contain"
+                // src={`${devBaseImgUrl}/hrScopdeSS_announcement.jpg`}
+                src={`../../public/img/hrScopdeSS_announcement.jpg`}
+                alt=""
+              />
             </div>
             <div
               className={`${accordionItem === "201file" ? "block" : "hidden"}`}
             >
-              <p>image 2</p>
+              <img
+                className="w-full object-contain"
+                // src={`${devBaseImgUrl}/hrScopdeSS_employee-list.jpg`}
+                src={`../../public/img/hrScopdeSS_employee-list.jpg`}
+                alt=""
+              />
             </div>
           </div>
         </div>

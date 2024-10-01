@@ -1,24 +1,17 @@
 import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
-import { headers } from "./data";
+import Slider from "react-slick";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const ServiceHrPartners = () => {
+const VaPartners = () => {
   return (
     <>
       <section className="ServiceHrPartners py-20">
         <div className="customContainer">
-          {headers.map((header, key) => (
-            <React.Fragment key={key}>
-              {header.section_name === "partners" && (
-                <>
-                  <p>{header.subheader}</p>
-                  <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
-                    {header.header}
-                  </h2>
-                </>
-              )}
-            </React.Fragment>
-          ))}
+          <p>What our</p>
+          <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+            clients say
+          </h2>
 
           <ul className="flex flex-wrap justify-center gap-10 items-center">
             <li>
@@ -60,4 +53,4 @@ const ServiceHrPartners = () => {
   );
 };
 
-export default ServiceHrPartners;
+export default VaPartners;

@@ -100,8 +100,8 @@ const BannerSlider = () => {
           id="banner"
           className={`banner  bg-cover bg-center`}
           style={{
-            // backgroundImage: `url(${devBaseImgUrl}/HomeBanner.jpg)`,
-            backgroundImage: `url(../../public/img/HomeBanner.jpg)`,
+            // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+            backgroundImage: `url(../../public/img/home-bg-new.jpg)`,
           }}
         >
           <div className="customContainer">
@@ -132,8 +132,8 @@ const BannerSlider = () => {
           id="banner"
           className={`banner bg-cover bg-center`}
           style={{
-            // backgroundImage: `url(${devBaseImgUrl}/HomeBanner.jpg)`,
-            backgroundImage: `url(../../public/img/HomeBanner.jpg)`,
+            // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+            backgroundImage: `url(../../public/img/home-bg-new.jpg)`,
           }}
         >
           <div className="customContainer">
@@ -164,8 +164,8 @@ const BannerSlider = () => {
           id="banner"
           className={`banner bg-cover bg-center`}
           style={{
-            // backgroundImage: `url(${devBaseImgUrl}/HomeBanner.jpg)`,
-            backgroundImage: `url(../../public/img/HomeBanner.jpg)`,
+            // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+            backgroundImage: `url(../../public/img/home-bg-new.jpg)`,
           }}
         >
           <div className="customContainer">

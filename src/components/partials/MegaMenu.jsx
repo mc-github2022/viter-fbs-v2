@@ -106,7 +106,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                     [&>li]:lg:!mb-2`}
                 >
-                  <li>Administrative Solutions</li>
+                  <li>
+                    <Link to="/va">Administrative Solutions</Link>
+                  </li>
                   <li>Marketing & Social Media</li>
                   <li>Technical Support</li>
                   <li>Creative Support</li>
