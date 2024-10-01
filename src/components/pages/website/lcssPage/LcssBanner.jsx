@@ -26,8 +26,11 @@ const LcssBanner = () => {
               </h2>
               <p className="text-light mb-10">
                 Partner with us for cutting-edge on-the-job training programs
-                that equip aspiring IT and Accounting professionals practical
-                workplace workplace experience.
+                that equip aspiring IT and Accounting professionals with
+                real-world skills, bridging academic learning with practical
+                workplace experience. Our program can accommodate students with
+                required internship hours ranging from 150 to 600, ensuring
+                flexibility and comprehensive skills development.
               </p>
               <a href="#" className="btn bg-transparent text-light border-2">
                 SCHEDULE A DEMO

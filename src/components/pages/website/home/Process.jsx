@@ -1,4 +1,5 @@
 import React from "react";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const Process = () => {
   return (
@@ -13,37 +14,49 @@ const Process = () => {
           </div>
           <img
             src="../../public/img/our-process.png"
-            className=" h-full object-contain object-top w-[78%] mx-auto mb-2"
+            className="hidden md:block h-full object-contain object-top w-[78%] mx-auto mb-2"
             alt=""
           />
-          <div className="wrapper grid grid-cols-4">
-            <div className="processItem text-center translate-y-[-50px] lg:translate-y-[-100px]">
-              <p className="text-primary font-bold text-lg">We Collaborate</p>
-              <p>
-                with our clients to understand their specific talent needs and
-                project requirements.
-              </p>
-            </div>
-            <div className="processItem text-center">
-              <p className="text-primary font-bold text-lg">We Collaborate</p>
-              <p>
-                with our clients to understand their specific talent needs and
-                project requirements.
-              </p>
-            </div>
-            <div className="processItem text-center translate-y-[-50px] lg:translate-y-[-100px]">
-              <p className="text-primary font-bold text-lg">We Collaborate</p>
-              <p>
-                with our clients to understand their specific talent needs and
-                project requirements.
-              </p>
-            </div>
-            <div className="processItem text-center">
-              <p className="text-primary font-bold text-lg">We Collaborate</p>
-              <p>
-                with our clients to understand their specific talent needs and
-                project requirements.
-              </p>
+          <div>
+            <div className="grid place-items-center">
+              <div className="md:grid grid-cols-4">
+                <div className="processItem md:text-center md:translate-y-[-50px] lg:translate-y-[-100px] mb-6">
+                  <p className="text-primary font-bold text-lg">
+                    We Collaborate
+                  </p>
+                  <p>
+                    with our clients to understand their specific talent needs
+                    and project requirements.
+                  </p>
+                </div>
+                <div className="processItem md:text-center mb-6">
+                  <p className="text-primary font-bold text-lg">
+                    We Collaborate
+                  </p>
+                  <p>
+                    with our clients to understand their specific talent needs
+                    and project requirements.
+                  </p>
+                </div>
+                <div className="processItem md:text-center md:translate-y-[-50px] lg:translate-y-[-100px] mb-6">
+                  <p className="text-primary font-bold text-lg">
+                    We Collaborate
+                  </p>
+                  <p>
+                    with our clients to understand their specific talent needs
+                    and project requirements.
+                  </p>
+                </div>
+                <div className="processItem md:text-center">
+                  <p className="text-primary font-bold text-lg">
+                    We Collaborate
+                  </p>
+                  <p>
+                    with our clients to understand their specific talent needs
+                    and project requirements.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
