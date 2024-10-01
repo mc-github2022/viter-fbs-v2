@@ -8,9 +8,9 @@ const VaPartners = () => {
     <>
       <section className="ServiceHrPartners py-20">
         <div className="customContainer">
-          <p>What our</p>
+          <p>Clients who trusted their</p>
           <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
-            clients say
+            growth with us.
           </h2>
 
           <ul className="flex flex-wrap justify-center gap-10 items-center">
