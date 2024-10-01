@@ -1,7 +1,7 @@
 {
-  "homepage": "https://mc-github2022.github.io/viter-fbs-v2/",
+  "homepage": "./",
   "name": "viter-fbs-v2",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
