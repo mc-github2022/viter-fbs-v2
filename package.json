@@ -1,4 +1,5 @@
 {
+  "homepage": "https://mc-github2022.github.io/viter-fbs-v2/",
   "name": "viter-fbs-v2",
   "private": true,
   "version": "0.0.0",
@@ -9,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",
