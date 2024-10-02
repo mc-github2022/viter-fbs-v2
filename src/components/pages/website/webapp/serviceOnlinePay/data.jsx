@@ -3,7 +3,7 @@ import { MdOutlineDashboard } from "react-icons/md";
 
 export const banner = [
   {
-    bannerTitle: "HRIS",
+    bannerTitle: "OnlinePay",
     bannerTitleBoldText: "bannerTitleBoldText",
     bannerTextDesc: "bannerTextDesc",
     bannerBtnText: "bannerBtnText",
@@ -105,21 +105,10 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-<<<<<<< HEAD
-    subheader: "Clients who trusted their",
-    header: "Growth with us.",
-    section_name: "partners",
-  },
-  {
-    subheader: "Our HRIS is perfect",
-    header: "for your HR specific needs.",
-    section_name: "overview",
-=======
     clientName: "Client Name",
     clientDesc: "Client Desc",
     clientMessage: "The Message",
     clientLogo: "addIamgeNameHere",
     clientProfilePic: "olivia-almarez.png",
->>>>>>> f236f87e2aaa589f037c267a90c7bca294b6619c
   },
 ];

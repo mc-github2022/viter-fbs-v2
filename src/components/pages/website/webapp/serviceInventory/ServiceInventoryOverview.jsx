@@ -3,10 +3,10 @@ import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
 
-const ServiceHrOverview = () => {
+const ServiceInventoryOverview = () => {
   return (
     <>
-      <section className="ServiceHrOverview py-20 bg-customGray">
+      <section className="ServiceInventoryOverview py-20 bg-customGray">
         <div className="customContainer">
           <p>{webAppOverview[0].subtitle}</p>
           <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
@@ -91,4 +91,4 @@ const ServiceHrOverview = () => {
   );
 };
 
-export default ServiceHrOverview;
+export default ServiceInventoryOverview;

@@ -55,7 +55,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceCrmPartnersSay = () => {
+const ServiceEnrollmentPartnersSay = () => {
   var partnerSaysSettings = {
     infinite: false,
     speed: 500,
@@ -148,4 +148,4 @@ const ServiceCrmPartnersSay = () => {
   );
 };
 
-export default ServiceCrmPartnersSay;
+export default ServiceEnrollmentPartnersSay;
