@@ -40,7 +40,7 @@ export const webAppOverview = [
   {
     subtitle: "Why choose our",
     mainTitle: "Online Payroll System",
-    webAppImage: "addImageName",
+    webAppImage: "payroll-ss.png",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Enhanced Accuracy and Reduced Errors",
@@ -153,8 +153,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "What our",
+    mainTitle: "clients say",
   },
 ];
 

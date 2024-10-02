@@ -38,7 +38,7 @@ export const webAppOverview = [
   {
     subtitle: "sectionSubtitle",
     mainTitle: "sectionMainTitle",
-    webAppImage: "addImageName",
+    webAppImage: "HRISscreenShot.png",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "titleA",
