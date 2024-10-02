@@ -36,13 +36,14 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "sectionSubtitle",
-    mainTitle: "sectionMainTitle",
+    subtitle: "Our web application is perfect",
+    mainTitle: "for your HR specific needs",
     webAppImage: "HRISscreenShot.png",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "titleA",
-    overviewAtext: "textA",
+    overviewAtitle: "Compatibility",
+    overviewAtext:
+      "Compatible with various timekeeping tools and terminals, both biometric and non-biometric, for easy customization of importing and extracting employee time data.",
     overviewBtitle: "Flexibility",
     overviewBtext:
       "Accessible anytime and anywhere, and fully mobile-ready to accommodate the dynamic needs of your organization.",
