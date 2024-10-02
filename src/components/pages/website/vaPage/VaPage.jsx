@@ -6,6 +6,7 @@ import VaOverview from "./VaOverview";
 import VaPartnerWithUs from "./VaPartnerWithUs";
 import VaPricing from "./VaPricing";
 import VaPartners from "./VaPartners";
+import VaPartnersSay from "./VaPartnersSay";
 
 const VaPage = () => {
   return (
@@ -16,6 +17,7 @@ const VaPage = () => {
       <VaPartnerWithUs />
       <VaPricing />
       <VaPartners />
+      <VaPartnersSay />
       <Footer />
     </>
   );

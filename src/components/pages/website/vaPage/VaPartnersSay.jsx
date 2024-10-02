@@ -55,7 +55,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const VaHrPartnersSay = () => {
+const VaPartnersSay = () => {
   var partnerSaysSettings = {
     infinite: false,
     speed: 500,
@@ -91,7 +91,7 @@ const VaHrPartnersSay = () => {
 
   return (
     <>
-      <section className="ServiceHrPartnersSay py-20">
+      <section className="VaPartnersSay py-20">
         <div className="customContainer">
           <div className="">
             <p>What our</p>
@@ -191,4 +191,4 @@ const VaHrPartnersSay = () => {
   );
 };
 
-export default VaHrPartnersSay;
+export default VaPartnersSay;
