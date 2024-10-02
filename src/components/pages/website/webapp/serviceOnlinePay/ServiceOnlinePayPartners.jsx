@@ -1,10 +1,10 @@
 import React from "react";
 import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
 
-const ServiceHrPartners = () => {
+const ServiceOnlinePayPartners = () => {
   return (
     <>
-      <section className="ServiceHrPartners py-20">
+      <section className="ServiceOnlinePayPartners py-20">
         <div className="customContainer">
           <p>{sectionPartnersTitle[0].subTitle}</p>
           <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
@@ -31,4 +31,4 @@ const ServiceHrPartners = () => {
   );
 };
 
-export default ServiceHrPartners;
+export default ServiceOnlinePayPartners;

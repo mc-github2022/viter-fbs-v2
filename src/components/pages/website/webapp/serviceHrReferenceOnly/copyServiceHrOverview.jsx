@@ -1,24 +1,23 @@
 import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { webAppOverview } from "./data";
 
-const ServiceCrmOverview = () => {
+const ServiceHrOverview = () => {
   return (
     <>
-      <section className="ServiceCrmOverview py-20 bg-customGray">
+      <section className="ServiceHrOverview py-20 bg-customGray">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p> Our web Applications is perfect</p>
           <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              for your HR specific needs.
             </span>
           </h2>
           <div className="wrapper grid grid-cols-2 gap-12">
             <div>
               <img
                 // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`../../public/img/${webAppOverview[0].webAppImage}`}
+                src={`../../public/img/HRISscreenShot.png`}
                 className="mb-12"
                 alt=""
               />
@@ -28,7 +27,7 @@ const ServiceCrmOverview = () => {
                     href="#"
                     className="btn bg-primary text-light font-semibold"
                   >
-                    {webAppOverview[0].btnText}
+                    SCHEDULE A DEMO
                   </a>
                 </li>
                 <li>
@@ -36,7 +35,7 @@ const ServiceCrmOverview = () => {
                     href="#"
                     className="flex items-center gap-2 font-bold text-primary"
                   >
-                    {webAppOverview[0].btnDownloadText} <FaFileDownload />
+                    Download Proposal <FaFileDownload />
                   </a>
                 </li>
               </ul>
@@ -50,9 +49,13 @@ const ServiceCrmOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        Compatibility
                       </h3>
-                      <p>{webAppOverview[0].overviewAtext}</p>
+                      <p>
+                        Compatible with various timekeeping tools and terminals,
+                        both biometric and non-biometric, for easu customization
+                        of importing and extracting exployee time data.
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -63,9 +66,12 @@ const ServiceCrmOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        Flexibility
                       </h3>
-                      <p>{webAppOverview[0].overviewBtext}</p>
+                      <p>
+                        Accessible anytime and anywhere, and fully mobile-ready
+                        to accommodate the dynamic needs of your organization.
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -76,9 +82,12 @@ const ServiceCrmOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        Customizable
                       </h3>
-                      <p>{webAppOverview[0].overviewCtext}</p>
+                      <p>
+                        Allowing it to be tailored to meet the specific
+                        requirements and unique needs of your organization.
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -91,4 +100,4 @@ const ServiceCrmOverview = () => {
   );
 };
 
-export default ServiceCrmOverview;
+export default ServiceHrOverview;

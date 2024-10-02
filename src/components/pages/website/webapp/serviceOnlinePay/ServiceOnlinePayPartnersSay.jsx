@@ -55,7 +55,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceCrmPartnersSay = () => {
+const ServiceOnlinePayPartnersSay = () => {
   var partnerSaysSettings = {
     infinite: false,
     speed: 500,
@@ -91,7 +91,7 @@ const ServiceCrmPartnersSay = () => {
 
   return (
     <>
-      <section className="ServiceCrmPartnersSay py-20">
+      <section className="ServiceOnlinePayPartnersSay py-20">
         <div className="customContainer">
           <div className="">
             <p>{clientSaysTitle[0].subTitle}</p>
@@ -148,4 +148,4 @@ const ServiceCrmPartnersSay = () => {
   );
 };
 
-export default ServiceCrmPartnersSay;
+export default ServiceOnlinePayPartnersSay;

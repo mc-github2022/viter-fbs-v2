@@ -7,7 +7,7 @@ import { LuCalendarClock, LuClock } from "react-icons/lu";
 import { MdOutlineCalendarToday, MdOutlineDashboard } from "react-icons/md";
 import { scope } from "./data";
 
-const ServiceCrmScope = () => {
+const ServiceOnlinePayScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
   window.onload = function () {
@@ -23,7 +23,7 @@ const ServiceCrmScope = () => {
 
   return (
     <>
-      <section className="ServiceCrmScope py-20">
+      <section className="ServiceOnlinePayScope py-20">
         <div className="customContainer">
           <div>
             <p>What makes this web app</p>
@@ -97,4 +97,4 @@ const ServiceCrmScope = () => {
   );
 };
 
-export default ServiceCrmScope;
+export default ServiceOnlinePayScope;

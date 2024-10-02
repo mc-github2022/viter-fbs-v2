@@ -3,7 +3,7 @@ import { MdOutlineDashboard } from "react-icons/md";
 
 export const banner = [
   {
-    bannerTitle: "Enrollment",
+    bannerTitle: "OnlinePay",
     bannerTitleBoldText: "bannerTitleBoldText",
     bannerTextDesc: "bannerTextDesc",
     bannerBtnText: "bannerBtnText",

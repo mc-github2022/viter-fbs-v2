@@ -17,10 +17,9 @@ const ServiceEnrollmentBanner = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
             <div className="text-left">
-              <h2 className="text-[45px] leading-[1.1] mb-8 text-light">
-                {banner[0].bannerTitle}
+              <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
+                {banner[0].bannerTitle} <br />
                 <span className="text-light font-semibold">
-                  {" "}
                   {banner[0].bannerTitleBoldText}
                 </span>
                 <br />

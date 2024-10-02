@@ -3,11 +3,11 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { banner } from "./data";
 
-const ServiceHrBanner = () => {
+const ServiceOnlinePayBanner = () => {
   return (
     <>
       <section
-        id="ServiceHrBanner"
+        id="ServiceOnlinePayBanner"
         className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,
@@ -17,9 +17,10 @@ const ServiceHrBanner = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
             <div className="text-left">
-              <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
+              <h2 className="text-[45px] leading-[1.1] mb-8 text-light">
                 {banner[0].bannerTitle}
                 <span className="text-light font-semibold">
+                  {" "}
                   {banner[0].bannerTitleBoldText}
                 </span>
                 <br />
@@ -36,4 +37,4 @@ const ServiceHrBanner = () => {
   );
 };
 
-export default ServiceHrBanner;
+export default ServiceOnlinePayBanner;
