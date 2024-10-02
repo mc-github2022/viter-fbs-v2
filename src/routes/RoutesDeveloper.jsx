@@ -5,6 +5,7 @@ import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import VaPage from "../components/pages/website/vaPage/VaPage";
 import ServiceCrmPage from "../components/pages/website/webapp/serviceCrm/ServiceCrmPage";
+import ServiceEnrollmentPage from "../components/pages/website/webapp/serviceEnrollment/ServiceEnrollmentPage";
 import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceHrPage";
 import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
@@ -41,5 +42,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/webapp-crm`,
     element: <ServiceCrmPage />,
+  },
+  {
+    path: `${devNavUrl}/webapp-enrollment`,
+    element: <ServiceEnrollmentPage />,
   },
 ];

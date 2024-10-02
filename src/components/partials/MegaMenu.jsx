@@ -68,8 +68,15 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   <li>
                     <Link to="/webapp-payroll">Payroll System</Link>
                   </li>
-                  <li>Customer Relations Management</li>
-                  <li>School Enrollment System</li>
+                  <li>
+                    <Link to="/webapp-crm">Customer Relations Management</Link>
+                  </li>
+                  <li>
+                    <Link to="/webapp-enrollment">
+                      School Enrollment System
+                    </Link>
+                  </li>
+                  <li></li>
                   <li>Asset Inventory System</li>
                 </ul>
               </div>
