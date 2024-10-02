@@ -12,7 +12,7 @@ const ServicePayrollBanner = () => {
         className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,
-          backgroundImage: `url(../../public/img/ServicesBanner.jpg)`,
+          backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
         }}
       >
         <div className="customContainer">
