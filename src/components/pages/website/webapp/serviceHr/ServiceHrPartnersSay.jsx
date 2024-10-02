@@ -1,8 +1,6 @@
 import React from "react";
-import { RiDoubleQuotesL } from "react-icons/ri";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
-import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Slider from "react-slick";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;

@@ -1,5 +1,4 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { headers } from "./data";
 
 const ServiceHrPartners = () => {

@@ -1,6 +1,5 @@
 import React from "react";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { FaCheckCircle, FaRegThumbsUp } from "react-icons/fa";
 import { pricing } from "./data";
 

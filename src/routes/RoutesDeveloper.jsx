@@ -3,9 +3,10 @@ import SinglePage from "../components/pages/website/events/SinglePage";
 import EventsAndAct from "../components/pages/website/events/SinglePage";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
-import ServiceHrPage from "../components/pages/website/serviceHr/ServiceHrPage";
-import ServicePayrollPage from "../components/pages/website/servicePayroll/ServicePayrollPage";
 import VaPage from "../components/pages/website/vaPage/VaPage";
+import ServiceCrmPage from "../components/pages/website/webapp/serviceCrm/ServiceCrmPage";
+import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceHrPage";
+import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
 
 export const routesDeveloper = [
@@ -36,5 +37,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/webapp-payroll`,
     element: <ServicePayrollPage />,
+  },
+  {
+    path: `${devNavUrl}/webapp-crm`,
+    element: <ServiceCrmPage />,
   },
 ];

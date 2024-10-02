@@ -1,36 +1,33 @@
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { Link } from "react-router-dom";
+import { banner } from "./data";
 
-const ServiceHrBanner = () => {
+const ServiceCrmBanner = () => {
   return (
     <>
       <section
-        id="serviceHrBanner"
+        id="ServiceCrmBanner"
         className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,
-          backgroundImage: `url(../../public/img/ServicesBanner.jpg)`,
+          backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
         }}
       >
         <div className="customContainer">
           <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
             <div className="text-left">
               <h2 className="text-[45px] leading-[1.1] mb-8 text-light">
-                Smarter, faster, <br /> and more efficient <br />
-                <span className="text-light font-semibold">HR Solutions</span>
+                {banner[0].bannerTitle}
+                <span className="text-light font-semibold">
+                  {" "}
+                  {banner[0].bannerTitleBoldText}
+                </span>
                 <br />
               </h2>
-              <p className="text-light mb-10">
-                Experience seamless HR operation and make data-driven decisions
-                that drive organizational success. Designed to centralize all HR
-                data and workflows, our solution simplifies employee records
-                management, leave and attendance tracking, performance
-                evaluations, and HR analytics
-              </p>
+              <p className="text-light mb-10">{banner[0].bannerTextDesc}</p>
               <a href="#" className="btn bg-transparent text-light border-2">
-                SCHEDULE A DEMO
+                {banner[0].bannerBtnText}
               </a>
             </div>
           </div>
@@ -40,4 +37,4 @@ const ServiceHrBanner = () => {
   );
 };
 
-export default ServiceHrBanner;
+export default ServiceCrmBanner;

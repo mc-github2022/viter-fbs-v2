@@ -1,11 +1,10 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
 
-const ServicePayrollPartners = () => {
+const ServiceCrmPartners = () => {
   return (
     <>
-      <section className="ServicePayrollPartners py-20">
+      <section className="ServiceCrmPartners py-20">
         <div className="customContainer">
           <p>{sectionPartnersTitle[0].subTitle}</p>
           <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
@@ -32,4 +31,4 @@ const ServicePayrollPartners = () => {
   );
 };
 
-export default ServicePayrollPartners;
+export default ServiceCrmPartners;
