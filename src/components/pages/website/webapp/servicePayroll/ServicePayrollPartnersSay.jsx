@@ -133,7 +133,7 @@ const ServicePayrollPartnersSay = () => {
                       <img
                         // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                         src={`../../public/img/${testimonial.clientProfilePic}`}
-                        className="absolute bottom-0 w-[300px] right-8"
+                        className="absolute bottom-0 w-[295px] right-8"
                         alt=""
                       />
                     </div>

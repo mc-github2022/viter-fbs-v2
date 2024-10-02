@@ -44,7 +44,7 @@ export const headers = [
     section_name: "partners",
   },
   {
-    subheader: "Our web Applications is perfect",
+    subheader: "Our HRIS is perfect",
     header: "for your HR specific needs.",
     section_name: "overview",
   },
