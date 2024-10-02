@@ -59,13 +59,11 @@ const ServiceHrScope = () => {
                   } accordionContent `}
                 >
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quaerat reprehenderit est amet quisquam autem tempore
-                    pariatur, deleniti dolores cumque corporis mollitia!
-                    Commodi, corrupti quaerat! Debitis, repudiandae asperiores.
-                    Harum praesentium omnis aliquam nostrum consectetur dolorum
-                    eius error molestiae. Sunt aut accusantium eos culpa illum
-                    magni, eum velit molestias veritatis cumque. Nemo?
+                    The system offers a user-friendly dashboard that provides
+                    admins and employees with key information at a glance,
+                    including leave statuses, announcements, celebrations, team
+                    details, and new employee notifications for quick access and
+                    improved communication.
                   </p>
                   <a href="#" className="btn bg-primary text-light">
                     Schedule a Demo
@@ -99,13 +97,10 @@ const ServiceHrScope = () => {
                   } accordionContent`}
                 >
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quaerat reprehenderit est amet quisquam autem tempore
-                    pariatur, deleniti dolores cumque corporis mollitia!
-                    Commodi, corrupti quaerat! Debitis, repudiandae asperiores.
-                    Harum praesentium omnis aliquam nostrum consectetur dolorum
-                    eius error molestiae. Sunt aut accusantium eos culpa illum
-                    magni, eum velit molestias veritatis cumque. Nemo?
+                    This allows HR teams to manage and maintain comprehensive
+                    201 files for all employees, storing personal information,
+                    employment history, performance records, and other relevant
+                    documents in one secure and accessible location.
                   </p>
                   <a href="#" className="btn bg-primary text-light">
                     Schedule a Demo
@@ -139,13 +134,10 @@ const ServiceHrScope = () => {
                   } accordionContent`}
                 >
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quaerat reprehenderit est amet quisquam autem tempore
-                    pariatur, deleniti dolores cumque corporis mollitia!
-                    Commodi, corrupti quaerat! Debitis, repudiandae asperiores.
-                    Harum praesentium omnis aliquam nostrum consectetur dolorum
-                    eius error molestiae. Sunt aut accusantium eos culpa illum
-                    magni, eum velit molestias veritatis cumque. Nemo?
+                    It includes a Leave Application and Approval feature that
+                    enables employees to request leaves and managers to approve
+                    or reject them through an intuitive and automated platform,
+                    streamlining the entire leave process.
                   </p>
                   <a href="#" className="btn bg-primary text-light">
                     Schedule a Demo
@@ -179,13 +171,10 @@ const ServiceHrScope = () => {
                   } accordionContent`}
                 >
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quaerat reprehenderit est amet quisquam autem tempore
-                    pariatur, deleniti dolores cumque corporis mollitia!
-                    Commodi, corrupti quaerat! Debitis, repudiandae asperiores.
-                    Harum praesentium omnis aliquam nostrum consectetur dolorum
-                    eius error molestiae. Sunt aut accusantium eos culpa illum
-                    magni, eum velit molestias veritatis cumque. Nemo?
+                    This feature tracks employee overtime hours, allowing for
+                    easy submission, approval, and monitoring of overtime
+                    requests. It ensures accurate compensation and compliance
+                    with company policies.
                   </p>
                   <a href="#" className="btn bg-primary text-light">
                     Schedule a Demo
@@ -219,13 +208,10 @@ const ServiceHrScope = () => {
                   } accordionContent`}
                 >
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quaerat reprehenderit est amet quisquam autem tempore
-                    pariatur, deleniti dolores cumque corporis mollitia!
-                    Commodi, corrupti quaerat! Debitis, repudiandae asperiores.
-                    Harum praesentium omnis aliquam nostrum consectetur dolorum
-                    eius error molestiae. Sunt aut accusantium eos culpa illum
-                    magni, eum velit molestias veritatis cumque. Nemo?
+                    It enables employees to track time spent on various tasks
+                    and projects within the application, offering a detailed
+                    breakdown of work hours for better project management and
+                    productivity analysis.
                   </p>
                   <a href="#" className="btn bg-primary text-light">
                     Schedule a Demo
@@ -259,13 +245,9 @@ const ServiceHrScope = () => {
                   } accordionContent`}
                 >
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quaerat reprehenderit est amet quisquam autem tempore
-                    pariatur, deleniti dolores cumque corporis mollitia!
-                    Commodi, corrupti quaerat! Debitis, repudiandae asperiores.
-                    Harum praesentium omnis aliquam nostrum consectetur dolorum
-                    eius error molestiae. Sunt aut accusantium eos culpa illum
-                    magni, eum velit molestias veritatis cumque. Nemo?
+                    This feature helps manage and track records of clients,
+                    including maintaining client information and ensuring a
+                    smooth and organized client relationship process.
                   </p>
                   <a href="#" className="btn bg-primary text-light">
                     Schedule a Demo
@@ -299,13 +281,10 @@ const ServiceHrScope = () => {
                   } accordionContent`}
                 >
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quaerat reprehenderit est amet quisquam autem tempore
-                    pariatur, deleniti dolores cumque corporis mollitia!
-                    Commodi, corrupti quaerat! Debitis, repudiandae asperiores.
-                    Harum praesentium omnis aliquam nostrum consectetur dolorum
-                    eius error molestiae. Sunt aut accusantium eos culpa illum
-                    magni, eum velit molestias veritatis cumque. Nemo?
+                    This allows organizations to share important news, updates,
+                    and upcoming activities with employees through a centralized
+                    platform, ensuring everyone stays informed and connected
+                    across the company.
                   </p>
                   <a href="#" className="btn bg-primary text-light">
                     Schedule a Demo
