@@ -8,7 +8,7 @@ const ServicePayrollBanner = () => {
   return (
     <>
       <section
-        id="serviceHrBanner"
+        id="ServicePayrollBanner"
         className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,

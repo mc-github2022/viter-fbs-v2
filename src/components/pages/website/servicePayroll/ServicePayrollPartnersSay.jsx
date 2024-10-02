@@ -92,7 +92,7 @@ const ServicePayrollPartnersSay = () => {
 
   return (
     <>
-      <section className="ServiceHrPartnersSay py-20">
+      <section className="ServicePayrollPartnersSay py-20">
         <div className="customContainer">
           <div className="">
             <p>{clientSaysTitle[0].subTitle}</p>

@@ -7,7 +7,7 @@ import { webAppOverview } from "./data";
 const ServicePayrollOverview = () => {
   return (
     <>
-      <section className="ServiceHrOverview py-20 bg-customGray">
+      <section className="ServicePayrollOverview py-20 bg-customGray">
         <div className="customContainer">
           <p>{webAppOverview[0].subtitle}</p>
           <h2 className="text-[35px] leading-[1.1] mb-12 text-light">

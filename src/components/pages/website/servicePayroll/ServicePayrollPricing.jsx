@@ -7,7 +7,7 @@ import { pricing } from "./data";
 const ServicePayrollPricing = () => {
   return (
     <>
-      <section className="ServiceHrPricing py-20 bg-[#000000] relative overflow-hidden">
+      <section className="ServicePayrollPricing py-20 bg-[#000000] relative overflow-hidden">
         <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
         <div className="customContainer">

@@ -23,7 +23,7 @@ const ServicePayrollScope = () => {
 
   return (
     <>
-      <section className="ServiceHrScope py-20">
+      <section className="ServicePayrollScope py-20">
         <div className="customContainer">
           <div>
             <p>What makes this web app</p>
