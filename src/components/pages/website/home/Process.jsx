@@ -7,7 +7,7 @@ const Process = () => {
       <section className="process py-20">
         <div className="customContainer">
           <div className="theTitle leading-1 mb-12">
-            <p>Three key stages</p>
+            <p>Key stages</p>
             <h2 className="text-[clamp(30px,7vw,45px)] font-semibold text-primary leading-[1.1]">
               how our process works
             </h2>
