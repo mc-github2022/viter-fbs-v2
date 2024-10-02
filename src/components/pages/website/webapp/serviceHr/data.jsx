@@ -55,10 +55,59 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "dassboard",
+    scopeId: "dashboard",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Intuitive Dashboard",
-    scopeDesc: "text",
+    scopeDesc:
+      "The system offers a user-friendly dashboard that provides admins and employees with key information at a glance, including leave statuses, announcements, celebrations, team details, and new employee notifications for quick access and improved communication.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "employee-record",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Employee 201 File",
+    scopeDesc:
+      "This allows HR teams to manage and maintain comprehensive 201 files for all employees, storing personal information, employment history, performance records, and other relevant documents in one secure and accessible location.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "leave-management",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Leave Management",
+    scopeDesc:
+      "It includes a Leave Application and Approval feature that enables employees to request leaves and managers to approve or reject them through an intuitive and automated platform, streamlining the entire leave process.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "overtime-management",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Overtime Management",
+    scopeDesc:
+      "This feature tracks employee overtime hours, allowing for easy submission, approval, and monitoring of overtime requests. It ensures accurate compensation and compliance with company policies.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "task-management",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Task Management with a Timer",
+    scopeDesc:
+      "It enables employees to track time spent on various tasks and projects within the application, offering a detailed breakdown of work hours for better project management and productivity analysis.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "client-management",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Client Management",
+    scopeDesc:
+      "This feature helps manage and track records of clients, including maintaining client information and ensuring a smooth and organized client relationship process.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "announcement-management",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Announcement Management",
+    scopeDesc:
+      "This allows organizations to share important news, updates, and upcoming activities with employees through a centralized platform, ensuring everyone stays informed and connected across the company.",
     scopeImage: "hrScopdeSS_overview.jpg",
   },
 ];
@@ -66,34 +115,37 @@ export const scope = [
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Free Trial",
-    rate: "PHP 0 / 7 days",
-    note: "",
-    info: ["Employee Records", "Task Timer", "Announcement"],
-    link: "/free-trial",
+    title: "Foreign Clients",
+    rate: "Starts at $1",
+    note: "Per Employee Per Month",
+    info: [
+      "Employee 201",
+      "Leave Management",
+      "Overtime Management",
+      "Task Management",
+      "Client Management",
+      "Announcement",
+    ],
+    link: "/basic",
     isActive: 0,
     customCss: "text-primary",
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Basic",
-    rate: "PHP 20 / Emp / Mo",
-    note: "31 and above employees",
-    info: ["Employee Recordsxx", "Task Timerxx", "Announcementxx"],
-    link: "/basic",
+    title: "Philippine Clients",
+    rate: "Starts at ₱40",
+    note: "Per Employee Per Month",
+    info: [
+      "Employee 201",
+      "Leave Management",
+      "Overtime Management",
+      "Task Management",
+      "Client Management",
+      "Announcement",
+    ],
+    link: "/free-trial",
     isActive: 1,
     customCss: "",
-  },
-
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Premium",
-    rate: "PHP 70 / Emp / Mo",
-    note: "",
-    info: ["Employee xxxx", "Task xxxx", "xxxx"],
-    link: "/premium",
-    isActive: 0,
-    customCss: "text-primary",
   },
 ];
 
@@ -106,10 +158,11 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-    clientName: "Client Name",
-    clientDesc: "Client Desc",
-    clientMessage: "The Message",
-    clientLogo: "addIamgeNameHere",
-    clientProfilePic: "olivia-almarez.png",
+    clientName: "Kimbell John Reyes",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "Frontline Business Solutions is indeed a partner to innovative success of a company. A connection of employer and employee. ",
+    clientLogo: "AKA-Global.png",
+    clientProfilePic: "emilio-macaso.png",
   },
 ];
