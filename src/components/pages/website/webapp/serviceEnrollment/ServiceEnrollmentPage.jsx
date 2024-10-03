@@ -16,7 +16,7 @@ const ServiceEnrollmentPage = () => {
       <ServiceEnrollmentOverview />
       <ServiceEnrollmentScope />
       <ServiceEnrollmentPricing />
-      <ServiceEnrollmentPartners />
+      {/* <ServiceEnrollmentPartners /> */}
       <ServiceEnrollmentPartnersSay />
       <Footer />
     </>

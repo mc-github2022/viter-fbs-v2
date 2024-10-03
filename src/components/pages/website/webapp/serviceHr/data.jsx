@@ -27,13 +27,13 @@ export const sectionPartnersTitle = [
 
 export const sectionPartnersLogos = [
   {
-    imageName: "web-obich.png",
-  },
-  {
-    imageName: "AKA-Global.png",
+    imageName: "bensHalo.png",
   },
   {
     imageName: "DTOD-BPO.png",
+  },
+  {
+    imageName: "web-obich.png",
   },
   {
     imageName: "web-victorious-Virtual-Hub.png",
