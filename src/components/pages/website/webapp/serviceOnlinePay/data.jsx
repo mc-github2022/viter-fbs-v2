@@ -8,7 +8,7 @@ export const banner = [
     bannerTextDesc: "bannerTextDesc",
     bannerBtnText: "bannerBtnText",
     bannerBtnLink: "Link",
-    bannerImage: "ServicesBanner.jpg",
+    bannerImage: "OnlinePayment.jpg",
   },
 ];
 
