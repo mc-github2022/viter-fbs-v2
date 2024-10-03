@@ -157,8 +157,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "What our",
+    mainTitle: "clients say",
   },
 ];
 

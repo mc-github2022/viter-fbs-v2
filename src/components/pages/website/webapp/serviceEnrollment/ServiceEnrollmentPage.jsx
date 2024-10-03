@@ -13,10 +13,10 @@ const ServiceEnrollmentPage = () => {
     <>
       <Header />
       <ServiceEnrollmentBanner />
-      <ServiceEnrollmentPartners />
       <ServiceEnrollmentOverview />
       <ServiceEnrollmentScope />
       <ServiceEnrollmentPricing />
+      <ServiceEnrollmentPartners />
       <ServiceEnrollmentPartnersSay />
       <Footer />
     </>

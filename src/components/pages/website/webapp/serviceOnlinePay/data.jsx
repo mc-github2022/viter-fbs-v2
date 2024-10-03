@@ -42,19 +42,17 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "sectionSubtitle",
-    mainTitle: "sectionMainTitle",
-    webAppImage: "addImageName",
+    subtitle: "Why choose our",
+    mainTitle: "Online Payment Integration",
+    webAppImage: "online-payment-ss.png",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "titleA",
-    overviewAtext: "textA",
-    overviewBtitle: "Flexibility",
+    overviewAtitle: "Payment Flexibility",
+    overviewAtext:
+      "By offering multiple credit card payment options, businesses can provide a smoother checkout experience, catering to a broader range of customers and reducing barriers to completing transactions.",
+    overviewBtitle: "Local Market Adaptation",
     overviewBtext:
-      "Accessible anytime and anywhere, and fully mobile-ready to accommodate the dynamic needs of your organization.",
-    overviewCtitle: "Customizable",
-    overviewCtext:
-      "Allowing it to be tailored to meet the specific requirements and unique needs of your organization.",
+      "By integrating with GCash, a widely-used payment method in the Philippines, businesses can cater to local customer preferences, offering a more flexible and accessible payment option that enhances the user experience.",
   },
 ];
 

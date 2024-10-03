@@ -69,19 +69,6 @@ const ServiceOnlinePayOverview = () => {
                     </div>
                   </div>
                 </li>
-                <li className="flex items-start gap-4 text-dark">
-                  <div className="flex gap-4 items-start">
-                    <div>
-                      <FaRegCircleCheck className="circleCheck text-primary text-[30px] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
-                    </div>
-                    <div>
-                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        {webAppOverview[0].overviewCtitle}
-                      </h3>
-                      <p>{webAppOverview[0].overviewCtext}</p>
-                    </div>
-                  </div>
-                </li>
               </ul>
             </div>
           </div>

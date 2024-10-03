@@ -13,11 +13,11 @@ const ServiceInventoryPage = () => {
     <>
       <Header />
       <ServiceInventoryBanner />
-      <ServiceInventoryPartners />
+      {/* <ServiceInventoryPartners /> */}
       <ServiceInventoryOverview />
       <ServiceInventoryScope />
       <ServiceInventoryPricing />
-      <ServiceInventoryPartnersSay />
+      {/* <ServiceInventoryPartnersSay /> */}
       <Footer />
     </>
   );

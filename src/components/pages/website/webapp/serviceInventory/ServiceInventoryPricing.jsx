@@ -16,57 +16,61 @@ const ServiceInventoryPricing = () => {
               Suitable Pricing Plans
             </h3>
           </div>
-          <div className="wrapper grid grid-cols-3 gap-6 items-center">
-            {pricing.map((price, key) => {
-              return (
-                <div
-                  key={key}
-                  className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
-                    price.isActive
-                      ? "bg-primary h-[500px]"
-                      : "bg-customGray !text-dark"
-                  } grid place-items-center`}
-                >
-                  <div>
-                    <div className="title mb-4 ">
-                      {price.icon}
-                      <h3
-                        className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
-                      >
-                        {price.title}
-                      </h3>
-                      <p
-                        className={`${price.customCss} text-2xl  font-bold text-light`}
-                      >
-                        {price.rate}
-                      </p>
-
-                      {price.note !== "" && (
-                        <p className="text-light text-lg italic">
-                          {price.note}
+          <div className="grid place-items-center">
+            <div className="wrapper grid grid-cols-2 gap-6 items-center">
+              {pricing.map((price, key) => {
+                return (
+                  <div
+                    key={key}
+                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
+                      price.isActive
+                        ? "bg-primary h-[500px]"
+                        : "bg-customGray !text-dark"
+                    } grid place-items-center`}
+                  >
+                    <div>
+                      <div className="title mb-4 ">
+                        {price.icon}
+                        <h3
+                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
+                        >
+                          {price.title}
+                        </h3>
+                        <p
+                          className={`${price.customCss} text-2xl  font-bold text-light`}
+                        >
+                          {price.rate}
                         </p>
-                      )}
+
+                        {price.note !== "" && (
+                          <p
+                            className={`${price.customCss} text-light text-lg italic`}
+                          >
+                            {price.note}
+                          </p>
+                        )}
+                      </div>
+                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
+                        {price.info.map((info, key) => (
+                          <li key={key}>
+                            <FaCheckCircle
+                              className={`${price.customCss} text-light`}
+                            />
+                            {info}
+                          </li>
+                        ))}
+                      </ul>
+                      <a
+                        href={`${price.link}`}
+                        className="btn bg-light text-primary font-bold"
+                      >
+                        LEARN MORE
+                      </a>
                     </div>
-                    <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
-                      {price.info.map((info, key) => (
-                        <li key={key}>
-                          <FaCheckCircle
-                            className={`${price.customCss} text-light`}
-                          />
-                          {info}
-                        </li>
-                      ))}
-                    </ul>
-                    <a
-                      href={`${price.link}`}
-                      className="btn bg-light text-primary font-bold"
-                    >
-                      CHOOSE PLAN
-                    </a>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

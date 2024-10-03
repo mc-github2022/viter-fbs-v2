@@ -61,7 +61,7 @@ const ServiceEnrollmentPricing = () => {
                       href={`${price.link}`}
                       className="btn bg-light text-primary font-bold"
                     >
-                      CHOOSE PLAN
+                      LEARN MORE
                     </a>
                   </div>
                 </div>

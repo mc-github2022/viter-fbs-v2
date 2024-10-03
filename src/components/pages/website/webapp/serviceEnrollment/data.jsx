@@ -148,10 +148,11 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-    clientName: "Client Name",
-    clientDesc: "Client Desc",
-    clientMessage: "The Message",
-    clientLogo: "addIamgeNameHere",
-    clientProfilePic: "olivia-almarez.png",
+    clientName: "Alexander Ubeda II",
+    clientDesc: "IT Department Head",
+    clientMessage:
+      "Frontline Business Solutions not only tailored the online enrollment system to Frontline Christian Academy's specific needs but also provided exceptional support, ensuring they were always available for any adjustments we required.",
+    clientLogo: "fca-logo.png",
+    clientProfilePic: "alexander-ubeda.png",
   },
 ];

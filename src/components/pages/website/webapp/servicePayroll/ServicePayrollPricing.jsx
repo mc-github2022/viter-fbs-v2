@@ -17,7 +17,7 @@ const ServicePayrollPricing = () => {
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper grid grid-cols-2 gap-6 items-center">
+            <div className="wrapper grid grid-cols-2 gap-8 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div

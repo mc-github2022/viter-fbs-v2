@@ -97,34 +97,23 @@ export const scope = [
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Free Trial",
-    rate: "PHP 0 / 7 days",
-    note: "",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    title: "International Clients",
+    rate: "Starts at $1500",
+    note: "Depends on Customizable Scope",
+    info: ["Asset Management", "Assignment of Asset", "Reports"],
     link: "/free-trial",
     isActive: 0,
     customCss: "text-primary",
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Basic",
-    rate: "PHP 20 / Emp / Mo",
-    note: "31 and above employees",
-    info: ["Employee Recordsxx", "Task Timerxx", "Announcementxx"],
-    link: "/basic",
+    title: "Philippine Clients",
+    rate: "Starts at ₱80K",
+    note: "Depends on Customizable Scope",
+    info: ["Asset Management", "Assignment of Asset", "Reports"],
+    link: "/free-trial",
     isActive: 1,
     customCss: "",
-  },
-
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Premium",
-    rate: "PHP 70 / Emp / Mo",
-    note: "",
-    info: ["Employee xxxx", "Task xxxx", "xxxx"],
-    link: "/premium",
-    isActive: 0,
-    customCss: "text-primary",
   },
 ];
 
