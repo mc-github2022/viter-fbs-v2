@@ -3,10 +3,16 @@ import { MdOutlineDashboard } from "react-icons/md";
 
 export const banner = [
   {
-    bannerTitle: "HRIS",
-    bannerTitleBoldText: "bannerTitleBoldText",
-    bannerTextDesc: "bannerTextDesc",
-    bannerBtnText: "bannerBtnText",
+    bannerTitle: (
+      <p>
+        Smarter, faster, <br />
+        and more efficient
+      </p>
+    ),
+    bannerTitleBoldText: "HR Information System",
+    bannerTextDesc:
+      "Experience seamless HR operations and make data-driven decisions that drive organizational success. Designed to centralize all HR data and workflows, our solution simplifies employee records management, leave and attendance tracking, performance evaluations, and HR analytics. ",
+    bannerBtnText: "Schedule a Demo",
     bannerBtnLink: "Link",
     bannerImage: "ServicesBanner.jpg",
   },

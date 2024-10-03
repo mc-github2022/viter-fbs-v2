@@ -19,10 +19,10 @@ const ServiceHrBanner = () => {
             <div className="text-left">
               <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
                 {banner[0].bannerTitle}
+
                 <span className="text-light font-semibold">
                   {banner[0].bannerTitleBoldText}
                 </span>
-                <br />
               </h2>
               <p className="text-light mb-10">{banner[0].bannerTextDesc}</p>
               <a href="#" className="btn bg-transparent text-light border-2">

@@ -3,7 +3,12 @@ import { MdOutlineDashboard } from "react-icons/md";
 
 export const banner = [
   {
-    bannerTitle: "Simplify your payroll processing with our",
+    bannerTitle: (
+      <p>
+        Simplify your payroll processing with our
+        <br />
+      </p>
+    ),
     bannerTitleBoldText: "Online Payroll System",
     bannerTextDesc:
       "Our Online Payroll System simplifies payroll management for Philippine businesses. It automates salary calculations, tax compliance, and government contributions, ensuring accuracy and timely payouts. With real-time reporting and employee self-service access to payslips, it reduces HR workload and boosts efficiency.",

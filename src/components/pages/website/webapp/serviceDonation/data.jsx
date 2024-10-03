@@ -3,12 +3,18 @@ import { MdOutlineDashboard } from "react-icons/md";
 
 export const banner = [
   {
-    bannerTitle: "Donation",
-    bannerTitleBoldText: "bannerTitleBoldText",
-    bannerTextDesc: "bannerTextDesc",
+    bannerTitle: (
+      <p>
+        Streamline donations securely with our
+        <br />
+      </p>
+    ),
+    bannerTitleBoldText: "Online Donation System",
+    bannerTextDesc:
+      "The Online Donation System is a versatile and integrated platform designed to facilitate and manage donations across various client websites. This system supports both one-time and recurring donations for specific projects as well as general donation funds. It includes comprehensive management consoles for both administrators and donors, ensuring a seamless and efficient donation process.",
     bannerBtnText: "bannerBtnText",
     bannerBtnLink: "Link",
-    bannerImage: "ServicesBanner.jpg",
+    bannerImage: "OnlineDonation.jpg",
   },
 ];
 
