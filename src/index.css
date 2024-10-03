@@ -137,6 +137,9 @@
   .bgGradientRadialButtonleft {
     background: radial-gradient(500px, #585858, #000000);
   }
+  .accordionContent {
+    @apply bg-customGray;
+  }
 }
 
 @media screen and (max-width: 1366px) {
