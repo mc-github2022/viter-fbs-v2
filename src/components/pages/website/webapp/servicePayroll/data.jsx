@@ -122,25 +122,7 @@ export const scope = [
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Foreign Clients",
-    rate: "Starts at $1",
-    note: "Per Employee Per Month",
-    info: [
-      "Biometric Data Import",
-      "Record Management",
-      "Earnings Recording",
-      "Deduction Recording",
-      "Holidays Recording",
-      "Access and Role Management",
-      "Reporting",
-    ],
-    link: "/basic",
-    isActive: 0,
-    customCss: "text-primary",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Philippine Clients",
+    title: "Online Payroll System",
     rate: "Starts at ₱40",
     note: "Per Employee Per Month",
     info: [
@@ -153,8 +135,8 @@ export const pricing = [
       "Reporting",
     ],
     link: "/free-trial",
-    isActive: 1,
-    customCss: "",
+    isActive: 0,
+    customCss: "text-primary",
   },
 ];
 
