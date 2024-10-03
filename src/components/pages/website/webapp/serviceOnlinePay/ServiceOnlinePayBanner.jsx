@@ -17,7 +17,7 @@ const ServiceOnlinePayBanner = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
             <div className="text-left">
-              <h2 className="text-[45px] leading-[1.1] mb-8 text-light">
+              <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
                 {banner[0].bannerTitle}
                 <span className="text-light font-semibold">
                   {" "}

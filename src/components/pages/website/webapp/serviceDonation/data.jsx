@@ -42,28 +42,86 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "sectionSubtitle",
-    mainTitle: "sectionMainTitle",
-    webAppImage: "addImageName",
+    subtitle: "Why choose our",
+    mainTitle: "Online Donation System",
+    webAppImage: "ftc-ss.png",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "titleA",
-    overviewAtext: "textA",
-    overviewBtitle: "Flexibility",
+    overviewAtitle: "Enhanced Efficiency and Decision-Making",
+    overviewAtext:
+      "Streamline operations by managing donations in a single platform, reducing administrative tasks, and enabling data-driven decisions for better resource allocation and fundraising success.",
+    overviewBtitle: "Increased Donor Trust and Retention",
     overviewBtext:
-      "Accessible anytime and anywhere, and fully mobile-ready to accommodate the dynamic needs of your organization.",
-    overviewCtitle: "Customizable",
+      "Strengthen relationships with donors through transparent transaction history and secure management, leading to long-term support and repeat donations.",
+    overviewCtitle: "Higher Donations and Optimized Fund Allocation",
     overviewCtext:
-      "Allowing it to be tailored to meet the specific requirements and unique needs of your organization.",
+      "Encourage more contributions by allowing donors to see the direct impact of their support, resulting in increased donation amounts and more effective program funding.",
   },
 ];
 
 export const scope = [
   {
-    scopeId: "dassboard",
+    scopeId: "admin-console",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Intuitive Dashboard",
-    scopeDesc: "text",
+    scopeTitle: "Admin Console",
+    scopeDesc:
+      "Allows administrators to manage donations, track funds, and oversee donor activities through an intuitive interface.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "donor-console",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Donor Console",
+    scopeDesc:
+      "Provides donors with a user-friendly platform to make and manage their donations, view history, and update preferences.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "donation-designations",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Donation Designations",
+    scopeDesc:
+      "Enables donations to be directed to specific projects or general funds, offering flexibility for donors.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "donors-record",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Donors Record Management",
+    scopeDesc:
+      "Maintains detailed records of donors, including contact information, donation history, and engagement data.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "payment-method",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Payment Method Management",
+    scopeDesc:
+      "Manages donors' credit card and payment details, ensuring secure and efficient handling of transactions for seamless donation processing.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "donations-record",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Donations Record",
+    scopeDesc:
+      "Keeps a comprehensive log of all donations, tracking amounts, donors, and designated funds.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "donations-frequency",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Donation Frequency (One-time, Recurring, Manual)",
+    scopeDesc:
+      "Allows donors to choose between one-time, recurring, or manual donation schedules for flexibility.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "users-setting",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Users Settings",
+    scopeDesc:
+      "Enables donors and admins to manage account settings, preferences, and personal information securely.",
     scopeImage: "hrScopdeSS_overview.jpg",
   },
 ];

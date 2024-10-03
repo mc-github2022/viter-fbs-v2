@@ -3,9 +3,15 @@ import { MdOutlineDashboard } from "react-icons/md";
 
 export const banner = [
   {
-    bannerTitle: "OnlinePay",
-    bannerTitleBoldText: "bannerTitleBoldText",
-    bannerTextDesc: "bannerTextDesc",
+    bannerTitle: (
+      <p>
+        Integrate into your website
+        <br /> a hassle-free
+      </p>
+    ),
+    bannerTitleBoldText: "Online Payment Transaction",
+    bannerTextDesc:
+      "A component that integrates with existing systems to enable online payment processing. It allows businesses to accept payments securely via various channels such as credit/debit cards, e-wallets, or bank transfers, enhancing customer convenience and expanding revenue streams.",
     bannerBtnText: "bannerBtnText",
     bannerBtnLink: "Link",
     bannerImage: "OnlinePayment.jpg",
@@ -54,10 +60,19 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "dassboard",
+    scopeId: "cc-payment",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Intuitive Dashboard",
-    scopeDesc: "text",
+    scopeTitle: "Credit Card Payment (Visa and Mastercard)",
+    scopeDesc:
+      "Enables secure payment processing through Visa and Mastercard, offering customers a trusted and convenient way to complete transactions.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "e-wallet",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Gcash Payment",
+    scopeDesc:
+      "Supports Gcash payment integration, allowing customers to pay seamlessly using their e-wallet for a hassle-free experience.",
     scopeImage: "hrScopdeSS_overview.jpg",
   },
 ];
