@@ -16,7 +16,7 @@ const ServiceOnlineDonationPage = () => {
       <ServiceOnlineDonationOverview />
       <ServiceOnlineDonationScope />
       <ServiceOnlineDonationPricing />
-      <ServiceOnlineDonationPartners />
+      {/* <ServiceOnlineDonationPartners /> */}
       <ServiceOnlineDonationPartnersSay />
       <Footer />
     </>

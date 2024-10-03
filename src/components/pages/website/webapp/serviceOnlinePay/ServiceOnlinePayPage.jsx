@@ -17,7 +17,7 @@ const ServiceOnlinePayPage = () => {
       <ServiceOnlinePayScope />
       <ServiceOnlinePayPricing />
       {/* <ServiceOnlinePayPartners /> */}
-      <ServiceOnlinePayPartnersSay />
+      {/* <ServiceOnlinePayPartnersSay /> */}
       <Footer />
     </>
   );
