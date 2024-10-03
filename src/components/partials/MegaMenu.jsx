@@ -124,7 +124,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                 >
                   <li>
-                    <Link to="/va">Administrative Solutions</Link>
+                    <Link to="/adminSolution">Administrative Solutions</Link>
                   </li>
                   <li>Marketing & Social Media</li>
                   <li>Technical Support</li>

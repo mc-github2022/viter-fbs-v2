@@ -1,15 +1,15 @@
 import React from "react";
 import { banner } from "./data";
 
-const VaBanner = () => {
+const VaAdminSolutionBanner = () => {
   return (
     <>
       <section
-        id="vaBanner"
+        id="VaAdminSolutionBanner"
         className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/VABG.jpg)`,
-          backgroundImage: `url(../../public/img/VABG.jpg)`,
+          backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
         }}
       >
         <div className="customContainer">
@@ -34,4 +34,4 @@ const VaBanner = () => {
   );
 };
 
-export default VaBanner;
+export default VaAdminSolutionBanner;

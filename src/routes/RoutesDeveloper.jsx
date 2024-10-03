@@ -2,7 +2,7 @@ import { devNavUrl } from "../components/helpers/functions-general";
 import SinglePage from "../components/pages/website/events/SinglePage";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
-import VaPage from "../components/pages/website/vaPage/VaPage";
+import VaAdminSolutionPage from "../components/pages/website/virtualSolution/adminSolution/VaAdminSolutionPage";
 import ServiceOnlineDonationPage from "../components/pages/website/webapp/serviceDonation/ServiceOnlineDonationPage";
 import ServiceEnrollmentPage from "../components/pages/website/webapp/serviceEnrollment/ServiceEnrollmentPage";
 import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceHrPage";
@@ -33,8 +33,8 @@ export const routesDeveloper = [
     element: <SinglePage />,
   },
   {
-    path: `${devNavUrl}/va`,
-    element: <VaPage />,
+    path: `${devNavUrl}/adminSolution`,
+    element: <VaAdminSolutionPage />,
   },
   {
     path: `${devNavUrl}/webapp-payroll`,
