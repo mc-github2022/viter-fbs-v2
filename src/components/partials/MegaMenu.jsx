@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { CgSmileMouthOpen } from "react-icons/cg";
 import {
   FaAddressCard,
@@ -35,7 +35,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
 
   return (
     <>
-      <div className={`${toggleMenu ? "active" : ""} megaMenu`}>
+      <div ref={modalRef} className={`${toggleMenu ? "active" : ""} megaMenu`}>
         <div className="holder w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl">
           <div className="pt-8 px-8 pb-8 rounded-br-xl rounded-bl-xl">
             <div className="backArrow absolute top-2 right-9 md:hidden">
