@@ -3,9 +3,15 @@ import { MdOutlineDashboard } from "react-icons/md";
 
 export const banner = [
   {
-    bannerTitle: "Inventory",
-    bannerTitleBoldText: "bannerTitleBoldText",
-    bannerTextDesc: "bannerTextDesc",
+    bannerTitle: (
+      <p>
+        Track and manage <br />
+        assets with our
+      </p>
+    ),
+    bannerTitleBoldText: "Asset Inventory System",
+    bannerTextDesc:
+      "Designed to track and manage an organization’s assets and inventory efficiently. It enables businesses to monitor stock levels, track asset locations, manage depreciation, schedule maintenance, and streamline procurement processes, optimizing resource utilization and reducing operational costs.",
     bannerBtnText: "bannerBtnText",
     bannerBtnLink: "Link",
     bannerImage: "InventorySystem.jpg",
@@ -36,28 +42,54 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "sectionSubtitle",
-    mainTitle: "sectionMainTitle",
-    webAppImage: "addImageName",
+    subtitle: "Why choose our",
+    mainTitle: "Asset Inventory System",
+    webAppImage: "asset-inventory-ss.png",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "titleA",
-    overviewAtext: "textA",
-    overviewBtitle: "Flexibility",
+    overviewAtitle: "Improved Asset Visibility and Control",
+    overviewAtext:
+      "By maintaining detailed and organized asset records, organizations enhance visibility, streamline asset management processes, and ensure efficient utilization and maintenance of their resources.",
+    overviewBtitle: "Enhanced Accountability and Tracking",
     overviewBtext:
-      "Accessible anytime and anywhere, and fully mobile-ready to accommodate the dynamic needs of your organization.",
-    overviewCtitle: "Customizable",
+      "By clearly defining asset assignments, organizations improve accountability, streamline asset tracking, and reduce loss or mismanagement of resources.",
+    overviewCtitle: "Improved Decision-Making and Management",
     overviewCtext:
-      "Allowing it to be tailored to meet the specific requirements and unique needs of your organization.",
+      "By generating accurate and detailed asset reports, organizations enhance their ability to make informed decisions, optimize asset usage, and manage resources more effectively.",
   },
 ];
 
 export const scope = [
   {
-    scopeId: "dassboard",
+    scopeId: "asset-management",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Intuitive Dashboard",
-    scopeDesc: "text",
+    scopeTitle: "Asset Management",
+    scopeDesc:
+      "Facilitates the tracking and management of organizational assets, including their details, locations, and status, to ensure effective utilization.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "assignment-asset",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Assignment of Asset",
+    scopeDesc:
+      "Allows for the assignment of assets to employees or departments, maintaining a clear record of asset ownership and accountability.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "reports",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Reports",
+    scopeDesc:
+      "Generates comprehensive reports on asset status, inventory levels, and depreciation, providing valuable insights for decision-making and resource planning.",
+    scopeImage: "hrScopdeSS_overview.jpg",
+  },
+  {
+    scopeId: "settings",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Settings",
+    scopeDesc:
+      "Provides customization options for system configuration to meet the specific needs of the organization and enhance user experience.",
     scopeImage: "hrScopdeSS_overview.jpg",
   },
 ];
