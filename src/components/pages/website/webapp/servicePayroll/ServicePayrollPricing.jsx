@@ -11,13 +11,15 @@ const ServicePayrollPricing = () => {
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
-            <p className="text-light">Choose what's best for your needs</p>
+            <p className="text-light">
+              Web application for your payroll processing needs
+            </p>
             <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
-              Suitable Pricing Plans
+              Affordable Pricing Plan
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper grid grid-cols-2 gap-8 items-center">
+            <div className="wrapper grid grid-cols-1 gap-8 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
@@ -64,7 +66,7 @@ const ServicePayrollPricing = () => {
                         href={`${price.link}`}
                         className="btn bg-light text-primary font-bold"
                       >
-                        CHOOSE PLAN
+                        LEARN MORE
                       </a>
                     </div>
                   </div>
