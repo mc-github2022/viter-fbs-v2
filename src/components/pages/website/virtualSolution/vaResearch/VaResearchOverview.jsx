@@ -1,24 +1,23 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
-import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { webAppOverview } from "./data";
 
-const VaOverview = () => {
+const VaResearchOverview = () => {
   return (
     <>
-      <section className="partnersWithUs py-20 ">
+      <section className="VaResearchOverview py-20 ">
         <div className="customContainer">
-          <p> Here's why we're the</p>
+          <p>{webAppOverview[0].subtitle}</p>
           <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              right choice for your VA needs.
+              {webAppOverview[0].mainTitle}
             </span>
           </h2>
           <div className="wrapper grid grid-cols-2 gap-12 items-center">
             <div>
               <img
                 // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
-                src={`../../public/img/vaOverviewImage.jpg`}
+                src={`../../public/img/${webAppOverview[0].webAppImage}`}
                 className="mb-12 md:mb-0 h-full object-cover"
                 alt=""
               />
@@ -32,12 +31,9 @@ const VaOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        Fast turnaround time
+                        {webAppOverview[0].overviewAtitle}
                       </h3>
-                      <p>
-                        We deliver websites quickly, ensuring your project meets
-                        deadlines without compromising quality
-                      </p>
+                      <p>{webAppOverview[0].overviewAtext}</p>
                     </div>
                   </div>
                 </li>
@@ -48,13 +44,9 @@ const VaOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        Optimal Viewing and Interaction
+                        {webAppOverview[0].overviewBtitle}
                       </h3>
-                      <p>
-                        Our responsive designs ensure seamless viewing and
-                        Interaction across all devices for an engaging user
-                        experience.
-                      </p>
+                      <p>{webAppOverview[0].overviewBtext}</p>
                     </div>
                   </div>
                 </li>
@@ -65,13 +57,9 @@ const VaOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
-                        High-Quality at Lower Costs
+                        {webAppOverview[0].overviewCtitle}
                       </h3>
-                      <p>
-                        We offer high-quality websitels at competitive prices,
-                        delivering excellence results while staying within your
-                        budget.
-                      </p>
+                      <p>{webAppOverview[0].overviewCtext}</p>
                     </div>
                   </div>
                 </li>
@@ -84,4 +72,4 @@ const VaOverview = () => {
   );
 };
 
-export default VaOverview;
+export default VaResearchOverview;

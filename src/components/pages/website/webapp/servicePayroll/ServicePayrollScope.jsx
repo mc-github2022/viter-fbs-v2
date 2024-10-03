@@ -37,7 +37,7 @@ const ServicePayrollScope = () => {
                 return (
                   <li
                     key={key}
-                    className="overflow-hidden  border-b border-[#e9e9e9]"
+                    className={"overflow-hidden  border-b border-[#e9e9e9]"}
                   >
                     <div
                       className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2"
