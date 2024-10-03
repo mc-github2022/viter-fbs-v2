@@ -2,7 +2,7 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Virtual Assistant",
+    bannerTitle: "Research",
     bannerTitleBoldText: "bannerTitleBoldText",
     bannerTextDesc: "bannerTextDesc",
     bannerBtnText: "bannerBtnText",

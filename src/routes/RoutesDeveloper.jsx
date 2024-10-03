@@ -2,7 +2,12 @@ import { devNavUrl } from "../components/helpers/functions-general";
 import SinglePage from "../components/pages/website/events/SinglePage";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
-import VaAdminSolutionPage from "../components/pages/website/virtualSolution/adminSolution/VaAdminSolutionPage";
+import VaAdminSolutionPage from "../components/pages/website/virtualSolution/vaAdminSolution/VaAdminSolutionPage";
+import VaCreativeSupportPage from "../components/pages/website/virtualSolution/vaCreativeSupport/VaCreativeSupportPage";
+import VaMarketingPage from "../components/pages/website/virtualSolution/vaMarketing/VaMarketingPage";
+import VaMiscellaneousPage from "../components/pages/website/virtualSolution/vaMiscellaneous/VaMiscellaneousPage";
+import VaResearchPage from "../components/pages/website/virtualSolution/vaResearch/VaResearchPage";
+import VaTechSupportPage from "../components/pages/website/virtualSolution/vaTechSupport/VaTechSupportPage";
 import ServiceOnlineDonationPage from "../components/pages/website/webapp/serviceDonation/ServiceOnlineDonationPage";
 import ServiceEnrollmentPage from "../components/pages/website/webapp/serviceEnrollment/ServiceEnrollmentPage";
 import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceHrPage";
@@ -35,6 +40,26 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/adminSolution`,
     element: <VaAdminSolutionPage />,
+  },
+  {
+    path: `${devNavUrl}/va-marketing`,
+    element: <VaMarketingPage />,
+  },
+  {
+    path: `${devNavUrl}/va-techsupport`,
+    element: <VaTechSupportPage />,
+  },
+  {
+    path: `${devNavUrl}/va-creativesupport`,
+    element: <VaCreativeSupportPage />,
+  },
+  {
+    path: `${devNavUrl}/va-research`,
+    element: <VaResearchPage />,
+  },
+  {
+    path: `${devNavUrl}/va-miscellaneous`,
+    element: <VaMiscellaneousPage />,
   },
   {
     path: `${devNavUrl}/webapp-payroll`,

@@ -126,11 +126,21 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   <li>
                     <Link to="/adminSolution">Administrative Solutions</Link>
                   </li>
-                  <li>Marketing & Social Media</li>
-                  <li>Technical Support</li>
-                  <li>Creative Support</li>
-                  <li>Research Services</li>
-                  <li>Miscellaneous Services</li>
+                  <li>
+                    <Link to="/va-marketing">Marketing & Social Media</Link>
+                  </li>
+                  <li>
+                    <Link to="/va-techsupport">Technical Support</Link>
+                  </li>
+                  <li>
+                    <Link to="/va-creativesupport">Creative Support</Link>
+                  </li>
+                  <li>
+                    <Link to="/va-research">Research Services</Link>
+                  </li>
+                  <li>
+                    <Link to="/va-miscellaneous">Miscellaneous Services</Link>
+                  </li>
                 </ul>
               </div>
               <div className="menuItem mb-3">
