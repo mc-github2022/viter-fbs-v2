@@ -40,7 +40,11 @@ const ServiceEnrollmentScope = () => {
                     className="overflow-hidden  border-b border-[#e9e9e9]"
                   >
                     <div
-                      className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2"
+                      className={`${
+                        accordion && accordionItem === scopeList.scopeId
+                          ? "bg-customGray"
+                          : ""
+                      } flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
                       onClick={() => handleAccordion(scopeList.scopeId)}
                     >
                       <div className="flex items-center gap-4">
