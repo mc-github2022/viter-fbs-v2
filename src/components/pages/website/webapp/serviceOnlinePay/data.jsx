@@ -12,7 +12,7 @@ export const banner = [
     bannerTitleBoldText: "Online Payment Transaction",
     bannerTextDesc:
       "A component that integrates with existing systems to enable online payment processing. It allows businesses to accept payments securely via various channels such as credit/debit cards, e-wallets, or bank transfers, enhancing customer convenience and expanding revenue streams.",
-    bannerBtnText: "bannerBtnText",
+    bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
     bannerImage: "OnlinePayment.jpg",
   },
@@ -45,7 +45,7 @@ export const webAppOverview = [
     subtitle: "Why choose our",
     mainTitle: "Online Payment Integration",
     webAppImage: "online-payment-ss.png",
-    btnText: "Schedule A Demo",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Payment Flexibility",
     overviewAtext:

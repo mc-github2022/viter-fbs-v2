@@ -12,7 +12,7 @@ export const banner = [
     bannerTitleBoldText: "Online Donation System",
     bannerTextDesc:
       "The Online Donation System is a versatile and integrated platform designed to facilitate and manage donations across various client websites. This system supports both one-time and recurring donations for specific projects as well as general donation funds. It includes comprehensive management consoles for both administrators and donors, ensuring a seamless and efficient donation process.",
-    bannerBtnText: "bannerBtnText",
+    bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
     bannerImage: "OnlineDonation.jpg",
   },
@@ -45,7 +45,7 @@ export const webAppOverview = [
     subtitle: "Why choose our",
     mainTitle: "Online Donation System",
     webAppImage: "ftc-ss.png",
-    btnText: "Schedule A Demo",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Enhanced Efficiency and Decision-Making",
     overviewAtext:

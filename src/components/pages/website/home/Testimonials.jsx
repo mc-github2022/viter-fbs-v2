@@ -16,7 +16,7 @@ const Testimonials = () => {
                 </h3>
                 <p>
                   See what our clients say about our services and how we've
-                  helped them achieve
+                  helped them achieve their goals.
                 </p>
               </div>
               <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[150px] lg:h-[150px] z-[1]">
@@ -65,7 +65,7 @@ const Testimonials = () => {
             <img
               // src={`${devBaseImgUrl}/tm_logo.png`}
               src={`../../public/img/tm_logo.png`}
-              className="w-[150px] mt-[25px] ml-[50px]"
+              className="w-[200px] mt-[30px] ml-[15%]"
               alt=""
             />
           </div>

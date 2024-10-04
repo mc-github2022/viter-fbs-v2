@@ -12,7 +12,7 @@ export const banner = [
     bannerTitleBoldText: "Online Payroll System",
     bannerTextDesc:
       "Our Online Payroll System simplifies payroll management for Philippine businesses. It automates salary calculations, tax compliance, and government contributions, ensuring accuracy and timely payouts. With real-time reporting and employee self-service access to payslips, it reduces HR workload and boosts efficiency.",
-    bannerBtnText: "Schedule a Demo",
+    bannerBtnText: "SCHEDULE A DEMO",
 
     bannerBtnLink: "Link",
     bannerImage: "ServicesBanner.jpg",
@@ -36,12 +36,6 @@ export const sectionPartnersLogos = [
   {
     imageName: "DTOD-BPO.png",
   },
-  {
-    imageName: "web-obich.png",
-  },
-  {
-    imageName: "web-victorious-Virtual-Hub.png",
-  },
 ];
 
 export const webAppOverview = [
@@ -49,7 +43,7 @@ export const webAppOverview = [
     subtitle: "Why choose our",
     mainTitle: "Online Payroll System",
     webAppImage: "payroll-ss.png",
-    btnText: "Schedule A Demo",
+    btnText: "SCHEDULE A DEMO",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Enhanced Accuracy and Reduced Errors",
     overviewAtext:

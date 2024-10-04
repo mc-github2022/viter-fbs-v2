@@ -66,7 +66,7 @@ const ServiceInventoryPricing = () => {
                         href={`${price.link}`}
                         className="btn bg-light text-primary font-bold"
                       >
-                        LEARN MORE
+                        CONTACT US
                       </a>
                     </div>
                   </div>
