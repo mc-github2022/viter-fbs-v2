@@ -63,7 +63,7 @@ export const scope = [
     scopeTitle: "Credit Card Payment (Visa and Mastercard)",
     scopeDesc:
       "Enables secure payment processing through Visa and Mastercard, offering customers a trusted and convenient way to complete transactions.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "online-payment-cc.png",
   },
   {
     scopeId: "e-wallet",
@@ -71,7 +71,7 @@ export const scope = [
     scopeTitle: "Gcash Payment",
     scopeDesc:
       "Supports Gcash payment integration, allowing customers to pay seamlessly using their e-wallet for a hassle-free experience.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "online-payment-gcash.png",
   },
 ];
 
