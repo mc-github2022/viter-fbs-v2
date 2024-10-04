@@ -66,7 +66,7 @@ export const scope = [
     scopeTitle: "Admin Console",
     scopeDesc:
       "Allows administrators to manage donations, track funds, and oversee donor activities through an intuitive interface.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-admin-console.png",
   },
   {
     scopeId: "donor-console",
@@ -74,7 +74,7 @@ export const scope = [
     scopeTitle: "Donor Console",
     scopeDesc:
       "Provides donors with a user-friendly platform to make and manage their donations, view history, and update preferences.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-donor-console.png",
   },
   {
     scopeId: "donation-designations",
@@ -82,7 +82,7 @@ export const scope = [
     scopeTitle: "Donation Designations",
     scopeDesc:
       "Enables donations to be directed to specific projects or general funds, offering flexibility for donors.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-designation.png",
   },
   {
     scopeId: "donors-record",
@@ -90,7 +90,7 @@ export const scope = [
     scopeTitle: "Donors Record Management",
     scopeDesc:
       "Maintains detailed records of donors, including contact information, donation history, and engagement data.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-donors-record.png",
   },
   {
     scopeId: "payment-method",
@@ -98,7 +98,7 @@ export const scope = [
     scopeTitle: "Payment Method Management",
     scopeDesc:
       "Manages donors' credit card and payment details, ensuring secure and efficient handling of transactions for seamless donation processing.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-payment-method.png",
   },
   {
     scopeId: "donations-record",
@@ -106,7 +106,7 @@ export const scope = [
     scopeTitle: "Donations Record",
     scopeDesc:
       "Keeps a comprehensive log of all donations, tracking amounts, donors, and designated funds.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-record.png",
   },
   {
     scopeId: "donations-frequency",
@@ -114,7 +114,7 @@ export const scope = [
     scopeTitle: "Donation Frequency (One-time, Recurring, Manual)",
     scopeDesc:
       "Allows donors to choose between one-time, recurring, or manual donation schedules for flexibility.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-frequency.png",
   },
   {
     scopeId: "users-setting",
@@ -122,7 +122,7 @@ export const scope = [
     scopeTitle: "Users Settings",
     scopeDesc:
       "Enables donors and admins to manage account settings, preferences, and personal information securely.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-setting.png",
   },
 ];
 
