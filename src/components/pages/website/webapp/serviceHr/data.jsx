@@ -66,7 +66,7 @@ export const scope = [
     scopeTitle: "Intuitive Dashboard",
     scopeDesc:
       "The system offers a user-friendly dashboard that provides admins and employees with key information at a glance, including leave statuses, announcements, celebrations, team details, and new employee notifications for quick access and improved communication.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-dashboard.png",
   },
   {
     scopeId: "employee-record",
@@ -74,7 +74,7 @@ export const scope = [
     scopeTitle: "Employee 201 File",
     scopeDesc:
       "This allows HR teams to manage and maintain comprehensive 201 files for all employees, storing personal information, employment history, performance records, and other relevant documents in one secure and accessible location.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-employee-list.png",
   },
   {
     scopeId: "leave-management",
@@ -82,7 +82,7 @@ export const scope = [
     scopeTitle: "Leave Management",
     scopeDesc:
       "It includes a Leave Application and Approval feature that enables employees to request leaves and managers to approve or reject them through an intuitive and automated platform, streamlining the entire leave process.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-leave.png",
   },
   {
     scopeId: "overtime-management",
@@ -90,7 +90,7 @@ export const scope = [
     scopeTitle: "Overtime Management",
     scopeDesc:
       "This feature tracks employee overtime hours, allowing for easy submission, approval, and monitoring of overtime requests. It ensures accurate compensation and compliance with company policies.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-overtime.png",
   },
   {
     scopeId: "task-management",
@@ -98,7 +98,7 @@ export const scope = [
     scopeTitle: "Task Management with a Timer",
     scopeDesc:
       "It enables employees to track time spent on various tasks and projects within the application, offering a detailed breakdown of work hours for better project management and productivity analysis.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-task-management.png",
   },
   {
     scopeId: "client-management",

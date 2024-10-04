@@ -10,11 +10,11 @@ const PartnerWithUs = () => {
             <div className="bg-customGray md:bg-opacity-70 py-20 px-10 z-10 rounded-lg addShadow">
               <p>Empowering you business with</p>
               <h2 className="lg:text-[45px] font-semibold text-primary leading-[1.1] mb-8 text-[clamp(20px,4vw,45px)]">
-                reliable, cost-effective, and expertly managed solutins.
+                reliable, cost-effective, and expertly managed solutions.
               </h2>
               <p className="mb-8">
                 Our talented professionals are carefully supervised by
-                experienced management, ensuring high standards and cosistent
+                experienced management, ensuring high standards and consistent
                 performance. Plus, we are dedicated to empowering local talent,
                 and helping you support the community while benefiting from
                 skilled expertise.
