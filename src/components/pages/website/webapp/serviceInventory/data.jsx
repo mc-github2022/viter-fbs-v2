@@ -66,7 +66,7 @@ export const scope = [
     scopeTitle: "Asset Management",
     scopeDesc:
       "Facilitates the tracking and management of organizational assets, including their details, locations, and status, to ensure effective utilization.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "asset-inventory.png",
   },
   {
     scopeId: "assignment-asset",
@@ -74,23 +74,23 @@ export const scope = [
     scopeTitle: "Assignment of Asset",
     scopeDesc:
       "Allows for the assignment of assets to employees or departments, maintaining a clear record of asset ownership and accountability.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "asset-assignment.png",
   },
-  {
-    scopeId: "reports",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Reports",
-    scopeDesc:
-      "Generates comprehensive reports on asset status, inventory levels, and depreciation, providing valuable insights for decision-making and resource planning.",
-    scopeImage: "hrScopdeSS_overview.jpg",
-  },
+  // {
+  //   scopeId: "reports",
+  //   scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+  //   scopeTitle: "Reports",
+  //   scopeDesc:
+  //     "Generates comprehensive reports on asset status, inventory levels, and depreciation, providing valuable insights for decision-making and resource planning.",
+  //   scopeImage: "hrScopdeSS_overview.jpg",
+  // },
   {
     scopeId: "settings",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Settings",
     scopeDesc:
       "Provides customization options for system configuration to meet the specific needs of the organization and enhance user experience.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "asset-settings.png",
   },
 ];
 

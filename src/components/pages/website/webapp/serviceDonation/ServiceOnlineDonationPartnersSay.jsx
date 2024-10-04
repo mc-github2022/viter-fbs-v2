@@ -114,7 +114,7 @@ const ServiceOnlineDonationPartnersSay = () => {
                             alt=""
                           />
                         </div>
-                        <p className="relative z-10 italic mb-4">
+                        <p className="relative z-10 italic mb-4 text-sm">
                           {testimonial.clientMessage}
                         </p>
                         <div className="logoAndName flex items-center gap-3">
