@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { CgSmileMouthOpen } from "react-icons/cg";
 import {
   FaAddressCard,

@@ -10,10 +10,10 @@ import { scope } from "./data";
 const ServiceOnlinePayScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
-  window.onload = function () {
+  useEffect(() => {
     setAccordion(true);
-    setAccordionItem("dassboard");
-  };
+    setAccordionItem("starter");
+  }, []);
 
   const [accordion, setAccordion] = React.useState(false);
   const handleAccordion = (item) => {

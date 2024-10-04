@@ -56,7 +56,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "registration",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Registration and Enrollment",
     scopeDesc:

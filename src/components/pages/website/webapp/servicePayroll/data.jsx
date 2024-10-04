@@ -65,7 +65,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "biometric",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Biometric Data Import Capability",
     scopeDesc:

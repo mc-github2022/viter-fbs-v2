@@ -61,7 +61,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "dashboard",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Intuitive Dashboard",
     scopeDesc:
