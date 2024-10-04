@@ -12,7 +12,7 @@ export const banner = [
     bannerTitleBoldText: "HR Information System",
     bannerTextDesc:
       "Experience seamless HR operations and make data-driven decisions that drive organizational success. Designed to centralize all HR data and workflows, our solution simplifies employee records management, leave and attendance tracking, performance evaluations, and HR analytics. ",
-    bannerBtnText: "Schedule a Demo",
+    bannerBtnText: "SCHEDULE A DEMO",
     bannerBtnLink: "Link",
     bannerImage: "HrisBackground.jpg",
   },
@@ -45,7 +45,7 @@ export const webAppOverview = [
     subtitle: "Our web application is perfect",
     mainTitle: "for your HR specific needs",
     webAppImage: "HRISscreenShot.png",
-    btnText: "Schedule A Demo",
+    btnText: "SCHEDULE A DEMO",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Compatibility",
     overviewAtext:
@@ -164,11 +164,11 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-    clientName: "Kimbell John Reyes",
+    clientName: "Dennis Delos Santos",
     clientDesc: "Chief Executive Officer",
     clientMessage:
-      "Frontline Business Solutions is indeed a partner to innovative success of a company. A connection of employer and employee. ",
-    clientLogo: "AKA-Global.png",
+      "Excellent HRIS Provider with Outstanding Support! heir platform has streamlined our HR processes, making tasks like employee management, payroll, and reporting much more efficient. What truly stands out is the level of support we’ve received from their team. I highly recommend Frontline Business Solutions Inc. for anyone looking for a reliable and supportive HRIS provider. Their service has been excellent, and their team truly understands the needs of their clients. ",
+    clientLogo: "DTOD-BPO.png",
     clientProfilePic: "emilio-macaso.png",
   },
 ];

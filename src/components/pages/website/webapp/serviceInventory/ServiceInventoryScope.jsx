@@ -96,7 +96,7 @@ const ServiceInventoryScope = () => {
                       href="#"
                       className="btn bg-primary text-light font-semibold"
                     >
-                      Schedule a Demo
+                      CONTACT US
                     </a>
                   </p>
                 </div>

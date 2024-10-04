@@ -96,7 +96,7 @@ const ServiceOnlineDonationScope = () => {
                       href="#"
                       className="btn bg-primary text-light font-semibold"
                     >
-                      Schedule a Demo
+                      LEARN MORE
                     </a>
                   </p>
                 </div>

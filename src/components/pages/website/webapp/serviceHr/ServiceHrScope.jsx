@@ -97,7 +97,7 @@ const ServiceHrScope = () => {
                       href="#"
                       className="btn bg-primary text-light font-semibold"
                     >
-                      Schedule a Demo
+                      SCHEDULE A DEMO
                     </a>
                   </p>
                 </div>

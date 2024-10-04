@@ -7,7 +7,7 @@ export const banner = [
     bannerTitleBoldText: "School Enrollment System.",
     bannerTextDesc:
       "Tailored for educational institutions, this system automates the enrollment process for students. It typically includes features for online registration, course selection, fee payment, document submission, and enrollment status tracking, simplifying administrative tasks for schools and improving the enrollment experience for students and parents.",
-    bannerBtnText: "Schedule a Demo",
+    bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
     bannerImage: "SchoolEnrollment.jpg",
   },
@@ -40,7 +40,7 @@ export const webAppOverview = [
     subtitle: "Why choose our online",
     mainTitle: "School Enrollment System",
     webAppImage: "enrollment-ss.png",
-    btnText: "Schedule A Demo",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Streamlined Registration and Enrollment",
     overviewAtext:
@@ -61,7 +61,7 @@ export const scope = [
     scopeTitle: "Registration and Enrollment",
     scopeDesc:
       "Automates the student registration and enrollment process, enabling easy online sign-ups and registration.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "school-registration.png",
   },
   {
     scopeId: "student-record",
@@ -69,7 +69,7 @@ export const scope = [
     scopeTitle: "Students Record Management",
     scopeDesc:
       "Maintains comprehensive student records, including personal details, enrollment status, and academic history.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "school-student.png",
   },
   {
     scopeId: "parent-record",
@@ -77,7 +77,7 @@ export const scope = [
     scopeTitle: "Parents Record Management",
     scopeDesc:
       "Maintains detailed records of parents, including contact information, student associations, and communication history, ensuring efficient parent engagement.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "school-parent.png",
   },
   {
     scopeId: "notification",
@@ -85,7 +85,15 @@ export const scope = [
     scopeTitle: "Notification of Enrollment Process",
     scopeDesc:
       "Notifies departments such as the registrar, principal, finance, parents, and students about the enrollment progress, including requirements and documentation for submission, ensuring smooth coordination.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "school-notification.png",
+  },
+  {
+    scopeId: "tuition",
+    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeTitle: "Tuition Fee Schedule",
+    scopeDesc:
+      "Allows the admin to encode tuition details per grade level, along with discounts and payment schedules, providing easy reference for students and teachers.",
+    scopeImage: "school-tuition.png",
   },
   {
     scopeId: "user-management",
@@ -93,47 +101,34 @@ export const scope = [
     scopeTitle: "User Management",
     scopeDesc:
       "Manages user roles and permissions, ensuring secure access for administrators, teachers, students, and parents.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "school-user.png",
   },
   {
     scopeId: "settings",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Settings",
+    scopeTitle: "Customizable Settings",
     scopeDesc:
       "Provides customization options for system configuration to meet the specific needs of the institution.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "school-setting.png",
   },
 ];
 
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Free Trial",
-    rate: "PHP 0 / 7 days",
-    note: "",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    title: "Online School Enrollment System",
+    rate: "Starts at ₱80K",
+    note: "price varies based on system scope",
+    info: [
+      "Online Registration",
+      "Student Record",
+      "Client/Parent Record",
+      "Enrollment Notification",
+      "Tuition Fee Schedule",
+      "User Management",
+      "Customizable Settings",
+    ],
     link: "/free-trial",
-    isActive: 0,
-    customCss: "text-primary",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Basic",
-    rate: "PHP 20 / Emp / Mo",
-    note: "31 and above employees",
-    info: ["Employee Recordsxx", "Task Timerxx", "Announcementxx"],
-    link: "/basic",
-    isActive: 1,
-    customCss: "",
-  },
-
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Premium",
-    rate: "PHP 70 / Emp / Mo",
-    note: "",
-    info: ["Employee xxxx", "Task xxxx", "xxxx"],
-    link: "/premium",
     isActive: 0,
     customCss: "text-primary",
   },
