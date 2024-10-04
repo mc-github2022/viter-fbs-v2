@@ -64,14 +64,14 @@ const ServiceHrScope = () => {
                     <div
                       className={`${
                         accordion && accordionItem === scopeList.scopeId
-                          ? "min-h-[170px] px-4 pt-4 pb-8"
+                          ? "px-4 pt-4 pb-4"
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p className="mb-4">{scopeList.scopeDesc}</p>
-                      <a href="#" className="btn bg-primary text-light">
+                      <p>{scopeList.scopeDesc}</p>
+                      {/* <a href="#" className="btn bg-primary text-light">
                         Schedule a Demo
-                      </a>
+                      </a> */}
                     </div>
                   </li>
                 );
@@ -91,6 +91,15 @@ const ServiceHrScope = () => {
                     src={`../../public/img/${scopedata.scopeImage}`}
                     alt=""
                   />
+
+                  <p className="mb-4 text-center pt-8 pb-8">
+                    <a
+                      href="#"
+                      className="btn bg-primary text-light font-semibold"
+                    >
+                      Schedule a Demo
+                    </a>
+                  </p>
                 </div>
               );
             })}

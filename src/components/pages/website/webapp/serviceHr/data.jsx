@@ -106,7 +106,7 @@ export const scope = [
     scopeTitle: "Client Management",
     scopeDesc:
       "This feature helps manage and track records of clients, including maintaining client information and ensuring a smooth and organized client relationship process.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-client.png",
   },
   {
     scopeId: "announcement-management",
@@ -114,7 +114,7 @@ export const scope = [
     scopeTitle: "Announcement Management",
     scopeDesc:
       "This allows organizations to share important news, updates, and upcoming activities with employees through a centralized platform, ensuring everyone stays informed and connected across the company.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-announcement.png",
   },
 ];
 
