@@ -58,7 +58,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "cc-payment",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Credit Card Payment (Visa and Mastercard)",
     scopeDesc:

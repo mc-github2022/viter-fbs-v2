@@ -10,10 +10,10 @@ import { scope } from "./data";
 const ServicePayrollScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
-  window.onload = function () {
+  useEffect(() => {
     setAccordion(true);
-    setAccordionItem("dassboard");
-  };
+    setAccordionItem("starter");
+  }, []);
 
   const [accordion, setAccordion] = React.useState(false);
   const handleAccordion = (item) => {

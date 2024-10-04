@@ -61,7 +61,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "asset-management",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Asset Management",
     scopeDesc:
