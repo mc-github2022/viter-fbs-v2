@@ -180,7 +180,10 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                   [&>li]:lg:!mb-2`}
                 >
-                  <li>WordPress</li>
+                  <li>
+                    <Link to="/web-wordpress">WordPress</Link>
+                  </li>
+                  <li></li>
                   <li>Single Page Website</li>
                   <li>Web Design</li>
                 </ul>
