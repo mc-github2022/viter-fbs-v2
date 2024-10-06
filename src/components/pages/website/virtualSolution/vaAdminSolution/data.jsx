@@ -2,10 +2,11 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Admin Assistant",
-    bannerTitleBoldText: "bannerTitleBoldText",
-    bannerTextDesc: "bannerTextDesc",
-    bannerBtnText: "bannerBtnText",
+    bannerTitle: "Boost your business efficiency with our",
+    bannerTitleBoldText: "VA Admin Assistance",
+    bannerTextDesc:
+      "Let us handle your email management, data entry, database management, document preparation, and file management, so you can focus on what matters most. Save time, reduce stress, and ensure your operations run smoothly with our expert support tailored to your needs!",
+    bannerBtnText: "PARTNER WITH US",
     bannerBtnLink: "Link",
     bannerImage: "VABG.jpg",
   },
@@ -20,16 +21,13 @@ export const sectionPartnersTitle = [
 
 export const sectionPartnersLogos = [
   {
-    imageName: "web-obich.png",
+    imageName: "logo-avant-white.png",
   },
   {
-    imageName: "AKA-Global.png",
+    imageName: "logo-ignite.png",
   },
   {
-    imageName: "DTOD-BPO.png",
-  },
-  {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "logo-jcceos.png",
   },
 ];
 
@@ -40,22 +38,22 @@ export const webAppOverview = [
     webAppImage: "vaOverviewImage.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Fast turnaround time",
+    overviewAtitle: "Streamlined Admin & Communication Support",
     overviewAtext:
       "We deliver websites quickly, ensuring your project meets deadlines without compromising quality",
-    overviewBtitle: " Optimal Viewing and Interaction",
+    overviewBtitle: " Flawless Document & Contact Organization",
     overviewBtext:
-      "Our responsive designs ensure seamless viewing and Interaction across all devices for an engaging user experience.",
-    overviewCtitle: "High-Quality at Lower Costs",
+      "Perfectly manage, format, and transcribe files while maintaining a polished, up-to-date contact list for stronger connections.",
+    overviewCtitle: "Seamless Schedule & Event Management",
     overviewCtext:
-      " We offer high-quality websitels at competitive prices, delivering excellence results while staying within your budget.",
+      "Effortlessly coordinate meetings, appointments, and events, while ensuring smooth logistics and deadline reminders.",
   },
 ];
 
 export const serviceInclusion = [
   {
     subtitle:
-      "Our VA for Administrative Assisatance offers comprehensive support to",
+      "Our VA for Administrative Assistance offers comprehensive support to",
     mainTitle: "streamline your business operations.",
     taskType: "Administrative Tasks:",
     taskTypeList: [
@@ -117,10 +115,11 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-    clientName: "Client Name",
-    clientDesc: "Client Desc",
-    clientMessage: "The Message",
-    clientLogo: "addIamgeNameHere",
-    clientProfilePic: "olivia-almarez.png",
+    clientName: "James Davidson",
+    clientDesc: "Managing Director & President",
+    clientMessage:
+      "Frontline Business Solutions is beyond an exceptional firm. Professional courtesy, responsiveness, competence, and client service are only a few of the many high level qualities that Frontline’s team exhibit. Frontline exemplifies the golden rule by treating its clients as it would like to be treated. Every Frontline team member with whom Avant Advisory Group has dealt has been a true blessing. Finally, based on Avant Advisory Group’s several years of working with Frontline personnel, and especially Mike DeJesus, I can say that they work heartily for their clients as if they are working for the Lord. (Colossians 3:23-24) Thank you for what you do, Frontline!",
+    clientLogo: "logo-avant.png",
+    clientProfilePic: "jim-davison.png",
   },
 ];

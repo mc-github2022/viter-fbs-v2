@@ -113,13 +113,13 @@ const VaAdminSolutionPartnersSay = () => {
                             alt=""
                           />
                         </div>
-                        <p className="relative z-10 italic mb-4">
+                        <p className="relative z-10 italic mb-4  text-sm">
                           {testimonial.clientMessage}
                         </p>
                         <div className="logoAndName flex items-center gap-3">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
-                            className="w-[80px]"
+                            className="w-[120px]"
                             src={`../../public/img/${testimonial.clientLogo}`}
                             alt=""
                           />
