@@ -66,7 +66,7 @@ const Footer = () => {
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   <li>Web Solutions</li>
                   <li>Virtual Assistant Solutions</li>
-                  <li>Accounting Solution</li>
+                  <li>Accounting Solutions</li>
                   <li>Learning Center Solutions</li>
                 </ul>
               </div>

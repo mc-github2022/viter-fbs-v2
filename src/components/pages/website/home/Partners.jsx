@@ -9,7 +9,7 @@ const Partners = () => {
             <div className="order-2 lg:order-1">
               <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-10">
                 <li>
-                  <img src="../../public/img/logo-avant.png" alt="" />
+                  <img src="../../public/img/logo-avant-white.png" alt="" />
                 </li>
                 <li>
                   <img src="../../public/img/AKA-Global.png" alt="" />

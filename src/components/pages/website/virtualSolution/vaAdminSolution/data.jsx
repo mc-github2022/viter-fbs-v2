@@ -27,7 +27,7 @@ export const sectionPartnersLogos = [
     imageName: "logo-ignite.png",
   },
   {
-    imageName: "logo-jcceos.png",
+    imageName: "jcceos-logo.png",
   },
 ];
 
