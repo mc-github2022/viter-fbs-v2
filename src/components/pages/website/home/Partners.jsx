@@ -7,21 +7,18 @@ const Partners = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1fr_1fr]">
             <div className="order-2 lg:order-1">
-              <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-10">
+              <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-10 items-center">
                 <li>
                   <img src="../../public/img/logo-avant-white.png" alt="" />
-                </li>
-                <li>
-                  <img src="../../public/img/AKA-Global.png" alt="" />
-                </li>
-                <li>
-                  <img src="../../public/img/DTOD-BPO.png" alt="" />
                 </li>
                 <li>
                   <img src="../../public/img/FTC-e1716532807623.png" alt="" />
                 </li>
                 <li>
-                  <img src="../../public/img/JCCO.png" alt="" />
+                  <img src="../../public/img/logo-go-mission-trip.png" alt="" />
+                </li>
+                <li>
+                  <img src="../../public/img/jcceos-logo.png" alt="" />
                 </li>
                 <li>
                   <img src="../../public/img/lightupToy.png" alt="" />
@@ -30,7 +27,10 @@ const Partners = () => {
                   <img src="../../public/img/rebekah.png" alt="" />
                 </li>
                 <li>
-                  <img src="../../public/img/web-obich.png" alt="" />
+                  <img src="../../public/img/tm_logo_dark.png" alt="" />
+                </li>
+                <li>
+                  <img src="../../public/img/logo-world-focus.png" alt="" />
                 </li>
               </ul>
             </div>

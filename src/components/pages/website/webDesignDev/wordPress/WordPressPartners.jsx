@@ -11,12 +11,12 @@ const WordPressPartners = () => {
             {sectionPartnersTitle[0].mainTitle}
           </h2>
 
-          <ul className="flex flex-wrap justify-center gap-10 items-center">
+          <ul className="flex flex-wrap justify-center gap-y-10 gap-x-20 items-center">
             {sectionPartnersLogos.map((logo, key) => {
               return (
                 <li key={key}>
                   <img
-                    className="w-[150px] h-[150px] object-contain"
+                    className="w-[200px] object-contain"
                     // src={`${devBaseImgUrl}/web-obich.png`}
                     src={`../../public/img/${logo.imageName}`}
                     alt=""

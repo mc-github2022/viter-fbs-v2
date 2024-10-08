@@ -5,17 +5,17 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Simplify your payroll processing with our
+        Website to elevate your business brand through our
         <br />
       </p>
     ),
-    bannerTitleBoldText: "WordPress",
+    bannerTitleBoldText: "WordPress Website",
     bannerTextDesc:
-      "Our Online Payroll System simplifies payroll management for Philippine businesses. It automates salary calculations, tax compliance, and government contributions, ensuring accuracy and timely payouts. With real-time reporting and employee self-service access to payslips, it reduces HR workload and boosts efficiency.",
-    bannerBtnText: "Schedule a Demo",
+      "Build a website that reflects your unique brand and drives results. Our WordPress development services offer custom designs, seamless functionality, and responsive performance to ensure your site stands out, engages users, and supports your business growth.",
+    bannerBtnText: "Learn More",
 
     bannerBtnLink: "Link",
-    bannerImage: "ServicesBanner.jpg",
+    bannerImage: "wordpress-bg.jpg",
   },
 ];
 
@@ -28,19 +28,29 @@ export const sectionPartnersTitle = [
 
 export const sectionPartnersLogos = [
   {
-    imageName: "AKA-Global.png",
+    imageName: "fca-logo-horizontal.png",
+  },
+
+  {
+    imageName: "logo-go-mission-trip.png",
   },
   {
-    imageName: "bensHalo.png",
+    imageName: "logo-rebekah.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "logo-resound.png",
   },
   {
-    imageName: "web-obich.png",
+    imageName: "logo-tazamia.png",
   },
   {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "logo-threadworks.png",
+  },
+  {
+    imageName: "logo-world-focus.png",
+  },
+  {
+    imageName: "logo-fwc.png",
   },
 ];
 
@@ -125,21 +135,39 @@ export const scope = [
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Online Payroll System",
-    rate: "Starts at ₱40",
-    note: "Per Employee Per Month",
+    title: "International Clients",
+    rate: "Starts at $300",
+    note: "WordPress CMS Website",
     info: [
-      "Biometric Data Import",
-      "Record Management",
-      "Earnings Recording",
-      "Deduction Recording",
-      "Holidays Recording",
-      "Access and Role Management",
-      "Reporting",
+      "Up to 6 Web Pages",
+      "Responsive Web Design",
+      "Basic Search Engine Optimization",
+      "SSL Certificate",
+      "One (1) Year Hosting Space",
+      "One (1) Year Domain Name Registration",
+      "Two (2) Hours / Month Technical Support",
     ],
     link: "/free-trial",
     isActive: 0,
     customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
+    title: "Philippine Clients",
+    rate: "Starts at ₱25K",
+    note: "WordPress CMS Website",
+    info: [
+      "Up to 6 Web Pages",
+      "Responsive Web Design",
+      "Basic Search Engine Optimization",
+      "SSL Certificate",
+      "One (1) Year Hosting Space",
+      "One (1) Year Domain Name Registration",
+      "Two (2) Hours / Month Technical Support",
+    ],
+    link: "/free-trial",
+    isActive: 1,
+    customCss: "",
   },
 ];
 
@@ -152,11 +180,11 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-    clientName: "Kimbell John Reyes",
-    clientDesc: "Chief Executive Officer",
+    clientName: "James Sunderland",
+    clientDesc: "VP Creative",
     clientMessage:
-      "Frontline Business Solutions is indeed a partner to innovative success of a company. A connection of employer and employee. ",
-    clientLogo: "AKA-Global.png",
-    clientProfilePic: "emilio-macaso.png",
+      "The team at Frontline is incredible. They genuinely care about our needs and share in our vision of success. We are proud to call them a business partner and appreciate all the hard work they do for us.",
+    clientLogo: "logo-overthetop.png",
+    clientProfilePic: "james-sunderland.png",
   },
 ];
