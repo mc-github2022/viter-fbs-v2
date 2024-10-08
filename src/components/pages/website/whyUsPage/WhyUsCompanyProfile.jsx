@@ -28,7 +28,7 @@ const WhyUsCompanyProfile = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//lcssBannerImg.jpg`}
+                src={`../../public/img//asian-children.jpg`}
                 className="mb-12"
                 alt=""
               />
