@@ -183,8 +183,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   <li>
                     <Link to="/web-wordpress">WordPress</Link>
                   </li>
-                  <li></li>
-                  <li>Single Page Website</li>
+                  <li>
+                    <Link to="/web-singlepage">Single Page Website</Link>
+                  </li>
                   <li>Web Design</li>
                 </ul>
               </div>

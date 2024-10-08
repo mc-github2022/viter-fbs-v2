@@ -14,6 +14,7 @@ import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceH
 import ServiceInventoryPage from "../components/pages/website/webapp/serviceInventory/ServiceInventoryPage";
 import ServiceOnlinePayPage from "../components/pages/website/webapp/serviceOnlinePay/ServiceOnlinePayPage";
 import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
+import SinglePageWebsite from "../components/pages/website/webDesignDev/singlePageWebsite/SinglePageWebsite";
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/wordPressPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
 
@@ -85,5 +86,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/web-wordpress`,
     element: <WordPressPage />,
+  },
+  {
+    path: `${devNavUrl}/web-singlepage`,
+    element: <SinglePageWebsite />,
   },
 ];
