@@ -20,10 +20,24 @@ import { MdOutlinePhoneIphone } from "react-icons/md";
 
 const ModalContact = ({ setModalContact, setToggleMenu }) => {
   setToggleMenu(false);
+
+  const handleClose = () => {
+    setModalContact(false);
+    console.log("clicked");
+  };
+
   return (
     <>
-      <div className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center">
-        <div className="theModal bg-customGray pl-10 pt-10 pb-10 pr-[150px] grid grid-cols-2 gap-10 rounded-lg relative addShadow">
+      <div
+        onClick={handleClose}
+        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center"
+      >
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="theModal bg-customGray pl-10 pt-10 pb-10 pr-[150px] grid grid-cols-2 gap-10 rounded-lg relative addShadow"
+        >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
               className="text-3xl text-light"
