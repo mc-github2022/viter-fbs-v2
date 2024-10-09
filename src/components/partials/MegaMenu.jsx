@@ -186,7 +186,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   <li>
                     <Link to="/web-singlepage">Single Page Website</Link>
                   </li>
-                  <li>Web Design</li>
+                  <li>
+                    <Link to="/web-design">Web Design</Link>
+                  </li>
                 </ul>
               </div>
             </div>

@@ -34,7 +34,7 @@ const Header = () => {
     <>
       <section
         id="header"
-        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[999999] shadow-md"
+        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[999] shadow-md"
       >
         <div
           className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
@@ -94,9 +94,12 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <a className="!p-0 hover:text-primary" href="#">
+                      <Link
+                        className="!p-0 hover:text-primary"
+                        to="/events-and-activities"
+                      >
                         Events & Activities
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a className="!p-0 hover:text-primary" href="#">
