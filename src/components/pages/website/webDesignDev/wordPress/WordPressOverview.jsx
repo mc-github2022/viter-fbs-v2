@@ -32,12 +32,12 @@ const WordPressOverview = () => {
                   </a>
                 </li>
                 <li>
-                  <a
+                  {/* <a
                     href="#"
                     className="flex items-center gap-2 font-bold text-primary"
                   >
                     {webAppOverview[0].btnDownloadText} <FaFileDownload />
-                  </a>
+                  </a> */}
                 </li>
               </ul>
             </div>

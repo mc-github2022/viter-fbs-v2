@@ -26,7 +26,7 @@ const WordPressScope = () => {
       <section className="WordPressScope py-20">
         <div className="customContainer">
           <div>
-            <p>What makes this web app</p>
+            <p>What makes our website development</p>
             <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
               a lifesaver?
             </h2>
@@ -97,7 +97,7 @@ const WordPressScope = () => {
                       href="#"
                       className="btn bg-primary text-light font-semibold"
                     >
-                      Schedule a Demo
+                      CONTACT US
                     </a>
                   </p>
                 </div>
