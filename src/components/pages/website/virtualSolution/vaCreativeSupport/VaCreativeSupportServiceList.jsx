@@ -29,8 +29,8 @@ const VaCreativeSupportServiceList = () => {
               GET STARTED
             </a>
           </div>
-          <ul className="serviceInclusion grid md:grid-cols-1 gap-6">
-            <li className="flex items-center gap-7">
+          <ul className="serviceInclusion w-[400px] mx-auto">
+            <li className="flex items-center gap-7 mb-7 ">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
                   <FaHeadset className="text-3xl text-primary" />
@@ -38,7 +38,7 @@ const VaCreativeSupportServiceList = () => {
               </div>
               <p className="font-semibold text-xl lg:text-2xl">Canva Design</p>
             </li>
-            <li className="flex items-center gap-7">
+            <li className="flex items-center gap-7 mb-7 ">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
                   <MdInfoOutline className="text-3xl text-primary" />
@@ -46,7 +46,7 @@ const VaCreativeSupportServiceList = () => {
               </div>
               <p className="font-semibold text-xl lg:text-2xl">Video Editing</p>
             </li>
-            <li className="flex items-center gap-7">
+            <li className="flex items-center gap-7  ">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
                   <MdOutlineSupportAgent className="text-3xl text-primary" />

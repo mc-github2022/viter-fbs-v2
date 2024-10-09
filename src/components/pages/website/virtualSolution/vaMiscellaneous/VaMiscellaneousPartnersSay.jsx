@@ -10,7 +10,8 @@ function SampleNextArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         right: "8%",
         fontSize: "3rem",
         cursor: "pointer",
@@ -35,7 +36,8 @@ function SamplePrevArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         left: "8%",
         fontSize: "3rem",
         zIndex: "1",
@@ -102,8 +104,8 @@ const VaMiscellaneousPartnersSay = () => {
             <Slider {...partnerSaysSettings}>
               {clientSays.map((testimonial, key) => {
                 return (
-                  <div key={key}>
-                    <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center mt-20 px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+                  <div key={key} className="h-[425px]">
+                    <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img
