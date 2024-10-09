@@ -30,7 +30,7 @@ const ModalContact = ({ setModalContact, setToggleMenu }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center"
+        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center backdrop-blur-lg"
       >
         <div
           onClick={(e) => {
