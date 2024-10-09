@@ -1,5 +1,5 @@
 import { devNavUrl } from "../components/helpers/functions-general";
-import SinglePage from "../components/pages/website/events/SinglePage";
+import EventsAndAct from "../components/pages/website/events/EventsAndAct";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import VaAdminSolutionPage from "../components/pages/website/virtualSolution/vaAdminSolution/VaAdminSolutionPage";
@@ -14,6 +14,8 @@ import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceH
 import ServiceInventoryPage from "../components/pages/website/webapp/serviceInventory/ServiceInventoryPage";
 import ServiceOnlinePayPage from "../components/pages/website/webapp/serviceOnlinePay/ServiceOnlinePayPage";
 import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
+import SinglePageWebsite from "../components/pages/website/webDesignDev/singlePageWebsite/SinglePageWebsite";
+import WebDesignPage from "../components/pages/website/webDesignDev/webDesign/WebDesignPage";
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/wordPressPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
 
@@ -35,8 +37,8 @@ export const routesDeveloper = [
     element: <WhyUsPage />,
   },
   {
-    path: `${devNavUrl}/singlepage`,
-    element: <SinglePage />,
+    path: `${devNavUrl}/events-and-activities`,
+    element: <EventsAndAct />,
   },
   {
     path: `${devNavUrl}/adminSolution`,
@@ -85,5 +87,13 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/web-wordpress`,
     element: <WordPressPage />,
+  },
+  {
+    path: `${devNavUrl}/web-singlepage`,
+    element: <SinglePageWebsite />,
+  },
+  {
+    path: `${devNavUrl}/web-design`,
+    element: <WebDesignPage />,
   },
 ];

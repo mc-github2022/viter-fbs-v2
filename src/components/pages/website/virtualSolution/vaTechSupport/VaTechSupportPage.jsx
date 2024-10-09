@@ -7,6 +7,7 @@ import VaTechSupportPricing from "./VaTechSupportPricing";
 import VaTechSupportPartners from "./VaTechSupportPartners";
 import VaTechSupportPartnerWithUs from "./VaTechSupportPartnerWithUs";
 import VaTechSupportPartnersSay from "./VaTechSupportPartnersSay";
+import VaTechSupportServiceList from "./VaTechSupportServiceList";
 
 const VaTechSupportPage = () => {
   return (
@@ -14,7 +15,7 @@ const VaTechSupportPage = () => {
       <Header />
       <VaTechSupportBanner />
       <VaTechSupportOverview />
-      <VaTechSupportPartnerWithUs />
+      <VaTechSupportServiceList />
       <VaTechSupportPricing />
       <VaTechSupportPartners />
       <VaTechSupportPartnersSay />
