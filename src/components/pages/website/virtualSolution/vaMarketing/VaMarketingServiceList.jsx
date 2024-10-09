@@ -1,20 +1,5 @@
 import React from "react";
-import { FaHeadset, FaRegHandshake } from "react-icons/fa6";
-import { FaRegPaperPlane } from "react-icons/fa";
-import { PiMagnifyingGlass } from "react-icons/pi";
-import { Search, Send, Share2 } from "lucide-react";
-import {
-  IoShareSocialOutline,
-  IoAnalyticsOutline,
-  IoPaperPlaneOutline,
-} from "react-icons/io5";
-import {
-  MdInfoOutline,
-  MdOutlineRocketLaunch,
-  MdOutlineSupportAgent,
-} from "react-icons/md";
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import { Search, Send, Share2, Headset, ChartPie } from "lucide-react";
 
 const VaMarketingServiceList = () => {
   return (
@@ -42,7 +27,7 @@ const VaMarketingServiceList = () => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <FaHeadset className="text-3xl text-primary" />
+                  <Headset size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
@@ -52,7 +37,7 @@ const VaMarketingServiceList = () => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <Send className="text-3xl text-primary" />
+                  <Send size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
@@ -62,7 +47,7 @@ const VaMarketingServiceList = () => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <Search className="text-base text-primary" />
+                  <Search size={28} className="text-base text-primary" />
                   {/* <PiMagnifyingGlass className="text-3xl text-primary" /> */}
                 </div>
               </div>
@@ -73,7 +58,7 @@ const VaMarketingServiceList = () => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <Share2 className="text-3xl text-primary" />
+                  <Share2 size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
@@ -83,7 +68,7 @@ const VaMarketingServiceList = () => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <IoAnalyticsOutline className="text-3xl text-primary" />
+                  <ChartPie size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
