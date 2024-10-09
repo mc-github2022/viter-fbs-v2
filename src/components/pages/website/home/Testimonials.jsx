@@ -29,7 +29,7 @@ const Testimonials = () => {
               </div>
             </div>
             <div className="flex justify-end">
-              <div className="w-full lg:w-[439px] relative z-[999] text-light text-right">
+              <div className="w-full lg:w-[439px] relative z-[14] text-light text-right">
                 <p className=" lg:mt-[130px] mb-3 relative italic">
                   FBS is a true partner to our firm. They have help form our
                   vision and trajectory. We are immnensely gratefull our
