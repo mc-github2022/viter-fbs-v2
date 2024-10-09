@@ -104,7 +104,7 @@ const WordPressPartnersSay = () => {
               {clientSays.map((testimonial, key) => {
                 return (
                   <div key={key}>
-                    <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center mt-20 px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+                    <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center mt-24 px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img

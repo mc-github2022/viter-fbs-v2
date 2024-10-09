@@ -1,12 +1,15 @@
 import React from "react";
 import { FaHeadset, FaRegHandshake } from "react-icons/fa6";
 import { GoChecklist } from "react-icons/go";
+import { IoDocumentsOutline } from "react-icons/io5";
 import {
   MdInfoOutline,
   MdOutlineRocketLaunch,
   MdOutlineSupportAgent,
+  MdOutlineMarkEmailRead,
 } from "react-icons/md";
-
+import { BsDatabaseCheck, BsClipboard2Data } from "react-icons/bs";
+import { IoFileTrayStackedOutline } from "react-icons/io5";
 const VaAdminServiceList = () => {
   return (
     <>
@@ -14,79 +17,67 @@ const VaAdminServiceList = () => {
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">
-              What Can Customer Service Assistants Do?
+              What <span className="text-primary">Administrative Tasks </span>{" "}
+              Can We Perform?
             </h2>
             <p className="subDesc mb-10">
-              Using an assistant to help manage your customer service saves you
-              time and money and means that you can deliver a better customer
-              experience.
+              Our VA for Administrative Assistance offers comprehensive support
+              to streamline your business operations.
             </p>
             <a
               href="#"
-              className="btn bg-primary text-light font-bold hover:bg-secondary transition-all"
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
             >
-              Get Started
+              GET STARTED
             </a>
           </div>
           <ul className="serviceInclusion grid md:grid-cols-2 gap-6">
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <FaHeadset className="text-3xl text-primary" />
+                  <MdOutlineMarkEmailRead className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Phone, Email & Live Chat Support
+                Email Management
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <MdInfoOutline className="text-3xl text-primary" />
+                  <BsClipboard2Data className="text-3xl text-primary" />
+                </div>
+              </div>
+              <p className="font-semibold text-xl lg:text-2xl">Data Entry</p>
+            </li>
+            <li className="flex items-center gap-7">
+              <div className="bg-customGray rounded-lg addShadow">
+                <div className="w-16 h-16 grid place-items-center">
+                  <BsDatabaseCheck className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Escalation Management
+                Database Management
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <MdOutlineSupportAgent className="text-3xl text-primary" />
+                  <IoDocumentsOutline className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                24/7 Customer Support
+                Document Preparation
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <FaRegHandshake className="text-3xl text-primary" />
+                  <IoFileTrayStackedOutline className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Customer Retention & Relationship Building
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <MdOutlineRocketLaunch className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Customer Onboarding
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <GoChecklist className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Order Processing & Fulfillment
+                File Management
               </p>
             </li>
           </ul>

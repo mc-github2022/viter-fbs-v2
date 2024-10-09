@@ -122,4 +122,12 @@ export const clientSays = [
     clientLogo: "logo-avant.png",
     clientProfilePic: "jim-davison.png",
   },
+  {
+    clientName: "Josh Howard",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "Our partnership with Frontline has been the best financial investment we’ve ever made. The team is absolutely amazing and always goes above and beyond in every area. I highly recommend them!!",
+    clientLogo: "logo-ignite.png",
+    clientProfilePic: "josh-howard.png",
+  },
 ];

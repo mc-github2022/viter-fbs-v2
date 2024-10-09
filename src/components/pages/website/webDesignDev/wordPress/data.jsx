@@ -12,7 +12,7 @@ export const banner = [
     bannerTitleBoldText: "WordPress Website",
     bannerTextDesc:
       "Build a website that reflects your unique brand and drives results. Our WordPress development services offer custom designs, seamless functionality, and responsive performance to ensure your site stands out, engages users, and supports your business growth.",
-    bannerBtnText: "Learn More",
+    bannerBtnText: "LEARN MORE",
 
     bannerBtnLink: "Link",
     bannerImage: "wordpress-bg.jpg",
@@ -57,78 +57,78 @@ export const sectionPartnersLogos = [
 export const webAppOverview = [
   {
     subtitle: "Why choose our",
-    mainTitle: "Online Payroll System",
-    webAppImage: "payroll-ss.png",
-    btnText: "Schedule A Demo",
+    mainTitle: "Web Development Team",
+    webAppImage: "web-team.jpg",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Enhanced Accuracy and Reduced Errors",
+    overviewAtitle: "Fast Turnaround Time",
     overviewAtext:
-      "Our system automates payroll calculations, ensuring precise processing of hours worked, overtime, and deductions. This minimizes payroll disputes and errors, increasing employee satisfaction and reducing administrative workload.",
-    overviewBtitle: "Cost Efficiency and Compliance",
+      "Clients can see progress in real-time, make changes on the go, and have greater control over the project’s direction",
+    overviewBtitle: "High-Quality at Lower Costs",
     overviewBtext:
-      "Centralized payroll management cuts administrative costs and ensures compliance with local labor laws and tax regulations. This saves time, reduces potential penalties, and enhances trust among employees by ensuring accurate and timely compensation.",
-    overviewCtitle: "Secure and Transparent Payroll",
+      "Clients receive high-quality websites at lower costs compared to global competitors, without compromising on functionality, performance, or support.",
+    overviewCtitle: "Creative Guidance",
     overviewCtext:
-      "With robust security features, our system protects sensitive employee and financial data while ensuring accurate, compliant payroll processes. This fosters trust among stakeholders by guaranteeing transparency and data protection.",
+      "We offer tailored customer support and creative inputs to enhance your online presence, ensuring your website not only functions optimally but also stands out in the digital landscape.",
   },
 ];
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "quick-deployment",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Biometric Data Import Capability",
+    scopeTitle: "Quick Deployment",
     scopeDesc:
-      "Our Payroll System offers a capability feature that allows seamless importing of time-in and time-out data directly from biometric systems, ensuring accurate and automated attendance tracking for payroll processing.",
-    scopeImage: "payroll-biometrics.png",
+      "Our website development service utilizes Agile methodology to ensure a Quick Deployment feature. This approach allows for rapid and iterative development, enabling us to deploy functional website components efficiently and adapt quickly to changes throughout the development process.",
+    scopeImage: "quick-deployment.png",
   },
   {
-    scopeId: "employee-record",
+    scopeId: "page-insights",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Employee Record Management",
+    scopeTitle: "Optimized Fast Load Time",
     scopeDesc:
-      "Our Payroll System includes an Employee Record Management feature that centralizes all essential employee information, including personal details, salary data, tax information, benefits, and employment history, within a secure digital platform.",
-    scopeImage: "payroll-employee-record.png",
+      "Our website development service includes a Fast Load Time feature, where we optimize website performance to ensure that pages load quickly. This involves advanced coding practices, efficient asset management, and performance-enhancing technologies.",
+    scopeImage: "page-insights.png",
   },
   {
-    scopeId: "employee-earning",
+    scopeId: "seo",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Employee Earnings Recording",
+    scopeTitle: "Basic SEO",
     scopeDesc:
-      "Our Payroll System includes an Earnings Recording feature that allows for the detailed encoding of all types of employee earnings, including regular salary, overtime, bonuses, allowances, commissions, and other compensations needed for accurate payroll computation.",
-    scopeImage: "payroll-earnings.png",
+      "Our Basic SEO setup enhances your website’s visibility on search engines, helping potential customers find you more easily. With targeted keyword optimization, proper meta tags, and site indexing in place within the first week, you'll be better positioned to attract organic traffic right from the start.",
+    scopeImage: "seo.png",
   },
   {
-    scopeId: "deduction-record",
+    scopeId: "cms",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Deductions Recording",
+    scopeTitle: "Content Management System",
     scopeDesc:
-      "Our Payroll System includes a Deductions Recording feature that enables the encoding of all mandatory government deductions (such as taxes, SSS, PhilHealth, and Pag-IBIG) as well as optional deductions (such as loans, benefits, and company-specific charges) required for accurate payroll computation.",
-    scopeImage: "payroll-deductions.png",
+      "With our Content Management System, you have complete control over your website content, allowing you to update pages, blog posts, and media without needing a developer. This gives you the flexibility to keep your website fresh and relevant, putting you in charge of your own digital presence.",
+    scopeImage: "wordpress-dashboard.png",
   },
   {
-    scopeId: "holiday-record",
+    scopeId: "mobile-compatibility",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Holidays Recording",
+    scopeTitle: "Mobile Compatibility",
     scopeDesc:
-      "Our Payroll System includes a holiday recording feature that allows for the encoding of all regular and special non-working holidays, ensuring that holiday pay computations are accurate and aligned with company policies and labor regulations.",
-    scopeImage: "payroll-holiday.png",
+      "Our website development service includes Mobile Compatibility, ensuring that your website is fully optimized for various mobile devices. This feature involves responsive design techniques that adapt the website’s layout and content to different screen sizes and orientations.",
+    scopeImage: "mobile-compatability.png",
   },
   {
-    scopeId: "access-control",
+    scopeId: "malware-protection",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "User Access and Role Management",
+    scopeTitle: "Malware Protection",
     scopeDesc:
-      "Our Payroll System includes a user recording feature that provides secure access control, allowing only authorized users—such as payroll officers, HR managers, and finance staff—to access and manage payroll data, ensuring data security and confidentiality.",
-    scopeImage: "payroll-user-access.png",
+      "Our website development service includes a Malware Protection feature, implementing robust security measures to detect, prevent, and remove malicious software. This feature encompasses regular security scans, real-time threat detection, and automated updates to safeguard your website.",
+    scopeImage: "security.png",
   },
   {
-    scopeId: "compliance-report",
+    scopeId: "ssl-certificate",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Compliance Reporting Capability",
+    scopeTitle: "SSL Certificate",
     scopeDesc:
-      "Our Payroll System includes a Reporting feature that generates accurate and detailed reports needed for easy compliance with the requirements of government agencies such as SSS, BIR, Pag-IBIG, and PhilHealth.",
-    scopeImage: "payroll-report.png",
+      "Every website we build includes an SSL Certificate, ensuring secure, encrypted communication between your site and its visitors. This not only protects sensitive data but also boosts your credibility with search engines and customers, giving your website the trust it needs to succeed.",
+    scopeImage: "ssl.png",
   },
 ];
 
@@ -184,7 +184,15 @@ export const clientSays = [
     clientDesc: "VP Creative",
     clientMessage:
       "The team at Frontline is incredible. They genuinely care about our needs and share in our vision of success. We are proud to call them a business partner and appreciate all the hard work they do for us.",
-    clientLogo: "logo-overthetop.png",
+    clientLogo: "logo-ottm.png",
     clientProfilePic: "james-sunderland.png",
+  },
+  {
+    clientName: "Rhoda Lynn Pessina-Dayo",
+    clientDesc: "School Directress",
+    clientMessage:
+      "We enjoyed working together and meeting with the Frontline Business Solutions Staff when they built the website of Frontline Christian Academy.",
+    clientLogo: "logo-fca.png",
+    clientProfilePic: "rhodalynn-dayo.png",
   },
 ];
