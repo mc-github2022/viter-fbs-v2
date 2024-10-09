@@ -13,7 +13,7 @@ export const banner = [
       "Our Virtual Assistants deliver fast, high-quality Canva designs, video editing, and podcast management. Achieve professional results without the hassle—on time and within your budget.",
     bannerBtnText: "LEARNING MORE",
     bannerBtnLink: "Link",
-    bannerImage: "VABG.jpg",
+    bannerImage: "creative-support-bg.png",
   },
 ];
 
@@ -40,7 +40,7 @@ export const webAppOverview = [
   {
     subtitle: "Here's why we're the",
     mainTitle: "right choice for your VA needs.",
-    webAppImage: "vaOverviewImage.jpg",
+    webAppImage: "vaCreativeSupports.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Fast turnaround time",
