@@ -15,7 +15,7 @@ const VaResearchBanner = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
             <div className="text-left">
-              <h2 className="text-[45px] leading-[1.1] mb-8 text-light">
+              <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
                 {banner[0].bannerTitle}
                 <br />
                 <span className="text-light font-semibold">
@@ -24,7 +24,7 @@ const VaResearchBanner = () => {
               </h2>
               <p className="text-light mb-10">{banner[0].bannerTextDesc}</p>
               <a href="#" className="btn bg-transparent text-light border-2">
-                {banner[0].bannerTextDesc}
+                {banner[0].bannerBtnText}
               </a>
             </div>
           </div>
