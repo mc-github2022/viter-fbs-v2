@@ -1,11 +1,20 @@
 import React from "react";
 import { FaHeadset, FaRegHandshake } from "react-icons/fa6";
-import { GoChecklist } from "react-icons/go";
+import { FaRegPaperPlane } from "react-icons/fa";
+import { PiMagnifyingGlass } from "react-icons/pi";
+import { Search, Send, Share2 } from "lucide-react";
+import {
+  IoShareSocialOutline,
+  IoAnalyticsOutline,
+  IoPaperPlaneOutline,
+} from "react-icons/io5";
 import {
   MdInfoOutline,
   MdOutlineRocketLaunch,
   MdOutlineSupportAgent,
 } from "react-icons/md";
+import { FaMagnifyingGlass } from "react-icons/fa6";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const VaMarketingServiceList = () => {
   return (
@@ -14,18 +23,19 @@ const VaMarketingServiceList = () => {
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">
-              What Can Customer Service Assistants Do?
+              What{" "}
+              <span className="text-primary">Marketing and Social Media </span>{" "}
+              Services Can We Perform?
             </h2>
             <p className="subDesc mb-10">
-              Using an assistant to help manage your customer service saves you
-              time and money and means that you can deliver a better customer
-              experience.
+              Our VA for Administrative Assistance offers comprehensive support
+              to streamline your business operations.
             </p>
             <a
               href="#"
-              className="btn bg-primary text-light font-bold hover:bg-secondary transition-all"
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
             >
-              Get Started
+              GET STARTED
             </a>
           </div>
           <ul className="serviceInclusion grid md:grid-cols-2 gap-6">
@@ -36,57 +46,48 @@ const VaMarketingServiceList = () => {
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Phone, Email & Live Chat Support
+                CRM Management (HubSpot in particular)
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <MdInfoOutline className="text-3xl text-primary" />
+                  <Send className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Escalation Management
+                Email Marketing
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <MdOutlineSupportAgent className="text-3xl text-primary" />
+                  <Search className="text-base text-primary" />
+                  {/* <PiMagnifyingGlass className="text-3xl text-primary" /> */}
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                24/7 Customer Support
+                Lead Management
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <FaRegHandshake className="text-3xl text-primary" />
+                  <Share2 className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Customer Retention & Relationship Building
+                Social Media Management
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <MdOutlineRocketLaunch className="text-3xl text-primary" />
+                  <IoAnalyticsOutline className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Customer Onboarding
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <GoChecklist className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Order Processing & Fulfillment
+                Analytics & Reporting
               </p>
             </li>
           </ul>
