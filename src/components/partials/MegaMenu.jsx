@@ -38,16 +38,16 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
     <>
       <div
         onClick={handleClose}
-        className="bg-dark bg-opacity-85 fixed left-0 w-full h-screen z-[99]"
+        className="bg-dark bg-opacity-25 fixed left-0 w-full h-screen z-[99] backdrop-blur-lg"
       >
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          className={`${toggleMenu ? "active" : ""} megaMenu`}
-        >
+        <div className={`${toggleMenu ? "active" : ""} megaMenu`}>
           <div className="holder w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl">
-            <div className="pt-8 px-8 pb-8 rounded-br-xl rounded-bl-xl">
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="pt-8 px-8 pb-8 rounded-br-xl rounded-bl-xl"
+            >
               <div className="backArrow absolute top-2 right-9 md:hidden">
                 <button>
                   <TiArrowBackOutline
