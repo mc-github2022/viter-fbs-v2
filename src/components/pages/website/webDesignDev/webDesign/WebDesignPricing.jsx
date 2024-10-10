@@ -12,7 +12,7 @@ const WebDesignPricing = () => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              CMS Website development for your online branding
+              Website designing for your online branding
             </p>
             <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
               Affordable Pricing Plan

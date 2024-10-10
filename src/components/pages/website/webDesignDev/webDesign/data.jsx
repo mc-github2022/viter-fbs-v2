@@ -5,17 +5,17 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Website to elevate your business brand through our
-        <br />
+        Visually Stunning and <br />
+        User-Friendly
       </p>
     ),
-    bannerTitleBoldText: "Web Design",
+    bannerTitleBoldText: "Website Design",
     bannerTextDesc:
-      "Build a website that reflects your unique brand and drives results. Our WordPress development services offer custom designs, seamless functionality, and responsive performance to ensure your site stands out, engages users, and supports your business growth.",
-    bannerBtnText: "Learn More",
+      "Our Website Designing Service offers custom, high-quality designs that reflect your brand’s identity. With expert guidance, fast delivery, and a focus on seamless user experience, we ensure your site not only looks great but also performs flawlessly across all devices.",
+    bannerBtnText: "LEARN MORE",
 
     bannerBtnLink: "Link",
-    bannerImage: "wordpress-bg.jpg",
+    bannerImage: "webdesign-bg.jpg",
   },
 ];
 
@@ -57,78 +57,70 @@ export const sectionPartnersLogos = [
 export const webAppOverview = [
   {
     subtitle: "Why choose our",
-    mainTitle: "Online Payroll System",
-    webAppImage: "payroll-ss.png",
-    btnText: "Schedule A Demo",
-    btnDownloadText: "Download Proposal",
-    overviewAtitle: "Enhanced Accuracy and Reduced Errors",
+    mainTitle: "Web Development Team",
+    webAppImage: "web-team.jpg",
+    btnText: "LEARN MORE",
+    btnDownloadText: "Download Portfolio",
+    overviewAtitle: "Tailored Designs for Your Brand",
     overviewAtext:
-      "Our system automates payroll calculations, ensuring precise processing of hours worked, overtime, and deductions. This minimizes payroll disputes and errors, increasing employee satisfaction and reducing administrative workload.",
-    overviewBtitle: "Cost Efficiency and Compliance",
+      "We create customized website designs that align perfectly with your brand’s identity, ensuring your online presence is unique, visually appealing, and memorable to your audience.",
+    overviewBtitle: "Responsive and User-Friendly Experience",
     overviewBtext:
-      "Centralized payroll management cuts administrative costs and ensures compliance with local labor laws and tax regulations. This saves time, reduces potential penalties, and enhances trust among employees by ensuring accurate and timely compensation.",
-    overviewCtitle: "Secure and Transparent Payroll",
+      "Our designs prioritize responsive layouts and user-friendly navigation, ensuring your website looks and performs flawlessly across all devices, leading to higher satisfaction and better engagement.",
+    overviewCtitle: "Fast Turnaround with Quality",
     overviewCtext:
-      "With robust security features, our system protects sensitive employee and financial data while ensuring accurate, compliant payroll processes. This fosters trust among stakeholders by guaranteeing transparency and data protection.",
+      "We deliver high-quality website designs quickly, without compromising on performance or aesthetics, allowing you to launch your site on time while staying within your budget.",
   },
 ];
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "responsive",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Biometric Data Import Capability",
+    scopeTitle: "Responsive Design",
     scopeDesc:
-      "Our Payroll System offers a capability feature that allows seamless importing of time-in and time-out data directly from biometric systems, ensuring accurate and automated attendance tracking for payroll processing.",
-    scopeImage: "payroll-biometrics.png",
+      "We create websites that adapt seamlessly across all devices, ensuring optimal viewing and interaction on desktops, tablets, and smartphones.",
+    scopeImage: "mobile-compatability.png",
   },
   {
-    scopeId: "employee-record",
+    scopeId: "user-friendly",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Employee Record Management",
+    scopeTitle: "User-Friendly Interface",
     scopeDesc:
-      "Our Payroll System includes an Employee Record Management feature that centralizes all essential employee information, including personal details, salary data, tax information, benefits, and employment history, within a secure digital platform.",
-    scopeImage: "payroll-employee-record.png",
+      "We prioritize intuitive and easy-to-use interfaces, allowing visitors to find what they need quickly, enhancing the overall user experience.",
+    scopeImage: "user-friendly-interface.png",
   },
   {
-    scopeId: "employee-earning",
+    scopeId: "optimized",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Employee Earnings Recording",
+    scopeTitle: "Optimized for Fast Load Times",
     scopeDesc:
-      "Our Payroll System includes an Earnings Recording feature that allows for the detailed encoding of all types of employee earnings, including regular salary, overtime, bonuses, allowances, commissions, and other compensations needed for accurate payroll computation.",
-    scopeImage: "payroll-earnings.png",
+      "Our designs focus on content optimization, ensuring fast load times and smooth performance to keep users engaged and improve search engine rankings.",
+    scopeImage: "page-insights.png",
   },
   {
-    scopeId: "deduction-record",
+    scopeId: "seo-ready",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Deductions Recording",
+    scopeTitle: "SEO-Ready Design",
     scopeDesc:
-      "Our Payroll System includes a Deductions Recording feature that enables the encoding of all mandatory government deductions (such as taxes, SSS, PhilHealth, and Pag-IBIG) as well as optional deductions (such as loans, benefits, and company-specific charges) required for accurate payroll computation.",
-    scopeImage: "payroll-deductions.png",
+      "We implement basic SEO practices to help your website rank higher on search engines, driving more organic traffic to your site.",
+    scopeImage: "seo.png",
   },
   {
-    scopeId: "holiday-record",
+    scopeId: "custom-design",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Holidays Recording",
+    scopeTitle: "Custom Design Tailored to Your Brand",
     scopeDesc:
-      "Our Payroll System includes a holiday recording feature that allows for the encoding of all regular and special non-working holidays, ensuring that holiday pay computations are accurate and aligned with company policies and labor regulations.",
-    scopeImage: "payroll-holiday.png",
+      "Each website is uniquely designed to reflect your brand’s identity, ensuring a cohesive and visually appealing online presence.",
+    scopeImage: "custom-design.png",
   },
   {
-    scopeId: "access-control",
+    scopeId: "high-quality",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "User Access and Role Management",
+    scopeTitle: "High-Quality Visuals",
     scopeDesc:
-      "Our Payroll System includes a user recording feature that provides secure access control, allowing only authorized users—such as payroll officers, HR managers, and finance staff—to access and manage payroll data, ensuring data security and confidentiality.",
-    scopeImage: "payroll-user-access.png",
-  },
-  {
-    scopeId: "compliance-report",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Compliance Reporting Capability",
-    scopeDesc:
-      "Our Payroll System includes a Reporting feature that generates accurate and detailed reports needed for easy compliance with the requirements of government agencies such as SSS, BIR, Pag-IBIG, and PhilHealth.",
-    scopeImage: "payroll-report.png",
+      "Our design service includes high-quality graphics and imagery, ensuring that your website is both engaging and professional.",
+    scopeImage: "high-quality-visuals.png",
   },
 ];
 
@@ -136,16 +128,15 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
     title: "International Clients",
-    rate: "Starts at $300",
-    note: "WordPress CMS Website",
+    rate: "Starts at $400",
+    note: "Website Designing",
     info: [
-      "Up to 6 Web Pages",
       "Responsive Web Design",
-      "Basic Search Engine Optimization",
-      "SSL Certificate",
-      "One (1) Year Hosting Space",
-      "One (1) Year Domain Name Registration",
-      "Two (2) Hours / Month Technical Support",
+      "Shareable Figma Design",
+      "Optimized Content",
+      "SEO Ready Design",
+      "Custom Design for your Branding",
+      "High-Quality Professional Visuals",
     ],
     link: "/free-trial",
     isActive: 0,
@@ -154,16 +145,15 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
     title: "Philippine Clients",
-    rate: "Starts at ₱25K",
-    note: "WordPress CMS Website",
+    rate: "Starts at ₱20K",
+    note: "Website Designing",
     info: [
-      "Up to 6 Web Pages",
       "Responsive Web Design",
-      "Basic Search Engine Optimization",
-      "SSL Certificate",
-      "One (1) Year Hosting Space",
-      "One (1) Year Domain Name Registration",
-      "Two (2) Hours / Month Technical Support",
+      "Shareable Figma Design",
+      "Optimized Content",
+      "SEO Ready Design",
+      "Custom Design for your Branding",
+      "High-Quality Professional Visuals",
     ],
     link: "/free-trial",
     isActive: 1,
@@ -184,7 +174,7 @@ export const clientSays = [
     clientDesc: "VP Creative",
     clientMessage:
       "The team at Frontline is incredible. They genuinely care about our needs and share in our vision of success. We are proud to call them a business partner and appreciate all the hard work they do for us.",
-    clientLogo: "logo-overthetop.png",
+    clientLogo: "logo-ottm.png",
     clientProfilePic: "james-sunderland.png",
   },
 ];
