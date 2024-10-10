@@ -6,6 +6,7 @@ import { LuChevronsDown, LuCode2 } from "react-icons/lu";
 import { HiCode } from "react-icons/hi";
 import { jobOpening } from "./data";
 import ModalJobApplication from "./ModalJobApplication";
+import { FiChevronsUp } from "react-icons/fi";
 
 const CareerPage = () => {
   const [jobIdentifier, setJobIdentifier] = React.useState("");
@@ -86,7 +87,11 @@ const CareerPage = () => {
                             APPLY
                           </a>
                         </div>
-                        <LuChevronsDown className="text-3xl text-[#acacac]" />
+                        {jobAccordion && jobIdentifier === item.jobID ? (
+                          <FiChevronsUp className="text-3xl text-[#acacac]" />
+                        ) : (
+                          <LuChevronsDown className="text-3xl text-[#acacac]" />
+                        )}
                       </div>
                     </div>
                     <div className="jobDesc ml-[103px] mt-6">
