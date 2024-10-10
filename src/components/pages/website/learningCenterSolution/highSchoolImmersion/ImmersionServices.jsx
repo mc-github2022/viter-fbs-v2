@@ -1,112 +1,132 @@
 import React from "react";
-import { BsCalculator } from "react-icons/bs";
-import { FaLaptop } from "react-icons/fa";
+import { Laptop, Calculator, NotebookPen } from "lucide-react";
 
 const ImmersionServices = () => {
   return (
     <>
       <section className="ImmersionServices py-20">
         <div className="customContainer">
-          <div className="wrapper grid grid-cols-2">
+          <div className="wrapper grid grid-cols-3">
             <div className="webDEv">
               <div className="mb-10">
-                <p>Here is what you can learn in our</p>
+                <p>STEM and ICT students can learn</p>
                 <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
                   Web Design & Development
                 </h3>
-                <p>On-the-job training.</p>
+                <p>SHS Work Immersion</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Web Designing
-                  using Figma
+                  <Laptop className="text-2xl text-dark" />
+                  Web Designing using Figma
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Website Mockup
+                  <Laptop className="text-2xl text-dark" /> Website Mockup
                   Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Mobile Responsive
+                  <Laptop className="text-2xl text-dark" /> Frontend Development
+                </li>
+                <li>
+                  <Laptop className="text-2xl text-dark" /> Mobile Responsive
                   Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> CSS & HTML
-                  Programming
+                  <Laptop className="text-2xl text-dark" />
+                  HTML5 & CSS3 Programming
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  SASS Preprocessor
+                  <Laptop className="text-2xl text-dark" />
+                  Basic Scripting Language
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  Scripting Language
-                </li>
-                <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  Tailwind CSS
-                </li>
-                <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  WordPress Development
-                </li>
-                <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  Business Wirk Ethics
+                  <Laptop className="text-2xl text-dark" />
+                  Business Work Ethics
                 </li>
               </ul>
             </div>
             <div className="accountingServices">
               <div className="mb-10">
-                <p>Here is what you can learn in our</p>
+                <p>ABM students can learn</p>
                 <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
-                  Accounting Processes
+                  Accounting <br />
+                  Processes
                 </h3>
-                <p>On-the-job training.</p>
+                <p>SHS Work Immersion</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Basic
-                  Accoutning
+                  <Calculator className="text-2xl text-dark" /> Journal Entry
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Excel Advanced
-                  Functions
+                  <Calculator className="text-2xl text-dark" /> Ledger Posting
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Accounting
-                  Source Documents
+                  <Calculator className="text-2xl text-dark" /> Trial Balance
+                  Reporting
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Business
-                  Registration
+                  <Calculator className="text-2xl text-dark" /> Adjusting Entry
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  PH & US Taxation
+                  <Calculator className="text-2xl text-dark" />
+                  Financial Statements & Reports
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  PH & US Payroll
+                  <Calculator className="text-2xl text-dark" />
+                  Excel Advanced Functions & Formulas
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Quickbooks
+                  <Calculator className="text-2xl text-dark" />
+                  Payroll Report
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Xero
+                  <Calculator className="text-2xl text-dark" />
+                  Quickbooks Online
+                </li>
+              </ul>
+            </div>
+            <div className="adminTasks">
+              <div className="mb-10">
+                <p>HUMSS and GAS students can learn</p>
+                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
+                  Administrative <br />
+                  Tasks
+                </h3>
+                <p>SHS Work Immersion</p>
+              </div>
+              <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
+                <li>
+                  <NotebookPen className="text-2xl text-dark" />
+                  Leadership Principles
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Budget Monitoring
+                  <NotebookPen className="text-2xl text-dark" />
+                  Business Correspondence
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Financial Reports & Projections
+                  <NotebookPen className="text-2xl text-dark" />
+                  Standard Operating Procedures
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Non-Profit Accounting
+                  <NotebookPen className="text-2xl text-dark" />
+                  Job Interview Simulation
+                </li>
+                <li>
+                  <NotebookPen className="text-2xl text-dark" />
+                  Basic Accounting Application
+                </li>
+                <li>
+                  <NotebookPen className="text-2xl text-dark" />
+                  Excel Advanced Functions and Formulas
+                </li>
+                <li>
+                  <NotebookPen className="text-2xl text-dark" />
+                  Payroll Setup
+                </li>
+                <li>
+                  <NotebookPen className="text-2xl text-dark" />
+                  Business Work Ethics
                 </li>
               </ul>
             </div>

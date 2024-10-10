@@ -113,23 +113,31 @@ const ImmersionPartnersSay = () => {
                       />
                     </div>
                     <p className="relative z-10 italic mb-4">
-                      Frontline Business Solution has been one of STI San
-                      Pablo's most trusted partners for several years. We at STI
-                      are truly grateful for the exceptional knowledge and
-                      experience FBS has provided to our On-the-Job trainee
-                      students in IT and Engineering, as well as for the
-                      kindness and support shown coming from the people of FBS.
+                      We extend our deepest gratitude to Frontline Business
+                      Solutions for being an outstanding partner in our Work
+                      Immersion program. Your organization provided our students
+                      with valuable, real-world experiences that greatly
+                      enhanced their skills and understanding of their chosen
+                      fields. The support and mentorship offered by your team
+                      created an ideal learning environment, fostering both
+                      professional and personal growth. Your commitment to
+                      nurturing young talent and your willingness to involve
+                      them in meaningful projects have had a profound impact on
+                      their future careers. We truly appreciate the
+                      collaboration and look forward to more successful
+                      partnerships in the years to come.
                     </p>
                     <div className="logoAndName flex items-center gap-3">
                       <img
                         // src={`${devBaseImgUrl}/sti.png`}
                         className="w-[80px]"
-                        src={`../../public/img/sti.png`}
+                        src={`../../public/img/stms.png`}
                         alt=""
                       />
                       <div className="leading-[1] italic">
-                        <p>Ms. Olivia Almarez</p>
-                        <p className="text-sm">OJT Coordinator</p>
+                        <p>Ms. Lara Jane P. Yedra</p>
+                        <p className="text-sm">Work Immersion Teacher</p>
+                        <p className="text-sm">St. Therese Montessori School</p>
                       </div>
                     </div>
                   </div>
