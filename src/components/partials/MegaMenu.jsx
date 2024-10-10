@@ -179,7 +179,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     <li>
                       <Link to="/immersion">High School Work Immersion</Link>
                     </li>
-                    <li>Continuing Studies</li>
+                    <li>
+                      <Link to="/continuing-studies">Continuing Studies</Link>
+                    </li>
                   </ul>
                 </div>
                 <div className="menuItem">
