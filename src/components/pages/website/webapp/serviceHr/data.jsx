@@ -164,11 +164,19 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-    clientName: "Dennis Delos Santos",
+    clientName: "Dennis Ray Siano",
     clientDesc: "Chief Executive Officer",
     clientMessage:
-      "Excellent HRIS Provider with Outstanding Support! heir platform has streamlined our HR processes, making tasks like employee management, payroll, and reporting much more efficient. What truly stands out is the level of support we’ve received from their team. I highly recommend Frontline Business Solutions Inc. for anyone looking for a reliable and supportive HRIS provider. Their service has been excellent, and their team truly understands the needs of their clients. ",
+      "Excellent HRIS Provider with Outstanding Support! Their platform has streamlined our HR processes, making tasks like employee management, payroll, and reporting much more efficient. What truly stands out is the level of support we’ve received from their team. I highly recommend Frontline Business Solutions Inc. for anyone looking for a reliable and supportive HRIS provider. Their service has been excellent, and their team truly understands the needs of their clients. ",
     clientLogo: "DTOD-BPO.png",
-    clientProfilePic: "emilio-macaso.png",
+    clientProfilePic: "dennis-siano.png",
+  },
+  {
+    clientName: "Kimbell John Reyes",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "Frontline Business Solutions is indeed a partner to innovative success of a company. A connection of employer and employee. ",
+    clientLogo: "AKA-Global.png",
+    clientProfilePic: "kimbell-reyes.png",
   },
 ];

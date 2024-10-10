@@ -7,11 +7,11 @@ const WordPressPartners = () => {
       <section className="WordPressPartners py-20">
         <div className="customContainer">
           <p>{sectionPartnersTitle[0].subTitle}</p>
-          <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+          <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-20">
             {sectionPartnersTitle[0].mainTitle}
           </h2>
 
-          <ul className="flex flex-wrap justify-center gap-y-10 gap-x-20 items-center">
+          <ul className="flex flex-wrap justify-center gap-y-8 gap-x-44 items-center">
             {sectionPartnersLogos.map((logo, key) => {
               return (
                 <li key={key}>

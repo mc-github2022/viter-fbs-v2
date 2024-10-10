@@ -163,6 +163,6 @@ export const clientSays = [
     clientMessage:
       "FBS has been an incredible partner in helping us enhance the functionality and efficiency of our FTC website. They seamlessly upgraded our backend systems, greatly improving our ability to manage donations and streamlining other critical IT requests. Their team’s professionalism, attention to detail, and commitment to supporting our mission of serving abandoned, abused, and neglected children have been invaluable. Thanks to their expertise, we are now able to operate more smoothly and efficiently, allowing us to focus on making a bigger difference for the kids we serve. We highly recommend Frontline Business Solution for any organization in need of reliable and innovative IT solutions.",
     clientLogo: "ftc-logo.png",
-    clientProfilePic: "olivia-almarez.png",
+    clientProfilePic: "judea-delos-santos.png",
   },
 ];

@@ -11,7 +11,7 @@ const SinglePagePartners = () => {
             {sectionPartnersTitle[0].mainTitle}
           </h2>
 
-          <ul className="flex flex-wrap justify-center gap-10 items-center">
+          <ul className="flex flex-wrap justify-center gap-y-10 gap-x-24 items-center">
             {sectionPartnersLogos.map((logo, key) => {
               return (
                 <li key={key}>
