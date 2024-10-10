@@ -47,9 +47,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
           <div className="flex flex-col justify-between">
             <div>
               <div className="mb-12">
-                <p>How can we help you?</p>
+                <p>Discover your potential with us.</p>
                 <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  Let's work together.
+                  Join our Team!
                 </h3>
               </div>
               <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-12 leading-[1.2]">
@@ -96,7 +96,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
             </div>
           </div>
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">
-            <p className="mb-2">Application: Position {jobTitle}</p>
+            <p className="mb-2">Job Application: {jobTitle}</p>
             <div className="inputGroup mb-4">
               <label htmlFor="">Full Name</label> <br />
               <input type="text" name="" id="" className="w-full" />
@@ -110,7 +110,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Resume (Optional)</label> <br />
+              <label htmlFor="">Resume</label> <br />
               <input type="file" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-2">
