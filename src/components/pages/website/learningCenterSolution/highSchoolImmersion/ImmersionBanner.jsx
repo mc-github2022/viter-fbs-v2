@@ -16,10 +16,13 @@ const ImmersionBanner = () => {
             <div className="text-left">
               <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
                 <span className="text-light font-semibold">
-                  College On-the-job
+                  Senior High School <br />
+                  Work Immersion
                 </span>
                 <br />
-                with industry experience practical, work-related skills
+                <span class="font-light">
+                  with industry experience practical, work-related skills
+                </span>
               </h2>
               <p className="text-light mb-10">
                 Partner with us for cutting-edge on-the-job training programs
