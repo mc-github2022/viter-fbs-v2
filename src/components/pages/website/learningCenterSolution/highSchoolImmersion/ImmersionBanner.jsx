@@ -25,12 +25,13 @@ const ImmersionBanner = () => {
                 </span>
               </h2>
               <p className="text-light mb-10">
-                Partner with us for cutting-edge on-the-job training programs
-                that equip aspiring IT and Accounting professionals with
-                real-world skills, bridging academic learning with practical
-                workplace experience. Our program can accommodate students with
-                required internship hours ranging from 150 to 600, ensuring
-                flexibility and comprehensive skills development.
+                Join us for an innovative Senior High School Work Immersion
+                program designed for students from the STEM, ABM, HUMSS, and GAS
+                strands, equipping them with real-world skills. Our program
+                bridges classroom learning with practical workplace expertise.
+                With a focus on flexibility and comprehensive skills
+                development, we prepare future professionals for success in IT,
+                Accounting, Administration, and beyond.
               </p>
               <a href="#" className="btn bg-transparent text-light border-2">
                 SCHEDULE A DEMO

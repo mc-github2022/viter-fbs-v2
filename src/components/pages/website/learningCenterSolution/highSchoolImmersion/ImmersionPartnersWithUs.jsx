@@ -7,10 +7,10 @@ const ImmersionPartnersWithUs = () => {
     <>
       <section className="ImmersionPartnersWithUs py-20 bg-customGray">
         <div className="customContainer">
-          <p> We Offer on-thejob training for</p>
+          <p> We offer senior high school work immersion with</p>
           <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              effective skills acquisitions.
+              actual work-related experience.
             </span>
           </h2>
           <div className="wrapper grid grid-cols-2 gap-12">
@@ -53,8 +53,8 @@ const ImmersionPartnersWithUs = () => {
                       </h3>
                       <p>
                         Students get hands-on, real-world experience, allowing
-                        them toi apply knowledge in practical settings,
-                        preparing them for the demands of their future careers.
+                        them to apply knowledge in practical settings, preparing
+                        them for the demands of their future careers.
                       </p>
                     </div>
                   </div>
