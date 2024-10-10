@@ -15,7 +15,7 @@ export const banner = [
     bannerBtnText: "LEARN MORE",
 
     bannerBtnLink: "Link",
-    bannerImage: "ServicesBanner.jpg",
+    bannerImage: "single-page-bg.jpg",
   },
 ];
 
@@ -44,78 +44,70 @@ export const sectionPartnersLogos = [
 export const webAppOverview = [
   {
     subtitle: "Why choose our",
-    mainTitle: "Online Payroll System",
-    webAppImage: "payroll-ss.png",
-    btnText: "Schedule A Demo",
+    mainTitle: "Web Development Team",
+    webAppImage: "web-team.jpg",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Enhanced Accuracy and Reduced Errors",
+    overviewAtitle: "Fast Deployment and Real-Time Updates",
     overviewAtext:
-      "Our system automates payroll calculations, ensuring precise processing of hours worked, overtime, and deductions. This minimizes payroll disputes and errors, increasing employee satisfaction and reducing administrative workload.",
-    overviewBtitle: "Cost Efficiency and Compliance",
+      "We ensure quick deployment, allowing clients to see progress in real-time and make updates on the fly. This provides you with full control over the project’s direction, ensuring your vision is met swiftly and efficiently.",
+    overviewBtitle: "Affordable High-Quality Solutions",
     overviewBtext:
-      "Centralized payroll management cuts administrative costs and ensures compliance with local labor laws and tax regulations. This saves time, reduces potential penalties, and enhances trust among employees by ensuring accurate and timely compensation.",
-    overviewCtitle: "Secure and Transparent Payroll",
+      "Our Single Page Website Development offers high-quality websites at competitive rates, delivering sleek, functional, and optimized web solutions without the high costs associated with larger projects or global competitors.",
+    overviewCtitle: "Expert Design and Usability Guidance",
     overviewCtext:
-      "With robust security features, our system protects sensitive employee and financial data while ensuring accurate, compliant payroll processes. This fosters trust among stakeholders by guaranteeing transparency and data protection.",
+      "We provide creative guidance throughout the development process, ensuring your website is not only visually appealing but also highly user-friendly. Our tailored support ensures your site stands out while offering a seamless user experience.",
   },
 ];
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "quick-deployment",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Biometric Data Import Capability",
+    scopeTitle: "Quick Deployment",
     scopeDesc:
-      "Our Payroll System offers a capability feature that allows seamless importing of time-in and time-out data directly from biometric systems, ensuring accurate and automated attendance tracking for payroll processing.",
-    scopeImage: "payroll-biometrics.png",
+      "Our website development service utilizes Agile methodology to ensure a Quick Deployment feature. This approach allows for rapid and iterative development, enabling us to deploy functional website components efficiently and adapt quickly to changes throughout the development process.",
+    scopeImage: "quick-deployment.png",
   },
   {
-    scopeId: "employee-record",
+    scopeId: "page-insights",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Employee Record Management",
+    scopeTitle: "Optimized Fast Load Time",
     scopeDesc:
-      "Our Payroll System includes an Employee Record Management feature that centralizes all essential employee information, including personal details, salary data, tax information, benefits, and employment history, within a secure digital platform.",
-    scopeImage: "payroll-employee-record.png",
+      "Our website development service includes a Fast Load Time feature, where we optimize website performance to ensure that pages load quickly. This involves advanced coding practices, efficient asset management, and performance-enhancing technologies.",
+    scopeImage: "page-insights.png",
   },
   {
-    scopeId: "employee-earning",
+    scopeId: "seo",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Employee Earnings Recording",
+    scopeTitle: "Basic SEO",
     scopeDesc:
-      "Our Payroll System includes an Earnings Recording feature that allows for the detailed encoding of all types of employee earnings, including regular salary, overtime, bonuses, allowances, commissions, and other compensations needed for accurate payroll computation.",
-    scopeImage: "payroll-earnings.png",
+      "Our Basic SEO setup enhances your website’s visibility on search engines, helping potential customers find you more easily. With targeted keyword optimization, proper meta tags, and site indexing in place within the first week, you'll be better positioned to attract organic traffic right from the start.",
+    scopeImage: "seo.png",
   },
   {
-    scopeId: "deduction-record",
+    scopeId: "mobile-compatibility",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Deductions Recording",
+    scopeTitle: "Mobile Compatibility",
     scopeDesc:
-      "Our Payroll System includes a Deductions Recording feature that enables the encoding of all mandatory government deductions (such as taxes, SSS, PhilHealth, and Pag-IBIG) as well as optional deductions (such as loans, benefits, and company-specific charges) required for accurate payroll computation.",
-    scopeImage: "payroll-deductions.png",
+      "Our website development service includes Mobile Compatibility, ensuring that your website is fully optimized for various mobile devices. This feature involves responsive design techniques that adapt the website’s layout and content to different screen sizes and orientations.",
+    scopeImage: "mobile-compatability.png",
   },
   {
-    scopeId: "holiday-record",
+    scopeId: "malware-protection",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Holidays Recording",
+    scopeTitle: "Malware Protection",
     scopeDesc:
-      "Our Payroll System includes a holiday recording feature that allows for the encoding of all regular and special non-working holidays, ensuring that holiday pay computations are accurate and aligned with company policies and labor regulations.",
-    scopeImage: "payroll-holiday.png",
+      "Our website development service includes a Malware Protection feature, implementing robust security measures to detect, prevent, and remove malicious software. This feature encompasses regular security scans, real-time threat detection, and automated updates to safeguard your website.",
+    scopeImage: "security.png",
   },
   {
-    scopeId: "access-control",
+    scopeId: "ssl-certificate",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "User Access and Role Management",
+    scopeTitle: "SSL Certificate",
     scopeDesc:
-      "Our Payroll System includes a user recording feature that provides secure access control, allowing only authorized users—such as payroll officers, HR managers, and finance staff—to access and manage payroll data, ensuring data security and confidentiality.",
-    scopeImage: "payroll-user-access.png",
-  },
-  {
-    scopeId: "compliance-report",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Compliance Reporting Capability",
-    scopeDesc:
-      "Our Payroll System includes a Reporting feature that generates accurate and detailed reports needed for easy compliance with the requirements of government agencies such as SSS, BIR, Pag-IBIG, and PhilHealth.",
-    scopeImage: "payroll-report.png",
+      "Every website we build includes an SSL Certificate, ensuring secure, encrypted communication between your site and its visitors. This not only protects sensitive data but also boosts your credibility with search engines and customers, giving your website the trust it needs to succeed.",
+    scopeImage: "ssl.png",
   },
 ];
 

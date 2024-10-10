@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { CgSmileMouthOpen } from "react-icons/cg";
+import { Globe, Calculator, Headset, GraduationCap } from "lucide-react";
 import {
   FaAddressCard,
   FaBriefcase,
@@ -59,10 +60,11 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
               <div className="wrapper md:flex flex-wrap gap-y-0 gap-x-10 justify-start lg:justify-between mb-8">
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold mb-2 cursor-pointer lg:cursor-default"
+                    className="font-semibold mb-2 cursor-pointer lg:cursor-default flex text-primary"
                     onClick={() => handleServiceDropdown("webapp")}
                   >
-                    WEB APPLICATIONS
+                    <Globe className="text-primary" />{" "}
+                    <span className="mx-2">WEB APPLICATIONS</span>
                   </h2>
                   <ul
                     className={`${
@@ -73,10 +75,10 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/webapp-hris">Information System HR</Link>
+                      <Link to="/webapp-hris">HR Information System</Link>
                     </li>
                     <li>
-                      <Link to="/webapp-payroll">Payroll System</Link>
+                      <Link to="/webapp-payroll">Online Payroll System</Link>
                     </li>
                     <li>
                       <Link to="/webapp-enrollment">
@@ -100,10 +102,11 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
                     onClick={() => handleServiceDropdown("accounting")}
                   >
-                    ACCOUNTING SOLUTIONS
+                    <Calculator className="text-primary" />{" "}
+                    <span className="mx-2">ACCOUNTING SOLUTIONS </span>
                   </h2>
                   <ul
                     className={`${
@@ -120,10 +123,11 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
                     onClick={() => handleServiceDropdown("va")}
                   >
-                    VIRTUAL ASSISTANT SOLUTIONS
+                    <Headset />{" "}
+                    <span className="mx-2">VIRTUAL ASSISTANT SOLUTIONS </span>
                   </h2>
                   <ul
                     className={`${
@@ -155,10 +159,11 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
                     onClick={() => handleServiceDropdown("lcss")}
                   >
-                    LEARNING CENTER SOLUTIONS
+                    <GraduationCap />{" "}
+                    <span className="mx-2">LEARNING CENTER SOLUTIONS</span>
                   </h2>
                   <ul
                     className={`${
@@ -177,10 +182,11 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
                     onClick={() => handleServiceDropdown("webDev")}
                   >
-                    WEB DESIGN AND DEVELOPMENT
+                    <Globe className="text-primary" />{" "}
+                    <span className="mx-2">WEB DESIGN AND DEVELOPMENT </span>
                   </h2>
                   <ul
                     className={`${
@@ -191,7 +197,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/web-wordpress">WordPress</Link>
+                      <Link to="/web-wordpress">WordPress CMS Website</Link>
                     </li>
                     <li>
                       <Link to="/web-singlepage">Single Page Website</Link>
