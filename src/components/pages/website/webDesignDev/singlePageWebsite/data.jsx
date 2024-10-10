@@ -5,14 +5,14 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Simplify your payroll processing with our
+        Launch a Stunning, Quick, and Affordable
         <br />
       </p>
     ),
-    bannerTitleBoldText: "Single Page",
+    bannerTitleBoldText: "Single Page Website",
     bannerTextDesc:
-      "Our Online Payroll System simplifies payroll management for Philippine businesses. It automates salary calculations, tax compliance, and government contributions, ensuring accuracy and timely payouts. With real-time reporting and employee self-service access to payslips, it reduces HR workload and boosts efficiency.",
-    bannerBtnText: "Schedule a Demo",
+      "Our fast, cost-effective Single Page Website Development delivers sleek, high-quality designs with real-time updates. Get expert creative guidance and a website that’s optimized for performance and user experience—all at an unbeatable price.",
+    bannerBtnText: "LEARN MORE",
 
     bannerBtnLink: "Link",
     bannerImage: "ServicesBanner.jpg",
@@ -28,19 +28,16 @@ export const sectionPartnersTitle = [
 
 export const sectionPartnersLogos = [
   {
-    imageName: "AKA-Global.png",
+    imageName: "logo-rebekah.png",
   },
   {
-    imageName: "bensHalo.png",
+    imageName: "logo-resound.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "logo-tazamia.png",
   },
   {
-    imageName: "web-obich.png",
-  },
-  {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "logo-threadworks.png",
   },
 ];
 
@@ -125,21 +122,39 @@ export const scope = [
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Online Payroll System",
-    rate: "Starts at ₱40",
-    note: "Per Employee Per Month",
+    title: "International Clients",
+    rate: "Starts at $300",
+    note: "Single Page Website",
     info: [
-      "Biometric Data Import",
-      "Record Management",
-      "Earnings Recording",
-      "Deduction Recording",
-      "Holidays Recording",
-      "Access and Role Management",
-      "Reporting",
+      "Up to 6 Page Sections",
+      "Responsive Web Design",
+      "Basic Search Engine Optimization",
+      "SSL Certificate",
+      "One (1) Year Hosting Space",
+      "One (1) Year Domain Name Registration",
+      "Two (2) Hours / Month Technical Support",
     ],
     link: "/free-trial",
     isActive: 0,
     customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
+    title: "Philippine Clients",
+    rate: "Starts at ₱12K",
+    note: "Single Page Website",
+    info: [
+      "Up to 6 Page Sections",
+      "Responsive Web Design",
+      "Basic Search Engine Optimization",
+      "SSL Certificate",
+      "One (1) Year Hosting Space",
+      "One (1) Year Domain Name Registration",
+      "Two (2) Hours / Month Technical Support",
+    ],
+    link: "/free-trial",
+    isActive: 1,
+    customCss: "",
   },
 ];
 

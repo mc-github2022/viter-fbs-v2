@@ -30,21 +30,11 @@ export const sectionPartnersLogos = [
   {
     imageName: "fca-logo-horizontal.png",
   },
-
   {
     imageName: "logo-go-mission-trip.png",
   },
   {
-    imageName: "logo-rebekah.png",
-  },
-  {
-    imageName: "logo-resound.png",
-  },
-  {
-    imageName: "logo-tazamia.png",
-  },
-  {
-    imageName: "logo-threadworks.png",
+    imageName: "logo-phixgenomics.png",
   },
   {
     imageName: "logo-world-focus.png",
@@ -136,7 +126,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
     title: "International Clients",
-    rate: "Starts at $300",
+    rate: "Starts at $750",
     note: "WordPress CMS Website",
     info: [
       "Up to 6 Web Pages",
@@ -186,6 +176,14 @@ export const clientSays = [
       "The team at Frontline is incredible. They genuinely care about our needs and share in our vision of success. We are proud to call them a business partner and appreciate all the hard work they do for us.",
     clientLogo: "logo-ottm.png",
     clientProfilePic: "james-sunderland.png",
+  },
+  {
+    clientName: "Jeffrey Seitz",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "I have worked with a number of different website developers, but none have been as responsive or as quick to turn the work around.",
+    clientLogo: "logo-phixgenomics.png",
+    clientProfilePic: "jeffrey-seitz.png",
   },
   {
     clientName: "Rhoda Lynn Pessina-Dayo",

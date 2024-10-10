@@ -17,7 +17,7 @@ const SinglePageWebsite = () => {
       <SinglePageScope />
       <SinglePagePricing />
       <SinglePagePartners />
-      <SinglePagePartnersSay />
+      {/* <SinglePagePartnersSay /> */}
       <Footer />
     </>
   );
