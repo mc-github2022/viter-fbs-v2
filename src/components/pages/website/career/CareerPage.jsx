@@ -5,14 +5,22 @@ import { IoCodeSlashOutline } from "react-icons/io5";
 import { LuChevronsDown, LuCode2 } from "react-icons/lu";
 import { HiCode } from "react-icons/hi";
 import { jobOpening } from "./data";
+import ModalJobApplication from "./ModalJobApplication";
 
 const CareerPage = () => {
   const [jobIdentifier, setJobIdentifier] = React.useState("");
+  const [jobTitle, setJobTitle] = React.useState("");
 
   const [jobAccordion, setJobAccordion] = React.useState(false);
   const handleJobAccordion = (item) => {
     setJobAccordion(true);
     setJobIdentifier(item);
+  };
+
+  const [modalJob, setModalJob] = React.useState(false);
+  const handleModalJob = (item) => {
+    setModalJob(!modalJob);
+    setJobTitle(item);
   };
 
   useEffect(() => {
@@ -72,6 +80,7 @@ const CareerPage = () => {
                         <div>
                           <a
                             href="#"
+                            onClick={() => handleModalJob(item.theTitle)}
                             className="btn bg-secondary text-light !py-1.5 !px-12 "
                           >
                             APPLY
@@ -91,6 +100,9 @@ const CareerPage = () => {
         </div>
       </section>
       <Footer />
+      {modalJob && (
+        <ModalJobApplication setModalJob={setModalJob} jobTitle={jobTitle} />
+      )}
     </>
   );
 };
