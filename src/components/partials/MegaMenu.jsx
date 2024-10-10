@@ -176,7 +176,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     <li>
                       <Link to="/lcss">College On-the-job- Training</Link>
                     </li>
-                    <li>High School Work Immersion</li>
+                    <li>
+                      <Link to="/immersion">High School Work Immersion</Link>
+                    </li>
                     <li>Continuing Studies</li>
                   </ul>
                 </div>

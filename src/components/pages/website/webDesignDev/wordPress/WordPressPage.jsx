@@ -7,6 +7,7 @@ import WordPressScope from "./WordPressScope";
 import WordPressPricing from "./WordPressPricing";
 import WordPressPartners from "./WordPressPartners";
 import WordPressPartnersSay from "./WordPressPartnersSay";
+import WordPressPortfolio from "./WordPressPortfolio";
 
 const WordPressPage = () => {
   return (
@@ -16,6 +17,7 @@ const WordPressPage = () => {
       <WordPressOverview />
       <WordPressScope />
       <WordPressPricing />
+      <WordPressPortfolio />
       <WordPressPartners />
       <WordPressPartnersSay />
       <Footer />

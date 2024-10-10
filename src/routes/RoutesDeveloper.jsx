@@ -3,6 +3,7 @@ import CareerPage from "../components/pages/website/career/CareerPage";
 import EventsAndAct from "../components/pages/website/events/EventsAndAct";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
+import ImmersionPage from "../components/pages/website/learningCenterSolution/highSchoolImmersion/ImmersionPage";
 import VaAdminSolutionPage from "../components/pages/website/virtualSolution/vaAdminSolution/VaAdminSolutionPage";
 import VaCreativeSupportPage from "../components/pages/website/virtualSolution/vaCreativeSupport/VaCreativeSupportPage";
 import VaMarketingPage from "../components/pages/website/virtualSolution/vaMarketing/VaMarketingPage";
@@ -100,5 +101,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/career`,
     element: <CareerPage />,
+  },
+  {
+    path: `${devNavUrl}/immersion`,
+    element: <ImmersionPage />,
   },
 ];

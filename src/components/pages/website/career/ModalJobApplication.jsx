@@ -96,7 +96,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
             </div>
           </div>
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">
-            <p className="mb-2">Job Application: {jobTitle}</p>
+            <p className="mb-2 text-lg">
+              Job Application: <b>{jobTitle}</b>
+            </p>
             <div className="inputGroup mb-4">
               <label htmlFor="">Full Name</label> <br />
               <input type="text" name="" id="" className="w-full" />
