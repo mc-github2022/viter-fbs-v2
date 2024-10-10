@@ -2,12 +2,13 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Research",
-    bannerTitleBoldText: "bannerTitleBoldText",
-    bannerTextDesc: "bannerTextDesc",
-    bannerBtnText: "bannerBtnText",
+    bannerTitle: "Unlock Targeted Data and Leads with Expert",
+    bannerTitleBoldText: "Research Support",
+    bannerTextDesc:
+      "Our Virtual Assistants provide fast, accurate contact list building, data mining, and lead generation services. Get tailored, actionable insights to boost your marketing efforts—all delivered on time and within your budget.",
+    bannerBtnText: "LEARN MORE",
     bannerBtnLink: "Link",
-    bannerImage: "VABG.jpg",
+    bannerImage: "research-services-bg.jpg",
   },
 ];
 
@@ -20,16 +21,13 @@ export const sectionPartnersTitle = [
 
 export const sectionPartnersLogos = [
   {
-    imageName: "web-obich.png",
+    imageName: "logo-avant-white.png",
   },
   {
-    imageName: "AKA-Global.png",
+    imageName: "logo-ignite.png",
   },
   {
-    imageName: "DTOD-BPO.png",
-  },
-  {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "jcceos-logo.png",
   },
 ];
 
@@ -37,18 +35,18 @@ export const webAppOverview = [
   {
     subtitle: "Here's why we're the",
     mainTitle: "right choice for your VA needs.",
-    webAppImage: "vaOverviewImage.jpg",
+    webAppImage: "vaResearch.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Fast turnaround time",
+    overviewAtitle: "Fast and Accurate Data Delivery",
     overviewAtext:
-      "We deliver websites quickly, ensuring your project meets deadlines without compromising quality",
-    overviewBtitle: " Optimal Viewing and Interaction",
+      "Our Virtual Assistants provide rapid contact list building and data mining, ensuring you receive high-quality, actionable data quickly. This allows you to capitalize on leads and make timely business decisions without delays.",
+    overviewBtitle: "Targeted Lead Generation",
     overviewBtext:
-      "Our responsive designs ensure seamless viewing and Interaction across all devices for an engaging user experience.",
-    overviewCtitle: "High-Quality at Lower Costs",
+      "We use precise data mining and research techniques to deliver highly relevant leads tailored to your business needs. By providing curated and targeted lists, we help improve your marketing and sales efforts for maximum engagement.",
+    overviewCtitle: "Cost-Effective Research Solutions",
     overviewCtext:
-      " We offer high-quality websitels at competitive prices, delivering excellence results while staying within your budget.",
+      "Our Virtual Assistants offer comprehensive research services at competitive prices. You get accurate data, reliable lead generation, and actionable insights without exceeding your budget, helping you maximize your return on investment.",
   },
 ];
 
@@ -110,17 +108,26 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "What our",
+    mainTitle: "clients say",
   },
 ];
 
 export const clientSays = [
   {
-    clientName: "Client Name",
-    clientDesc: "Client Desc",
-    clientMessage: "The Message",
-    clientLogo: "addIamgeNameHere",
-    clientProfilePic: "olivia-almarez.png",
+    clientName: "James Davidson",
+    clientDesc: "Managing Director & President",
+    clientMessage:
+      "Frontline Business Solutions is beyond an exceptional firm. Professional courtesy, responsiveness, competence, and client service are only a few of the many high level qualities that Frontline’s team exhibit. Frontline exemplifies the golden rule by treating its clients as it would like to be treated. Every Frontline team member with whom Avant Advisory Group has dealt has been a true blessing. Finally, based on Avant Advisory Group’s several years of working with Frontline personnel, and especially Mike DeJesus, I can say that they work heartily for their clients as if they are working for the Lord. (Colossians 3:23-24) Thank you for what you do, Frontline!",
+    clientLogo: "logo-avant.png",
+    clientProfilePic: "jim-davison.png",
+  },
+  {
+    clientName: "Josh Howard",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "Our partnership with Frontline has been the best financial investment we’ve ever made. The team is absolutely amazing and always goes above and beyond in every area. I highly recommend them!!",
+    clientLogo: "logo-ignite.png",
+    clientProfilePic: "josh-howard.png",
   },
 ];
