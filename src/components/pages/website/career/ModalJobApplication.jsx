@@ -120,7 +120,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
             <div className="inputGroup mb-2">
               <input
                 type="submit"
-                value="Send Message"
+                value="Submit"
                 className="btn bg-primary text-light cursor-pointer"
               />
             </div>
