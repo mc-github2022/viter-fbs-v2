@@ -1,4 +1,5 @@
 import { devNavUrl } from "../components/helpers/functions-general";
+import CareerPage from "../components/pages/website/career/CareerPage";
 import EventsAndAct from "../components/pages/website/events/EventsAndAct";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
@@ -95,5 +96,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/web-design`,
     element: <WebDesignPage />,
+  },
+  {
+    path: `${devNavUrl}/career`,
+    element: <CareerPage />,
   },
 ];

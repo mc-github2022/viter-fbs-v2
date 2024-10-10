@@ -102,9 +102,9 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <a className="!p-0 hover:text-primary" href="#">
+                      <Link className="!p-0 hover:text-primary" to="/career">
                         Career
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
