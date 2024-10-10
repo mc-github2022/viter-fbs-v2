@@ -122,7 +122,7 @@ const WebDesignPartnersSay = () => {
                         <div className="logoAndName flex items-center gap-3">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
-                            className="w-[80px]"
+                            className="w-[100px]"
                             src={`../../public/img/${testimonial.clientLogo}`}
                             alt=""
                           />
