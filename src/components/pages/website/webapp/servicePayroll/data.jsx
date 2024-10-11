@@ -159,6 +159,6 @@ export const clientSays = [
     clientMessage:
       "Excellent HRIS Provider with Outstanding Support! Their platform has streamlined our HR processes, making tasks like employee management, payroll, and reporting much more efficient. What truly stands out is the level of support we’ve received from their team. I highly recommend Frontline Business Solutions Inc. for anyone looking for a reliable and supportive HRIS provider. Their service has been excellent, and their team truly understands the needs of their clients. ",
     clientLogo: "DTOD-BPO.png",
-    clientProfilePic: "dennis-siano.png",
+    clientProfilePic: "dennis-siano2.png",
   },
 ];

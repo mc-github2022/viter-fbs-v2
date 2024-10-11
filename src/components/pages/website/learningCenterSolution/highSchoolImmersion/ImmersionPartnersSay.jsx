@@ -143,7 +143,7 @@ const ImmersionPartnersSay = () => {
                   </div>
                   <img
                     // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                    src={`../../public/img/olivia-almarez.png`}
+                    src={`../../public/img/lara-yedra.png`}
                     className="absolute bottom-0 w-[300px] right-8"
                     alt=""
                   />
@@ -161,31 +161,33 @@ const ImmersionPartnersSay = () => {
                       />
                     </div>
                     <p className="relative z-10 italic mb-4">
-                      My experience at Frontline Business Solution has truly
-                      been a great journey. I gained a wealth of knowledge in
-                      front-end web design, equipping me with essential skills
-                      in HTML, CSS, and JavaScript. Most importantly, the people
-                      there are truly amazing and passionate about their work.
-                      To sum it up, my experience at FBS was fun!
+                      Frontline Business Solutions helped my students grow in
+                      every aspect. They were trained as part of the company and
+                      were really excited to tell me their stories. I saw how
+                      the company changed my students in facing problems, way of
+                      learning, discipline and understanding. I would recommend
+                      Frontline Business Solutions if you want exceptional
+                      training and experience.
                     </p>
                     <div className="logoAndName flex items-center gap-3">
                       <img
                         // src={`${devBaseImgUrl}/sti.png`}
                         className="w-[80px]"
-                        src={`../../public/img/lspu.png`}
+                        src={`../../public/img/spc.png`}
                         alt=""
                       />
                       <div className="leading-[1] italic">
-                        <p>Ms. Ariel Angeni Ferrer</p>
+                        <p>Ms. Chelsea Lim</p>
                         <p className="text-sm">
-                          BS Computer Engineering Graduate
+                          Senior High School ICT Faculty <br />
+                          San Pablo Colleges
                         </p>
                       </div>
                     </div>
                   </div>
                   <img
                     // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                    src={`../../public/img/ariel-ferrer.png`}
+                    src={`../../public/img/chelsea-lim.png`}
                     className="absolute bottom-0 w-[300px] right-8"
                     alt=""
                   />
