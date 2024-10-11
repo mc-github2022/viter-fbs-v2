@@ -14,17 +14,17 @@ const ServiceHrPricing = () => {
             <p className="text-light">
               Web application for your payroll processing needs
             </p>
-            <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Affordable Pricing Plan
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper grid grid-cols-2 gap-8 items-center">
+            <div className="wrapper md:grid md:grid-cols-2 gap-8 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
+                    className={`priceItem mb-5 md:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive
                         ? "bg-primary h-[500px]"
                         : "bg-customGray !text-dark"

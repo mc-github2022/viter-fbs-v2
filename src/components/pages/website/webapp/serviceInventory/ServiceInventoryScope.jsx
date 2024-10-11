@@ -27,11 +27,11 @@ const ServiceInventoryScope = () => {
         <div className="customContainer">
           <div>
             <p>What makes this web app</p>
-            <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
               a lifesaver?
             </h2>
           </div>
-          <div className="warpper grid grid-cols-2 gap-5">
+          <div className="warpper md:grid md:grid-cols-2 gap-5">
             <ul>
               {scope.map((scopeList, key) => {
                 return (
@@ -54,7 +54,7 @@ const ServiceInventoryScope = () => {
                             accordion && accordionItem === scopeList.scopeId
                               ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                               : "text-dark"
-                          } text-xl font-semibold cursor-pointer `}
+                          } text-[clamp(16px,4vw,20px)] font-semibold cursor-pointer `}
                         >
                           {scopeList.scopeTitle}
                         </p>
@@ -72,6 +72,14 @@ const ServiceInventoryScope = () => {
                       {/* <a href="#" className="btn bg-primary text-light">
                         Schedule a Demo
                       </a> */}
+                      <p className="md:hidden py-6">
+                    <a
+                      href="#"
+                      className="btn bg-primary text-light font-semibold"
+                    >
+                      CONTACT US
+                    </a>
+                  </p>
                     </div>
                   </li>
                 );
@@ -86,12 +94,12 @@ const ServiceInventoryScope = () => {
                   }`}
                 >
                   <img
-                    className="w-full object-contain"
+                    className="hidden md:w-full md:object-contain md:block"
                     // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
                     src={`../../public/img/${scopedata.scopeImage}`}
                     alt=""
                   />
-                  <p className="mb-4 text-center pt-8 pb-8">
+                  <p className="hidden md:block mb-4 text-center pt-8 pb-8">
                     <a
                       href="#"
                       className="btn bg-primary text-light font-semibold"

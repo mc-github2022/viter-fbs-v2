@@ -58,6 +58,7 @@ function SamplePrevArrow(props) {
 
 const VaTechSupportPartnersSay = () => {
   var partnerSaysSettings = {
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 1,
@@ -70,7 +71,7 @@ const VaTechSupportPartnersSay = () => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "30px",
+          bottom: "-40px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -82,21 +83,33 @@ const VaTechSupportPartnersSay = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "#ac1f72",
           borderRadius: "50%",
           opacity: "50%",
         }}
       ></div>
     ),
+    responsive: [
+      {
+        breakpoint: 1086,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: true,
+        },
+      },
+    ],
   };
 
   return (
     <>
-      <section className="VaTechSupportPartnersSay py-20">
+      <section className="VaTechSupportPartnersSay pb-10 md:py-20">
         <div className="customContainer">
           <div className="">
             <p>{clientSaysTitle[0].subTitle}</p>
-            <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
               {clientSaysTitle[0].mainTitle}
             </h2>
           </div>
@@ -104,8 +117,8 @@ const VaTechSupportPartnersSay = () => {
             <Slider {...partnerSaysSettings}>
               {clientSays.map((testimonial, key) => {
                 return (
-                  <div key={key} className="h-[425px]">
-                    <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center top-[50%] translate-y-[-50%] px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+                  <div key={key} className="md:h-[425px]">
+                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img
@@ -115,7 +128,7 @@ const VaTechSupportPartnersSay = () => {
                             alt=""
                           />
                         </div>
-                        <p className="relative z-10 italic mb-4">
+                        <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0 text-sm">
                           {testimonial.clientMessage}
                         </p>
                         <div className="logoAndName flex items-center gap-3">
@@ -131,12 +144,14 @@ const VaTechSupportPartnersSay = () => {
                           </div>
                         </div>
                       </div>
-                      <img
-                        // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                        src={`../../public/img/${testimonial.clientProfilePic}`}
-                        className="absolute bottom-0 w-[300px] right-8"
-                        alt=""
-                      />
+                      <div className="hidden lg:block">
+                        <img
+                          // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                          src={`../../public/img/${testimonial.clientProfilePic}`}
+                          className="absolute bottom-0 w-[300px] right-8"
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
                 );
