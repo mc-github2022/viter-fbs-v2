@@ -5,6 +5,7 @@ import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import ConStudPage from "../components/pages/website/learningCenterSolution/continuingStudies/ConStudPage";
 import ImmersionPage from "../components/pages/website/learningCenterSolution/highSchoolImmersion/ImmersionPage";
+import SingplePage from "../components/pages/website/singlePage/SingplePage";
 import VaAdminSolutionPage from "../components/pages/website/virtualSolution/vaAdminSolution/VaAdminSolutionPage";
 import VaCreativeSupportPage from "../components/pages/website/virtualSolution/vaCreativeSupport/VaCreativeSupportPage";
 import VaMarketingPage from "../components/pages/website/virtualSolution/vaMarketing/VaMarketingPage";
@@ -110,5 +111,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/continuing-studies`,
     element: <ConStudPage />,
+  },
+  {
+    path: `${devNavUrl}/single-post`,
+    element: <SingplePage />,
   },
 ];
