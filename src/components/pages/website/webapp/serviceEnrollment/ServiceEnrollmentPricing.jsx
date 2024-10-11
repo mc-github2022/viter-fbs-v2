@@ -14,12 +14,12 @@ const ServiceEnrollmentPricing = () => {
             <p className="text-light">
               Web application for your online school enrollment needs
             </p>
-            <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Affordable Pricing Plan
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper grid grid-cols-1 gap-6 items-center">
+            <div className="wrapper md:grid md:grid-cols-1 gap-6 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div

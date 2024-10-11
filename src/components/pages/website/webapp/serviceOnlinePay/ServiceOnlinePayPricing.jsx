@@ -14,7 +14,7 @@ const ServiceOnlinePayPricing = () => {
             <p className="text-light">
               Web application for your online payment integration needs
             </p>
-            <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Affordable Pricing Plan
             </h3>
           </div>
