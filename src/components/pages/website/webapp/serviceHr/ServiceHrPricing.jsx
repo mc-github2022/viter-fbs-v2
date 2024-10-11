@@ -12,18 +12,18 @@ const ServiceHrPricing = () => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">Choose what's best for your needs</p>
-            <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Suitable Pricing Plans
             </h3>
           </div>
-          <div className="wrapper grid grid-cols-3 gap-6 items-center">
+          <div className="wrapper md:grid md:grid-cols-3 gap-6 items-center">
             {pricing.map((price, key) => {
               return (
                 <div
                   key={key}
-                  className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
+                  className={`priceItem mb-5 md:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
                     price.isActive
-                      ? "bg-primary h-[500px]"
+                      ? "bg-primary max-h-[500px]"
                       : "bg-customGray !text-dark"
                   } grid place-items-center`}
                 >
@@ -42,7 +42,7 @@ const ServiceHrPricing = () => {
                       </p>
 
                       {price.note !== "" && (
-                        <p className="text-light text-lg italic">
+                        <p className={`${price.customCss} text-lg italic`}>
                           {price.note}
                         </p>
                       )}
