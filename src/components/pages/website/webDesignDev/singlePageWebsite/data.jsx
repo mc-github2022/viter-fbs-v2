@@ -47,7 +47,7 @@ export const webAppOverview = [
     mainTitle: "Web Development Team",
     webAppImage: "web-team.jpg",
     btnText: "LEARN MORE",
-    btnDownloadText: "Download Proposal",
+    btnDownloadText: "Download Portfolio",
     overviewAtitle: "Fast Deployment and Real-Time Updates",
     overviewAtext:
       "We ensure quick deployment, allowing clients to see progress in real-time and make updates on the fly. This provides you with full control over the project’s direction, ensuring your vision is met swiftly and efficiently.",
