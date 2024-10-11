@@ -17,7 +17,7 @@ const ImmersionPartnersWithUs = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//lcssBannerImg.jpg`}
+                src={`../../public/img//workimmersion-sige-img.jpg`}
                 className="mb-12"
                 alt=""
               />

@@ -11,7 +11,7 @@ const ImmersionTeam = () => {
           >
             <p>Here are the</p>
             <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
-              industry professional
+              industry professionals
             </h3>
             <p>who will provide you with real-world experience and insights.</p>
           </div>
@@ -45,7 +45,7 @@ const ImmersionTeam = () => {
                 <p className="font-semibold text-xl">
                   Ms. Thea Lyzette Consignado
                 </p>
-                <p>Accoutiung Trainer</p>
+                <p>Accouting Trainer</p>
                 <p>Accounting Associate</p>
                 <p className="text-sm">
                   thea.consignado@frontlinebusiness.com.ph
