@@ -8,7 +8,7 @@ const ImmersionApplyNow = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-[_1.5fr_1fr] ">
             <div className="bg-customGray bg-opacity-70 py-20 px-10 z-10 rounded-lg addShadow">
-              <p>Join and experience the fun and learning with our team!</p>
+              <p>Experience the fun and learning with our team!</p>
               <h2 className="text-[45px] font-semibold text-primary leading-[1.1] mb-8">
                 Join our team now!
               </h2>
