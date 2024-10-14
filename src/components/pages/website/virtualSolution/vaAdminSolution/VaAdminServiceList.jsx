@@ -1,7 +1,11 @@
 import React from "react";
-import { FaHeadset, FaRegHandshake } from "react-icons/fa6";
-import { GoChecklist } from "react-icons/go";
-import { IoDocumentsOutline } from "react-icons/io5";
+import {
+  BriefcaseBusiness,
+  Headset,
+  FolderSearch,
+  HandCoins,
+} from "lucide-react";
+
 import {
   MdInfoOutline,
   MdOutlineRocketLaunch,
@@ -35,20 +39,15 @@ const VaAdminServiceList = () => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <MdOutlineMarkEmailRead className="text-3xl text-primary" />
+                  <BriefcaseBusiness
+                    size={28}
+                    className="text-3xl text-primary"
+                  />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Email Management
+                Administrative Support
               </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <BsClipboard2Data className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">Data Entry</p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
@@ -57,17 +56,37 @@ const VaAdminServiceList = () => {
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Database Management
+                Data Management and Organization
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <IoDocumentsOutline className="text-3xl text-primary" />
+                  <Headset size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Document Preparation
+                Communication and Coordination
+              </p>
+            </li>
+            <li className="flex items-center gap-7">
+              <div className="bg-customGray rounded-lg addShadow">
+                <div className="w-16 h-16 grid place-items-center">
+                  <HandCoins size={28} className="text-3xl text-primary" />
+                </div>
+              </div>
+              <p className="font-semibold text-xl lg:text-2xl">
+                Financial and Billing Tasks
+              </p>
+            </li>
+            <li className="flex items-center gap-7">
+              <div className="bg-customGray rounded-lg addShadow">
+                <div className="w-16 h-16 grid place-items-center">
+                  <FolderSearch size={28} className="text-3xl text-primary" />
+                </div>
+              </div>
+              <p className="font-semibold text-xl lg:text-2xl">
+                Project and Research Support
               </p>
             </li>
             <li className="flex items-center gap-7">
@@ -77,7 +96,7 @@ const VaAdminServiceList = () => {
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                File Management
+                Specialized Document Handling
               </p>
             </li>
           </ul>

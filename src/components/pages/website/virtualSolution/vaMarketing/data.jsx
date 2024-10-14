@@ -3,9 +3,9 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 export const banner = [
   {
     bannerTitle: "Boost your Online Presence through our",
-    bannerTitleBoldText: "Marketing and Social Media Management",
+    bannerTitleBoldText: "Marketing Support",
     bannerTextDesc:
-      "From CRM management to social media strategy, our Virtual Assistants streamline your marketing efforts with data-driven insights, automation, and efficient campaign execution—delivering impactful results without exceeding your budget.",
+      "Our Virtual Assistance Services cover all aspects of marketing, from crafting digital strategies and managing social media content to designing visually compelling materials and editing media. Let us help you enhance your brand’s presence with tailored solutions in digital marketing, content creation, design, media production, and writing.",
     bannerBtnText: "LEARN MORE",
     bannerBtnLink: "Link",
     bannerImage: "social-media-management.png",
@@ -38,15 +38,15 @@ export const webAppOverview = [
     webAppImage: "vaMarketing.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Efficient Campaign Execution",
+    overviewAtitle: "Strategic Marketing Expertise",
     overviewAtext:
-      "We ensure fast turnaround times for CRM management, email marketing, and marketing automation, allowing you to launch and manage campaigns promptly while maintaining the highest standards of quality and precision.",
-    overviewBtitle: "Data-Driven Engagement",
+      "Our team specializes in developing and executing effective online marketing strategies, ensuring your brand gains visibility and engages with your target audience through tailored promotions and brand management.",
+    overviewBtitle: "Creative Content Creation",
     overviewBtext:
-      "Our Virtual Assistants provide targeted social media management and lead generation, optimizing your brand's presence through insightful analytics and reporting. We tailor strategies based on data to ensure effective audience engagement and business growth.",
-    overviewCtitle: "Cost-Effective Marketing Solutions",
+      "We offer comprehensive content services, including social media management, newsletter creation, and graphic design. This ensures your brand's messaging is consistent, engaging, and visually appealing across all platforms.",
+    overviewCtitle: "Professional Media Production",
     overviewCtext:
-      "With expertise in CRM systems like HubSpot, email marketing, and social media management, we deliver high-quality marketing support at competitive rates. You get professional marketing solutions that align with your goals without exceeding your budget.",
+      "From video and audio editing to image enhancement and email marketing, our media production services help you create high-quality promotional materials that resonate with your audience and drive conversions.",
   },
 ];
 

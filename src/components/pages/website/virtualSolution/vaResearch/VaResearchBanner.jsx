@@ -22,7 +22,9 @@ const VaResearchBanner = () => {
                   {banner[0].bannerTitleBoldText}
                 </span>
               </h2>
-              <p className="text-light mb-10">{banner[0].bannerTextDesc}</p>
+              <p className="text-light font-light mb-10">
+                {banner[0].bannerTextDesc}
+              </p>
               <a href="#" className="btn bg-transparent text-light border-2">
                 {banner[0].bannerBtnText}
               </a>

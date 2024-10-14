@@ -3,9 +3,9 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 export const banner = [
   {
     bannerTitle: "Boost your business efficiency with our",
-    bannerTitleBoldText: "VA Admin Assistance",
+    bannerTitleBoldText: "Administrative Assistance",
     bannerTextDesc:
-      "Let us handle your email management, data entry, database management, document preparation, and file management, so you can focus on what matters most. Save time, reduce stress, and ensure your operations run smoothly with our expert support tailored to your needs!",
+      "Our Virtual Assistance Services provide reliable and efficient administrative support tailored to your needs. From managing schedules and coordinating communication to handling data, organizing documents, and supporting financial tasks, we ensure your daily operations run smoothly. Whether you need secretarial assistance, executive support, or help with project coordination, our team is here to optimize your workflow and free up your time for what matters most.",
     bannerBtnText: "PARTNER WITH US",
     bannerBtnLink: "Link",
     bannerImage: "VABG.jpg",
@@ -38,15 +38,15 @@ export const webAppOverview = [
     webAppImage: "vaOverviewImage.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Streamlined Admin & Communication Support",
+    overviewAtitle: "Enhanced Efficiency and Productivity",
     overviewAtext:
-      "We deliver websites quickly, ensuring your project meets deadlines without compromising quality",
-    overviewBtitle: " Flawless Document & Contact Organization",
+      "We handle routine tasks like data entry, calendar management, and email organization, freeing up your time to focus on core business activities.",
+    overviewBtitle: "Comprehensive Support Tailored to Your Needs",
     overviewBtext:
-      "Perfectly manage, format, and transcribe files while maintaining a polished, up-to-date contact list for stronger connections.",
-    overviewCtitle: "Seamless Schedule & Event Management",
+      "Our services cover everything from executive assistance and personal tasks to data management and event coordination, offering solutions that fit your specific needs.",
+    overviewCtitle: "Cost-Effective and Scalable Solutions",
     overviewCtext:
-      "Effortlessly coordinate meetings, appointments, and events, while ensuring smooth logistics and deadline reminders.",
+      "Enjoy flexible support without the costs of full-time staff. Our services can scale with your workload, ensuring you pay only for what you need.",
   },
 ];
 

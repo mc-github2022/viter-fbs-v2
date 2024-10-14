@@ -1,5 +1,11 @@
 import React from "react";
-import { Search, Send, Share2, Headset, ChartPie } from "lucide-react";
+import {
+  MessageCircleMore,
+  Headset,
+  BookOpenCheck,
+  FileMusic,
+  Palette,
+} from "lucide-react";
 
 const VaMarketingServiceList = () => {
   return (
@@ -8,9 +14,9 @@ const VaMarketingServiceList = () => {
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">
-              What{" "}
-              <span className="text-primary">Marketing and Social Media </span>{" "}
-              Services Can We Perform?
+              What <span className="text-primary">Marketing Support </span>{" "}
+              <br />
+              Can We Perform?
             </h2>
             <p className="subDesc mb-10">
               Our VA for Administrative Assistance offers comprehensive support
@@ -31,48 +37,50 @@ const VaMarketingServiceList = () => {
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                CRM Management (HubSpot in particular)
+                Digital Marketing & Strategy
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <Send size={28} className="text-3xl text-primary" />
+                  <MessageCircleMore
+                    size={28}
+                    className="text-3xl text-primary"
+                  />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Email Marketing
+                Content Creation & Management
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <Search size={28} className="text-base text-primary" />
-                  {/* <PiMagnifyingGlass className="text-3xl text-primary" /> */}
+                  <Palette size={28} className="text-base text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Lead Management
+                Design & Visual Content
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <Share2 size={28} className="text-3xl text-primary" />
+                  <FileMusic size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Social Media Management
+                Media Production
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <ChartPie size={28} className="text-3xl text-primary" />
+                  <BookOpenCheck size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Analytics & Reporting
+                Writing, Editing, & Proofing
               </p>
             </li>
           </ul>

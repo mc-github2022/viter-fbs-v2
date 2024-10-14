@@ -2,10 +2,10 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Unlock Targeted Data and Leads with Expert",
-    bannerTitleBoldText: "Research Support",
+    bannerTitle: "Streamline your Business Operations with our",
+    bannerTitleBoldText: "Business Support",
     bannerTextDesc:
-      "Our Virtual Assistants provide fast, accurate contact list building, data mining, and lead generation services. Get tailored, actionable insights to boost your marketing efforts—all delivered on time and within your budget.",
+      "Our Virtual Assistance Services are designed to boost your business's efficiency and growth through expert support in lead management, customer communication, administrative tasks, and project management. From generating leads and handling customer inquiries to managing financials, data analysis, and operational processes, we provide the essential business support you need to focus on your core activities and achieve your goals.",
     bannerBtnText: "LEARN MORE",
     bannerBtnLink: "Link",
     bannerImage: "research-services-bg.jpg",
@@ -38,15 +38,15 @@ export const webAppOverview = [
     webAppImage: "vaResearch.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Fast and Accurate Data Delivery",
+    overviewAtitle: "Proactive Lead Management",
     overviewAtext:
-      "Our Virtual Assistants provide rapid contact list building and data mining, ensuring you receive high-quality, actionable data quickly. This allows you to capitalize on leads and make timely business decisions without delays.",
-    overviewBtitle: "Targeted Lead Generation",
+      "Our services enhance your sales process by identifying potential customers, converting leads, and nurturing relationships, ensuring a steady flow of business opportunities.",
+    overviewBtitle: "Comprehensive Customer Support",
     overviewBtext:
-      "We use precise data mining and research techniques to deliver highly relevant leads tailored to your business needs. By providing curated and targeted lists, we help improve your marketing and sales efforts for maximum engagement.",
-    overviewCtitle: "Cost-Effective Research Solutions",
+      "We offer multi-channel customer support, from phone and email to live chat, ensuring that inquiries are managed efficiently, which improves customer satisfaction and retention.",
+    overviewCtitle: "Streamlined Operations and Reporting",
     overviewCtext:
-      "Our Virtual Assistants offer comprehensive research services at competitive prices. You get accurate data, reliable lead generation, and actionable insights without exceeding your budget, helping you maximize your return on investment.",
+      "Our expertise in operations management, data analysis, and reporting helps you optimize processes, make informed decisions, and track performance metrics effectively, driving business growth.",
   },
 ];
 

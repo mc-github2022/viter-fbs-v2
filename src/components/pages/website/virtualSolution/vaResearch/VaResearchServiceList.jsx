@@ -1,9 +1,12 @@
 import React from "react";
 import {
-  Contact,
-  UserRoundSearch,
+  FileUser,
+  Headset,
   TextSearch,
   NotebookPen,
+  WalletCards,
+  Presentation,
+  Handshake,
 } from "lucide-react";
 
 const VaResearchServiceList = () => {
@@ -13,12 +16,12 @@ const VaResearchServiceList = () => {
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">
-              What <span className="text-primary">Research Services </span>
+              What <span className="text-primary">Business Support </span>
               <br /> Can We Perform?
             </h2>
             <p className="subDesc mb-10">
-              Our VA for Administrative Assistance offers comprehensive support
-              to streamline your business operations.
+              Our VA for Business Support offers comprehensive support to
+              streamline your business operations.
             </p>
             <a
               href="#"
@@ -31,32 +34,41 @@ const VaResearchServiceList = () => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <Contact size={28} className="text-3xl text-primary" />
+                  <TextSearch size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Contact List Building
+                Lead Management
               </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <UserRoundSearch
-                    size={28}
-                    className="text-3xl text-primary"
-                  />
+                  <Headset size={28} className="text-3xl text-primary" />
                 </div>
               </div>
-              <p className="font-semibold text-xl lg:text-2xl">Data Mining</p>
+              <p className="font-semibold text-xl lg:text-2xl">
+                Customer Support & Communication
+              </p>
             </li>
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <TextSearch size={28} className="text-3xl text-primary" />
+                  <WalletCards size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                Lead Generation
+                Administrative & Financial Management
+              </p>
+            </li>
+            <li className="flex items-center gap-7">
+              <div className="bg-customGray rounded-lg addShadow">
+                <div className="w-16 h-16 grid place-items-center">
+                  <Presentation size={28} className="text-3xl text-primary" />
+                </div>
+              </div>
+              <p className="font-semibold text-xl lg:text-2xl">
+                Data & Reporting
               </p>
             </li>
             <li className="flex items-center gap-7">
@@ -66,7 +78,27 @@ const VaResearchServiceList = () => {
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">
-                General Research
+                Operations & Project Management
+              </p>
+            </li>
+            <li className="flex items-center gap-7">
+              <div className="bg-customGray rounded-lg addShadow">
+                <div className="w-16 h-16 grid place-items-center">
+                  <FileUser okPen size={28} className="text-3xl text-primary" />
+                </div>
+              </div>
+              <p className="font-semibold text-xl lg:text-2xl">
+                Document & Communication Management
+              </p>
+            </li>
+            <li className="flex items-center gap-7">
+              <div className="bg-customGray rounded-lg addShadow">
+                <div className="w-16 h-16 grid place-items-center">
+                  <Handshake size={28} className="text-3xl text-primary" />
+                </div>
+              </div>
+              <p className="font-semibold text-xl lg:text-2xl">
+                Customer Engagement & Relationship Building
               </p>
             </li>
           </ul>
