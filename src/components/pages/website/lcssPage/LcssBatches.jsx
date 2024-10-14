@@ -55,6 +55,7 @@ function SamplePrevArrow(props) {
 
 const LcssBatches = () => {
   var settings = {
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -67,7 +68,7 @@ const LcssBatches = () => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "30px",
+          bottom: "-60px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -79,7 +80,7 @@ const LcssBatches = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "#ac1f72",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -91,6 +92,9 @@ const LcssBatches = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: true,
         },
       },
       {
@@ -98,6 +102,9 @@ const LcssBatches = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: true,
         },
       },
     ],
@@ -105,14 +112,14 @@ const LcssBatches = () => {
 
   return (
     <>
-      <section className="batches pt-20 pb-40">
+      <section className="batches py-40 md:pt-20 md:pb-40">
         <div className="customContainer">
           <div
             className="mb-12
           "
           >
             <p>Professional journey of our</p>
-            <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
               successful, industry-ready Batches
             </h3>
           </div>

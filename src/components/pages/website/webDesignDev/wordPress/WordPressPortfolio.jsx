@@ -4,11 +4,11 @@ import { RiExternalLinkLine } from "react-icons/ri";
 const WordPressPortfolio = () => {
   return (
     <>
-      <section className="profolioWebsite py-40">
+      <section className="profolioWebsite md:py-40">
         <div className="customContainer">
           <div className="">
             <p>Seamless performance and stunning design</p>
-            <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
               custom-built website
             </h2>
           </div>

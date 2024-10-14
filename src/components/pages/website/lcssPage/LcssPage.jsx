@@ -1,5 +1,4 @@
 import React from "react";
-import LcssBanner from "./lcssBanner";
 import Header from "../../../partials/Header";
 import Footer from "../../../partials/Footer";
 import LcssPartners from "./LcssPartners";
@@ -10,6 +9,7 @@ import LcssTeam from "./LcssTeam";
 import LcssBatches from "./LcssBatches";
 import LcssVidTestimonials from "./LcssVidTestimonials";
 import LcssPartnersSay from "./LcssPartnersSay";
+import LcssBanner from "./LcssBanner";
 
 const LcssPage = () => {
   return (

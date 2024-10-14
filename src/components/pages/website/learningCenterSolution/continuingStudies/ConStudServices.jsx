@@ -7,11 +7,11 @@ const ConStudServices = () => {
     <>
       <section className="ConStudServices py-20">
         <div className="customContainer">
-          <div className="wrapper grid grid-cols-2">
+          <div className="wrapper lg:grid lg:grid-cols-2">
             <div className="webDEv">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
-                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Web Design & Development
                 </h3>
                 <p>On-the-job training.</p>
@@ -56,9 +56,9 @@ const ConStudServices = () => {
               </ul>
             </div>
             <div className="accountingServices">
-              <div className="mb-10">
+              <div className="my-10 md:mb-10 md:my-0">
                 <p>Here is what you can learn in our</p>
-                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Accounting Processes
                 </h3>
                 <p>On-the-job training.</p>
