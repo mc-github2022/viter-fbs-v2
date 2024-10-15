@@ -84,7 +84,7 @@ const EventsSingplePage = () => {
             <div className="order-1 px-10 md:px-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold mb-10 text-dark">
-                  Popular Posts
+                  Recent Activities
                 </h3>
                 <div className="popularPostLinks [&>ul>li]:flex [&>ul>li]:items-center [&>ul>li]:gap-4">
                   <ul className="[&>li]:my-8">
@@ -113,31 +113,7 @@ const EventsSingplePage = () => {
                       <p>Top 10 Accounting software for Business</p>
                     </li>
                   </ul>
-                  <hr />
                 </div>
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold mb-10 text-dark">
-                  Categories
-                </h3>
-                <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-3">
-                  <li>
-                    <BiSolidRightArrow className="text-primary" /> Web
-                    Development
-                  </li>
-                  <li>
-                    <BiSolidRightArrow className="text-primary" />
-                    Accounting
-                  </li>
-                  <li>
-                    <BiSolidRightArrow className="text-primary" />
-                    Virtual Assistant
-                  </li>
-                  <li>
-                    <BiSolidRightArrow className="text-primary" /> Skill
-                    Development
-                  </li>
-                </ul>
               </div>
             </div>
           </div>
