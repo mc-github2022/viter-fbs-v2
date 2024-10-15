@@ -39,7 +39,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
     <>
       <div
         onClick={handleClose}
-        className="bg-dark bg-opacity-25 fixed left-0 w-full h-screen z-[99] backdrop-blur-lg"
+        className="lg:bg-dark lg:bg-opacity-25 fixed left-0 w-full lg:h-screen z-[99] lg:backdrop-blur-lg"
       >
         <div className={`${toggleMenu ? "active" : ""} megaMenu`}>
           <div className="holder w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl">
@@ -60,10 +60,10 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
               <div className="wrapper md:flex flex-wrap gap-y-0 gap-x-10 justify-start lg:justify-between mb-8">
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold mb-2 cursor-pointer lg:cursor-default flex text-primary"
+                    className="font-semibold mb-2 cursor-pointer lg:cursor-default lg:pointer-events-none flex text-primary"
                     onClick={() => handleServiceDropdown("webapp")}
                   >
-                    <Globe className="text-primary" />{" "}
+                    <Globe className="text-primary" />
                     <span className="mx-2">WEB APPLICATIONS</span>
                   </h2>
                   <ul
@@ -102,7 +102,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default lg:pointer-events-none flex text-primary"
                     onClick={() => handleServiceDropdown("accounting")}
                   >
                     <Calculator className="text-primary" />{" "}
@@ -127,7 +127,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default lg:pointer-events-none flex text-primary"
                     onClick={() => handleServiceDropdown("va")}
                   >
                     <Headset />{" "}
@@ -164,7 +164,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem mb-3">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default lg:pointer-events-none flex text-primary"
                     onClick={() => handleServiceDropdown("lcss")}
                   >
                     <GraduationCap />{" "}
@@ -191,7 +191,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                 </div>
                 <div className="menuItem">
                   <h2
-                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default flex text-primary"
+                    className="font-semibold  mb-2 cursor-pointer lg:cursor-default lg:pointer-events-none flex text-primary"
                     onClick={() => handleServiceDropdown("webDev")}
                   >
                     <Globe className="text-primary" />{" "}

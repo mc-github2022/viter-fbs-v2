@@ -7,7 +7,7 @@ const WhyUsPartners = () => {
       <section className="partners py-20">
         <div className="customContainer">
           <p>Clients who trusted their</p>
-          <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+          <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
             growth with us.
           </h2>
           <ul className="flex flex-wrap justify-center gap-14 items-center">

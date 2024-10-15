@@ -35,7 +35,7 @@ const CareerPage = () => {
       <section className="career pt-40 pb-20">
         <div className="customContainer">
           <div className="text-center">
-            <h2 className="text-primary mb-8 text-[40px] font-semibold">
+            <h2 className="text-primary mb-8 text-[clamp(30px,5vw,40px)] font-semibold">
               Join our Team!
             </h2>
             <p className="w-[90%] m-auto mb-20">
