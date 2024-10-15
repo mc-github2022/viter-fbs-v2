@@ -1,5 +1,7 @@
 import { devNavUrl } from "../components/helpers/functions-general";
+import BookkeepingPage from "../components/pages/website/accountingSolution/bookkeeping/BookkeepingPage";
 import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
+import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
 import CareerPage from "../components/pages/website/career/CareerPage";
 import EventsAndAct from "../components/pages/website/events/EventsAndAct";
 import Home from "../components/pages/website/home/Home";
@@ -120,5 +122,13 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/business-registration`,
     element: <BusinessRegPage />,
+  },
+  {
+    path: `${devNavUrl}/compliance`,
+    element: <CompliancePage />,
+  },
+  {
+    path: `${devNavUrl}/bookkeeping`,
+    element: <BookkeepingPage />,
   },
 ];

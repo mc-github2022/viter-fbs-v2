@@ -2,10 +2,10 @@ import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
 
-const BusinessRegOverview = () => {
+const BookkeepingOverview = () => {
   return (
     <>
-      <section className="BusinessRegOverview py-20 ">
+      <section className="BookkeepingOverview py-20 ">
         <div className="customContainer">
           <p>{webAppOverview[0].subtitle}</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
@@ -72,4 +72,4 @@ const BusinessRegOverview = () => {
   );
 };
 
-export default BusinessRegOverview;
+export default BookkeepingOverview;
