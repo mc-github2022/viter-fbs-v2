@@ -92,7 +92,6 @@ const BannerSlider = () => {
     ],
   };
 
-  console.log(devBaseImgUrl);
   return (
     <Slider {...settings}>
       <div>
