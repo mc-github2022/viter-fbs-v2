@@ -39,7 +39,7 @@ export const insight = [
         </p>
       </div>
     ),
-    customCss: "col-span-2",
+    customCss: "md:col-span-2",
   },
   {
     postTitle: "How Virtual Assistants Can Boost You Productivity",

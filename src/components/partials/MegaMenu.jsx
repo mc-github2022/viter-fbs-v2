@@ -63,7 +63,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     className="font-semibold mb-2 cursor-pointer lg:cursor-default lg:pointer-events-none flex text-primary"
                     onClick={() => handleServiceDropdown("webapp")}
                   >
-                    <Globe className="text-primary" />{" "}
+                    <Globe className="text-primary" />
                     <span className="mx-2">WEB APPLICATIONS</span>
                   </h2>
                   <ul
