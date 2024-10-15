@@ -1,4 +1,5 @@
 import { devNavUrl } from "../components/helpers/functions-general";
+import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
 import CareerPage from "../components/pages/website/career/CareerPage";
 import EventsAndAct from "../components/pages/website/events/EventsAndAct";
 import Home from "../components/pages/website/home/Home";
@@ -115,5 +116,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/single-post`,
     element: <SingplePage />,
+  },
+  {
+    path: `${devNavUrl}/business-registration`,
+    element: <BusinessRegPage />,
   },
 ];
