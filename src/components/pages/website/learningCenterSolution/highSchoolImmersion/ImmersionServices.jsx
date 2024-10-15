@@ -6,11 +6,11 @@ const ImmersionServices = () => {
     <>
       <section className="ImmersionServices py-20">
         <div className="customContainer">
-          <div className="wrapper grid grid-cols-3">
+          <div className="wrapper md:flex md:flex-wrap lg:grid lg:grid-cols-3">
             <div className="webDEv">
               <div className="mb-10">
                 <p>STEM and ICT students can learn</p>
-                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Web Design & Development
                 </h3>
                 <p>SHS Work Immersion</p>
@@ -46,9 +46,9 @@ const ImmersionServices = () => {
               </ul>
             </div>
             <div className="accountingServices">
-              <div className="mb-10">
+              <div className=" my-10 md:my-10 lg:my-0">
                 <p>ABM students can learn</p>
-                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Accounting <br />
                   Processes
                 </h3>
@@ -87,9 +87,9 @@ const ImmersionServices = () => {
               </ul>
             </div>
             <div className="adminTasks">
-              <div className="mb-10">
+              <div className=" my-10 md:my-10 lg:my-0">
                 <p>HUMSS and GAS students can learn</p>
-                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Administrative <br />
                   Tasks
                 </h3>

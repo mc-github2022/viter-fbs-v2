@@ -19,12 +19,12 @@ const ServicePayrollPricing = () => {
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper md:grid md:grid-cols-2 gap-8 items-center">
+            <div className="wrapper md:grid md:grid-cols-1 gap-6 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg addShadow w-[350px] min-h-[520px] ${
+                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg min-h-[550px] addShadow ${
                       price.isActive
                         ? "bg-primary h-[500px]"
                         : "bg-customGray !text-dark"

@@ -6,7 +6,7 @@ const ImmersionPartners = () => {
       <section className="ImmersionPartners py-20">
         <div className="customContainer">
           <p>Our Partner</p>
-          <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+          <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
             educational institutions
           </h2>
           <ul className="flex flex-wrap justify-center gap-14 items-center">

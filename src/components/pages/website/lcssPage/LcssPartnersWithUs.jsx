@@ -9,12 +9,12 @@ const LcssPartnersWithUs = () => {
       <section className="partnersWithUs py-20 bg-customGray">
         <div className="customContainer">
           <p> We Offer on-thejob training for</p>
-          <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
+          <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
               effective skills acquisitions.
             </span>
           </h2>
-          <div className="wrapper grid grid-cols-2 gap-12">
+          <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
@@ -22,7 +22,7 @@ const LcssPartnersWithUs = () => {
                 className="mb-12"
                 alt=""
               />
-              <ul className="flex items-center gap-12">
+              <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <a
                     href="#"
@@ -41,15 +41,15 @@ const LcssPartnersWithUs = () => {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="mt-14">
               <ul>
                 <li className="flex items-start gap-4 text-dark mb-6">
                   <div className="flex gap-4 items-start">
                     <div>
-                      <FaRegCircleCheck className="circleCheck text-primary text-[30px] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
                     </div>
                     <div>
-                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         Work-Related Experience
                       </h3>
                       <p>
@@ -63,10 +63,10 @@ const LcssPartnersWithUs = () => {
                 <li className="flex items-start gap-4 text-dark mb-6">
                   <div className="flex gap-4 items-start">
                     <div>
-                      <FaRegCircleCheck className="circleCheck text-primary text-[30px] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
                     </div>
                     <div>
-                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         Expert-Led Training
                       </h3>
                       <p>
@@ -81,10 +81,10 @@ const LcssPartnersWithUs = () => {
                 <li className="flex items-start gap-4 text-dark">
                   <div className="flex gap-4 items-start">
                     <div>
-                      <FaRegCircleCheck className="circleCheck text-primary text-[30px] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
                     </div>
                     <div>
-                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-2xl mb-3">
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         Higher Employability
                       </h3>
                       <p>
