@@ -18,9 +18,9 @@ const WhyUsBanner = () => {
           }}
         >
           <div className="customContainer">
-            <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
-              <div className="text-left">
-                <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
+            <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[90vh] md:h-[70vh] transition-all w-full">
+              <div className="text-center lg:text-left">
+                <h2 className="text-[clamp(30px,4vw,45px)] leading-[1.1] mb-8 text-light font-light">
                   We are
                   <span className="text-light font-semibold inline-block ml-3 mr-3">
                     more than

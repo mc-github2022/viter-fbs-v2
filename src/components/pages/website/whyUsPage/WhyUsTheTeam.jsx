@@ -9,14 +9,14 @@ const WhyUsTheTeam = () => {
             <div className="flex items-center">
               <div>
                 <p className="text-light">We work with a</p>
-                <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+                <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
                   great team for extraordinary result.
                 </h2>
               </div>
             </div>
-            <div className="grid grid-cols-4  gap-10">
+            <div className="flex flex-wrap gap-10 place-content-center lg:grid lg:grid-cols-4 lg:gap-10">
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-2 rotate-[-50deg] w-[220px] ml-2">
                     <img
                       className="grayscale"
@@ -32,7 +32,7 @@ const WhyUsTheTeam = () => {
                 </div>
               </div>
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-[-10px] rotate-[-50deg] w-[230px] ml-4">
                     <img
                       className="grayscale"
@@ -48,7 +48,7 @@ const WhyUsTheTeam = () => {
                 </div>
               </div>
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-[-30px] left-[45px] rotate-[-50deg] w-[180px] ml-2">
                     <img
                       className="grayscale"
@@ -64,7 +64,7 @@ const WhyUsTheTeam = () => {
                 </div>
               </div>
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-2 left-[10px] rotate-[-50deg] w-[180px] ml-2">
                     <img
                       className="grayscale"
@@ -80,7 +80,7 @@ const WhyUsTheTeam = () => {
                 </div>
               </div>
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-[-30px] rotate-[-50deg] w-[220px] ml-[50px]">
                     <img
                       className="grayscale"
@@ -96,7 +96,7 @@ const WhyUsTheTeam = () => {
                 </div>
               </div>
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-[50px]">
                     <img
                       className="grayscale"
@@ -112,7 +112,7 @@ const WhyUsTheTeam = () => {
                 </div>
               </div>
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-2">
                     <img
                       className="grayscale"
@@ -128,7 +128,7 @@ const WhyUsTheTeam = () => {
                 </div>
               </div>
               <div className="theTeamItem relative">
-                <div className="thePill h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
+                <div className="thePill h-[230px] lg:h-[350px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-12">
                     <img
                       className="grayscale"
