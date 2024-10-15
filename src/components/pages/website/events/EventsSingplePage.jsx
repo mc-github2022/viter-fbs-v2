@@ -6,14 +6,15 @@ import { useParams } from "react-router-dom";
 import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import { insight } from "../home/data";
+import { eventsAndAct } from "./data";
 
-const SingplePage = () => {
+const EventsSingplePage = () => {
   const { slug } = useParams();
 
   console.log(slug);
 
   const getInsights = () => {
-    return insight.filter((item) => item.postSlug === slug)[0];
+    return eventsAndAct.filter((item) => item.postSlug === slug)[0];
   };
 
   useEffect(() => {
@@ -147,4 +148,4 @@ const SingplePage = () => {
   );
 };
 
-export default SingplePage;
+export default EventsSingplePage;
