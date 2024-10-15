@@ -116,18 +116,13 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                     [&>li]:lg:!mb-2`}
                   >
-<<<<<<< HEAD
-                    <li>Business Registration</li>
-                    <li>Bookkeeping / Compliance</li>
-=======
                     <li>
                       <Link to="/business-registration">
                         Business Registration
                       </Link>
                     </li>
-                    <li>Compliance</li>
-                    <li>Bookkeeping</li>
->>>>>>> b4d1b37b660cea883c58b8f88d41e6cd39452047
+
+                    <li>Bookkeeping / Compliance</li>
                   </ul>
                 </div>
                 <div className="menuItem mb-3">

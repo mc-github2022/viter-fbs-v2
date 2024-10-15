@@ -114,7 +114,6 @@ const ConStudPartnersSay = () => {
           </div>
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
-<<<<<<< HEAD
               <div className="h-[425px]">
                 <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
                   <div className="theMessage  relative">
@@ -157,12 +156,9 @@ const ConStudPartnersSay = () => {
                   />
                 </div>
               </div>
-              <div className="h-[425px]">
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
-=======
+
               <div className="md:h-[425px]">
                 <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative ">
->>>>>>> b4d1b37b660cea883c58b8f88d41e6cd39452047
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -172,7 +168,7 @@ const ConStudPartnersSay = () => {
                         alt=""
                       />
                     </div>
-<<<<<<< HEAD
+
                     <p className="relative z-10 italic mb-4">
                       After graduating 5 years ago, I didn't have the chance to
                       apply my programming skills in my career. So, I decided to
@@ -181,15 +177,6 @@ const ConStudPartnersSay = () => {
                       web development, including HTML/CSS, SASS, Tailwind,
                       Figma, WordPress, and JavaScript, which I have already
                       been using in my freelancing career.
-=======
-                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
-                      Frontline Business Solution has been one of STI San
-                      Pablo's most trusted partners for several years. We at STI
-                      are truly grateful for the exceptional knowledge and
-                      experience FBS has provided to our On-the-Job trainee
-                      students in IT and Engineering, as well as for the
-                      kindness and support shown coming from the people of FBS.
->>>>>>> b4d1b37b660cea883c58b8f88d41e6cd39452047
                     </p>
                     <div className="logoAndName flex items-center gap-3">
                       <img
@@ -204,7 +191,7 @@ const ConStudPartnersSay = () => {
                       </div>
                     </div>
                   </div>
-<<<<<<< HEAD
+
                   <img
                     // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                     src={`../../public/img/kevinroy-nativo.png`}
@@ -213,22 +200,9 @@ const ConStudPartnersSay = () => {
                   />
                 </div>
               </div>
-              <div className="h-[425px]">
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
-=======
-                  <div className="hidden lg:block">
-                    <img
-                      // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                      src={`../../public/img/olivia-almarez.png`}
-                      className="absolute bottom-0 w-[300px] right-8"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
+
               <div className="md:h-[425px]">
                 <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
->>>>>>> b4d1b37b660cea883c58b8f88d41e6cd39452047
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -238,8 +212,8 @@ const ConStudPartnersSay = () => {
                         alt=""
                       />
                     </div>
-<<<<<<< HEAD
-                    <p className="relative z-10 italic mb-4">
+
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
                       The immersion program was incredibly beneficial for me. I
                       loved diving into front-end web development, learning
                       tools like Figma for prototyping and web designing, and
@@ -247,15 +221,6 @@ const ConStudPartnersSay = () => {
                       experience with WordPress really boosted my confidence.
                       I’m thankful for the supportive instructors and the skills
                       I gained for my career!
-=======
-                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
-                      My experience at Frontline Business Solution has truly
-                      been a great journey. I gained a wealth of knowledge in
-                      front-end web design, equipping me with essential skills
-                      in HTML, CSS, and JavaScript. Most importantly, the people
-                      there are truly amazing and passionate about their work.
-                      To sum it up, my experience at FBS was fun!
->>>>>>> b4d1b37b660cea883c58b8f88d41e6cd39452047
                     </p>
                     <div className="logoAndName flex items-center gap-3">
                       <img
@@ -270,23 +235,15 @@ const ConStudPartnersSay = () => {
                       </div>
                     </div>
                   </div>
-<<<<<<< HEAD
-                  <img
-                    // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                    src={`../../public/img/jake-gamaro.png`}
-                    className="absolute bottom-0 w-[300px] right-8"
-                    alt=""
-                  />
-=======
+
                   <div className="hidden lg:block">
                     <img
                       // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                      src={`../../public/img/ariel-ferrer.png`}
+                      src={`../../public/img/jake-gamaro.png`}
                       className="absolute bottom-0 w-[300px] right-8"
                       alt=""
                     />
                   </div>
->>>>>>> b4d1b37b660cea883c58b8f88d41e6cd39452047
                 </div>
               </div>
             </Slider>
