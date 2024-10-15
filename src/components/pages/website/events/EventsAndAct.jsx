@@ -29,7 +29,7 @@ function SampleNextArrow(props) {
       }}
       onClick={onClick}
     >
-      <IoIosArrowForward />
+      <IoIosArrowForward className="text-[2rem]" />
     </div>
   );
 }
@@ -56,7 +56,7 @@ function SamplePrevArrow(props) {
       }}
       onClick={onClick}
     >
-      <IoIosArrowBack />
+      <IoIosArrowBack className="text-[2rem]" />
     </div>
   );
 }
