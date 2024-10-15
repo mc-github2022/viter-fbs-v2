@@ -104,6 +104,55 @@ const LcssPartnersSay = () => {
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
               <div className="h-[425px]">
+                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+                  <div className="theMessage  relative">
+                    <div className="absolute top-[-30px] left-[-40px]">
+                      <img
+                        // src={`${devBaseImgUrl}/quote-white.png`}
+                        src={`../../public/img//quote-white.png`}
+                        className="w-[80px]"
+                        alt=""
+                      />
+                    </div>
+                    <p className="text-sm relative z-10 italic mb-4">
+                      A successful internship may be defined as one that
+                      provides the following: meaningful and relevant work,
+                      formal and informal training, social opportunities to
+                      build personal skills and relationships, and continuous
+                      connections even after the internship has ended. The
+                      Information Technology program of De La Salle Lipa is
+                      fortunate to have found all these with the internship
+                      program of Frontline Business Solutions. Our student
+                      interns had fulfilling internships with FBS, with their
+                      holistic approach in honing both their technical.
+                      leadership, and personal skills, and making them more
+                      ready to face the exciting world of IT. We look forward to
+                      partnering with FBS to develop and nurture future-ready IT
+                      professionals.
+                    </p>
+                    <div className="logoAndName flex items-center gap-3">
+                      <img
+                        // src={`${devBaseImgUrl}/sti.png`}
+                        className="w-[80px]"
+                        src={`../../public/img/DLSL_Official_logo.png`}
+                        alt=""
+                      />
+                      <div className="leading-[1] italic">
+                        <p>Mr. Emilio Manuel Macaso</p>
+                        <p className="text-sm">IT Faculty, La Salle Lipa</p>
+                      </div>
+                    </div>
+                  </div>
+                  <img
+                    // src={`${devBaseImgUrl}/ariel-ferrer.png`}
+                    src={`../../public/img/emilio-macaso.png`}
+                    className="absolute bottom-0 w-[300px] right-8"
+                    alt=""
+                  />
+                </div>
+              </div>
+
+              <div className="h-[425px]">
                 <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
@@ -154,13 +203,18 @@ const LcssPartnersSay = () => {
                         alt=""
                       />
                     </div>
-                    <p className="relative z-10 italic mb-4">
-                      My experience at Frontline Business Solution has truly
-                      been a great journey. I gained a wealth of knowledge in
-                      front-end web design, equipping me with essential skills
-                      in HTML, CSS, and JavaScript. Most importantly, the people
-                      there are truly amazing and passionate about their work.
-                      To sum it up, my experience at FBS was fun!
+                    <p className="text-sm relative z-10 italic mb-4">
+                      Frontline Business Solutions has demonstrated a
+                      commendable commitment to fostering the professional
+                      growth of our students through their intensive Internship
+                      programs. The hands-on experience provided during the
+                      training is invaluable, allowing students to apply
+                      theoretical knowledge in real-world settings. Moreover,
+                      Frontline offers high-end facilities equipped with the
+                      latest technology, ensuring that interns are well-prepared
+                      to meet industry standards. We appreciate Frontline
+                      Business Solutions for their partnership and commitment to
+                      the development of our students.
                     </p>
                     <div className="logoAndName flex items-center gap-3">
                       <img
@@ -170,16 +224,59 @@ const LcssPartnersSay = () => {
                         alt=""
                       />
                       <div className="leading-[1] italic">
-                        <p>Ms. Ariel Angeni Ferrer</p>
+                        <p>Mr. Joesua R. Manzanero</p>
                         <p className="text-sm">
-                          BS Computer Engineering Graduate
+                          Faculty, LSPU- San Pablo City Campus Program
+                          Coordinator, BS in Information Technology OJT
+                          Coordinator, College of Computer Studies
                         </p>
                       </div>
                     </div>
                   </div>
                   <img
                     // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                    src={`../../public/img/ariel-ferrer.png`}
+                    src={`../../public/img/joesua-manzanero.png`}
+                    className="absolute bottom-0 w-[300px] right-8"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className="h-[425px]">
+                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
+                  <div className="theMessage  relative">
+                    <div className="absolute top-[-30px] left-[-40px]">
+                      <img
+                        // src={`${devBaseImgUrl}/quote-white.png`}
+                        src={`../../public/img//quote-white.png`}
+                        className="w-[80px]"
+                        alt=""
+                      />
+                    </div>
+                    <p className="relative z-10 italic mb-4">
+                      FBS' internship program provided great opportunity for
+                      students to experience actual industry-related tasks which
+                      greatly honed their skills. This also enhanced their
+                      professional capabilities and served as a valuable
+                      foundation for their future career.
+                    </p>
+                    <div className="logoAndName flex items-center gap-3">
+                      <img
+                        // src={`${devBaseImgUrl}/sti.png`}
+                        className="w-[80px]"
+                        src={`../../public/img/sti.png`}
+                        alt=""
+                      />
+                      <div className="leading-[1] italic">
+                        <p>Mrs. Angelou Almare-Medina</p>
+                        <p className="text-sm">
+                          Program Head, Information Technology
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <img
+                    // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                    src={`../../public/img/angelou-almare-medina.png`}
                     className="absolute bottom-0 w-[300px] right-8"
                     alt=""
                   />

@@ -102,46 +102,6 @@ const ConStudPartnersSay = () => {
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
               <div className="h-[425px]">
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
-                  <div className="theMessage  relative">
-                    <div className="absolute top-[-30px] left-[-40px]">
-                      <img
-                        // src={`${devBaseImgUrl}/quote-white.png`}
-                        src={`../../public/img//quote-white.png`}
-                        className="w-[80px]"
-                        alt=""
-                      />
-                    </div>
-                    <p className="relative z-10 italic mb-4">
-                      Frontline Business Solution has been one of STI San
-                      Pablo's most trusted partners for several years. We at STI
-                      are truly grateful for the exceptional knowledge and
-                      experience FBS has provided to our On-the-Job trainee
-                      students in IT and Engineering, as well as for the
-                      kindness and support shown coming from the people of FBS.
-                    </p>
-                    <div className="logoAndName flex items-center gap-3">
-                      <img
-                        // src={`${devBaseImgUrl}/sti.png`}
-                        className="w-[80px]"
-                        src={`../../public/img/sti.png`}
-                        alt=""
-                      />
-                      <div className="leading-[1] italic">
-                        <p>Ms. Olivia Almarez</p>
-                        <p className="text-sm">OJT Coordinator</p>
-                      </div>
-                    </div>
-                  </div>
-                  <img
-                    // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                    src={`../../public/img/olivia-almarez.png`}
-                    className="absolute bottom-0 w-[300px] right-8"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="h-[425px]">
                 <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
@@ -164,7 +124,7 @@ const ConStudPartnersSay = () => {
                       <img
                         // src={`${devBaseImgUrl}/sti.png`}
                         className="w-[80px]"
-                        src={`../../public/img/lspu.png`}
+                        src={`../../public/img/plsp.png`}
                         alt=""
                       />
                       <div className="leading-[1] italic">
@@ -178,6 +138,88 @@ const ConStudPartnersSay = () => {
                   <img
                     // src={`${devBaseImgUrl}/ariel-ferrer.png`}
                     src={`../../public/img/ariel-ferrer.png`}
+                    className="absolute bottom-0 w-[300px] right-8"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className="h-[425px]">
+                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
+                  <div className="theMessage  relative">
+                    <div className="absolute top-[-30px] left-[-40px]">
+                      <img
+                        // src={`${devBaseImgUrl}/quote-white.png`}
+                        src={`../../public/img//quote-white.png`}
+                        className="w-[80px]"
+                        alt=""
+                      />
+                    </div>
+                    <p className="relative z-10 italic mb-4">
+                      After graduating 5 years ago, I didn't have the chance to
+                      apply my programming skills in my career. So, I decided to
+                      further my studies at FBS. Through FBS, I was able to
+                      refresh my existing knowledge and acquire new skills in
+                      web development, including HTML/CSS, SASS, Tailwind,
+                      Figma, WordPress, and JavaScript, which I have already
+                      been using in my freelancing career.
+                    </p>
+                    <div className="logoAndName flex items-center gap-3">
+                      <img
+                        // src={`${devBaseImgUrl}/sti.png`}
+                        className="w-[80px]"
+                        src={`../../public/img/aclc.png`}
+                        alt=""
+                      />
+                      <div className="leading-[1] italic">
+                        <p>Mr. Kevin Roy N. Oreña</p>
+                        <p className="text-sm">Freelancer</p>
+                      </div>
+                    </div>
+                  </div>
+                  <img
+                    // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                    src={`../../public/img/kevinroy-nativo.png`}
+                    className="absolute bottom-0 w-[300px] right-8"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className="h-[425px]">
+                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
+                  <div className="theMessage  relative">
+                    <div className="absolute top-[-30px] left-[-40px]">
+                      <img
+                        // src={`${devBaseImgUrl}/quote-white.png`}
+                        src={`../../public/img//quote-white.png`}
+                        className="w-[80px]"
+                        alt=""
+                      />
+                    </div>
+                    <p className="relative z-10 italic mb-4">
+                      The immersion program was incredibly beneficial for me. I
+                      loved diving into front-end web development, learning
+                      tools like Figma for prototyping and web designing, and
+                      exploring CSS with SASS and Tailwind. Getting hands-on
+                      experience with WordPress really boosted my confidence.
+                      I’m thankful for the supportive instructors and the skills
+                      I gained for my career!
+                    </p>
+                    <div className="logoAndName flex items-center gap-3">
+                      <img
+                        // src={`${devBaseImgUrl}/sti.png`}
+                        className="w-[80px]"
+                        src={`../../public/img/lspu.png`}
+                        alt=""
+                      />
+                      <div className="leading-[1] italic">
+                        <p>Mr. Jake Ansel Gamaro</p>
+                        <p className="text-sm">Freelancer</p>
+                      </div>
+                    </div>
+                  </div>
+                  <img
+                    // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                    src={`../../public/img/jake-gamaro.png`}
                     className="absolute bottom-0 w-[300px] right-8"
                     alt=""
                   />
