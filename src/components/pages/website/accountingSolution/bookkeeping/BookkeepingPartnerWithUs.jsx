@@ -2,10 +2,10 @@ import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { serviceInclusion } from "./data";
 
-const VaAdminSolutionPartnerWithUs = () => {
+const BookkeepingPartnerWithUs = () => {
   return (
     <>
-      <section className="lcssApplyNow py-20 relative overflow-hidden mb-20 ">
+      <section className="BookkeepingPartnerWithUs py-20 relative overflow-hidden mb-20 ">
         <div className="customContainer relative">
           <div className="wrapper grid grid-cols-[_1fr_1.5fr] p-20">
             <div></div>
@@ -45,4 +45,4 @@ const VaAdminSolutionPartnerWithUs = () => {
   );
 };
 
-export default VaAdminSolutionPartnerWithUs;
+export default BookkeepingPartnerWithUs;
