@@ -15,7 +15,7 @@ const LcssVidTestimonials = () => {
               Trainees Work Experience
             </h3>
           </div>
-          <div className="wrapper grid grid-cols-3 gap-6">
+          <div className="wrapper flex flex-col md:flex lg:grid lg:grid-cols-3 gap-6">
             <div className="vidItem addShadow rounded-xl z-[2]">
               <iframe
                 id="player"
