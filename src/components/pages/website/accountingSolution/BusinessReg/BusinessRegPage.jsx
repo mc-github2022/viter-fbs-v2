@@ -16,8 +16,8 @@ const BusinessRegPage = () => {
       <BusinessRegOverview />
       <BusinessRegServiceList />
       <BusinessRegPricing />
-      <BusinessRegPartners />
-      <BusinessRegPartnersSay />
+      {/* <BusinessRegPartners />
+      <BusinessRegPartnersSay /> */}
       <Footer />
     </>
   );
