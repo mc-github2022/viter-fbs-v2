@@ -124,7 +124,7 @@ const Header = () => {
               onClick={handdleToggle}
               className={`${
                 toggleNav ? "active" : ""
-              } toggleNav block md:hidden relative w-[20px] h-[20px] ml-auto`}
+              } toggleNav block md:hidden relative w-[20px] h-[20px] ml-auto z-[9999]`}
             >
               <span></span>
               <span></span>

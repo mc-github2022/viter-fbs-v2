@@ -8,18 +8,18 @@ const MissionVission = () => {
     <>
       <section className="missionVission py-20 bg-customGray">
         <div className="customContainer">
-          <div className="w-[50%] mb-4">
+          <div className="lg:w-[50%] mb-4">
             <p>
               Our mission, vission, and core values are the driving forces
               behind the
             </p>
-            <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
+            <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
               <span className="font-semibold text-primary">
                 exceptional web, virtual, and learning solutions
               </span>
             </h2>
           </div>
-          <div className="wrapper grid grid-cols-3 gap-5">
+          <div className="wrapper flex flex-col lg:grid lg:grid-cols-3 gap-5">
             <div className="gridItem grid place-items-start bg-light p-10">
               <div className="text-center">
                 <LuEye className="text-[50px] mx-auto text-secondary mb-2" />
