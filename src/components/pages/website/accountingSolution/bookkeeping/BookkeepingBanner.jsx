@@ -1,11 +1,11 @@
 import React from "react";
 import { banner } from "./data";
 
-const BusinessRegBanner = () => {
+const BookkeepingBanner = () => {
   return (
     <>
       <section
-        id="BusinessRegBanner"
+        id="BookkeepingBanner"
         className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/VABG.jpg)`,
@@ -36,4 +36,4 @@ const BusinessRegBanner = () => {
   );
 };
 
-export default BusinessRegBanner;
+export default BookkeepingBanner;

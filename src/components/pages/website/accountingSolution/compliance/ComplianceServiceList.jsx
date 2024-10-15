@@ -1,23 +1,17 @@
-import React from "react";
 import {
   BriefcaseBusiness,
-  Headset,
   FolderSearch,
   HandCoins,
+  Headset,
 } from "lucide-react";
+import React from "react";
 
-import {
-  MdInfoOutline,
-  MdOutlineRocketLaunch,
-  MdOutlineSupportAgent,
-  MdOutlineMarkEmailRead,
-} from "react-icons/md";
-import { BsDatabaseCheck, BsClipboard2Data } from "react-icons/bs";
+import { BsDatabaseCheck } from "react-icons/bs";
 import { IoFileTrayStackedOutline } from "react-icons/io5";
-const BusinessRegServiceList = () => {
+const ComplianceServiceList = () => {
   return (
     <>
-      <section className="BusinessRegServiceList pt-20 pb-40">
+      <section className="ComplianceServiceList pt-20 pb-40">
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">
@@ -106,4 +100,4 @@ const BusinessRegServiceList = () => {
   );
 };
 
-export default BusinessRegServiceList;
+export default ComplianceServiceList;
