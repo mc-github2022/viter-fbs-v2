@@ -81,7 +81,7 @@ const Services = () => {
               </a>
             </div>
           </div>
-          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
+          <div className="serviceItem z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
             <div>
               <div className="serviceName  flex items-center gap-8 mb-6">
                 <SkillDevSvg />

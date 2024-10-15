@@ -15,8 +15,8 @@ const LcssVidTestimonials = () => {
               Trainees Work Experience
             </h3>
           </div>
-          <div className="wrapper flex flex-col md:flex lg:grid lg:grid-cols-3 gap-6">
-            <div className="vidItem addShadow rounded-xl z-[2]">
+          <div className="wrapper flex flex-wrap place-content-center lg:grid lg:grid-cols-3 gap-6">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -49,7 +49,7 @@ const LcssVidTestimonials = () => {
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -82,7 +82,7 @@ const LcssVidTestimonials = () => {
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
