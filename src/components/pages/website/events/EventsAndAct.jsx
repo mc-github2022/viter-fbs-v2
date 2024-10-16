@@ -125,7 +125,7 @@ const EventsAndAct = () => {
         <div className="customContainer">
           <div className="theTitle mb-20">
             <p>Through our</p>
-            <h2 className="text-3xl font-semibold text-primary">
+            <h2 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary">
               events and activities
             </h2>
             <p>
@@ -147,7 +147,7 @@ const EventsAndAct = () => {
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                           backgroundImage: `url(../../public/img/${post.postImage})`,
                         }}
-                        className={`blogItem bg-center bg-cover ${post.customCss2} flex items-end relative  rounded-none md:rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem bg-center bg-cover ${post.customCss2} flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
@@ -161,7 +161,7 @@ const EventsAndAct = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block md:rounded-bl-xl md:rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[100px] md:h-[200px] w-full absolute bottom-0 block md:rounded-bl-xl md:rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>

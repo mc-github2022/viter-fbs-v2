@@ -104,7 +104,7 @@ const BannerSlider = () => {
           }}
         >
           <div className="customContainer">
-            <div className="wrapper flex place-items-center h-[90vh] md:h-[90vh] transition-all w-full">
+            <div className="wrapper flex place-items-center min-h-[90vh] md:h-[90vh] transition-all w-full">
               <div className="mx-auto w-full md:w-[865px] text-center">
                 <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
                   Your Trusted Christian Partner in Managed Services

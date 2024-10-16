@@ -8,7 +8,7 @@ const Insights = () => {
     <>
       <section className="insights py-24 bg-customGray">
         <div className="customContainer p-0 md:px-10">
-          <h3 className="text-[45px] font-semibold  leading-[1.1] mb-24  text-dark text-center">
+          <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24  text-dark text-center">
             Industry Insights
           </h3>
           <div className="wrapper  lg:grid lg:grid-cols-[_1fr_3fr] gap-6">
