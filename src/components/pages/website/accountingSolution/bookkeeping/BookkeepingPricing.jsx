@@ -14,6 +14,35 @@ const BookkeepingPricing = () => {
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Suitable Pricing Plans
             </h3>
+            <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4 text-light">
+              <h3>Scope of Services</h3>
+              <li>
+                <FaCheckCircle className="text-light" />
+                Compliance For:
+                <ul>
+                  <li>BIR Compliance</li>
+                  <li>Bookkeeping</li>
+                  <li>Mandatory Government Deductions & Contributions</li>
+                </ul>
+              </li>
+              <li>
+                <FaCheckCircle className="text-light" />
+                Monthly
+              </li>
+              <li>
+                <FaCheckCircle className="text-light" />
+                Mandatory Government Deductions & Contributions (SSS, Pag-IBIG,
+                PhilHealth, BIR)
+              </li>
+              <li>
+                <FaCheckCircle className="text-light" />
+                Financial Reports
+              </li>
+              <li>
+                <FaCheckCircle className="text-light" />
+                filling of BIR Tax Returns
+              </li>
+            </ul>
           </div>
           <div className="grid place-items-center">
             <div

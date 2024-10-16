@@ -1,12 +1,10 @@
 import React from "react";
-import { FiTag } from "react-icons/fi";
-import { IoCalendarClearOutline } from "react-icons/io5";
-import Header from "../../../partials/Header";
-import Footer from "../../../partials/Footer";
-import { eventsAndAct } from "./data";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Slider from "react-slick/lib/slider";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Footer from "../../../partials/Footer";
+import Header from "../../../partials/Header";
+import { eventsAndAct } from "./data";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -89,7 +87,7 @@ const EventsAndAct = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "#ac1f72",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -161,7 +159,7 @@ const EventsAndAct = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[100px] md:h-[200px] w-full absolute bottom-0 block md:rounded-bl-xl md:rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[100px] md:h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>
@@ -186,7 +184,7 @@ const EventsAndAct = () => {
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                           backgroundImage: `url(../../public/img/${post.postImage})`,
                         }}
-                        className={`blogItem mx-2 bg-center bg-cover ${post.customCss2} flex items-end relative  rounded-none md:rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem mx-2 bg-center bg-cover ${post.customCss2} flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
@@ -200,7 +198,7 @@ const EventsAndAct = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block md:rounded-bl-xl md:rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>

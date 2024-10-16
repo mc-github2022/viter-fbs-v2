@@ -1,5 +1,4 @@
 import React from "react";
-import { RiDoubleQuotesL } from "react-icons/ri";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const Testimonials = () => {

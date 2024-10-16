@@ -81,7 +81,7 @@ export const insight = [
         </p>
       </div>
     ),
-    customCss: "px-4",
+    customCss: "px-4 md:px-0",
   },
   {
     postTitle: "Skills Requirement for Fresh Graduates",
@@ -123,6 +123,6 @@ export const insight = [
         </p>
       </div>
     ),
-    customCss: "px-4",
+    customCss: "px-4 md:px-0",
   },
 ];
