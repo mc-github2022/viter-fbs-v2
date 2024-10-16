@@ -14,10 +14,10 @@ const BookkeepingPage = () => {
       <Header />
       <BookkeepingBanner />
       <BookkeepingOverview />
-      <BookkeepingServiceList />
+      {/* <BookkeepingServiceList /> */}
       <BookkeepingPricing />
-      <BookkeepingPartners />
-      <BookkeepingPartnersSay />
+      {/* <BookkeepingPartners />
+      <BookkeepingPartnersSay /> */}
       <Footer />
     </>
   );
