@@ -129,13 +129,13 @@ const ServiceOnlineDonationPartnersSay = () => {
                             alt=""
                           />
                         </div>
-                        <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
+                        <p className="relative z-10 italic mb-8 min-h-[260px] md:min-h-0">
                           {testimonial.clientMessage}
                         </p>
                         <div className="logoAndName flex items-center gap-3">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
-                            className="w-[80px]"
+                            className="w-[100px]"
                             src={`../../public/img/${testimonial.clientLogo}`}
                             alt=""
                           />

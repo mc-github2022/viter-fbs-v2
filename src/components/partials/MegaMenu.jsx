@@ -121,8 +121,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                         Business Registration
                       </Link>
                     </li>
-
-                    <li>Bookkeeping / Compliance</li>
+                    <li>
+                      <Link to="/bookkeeping">Bookkeeping / Compliance</Link>
+                    </li>
                   </ul>
                 </div>
                 <div className="menuItem mb-3">

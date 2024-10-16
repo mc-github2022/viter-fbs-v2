@@ -165,4 +165,12 @@ export const clientSays = [
     clientLogo: "ftc-logo.png",
     clientProfilePic: "judea-delos-santos.png",
   },
+  {
+    clientName: "Bethay P. Acoba",
+    clientDesc: "Donor Communications and Care Coordinator",
+    clientMessage:
+      "The online donation platform that FBS developed has enhanced our website. The process is straightforward and user-friendly, making it easy for our partners and friends from around the world to support our mission. I couldn't be happier with the results! ",
+    clientLogo: "logo-pfm.png",
+    clientProfilePic: "bethany-acoba.png",
+  },
 ];
