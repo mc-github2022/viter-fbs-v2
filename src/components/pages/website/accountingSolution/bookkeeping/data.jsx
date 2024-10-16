@@ -2,13 +2,13 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Boost your business efficiency with our",
-    bannerTitleBoldText: "Administrative Assistance",
+    bannerTitle: "Keep Your Business",
+    bannerTitleBoldText: "Compliant and Financially Organized",
     bannerTextDesc:
-      "Our Virtual Assistance Services provide reliable and efficient administrative support tailored to your needs. From managing schedules and coordinating communication to handling data, organizing documents, and supporting financial tasks, we ensure your daily operations run smoothly. Whether you need secretarial assistance, executive support, or help with project coordination, our team is here to optimize your workflow and free up your time for what matters most.",
-    bannerBtnText: "PARTNER WITH US",
+      "Our bookkeeping and business compliance services ensure hassle-free tax filings, accurate financial reporting, and adherence to government regulations. Choose from tailored packages designed to meet the needs of startups, small businesses, and corporations, and stay on top of your financial obligations with confidence.",
+    bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "VABG.jpg",
+    bannerImage: "bookkeeping-bg.jpg",
   },
 ];
 
@@ -34,19 +34,19 @@ export const sectionPartnersLogos = [
 export const webAppOverview = [
   {
     subtitle: "Here's why we're the",
-    mainTitle: "right choice for your VA needs.",
-    webAppImage: "vaOverviewImage.jpg",
+    mainTitle: "right choice for your Bookkeeping & Business Compliance needs.",
+    webAppImage: "bookkeeping-img.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Enhanced Efficiency and Productivity",
+    overviewAtitle: "Comprehensive Compliance Management",
     overviewAtext:
-      "We handle routine tasks like data entry, calendar management, and email organization, freeing up your time to focus on core business activities.",
-    overviewBtitle: "Comprehensive Support Tailored to Your Needs",
+      "Our services ensure you stay compliant with all regulatory requirements, including BIR tax filings, government-mandated contributions (SSS, Pag-IBIG, PhilHealth), and business permit renewals.",
+    overviewBtitle: "Flexible Packages for All Business Sizes",
     overviewBtext:
-      "Our services cover everything from executive assistance and personal tasks to data management and event coordination, offering solutions that fit your specific needs.",
-    overviewCtitle: "Cost-Effective and Scalable Solutions",
+      "We offer tailored packages for startups, small businesses, and corporations, with pricing based on your invoice volume and revenue. Choose the level of support that fits your needs, from basic bookkeeping to premium compliance services.",
+    overviewCtitle: "Accurate Financial Reporting",
     overviewCtext:
-      "Enjoy flexible support without the costs of full-time staff. Our services can scale with your workload, ensuring you pay only for what you need.",
+      "Receive regular, detailed financial reports that provide a clear overview of your business's financial health, helping you make informed decisions while staying up-to-date with tax obligations.",
   },
 ];
 
