@@ -33,7 +33,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="flex items-center gap-3 font-normal sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>
@@ -54,7 +54,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>
@@ -75,7 +75,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>
@@ -96,7 +96,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>

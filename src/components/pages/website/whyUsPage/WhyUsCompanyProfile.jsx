@@ -51,7 +51,7 @@ const WhyUsCompanyProfile = () => {
                 </li>
               </ul>
             </div>
-            <div className="mt-14">
+            <div className="mt-14 lg:mt-0">
               <ul>
                 <li className="flex items-start gap-4 text-dark mb-8">
                   <div className="flex gap-4 items-start">

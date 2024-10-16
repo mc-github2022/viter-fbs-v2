@@ -17,7 +17,7 @@ function SampleNextArrow(props) {
         color: "white",
         top: "50%",
         transform: "translateY(-50%)",
-        right: "-5%",
+        right: "-20px",
         fontSize: "3rem",
         cursor: "pointer",
         background: "#ac1f72",
@@ -43,7 +43,7 @@ function SamplePrevArrow(props) {
         color: "white",
         top: "50%",
         transform: "translateY(-50%)",
-        left: "-5%",
+        left: "-20px",
         fontSize: "3rem",
         zIndex: "1",
         cursor: "pointer",
@@ -63,7 +63,7 @@ function SamplePrevArrow(props) {
 
 const EventsAndAct = () => {
   var EventsSliderSettings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -99,10 +99,21 @@ const EventsAndAct = () => {
       {
         breakpoint: 1086,
         settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 760,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           nextArrow: "",
           prevArrow: "",
+          dots: true,
         },
       },
     ],
@@ -114,7 +125,7 @@ const EventsAndAct = () => {
         <div className="customContainer">
           <div className="theTitle mb-20">
             <p>Through our</p>
-            <h2 className="text-3xl font-semibold text-primary">
+            <h2 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary">
               events and activities
             </h2>
             <p>
@@ -136,7 +147,7 @@ const EventsAndAct = () => {
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                           backgroundImage: `url(../../public/img/${post.postImage})`,
                         }}
-                        className={`blogItem bg-center bg-cover ${post.customCss2} flex items-end relative  rounded-none md:rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem bg-center bg-cover ${post.customCss2} flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
@@ -150,7 +161,7 @@ const EventsAndAct = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block md:rounded-bl-xl md:rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[100px] md:h-[200px] w-full absolute bottom-0 block md:rounded-bl-xl md:rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>

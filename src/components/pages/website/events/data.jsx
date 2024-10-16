@@ -83,7 +83,7 @@ export const eventsAndAct = [
       </div>
     ),
     customCss: "",
-    customCss2: "h-full",
+    customCss2: "h-[267px]",
   },
   {
     postTitle: "Events Skills Requirement for Fresh Graduates",
@@ -126,7 +126,7 @@ export const eventsAndAct = [
       </div>
     ),
     customCss: "",
-    customCss2: "h-full",
+    customCss2: "h-[267px]",
   },
   {
     postTitle: "asdasdEvents Skills Requirement for Fresh Graduates",
