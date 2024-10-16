@@ -86,7 +86,7 @@ const Header = () => {
                   <ul
                     className={`${
                       toggleWhyUs
-                        ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:!border-b-1 [&>li]:!border-[red] lg:[&>li]:my-2 py-0  !top-12 pl-20 md:pl-[20px] transition-all md:!bg-light"
+                        ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:my-2 lg:[&>li]:my-2 py-0 md:p-[20px]  !top-12 pl-20 md:pl-[20px] transition-all md:!bg-light"
                         : "hidden"
                     } left-0  text-sm p-5    md:rounded-bl-xl md:rounded-br-xl`}
                   >
