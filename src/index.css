@@ -140,6 +140,9 @@
   .accordionContent {
     @apply bg-customGray;
   }
+  .slick-slider {
+    padding: 20px !important;
+  }
 }
 
 @media screen and (max-width: 1366px) {
