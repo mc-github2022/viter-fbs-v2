@@ -14,7 +14,7 @@ const BusinessRegPage = () => {
       <Header />
       <BusinessRegBanner />
       <BusinessRegOverview />
-      <BusinessRegServiceList />
+      {/* <BusinessRegServiceList /> */}
       <BusinessRegPricing />
       {/* <BusinessRegPartners />
       <BusinessRegPartnersSay /> */}

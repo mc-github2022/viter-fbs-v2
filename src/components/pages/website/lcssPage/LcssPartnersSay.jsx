@@ -209,7 +209,7 @@ const LcssPartnersSay = () => {
               </div>
               <div className="md:h-[425px]">
                 <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
-                  <div className="theMessage  relative">
+                  <div className="theMessage  relative text-sm">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
                         // src={`${devBaseImgUrl}/quote-white.png`}
@@ -219,12 +219,19 @@ const LcssPartnersSay = () => {
                       />
                     </div>
                     <p className="relative z-10 italic mb-4">
-                      My experience at Frontline Business Solution has truly
-                      been a great journey. I gained a wealth of knowledge in
-                      front-end web design, equipping me with essential skills
-                      in HTML, CSS, and JavaScript. Most importantly, the people
-                      there are truly amazing and passionate about their work.
-                      To sum it up, my experience at FBS was fun!
+                      Frontline Business Solutions has demonstrated a
+                      commendable commitment to fostering the professional
+                      growth of our students through their intensive Internship
+                      programs. The hands-on experience provided during the
+                      training is invaluable, allowing students to apply
+                      theoretical knowledge in real-world settings. This
+                      practical exposure significantly enhances their readiness
+                      for the workforce. Moreover, Frontline offers high-end
+                      facilities equipped with the latest technology, ensuring
+                      that interns are well-prepared to meet industry standards.
+                      We appreciate Frontline Business Solutions for their
+                      partnership and commitment to the development of our
+                      students.
                     </p>
                     <div className="logoAndName flex items-center gap-3">
                       <img
@@ -245,7 +252,7 @@ const LcssPartnersSay = () => {
                   </div>
                   <img
                     // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                    src={`../../public/img/ariel-ferrer.png`}
+                    src={`../../public/img/joesua-manzanero.png`}
                     className="absolute bottom-0 w-[300px] right-8"
                     alt=""
                   />
