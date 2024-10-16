@@ -26,8 +26,8 @@ const EventsSingplePage = () => {
       <Header />
       <section className="singlePost pt-40 mb-20">
         <div className="customContainer">
-          <div className="theTitle mb-">
-            <h2 className="text-dark text-[40px] lg:w-[70%] leading-[1.3] mb-4 font-semibold">
+          <div className="theTitle">
+            <h2 className="text-dark text-[clamp(30px,5vw,40px)] lg:w-[70%] leading-[1.3] mb-4 font-semibold">
               {getInsights().postTitle}
             </h2>
           </div>
@@ -41,12 +41,12 @@ const EventsSingplePage = () => {
               <p>{getInsights().postDate}</p>
             </li>
           </ul>
-          <div className="wrapper grid grid-cols-[_3fr_1fr] gap-8 mt-12">
+          <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] gap-8 mt-12">
             <div className="postContent">
               <img
                 src={`../../public/img/${getInsights().postImage}`}
                 alt=""
-                className="rounded-lg object-cover mb-8 w-full h-[700px] object-center"
+                className="rounded-lg object-cover mb-8 w-full max-h-[700px] object-center"
               />
               <p className="mb-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et sit
@@ -81,7 +81,7 @@ const EventsSingplePage = () => {
                 repellendus similique alias!
               </p>
             </div>
-            <div className="order-1 px-10 md:px-0">
+            <div className="order-1 lg:px-10 md:px-0 mt-6 lg:mt-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold mb-10 text-dark">
                   Recent Activities
