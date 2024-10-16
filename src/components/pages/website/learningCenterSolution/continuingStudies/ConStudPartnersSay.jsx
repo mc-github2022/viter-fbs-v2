@@ -114,8 +114,8 @@ const ConStudPartnersSay = () => {
           </div>
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
-              <div className="h-[425px]">
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+              <div className="md:h-[425px]">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -125,7 +125,7 @@ const ConStudPartnersSay = () => {
                         alt=""
                       />
                     </div>
-                    <p className="relative z-10 italic mb-4">
+                    <p className="relative z-10 italic mb-4 min-h-[260px]">
                       My experience at Frontline Business Solution has truly
                       been a great journey. I gained a wealth of knowledge in
                       front-end web design, equipping me with essential skills
@@ -148,17 +148,19 @@ const ConStudPartnersSay = () => {
                       </div>
                     </div>
                   </div>
-                  <img
-                    // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                    src={`../../public/img/ariel-ferrer.png`}
-                    className="absolute bottom-0 w-[300px] right-8"
-                    alt=""
-                  />
+                  <div className="hidden lg:block">
+                    <img
+                      // src={`${devBaseImgUrl}/ariel-ferrer.png`}
+                      src={`../../public/img/ariel-ferrer.png`}
+                      className="absolute bottom-0 w-[300px] right-8"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="md:h-[425px]">
-                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative ">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5 ">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -169,7 +171,7 @@ const ConStudPartnersSay = () => {
                       />
                     </div>
 
-                    <p className="relative z-10 italic mb-4">
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
                       After graduating 5 years ago, I didn't have the chance to
                       apply my programming skills in my career. So, I decided to
                       further my studies at FBS. Through FBS, I was able to
@@ -191,18 +193,19 @@ const ConStudPartnersSay = () => {
                       </div>
                     </div>
                   </div>
-
-                  <img
-                    // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                    src={`../../public/img/kevinroy-nativo.png`}
-                    className="absolute bottom-0 w-[300px] right-8"
-                    alt=""
-                  />
+                  <div className="hidden lg:block">
+                    <img
+                      // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                      src={`../../public/img/kevinroy-nativo.png`}
+                      className="absolute bottom-0 w-[300px] right-8"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
 
               <div className="md:h-[425px]">
-                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img

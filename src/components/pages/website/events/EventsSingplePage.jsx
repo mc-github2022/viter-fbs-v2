@@ -1,11 +1,9 @@
 import { default as React, useEffect } from "react";
-import { BiSolidRightArrow } from "react-icons/bi";
 import { LuTag } from "react-icons/lu";
 import { MdOutlineCalendarToday } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
-import { insight } from "../home/data";
 import { eventsAndAct } from "./data";
 
 const EventsSingplePage = () => {
@@ -41,7 +39,7 @@ const EventsSingplePage = () => {
               <p>{getInsights().postDate}</p>
             </li>
           </ul>
-          <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] gap-8 mt-12">
+          <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12">
             <div className="postContent">
               <img
                 src={`../../public/img/${getInsights().postImage}`}

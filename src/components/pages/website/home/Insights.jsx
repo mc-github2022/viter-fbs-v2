@@ -8,11 +8,11 @@ const Insights = () => {
     <>
       <section className="insights py-24 bg-customGray">
         <div className="customContainer p-0 md:px-10">
-          <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24  text-dark text-center">
+          <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
             Industry Insights
           </h3>
           <div className="wrapper  lg:grid lg:grid-cols-[_1fr_3fr] gap-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 order-2  mb-12 lg:mb-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 order-2 mb-12 lg:mb-0">
               {insight.map((post, key) => {
                 return (
                   <div key={key} className={`${post.customCss}`}>
@@ -22,7 +22,7 @@ const Insights = () => {
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                           backgroundImage: `url(../../public/img/${post.postImage})`,
                         }}
-                        className={`blogItem bg-center bg-cover h-[350px] flex items-end relative  rounded-none md:rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem bg-center bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
@@ -36,7 +36,7 @@ const Insights = () => {
                             </p>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block md:rounded-bl-xl md:rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>

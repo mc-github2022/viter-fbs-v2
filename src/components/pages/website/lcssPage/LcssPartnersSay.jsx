@@ -116,8 +116,8 @@ const LcssPartnersSay = () => {
           </div>
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
-              <div className="h-[425px]">
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+              <div className="md:h-[425px]">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%] lg:translate-y-[-50%] py-10 px-10 lg:px-20 lg:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -127,7 +127,7 @@ const LcssPartnersSay = () => {
                         alt=""
                       />
                     </div>
-                    <p className="text-sm relative z-10 italic mb-4">
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
                       A successful internship may be defined as one that
                       provides the following: meaningful and relevant work,
                       formal and informal training, social opportunities to
@@ -156,17 +156,19 @@ const LcssPartnersSay = () => {
                       </div>
                     </div>
                   </div>
-                  <img
-                    // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                    src={`../../public/img/emilio-macaso.png`}
-                    className="absolute bottom-0 w-[300px] right-8"
-                    alt=""
-                  />
+                  <div className="hidden lg:block">
+                    <img
+                      // src={`${devBaseImgUrl}/ariel-ferrer.png`}
+                      src={`../../public/img/emilio-macaso.png`}
+                      className="absolute bottom-0 w-[300px] right-8"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
 
-              <div className="h-[425px]">
-                <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] top-[50%] translate-y-[-50%] items-center px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative ">
+              <div className="md:h-[425px]">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%] lg:translate-y-[-50%] py-10 px-10 lg:px-20 lg:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -208,7 +210,7 @@ const LcssPartnersSay = () => {
                 </div>
               </div>
               <div className="md:h-[425px]">
-                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
                       <img
@@ -218,7 +220,7 @@ const LcssPartnersSay = () => {
                         alt=""
                       />
                     </div>
-                    <p className="relative z-10 italic mb-4">
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
                       My experience at Frontline Business Solution has truly
                       been a great journey. I gained a wealth of knowledge in
                       front-end web design, equipping me with essential skills
@@ -243,12 +245,14 @@ const LcssPartnersSay = () => {
                       </div>
                     </div>
                   </div>
-                  <img
-                    // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                    src={`../../public/img/ariel-ferrer.png`}
-                    className="absolute bottom-0 w-[300px] right-8"
-                    alt=""
-                  />
+                  <div className="hidden lg:block">
+                    <img
+                      // src={`${devBaseImgUrl}/ariel-ferrer.png`}
+                      src={`../../public/img/ariel-ferrer.png`}
+                      className="absolute bottom-0 w-[300px] right-8"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
             </Slider>

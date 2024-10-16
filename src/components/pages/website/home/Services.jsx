@@ -1,10 +1,9 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import webLogo from "/web.svg";
-import WebSvg from "../../../partials/customSVG/WebSvg";
-import VASvg from "../../../partials/customSVG/VASvg";
 import AccountingSvg from "../../../partials/customSVG/AccountingSvg";
 import SkillDevSvg from "../../../partials/customSVG/SkillDevSvg";
+import VASvg from "../../../partials/customSVG/VASvg";
+import WebSvg from "../../../partials/customSVG/WebSvg";
 
 const Services = () => {
   return (
