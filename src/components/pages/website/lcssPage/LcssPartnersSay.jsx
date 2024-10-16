@@ -221,12 +221,19 @@ const LcssPartnersSay = () => {
                       />
                     </div>
                     <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
-                      My experience at Frontline Business Solution has truly
-                      been a great journey. I gained a wealth of knowledge in
-                      front-end web design, equipping me with essential skills
-                      in HTML, CSS, and JavaScript. Most importantly, the people
-                      there are truly amazing and passionate about their work.
-                      To sum it up, my experience at FBS was fun!
+                      Frontline Business Solutions has demonstrated a
+                      commendable commitment to fostering the professional
+                      growth of our students through their intensive Internship
+                      programs. The hands-on experience provided during the
+                      training is invaluable, allowing students to apply
+                      theoretical knowledge in real-world settings. This
+                      practical exposure significantly enhances their readiness
+                      for the workforce. Moreover, Frontline offers high-end
+                      facilities equipped with the latest technology, ensuring
+                      that interns are well-prepared to meet industry standards.
+                      We appreciate Frontline Business Solutions for their
+                      partnership and commitment to the development of our
+                      students.
                     </p>
                     <div className="logoAndName flex items-center gap-3">
                       <img
@@ -248,7 +255,7 @@ const LcssPartnersSay = () => {
                   <div className="hidden lg:block">
                     <img
                       // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                      src={`../../public/img/ariel-ferrer.png`}
+                      src={`../../public/img/joesua-manzanero.png`}
                       className="absolute bottom-0 w-[300px] right-8"
                       alt=""
                     />

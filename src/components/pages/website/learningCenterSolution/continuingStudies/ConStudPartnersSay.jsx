@@ -143,7 +143,8 @@ const ConStudPartnersSay = () => {
                       <div className="leading-[1] italic">
                         <p>Ms. Ariel Angeni Ferrer</p>
                         <p className="text-sm">
-                          BS Computer Engineering Graduate
+                          BS Computer Engineering Graduate <br />
+                          Pamantasan ng Lungsod ng San Pablo
                         </p>
                       </div>
                     </div>
@@ -243,6 +244,158 @@ const ConStudPartnersSay = () => {
                     <img
                       // src={`${devBaseImgUrl}/ariel-ferrer.png`}
                       src={`../../public/img/jake-gamaro.png`}
+                      className="absolute bottom-0 w-[300px] right-8"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:h-[425px]">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                  <div className="theMessage  relative text-sm">
+                    <div className="absolute top-[-30px] left-[-40px]">
+                      <img
+                        // src={`${devBaseImgUrl}/quote-white.png`}
+                        src={`../../public/img//quote-white.png`}
+                        className="w-[80px]"
+                        alt=""
+                      />
+                    </div>
+
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
+                      My training at Frontline Business Solutions was an
+                      invaluable experience that equipped me with essential
+                      skills in HTML, CSS, and Javascript. The supportive and
+                      professional environment made me feel empowered and ready
+                      to take on future challenges in the industry. This
+                      experience has truly prepared me for my career endeavors,
+                      leaving me more confident in my abilities.
+                    </p>
+                    <div className="logoAndName flex items-center gap-3">
+                      <img
+                        // src={`${devBaseImgUrl}/sti.png`}
+                        className="w-[80px]"
+                        src={`../../public/img/plsp.png`}
+                        alt=""
+                      />
+                      <div className="leading-[1] italic">
+                        <p>Mr. Kurt Lui Balanial</p>
+                        <p className="text-sm">
+                          BSCpE Batch 2024 <br />
+                          Pamantasan ng Lungsod ng San Pablo
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="hidden lg:block">
+                    <img
+                      // src={`${devBaseImgUrl}/ariel-ferrer.png`}
+                      src={`../../public/img/kurt-balanial.png`}
+                      className="absolute bottom-0 w-[300px] right-8"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:h-[425px]">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                  <div className="theMessage  relative text-sm">
+                    <div className="absolute top-[-30px] left-[-40px]">
+                      <img
+                        // src={`${devBaseImgUrl}/quote-white.png`}
+                        src={`../../public/img//quote-white.png`}
+                        className="w-[80px]"
+                        alt=""
+                      />
+                    </div>
+
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
+                      As a lifelong learner, the continuing study program at
+                      Frontline Business Solutions was truly beneficial for my
+                      own personal and professional growth. The Front-End
+                      development training was exceptional, covering HTML, CSS,
+                      and other frameworks, while also focusing on coding
+                      efficiency and dynamic web design. Grateful for the
+                      excellent trainers and well-structured training
+                      program—truly worth it.
+                    </p>
+                    <div className="logoAndName flex items-center gap-3">
+                      <img
+                        // src={`${devBaseImgUrl}/sti.png`}
+                        className="w-[80px]"
+                        src={`../../public/img/lc.png`}
+                        alt=""
+                      />
+                      <div className="leading-[1] italic">
+                        <p>Mr. Jinuel Zymon Ramos</p>
+                        <p className="text-sm">
+                          BSCS Magna Cum Laude, Batch 2023 <br />
+                          Laguna College
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="hidden lg:block">
+                    <img
+                      // src={`${devBaseImgUrl}/ariel-ferrer.png`}
+                      src={`../../public/img/zymon-ramos.png`}
+                      className="absolute bottom-0 w-[300px] right-8"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:h-[425px]">
+                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                  <div className="theMessage  relative text-sm">
+                    <div className="absolute top-[-30px] left-[-40px]">
+                      <img
+                        // src={`${devBaseImgUrl}/quote-white.png`}
+                        src={`../../public/img//quote-white.png`}
+                        className="w-[80px]"
+                        alt=""
+                      />
+                    </div>
+
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
+                      I've gained a wealth of knowledge in web development
+                      through my experience at Frontline Business Solutions,
+                      especially their Continuing Study Program. The program’s
+                      hands-on approach and structured tutorials deepened my
+                      understanding of both front-end and back-end development.
+                      This practical learning environment encouraged continuous
+                      improvement and allowed me to confidently apply my skills
+                      to real-world projects, significantly enhancing my
+                      technical abilities. Thanks to this program, I am more
+                      confident and better equipped to handle complex web
+                      development challenges.
+                    </p>
+                    <div className="logoAndName flex items-center gap-3">
+                      <img
+                        // src={`${devBaseImgUrl}/sti.png`}
+                        className="w-[80px]"
+                        src={`../../public/img/plsp.png`}
+                        alt=""
+                      />
+                      <div className="leading-[1] italic">
+                        <p>Mr. Andrey Ilagan</p>
+                        <p className="text-sm">
+                          BSCpE Batch 2024 <br />
+                          Pamantasan ng Lungsod ng San Pablo
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="hidden lg:block">
+                    <img
+                      // src={`${devBaseImgUrl}/ariel-ferrer.png`}
+                      src={`../../public/img/andrey-ilagan.png`}
                       className="absolute bottom-0 w-[300px] right-8"
                       alt=""
                     />

@@ -2,11 +2,16 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Boost your business efficiency with our",
-    bannerTitleBoldText: "Administrative Assistance",
+    bannerTitle: (
+      <p>
+        Start Your Business <br />
+        Hassle-Free with Our
+      </p>
+    ),
+    bannerTitleBoldText: "Business Registration",
     bannerTextDesc:
-      "Our Virtual Assistance Services provide reliable and efficient administrative support tailored to your needs. From managing schedules and coordinating communication to handling data, organizing documents, and supporting financial tasks, we ensure your daily operations run smoothly. Whether you need secretarial assistance, executive support, or help with project coordination, our team is here to optimize your workflow and free up your time for what matters most.",
-    bannerBtnText: "PARTNER WITH US",
+      "Choose from comprehensive packages that simplify the registration process for any business type. We handle everything—from essential permits to compliance documents—so you can focus on growing your business",
+    bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
     bannerImage: "business-reg-bg.jpg",
   },
@@ -34,19 +39,19 @@ export const sectionPartnersLogos = [
 export const webAppOverview = [
   {
     subtitle: "Here's why we're the",
-    mainTitle: "right choice for your VA needs.",
-    webAppImage: "vaOverviewImage.jpg",
+    mainTitle: "right choice for your Business Registration needs.",
+    webAppImage: "business-reg-img.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Enhanced Efficiency and Productivity",
+    overviewAtitle: "Comprehensive Registration Packages",
     overviewAtext:
-      "We handle routine tasks like data entry, calendar management, and email organization, freeing up your time to focus on core business activities.",
-    overviewBtitle: "Comprehensive Support Tailored to Your Needs",
+      "We offer a range of packages to suit different business needs, from sole proprietorship to one-person corporations and domestic corporations. Each package is tailored to cover essential requirements such as DTI, SEC, BIR, LGU registrations, and necessary permits, making the process hassle-free for clients.",
+    overviewBtitle: "End-to-End Compliance Assistance",
     overviewBtext:
-      "Our services cover everything from executive assistance and personal tasks to data management and event coordination, offering solutions that fit your specific needs.",
-    overviewCtitle: "Cost-Effective and Scalable Solutions",
+      "Our services include the preparation and filing of important documents like the Authority to Print, Books of Account, annual registration (0605), and DST Doc Stamps, ensuring that all compliance requirements are met efficiently without any delays.",
+    overviewCtitle: "Flexible and Affordable Options",
     overviewCtext:
-      "Enjoy flexible support without the costs of full-time staff. Our services can scale with your workload, ensuring you pay only for what you need.",
+      "We provide cost-effective solutions for businesses of all sizes. Clients can choose the package that fits their budget and registration requirements, making it accessible for startups and established firms alike.",
   },
 ];
 
@@ -71,38 +76,171 @@ export const serviceInclusion = [
 
 export const pricingCardCount = [
   {
-    columnNumber: 2,
+    columnNumber: 5,
   },
 ];
 
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "Part-Time",
-    rate: "$10 / Hour",
+    title: "Sole Proprietor",
+    rate: "P12,000",
     duration: "(20 hours per week)",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    info: [
+      <div className="text-left">
+        <p className="font-bold">DTI Registration</p>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">BIR Registratio</p>
+        <ul className="text-sm ml-5">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">LGU Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+        </ul>
+      </div>,
+    ],
     priceDesc:
       "Get dedicated virtual assistant support for half the week, perfect for business needing flexible help with task and projects without the commitment of full-time hours.",
     link: "/free-trial",
     isActive: 0,
     btnText: "CHOOSE PLAN",
-
+    customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: "Company Incorporation SEC Registration Only",
+    rate: "P20,000",
+    duration: "(40 hours per week)",
+    info: [
+      <div className="">
+        <p className="font-bold">SEC Only</p>
+      </div>,
+    ],
+    priceDesc:
+      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    link: "/free-trial",
+    isActive: 0,
+    btnText: "CHOOSE PLAN",
     customCss: "text-primary",
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-light" />,
-    title: "Full-Time",
-    rate: "$8 / Hour",
+    title: "Company Incorporation No SEC",
+    rate: "P25,000",
     duration: "(40 hours per week)",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    info: [
+      <div className="text-left">
+        <p className="font-bold">BIR Registratio</p>
+        <ul className="text-sm ml-5">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+          <li>DST Doc Stamp for Subscribed Capital</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">LGU Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+          <li>Insurance (CGL)</li>
+        </ul>
+      </div>,
+    ],
     priceDesc:
       "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
     link: "/free-trial",
     isActive: 1,
     btnText: "CHOOSE PLAN",
-
     customCss: "text-light",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: "One Person Corporation (OPC)",
+    rate: "P20,000",
+    duration: "(40 hours per week)",
+    info: [
+      <div className="text-left">
+        <p className="font-bold">SEC Registration</p>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">BIR Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+          <li>DST Doc Stamp for Subscribed Capital</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">LGU Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+          <li>Insurance (CGL)</li>
+        </ul>
+      </div>,
+    ],
+    priceDesc:
+      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    link: "/free-trial",
+    isActive: 0,
+    btnText: "CHOOSE PLAN",
+    customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: "Company Incorporation",
+    rate: "P35,000",
+
+    duration: "(40 hours per week)",
+    info: [
+      <div className="text-left">
+        <p className="font-bold">SEC Registration</p>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">BIR Registratio</p>
+        <ul className="text-sm ml-5">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+          <li>DST Doc Stamp for Subscribed Capital</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">LGU Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+          <li>Insurance (CGL)</li>
+        </ul>
+      </div>,
+    ],
+    priceDesc:
+      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    link: "/free-trial",
+    isActive: 0,
+    btnText: "CHOOSE PLAN",
+    customCss: "text-primary",
   },
 ];
 
