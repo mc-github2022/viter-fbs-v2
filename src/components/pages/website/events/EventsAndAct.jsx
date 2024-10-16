@@ -17,7 +17,7 @@ function SampleNextArrow(props) {
         color: "white",
         top: "50%",
         transform: "translateY(-50%)",
-        right: "-5%",
+        right: "-20px",
         fontSize: "3rem",
         cursor: "pointer",
         background: "#ac1f72",
@@ -43,7 +43,7 @@ function SamplePrevArrow(props) {
         color: "white",
         top: "50%",
         transform: "translateY(-50%)",
-        left: "-5%",
+        left: "-20px",
         fontSize: "3rem",
         zIndex: "1",
         cursor: "pointer",
@@ -63,7 +63,7 @@ function SamplePrevArrow(props) {
 
 const EventsAndAct = () => {
   var EventsSliderSettings = {
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
@@ -99,10 +99,21 @@ const EventsAndAct = () => {
       {
         breakpoint: 1086,
         settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 760,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           nextArrow: "",
           prevArrow: "",
+          dots: true,
         },
       },
     ],
