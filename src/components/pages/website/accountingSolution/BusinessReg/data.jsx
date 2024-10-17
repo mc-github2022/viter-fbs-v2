@@ -123,13 +123,57 @@ export const pricing = [
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: "One Person Corporation (OPC)",
+    rate: "P20,000",
+    duration: "(40 hours per week)",
+    info: [
+      <div className="text-left flex items-center gap-3">
+        <FaCheckCircle className={`text-primary`} />
+        <p className="font-bold">SEC Registration</p>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-center gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p className="font-bold">BIR Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+          <li>DST Doc Stamp for Subscribed Capital</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-center gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p className="font-bold">LGU Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+          <li>Insurance (CGL)</li>
+        </ul>
+      </div>,
+    ],
+    priceDesc:
+      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    link: "/free-trial",
+    isActive: 0,
+    btnText: "CHOOSE PLAN",
+    customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Company Incorporation SEC Registration Only",
     rate: "P20,000",
     duration: "(40 hours per week)",
     info: [
       <div className="text-left flex items-center gap-3">
         <FaCheckCircle className={`text-primary`} />
-        <p className="font-bold">SEC Only</p>
+        <p className="font-bold">SEC Registration</p>
       </div>,
       <div className="text-left">
         <div className="text-left flex items-center gap-3">
@@ -164,14 +208,14 @@ export const pricing = [
     customCss: "text-primary",
   },
   {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-light" />,
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Company Incorporation No SEC",
     rate: "P25,000",
     duration: "(40 hours per week)",
     info: [
       <div className="text-left">
         <div className="text-left flex items-center gap-3">
-          <FaCheckCircle className={`text-light text-[17px]`} />
+          <FaCheckCircle className={`text-primary text-[17px]`} />
           <p className="font-bold">BIR Registration</p>
         </div>
         <ul className="text-sm ml-7">
@@ -183,47 +227,10 @@ export const pricing = [
       </div>,
       <div className="text-left">
         <div className="text-left flex items-center gap-3">
-          <FaCheckCircle className={`text-light text-[17px]`} />
+          <FaCheckCircle className={`text-primary text-[17px]`} />
           <p className="font-bold">LGU Registration</p>
         </div>
         <ul className="text-sm ml-7">
-          <li>Barangay Permit</li>
-          <li>Mayor's Permit</li>
-          <li>Fire and Safety</li>
-          <li>Zoning Permit</li>
-          <li>Location Clearance</li>
-          <li>Insurance (CGL)</li>
-        </ul>
-      </div>,
-    ],
-    priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
-    link: "/free-trial",
-    isActive: 1,
-    btnText: "CHOOSE PLAN",
-    customCss: "text-light",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "One Person Corporation (OPC)",
-    rate: "P20,000",
-    duration: "(40 hours per week)",
-    info: [
-      <div className="text-left">
-        <p className="font-bold">SEC Registration</p>
-      </div>,
-      <div className="text-left">
-        <p className="font-bold">BIR Registration</p>
-        <ul className="text-sm ml-5">
-          <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
-          <li>Annual Registration (0605)</li>
-          <li>DST Doc Stamp for Subscribed Capital</li>
-        </ul>
-      </div>,
-      <div className="text-left">
-        <p className="font-bold">LGU Registration</p>
-        <ul className="text-sm ml-5">
           <li>Barangay Permit</li>
           <li>Mayor's Permit</li>
           <li>Fire and Safety</li>
@@ -247,12 +254,16 @@ export const pricing = [
 
     duration: "(40 hours per week)",
     info: [
-      <div className="text-left">
+      <div className="text-left flex items-center gap-3">
+        <FaCheckCircle className={`text-primary`} />
         <p className="font-bold">SEC Registration</p>
       </div>,
       <div className="text-left">
-        <p className="font-bold">BIR Registratio</p>
-        <ul className="text-sm ml-5">
+        <div className="text-left flex items-center gap-3">
+          <FaCheckCircle className={`text-primary text-[17px]`} />
+          <p className="font-bold">BIR Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
           <li>Books of Account</li>
           <li>Annual Registration (0605)</li>
@@ -260,8 +271,11 @@ export const pricing = [
         </ul>
       </div>,
       <div className="text-left">
-        <p className="font-bold">LGU Registration</p>
-        <ul className="text-sm ml-5">
+        <div className="text-left flex items-center gap-3">
+          <FaCheckCircle className={`text-primary text-[17px]`} />
+          <p className="font-bold">LGU Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
           <li>Barangay Permit</li>
           <li>Mayor's Permit</li>
           <li>Fire and Safety</li>
