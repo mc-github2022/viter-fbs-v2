@@ -1,9 +1,8 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { pricing, pricingCardCount } from "./data";
-
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Slider from "react-slick/lib/slider";
+import Slider from "react-slick";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -59,14 +58,13 @@ function SamplePrevArrow(props) {
 }
 
 const BusinessRegPricing = () => {
-  var EventsSliderSettings = {
+  var eventsSliderSettings = {
     dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
     dotsClass: "slickNav slick-dots",
-    className: "reactSlick",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     appendDots: (dots) => (
@@ -74,7 +72,7 @@ const BusinessRegPricing = () => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "-5rem",
+          bottom: "-60px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -86,7 +84,7 @@ const BusinessRegPricing = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "#ac1f72",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -94,12 +92,20 @@ const BusinessRegPricing = () => {
     ),
     responsive: [
       {
-        breakpoint: 1336,
+        breakpoint: 1300,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
+          arrows: false,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 886,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
           dots: true,
         },
       },
@@ -118,50 +124,55 @@ const BusinessRegPricing = () => {
             </h3>
           </div>
           <div className="">
-            <div className={`wrapper`}>
-              <Slider {...EventsSliderSettings}>
+            <div className="wrapper">
+              <Slider {...eventsSliderSettings}>
                 {pricing.map((price, key) => {
                   return (
-                    <div
-                      key={key}
-                      className={`${
-                        price.isActive
-                          ? "!bg-primary text-light"
-                          : "!bg-customGray"
-                      } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg  min-h-[654px] !w-[400px] !ml-[3%] grid place-items-center items-center`}
-                    >
-                      <div className="z-10">
-                        <div className="title mb-4">
-                          {price.icon}
-                          <h3
-                            className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}
-                          >
-                            {price.title}
-                          </h3>
-                          <p
-                            className={`${price.customCss} text-2xl text-dark font-bold`}
-                          >
-                            {price.rate}
-                          </p>
-                          <div className="grid">
-                            <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
-                              {price.info.map((info, key) => (
-                                <li key={key} className="mb-1">
-                                  <FaCheckCircle
-                                    className={`${price.customCss} text-light mt-1`}
-                                  />
-                                  {info}
-                                </li>
-                              ))}
-                            </ul>
+                    <div className="!grid place-items-center">
+                      <div
+                        key={key}
+                        className={`priceItem md:mb-0 relative z-[1] text-light text-center p-10 rounded-lg min-h-[684px] md:min-h-[654px] md:!w-[400px] ${
+                          price.isActive
+                            ? "!bg-primary text-light "
+                            : "!bg-customGray !text-dark"
+                        }`}
+                      >
+                        {/* priceItem mb-5 md:mb-0 relative z-[1] text-center p-10 rounded-lg min-h-[654px] !max-w-[400px] !ml-[3%] grid place-items-center items-center */}
+                        <div className="z-10 ">
+                          <div className="title mb-4">
+                            {price.icon}
+                            <h3
+                              className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}
+                            >
+                              {price.title}
+                            </h3>
+                            <p
+                              className={`${price.customCss} text-2xl text-dark font-bold`}
+                            >
+                              {price.rate}
+                            </p>
+                            <div className="grid">
+                              <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
+                                {price.info.map((info, key) => (
+                                  <li key={key} className="mb-1">
+                                    <FaCheckCircle
+                                      className={`${price.customCss} text-light mt-1`}
+                                    />
+                                    {info}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           </div>
                         </div>
-                        <a
-                          href={price.link}
-                          className="btn bg-light text-primary font-bold"
-                        >
-                          {price.btnText}
-                        </a>
+                        <div className="absolute bottom-0 my-12 left-0 right-0">
+                          <a
+                            href={price.link}
+                            className="btn bg-light text-primary font-bold  "
+                          >
+                            {price.btnText}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   );
