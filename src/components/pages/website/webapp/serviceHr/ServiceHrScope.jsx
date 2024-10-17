@@ -19,6 +19,7 @@ const ServiceHrScope = () => {
   const handleAccordion = (item) => {
     setAccordion(true);
     setAccordionItem(item);
+    console.log(accordionItem);
   };
 
   return (

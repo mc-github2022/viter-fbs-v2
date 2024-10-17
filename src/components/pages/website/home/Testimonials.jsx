@@ -2,6 +2,15 @@ import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const Testimonials = () => {
+  const [testimonialItem, setTestimonialItem] = React.useState();
+
+  const [displayTestimonial, setDisplayTestimonial] = React.useState(false);
+  const handleTestimonial = (item) => {
+    setDisplayTestimonial(true);
+    setTestimonialItem(item);
+    console.log(testimonialItem);
+  };
+
   return (
     <>
       <section className="testimonials relative py-24 md:mt-40 lg:mt-0  lg:overflow-hidden bg-[#000] lg:bg-[transparent]">
@@ -29,44 +38,83 @@ const Testimonials = () => {
             </div>
             <div className="flex justify-end">
               <div className="w-full lg:w-[439px] relative z-[14] text-light text-right">
-                <p className=" lg:mt-[130px] mb-3 relative italic">
-                  FBS is a true partner to our firm. They have help form our
-                  vision and trajectory. We are immnensely gratefull our
-                  partnership. Our expectation is to FBS to grow with us. They
-                  are an important part of our success. And beyond the business
-                  perpective, they are fantastic people. We are bless to work
-                  with them.
-                </p>
-                <h3 className="text-[24px] font-semibold mb-2">
-                  Robert Han, COO
-                </h3>
-                <div className="justify-end flex lg:hidden">
-                  <img
-                    src={`${devBaseImgUrl}/tm_logo.png`}
-                    className="w-[100px]"
-                    alt=""
-                  />
+                <div
+                  className={`${
+                    displayTestimonial && testimonialItem == "slider-index-1"
+                      ? "addEntrance block"
+                      : "hidden"
+                  }`}
+                >
+                  <p className=" lg:mt-[130px] mb-3 relative italic">
+                    FBS is a true partner to our firm. They have help form our
+                    vision and trajectory. We are immnensely gratefull our
+                    partnership. Our expectation is to FBS to grow with us. They
+                    are an important part of our success. And beyond the
+                    business perpective, they are fantastic people. We are bless
+                    to work with them.
+                  </p>
+                  <h3 className="text-[24px] font-semibold mb-2">
+                    Robert Han, COO
+                  </h3>
+                  <div className="justify-end flex lg:hidden">
+                    <img
+                      src={`${devBaseImgUrl}/tm_logo.png`}
+                      className="w-[100px]"
+                      alt=""
+                    />
+                  </div>
+                </div>
+
+                <div className="sliderNavTestimonials flex gap-2 absolute right-[2%] bottom-[20%]">
+                  <button
+                    className="h-5 w-5 block bg-light rounded-full"
+                    onClick={() => handleTestimonial("slider-index-1")}
+                  ></button>
+                  <button
+                    className="h-5 w-5 block bg-light rounded-full"
+                    onClick={() => handleTestimonial("slider-index-2")}
+                  ></button>
+                  <button
+                    className="h-5 w-5 block bg-light rounded-full"
+                    onClick={() => handleTestimonial("slider-index-3")}
+                  ></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="testimonialPhoto hidden  lg:block absolute z-[1] left-[52%] translate-x-[-40%] top-[250px] lg:top-[130px] w-[250px] lg:w-[358px]">
-          <img
-            // src={`${devBaseImgUrl}/Rober_han.png`}
-            src={`../../public/img/Rober_han.png`}
-            alt=""
-            className="rotate-[5deg]"
-          />
+          <div
+            className={`${
+              displayTestimonial && testimonialItem == "slider-index-1"
+                ? "addEntrance block"
+                : "hidden"
+            }`}
+          >
+            <img
+              // src={`${devBaseImgUrl}/Rober_han.png`}
+              src={`../../public/img/Rober_han.png`}
+              alt=""
+              className="rotate-[5deg]"
+            />
+          </div>
         </div>
         <div className="hidden lg:block">
           <div className="smPill w-[70%] h-[100px] bg-primary top-[60%] z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg]">
-            <img
-              // src={`${devBaseImgUrl}/tm_logo.png`}
-              src={`../../public/img/tm_logo.png`}
-              className="w-[200px] mt-[30px] ml-[15%]"
-              alt=""
-            />
+            <div
+              className={`${
+                displayTestimonial && testimonialItem == "slider-index-1"
+                  ? "addEntrance block"
+                  : "hidden"
+              }`}
+            >
+              <img
+                // src={`${devBaseImgUrl}/tm_logo.png`}
+                src={`../../public/img/tm_logo.png`}
+                className="w-[200px] mt-[30px] ml-[15%]"
+                alt=""
+              />
+            </div>
           </div>
         </div>
         <div className="z-0 hidden lg:block">
