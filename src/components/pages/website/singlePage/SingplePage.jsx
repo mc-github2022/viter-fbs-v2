@@ -80,7 +80,7 @@ const SingplePage = () => {
                 repellendus similique alias!
               </p>
             </div>
-            <div className="order-1 px-10 md:px-0">
+            <div className="order-1 mt-6 md:mt-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold mb-10 text-dark">
                   Popular Posts

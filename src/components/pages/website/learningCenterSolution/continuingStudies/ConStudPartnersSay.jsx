@@ -125,7 +125,7 @@ const ConStudPartnersSay = () => {
                         alt=""
                       />
                     </div>
-                    <p className="relative z-10 italic mb-4 min-h-[260px]">
+                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
                       My experience at Frontline Business Solution has truly
                       been a great journey. I gained a wealth of knowledge in
                       front-end web design, equipping me with essential skills

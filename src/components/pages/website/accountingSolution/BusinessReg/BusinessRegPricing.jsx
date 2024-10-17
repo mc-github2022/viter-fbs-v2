@@ -1,9 +1,8 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { pricing, pricingCardCount } from "./data";
-
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Slider from "react-slick/lib/slider";
+import Slider from "react-slick";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -59,14 +58,13 @@ function SamplePrevArrow(props) {
 }
 
 const BusinessRegPricing = () => {
-  var EventsSliderSettings = {
+  var eventsSliderSettings = {
     dots: false,
     infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
     dotsClass: "slickNav slick-dots",
-    className: "reactSlick",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     appendDots: (dots) => (
@@ -74,7 +72,7 @@ const BusinessRegPricing = () => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "-5rem",
+          bottom: "-60px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -86,7 +84,7 @@ const BusinessRegPricing = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "#ac1f72",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -94,12 +92,20 @@ const BusinessRegPricing = () => {
     ),
     responsive: [
       {
-        breakpoint: 1336,
+        breakpoint: 1300,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
+          arrows: false,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 886,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
           dots: true,
         },
       },
@@ -118,8 +124,8 @@ const BusinessRegPricing = () => {
             </h3>
           </div>
           <div className="">
-            <div className={`wrapper`}>
-              <Slider {...EventsSliderSettings}>
+            <div className="wrapper">
+              <Slider {...eventsSliderSettings}>
                 {pricing.map((price, key) => {
                   return (
                     <div
@@ -153,12 +159,14 @@ const BusinessRegPricing = () => {
                             </ul>
                           </div>
                         </div>
-                        <a
-                          href={price.link}
-                          className="btn bg-light text-primary font-bold"
-                        >
-                          {price.btnText}
-                        </a>
+                        <div className="absolute bottom-0 my-12 left-0 right-0">
+                          <a
+                            href={price.link}
+                            className="btn bg-light text-primary font-bold  "
+                          >
+                            {price.btnText}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   );
