@@ -11,6 +11,11 @@ const Testimonials = () => {
     console.log(testimonialItem);
   };
 
+  React.useEffect(() => {
+    setDisplayTestimonial(true);
+    setTestimonialItem("slider-index-1");
+  }, []);
+
   return (
     <>
       <section className="testimonials relative py-24 md:mt-40 lg:mt-0  lg:overflow-hidden bg-[#000] lg:bg-[transparent]">
