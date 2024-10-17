@@ -128,9 +128,8 @@ const BusinessRegPricing = () => {
               <Slider {...eventsSliderSettings}>
                 {pricing.map((price, key) => {
                   return (
-                    <div className="!grid place-items-center">
+                    <div className="!grid place-items-center" key={key}>
                       <div
-                        key={key}
                         className={`priceItem md:mb-0 relative z-[1] text-light text-center p-10 rounded-lg min-h-[684px] md:min-h-[654px] md:!w-[400px] ${
                           price.isActive
                             ? "!bg-primary text-light "
