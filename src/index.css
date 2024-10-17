@@ -73,7 +73,7 @@
   }
 
   .slickNav ul li.slick-active div {
-    @apply !bg-[gray] !opacity-100;
+    @apply !bg-[white] !opacity-100;
   }
   .serviceIcon svg {
     @apply group-hover:fill-[white] fill-[#6a1141];
@@ -142,6 +142,20 @@
   }
   .slick-slider {
     padding: 20px !important;
+  }
+  .addEntrance {
+    animation: mymove 2s;
+  }
+}
+
+@keyframes mymove {
+  from {
+    transform: translateX(20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
