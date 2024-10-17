@@ -62,13 +62,13 @@ const ServiceOnlineDonationPricing = () => {
                           </li>
                         ))}
                       </ul>
-                      <a
-                        href={`${price.link}`}
-                        className="btn bg-light text-primary font-bold"
-                      >
-                        CONTACT US
-                      </a>
                     </div>
+                    <a
+                      href={`${price.link}`}
+                      className="btn bg-light text-primary font-bold"
+                    >
+                      CONTACT US
+                    </a>
                   </div>
                 );
               })}

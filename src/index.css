@@ -73,6 +73,10 @@
   }
 
   .slickNav ul li.slick-active div {
+    @apply !bg-[gray] !opacity-100;
+  }
+
+  .slickNavHome ul li.slick-active div {
     @apply !bg-[white] !opacity-100;
   }
   .serviceIcon svg {
@@ -151,9 +155,11 @@
 @keyframes mymove {
   from {
     transform: translateX(20%);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
