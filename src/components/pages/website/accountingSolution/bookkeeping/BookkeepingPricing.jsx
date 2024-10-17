@@ -33,22 +33,20 @@ const BookkeepingPricing = () => {
                   <FaCheckCircle className="text-light" /> Filing of BIR Tax
                   Returns
                 </li>
-              </ul>
-
-              <p>QUARTERLY SERVICE:</p>
-              <ul className="text-left [&>li]:gap-2 my-4">
-                <li className="flex items-center">
-                  <FaCheckCircle className="text-light" />
-                  <p>BIR Compliance</p>
-                </li>
-              </ul>
-
-              <p>ANNUAL SERVICE:</p>
-              <ul className="text-left [&>li]:gap-2 my-4">
-                <li className="flex items-center">
-                  <FaCheckCircle className="text-light" />
-                  <p>Renewals (Business Permit, BIR)</p>
-                </li>
+                <p className="text-center mt-7">QUARTERLY SERVICE:</p>
+                <ul className="text-left [&>li]:gap-2 my-4">
+                  <li className="flex items-center">
+                    <FaCheckCircle className="text-light" />
+                    <p>BIR Compliance</p>
+                  </li>
+                </ul>
+                <p className="text-center mt-7">ANNUAL SERVICE:</p>
+                <ul className="text-left [&>li]:gap-2 my-4">
+                  <li className="flex items-center">
+                    <FaCheckCircle className="text-light" />
+                    <p>Renewals (Business Permit, BIR)</p>
+                  </li>
+                </ul>
               </ul>
             </div>
           </div>
