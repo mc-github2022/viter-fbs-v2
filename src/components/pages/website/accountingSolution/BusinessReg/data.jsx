@@ -78,15 +78,20 @@ export const pricingCardCount = [
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "Sole Proprietor",
-    rate: "P12,000",
+    title: (
+      <p>
+        Sole <br />
+        Proprietor
+      </p>
+    ),
+    rate: "Starts at ₱12,000",
     duration: "(20 hours per week)",
     info: [
       <div className="text-left">
         <p className="font-bold">DTI Registration</p>
       </div>,
       <div className="text-left">
-        <p className="font-bold">BIR Registratio</p>
+        <p className="font-bold">BIR Registration</p>
         <ul className="text-sm ml-5">
           <li>Application for 'Authority to Print'</li>
           <li>Books of Account</li>
@@ -113,59 +118,8 @@ export const pricing = [
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "Company Incorporation SEC Registration Only",
-    rate: "P20,000",
-    duration: "(40 hours per week)",
-    info: [
-      <div className="">
-        <p className="font-bold">SEC Only</p>
-      </div>,
-    ],
-    priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
-    link: "/free-trial",
-    isActive: 0,
-    btnText: "CHOOSE PLAN",
-    customCss: "text-primary",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-light" />,
-    title: "Company Incorporation No SEC",
-    rate: "P25,000",
-    duration: "(40 hours per week)",
-    info: [
-      <div className="text-left">
-        <p className="font-bold">BIR Registratio</p>
-        <ul className="text-sm ml-5">
-          <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
-          <li>Annual Registration (0605)</li>
-          <li>DST Doc Stamp for Subscribed Capital</li>
-        </ul>
-      </div>,
-      <div className="text-left">
-        <p className="font-bold">LGU Registration</p>
-        <ul className="text-sm ml-5">
-          <li>Barangay Permit</li>
-          <li>Mayor's Permit</li>
-          <li>Fire and Safety</li>
-          <li>Zoning Permit</li>
-          <li>Location Clearance</li>
-          <li>Insurance (CGL)</li>
-        </ul>
-      </div>,
-    ],
-    priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
-    link: "/free-trial",
-    isActive: 1,
-    btnText: "CHOOSE PLAN",
-    customCss: "text-light",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "One Person Corporation (OPC)",
-    rate: "P20,000",
+    rate: "Starts at ₱20,000",
     duration: "(40 hours per week)",
     info: [
       <div className="text-left">
@@ -201,8 +155,89 @@ export const pricing = [
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "Company Incorporation",
-    rate: "P35,000",
+    title: "Company Incorporation SEC Registration Only",
+    rate: "Starts at ₱20,000",
+    duration: "(40 hours per week)",
+    info: [
+      <div className="">
+        <p className="font-bold">SEC Only</p>
+      </div>,
+      <div className="text-left text-dark">
+        <p className="font-bold">BIR Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+          <li>DST Doc Stamp for Subscribed Capital</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">LGU Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+          <li>Insurance (CGL)</li>
+        </ul>
+      </div>,
+    ],
+    priceDesc:
+      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    link: "/free-trial",
+    isActive: 0,
+    btnText: "CHOOSE PLAN",
+    customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: (
+      <p>
+        Company Incorporation <br /> No SEC
+      </p>
+    ),
+    rate: "Starts at ₱25,000",
+
+    duration: "(40 hours per week)",
+    info: [
+      <div className="text-left">
+        <p className="font-bold">BIR Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+          <li>DST Doc Stamp for Lease</li>
+          <li>DST Doc Stamp for Subscribed Capital</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <p className="font-bold">LGU Registration</p>
+        <ul className="text-sm ml-5">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+          <li>Insurance (CGL)</li>
+        </ul>
+      </div>,
+    ],
+    priceDesc:
+      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    link: "/free-trial",
+    isActive: 0,
+    btnText: "CHOOSE PLAN",
+    customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: (
+      <p>
+        Domestic <br /> Corporation
+      </p>
+    ),
+    rate: "Starts at ₱35,000",
 
     duration: "(40 hours per week)",
     info: [
@@ -210,11 +245,12 @@ export const pricing = [
         <p className="font-bold">SEC Registration</p>
       </div>,
       <div className="text-left">
-        <p className="font-bold">BIR Registratio</p>
+        <p className="font-bold">BIR Registration</p>
         <ul className="text-sm ml-5">
           <li>Application for 'Authority to Print'</li>
           <li>Books of Account</li>
           <li>Annual Registration (0605)</li>
+          <li>DST Doc Stamp for Lease</li>
           <li>DST Doc Stamp for Subscribed Capital</li>
         </ul>
       </div>,
