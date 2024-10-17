@@ -11,38 +11,46 @@ const BookkeepingPricing = () => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">Choose what's best for your needs</p>
-            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light mb-8">
               Suitable Pricing Plans
             </h3>
-            <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4 text-light">
-              <h3>Scope of Services</h3>
-              <li>
-                <FaCheckCircle className="text-light" />
-                Compliance For:
-                <ul>
-                  <li>BIR Compliance</li>
-                  <li>Bookkeeping</li>
-                  <li>Mandatory Government Deductions & Contributions</li>
-                </ul>
-              </li>
-              <li>
-                <FaCheckCircle className="text-light" />
-                Monthly
-              </li>
-              <li>
-                <FaCheckCircle className="text-light" />
-                Mandatory Government Deductions & Contributions (SSS, Pag-IBIG,
-                PhilHealth, BIR)
-              </li>
-              <li>
-                <FaCheckCircle className="text-light" />
-                Financial Reports
-              </li>
-              <li>
-                <FaCheckCircle className="text-light" />
-                filling of BIR Tax Returns
-              </li>
-            </ul>
+            <div className="grid place-items-center text-light">
+              <h3 className="mb-8">Scope of Services</h3>
+              <p>MONTHLY SERVICE:</p>
+              <ul className="text-left [&>li]:gap-2 my-4">
+                <li className="flex items-center">
+                  <FaCheckCircle className="text-light" />
+                  <p>Bookkeeping</p>
+                </li>
+                <li className="flex items-center">
+                  <FaCheckCircle className="text-light" /> Mandatory Government
+                  Deductions & Contributions
+                </li>
+                <li className="flex items-center">
+                  <FaCheckCircle className="text-light" /> Financial Reports
+                </li>
+                <li className="flex items-center">
+                  <FaCheckCircle className="text-light" /> Filing of BIR Tax
+                  Returns
+                </li>
+              </ul>
+
+              <p>QUARTERLY SERVICE:</p>
+              <ul className="text-left [&>li]:gap-2 my-4">
+                <li className="flex items-center">
+                  <FaCheckCircle className="text-light" />
+                  <p>BIR Compliance</p>
+                </li>
+              </ul>
+
+              <p>ANNUAL SERVICE:</p>
+              <ul className="text-left [&>li]:gap-2 my-4">
+                <li className="flex items-center">
+                  <FaCheckCircle className="text-light" />
+                  <p>Renewals (Business Permit, BIR)</p>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="grid place-items-center">
             <div
