@@ -143,6 +143,18 @@
   .slick-slider {
     padding: 20px !important;
   }
+  .addEntrance {
+    animation: mymove 2s;
+  }
+}
+
+@keyframes mymove {
+  from {
+    transform: translateX(20%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media screen and (max-width: 1366px) {
