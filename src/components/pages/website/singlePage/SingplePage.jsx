@@ -2,7 +2,7 @@ import { default as React, useEffect } from "react";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { LuTag } from "react-icons/lu";
 import { MdOutlineCalendarToday } from "react-icons/md";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import { insight } from "../home/data";
@@ -40,7 +40,7 @@ const SingplePage = () => {
               <p>{getInsights().postDate}</p>
             </li>
           </ul>
-          <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12">
+          <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] gap-8 mt-12">
             <div className="postContent">
               <img
                 src={`../../public/img/${getInsights().postImage}`}
@@ -80,37 +80,43 @@ const SingplePage = () => {
                 repellendus similique alias!
               </p>
             </div>
-            <div className="order-1 lg:px-10 md:px-0 mt-6 lg:mt-0">
+            <div className="order-1 px-10 md:px-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold mb-10 text-dark">
                   Popular Posts
                 </h3>
-                <div className="popularPostLinks [&>ul>li]:flex [&>ul>li]:items-center [&>ul>li]:gap-4">
+                <div className="popularPostLinks">
                   <ul className="[&>li]:my-8">
-                    <li>
-                      <img
-                        src="../../public/img/partnerWithUs.jpg"
-                        alt=""
-                        className="h-[60px] w-[80px] rounded-lg object-cover"
-                      />
-                      <p>Top 10 Accounting software for Business</p>
-                    </li>
-                    <li>
-                      <img
-                        src="../../public/img/partnerWithUs.jpg"
-                        alt=""
-                        className="h-[60px] w-[80px] rounded-lg object-cover"
-                      />
-                      <p>Top 10 Accounting software for Business</p>
-                    </li>
-                    <li>
-                      <img
-                        src="../../public/img/partnerWithUs.jpg"
-                        alt=""
-                        className="h-[60px] w-[80px] rounded-lg object-cover"
-                      />
-                      <p>Top 10 Accounting software for Business</p>
-                    </li>
+                    {insight.map((popPost, key) => {
+                      return (
+                        <>
+                          <li key={key}>
+                            <Link to={`/insight/${popPost.postSlug}`}>
+                              <div className="flex items-center gap-4">
+                                <figure className="">
+                                  <img
+                                    style={{
+                                      width: "150px",
+                                      height: "80px",
+                                    }}
+                                    src={`../../public/img/${popPost.postImage}`}
+                                    alt=""
+                                    className="w-24 rounded-lg object-cover block"
+                                  />
+                                </figure>
+
+                                <div>
+                                  <p>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit.
+                                  </p>
+                                </div>
+                              </div>
+                            </Link>
+                          </li>
+                        </>
+                      );
+                    })}
                   </ul>
                   <hr />
                 </div>
@@ -120,22 +126,14 @@ const SingplePage = () => {
                   Categories
                 </h3>
                 <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-3">
-                  <li>
-                    <BiSolidRightArrow className="text-primary" /> Web
-                    Development
-                  </li>
-                  <li>
-                    <BiSolidRightArrow className="text-primary" />
-                    Accounting
-                  </li>
-                  <li>
-                    <BiSolidRightArrow className="text-primary" />
-                    Virtual Assistant
-                  </li>
-                  <li>
-                    <BiSolidRightArrow className="text-primary" /> Skill
-                    Development
-                  </li>
+                  {insight.map((cat, key) => {
+                    return (
+                      <li key={key}>
+                        <BiSolidRightArrow className="text-primary" />
+                        {cat.postCategory}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

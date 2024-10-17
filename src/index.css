@@ -160,3 +160,8 @@
 /* .slick-slider .slick-list {
   padding-top: 100px;
 } */
+
+img.popPost {
+  width: 80px !important;
+  height: 60px !important;
+}
