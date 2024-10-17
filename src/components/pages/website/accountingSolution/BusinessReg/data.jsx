@@ -2,10 +2,10 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Boost your business efficiency with our",
-    bannerTitleBoldText: "Administrative Assistance",
+    bannerTitle: "Start Your Business Hassle-Free with Our ",
+    bannerTitleBoldText: "Registration Services",
     bannerTextDesc:
-      "Our Virtual Assistance Services provide reliable and efficient administrative support tailored to your needs. From managing schedules and coordinating communication to handling data, organizing documents, and supporting financial tasks, we ensure your daily operations run smoothly. Whether you need secretarial assistance, executive support, or help with project coordination, our team is here to optimize your workflow and free up your time for what matters most.",
+      "Choose from comprehensive packages that simplify the registration process for any business type. We handle everything—from essential permits to compliance documents—so you can focus on growing your business.",
     bannerBtnText: "PARTNER WITH US",
     bannerBtnLink: "Link",
     bannerImage: "business-reg-bg.jpg",
@@ -34,19 +34,19 @@ export const sectionPartnersLogos = [
 export const webAppOverview = [
   {
     subtitle: "Here's why we're the",
-    mainTitle: "right choice for your VA needs.",
-    webAppImage: "vaOverviewImage.jpg",
+    mainTitle: "right choice for your Business Registration needs.",
+    webAppImage: "business-reg-img.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Enhanced Efficiency and Productivity",
+    overviewAtitle: "Comprehensive Registration",
     overviewAtext:
-      "We handle routine tasks like data entry, calendar management, and email organization, freeing up your time to focus on core business activities.",
-    overviewBtitle: "Comprehensive Support Tailored to Your Needs",
+      "We offer tailored packages for different business types, covering essential registrations like DTI, SEC, BIR, and LGU to simplify the process.",
+    overviewBtitle: "Full Compliance Support",
     overviewBtext:
-      "Our services cover everything from executive assistance and personal tasks to data management and event coordination, offering solutions that fit your specific needs.",
-    overviewCtitle: "Cost-Effective and Scalable Solutions",
+      "Our services handle key documents like the Authority to Print, Books of Account, and DST Doc Stamps, ensuring all compliance needs are met.",
+    overviewCtitle: "Affordable and Flexible Packages",
     overviewCtext:
-      "Enjoy flexible support without the costs of full-time staff. Our services can scale with your workload, ensuring you pay only for what you need.",
+      "Our packages cater to different budgets, making registration accessible for businesses of any size.",
   },
 ];
 

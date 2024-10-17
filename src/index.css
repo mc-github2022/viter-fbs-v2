@@ -73,7 +73,7 @@
   }
 
   .slickNav ul li.slick-active div {
-    @apply !bg-[gray] !opacity-100;
+    @apply !bg-[white] !opacity-100;
   }
   .serviceIcon svg {
     @apply group-hover:fill-[white] fill-[#6a1141];
