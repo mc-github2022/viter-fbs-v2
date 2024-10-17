@@ -39,7 +39,7 @@ export const eventsAndAct = [
         </p>
       </div>
     ),
-    customCss: "md:row-span-2",
+    customCss: "",
     customCss2: "h-[550px]",
   },
   {
