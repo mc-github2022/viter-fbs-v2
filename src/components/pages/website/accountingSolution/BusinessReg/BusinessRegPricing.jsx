@@ -147,9 +147,6 @@ const BusinessRegPricing = () => {
                             <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
                               {price.info.map((info, key) => (
                                 <li key={key} className="mb-1">
-                                  <FaCheckCircle
-                                    className={`${price.customCss} text-light mt-1`}
-                                  />
                                   {info}
                                 </li>
                               ))}

@@ -1,4 +1,7 @@
+import { AiFillCloseCircle } from "react-icons/ai";
+import { FaCheckCircle } from "react-icons/fa";
 import { FaRegThumbsUp } from "react-icons/fa6";
+import { RiCloseCircleLine, RiCloseLargeFill } from "react-icons/ri";
 
 export const banner = [
   {
@@ -82,20 +85,27 @@ export const pricing = [
     rate: "P12,000",
     duration: "(20 hours per week)",
     info: [
-      <div className="text-left">
+      <div className="text-left flex items-center gap-3">
+        <FaCheckCircle className={`text-primary`} />
         <p className="font-bold">DTI Registration</p>
       </div>,
       <div className="text-left">
-        <p className="font-bold">BIR Registratio</p>
-        <ul className="text-sm ml-5">
+        <div className="flex items-center gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p className="font-bold">BIR Registratio</p>
+        </div>
+        <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
           <li>Books of Account</li>
           <li>Annual Registration (0605)</li>
         </ul>
       </div>,
       <div className="text-left">
-        <p className="font-bold">LGU Registration</p>
-        <ul className="text-sm ml-5">
+        <div className="flex items-center gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p className="font-bold">LGU Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
           <li>Barangay Permit</li>
           <li>Mayor's Permit</li>
           <li>Fire and Safety</li>
@@ -117,8 +127,33 @@ export const pricing = [
     rate: "P20,000",
     duration: "(40 hours per week)",
     info: [
-      <div className="">
+      <div className="text-left flex items-center gap-3">
+        <FaCheckCircle className={`text-primary`} />
         <p className="font-bold">SEC Only</p>
+      </div>,
+      <div className="text-left">
+        <div className="text-left flex items-center gap-3">
+          <RiCloseLargeFill className={`text-primary text-[17px]`} />
+          <p className="font-bold">BIR Registratio</p>
+        </div>
+        <ul className="text-sm ml-7">
+          <li>Application for 'Authority to Print'</li>
+          <li>Books of Account</li>
+          <li>Annual Registration (0605)</li>
+        </ul>
+      </div>,
+      <div className="text-left">
+        <div className="text-left flex items-center gap-3">
+          <RiCloseLargeFill className={`text-primary text-lg`} />
+          <p className="font-bold">LGU Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
+          <li>Barangay Permit</li>
+          <li>Mayor's Permit</li>
+          <li>Fire and Safety</li>
+          <li>Zoning Permit</li>
+          <li>Location Clearance</li>
+        </ul>
       </div>,
     ],
     priceDesc:
@@ -135,8 +170,11 @@ export const pricing = [
     duration: "(40 hours per week)",
     info: [
       <div className="text-left">
-        <p className="font-bold">BIR Registratio</p>
-        <ul className="text-sm ml-5">
+        <div className="text-left flex items-center gap-3">
+          <FaCheckCircle className={`text-light text-[17px]`} />
+          <p className="font-bold">BIR Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
           <li>Books of Account</li>
           <li>Annual Registration (0605)</li>
@@ -144,8 +182,11 @@ export const pricing = [
         </ul>
       </div>,
       <div className="text-left">
-        <p className="font-bold">LGU Registration</p>
-        <ul className="text-sm ml-5">
+        <div className="text-left flex items-center gap-3">
+          <FaCheckCircle className={`text-light text-[17px]`} />
+          <p className="font-bold">LGU Registration</p>
+        </div>
+        <ul className="text-sm ml-7">
           <li>Barangay Permit</li>
           <li>Mayor's Permit</li>
           <li>Fire and Safety</li>
