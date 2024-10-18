@@ -15,8 +15,10 @@ const BookkeepingPricing = () => {
               Suitable Pricing Plans
             </h3>
             <div className="grid place-items-center text-light">
-              <h3 className="mb-8">Scope of Services</h3>
-              <p>MONTHLY SERVICE:</p>
+              <h2 className="mb-8 text-primary font-semibold">
+                SCOPE OF SERVICES
+              </h2>
+              <p className="">MONTHLY SERVICE:</p>
               <ul className="text-left [&>li]:gap-2 my-4">
                 <li className="flex items-center">
                   <FaCheckCircle className="text-light" />
