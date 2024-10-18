@@ -4,7 +4,7 @@ const WhyUsTheTeam = () => {
   return (
     <>
       <section className="whyUsTheTeam py-20 bg-[#000]">
-        <div className="customContainer">
+        <div className="customContainer px-7">
           <div className="wrapper grid grid-cols-1 xl:grid-cols-[_270px_2fr] gap-16">
             <div className="flex items-center">
               <div>

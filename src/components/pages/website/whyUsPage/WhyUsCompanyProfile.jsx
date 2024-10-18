@@ -16,7 +16,7 @@ const WhyUsCompanyProfile = () => {
         </div>
       </div>
 
-      <section className="partnersWithUs py-20 ">
+      <section className="partnersWithUs pb-20 md:py-20 ">
         <div className="customContainer">
           <p> Here are the</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">

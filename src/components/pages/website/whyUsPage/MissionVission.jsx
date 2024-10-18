@@ -19,8 +19,8 @@ const MissionVission = () => {
               </span>
             </h2>
           </div>
-          <div className="wrapper flex flex-col lg:grid lg:grid-cols-3 gap-5">
-            <div className="gridItem grid place-items-start bg-light p-10">
+          <div className="wrapper flex flex-wrap gap-5 place-content-center">
+            <div className="gridItem grid bg-light p-10 w-[400px]">
               <div className="text-center">
                 <LuEye className="text-[50px] mx-auto text-secondary mb-2" />
                 <h2 className="text-2xl font-bold mb-10 textGradient">
@@ -34,7 +34,7 @@ const MissionVission = () => {
                 </p>
               </div>
             </div>
-            <div className="gridItem grid place-items-start bg-light p-10">
+            <div className="gridItem grid bg-light p-10 w-[400px]">
               <div className="text-center">
                 <TbTargetArrow className="text-[50px] mx-auto text-secondary mb-2" />
                 <h2 className="text-2xl font-bold mb-10 textGradient">
@@ -48,7 +48,7 @@ const MissionVission = () => {
                 </p>
               </div>
             </div>
-            <div className="gridItem grid bg-light p-10">
+            <div className="gridItem grid bg-light p-10 w-[400px]">
               <div className="text-center">
                 <LuHeartHandshake className="text-[50px] mx-auto text-secondary mb-2" />
                 <h2 className="text-2xl font-bold mb-10 textGradient">

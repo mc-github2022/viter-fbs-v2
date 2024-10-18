@@ -1,12 +1,10 @@
 import React, { Fragment, useEffect } from "react";
-import Header from "../../../partials/Header";
+import { FiChevronsUp } from "react-icons/fi";
+import { LuChevronsDown } from "react-icons/lu";
 import Footer from "../../../partials/Footer";
-import { IoCodeSlashOutline } from "react-icons/io5";
-import { LuChevronsDown, LuCode2 } from "react-icons/lu";
-import { HiCode } from "react-icons/hi";
+import Header from "../../../partials/Header";
 import { jobOpening } from "./data";
 import ModalJobApplication from "./ModalJobApplication";
-import { FiChevronsUp } from "react-icons/fi";
 
 const CareerPage = () => {
   const [jobIdentifier, setJobIdentifier] = React.useState("");
@@ -60,29 +58,34 @@ const CareerPage = () => {
                     } jobItem bg-[#f8f8f8] p-5 rounded-lg addShadow  cursor-pointer  overflow-hidden mb-8`}
                   >
                     <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-6">
-                        <div className="bg-[#eedce8] w-20 h-16 grid place-items-center rounded-md">
+                      <div className="flex items-center gap-2 md:gap-6 ">
+                        <div className="bg-[#eedce8] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md">
                           {item.theIcon}
                         </div>
                         <div>
-                          <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2 md:gap-4">
                             <p className="font-bold text-dark">
                               {item.theTitle}
                             </p>
-                            <p className="text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg">
+                            <p className="text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg hidden md:block">
                               {item.jobStatus}
                             </p>
                           </div>
-                          <p className="text-sm">{item.jobCategory}</p>
+                          <div className="flex items-center gap-3">
+                            <p className="text-sm">{item.jobCategory}</p>
+                            <p className="text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg md:hidden">
+                              {item.jobStatus}
+                            </p>
+                          </div>
                           <p className="text-sm">{item.onsite}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-6">
+                      <div className="flex items-center md:gap-6">
                         <div>
                           <a
                             href="#"
                             onClick={() => handleModalJob(item.theTitle)}
-                            className="btn bg-secondary text-light !py-1.5 !px-12 "
+                            className="btn bg-secondary text-light !py-1.5 !px-12 hidden md:block "
                           >
                             APPLY
                           </a>
@@ -94,8 +97,17 @@ const CareerPage = () => {
                         )}
                       </div>
                     </div>
-                    <div className="jobDesc ml-[103px] mt-6">
+                    <div className="jobDesc px-6 md:px-0 md:ml-[103px] mt-6">
                       {item.jobInfo}
+                      <div className="my-8">
+                        <a
+                          href="#"
+                          onClick={() => handleModalJob(item.theTitle)}
+                          className="btn bg-secondary text-light !py-1.5 !px-12 md:hidden"
+                        >
+                          APPLY
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </Fragment>
