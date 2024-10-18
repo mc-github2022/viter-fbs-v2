@@ -25,9 +25,7 @@ const ServiceEnrollmentPricing = () => {
                   <div
                     key={key}
                     className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg min-h-[550px] addShadow ${
-                      price.isActive
-                        ? "bg-primary h-[500px]"
-                        : "bg-customGray !text-dark"
+                      price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid place-items-center`}
                   >
                     <div>
