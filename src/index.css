@@ -26,6 +26,9 @@
   textarea {
     @apply bg-customGray w-full h-20 resize-none;
   }
+  /* * {
+    @apply outline ;
+  } */
 }
 
 @layer components {
