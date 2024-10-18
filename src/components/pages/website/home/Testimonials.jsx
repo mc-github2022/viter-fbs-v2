@@ -50,7 +50,7 @@ const Testimonials = () => {
                       : "hidden"
                   }`}
                 >
-                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] lg:float-right">
+                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
                     FBS is a true partner to our firm. They have help form our
                     vision and trajectory. We are immnensely gratefull our
                     partnership. Our expectation is to FBS to grow with us. They
@@ -76,7 +76,7 @@ const Testimonials = () => {
                       : "hidden"
                   }`}
                 >
-                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] lg:float-right">
+                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
                     FBS is a true partner to our firm. They have help form our
                     vision and trajectory. We are immnensely gratefull our
                     partnership. Our expectation is to FBS to grow with us. They
@@ -96,7 +96,7 @@ const Testimonials = () => {
                   </div>
                 </div>
 
-                <div className="sliderNavTestimonials flex gap-2 absolute right-[2%] lg:bottom-[20%]">
+                <div className="sliderNavTestimonials flex gap-2 absolute right-[2%] py-3 lg:bottom-[20%] lg:py-0">
                   <button
                     className={`${
                       displayTestimonial && testimonialItem == "slider-index-1"
@@ -126,7 +126,7 @@ const Testimonials = () => {
             </div>
           </div>
         </div>
-        <div className="testimonialPhoto hidden  lg:block absolute z-[1] left-[50%] translate-x-[-40%] top-[250px] lg:top-[130px] w-[250px] lg:w-[358px]">
+        <div className="testimonialPhoto hidden lg:block absolute z-[1] left-[50%] translate-x-[-40%] top-[250px] lg:top-[130px] w-[250px] lg:w-[358px]">
           <div
             className={`${
               displayTestimonial && testimonialItem == "slider-index-1"
@@ -144,7 +144,7 @@ const Testimonials = () => {
           <div
             className={`${
               displayTestimonial && testimonialItem == "slider-index-2"
-                ? "addEntrance block w-[450px]"
+                ? "addEntrance block w-[445px]"
                 : "hidden"
             }`}
           >
@@ -157,7 +157,7 @@ const Testimonials = () => {
           </div>
         </div>
         <div className="hidden lg:block">
-          <div className="smPill w-[70%] h-[100px] bg-primary top-[60%] z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg]">
+          <div className="smPill w-[72%] h-[100px] 2xl:top-[55%] bg-primary lg:top-[60%] z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg]">
             <div
               className={`${
                 displayTestimonial && testimonialItem == "slider-index-1"
@@ -190,7 +190,7 @@ const Testimonials = () => {
         </div>
         <div className="z-0 hidden lg:block overflow-hidden">
           <div className="radial w-full h-[510px] bgGradientBlack absolute left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%] overflow-hidden">
-            <div className="bigPill w-[70%] h-[300px] bg-primary top-0 z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg] "></div>
+            <div className="bigPill w-[72%] h-[300px] 2xl:-top-[10%] bg-primary lg:top-0 z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg] "></div>
           </div>
         </div>
       </section>

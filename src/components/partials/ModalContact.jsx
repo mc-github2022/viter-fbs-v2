@@ -36,7 +36,7 @@ const ModalContact = ({ setModalContact, setToggleMenu }) => {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray pl-10 pt-10 pb-10 pr-[150px] grid grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -46,7 +46,7 @@ const ModalContact = ({ setModalContact, setToggleMenu }) => {
               }}
             />
           </div>
-          <div className="absolute right-0 w-[30%] h-full ">
+          <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
               src="../../public/img/lets-talk.jpg"
               className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"

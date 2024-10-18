@@ -25,7 +25,7 @@ const Insights = () => {
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                           backgroundImage: `url(../../public/img/${post.postImage})`,
                         }}
-                        className={`blogItem bg-center bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem bg-center bg-cover h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
