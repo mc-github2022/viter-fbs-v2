@@ -12,7 +12,7 @@ const ServiceOnlineDonationPricing = () => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              Web application for your asset inventory needs
+              Web application for your online donation needs
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Affordable Pricing Plan
@@ -24,10 +24,8 @@ const ServiceOnlineDonationPricing = () => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 md:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
-                      price.isActive
-                        ? "bg-primary h-[500px]"
-                        : "bg-customGray !text-dark"
+                    className={`priceItem mb-5 md:mb-0 relative z-[1]  h-[500px] text-light text-center p-10 rounded-lg addShadow ${
+                      price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid place-items-center`}
                   >
                     <div>
