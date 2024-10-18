@@ -104,7 +104,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   .theNav ul {
-    @apply absolute md:static bg-light right-[-100%] top-[59px] w-full z-[5] transition-all;
+    @apply absolute md:static bg-light right-[-100%] top-[57px] w-full z-[5] transition-all;
   }
   .theNav ul li {
     @apply border-t border-t-customGray border-b-customGray md:border-t-0 cursor-pointer;
