@@ -18,7 +18,7 @@ import {
 } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 
-const ModalContact = ({ setModalContact, setToggleMenu }) => {
+const ModalContact = ({ setModalContact, setToggleMenu = null }) => {
   setToggleMenu(false);
 
   const handleClose = () => {
@@ -30,7 +30,7 @@ const ModalContact = ({ setModalContact, setToggleMenu }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center backdrop-blur-lg"
+        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center backdrop-blur-lg overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
@@ -57,11 +57,11 @@ const ModalContact = ({ setModalContact, setToggleMenu }) => {
             <div>
               <div className="mb-12">
                 <p>How can we help you?</p>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
                   Let's work together.
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-12 leading-[1.2]">
+              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p>
@@ -103,7 +103,7 @@ const ModalContact = ({ setModalContact, setToggleMenu }) => {
                 </ul>
               </div>
             </div>
-            <div className="downloadProposal justify-end ">
+            <div className="downloadProposal justify-end py-5 md:py-0">
               <p className="text-sm">Learn more about our program</p>
               <p className="flex gap-2 items-center font-bold text-primary">
                 Download Proposal <FaFileDownload />
