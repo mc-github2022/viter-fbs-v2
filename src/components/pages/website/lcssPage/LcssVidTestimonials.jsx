@@ -39,7 +39,7 @@ const LcssVidTestimonials = () => {
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    className="w-[60px]  mr-4"
                     alt=""
                   />
                   <div className="italic">
@@ -53,7 +53,7 @@ const LcssVidTestimonials = () => {
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
+                src="https://www.youtube.com/embed/rGtLB1x58ts?si=GDWftGxNTKDHpyZI"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -63,21 +63,25 @@ const LcssVidTestimonials = () => {
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
                 <p className="italic mb-8">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
-                  have learned a lot, and my overall experience will be very
-                  helpful not only in my future career, but also in building and
-                  shaping myself.
+                  am grateful to Frontline Business Solutions for providing me
+                  with a training and the support I needed to become what I am
+                  today. Their programs are designed to help people like me to
+                  gain the skills and knowledge that is neccesary to success in
+                  this field.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
                 <div className="nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    src={`../../public/img/LSPU.png`}
+                    className="w-[60px]  mr-4"
                     alt=""
                   />
                   <div className="italic">
-                    <p className="font-semibold">Thea Lyzette Consignado</p>
-                    <p>De La Salle Lipa Trainee</p>
+                    <p className="font-semibold">Mark Ryan Merin</p>
+                    <p>
+                      Laguna State Polytechnic Univ. <br /> SPC Campus
+                    </p>
                   </div>
                 </div>
               </div>
@@ -86,7 +90,7 @@ const LcssVidTestimonials = () => {
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
+                src="https://www.youtube.com/embed/7fGYHbtnCQk?si=-97GqozGwXnv3Z9q"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -95,22 +99,22 @@ const LcssVidTestimonials = () => {
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
                 <p className="italic mb-8">
-                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
-                  have learned a lot, and my overall experience will be very
-                  helpful not only in my future career, but also in building and
-                  shaping myself.
+                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
+                  They did not just help me improve my web designing skills, but
+                  they also gave me strength and advises regarding personality
+                  and values that I can adopt from them to the IT industry.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
                 <div className="nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    src={`../../public/img/lc.png`}
+                    className="w-[60px] mr-4"
                     alt=""
                   />
                   <div className="italic">
-                    <p className="font-semibold">Thea Lyzette Consignado</p>
-                    <p>De La Salle Lipa Trainee</p>
+                    <p className="font-semibold">Aileah Marie Lozada</p>
+                    <p>Laguna College Trainee</p>
                   </div>
                 </div>
               </div>
