@@ -109,14 +109,14 @@ const LcssPartnersSay = () => {
       <section className="partnersSay py-10 pb-20 md:py-20">
         <div className="customContainer">
           <div className="">
-            <p>What our school and university</p>
+            <p>What Our School and University</p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              partners say
+              Partners Say
             </h2>
           </div>
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
-              <div className="md:h-[425px]">
+              <div className="md:h-[500px]">
                 <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%] lg:translate-y-[-50%] py-10 px-10 lg:px-20 lg:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                   <div className="theMessage  relative">
                     <div className="absolute top-[-30px] left-[-40px]">
@@ -245,9 +245,9 @@ const LcssPartnersSay = () => {
                       <div className="leading-[1] italic">
                         <p>Mr. Joesua R. Manzanero</p>
                         <p className="text-sm">
-                          Faculty, LSPU- San Pablo City Campus Program
-                          Coordinator, BS in Information Technology OJT
-                          Coordinator, College of Computer Studies
+                          Faculty, LSPU- San Pablo City Campus <br />
+                          Program Coordinator, BSIT OJT Coordinator, <br />{" "}
+                          College of Computer Studies
                         </p>
                       </div>
                     </div>
