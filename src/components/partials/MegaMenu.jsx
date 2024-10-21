@@ -244,75 +244,95 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   Special Offer
                 </h3>
                 <div className="wrapper grid grid-cols-1 lg:grid-cols-5 gap-3">
-                  <div className="offerItem bg-light p-2 rounded-xl grid place-items-center">
-                    <div>
-                      <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3">
-                        <li>
-                          <FaAddressCard className="text-[32px] text-primary" />
-                        </li>
-                        <li className="text-xs">
-                          Business <br /> Registration
-                        </li>
-                      </ul>
-                      <p className="font-bold text-dark">Startup Package</p>
+                  <Link to="/business-registration">
+                    <div className="offerItem bg-light p-2 rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
+                      <div>
+                        <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
+                          <li>
+                            <FaAddressCard className="text-[32px] text-primary group-hover:text-light" />
+                          </li>
+                          <li className="text-xs ">
+                            Business <br /> Registration
+                          </li>
+                        </ul>
+                        <p className="font-bold text-dark group-hover:text-light">
+                          Startup Package
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="offerItem bg-light p-2  rounded-xl grid place-items-center">
-                    <div>
-                      <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3">
-                        <li>
-                          <FaGlobe className="text-[32px] text-primary" />
-                        </li>
-                        <li className="text-xs">
-                          One-Page <br /> Website
-                        </li>
-                      </ul>
-                      <p className="font-bold text-dark">30 Days Trial</p>
+                  </Link>
+
+                  <Link to="/web-singlepage">
+                    <div className="offerItem bg-light p-2  rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
+                      <div>
+                        <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
+                          <li>
+                            <FaGlobe className="text-[32px] text-primary group-hover:text-light" />
+                          </li>
+                          <li className="text-xs">
+                            One-Page <br /> Website
+                          </li>
+                        </ul>
+                        <p className="font-bold text-dark group-hover:text-light">
+                          30 Days Trial
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="offerItem bg-light p-2  rounded-xl grid place-items-center">
-                    <div>
-                      <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3">
-                        <li>
-                          <FaBriefcase className="text-[32px] text-primary" />
-                        </li>
-                        <li className="text-xs">
-                          Human Resource <br /> Information System
-                        </li>
-                      </ul>
-                      <p className="font-bold text-dark">
-                        ₱40 / Employee / Mo.
-                      </p>
+                  </Link>
+
+                  <Link to="/webapp-hris">
+                    <div className="offerItem bg-light p-2  rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
+                      <div>
+                        <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
+                          <li>
+                            <FaBriefcase className="text-[32px] text-primary group-hover:text-light" />
+                          </li>
+                          <li className="text-xs">
+                            Human Resource <br /> Information System
+                          </li>
+                        </ul>
+                        <p className="font-bold text-dark group-hover:text-light">
+                          ₱40 / Employee / Mo.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="offerItem bg-light p-2  rounded-xl grid place-items-center">
-                    <div>
-                      <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3">
-                        <li>
-                          <FaMoneyBill className="text-[32px] text-primary" />
-                        </li>
-                        <li className="text-xs">
-                          Online Payroll <br /> System
-                        </li>
-                      </ul>
-                      <p className="font-bold text-dark">
-                        ₱40 / Employee / Mo.
-                      </p>
+                  </Link>
+
+                  <Link to="/webapp-payroll">
+                    <div className="offerItem bg-light p-2  rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
+                      <div>
+                        <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
+                          <li>
+                            <FaMoneyBill className="text-[32px] text-primary group-hover:text-light" />
+                          </li>
+                          <li className="text-xs">
+                            Online Payroll <br /> System
+                          </li>
+                        </ul>
+                        <p className="font-bold text-dark group-hover:text-light">
+                          ₱40 / Employee / Mo.
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="offerItem bg-light p-2  rounded-xl grid place-items-center">
-                    <div>
-                      <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3">
-                        <li>
-                          <FaSmile className="text-[32px] text-primary" />
-                        </li>
-                        <li className="text-xs">
-                          Virtual Assistant <br /> Solutions
-                        </li>
-                      </ul>
-                      <p className="font-bold text-dark">₱8 / Hour</p>
+                  </Link>
+
+                  <Link to="/adminSolution">
+                    <div className="offerItem bg-light p-2  rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
+                      <div>
+                        <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
+                          <li>
+                            <FaSmile className="text-[32px] text-primary group-hover:text-light" />
+                          </li>
+                          <li className="text-xs">
+                            Virtual Assistant <br /> Solutions
+                          </li>
+                        </ul>
+                        <p className="font-bold text-dark group-hover:text-light">
+                          ₱8 / Hour
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
