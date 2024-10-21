@@ -43,7 +43,7 @@ const ImmersionTeam = () => {
                 <p className="font-semibold text-xl">
                   Ms. Thea Lyzette Consignado
                 </p>
-                <p>Accouting Trainer</p>
+                <p>Accounting Trainer</p>
                 <p>Accounting Associate</p>
                 <p className="text-sm">
                   thea.consignado@frontlinebusiness.com.ph

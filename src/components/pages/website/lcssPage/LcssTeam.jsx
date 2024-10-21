@@ -44,7 +44,7 @@ const LcssTeam = () => {
                 <p className="font-semibold text-xl">
                   Ms. Thea Lyzette Consignado
                 </p>
-                <p>Accoutiung Trainer</p>
+                <p>Accounting Trainer</p>
                 <p>Accounting Associate</p>
                 <p className="text-sm">
                   thea.consignado@frontlinebusiness.com.ph

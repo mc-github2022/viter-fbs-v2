@@ -46,7 +46,7 @@ const ImmersionServices = () => {
               </ul>
             </div>
             <div className="accountingServices">
-              <div className=" my-10 md:my-10 lg:my-0">
+              <div className="mb-10">
                 <p>ABM students can learn</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Accounting <br />
@@ -87,7 +87,7 @@ const ImmersionServices = () => {
               </ul>
             </div>
             <div className="adminTasks">
-              <div className=" my-10 md:my-10 lg:my-0">
+              <div className="mb-10">
                 <p>HUMSS and GAS students can learn</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Administrative <br />
