@@ -281,7 +281,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                         </li>
                       </ul>
                       <p className="font-bold text-dark">
-                        P40 / Employee / Mo.
+                        ₱40 / Employee / Mo.
                       </p>
                     </div>
                   </div>
@@ -296,7 +296,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                         </li>
                       </ul>
                       <p className="font-bold text-dark">
-                        P40 / Employee / Mo.
+                        ₱40 / Employee / Mo.
                       </p>
                     </div>
                   </div>
@@ -307,10 +307,10 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                           <FaSmile className="text-[32px] text-primary" />
                         </li>
                         <li className="text-xs">
-                          Social Media <br /> Management
+                          Virtual Assistant <br /> Solutions
                         </li>
                       </ul>
-                      <p className="font-bold text-dark">10% Discount</p>
+                      <p className="font-bold text-dark">₱8 / Hour</p>
                     </div>
                   </div>
                 </div>
