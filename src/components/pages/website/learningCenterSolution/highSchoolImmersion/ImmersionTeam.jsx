@@ -11,7 +11,7 @@ const ImmersionTeam = () => {
           >
             <p>Here are the</p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              industry professionals
+              Industry Professionals
             </h3>
             <p>who will provide you with real-world experience and insights.</p>
           </div>
@@ -24,9 +24,7 @@ const ImmersionTeam = () => {
                 alt=""
               />
               <div>
-                <p className="font-semibold text-xl">
-                  Mr. Jhonny Dischoso, MIT
-                </p>
+                <p className="font-semibold text-xl">Mr. Jhonny Dichoso, MIT</p>
                 <p>Head, Learning Center Solutions</p>
                 <p>Supervisor, Web Development</p>
                 <p className="text-sm">
@@ -78,7 +76,7 @@ const ImmersionTeam = () => {
                 <p className="font-semibold text-xl">Ms. Herlyn Mae Torres</p>
                 <p>Frontend Development Trainer</p>
                 <p className="text-sm">
-                  roy.balaaldia@frontlinebusiness.com.ph
+                  herlyn.torres@frontlinebusiness.com.ph
                 </p>
               </div>
             </div>

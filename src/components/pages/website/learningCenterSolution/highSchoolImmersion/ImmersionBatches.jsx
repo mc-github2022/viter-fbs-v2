@@ -128,9 +128,9 @@ const ImmersionBatches = () => {
             className="mb-12
           "
           >
-            <p>Professional journey of our</p>
+            <p>Professional Journey of Our</p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              successful, industry-ready Batches
+              Successful, Industry-ready Batches
             </h3>
           </div>
           <Slider {...settings}>
@@ -168,7 +168,10 @@ const ImmersionBatches = () => {
       </section>
 
       {modalBatch && (
-        <ImmersionBatchSliderPage setModalBatch={setModalBatch} itemEdit={itemEdit} />
+        <ImmersionBatchSliderPage
+          setModalBatch={setModalBatch}
+          itemEdit={itemEdit}
+        />
       )}
     </>
   );

@@ -7,10 +7,10 @@ const ImmersionPartnersWithUs = () => {
     <>
       <section className="ImmersionPartnersWithUs py-20 bg-customGray">
         <div className="customContainer">
-          <p> We offer senior high school work immersion with</p>
+          <p> We Offer Senior High School Work Immersion With</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              actual work-related experience.
+              Actual Work-Related Experience.
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
