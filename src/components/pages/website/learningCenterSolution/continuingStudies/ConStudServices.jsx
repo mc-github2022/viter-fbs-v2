@@ -7,14 +7,16 @@ const ConStudServices = () => {
     <>
       <section className="ConStudServices py-20">
         <div className="customContainer">
-          <div className="wrapper lg:grid lg:grid-cols-2">
+          <div className="wrapper lg:grid lg:grid-cols-3">
             <div className="webDEv">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-                  Web Design & Development
+                  Frontend <br /> Development <br />
+                  Training
                 </h3>
-                <p>On-the-job training.</p>
+                <p>Minimun of 240 Hours </p>
+                <p>Prerequisite: None</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
@@ -51,7 +53,35 @@ const ConStudServices = () => {
                 </li>
                 <li>
                   <FaLaptop className="text-2xl text-dark" />
-                  Business Wirk Ethics
+                  Business Work Ethics
+                </li>
+              </ul>
+            </div>
+            <div className="webDEv">
+              <div className="mb-10">
+                <p>Here is what you can learn in our</p>
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
+                  Backend <br /> Development <br />
+                  Training
+                </h3>
+                <p>Minimun of 160 Hours</p>
+                <p>Prerequisite: Frontend Dev.</p>
+              </div>
+              <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> ReactJs Frontend
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> Props, State, and
+                  Store Context
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> MySQL, CRUD, CORS,
+                  and API
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> ReactJS Project
+                  Development
                 </li>
               </ul>
             </div>

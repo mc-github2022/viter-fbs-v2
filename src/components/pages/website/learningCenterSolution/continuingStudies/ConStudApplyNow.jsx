@@ -16,13 +16,19 @@ const ConStudApplyNow = () => {
               <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2">
                 <li>
                   <FaCheckCircle className="text-primary" />
-                  Resume
+                  Email of Application
                 </li>
                 <li>
                   <FaCheckCircle className="text-primary" />
-                  School Memorandum of Agreement
+                  Resume
                 </li>
-                <li>
+                <li className="mt-4 italic">
+                  Interested applicants can submit their resumes to our Learning
+                  Center Solutions Department at
+                  herlyn.torres@frontlinebusiness.com.ph, and you will be
+                  scheduled for an online initial interview.
+                </li>
+                {/* <li>
                   <FaCheckCircle className="text-primary" /> Endorsement Letter
                 </li>
                 <li>
@@ -31,13 +37,13 @@ const ConStudApplyNow = () => {
                 <li>
                   <FaCheckCircle className="text-primary" />
                   School's Evaluation Form
-                </li>
+                </li> */}
               </ul>
               <a
                 href=""
                 className="btn bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
-                PARTNER WITH US TODAY
+                APPLY NOW
               </a>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">
