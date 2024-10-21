@@ -7,8 +7,55 @@ const ConStudServices = () => {
     <>
       <section className="ConStudServices py-20">
         <div className="customContainer">
-          <div className="wrapper lg:grid lg:grid-cols-3">
-            <div className="webDEv">
+          <div className="wrapper lg:grid lg:grid-cols-4">
+            <div className="webDesign">
+              <div className="mb-10">
+                <p>Here is what you can learn in our</p>
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
+                  Website <br /> Designing <br />
+                  Training
+                </h3>
+                <p>Minimun of 80 Hours </p>
+                <p>Prerequisite: None</p>
+              </div>
+              <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> Figma Introduction
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> Figma User
+                  Interface
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> Layers
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" /> Colors, Images,
+                  Icons, and Typography
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" />
+                  Components
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" />
+                  Plugins
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" />
+                  Grids
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" />
+                  Collaborations
+                </li>
+                <li>
+                  <FaLaptop className="text-2xl text-dark" />
+                  Prototyping
+                </li>
+              </ul>
+            </div>
+            <div className="webFrontend">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -57,7 +104,7 @@ const ConStudServices = () => {
                 </li>
               </ul>
             </div>
-            <div className="webDEv">
+            <div className="webBackend">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -89,54 +136,22 @@ const ConStudServices = () => {
               <div className="my-10 md:mb-10 md:my-0">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-                  Accounting Processes
+                  Online Accounting System
                 </h3>
-                <p>On-the-job training.</p>
+                <p>80 Hours</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Basic
-                  Accoutning
-                </li>
-                <li>
-                  <BsCalculator className="text-2xl text-dark" /> Excel Advanced
-                  Functions
-                </li>
-                <li>
-                  <BsCalculator className="text-2xl text-dark" /> Accounting
-                  Source Documents
-                </li>
-                <li>
-                  <BsCalculator className="text-2xl text-dark" /> Business
-                  Registration
-                </li>
-                <li>
                   <BsCalculator className="text-2xl text-dark" />
-                  PH & US Taxation
-                </li>
-                <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  PH & US Payroll
-                </li>
-                <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Quickbooks
+                  Quickbooks Online
                 </li>
                 <li>
                   <BsCalculator className="text-2xl text-dark" />
                   Xero
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Budget Monitoring
-                </li>
-                <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Financial Reports & Projections
-                </li>
-                <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Non-Profit Accounting
+                  <BsCalculator className="text-2xl text-dark" /> Pro Adviser
+                  Certification Reviewer
                 </li>
               </ul>
             </div>
