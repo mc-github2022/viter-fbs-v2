@@ -16,7 +16,7 @@ const LcssVidTestimonials = () => {
             </h3>
           </div>
           <div className="wrapper flex flex-wrap place-content-center lg:grid lg:grid-cols-3 gap-6">
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -27,29 +27,30 @@ const LcssVidTestimonials = () => {
                 allowFullScreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative">
-                <p className="italic mb-8">
+              <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
+                <p className="italic mb-8 min-h-[250px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   have learned a lot, and my overall experience will be very
                   helpful not only in my future career, but also in building and
                   shaping myself.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
-                  <img
-                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]  mr-4"
-                    alt=""
-                  />
-                  <div className="italic">
-                    <p className="font-semibold">Thea Lyzette Consignado</p>
-                    <p>De La Salle Lipa Trainee</p>
-                  </div>
+              </div>
+              <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                <img
+                  // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                  src={`../../public/img/DLSL_Official_logo.png`}
+                  className="w-[60px]  mr-4"
+                  alt=""
+                />
+                <div className="italic">
+                  <p className="font-semibold">Thea Lyzette Consignado</p>
+                  <p>De La Salle Lipa Trainee</p>
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -60,8 +61,8 @@ const LcssVidTestimonials = () => {
                 allowFullScreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-8">
+              <div className="testimonialMessage p-5 rounded-bl-xl rounded-br-xl ">
+                <p className="italic mb-8 min-h-[250px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   am grateful to Frontline Business Solutions for providing me
                   with a training and the support I needed to become what I am
@@ -70,23 +71,23 @@ const LcssVidTestimonials = () => {
                   this field.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
-                  <img
-                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/LSPU.png`}
-                    className="w-[60px]  mr-4"
-                    alt=""
-                  />
-                  <div className="italic">
-                    <p className="font-semibold">Mark Ryan Merin</p>
-                    <p>
-                      Laguna State Polytechnic Univ. <br /> SPC Campus
-                    </p>
-                  </div>
+              </div>
+              <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                <img
+                  // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                  src={`../../public/img/LSPU.png`}
+                  className="w-[60px]  mr-4"
+                  alt=""
+                />
+                <div className="italic">
+                  <p className="font-semibold">Mark Ryan Merin</p>
+                  <p>
+                    Laguna State Polytechnic Univ. <br /> SPC Campus
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -97,25 +98,25 @@ const LcssVidTestimonials = () => {
                 allowFullScreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-8">
+              <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl">
+                <p className="italic mb-8 min-h-[250px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
                   They did not just help me improve my web designing skills, but
                   they also gave me strength and advises regarding personality
                   and values that I can adopt from them to the IT industry.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
-                  <img
-                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/lc.png`}
-                    className="w-[60px] mr-4"
-                    alt=""
-                  />
-                  <div className="italic">
-                    <p className="font-semibold">Aileah Marie Lozada</p>
-                    <p>Laguna College Trainee</p>
-                  </div>
+              </div>
+              <div className=" absolute bottom-0 p-5 nameAndSchool flex items-center">
+                <img
+                  // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                  src={`../../public/img/lc.png`}
+                  className="w-[60px] mr-4"
+                  alt=""
+                />
+                <div className="italic">
+                  <p className="font-semibold">Aileah Marie Lozada</p>
+                  <p>Laguna College Trainee</p>
                 </div>
               </div>
             </div>
