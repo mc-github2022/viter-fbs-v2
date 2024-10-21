@@ -1,6 +1,7 @@
 import React from "react";
 import { BsCalculator } from "react-icons/bs";
 import { FaLaptop } from "react-icons/fa";
+import { Palette, Laptop, Calculator } from "lucide-react";
 
 const ConStudServices = () => {
   return (
@@ -20,37 +21,30 @@ const ConStudServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Figma Introduction
+                  <Palette className="text-2xl text-dark" /> Figma Introduction
+                  and UI
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Figma User
-                  Interface
+                  <Palette className="text-2xl text-dark" /> Layers
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Layers
-                </li>
-                <li>
-                  <FaLaptop className="text-2xl text-dark" /> Colors, Images,
+                  <Palette className="text-2xl text-dark" /> Colors, Images,
                   Icons, and Typography
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <Palette className="text-2xl text-dark" />
                   Components
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  Plugins
+                  <Palette className="text-2xl text-dark" />
+                  Plugins & Grids
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  Grids
-                </li>
-                <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <Palette className="text-2xl text-dark" />
                   Collaborations
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <Palette className="text-2xl text-dark" />
                   Prototyping
                 </li>
               </ul>
@@ -67,40 +61,36 @@ const ConStudServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Web Designing
-                  using Figma
+                  <Laptop className="text-2xl text-dark" /> Web Designing using
+                  Figma
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Website Mockup
+                  <Laptop className="text-2xl text-dark" /> Website Mockup
                   Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Mobile Responsive
+                  <Laptop className="text-2xl text-dark" /> Mobile Responsive
                   Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> CSS & HTML
+                  <Laptop className="text-2xl text-dark" /> CSS & HTML
                   Programming
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <Laptop className="text-2xl text-dark" />
                   SASS Preprocessor
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <Laptop className="text-2xl text-dark" />
                   Scripting Language
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <Laptop className="text-2xl text-dark" />
                   Tailwind CSS
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <Laptop className="text-2xl text-dark" />
                   WordPress Development
-                </li>
-                <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  Business Work Ethics
                 </li>
               </ul>
             </div>
@@ -116,18 +106,18 @@ const ConStudServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> ReactJs Frontend
+                  <Laptop className="text-2xl text-dark" /> ReactJs Frontend
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Props, State, and
+                  <Laptop className="text-2xl text-dark" /> Props, State, and
                   Store Context
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> MySQL, CRUD, CORS,
+                  <Laptop className="text-2xl text-dark" /> MySQL, CRUD, CORS,
                   and API
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> ReactJS Project
+                  <Laptop className="text-2xl text-dark" /> ReactJS Project
                   Development
                 </li>
               </ul>
@@ -138,19 +128,20 @@ const ConStudServices = () => {
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
                   Online Accounting System
                 </h3>
-                <p>80 Hours</p>
+                <p>Minimum of 80 Hours</p>
+                <p>Prerequisite: Basic Accounting</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <Calculator className="text-2xl text-dark" />
                   Quickbooks Online
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
-                  Xero
+                  <Calculator className="text-2xl text-dark" />
+                  Xero Accounting Software
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Pro Adviser
+                  <Calculator className="text-2xl text-dark" /> ProAdvisor
                   Certification Reviewer
                 </li>
               </ul>
