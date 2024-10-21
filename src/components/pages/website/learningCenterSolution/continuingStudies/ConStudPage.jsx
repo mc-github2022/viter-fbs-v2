@@ -16,7 +16,7 @@ const ConStudPage = () => {
     <>
       <Header />
       <ConStudBanner />
-      <ConStudPartners />
+      {/* <ConStudPartners /> */}
       <ConStudPartnersWithUs />
       <ConStudServices />
       <ConStudApplyNow />

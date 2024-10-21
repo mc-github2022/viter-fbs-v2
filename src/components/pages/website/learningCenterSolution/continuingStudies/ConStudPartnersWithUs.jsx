@@ -17,7 +17,7 @@ const ConStudPartnersWithUs = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//lcssBannerImg.jpg`}
+                src={`../../public/img//continuing-studies-img.jpg`}
                 className="mb-12"
                 alt=""
               />

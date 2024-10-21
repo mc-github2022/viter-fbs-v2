@@ -12,7 +12,7 @@ const LcssServices = () => {
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-                  Web Design & Development
+                  Web Design & <br /> Development
                 </h3>
                 <p>On-the-job training.</p>
               </div>
@@ -51,7 +51,7 @@ const LcssServices = () => {
                 </li>
                 <li>
                   <FaLaptop className="text-2xl text-dark" />
-                  Business Wirk Ethics
+                  Business Work Ethics
                 </li>
               </ul>
             </div>
@@ -59,14 +59,15 @@ const LcssServices = () => {
               <div className=" my-10 md:mb-10 md:my-0">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-                  Accounting Processes
+                  Accounting <br />
+                  Processes
                 </h3>
                 <p>On-the-job training.</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
                   <BsCalculator className="text-2xl text-dark" /> Basic
-                  Accoutning
+                  Accounting
                 </li>
                 <li>
                   <BsCalculator className="text-2xl text-dark" /> Excel Advanced

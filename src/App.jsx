@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StoreProvider } from "./components/store/StoreContext";
 import SingplePage from "./components/pages/website/singlePage/SingplePage";
 import EventsSingplePage from "./components/pages/website/events/EventsSingplePage";
+import BatchSliderPage from "./components/pages/website/lcssPage/BatchSliderPage";
 
 function App() {
   const queryClient = new QueryClient();

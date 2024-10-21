@@ -1,6 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { conStudBatch } from "./data";
+import ConStudBatchSliderPage from "./ConStudBatchSliderPage";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -110,6 +112,14 @@ const ConStudBatches = () => {
     ],
   };
 
+  const [modalBatch, setModalBatch] = React.useState(false);
+  const [itemEdit, setItemEdit] = React.useState(null);
+  const handleModalBatch = (post) => {
+    setModalBatch(!modalBatch);
+    setItemEdit(post);
+    // document.body.classList.toggle("overflow-hidden");
+  };
+
   return (
     <>
       <section className="ConStudBatches pt-20 pb-40">
@@ -124,63 +134,45 @@ const ConStudBatches = () => {
             </h3>
           </div>
           <Slider {...settings}>
-            <div>
-              <div className="blogItem addShadow mx-3 bg-[url('../../public/img/Batch-63.jpg')] bg-center bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
-                <div>
-                  <div className="blogTitle relative z-[1]">
-                    <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                      Batch 43
-                    </h4>
-                  </div>
-                  <div className="blogExcerpt p-10 relative z-[1]">
-                    <p className="text-light font-bold text-lg">
-                      CAVITY STATE UNIVERSITY
-                    </p>
-                    <p className="text-light">BS Computer Engineering</p>
-                  </div>
+            {conStudBatch.map((post, key) => {
+              return (
+                <div key={key}>
+                  <a onClick={() => handleModalBatch(post)}>
+                    <div
+                      className="blogItem addShadow mx-3 bg-[url('../../public/img/Batch-63.jpg')] bg-center bg-cover h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                      style={{
+                        backgroundImage: `url(../../public/img/${post.batchImage})`,
+                      }}
+                    >
+                      <div>
+                        <div className="blogTitle relative z-[1]">
+                          <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                            {post.batchTitle}
+                          </h4>
+                        </div>
+                        <div className="blogExcerpt p-10 relative z-[1]">
+                          <p className="text-light font-bold text-lg">
+                            {post.batchSchool}
+                          </p>
+                          <p className="text-light">{post.batchCourse}</p>
+                        </div>
+                      </div>
+                      <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                    </div>
+                  </a>
                 </div>
-                <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-              </div>
-            </div>
-            <div>
-              <div className="blogItem addShadow mx-3  bg-[url('../../public/img/Batch-62.jpg')] bg-center  bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
-                <div>
-                  <div className="blogTitle relative z-[1]">
-                    <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                      Batch 42
-                    </h4>
-                  </div>
-                  <div className="blogExcerpt p-10 relative z-[1]">
-                    <p className="text-light font-bold text-lg">
-                      Southern Luzon State University
-                    </p>
-                    <p className="text-light">BS Computer Science</p>
-                  </div>
-                </div>
-                <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-              </div>
-            </div>
-            <div>
-              <div className="blogItem addShadow mx-3 bg-[url('../../public/img/Batch-61.jpg')] bg-center  bg-cover h-[350px] flex items-end relative  rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
-                <div>
-                  <div className="blogTitle relative z-[1]">
-                    <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                      Batch 41
-                    </h4>
-                  </div>
-                  <div className="blogExcerpt p-10 relative z-[1]">
-                    <p className="text-light font-bold text-lg">
-                      Laguna Sate Polytechnic Univ.
-                    </p>
-                    <p className="text-light">BS Information Technology</p>
-                  </div>
-                </div>
-                <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-              </div>
-            </div>
+              );
+            })}
           </Slider>
         </div>
       </section>
+
+      {modalBatch && (
+        <ConStudBatchSliderPage
+          setModalBatch={setModalBatch}
+          itemEdit={itemEdit}
+        />
+      )}
     </>
   );
 };

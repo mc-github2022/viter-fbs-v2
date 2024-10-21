@@ -11,7 +11,7 @@ const LcssBanner = () => {
         className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
-          backgroundImage: `url(../../public/img/LCS-Banner.jpg)`,
+          backgroundImage: `url(../../public/img/college-ojt-bg.jpg)`,
         }}
       >
         <div className="customContainer">

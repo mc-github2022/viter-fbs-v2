@@ -20,8 +20,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -42,8 +42,8 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Our web application is perfect",
-    mainTitle: "for your HR specific needs",
+    subtitle: "Our Web Application Is Perfect",
+    mainTitle: "for Your HR Specific Needs.",
     webAppImage: "HRISscreenShot.png",
     btnText: "SCHEDULE A DEMO",
     btnDownloadText: "Download Proposal",
@@ -157,8 +157,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "What our",
-    mainTitle: "clients say",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 
