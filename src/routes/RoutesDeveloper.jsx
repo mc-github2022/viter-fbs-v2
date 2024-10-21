@@ -5,6 +5,7 @@ import CompliancePage from "../components/pages/website/accountingSolution/compl
 import CareerPage from "../components/pages/website/career/CareerPage";
 import EventsAndAct from "../components/pages/website/events/EventsAndAct";
 import Home from "../components/pages/website/home/Home";
+import BatchSliderPage from "../components/pages/website/lcssPage/BatchSliderPage";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import ConStudPage from "../components/pages/website/learningCenterSolution/continuingStudies/ConStudPage";
 import ImmersionPage from "../components/pages/website/learningCenterSolution/highSchoolImmersion/ImmersionPage";
@@ -130,5 +131,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/bookkeeping`,
     element: <BookkeepingPage />,
+  },
+  {
+    path: `${devNavUrl}/batch-slider-image`,
+    element: <BatchSliderPage />,
   },
 ];
