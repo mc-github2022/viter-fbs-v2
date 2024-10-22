@@ -20,8 +20,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -42,7 +42,7 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our",
+    subtitle: "Why Choose Our",
     mainTitle: "Asset Inventory System",
     webAppImage: "asset-inventory-ss.png",
     btnText: "LEARN MORE",
