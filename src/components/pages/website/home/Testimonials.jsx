@@ -77,6 +77,32 @@ const Testimonials = () => {
                   }`}
                 >
                   <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
+                    Frontline has been an incredible organization to work with.
+                    They are friendly, accommodating, and professional, but what
+                    stands out to me the most is how responsive they are. I’m
+                    not sure I have ever worked with an organization as
+                    responsive as they are. I would highly recommend working
+                    with them.
+                  </p>
+                  <h3 className="text-[24px] font-semibold mb-2">
+                    Duane Masters, Executive Director
+                  </h3>
+                  <div className="justify-end flex lg:hidden">
+                    <img
+                      src={`${devBaseImgUrl}/logo-world-focus.png`}
+                      className="w-[100px]"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    displayTestimonial && testimonialItem == "slider-index-3"
+                      ? "addEntrance block"
+                      : "hidden"
+                  }`}
+                >
+                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
                     FBS is a true partner to our firm. They have help form our
                     vision and trajectory. We are immnensely gratefull our
                     partnership. Our expectation is to FBS to grow with us. They
@@ -85,7 +111,7 @@ const Testimonials = () => {
                     to work with them.
                   </p>
                   <h3 className="text-[24px] font-semibold mb-2">
-                    Hiro Isugawa, CEO
+                    Hiro Isogawa, CEO
                   </h3>
                   <div className="justify-end flex lg:hidden">
                     <img
@@ -150,6 +176,20 @@ const Testimonials = () => {
           >
             <img
               // src={`${devBaseImgUrl}/Rober_han.png`}
+              src={`../../public/img/duane_sm.png`}
+              alt=""
+              className=""
+            />
+          </div>
+          <div
+            className={`${
+              displayTestimonial && testimonialItem == "slider-index-3"
+                ? "addEntrance block w-[445px]"
+                : "hidden"
+            }`}
+          >
+            <img
+              // src={`${devBaseImgUrl}/Rober_han.png`}
               src={`../../public/img/hiro_sm.png`}
               alt=""
               className=""
@@ -175,6 +215,20 @@ const Testimonials = () => {
             <div
               className={`${
                 displayTestimonial && testimonialItem == "slider-index-2"
+                  ? "addEntrance block"
+                  : "hidden"
+              }`}
+            >
+              <img
+                // src={`${devBaseImgUrl}/tm_logo.png`}
+                src={`../../public/img/logo-world-focus.png`}
+                className="w-[150px] mt-[20px] ml-[15%]"
+                alt=""
+              />
+            </div>
+            <div
+              className={`${
+                displayTestimonial && testimonialItem == "slider-index-3"
                   ? "addEntrance block"
                   : "hidden"
               }`}
