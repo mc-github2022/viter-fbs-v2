@@ -30,6 +30,18 @@ const Header = () => {
     setModalContact(!modalContact);
   };
 
+  const ref = React.useRef();
+  const clickOutsideRef = (e) => {
+    if (!ref.current?.contains(e.target)) {
+      setToggleWhyUs(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRef);
+    return () => document.addEventListener("click", clickOutsideRef);
+  }, []);
+
   return (
     <>
       <section
@@ -75,6 +87,7 @@ const Header = () => {
                       toggleWhyUs ? "text-primary" : ""
                     } flex items-center gap-2`}
                     onClick={handdleWhyUs}
+                    ref={ref}
                   >
                     Why FBS?
                     <BiSolidDownArrow
