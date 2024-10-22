@@ -14,8 +14,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -33,8 +33,8 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Here's why we're the",
-    mainTitle: "right choice for your VA needs.",
+    subtitle: "Here's Why We're The",
+    mainTitle: "Right Choice for Your VA Needs.",
     webAppImage: "vaOverviewImage.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
@@ -108,8 +108,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "What our",
-    mainTitle: "clients say",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 
