@@ -136,8 +136,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -147,7 +147,7 @@ export const clientSays = [
     clientDesc: "IT Department Head",
     clientMessage:
       "Frontline Business Solutions not only tailored the online enrollment system to Frontline Christian Academy's specific needs but also provided exceptional support, ensuring they were always available for any adjustments we required.",
-    clientLogo: "fca-logo.png",
+    clientLogo: "logo-fca.png",
     clientProfilePic: "alexander-ubeda.png",
   },
 ];
