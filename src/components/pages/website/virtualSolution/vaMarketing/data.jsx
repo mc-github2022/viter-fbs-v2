@@ -14,8 +14,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -33,8 +33,8 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Here's why we're the",
-    mainTitle: "right choice for your VA needs.",
+    subtitle: "Here's Why We're The",
+    mainTitle: "Right Choice for Your VA Needs.",
     webAppImage: "vaMarketing.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
@@ -81,7 +81,13 @@ export const pricing = [
     title: "Part-Time",
     rate: "$10 / Hour",
     duration: "(20 hours per week)",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    info: [
+      "Digital Marketing & Strategy",
+      "Design & Visual Content",
+      "Writing, Editing, & Proofing",
+      "Content Creation & Management",
+      "Media Production",
+    ],
     priceDesc:
       "Get dedicated virtual assistant support for half the week, perfect for business needing flexible help with task and projects without the commitment of full-time hours.",
     link: "/free-trial",
@@ -95,7 +101,13 @@ export const pricing = [
     title: "Full-Time",
     rate: "$8 / Hour",
     duration: "(40 hours per week)",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    info: [
+      "Digital Marketing & Strategy",
+      "Design & Visual Content",
+      "Writing, Editing, & Proofing",
+      "Content Creation & Management",
+      "Media Production",
+    ],
     priceDesc:
       "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
     link: "/free-trial",

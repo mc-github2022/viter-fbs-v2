@@ -10,12 +10,12 @@ const MissionVission = () => {
         <div className="customContainer">
           <div className="lg:w-[50%] mb-4">
             <p>
-              Our mission, vission, and core values are the driving forces
-              behind the
+              Our Mission, Vision, and Core Values Are the Driving Forces Behind
+              the
             </p>
             <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
               <span className="font-semibold text-primary">
-                exceptional web, virtual, and learning solutions
+                Exceptional Web, Virtual, Accounting, and Learning Solutions.
               </span>
             </h2>
           </div>

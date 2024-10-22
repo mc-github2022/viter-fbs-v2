@@ -18,10 +18,10 @@ const WhyUsCompanyProfile = () => {
 
       <section className="partnersWithUs pb-20 md:py-20 ">
         <div className="customContainer">
-          <p> Here are the</p>
+          <p> Here Are the</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              major areas of our impact
+              Major Areas of Our Impact
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
