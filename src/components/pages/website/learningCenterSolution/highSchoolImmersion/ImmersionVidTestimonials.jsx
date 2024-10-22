@@ -53,7 +53,7 @@ const ImmersionVidTestimonials = () => {
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
+                src="https://www.youtube.com/embed/-OI3L6mWmsA?si=IgdftJp8Ike8Cju-"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -76,8 +76,9 @@ const ImmersionVidTestimonials = () => {
                     alt=""
                   />
                   <div className="italic">
-                    <p className="font-semibold">Thea Lyzette Consignado</p>
-                    <p>De La Salle Lipa Trainee</p>
+                    <p className="font-semibold">Althea Mae Lat</p>
+                    <p>Grade 12 HUMSS</p>
+                    <p>Marcelino Fule Memorial College</p>
                   </div>
                 </div>
               </div>
@@ -86,7 +87,7 @@ const ImmersionVidTestimonials = () => {
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
+                src="https://www.youtube.com/embed/GJNpd6naWUI?si=7yrngP6PCULApJBU"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
