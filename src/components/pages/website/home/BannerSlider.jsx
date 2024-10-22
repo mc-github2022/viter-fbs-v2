@@ -116,7 +116,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     In business for good.
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px] drop-shadow-2xl">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px] drop-shadow-2xl">
                     Your Trusted Christian Partner in{" "}
                     <span className="bg-sky-500/50">Managed Services</span>
                   </h1>
@@ -157,7 +157,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Custom Solutions, Lasting Growth
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]  ">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]  ">
                     Empower your business with Custom Web Applications
                   </h1>
                   <p className="text-light text-center mb-10">
@@ -194,7 +194,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Digital Design, Meaningful Engagement
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
                     Elevate your digital presence with responsive, user-friendly
                     Websites
                   </h1>
@@ -231,7 +231,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Virtual Support, Real Results
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
                     Streamline your operations with skilled Virtual Assistants.
                   </h1>
                   <p className="text-light text-center mb-10">
@@ -268,7 +268,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Work-Related Training, Career Success
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
                     Hands-on training with actual industry experience.
                   </h1>
                   <p className="text-light text-center mb-10">

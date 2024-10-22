@@ -123,7 +123,7 @@ const ConStudBatches = () => {
   return (
     <>
       <section className="ConStudBatches pt-20 pb-40">
-        <div className="customContainer">
+        <div className="customContainer max-w-[90%]">
           <div
             className="mb-12
           "
