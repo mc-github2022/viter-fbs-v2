@@ -8,8 +8,8 @@ const ConStudServices = () => {
     <>
       <section className="ConStudServices py-20">
         <div className="customContainer">
-          <div className="wrapper lg:grid lg:grid-cols-4">
-            <div className="webDesign">
+          <div className="wrapper flex flex-wrap place-content-center">
+            <div className="webDesign w-[320px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -49,7 +49,7 @@ const ConStudServices = () => {
                 </li>
               </ul>
             </div>
-            <div className="webFrontend">
+            <div className="webFrontend w-[320px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -94,7 +94,7 @@ const ConStudServices = () => {
                 </li>
               </ul>
             </div>
-            <div className="webBackend">
+            <div className="webBackend w-[320px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -122,7 +122,7 @@ const ConStudServices = () => {
                 </li>
               </ul>
             </div>
-            <div className="accountingServices">
+            <div className="accountingServices w-[320px] py-5 md:px-3 lg:px-0">
               <div className="my-10 md:mb-10 md:my-0">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">

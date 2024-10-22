@@ -15,7 +15,7 @@ const ImmersionVidTestimonials = () => {
             </h3>
           </div>
           <div className="wrapper flex flex-wrap place-content-center lg:grid lg:grid-cols-3 gap-6">
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -27,15 +27,15 @@ const ImmersionVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative">
-                <p className="italic mb-8">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> The
                   program was also very beneficial to me—I learned a lot about
                   potential jobs I could take in the future, and it helped me
                   become a better person thanks to their PLEs after almost every
-                  task we completed.
+                  task we completed. 
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/slis.png`}
@@ -50,7 +50,7 @@ const ImmersionVidTestimonials = () => {
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -62,14 +62,14 @@ const ImmersionVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-8">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   had a very enjoyable experience here at FBS. Everything we did
                   at FBS was truly enjoyable, from web designing using Figma to
                   creating our own websites with HTML and CSS.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/SPC.png`}
@@ -84,7 +84,7 @@ const ImmersionVidTestimonials = () => {
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -96,14 +96,14 @@ const ImmersionVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-8">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> My
                   experience was very fun, and all the trainers were kind and
                   approachable. I highly recommend the FBS work immersion
                   program because you will learn a lot here.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/MFMC.png`}

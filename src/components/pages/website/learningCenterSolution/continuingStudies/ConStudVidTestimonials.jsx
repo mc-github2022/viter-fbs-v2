@@ -15,7 +15,7 @@ const ConStudVidTestimonials = () => {
             </h3>
           </div>
           <div className="wrapper flex flex-wrap place-content-center lg:grid lg:grid-cols-3 gap-6">
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] ">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative ">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -27,7 +27,7 @@ const ConStudVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative">
-                <p className="italic mb-8">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   really love web development, which is why I grabbed the
                   opportunity to join their web development training. It is
@@ -36,7 +36,7 @@ const ConStudVidTestimonials = () => {
                   taught us how to act professionally in a working environment.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/lc.png`}
@@ -50,7 +50,7 @@ const ConStudVidTestimonials = () => {
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -62,14 +62,14 @@ const ConStudVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-8">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   have learned a lot, and my overall experience will be very
                   helpful not only in my future career, but also in building and
                   shaping myself.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/DLSL_Official_logo.png`}
@@ -83,7 +83,7 @@ const ConStudVidTestimonials = () => {
                 </div>
               </div>
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px]">
+            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
@@ -95,14 +95,14 @@ const ConStudVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-8">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   have learned a lot, and my overall experience will be very
                   helpful not only in my future career, but also in building and
                   shaping myself.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool flex items-center">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/DLSL_Official_logo.png`}

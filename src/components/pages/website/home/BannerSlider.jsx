@@ -1,10 +1,9 @@
 import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
-import ModalContact from "../../../partials/ModalContact";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import ModalContactGetStarted from "./ModalContactGetStarted";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -48,10 +47,10 @@ function SamplePrevArrow(props) {
 }
 
 const BannerSlider = () => {
-  const [toggleMenu, setToggleMenu] = React.useState(false);
   const [modalContact, setModalContact] = React.useState(false);
   const handleModalContact = () => {
     setModalContact(!modalContact);
+    console.log("open");
   };
 
   var settings = {
@@ -293,11 +292,7 @@ const BannerSlider = () => {
         </div>
       </Slider>
       {modalContact && (
-        <ModalContact
-          setModalContact={setModalContact}
-          modalContact={modalContact}
-          setToggleMenu={setToggleMenu}
-        />
+        <ModalContactGetStarted setModalContact={setModalContact} />
       )}
     </>
   );
