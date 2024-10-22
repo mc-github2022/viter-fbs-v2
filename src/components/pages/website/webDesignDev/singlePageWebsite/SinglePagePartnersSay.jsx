@@ -83,7 +83,7 @@ const SinglePagePartnersSay = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}

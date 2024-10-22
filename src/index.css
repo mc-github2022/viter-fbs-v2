@@ -76,7 +76,7 @@
   }
 
   .slickNav ul li.slick-active div {
-    @apply !bg-[gray] !opacity-100;
+    @apply !bg-[#ac1f72] !opacity-100;
   }
 
   .slickNavHome ul li.slick-active div {
