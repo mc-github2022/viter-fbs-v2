@@ -132,10 +132,10 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                     onClick={handleModalContact}
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -170,9 +170,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -207,9 +207,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -243,9 +243,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -281,9 +281,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>

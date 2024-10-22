@@ -10,11 +10,11 @@ const Services = () => {
     <section className="services py-20 relative">
       <div className="customContainer">
         <div className="theTitle leading-1 mb-12">
-          <p>Here are</p>
+          <p>Here Are</p>
           <h2 className="text-[clamp(30px,7vw,45px)] font-semibold text-primary leading-[1.1]">
-            Our specialized services
+            Our Specialized Services
           </h2>
-          <p>to help grow your business</p>
+          <p>to Help Grow Your Business</p>
         </div>
         <div className="wrapper grid  grid-cols-1 md:grid-cols-2 ">
           <div className="serviceItem  z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
