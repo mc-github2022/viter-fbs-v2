@@ -28,10 +28,8 @@ const ConStudVidTestimonials = () => {
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative">
                 <p className="italic mb-24 min-h-[120px]">
-                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
-                  really love web development, which is why I grabbed the
-                  opportunity to join their web development training. It is
-                  fulfilling, especially learning tools like SASS, Tailwind,
+                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> It
+                  is fulfilling, especially learning tools like SASS, Tailwind,
                   WordPress, and Figma. Aside from the technical skills, they
                   taught us how to act professionally in a working environment.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
