@@ -17,8 +17,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -36,8 +36,8 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Here's why we're the",
-    mainTitle: "right choice for your Business Registration needs.",
+    subtitle: "Here's Why We're The",
+    mainTitle: "Right Choice for Your Business Registration Needs.",
     webAppImage: "business-reg-img.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
@@ -296,8 +296,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "What our",
-    mainTitle: "clients say",
+    subTitle: "What Our",
+    mainTitle: "clients Say",
   },
 ];
 
