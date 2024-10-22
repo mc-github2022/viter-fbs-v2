@@ -21,8 +21,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -40,7 +40,7 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our",
+    subtitle: "Why Choose Our",
     mainTitle: "Online Payroll System",
     webAppImage: "payroll-ss.png",
     btnText: "SCHEDULE A DEMO",
@@ -139,8 +139,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "What our",
-    mainTitle: "clients say",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 

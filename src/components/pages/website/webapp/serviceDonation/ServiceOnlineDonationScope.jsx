@@ -26,9 +26,9 @@ const ServiceOnlineDonationScope = () => {
       <section className="ServiceOnlineDonationScope py-20">
         <div className="customContainer">
           <div>
-            <p>What makes this web app</p>
+            <p>What Makes This Web App</p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              a lifesaver?
+              a Lifesaver?
             </h2>
           </div>
           <div className="warpper md:grid md:grid-cols-2 gap-5">
@@ -73,13 +73,13 @@ const ServiceOnlineDonationScope = () => {
                         Schedule a Demo
                       </a> */}
                       <p className="md:hidden py-6">
-                    <a
-                      href="#"
-                      className="btn bg-primary text-light font-semibold"
-                    >
-                      LEARN MORE
-                    </a>
-                  </p>
+                        <a
+                          href="#"
+                          className="btn bg-primary text-light font-semibold"
+                        >
+                          LEARN MORE
+                        </a>
+                      </p>
                     </div>
                   </li>
                 );
