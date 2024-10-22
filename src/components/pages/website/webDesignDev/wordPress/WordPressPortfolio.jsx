@@ -7,9 +7,9 @@ const WordPressPortfolio = () => {
       <section className="profolioWebsite md:py-40">
         <div className="customContainer">
           <div className="">
-            <p>Seamless performance and stunning design</p>
+            <p>Seamless Performance and Stunning Design</p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              custom-built website
+              Custom-built Website
             </h2>
           </div>
           <div className="wrapper grid grid-rows-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
