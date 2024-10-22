@@ -27,9 +27,9 @@ const VaMarketingPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] max-h-[700px] max-w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-[700px] max-w-[400px] grid place-items-center`}
                   >
-                    <div className="min-h-[300px] max-h-[600px] mb-5 relative">
+                    <div className="min-h-[500px] max-h-[600px] mb-5 relative">
                       <div className="title mb-4">
                         {price.icon}
                         <h3
@@ -62,12 +62,12 @@ const VaMarketingPricing = () => {
                       </div>
                       <p className="mb-8">{price.priceDesc}</p>
                     </div>
-                      <a
-                        href={price.link}
-                        className="btn bg-light text-primary font-bold absolute bottom-0 my-6"
-                      >
-                        {price.btnText}
-                      </a>
+                    <a
+                      href={price.link}
+                      className="btn bg-light text-primary font-bold bottom-0 "
+                    >
+                      {price.btnText}
+                    </a>
                   </div>
                 );
               })}

@@ -27,7 +27,7 @@ const VaCreativeSupportPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    }  priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px]  max-w-[400px] grid place-items-center`}
+                    }  priceItem mb-5 md:mb-0 relative z-[1] text-center p-10 rounded-lg addShadow min-h-[630px]  max-w-[400px] grid place-items-center`}
                   >
                     <div className="">
                       <div className="title mb-4">
