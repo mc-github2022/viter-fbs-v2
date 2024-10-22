@@ -84,7 +84,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#ac1f72",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}
