@@ -11,7 +11,7 @@ const WhyUsBanner = () => {
       <div>
         <section
           id="WhyUsBanner"
-          className={`banner bg-cover pt-[59px] md:pt-[112px] bg-top`}
+          className={`banner bg-cover pt-[59px] md:pt-[95px] bg-top`}
           style={{
             // backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.jpg)`,
             backgroundImage: `url(../../public/img/whyfbsBanner.jpg)`,

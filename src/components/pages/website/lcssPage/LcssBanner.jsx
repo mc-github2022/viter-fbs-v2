@@ -8,7 +8,7 @@ const LcssBanner = () => {
     <>
       <section
         id="lcssBanner"
-        className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
+        className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
           backgroundImage: `url(../../public/img/college-ojt-bg.jpg)`,
