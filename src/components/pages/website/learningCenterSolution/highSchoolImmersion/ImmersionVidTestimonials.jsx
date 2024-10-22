@@ -38,13 +38,14 @@ const ImmersionVidTestimonials = () => {
                 <div className="nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    src={`../../public/img/slis.png`}
+                    className="w-[60px] mr-4"
                     alt=""
                   />
                   <div className="italic">
-                    <p className="font-semibold">Thea Lyzette Consignado</p>
-                    <p>De La Salle Lipa Trainee</p>
+                    <p className="font-semibold">Christian Jaekhob Dela Cruz</p>
+                    <p>Grade 12 HUMSS</p>
+                    <p>South Lakes Integrated School</p>
                   </div>
                 </div>
               </div>
@@ -63,22 +64,22 @@ const ImmersionVidTestimonials = () => {
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
                 <p className="italic mb-8">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
-                  have learned a lot, and my overall experience will be very
-                  helpful not only in my future career, but also in building and
-                  shaping myself.
+                  had a very enjoyable experience here at FBS. Everything we did
+                  at FBS was truly enjoyable, from web designing using Figma to
+                  creating our own websites with HTML and CSS.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
                 <div className="nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    src={`../../public/img/SPC.png`}
+                    className="w-[60px] mr-4"
                     alt=""
                   />
                   <div className="italic">
-                    <p className="font-semibold">Althea Mae Lat</p>
-                    <p>Grade 12 HUMSS</p>
-                    <p>Marcelino Fule Memorial College</p>
+                    <p className="font-semibold">Justine Clein Gelindon</p>
+                    <p>Grade 12 ICT</p>
+                    <p>San Pablo Colleges</p>
                   </div>
                 </div>
               </div>
@@ -96,22 +97,23 @@ const ImmersionVidTestimonials = () => {
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
                 <p className="italic mb-8">
-                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
-                  have learned a lot, and my overall experience will be very
-                  helpful not only in my future career, but also in building and
-                  shaping myself.
+                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> My
+                  experience was very fun, and all the trainers were kind and
+                  approachable. I highly recommend the FBS work immersion
+                  program because you will learn a lot here.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
                 <div className="nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    src={`../../public/img/MFMC.png`}
+                    className="w-[60px] mr-4"
                     alt=""
                   />
                   <div className="italic">
-                    <p className="font-semibold">Thea Lyzette Consignado</p>
-                    <p>De La Salle Lipa Trainee</p>
+                    <p className="font-semibold">Althea Mae Lat</p>
+                    <p>Grade 12 HUMSS</p>
+                    <p>Marcelino Fule Memorial College</p>
                   </div>
                 </div>
               </div>
