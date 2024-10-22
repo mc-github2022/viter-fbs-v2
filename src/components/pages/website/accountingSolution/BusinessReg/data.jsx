@@ -1,7 +1,8 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaRegThumbsUp } from "react-icons/fa6";
-import { RiCloseCircleLine, RiCloseLargeFill } from "react-icons/ri";
+import { RiCloseCircleFill, RiCloseLargeFill } from "react-icons/ri";
+import { IoMdCloseCircle } from "react-icons/io";
 
 export const banner = [
   {
@@ -92,7 +93,7 @@ export const pricing = [
       <div className="text-left">
         <div className="flex items-center gap-3">
           <FaCheckCircle className={`text-primary`} />
-          <p className="font-bold">BIR Registratio</p>
+          <p className="font-bold">BIR Registration</p>
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
@@ -175,10 +176,10 @@ export const pricing = [
         <FaCheckCircle className={`text-primary`} />
         <p className="font-bold">SEC Registration</p>
       </div>,
-      <div className="text-left">
+      <div className="text-left text-[#a3a3a3]">
         <div className="text-left flex items-center gap-3">
-          <RiCloseLargeFill className={`text-primary text-[17px]`} />
-          <p className="font-bold">BIR Registratio</p>
+          <IoMdCloseCircle className="  text-lg" />
+          <p className="font-bold">BIR Registration</p>
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
@@ -186,9 +187,9 @@ export const pricing = [
           <li>Annual Registration (0605)</li>
         </ul>
       </div>,
-      <div className="text-left">
+      <div className="text-left text-[#a3a3a3]">
         <div className="text-left flex items-center gap-3">
-          <RiCloseLargeFill className={`text-primary text-lg`} />
+          <IoMdCloseCircle className="text-lg" />
           <p className="font-bold">LGU Registration</p>
         </div>
         <ul className="text-sm ml-7">
