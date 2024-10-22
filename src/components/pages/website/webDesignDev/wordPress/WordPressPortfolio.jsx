@@ -24,7 +24,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50 transition-all"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>gomissiontrip.com</p>
                 </div>
@@ -41,7 +41,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl  group-hover:brightness-50"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>tazamiacoffee.com</p>
                 </div>
@@ -58,7 +58,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>overthetop.com</p>
                 </div>
@@ -75,7 +75,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>facethechildren.org</p>
                 </div>
@@ -92,7 +92,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>worldfocusinc.com</p>
                 </div>
@@ -109,7 +109,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>fca.edu.ph</p>
                 </div>
@@ -126,7 +126,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>phixgenomics.com</p>
                 </div>
@@ -143,7 +143,7 @@ const WordPressPortfolio = () => {
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
-                <div className="theLink flex items-center gap-2 hover:text-primary absolute bottom-4 left-4 bg-light rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
+                <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
                   <p>frontlineworshipcenter.org</p>
                 </div>
