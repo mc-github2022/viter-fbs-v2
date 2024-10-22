@@ -8,9 +8,9 @@ const PartnerWithUs = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
             <div className="bg-customGray md:bg-opacity-70 py-20 px-10 z-10 rounded-lg addShadow">
-              <p>Empowering you business with</p>
+              <p>Empowering You Business With</p>
               <h2 className="lg:text-[45px] font-semibold text-primary leading-[1.1] mb-8 text-[clamp(20px,4vw,45px)]">
-                reliable, cost-effective, and expertly managed solutions.
+                Reliable, Cost-effective, and Expertly Managed Solutions.
               </h2>
               <p className="mb-8">
                 Our talented professionals are carefully supervised by
@@ -21,7 +21,7 @@ const PartnerWithUs = () => {
               </p>
               <a
                 href=""
-                className="btn bg-primary text-light my-5  inline-block rounded-full "
+                className="btn bg-primary text-light my-5  font-semibold inline-block rounded-full "
               >
                 PARTNER WITH US
               </a>

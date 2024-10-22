@@ -25,7 +25,7 @@ const Testimonials = () => {
             <div className="grid place-items-center relative">
               <div className="z-50 text-light mb-20 lg:mb-0">
                 <h3 className="text-[clamp(30px,6vw,45px)] font-semibold  leading-[1.1] mb-8">
-                  Our clients' <span className="text-primary">experience</span>
+                  Our Clients' <span className="text-primary">Experience</span>
                 </h3>
                 <p>
                   See what our clients say about our services and how we've
