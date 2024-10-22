@@ -8,9 +8,9 @@ const WhyUsTheTeam = () => {
           <div className="wrapper grid grid-cols-1 xl:grid-cols-[_270px_2fr] gap-16">
             <div className="flex items-center">
               <div>
-                <p className="text-light">We work with a</p>
+                <p className="text-light">We Work With a</p>
                 <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                  great team for extraordinary result.
+                  Great Team for Extraordinary Results.
                 </h2>
               </div>
             </div>
