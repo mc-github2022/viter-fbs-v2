@@ -19,7 +19,7 @@ const ImmersionVidTestimonials = () => {
               <iframe
                 id="player"
                 class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
+                src="https://www.youtube.com/embed/MlBrBmufpy4?si=tDU-2bcyfzUFNe3T"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -28,10 +28,11 @@ const ImmersionVidTestimonials = () => {
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative">
                 <p className="italic mb-8">
-                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
-                  have learned a lot, and my overall experience will be very
-                  helpful not only in my future career, but also in building and
-                  shaping myself.
+                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> The
+                  program was also very beneficial to me—I learned a lot about
+                  potential jobs I could take in the future, and it helped me
+                  become a better person thanks to their PLEs after almost every
+                  task we completed.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
                 <div className="nameAndSchool flex items-center">
