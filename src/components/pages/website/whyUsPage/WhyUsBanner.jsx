@@ -26,7 +26,7 @@ const WhyUsBanner = () => {
                     more than
                   </span>
                   just a
-                  <span className="text-light font-semibold inline-block ml-3 mr-3">
+                  <span className="text-light font-semibold inline-block mr-3">
                     managed services provider
                   </span>
                 </h2>

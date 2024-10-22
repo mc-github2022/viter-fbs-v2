@@ -27,9 +27,9 @@ const VaResearchPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px]  max-w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-[800px] max-w-[400px] grid place-items-center`}
                   >
-                    <div className="">
+                    <div className="min-h-[300px] max-h-[800px] mb-5 relative">
                       <div className="title mb-4">
                         {price.icon}
                         <h3
@@ -61,13 +61,13 @@ const VaResearchPricing = () => {
                         </div>
                       </div>
                       <p className="mb-8">{price.priceDesc}</p>
-                      <a
-                        href={price.link}
-                        className="btn bg-light text-primary font-bold"
-                      >
-                        {price.btnText}
-                      </a>
                     </div>
+                    <a
+                      href={price.link}
+                      className="btn bg-light text-primary font-bold bottom-0"
+                    >
+                      {price.btnText}
+                    </a>
                   </div>
                 );
               })}
