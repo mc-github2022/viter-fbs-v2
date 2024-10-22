@@ -7,8 +7,8 @@ const LcssServices = () => {
     <>
       <section className="lcssServices py-20">
         <div className="customContainer">
-          <div className="wrapper md:grid md:grid-cols-2">
-            <div className="webDEv">
+          <div className="wrapper flex flex-wrap place-content-center">
+            <div className="webDEv w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -55,7 +55,7 @@ const LcssServices = () => {
                 </li>
               </ul>
             </div>
-            <div className="accountingServices">
+            <div className="accountingServices w-[387px] py-5 md:px-3 lg:px-0">
               <div className=" my-10 md:mb-10 md:my-0">
                 <p>Here is what you can learn in our</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">

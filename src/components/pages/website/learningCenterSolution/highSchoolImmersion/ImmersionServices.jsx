@@ -6,8 +6,8 @@ const ImmersionServices = () => {
     <>
       <section className="ImmersionServices py-20">
         <div className="customContainer">
-          <div className="wrapper md:flex md:flex-wrap place-content-center">
-            <div className="webDEv lg:w-[387px] py-5 md:px-3 lg:px-0">
+          <div className="wrapper flex flex-wrap place-content-center">
+            <div className="webDEv w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>STEM and ICT students can learn</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -45,7 +45,7 @@ const ImmersionServices = () => {
                 </li>
               </ul>
             </div>
-            <div className="accountingServices lg:w-[387px] py-5 md:px-3 lg:px-0">
+            <div className="accountingServices w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>ABM students can learn</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
@@ -86,7 +86,7 @@ const ImmersionServices = () => {
                 </li>
               </ul>
             </div>
-            <div className="adminTasks lg:w-[387px] py-5 md:px-3 lg:px-0">
+            <div className="adminTasks w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>HUMSS and GAS students can learn</p>
                 <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
