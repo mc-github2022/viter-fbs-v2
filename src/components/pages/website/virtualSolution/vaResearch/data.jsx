@@ -81,7 +81,15 @@ export const pricing = [
     title: "Part-Time",
     rate: "$10 / Hour",
     duration: "(20 hours per week)",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    info: [
+      "Lead Management",
+      "Administrative & Financial Management",
+      "Operations & Project Management",
+      "Customer Engagement & Relationship Building",
+      "Customer Support & Communication",
+      "Data & Reporting",
+      "Document & Communication Management",
+    ],
     priceDesc:
       "Get dedicated virtual assistant support for half the week, perfect for business needing flexible help with task and projects without the commitment of full-time hours.",
     link: "/free-trial",
@@ -95,7 +103,15 @@ export const pricing = [
     title: "Full-Time",
     rate: "$8 / Hour",
     duration: "(40 hours per week)",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    info: [
+      "Lead Management",
+      "Administrative & Financial Management",
+      "Operations & Project Management",
+      "Customer Engagement & Relationship Building",
+      "Customer Support & Communication",
+      "Data & Reporting",
+      "Document & Communication Management",
+    ],
     priceDesc:
       "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
     link: "/free-trial",
