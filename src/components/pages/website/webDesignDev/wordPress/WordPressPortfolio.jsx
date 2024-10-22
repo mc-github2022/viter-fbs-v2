@@ -14,7 +14,11 @@ const WordPressPortfolio = () => {
           </div>
           <div className="wrapper grid grid-rows-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div className="imageItem row-span-4 h-[180] relative overflow-hidden addShadow rounded-2xl group bg-transparent">
-              <a href="https://www.gomissiontrip.com/">
+              <a
+                href="https://www.gomissiontrip.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-gomission.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50 transition-all"
@@ -27,7 +31,11 @@ const WordPressPortfolio = () => {
               </a>
             </div>
             <div className="imageItem  row-span-3 h-[180] relative overflow-hidden addShadow rounded-2xl group">
-              <a href="https://tazamiacoffee.com/">
+              <a
+                href="https://tazamiacoffee.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-tazamia.png`}
                   className="w-full h-full object-cover rounded-2xl  group-hover:brightness-50"
@@ -40,7 +48,11 @@ const WordPressPortfolio = () => {
               </a>
             </div>
             <div className="imageItem row-span-6 h-[180] relative overflow-hidden addShadow rounded-2xl group">
-              <a href="https://www.overthetop.com/">
+              <a
+                href="https://www.overthetop.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-ottm.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
@@ -53,7 +65,11 @@ const WordPressPortfolio = () => {
               </a>
             </div>
             <div className="imageItem row-span-2 h-[180] relative overflow-hidden addShadow rounded-2xl group">
-              <a href="https://facethechildren.org/">
+              <a
+                href="https://facethechildren.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-ftc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
@@ -66,7 +82,11 @@ const WordPressPortfolio = () => {
               </a>
             </div>
             <div className="imageItem row-span-2 h-[180] relative overflow-hidden addShadow rounded-2xl group">
-              <a href="https://www.worldfocusinc.com/">
+              <a
+                href="https://www.worldfocusinc.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-worldfocus.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
@@ -79,7 +99,11 @@ const WordPressPortfolio = () => {
               </a>
             </div>
             <div className="imageItem row-span-3 h-[180] relative overflow-hidden addShadow rounded-2xl group">
-              <a href="https://fca.edu.ph/">
+              <a
+                href="https://fca.edu.ph/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-fca.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
@@ -92,7 +116,11 @@ const WordPressPortfolio = () => {
               </a>
             </div>
             <div className="imageItem row-span-2 h-[180] relative overflow-hidden addShadow rounded-2xl group">
-              <a href="https://phixgenomics.com/">
+              <a
+                href="https://phixgenomics.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-phixgenomics.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
@@ -105,7 +133,11 @@ const WordPressPortfolio = () => {
               </a>
             </div>
             <div className="imageItem row-span-2 h-[180] relative overflow-hidden addShadow rounded-2xl group">
-              <a href="https://frontlineworshipcenter.org/">
+              <a
+                href="https://frontlineworshipcenter.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   src={`../../public/img/portfolio-fwc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
