@@ -37,7 +37,7 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our online",
+    subtitle: "Why Choose Our Online",
     mainTitle: "School Enrollment System",
     webAppImage: "enrollment-ss.png",
     btnText: "LEARN MORE",
