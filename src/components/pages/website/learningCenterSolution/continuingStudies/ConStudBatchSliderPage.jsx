@@ -122,22 +122,20 @@ const ConStudBatchSliderPage = ({ setModalBatch, itemEdit }) => {
           />
         </div>
         <Slider {...settings}>
-          <div>
-            {itemEdit.batchImageList.map((image, index) => (
-              <div
-                key={index}
-                className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
-              >
-                <div className="z-[1] mx-3">
-                  <img
-                    src={`/img/${image}`}
-                    alt={`Batch image ${index + 1}`}
-                    className="object-contain w-[600px] h-[70vh]"
-                  />
-                </div>
+          {itemEdit.batchImageList.map((image, index) => (
+            <div
+              key={index}
+              className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
+            >
+              <div className="z-[1] mx-3">
+                <img
+                  src={`/img/${image}`}
+                  alt={`Batch image ${index + 1}`}
+                  className="object-contain w-[600px] h-[70vh]"
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </Slider>
       </div>
     </ModalWrapper>

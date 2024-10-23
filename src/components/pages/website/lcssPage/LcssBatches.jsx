@@ -1,9 +1,8 @@
 import React from "react";
-import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { batch } from "./data";
-import { Link } from "react-router-dom";
+import Slider from "react-slick";
 import BatchSliderPage from "./BatchSliderPage";
+import { batch } from "./data";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
