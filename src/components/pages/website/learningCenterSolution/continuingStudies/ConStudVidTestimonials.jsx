@@ -18,12 +18,12 @@ const ConStudVidTestimonials = () => {
             <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative ">
               <iframe
                 id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
                 src="https://www.youtube.com/embed/xnHrbjA0WZY?si=1cz7EVt0A5_8bXR4"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
+                allowFullScreen
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative">
@@ -51,12 +51,12 @@ const ConStudVidTestimonials = () => {
             <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
                 src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
+                allowFullScreen
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
@@ -84,12 +84,12 @@ const ConStudVidTestimonials = () => {
             <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
                 src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
                 title="Marks story"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
+                allowFullScreen
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">

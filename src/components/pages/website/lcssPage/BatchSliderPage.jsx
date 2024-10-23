@@ -4,7 +4,8 @@ import { batch } from "./data";
 import { IoCloseCircle } from "react-icons/io5";
 import ModalWrapper from "../../../partials/ModalWrapper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Slider from "react-slick/lib/slider";
+import Slider from "react-slick";
+
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;

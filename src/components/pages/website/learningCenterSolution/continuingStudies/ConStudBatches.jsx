@@ -117,7 +117,7 @@ const ConStudBatches = () => {
   const handleModalBatch = (post) => {
     setModalBatch(!modalBatch);
     setItemEdit(post);
-    // document.body.classList.toggle("overflow-hidden");
+    document.body.classList.toggle("overflow-hidden");
   };
 
   return (
