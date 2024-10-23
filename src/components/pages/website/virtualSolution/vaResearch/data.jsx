@@ -131,14 +131,6 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
-    clientName: "James Davidson",
-    clientDesc: "Managing Director & President",
-    clientMessage:
-      "Frontline Business Solutions is beyond an exceptional firm. Professional courtesy, responsiveness, competence, and client service are only a few of the many high level qualities that Frontline’s team exhibit. Frontline exemplifies the golden rule by treating its clients as it would like to be treated. Every Frontline team member with whom Avant Advisory Group has dealt has been a true blessing. Finally, based on Avant Advisory Group’s several years of working with Frontline personnel, and especially Mike DeJesus, I can say that they work heartily for their clients as if they are working for the Lord. (Colossians 3:23-24) Thank you for what you do, Frontline!",
-    clientLogo: "logo-avant.png",
-    clientProfilePic: "jim-davison.png",
-  },
-  {
     clientName: "Josh Howard",
     clientDesc: "Chief Executive Officer",
     clientMessage:
@@ -153,5 +145,13 @@ export const clientSays = [
       "I am extremely impressed with Frontline Business Solution's dedication to excellence. Their team demonstrates outstanding professionalism and attention to detail with their Personal Assistant and Graphic Design Services.   When we transitioned our CRM over to HubSpot, they went above and beyond to learn and implement all of the marketing automation processes and reporting analytics.  The results have positively impacted our ministry, and we look forward to continuing our relationship with them. ",
     clientLogo: "jcceos-logo.png",
     clientProfilePic: "teresa-heyne.png",
+  },
+  {
+    clientName: "James Davidson",
+    clientDesc: "Managing Director & President",
+    clientMessage:
+      "Frontline Business Solutions is beyond an exceptional firm. Professional courtesy, responsiveness, competence, and client service are only a few of the many high level qualities that Frontline’s team exhibit. Frontline exemplifies the golden rule by treating its clients as it would like to be treated. Every Frontline team member with whom Avant Advisory Group has dealt has been a true blessing. Finally, based on Avant Advisory Group’s several years of working with Frontline personnel, and especially Mike DeJesus, I can say that they work heartily for their clients as if they are working for the Lord. (Colossians 3:23-24) Thank you for what you do, Frontline!",
+    clientLogo: "logo-avant.png",
+    clientProfilePic: "jim-davison.png",
   },
 ];
