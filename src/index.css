@@ -182,6 +182,10 @@
   padding-top: 100px;
 } */
 
+.slick-slider {
+  width: 100% !important;
+}
+
 img.popPost {
   width: 80px !important;
   height: 60px !important;

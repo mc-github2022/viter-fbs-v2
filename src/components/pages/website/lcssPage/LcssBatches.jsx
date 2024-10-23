@@ -169,7 +169,7 @@ const LcssBatches = () => {
       </section>
 
       {modalBatch && (
-        <BatchSlider setModalBatch={setModalBatch} itemEdit={itemEdit} />
+        <BatchSliderPage setModalBatch={setModalBatch} itemEdit={itemEdit} />
       )}
     </>
   );
