@@ -12,7 +12,7 @@ export const banner = [
       "Choose from comprehensive packages that simplify the registration process for any business type. We handle everything—from essential permits to compliance documents—so you can focus on growing your business.",
     bannerBtnText: "PARTNER WITH US",
     bannerBtnLink: "Link",
-    bannerImage: "business-reg-bg.jpg",
+    bannerImage: "business-reg-bg.webp",
   },
 ];
 
