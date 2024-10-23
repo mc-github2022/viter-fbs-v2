@@ -33,7 +33,7 @@ const WebDesignOverview = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="../../public/img/website-design-and-development-portfolio-2022-v3.pdf"
                     className="flex items-center gap-2 font-bold text-primary"
                   >
                     {webAppOverview[0].btnDownloadText} <FaFileDownload />

@@ -1,5 +1,5 @@
+import { Globe, Settings, Wrench } from "lucide-react";
 import React from "react";
-import { Globe, Wrench, Settings } from "lucide-react";
 
 const VaTechSupportServiceList = () => {
   return (

@@ -1,10 +1,8 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { batch } from "./data";
-import { IoCloseCircle } from "react-icons/io5";
-import ModalWrapper from "../../../partials/ModalWrapper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { IoCloseCircle } from "react-icons/io5";
 import Slider from "react-slick";
+import ModalWrapper from "../../../partials/ModalWrapper";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -60,7 +58,7 @@ function SamplePrevArrow(props) {
 const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -108,7 +106,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
   const handleClose = () => {
     setModalBatch(false);
     console.log("clicked");
-    document.body.classList.remove("overflow-hidden");
+    // document.body.classList.remove("overflow-hidden");
   };
 
   return (
