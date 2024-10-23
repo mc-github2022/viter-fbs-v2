@@ -142,4 +142,12 @@ export const clientSays = [
     clientLogo: "logo-ignite.png",
     clientProfilePic: "josh-howard.png",
   },
+  {
+    clientName: "Teresa Heyne",
+    clientDesc: "Overseer, Director of Operations",
+    clientMessage:
+      "I am extremely impressed with Frontline Business Solution's dedication to excellence. Their team demonstrates outstanding professionalism and attention to detail with their Personal Assistant and Graphic Design Services.   When we transitioned our CRM over to HubSpot, they went above and beyond to learn and implement all of the marketing automation processes and reporting analytics.  The results have positively impacted our ministry, and we look forward to continuing our relationship with them. ",
+    clientLogo: "jcceos-logo.png",
+    clientProfilePic: "teresa-heyne.png",
+  },
 ];
