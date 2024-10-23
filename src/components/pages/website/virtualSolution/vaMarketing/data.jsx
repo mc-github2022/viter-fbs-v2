@@ -127,6 +127,14 @@ export const clientSaysTitle = [
 
 export const clientSays = [
   {
+    clientName: "Teresa Heyne",
+    clientDesc: "Overseer, Director of Operations",
+    clientMessage:
+      "I am extremely impressed with Frontline Business Solution's dedication to excellence. Their team demonstrates outstanding professionalism and attention to detail with their Personal Assistant and Graphic Design Services.   When we transitioned our CRM over to HubSpot, they went above and beyond to learn and implement all of the marketing automation processes and reporting analytics.  The results have positively impacted our ministry, and we look forward to continuing our relationship with them. ",
+    clientLogo: "jcceos-logo.png",
+    clientProfilePic: "teresa-heyne.png",
+  },
+  {
     clientName: "James Davidson",
     clientDesc: "Managing Director & President",
     clientMessage:
@@ -141,13 +149,5 @@ export const clientSays = [
       "Our partnership with Frontline has been the best financial investment we’ve ever made. The team is absolutely amazing and always goes above and beyond in every area. I highly recommend them!!",
     clientLogo: "logo-ignite.png",
     clientProfilePic: "josh-howard.png",
-  },
-  {
-    clientName: "Teresa Heyne",
-    clientDesc: "Overseer, Director of Operations",
-    clientMessage:
-      "I am extremely impressed with Frontline Business Solution's dedication to excellence. Their team demonstrates outstanding professionalism and attention to detail with their Personal Assistant and Graphic Design Services.   When we transitioned our CRM over to HubSpot, they went above and beyond to learn and implement all of the marketing automation processes and reporting analytics.  The results have positively impacted our ministry, and we look forward to continuing our relationship with them. ",
-    clientLogo: "jcceos-logo.png",
-    clientProfilePic: "teresa-heyne.png",
   },
 ];
