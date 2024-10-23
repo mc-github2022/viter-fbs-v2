@@ -64,7 +64,6 @@ const BatchSlider = ({ setModalBatch, itemEdit }) => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -127,11 +126,8 @@ const BatchSlider = ({ setModalBatch, itemEdit }) => {
         <Slider {...settings}>
           {/* <p>dsdsdsd</p> */}
 
-          {itemEdit.batchImageList.map((image, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
-            >
+          {itemEdit?.batchImageList.map((image, index) => (
+            <div key={index} className="flex items-center justify-center">
               <div className="z-[1] mx-3">
                 <img
                   src={`/img/${image}`}
