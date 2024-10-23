@@ -15,7 +15,7 @@ export const banner = [
     bannerBtnText: "LEARN MORE",
 
     bannerBtnLink: "Link",
-    bannerImage: "webdesign-bg.jpg",
+    bannerImage: "webdesign-bg.webp",
   },
 ];
 

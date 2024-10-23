@@ -15,7 +15,7 @@ export const banner = [
     bannerBtnText: "LEARN MORE",
 
     bannerBtnLink: "Link",
-    bannerImage: "wordpress-bg.jpg",
+    bannerImage: "wordpress-bg.webp",
   },
 ];
 
