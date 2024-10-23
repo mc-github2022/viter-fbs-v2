@@ -27,7 +27,7 @@ const VaResearchPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-[800px] max-w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-[700px] max-w-[480px] grid place-items-center`}
                   >
                     <div className="min-h-[300px] max-h-[800px] mb-5 relative">
                       <div className="title mb-4">
@@ -47,13 +47,15 @@ const VaResearchPricing = () => {
                         >
                           {price.duration}
                         </p>
-                        <div className="grid place-items-center">
+                        <div className="grid place-items-center text-left">
                           <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
                             {price.info.map((info, key) => (
                               <li key={key}>
-                                <FaCheckCircle
-                                  className={`${price.customCss} text-light`}
-                                />
+                                <div>
+                                  <FaCheckCircle
+                                    className={`${price.customCss} text-light`}
+                                  />
+                                </div>
                                 {info}
                               </li>
                             ))}

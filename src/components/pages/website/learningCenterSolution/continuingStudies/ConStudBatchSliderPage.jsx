@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
-import Slider from "react-slick/lib/slider";
+import Slider from "react-slick";
 import ModalWrapper from "../../../../partials/ModalWrapper";
 
 function SampleNextArrow(props) {
@@ -106,7 +106,7 @@ const ConStudBatchSliderPage = ({ setModalBatch, itemEdit }) => {
   const handleClose = () => {
     setModalBatch(false);
     console.log("clicked");
-    // document.body.classList.remove("overflow-hidden");
+    document.body.classList.remove("overflow-hidden");
   };
 
   return (
@@ -122,20 +122,22 @@ const ConStudBatchSliderPage = ({ setModalBatch, itemEdit }) => {
           />
         </div>
         <Slider {...settings}>
-          {itemEdit.batchImageList.map((image, index) => (
-            <div
-              key={index}
-              className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
-            >
-              <div className="z-[1] mx-3">
-                <img
-                  src={`/img/${image}`}
-                  alt={`Batch image ${index + 1}`}
-                  className="object-contain w-[600px] h-[70vh] "
-                />
+          <div>
+            {itemEdit.batchImageList.map((image, index) => (
+              <div
+                key={index}
+                className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
+              >
+                <div className="z-[1] mx-3">
+                  <img
+                    src={`/img/${image}`}
+                    alt={`Batch image ${index + 1}`}
+                    className="object-contain w-[600px] h-[70vh]"
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </Slider>
       </div>
     </ModalWrapper>

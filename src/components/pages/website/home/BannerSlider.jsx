@@ -100,6 +100,9 @@ const BannerSlider = () => {
 
   return (
     <>
+      {modalContact && (
+        <ModalContactGetStarted setModalContact={setModalContact} />
+      )}
       <Slider {...settings}>
         <div>
           <section
@@ -171,6 +174,7 @@ const BannerSlider = () => {
                   <a
                     href="#"
                     className="btn bg-transparent text-light font-semibold border-2"
+                    onClick={handleModalContact}
                   >
                     GET STARTED
                   </a>
@@ -208,6 +212,7 @@ const BannerSlider = () => {
                   <a
                     href="#"
                     className="btn bg-transparent text-light font-semibold border-2"
+                    onClick={handleModalContact}
                   >
                     GET STARTED
                   </a>
@@ -244,6 +249,7 @@ const BannerSlider = () => {
                   <a
                     href="#"
                     className="btn bg-transparent text-light font-semibold border-2"
+                    onClick={handleModalContact}
                   >
                     GET STARTED
                   </a>
@@ -282,6 +288,7 @@ const BannerSlider = () => {
                   <a
                     href="#"
                     className="btn bg-transparent text-light font-semibold border-2"
+                    onClick={handleModalContact}
                   >
                     GET STARTED
                   </a>
@@ -291,9 +298,6 @@ const BannerSlider = () => {
           </section>
         </div>
       </Slider>
-      {modalContact && (
-        <ModalContactGetStarted setModalContact={setModalContact} />
-      )}
     </>
   );
 };

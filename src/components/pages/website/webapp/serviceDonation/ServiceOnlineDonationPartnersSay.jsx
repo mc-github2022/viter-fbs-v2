@@ -60,7 +60,7 @@ function SamplePrevArrow(props) {
 const ServiceOnlineDonationPartnersSay = () => {
   var partnerSaysSettings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
