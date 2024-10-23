@@ -26,6 +26,9 @@ import SinglePageWebsite from "../components/pages/website/webDesignDev/singlePa
 import WebDesignPage from "../components/pages/website/webDesignDev/webDesign/WebDesignPage";
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/wordPressPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
+import EULA from "../components/partials/policies/EULA";
+import PrivacyPolicy from "../components/partials/policies/PrivacyPolicy";
+import TermsOfService from "../components/partials/policies/TermsOfService";
 
 export const routesDeveloper = [
   {
@@ -133,7 +136,15 @@ export const routesDeveloper = [
     element: <BookkeepingPage />,
   },
   {
-    path: `${devNavUrl}/batch-slider-image`,
-    element: <BatchSliderPage />,
+    path: `${devNavUrl}/privacy-policy`,
+    element: <PrivacyPolicy />,
+  },
+  {
+    path: `${devNavUrl}/terms-of-service`,
+    element: <TermsOfService />,
+  },
+  {
+    path: `${devNavUrl}/eula`,
+    element: <EULA />,
   },
 ];

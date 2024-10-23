@@ -80,15 +80,10 @@ const Footer = () => {
                 reserved.
               </p>
               <p className="text-xs">
-                <a href="https://frontlinebusiness.com.ph/privacy-policy/">
-                  Privacy Policy
-                </a>
+                <a href="/privacy-policy">Privacy Policy</a>
                 <span className="mx-2">|</span>
-                <a href="https://frontlinebusiness.com.ph/terms-of-service/">
-                  Terms of Service
-                </a>
-                <span className="mx-2">|</span>{" "}
-                <a href="https://frontlinebusiness.com.ph/eula/">EULA</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <span className="mx-2">|</span> <a href="/eula">EULA</a>
               </p>
             </div>
           </div>
