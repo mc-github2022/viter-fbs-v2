@@ -11,22 +11,22 @@ const WhyUsBanner = () => {
       <div>
         <section
           id="WhyUsBanner"
-          className={`banner bg-cover pt-[59px] md:pt-[112px] bg-top`}
+          className={`banner bg-cover pt-[59px] md:pt-[95px] bg-top`}
           style={{
             // backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.jpg)`,
             backgroundImage: `url(../../public/img/whyfbsBanner.jpg)`,
           }}
         >
           <div className="customContainer">
-            <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[90vh] md:h-[70vh] lg:min-h-0 transition-all w-full">
+            <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[90vh] md:h-[75vh] lg:min-h-0 transition-all w-full">
               <div className="text-center lg:text-left">
-                <h2 className="text-[clamp(30px,4vw,45px)] leading-[1.1] mb-8 text-light font-light">
+                <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                   We are
                   <span className="text-light font-semibold inline-block ml-3 mr-3">
                     more than
                   </span>
                   just a
-                  <span className="text-light font-semibold inline-block ml-3 mr-3">
+                  <span className="text-light font-semibold inline-block mr-3">
                     managed services provider
                   </span>
                 </h2>

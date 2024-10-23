@@ -84,7 +84,7 @@ const BookkeepingPricing = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#ac1f72",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -171,7 +171,7 @@ const BookkeepingPricing = () => {
                         price.isActive
                           ? "!bg-primary text-light"
                           : "!bg-customGray"
-                      } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg  min-h-[654px] !w-[400px] !ml-[3%] grid place-items-center items-center`}
+                      } priceItem mb-5 md:mb-0 relative z-[1] text-center p-10 rounded-lg min-h-[654px] !w-[400px] !ml-[3%] grid place-items-center items-center`}
                     >
                       <div className="z-10">
                         <div className="title mb-4">

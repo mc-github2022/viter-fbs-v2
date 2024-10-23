@@ -21,8 +21,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -56,7 +56,7 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our",
+    subtitle: "Why Choose Our",
     mainTitle: "Web Development Team",
     webAppImage: "web-team.jpg",
     btnText: "LEARN MORE",
@@ -163,8 +163,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "What our",
-    mainTitle: "clients say",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 
@@ -176,5 +176,13 @@ export const clientSays = [
       "The team at Frontline is incredible. They genuinely care about our needs and share in our vision of success. We are proud to call them a business partner and appreciate all the hard work they do for us.",
     clientLogo: "logo-ottm.png",
     clientProfilePic: "james-sunderland.png",
+  },
+  {
+    clientName: "Pastor Duane Masters",
+    clientDesc: "Executive Director",
+    clientMessage:
+      "Frontline has been an incredible organization to work with. They are friendly, accommodating, and professional, but what stands out to me the most is how responsive they are. Whenever I have a problem or request, not only have I always received a response within the day, but their team has also met my needs the same day. I’m not sure I have ever worked with an organization as responsive as they are. I would highly recommend working with them.",
+    clientLogo: "logo-world-focus.png",
+    clientProfilePic: "duane-masters.png",
   },
 ];

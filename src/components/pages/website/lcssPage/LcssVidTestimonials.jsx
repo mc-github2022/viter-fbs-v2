@@ -28,7 +28,7 @@ const LcssVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
-                <p className="italic mb-8 min-h-[250px]">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   have learned a lot, and my overall experience will be very
                   helpful not only in my future career, but also in building and
@@ -62,7 +62,7 @@ const LcssVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5 rounded-bl-xl rounded-br-xl ">
-                <p className="italic mb-8 min-h-[250px]">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   am grateful to Frontline Business Solutions for providing me
                   with a training and the support I needed to become what I am
@@ -99,7 +99,7 @@ const LcssVidTestimonials = () => {
                 loading="lazy"
               ></iframe>
               <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-8 min-h-[250px]">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
                   They did not just help me improve my web designing skills, but
                   they also gave me strength and advises regarding personality

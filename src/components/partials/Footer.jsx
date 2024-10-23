@@ -80,7 +80,10 @@ const Footer = () => {
                 reserved.
               </p>
               <p className="text-xs">
-                Privacy Policy | Terms of Service | EULA
+                <a href="/privacy-policy">Privacy Policy</a>
+                <span className="mx-2">|</span>
+                <a href="/terms-of-service">Terms of Service</a>
+                <span className="mx-2">|</span> <a href="/eula">EULA</a>
               </p>
             </div>
           </div>

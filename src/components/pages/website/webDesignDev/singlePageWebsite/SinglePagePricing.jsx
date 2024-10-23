@@ -12,7 +12,7 @@ const SinglePagePricing = () => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              Single Page Website development for your online branding
+              Single page website development for your online branding
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Affordable Pricing Plan

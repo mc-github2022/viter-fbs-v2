@@ -7,10 +7,10 @@ const ConStudPartnersWithUs = () => {
     <>
       <section className="ConStudPartnersWithUs py-20 bg-customGray">
         <div className="customContainer">
-          <p> We Offer on-thejob training for</p>
+          <p> We Offer On-the-job Training for</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              effective skills acquisitions.
+              Effective Skills Acquisitions.
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
@@ -52,9 +52,9 @@ const ConStudPartnersWithUs = () => {
                         Work-Related Experience
                       </h3>
                       <p>
-                        Students get hands-on, real-world experience, allowing
-                        them toi apply knowledge in practical settings,
-                        preparing them for the demands of their future careers.
+                        Trainees get hands-on, real-world experience, allowing
+                        them to apply knowledge in practical settings, preparing
+                        them for the demands of their future careers.
                       </p>
                     </div>
                   </div>

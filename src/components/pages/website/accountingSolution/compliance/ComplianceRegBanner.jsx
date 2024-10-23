@@ -6,7 +6,7 @@ const ComplianceRegBanner = () => {
     <>
       <section
         id="ComplianceRegBanner"
-        className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
+        className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/VABG.jpg)`,
           backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
@@ -15,7 +15,7 @@ const ComplianceRegBanner = () => {
         <div className="customContainer">
           <div className="wrapper flex flex-col justify-center md:grid md:grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
             <div className="text-center md:text-left">
-              <h2 className="text-[clamp(30px,4vw,45px)] leading-[1.1] mb-8 text-light">
+              <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light">
                 {banner[0].bannerTitle}
                 <br />
                 <span className="text-light font-semibold">

@@ -82,7 +82,7 @@ const ImmersionBatches = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#ac1f72",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -123,7 +123,7 @@ const ImmersionBatches = () => {
   return (
     <>
       <section className="ImmersionBatches py-40 md:pt-20 md:pb-40">
-        <div className="customContainer">
+        <div className="customContainer max-w-[90%]">
           <div
             className="mb-12
           "

@@ -1,6 +1,7 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { FaRegThumbsUp } from "react-icons/fa6";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { IoMdCloseCircle } from "react-icons/io";
 
 export const banner = [
   {
@@ -35,8 +36,8 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Here's why we're the",
-    mainTitle: "right choice for your Bookkeeping & Business Compliance needs.",
+    subtitle: "Here's Why We're The",
+    mainTitle: "Right Choice for Your Bookkeeping & Business Compliance needs.",
     webAppImage: "bookkeeping-img.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
@@ -174,10 +175,10 @@ export const pricing = [
         <FaCheckCircle className={`text-primary`} />
         <p className="font-bold">SEC Registration</p>
       </div>,
-      <div className="text-left">
+      <div className="text-left text-[#a3a3a3]">
         <div className="text-left flex items-center gap-3">
-          <RiCloseLargeFill className={`text-primary text-[17px]`} />
-          <p className="font-bold">BIR Registratio</p>
+          <IoMdCloseCircle className="  text-lg" />
+          <p className="font-bold">BIR Registration</p>
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
@@ -185,9 +186,9 @@ export const pricing = [
           <li>Annual Registration (0605)</li>
         </ul>
       </div>,
-      <div className="text-left">
+      <div className="text-left text-[#a3a3a3]">
         <div className="text-left flex items-center gap-3">
-          <RiCloseLargeFill className={`text-primary text-lg`} />
+          <IoMdCloseCircle className="  text-lg" />
           <p className="font-bold">LGU Registration</p>
         </div>
         <ul className="text-sm ml-7">

@@ -20,8 +20,8 @@ export const banner = [
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -42,7 +42,7 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our",
+    subtitle: "Why Choose Our",
     mainTitle: "Online Donation System",
     webAppImage: "ftc-ss.png",
     btnText: "LEARN MORE",
@@ -132,7 +132,14 @@ export const pricing = [
     title: "International Clients",
     rate: "Starts at $1500",
     note: "price varies based on system scope",
-    info: ["Asset Management", "Assignment of Asset", "Reports"],
+    info: [
+      "Admin Console",
+      "Donor Console",
+      "Donors Record Management",
+      "Payment Method Management",
+      "Donations Record",
+      "Donation Frequency",
+    ],
     link: "/free-trial",
     isActive: 0,
     customCss: "text-primary",
@@ -142,7 +149,14 @@ export const pricing = [
     title: "Philippine Clients",
     rate: "Starts at ₱80K",
     note: "price varies based on system scope",
-    info: ["Asset Management", "Assignment of Asset", "Reports"],
+    info: [
+      "Admin Console",
+      "Donor Console",
+      "Donors Record Management",
+      "Payment Method Management",
+      "Donations Record",
+      "Donation Frequency",
+    ],
     link: "/free-trial",
     isActive: 1,
     customCss: "",
@@ -151,8 +165,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 

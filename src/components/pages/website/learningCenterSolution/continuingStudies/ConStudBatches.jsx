@@ -82,7 +82,7 @@ const ConStudBatches = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#ac1f72",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -123,14 +123,14 @@ const ConStudBatches = () => {
   return (
     <>
       <section className="ConStudBatches pt-20 pb-40">
-        <div className="customContainer">
+        <div className="customContainer max-w-[90%]">
           <div
             className="mb-12
           "
           >
-            <p>Professional journey of our</p>
+            <p>Professional Journey of Our</p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              successful, industry-ready Batches
+              Successful, Industry-ready Batches
             </h3>
           </div>
           <Slider {...settings}>

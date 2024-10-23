@@ -1,10 +1,9 @@
 import React from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
-import ModalContact from "../../../partials/ModalContact";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import ModalContactGetStarted from "./ModalContactGetStarted";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -48,10 +47,10 @@ function SamplePrevArrow(props) {
 }
 
 const BannerSlider = () => {
-  const [toggleMenu, setToggleMenu] = React.useState(false);
   const [modalContact, setModalContact] = React.useState(false);
   const handleModalContact = () => {
     setModalContact(!modalContact);
+    console.log("open");
   };
 
   var settings = {
@@ -117,7 +116,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     In business for good.
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px] drop-shadow-2xl">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px] drop-shadow-2xl">
                     Your Trusted Christian Partner in{" "}
                     <span className="bg-sky-500/50">Managed Services</span>
                   </h1>
@@ -133,10 +132,10 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                     onClick={handleModalContact}
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -158,7 +157,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Custom Solutions, Lasting Growth
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]  ">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]  ">
                     Empower your business with Custom Web Applications
                   </h1>
                   <p className="text-light text-center mb-10">
@@ -171,9 +170,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -195,7 +194,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Digital Design, Meaningful Engagement
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
                     Elevate your digital presence with responsive, user-friendly
                     Websites
                   </h1>
@@ -208,9 +207,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -232,7 +231,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Virtual Support, Real Results
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
                     Streamline your operations with skilled Virtual Assistants.
                   </h1>
                   <p className="text-light text-center mb-10">
@@ -244,9 +243,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -269,7 +268,7 @@ const BannerSlider = () => {
                   <p className="text-light lg:text-[28px] italic">
                     Work-Related Training, Career Success
                   </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,7vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
+                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px]">
                     Hands-on training with actual industry experience.
                   </h1>
                   <p className="text-light text-center mb-10">
@@ -282,9 +281,9 @@ const BannerSlider = () => {
                   </p>
                   <a
                     href="#"
-                    className="btn bg-transparent text-light border-2"
+                    className="btn bg-transparent text-light font-semibold border-2"
                   >
-                    Get Started
+                    GET STARTED
                   </a>
                 </div>
               </div>
@@ -293,11 +292,7 @@ const BannerSlider = () => {
         </div>
       </Slider>
       {modalContact && (
-        <ModalContact
-          setModalContact={setModalContact}
-          modalContact={modalContact}
-          setToggleMenu={setToggleMenu}
-        />
+        <ModalContactGetStarted setModalContact={setModalContact} />
       )}
     </>
   );
