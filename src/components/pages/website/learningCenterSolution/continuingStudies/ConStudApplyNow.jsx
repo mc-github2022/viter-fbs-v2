@@ -49,7 +49,7 @@ const ConStudApplyNow = () => {
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">
               <img
                 // src={`${devBaseImgUrl}/ojt-accepted.jpg`}
-                src="../../public/img/ojt-accepted.jpg"
+                src="../../public/img/ojt-accepted.webp"
                 className="w-full h-full object-cover object-top"
                 alt=""
               />
