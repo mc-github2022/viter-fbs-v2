@@ -19,10 +19,9 @@ const LcssVidTestimonials = () => {
             <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
                 src="https://www.youtube.com/embed/w6_k-pnlaE0?si=Qhu_Hvw8HZcRgVVr"
                 title="Marks story"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 loading="lazy"
@@ -53,10 +52,9 @@ const LcssVidTestimonials = () => {
             <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
                 src="https://www.youtube.com/embed/rGtLB1x58ts?si=GDWftGxNTKDHpyZI"
                 title="Marks story"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 loading="lazy"
@@ -90,10 +88,9 @@ const LcssVidTestimonials = () => {
             <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
               <iframe
                 id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
                 src="https://www.youtube.com/embed/7fGYHbtnCQk?si=-97GqozGwXnv3Z9q"
                 title="Marks story"
-                frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 loading="lazy"

@@ -3,6 +3,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
 import Slider from "react-slick";
 import ModalWrapper from "../../../partials/ModalWrapper";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -55,13 +57,14 @@ function SamplePrevArrow(props) {
   );
 }
 
-const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
+const BatchSlider = ({ setModalBatch, itemEdit }) => {
   var settings = {
-    dots: false,
-    infinite: true,
+    dots: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: true,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -114,18 +117,20 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
       className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[40%] md:w-[60%] `}
       handleClose={handleClose}
     >
-      <div className="bg-transparent h-screen place-items-center">
-        <div className="closeBtn absolute top-[150px] right-0 z-[1] cursor-pointer ">
+      <div className="bg-transparent h-screen place-items-center place-content-center">
+        <div className="closeBtn absolute top-[150px] right-0 z-[1] cursor-pointer">
           <IoCloseCircle
             className="text-3xl text-light"
             onClick={handleClose}
           />
         </div>
         <Slider {...settings}>
+          {/* <p>dsdsdsd</p> */}
+
           {itemEdit.batchImageList.map((image, index) => (
             <div
               key={index}
-              className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
+              className="flex items-center justify-center my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
             >
               <div className="z-[1] mx-3">
                 <img
@@ -142,4 +147,4 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
   );
 };
 
-export default BatchSliderPage;
+export default BatchSlider;

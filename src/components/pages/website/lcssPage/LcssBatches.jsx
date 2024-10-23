@@ -3,6 +3,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import BatchSliderPage from "./BatchSliderPage";
 import { batch } from "./data";
+import BatchSlider from "./BatchSlider";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -117,7 +118,7 @@ const LcssBatches = () => {
   const handleModalBatch = (post) => {
     setModalBatch(!modalBatch);
     setItemEdit(post);
-    document.body.classList.toggle("overflow-hidden");
+    // document.body.classList.toggle("overflow-hidden");
   };
 
   return (
@@ -168,7 +169,7 @@ const LcssBatches = () => {
       </section>
 
       {modalBatch && (
-        <BatchSliderPage setModalBatch={setModalBatch} itemEdit={itemEdit} />
+        <BatchSlider setModalBatch={setModalBatch} itemEdit={itemEdit} />
       )}
     </>
   );
