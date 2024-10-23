@@ -14,7 +14,7 @@ export const banner = [
       "Experience seamless HR operations and make data-driven decisions that drive organizational success. Designed to centralize all HR data and workflows, our solution simplifies employee records management, leave and attendance tracking, performance evaluations, and HR analytics. ",
     bannerBtnText: "SCHEDULE A DEMO",
     bannerBtnLink: "Link",
-    bannerImage: "HrisBackground.jpg",
+    bannerImage: "HrisBackground.webp",
   },
 ];
 

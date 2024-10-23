@@ -31,14 +31,14 @@ const ServiceHrOverview = () => {
                     {webAppOverview[0].btnText}
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="#"
                     className="flex items-center gap-2 font-bold text-primary"
                   >
                     {webAppOverview[0].btnDownloadText} <FaFileDownload />
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="mt-14 lg:mt-0">
