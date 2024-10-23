@@ -8,7 +8,7 @@ export const banner = [
       "Our Virtual Assistance Services cover all aspects of marketing, from crafting digital strategies and managing social media content to designing visually compelling materials and editing media. Let us help you enhance your brand’s presence with tailored solutions in digital marketing, content creation, design, media production, and writing.",
     bannerBtnText: "LEARN MORE",
     bannerBtnLink: "Link",
-    bannerImage: "social-media-management.png",
+    bannerImage: "social-media-management.webp",
   },
 ];
 
