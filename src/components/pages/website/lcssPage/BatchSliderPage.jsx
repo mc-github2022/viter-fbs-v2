@@ -6,7 +6,6 @@ import ModalWrapper from "../../../partials/ModalWrapper";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 
-
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -109,7 +108,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
   const handleClose = () => {
     setModalBatch(false);
     console.log("clicked");
-    // document.body.classList.remove("overflow-hidden");
+    document.body.classList.remove("overflow-hidden");
   };
 
   return (
@@ -134,7 +133,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
                 <img
                   src={`/img/${image}`}
                   alt={`Batch image ${index + 1}`}
-                  className="object-contain w-[600px] h-[70vh] "
+                  className="object-contain w-[600px] h-[70vh]"
                 />
               </div>
             </div>

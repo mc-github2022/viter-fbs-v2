@@ -47,7 +47,7 @@ const VaResearchPricing = () => {
                         >
                           {price.duration}
                         </p>
-                        <div className="grid place-items-center">
+                        <div className="grid place-items-center text-left">
                           <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
                             {price.info.map((info, key) => (
                               <li key={key}>
