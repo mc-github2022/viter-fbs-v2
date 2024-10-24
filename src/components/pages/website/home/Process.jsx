@@ -7,9 +7,9 @@ const Process = () => {
       <section className="process py-20">
         <div className="customContainer">
           <div className="theTitle leading-1 mb-12">
-            <p>Key stages</p>
+            <p>Key Stages</p>
             <h2 className="text-[clamp(30px,7vw,45px)] font-semibold text-primary leading-[1.1]">
-              how our process works
+              How our Process Works
             </h2>
           </div>
           <img
@@ -30,30 +30,25 @@ const Process = () => {
                   </p>
                 </div>
                 <div className="processItem md:text-center mb-6">
-                  <p className="text-primary font-bold text-lg">
-                    We Collaborate
-                  </p>
+                  <p className="text-primary font-bold text-lg">We Deliver</p>
                   <p>
-                    with our clients to understand their specific talent needs
-                    and project requirements.
+                    skilled professionals tailored to meet the client's demands,
+                    ensuring the right fit for their business.
                   </p>
                 </div>
                 <div className="processItem md:text-center md:translate-y-[-50px] lg:translate-y-[-100px] mb-6">
-                  <p className="text-primary font-bold text-lg">
-                    We Collaborate
-                  </p>
+                  <p className="text-primary font-bold text-lg">We Manage</p>
                   <p>
-                    with our clients to understand their specific talent needs
-                    and project requirements.
+                    the ongoing performance and development of the provided
+                    talents, ensuring seamless integration and success.
                   </p>
                 </div>
                 <div className="processItem md:text-center">
-                  <p className="text-primary font-bold text-lg">
-                    We Collaborate
-                  </p>
+                  <p className="text-primary font-bold text-lg">We Give back</p>
                   <p>
-                    with our clients to understand their specific talent needs
-                    and project requirements.
+                    to the ministry and work for the Kingdom of God, aligning
+                    our business practices with our faith and commitment to a
+                    higher purpose.
                   </p>
                 </div>
               </div>

@@ -8,31 +8,31 @@ const WhyUsCompanyProfile = () => {
     <>
       <div className="whyUsIntro py-20">
         <div className="customContainer">
-          <h2 className="text-3xl text-center">
-            By Choosing Frontline Bussiness Solutions, you align your business
+          <h2 className="text-[clamp(20px,5vw,30px)] text-center">
+            By choosing Frontline Bussiness Solutions, you align your business
             with a purpose-driven organization that combines business excellence
             with Christian values.
           </h2>
         </div>
       </div>
 
-      <section className="partnersWithUs py-20 ">
+      <section className="partnersWithUs pb-20 md:py-20 ">
         <div className="customContainer">
-          <p> Here are the</p>
-          <h2 className="text-[35px] leading-[1.1] mb-12 text-light">
+          <p> Here Are the</p>
+          <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              major areas of our impact
+              Major Areas of Our Impact
             </span>
           </h2>
-          <div className="wrapper grid grid-cols-2 gap-12">
+          <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//lcssBannerImg.jpg`}
+                src={`../../public/img//ftc-children.jpg`}
                 className="mb-12"
                 alt=""
               />
-              <ul className="flex items-center gap-12">
+              <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <a
                     href="#"
@@ -51,12 +51,12 @@ const WhyUsCompanyProfile = () => {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="mt-14 lg:mt-0">
               <ul>
                 <li className="flex items-start gap-4 text-dark mb-8">
                   <div className="flex gap-4 items-start">
                     <div>
-                      <h3 className="textGradient text-2xl mb-1">
+                      <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
                         <span className="font-bold">CARING</span> for Abandonded
                         Children
                       </h3>
@@ -71,7 +71,7 @@ const WhyUsCompanyProfile = () => {
                 <li className="flex items-start gap-4 text-dark mb-8">
                   <div className="flex gap-4 items-start">
                     <div>
-                      <h3 className="textGradient text-2xl mb-1">
+                      <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
                         <span className="font-bold">CREATING</span> Jobs and
                         Supoprting Local Families
                       </h3>
@@ -86,7 +86,7 @@ const WhyUsCompanyProfile = () => {
                 <li className="flex items-start gap-4 text-dark mb-8">
                   <div className="flex gap-4 items-start">
                     <div>
-                      <h3 className="textGradient text-2xl mb-1">
+                      <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
                         <span className="font-bold">PROVIDING</span> Christian
                         Education
                       </h3>
@@ -101,7 +101,7 @@ const WhyUsCompanyProfile = () => {
                 <li className="flex items-start gap-4 text-dark">
                   <div className="flex gap-4 items-start">
                     <div>
-                      <h3 className="textGradient text-2xl mb-1">
+                      <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
                         <span className="font-bold">SUPPORTING</span> Ministry
                         Work
                       </h3>

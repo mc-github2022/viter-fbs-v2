@@ -7,105 +7,146 @@ const LcssServices = () => {
     <>
       <section className="lcssServices py-20">
         <div className="customContainer">
-          <div className="wrapper grid grid-cols-2">
-            <div className="webDEv">
+          <div className="wrapper flex flex-wrap place-content-center">
+            <div className="webDEv w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
-                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
-                  Web Design & Development
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
+                  Web Design & <br /> Development
                 </h3>
                 <p>On-the-job training.</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Web Designing
-                  using Figma
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  Web Designing using Figma
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Website Mockup
-                  Designing
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  Website Mockup Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Mobile Responsive
-                  Designing
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  Mobile Responsive Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> CSS & HTML
-                  Programming
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  CSS & HTML Programming
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   SASS Preprocessor
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   Scripting Language
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   Tailwind CSS
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   WordPress Development
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
-                  Business Wirk Ethics
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  Business Work Ethics
                 </li>
               </ul>
             </div>
-            <div className="accountingServices">
-              <div className="mb-10">
+            <div className="accountingServices w-[387px] py-5 md:px-3 lg:px-0">
+              <div className=" my-10 md:mb-10 md:my-0">
                 <p>Here is what you can learn in our</p>
-                <h3 className="text-[35px] font-semibold text-primary leading-[1.1]">
-                  Accounting Processes
+                <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
+                  Accounting <br />
+                  Processes
                 </h3>
                 <p>On-the-job training.</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Basic
-                  Accoutning
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
+                  Basic Accounting
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Excel Advanced
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div> Excel Advanced
                   Functions
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Accounting
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div> Accounting
                   Source Documents
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Business
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div> Business
                   Registration
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   PH & US Taxation
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   PH & US Payroll
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Quickbooks
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Xero
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Budget Monitoring
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Financial Reports & Projections
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Non-Profit Accounting
                 </li>
               </ul>

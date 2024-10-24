@@ -1,7 +1,15 @@
 import { devNavUrl } from "../components/helpers/functions-general";
-import SinglePage from "../components/pages/website/events/SinglePage";
+import BookkeepingPage from "../components/pages/website/accountingSolution/bookkeeping/BookkeepingPage";
+import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
+import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
+import CareerPage from "../components/pages/website/career/CareerPage";
+import EventsAndAct from "../components/pages/website/events/EventsAndAct";
 import Home from "../components/pages/website/home/Home";
+import BatchSliderPage from "../components/pages/website/lcssPage/BatchSliderPage";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
+import ConStudPage from "../components/pages/website/learningCenterSolution/continuingStudies/ConStudPage";
+import ImmersionPage from "../components/pages/website/learningCenterSolution/highSchoolImmersion/ImmersionPage";
+import SingplePage from "../components/pages/website/singlePage/SingplePage";
 import VaAdminSolutionPage from "../components/pages/website/virtualSolution/vaAdminSolution/VaAdminSolutionPage";
 import VaCreativeSupportPage from "../components/pages/website/virtualSolution/vaCreativeSupport/VaCreativeSupportPage";
 import VaMarketingPage from "../components/pages/website/virtualSolution/vaMarketing/VaMarketingPage";
@@ -14,7 +22,13 @@ import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceH
 import ServiceInventoryPage from "../components/pages/website/webapp/serviceInventory/ServiceInventoryPage";
 import ServiceOnlinePayPage from "../components/pages/website/webapp/serviceOnlinePay/ServiceOnlinePayPage";
 import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
+import SinglePageWebsite from "../components/pages/website/webDesignDev/singlePageWebsite/SinglePageWebsite";
+import WebDesignPage from "../components/pages/website/webDesignDev/webDesign/WebDesignPage";
+import WordPressPage from "../components/pages/website/webDesignDev/wordPress/wordPressPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
+import EULA from "../components/partials/policies/EULA";
+import PrivacyPolicy from "../components/partials/policies/PrivacyPolicy";
+import TermsOfService from "../components/partials/policies/TermsOfService";
 
 export const routesDeveloper = [
   {
@@ -34,8 +48,8 @@ export const routesDeveloper = [
     element: <WhyUsPage />,
   },
   {
-    path: `${devNavUrl}/singlepage`,
-    element: <SinglePage />,
+    path: `${devNavUrl}/events-and-activities`,
+    element: <EventsAndAct />,
   },
   {
     path: `${devNavUrl}/adminSolution`,
@@ -80,5 +94,57 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/webapp-inventory`,
     element: <ServiceInventoryPage />,
+  },
+  {
+    path: `${devNavUrl}/web-wordpress`,
+    element: <WordPressPage />,
+  },
+  {
+    path: `${devNavUrl}/web-singlepage`,
+    element: <SinglePageWebsite />,
+  },
+  {
+    path: `${devNavUrl}/web-design`,
+    element: <WebDesignPage />,
+  },
+  {
+    path: `${devNavUrl}/career`,
+    element: <CareerPage />,
+  },
+  {
+    path: `${devNavUrl}/immersion`,
+    element: <ImmersionPage />,
+  },
+  {
+    path: `${devNavUrl}/continuing-studies`,
+    element: <ConStudPage />,
+  },
+  {
+    path: `${devNavUrl}/single-post`,
+    element: <SingplePage />,
+  },
+  {
+    path: `${devNavUrl}/business-registration`,
+    element: <BusinessRegPage />,
+  },
+  {
+    path: `${devNavUrl}/compliance`,
+    element: <CompliancePage />,
+  },
+  {
+    path: `${devNavUrl}/bookkeeping`,
+    element: <BookkeepingPage />,
+  },
+  {
+    path: `${devNavUrl}/privacy-policy`,
+    element: <PrivacyPolicy />,
+  },
+  {
+    path: `${devNavUrl}/terms-of-service`,
+    element: <TermsOfService />,
+  },
+  {
+    path: `${devNavUrl}/eula`,
+    element: <EULA />,
   },
 ];

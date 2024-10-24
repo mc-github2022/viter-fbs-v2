@@ -1,21 +1,20 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import webLogo from "/web.svg";
-import WebSvg from "../../../partials/customSVG/WebSvg";
-import VASvg from "../../../partials/customSVG/VASvg";
 import AccountingSvg from "../../../partials/customSVG/AccountingSvg";
 import SkillDevSvg from "../../../partials/customSVG/SkillDevSvg";
+import VASvg from "../../../partials/customSVG/VASvg";
+import WebSvg from "../../../partials/customSVG/WebSvg";
 
 const Services = () => {
   return (
     <section className="services py-20 relative">
       <div className="customContainer">
         <div className="theTitle leading-1 mb-12">
-          <p>Here are</p>
+          <p>Here Are</p>
           <h2 className="text-[clamp(30px,7vw,45px)] font-semibold text-primary leading-[1.1]">
-            Our specialized services
+            Our Specialized Services
           </h2>
-          <p>to help grow your business</p>
+          <p>to Help Grow Your Business</p>
         </div>
         <div className="wrapper grid  grid-cols-1 md:grid-cols-2 ">
           <div className="serviceItem  z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
@@ -33,7 +32,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="flex items-center gap-3 font-normal sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>
@@ -54,7 +53,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>
@@ -75,17 +74,17 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>
             </div>
           </div>
-          <div className="serviceItem z-10 grid place-items-center hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg px-10 py-10 transition-all hover:addShadow group">
+          <div className="serviceItem z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
             <div>
               <div className="serviceName  flex items-center gap-8 mb-6">
                 <SkillDevSvg />
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                <h3 className="text-[clamp(20px,5vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
                   Skills Development
                 </h3>
               </div>
@@ -96,7 +95,7 @@ const Services = () => {
               </p>
               <a
                 href="#"
-                className="font-normal flex items-center gap-3  sm:text-light text-xl group-hover:opacity-100 sm:opacity-0 sm:translate-y-8 sm:group-hover:translate-y-0 transition-all "
+                className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
               </a>

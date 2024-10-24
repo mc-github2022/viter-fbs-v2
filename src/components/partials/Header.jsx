@@ -30,11 +30,23 @@ const Header = () => {
     setModalContact(!modalContact);
   };
 
+  const ref = React.useRef();
+  const clickOutsideRef = (e) => {
+    if (!ref.current?.contains(e.target)) {
+      setToggleWhyUs(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRef);
+    return () => document.addEventListener("click", clickOutsideRef);
+  }, []);
+
   return (
     <>
       <section
         id="header"
-        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[13] shadow-md"
+        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[999] shadow-md"
       >
         <div
           className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
@@ -48,7 +60,7 @@ const Header = () => {
                 toggleNav ? "active" : ""
               } theNav flex justify-end md:justify-between items-center `}
             >
-              <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0  h-screen md:h-[96px]">
+              <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
@@ -75,6 +87,7 @@ const Header = () => {
                       toggleWhyUs ? "text-primary" : ""
                     } flex items-center gap-2`}
                     onClick={handdleWhyUs}
+                    ref={ref}
                   >
                     Why FBS?
                     <BiSolidDownArrow
@@ -85,8 +98,10 @@ const Header = () => {
                   </a>
                   <ul
                     className={`${
-                      toggleWhyUs ? "!absolute" : "hidden"
-                    } left-0 !top-[96px] !w-[180px] text-sm p-5  [&>li]:mb-2 addShadow rounded-bl-xl rounded-br-xl`}
+                      toggleWhyUs
+                        ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:my-2 lg:[&>li]:my-2 py-0 md:p-[20px]  !top-12 pl-20 md:pl-[20px] transition-all md:!bg-light"
+                        : "hidden"
+                    } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
                   >
                     <li>
                       <Link className="!p-0 hover:text-primary" to="/whyus">
@@ -94,14 +109,17 @@ const Header = () => {
                       </Link>
                     </li>
                     <li>
-                      <a className="!p-0 hover:text-primary" href="#">
+                      <Link
+                        className="!p-0 hover:text-primary"
+                        to="/events-and-activities"
+                      >
                         Events & Activities
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a className="!p-0 hover:text-primary" href="#">
+                      <Link className="!p-0 hover:text-primary" to="/career">
                         Career
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>

@@ -10,10 +10,10 @@ import { scope } from "./data";
 const ServicePayrollScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
-  window.onload = function () {
+  useEffect(() => {
     setAccordion(true);
-    setAccordionItem("dassboard");
-  };
+    setAccordionItem("starter");
+  }, []);
 
   const [accordion, setAccordion] = React.useState(false);
   const handleAccordion = (item) => {
@@ -26,12 +26,12 @@ const ServicePayrollScope = () => {
       <section className="ServicePayrollScope py-20">
         <div className="customContainer">
           <div>
-            <p>What makes this web app</p>
-            <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
-              a lifesaver?
+            <p>What Makes This Web App</p>
+            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+              a Lifesaver?
             </h2>
           </div>
-          <div className="warpper grid grid-cols-2 gap-5">
+          <div className="warpper md:grid md:grid-cols-2 gap-5">
             <ul>
               {scope.map((scopeList, key) => {
                 return (
@@ -40,7 +40,11 @@ const ServicePayrollScope = () => {
                     className={"overflow-hidden  border-b border-[#e9e9e9]"}
                   >
                     <div
-                      className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2"
+                      className={`${
+                        accordion && accordionItem === scopeList.scopeId
+                          ? "bg-customGray"
+                          : ""
+                      } flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
                       onClick={() => handleAccordion(scopeList.scopeId)}
                     >
                       <div className="flex items-center gap-4">
@@ -50,7 +54,7 @@ const ServicePayrollScope = () => {
                             accordion && accordionItem === scopeList.scopeId
                               ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                               : "text-dark"
-                          } text-xl font-semibold cursor-pointer `}
+                          } text-[clamp(16px,4vw,20px)] font-semibold cursor-pointer `}
                         >
                           {scopeList.scopeTitle}
                         </p>
@@ -60,14 +64,19 @@ const ServicePayrollScope = () => {
                     <div
                       className={`${
                         accordion && accordionItem === scopeList.scopeId
-                          ? "min-h-[170px] px-4 pt-4 pb-8"
+                          ? "px-4 pt-4 pb-4"
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p className="mb-4">{scopeList.scopeDesc}</p>
-                      <a href="#" className="btn bg-primary text-light">
-                        Schedule a Demo
-                      </a>
+                      <p>{scopeList.scopeDesc}</p>
+                      <p className="md:hidden py-6">
+                        <a
+                          href="#"
+                          className="btn bg-primary text-light font-semibold"
+                        >
+                          Schedule a Demo
+                        </a>
+                      </p>
                     </div>
                   </li>
                 );
@@ -82,11 +91,20 @@ const ServicePayrollScope = () => {
                   }`}
                 >
                   <img
-                    className="w-full object-contain"
+                    className="hidden md:w-full md:object-contain md:block"
                     // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
                     src={`../../public/img/${scopedata.scopeImage}`}
                     alt=""
                   />
+
+                  <p className="hidden md:block mb-4 text-center pt-8 pb-8">
+                    <a
+                      href="#"
+                      className="btn bg-primary text-light font-semibold"
+                    >
+                      SCHEDULE A DEMO
+                    </a>
+                  </p>
                 </div>
               );
             })}

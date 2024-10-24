@@ -7,6 +7,7 @@ import VaAdminSolutionPartners from "./VaAdminSolutionPartners";
 import VaAdminSolutionPartnersSay from "./VaAdminSolutionPartnersSay";
 import VaAdminSolutionPartnerWithUs from "./VaAdminSolutionPartnerWithUs";
 import VaAdminSolutionPricing from "./VaAdminSolutionPricing";
+import VaAdminServiceList from "./VaAdminServiceList";
 
 const VaAdminSolutionPage = () => {
   return (
@@ -14,7 +15,8 @@ const VaAdminSolutionPage = () => {
       <Header />
       <VaAdminSolutionBanner />
       <VaAdminSolutionOverview />
-      <VaAdminSolutionPartnerWithUs />
+      <VaAdminServiceList />
+      {/* <VaAdminSolutionPartnerWithUs /> */}
       <VaAdminSolutionPricing />
       <VaAdminSolutionPartners />
       <VaAdminSolutionPartnersSay />

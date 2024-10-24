@@ -12,41 +12,38 @@ export const banner = [
     bannerTitleBoldText: "Online Payroll System",
     bannerTextDesc:
       "Our Online Payroll System simplifies payroll management for Philippine businesses. It automates salary calculations, tax compliance, and government contributions, ensuring accuracy and timely payouts. With real-time reporting and employee self-service access to payslips, it reduces HR workload and boosts efficiency.",
-    bannerBtnText: "Schedule a Demo",
+    bannerBtnText: "SCHEDULE A DEMO",
 
     bannerBtnLink: "Link",
-    bannerImage: "ServicesBanner.jpg",
+    bannerImage: "ServicesBanner.webp",
   },
 ];
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
 export const sectionPartnersLogos = [
   {
-    imageName: "web-obich.png",
-  },
-  {
     imageName: "AKA-Global.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "bensHalo.png",
   },
   {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "DTOD-BPO.png",
   },
 ];
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our",
+    subtitle: "Why Choose Our",
     mainTitle: "Online Payroll System",
     webAppImage: "payroll-ss.png",
-    btnText: "Schedule A Demo",
+    btnText: "SCHEDULE A DEMO",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Enhanced Accuracy and Reduced Errors",
     overviewAtext:
@@ -62,12 +59,12 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "biometric",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Biometric Data Import Capability",
     scopeDesc:
       "Our Payroll System offers a capability feature that allows seamless importing of time-in and time-out data directly from biometric systems, ensuring accurate and automated attendance tracking for payroll processing.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "payroll-biometrics.png",
   },
   {
     scopeId: "employee-record",
@@ -75,7 +72,7 @@ export const scope = [
     scopeTitle: "Employee Record Management",
     scopeDesc:
       "Our Payroll System includes an Employee Record Management feature that centralizes all essential employee information, including personal details, salary data, tax information, benefits, and employment history, within a secure digital platform.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "payroll-employee-record.png",
   },
   {
     scopeId: "employee-earning",
@@ -83,7 +80,7 @@ export const scope = [
     scopeTitle: "Employee Earnings Recording",
     scopeDesc:
       "Our Payroll System includes an Earnings Recording feature that allows for the detailed encoding of all types of employee earnings, including regular salary, overtime, bonuses, allowances, commissions, and other compensations needed for accurate payroll computation.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "payroll-earnings.png",
   },
   {
     scopeId: "deduction-record",
@@ -91,7 +88,7 @@ export const scope = [
     scopeTitle: "Deductions Recording",
     scopeDesc:
       "Our Payroll System includes a Deductions Recording feature that enables the encoding of all mandatory government deductions (such as taxes, SSS, PhilHealth, and Pag-IBIG) as well as optional deductions (such as loans, benefits, and company-specific charges) required for accurate payroll computation.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "payroll-deductions.png",
   },
   {
     scopeId: "holiday-record",
@@ -99,7 +96,7 @@ export const scope = [
     scopeTitle: "Holidays Recording",
     scopeDesc:
       "Our Payroll System includes a holiday recording feature that allows for the encoding of all regular and special non-working holidays, ensuring that holiday pay computations are accurate and aligned with company policies and labor regulations.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "payroll-holiday.png",
   },
   {
     scopeId: "access-control",
@@ -107,7 +104,7 @@ export const scope = [
     scopeTitle: "User Access and Role Management",
     scopeDesc:
       "Our Payroll System includes a user recording feature that provides secure access control, allowing only authorized users—such as payroll officers, HR managers, and finance staff—to access and manage payroll data, ensuring data security and confidentiality.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "payroll-user-access.png",
   },
   {
     scopeId: "compliance-report",
@@ -115,32 +112,14 @@ export const scope = [
     scopeTitle: "Compliance Reporting Capability",
     scopeDesc:
       "Our Payroll System includes a Reporting feature that generates accurate and detailed reports needed for easy compliance with the requirements of government agencies such as SSS, BIR, Pag-IBIG, and PhilHealth.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "payroll-report.png",
   },
 ];
 
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Foreign Clients",
-    rate: "Starts at $1",
-    note: "Per Employee Per Month",
-    info: [
-      "Biometric Data Import",
-      "Record Management",
-      "Earnings Recording",
-      "Deduction Recording",
-      "Holidays Recording",
-      "Access and Role Management",
-      "Reporting",
-    ],
-    link: "/basic",
-    isActive: 0,
-    customCss: "text-primary",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Philippine Clients",
+    title: "Online Payroll System",
     rate: "Starts at ₱40",
     note: "Per Employee Per Month",
     info: [
@@ -153,15 +132,15 @@ export const pricing = [
       "Reporting",
     ],
     link: "/free-trial",
-    isActive: 1,
-    customCss: "",
+    isActive: 0,
+    customCss: "text-primary",
   },
 ];
 
 export const clientSaysTitle = [
   {
-    subTitle: "What our",
-    mainTitle: "clients say",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 
@@ -172,6 +151,14 @@ export const clientSays = [
     clientMessage:
       "Frontline Business Solutions is indeed a partner to innovative success of a company. A connection of employer and employee. ",
     clientLogo: "AKA-Global.png",
-    clientProfilePic: "emilio-macaso.png",
+    clientProfilePic: "kimbell-reyes.png",
+  },
+  {
+    clientName: "Dennis Ray Siano",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "Excellent HRIS Provider with Outstanding Support! Their platform has streamlined our HR processes, making tasks like employee management, payroll, and reporting much more efficient. What truly stands out is the level of support we’ve received from their team. I highly recommend Frontline Business Solutions Inc. for anyone looking for a reliable and supportive HRIS provider. Their service has been excellent, and their team truly understands the needs of their clients. ",
+    clientLogo: "DTOD-BPO.png",
+    clientProfilePic: "dennis-siano2.png",
   },
 ];

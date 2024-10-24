@@ -11,7 +11,8 @@ function SampleNextArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         right: "8%",
         fontSize: "3rem",
         cursor: "pointer",
@@ -36,7 +37,8 @@ function SamplePrevArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         left: "8%",
         fontSize: "3rem",
         zIndex: "1",
@@ -57,7 +59,8 @@ function SamplePrevArrow(props) {
 
 const ServiceHrPartnersSay = () => {
   var partnerSaysSettings = {
-    infinite: false,
+    dots: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -69,7 +72,7 @@ const ServiceHrPartnersSay = () => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "30px",
+          bottom: "-40px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -81,12 +84,24 @@ const ServiceHrPartnersSay = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}
       ></div>
     ),
+    responsive: [
+      {
+        breakpoint: 1086,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: true,
+        },
+      },
+    ],
   };
 
   return (
@@ -103,8 +118,8 @@ const ServiceHrPartnersSay = () => {
             <Slider {...partnerSaysSettings}>
               {clientSays.map((testimonial, key) => {
                 return (
-                  <div key={key}>
-                    <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center mt-20 px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+                  <div key={key} className="md:h-[425px]">
+                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img
@@ -114,7 +129,7 @@ const ServiceHrPartnersSay = () => {
                             alt=""
                           />
                         </div>
-                        <p className="relative z-10 italic mb-4">
+                        <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
                           {testimonial.clientMessage}
                         </p>
                         <div className="logoAndName flex items-center gap-3">
@@ -130,12 +145,14 @@ const ServiceHrPartnersSay = () => {
                           </div>
                         </div>
                       </div>
-                      <img
-                        // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                        src={`../../public/img/${testimonial.clientProfilePic}`}
-                        className="absolute bottom-0 w-[300px] right-8"
-                        alt=""
-                      />
+                      <div className="hidden lg:block">
+                        <img
+                          // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                          src={`../../public/img/${testimonial.clientProfilePic}`}
+                          className="absolute bottom-0 w-[300px] right-0"
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
                 );

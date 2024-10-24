@@ -12,16 +12,16 @@ export const banner = [
     bannerTitleBoldText: "Online Payment Transaction",
     bannerTextDesc:
       "A component that integrates with existing systems to enable online payment processing. It allows businesses to accept payments securely via various channels such as credit/debit cards, e-wallets, or bank transfers, enhancing customer convenience and expanding revenue streams.",
-    bannerBtnText: "bannerBtnText",
+    bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "OnlinePayment.jpg",
+    bannerImage: "OnlinePayment.webp",
   },
 ];
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -42,30 +42,28 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "sectionSubtitle",
-    mainTitle: "sectionMainTitle",
-    webAppImage: "addImageName",
-    btnText: "Schedule A Demo",
+    subtitle: "Why Choose Our",
+    mainTitle: "Online Payment Integration",
+    webAppImage: "online-payment-ss.png",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "titleA",
-    overviewAtext: "textA",
-    overviewBtitle: "Flexibility",
+    overviewAtitle: "Payment Flexibility",
+    overviewAtext:
+      "By offering multiple credit card payment options, businesses can provide a smoother checkout experience, catering to a broader range of customers and reducing barriers to completing transactions.",
+    overviewBtitle: "Local Market Adaptation",
     overviewBtext:
-      "Accessible anytime and anywhere, and fully mobile-ready to accommodate the dynamic needs of your organization.",
-    overviewCtitle: "Customizable",
-    overviewCtext:
-      "Allowing it to be tailored to meet the specific requirements and unique needs of your organization.",
+      "By integrating with GCash, a widely-used payment method in the Philippines, businesses can cater to local customer preferences, offering a more flexible and accessible payment option that enhances the user experience.",
   },
 ];
 
 export const scope = [
   {
-    scopeId: "cc-payment",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Credit Card Payment (Visa and Mastercard)",
     scopeDesc:
       "Enables secure payment processing through Visa and Mastercard, offering customers a trusted and convenient way to complete transactions.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "online-payment-cc.png",
   },
   {
     scopeId: "e-wallet",
@@ -73,39 +71,18 @@ export const scope = [
     scopeTitle: "Gcash Payment",
     scopeDesc:
       "Supports Gcash payment integration, allowing customers to pay seamlessly using their e-wallet for a hassle-free experience.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "online-payment-gcash.png",
   },
 ];
 
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Free Trial",
-    rate: "PHP 0 / 7 days",
-    note: "",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    title: "Online Payment Integration",
+    rate: "Starts at ₱80K",
+    note: "price varies based on system scope",
+    info: ["Credit Card Payment", "Gcash Payment"],
     link: "/free-trial",
-    isActive: 0,
-    customCss: "text-primary",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Basic",
-    rate: "PHP 20 / Emp / Mo",
-    note: "31 and above employees",
-    info: ["Employee Recordsxx", "Task Timerxx", "Announcementxx"],
-    link: "/basic",
-    isActive: 1,
-    customCss: "",
-  },
-
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Premium",
-    rate: "PHP 70 / Emp / Mo",
-    note: "",
-    info: ["Employee xxxx", "Task xxxx", "xxxx"],
-    link: "/premium",
     isActive: 0,
     customCss: "text-primary",
   },
@@ -113,8 +90,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 

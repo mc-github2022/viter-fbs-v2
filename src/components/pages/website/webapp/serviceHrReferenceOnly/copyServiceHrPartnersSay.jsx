@@ -9,7 +9,8 @@ function SampleNextArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         right: "8%",
         fontSize: "3rem",
         cursor: "pointer",
@@ -34,7 +35,8 @@ function SamplePrevArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         left: "8%",
         fontSize: "3rem",
         zIndex: "1",

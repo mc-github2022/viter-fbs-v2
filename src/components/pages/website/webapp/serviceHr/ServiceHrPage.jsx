@@ -13,10 +13,10 @@ const ServiceHrPage = () => {
     <>
       <Header />
       <ServiceHrBanner />
-      <ServiceHrPartners />
       <ServiceHrOverview />
       <ServiceHrScope />
       <ServiceHrPricing />
+      <ServiceHrPartners />
       <ServiceHrPartnersSay />
       <Footer />
     </>

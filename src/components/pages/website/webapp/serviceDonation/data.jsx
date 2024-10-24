@@ -12,16 +12,16 @@ export const banner = [
     bannerTitleBoldText: "Online Donation System",
     bannerTextDesc:
       "The Online Donation System is a versatile and integrated platform designed to facilitate and manage donations across various client websites. This system supports both one-time and recurring donations for specific projects as well as general donation funds. It includes comprehensive management consoles for both administrators and donors, ensuring a seamless and efficient donation process.",
-    bannerBtnText: "bannerBtnText",
+    bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "OnlineDonation.jpg",
+    bannerImage: "OnlineDonation.webp",
   },
 ];
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -42,10 +42,10 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our",
+    subtitle: "Why Choose Our",
     mainTitle: "Online Donation System",
     webAppImage: "ftc-ss.png",
-    btnText: "Schedule A Demo",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Enhanced Efficiency and Decision-Making",
     overviewAtext:
@@ -61,12 +61,12 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "admin-console",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Admin Console",
     scopeDesc:
       "Allows administrators to manage donations, track funds, and oversee donor activities through an intuitive interface.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-admin-console.png",
   },
   {
     scopeId: "donor-console",
@@ -74,7 +74,7 @@ export const scope = [
     scopeTitle: "Donor Console",
     scopeDesc:
       "Provides donors with a user-friendly platform to make and manage their donations, view history, and update preferences.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-donor-console.png",
   },
   {
     scopeId: "donation-designations",
@@ -82,7 +82,7 @@ export const scope = [
     scopeTitle: "Donation Designations",
     scopeDesc:
       "Enables donations to be directed to specific projects or general funds, offering flexibility for donors.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-designation.png",
   },
   {
     scopeId: "donors-record",
@@ -90,7 +90,7 @@ export const scope = [
     scopeTitle: "Donors Record Management",
     scopeDesc:
       "Maintains detailed records of donors, including contact information, donation history, and engagement data.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-donors-record.png",
   },
   {
     scopeId: "payment-method",
@@ -98,7 +98,7 @@ export const scope = [
     scopeTitle: "Payment Method Management",
     scopeDesc:
       "Manages donors' credit card and payment details, ensuring secure and efficient handling of transactions for seamless donation processing.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-payment-method.png",
   },
   {
     scopeId: "donations-record",
@@ -106,7 +106,7 @@ export const scope = [
     scopeTitle: "Donations Record",
     scopeDesc:
       "Keeps a comprehensive log of all donations, tracking amounts, donors, and designated funds.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-record.png",
   },
   {
     scopeId: "donations-frequency",
@@ -114,7 +114,7 @@ export const scope = [
     scopeTitle: "Donation Frequency (One-time, Recurring, Manual)",
     scopeDesc:
       "Allows donors to choose between one-time, recurring, or manual donation schedules for flexibility.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-frequency.png",
   },
   {
     scopeId: "users-setting",
@@ -122,57 +122,69 @@ export const scope = [
     scopeTitle: "Users Settings",
     scopeDesc:
       "Enables donors and admins to manage account settings, preferences, and personal information securely.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "donation-setting.png",
   },
 ];
 
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Free Trial",
-    rate: "PHP 0 / 7 days",
-    note: "",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    title: "International Clients",
+    rate: "Starts at $1500",
+    note: "price varies based on system scope",
+    info: [
+      "Admin Console",
+      "Donor Console",
+      "Donors Record Management",
+      "Payment Method Management",
+      "Donations Record",
+      "Donation Frequency",
+    ],
     link: "/free-trial",
     isActive: 0,
     customCss: "text-primary",
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Basic",
-    rate: "PHP 20 / Emp / Mo",
-    note: "31 and above employees",
-    info: ["Employee Recordsxx", "Task Timerxx", "Announcementxx"],
-    link: "/basic",
+    title: "Philippine Clients",
+    rate: "Starts at ₱80K",
+    note: "price varies based on system scope",
+    info: [
+      "Admin Console",
+      "Donor Console",
+      "Donors Record Management",
+      "Payment Method Management",
+      "Donations Record",
+      "Donation Frequency",
+    ],
+    link: "/free-trial",
     isActive: 1,
     customCss: "",
-  },
-
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Premium",
-    rate: "PHP 70 / Emp / Mo",
-    note: "",
-    info: ["Employee xxxx", "Task xxxx", "xxxx"],
-    link: "/premium",
-    isActive: 0,
-    customCss: "text-primary",
   },
 ];
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 
 export const clientSays = [
   {
-    clientName: "Client Name",
-    clientDesc: "Client Desc",
-    clientMessage: "The Message",
-    clientLogo: "addIamgeNameHere",
-    clientProfilePic: "olivia-almarez.png",
+    clientName: "Judea Delos Santos",
+    clientDesc: "Asst. Managing Director / Comm. & Dev. Staff",
+    clientMessage:
+      "FBS has been an incredible partner in helping us enhance the functionality and efficiency of our FTC website. They seamlessly upgraded our backend systems, greatly improving our ability to manage donations and streamlining other critical IT requests. Their team’s professionalism, attention to detail, and commitment to supporting our mission of serving abandoned, abused, and neglected children have been invaluable. Thanks to their expertise, we are now able to operate more smoothly and efficiently, allowing us to focus on making a bigger difference for the kids we serve. We highly recommend Frontline Business Solution for any organization in need of reliable and innovative IT solutions.",
+    clientLogo: "ftc-logo.png",
+    clientProfilePic: "judea-delos-santos.png",
+  },
+  {
+    clientName: "Bethay P. Acoba",
+    clientDesc: "Donor Communications and Care Coordinator",
+    clientMessage:
+      "The online donation platform that FBS developed has enhanced our website. The process is straightforward and user-friendly, making it easy for our partners and friends from around the world to support our mission. I couldn't be happier with the results! ",
+    clientLogo: "logo-pfm.png",
+    clientProfilePic: "bethany-acoba.png",
   },
 ];

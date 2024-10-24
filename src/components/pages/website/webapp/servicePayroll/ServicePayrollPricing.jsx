@@ -11,21 +11,21 @@ const ServicePayrollPricing = () => {
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
-            <p className="text-light">Choose what's best for your needs</p>
-            <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
-              Suitable Pricing Plans
+            <p className="text-light">
+              Web application for your payroll processing needs
+            </p>
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
+              Affordable Pricing Plan
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper grid grid-cols-2 gap-6 items-center">
+            <div className="wrapper md:grid md:grid-cols-1 gap-6 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg addShadow w-[350px] min-h-[520px] ${
-                      price.isActive
-                        ? "bg-primary h-[500px]"
-                        : "bg-customGray !text-dark"
+                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg min-h-[550px] addShadow ${
+                      price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid place-items-center`}
                   >
                     <div>
@@ -64,7 +64,7 @@ const ServicePayrollPricing = () => {
                         href={`${price.link}`}
                         className="btn bg-light text-primary font-bold"
                       >
-                        CHOOSE PLAN
+                        LEARN MORE
                       </a>
                     </div>
                   </div>

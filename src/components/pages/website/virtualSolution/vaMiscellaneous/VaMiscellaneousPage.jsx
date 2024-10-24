@@ -7,6 +7,7 @@ import VaMiscellaneousPartnerWithUs from "./VaMiscellaneousPartnerWithUs";
 import VaMiscellaneousPricing from "./VaMiscellaneousPricing";
 import VaMiscellaneousPartners from "./VaMiscellaneousPartners";
 import VaMiscellaneousPartnersSay from "./VaMiscellaneousPartnersSay";
+import VaMiscellaneousServiceList from "./VaMiscellaneousServiceList";
 
 const VaMiscellaneousPage = () => {
   return (
@@ -14,7 +15,7 @@ const VaMiscellaneousPage = () => {
       <Header />
       <VaMiscellaneousBanner />
       <VaMiscellaneousOverview />
-      <VaMiscellaneousPartnerWithUs />
+      <VaMiscellaneousServiceList />
       <VaMiscellaneousPricing />
       <VaMiscellaneousPartners />
       <VaMiscellaneousPartnersSay />

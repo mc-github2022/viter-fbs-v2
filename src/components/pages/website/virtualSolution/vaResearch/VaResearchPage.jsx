@@ -7,6 +7,7 @@ import VaResearchPartnerWithUs from "./VaResearchPartnerWithUs";
 import VaResearchPricing from "./VaResearchPricing";
 import VaResearchPartners from "./VaResearchPartners";
 import VaResearchPartnersSay from "./VaResearchPartnersSay";
+import VaResearchServiceList from "./VaResearchServiceList";
 
 const VaResearchPage = () => {
   return (
@@ -14,7 +15,7 @@ const VaResearchPage = () => {
       <Header />
       <VaResearchBanner />
       <VaResearchOverview />
-      <VaResearchPartnerWithUs />
+      <VaResearchServiceList />
       <VaResearchPricing />
       <VaResearchPartners />
       <VaResearchPartnersSay />

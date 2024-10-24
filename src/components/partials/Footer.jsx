@@ -66,7 +66,7 @@ const Footer = () => {
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   <li>Web Solutions</li>
                   <li>Virtual Assistant Solutions</li>
-                  <li>Accounting Solution</li>
+                  <li>Accounting Solutions</li>
                   <li>Learning Center Solutions</li>
                 </ul>
               </div>
@@ -80,7 +80,10 @@ const Footer = () => {
                 reserved.
               </p>
               <p className="text-xs">
-                Privacy Policy | Terms of Service | EULA
+                <a href="/privacy-policy">Privacy Policy</a>
+                <span className="mx-2">|</span>
+                <a href="/terms-of-service">Terms of Service</a>
+                <span className="mx-2">|</span> <a href="/eula">EULA</a>
               </p>
             </div>
           </div>

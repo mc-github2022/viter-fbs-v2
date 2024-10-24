@@ -7,6 +7,7 @@ import VaMarketingPartnerWithUs from "./VaMarketingPartnerWithUs";
 import VaMarketingPricing from "./VaMarketingPricing";
 import VaMarketingPartners from "./VaMarketingPartners";
 import VaMarketingPartnersSay from "./VaMarketingPartnersSay";
+import VaMarketingServiceList from "./VaMarketingServiceList";
 
 const VaMarketingPage = () => {
   return (
@@ -14,7 +15,7 @@ const VaMarketingPage = () => {
       <Header />
       <VaMarketingBanner />
       <VaMarketingOverview />
-      <VaMarketingPartnerWithUs />
+      <VaMarketingServiceList />
       <VaMarketingPricing />
       <VaMarketingPartners />
       <VaMarketingPartnersSay />

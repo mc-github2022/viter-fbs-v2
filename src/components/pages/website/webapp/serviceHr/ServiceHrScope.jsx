@@ -10,15 +10,16 @@ import { scope } from "./data";
 const ServiceHrScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
-  window.onload = function () {
+  useEffect(() => {
     setAccordion(true);
-    setAccordionItem("dassboard");
-  };
+    setAccordionItem("starter");
+  }, []);
 
   const [accordion, setAccordion] = React.useState(false);
   const handleAccordion = (item) => {
     setAccordion(true);
     setAccordionItem(item);
+    console.log(accordionItem);
   };
 
   return (
@@ -26,9 +27,15 @@ const ServiceHrScope = () => {
       <section className="ServiceHrScope py-20">
         <div className="customContainer">
           <div>
+<<<<<<< HEAD
             <p>What makes this web app</p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
               a lifesaver?
+=======
+            <p>What Makes This Web App</p>
+            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+              a Lifesaver?
+>>>>>>> 005ea675598da0cb65dee7cf05a0aaa1da68e42d
             </h2>
           </div>
           <div className="warpper md:grid md:grid-cols-2 gap-5">
@@ -37,10 +44,14 @@ const ServiceHrScope = () => {
                 return (
                   <li
                     key={key}
-                    className="overflow-hidden  border-b border-[#e9e9e9]"
+                    className="overflow-hidden border-b border-[#e9e9e9]"
                   >
                     <div
-                      className="flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2"
+                      className={`${
+                        accordion && accordionItem === scopeList.scopeId
+                          ? "bg-customGray"
+                          : ""
+                      } flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
                       onClick={() => handleAccordion(scopeList.scopeId)}
                     >
                       <div className="flex items-center gap-4">
@@ -60,14 +71,22 @@ const ServiceHrScope = () => {
                     <div
                       className={`${
                         accordion && accordionItem === scopeList.scopeId
-                          ? "min-h-[170px] px-4 pt-4 pb-8"
+                          ? "px-4 pt-4 pb-4"
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p className="mb-4">{scopeList.scopeDesc}</p>
-                      <a href="#" className="btn bg-primary text-light">
+                      <p>{scopeList.scopeDesc}</p>
+                      {/* <a href="#" className="btn bg-primary text-light">
                         Schedule a Demo
-                      </a>
+                      </a> */}
+                      <p className="md:hidden py-6">
+                        <a
+                          href="#"
+                          className="btn bg-primary text-light font-semibold"
+                        >
+                          SCHEDULE A DEMO
+                        </a>
+                      </p>
                     </div>
                   </li>
                 );
@@ -82,11 +101,24 @@ const ServiceHrScope = () => {
                   }`}
                 >
                   <img
+<<<<<<< HEAD
                     className="hidden md:w-full md:object-contain md:block "
+=======
+                    className="hidden md:w-full md:object-contain md:block"
+>>>>>>> 005ea675598da0cb65dee7cf05a0aaa1da68e42d
                     // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
                     src={`../../public/img/${scopedata.scopeImage}`}
                     alt=""
                   />
+
+                  <p className="hidden md:block mb-4 text-center pt-8 pb-8">
+                    <a
+                      href="#"
+                      className="btn bg-primary text-light font-semibold"
+                    >
+                      SCHEDULE A DEMO
+                    </a>
+                  </p>
                 </div>
               );
             })}

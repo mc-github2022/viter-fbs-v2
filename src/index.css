@@ -26,6 +26,9 @@
   textarea {
     @apply bg-customGray w-full h-20 resize-none;
   }
+  /* * {
+    @apply outline ;
+  } */
 }
 
 @layer components {
@@ -73,6 +76,10 @@
   }
 
   .slickNav ul li.slick-active div {
+    @apply !bg-[#ac1f72] !opacity-100;
+  }
+
+  .slickNavHome ul li.slick-active div {
     @apply !bg-[white] !opacity-100;
   }
   .serviceIcon svg {
@@ -97,7 +104,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   .theNav ul {
-    @apply absolute md:static bg-light right-[-100%] top-[59px] w-full z-[5] transition-all;
+    @apply absolute md:static bg-light right-[-100%] top-[57px] w-full z-[5] transition-all;
   }
   .theNav ul li {
     @apply border-t border-t-customGray border-b-customGray md:border-t-0 cursor-pointer;
@@ -132,10 +139,30 @@
     @apply overflow-hidden;
   }
   .addShadow {
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(99, 99, 99, 0.35) 0px 2px 8px 0px;
   }
   .bgGradientRadialButtonleft {
     background: radial-gradient(500px, #585858, #000000);
+  }
+  .accordionContent {
+    @apply bg-customGray;
+  }
+  .slick-slider {
+    padding: 20px !important;
+  }
+  .addEntrance {
+    animation: mymove 2s;
+  }
+}
+
+@keyframes mymove {
+  from {
+    transform: translateX(20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -154,3 +181,12 @@
 /* .slick-slider .slick-list {
   padding-top: 100px;
 } */
+
+.slick-slider {
+  width: 100% !important;
+}
+
+img.popPost {
+  width: 80px !important;
+  height: 60px !important;
+}

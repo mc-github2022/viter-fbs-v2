@@ -8,16 +8,16 @@ const LcssBanner = () => {
     <>
       <section
         id="lcssBanner"
-        className={`banner bg-cover bg-center pt-[59px] md:pt-[112px]`}
+        className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
-          backgroundImage: `url(../../public/img/LCS-Banner.jpg)`,
+          backgroundImage: `url(../../public/img/college-ojt-bg.webp)`,
         }}
       >
         <div className="customContainer">
-          <div className="wrapper grid grid-cols-2 place-items-center h-[80vh] md:h-[70vh] transition-all w-full">
-            <div className="text-left">
-              <h2 className="text-[45px] leading-[1.1] mb-8 text-light font-light">
+          <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[90vh] md:h-[75vh] lg:min-h-0 transition-all w-full">
+            <div className="text-center lg:text-left">
+              <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                 <span className="text-light font-semibold">
                   College On-the-job
                 </span>

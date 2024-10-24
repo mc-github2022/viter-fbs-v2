@@ -12,28 +12,28 @@ export const banner = [
     bannerTitleBoldText: "HR Information System",
     bannerTextDesc:
       "Experience seamless HR operations and make data-driven decisions that drive organizational success. Designed to centralize all HR data and workflows, our solution simplifies employee records management, leave and attendance tracking, performance evaluations, and HR analytics. ",
-    bannerBtnText: "Schedule a Demo",
+    bannerBtnText: "SCHEDULE A DEMO",
     bannerBtnLink: "Link",
-    bannerImage: "HrisBackground.jpg",
+    bannerImage: "HrisBackground.webp",
   },
 ];
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
 export const sectionPartnersLogos = [
   {
-    imageName: "web-obich.png",
-  },
-  {
-    imageName: "AKA-Global.png",
+    imageName: "bensHalo.png",
   },
   {
     imageName: "DTOD-BPO.png",
+  },
+  {
+    imageName: "web-obich.png",
   },
   {
     imageName: "web-victorious-Virtual-Hub.png",
@@ -42,10 +42,10 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Our web application is perfect",
-    mainTitle: "for your HR specific needs",
+    subtitle: "Our Web Application Is Perfect",
+    mainTitle: "for Your HR Specific Needs.",
     webAppImage: "HRISscreenShot.png",
-    btnText: "Schedule A Demo",
+    btnText: "SCHEDULE A DEMO",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Compatibility",
     overviewAtext:
@@ -61,12 +61,12 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "dashboard",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Intuitive Dashboard",
     scopeDesc:
       "The system offers a user-friendly dashboard that provides admins and employees with key information at a glance, including leave statuses, announcements, celebrations, team details, and new employee notifications for quick access and improved communication.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-dashboard.png",
   },
   {
     scopeId: "employee-record",
@@ -74,7 +74,7 @@ export const scope = [
     scopeTitle: "Employee 201 File",
     scopeDesc:
       "This allows HR teams to manage and maintain comprehensive 201 files for all employees, storing personal information, employment history, performance records, and other relevant documents in one secure and accessible location.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-employee-list.png",
   },
   {
     scopeId: "leave-management",
@@ -82,7 +82,7 @@ export const scope = [
     scopeTitle: "Leave Management",
     scopeDesc:
       "It includes a Leave Application and Approval feature that enables employees to request leaves and managers to approve or reject them through an intuitive and automated platform, streamlining the entire leave process.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-leave.png",
   },
   {
     scopeId: "overtime-management",
@@ -90,7 +90,7 @@ export const scope = [
     scopeTitle: "Overtime Management",
     scopeDesc:
       "This feature tracks employee overtime hours, allowing for easy submission, approval, and monitoring of overtime requests. It ensures accurate compensation and compliance with company policies.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-overtime.png",
   },
   {
     scopeId: "task-management",
@@ -98,7 +98,7 @@ export const scope = [
     scopeTitle: "Task Management with a Timer",
     scopeDesc:
       "It enables employees to track time spent on various tasks and projects within the application, offering a detailed breakdown of work hours for better project management and productivity analysis.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-task-management.png",
   },
   {
     scopeId: "client-management",
@@ -106,7 +106,7 @@ export const scope = [
     scopeTitle: "Client Management",
     scopeDesc:
       "This feature helps manage and track records of clients, including maintaining client information and ensuring a smooth and organized client relationship process.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-client.png",
   },
   {
     scopeId: "announcement-management",
@@ -114,7 +114,7 @@ export const scope = [
     scopeTitle: "Announcement Management",
     scopeDesc:
       "This allows organizations to share important news, updates, and upcoming activities with employees through a centralized platform, ensuring everyone stays informed and connected across the company.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "hris-announcement.png",
   },
 ];
 
@@ -157,18 +157,26 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 
 export const clientSays = [
+  {
+    clientName: "Dennis Ray Siano",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "Excellent HRIS Provider with Outstanding Support! Their platform has streamlined our HR processes, making tasks like employee management, payroll, and reporting much more efficient. What truly stands out is the level of support we’ve received from their team. I highly recommend Frontline Business Solutions Inc. for anyone looking for a reliable and supportive HRIS provider. Their service has been excellent, and their team truly understands the needs of their clients. ",
+    clientLogo: "DTOD-BPO.png",
+    clientProfilePic: "dennis-siano2.png",
+  },
   {
     clientName: "Kimbell John Reyes",
     clientDesc: "Chief Executive Officer",
     clientMessage:
       "Frontline Business Solutions is indeed a partner to innovative success of a company. A connection of employer and employee. ",
     clientLogo: "AKA-Global.png",
-    clientProfilePic: "emilio-macaso.png",
+    clientProfilePic: "kimbell-reyes.png",
   },
 ];

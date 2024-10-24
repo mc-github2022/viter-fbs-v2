@@ -12,16 +12,16 @@ export const banner = [
     bannerTitleBoldText: "Asset Inventory System",
     bannerTextDesc:
       "Designed to track and manage an organization’s assets and inventory efficiently. It enables businesses to monitor stock levels, track asset locations, manage depreciation, schedule maintenance, and streamline procurement processes, optimizing resource utilization and reducing operational costs.",
-    bannerBtnText: "bannerBtnText",
+    bannerBtnText: "SCHEDULE A DEMO",
     bannerBtnLink: "Link",
-    bannerImage: "InventorySystem.jpg",
+    bannerImage: "InventorySystem.webp",
   },
 ];
 
 export const sectionPartnersTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "Clients Who Trusted Their",
+    mainTitle: "Growth With Us.",
   },
 ];
 
@@ -42,10 +42,10 @@ export const sectionPartnersLogos = [
 
 export const webAppOverview = [
   {
-    subtitle: "Why choose our",
+    subtitle: "Why Choose Our",
     mainTitle: "Asset Inventory System",
     webAppImage: "asset-inventory-ss.png",
-    btnText: "Schedule A Demo",
+    btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Improved Asset Visibility and Control",
     overviewAtext:
@@ -61,12 +61,12 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "asset-management",
+    scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Asset Management",
     scopeDesc:
       "Facilitates the tracking and management of organizational assets, including their details, locations, and status, to ensure effective utilization.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "asset-inventory.png",
   },
   {
     scopeId: "assignment-asset",
@@ -74,57 +74,46 @@ export const scope = [
     scopeTitle: "Assignment of Asset",
     scopeDesc:
       "Allows for the assignment of assets to employees or departments, maintaining a clear record of asset ownership and accountability.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "asset-assignment.png",
   },
-  {
-    scopeId: "reports",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Reports",
-    scopeDesc:
-      "Generates comprehensive reports on asset status, inventory levels, and depreciation, providing valuable insights for decision-making and resource planning.",
-    scopeImage: "hrScopdeSS_overview.jpg",
-  },
+  // {
+  //   scopeId: "reports",
+  //   scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+  //   scopeTitle: "Reports",
+  //   scopeDesc:
+  //     "Generates comprehensive reports on asset status, inventory levels, and depreciation, providing valuable insights for decision-making and resource planning.",
+  //   scopeImage: "hrScopdeSS_overview.jpg",
+  // },
   {
     scopeId: "settings",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Settings",
     scopeDesc:
       "Provides customization options for system configuration to meet the specific needs of the organization and enhance user experience.",
-    scopeImage: "hrScopdeSS_overview.jpg",
+    scopeImage: "asset-settings.png",
   },
 ];
 
 export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Free Trial",
-    rate: "PHP 0 / 7 days",
-    note: "",
-    info: ["Employee Records", "Task Timer", "Announcement"],
+    title: "International Clients",
+    rate: "Starts at $1500",
+    note: "price varies based on system scope",
+    info: ["Asset Management", "Assignment of Asset", "Customizable Settings"],
     link: "/free-trial",
     isActive: 0,
     customCss: "text-primary",
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Basic",
-    rate: "PHP 20 / Emp / Mo",
-    note: "31 and above employees",
-    info: ["Employee Recordsxx", "Task Timerxx", "Announcementxx"],
-    link: "/basic",
+    title: "Philippine Clients",
+    rate: "Starts at ₱80K",
+    note: "price varies based on system scope",
+    info: ["Asset Management", "Assignment of Asset", "Customizable Settings"],
+    link: "/free-trial",
     isActive: 1,
     customCss: "",
-  },
-
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />,
-    title: "Premium",
-    rate: "PHP 70 / Emp / Mo",
-    note: "",
-    info: ["Employee xxxx", "Task xxxx", "xxxx"],
-    link: "/premium",
-    isActive: 0,
-    customCss: "text-primary",
   },
 ];
 

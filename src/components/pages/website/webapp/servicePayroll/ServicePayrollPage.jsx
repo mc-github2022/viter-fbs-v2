@@ -13,10 +13,10 @@ const ServicePayrollPage = () => {
     <>
       <Header />
       <ServicePayrollBanner />
-      <ServicePayrollPartners />
       <ServicePayrollOverview />
       <ServicePayrollScope />
       <ServicePayrollPricing />
+      <ServicePayrollPartners />
       <ServicePayrollPartnersSay />
       <Footer />
     </>

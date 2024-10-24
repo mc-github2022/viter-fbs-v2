@@ -11,7 +11,8 @@ function SampleNextArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         right: "8%",
         fontSize: "3rem",
         cursor: "pointer",
@@ -36,7 +37,8 @@ function SamplePrevArrow(props) {
       style={{
         position: "absolute",
         color: "white",
-        top: "57%",
+        top: "50%",
+        transform: "translateY(-50%)",
         left: "8%",
         fontSize: "3rem",
         zIndex: "1",
@@ -57,7 +59,8 @@ function SamplePrevArrow(props) {
 
 const ServiceOnlineDonationPartnersSay = () => {
   var partnerSaysSettings = {
-    infinite: false,
+    dots: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -69,7 +72,7 @@ const ServiceOnlineDonationPartnersSay = () => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "30px",
+          bottom: "-40px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -81,21 +84,33 @@ const ServiceOnlineDonationPartnersSay = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#F5F5F5",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}
       ></div>
     ),
+    responsive: [
+      {
+        breakpoint: 1086,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: true,
+        },
+      },
+    ],
   };
 
   return (
     <>
-      <section className="ServiceOnlineDonationPartnersSay py-20">
+      <section className="ServiceOnlineDonationPartnersSay pb-10 md:py-20">
         <div className="customContainer">
           <div className="">
             <p>{clientSaysTitle[0].subTitle}</p>
-            <h2 className="text-[35px] font-semibold text-primary leading-[1.1] mb-8">
+            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
               {clientSaysTitle[0].mainTitle}
             </h2>
           </div>
@@ -103,8 +118,8 @@ const ServiceOnlineDonationPartnersSay = () => {
             <Slider {...partnerSaysSettings}>
               {clientSays.map((testimonial, key) => {
                 return (
-                  <div key={key}>
-                    <div className="testimonialItem bg-customGray grid grid-cols-[_2fr_1fr] items-center mt-20 px-20 pt-16 pb-9 rounded-xl w-[80%] mx-auto relative">
+                  <div key={key} className=" lg:h-[525px]">
+                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%] lg:translate-y-[-50%] py-10 px-10 lg:px-20 lg:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img
@@ -114,13 +129,13 @@ const ServiceOnlineDonationPartnersSay = () => {
                             alt=""
                           />
                         </div>
-                        <p className="relative z-10 italic mb-4">
+                        <p className="relative z-10 italic mb-8 min-h-[260px] md:min-h-0">
                           {testimonial.clientMessage}
                         </p>
                         <div className="logoAndName flex items-center gap-3">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
-                            className="w-[80px]"
+                            className="w-[100px]"
                             src={`../../public/img/${testimonial.clientLogo}`}
                             alt=""
                           />
@@ -130,12 +145,14 @@ const ServiceOnlineDonationPartnersSay = () => {
                           </div>
                         </div>
                       </div>
-                      <img
-                        // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                        src={`../../public/img/${testimonial.clientProfilePic}`}
-                        className="absolute bottom-0 w-[300px] right-8"
-                        alt=""
-                      />
+                      <div className="hidden lg:block">
+                        <img
+                          // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                          src={`../../public/img/${testimonial.clientProfilePic}`}
+                          className="absolute bottom-0 w-[300px] right-8"
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
                 );

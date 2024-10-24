@@ -2,12 +2,13 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Tech Support",
-    bannerTitleBoldText: "bannerTitleBoldText",
-    bannerTextDesc: "bannerTextDesc",
-    bannerBtnText: "bannerBtnText",
+    bannerTitle: "Experience Reliable ",
+    bannerTitleBoldText: "Technical Support",
+    bannerTextDesc:
+      "Our Virtual Assistants provide fast troubleshooting, seamless website management, and expert software setup, ensuring your tech runs smoothly. Get professional, cost-effective support without the hassle of in-house teams.",
+    bannerBtnText: "LEARN MORE",
     bannerBtnLink: "Link",
-    bannerImage: "VABG.jpg",
+    bannerImage: "techsupport-bg.jpg",
   },
 ];
 
@@ -20,16 +21,13 @@ export const sectionPartnersTitle = [
 
 export const sectionPartnersLogos = [
   {
-    imageName: "web-obich.png",
+    imageName: "logo-avant-white.png",
   },
   {
-    imageName: "AKA-Global.png",
+    imageName: "logo-ignite.png",
   },
   {
-    imageName: "DTOD-BPO.png",
-  },
-  {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "jcceos-logo.png",
   },
 ];
 
@@ -37,18 +35,18 @@ export const webAppOverview = [
   {
     subtitle: "Here's why we're the",
     mainTitle: "right choice for your VA needs.",
-    webAppImage: "vaOverviewImage.jpg",
+    webAppImage: "vaTechSupport.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
-    overviewAtitle: "Fast turnaround time",
+    overviewAtitle: "Rapid Issue Resolution",
     overviewAtext:
-      "We deliver websites quickly, ensuring your project meets deadlines without compromising quality",
-    overviewBtitle: " Optimal Viewing and Interaction",
+      "Our Virtual Assistants provide fast and reliable technical troubleshooting, ensuring that any issues with your software or website are resolved promptly, minimizing downtime and keeping your operations running smoothly.",
+    overviewBtitle: "Seamless Website Management",
     overviewBtext:
-      "Our responsive designs ensure seamless viewing and Interaction across all devices for an engaging user experience.",
-    overviewCtitle: "High-Quality at Lower Costs",
+      "We offer expert website management services, ensuring your site is always up-to-date, secure, and fully functional. From routine updates to critical fixes, we handle everything to ensure optimal performance for your users.",
+    overviewCtitle: "Cost-Effective Tech Support",
     overviewCtext:
-      " We offer high-quality websitels at competitive prices, delivering excellence results while staying within your budget.",
+      "Our Virtual Assistants deliver professional technical support, including software setup and website management, at competitive rates. You receive high-quality technical expertise without the high costs of in-house support teams.",
   },
 ];
 
@@ -110,17 +108,26 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "Clients who trusted their",
-    mainTitle: "growth with us.",
+    subTitle: "What our",
+    mainTitle: "clients say",
   },
 ];
 
 export const clientSays = [
   {
-    clientName: "Client Name",
-    clientDesc: "Client Desc",
-    clientMessage: "The Message",
-    clientLogo: "addIamgeNameHere",
-    clientProfilePic: "olivia-almarez.png",
+    clientName: "James Davidson",
+    clientDesc: "Managing Director & President",
+    clientMessage:
+      "Frontline Business Solutions is beyond an exceptional firm. Professional courtesy, responsiveness, competence, and client service are only a few of the many high level qualities that Frontline’s team exhibit. Frontline exemplifies the golden rule by treating its clients as it would like to be treated. Every Frontline team member with whom Avant Advisory Group has dealt has been a true blessing. Finally, based on Avant Advisory Group’s several years of working with Frontline personnel, and especially Mike DeJesus, I can say that they work heartily for their clients as if they are working for the Lord. (Colossians 3:23-24) Thank you for what you do, Frontline!",
+    clientLogo: "logo-avant.png",
+    clientProfilePic: "jim-davison.png",
+  },
+  {
+    clientName: "Josh Howard",
+    clientDesc: "Chief Executive Officer",
+    clientMessage:
+      "Our partnership with Frontline has been the best financial investment we’ve ever made. The team is absolutely amazing and always goes above and beyond in every area. I highly recommend them!!",
+    clientLogo: "logo-ignite.png",
+    clientProfilePic: "josh-howard.png",
   },
 ];

@@ -7,6 +7,7 @@ import VaCreativeSupportPartners from "./VaCreativeSupportPartners";
 import VaCreativeSupportPartnersSay from "./VaCreativeSupportPartnersSay";
 import VaCreativeSupportPartnerWithUs from "./VaCreativeSupportPartnerWithUs";
 import VaCreativeSupportPricing from "./VaCreativeSupportPricing";
+import VaCreativeSupportServiceList from "./VaCreativeSupportServiceList";
 
 const VaCreativeSupportPage = () => {
   return (
@@ -14,7 +15,7 @@ const VaCreativeSupportPage = () => {
       <Header />
       <VaCreativeSupportBanner />
       <VaCreativeSupportOverview />
-      <VaCreativeSupportPartnerWithUs />
+      <VaCreativeSupportServiceList />
       <VaCreativeSupportPricing />
       <VaCreativeSupportPartners />
       <VaCreativeSupportPartnersSay />

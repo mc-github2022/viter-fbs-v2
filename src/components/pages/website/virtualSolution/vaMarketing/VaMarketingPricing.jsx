@@ -11,13 +11,13 @@ const VaMarketingPricing = () => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">Choose what's best for your needs</p>
-            <h3 className="text-[35px] font-semibold leading-[1.1] text-light">
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Suitable Pricing Plans
             </h3>
           </div>
           <div className="grid place-items-center">
             <div
-              className={`wrapper grid grid-cols-${pricingCardCount[0].columnNumber} gap-6 items-center`}
+              className={`wrapper md:grid md:grid-cols-${pricingCardCount[0].columnNumber} gap-6 items-center`}
             >
               {pricing.map((price, key) => {
                 return (
@@ -27,9 +27,9 @@ const VaMarketingPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px]  w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-[700px] max-w-[400px] grid place-items-center`}
                   >
-                    <div className="">
+                    <div className="min-h-[500px] max-h-[600px] mb-5 relative">
                       <div className="title mb-4">
                         {price.icon}
                         <h3
@@ -61,13 +61,13 @@ const VaMarketingPricing = () => {
                         </div>
                       </div>
                       <p className="mb-8">{price.priceDesc}</p>
-                      <a
-                        href={price.link}
-                        className="btn bg-light text-primary font-bold"
-                      >
-                        {price.btnText}
-                      </a>
                     </div>
+                    <a
+                      href={price.link}
+                      className="btn bg-light text-primary font-bold bottom-0 "
+                    >
+                      {price.btnText}
+                    </a>
                   </div>
                 );
               })}
