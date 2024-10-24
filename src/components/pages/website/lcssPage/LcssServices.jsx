@@ -18,39 +18,57 @@ const LcssServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Web Designing
-                  using Figma
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  Web Designing using Figma
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Website Mockup
-                  Designing
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  Website Mockup Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> Mobile Responsive
-                  Designing
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  Mobile Responsive Designing
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" /> CSS & HTML
-                  Programming
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
+                  CSS & HTML Programming
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   SASS Preprocessor
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   Scripting Language
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   Tailwind CSS
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   WordPress Development
                 </li>
                 <li>
-                  <FaLaptop className="text-2xl text-dark" />
+                  <div>
+                    <FaLaptop className="text-2xl text-dark" />
+                  </div>
                   Business Work Ethics
                 </li>
               </ul>
@@ -66,47 +84,69 @@ const LcssServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Basic
-                  Accounting
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
+                  Basic Accounting
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Excel Advanced
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div> Excel Advanced
                   Functions
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Accounting
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div> Accounting
                   Source Documents
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" /> Business
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div> Business
                   Registration
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   PH & US Taxation
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   PH & US Payroll
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Quickbooks
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Xero
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Budget Monitoring
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Financial Reports & Projections
                 </li>
                 <li>
-                  <BsCalculator className="text-2xl text-dark" />
+                  <div>
+                    <BsCalculator className="text-2xl text-dark" />
+                  </div>
                   Non-Profit Accounting
                 </li>
               </ul>

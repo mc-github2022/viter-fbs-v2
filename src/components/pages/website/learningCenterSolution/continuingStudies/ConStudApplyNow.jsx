@@ -15,18 +15,24 @@ const ConStudApplyNow = () => {
               <p className="mb-4">Requirements:</p>
               <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2">
                 <li>
-                  <FaCheckCircle className="text-primary" />
+                  <div>
+                    <FaCheckCircle className="text-primary" />
+                  </div>
                   Email of Application
                 </li>
                 <li>
-                  <FaCheckCircle className="text-primary" />
+                  <div>
+                    <FaCheckCircle className="text-primary" />
+                  </div>
                   Resume
                 </li>
                 <li className="mt-4 italic">
-                  Interested applicants can submit their resumes to our Learning
-                  Center Solutions Department at
-                  herlyn.torres@frontlinebusiness.com.ph, and you will be
-                  scheduled for an online initial interview.
+                  <p>
+                    Interested applicants can submit their resumes to our
+                    Learning Center Solutions Department at
+                    herlyn.torres@frontlinebusiness.com.ph, and you will be
+                    scheduled for an online initial interview.
+                  </p>
                 </li>
                 {/* <li>
                   <FaCheckCircle className="text-primary" /> Endorsement Letter

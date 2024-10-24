@@ -15,21 +15,21 @@ const ImmersionApplyNow = () => {
               <p className="mb-4">Requirements:</p>
               <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2">
                 <li>
-                  <FaCheckCircle className="text-primary" />
+                  <div><FaCheckCircle className="text-primary" /></div>
                   Resume
                 </li>
                 <li>
-                  <FaCheckCircle className="text-primary" />
+                  <div><FaCheckCircle className="text-primary" /></div>
                   School Memorandum of Agreement
                 </li>
                 <li>
-                  <FaCheckCircle className="text-primary" /> Endorsement Letter
+                  <div><FaCheckCircle className="text-primary" /></div> Endorsement Letter
                 </li>
                 <li>
-                  <FaCheckCircle className="text-primary" /> Training Waiver
+                  <div><FaCheckCircle className="text-primary" /></div> Training Waiver
                 </li>
                 <li>
-                  <FaCheckCircle className="text-primary" />
+                  <div><FaCheckCircle className="text-primary" /></div>
                   School's Evaluation Form
                 </li>
               </ul>
