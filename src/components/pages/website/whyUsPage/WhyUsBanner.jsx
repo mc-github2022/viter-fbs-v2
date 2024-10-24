@@ -14,7 +14,7 @@ const WhyUsBanner = () => {
           className={`banner bg-cover pt-[59px] md:pt-[95px] bg-top`}
           style={{
             // backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.jpg)`,
-            backgroundImage: `url(../../public/img/whyfbsBanner.jpg)`,
+            backgroundImage: `url(../../public/img/whyfbsBanner.webp)`,
           }}
         >
           <div className="customContainer">
@@ -35,8 +35,11 @@ const WhyUsBanner = () => {
                   purposeful service, we aim to be your trusted partner in
                   driving growth, efficiency, and innovation.
                 </p>
-                <a href="#" className="btn bg-transparent text-light border-2">
-                  Get Started
+                <a
+                  href="#"
+                  className="btn bg-transparent text-light font-semibold border-2"
+                >
+                  GET STARTED
                 </a>
               </div>
             </div>
