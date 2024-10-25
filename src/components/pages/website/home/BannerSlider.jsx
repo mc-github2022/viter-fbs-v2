@@ -110,7 +110,7 @@ const BannerSlider = () => {
             className={`banner  bg-cover bg-center`}
             style={{
               // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-              backgroundImage: `url(../../public/img/home-bg-new.jpg)`,
+              backgroundImage: `url(../../public/img/home-bg-new.webp)`,
             }}
           >
             <div className="customContainer">
@@ -151,7 +151,7 @@ const BannerSlider = () => {
             className={`banner bg-cover bg-center`}
             style={{
               // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-              backgroundImage: `url(../../public/img/home-bg-webapp.jpg)`,
+              backgroundImage: `url(../../public/img/home-bg-webapp.webp)`,
             }}
           >
             <div className="customContainer">
@@ -189,7 +189,7 @@ const BannerSlider = () => {
             className={`banner bg-cover bg-center`}
             style={{
               // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-              backgroundImage: `url(../../public/img/home-bg-website.jpg)`,
+              backgroundImage: `url(../../public/img/home-bg-website.webp)`,
             }}
           >
             <div className="customContainer">
@@ -227,7 +227,7 @@ const BannerSlider = () => {
             className={`banner bg-cover bg-center`}
             style={{
               // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-              backgroundImage: `url(../../public/img/home-bg-va.jpg)`,
+              backgroundImage: `url(../../public/img/home-bg-va.webp)`,
             }}
           >
             <div className="customContainer">
@@ -265,7 +265,7 @@ const BannerSlider = () => {
             className={`banner bg-cover bg-center`}
             style={{
               // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-              backgroundImage: `url(../../public/img/home-bg-lcs.jpg)`,
+              backgroundImage: `url(../../public/img/home-bg-lcs.webp)`,
             }}
           >
             <div className="customContainer">
