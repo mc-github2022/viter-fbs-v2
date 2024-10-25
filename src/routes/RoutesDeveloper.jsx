@@ -1,4 +1,5 @@
 import { devNavUrl } from "../components/helpers/functions-general";
+import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import BookkeepingPage from "../components/pages/website/accountingSolution/bookkeeping/BookkeepingPage";
 import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
 import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
@@ -26,6 +27,7 @@ import SinglePageWebsite from "../components/pages/website/webDesignDev/singlePa
 import WebDesignPage from "../components/pages/website/webDesignDev/webDesign/WebDesignPage";
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/wordPressPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
+import Dashboard from "../components/partials/dashboard/Dashboard";
 import EULA from "../components/partials/policies/EULA";
 import PrivacyPolicy from "../components/partials/policies/PrivacyPolicy";
 import TermsOfService from "../components/partials/policies/TermsOfService";
@@ -146,5 +148,13 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/eula`,
     element: <EULA />,
+  },
+  {
+    path: `${devNavUrl}/dashboard`,
+    element: <Dashboard />,
+  },
+  {
+    path: `${devNavUrl}/home-insights`,
+    element: <Insights />,
   },
 ];

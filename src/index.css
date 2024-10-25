@@ -5,6 +5,17 @@
 @tailwind utilities;
 
 @layer base {
+  /* Reference color for dashboard
+    dashPrimary: #F5F5F3
+    dashSecondary: #ECECEC
+    dashAccent: #CCCCCC  */
+
+    :root {
+      --dashPrimary-color: 245 245 243;
+      --dashSecondary-color: 236 236 236;
+      --dashAccent-color: 204 204 204;
+    }
+
   * {
     @apply m-0 p-0 box-border;
   }
@@ -29,6 +40,53 @@
   /* * {
     @apply outline ;
   } */
+
+  table {
+    @apply border-collapse border-spacing-2 text-left w-full table-auto;
+  }
+  table tr:hover {
+    @apply bg-[#f3f4f6];
+  }
+  table tr {
+    @apply border-b border-solid border-[#d1d5db];
+  }
+  table th {
+    @apply font-bold bg-[#e5e7eb] py-1 pr-3 capitalize;
+  }
+  table td {
+    @apply py-2 pr-3;
+  }
+  label {
+    @apply text-primary text-[clamp(10px,3vw,12px)];
+  }
+  input,
+  select {
+    @apply border border-solid border-[#d1d5db] p-2 rounded-lg w-full h-[34px] truncate bg-none outline-none;
+  }
+  textarea {
+    @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none;
+  }
+  label {
+    @apply text-xs text-[black] transform -translate-y-6 -translate-x-1 absolute left-3 top-4 px-1 z-10 isolate capitalize;
+  }
+  label:after {
+    @apply content-[''] w-[97%] h-[2.5px] absolute left-px top-[7.2px] bg-[white] -z-10;
+  }
+  input:disabled,
+  select:disabled,
+  textarea:disabled,
+  :disabled {
+    @apply bg-[gray-100] border-[#e5e7eb] cursor-not-allowed hover:bg-[gray-100] hover:text-[inherit] hover:border-[#e5e7eb]
+  }
+  input::file-selector-button {
+    @apply mr-5 border-0 bg-primary disabled:bg-[#e5e7eb] rounded-md text-[white] cursor-pointer px-1 py-0;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus {
+    @apply border border-solid border-primary outline-0;
+  }
+
 }
 
 @layer components {
@@ -153,6 +211,85 @@
   .addEntrance {
     animation: mymove 2s;
   }
+}
+
+@layer components{
+  /* Modals */
+  .btn-modal-submit {
+    @apply flex items-center justify-center text-[white] gap-2 px-3 py-1.5 bg-primary rounded-md border-primary border hover:bg-secondary hover:text-[white] hover:border-[#d1d5db] duration-300 ease-in w-full;
+  }
+  .btn-modal-submit:disabled {
+    @apply opacity-50 hover:bg-primary hover:text-[white];
+  }
+  .btn-modal-cancel {
+    @apply flex items-center justify-center text-[black] gap-2 px-3 py-1.5 bg-[white] rounded-md border-[#d1d5db] border w-full;
+  }
+  .btn-modal-cancel:disabled {
+    @apply opacity-50 hover:bg-[white] hover:text-[black] hover:border-[#d1d5db];
+  }
+  .modal {
+    @apply bg-black/0 transition-all opacity-0;
+  }
+  .modal > .animate-slideUp {
+    @apply translate-y-3 transition-all;
+  }
+  .modal.show {
+    @apply bg-black/50 opacity-100;
+  }
+  .modal.show > .animate-slideUp {
+    @apply translate-y-0;
+  }
+  .modal-wrapper {
+    @apply bg-[white] h-full flex flex-col max-w-[400px] w-full p-5;
+  }
+  .modal-wrapper-menu {
+    @apply bg-[white] h-full flex flex-col max-w-[506px] w-full p-5;
+  }
+  .modal-title {
+    @apply flex justify-between items-center text-sm;
+  }
+  .modal-content {
+    @apply overflow-y-auto flex flex-col justify-between h-full;
+  }
+  .modal-form {
+    @apply flex flex-col justify-between h-full;
+  }
+  .input-wrapper {
+    @apply mb-2 my-[20px] relative flex flex-col gap-2;
+  }
+  .form-btn {
+    @apply flex gap-2 pt-4;
+  }
+  .btnImgUpload button {
+    @apply text-2xl text-[white] bg-[black] bg-opacity-50 transition-all opacity-0 group-hover:opacity-40 w-full grid place-items-center h-full absolute top-0 left-0;
+  }
+}
+
+@layer utilities{
+  span.error-show {
+    @apply text-[11px] absolute right-1 -bottom-5 text-[red-500] italic z-40;
+  }
+  input.error-show,
+  select.error-show,
+  textarea.error-show {
+    @apply border border-[red-500];
+  }
+  label.error-show {
+    @apply text-[red-500];
+  }
+  .tooltip-action-table {
+    @apply relative p-1 mr-1.5 bg-none leading-none;
+  }
+  .tooltip-action-table::after {
+    @apply content-[attr(data-tooltip)] capitalize absolute -translate-x-2/4 bottom-full -top-[24px] bg-dark/80 text-[white] p-1 rounded-sm h-fit leading-none z-20 whitespace-nowrap text-center opacity-0 text-[10px] pointer-events-none transition ease-linear scale-0 duration-75 left-1/2;
+  }
+  .tooltip-action-table:hover::after {
+    @apply scale-100 opacity-100;
+  }
+}
+
+.addShadowDash {
+  box-shadow: 0px 0px 9px 3px rgb(207, 208, 212, 0.85);
 }
 
 @keyframes mymove {
