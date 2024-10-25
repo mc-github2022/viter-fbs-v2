@@ -14,11 +14,7 @@ const ServiceHrOverview = () => {
               {webAppOverview[0].mainTitle}
             </span>
           </h2>
-<<<<<<< HEAD
-          <div className="wrapper md:grid md:grid-cols-2 gap-12">
-=======
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
->>>>>>> 005ea675598da0cb65dee7cf05a0aaa1da68e42d
             <div>
               <img
                 // src={`${devBaseImgUrl}/HRISscreenShot.png`}
@@ -45,11 +41,7 @@ const ServiceHrOverview = () => {
                 </li> */}
               </ul>
             </div>
-<<<<<<< HEAD
-            <div className="mt-14">
-=======
             <div className="mt-14 lg:mt-0">
->>>>>>> 005ea675598da0cb65dee7cf05a0aaa1da68e42d
               <ul>
                 <li className="flex items-start gap-4 text-dark mb-6">
                   <div className="flex gap-4 items-start">

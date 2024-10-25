@@ -27,15 +27,9 @@ const ServiceHrScope = () => {
       <section className="ServiceHrScope py-20">
         <div className="customContainer">
           <div>
-<<<<<<< HEAD
-            <p>What makes this web app</p>
-            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              a lifesaver?
-=======
             <p>What Makes This Web App</p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
               a Lifesaver?
->>>>>>> 005ea675598da0cb65dee7cf05a0aaa1da68e42d
             </h2>
           </div>
           <div className="warpper md:grid md:grid-cols-2 gap-5">
@@ -101,11 +95,7 @@ const ServiceHrScope = () => {
                   }`}
                 >
                   <img
-<<<<<<< HEAD
-                    className="hidden md:w-full md:object-contain md:block "
-=======
                     className="hidden md:w-full md:object-contain md:block"
->>>>>>> 005ea675598da0cb65dee7cf05a0aaa1da68e42d
                     // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
                     src={`../../public/img/${scopedata.scopeImage}`}
                     alt=""
