@@ -32,18 +32,20 @@ const Navigation = ({ menu, submenu }) => {
 
   return (
     <>
-      <div className="thedashnav bg-[#f5f5f3] w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray">
-        <div className="theLogo mb-[114px] ">
-          <h2 className="text-xl mt-5 font-bold text-black">FBS</h2>
+      <div className="thedashnav bg-secondary w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray flex flex-col justify-between">
+        <div className="theLogo ">
+          <h2 className="text-xl mt-5 font-bold text-[white] ">
+            Frontline Business Solutions
+          </h2>
         </div>
-        <div className="flex flex-col justify-between h-[calc(100%_-_160px)]">
+        <div>
           <nav>
             <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold [&>li]:mb-[17px]">
               <li
-                className={` flex justify-between items-center
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "home"
-                      ? "text-black underline underline-offset-4"
+                      ? "text-[white] underline underline-offset-4 "
                       : "text-dashAccent "
                   }
                 `}
@@ -59,12 +61,12 @@ const Navigation = ({ menu, submenu }) => {
                 />
               </li>
               {store.isHome && (
-                <ul className="submenu ml-10 my-6 text-[12px]">
+                <ul className="submenu ml-10 my-6 text-[12px] ">
                   <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
                         submenu === "home-banner"
-                          ? "text-black"
+                          ? "text-[white] py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -73,9 +75,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-process`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
                         submenu === "home-process"
-                          ? "text-black"
+                          ? "text-[white]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -84,9 +86,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-services`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
                         submenu === "home-services"
-                          ? "text-black"
+                          ? "text-[white]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -95,9 +97,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-partnerWithUs`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
                         submenu === "home-partnerWithUs"
-                          ? "text-black"
+                          ? "text-[white]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -106,9 +108,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-testimonial`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
                         submenu === "home-testimonial"
-                          ? "text-black"
+                          ? "text-[white]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -117,9 +119,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-partners`}>
                     <li
-                      className={` text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={` text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
                         submenu === "home-partners"
-                          ? "text-black"
+                          ? "text-[white] py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -128,9 +130,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-insights`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
                         submenu === "home-insights"
-                          ? "text-black"
+                          ? "text-[white] py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -142,7 +144,7 @@ const Navigation = ({ menu, submenu }) => {
               {/* <li
                 className={
                   activeSection === "ourOrigin"
-                    ? "text-black underline underline-offset-4"
+                    ? "text-[white] bg-primary py-1 underline underline-offset-4"
                     : "text-dashAccent"
                 }
                 onClick={() => scrollToSection("ourOrigin")}
@@ -191,17 +193,21 @@ const Navigation = ({ menu, submenu }) => {
               </li> */}
             </ul>
           </nav>
-          <div>
+          
+        </div>
+        <div>
             <div
-              className={`py-[51px] relative ${isOpen && "border-black"}`}
+              className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 ${
+                isOpen && "!border-primary"
+              }`}
               onClick={handleOpen}
               ref={ref}
             >
-              <span className="w-[40px] h-[40px]">
-                <img src={`${devBaseImgUrl}/user.webp`} alt="" />
-              </span>
+              <div className="bg-[white] p-1.5 rounded-full ">
+                <span className="text-white p-1 rounded-full ">LR</span>
+              </div>
               {isOpen && (
-                <div className="absolute top-16 ml-[45px] bg-[#1E1E1E] shadow-md flex flex-col gap-2 p-3 min-w-[180px]">
+                <div className="absolute top-5 ml-[45px] bg-[white] shadow-md flex flex-col gap-2 p-3 min-w-[180px]">
                   <h6 className="text-white font-[inter-regular] text-[15px]">
                     Louren Rubico
                   </h6>
@@ -219,16 +225,15 @@ const Navigation = ({ menu, submenu }) => {
                 </div>
               )}
             </div>
-            <div className="border-t-[2px] border-dashAccent flex flex-col gap-2">
-              <h5 className="mt-[10px] text-black text-sm">Powered by:</h5>
-              <div className="w-[120px] h-[44px]">
-                <img
-                  src={`${devBaseImgUrl}/logo.png`}
-                  alt=""
-                  className="object-cover"
-                />
-              </div>
-            </div>
+          </div>
+        <div className="border-t-[2px] border-dashAccent flex flex-col gap-2 bottom-0">
+          <h5 className="mt-[10px] text-[white] text-sm">Powered by:</h5>
+          <div className="w-[120px] h-[44px]">
+            <img
+              src={`${devBaseImgUrl}/logo-fbs.png`}
+              alt=""
+              className="object-cover"
+            />
           </div>
         </div>
       </div>

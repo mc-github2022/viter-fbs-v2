@@ -12,7 +12,7 @@ checkPayload($data);
 $home_insights->home_insights_img = $data["home_insights_img"];
 $home_insights->home_insights_category = $data["home_insights_category"];
 $home_insights->home_insights_title = $data["home_insights_title"];
-$home_insights->home_insights_slug = $data["home_insights_slug"];
+$home_insights->home_insights_slug =  checkIndex($data, "home_insights_slug");
 $home_insights->home_insights_date = $data["home_insights_date"];
 $home_insights->home_insights_paragraph_a = $data["home_insights_paragraph_a"];
 $home_insights->home_insights_paragraph_b = $data["home_insights_paragraph_b"];

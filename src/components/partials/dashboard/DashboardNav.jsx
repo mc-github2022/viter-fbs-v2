@@ -7,9 +7,9 @@ import { devNavUrl } from "../../helpers/functions-general";
 const DashboardNav = ({ menu }) => {
   return (
     <>
-      <div className="profileHeader p-4 addShadow border-none bg-dashSecondary h-[58px] rounded-tl-lg rounded-tr-lg fixed top-[20px] w-[calc(100%_-_240px)] grid items-center z-[10]">
+      <div className="profileHeader p-4 addShadow border-none bg-primary h-[58px] rounded-tl-lg rounded-tr-lg fixed top-[20px] w-[calc(100%_-_240px)] grid items-center z-[10]">
         <div className="flex justify-between  items-center ">
-          <p className="font-semibold text-[14px] text-black">Dashboard</p>
+          <p className="font-semibold text-[14px] text-[white]">Dashboard</p>
           <div className="flex items-center gap-4">
             <div>
               <Link
@@ -20,7 +20,7 @@ const DashboardNav = ({ menu }) => {
                 <FaDesktop
                   className={`hover:text-black size-4 ${
                     menu === "dashboard"
-                      ? "text-black"
+                      ? "text-[white]"
                       : "text-dashAccent hover:text-black"
                   }`}
                 />

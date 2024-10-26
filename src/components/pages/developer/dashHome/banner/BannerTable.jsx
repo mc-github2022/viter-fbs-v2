@@ -1,18 +1,17 @@
 import React from "react";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import { formatDate } from "../../../../helpers/functions-general";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import TableSpinner from "../../../../partials/spinners/TableSpinner";
+import TableLoading from "../../../../partials/spinners/TableLoading";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import TableSpinner from "../../../../partials/spinners/TableSpinner";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
 import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 
-const InsightsTable = ({ setItemEdit }) => {
+const BannerTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -22,11 +21,11 @@ const InsightsTable = ({ setItemEdit }) => {
     error,
     isLoading,
     status,
-    data: insightData,
+    data: bannerData,
   } = useQueryData(
-    "/v1/insights", // endpoint
+    "/v1/banner", // endpoint
     "get", // method
-    "insights" // key
+    "banner" // key
   );
 
   let counter = 1;
@@ -38,8 +37,8 @@ const InsightsTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.home_insights_title);
-    setIsId(item.home_insights_aid);
+    setIsData(item.home_banner_title);
+    setIsId(item.home_banner_aid);
   };
 
   return (
@@ -52,18 +51,17 @@ const InsightsTable = ({ setItemEdit }) => {
             <thead>
               <tr className="text-[black]">
                 <th className="pl-2 w-[1rem]">#</th>
-                <th>Category</th>
-                <th className="w-[10rem]">Title</th>
-                <th className="w-[10rem]">Slug</th>
-                <th className="w-[8rem]">Date</th>
-                <th>Content</th>
+                <th className="w-[10rem]">Sub-Title</th>
+                <th className="w-[15rem]">Title</th>
+                <th>Description</th>
+                <th className="w-[8rem]">Button</th>
                 <th className="w-[8rem]">Image</th>
                 <th className="text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="relative">
               {isLoading && status !== "pending" && <TableSpinner />}
-              {(status === "pending" || insightData?.data.length === 0) && (
+              {(status === "pending" || bannerData?.data.length === 0) && (
                 <tr className="text-center">
                   <td colSpan="100%" className="p-10">
                     {status === "pending" ? <TableLoading /> : <NoData />}
@@ -79,28 +77,23 @@ const InsightsTable = ({ setItemEdit }) => {
                 </tr>
               )}
 
-              {insightData?.data.map((item, key) => (
+              {bannerData?.data.map((item, key) => (
                 <tr key={key} className="place-content-start text-[14px]">
                   <td className="pl-2 place-content-start">{counter++}</td>
                   <td className="place-content-start">
-                    {item.home_insights_category}
+                    {item.home_banner_sub_title}
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_title}
+                    {item.home_banner_title}
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_slug}
+                    {item.home_banner_description}
                   </td>
                   <td className="place-content-start">
-                    {formatDate(item.home_insights_date)}
-                  </td>
-                  <td>
-                    <p>1. {item.home_insights_paragraph_a}</p>
-                    <p>2. {item.home_insights_paragraph_b}</p>
-                    <p>3. {item.home_insights_paragraph_c}</p>
+                    {item.home_banner_button_text}
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_img}
+                    {item.home_banner_img}
                   </td>
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                     <button
@@ -137,4 +130,4 @@ const InsightsTable = ({ setItemEdit }) => {
   );
 };
 
-export default InsightsTable;
+export default BannerTable;

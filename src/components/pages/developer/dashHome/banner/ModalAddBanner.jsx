@@ -1,15 +1,9 @@
 import React from "react";
-import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import { StoreContext } from "../../../../store/StoreContext";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import * as Yup from "yup";
+import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
 import {
-  InputPhotoUpload,
-  InputText,
-  InputTextArea,
-} from "../../../../helpers/FormInputs";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+  apiVersion,
+  devBaseImgUrl,
+} from "../../../../helpers/functions-general";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "../../../../helpers/queryData";
 import {
@@ -17,15 +11,21 @@ import {
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
-import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
-import {
-  apiVersion,
-  devBaseImgUrl,
-} from "../../../../helpers/functions-general";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import { GrFormClose } from "react-icons/gr";
+import { Form, Formik } from "formik";
 import { IoImageOutline } from "react-icons/io5";
 import { MdOutlineFileUpload } from "react-icons/md";
+import {
+  InputPhotoUpload,
+  InputText,
+  InputTextArea,
+} from "../../../../helpers/FormInputs";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import { StoreContext } from "../../../../store/StoreContext";
+import * as Yup from "yup";
 
-const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
+const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
@@ -46,13 +46,13 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/insights/${itemEdit.home_insights_aid}` // update
-          : `/v1/insights`, // create
+          ? `/v1/banner/${itemEdit.home_banner_aid}` // update
+          : `/v1/banner`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["insights"] });
+      queryClient.invalidateQueries({ queryKey: ["banner"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -71,34 +71,22 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   }, []);
 
   const initVal = {
-    home_insights_aid: itemEdit ? itemEdit.home_insights_aid : "",
-    home_insights_category: itemEdit ? itemEdit.home_insights_category : "",
-    home_insights_title: itemEdit ? itemEdit.home_insights_title : "",
-    home_insights_slug: itemEdit ? itemEdit.home_insights_slug : "",
-    home_insights_date: itemEdit ? itemEdit.home_insights_date : "",
-    home_insights_paragraph_a: itemEdit
-      ? itemEdit.home_insights_paragraph_a
-      : "",
-    home_insights_paragraph_b: itemEdit
-      ? itemEdit.home_insights_paragraph_b
-      : "",
-    home_insights_paragraph_c: itemEdit
-      ? itemEdit.home_insights_paragraph_c
-      : "",
-    home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
+    home_banner_aid: itemEdit ? itemEdit.home_banner_aid : "",
+    home_banner_sub_title: itemEdit ? itemEdit.home_banner_sub_title : "",
+    home_banner_title: itemEdit ? itemEdit.home_banner_title : "",
+    home_banner_description: itemEdit ? itemEdit.home_banner_description : "",
+    home_banner_button_text: itemEdit ? itemEdit.home_banner_button_text : "",
+    home_banner_img: itemEdit ? itemEdit.home_banner_img : "",
   };
 
-  const yupSchema = Yup.object({
-    home_insights_slug: Yup.string().required("Required"),
-  });
-
+  const yupSchema = Yup.object({});
   return (
     <ModalAddWrapper
       className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Insights</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Banner Slider</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -110,9 +98,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              home_insights_img: photo
-                ? photo.name
-                : itemEdit.home_insights_img,
+              home_banner_img: photo ? photo.name : itemEdit.home_banner_img,
             };
             if (photo) {
               await uploadPhoto(); // to save the photo when submit
@@ -137,7 +123,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             </h1>
                           </div>
                         </div>
-                      ) : (itemEdit && !itemEdit.home_insights_img && !photo) ||
+                      ) : (itemEdit && !itemEdit.home_banner_img && !photo) ||
                         (!itemEdit && !photo) ? (
                         <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
                           <div>
@@ -152,7 +138,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           src={
                             photo
                               ? URL.createObjectURL(photo) // preview
-                              : devBaseImgUrl + "/" + itemEdit.home_insights_img // check db
+                              : devBaseImgUrl + "/" + itemEdit.home_banner_img // check db
                           }
                           alt="Logo"
                           className="group-hover:opacity-30 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
@@ -167,9 +153,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             type="file"
                             id="myFile"
                             accept="image/*"
-                            title="Upload Logo"
+                            title="Upload image"
                             onChange={(e) =>
-                              handleChangePhoto(e, initVal.home_insights_img)
+                              handleChangePhoto(e, initVal.home_banner_img)
                             }
                             className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
                           />
@@ -179,9 +165,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                   </div>
                   <div className="input-wrapper">
                     <InputText
-                      label="Category"
+                      label="Sub-title"
                       type="text"
-                      name="home_insights_category"
+                      name="home_banner_sub_title"
                       disabled={mutation.isPending}
                     />
                   </div>
@@ -189,47 +175,23 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                     <InputText
                       label="Title"
                       type="text"
-                      name="home_insights_title"
+                      name="home_banner_title"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <InputTextArea
+                      label="Description"
+                      type="text"
+                      name="home_banner_description"
                       disabled={mutation.isPending}
                     />
                   </div>
                   <div className="input-wrapper">
                     <InputText
-                      label="*Slug"
+                      label="Button"
                       type="text"
-                      name="home_insights_slug"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputText
-                      label="Date"
-                      type="date"
-                      name="home_insights_date"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputTextArea
-                      label="Paragraph 1"
-                      type="text"
-                      name="home_insights_paragraph_a"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputTextArea
-                      label="Paragraph 2"
-                      type="text"
-                      name="home_insights_paragraph_b"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputTextArea
-                      label="Paragraph 3"
-                      type="text"
-                      name="home_insights_paragraph_c"
+                      name="home_banner_button_text"
                       disabled={mutation.isPending}
                     />
                   </div>
@@ -243,7 +205,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                         ((mutation.isPending || !props.dirty) &&
                           photo === null) ||
                         photo === "" ||
-                        initVal.home_insights_img === photo?.name
+                        initVal.home_banner_img === photo?.name
                       }
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
@@ -266,4 +228,4 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   );
 };
 
-export default ModalAddInsights;
+export default ModalAddBanner;

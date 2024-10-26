@@ -7,7 +7,7 @@ const ModalWrapper = ({ children, className, handleClose }) => {
         className={`backdrop  bg-[black] opacity-70 h-full w-full absolute top-0 left-0 z-[-1]`}
         onClick={handleClose}
       ></div>
-      <div className={`modal-wrapper ${className}`}>{children}</div>
+      <div className={` ${className}`}>{children}</div>
     </div>
   );
 };

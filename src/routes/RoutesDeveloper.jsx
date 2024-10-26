@@ -1,4 +1,5 @@
 import { devNavUrl } from "../components/helpers/functions-general";
+import Banner from "../components/pages/developer/dashHome/banner/Banner";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import BookkeepingPage from "../components/pages/website/accountingSolution/bookkeeping/BookkeepingPage";
 import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
@@ -156,5 +157,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/home-insights`,
     element: <Insights />,
+  },
+  {
+    path: `${devNavUrl}/home-banner`,
+    element: <Banner />,
   },
 ];

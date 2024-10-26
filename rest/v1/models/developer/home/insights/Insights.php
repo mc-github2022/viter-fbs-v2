@@ -70,7 +70,6 @@ class Insights
                 "home_insights_title" => $this->home_insights_title,
                 "home_insights_slug" => $this->home_insights_slug,
                 "home_insights_date" => $this->home_insights_date,
-                "home_insights_date" => $this->home_insights_date,
                 "home_insights_paragraph_a" => $this->home_insights_paragraph_a,
                 "home_insights_paragraph_b" => $this->home_insights_paragraph_b,
                 "home_insights_paragraph_c" => $this->home_insights_paragraph_c,
