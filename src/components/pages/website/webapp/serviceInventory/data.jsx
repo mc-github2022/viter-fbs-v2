@@ -14,7 +14,7 @@ export const banner = [
       "Designed to track and manage an organization’s assets and inventory efficiently. It enables businesses to monitor stock levels, track asset locations, manage depreciation, schedule maintenance, and streamline procurement processes, optimizing resource utilization and reducing operational costs.",
     bannerBtnText: "SCHEDULE A DEMO",
     bannerBtnLink: "Link",
-    bannerImage: "InventorySystem.jpg",
+    bannerImage: "InventorySystem.webp",
   },
 ];
 

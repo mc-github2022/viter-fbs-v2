@@ -53,8 +53,8 @@ const CareerPage = () => {
                     onClick={() => handleJobAccordion(item.jobID)}
                     className={`${
                       jobAccordion && jobIdentifier === item.jobID
-                        ? "min-h-[200px] transition-all"
-                        : "h-[104px] transition-all"
+                        ? "min-h-[200px] transition-all !bg-[#eedce8] "
+                        : "h-[104px] transition-all "
                     } jobItem bg-[#f8f8f8] p-5 rounded-lg addShadow  cursor-pointer  overflow-hidden mb-8`}
                   >
                     <div className="flex justify-between items-center">

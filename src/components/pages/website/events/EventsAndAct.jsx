@@ -122,13 +122,13 @@ const EventsAndAct = () => {
       <div className="EventsAndAct pb-20 pt-40">
         <div className="customContainer">
           <div className="theTitle mb-20">
-            <p>Through our</p>
+            <p>Through Our</p>
             <h2 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary">
-              events and activities
+              Events and Activities
             </h2>
             <p>
-              we engage, inspire and empower our patners, clients, and team
-              members.
+              We Engage, Inspire, and Empower Our Partners, Clients, and Team
+              Members.
             </p>
           </div>
           <div className="wrapper mb-24">

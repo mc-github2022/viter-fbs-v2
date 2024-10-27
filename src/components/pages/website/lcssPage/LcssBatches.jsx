@@ -1,9 +1,9 @@
 import React from "react";
-import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { batch } from "./data";
-import { Link } from "react-router-dom";
+import Slider from "react-slick";
 import BatchSliderPage from "./BatchSliderPage";
+import { batch } from "./data";
+import BatchSlider from "./BatchSlider";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -59,7 +59,7 @@ function SamplePrevArrow(props) {
 const LcssBatches = () => {
   var settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,

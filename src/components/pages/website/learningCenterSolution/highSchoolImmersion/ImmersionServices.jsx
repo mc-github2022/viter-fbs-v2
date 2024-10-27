@@ -17,30 +17,30 @@ const ImmersionServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <Laptop className="text-2xl text-dark" />
+                  <div><Laptop className="text-2xl text-dark" /></div>
                   Web Designing using Figma
                 </li>
                 <li>
-                  <Laptop className="text-2xl text-dark" /> Website Mockup
+                  <div><Laptop className="text-2xl text-dark" /></div> Website Mockup
                   Designing
                 </li>
                 <li>
-                  <Laptop className="text-2xl text-dark" /> Frontend Development
+                  <div><Laptop className="text-2xl text-dark" /></div> Frontend Development
                 </li>
                 <li>
-                  <Laptop className="text-2xl text-dark" /> Mobile Responsive
+                  <div><Laptop className="text-2xl text-dark" /></div> Mobile Responsive
                   Designing
                 </li>
                 <li>
-                  <Laptop className="text-2xl text-dark" />
+                  <div><Laptop className="text-2xl text-dark" /></div>
                   HTML5 & CSS3 Programming
                 </li>
                 <li>
-                  <Laptop className="text-2xl text-dark" />
+                  <div><Laptop className="text-2xl text-dark" /></div>
                   Basic Scripting Language
                 </li>
                 <li>
-                  <Laptop className="text-2xl text-dark" />
+                  <div><Laptop className="text-2xl text-dark" /></div>
                   Business Work Ethics
                 </li>
               </ul>
@@ -56,32 +56,32 @@ const ImmersionServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <Calculator className="text-2xl text-dark" /> Journal Entry
+                  <div><Calculator className="text-2xl text-dark" /></div> Journal Entry
                 </li>
                 <li>
-                  <Calculator className="text-2xl text-dark" /> Ledger Posting
+                  <div><Calculator className="text-2xl text-dark" /></div> Ledger Posting
                 </li>
                 <li>
-                  <Calculator className="text-2xl text-dark" /> Trial Balance
+                  <div><Calculator className="text-2xl text-dark" /></div> Trial Balance
                   Reporting
                 </li>
                 <li>
-                  <Calculator className="text-2xl text-dark" /> Adjusting Entry
+                  <div><Calculator className="text-2xl text-dark" /></div> Adjusting Entry
                 </li>
                 <li>
-                  <Calculator className="text-2xl text-dark" />
+                  <div><Calculator className="text-2xl text-dark" /></div>
                   Financial Statements & Reports
                 </li>
                 <li>
-                  <Calculator className="text-2xl text-dark" />
+                  <div><Calculator className="text-2xl text-dark" /></div>
                   Excel Advanced Functions & Formulas
                 </li>
                 <li>
-                  <Calculator className="text-2xl text-dark" />
+                  <div><Calculator className="text-2xl text-dark" /></div>
                   Payroll Report
                 </li>
                 <li>
-                  <Calculator className="text-2xl text-dark" />
+                  <div><Calculator className="text-2xl text-dark" /></div>
                   Quickbooks Online
                 </li>
               </ul>
@@ -97,35 +97,35 @@ const ImmersionServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Leadership Principles
                 </li>
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Business Correspondence
                 </li>
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Standard Operating Procedures
                 </li>
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Job Interview Simulation
                 </li>
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Basic Accounting Application
                 </li>
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Excel Advanced Functions and Formulas
                 </li>
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Payroll Setup
                 </li>
                 <li>
-                  <NotebookPen className="text-2xl text-dark" />
+                  <div><NotebookPen className="text-2xl text-dark" /></div>
                   Business Work Ethics
                 </li>
               </ul>

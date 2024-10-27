@@ -109,6 +109,13 @@ export const setIsAnimating = (val) => {
   };
 };
 
+export const setIsHome = (val) => {
+  return {
+    type: "IS_HOME",
+    payload: val,
+  };
+};
+
 export const setStartIndex = (val) => {
   return {
     type: "START_INDEX",

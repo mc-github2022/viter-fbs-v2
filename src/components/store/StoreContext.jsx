@@ -17,6 +17,7 @@ const initVal = {
   isView: false,
   isSearch: false,
   isAnimating: true,
+  isHome: false,
   startIndex: 0,
   isCreatePassSuccess: false,
   isForgotPassSuccess: false,

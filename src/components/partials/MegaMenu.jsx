@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { CgSmileMouthOpen } from "react-icons/cg";
-import { Globe, Calculator, Headset, GraduationCap } from "lucide-react";
+import { Calculator, Globe, GraduationCap, Headset } from "lucide-react";
+import React from "react";
 import {
   FaAddressCard,
   FaBriefcase,
@@ -8,7 +7,6 @@ import {
   FaMoneyBill,
   FaSmile,
 } from "react-icons/fa";
-import { TbArrowBackUp } from "react-icons/tb";
 import { TiArrowBackOutline, TiGift } from "react-icons/ti";
 import { Link } from "react-router-dom";
 

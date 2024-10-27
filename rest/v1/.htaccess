@@ -1,0 +1,18 @@
+RewriteEngine On
+# use for authentication
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+Header set Access-Control-Allow-Origin *
+
+RewriteRule ^upload-photo$ core/upload-photo.php [L]
+
+# HOME - BANNER
+RewriteRule ^banner$ controllers/developer/home/banner/banner.php [L]
+RewriteRule ^banner/([0-9]+)$ controllers/developer/home/banner/banner.php?home_bannerid=$1 [L]
+
+# HOME - INSIGHT
+RewriteRule ^insights$ controllers/developer/home/insights/insights.php [L]
+RewriteRule ^insights/([0-9]+)$ controllers/developer/home/insights/insights.php?home_insightsid=$1 [L]

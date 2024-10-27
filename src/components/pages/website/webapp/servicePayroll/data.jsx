@@ -15,7 +15,7 @@ export const banner = [
     bannerBtnText: "SCHEDULE A DEMO",
 
     bannerBtnLink: "Link",
-    bannerImage: "ServicesBanner.jpg",
+    bannerImage: "ServicesBanner.webp",
   },
 ];
 

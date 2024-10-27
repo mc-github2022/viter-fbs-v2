@@ -97,6 +97,12 @@ export const StoreReducer = (state, action) => {
         isAnimating: action.payload,
       };
 
+    case "IS_HOME":
+      return {
+        ...state,
+        isHome: action.payload,
+      };
+
     case "START_INDEX":
       return {
         ...state,

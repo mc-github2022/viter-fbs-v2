@@ -14,7 +14,7 @@ export const banner = [
       "A component that integrates with existing systems to enable online payment processing. It allows businesses to accept payments securely via various channels such as credit/debit cards, e-wallets, or bank transfers, enhancing customer convenience and expanding revenue streams.",
     bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "OnlinePayment.jpg",
+    bannerImage: "OnlinePayment.webp",
   },
 ];
 

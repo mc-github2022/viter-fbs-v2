@@ -19,7 +19,6 @@ import {
 import { MdOutlinePhoneIphone } from "react-icons/md";
 
 const ModalContactGetStarted = ({ setModalContact }) => {
-
   const handleClose = () => {
     setModalContact(false);
     console.log("clicked");
@@ -29,7 +28,7 @@ const ModalContactGetStarted = ({ setModalContact }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[99999] grid place-items-center backdrop-blur-lg overflow-auto py-6 md:py-0 "
+        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[99999] grid place-items-center backdrop-blur-lg overflow-auto py-6 md:py-0 top-0 "
       >
         <div
           onClick={(e) => {

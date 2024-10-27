@@ -11,7 +11,7 @@ export const banner = [
       "Our bookkeeping and business compliance services ensure hassle-free tax filings, accurate financial reporting, and adherence to government regulations. Choose from tailored packages designed to meet the needs of startups, small businesses, and corporations, and stay on top of your financial obligations with confidence.",
     bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "bookkeeping-bg.jpg",
+    bannerImage: "bookkeeping-bg.webp",
   },
 ];
 

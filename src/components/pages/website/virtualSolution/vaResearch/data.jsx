@@ -8,7 +8,7 @@ export const banner = [
       "Our Virtual Assistance Services are designed to boost your business's efficiency and growth through expert support in lead management, customer communication, administrative tasks, and project management. From generating leads and handling customer inquiries to managing financials, data analysis, and operational processes, we provide the essential business support you need to focus on your core activities and achieve your goals.",
     bannerBtnText: "LEARN MORE",
     bannerBtnLink: "Link",
-    bannerImage: "research-services-bg.jpg",
+    bannerImage: "research-services-bg.webp",
   },
 ];
 
