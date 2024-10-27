@@ -1,6 +1,7 @@
 import { devNavUrl } from "../components/helpers/functions-general";
 import Banner from "../components/pages/developer/dashHome/banner/Banner";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
+import Services from "../components/pages/developer/services/Services";
 import BookkeepingPage from "../components/pages/website/accountingSolution/bookkeeping/BookkeepingPage";
 import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
 import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
@@ -161,5 +162,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/home-banner`,
     element: <Banner />,
+  },
+  {
+    path: `${devNavUrl}/services`,
+    element: <Services />,
   },
 ];

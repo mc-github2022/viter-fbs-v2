@@ -12,12 +12,18 @@ const Navigation = ({ menu, submenu }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const handleOpenHome = () => {
-    dispatch(setIsHome(true));
+    dispatch(setIsHome(!store.isHome));
   };
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  // Function to close all menus (when navigating away)
+const handleCloseMenus = () => {
+  dispatch(setIsHome(false)); // Close the 'Home' menu
+  // Add other state resets if needed for other menus
+};
 
   const clickOutsideRef = (e) => {
     if (!ref.current?.contains(e.target)) {
@@ -141,6 +147,23 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                 </ul>
               )}
+
+              <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "services"
+                      ? "text-[white] underline underline-offset-4 "
+                      : "text-dashAccent "
+                  }
+                `}
+                onClick={handleCloseMenus}
+              >
+                <Link to={`${devNavUrl}/services`}>
+                  <div className="nav flex items-center">
+                    <span className="ml-2.5">Services</span>
+                  </div>
+                </Link>
+              </li>
               {/* <li
                 className={
                   activeSection === "ourOrigin"
@@ -193,39 +216,38 @@ const Navigation = ({ menu, submenu }) => {
               </li> */}
             </ul>
           </nav>
-          
         </div>
         <div>
-            <div
-              className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 ${
-                isOpen && "!border-primary"
-              }`}
-              onClick={handleOpen}
-              ref={ref}
-            >
-              <div className="bg-[white] p-1.5 rounded-full ">
-                <span className="text-white p-1 rounded-full ">LR</span>
-              </div>
-              {isOpen && (
-                <div className="absolute top-5 ml-[45px] bg-[white] shadow-md flex flex-col gap-2 p-3 min-w-[180px]">
-                  <h6 className="text-white font-[inter-regular] text-[15px]">
-                    Louren Rubico
-                  </h6>
-                  <a>
-                    <span className="text-white text-sm">louren@gmail.com</span>
-                  </a>
-                  <Link to="/changePass">
-                    <span className="text-white text-sm">Change Password</span>
-                  </Link>
-                  <div className="flex flex-row gap-4 items-center">
-                    <Link>
-                      <button className=" text-white text-sm">Users</button>
-                    </Link>
-                  </div>
-                </div>
-              )}
+          <div
+            className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 ${
+              isOpen && "!border-primary"
+            }`}
+            onClick={handleOpen}
+            ref={ref}
+          >
+            <div className="bg-[white] p-1.5 rounded-full ">
+              <span className="text-white p-1 rounded-full ">LR</span>
             </div>
+            {isOpen && (
+              <div className="absolute top-5 ml-[45px] bg-[white] shadow-md flex flex-col gap-2 p-3 min-w-[180px]">
+                <h6 className="text-white font-[inter-regular] text-[15px]">
+                  Louren Rubico
+                </h6>
+                <a>
+                  <span className="text-white text-sm">louren@gmail.com</span>
+                </a>
+                <Link to="/changePass">
+                  <span className="text-white text-sm">Change Password</span>
+                </Link>
+                <div className="flex flex-row gap-4 items-center">
+                  <Link>
+                    <button className=" text-white text-sm">Users</button>
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
+        </div>
         <div className="border-t-[2px] border-dashAccent flex flex-col gap-2 bottom-0">
           <h5 className="mt-[10px] text-[white] text-sm">Powered by:</h5>
           <div className="w-[120px] h-[44px]">

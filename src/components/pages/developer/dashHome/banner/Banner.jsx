@@ -5,7 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import BannerTable from "./BannerTable";
 import ModalAddBanner from "./ModalAddBanner";
 import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd } from "../../../../store/StoreAction";
+import { setIsAdd, setIsHome } from "../../../../store/StoreAction";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../partials/modals/ModalError";
 
@@ -17,6 +17,10 @@ const Banner = () => {
     dispatch(setIsAdd(true));
     setItemEdit(null);
   };
+
+  React.useEffect(() => {
+    dispatch(setIsHome(true));
+  }, []);
 
   return (
     <>

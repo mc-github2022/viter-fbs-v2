@@ -29,7 +29,7 @@ const DashboardNav = ({ menu }) => {
 
             <div>
               <Link
-                to={`${devNavUrl}/uncle-eddys`}
+                to={`${devNavUrl}/`}
                 className="tooltip-phone"
                 data-tooltip="Go to Webpage"
                 target="_blank"
