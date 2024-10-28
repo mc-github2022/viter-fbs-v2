@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import ModalContactGetStarted from "./ModalContactGetStarted";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -52,6 +54,18 @@ const BannerSlider = () => {
     setModalContact(!modalContact);
     console.log("open");
   };
+
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: bannerData,
+  } = useQueryData(
+    "/v1/banner", // endpoint
+    "get", // method
+    "banner" // key
+  );
 
   var settings = {
     dots: true,
@@ -104,48 +118,43 @@ const BannerSlider = () => {
         <ModalContactGetStarted setModalContact={setModalContact} />
       )}
       <Slider {...settings}>
-        <div>
-          <section
-            id="banner"
-            className={`banner  bg-cover bg-center`}
-            style={{
-              // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-              backgroundImage: `url(../../public/img/home-bg-new.webp)`,
-            }}
-          >
-            <div className="customContainer">
-              <div className="wrapper flex place-items-center min-h-[90vh] md:h-[90vh] transition-all w-full">
-                <div className="mx-auto w-full md:w-[865px] text-center">
-                  <p className="text-light lg:text-[28px] italic">
-                    In business for good.
-                  </p>
-                  <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px] drop-shadow-2xl">
-                    Your Trusted Christian Partner in{" "}
-                    <span className="bg-sky-500/50">Managed Services</span>
-                  </h1>
-                  <p className="text-light text-center mb-10">
-                    We deliver end-to-end solutions and professional expertise
-                    in web applications, websites, virtual assistants, and
-                    skills development. Rooted in Christian values, we are
-                    committed to integrity and excellence in helping you elevate
-                    your digital presence, streamline operations, and build a
-                    more skilled workforce. Our comprehensive services are
-                    designed to drive your success with a mission to serve with
-                    purpose and care.
-                  </p>
-                  <a
-                    href="#"
-                    className="btn bg-transparent text-light font-semibold border-2"
-                    onClick={handleModalContact}
-                  >
-                    GET STARTED
-                  </a>
+        {bannerData?.data.map((item, key) => (
+          <div>
+            <section
+              id="banner"
+              className={`banner  bg-cover bg-center`}
+              style={{
+                // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+                backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,
+              }}
+              key={key}
+            >
+              <div className="customContainer">
+                <div className="wrapper flex place-items-center min-h-[90vh] md:h-[90vh] transition-all w-full">
+                  <div className="mx-auto w-full md:w-[865px] text-center">
+                    <p className="text-light lg:text-[28px] italic">
+                      {item.home_banner_sub_title}
+                    </p>
+                    <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px] drop-shadow-2xl">
+                      {item.home_banner_title}
+                    </h1>
+                    <p className="text-light text-center mb-10">
+                      {item.home_banner_description}
+                    </p>
+                    <a
+                      href="#"
+                      className="btn bg-transparent text-light font-semibold border-2"
+                      onClick={handleModalContact}
+                    >
+                      {item.home_banner_button_text}
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-        </div>
-        <div>
+            </section>
+          </div>
+        ))}
+        {/* <div>
           <section
             id="banner"
             className={`banner bg-cover bg-center`}
@@ -296,7 +305,7 @@ const BannerSlider = () => {
               </div>
             </div>
           </section>
-        </div>
+        </div> */}
       </Slider>
     </>
   );

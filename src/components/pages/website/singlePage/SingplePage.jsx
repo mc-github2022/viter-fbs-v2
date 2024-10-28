@@ -9,7 +9,7 @@ import { insight } from "../home/data";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl, formatDate } from "../../../helpers/functions-general";
 
-const SingplePage = () => {
+const SingplePage = ({ itemEdit }) => {
   const {
     isFetching,
     error,
@@ -23,6 +23,19 @@ const SingplePage = () => {
   );
 
   const { slug } = useParams();
+
+  const [html, setHtml] = React.useState("");
+  useEffect(() => {
+    if (insightData?.data.length > 0) {
+      setHtml(insightData?.data[0].home_insights_paragraph_a);
+    }
+  }, [insightData]);
+
+  // const [html] = React.useState(
+  //   insightData?.data.length > 0
+  //     ? insightData?.data[0].home_insights_paragraph_a
+  //     : ""
+  // );
 
   useEffect(() => {
     if (!insightData) return; // Early return if insightData is not yet available
@@ -73,9 +86,10 @@ const SingplePage = () => {
                   alt=""
                   className="rounded-lg object-cover mb-8 w-full max-h-[700px] object-center"
                 />
-                <p className="mb-4">{post.home_insights_paragraph_a}</p>
-                <p className="mb-4">{post.home_insights_paragraph_b}</p>
-                <p>{post.home_insights_paragraph_c}</p>
+                <div dangerouslySetInnerHTML={{ __html: html }}></div>
+                {/* <p className="mb-4">{post.home_insights_paragraph_a}</p> */}
+                {/* <p className="mb-4">{post.home_insights_paragraph_b}</p>
+                <p>{post.home_insights_paragraph_c}</p> */}
               </div>
               <div className="order-1 mt-6 md:mt-0">
                 <div className="mb-12">

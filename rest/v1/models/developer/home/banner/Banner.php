@@ -28,7 +28,7 @@ class Banner
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblBanner} ";
-            $sql .= "order by home_banner_title asc ";
+            $sql .= "order by home_banner_aid asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
