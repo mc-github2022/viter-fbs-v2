@@ -24,45 +24,48 @@ const ServiceInventoryPricing = () => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 md:mb-0 relative z-[1] min-h-[500px] text-light text-center p-10 rounded-lg addShadow ${
+                    className={`priceItem mb-5 md:mb-0 relative z-[1] min-h-[594px] max-w-[400px] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
-                    } grid place-items-center`}
+                    } grid`}
                   >
-                    <div>
-                      <div className="title mb-4 ">
-                        {price.icon}
-                        <h3
-                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
-                        >
-                          {price.title}
-                        </h3>
-                        <p
-                          className={`${price.customCss} text-2xl  font-bold text-light`}
-                        >
-                          {price.rate}
-                        </p>
-
-                        {price.note !== "" && (
-                          <p
-                            className={`${price.customCss} text-light text-lg italic`}
+                    <div className="flex flex-col justify-between">
+                      <div>
+                        <div className="title mb-4 ">
+                          {price.icon}
+                          <h3
+                            className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
                           >
-                            {price.note}
+                            {price.title}
+                          </h3>
+                          <p
+                            className={`${price.customCss} text-2xl  font-bold text-light`}
+                          >
+                            {price.rate}
                           </p>
-                        )}
+
+                          {price.note !== "" && (
+                            <p
+                              className={`${price.customCss} text-light text-lg italic`}
+                            >
+                              {price.note}
+                            </p>
+                          )}
+                        </div>
+                        <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
+                          {price.info.map((info, key) => (
+                            <li key={key}>
+                              <FaCheckCircle
+                                className={`${price.customCss} text-light`}
+                              />
+                              {info}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
-                        {price.info.map((info, key) => (
-                          <li key={key}>
-                            <FaCheckCircle
-                              className={`${price.customCss} text-light`}
-                            />
-                            {info}
-                          </li>
-                        ))}
-                      </ul>
+
                       <a
                         href={`${price.link}`}
-                        className="btn bg-light text-primary font-bold"
+                        className="btn bg-light text-primary font-bold mx-auto w-[170px]"
                       >
                         CONTACT US
                       </a>
