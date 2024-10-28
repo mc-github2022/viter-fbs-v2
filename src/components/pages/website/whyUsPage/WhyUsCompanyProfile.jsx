@@ -43,7 +43,8 @@ const WhyUsCompanyProfile = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="../../public/img/FBS-Brochure-2024.pdf"
+                    download
                     className="flex items-center gap-2 font-bold text-primary text-xl"
                   >
                     Company Profile <FaFileDownload />

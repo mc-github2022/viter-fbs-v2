@@ -7,7 +7,7 @@ const ConStudPartnersWithUs = () => {
     <>
       <section className="ConStudPartnersWithUs py-20 bg-customGray">
         <div className="customContainer">
-          <p> We Offer On-the-job Training for</p>
+          <p> We Offer Training for</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
               Effective Skills Acquisitions.
@@ -88,7 +88,7 @@ const ConStudPartnersWithUs = () => {
                       </h3>
                       <p>
                         By gaining insdustry-aligned experience and expert
-                        training, students enhance their employability, making
+                        training, trainees enhance their employability, making
                         them more competitive in the job market and ready for
                         career opportunities.
                       </p>
