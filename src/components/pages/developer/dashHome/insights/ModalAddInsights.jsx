@@ -27,14 +27,14 @@ import { MdOutlineFileUpload } from "react-icons/md";
 
 const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [animate, setAnimate] = React.useState("translate-x-full");
+  // const [animate, setAnimate] = React.useState("translate-x-full");
   const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
     `${apiVersion}/upload-photo`,
     dispatch
   );
 
   const handleClose = () => {
-    setAnimate("translate-x-full");
+    // setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -66,9 +66,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     },
   });
 
-  React.useEffect(() => {
-    setAnimate("");
-  }, []);
+  // React.useEffect(() => {
+  //   setAnimate("");
+  // }, []);
 
   const initVal = {
     home_insights_aid: itemEdit ? itemEdit.home_insights_aid : "",
@@ -92,9 +92,11 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     home_insights_slug: Yup.string().required("Required"),
   });
 
+ 
+
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 ${animate}`}
+      className={`transition-all ease-linear transform duration-200`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -211,13 +213,13 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                   </div>
                   <div className="input-wrapper">
                     <InputTextArea
-                      label="Paragraph 1"
+                      label="Description"
                       type="text"
                       name="home_insights_paragraph_a"
                       disabled={mutation.isPending}
                     />
                   </div>
-                  <div className="input-wrapper">
+                  {/* <div className="input-wrapper">
                     <InputTextArea
                       label="Paragraph 2"
                       type="text"
@@ -232,7 +234,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                       name="home_insights_paragraph_c"
                       disabled={mutation.isPending}
                     />
-                  </div>
+                  </div> */}
                 </div>
                 <div className="form-action">
                   <div className="form-btn">

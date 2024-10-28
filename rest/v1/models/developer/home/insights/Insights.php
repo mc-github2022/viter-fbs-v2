@@ -31,7 +31,7 @@ class Insights
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblInsights} ";
-            $sql .= "order by home_insights_category asc ";
+            $sql .= "order by home_insights_aid asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;

@@ -27,14 +27,14 @@ import * as Yup from "yup";
 
 const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [animate, setAnimate] = React.useState("translate-x-full");
+  // const [animate, setAnimate] = React.useState("translate-x-full");
   const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
     `${apiVersion}/upload-photo`,
     dispatch
   );
 
   const handleClose = () => {
-    setAnimate("translate-x-full");
+    // setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -66,9 +66,9 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
     },
   });
 
-  React.useEffect(() => {
-    setAnimate("");
-  }, []);
+  // React.useEffect(() => {
+  //   setAnimate("");
+  // }, []);
 
   const initVal = {
     home_banner_aid: itemEdit ? itemEdit.home_banner_aid : "",
@@ -82,7 +82,7 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
   const yupSchema = Yup.object({});
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 ${animate}`}
+      className={`transition-all ease-linear transform duration-200`}
       handleClose={handleClose}
     >
       <div className="modal-title">
