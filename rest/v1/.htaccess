@@ -16,3 +16,7 @@ RewriteRule ^banner/([0-9]+)$ controllers/developer/home/banner/banner.php?home_
 # HOME - INSIGHT
 RewriteRule ^insights$ controllers/developer/home/insights/insights.php [L]
 RewriteRule ^insights/([0-9]+)$ controllers/developer/home/insights/insights.php?home_insightsid=$1 [L]
+
+# SPECIAL OFFERS
+RewriteRule ^specialOffers$ controllers/developer/special-offers/specialOffers.php [L]
+RewriteRule ^specialOffers/([0-9]+)$ controllers/developer/special-offers/specialOffers.php?special_offersid=$1 [L]

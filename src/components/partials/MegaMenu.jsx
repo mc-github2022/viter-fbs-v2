@@ -9,11 +9,29 @@ import {
 } from "react-icons/fa";
 import { TiArrowBackOutline, TiGift } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import useQueryData from "../custom-hooks/useQueryData";
+import { devNavUrl } from "../helpers/functions-general";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
+
+const icons = { ...FaIcons, ...AiIcons, ...IoIcons };
 
 const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
   const [serviceDropdown, serServiceDropdown] = React.useState(false);
-
   const [menuIdentifier, setMenuIdentifier] = React.useState("");
+
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: specialOffersData,
+  } = useQueryData(
+    "/v1/specialOffers", // endpoint
+    "get", // method
+    "specialOffers" // key
+  );
 
   const handleClose = () => {
     setToggleMenu(false);
@@ -242,7 +260,41 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   Special Offer
                 </h3>
                 <div className="wrapper grid grid-cols-1 lg:grid-cols-5 gap-3">
-                  <Link to="/business-registration">
+                  {specialOffersData?.data.map((item, key) => {
+                    const SelectedIcon = item.special_offers_icons
+                      ? icons[item.special_offers_icons]
+                      : null;
+
+                    return (
+                      <Link
+                        key={key}
+                        to={`${devNavUrl}${item.special_offers_link}`} 
+                      >
+                        <div className="offerItem bg-light p-2 rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
+                          <div>
+                            <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
+                              <li>
+                                <span className="text-[32px] text-primary group-hover:text-light">
+                                  {SelectedIcon ? (
+                                    <SelectedIcon />
+                                  ) : (
+                                    "No icon selected"
+                                  )}
+                                </span>
+                              </li>
+                              <li className="text-xs w-[20px]">
+                                {item.special_offers_services}
+                              </li>
+                            </ul>
+                            <p className="font-bold text-dark group-hover:text-light">
+                              {item.special_offers_price}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                   {/* <Link to="/business-registration">
                     <div className="offerItem bg-light p-2 rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
                       <div>
                         <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
@@ -258,8 +310,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                         </p>
                       </div>
                     </div>
-                  </Link>
-
+                  </Link> 
                   <Link to="/web-singlepage">
                     <div className="offerItem bg-light p-2  rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
                       <div>
@@ -330,7 +381,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                         </p>
                       </div>
                     </div>
-                  </Link>
+                  </Link>  */}
                 </div>
               </div>
             </div>

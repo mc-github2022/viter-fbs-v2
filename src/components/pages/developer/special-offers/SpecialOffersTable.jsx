@@ -37,8 +37,8 @@ const SpecialOffersTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.home_specialOffers_title);
-    setIsId(item.home_specialOffers_aid);
+    setIsData(item.special_offers_services);
+    setIsId(item.special_offers_aid);
   };
 
   return (
@@ -51,11 +51,10 @@ const SpecialOffersTable = ({ setItemEdit }) => {
             <thead>
               <tr className="text-[black]">
                 <th className="pl-2 w-[1rem]">#</th>
-                <th className="w-[10rem]">Sub-Title</th>
-                <th className="w-[15rem]">Title</th>
-                <th>Description</th>
-                <th className="w-[8rem]">Button</th>
-                <th className="w-[8rem]">Image</th>
+                <th>Icon Name</th>
+                <th>Services</th>
+                <th>Special Offers</th>
+                <th>Link</th>
                 <th className="text-right">Actions</th>
               </tr>
             </thead>
@@ -82,19 +81,16 @@ const SpecialOffersTable = ({ setItemEdit }) => {
                 <tr key={key} className="place-content-start text-[14px]">
                   <td className="pl-2 place-content-start">{counter++}</td>
                   <td className="place-content-start">
-                    {item.home_banner_sub_title}
+                    {item.special_offers_icons}
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_title}
+                    {item.special_offers_services}
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_description}
+                    {item.special_offers_price}
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_button_text}
-                  </td>
-                  <td className="place-content-start">
-                    {item.home_banner_img}
+                    {item.special_offers_link}
                   </td>
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                     <button
@@ -122,8 +118,8 @@ const SpecialOffersTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"insights"}
-          mysqlEndpoint={`/v1/insights/${id}`}
+          queryKey={"specialOffers"}
+          mysqlEndpoint={`/v1/specialOffers/${id}`}
           item={isData}
         />
       )}

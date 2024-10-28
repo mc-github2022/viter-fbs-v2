@@ -9,13 +9,35 @@ import { Form, Formik } from "formik";
 import { InputSelect, InputText } from "../../../helpers/FormInputs";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import * as Yup from "yup";
-import * as icons from "react-icons/fa";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
+import * as TiIcons from "react-icons/ti";
+
+const icons = { ...FaIcons, ...AiIcons, ...IoIcons, ...TiIcons };
 
 const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [icon, setIcon] = React.useState("");
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [icon, setIcon] = React.useState(
+    itemEdit ? itemEdit.special_offers_icons : ""
+  );
+
   const Icon = icon ? icons[icon] : null;
 
+
+  const filteredIcons = Object.keys(icons).filter((iconKey) =>
+    iconKey.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+ 
+  React.useEffect(() => {
+    if (itemEdit) {
+      setIcon(itemEdit.special_offers_icons);
+    }
+  }, [itemEdit]);
+
+  
   const handleClose = () => {
     setTimeout(() => {
       dispatch(setIsAdd(false));
@@ -28,13 +50,13 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/insights/${itemEdit.home_insights_aid}` // update
-          : `/v1/insights`, // create
+          ? `/v1/specialOffers/${itemEdit.special_offers_aid}` // update
+          : `/v1/specialOffers`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["insights"] });
+      queryClient.invalidateQueries({ queryKey: ["specialOffers"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -49,26 +71,14 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   });
 
   const initVal = {
-    home_insights_aid: itemEdit ? itemEdit.home_insights_aid : "",
-    home_insights_category: itemEdit ? itemEdit.home_insights_category : "",
-    home_insights_title: itemEdit ? itemEdit.home_insights_title : "",
-    home_insights_slug: itemEdit ? itemEdit.home_insights_slug : "",
-    home_insights_date: itemEdit ? itemEdit.home_insights_date : "",
-    home_insights_paragraph_a: itemEdit
-      ? itemEdit.home_insights_paragraph_a
-      : "",
-    home_insights_paragraph_b: itemEdit
-      ? itemEdit.home_insights_paragraph_b
-      : "",
-    home_insights_paragraph_c: itemEdit
-      ? itemEdit.home_insights_paragraph_c
-      : "",
-    home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
+    special_offers_aid: itemEdit ? itemEdit.special_offers_aid : "",
+    special_offers_icons: itemEdit ? itemEdit.special_offers_icons : "",
+    special_offers_services: itemEdit ? itemEdit.special_offers_services : "",
+    special_offers_price: itemEdit ? itemEdit.special_offers_price : "",
+    special_offers_link: itemEdit ? itemEdit.special_offers_link : "",
   };
 
-  const yupSchema = Yup.object({
-    home_insights_slug: Yup.string().required("Required"),
-  });
+  const yupSchema = Yup.object({});
 
   return (
     <ModalAddWrapper
@@ -86,7 +96,11 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
-            mutation.mutate(values);
+            const data = {
+              ...values,
+              special_offers_icons: icon,
+            };
+            mutation.mutate(data);
           }}
         >
           {(props) => {
@@ -94,26 +108,40 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="input-wrapper">
-                    <InputSelect
-                      label="Icon"
+                    <label htmlFor="icon-search">Search Icon</label>
+                    <input
+                      id="icon-search"
                       type="text"
-                      name="home_insights_category"
+                      placeholder="Type to search icons..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="border p-2 w-full"
                       disabled={mutation.isPending}
+                    />
+
+                    <select
+                      name="home_insights_category"
+                      value={icon}
                       onChange={(e) => setIcon(e.target.value)}
+                      className="border p-2 w-full mt-2"
+                      disabled={mutation.isPending}
                     >
-                      {Object.keys(icons).map((icon) => (
-                        <option className="text-sm">{icon}</option>
+                      <option value="" disabled>
+                        Select an icon
+                      </option>
+                      {filteredIcons.map((iconKey) => (
+                        <option
+                          key={iconKey}
+                          value={iconKey}
+                          className="text-sm"
+                        >
+                          {iconKey}
+                        </option>
                       ))}
-                      {icon ? (
-                        <div>
-                          Selected icon: <Icon />
-                        </div>
-                      ) : (
-                        "No icon selected"
-                      )}
-                    </InputSelect>
+                    </select>
+
                     {icon ? (
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-4 mt-2">
                         Selected icon: <Icon />
                       </div>
                     ) : (
@@ -122,25 +150,25 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                   </div>
                   <div className="input-wrapper">
                     <InputText
-                      label="Title"
+                      label="Services"
                       type="text"
-                      name="home_insights_title"
+                      name="special_offers_services"
                       disabled={mutation.isPending}
                     />
                   </div>
                   <div className="input-wrapper">
                     <InputText
-                      label="*Slug"
+                      label="Special Offer"
                       type="text"
-                      name="home_insights_slug"
+                      name="special_offers_price"
                       disabled={mutation.isPending}
                     />
                   </div>
                   <div className="input-wrapper">
                     <InputText
-                      label="Date"
-                      type="date"
-                      name="home_insights_date"
+                      label="Link"
+                      type="text"
+                      name="special_offers_link"
                       disabled={mutation.isPending}
                     />
                   </div>
@@ -150,7 +178,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                     <button
                       className="btn-modal-submit"
                       type="submit"
-                      disabled={mutation.isPending || !props.dirty}
+                      disabled={mutation.isPending || !icon}
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
                     </button>
