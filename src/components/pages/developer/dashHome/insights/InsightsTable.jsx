@@ -95,9 +95,7 @@ const InsightsTable = ({ setItemEdit }) => {
                     {formatDate(item.home_insights_date)}
                   </td>
                   <td>
-                    <p>1. {item.home_insights_paragraph_a}</p>
-                    <p>2. {item.home_insights_paragraph_b}</p>
-                    <p>3. {item.home_insights_paragraph_c}</p>
+                    <p>{item.home_insights_paragraph_a}</p>
                   </td>
                   <td className="place-content-start">
                     {item.home_insights_img}

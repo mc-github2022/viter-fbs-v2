@@ -4,10 +4,13 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
 
+const sliderCount = document.querySelectorAll(".slick-slide").length;
+
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
+      className={`${sliderCount < 2 ? "!hidden" : ""} sliderArrow`}
       style={{
         position: "absolute",
         color: "white",
@@ -34,6 +37,7 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
+      className={`${sliderCount < 2 ? "!hidden" : ""} sliderArrow`}
       style={{
         position: "absolute",
         color: "white",
@@ -65,7 +69,9 @@ const ServiceEnrollmentPartnersSay = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     dotsClass: "slickNav slick-dots",
-    nextArrow: <SampleNextArrow />,
+    nextArrow: (
+      <SampleNextArrow className={`${sliderCount < 2 ? "!hidden" : ""}`} />
+    ),
     prevArrow: <SamplePrevArrow />,
     appendDots: (dots) => (
       <div
