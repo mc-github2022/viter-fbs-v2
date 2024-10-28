@@ -1,17 +1,16 @@
 import React from "react";
+import { StoreContext } from "../../../../store/StoreContext";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
-import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
-import { StoreContext } from "../../../../store/StoreContext";
-import useQueryData from "../../../../custom-hooks/useQueryData";
 
-const BannerTable = ({ setItemEdit }) => {
+const TestimonialTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -21,11 +20,11 @@ const BannerTable = ({ setItemEdit }) => {
     error,
     isLoading,
     status,
-    data: bannerData,
+    data: testimonialData,
   } = useQueryData(
-    "/v1/banner", // endpoint
+    "/v1/testimonial", // endpoint
     "get", // method
-    "banner" // key
+    "testimonial" // key
   );
 
   let counter = 1;
@@ -37,8 +36,8 @@ const BannerTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.home_banner_title);
-    setIsId(item.home_banner_aid);
+    setIsData(item.home_insights_title);
+    setIsId(item.home_insights_aid);
   };
 
   return (
@@ -51,17 +50,18 @@ const BannerTable = ({ setItemEdit }) => {
             <thead>
               <tr className="text-[black]">
                 <th className="pl-2 w-[1rem]">#</th>
-                <th className="w-[10rem]">Sub-Title</th>
-                <th className="w-[15rem]">Title</th>
-                <th>Description</th>
-                <th className="w-[8rem]">Button</th>
+                <th>Category</th>
+                <th className="w-[10rem]">Title</th>
+                <th className="w-[10rem]">Slug</th>
+                <th className="w-[8rem]">Date</th>
+                <th>Content</th>
                 <th className="w-[8rem]">Image</th>
                 <th className="text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="relative">
               {isLoading && status !== "pending" && <TableSpinner />}
-              {(status === "pending" || bannerData?.data.length === 0) && (
+              {(status === "pending" || testimonialData?.data.length === 0) && (
                 <tr className="text-center">
                   <td colSpan="100%" className="p-10">
                     {status === "pending" ? <TableLoading /> : <NoData />}
@@ -77,23 +77,26 @@ const BannerTable = ({ setItemEdit }) => {
                 </tr>
               )}
 
-              {bannerData?.data.map((item, key) => (
+              {testimonialData?.data.map((item, key) => (
                 <tr key={key} className="place-content-start text-[14px]">
                   <td className="pl-2 place-content-start">{counter++}</td>
                   <td className="place-content-start">
-                    {item.home_banner_sub_title}
+                    {item.home_insights_category}
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_title}
+                    {item.home_insights_title}
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_description}
+                    {item.home_insights_slug}
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_button_text}
+                    {formatDate(item.home_insights_date)}
+                  </td>
+                  <td>
+                    <p>{item.home_insights_paragraph_a}</p>
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_img}
+                    {item.home_insights_img}
                   </td>
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                     <button
@@ -121,8 +124,8 @@ const BannerTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"banner"}
-          mysqlEndpoint={`/v1/banner/${id}`}
+          queryKey={"testimonial"}
+          mysqlEndpoint={`/v1/testimonial/${id}`}
           item={isData}
         />
       )}
@@ -130,4 +133,4 @@ const BannerTable = ({ setItemEdit }) => {
   );
 };
 
-export default BannerTable;
+export default TestimonialTable;

@@ -32,8 +32,6 @@ const SingplePage = () => {
     }
   }, [insightData]);
 
-  console.log(html);
-
   // Update html based on slug and insightData
   useEffect(() => {
     if (!insightData) return; // Early return if insightData is not yet available

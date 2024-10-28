@@ -7,7 +7,7 @@ import { devNavUrl } from "../../helpers/functions-general";
 const DashboardNav = ({ menu }) => {
   return (
     <>
-      <div className="profileHeader p-4 addShadow border-none bg-[#d1d5db] h-[58px] rounded-tl-lg rounded-tr-lg fixed top-[20px] w-[calc(100%_-_240px)] grid items-center z-[10]">
+      <div className="profileHeader p-4 addShadow border-none bg-dashSecondary h-[58px] rounded-tl-lg rounded-tr-lg fixed top-[20px] w-[calc(100%_-_240px)] grid items-center z-[10]">
         <div className="flex justify-between  items-center ">
           <p className="font-semibold text-[14px] text-[black]">Dashboard</p>
           <div className="flex items-center gap-4">

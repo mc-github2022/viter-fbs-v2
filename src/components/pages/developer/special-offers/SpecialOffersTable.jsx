@@ -1,17 +1,17 @@
 import React from "react";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import TableSpinner from "../../../../partials/spinners/TableSpinner";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import ServerError from "../../../../partials/spinners/ServerError";
-import { FaEdit } from "react-icons/fa";
+import { StoreContext } from "../../../store/StoreContext";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
+import ModalDelete from "../../../partials/modals/ModalDelete";
 import { MdDelete } from "react-icons/md";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
-import { StoreContext } from "../../../../store/StoreContext";
-import useQueryData from "../../../../custom-hooks/useQueryData";
+import { FaEdit } from "react-icons/fa";
+import ServerError from "../../../partials/spinners/ServerError";
+import TableLoading from "../../../partials/spinners/TableLoading";
+import NoData from "../../../partials/spinners/NoData";
+import TableSpinner from "../../../partials/spinners/TableSpinner";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
 
-const BannerTable = ({ setItemEdit }) => {
+const SpecialOffersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -21,11 +21,11 @@ const BannerTable = ({ setItemEdit }) => {
     error,
     isLoading,
     status,
-    data: bannerData,
+    data: specialOffersData,
   } = useQueryData(
-    "/v1/banner", // endpoint
+    "/v1/specialOffers", // endpoint
     "get", // method
-    "banner" // key
+    "specialOffers" // key
   );
 
   let counter = 1;
@@ -37,8 +37,8 @@ const BannerTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.home_banner_title);
-    setIsId(item.home_banner_aid);
+    setIsData(item.home_specialOffers_title);
+    setIsId(item.home_specialOffers_aid);
   };
 
   return (
@@ -61,7 +61,8 @@ const BannerTable = ({ setItemEdit }) => {
             </thead>
             <tbody className="relative">
               {isLoading && status !== "pending" && <TableSpinner />}
-              {(status === "pending" || bannerData?.data.length === 0) && (
+              {(status === "pending" ||
+                specialOffersData?.data.length === 0) && (
                 <tr className="text-center">
                   <td colSpan="100%" className="p-10">
                     {status === "pending" ? <TableLoading /> : <NoData />}
@@ -77,7 +78,7 @@ const BannerTable = ({ setItemEdit }) => {
                 </tr>
               )}
 
-              {bannerData?.data.map((item, key) => (
+              {specialOffersData?.data.map((item, key) => (
                 <tr key={key} className="place-content-start text-[14px]">
                   <td className="pl-2 place-content-start">{counter++}</td>
                   <td className="place-content-start">
@@ -121,8 +122,8 @@ const BannerTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"banner"}
-          mysqlEndpoint={`/v1/banner/${id}`}
+          queryKey={"insights"}
+          mysqlEndpoint={`/v1/insights/${id}`}
           item={isData}
         />
       )}
@@ -130,4 +131,4 @@ const BannerTable = ({ setItemEdit }) => {
   );
 };
 
-export default BannerTable;
+export default SpecialOffersTable;

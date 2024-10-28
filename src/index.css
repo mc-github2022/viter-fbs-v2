@@ -37,6 +37,9 @@
   textarea {
     @apply bg-customGray w-full h-20 resize-none;
   }
+  select {
+    @apply bg-customGray h-8 p-1 text-sm text-dark;
+  }
   /* * {
     @apply outline ;
   } */
@@ -301,7 +304,8 @@
 }
 
 .addShadowDash {
-  box-shadow: 0px 0px 9px 3px rgb(106, 17, 65, 0.85);
+  /* box-shadow: 0px 0px 9px 3px rgb(106, 17, 65, 0.85); */
+  box-shadow: 0px 0px 9px 3px rgb(207, 208, 212, 0.85);
 }
 
 @keyframes mymove {

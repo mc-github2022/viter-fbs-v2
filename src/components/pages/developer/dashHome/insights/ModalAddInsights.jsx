@@ -27,14 +27,12 @@ import { MdOutlineFileUpload } from "react-icons/md";
 
 const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  // const [animate, setAnimate] = React.useState("translate-x-full");
   const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
     `${apiVersion}/upload-photo`,
     dispatch
   );
 
   const handleClose = () => {
-    // setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);

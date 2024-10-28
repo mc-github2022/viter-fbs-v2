@@ -1,7 +1,8 @@
 import { devNavUrl } from "../components/helpers/functions-general";
 import Banner from "../components/pages/developer/dashHome/banner/Banner";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
-import Services from "../components/pages/developer/services/Services";
+import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
+import Services from "../components/pages/developer/special-offers/SpecialOffers";
 import BookkeepingPage from "../components/pages/website/accountingSolution/bookkeeping/BookkeepingPage";
 import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
 import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
@@ -164,7 +165,11 @@ export const routesDeveloper = [
     element: <Banner />,
   },
   {
-    path: `${devNavUrl}/services`,
+    path: `${devNavUrl}/home-testimonial`,
+    element: <Testimonial />,
+  },
+  {
+    path: `${devNavUrl}/special-offers`,
     element: <Services />,
   },
 ];

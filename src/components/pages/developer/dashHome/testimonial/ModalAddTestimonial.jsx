@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ModalAddServices = () => {
+const ModalAddTestimonial = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const ModalAddServices = () => {
   )
 }
 
-export default ModalAddServices
+export default ModalAddTestimonial

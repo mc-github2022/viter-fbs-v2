@@ -20,10 +20,10 @@ const Navigation = ({ menu, submenu }) => {
   };
 
   // Function to close all menus (when navigating away)
-const handleCloseMenus = () => {
-  dispatch(setIsHome(false)); // Close the 'Home' menu
-  // Add other state resets if needed for other menus
-};
+  const handleCloseMenus = () => {
+    dispatch(setIsHome(false)); // Close the 'Home' menu
+    // Add other state resets if needed for other menus
+  };
 
   const clickOutsideRef = (e) => {
     if (!ref.current?.contains(e.target)) {
@@ -38,9 +38,9 @@ const handleCloseMenus = () => {
 
   return (
     <>
-      <div className="thedashnav bg-secondary w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray flex flex-col justify-between">
+      <div className="thedashnav bg-[#f5f5f3] w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray flex flex-col justify-between">
         <div className="theLogo ">
-          <h2 className="text-xl mt-5 font-bold text-[white] ">
+          <h2 className="text-xl mt-5 font-bold text-[black] ">
             Frontline Business Solutions
           </h2>
         </div>
@@ -51,7 +51,7 @@ const handleCloseMenus = () => {
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "home"
-                      ? "text-[white] underline underline-offset-4 "
+                      ? "text-[black] underline underline-offset-4 "
                       : "text-dashAccent "
                   }
                 `}
@@ -67,12 +67,12 @@ const handleCloseMenus = () => {
                 />
               </li>
               {store.isHome && (
-                <ul className="submenu ml-10 my-6 text-[12px] ">
+                <ul className="submenu ml-5 my-6 text-[12px] ">
                   <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
                         submenu === "home-banner"
-                          ? "text-[white] py-1"
+                          ? "text-[black] py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -81,9 +81,9 @@ const handleCloseMenus = () => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-process`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
                         submenu === "home-process"
-                          ? "text-[white]  py-1"
+                          ? "text-[black]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -92,9 +92,9 @@ const handleCloseMenus = () => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-services`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
                         submenu === "home-services"
-                          ? "text-[white]  py-1"
+                          ? "text-[black]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -103,9 +103,9 @@ const handleCloseMenus = () => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-partnerWithUs`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
                         submenu === "home-partnerWithUs"
-                          ? "text-[white]  py-1"
+                          ? "text-[black]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -114,9 +114,9 @@ const handleCloseMenus = () => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-testimonial`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
                         submenu === "home-testimonial"
-                          ? "text-[white]  py-1"
+                          ? "text-[black]  py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -125,9 +125,9 @@ const handleCloseMenus = () => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-partners`}>
                     <li
-                      className={` text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
+                      className={` text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
                         submenu === "home-partners"
-                          ? "text-[white] py-1"
+                          ? "text-[black] py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -136,9 +136,9 @@ const handleCloseMenus = () => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-insights`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent hover:bg-primary ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
                         submenu === "home-insights"
-                          ? "text-[white] py-1"
+                          ? "text-[black] py-1"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -151,23 +151,23 @@ const handleCloseMenus = () => {
               <li
                 className={` flex justify-between items-center p-1
                   ${
-                    menu === "services"
-                      ? "text-[white] underline underline-offset-4 "
+                    menu === "special-offers"
+                      ? "text-[black] underline underline-offset-4 "
                       : "text-dashAccent "
                   }
                 `}
                 onClick={handleCloseMenus}
               >
-                <Link to={`${devNavUrl}/services`}>
+                <Link to={`${devNavUrl}/special-offers`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5">Services</span>
+                    <span className="ml-2.5">Special Offers</span>
                   </div>
                 </Link>
               </li>
               {/* <li
                 className={
                   activeSection === "ourOrigin"
-                    ? "text-[white] bg-primary py-1 underline underline-offset-4"
+                    ? "text-[black] bg-primary py-1 underline underline-offset-4"
                     : "text-dashAccent"
                 }
                 onClick={() => scrollToSection("ourOrigin")}
@@ -249,10 +249,10 @@ const handleCloseMenus = () => {
           </div>
         </div>
         <div className="border-t-[2px] border-dashAccent flex flex-col gap-2 bottom-0">
-          <h5 className="mt-[10px] text-[white] text-sm">Powered by:</h5>
+          <h5 className="mt-[10px] text-[black] text-sm">Powered by:</h5>
           <div className="w-[120px] h-[44px]">
             <img
-              src={`${devBaseImgUrl}/logo-fbs.png`}
+              src={`${devBaseImgUrl}/logo.png`}
               alt=""
               className="object-cover"
             />
