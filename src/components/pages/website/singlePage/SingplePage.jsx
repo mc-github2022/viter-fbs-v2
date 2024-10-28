@@ -9,7 +9,7 @@ import { insight } from "../home/data";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl, formatDate } from "../../../helpers/functions-general";
 
-const SingplePage = ({ itemEdit }) => {
+const SingplePage = () => {
   const {
     isFetching,
     error,
@@ -25,22 +25,33 @@ const SingplePage = ({ itemEdit }) => {
   const { slug } = useParams();
 
   const [html, setHtml] = React.useState("");
+  // Initial useEffect to set default html if insightData is available
   useEffect(() => {
     if (insightData?.data.length > 0) {
       setHtml(insightData?.data[0].home_insights_paragraph_a);
     }
   }, [insightData]);
 
-  // const [html] = React.useState(
-  //   insightData?.data.length > 0
-  //     ? insightData?.data[0].home_insights_paragraph_a
-  //     : ""
-  // );
+  console.log(html);
 
+  // Update html based on slug and insightData
   useEffect(() => {
     if (!insightData) return; // Early return if insightData is not yet available
+
+    const matchingInsight = insightData.data.find(
+      (item) =>
+        item.home_insights_slug?.trim().toLowerCase() ===
+        slug?.trim().toLowerCase()
+    );
+
+    if (matchingInsight) {
+      setHtml(matchingInsight.home_insights_paragraph_a);
+    } else {
+      setHtml(""); // Clear HTML if no match is found
+    }
   }, [slug, insightData]);
 
+  // Function to get the post based on slug
   const getInsights = () => {
     if (!insightData || !Array.isArray(insightData.data)) {
       return undefined;
@@ -87,9 +98,6 @@ const SingplePage = ({ itemEdit }) => {
                   className="rounded-lg object-cover mb-8 w-full max-h-[700px] object-center"
                 />
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
-                {/* <p className="mb-4">{post.home_insights_paragraph_a}</p> */}
-                {/* <p className="mb-4">{post.home_insights_paragraph_b}</p>
-                <p>{post.home_insights_paragraph_c}</p> */}
               </div>
               <div className="order-1 mt-6 md:mt-0">
                 <div className="mb-12">

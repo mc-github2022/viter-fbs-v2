@@ -263,7 +263,7 @@
     @apply text-2xl text-[white] bg-[black] bg-opacity-50 transition-all opacity-0 group-hover:opacity-40 w-full grid place-items-center h-full absolute top-0 left-0;
   }
   .postContent p {
-    @apply pb-4
+    @apply pb-4;
   }
 }
 
