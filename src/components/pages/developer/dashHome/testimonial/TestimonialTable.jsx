@@ -9,6 +9,7 @@ import TableLoading from "../../../../partials/spinners/TableLoading";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 const TestimonialTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -22,9 +23,9 @@ const TestimonialTable = ({ setItemEdit }) => {
     status,
     data: testimonialData,
   } = useQueryData(
-    "/v1/testimonial", // endpoint
+    "/v1/testimonials", // endpoint
     "get", // method
-    "testimonial" // key
+    "testimonials" // key
   );
 
   let counter = 1;
@@ -36,8 +37,8 @@ const TestimonialTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.home_insights_title);
-    setIsId(item.home_insights_aid);
+    setIsData(item.home_testimonial_name);
+    setIsId(item.home_testimonial_aid);
   };
 
   return (
@@ -50,12 +51,11 @@ const TestimonialTable = ({ setItemEdit }) => {
             <thead>
               <tr className="text-[black]">
                 <th className="pl-2 w-[1rem]">#</th>
-                <th>Category</th>
-                <th className="w-[10rem]">Title</th>
-                <th className="w-[10rem]">Slug</th>
-                <th className="w-[8rem]">Date</th>
-                <th>Content</th>
-                <th className="w-[8rem]">Image</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th className="w-[30rem]">Message</th>
+                <th>Image</th>
+                <th>Logo</th>
                 <th className="text-right">Actions</th>
               </tr>
             </thead>
@@ -81,22 +81,19 @@ const TestimonialTable = ({ setItemEdit }) => {
                 <tr key={key} className="place-content-start text-[14px]">
                   <td className="pl-2 place-content-start">{counter++}</td>
                   <td className="place-content-start">
-                    {item.home_insights_category}
+                    {item.home_testimonial_name}
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_title}
+                    {item.home_testimonial_position}
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_slug}
-                  </td>
-                  <td className="place-content-start">
-                    {formatDate(item.home_insights_date)}
+                    {item.home_testimonial_message}
                   </td>
                   <td>
-                    <p>{item.home_insights_paragraph_a}</p>
+                    <p>{item.home_testimonial_client_img}</p>
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_img}
+                    {item.home_testimonial_logo_img}
                   </td>
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                     <button
@@ -124,8 +121,8 @@ const TestimonialTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"testimonial"}
-          mysqlEndpoint={`/v1/testimonial/${id}`}
+          queryKey={"testimonials"}
+          mysqlEndpoint={`/v1/testimonials/${id}`}
           item={isData}
         />
       )}

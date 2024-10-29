@@ -48,7 +48,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
     serServiceDropdown(false);
     serServiceDropdown(true);
     setMenuIdentifier(item);
-    console.log(item);
+    // console.log(item);
   };
 
   return (
@@ -268,7 +268,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     return (
                       <Link
                         key={key}
-                        to={`${devNavUrl}${item.special_offers_link}`} 
+                        to={`${devNavUrl}${item.special_offers_link}`}
                       >
                         <div className="offerItem bg-light p-2 rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
                           <div>
@@ -294,7 +294,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                       </Link>
                     );
                   })}
-                   {/* <Link to="/business-registration">
+                  {/* <Link to="/business-registration">
                     <div className="offerItem bg-light p-2 rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
                       <div>
                         <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">

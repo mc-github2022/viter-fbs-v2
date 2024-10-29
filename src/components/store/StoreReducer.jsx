@@ -103,6 +103,12 @@ export const StoreReducer = (state, action) => {
         isHome: action.payload,
       };
 
+    case "IS_WHYFBS":
+      return {
+        ...state,
+        isWhyFBS: action.payload,
+      };
+
     case "START_INDEX":
       return {
         ...state,

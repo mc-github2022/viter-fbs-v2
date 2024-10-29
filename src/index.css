@@ -236,7 +236,7 @@
     @apply translate-y-3 transition-all;
   }
   .modal.show {
-    @apply bg-black/50 opacity-100;
+    @apply bg-[black/50] opacity-100;
   }
   .modal.show > .animate-slideUp {
     @apply translate-y-0;

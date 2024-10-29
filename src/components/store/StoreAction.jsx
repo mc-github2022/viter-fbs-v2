@@ -116,6 +116,13 @@ export const setIsHome = (val) => {
   };
 };
 
+export const setIsWhyFBS = (val) => {
+  return {
+    type: "IS_WHYFBS",
+    payload: val,
+  };
+};
+
 export const setStartIndex = (val) => {
   return {
     type: "START_INDEX",

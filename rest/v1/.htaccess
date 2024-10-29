@@ -8,10 +8,15 @@ RewriteCond %{REQUEST_FILENAME} !-f
 Header set Access-Control-Allow-Origin *
 
 RewriteRule ^upload-photo$ core/upload-photo.php [L]
+RewriteRule ^upload-multiple-photo$ core/upload-multiple-photo.php [L]
 
 # HOME - BANNER
 RewriteRule ^banner$ controllers/developer/home/banner/banner.php [L]
 RewriteRule ^banner/([0-9]+)$ controllers/developer/home/banner/banner.php?home_bannerid=$1 [L]
+
+# HOME - TESTIMONIALS
+RewriteRule ^testimonials$ controllers/developer/home/testimonials/testimonials.php [L]
+RewriteRule ^testimonials/([0-9]+)$ controllers/developer/home/testimonials/testimonials.php?home_testimonialid=$1 [L]
 
 # HOME - INSIGHT
 RewriteRule ^insights$ controllers/developer/home/insights/insights.php [L]

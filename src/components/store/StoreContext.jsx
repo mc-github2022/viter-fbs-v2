@@ -18,6 +18,7 @@ const initVal = {
   isSearch: false,
   isAnimating: true,
   isHome: false,
+  isWhyFBS: false,
   startIndex: 0,
   isCreatePassSuccess: false,
   isForgotPassSuccess: false,

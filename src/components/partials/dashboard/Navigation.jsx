@@ -4,15 +4,21 @@ import { devBaseImgUrl, devNavUrl } from "../../helpers/functions-general";
 import { IoMdSettings } from "react-icons/io";
 import { GoChevronDown } from "react-icons/go";
 import { StoreContext } from "../../store/StoreContext";
-import { setIsHome } from "../../store/StoreAction";
+import { setIsHome, setIsWhyFBS } from "../../store/StoreAction";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const ref = React.useRef();
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const handleOpenHome = () => {
+  const handleHome = () => {
     dispatch(setIsHome(!store.isHome));
+    dispatch(setIsWhyFBS(false));
+  };
+
+  const handleWhyFBS = () => {
+    dispatch(setIsWhyFBS(!store.isWhyFBS));
+    dispatch(setIsHome(false));
   };
 
   const handleOpen = () => {
@@ -21,7 +27,8 @@ const Navigation = ({ menu, submenu }) => {
 
   // Function to close all menus (when navigating away)
   const handleCloseMenus = () => {
-    dispatch(setIsHome(false)); // Close the 'Home' menu
+    dispatch(setIsHome(false));
+    dispatch(setIsWhyFBS(false)); // Close the 'Home' menu
     // Add other state resets if needed for other menus
   };
 
@@ -55,7 +62,7 @@ const Navigation = ({ menu, submenu }) => {
                       : "text-dashAccent "
                   }
                 `}
-                onClick={handleOpenHome}
+                onClick={handleHome}
               >
                 <div className="nav flex items-center">
                   <span className="ml-2.5">Home</span>
@@ -164,6 +171,63 @@ const Navigation = ({ menu, submenu }) => {
                   </div>
                 </Link>
               </li>
+
+              <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "whyFBS"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-dashAccent "
+                  }
+                `}
+                onClick={handleWhyFBS}
+              >
+                <div className="nav flex items-center">
+                  <span className="ml-2.5">Why FBS?</span>
+                </div>
+                <GoChevronDown
+                  className={`duration-200 text-[15px] ${
+                    store.isWhyFBS && "-rotate-180 duration-200 "
+                  }`}
+                />
+              </li>
+              {store.isWhyFBS && (
+                <ul className="submenu ml-5 my-6 text-[12px] ">
+                  <Link className="!p-0" to={`${devNavUrl}/why-work-with-us`}>
+                    <li
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                        submenu === "why-work-with-us"
+                          ? "text-[black] py-1"
+                          : "border-none text-dashAccent"
+                      }`}
+                    >
+                      Why Work With Us
+                    </li>
+                  </Link>
+                  <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
+                    <li
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                        submenu === "events-activities"
+                          ? "text-[black]  py-1"
+                          : "border-none text-dashAccent"
+                      }`}
+                    >
+                      Events & Activities
+                    </li>
+                  </Link>
+                  <Link className="!p-0" to={`${devNavUrl}/career`}>
+                    <li
+                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                        submenu === "career"
+                          ? "text-[black]  py-1"
+                          : "border-none text-dashAccent"
+                      }`}
+                    >
+                      Career
+                    </li>
+                  </Link>
+                </ul>
+              )}
               {/* <li
                 className={
                   activeSection === "ourOrigin"
