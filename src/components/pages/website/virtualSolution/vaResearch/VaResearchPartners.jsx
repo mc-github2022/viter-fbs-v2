@@ -16,7 +16,7 @@ const VaResearchPartners = () => {
               return (
                 <li key={key}>
                   <img
-                    className="w-[150px] h-[150px] object-contain"
+                    className="object-contain"
                     // src={`${devBaseImgUrl}/web-obich.png`}
                     src={`../../public/img/${logo.imageName}`}
                     alt=""
