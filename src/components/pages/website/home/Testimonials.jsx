@@ -1,10 +1,24 @@
 import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
+import useQueryData from "../../../custom-hooks/useQueryData";
 
 const Testimonials = () => {
   const [testimonialItem, setTestimonialItem] = React.useState();
 
   const [displayTestimonial, setDisplayTestimonial] = React.useState(false);
+
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: testimonialData,
+  } = useQueryData(
+    "/v1/testimonials", // endpoint
+    "get", // method
+    "testimonials" // key
+  );
+
   const handleTestimonial = (item) => {
     setDisplayTestimonial(true);
     setTestimonialItem(item);
@@ -13,7 +27,9 @@ const Testimonials = () => {
 
   React.useEffect(() => {
     setDisplayTestimonial(true);
-    setTestimonialItem("slider-index-1");
+    setTestimonialItem(
+      `slider-index-${testimonialData?.data[0].home_testimonial_aid}`
+    );
   }, []);
 
   return (
@@ -33,215 +49,114 @@ const Testimonials = () => {
                 </p>
               </div>
               <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[150px] lg:h-[150px] z-[1]">
-                <img
-                  // src={`${devBaseImgUrl}/quote.png`}
-                  src={`../../public/img/quote.png`}
-                  className="w-full h-full object-cover object-top block"
-                  alt=""
-                />
+                <div>
+                  <img
+                    // src={`${devBaseImgUrl}/quote.png`}
+                    src={`${devBaseImgUrl}/quote.png`}
+                    className="w-full h-full object-cover object-top block"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
             <div className="flex justify-end">
               <div className="w-full lg:w-[439px] relative z-[14] text-light text-right">
-                <div
-                  className={`${
-                    displayTestimonial && testimonialItem == "slider-index-1"
-                      ? "addEntrance block"
-                      : "hidden"
-                  }`}
-                >
-                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
-                    FBS is a true partner to our firm. They have help form our
-                    vision and trajectory. We are immnensely gratefull our
-                    partnership. Our expectation is to FBS to grow with us. They
-                    are an important part of our success. And beyond the
-                    business perpective, they are fantastic people. We are bless
-                    to work with them.
-                  </p>
-                  <h3 className="text-[24px] font-semibold mb-2">
-                    Robert Han, COO
-                  </h3>
-                  <div className="justify-end flex lg:hidden">
-                    <img
-                      src={`${devBaseImgUrl}/tm_logo.png`}
-                      className="w-[100px]"
-                      alt=""
-                    />
+                {testimonialData?.data.map((item, key) => (
+                  <div
+                    key={key}
+                    className={`${
+                      displayTestimonial &&
+                      testimonialItem ==
+                        `slider-index-${item.home_testimonial_aid}`
+                        ? "addEntrance block"
+                        : "hidden"
+                    }`}
+                  >
+                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
+                      {item.home_testimonial_message}
+                    </p>
+                    <h3 className="text-[24px] font-semibold mb-2">
+                      {item.home_testimonial_name},{" "}
+                      {item.home_testimonial_position}
+                    </h3>
+                    <div className="justify-end flex lg:hidden">
+                      <img
+                        src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
+                        className="w-[100px]"
+                        alt=""
+                      />
+                    </div>
                   </div>
-                </div>
-                <div
-                  className={`${
-                    displayTestimonial && testimonialItem == "slider-index-2"
-                      ? "addEntrance block"
-                      : "hidden"
-                  }`}
-                >
-                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
-                    Frontline has been an incredible organization to work with.
-                    They are friendly, accommodating, and professional, but what
-                    stands out to me the most is how responsive they are. I’m
-                    not sure I have ever worked with an organization as
-                    responsive as they are. I would highly recommend working
-                    with them.
-                  </p>
-                  <h3 className="text-[24px] font-semibold mb-2">
-                    Duane Masters, Executive Director
-                  </h3>
-                  <div className="justify-end flex lg:hidden">
-                    <img
-                      src={`${devBaseImgUrl}/logo-world-focus.png`}
-                      className="w-[100px]"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div
-                  className={`${
-                    displayTestimonial && testimonialItem == "slider-index-3"
-                      ? "addEntrance block"
-                      : "hidden"
-                  }`}
-                >
-                  <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
-                    FBS is a true partner to our firm. They have help form our
-                    vision and trajectory. We are immnensely gratefull our
-                    partnership. Our expectation is to FBS to grow with us. They
-                    are an important part of our success. And beyond the
-                    business perpective, they are fantastic people. We are bless
-                    to work with them.
-                  </p>
-                  <h3 className="text-[24px] font-semibold mb-2">
-                    Hiro Isogawa, CEO
-                  </h3>
-                  <div className="justify-end flex lg:hidden">
-                    <img
-                      src={`${devBaseImgUrl}/tm_logo.png`}
-                      className="w-[100px]"
-                      alt=""
-                    />
-                  </div>
-                </div>
+                ))}
 
                 <div className="sliderNavTestimonials flex gap-2 absolute right-[2%] py-3 lg:bottom-[20%] lg:py-0">
-                  <button
-                    className={`${
-                      displayTestimonial && testimonialItem == "slider-index-1"
-                        ? "bg-secondary"
-                        : "bg-light"
-                    } h-5 w-5 block  rounded-full`}
-                    onClick={() => handleTestimonial("slider-index-1")}
-                  ></button>
-                  <button
-                    className={`${
-                      displayTestimonial && testimonialItem == "slider-index-2"
-                        ? "bg-secondary"
-                        : "bg-light"
-                    } h-5 w-5 block  rounded-full`}
-                    onClick={() => handleTestimonial("slider-index-2")}
-                  ></button>
-                  <button
-                    className={`${
-                      displayTestimonial && testimonialItem == "slider-index-3"
-                        ? "bg-secondary"
-                        : "bg-light"
-                    } h-5 w-5 block  rounded-full`}
-                    onClick={() => handleTestimonial("slider-index-3")}
-                  ></button>
+                  {testimonialData?.data.map((item, key) => (
+                    <button
+                      key={key}
+                      className={`${
+                        displayTestimonial &&
+                        testimonialItem ==
+                          `slider-index-${item.home_testimonial_aid}`
+                          ? "bg-secondary"
+                          : "bg-light"
+                      } h-5 w-5 block  rounded-full`}
+                      onClick={() =>
+                        handleTestimonial(
+                          `slider-index-${item.home_testimonial_aid}`
+                        )
+                      }
+                    ></button>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div className="testimonialPhoto hidden lg:block absolute z-[1] left-[50%] translate-x-[-40%] top-[250px] lg:top-[130px] w-[250px] lg:w-[358px]">
-          <div
-            className={`${
-              displayTestimonial && testimonialItem == "slider-index-1"
-                ? "addEntrance block"
-                : "hidden"
-            }`}
-          >
-            <img
-              // src={`${devBaseImgUrl}/Rober_han.png`}
-              src={`../../public/img/Rober_han.png`}
-              alt=""
-              className="rotate-[5deg]"
-            />
-          </div>
-          <div
-            className={`${
-              displayTestimonial && testimonialItem == "slider-index-2"
-                ? "addEntrance block w-[445px]"
-                : "hidden"
-            }`}
-          >
-            <img
-              // src={`${devBaseImgUrl}/Rober_han.png`}
-              src={`../../public/img/duane_sm.png`}
-              alt=""
-              className=""
-            />
-          </div>
-          <div
-            className={`${
-              displayTestimonial && testimonialItem == "slider-index-3"
-                ? "addEntrance block w-[445px]"
-                : "hidden"
-            }`}
-          >
-            <img
-              // src={`${devBaseImgUrl}/Rober_han.png`}
-              src={`../../public/img/hiro_sm.png`}
-              alt=""
-              className=""
-            />
-          </div>
+          {testimonialData?.data.map((item, key) => (
+            <div
+              key={key}
+              className={`${
+                displayTestimonial &&
+                testimonialItem == `slider-index-${item.home_testimonial_aid}`
+                  ? "addEntrance block"
+                  : "hidden"
+              }`}
+            >
+              <img
+                // src={`${devBaseImgUrl}/Rober_han.png`}
+                src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
+                alt=""
+                className="rotate-[5deg]"
+              />
+            </div>
+          ))}
         </div>
+
         <div className="hidden lg:block">
           <div className="smPill w-[72%] h-[100px] 2xl:top-[55%] bg-primary lg:top-[60%] z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg]">
-            <div
-              className={`${
-                displayTestimonial && testimonialItem == "slider-index-1"
-                  ? "addEntrance block"
-                  : "hidden"
-              }`}
-            >
-              <img
-                // src={`${devBaseImgUrl}/tm_logo.png`}
-                src={`../../public/img/tm_logo.png`}
-                className="w-[200px] mt-[30px] ml-[15%]"
-                alt=""
-              />
-            </div>
-            <div
-              className={`${
-                displayTestimonial && testimonialItem == "slider-index-2"
-                  ? "addEntrance block"
-                  : "hidden"
-              }`}
-            >
-              <img
-                // src={`${devBaseImgUrl}/tm_logo.png`}
-                src={`../../public/img/logo-world-focus.png`}
-                className="w-[150px] mt-[20px] ml-[15%]"
-                alt=""
-              />
-            </div>
-            <div
-              className={`${
-                displayTestimonial && testimonialItem == "slider-index-3"
-                  ? "addEntrance block"
-                  : "hidden"
-              }`}
-            >
-              <img
-                // src={`${devBaseImgUrl}/tm_logo.png`}
-                src={`../../public/img/tm_logo.png`}
-                className="w-[200px] mt-[30px] ml-[15%]"
-                alt=""
-              />
-            </div>
+            {testimonialData?.data.map((item, key) => (
+              <div
+                key={key}
+                className={`${
+                  displayTestimonial &&
+                  testimonialItem == `slider-index-${item.home_testimonial_aid}`
+                    ? "addEntrance block"
+                    : "hidden"
+                }`}
+              >
+                <img
+                  // src={`${devBaseImgUrl}/tm_logo.png`}
+                  src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
+                  className="w-[200px] mt-[30px] ml-[15%]"
+                  alt=""
+                />
+              </div>
+            ))}
           </div>
         </div>
+
         <div className="z-0 hidden lg:block overflow-hidden">
           <div className="radial w-full h-[510px] bgGradientBlack absolute left-[50%] top-[50%] translate-y-[-50%] translate-x-[-50%] overflow-hidden">
             <div className="bigPill w-[72%] h-[300px] 2xl:-top-[10%] bg-primary lg:top-0 z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg] "></div>

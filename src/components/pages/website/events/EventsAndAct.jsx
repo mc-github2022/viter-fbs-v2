@@ -158,7 +158,7 @@ const EventsAndAct = () => {
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                           backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                         }}
-                        className={`blogItem bg-center bg-cover h-full flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem bg-center bg-cover md:h-full flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
