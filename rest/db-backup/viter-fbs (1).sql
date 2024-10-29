@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2024 at 02:23 PM
+-- Generation Time: Oct 30, 2024 at 12:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -155,7 +155,11 @@ CREATE TABLE `special_offers` (
 --
 
 INSERT INTO `special_offers` (`special_offers_aid`, `special_offers_icons`, `special_offers_services`, `special_offers_price`, `special_offers_link`, `special_offers_created`, `special_offers_datetime`) VALUES
-(3, 'FaAddressCard', 'Business Registration', 'Startup Package', '/business-registration', '0000-00-00 00:00:00', '2024-10-28 22:32:16');
+(3, 'FaAddressCard', 'Business Registration', 'Startup Package', '/business-registration', '0000-00-00 00:00:00', '2024-10-28 22:32:16'),
+(4, 'FaBriefcase', 'Human Resource Information System', 'P40 / Employee / Mo.', '/webapp-hris', '0000-00-00 00:00:00', '2024-10-28 22:33:15'),
+(5, 'FaCalculator', 'Online Payroll System', 'P40 / Employee / Mo.', '/webapp-payroll', '0000-00-00 00:00:00', '2024-10-29 07:41:35'),
+(6, 'FaGlobe', 'One-Page Website', '30 Days Trial', '/web-singlepage', '2024-10-29 07:55:23', '2024-10-29 07:55:23'),
+(7, 'FaHeadphones', 'Virtual Assistant Service', '$8 / 40 Hours / Week', '/adminSolution', '2024-10-29 08:22:11', '2024-10-29 08:22:11');
 
 --
 -- Indexes for dumped tables
@@ -223,7 +227,7 @@ ALTER TABLE `home_testimonial`
 -- AUTO_INCREMENT for table `special_offers`
 --
 ALTER TABLE `special_offers`
-  MODIFY `special_offers_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `special_offers_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
