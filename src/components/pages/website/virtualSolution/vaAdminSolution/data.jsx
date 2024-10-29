@@ -97,7 +97,7 @@ export const pricing = [
     duration: "(40 hours per week)",
     info: ["Employee Records", "Task Timer", "Announcement"],
     priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to manage tasks, streamline operations, and increase productivity throughout the week at a more cost-effective rate.",
     link: "/free-trial",
     isActive: 1,
     btnText: "CHOOSE PLAN",
