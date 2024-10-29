@@ -272,7 +272,7 @@
     @apply md:row-span-2 h-full;
   }
   .postItem:first-child .blogItem {
-    @apply h-[550px];
+    @apply h-[267px] md:h-[550px];
   }
 }
 
