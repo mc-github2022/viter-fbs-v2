@@ -3,6 +3,7 @@ import Banner from "../components/pages/developer/dashHome/banner/Banner";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
+import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BookkeepingPage from "../components/pages/website/accountingSolution/bookkeeping/BookkeepingPage";
 import BusinessRegPage from "../components/pages/website/accountingSolution/BusinessReg/BusinessRegPage";
 import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
@@ -171,5 +172,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/special-offers`,
     element: <Services />,
+  },
+  {
+    path: `${devNavUrl}/events-activities`,
+    element: <EventsAndActivities />,
   },
 ];
