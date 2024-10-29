@@ -176,7 +176,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                           )}
                         </div>
                       )}
-
                       <div className="btnImgUpload">
                         <button>
                           <MdOutlineFileUpload />
