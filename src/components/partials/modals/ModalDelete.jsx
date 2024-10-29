@@ -44,7 +44,7 @@ const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
   };
 
   return (
-    <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center z-[999]">
+    <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center z-[9999999]">
       <div
         className=" backdrop bg-[black] opacity-70 h-full w-full absolute top-0 left-0 z-[-1]"
         onClick={handleClose}

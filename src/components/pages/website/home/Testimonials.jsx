@@ -26,11 +26,13 @@ const Testimonials = () => {
   };
 
   React.useEffect(() => {
-    setDisplayTestimonial(true);
-    setTestimonialItem(
-      `slider-index-${testimonialData?.data[0].home_testimonial_aid}`
-    );
-  }, []);
+    if (testimonialData?.data?.length > 0) {
+      setDisplayTestimonial(true);
+      setTestimonialItem(
+        `slider-index-${testimonialData.data[0].home_testimonial_aid}`
+      );
+    }
+  }, [testimonialData]);
 
   return (
     <>
@@ -54,7 +56,7 @@ const Testimonials = () => {
                     // src={`${devBaseImgUrl}/quote.png`}
                     src={`${devBaseImgUrl}/quote.png`}
                     className="w-full h-full object-cover object-top block"
-                    alt=""
+                    alt="quote"
                   />
                 </div>
               </div>
@@ -83,7 +85,7 @@ const Testimonials = () => {
                       <img
                         src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
                         className="w-[100px]"
-                        alt=""
+                        alt="company logo"
                       />
                     </div>
                   </div>
@@ -127,7 +129,7 @@ const Testimonials = () => {
               <img
                 // src={`${devBaseImgUrl}/Rober_han.png`}
                 src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                alt=""
+                alt="company logo"
                 className="rotate-[5deg]"
               />
             </div>
@@ -150,7 +152,7 @@ const Testimonials = () => {
                   // src={`${devBaseImgUrl}/tm_logo.png`}
                   src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
                   className="w-[200px] mt-[30px] ml-[15%]"
-                  alt=""
+                  alt="client image"
                 />
               </div>
             ))}
