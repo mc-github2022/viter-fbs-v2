@@ -1,0 +1,26 @@
+<?php
+// check database connection
+$conn = null;
+$conn = checkDbConnection();
+// make instance of classes
+$events_activities = new EventsAndActivities($conn);
+// get should not be present
+
+// check data
+checkPayload($data);
+// get data
+$events_activities->events_activities_img = $data["events_activities_img"];
+$events_activities->events_activities_category = $data["events_activities_category"];
+$events_activities->events_activities_title = $data["events_activities_title"];
+$events_activities->events_activities_slug =  checkIndex($data, "events_activities_slug");
+$events_activities->events_activities_date = $data["events_activities_date"];
+$events_activities->events_activities_description = $data["events_activities_description"];
+$events_activities->events_activities_created = date("Y-m-d H:i:s");
+$events_activities->events_activities_datetime = date("Y-m-d H:i:s");
+
+// //checks newly added data if it already exists
+// isNameExist($events_activities, $events_activities->events_activities_name);
+
+$query = checkCreate($events_activities);
+
+returnSuccess($events_activities, "eventsAndAct", $query);

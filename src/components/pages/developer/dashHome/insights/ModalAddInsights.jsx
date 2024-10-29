@@ -64,9 +64,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     },
   });
 
-  // React.useEffect(() => {
-  //   setAnimate("");
-  // }, []);
 
   const initVal = {
     home_insights_aid: itemEdit ? itemEdit.home_insights_aid : "",
@@ -217,22 +214,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                       disabled={mutation.isPending}
                     />
                   </div>
-                  {/* <div className="input-wrapper">
-                    <InputTextArea
-                      label="Paragraph 2"
-                      type="text"
-                      name="home_insights_paragraph_b"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputTextArea
-                      label="Paragraph 3"
-                      type="text"
-                      name="home_insights_paragraph_c"
-                      disabled={mutation.isPending}
-                    />
-                  </div> */}
                 </div>
                 <div className="form-action">
                   <div className="form-btn">

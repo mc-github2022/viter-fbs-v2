@@ -91,7 +91,7 @@ const SingplePage = () => {
             <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] gap-8 mt-12">
               <div className="postContent">
                 <img
-                  src={`../../public/img/${post.home_insights_img}`}
+                  src={`${devBaseImgUrl}/${post.home_insights_img}`}
                   alt=""
                   className="rounded-lg object-cover mb-8 w-full max-h-[700px] object-center"
                 />
