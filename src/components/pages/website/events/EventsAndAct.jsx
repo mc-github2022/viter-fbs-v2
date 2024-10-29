@@ -5,21 +5,22 @@ import Slider from "react-slick/lib/slider";
 import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import { eventsAndAct } from "./data";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
       style={{
+        background: "#ac1e72",
         position: "absolute",
         color: "white",
         top: "50%",
-        transform: "translateY(-50%)",
-        right: "-20px",
+        right: "-6%",
         fontSize: "3rem",
         cursor: "pointer",
-        background: "#ac1f72",
-        borderRadius: "50%",
+        borderRadius: "100%",
         width: "48px",
         height: "48px",
         display: "grid",
@@ -27,7 +28,7 @@ function SampleNextArrow(props) {
       }}
       onClick={onClick}
     >
-      <IoIosArrowForward className="text-[2rem]" />
+      <IoIosArrowForward className="text-3xl" />
     </div>
   );
 }
@@ -38,15 +39,14 @@ function SamplePrevArrow(props) {
     <div
       style={{
         position: "absolute",
+        background: "#ac1e72",
         color: "white",
         top: "50%",
-        transform: "translateY(-50%)",
-        left: "-20px",
+        left: "-6%",
         fontSize: "3rem",
         zIndex: "1",
         cursor: "pointer",
-        background: "#ac1f72",
-        borderRadius: "50%",
+        borderRadius: "100%",
         width: "48px",
         height: "48px",
         display: "grid",
@@ -54,18 +54,29 @@ function SamplePrevArrow(props) {
       }}
       onClick={onClick}
     >
-      <IoIosArrowBack className="text-[2rem]" />
+      <IoIosArrowBack className="text-3xl" />
     </div>
   );
 }
 
 const EventsAndAct = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: eventsAndActivitiesData,
+  } = useQueryData(
+    "/v1/eventsAndAct", // endpoint
+    "get", // method
+    "eventsAndAct" // key
+  );
+
   var EventsSliderSettings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 3,
-    centerPadding: "50px",
     slidesToScroll: 1,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
@@ -87,7 +98,7 @@ const EventsAndAct = () => {
           width: "20px",
           height: "20px",
           color: "blue",
-          background: "#ac1f72",
+          background: "gray",
           borderRadius: "50%",
           opacity: "50%",
         }}
@@ -133,29 +144,31 @@ const EventsAndAct = () => {
           </div>
           <div className="wrapper mb-24">
             <div className="grid grid-cols-1 md:grid-cols-[_2fr_1fr] md:grid-rows-2 gap-4 order-2  mb-12 lg:mb-0">
-              {eventsAndAct.map((post, key) => {
+              {eventsAndActivitiesData?.data.map((post, key) => {
                 if (key > 2) {
                   return;
                 }
                 return (
-                  <div key={key} className={`${post.customCss}`}>
-                    <Link to={`/events-and-activities/${post.postSlug}`}>
+                  <div key={key} className="postItem">
+                    <Link
+                      to={`/events-and-activities/${post.events_activities_slug}`}
+                    >
                       <div
                         style={{
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-                          backgroundImage: `url(../../public/img/${post.postImage})`,
+                          backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                         }}
-                        className={`blogItem bg-center bg-cover ${post.customCss2} flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem bg-center bg-cover md:h-full flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
                             <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                              {post.postCategory}
+                              {post.events_activities_category}
                             </h4>
                           </div>
                           <div className="blogExcerpt p-10 relative z-[1]">
                             <p className="text-light font-bold text-lg">
-                              {post.postTitle}
+                              {post.events_activities_title}
                             </p>
                           </div>
                         </div>
@@ -171,30 +184,63 @@ const EventsAndAct = () => {
             <h2 className="text-3xl font-semibold text-primary mb-8">
               See More
             </h2>
-            <Slider {...EventsSliderSettings}>
-              {eventsAndAct.map((post, key) => {
-                if (key < 3) {
-                  return;
-                }
-                return (
-                  <div key={key} className={`${post.customCss}`}>
-                    <Link to={`/events-and-activities/${post.postSlug}`}>
+            {eventsAndActivitiesData?.data.length > 3 ? (
+              <Slider {...EventsSliderSettings}>
+                {eventsAndActivitiesData?.data.map((post, key) => {
+                  return (
+                    <div key={key} className="h-[350px]">
+                      <Link
+                        to={`/events-and-activities/${post.events_activities_slug}`}
+                      >
+                        <div
+                          style={{
+                            // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+                            backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
+                          }}
+                          className="blogItem bg-center bg-cover max-w-[418px] min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                        >
+                          <div>
+                            <div className="blogTitle relative z-[1]">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {post.events_activities_category}
+                              </h4>
+                            </div>
+                            <div className="blogExcerpt p-10 relative z-[1]">
+                              <p className="text-light font-bold text-lg">
+                                {post.events_activities_title}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                        </div>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </Slider>
+            ) : (
+              <div className="gap-4 flex flex-col place-self-center lg:flex lg:flex-row lg:gap-4 md:place-content-center">
+                {eventsAndActivitiesData?.data.map((post, key) => (
+                  <div key={key} className="h-[350px]">
+                    <Link
+                      to={`/events-and-activities/${post.events_activities_slug}`}
+                    >
                       <div
                         style={{
                           // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-                          backgroundImage: `url(../../public/img/${post.postImage})`,
+                          backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                         }}
-                        className={`blogItem mx-2 bg-center bg-cover ${post.customCss2} flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                        className={`blogItem mx-2 bg-center bg-cover h-[350px] w-[410px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
                           <div className="blogTitle relative z-[1]">
                             <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                              {post.postCategory}
+                              {post.events_activities_category}
                             </h4>
                           </div>
                           <div className="blogExcerpt p-10 relative z-[1]">
                             <p className="text-light font-bold text-lg">
-                              {post.postTitle}
+                              {post.events_activities_title}
                             </p>
                           </div>
                         </div>
@@ -202,9 +248,9 @@ const EventsAndAct = () => {
                       </div>
                     </Link>
                   </div>
-                );
-              })}
-            </Slider>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

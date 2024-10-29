@@ -83,7 +83,8 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
   const yupSchema = Yup.object({});
 
-  // console.log(itemEdit.home_testimonial_logo_img);
+  console.log("itemEdit:", itemEdit);
+  console.log("photoArrayList:", photoArrayList);
 
   return (
     <ModalAddWrapper
@@ -104,9 +105,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             const data = {
               ...values,
               home_testimonial_client_img:
-                photoArrayList[0]?.name || itemEdit.home_testimonial_client_img,
+                photoArrayList[1]?.name || itemEdit.home_testimonial_client_img,
               home_testimonial_logo_img:
-                photoArrayList[1]?.name || itemEdit.home_testimonial_logo_img,
+                photoArrayList[0]?.name || itemEdit.home_testimonial_logo_img,
             };
             uploadMultiplePhoto(); // to save the photo when submit
             mutation.mutate(data);
@@ -121,55 +122,44 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                       Upload 2 Images
                     </span>
                     <div className="relative w-fit m-auto group">
-                      {itemEdit === null && photoArrayList === null ? (
+                      {(!itemEdit && !photoArrayList) ||
+                      (itemEdit &&
+                        !itemEdit.home_testimonial_logo_img &&
+                        !photoArrayList) ? (
+                        // Placeholder if no image is available
                         <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
-                          <div className="">
-                            <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
-                              Upload Image
-                            </h1>
-                          </div>
-                        </div>
-                      ) : (itemEdit &&
-                          !itemEdit.home_testimonial_client_img &&
-                          !photoArrayList) ||
-                        (!itemEdit && !photoArrayList) ? (
-                        <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
-                          <div>
-                            <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight grid place-items-center text-gray text-[gray] text-sm text-center mt-5">
-                              Upload Image
-                            </h1>
-                          </div>
+                          <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                          <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                            Upload Image
+                          </h1>
                         </div>
                       ) : (
+                        // Image display block
                         <div>
                           {photoArrayList && photoArrayList.length > 0 ? (
-                            // Display uploaded images from photoArrayList
                             <div className="flex flex-col gap-3">
                               {photoArrayList.map((file, index) => (
                                 <img
                                   key={index}
                                   src={URL.createObjectURL(file)}
                                   alt="Uploaded Preview"
+                                  className="w-48 h-24 object-cover rounded-md"
                                 />
                               ))}
                             </div>
                           ) : (
-                            // If no uploaded images, show images from itemEdit
-                            itemEdit &&
-                            itemEdit.data &&
-                            itemEdit.data.map((item, index) => (
+                            itemEdit?.data?.map((item, index) => (
                               <div key={index}>
                                 <img
                                   src={
-                                    initVal.home_testimonial_client_img
-                                      ? `${devBaseImgUrl}/${initVal.home_testimonial_client_img}`
-                                      : initVal.home_testimonial_logo_img
+                                    initVal.home_testimonial_logo_img
                                       ? `${devBaseImgUrl}/${initVal.home_testimonial_logo_img}`
+                                      : initVal.home_testimonial_client_img
+                                      ? `${devBaseImgUrl}/${initVal.home_testimonial_client_img}`
                                       : ""
                                   }
                                   alt="Testimonial Image"
+                                  className="w-48 h-24 object-cover rounded-md"
                                 />
                               </div>
                             ))
