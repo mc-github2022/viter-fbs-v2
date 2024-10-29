@@ -120,8 +120,8 @@ export const pricing = [
 
 export const clientSaysTitle = [
   {
-    subTitle: "What our",
-    mainTitle: "clients say",
+    subTitle: "What Our",
+    mainTitle: "Clients Say",
   },
 ];
 

@@ -282,7 +282,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                                   )}
                                 </span>
                               </li>
-                              <li className="text-xs w-[20px]">
+                              <li className="text-xs w-[120px]">
                                 {item.special_offers_services}
                               </li>
                             </ul>
