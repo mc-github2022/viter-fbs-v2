@@ -105,9 +105,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             const data = {
               ...values,
               home_testimonial_client_img:
-                photoArrayList[1]?.name || itemEdit.home_testimonial_client_img,
+                photoArrayList[0]?.name || itemEdit.home_testimonial_client_img,
               home_testimonial_logo_img:
-                photoArrayList[0]?.name || itemEdit.home_testimonial_logo_img,
+                photoArrayList[1]?.name || itemEdit.home_testimonial_logo_img,
             };
             uploadMultiplePhoto(); // to save the photo when submit
             mutation.mutate(data);
@@ -124,7 +124,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                     <div className="relative w-fit m-auto group">
                       {(!itemEdit && !photoArrayList) ||
                       (itemEdit &&
-                        !itemEdit.home_testimonial_logo_img &&
+                        !itemEdit.home_testimonial_client_img &&
                         !photoArrayList) ? (
                         // Placeholder if no image is available
                         <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
@@ -152,10 +152,10 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                               <div key={index}>
                                 <img
                                   src={
-                                    initVal.home_testimonial_logo_img
-                                      ? `${devBaseImgUrl}/${initVal.home_testimonial_logo_img}`
-                                      : initVal.home_testimonial_client_img
+                                    initVal.home_testimonial_client_img
                                       ? `${devBaseImgUrl}/${initVal.home_testimonial_client_img}`
+                                      : initVal.home_testimonial_logo_img
+                                      ? `${devBaseImgUrl}/${initVal.home_testimonial_logo_img}`
                                       : ""
                                   }
                                   alt="Testimonial Image"
