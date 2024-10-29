@@ -139,9 +139,6 @@ const Insights = () => {
               {insightData?.data.length > 3 ? (
                 <Slider {...settings}>
                   {insightData.data.map((post, key) => {
-                    if (key > 2) {
-                      return null;
-                    }
                     return (
                       <div key={key} className="px-4 md:px-0">
                         <Link to={`/insight/${post.home_insights_slug}`}>
