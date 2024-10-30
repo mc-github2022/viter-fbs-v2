@@ -94,16 +94,34 @@ const CareerPage = () => {
                   <div
                     onClick={() => handleJobAccordion(item.careers_aid)}
                     className={`${
-                      jobAccordion && jobIdentifier === item.careers_aid
-                        ? "min-h-[200px] transition-all !bg-[#eedce8] "
+                      jobAccordion &&
+                      jobIdentifier === item.careers_aid &&
+                      item.careers_job_status === "On going"
+                        ? `${
+                            item.careers_job_status === "On going"
+                              ? "min-h-[200px] transition-all !bg-[#eedce8]"
+                              : ""
+                          }`
                         : "h-[104px] transition-all "
                     } jobItem bg-[#f8f8f8] p-5 rounded-lg addShadow  cursor-pointer  overflow-hidden mb-8`}
                   >
                     <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-2 md:gap-6 ">
-                        <div className="bg-[#eedce8] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md">
+                      <div className="flex items-center gap-2 md:gap-6">
+                        <div
+                          className={`${
+                            item.careers_job_status === "On going"
+                              ? "bg-[#eedce8] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
+                              : "bg-[gray] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
+                          }`}
+                        >
                           {SelectedIcon ? (
-                            <SelectedIcon className="text-[40px] text-primary" />
+                            <SelectedIcon
+                              className={`${
+                                item.careers_job_status === "On going"
+                                  ? "text-[40px] text-primary"
+                                  : "text-[40px] text-[black]"
+                              } `}
+                            />
                           ) : (
                             "No icon selected"
                           )}
@@ -135,25 +153,34 @@ const CareerPage = () => {
                         </div>
                       </div>
                       <div className="flex items-center md:gap-6">
-                        <div>
-                          <a
-                            href="#"
-                            onClick={() =>
-                              handleModalJob(item.careers_job_title)
-                            }
-                            className="btn bg-secondary text-light !py-1.5 !px-12 hidden md:block "
-                          >
-                            APPLY
-                          </a>
-                        </div>
-                        {jobAccordion && jobIdentifier === item.careers_aid ? (
-                          <FiChevronsUp className="text-3xl text-[#acacac]" />
+                        {item.careers_job_status === "On going" ? (
+                          <div>
+                            <a
+                              href="#"
+                              onClick={() =>
+                                handleModalJob(item.careers_job_title)
+                              }
+                              className="btn bg-secondary text-light !py-1.5 !px-12 hidden md:block "
+                            >
+                              APPLY
+                            </a>
+                          </div>
                         ) : (
-                          <LuChevronsDown className="text-3xl text-[#acacac]" />
+                          ""
+                        )}
+
+                        {item.careers_job_status === "On going" ? (
+                          jobAccordion && jobIdentifier === item.careers_aid ? (
+                            <FiChevronsUp className="text-3xl text-[#acacac]" />
+                          ) : (
+                            <LuChevronsDown className="text-3xl text-[#acacac]" />
+                          )
+                        ) : (
+                          ""
                         )}
                       </div>
                     </div>
-                    <div className="jobDesc px-6 md:px-0 md:ml-[103px] mt-6">
+                    <div className="jobDesc px-6 md:px-0 md:mx-[103px] mt-6">
                       <div
                         dangerouslySetInnerHTML={{
                           __html: item.careers_job_description,
