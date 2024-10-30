@@ -62,7 +62,7 @@ const Testimonials = () => {
               </div>
             </div>
             <div className="flex justify-end">
-              <div className="w-full lg:w-[439px] relative z-[14] text-light text-right">
+              <div className="w-full lg:w-[455px] relative z-[14] text-light text-right">
                 {testimonialData?.data.map((item, key) => (
                   <div
                     key={key}
@@ -74,7 +74,7 @@ const Testimonials = () => {
                         : "hidden"
                     }`}
                   >
-                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto text-sm ">
+                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[455px] ml-auto text-sm ">
                       {item.home_testimonial_message}
                     </p>
                     <h3 className="text-[24px] font-semibold mb-2">
