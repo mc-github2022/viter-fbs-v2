@@ -14,8 +14,18 @@ import { devNavUrl } from "../helpers/functions-general";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import * as TiIcons from "react-icons/ti";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
 
-const icons = { ...FaIcons, ...AiIcons, ...IoIcons };
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+};
 
 const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
   const [serviceDropdown, serServiceDropdown] = React.useState(false);

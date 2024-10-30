@@ -4,6 +4,8 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "../../../../helpers/queryData";
 import {
@@ -14,11 +16,22 @@ import {
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
 import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
-import { InputSelect, InputText, InputTextArea } from "../../../../helpers/FormInputs";
+import {
+  InputSelect,
+  InputText,
+  InputTextArea,
+} from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 
-const icons = { ...FaIcons, ...AiIcons, ...IoIcons, ...TiIcons };
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+};
 
 const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -35,7 +48,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
 
   React.useEffect(() => {
     if (itemEdit) {
-      setIcon(itemEdit.special_offers_icons);
+      setIcon(itemEdit.careers_icon);
     }
   }, [itemEdit]);
 
@@ -51,7 +64,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/careers/${itemEdit.special_offers_aid}` // update
+          ? `/v1/careers/${itemEdit.careers_aid}` // update
           : `/v1/careers`, // create
         itemEdit ? "put" : "post",
         values
@@ -72,11 +85,15 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
   });
 
   const initVal = {
-    special_offers_aid: itemEdit ? itemEdit.special_offers_aid : "",
-    special_offers_icons: itemEdit ? itemEdit.special_offers_icons : "",
-    special_offers_services: itemEdit ? itemEdit.special_offers_services : "",
-    special_offers_price: itemEdit ? itemEdit.special_offers_price : "",
-    special_offers_link: itemEdit ? itemEdit.special_offers_link : "",
+    careers_aid: itemEdit ? itemEdit.careers_aid : "",
+    careers_job_title: itemEdit ? itemEdit.careers_job_title : "",
+    careers_job_classification: itemEdit
+      ? itemEdit.careers_job_classification
+      : "",
+    careers_job_mode: itemEdit ? itemEdit.careers_job_mode : "",
+    careers_job_status: itemEdit ? itemEdit.careers_job_status : "",
+    careers_job_description: itemEdit ? itemEdit.careers_job_description : "",
+    careers_icon: itemEdit ? itemEdit.careers_icon : "",
   };
 
   const yupSchema = Yup.object({});
@@ -99,7 +116,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              special_offers_icons: icon,
+              careers_icon: icon,
             };
             mutation.mutate(data);
           }}
@@ -153,7 +170,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                     <InputText
                       label="Job Title"
                       type="text"
-                      name="special_offers_services"
+                      name="careers_job_title"
                       disabled={mutation.isPending}
                     />
                   </div>
@@ -161,7 +178,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                     <InputSelect
                       label="Employee Classification"
                       type="text"
-                      name="special_offers_price"
+                      name="careers_job_classification"
                       disabled={mutation.isPending}
                     >
                       <option value="" disabled>
@@ -175,7 +192,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                     <InputSelect
                       label="Mode of Work"
                       type="text"
-                      name="special_offers_"
+                      name="careers_job_mode"
                       disabled={mutation.isPending}
                     >
                       <option value="" disabled>
@@ -190,7 +207,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                     <InputSelect
                       label="Job Status"
                       type="text"
-                      name="special_offers_"
+                      name="careers_job_status"
                       disabled={mutation.isPending}
                     >
                       <option value="" disabled>
@@ -204,7 +221,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                     <InputTextArea
                       label="Job Description"
                       type="text"
-                      name="home_insights_paragraph_a"
+                      name="careers_job_description"
                       disabled={mutation.isPending}
                     />
                   </div>

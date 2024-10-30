@@ -11,17 +11,10 @@ const Navigation = ({ menu, submenu }) => {
 
   const handleHome = () => {
     dispatch(setIsHome(!store.isHome));
-    dispatch(setIsWhyFBS(false));
   };
 
   const handleWhyFBS = () => {
     dispatch(setIsWhyFBS(!store.isWhyFBS));
-    dispatch(setIsHome(false));
-  };
-
-  const handleCloseMenus = () => {
-    dispatch(setIsHome(false));
-    dispatch(setIsWhyFBS(false));
   };
 
   return (
@@ -143,7 +136,6 @@ const Navigation = ({ menu, submenu }) => {
                       : "text-dashAccent "
                   }
                 `}
-                onClick={handleCloseMenus}
               >
                 <Link to={`${devNavUrl}/special-offers`}>
                   <div className="nav flex items-center">

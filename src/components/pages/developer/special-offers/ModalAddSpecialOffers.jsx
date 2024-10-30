@@ -13,8 +13,17 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
 
-const icons = { ...FaIcons, ...AiIcons, ...IoIcons, ...TiIcons };
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+};
 
 const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -25,19 +34,16 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
 
   const Icon = icon ? icons[icon] : null;
 
-
   const filteredIcons = Object.keys(icons).filter((iconKey) =>
     iconKey.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
- 
   React.useEffect(() => {
     if (itemEdit) {
       setIcon(itemEdit.special_offers_icons);
     }
   }, [itemEdit]);
 
-  
   const handleClose = () => {
     setTimeout(() => {
       dispatch(setIsAdd(false));

@@ -37,8 +37,8 @@ const CareersTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.events_activities_title);
-    setIsId(item.events_activities_aid);
+    setIsData(item.careers_job_title);
+    setIsId(item.careers_aid);
   };
 
   return (
@@ -54,7 +54,7 @@ const CareersTable = ({ setItemEdit }) => {
                 <th>Icon Name</th>
                 <th>Job Title</th>
                 <th>employee classification</th>
-                <th >Mode of Work</th>
+                <th>Mode of Work</th>
                 <th>Job Status</th>
                 <th className="w-[15rem]">Job Description</th>
                 <th className="text-right">Actions</th>
@@ -81,24 +81,23 @@ const CareersTable = ({ setItemEdit }) => {
               {careersData?.data.map((item, key) => (
                 <tr key={key} className="place-content-start text-[14px]">
                   <td className="pl-2 place-content-start">{counter++}</td>
+                  <td className="place-content-start">{item.careers_icon}</td>
                   <td className="place-content-start">
-                    {item.events_activities_category}
+                    {item.careers_job_title}
                   </td>
                   <td className="place-content-start">
-                    {item.events_activities_title}
+                    {item.careers_job_classification}
                   </td>
                   <td className="place-content-start">
-                    {item.events_activities_slug}
+                    {item.careers_job_mode}
                   </td>
                   <td className="place-content-start">
-                    {formatDate(item.events_activities_date)}
+                    {item.careers_job_status}
                   </td>
                   <td>
-                    <p>{item.events_activities_description}</p>
+                    <p>{item.careers_job_description}</p>
                   </td>
-                  <td className="place-content-start">
-                    {item.events_activities_img}
-                  </td>
+
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                     <button
                       className="tooltip-action-table"

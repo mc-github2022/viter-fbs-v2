@@ -40,25 +40,25 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     }, 200);
   };
 
-  const handleClientImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPhotoArrayList((prev) => [
-        ...prev.filter((photo) => photo.field !== "client"),
-        { file, field: "client" },
-      ]);
-    }
-  };
+  // const handleClientImageUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setPhotoArrayList((prev) => [
+  //       ...prev.filter((photo) => photo.field !== "client"),
+  //       { file, field: "client" },
+  //     ]);
+  //   }
+  // };
 
-  const handleLogoImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPhotoArrayList((prev) => [
-        ...prev.filter((photo) => photo.field !== "logo"),
-        { file, field: "logo" },
-      ]);
-    }
-  };
+  // const handleLogoImageUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setPhotoArrayList((prev) => [
+  //       ...prev.filter((photo) => photo.field !== "logo"),
+  //       { file, field: "logo" },
+  //     ]);
+  //   }
+  // };
 
   const queryClient = useQueryClient();
 
