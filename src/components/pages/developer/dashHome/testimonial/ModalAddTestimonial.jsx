@@ -150,9 +150,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                   <div className="flex gap-4 justify-between">
                     <div className="w-[500px]">
                       <div className="relative w-fit m-auto group">
-                        <span className="top-20 px-2 text-dark">
-                          Upload Client and Logo Images
-                        </span>
                         {/* Display images or placeholders */}
                         <div className="flex flex-row justify-between items-center">
                           {clientImage ? (
@@ -168,7 +165,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                               className="w-48 h-34 object-cover rounded-md"
                             />
                           ) : (
-                            // <Placeholder />
                             ""
                           )}
 
@@ -185,26 +181,35 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                               className="w-48 h-34 object-cover rounded-md"
                             />
                           ) : (
-                            // <Placeholder />
                             ""
                           )}
                         </div>
 
                         {/* Separate input fields for client and logo images */}
-                        <div className="flex items-center gap-4 mt-3">
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="h-10 my-1"
-                            onChange={handleClientImageUpload}
-                          />
+                        <div className="flex items-center gap-4 mt-4">
+                          <div className="relative">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="h-10 my-1"
+                              onChange={handleClientImageUpload}
+                            />
+                            <label className="absolute top-[20px]">
+                              Client Image
+                            </label>
+                          </div>
 
-                          <input
-                            type="file"
-                            accept="image/*"
-                            className="h-10"
-                            onChange={handleLogoImageUpload}
-                          />
+                          <div className="relative">
+                            <input
+                              type="file"
+                              accept="image/*"
+                              className="h-10 my-1"
+                              onChange={handleLogoImageUpload}
+                            />
+                            <label className="absolute top-[20px]">
+                              Logo Image
+                            </label>
+                          </div>
                         </div>
                       </div>
                       <div>
