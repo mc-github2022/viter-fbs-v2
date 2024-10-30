@@ -41,7 +41,7 @@ const CareerPage = () => {
   );
 
   const [html, setHtml] = React.useState("");
-  // Initial useEffect to set default html if careersData is available
+  //Initial useEffect to set default html if careersData is available
   useEffect(() => {
     if (careersData?.data.length > 0) {
       setHtml(careersData?.data[0].careers_job_description);
@@ -58,11 +58,6 @@ const CareerPage = () => {
     setModalJob(!modalJob);
     setJobTitle(item);
   };
-
-  // useEffect(() => {
-  //   setJobAccordion(true);
-  //   setJobIdentifier("starter");
-  // }, []);
 
   React.useEffect(() => {
     if (careersData?.data?.length > 0) {
@@ -118,7 +113,13 @@ const CareerPage = () => {
                             <p className="font-bold text-dark">
                               {item.careers_job_title}
                             </p>
-                            <p className="text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg hidden md:block">
+                            <p
+                              className={`${
+                                item.careers_job_status === "On going"
+                                  ? "text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg hidden md:block"
+                                  : "text-xs text-[#ef4444] bg-[#F8B1B1] px-3 py-1 rounded-lg hidden md:block"
+                              }`}
+                            >
                               {item.careers_job_status}
                             </p>
                           </div>
@@ -153,7 +154,11 @@ const CareerPage = () => {
                       </div>
                     </div>
                     <div className="jobDesc px-6 md:px-0 md:ml-[103px] mt-6">
-                      <div dangerouslySetInnerHTML={{ __html: html }}></div>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: item.careers_job_description,
+                        }}
+                      ></div>
                       <div className="my-8">
                         <a
                           href="#"
