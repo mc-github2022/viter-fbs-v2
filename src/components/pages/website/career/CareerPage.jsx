@@ -111,7 +111,7 @@ const CareerPage = () => {
                           className={`${
                             item.careers_job_status === "On going"
                               ? "bg-[#eedce8] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
-                              : "bg-[gray] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
+                              : "bg-[#0000001a] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
                           }`}
                         >
                           {SelectedIcon ? (
@@ -119,7 +119,7 @@ const CareerPage = () => {
                               className={`${
                                 item.careers_job_status === "On going"
                                   ? "text-[40px] text-primary"
-                                  : "text-[40px] text-[black]"
+                                  : "text-[40px] text-[#333]"
                               } `}
                             />
                           ) : (
