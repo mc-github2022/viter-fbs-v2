@@ -82,126 +82,95 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Sole Proprietor",
-    rate: "P12,000",
-    duration: "(20 hours per week)",
+    rate: "P6,500 / Month",
+    duration: "Starter",
     info: [
-      <div className="text-left flex items-center gap-3">
+      <div className="text-left flex items-start gap-3">
         <FaCheckCircle className={`text-primary`} />
-        <p className="font-bold">DTI Registration</p>
+        <p>
+          Up to 50 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
+        </p>
       </div>,
-      <div className="text-left">
-        <div className="flex items-center gap-3">
-          <FaCheckCircle className={`text-primary`} />
-          <p className="font-bold">BIR Registratio</p>
-        </div>
-        <ul className="text-sm ml-7">
-          <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
-          <li>Annual Registration (0605)</li>
-        </ul>
-      </div>,
-      <div className="text-left">
-        <div className="flex items-center gap-3">
-          <FaCheckCircle className={`text-primary`} />
-          <p className="font-bold">LGU Registration</p>
-        </div>
-        <ul className="text-sm ml-7">
-          <li>Barangay Permit</li>
-          <li>Mayor's Permit</li>
-          <li>Fire and Safety</li>
-          <li>Zoning Permit</li>
-          <li>Location Clearance</li>
-        </ul>
-      </div>,
-    ],
-    priceDesc:
-      "Get dedicated virtual assistant support for half the week, perfect for business needing flexible help with task and projects without the commitment of full-time hours.",
-    link: "/free-trial",
-    isActive: 0,
-    btnText: "CHOOSE PLAN",
-    customCss: "text-primary",
-  },
-  {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "One Person Corporation (OPC)",
-    rate: "P20,000",
-    duration: "(40 hours per week)",
-    info: [
-      <div className="text-left flex items-center gap-3">
+      <div className="text-left flex items-start gap-3">
         <FaCheckCircle className={`text-primary`} />
-        <p className="font-bold">SEC Registration</p>
-      </div>,
-      <div className="text-left">
-        <div className="flex items-center gap-3">
-          <FaCheckCircle className={`text-primary`} />
-          <p className="font-bold">BIR Registration</p>
-        </div>
-        <ul className="text-sm ml-7">
-          <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
-          <li>Annual Registration (0605)</li>
-          <li>DST Doc Stamp for Subscribed Capital</li>
-        </ul>
-      </div>,
-      <div className="text-left">
-        <div className="flex items-center gap-3">
-          <FaCheckCircle className={`text-primary`} />
-          <p className="font-bold">LGU Registration</p>
-        </div>
-        <ul className="text-sm ml-7">
-          <li>Barangay Permit</li>
-          <li>Mayor's Permit</li>
-          <li>Fire and Safety</li>
-          <li>Zoning Permit</li>
-          <li>Location Clearance</li>
-          <li>Insurance (CGL)</li>
-        </ul>
+        <p>Annual Revenue of up to P3,000,000</p>
       </div>,
     ],
-    priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    priceDesc: "",
     link: "/free-trial",
     isActive: 0,
     btnText: "CHOOSE PLAN",
     customCss: "text-primary",
   },
   {
-    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "Company Incorporation SEC Registration Only",
-    rate: "P20,000",
-    duration: "(40 hours per week)",
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-light" />,
+    title: "Introductory Offer for Corporations",
+    rate: "P12,000 / Month",
+    duration: "Essentials",
     info: [
-      <div className="text-left flex items-center gap-3">
+      <div className="text-left flex items-start gap-3">
+        <FaCheckCircle className={`text-light`} />
+        <p>
+          Up to 100 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
+        </p>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-light`} />
+          <p>Annual Revenue of up to P3,000,000</p>
+        </div>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-light`} />
+          <p>Filing of Tax Returns</p>
+        </div>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-light`} />
+          <p>Monthly Financial Reports</p>
+        </div>
+      </div>,
+    ],
+    priceDesc: "",
+    link: "/free-trial",
+    isActive: 1,
+    btnText: "CHOOSE PLAN",
+    customCss: "text-light",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: "Corporations",
+    rate: "P20,000 / Month",
+    duration: "Small Business",
+    info: [
+      <div className="text-left flex items-start gap-3">
         <FaCheckCircle className={`text-primary`} />
-        <p className="font-bold">SEC Registration</p>
+        <p>
+          Up to 150 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
+        </p>
       </div>,
-      <div className="text-left text-[#a3a3a3]">
-        <div className="text-left flex items-center gap-3">
-          <IoMdCloseCircle className="  text-lg" />
-          <p className="font-bold">BIR Registration</p>
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Annual Revenue of up to P3,000,000</p>
         </div>
-        <ul className="text-sm ml-7">
-          <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
-          <li>Annual Registration (0605)</li>
-        </ul>
       </div>,
-      <div className="text-left text-[#a3a3a3]">
-        <div className="text-left flex items-center gap-3">
-          <IoMdCloseCircle className="  text-lg" />
-          <p className="font-bold">LGU Registration</p>
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Filing of Tax Returns</p>
         </div>
-        <ul className="text-sm ml-7">
-          <li>Barangay Permit</li>
-          <li>Mayor's Permit</li>
-          <li>Fire and Safety</li>
-          <li>Zoning Permit</li>
-          <li>Location Clearance</li>
-        </ul>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Monthly Financial Reports</p>
+        </div>
       </div>,
     ],
-    priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    priceDesc: "",
     link: "/free-trial",
     isActive: 0,
     btnText: "CHOOSE PLAN",
@@ -209,84 +178,112 @@ export const pricing = [
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "Company Incorporation No SEC",
-    rate: "P25,000",
-    duration: "(40 hours per week)",
+    title: "Corporations",
+    rate: "P35,000 / Month",
+    duration: "Medium Business",
     info: [
-      <div className="text-left">
-        <div className="text-left flex items-center gap-3">
-          <FaCheckCircle className={`text-primary text-[17px]`} />
-          <p className="font-bold">BIR Registration</p>
-        </div>
-        <ul className="text-sm ml-7">
-          <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
-          <li>Annual Registration (0605)</li>
-          <li>DST Doc Stamp for Subscribed Capital</li>
-        </ul>
+      <div className="text-left flex items-start gap-3">
+        <FaCheckCircle className={`text-primary`} />
+        <p>
+          Up to 200 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
+        </p>
       </div>,
       <div className="text-left">
-        <div className="text-left flex items-center gap-3">
-          <FaCheckCircle className={`text-primary text-[17px]`} />
-          <p className="font-bold">LGU Registration</p>
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Annual Revenue of up to P3,000,000</p>
         </div>
-        <ul className="text-sm ml-7">
-          <li>Barangay Permit</li>
-          <li>Mayor's Permit</li>
-          <li>Fire and Safety</li>
-          <li>Zoning Permit</li>
-          <li>Location Clearance</li>
-          <li>Insurance (CGL)</li>
-        </ul>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Filing of Tax Returns</p>
+        </div>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Monthly Financial Reports</p>
+        </div>
       </div>,
     ],
-    priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
-    link: "/free-trial",
+    priceDesc: "",
     isActive: 0,
     btnText: "CHOOSE PLAN",
     customCss: "text-primary",
   },
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
-    title: "Company Incorporation",
-    rate: "P35,000",
+    title: "Corporations",
+    rate: "P60,000 / Month",
 
-    duration: "(40 hours per week)",
+    duration: "Plus",
     info: [
-      <div className="text-left flex items-center gap-3">
+      <div className="text-left flex items-start gap-3">
         <FaCheckCircle className={`text-primary`} />
-        <p className="font-bold">SEC Registration</p>
+        <p>
+          Up to 300 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
+        </p>
       </div>,
       <div className="text-left">
-        <div className="text-left flex items-center gap-3">
-          <FaCheckCircle className={`text-primary text-[17px]`} />
-          <p className="font-bold">BIR Registration</p>
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Annual Revenue of up to P3,000,000</p>
         </div>
-        <ul className="text-sm ml-7">
-          <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
-          <li>Annual Registration (0605)</li>
-          <li>DST Doc Stamp for Subscribed Capital</li>
-        </ul>
       </div>,
       <div className="text-left">
-        <div className="text-left flex items-center gap-3">
-          <FaCheckCircle className={`text-primary text-[17px]`} />
-          <p className="font-bold">LGU Registration</p>
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Filing of Tax Returns</p>
         </div>
-        <ul className="text-sm ml-7">
-          <li>Barangay Permit</li>
-          <li>Mayor's Permit</li>
-          <li>Fire and Safety</li>
-          <li>Zoning Permit</li>
-          <li>Location Clearance</li>
-          <li>Insurance (CGL)</li>
-        </ul>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Monthly Financial Reports</p>
+        </div>
       </div>,
     ],
-    priceDesc:
-      "Enjoy full-time virtual assistance, providing your business with consistent, reliable support to mannage tasks, streamline operations, and increase productivity throughout the week at a mose cost-effective rate.",
+    priceDesc: "",
+    link: "/free-trial",
+    isActive: 0,
+    btnText: "CHOOSE PLAN",
+    customCss: "text-primary",
+  },
+  {
+    icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
+    title: "Corporations",
+    rate: "P85,000 / Month",
+
+    duration: "Premium",
+    info: [
+      <div className="text-left flex items-start gap-3">
+        <FaCheckCircle className={`text-primary`} />
+        <p>
+          More than 300 Invoices or Official Receipts (ORs) Issued
+          (Income/Expenses)
+        </p>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Annual Revenue of up to P3,000,000</p>
+        </div>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Filing of Tax Returns</p>
+        </div>
+      </div>,
+      <div className="text-left">
+        <div className="flex items-start gap-3">
+          <FaCheckCircle className={`text-primary`} />
+          <p>Monthly Financial Reports</p>
+        </div>
+      </div>,
+    ],
+    priceDesc: "",
     link: "/free-trial",
     isActive: 0,
     btnText: "CHOOSE PLAN",

@@ -6,9 +6,9 @@ import { pricing } from "./data";
 const ServiceHrPricing = () => {
   return (
     <>
-      <section className="ServiceHrPricing py-20 bg-[#000000] relative overflow-hidden">
-        <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
-        <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
+      <section className="ServiceHrPricing py-20 bg-[#000000] relative sm:overflow-hidden">
+        <div className="footerGradientBlack hidden sm:block absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
+        <div className="absolute bg-light h-[180px] w-full bottom-[-2px] z-[1]"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
@@ -19,12 +19,12 @@ const ServiceHrPricing = () => {
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper md:grid md:grid-cols-2 gap-8 items-center">
+            <div className="wrapper lg:grid lg:grid-cols-2 gap-8 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 md:mb-0 relative z-[1] min-h-[594px] min-w-[400px] text-light text-center p-10 rounded-lg addShadow ${
+                    className={`priceItem mb-5 lg:mb-0 relative z-[1] min-h-[594px] md:min-w-[400px] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid `}
                   >
@@ -53,7 +53,7 @@ const ServiceHrPricing = () => {
                         </div>
                         <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
                           {price.info.map((info, key) => (
-                            <li key={key}>
+                            <li key={key} className="text-left">
                               <FaCheckCircle
                                 className={`${price.customCss} text-light`}
                               />

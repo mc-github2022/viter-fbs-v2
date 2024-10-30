@@ -177,15 +177,21 @@ const BookkeepingPricing = () => {
                         <div className="title mb-4">
                           {price.icon}
                           <h3
-                            className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}
+                            className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-0`}
                           >
                             {price.title}
                           </h3>
+                          <p
+                            className={`${price.customCss} text-lg text-dark font-bold mb-6`}
+                          >
+                            {price.duration}
+                          </p>
                           <p
                             className={`${price.customCss} text-2xl text-dark font-bold`}
                           >
                             {price.rate}
                           </p>
+
                           <div className="grid">
                             <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
                               {price.info.map((info, key) => (

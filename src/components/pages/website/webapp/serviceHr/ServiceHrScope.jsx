@@ -49,13 +49,13 @@ const ServiceHrScope = () => {
                       onClick={() => handleAccordion(scopeList.scopeId)}
                     >
                       <div className="flex items-center gap-4">
-                        {scopeList.scopeIcon}
+                        <div>{scopeList.scopeIcon}</div>
                         <p
                           className={`${
                             accordion && accordionItem === scopeList.scopeId
                               ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                               : "text-dark"
-                          } text-[clamp(16px,4vw,20px)] font-semibold cursor-pointer `}
+                          } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}
                         >
                           {scopeList.scopeTitle}
                         </p>

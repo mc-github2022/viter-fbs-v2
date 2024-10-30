@@ -129,7 +129,7 @@ const ServiceHrPartnersSay = () => {
                             alt=""
                           />
                         </div>
-                        <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
+                        <p className="relative z-10 italic mb-8  md:min-h-0">
                           {testimonial.clientMessage}
                         </p>
                         <div className="logoAndName flex items-center gap-3">
