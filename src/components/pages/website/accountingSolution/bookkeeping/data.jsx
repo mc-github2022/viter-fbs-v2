@@ -82,7 +82,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Sole Proprietor",
-    rate: "P6,500 / Month",
+    rate: "₱6,500 / Month",
     duration: "Starter",
     info: [
       <div className="text-left flex items-start gap-3">
@@ -109,7 +109,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-light" />,
     title: "Introductory Offer for Corporations",
-    rate: "P12,000 / Month",
+    rate: "₱12,000 / Month",
     duration: "Essentials",
     info: [
       <div className="text-left flex items-start gap-3">
@@ -154,7 +154,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Corporations",
-    rate: "P20,000 / Month",
+    rate: "₱20,000 / Month",
     duration: "Small Business",
     info: [
       <div className="text-left flex items-start gap-3">
@@ -199,7 +199,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Corporations",
-    rate: "P35,000 / Month",
+    rate: "₱35,000 / Month",
     duration: "Medium Business",
     info: [
       <div className="text-left flex items-start gap-3">
@@ -243,7 +243,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Corporations",
-    rate: "P60,000 / Month",
+    rate: "₱60,000 / Month",
 
     duration: "Plus",
     info: [
@@ -289,7 +289,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Corporations",
-    rate: "P85,000 / Month",
+    rate: "₱85,000 / Month",
 
     duration: "Premium",
     info: [

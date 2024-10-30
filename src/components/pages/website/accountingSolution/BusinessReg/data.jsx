@@ -83,7 +83,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Sole Proprietor",
-    rate: "P12,000",
+    rate: "₱12,000",
     duration: "(20 hours per week)",
     info: [
       <div className="text-left flex items-center gap-3">
@@ -125,7 +125,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "One Person Corporation (OPC)",
-    rate: "P20,000",
+    rate: "₱20,000",
     duration: "(40 hours per week)",
     info: [
       <div className="text-left flex items-center gap-3">
@@ -169,7 +169,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Company Incorporation SEC Registration Only",
-    rate: "P20,000",
+    rate: "₱20,000",
     duration: "(40 hours per week)",
     info: [
       <div className="text-left flex items-center gap-3">
@@ -211,7 +211,7 @@ export const pricing = [
   {
     icon: <FaRegThumbsUp className="text-[50px] mx-auto mb-4 text-primary" />,
     title: "Company Incorporation No SEC",
-    rate: "P25,000",
+    rate: "₱25,000",
     duration: "(40 hours per week)",
     info: [
       <div className="text-left">
