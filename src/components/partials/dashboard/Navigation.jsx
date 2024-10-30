@@ -28,10 +28,10 @@ const Navigation = ({ menu, submenu }) => {
     <>
       <div className="thedashnav bg-[#f5f5f3] w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray flex flex-col ">
         <div className="theLogo ">
-          <div className="w-[120px] h-[44px] my-5">
+          <div className="w-[130px] h-[44px] my-5">
             <img
               src={`${devBaseImgUrl}/logo.png`}
-              alt=""
+              alt="company logo"
               className="object-cover"
             />
           </div>
@@ -190,15 +190,15 @@ const Navigation = ({ menu, submenu }) => {
                       Events & Activities
                     </li>
                   </Link>
-                  <Link className="!p-0" to={`${devNavUrl}/career`}>
+                  <Link className="!p-0" to={`${devNavUrl}/whyFBS-careers`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
-                        submenu === "career"
+                        submenu === "whyFBS-careers"
                           ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
-                      Career
+                      Careers
                     </li>
                   </Link>
                 </ul>
