@@ -86,13 +86,17 @@ export const pricing = [
     duration: "Starter",
     info: [
       <div className="text-left flex items-start gap-3">
-        <FaCheckCircle className={`text-primary`} />
+        <div className="mt-1">
+          <FaCheckCircle className={`text-primary`} />
+        </div>
         <p>
           Up to 50 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
         </p>
       </div>,
       <div className="text-left flex items-start gap-3">
-        <FaCheckCircle className={`text-primary`} />
+        <div className="mt-1">
+          <FaCheckCircle className={`text-primary`} />
+        </div>
         <p>Annual Revenue of up to P3,000,000</p>
       </div>,
     ],
@@ -109,26 +113,34 @@ export const pricing = [
     duration: "Essentials",
     info: [
       <div className="text-left flex items-start gap-3">
-        <FaCheckCircle className={`text-light`} />
+        <div className="mt-1">
+          <FaCheckCircle className={`text-light`} />
+        </div>
         <p>
           Up to 100 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
         </p>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-light`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-light`} />
+          </div>
           <p>Annual Revenue of up to P3,000,000</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-light`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-light`} />
+          </div>
           <p>Filing of Tax Returns</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-light`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-light`} />
+          </div>
           <p>Monthly Financial Reports</p>
         </div>
       </div>,
@@ -146,26 +158,34 @@ export const pricing = [
     duration: "Small Business",
     info: [
       <div className="text-left flex items-start gap-3">
-        <FaCheckCircle className={`text-primary`} />
+        <div className="mt-1">
+          <FaCheckCircle className={`text-primary`} />
+        </div>
         <p>
           Up to 150 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
         </p>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Annual Revenue of up to P3,000,000</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Filing of Tax Returns</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Monthly Financial Reports</p>
         </div>
       </div>,
@@ -183,26 +203,34 @@ export const pricing = [
     duration: "Medium Business",
     info: [
       <div className="text-left flex items-start gap-3">
-        <FaCheckCircle className={`text-primary`} />
+        <div className="mt-1">
+          <FaCheckCircle className={`text-primary`} />
+        </div>
         <p>
           Up to 200 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
         </p>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Annual Revenue of up to P3,000,000</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Filing of Tax Returns</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Monthly Financial Reports</p>
         </div>
       </div>,
@@ -220,26 +248,34 @@ export const pricing = [
     duration: "Plus",
     info: [
       <div className="text-left flex items-start gap-3">
-        <FaCheckCircle className={`text-primary`} />
+        <div className="mt-1">
+          <FaCheckCircle className={`text-primary`} />
+        </div>
         <p>
           Up to 300 Invoices or Official Receipts (ORs) Issued (Income/Expenses)
         </p>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Annual Revenue of up to P3,000,000</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Filing of Tax Returns</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Monthly Financial Reports</p>
         </div>
       </div>,
@@ -258,7 +294,9 @@ export const pricing = [
     duration: "Premium",
     info: [
       <div className="text-left flex items-start gap-3">
-        <FaCheckCircle className={`text-primary`} />
+        <div className="mt-1">
+          <FaCheckCircle className={`text-primary`} />
+        </div>
         <p>
           More than 300 Invoices or Official Receipts (ORs) Issued
           (Income/Expenses)
@@ -266,19 +304,25 @@ export const pricing = [
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Annual Revenue of up to P3,000,000</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Filing of Tax Returns</p>
         </div>
       </div>,
       <div className="text-left">
         <div className="flex items-start gap-3">
-          <FaCheckCircle className={`text-primary`} />
+          <div className="mt-1">
+            <FaCheckCircle className={`text-primary`} />
+          </div>
           <p>Monthly Financial Reports</p>
         </div>
       </div>,
