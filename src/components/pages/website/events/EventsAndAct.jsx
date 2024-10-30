@@ -161,18 +161,18 @@ const EventsAndAct = () => {
                         className={`blogItem bg-center bg-cover md:h-full flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
                       >
                         <div>
-                          <div className="blogTitle relative z-[1]">
-                            <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                              {post.events_activities_category}
-                            </h4>
-                          </div>
-                          <div className="blogExcerpt p-10 relative z-[1]">
+                          <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                             <p className="text-light font-bold text-lg">
                               {post.events_activities_title}
                             </p>
                           </div>
+                          <div className="blogTitle pb-10 relative z-[1]">
+                            <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                              {post.events_activities_category}
+                            </h4>
+                          </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[100px] md:h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] md:h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>
@@ -200,18 +200,18 @@ const EventsAndAct = () => {
                           className="blogItem bg-center bg-cover max-w-[418px] min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                         >
                           <div>
-                            <div className="blogTitle relative z-[1]">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                {post.events_activities_category}
-                              </h4>
-                            </div>
-                            <div className="blogExcerpt p-10 relative z-[1]">
+                            <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                               <p className="text-light font-bold text-lg">
                                 {post.events_activities_title}
                               </p>
                             </div>
+                            <div className="blogTitle  pb-10 relative z-[1]">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {post.events_activities_category}
+                              </h4>
+                            </div>
                           </div>
-                          <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
                       </Link>
                     </div>
@@ -245,7 +245,7 @@ const EventsAndAct = () => {
                               </p>
                             </div>
                           </div>
-                          <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
                       </Link>
                     </div>
