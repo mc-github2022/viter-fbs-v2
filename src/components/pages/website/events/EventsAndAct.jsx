@@ -74,7 +74,7 @@ const EventsAndAct = () => {
 
   var EventsSliderSettings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -184,9 +184,10 @@ const EventsAndAct = () => {
             <h2 className="text-3xl font-semibold text-primary mb-8">
               See More
             </h2>
-            {eventsAndActivitiesData?.data.length > 3 ? (
+            {eventsAndActivitiesData?.data.length > 6 ? (
               <Slider {...EventsSliderSettings}>
                 {eventsAndActivitiesData?.data.map((post, key) => {
+                  if (key <= 2) return null;
                   return (
                     <div key={key} className="h-[350px]">
                       <Link
@@ -194,7 +195,6 @@ const EventsAndAct = () => {
                       >
                         <div
                           style={{
-                            // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                             backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                           }}
                           className="blogItem bg-center bg-cover max-w-[418px] min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
@@ -220,35 +220,37 @@ const EventsAndAct = () => {
               </Slider>
             ) : (
               <div className="gap-4 flex flex-col place-self-center lg:flex lg:flex-row lg:gap-4 md:place-content-center">
-                {eventsAndActivitiesData?.data.map((post, key) => (
-                  <div key={key} className="h-[350px]">
-                    <Link
-                      to={`/events-and-activities/${post.events_activities_slug}`}
-                    >
-                      <div
-                        style={{
-                          // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-                          backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
-                        }}
-                        className={`blogItem mx-2 bg-center bg-cover h-[350px] w-[410px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer`}
+                {eventsAndActivitiesData?.data.map((post, key) => {
+                  if (key <= 2) return null;
+                  return (
+                    <div key={key} className="h-[350px]">
+                      <Link
+                        to={`/events-and-activities/${post.events_activities_slug}`}
                       >
-                        <div>
-                          <div className="blogTitle relative z-[1]">
-                            <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                              {post.events_activities_category}
-                            </h4>
+                        <div
+                          style={{
+                            backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
+                          }}
+                          className="blogItem mx-2 bg-center bg-cover h-[350px] w-[410px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                        >
+                          <div>
+                            <div className="blogTitle relative z-[1]">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {post.events_activities_category}
+                              </h4>
+                            </div>
+                            <div className="blogExcerpt p-10 relative z-[1]">
+                              <p className="text-light font-bold text-lg">
+                                {post.events_activities_title}
+                              </p>
+                            </div>
                           </div>
-                          <div className="blogExcerpt p-10 relative z-[1]">
-                            <p className="text-light font-bold text-lg">
-                              {post.events_activities_title}
-                            </p>
-                          </div>
+                          <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+                      </Link>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>

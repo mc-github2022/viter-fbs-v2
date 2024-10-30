@@ -40,6 +40,26 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     }, 200);
   };
 
+  const handleClientImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPhotoArrayList((prev) => [
+        ...prev.filter((photo) => photo.field !== "client"),
+        { file, field: "client" },
+      ]);
+    }
+  };
+
+  const handleLogoImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPhotoArrayList((prev) => [
+        ...prev.filter((photo) => photo.field !== "logo"),
+        { file, field: "logo" },
+      ]);
+    }
+  };
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -105,9 +125,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             const data = {
               ...values,
               home_testimonial_client_img:
-                photoArrayList[1]?.name || itemEdit.home_testimonial_client_img,
+                photoArrayList[0]?.name || itemEdit.home_testimonial_client_img,
               home_testimonial_logo_img:
-                photoArrayList[0]?.name || itemEdit.home_testimonial_logo_img,
+                photoArrayList[1]?.name || itemEdit.home_testimonial_logo_img,
             };
             uploadMultiplePhoto(); // to save the photo when submit
             mutation.mutate(data);
@@ -119,13 +139,12 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                 <div className="form-input">
                   <div className="mt-5">
                     <span className="top-20 px-2 text-dark">
-                      Upload 2 Images
+                      Upload Client and Logo Images
                     </span>
                     <div className="relative w-fit m-auto group">
-                      {(!itemEdit && !photoArrayList) ||
-                      (itemEdit &&
-                        !itemEdit.home_testimonial_logo_img &&
-                        !photoArrayList) ? (
+                      {!photoArrayList?.length &&
+                      !itemEdit?.home_testimonial_client_img &&
+                      !itemEdit?.home_testimonial_logo_img ? (
                         // Placeholder if no image is available
                         <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
                           <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -137,32 +156,38 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                         // Image display block
                         <div>
                           {photoArrayList && photoArrayList.length > 0 ? (
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-row gap-3">
                               {photoArrayList.map((file, index) => (
                                 <img
                                   key={index}
                                   src={URL.createObjectURL(file)}
                                   alt="Uploaded Preview"
-                                  className="w-48 h-24 object-cover rounded-md"
+                                  className="w-48 h-[150px] object-contain rounded-md"
                                 />
                               ))}
                             </div>
                           ) : (
-                            itemEdit?.data?.map((item, index) => (
-                              <div key={index}>
-                                <img
-                                  src={
-                                    initVal.home_testimonial_logo_img
-                                      ? `${devBaseImgUrl}/${initVal.home_testimonial_logo_img}`
-                                      : initVal.home_testimonial_client_img
-                                      ? `${devBaseImgUrl}/${initVal.home_testimonial_client_img}`
-                                      : ""
-                                  }
-                                  alt="Testimonial Image"
-                                  className="w-48 h-24 object-cover rounded-md"
-                                />
-                              </div>
-                            ))
+                            // Display existing images if available
+                            <div className="flex flex-row gap-3">
+                              {itemEdit && (
+                                <>
+                                  {itemEdit.home_testimonial_client_img && (
+                                    <img
+                                      src={`${devBaseImgUrl}/${itemEdit.home_testimonial_client_img}`}
+                                      alt="Client Testimonial Image"
+                                      className="w-48 h-[150px] object-contain rounded-md"
+                                    />
+                                  )}
+                                  {itemEdit.home_testimonial_logo_img && (
+                                    <img
+                                      src={`${devBaseImgUrl}/${itemEdit.home_testimonial_logo_img}`}
+                                      alt="Logo Testimonial Image"
+                                      className="w-48 h-24 object-cover rounded-md"
+                                    />
+                                  )}
+                                </>
+                              )}
+                            </div>
                           )}
                         </div>
                       )}

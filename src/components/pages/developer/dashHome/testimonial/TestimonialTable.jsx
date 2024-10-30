@@ -54,8 +54,8 @@ const TestimonialTable = ({ setItemEdit }) => {
                 <th>Name</th>
                 <th>Position</th>
                 <th className="w-[30rem]">Message</th>
-                <th>Image</th>
                 <th>Logo</th>
+                <th>Image</th>
                 <th className="text-right">Actions</th>
               </tr>
             </thead>
