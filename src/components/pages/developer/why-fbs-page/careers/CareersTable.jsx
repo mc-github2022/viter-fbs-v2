@@ -95,7 +95,7 @@ const CareersTable = ({ setItemEdit }) => {
                     {item.careers_job_status}
                   </td>
                   <td>
-                    <p>{item.careers_job_description}</p>
+                    <p className="line-clamp-5">{item.careers_job_description}</p>
                   </td>
 
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">

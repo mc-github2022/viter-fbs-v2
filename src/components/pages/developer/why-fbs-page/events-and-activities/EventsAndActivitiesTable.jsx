@@ -96,7 +96,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                     {formatDate(item.events_activities_date)}
                   </td>
                   <td>
-                    <p>{item.events_activities_description}</p>
+                    <p className="line-clamp-5">{item.events_activities_description}</p>
                   </td>
                   <td className="place-content-start">
                     {item.events_activities_img}
