@@ -349,3 +349,8 @@ img.popPost {
   width: 80px !important;
   height: 60px !important;
 }
+
+.slick-track {
+  display: flex !important;
+  align-items: center !important;
+}
