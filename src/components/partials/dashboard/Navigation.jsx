@@ -8,8 +8,6 @@ import { setIsHome, setIsWhyFBS } from "../../store/StoreAction";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const ref = React.useRef();
-  const [isOpen, setIsOpen] = React.useState(false);
 
   const handleHome = () => {
     dispatch(setIsHome(!store.isHome));
@@ -21,35 +19,22 @@ const Navigation = ({ menu, submenu }) => {
     dispatch(setIsHome(false));
   };
 
-  const handleOpen = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // Function to close all menus (when navigating away)
   const handleCloseMenus = () => {
     dispatch(setIsHome(false));
-    dispatch(setIsWhyFBS(false)); // Close the 'Home' menu
-    // Add other state resets if needed for other menus
+    dispatch(setIsWhyFBS(false));
   };
-
-  const clickOutsideRef = (e) => {
-    if (!ref.current?.contains(e.target)) {
-      setIsOpen(false);
-    }
-  };
-
-  React.useEffect(() => {
-    document.addEventListener("click", clickOutsideRef);
-    return () => document.addEventListener("click", clickOutsideRef);
-  }, []);
 
   return (
     <>
-      <div className="thedashnav bg-[#f5f5f3] w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray flex flex-col justify-between">
+      <div className="thedashnav bg-[#f5f5f3] w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray flex flex-col ">
         <div className="theLogo ">
-          <h2 className="text-xl mt-5 font-bold text-[black] ">
-            Frontline Business Solutions
-          </h2>
+          <div className="w-[120px] h-[44px] my-5">
+            <img
+              src={`${devBaseImgUrl}/logo.png`}
+              alt=""
+              className="object-cover"
+            />
+          </div>
         </div>
         <div>
           <nav>
@@ -67,19 +52,14 @@ const Navigation = ({ menu, submenu }) => {
                 <div className="nav flex items-center">
                   <span className="ml-2.5">Home</span>
                 </div>
-                <GoChevronDown
-                  className={`duration-200 text-[15px] ${
-                    store.isHome && "-rotate-180 duration-200 "
-                  }`}
-                />
               </li>
               {store.isHome && (
                 <ul className="submenu ml-5 my-6 text-[12px] ">
                   <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-banner"
-                          ? "text-[black] py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -88,9 +68,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-process`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-process"
-                          ? "text-[black]  py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -99,9 +79,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-services`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-services"
-                          ? "text-[black]  py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -110,9 +90,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-partnerWithUs`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partnerWithUs"
-                          ? "text-[black]  py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -121,9 +101,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-testimonial`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-testimonial"
-                          ? "text-[black]  py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -132,9 +112,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-partners`}>
                     <li
-                      className={` text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={` text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partners"
-                          ? "text-[black] py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -143,9 +123,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/home-insights`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-insights"
-                          ? "text-[black] py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -185,19 +165,14 @@ const Navigation = ({ menu, submenu }) => {
                 <div className="nav flex items-center">
                   <span className="ml-2.5">Why FBS?</span>
                 </div>
-                <GoChevronDown
-                  className={`duration-200 text-[15px] ${
-                    store.isWhyFBS && "-rotate-180 duration-200 "
-                  }`}
-                />
               </li>
               {store.isWhyFBS && (
                 <ul className="submenu ml-5 my-6 text-[12px] ">
                   <Link className="!p-0" to={`${devNavUrl}/why-work-with-us`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "why-work-with-us"
-                          ? "text-[black] py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -206,9 +181,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "events-activities"
-                          ? "text-[black]  py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -217,9 +192,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}/career`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-2 border-transparent ${
+                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "career"
-                          ? "text-[black]  py-1"
+                          ? "text-[black] py-1 font-bold"
                           : "border-none text-dashAccent"
                       }`}
                     >
@@ -280,47 +255,6 @@ const Navigation = ({ menu, submenu }) => {
               </li> */}
             </ul>
           </nav>
-        </div>
-        <div>
-          <div
-            className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 ${
-              isOpen && "!border-primary"
-            }`}
-            onClick={handleOpen}
-            ref={ref}
-          >
-            <div className="bg-[white] p-1.5 rounded-full ">
-              <span className="text-white p-1 rounded-full ">LR</span>
-            </div>
-            {isOpen && (
-              <div className="absolute top-5 ml-[45px] bg-[white] shadow-md flex flex-col gap-2 p-3 min-w-[180px]">
-                <h6 className="text-white font-[inter-regular] text-[15px]">
-                  Louren Rubico
-                </h6>
-                <a>
-                  <span className="text-white text-sm">louren@gmail.com</span>
-                </a>
-                <Link to="/changePass">
-                  <span className="text-white text-sm">Change Password</span>
-                </Link>
-                <div className="flex flex-row gap-4 items-center">
-                  <Link>
-                    <button className=" text-white text-sm">Users</button>
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="border-t-[2px] border-dashAccent flex flex-col gap-2 bottom-0">
-          <h5 className="mt-[10px] text-[black] text-sm">Powered by:</h5>
-          <div className="w-[120px] h-[44px]">
-            <img
-              src={`${devBaseImgUrl}/logo.png`}
-              alt=""
-              className="object-cover"
-            />
-          </div>
         </div>
       </div>
     </>
