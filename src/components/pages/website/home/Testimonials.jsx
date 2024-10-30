@@ -84,7 +84,7 @@ const Testimonials = () => {
                     <div className="justify-end flex lg:hidden">
                       <img
                         src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                        className="w-[100px]"
+                        className="w-[100px] "
                         alt="company logo"
                       />
                     </div>
@@ -148,12 +148,12 @@ const Testimonials = () => {
                     : "hidden"
                 }`}
               >
-                <div className="w-[200px] mt-[30px] ml-[15%]">
+                <div className="w-[200px] max-h-[87px] py-[25px] ml-[15%]">
                   <img
                     // src={`${devBaseImgUrl}/tm_logo.png`}
                     src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                    className="object-contain"
-                    alt="client image"
+                    className="object-contain w-[200px] max-h-[87px] "
+                    alt="logo image"
                   />
                 </div>
               </div>

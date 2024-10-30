@@ -251,8 +251,8 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                         ((mutation.isPending || !props.dirty) &&
                           photo === null) ||
                         photo === "" ||
-                        (initVal.home_testimonial_client_img === photo?.name &&
-                          initVal.home_testimonial_logo_img === photo?.name)
+                        initVal.home_testimonial_client_img === photo?.name ||
+                        initVal.home_testimonial_logo_img === photo?.name
                       }
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
