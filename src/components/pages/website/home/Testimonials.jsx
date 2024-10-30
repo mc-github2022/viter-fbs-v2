@@ -128,9 +128,9 @@ const Testimonials = () => {
             >
               <img
                 // src={`${devBaseImgUrl}/Rober_han.png`}
-                src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
+                src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
                 alt="company logo"
-                className="rotate-[5deg]"
+                className="max-w-[430px] object-cover"
               />
             </div>
           ))}
@@ -150,7 +150,7 @@ const Testimonials = () => {
               >
                 <img
                   // src={`${devBaseImgUrl}/tm_logo.png`}
-                  src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
+                  src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
                   className="w-[200px] mt-[30px] ml-[15%]"
                   alt="client image"
                 />

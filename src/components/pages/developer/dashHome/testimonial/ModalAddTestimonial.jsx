@@ -24,15 +24,18 @@ import {
   setSuccess,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
+import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
 
 const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const {
-    uploadMultiplePhoto,
-    handleChangeMultiplePhoto,
-    setPhotoArrayList,
-    photoArrayList,
-  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+  const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
+    `${apiVersion}/upload-photo`,
+    dispatch
+  );
+
+  // Separate states to hold the client and logo image files
+  const [clientImage, setClientImage] = React.useState(null);
+  const [logoImage, setLogoImage] = React.useState(null);
 
   const handleClose = () => {
     setTimeout(() => {
@@ -40,25 +43,28 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     }, 200);
   };
 
-  // const handleClientImageUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setPhotoArrayList((prev) => [
-  //       ...prev.filter((photo) => photo.field !== "client"),
-  //       { file, field: "client" },
-  //     ]);
-  //   }
-  // };
+  // Handlers for client and logo images
+  const handleClientImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setClientImage(file); // Store client image file
+      uploadPhoto((prev) => [
+        ...prev.filter((photo) => photo.field !== "client"),
+        { file, field: "client" },
+      ]);
+    }
+  };
 
-  // const handleLogoImageUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setPhotoArrayList((prev) => [
-  //       ...prev.filter((photo) => photo.field !== "logo"),
-  //       { file, field: "logo" },
-  //     ]);
-  //   }
-  // };
+  const handleLogoImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setLogoImage(file); // Store logo image file
+      uploadPhoto((prev) => [
+        ...prev.filter((photo) => photo.field !== "logo"),
+        { file, field: "logo" },
+      ]);
+    }
+  };
 
   const queryClient = useQueryClient();
 
@@ -104,7 +110,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   const yupSchema = Yup.object({});
 
   console.log("itemEdit:", itemEdit);
-  console.log("photoArrayList:", photoArrayList);
+  console.log("photo:", photo);
 
   return (
     <ModalAddWrapper
@@ -125,91 +131,85 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             const data = {
               ...values,
               home_testimonial_client_img:
-                photoArrayList[0]?.name || itemEdit.home_testimonial_client_img,
+                clientImage?.name || itemEdit.home_testimonial_client_img,
               home_testimonial_logo_img:
-                photoArrayList[1]?.name || itemEdit.home_testimonial_logo_img,
+                logoImage?.name || itemEdit.home_testimonial_logo_img,
             };
-            uploadMultiplePhoto(); // to save the photo when submit
-            mutation.mutate(data);
+
+            // Upload photos if they exist
+            if (clientImage) await uploadPhoto(clientImage);
+            if (logoImage) await uploadPhoto(logoImage);
+
+            mutation.mutate(data); // Mutate form data
           }}
         >
           {(props) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <div className="mt-5">
-                    <span className="top-20 px-2 text-dark">
-                      Upload Client and Logo Images
-                    </span>
-                    <div className="relative w-fit m-auto group">
-                      {!photoArrayList?.length &&
-                      !itemEdit?.home_testimonial_client_img &&
-                      !itemEdit?.home_testimonial_logo_img ? (
-                        // Placeholder if no image is available
-                        <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
-                          <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                          <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
-                            Upload Image
-                          </h1>
-                        </div>
+                  <span className="top-20 px-2 text-dark">Upload 2 Images</span>
+                  <div className="relative w-fit m-auto group">
+                    {/* Display images or placeholders */}
+                    <div className="flex flex-col gap-3">
+                      {clientImage ? (
+                        <img
+                          src={URL.createObjectURL(clientImage)}
+                          alt="Client Preview"
+                          className="w-48 h-24 object-cover rounded-md"
+                        />
+                      ) : itemEdit?.home_testimonial_client_img ? (
+                        <img
+                          src={`${devBaseImgUrl}/${itemEdit.home_testimonial_client_img}`}
+                          alt="Client Testimonial Image"
+                          className="w-48 h-24 object-cover rounded-md"
+                        />
                       ) : (
-                        // Image display block
-                        <div>
-                          {photoArrayList && photoArrayList.length > 0 ? (
-                            <div className="flex flex-row gap-3">
-                              {photoArrayList.map((file, index) => (
-                                <img
-                                  key={index}
-                                  src={URL.createObjectURL(file)}
-                                  alt="Uploaded Preview"
-                                  className="w-48 h-[150px] object-contain rounded-md"
-                                />
-                              ))}
-                            </div>
-                          ) : (
-                            // Display existing images if available
-                            <div className="flex flex-row gap-3">
-                              {itemEdit && (
-                                <>
-                                  {itemEdit.home_testimonial_client_img && (
-                                    <img
-                                      src={`${devBaseImgUrl}/${itemEdit.home_testimonial_client_img}`}
-                                      alt="Client Testimonial Image"
-                                      className="w-48 h-[150px] object-contain rounded-md"
-                                    />
-                                  )}
-                                  {itemEdit.home_testimonial_logo_img && (
-                                    <img
-                                      src={`${devBaseImgUrl}/${itemEdit.home_testimonial_logo_img}`}
-                                      alt="Logo Testimonial Image"
-                                      className="w-48 h-24 object-cover rounded-md"
-                                    />
-                                  )}
-                                </>
-                              )}
-                            </div>
-                          )}
-                        </div>
+                        // <Placeholder />
+                        ""
                       )}
-                      <div className="btnImgUpload">
-                        <button>
-                          <MdOutlineFileUpload />
-                          <InputPhotoUpload
-                            name="photo"
-                            type="file"
-                            id="myFile"
-                            accept="image/*"
-                            title="Upload image"
-                            multiple
-                            onChange={(e) =>
-                              handleChangeMultiplePhoto(e, 2, true)
-                            }
-                            className="opacity-0 absolute right-0 top-0 left-0 m-auto cursor-pointer z-[999] h-[100px]"
-                          />
-                        </button>
+
+                      {logoImage ? (
+                        <img
+                          src={URL.createObjectURL(logoImage)}
+                          alt="Logo Preview"
+                          className="w-48 h-24 object-cover rounded-md"
+                        />
+                      ) : itemEdit?.home_testimonial_logo_img ? (
+                        <img
+                          src={`${devBaseImgUrl}/${itemEdit.home_testimonial_logo_img}`}
+                          alt="Logo Testimonial Image"
+                          className="w-48 h-24 object-cover rounded-md"
+                        />
+                      ) : (
+                        // <Placeholder />
+                        ""
+                      )}
+                    </div>
+
+                    {/* Separate input fields for client and logo images */}
+                    <div className="flex gap-4">
+                      <div>
+                        <label>Upload Client Image</label>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="h-10"
+                          onChange={handleClientImageUpload}
+                        />
+                      </div>
+
+                      <div >
+                        <label>Upload Logo Image</label>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="h-10"
+                          onChange={handleLogoImageUpload}
+                        />
                       </div>
                     </div>
                   </div>
+
                   <div className="input-wrapper">
                     <InputText
                       label="Name"
@@ -242,12 +242,10 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                       type="submit"
                       disabled={
                         ((mutation.isPending || !props.dirty) &&
-                          photoArrayList === null) ||
-                        photoArrayList === "" ||
-                        initVal.home_testimonial_client_img ===
-                          photoArrayList?.name ||
-                        initVal.home_testimonial_logo_img ===
-                          photoArrayList?.name
+                          photo === null) ||
+                        photo === "" ||
+                        (initVal.home_testimonial_client_img === photo?.name &&
+                          initVal.home_testimonial_logo_img === photo?.name)
                       }
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}

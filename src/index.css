@@ -54,7 +54,7 @@
     @apply border-b border-solid border-[#d1d5db];
   }
   table th {
-    @apply font-bold bg-[#d1d5db] py-1 pr-3 capitalize;
+    @apply font-semibold bg-[#d1d5db] py-1 pr-3 capitalize;
   }
   table td {
     @apply py-2 pr-3;
