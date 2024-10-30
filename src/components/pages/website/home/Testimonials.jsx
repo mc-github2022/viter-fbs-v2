@@ -74,7 +74,7 @@ const Testimonials = () => {
                         : "hidden"
                     }`}
                   >
-                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
+                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto text-sm ">
                       {item.home_testimonial_message}
                     </p>
                     <h3 className="text-[24px] font-semibold mb-2">
