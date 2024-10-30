@@ -125,105 +125,110 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <div className="input-wrapper">
-                    <label htmlFor="icon-search">Search Icon</label>
-                    <input
-                      id="icon-search"
-                      type="text"
-                      placeholder="Type to search icons..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="border p-2 w-full"
-                      disabled={mutation.isPending}
-                    />
+                  <div className="flex gap-4 justify-between">
+                    <div className="w-[500px]">
+                      <div className="input-wrapper">
+                        <label htmlFor="icon-search">Search Icon</label>
+                        <input
+                          id="icon-search"
+                          type="text"
+                          placeholder="Type to search icons..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className="border p-2 w-full"
+                          disabled={mutation.isPending}
+                        />
 
-                    <select
-                      name="home_insights_category"
-                      value={icon}
-                      onChange={(e) => setIcon(e.target.value)}
-                      className="border p-2 w-full mt-2"
-                      disabled={mutation.isPending}
-                    >
-                      <option value="" disabled>
-                        Select an icon
-                      </option>
-                      {filteredIcons.map((iconKey) => (
-                        <option
-                          key={iconKey}
-                          value={iconKey}
-                          className="text-sm"
+                        <select
+                          name="home_insights_category"
+                          value={icon}
+                          onChange={(e) => setIcon(e.target.value)}
+                          className="border p-2 w-full mt-2"
+                          disabled={mutation.isPending}
                         >
-                          {iconKey}
-                        </option>
-                      ))}
-                    </select>
+                          <option value="" disabled>
+                            Select an icon
+                          </option>
+                          {filteredIcons.map((iconKey) => (
+                            <option
+                              key={iconKey}
+                              value={iconKey}
+                              className="text-sm"
+                            >
+                              {iconKey}
+                            </option>
+                          ))}
+                        </select>
 
-                    {icon ? (
-                      <div className="flex items-center gap-4 mt-2">
-                        Selected icon: <Icon />
+                        {icon ? (
+                          <div className="flex items-center gap-4 mt-2">
+                            Selected icon: <Icon />
+                          </div>
+                        ) : (
+                          "No icon selected"
+                        )}
                       </div>
-                    ) : (
-                      "No icon selected"
-                    )}
-                  </div>
-                  <div className="input-wrapper">
-                    <InputText
-                      label="Job Title"
-                      type="text"
-                      name="careers_job_title"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputSelect
-                      label="Employee Classification"
-                      type="text"
-                      name="careers_job_classification"
-                      disabled={mutation.isPending}
-                    >
-                      <option value="" disabled>
-                        Select Employee Classification
-                      </option>
-                      <option value="Full-time">Full-time</option>
-                      <option value="Part-time">Part-time</option>
-                    </InputSelect>
-                  </div>
-                  <div className="input-wrapper">
-                    <InputSelect
-                      label="Mode of Work"
-                      type="text"
-                      name="careers_job_mode"
-                      disabled={mutation.isPending}
-                    >
-                      <option value="" disabled>
-                        Select Mode of Work
-                      </option>
-                      <option value="On-site">On-site</option>
-                      <option value="Remote">Remote</option>
-                      <option value="Hybrid">Hybrid</option>
-                    </InputSelect>
-                  </div>
-                  <div className="input-wrapper">
-                    <InputSelect
-                      label="Job Status"
-                      type="text"
-                      name="careers_job_status"
-                      disabled={mutation.isPending}
-                    >
-                      <option value="" disabled>
-                        Select Job Status
-                      </option>
-                      <option value="On going">On going</option>
-                      <option value="Closed">Closed</option>
-                    </InputSelect>
-                  </div>
-                  <div className="input-wrapper">
-                    <InputTextArea
-                      label="Job Description"
-                      type="text"
-                      name="careers_job_description"
-                      disabled={mutation.isPending}
-                    />
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Job Title"
+                          type="text"
+                          name="careers_job_title"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputSelect
+                          label="Employee Classification"
+                          type="text"
+                          name="careers_job_classification"
+                          disabled={mutation.isPending}
+                        >
+                          <option value="" disabled>
+                            Select Employee Classification
+                          </option>
+                          <option value="Full-time">Full-time</option>
+                          <option value="Part-time">Part-time</option>
+                        </InputSelect>
+                      </div>
+                      <div className="input-wrapper">
+                        <InputSelect
+                          label="Mode of Work"
+                          type="text"
+                          name="careers_job_mode"
+                          disabled={mutation.isPending}
+                        >
+                          <option value="" disabled>
+                            Select Mode of Work
+                          </option>
+                          <option value="On-site">On-site</option>
+                          <option value="Remote">Remote</option>
+                          <option value="Hybrid">Hybrid</option>
+                        </InputSelect>
+                      </div>
+                      <div className="input-wrapper">
+                        <InputSelect
+                          label="Job Status"
+                          type="text"
+                          name="careers_job_status"
+                          disabled={mutation.isPending}
+                        >
+                          <option value="" disabled>
+                            Select Job Status
+                          </option>
+                          <option value="On going">On going</option>
+                          <option value="Closed">Closed</option>
+                        </InputSelect>
+                      </div>
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Job Description"
+                        type="text"
+                        name="careers_job_description"
+                        className="h-[500px] w-[478px]"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="form-action">

@@ -88,7 +88,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200`}
+      className={`transition-all ease-linear transform duration-200 w-[600px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -113,6 +113,11 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
+                  <div className="flex gap-4 justify-between">
+                  <div className="w-[500px]">
+                    
+                  </div>
+                  </div>
                   <div className="input-wrapper">
                     <label htmlFor="icon-search">Search Icon</label>
                     <input

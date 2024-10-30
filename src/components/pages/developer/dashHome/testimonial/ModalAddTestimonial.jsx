@@ -147,92 +147,99 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <span className="top-20 px-2 text-dark">Upload 2 Images</span>
-                  <div className="relative w-fit m-auto group">
-                    {/* Display images or placeholders */}
-                    <div className="flex flex-col gap-3">
-                      {clientImage ? (
-                        <img
-                          src={URL.createObjectURL(clientImage)}
-                          alt="Client Preview"
-                          className="w-48 h-24 object-cover rounded-md"
-                        />
-                      ) : itemEdit?.home_testimonial_client_img ? (
-                        <img
-                          src={`${devBaseImgUrl}/${itemEdit.home_testimonial_client_img}`}
-                          alt="Client Testimonial Image"
-                          className="w-48 h-24 object-cover rounded-md"
-                        />
-                      ) : (
-                        // <Placeholder />
-                        ""
-                      )}
+                  <div className="flex gap-4 justify-between">
+                    <div className="w-[500px]">
+                      <div className="relative w-fit m-auto group">
+                        {/* Display images or placeholders */}
+                        <div className="flex flex-row justify-between items-center">
+                          {clientImage ? (
+                            <img
+                              src={URL.createObjectURL(clientImage)}
+                              alt="Client Preview"
+                              className="w-48 h-34 object-cover rounded-md"
+                            />
+                          ) : itemEdit?.home_testimonial_client_img ? (
+                            <img
+                              src={`${devBaseImgUrl}/${itemEdit.home_testimonial_client_img}`}
+                              alt="Client Testimonial Image"
+                              className="w-48 h-34 object-cover rounded-md"
+                            />
+                          ) : (
+                            // <Placeholder />
+                            ""
+                          )}
 
-                      {logoImage ? (
-                        <img
-                          src={URL.createObjectURL(logoImage)}
-                          alt="Logo Preview"
-                          className="w-48 h-24 object-cover rounded-md"
-                        />
-                      ) : itemEdit?.home_testimonial_logo_img ? (
-                        <img
-                          src={`${devBaseImgUrl}/${itemEdit.home_testimonial_logo_img}`}
-                          alt="Logo Testimonial Image"
-                          className="w-48 h-24 object-cover rounded-md"
-                        />
-                      ) : (
-                        // <Placeholder />
-                        ""
-                      )}
-                    </div>
+                          {logoImage ? (
+                            <img
+                              src={URL.createObjectURL(logoImage)}
+                              alt="Logo Preview"
+                              className="w-48 h-34 object-cover rounded-md"
+                            />
+                          ) : itemEdit?.home_testimonial_logo_img ? (
+                            <img
+                              src={`${devBaseImgUrl}/${itemEdit.home_testimonial_logo_img}`}
+                              alt="Logo Testimonial Image"
+                              className="w-48 h-34 object-cover rounded-md"
+                            />
+                          ) : (
+                            // <Placeholder />
+                            ""
+                          )}
+                        </div>
 
-                    {/* Separate input fields for client and logo images */}
-                    <div className="flex gap-4">
+                        {/* Separate input fields for client and logo images */}
+                        <div className="flex items-center gap-4 mt-3">
+                          <div>
+                            <div>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="h-10 my-1"
+                                onChange={handleClientImageUpload}
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <div>
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="h-10"
+                                onChange={handleLogoImageUpload}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <div>
-                        <label>Upload Client Image</label>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          className="h-10"
-                          onChange={handleClientImageUpload}
-                        />
-                      </div>
-
-                      <div >
-                        <label>Upload Logo Image</label>
-                        <input
-                          type="file"
-                          accept="image/*"
-                          className="h-10"
-                          onChange={handleLogoImageUpload}
-                        />
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Name"
+                            type="text"
+                            name="home_testimonial_name"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Position"
+                            type="text"
+                            name="home_testimonial_position"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div className="input-wrapper">
-                    <InputText
-                      label="Name"
-                      type="text"
-                      name="home_testimonial_name"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputText
-                      label="Position"
-                      type="text"
-                      name="home_testimonial_position"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputTextArea
-                      label="Message"
-                      type="text"
-                      name="home_testimonial_message"
-                      disabled={mutation.isPending}
-                    />
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Message"
+                        type="text"
+                        name="home_testimonial_message"
+                        className="h-[500px] w-[478px]"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="form-action">

@@ -116,105 +116,112 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <div className="mt-5">
-                    <span className="top-20 px-2 text-dark">Image</span>
-                    <div className="relative w-fit m-auto group">
-                      {(itemEdit === null && photo === null) ||
-                      (photo === "" && itemEdit === null) ? (
-                        <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
-                          <div className="">
-                            <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
-                              Upload Image
-                            </h1>
-                          </div>
-                        </div>
-                      ) : (itemEdit &&
-                          !itemEdit.events_activities_img &&
-                          !photo) ||
-                        (!itemEdit && !photo) ? (
-                        <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
-                          <div>
-                            <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
-                              Upload Image
-                            </h1>
-                          </div>
-                        </div>
-                      ) : (
-                        <img
-                          src={
-                            photo
-                              ? URL.createObjectURL(photo) // preview
-                              : devBaseImgUrl +
-                                "/" +
-                                itemEdit.events_activities_img // check db
-                          }
-                          alt="Logo"
-                          className="group-hover:opacity-30 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
-                        />
-                      )}
+                  <div className="flex gap-4 justify-between">
+                    <div className="w-[500px]">
+                      <div className="mt-5">
+                        <span className="top-20 px-2 text-dark">Image</span>
+                        <div className="relative w-fit m-auto group">
+                          {(itemEdit === null && photo === null) ||
+                          (photo === "" && itemEdit === null) ? (
+                            <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
+                              <div className="">
+                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                                  Upload Image
+                                </h1>
+                              </div>
+                            </div>
+                          ) : (itemEdit &&
+                              !itemEdit.events_activities_img &&
+                              !photo) ||
+                            (!itemEdit && !photo) ? (
+                            <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
+                              <div>
+                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
+                                  Upload Image
+                                </h1>
+                              </div>
+                            </div>
+                          ) : (
+                            <img
+                              src={
+                                photo
+                                  ? URL.createObjectURL(photo) // preview
+                                  : devBaseImgUrl +
+                                    "/" +
+                                    itemEdit.events_activities_img // check db
+                              }
+                              alt="Logo"
+                              className="group-hover:opacity-30 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
+                            />
+                          )}
 
-                      <div className="btnImgUpload">
-                        <button>
-                          <MdOutlineFileUpload />
-                          <InputPhotoUpload
-                            name="photo"
-                            type="file"
-                            id="myFile"
-                            accept="image/*"
-                            title="Upload Logo"
-                            onChange={(e) =>
-                              handleChangePhoto(
-                                e,
-                                initVal.events_activities_img
-                              )
-                            }
-                            className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
+                          <div className="btnImgUpload">
+                            <button>
+                              <MdOutlineFileUpload />
+                              <InputPhotoUpload
+                                name="photo"
+                                type="file"
+                                id="myFile"
+                                accept="image/*"
+                                title="Upload Logo"
+                                onChange={(e) =>
+                                  handleChangePhoto(
+                                    e,
+                                    initVal.events_activities_img
+                                  )
+                                }
+                                className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Category"
+                            type="text"
+                            name="events_activities_category"
+                            disabled={mutation.isPending}
                           />
-                        </button>
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Title"
+                            type="text"
+                            name="events_activities_title"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="*Slug"
+                            type="text"
+                            name="events_activities_slug"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Date"
+                            type="date"
+                            name="events_activities_date"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="input-wrapper">
-                    <InputText
-                      label="Category"
-                      type="text"
-                      name="events_activities_category"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputText
-                      label="Title"
-                      type="text"
-                      name="events_activities_title"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputText
-                      label="*Slug"
-                      type="text"
-                      name="events_activities_slug"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputText
-                      label="Date"
-                      type="date"
-                      name="events_activities_date"
-                      disabled={mutation.isPending}
-                    />
-                  </div>
-                  <div className="input-wrapper">
-                    <InputTextArea
-                      label="Description"
-                      type="text"
-                      name="events_activities_description"
-                      disabled={mutation.isPending}
-                    />
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Description"
+                        type="text"
+                        name="events_activities_description"
+                        className="h-[500px] w-[478px]"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="form-action">
