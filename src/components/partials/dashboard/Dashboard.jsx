@@ -19,9 +19,6 @@ const Dashboard = ({ children }) => {
           </div>
         </div>
       </div>
-
-      {/* {store.success && <ModalSuccess />}
-      {store.error && <ModalError />} */}
     </>
   );
 };
