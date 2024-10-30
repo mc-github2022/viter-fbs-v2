@@ -29,3 +29,7 @@ RewriteRule ^specialOffers/([0-9]+)$ controllers/developer/special-offers/specia
 # Why FBS - EVENTS AND ACTIVITIES
 RewriteRule ^eventsAndAct$ controllers/developer/events-and-activities/eventsAndActivities.php [L]
 RewriteRule ^eventsAndAct/([0-9]+)$ controllers/developer/events-and-activities/eventsAndActivities.php?events_activitiesid=$1 [L]
+
+# Why FBS - EVENTS AND ACTIVITIES
+RewriteRule ^careers$ controllers/developer/careers/careers.php [L]
+RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careersid=$1 [L]
