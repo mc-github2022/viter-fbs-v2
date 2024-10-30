@@ -214,7 +214,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                         Select Job Status
                       </option>
                       <option value="On going">On going</option>
-                      <option value="Close">Close</option>
+                      <option value="Closed">Closed</option>
                     </InputSelect>
                   </div>
                   <div className="input-wrapper">

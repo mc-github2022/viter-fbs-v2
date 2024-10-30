@@ -48,8 +48,6 @@ const CareerPage = () => {
     }
   }, [careersData]);
 
-  console.log(html);
-
   const handleJobAccordion = (item) => {
     setJobAccordion(true);
     setJobIdentifier(item);
@@ -115,7 +113,13 @@ const CareerPage = () => {
                             <p className="font-bold text-dark">
                               {item.careers_job_title}
                             </p>
-                            <p className="text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg hidden md:block">
+                            <p
+                              className={`${
+                                item.careers_job_status === "On going"
+                                  ? "text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg hidden md:block"
+                                  : "text-xs text-[#ef4444] bg-[#F8B1B1] px-3 py-1 rounded-lg hidden md:block"
+                              }`}
+                            >
                               {item.careers_job_status}
                             </p>
                           </div>

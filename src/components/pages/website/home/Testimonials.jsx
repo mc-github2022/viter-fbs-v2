@@ -148,12 +148,14 @@ const Testimonials = () => {
                     : "hidden"
                 }`}
               >
-                <img
-                  // src={`${devBaseImgUrl}/tm_logo.png`}
-                  src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                  className="w-[200px] mt-[30px] ml-[15%]"
-                  alt="client image"
-                />
+                <div className="w-[200px] mt-[30px] ml-[15%]">
+                  <img
+                    // src={`${devBaseImgUrl}/tm_logo.png`}
+                    src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
+                    className="object-contain"
+                    alt="client image"
+                  />
+                </div>
               </div>
             ))}
           </div>
