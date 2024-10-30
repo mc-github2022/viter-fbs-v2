@@ -29,7 +29,7 @@ const EventsAndActivities = () => {
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
-              <div className="text-[24px] text-[black]">
+              <div className="text-[18px] text-[black] font-semibold">
                 <h2>Events And Activities</h2>
               </div>
               <button
