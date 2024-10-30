@@ -33,7 +33,7 @@ const Navigation = ({ menu, submenu }) => {
           <nav>
             <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold [&>li]:mb-[17px]">
               <li
-                className={` flex justify-between items-center p-1
+                className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "home"
                       ? "text-[black] underline underline-offset-4 "
@@ -59,7 +59,7 @@ const Navigation = ({ menu, submenu }) => {
                       Banner
                     </li>
                   </Link>
-                  <Link className="!p-0" to={`${devNavUrl}/home-process`}>
+                  {/* <Link className="!p-0" to={`${devNavUrl}/home-process`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-process"
@@ -91,7 +91,7 @@ const Navigation = ({ menu, submenu }) => {
                     >
                       Partner With Us
                     </li>
-                  </Link>
+                  </Link> */}
                   <Link className="!p-0" to={`${devNavUrl}/home-testimonial`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
@@ -103,7 +103,7 @@ const Navigation = ({ menu, submenu }) => {
                       Testimonials
                     </li>
                   </Link>
-                  <Link className="!p-0" to={`${devNavUrl}/home-partners`}>
+                  {/* <Link className="!p-0" to={`${devNavUrl}/home-partners`}>
                     <li
                       className={` text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partners"
@@ -113,7 +113,7 @@ const Navigation = ({ menu, submenu }) => {
                     >
                       Partners
                     </li>
-                  </Link>
+                  </Link> */}
                   <Link className="!p-0" to={`${devNavUrl}/home-insights`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
@@ -145,7 +145,7 @@ const Navigation = ({ menu, submenu }) => {
               </li>
 
               <li
-                className={` flex justify-between items-center p-1
+                className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "whyFBS"
                       ? "text-[black] underline underline-offset-4 "
@@ -160,7 +160,7 @@ const Navigation = ({ menu, submenu }) => {
               </li>
               {store.isWhyFBS && (
                 <ul className="submenu ml-5 my-6 text-[12px] ">
-                  <Link className="!p-0" to={`${devNavUrl}/why-work-with-us`}>
+                  {/* <Link className="!p-0" to={`${devNavUrl}/why-work-with-us`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "why-work-with-us"
@@ -170,7 +170,7 @@ const Navigation = ({ menu, submenu }) => {
                     >
                       Why Work With Us
                     </li>
-                  </Link>
+                  </Link> */}
                   <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
