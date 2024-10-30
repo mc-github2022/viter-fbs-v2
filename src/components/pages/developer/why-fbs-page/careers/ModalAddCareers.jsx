@@ -1,13 +1,4 @@
 import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../helpers/queryData";
-import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import { InputSelect, InputText } from "../../../helpers/FormInputs";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import * as Yup from "yup";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -15,6 +6,23 @@ import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { queryData } from "../../../../helpers/queryData";
+import {
+  setError,
+  setMessage,
+  setSuccess,
+} from "../../../../store/StoreAction";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import { GrFormClose } from "react-icons/gr";
+import { Form, Formik } from "formik";
+import {
+  InputSelect,
+  InputText,
+  InputTextArea,
+} from "../../../../helpers/FormInputs";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const icons = {
   ...FaIcons,
@@ -25,7 +33,7 @@ const icons = {
   ...PiIcons,
 };
 
-const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
+const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [icon, setIcon] = React.useState(
@@ -40,7 +48,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
 
   React.useEffect(() => {
     if (itemEdit) {
-      setIcon(itemEdit.special_offers_icons);
+      setIcon(itemEdit.careers_icon);
     }
   }, [itemEdit]);
 
@@ -56,13 +64,13 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/specialOffers/${itemEdit.special_offers_aid}` // update
-          : `/v1/specialOffers`, // create
+          ? `/v1/careers/${itemEdit.careers_aid}` // update
+          : `/v1/careers`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["specialOffers"] });
+      queryClient.invalidateQueries({ queryKey: ["careers"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -77,11 +85,15 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   });
 
   const initVal = {
-    special_offers_aid: itemEdit ? itemEdit.special_offers_aid : "",
-    special_offers_icons: itemEdit ? itemEdit.special_offers_icons : "",
-    special_offers_services: itemEdit ? itemEdit.special_offers_services : "",
-    special_offers_price: itemEdit ? itemEdit.special_offers_price : "",
-    special_offers_link: itemEdit ? itemEdit.special_offers_link : "",
+    careers_aid: itemEdit ? itemEdit.careers_aid : "",
+    careers_job_title: itemEdit ? itemEdit.careers_job_title : "",
+    careers_job_classification: itemEdit
+      ? itemEdit.careers_job_classification
+      : "",
+    careers_job_mode: itemEdit ? itemEdit.careers_job_mode : "",
+    careers_job_status: itemEdit ? itemEdit.careers_job_status : "",
+    careers_job_description: itemEdit ? itemEdit.careers_job_description : "",
+    careers_icon: itemEdit ? itemEdit.careers_icon : "",
   };
 
   const yupSchema = Yup.object({});
@@ -92,7 +104,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Special Offers</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Career</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -104,7 +116,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              special_offers_icons: icon,
+              careers_icon: icon,
             };
             mutation.mutate(data);
           }}
@@ -156,25 +168,60 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                   </div>
                   <div className="input-wrapper">
                     <InputText
-                      label="Services"
+                      label="Job Title"
                       type="text"
-                      name="special_offers_services"
+                      name="careers_job_title"
                       disabled={mutation.isPending}
                     />
                   </div>
                   <div className="input-wrapper">
-                    <InputText
-                      label="Special Offer"
+                    <InputSelect
+                      label="Employee Classification"
                       type="text"
-                      name="special_offers_price"
+                      name="careers_job_classification"
                       disabled={mutation.isPending}
-                    />
+                    >
+                      <option value="" disabled>
+                        Select Employee Classification
+                      </option>
+                      <option value="Full-time">Full-time</option>
+                      <option value="Part-time">Part-time</option>
+                    </InputSelect>
                   </div>
                   <div className="input-wrapper">
-                    <InputText
-                      label="Link"
+                    <InputSelect
+                      label="Mode of Work"
                       type="text"
-                      name="special_offers_link"
+                      name="careers_job_mode"
+                      disabled={mutation.isPending}
+                    >
+                      <option value="" disabled>
+                        Select Mode of Work
+                      </option>
+                      <option value="On-site">On-site</option>
+                      <option value="Remote">Remote</option>
+                      <option value="Hybrid">Hybrid</option>
+                    </InputSelect>
+                  </div>
+                  <div className="input-wrapper">
+                    <InputSelect
+                      label="Job Status"
+                      type="text"
+                      name="careers_job_status"
+                      disabled={mutation.isPending}
+                    >
+                      <option value="" disabled>
+                        Select Job Status
+                      </option>
+                      <option value="On going">On going</option>
+                      <option value="Close">Close</option>
+                    </InputSelect>
+                  </div>
+                  <div className="input-wrapper">
+                    <InputTextArea
+                      label="Job Description"
+                      type="text"
+                      name="careers_job_description"
                       disabled={mutation.isPending}
                     />
                   </div>
@@ -206,4 +253,4 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   );
 };
 
-export default ModalAddSpecialOffers;
+export default ModalAddCareers;

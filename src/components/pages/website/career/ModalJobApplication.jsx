@@ -11,11 +11,24 @@ import {
 import { IoMdPin } from "react-icons/io";
 import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
+import useQueryData from "../../../custom-hooks/useQueryData";
 
 const ModalJobApplication = ({ setModalJob, jobTitle }) => {
   const handleClose = () => {
     setModalJob(false);
   };
+
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: careersData,
+  } = useQueryData(
+    "/v1/careers", // endpoint
+    "get", // method
+    "careers" // key
+  );
 
   return (
     <>
@@ -96,9 +109,11 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
             </div>
           </div>
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">
-            <p className="mb-2 text-lg">
-              Job Application: <b>{jobTitle}</b>
-            </p>
+            {careersData?.data.map((item, key) => {
+              <p className="mb-2 text-lg" key={key}>
+                Job Application: <b>{item.careers_job_title}</b>
+              </p>;
+            })}
             <div className="inputGroup mb-4">
               <label htmlFor="">Full Name</label> <br />
               <input type="text" name="" id="" className="w-full" />
