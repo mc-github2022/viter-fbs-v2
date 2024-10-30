@@ -35,7 +35,7 @@
     @apply bg-customGray h-8 p-1 text-sm text-dark;
   }
   textarea {
-    @apply bg-customGray w-full h-20 resize-none;
+    @apply bg-customGray w-full h-20 resize-none text-sm;
   }
   select {
     @apply bg-customGray h-8 p-1 text-sm text-dark;
