@@ -62,7 +62,7 @@ const Testimonials = () => {
               </div>
             </div>
             <div className="flex justify-end">
-              <div className="w-full lg:w-[439px] relative z-[14] text-light text-right">
+              <div className="w-full lg:w-[455px] relative z-[14] text-light text-right">
                 {testimonialData?.data.map((item, key) => (
                   <div
                     key={key}
@@ -74,7 +74,7 @@ const Testimonials = () => {
                         : "hidden"
                     }`}
                   >
-                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[439px] ml-auto ">
+                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[455px] ml-auto text-sm ">
                       {item.home_testimonial_message}
                     </p>
                     <h3 className="text-[24px] font-semibold mb-2">
@@ -84,7 +84,7 @@ const Testimonials = () => {
                     <div className="justify-end flex lg:hidden">
                       <img
                         src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                        className="w-[100px]"
+                        className="w-[100px] "
                         alt="company logo"
                       />
                     </div>
@@ -148,12 +148,12 @@ const Testimonials = () => {
                     : "hidden"
                 }`}
               >
-                <div className="w-[200px] mt-[30px] ml-[15%]">
+                <div className="w-[200px] max-h-[87px] py-[25px] ml-[15%]">
                   <img
                     // src={`${devBaseImgUrl}/tm_logo.png`}
                     src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                    className="object-contain"
-                    alt="client image"
+                    className="object-contain w-[200px] max-h-[87px] "
+                    alt="logo image"
                   />
                 </div>
               </div>

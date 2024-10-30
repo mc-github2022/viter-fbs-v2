@@ -35,7 +35,7 @@
     @apply bg-customGray h-8 p-1 text-sm text-dark;
   }
   textarea {
-    @apply bg-customGray w-full h-20 resize-none;
+    @apply bg-customGray w-full h-20 resize-none text-sm;
   }
   select {
     @apply bg-customGray h-8 p-1 text-sm text-dark;
@@ -64,7 +64,7 @@
   }
   input,
   select {
-    @apply border border-solid border-[#d1d5db] p-2 rounded-lg w-full h-[34px] truncate bg-none outline-none;
+    @apply border border-solid border-[#d1d5db] p-2 rounded-lg w-full h-[36px] truncate bg-none outline-none;
   }
   textarea {
     @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none;
@@ -242,7 +242,7 @@
     @apply translate-y-0;
   }
   .modal-wrapper {
-    @apply bg-[white] h-[650px] flex flex-col max-w-[600px] w-full p-5 place-self-center rounded-lg;
+    @apply bg-[white] h-[650px] flex flex-col max-w-[1000px] w-full p-5 place-self-center rounded-lg;
   }
   .modal-wrapper-menu {
     @apply bg-[white] h-full flex flex-col max-w-[506px] w-full p-5;
@@ -302,7 +302,7 @@
     @apply bg-none leading-none;
   }
   .tooltip-phone::after {
-    @apply content-[attr(data-tooltip)] capitalize absolute -translate-x-2/4  bottom-[35px] bg-dark/80 text-[white] p-1 -ml-3 rounded-sm h-fit leading-none z-20 whitespace-nowrap text-center opacity-0 text-[10px] pointer-events-none transition ease-linear scale-0 duration-75 right-[-50px] -top-0.5;
+    @apply content-[attr(data-tooltip)] capitalize absolute -translate-x-2/4  bottom-[35px] bg-dark/80 text-[white] p-1 -ml-3 rounded-sm h-fit leading-none z-20 whitespace-nowrap text-center opacity-0 text-[10px] pointer-events-none transition ease-linear scale-0 duration-75 right-[-10px] -top-0.5;
   }
   .tooltip-phone:hover::after {
     @apply scale-100 opacity-100;

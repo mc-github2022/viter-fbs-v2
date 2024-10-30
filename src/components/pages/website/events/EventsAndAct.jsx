@@ -181,9 +181,11 @@ const EventsAndAct = () => {
             </div>
           </div>
           <div className="moreEvents my-4">
-            <h2 className="text-3xl font-semibold text-primary mb-8">
-              See More
-            </h2>
+            {eventsAndActivitiesData?.data.length > 3 && (
+              <h2 className="text-3xl font-semibold text-primary mb-8">
+                See More
+              </h2>
+            )}
             {eventsAndActivitiesData?.data.length > 6 ? (
               <Slider {...EventsSliderSettings}>
                 {eventsAndActivitiesData?.data.map((post, key) => {
