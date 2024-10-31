@@ -70,7 +70,7 @@ const ImmersionPartnersWithUs = () => {
                       </h3>
                       <p>
                         Receive guidance and mentorship from industry experts
-                        who provide valuable insights, tecnical skills, and
+                        who provide valuable insights, technical skills, and
                         personalized support to help you excel in your chosen
                         field.
                       </p>
@@ -87,7 +87,7 @@ const ImmersionPartnersWithUs = () => {
                         Higher Employability
                       </h3>
                       <p>
-                        By gaining insdustry-aligned experience and expert
+                        By gaining industry-aligned experience and expert
                         training, students enhance their employability, making
                         them more competitive in the job market and ready for
                         career opportunities.
