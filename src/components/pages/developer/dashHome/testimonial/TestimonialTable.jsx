@@ -87,7 +87,9 @@ const TestimonialTable = ({ setItemEdit }) => {
                     {item.home_testimonial_position}
                   </td>
                   <td className="place-content-start">
-                    {item.home_testimonial_message}
+                    <p className="line-clamp-5">
+                      {item.home_testimonial_message}
+                    </p>
                   </td>
                   <td>
                     <p>{item.home_testimonial_client_img}</p>

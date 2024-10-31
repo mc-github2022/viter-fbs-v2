@@ -29,11 +29,11 @@ const Testimonial = () => {
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
-              <div className="text-[24px] text-[black]">
+              <div className="text-sm text-[black] font-semibold">
                 <h2>Testimonials</h2>
               </div>
               <button
-                className="flex items-center gap-1 text-[white] hover:underline bg-[black] px-2 rounded-lg"
+                className="flex items-center gap-1 text-[white] hover:underline bg-[black] py-1 px-2 rounded-lg"
                 onClick={handleAdd}
               >
                 <FaPlus />

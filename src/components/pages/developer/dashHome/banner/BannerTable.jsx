@@ -87,7 +87,9 @@ const BannerTable = ({ setItemEdit }) => {
                     {item.home_banner_title}
                   </td>
                   <td className="place-content-start">
-                    {item.home_banner_description}
+                    <p className="line-clamp-5">
+                      {item.home_banner_description}
+                    </p>
                   </td>
                   <td className="place-content-start">
                     {item.home_banner_button_text}

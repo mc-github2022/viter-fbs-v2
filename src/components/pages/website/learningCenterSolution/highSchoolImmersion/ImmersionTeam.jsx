@@ -28,7 +28,7 @@ const ImmersionTeam = () => {
                 <p>Head, Learning Center Solutions</p>
                 <p>Supervisor, Web Development</p>
                 <p className="text-sm">
-                  jhonny.dischoso@frontlinebusiness.com.ph
+                  jhonny.dichoso@frontlinebusiness.com.ph
                 </p>
               </div>
             </div>

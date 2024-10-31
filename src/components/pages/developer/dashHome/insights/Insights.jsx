@@ -29,11 +29,11 @@ const Insights = () => {
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
-              <div className="text-[24px] text-[black]">
+              <div className="text-sm text-[black] font-semibold">
                 <h2>Insights</h2>
               </div>
               <button
-                className="flex items-center gap-1 text-[white] hover:underline bg-[black] px-2 rounded-lg"
+                className="flex items-center gap-1 text-[white] hover:underline bg-[black] py-1 px-2 rounded-lg text-sm"
                 onClick={handleAdd}
               >
                 <FaPlus />
@@ -41,13 +41,15 @@ const Insights = () => {
               </button>
             </div>
             <div className="pb-4">
-              <InsightsTable setItemEdit={setItemEdit}/>
+              <InsightsTable setItemEdit={setItemEdit} />
             </div>
           </div>
         </Dashboard>
       </section>
 
-      {store.isAdd && <ModalAddInsights setIsAdd={setIsAdd} itemEdit={itemEdit} />}
+      {store.isAdd && (
+        <ModalAddInsights setIsAdd={setIsAdd} itemEdit={itemEdit} />
+      )}
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}
     </>
