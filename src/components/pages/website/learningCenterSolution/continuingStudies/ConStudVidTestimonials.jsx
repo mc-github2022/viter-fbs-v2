@@ -26,19 +26,19 @@ const ConStudVidTestimonials = () => {
                 allowFullScreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative">
-                <p className="italic mb-24 min-h-[120px]">
+              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative flex flex-col justify-between">
+                <p className="italic">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> It
                   is fulfilling, especially learning tools like SASS, Tailwind,
                   WordPress, and Figma. Aside from the technical skills, they
                   taught us how to act professionally in a working environment.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                <div className="nameAndSchool mt-10 text-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/lc.png`}
-                    className="w-[60px] mr-4"
+                    className="w-[60px] mx-auto -translate-y-5"
                     alt=""
                   />
                   <div className="italic">
@@ -59,19 +59,19 @@ const ConStudVidTestimonials = () => {
                 allowFullScreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-24 min-h-[120px]">
+              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl flex flex-col justify-between">
+                <p className="italic">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   have learned a lot, and my overall experience will be very
                   helpful not only in my future career, but also in building and
                   shaping myself.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                <div className="nameAndSchool mt-10 text-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    className="w-[60px] mx-auto -translate-y-5"
                     alt=""
                   />
                   <div className="italic">
@@ -92,19 +92,19 @@ const ConStudVidTestimonials = () => {
                 allowFullScreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl">
-                <p className="italic mb-24 min-h-[120px]">
+              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl flex flex-col justify-between">
+                <p className="italic">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   have learned a lot, and my overall experience will be very
                   helpful not only in my future career, but also in building and
                   shaping myself.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                <div className="nameAndSchool mt-10 text-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/DLSL_Official_logo.png`}
-                    className="w-[60px]"
+                    className="w-[60px] mx-auto -translate-y-5"
                     alt=""
                   />
                   <div className="italic">

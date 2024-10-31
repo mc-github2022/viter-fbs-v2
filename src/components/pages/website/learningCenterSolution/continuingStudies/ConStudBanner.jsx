@@ -24,7 +24,7 @@ const ConStudBanner = () => {
               <p className="text-light mb-10">
                 Empowering young professionals, fresh graduates, and career
                 shifters with essential technical skills in frontend
-                development, backend development, and Accounting through
+                development, backend development, and accounting through
                 hands-on training and real-world experience.
               </p>
               <a href="#" className="btn bg-transparent text-light border-2">

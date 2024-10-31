@@ -112,7 +112,7 @@ const ServiceEnrollmentPartnersSay = () => {
 
   return (
     <>
-      <section className="ServiceCrmPartnersSay pb-10 md:py-20">
+      <section className="ServiceCrmPartnersSay pb-10 md:py-20 bg-light -translate-y-1">
         <div className="customContainer">
           <div className="">
             <p>{clientSaysTitle[0].subTitle}</p>

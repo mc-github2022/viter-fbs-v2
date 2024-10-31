@@ -50,7 +50,7 @@ const ServiceEnrollmentPricing = () => {
                           </p>
                         )}
                       </div>
-                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
+                      {/* <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
                         {price.info.map((info, key) => (
                           <li key={key}>
                             <FaCheckCircle
@@ -59,7 +59,19 @@ const ServiceEnrollmentPricing = () => {
                             {info}
                           </li>
                         ))}
-                      </ul>
+                      </ul> */}
+                      <table>
+                        {price.info.map((info, key) => (
+                          <tr key={key} className="border-0">
+                            <td>
+                              <FaCheckCircle
+                                className={`${price.customCss} text-light`}
+                              />
+                            </td>
+                            <td>{info}</td>
+                          </tr>
+                        ))}
+                      </table>
                       <a
                         href={`${price.link}`}
                         className="btn bg-light text-primary font-bold"
