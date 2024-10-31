@@ -29,11 +29,11 @@ const Banner = () => {
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
-              <div className="text-[18px] text-[black] font-semibold">
+              <div className="text-sm text-[black] font-semibold">
                 <h2>Banner Slider</h2>
               </div>
               <button
-                className="flex items-center gap-1 text-[white] hover:underline px-2 bg-[black] rounded-lg"
+                className="flex items-center gap-1 text-[white] hover:underline py-1 px-2 bg-[black] rounded-lg text-sm"
                 onClick={handleAdd}
               >
                 <FaPlus />
