@@ -15,21 +15,33 @@ const ImmersionApplyNow = () => {
               <p className="mb-4">Requirements:</p>
               <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2">
                 <li>
-                  <div><FaCheckCircle className="text-primary" /></div>
+                  <div>
+                    <FaCheckCircle className="text-primary" />
+                  </div>
                   Resume
                 </li>
                 <li>
-                  <div><FaCheckCircle className="text-primary" /></div>
+                  <div>
+                    <FaCheckCircle className="text-primary" />
+                  </div>
                   School Memorandum of Agreement
                 </li>
                 <li>
-                  <div><FaCheckCircle className="text-primary" /></div> Endorsement Letter
+                  <div>
+                    <FaCheckCircle className="text-primary" />
+                  </div>{" "}
+                  Endorsement Letter
                 </li>
                 <li>
-                  <div><FaCheckCircle className="text-primary" /></div> Training Waiver
+                  <div>
+                    <FaCheckCircle className="text-primary" />
+                  </div>{" "}
+                  Training Waiver
                 </li>
                 <li>
-                  <div><FaCheckCircle className="text-primary" /></div>
+                  <div>
+                    <FaCheckCircle className="text-primary" />
+                  </div>
                   School's Evaluation Form
                 </li>
               </ul>
@@ -37,7 +49,7 @@ const ImmersionApplyNow = () => {
                 href=""
                 className="btn bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
-                PARTNER WITH US TODAY
+                PARTNER WITH US
               </a>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">

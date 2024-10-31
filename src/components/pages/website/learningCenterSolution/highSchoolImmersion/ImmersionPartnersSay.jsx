@@ -107,9 +107,9 @@ const ImmersionPartnersSay = () => {
       <section className="ImmersionPartnersSay py-10 pb-20 md:py-20">
         <div className="customContainer">
           <div className="">
-            <p>What our school and university</p>
+            <p>What Our School and University</p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              partners say
+              Partners Say
             </h2>
           </div>
           <div className="wrapper ">
