@@ -147,7 +147,7 @@ const LcssBatches = () => {
                     >
                       <div>
                         <div className="blogTitle relative z-[1]">
-                          <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                          <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[70%] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
                             {post.batchTitle}
                           </h4>
                         </div>

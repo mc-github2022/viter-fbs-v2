@@ -143,14 +143,14 @@ const LcssPartnersSay = () => {
                       partnering with FBS to develop and nurture future-ready IT
                       professionals.
                     </p>
-                    <div className="logoAndName flex items-center gap-3">
+                    <div className="logoAndName md:flex items-center gap-3">
                       <img
                         // src={`${devBaseImgUrl}/sti.png`}
-                        className="w-[80px]"
+                        className="w-[80px] mx-auto md:mx-0 mb-4 md:mb-0"
                         src={`../../public/img/DLSL_Official_logo.png`}
                         alt=""
                       />
-                      <div className="leading-[1] italic">
+                      <div className="leading-[1] italic text-center md:text-left">
                         <p>Mr. Emilio Manuel Macaso</p>
                         <p className="text-sm">IT Faculty, La Salle Lipa</p>
                       </div>
@@ -174,7 +174,7 @@ const LcssPartnersSay = () => {
                       <img
                         // src={`${devBaseImgUrl}/quote-white.png`}
                         src={`../../public/img//quote-white.png`}
-                        className="w-[80px]"
+                        className="w-[80px] "
                         alt=""
                       />
                     </div>
@@ -186,14 +186,14 @@ const LcssPartnersSay = () => {
                       students in IT and Engineering, as well as for the
                       kindness and support shown coming from the people of FBS.
                     </p>
-                    <div className="logoAndName flex items-center gap-3">
+                    <div className="logoAndName md:flex items-center gap-3">
                       <img
                         // src={`${devBaseImgUrl}/sti.png`}
-                        className="w-[80px]"
+                        className="w-[80px] mx-auto md:mx-0 mb-4 md:mb-0"
                         src={`../../public/img/sti.png`}
                         alt=""
                       />
-                      <div className="leading-[1] italic">
+                      <div className="leading-[1] italic text-center md:text-left">
                         <p>Ms. Olivia Almarez</p>
                         <p className="text-sm">OJT Coordinator</p>
                       </div>
@@ -235,14 +235,14 @@ const LcssPartnersSay = () => {
                       partnership and commitment to the development of our
                       students.
                     </p>
-                    <div className="logoAndName flex items-center gap-3">
+                    <div className="logoAndName md:flex items-center gap-3">
                       <img
                         // src={`${devBaseImgUrl}/sti.png`}
-                        className="w-[80px]"
+                        className="w-[80px] mx-auto md:mx-0 mb-4 md:mb-0"
                         src={`../../public/img/lspu.png`}
                         alt=""
                       />
-                      <div className="leading-[1] italic">
+                      <div className="leading-[1] italic text-center md:text-left">
                         <p>Mr. Joesua R. Manzanero</p>
                         <p className="text-sm">
                           Faculty, LSPU- San Pablo City Campus <br />

@@ -2,8 +2,8 @@ export const batch = [
   {
     batchTitle: "Batch 41",
     batchSlug: "batch-41",
-    batchSchool: "Laguna Sate Polytechnic Univ.",
-    batchCourse: "BS Information Technology",
+    batchSchool: "Laguna College",
+    batchCourse: "BS Computer Science",
     batchImage: "Batch-61.jpg",
     batchImageList: [
       "Batch-61.jpg",

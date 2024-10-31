@@ -48,7 +48,7 @@ const LcssApplyNow = () => {
               </ul>
               <a
                 href=""
-                className="btn bg-primary text-light my-5  inline-block rounded-full font-bold"
+                className="btn bg-primary text-light my-5 text-[12px] md:text-md  inline-block rounded-full font-bold"
               >
                 PARTNER WITH US TODAY
               </a>
