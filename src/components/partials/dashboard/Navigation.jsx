@@ -43,7 +43,7 @@ const Navigation = ({ menu, submenu }) => {
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-banner"
-                        ? "text-[black] py-1 font-bold"
+                        ? "text-[black] font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -54,7 +54,7 @@ const Navigation = ({ menu, submenu }) => {
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-process"
-                          ? "text-[black] py-1 font-bold"
+                          ? "text-[black] font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -65,7 +65,7 @@ const Navigation = ({ menu, submenu }) => {
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-services"
-                          ? "text-[black] py-1 font-bold"
+                          ? "text-[black] font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -76,7 +76,7 @@ const Navigation = ({ menu, submenu }) => {
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partnerWithUs"
-                          ? "text-[black] py-1 font-bold"
+                          ? "text-[black] font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -87,7 +87,7 @@ const Navigation = ({ menu, submenu }) => {
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-testimonial"
-                        ? "text-[black] py-1 font-bold"
+                        ? "text-[black] font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -98,7 +98,7 @@ const Navigation = ({ menu, submenu }) => {
                     <li
                       className={` text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partners"
-                          ? "text-[black] py-1 font-bold"
+                          ? "text-[black] font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -109,7 +109,7 @@ const Navigation = ({ menu, submenu }) => {
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-insights"
-                        ? "text-[black] py-1 font-bold"
+                        ? "text-[black] font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -153,7 +153,7 @@ const Navigation = ({ menu, submenu }) => {
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "why-work-with-us"
-                          ? "text-[black] py-1 font-bold"
+                          ? "text-[black] font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -164,7 +164,7 @@ const Navigation = ({ menu, submenu }) => {
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "events-activities"
-                        ? "text-[black] py-1 font-bold"
+                        ? "text-[black] font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -175,7 +175,7 @@ const Navigation = ({ menu, submenu }) => {
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "whyFBS-careers"
-                        ? "text-[black] py-1 font-bold"
+                        ? "text-[black] font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -187,7 +187,7 @@ const Navigation = ({ menu, submenu }) => {
               {/* <li
                 className={
                   activeSection === "ourOrigin"
-                    ? "text-[black] bg-primary py-1 underline underline-offset-4"
+                    ? "text-[black] bg-primary underline underline-offset-4"
                     : "text-[#9ca3af]"
                 }
                 onClick={() => scrollToSection("ourOrigin")}
