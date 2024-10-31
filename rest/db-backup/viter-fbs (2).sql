@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2024 at 02:21 PM
+-- Generation Time: Oct 31, 2024 at 03:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -163,6 +163,31 @@ INSERT INTO `home_testimonial` (`home_testimonial_aid`, `home_testimonial_messag
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lcss_batch`
+--
+
+CREATE TABLE `lcss_batch` (
+  `lcss_batch_aid` int(11) NOT NULL,
+  `lcss_batch_name` varchar(100) NOT NULL,
+  `lcss_batch_category` varchar(100) NOT NULL,
+  `lcss_batch_school` varchar(100) NOT NULL,
+  `lcss_batch_course` varchar(100) NOT NULL,
+  `lcss_batch_img` varchar(100) NOT NULL,
+  `lcss_batch_created` datetime NOT NULL,
+  `lcss_batch_datetime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lcss_batch`
+--
+
+INSERT INTO `lcss_batch` (`lcss_batch_aid`, `lcss_batch_name`, `lcss_batch_category`, `lcss_batch_school`, `lcss_batch_course`, `lcss_batch_img`, `lcss_batch_created`, `lcss_batch_datetime`) VALUES
+(1, 'Batch-41', 'College On-the-job Training', 'Laguna Sate Polytechnic Univ.', 'BS Information Technology', 'Batch-61.jpg', '2024-10-31 09:33:58', '2024-10-31 09:33:58'),
+(2, 'Batch-42', 'High School Work Immersion', 'Southern Luzon State University', 'BS Computer Science', 'Batch-62.jpg', '0000-00-00 00:00:00', '2024-10-31 09:34:38');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `special_offers`
 --
 
@@ -222,6 +247,12 @@ ALTER TABLE `home_testimonial`
   ADD PRIMARY KEY (`home_testimonial_aid`);
 
 --
+-- Indexes for table `lcss_batch`
+--
+ALTER TABLE `lcss_batch`
+  ADD PRIMARY KEY (`lcss_batch_aid`);
+
+--
 -- Indexes for table `special_offers`
 --
 ALTER TABLE `special_offers`
@@ -259,7 +290,13 @@ ALTER TABLE `home_insights`
 -- AUTO_INCREMENT for table `home_testimonial`
 --
 ALTER TABLE `home_testimonial`
-  MODIFY `home_testimonial_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `home_testimonial_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `lcss_batch`
+--
+ALTER TABLE `lcss_batch`
+  MODIFY `lcss_batch_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `special_offers`
