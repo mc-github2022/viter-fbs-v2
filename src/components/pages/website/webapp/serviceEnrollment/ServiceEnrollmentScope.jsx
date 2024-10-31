@@ -68,7 +68,7 @@ const ServiceEnrollmentScope = () => {
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p className="mb-4">{scopeList.scopeDesc}</p>
+                      <p className="mb-4 text-sm">{scopeList.scopeDesc}</p>
                       {/* <a href="#" className="btn bg-primary text-light">
                         Schedule a Demo
                       </a> */}

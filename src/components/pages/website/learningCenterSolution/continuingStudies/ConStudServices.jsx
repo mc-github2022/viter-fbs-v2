@@ -16,35 +16,50 @@ const ConStudServices = () => {
                   Website <br /> Designing <br />
                   Training
                 </h3>
-                <p>Minimun of 80 Hours </p>
+                <p>Minimum of 80 Hours </p>
                 <p>Prerequisite: None</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <div><Palette className="text-2xl text-dark" /></div> Figma Introduction
-                  and UI
+                  <div>
+                    <Palette className="text-2xl text-dark" />
+                  </div>{" "}
+                  Figma Introduction and UI
                 </li>
                 <li>
-                  <div><Palette className="text-2xl text-dark" /></div> Layers
+                  <div>
+                    <Palette className="text-2xl text-dark" />
+                  </div>{" "}
+                  Layers
                 </li>
                 <li>
-                  <div><Palette className="text-2xl text-dark" /></div> Colors, Images,
-                  Icons, and Typography
+                  <div>
+                    <Palette className="text-2xl text-dark" />
+                  </div>{" "}
+                  Colors, Images, Icons, and Typography
                 </li>
                 <li>
-                  <div><Palette className="text-2xl text-dark" /></div>
+                  <div>
+                    <Palette className="text-2xl text-dark" />
+                  </div>
                   Components
                 </li>
                 <li>
-                  <div><Palette className="text-2xl text-dark" /></div>
+                  <div>
+                    <Palette className="text-2xl text-dark" />
+                  </div>
                   Plugins & Grids
                 </li>
                 <li>
-                  <div><Palette className="text-2xl text-dark" /></div>
+                  <div>
+                    <Palette className="text-2xl text-dark" />
+                  </div>
                   Collaborations
                 </li>
                 <li>
-                  <div><Palette className="text-2xl text-dark" /></div>
+                  <div>
+                    <Palette className="text-2xl text-dark" />
+                  </div>
                   Prototyping
                 </li>
               </ul>
@@ -61,35 +76,51 @@ const ConStudServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> Web Designing using
-                  Figma
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  Web Designing using Figma
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> Website Mockup
-                  Designing
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  Website Mockup Designing
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> Mobile Responsive
-                  Designing
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  Mobile Responsive Designing
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> CSS & HTML
-                  Programming
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  CSS & HTML Programming
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
                   SASS Preprocessor
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
                   Scripting Language
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
                   Tailwind CSS
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
                   WordPress Development
                 </li>
               </ul>
@@ -106,19 +137,28 @@ const ConStudServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> ReactJs Frontend
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  ReactJs Frontend
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> Props, State, and
-                  Store Context
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  Props, State, and Store Context
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> MySQL, CRUD, CORS,
-                  and API
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  MySQL, CRUD, CORS, and API
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> ReactJS Project
-                  Development
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  ReactJS Project Development
                 </li>
               </ul>
             </div>
@@ -133,16 +173,22 @@ const ConStudServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div>
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>
                   Quickbooks Online
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div>
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>
                   Xero Accounting Software
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div> ProAdvisor
-                  Certification Reviewer
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>{" "}
+                  ProAdvisor Certification Reviewer
                 </li>
               </ul>
             </div>

@@ -60,7 +60,7 @@ export const webAppOverview = [
 export const scope = [
   {
     scopeId: "starter",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeIcon: <MdOutlineDashboard className="text-3xl  text-primary" />,
     scopeTitle: "Biometric Data Import Capability",
     scopeDesc:
       "Our Payroll System offers a capability feature that allows seamless importing of time-in and time-out data directly from biometric systems, ensuring accurate and automated attendance tracking for payroll processing.",
@@ -68,7 +68,7 @@ export const scope = [
   },
   {
     scopeId: "employee-record",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeIcon: <MdOutlineDashboard className="text-3xl  text-primary" />,
     scopeTitle: "Employee Record Management",
     scopeDesc:
       "Our Payroll System includes an Employee Record Management feature that centralizes all essential employee information, including personal details, salary data, tax information, benefits, and employment history, within a secure digital platform.",
@@ -76,7 +76,7 @@ export const scope = [
   },
   {
     scopeId: "employee-earning",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeIcon: <MdOutlineDashboard className="text-3xl  text-primary" />,
     scopeTitle: "Employee Earnings Recording",
     scopeDesc:
       "Our Payroll System includes an Earnings Recording feature that allows for the detailed encoding of all types of employee earnings, including regular salary, overtime, bonuses, allowances, commissions, and other compensations needed for accurate payroll computation.",
@@ -84,7 +84,7 @@ export const scope = [
   },
   {
     scopeId: "deduction-record",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeIcon: <MdOutlineDashboard className="text-3xl  text-primary" />,
     scopeTitle: "Deductions Recording",
     scopeDesc:
       "Our Payroll System includes a Deductions Recording feature that enables the encoding of all mandatory government deductions (such as taxes, SSS, PhilHealth, and Pag-IBIG) as well as optional deductions (such as loans, benefits, and company-specific charges) required for accurate payroll computation.",
@@ -92,7 +92,7 @@ export const scope = [
   },
   {
     scopeId: "holiday-record",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeIcon: <MdOutlineDashboard className="text-3xl  text-primary" />,
     scopeTitle: "Holidays Recording",
     scopeDesc:
       "Our Payroll System includes a holiday recording feature that allows for the encoding of all regular and special non-working holidays, ensuring that holiday pay computations are accurate and aligned with company policies and labor regulations.",
@@ -100,7 +100,7 @@ export const scope = [
   },
   {
     scopeId: "access-control",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeIcon: <MdOutlineDashboard className="text-3xl  text-primary" />,
     scopeTitle: "User Access and Role Management",
     scopeDesc:
       "Our Payroll System includes a user recording feature that provides secure access control, allowing only authorized users—such as payroll officers, HR managers, and finance staff—to access and manage payroll data, ensuring data security and confidentiality.",
@@ -108,7 +108,7 @@ export const scope = [
   },
   {
     scopeId: "compliance-report",
-    scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
+    scopeIcon: <MdOutlineDashboard className="text-3xl  text-primary" />,
     scopeTitle: "Compliance Reporting Capability",
     scopeDesc:
       "Our Payroll System includes a Reporting feature that generates accurate and detailed reports needed for easy compliance with the requirements of government agencies such as SSS, BIR, Pag-IBIG, and PhilHealth.",
