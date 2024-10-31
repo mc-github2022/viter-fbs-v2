@@ -1,6 +1,7 @@
 import React from "react";
 import { devApiUrl, fetchFormData } from "../helpers/functions-general";
 import { setError, setMessage } from "../store/StoreAction";
+import { StoreContext } from "../store/StoreContext";
 
 const useUploadMultiplePhoto = (url, dispatch) => {
   const [photoArrayList, setPhotoArrayList] = React.useState([]);
