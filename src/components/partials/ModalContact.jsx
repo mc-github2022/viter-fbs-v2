@@ -129,7 +129,7 @@ const ModalContact = ({ setModalContact, setToggleMenu = null }) => {
             </div>
             <div className="inputGroup mb-2">
               <span htmlFor="">Message</span> <br />
-              <textarea name="" id=""></textarea>
+              <textarea name="" id="" className="resize-none"></textarea>
             </div>
             <div className="inputGroup mb-2">
               <input
