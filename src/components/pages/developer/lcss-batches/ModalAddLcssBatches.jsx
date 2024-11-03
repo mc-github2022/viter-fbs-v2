@@ -75,6 +75,14 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
     lcss_batch_category: Yup.string().required("Required"),
   });
 
+  // console.log("Item Edit Data:", itemEdit);
+  // console.log("Photo Array List Length:", photoArrayList.length);
+
+  const imageList =
+    itemEdit && itemEdit.lcss_batch_img
+      ? itemEdit.lcss_batch_img.split(",")
+      : [];
+
   return (
     <ModalAddWrapper
       className={`transition-all ease-linear transform duration-200 w-[600px]`}
@@ -91,12 +99,14 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
+            await uploadMultiplePhoto(); // Ensure upload completes
             const data = {
               ...values,
               lcss_batch_img:
-                photoArrayList?.name || itemEdit?.data[0].lcss_batch_img,
+                photoArrayList.length > 0
+                  ? photoArrayList.map((file) => file.name).join(", ")
+                  : itemEdit.lcss_batch_img || "",
             };
-            uploadMultiplePhoto(); // to save the photo when submit
             mutation.mutate(data);
           }}
         >
@@ -105,81 +115,48 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="mt-5">
-                    <span className="top-20 px-2 text-dark text-sm">
-                      Images
-                    </span>
+                    <span className="top-20 px-2 text-dark">Upload Images</span>
                     <div className="relative w-fit m-auto group">
-                      {itemEdit === null && photoArrayList === null ? (
-                        <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[115px] h-[37px] border rounded-md p-2 grid place-items-center">
-                          <div className="">
-                            <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
-                              Upload Image
-                            </h1>
-                          </div>
+                      {/* Conditional Rendering Based on Image Availability */}
+                      {!itemEdit && !photoArrayList.length ? (
+                        <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[350px] h-[180px] border rounded-md p-2 place-content-center">
+                          <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                          <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                            Upload Image
+                          </h1>
                         </div>
-                      ) : (itemEdit?.data[0].lcss_batch_img === "" &&
-                          photoArrayList === null) ||
-                        photoArrayList === "" ? (
-                        <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 h-[180px] w-[350px] p-2">
-                          <div>
-                            <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight grid place-items-center text-gray text-[gray] text-sm text-center mt-5">
-                              Upload Image
-                            </h1>
-                          </div>
+                      ) : photoArrayList.length > 0 ? (
+                        <div className="grid grid-cols-4 gap-2">
+                          {photoArrayList.map((file, index) => (
+                            <img
+                              key={index}
+                              src={URL.createObjectURL(file)}
+                              alt="Uploaded Preview"
+                              className="w-[350px] h-[180px] object-cover"
+                            />
+                          ))}
+                        </div>
+                      ) : itemEdit && itemEdit.lcss_batch_img ? (
+                        <div className="grid grid-cols-4 gap-2">
+                          {imageList.map((img, index) => (
+                            <img
+                              key={index}
+                              src={`${devBaseImgUrl}/${img.trim()}`} // Use trim to remove any accidental whitespace
+                              alt={`Existing Batch Image ${index + 1}`}
+                              className="w-[350px] h-[180px] object-cover"
+                            />
+                          ))}
                         </div>
                       ) : (
-                        <div>
-                          {photoArrayList && photoArrayList.length > 0 ? (
-                            // Display uploaded images from photoArrayList
-                            <div className="flex flex-col gap-3">
-                              {photoArrayList.map((file, index) => (
-                                <img
-                                  key={index}
-                                  src={
-                                    photoArrayList
-                                      ? URL.createObjectURL(file) // preview
-                                      : devBaseImgUrl +
-                                        "/" +
-                                        itemEdit.lcss_batch_img // check db
-                                  }
-                                  alt="Uploaded Preview"
-                                />
-                              ))}
-                            </div>
-                          ) : (
-                            // If no uploaded images, show images from itemEdit
-                            itemEdit &&
-                            itemEdit.data &&
-                            itemEdit.data.map((item, index) => (
-                              <div key={index}>
-                                <img
-                                  src={
-                                    initVal.lcss_batch_img
-                                      ? `${devBaseImgUrl}/${initVal.lcss_batch_img}`
-                                      : ""
-                                  }
-                                  alt="Batch Image"
-                                />
-                              </div>
-                            ))
-                          )}
-
-                          {/* <img
-                            src={
-                              photoArrayList
-                                ? URL.createObjectURL(photoArrayList) // preview
-                                : devBaseImgUrl +
-                                  "/" +
-                                  itemEdit?.data[0].lcss_batch_img // check db
-                            }
-                            alt="image1"
-                            className="group-hover:opacity-30 duration-200 relative h-[180px]  object-contain object-[50%,50%] m-auto"
-                          /> */}
+                        <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[115px] h-[37px] border rounded-md p-2 grid place-items-center">
+                          <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                          <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                            No Images Available
+                          </h1>
                         </div>
                       )}
 
+                      {/* Upload Button */}
                       <div className="btnImgUpload">
                         <button>
                           <MdOutlineFileUpload />
@@ -191,7 +168,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                             title="Upload Logo"
                             multiple
                             onChange={(e) =>
-                              handleChangeMultiplePhoto(e, 3, true)
+                              handleChangeMultiplePhoto(e, 50, true)
                             }
                             className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
                           />

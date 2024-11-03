@@ -230,7 +230,7 @@
     @apply opacity-50 hover:bg-[white] hover:text-[black] hover:border-[#d1d5db];
   }
   .modal {
-    @apply bg-black/0 transition-all opacity-0;
+    @apply transition-all opacity-0;
   }
   .modal > .animate-slideUp {
     @apply translate-y-3 transition-all;

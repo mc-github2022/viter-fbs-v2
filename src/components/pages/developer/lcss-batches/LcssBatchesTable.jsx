@@ -37,8 +37,8 @@ const LcssBatchesTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.home_banner_title);
-    setIsId(item.home_banner_aid);
+    setIsData(item.lcss_batch_name);
+    setIsId(item.lcss_batch_aid);
   };
 
   return (
