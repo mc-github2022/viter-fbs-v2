@@ -62,7 +62,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className="text-center sm:text-left">
-                <p className="font-semibold">QUIKLINKS</p>
+                <p className="font-semibold">QUICKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   <li>Web Solutions</li>
                   <li>Virtual Assistant Solutions</li>
