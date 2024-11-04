@@ -9,7 +9,11 @@ import * as Yup from "yup";
 import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
 import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
-import { InputSelect, InputText, InputTextArea } from "../../../helpers/FormInputs";
+import {
+  InputSelect,
+  InputText,
+  InputTextArea,
+} from "../../../helpers/FormInputs";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
 const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
@@ -89,13 +93,18 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
     industry_testimonial_position: itemEdit
       ? itemEdit.industry_testimonial_position
       : "",
+    industry_testimonial_category: itemEdit
+      ? itemEdit.industry_testimonial_category
+      : "",
     industry_testimonial_img: itemEdit ? itemEdit.industry_testimonial_img : "",
     industry_testimonial_logo: itemEdit
       ? itemEdit.industry_testimonial_logo
       : "",
   };
 
-  const yupSchema = Yup.object({});
+  const yupSchema = Yup.object({
+    industry_testimonial_category: Yup.string().required("Required"),
+  });
 
   return (
     <ModalAddWrapper

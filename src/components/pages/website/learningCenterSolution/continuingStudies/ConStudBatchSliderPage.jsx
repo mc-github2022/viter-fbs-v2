@@ -159,7 +159,7 @@ const ConStudBatchSliderPage = ({
                   <img
                     src={`${devBaseImgUrl}/${image}`} // Use the current image
                     alt={`Batch image - ${index + 1}`} // Alt text for clarity
-                    className="object-cover w-[500px] h-[50vh]"
+                    className="object-contain w-[500px] h-[50vh]"
                   />
                 </div>
               </div>
@@ -171,7 +171,7 @@ const ConStudBatchSliderPage = ({
               <img
                 src={`${devBaseImgUrl}/${images[0]}`} // Use the only image
                 alt="Batch image" // Alt text for clarity
-                className="object-cover w-[500px] h-[50vh]"
+                className="object-contain w-[500px] h-[50vh]"
               />
             </div>
           </div>

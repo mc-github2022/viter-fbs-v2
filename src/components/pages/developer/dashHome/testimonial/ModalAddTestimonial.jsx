@@ -2,14 +2,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import React from "react";
 import { GrFormClose } from "react-icons/gr";
-import { IoImageOutline } from "react-icons/io5";
-import { MdOutlineFileUpload } from "react-icons/md";
 import * as Yup from "yup";
-import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
+import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
 import {
-  InputPhotoUpload,
   InputText,
-  InputTextArea,
+  InputTextArea
 } from "../../../../helpers/FormInputs";
 import {
   apiVersion,
@@ -24,7 +21,6 @@ import {
   setSuccess,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
 
 const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
