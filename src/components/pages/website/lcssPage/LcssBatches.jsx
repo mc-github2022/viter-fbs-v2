@@ -149,27 +149,9 @@ const LcssBatches = () => {
               Successful, Industry-Ready Batches.
             </h3>
           </div>
-<<<<<<< HEAD
-          <Slider {...settings}>
-            {batch.map((post, key) => {
-              return (
-                <div key={key}>
-                  <a onClick={() => handleModalBatch(post)}>
-                    <div
-                      className="blogItem addShadow mx-3 bg-[url('../../public/img/Batch-63.jpg')] bg-center bg-cover h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                      style={{
-                        backgroundImage: `url(../../public/img/${post.batchImage})`,
-                      }}
-                    >
-                      <div>
-                        <div className="blogTitle relative z-[1]">
-                          <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[70%] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                            {post.batchTitle}
-                          </h4>
-=======
           {lcssBatchesData?.data.filter(
             (item) => item.lcss_batch_category === "College On-the-job Training"
-          ).length > 3 ? ( 
+          ).length > 3 ? (
             <Slider {...settings}>
               {lcssBatchesData?.data.map((item, key) => {
                 if (
@@ -203,7 +185,6 @@ const LcssBatches = () => {
                             </div>
                           </div>
                           <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
->>>>>>> b9cc47c79b211dcc1ddac3dd5cc4b802ebf81671
                         </div>
                       </a>
                     </div>
