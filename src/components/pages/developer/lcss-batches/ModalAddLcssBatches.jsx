@@ -75,9 +75,17 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
     lcss_batch_category: Yup.string().required("Required"),
   });
 
+  // console.log("Item Edit Data:", itemEdit);
+  // console.log("Photo Array List Length:", photoArrayList.length);
+
+  const imageList =
+    itemEdit && itemEdit.lcss_batch_img
+      ? itemEdit.lcss_batch_img.split(",")
+      : [];
+
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 w-[600px]`}
+      className={`transition-all ease-linear transform duration-200`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -91,12 +99,14 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
+            await uploadMultiplePhoto(); // Ensure upload completes
             const data = {
               ...values,
               lcss_batch_img:
-                photoArrayList?.name || itemEdit?.data[0].lcss_batch_img,
+                photoArrayList.length > 0
+                  ? photoArrayList.map((file) => file.name).join(", ")
+                  : itemEdit.lcss_batch_img || "",
             };
-            uploadMultiplePhoto(); // to save the photo when submit
             mutation.mutate(data);
           }}
         >
@@ -104,147 +114,118 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <div className="mt-5">
-                    <span className="top-20 px-2 text-dark text-sm">
-                      Images
-                    </span>
-                    <div className="relative w-fit m-auto group">
-                      {itemEdit === null && photoArrayList === null ? (
-                        <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[115px] h-[37px] border rounded-md p-2 grid place-items-center">
-                          <div className="">
+                  <div className="flex gap-4 justify-between">
+                    <div className="w-[50%]">
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Batch"
+                          type="text"
+                          name="lcss_batch_name"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputSelect
+                          label="*Category"
+                          type="text"
+                          name="lcss_batch_category"
+                          disabled={mutation.isPending}
+                        >
+                          <option value="" disabled>
+                            Select Category
+                          </option>
+                          <option value="College On-the-job Training">
+                            College On-the-job Training
+                          </option>
+                          <option value="High School Work Immersion">
+                            High School Work Immersion
+                          </option>
+                          <option value="Continuing Studies">
+                            Continuing Studies
+                          </option>
+                        </InputSelect>
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="School"
+                          type="text"
+                          name="lcss_batch_school"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Course"
+                          type="text"
+                          name="lcss_batch_course"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                    </div>
+                    <div className=" w-[50%]">
+                      <span className="top-20 px-2 text-dark text-[12px]">
+                        Upload Images
+                      </span>
+                      <div className="relative w-fit m-auto group mt-3">
+                        {/* Conditional Rendering Based on Image Availability */}
+                        {!itemEdit && !photoArrayList.length ? (
+                          <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[350px] h-[180px] border rounded-md p-2 place-content-center">
                             <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                             <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
                               Upload Image
                             </h1>
                           </div>
-                        </div>
-                      ) : (itemEdit?.data[0].lcss_batch_img === "" &&
-                          photoArrayList === null) ||
-                        photoArrayList === "" ? (
-                        <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 h-[180px] w-[350px] p-2">
-                          <div>
+                        ) : photoArrayList.length > 0 ? (
+                          <div className="grid grid-cols-4 gap-2">
+                            {photoArrayList.map((file, index) => (
+                              <img
+                                key={index}
+                                src={URL.createObjectURL(file)}
+                                alt="Uploaded Preview"
+                                className="w-[350px] h-[180px] object-cover"
+                              />
+                            ))}
+                          </div>
+                        ) : itemEdit && itemEdit.lcss_batch_img ? (
+                          <div className="grid grid-cols-4 gap-2">
+                            {imageList.map((img, index) => (
+                              <img
+                                key={index}
+                                src={`${devBaseImgUrl}/${img.trim()}`} // Use trim to remove any accidental whitespace
+                                alt={`Existing Batch Image ${index + 1}`}
+                                className="w-[350px] h-[180px] object-cover"
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[115px] h-[37px] border rounded-md p-2 grid place-items-center">
                             <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight grid place-items-center text-gray text-[gray] text-sm text-center mt-5">
-                              Upload Image
+                            <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                              No Images Available
                             </h1>
                           </div>
-                        </div>
-                      ) : (
-                        <div>
-                          {photoArrayList && photoArrayList.length > 0 ? (
-                            // Display uploaded images from photoArrayList
-                            <div className="flex flex-col gap-3">
-                              {photoArrayList.map((file, index) => (
-                                <img
-                                  key={index}
-                                  src={
-                                    photoArrayList
-                                      ? URL.createObjectURL(file) // preview
-                                      : devBaseImgUrl +
-                                        "/" +
-                                        itemEdit.lcss_batch_img // check db
-                                  }
-                                  alt="Uploaded Preview"
-                                />
-                              ))}
-                            </div>
-                          ) : (
-                            // If no uploaded images, show images from itemEdit
-                            itemEdit &&
-                            itemEdit.data &&
-                            itemEdit.data.map((item, index) => (
-                              <div key={index}>
-                                <img
-                                  src={
-                                    initVal.lcss_batch_img
-                                      ? `${devBaseImgUrl}/${initVal.lcss_batch_img}`
-                                      : ""
-                                  }
-                                  alt="Batch Image"
-                                />
-                              </div>
-                            ))
-                          )}
+                        )}
 
-                          {/* <img
-                            src={
-                              photoArrayList
-                                ? URL.createObjectURL(photoArrayList) // preview
-                                : devBaseImgUrl +
-                                  "/" +
-                                  itemEdit?.data[0].lcss_batch_img // check db
-                            }
-                            alt="image1"
-                            className="group-hover:opacity-30 duration-200 relative h-[180px]  object-contain object-[50%,50%] m-auto"
-                          /> */}
+                        {/* Upload Button */}
+                        <div className="btnImgUpload">
+                          <button>
+                            <MdOutlineFileUpload />
+                            <InputPhotoUpload
+                              name="photo"
+                              type="file"
+                              id="myFile"
+                              accept="image/*"
+                              title="Upload Logo"
+                              multiple
+                              onChange={(e) =>
+                                handleChangeMultiplePhoto(e, 50, true)
+                              }
+                              className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
+                            />
+                          </button>
                         </div>
-                      )}
-
-                      <div className="btnImgUpload">
-                        <button>
-                          <MdOutlineFileUpload />
-                          <InputPhotoUpload
-                            name="photo"
-                            type="file"
-                            id="myFile"
-                            accept="image/*"
-                            title="Upload Logo"
-                            multiple
-                            onChange={(e) =>
-                              handleChangeMultiplePhoto(e, 3, true)
-                            }
-                            className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
-                          />
-                        </button>
                       </div>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="input-wrapper">
-                      <InputText
-                        label="Batch"
-                        type="text"
-                        name="lcss_batch_name"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-                    <div className="input-wrapper">
-                      <InputSelect
-                        label="*Category"
-                        type="text"
-                        name="lcss_batch_category"
-                        disabled={mutation.isPending}
-                      >
-                        <option value="" disabled>
-                          Select Category
-                        </option>
-                        <option value="College On-the-job Training">
-                          College On-the-job Training
-                        </option>
-                        <option value="High School Work Immersion">
-                          High School Work Immersion
-                        </option>
-                        <option value="Continuing Studies">
-                          Continuing Studies
-                        </option>
-                      </InputSelect>
-                    </div>
-                    <div className="input-wrapper">
-                      <InputText
-                        label="School"
-                        type="text"
-                        name="lcss_batch_school"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-
-                    <div className="input-wrapper">
-                      <InputText
-                        label="Course"
-                        type="text"
-                        name="lcss_batch_course"
-                        disabled={mutation.isPending}
-                      />
                     </div>
                   </div>
                 </div>

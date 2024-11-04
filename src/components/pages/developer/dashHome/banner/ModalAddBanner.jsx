@@ -105,9 +105,9 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[500px]">
+                    <div className="w-[50%]">
                       <div className="mt-5">
-                        <span className="top-20 px-2 text-dark">Image</span>
+                        <span className="top-20 px-2 text-dark text-xs">Image</span>
                         <div className="relative w-fit m-auto group">
                           {(itemEdit === null && photo === null) ||
                           (photo === "" && itemEdit === null) ? (

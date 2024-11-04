@@ -3,7 +3,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import BatchSliderPage from "./BatchSliderPage";
 import { batch } from "./data";
-
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -57,6 +58,18 @@ function SamplePrevArrow(props) {
 }
 
 const LcssBatches = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: lcssBatchesData,
+  } = useQueryData(
+    "/v1/lcssBatches", // endpoint
+    "get", // method
+    "lcssBatches" // key
+  );
+
   var settings = {
     dots: false,
     infinite: true,
@@ -115,9 +128,11 @@ const LcssBatches = () => {
 
   const [modalBatch, setModalBatch] = React.useState(false);
   const [itemEdit, setItemEdit] = React.useState(null);
-  const handleModalBatch = (post) => {
+  const [selectedBatchId, setSelectedBatchId] = React.useState(null);
+  const handleModalBatch = (item) => {
     setModalBatch(!modalBatch);
-    setItemEdit(post);
+    setItemEdit(item);
+    setSelectedBatchId(item.lcss_batch_aid); // Set the selected batch ID
     document.body.classList.toggle("overflow-hidden");
   };
 
@@ -134,42 +149,103 @@ const LcssBatches = () => {
               Successful, Industry-Ready Batches.
             </h3>
           </div>
-          <Slider {...settings}>
-            {batch.map((post, key) => {
-              return (
-                <div key={key}>
-                  <a onClick={() => handleModalBatch(post)}>
-                    <div
-                      className="blogItem addShadow mx-3 bg-[url('../../public/img/Batch-63.jpg')] bg-center bg-cover h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                      style={{
-                        backgroundImage: `url(../../public/img/${post.batchImage})`,
-                      }}
-                    >
-                      <div>
-                        <div className="blogTitle relative z-[1]">
-                          <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                            {post.batchTitle}
-                          </h4>
+          {lcssBatchesData?.data.filter(
+            (item) => item.lcss_batch_category === "College On-the-job Training"
+          ).length > 3 ? ( 
+            <Slider {...settings}>
+              {lcssBatchesData?.data.map((item, key) => {
+                if (
+                  item.lcss_batch_category === "College On-the-job Training"
+                ) {
+                  // Split the image string into an array and take the first image
+                  const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
+
+                  return (
+                    <div key={key}>
+                      <a onClick={() => handleModalBatch(item)}>
+                        <div
+                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          style={{
+                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
+                          }}
+                        >
+                          <div>
+                            <div className="blogTitle relative z-[1]">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {item.lcss_batch_name}
+                              </h4>
+                            </div>
+                            <div className="blogExcerpt p-10 relative z-[1]">
+                              <p className="text-light font-bold text-lg">
+                                {item.lcss_batch_school}
+                              </p>
+                              <p className="text-light">
+                                {item.lcss_batch_course}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
-                        <div className="blogExcerpt p-10 relative z-[1]">
-                          <p className="text-light font-bold text-lg">
-                            {post.batchSchool}
-                          </p>
-                          <p className="text-light">{post.batchCourse}</p>
-                        </div>
-                      </div>
-                      <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-              );
-            })}
-          </Slider>
+                  );
+                }
+                return null; // Return null if the category does not match
+              })}
+            </Slider>
+          ) : (
+            <div className="flex flex-row gap-2">
+              {lcssBatchesData?.data.map((item, key) => {
+                // Only render the items that match the category
+                if (
+                  item.lcss_batch_category === "College On-the-job Training"
+                ) {
+                  // Split the image string into an array and take the first image
+                  const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
+
+                  return (
+                    <div key={key}>
+                      <a onClick={() => handleModalBatch(item)}>
+                        <div
+                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          style={{
+                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`, // Use the first batch image
+                          }}
+                        >
+                          <div>
+                            <div className="blogTitle relative z-[1]">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {item.lcss_batch_name}
+                              </h4>
+                            </div>
+                            <div className="blogExcerpt p-10 relative z-[1]">
+                              <p className="text-light font-bold text-lg">
+                                {item.lcss_batch_school}
+                              </p>
+                              <p className="text-light">
+                                {item.lcss_batch_course}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                        </div>
+                      </a>
+                    </div>
+                  );
+                }
+                return null; // Return null if the category does not match
+              })}
+            </div>
+          )}
         </div>
       </section>
 
       {modalBatch && (
-        <BatchSliderPage setModalBatch={setModalBatch} itemEdit={itemEdit} />
+        <BatchSliderPage
+          setModalBatch={setModalBatch}
+          itemEdit={itemEdit}
+          selectedBatchId={selectedBatchId}
+        />
       )}
     </>
   );

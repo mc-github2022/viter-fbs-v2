@@ -44,7 +44,7 @@ const LcssBatches = () => {
       </section>
 
       {store.isAdd && (
-        <ModalAddLcssBatches setIsAdd={setIsAdd} itemEdit={itemEdit} />
+        <ModalAddLcssBatches setIsAdd={setIsAdd} itemEdit={itemEdit} setItemEdit={setItemEdit}/>
       )}
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}
