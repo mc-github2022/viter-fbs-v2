@@ -3,6 +3,8 @@ import { RiDoubleQuotesL } from "react-icons/ri";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -58,6 +60,18 @@ function SamplePrevArrow(props) {
 }
 
 const ServiceOnlineDonationPartnersSay = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: IndtestimonialData,
+  } = useQueryData(
+    "/v1/indTestimonial", // endpoint
+    "get", // method
+    "indTestimonial" // key
+  );
+
   var partnerSaysSettings = {
     dots: false,
     infinite: true,
@@ -108,12 +122,14 @@ const ServiceOnlineDonationPartnersSay = () => {
     <>
       <section className="ServiceOnlineDonationPartnersSay pb-10 md:py-20 bg-light -translate-y-1">
         <div className="customContainer">
-          <div className="">
-            <p>{clientSaysTitle[0].subTitle}</p>
-            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              {clientSaysTitle[0].mainTitle}
-            </h2>
-          </div>
+          {IndtestimonialData?.data.length > 1 && (
+            <div className="">
+              <p>What Our</p>
+              <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+                Clients Say
+              </h2>
+            </div>
+          )}
           <div className="wrapper ">
             <Slider {...partnerSaysSettings}>
               {clientSays.map((testimonial, key) => {
@@ -132,7 +148,7 @@ const ServiceOnlineDonationPartnersSay = () => {
                         <p className="relative z-10 italic mb-8 min-h-[260px] md:min-h-0">
                           {testimonial.clientMessage}
                         </p>
-                        <div className="logoAndName flex flex-col text-center items-center gap-3">
+                        <div className="logoAndName flex items-center gap-3">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
                             className="w-[100px]"

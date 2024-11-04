@@ -37,3 +37,7 @@ RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careers
 # Why FBS - EVENTS AND ACTIVITIES
 RewriteRule ^lcssBatches$ controllers/developer/lcss-batches/lcssBatches.php [L]
 RewriteRule ^lcssBatches/([0-9]+)$ controllers/developer/lcss-batches/lcssBatches.php?lcss_batchid=$1 [L]
+
+# INDUSTRY TESTIMONIAL
+RewriteRule ^indTestimonial$ controllers/developer/industry-testimonial/industryTestimonial.php [L]
+RewriteRule ^indTestimonial/([0-9]+)$ controllers/developer/industry-testimonial/industryTestimonial.php?industry_testimonialid=$1 [L]

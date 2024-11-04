@@ -28,7 +28,7 @@ class LcssBatches
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblLcssBatch} ";
-            $sql .= "order by lcss_batch_aid asc ";
+            $sql .= "order by lcss_batch_aid desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;

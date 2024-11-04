@@ -57,6 +57,7 @@ function SamplePrevArrow(props) {
 }
 
 const VaTechSupportPartnersSay = () => {
+  
   var partnerSaysSettings = {
     dots: false,
     infinite: false,

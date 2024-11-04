@@ -2,14 +2,11 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import React from "react";
 import { GrFormClose } from "react-icons/gr";
-import { IoImageOutline } from "react-icons/io5";
-import { MdOutlineFileUpload } from "react-icons/md";
 import * as Yup from "yup";
-import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
+import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
 import {
-  InputPhotoUpload,
   InputText,
-  InputTextArea,
+  InputTextArea
 } from "../../../../helpers/FormInputs";
 import {
   apiVersion,
@@ -24,7 +21,6 @@ import {
   setSuccess,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
 
 const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -109,8 +105,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
   const yupSchema = Yup.object({});
 
-  console.log("itemEdit:", itemEdit);
-  console.log("photo:", photo);
 
   return (
     <ModalAddWrapper
@@ -191,7 +185,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                             <input
                               type="file"
                               accept="image/*"
-                              className="h-10 my-1"
+                              className=" my-1"
                               onChange={handleClientImageUpload}
                             />
                             <label className="absolute top-[20px]">
@@ -203,7 +197,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                             <input
                               type="file"
                               accept="image/*"
-                              className="h-10 my-1"
+                              className=" my-1"
                               onChange={handleLogoImageUpload}
                             />
                             <label className="absolute top-[20px]">

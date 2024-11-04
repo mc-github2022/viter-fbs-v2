@@ -2,6 +2,8 @@ import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import { clientSays, clientSaysTitle } from "./data";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -57,6 +59,17 @@ function SamplePrevArrow(props) {
 }
 
 const VaAdminSolutionPartnersSay = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: IndtestimonialData,
+  } = useQueryData(
+    "/v1/indTestimonial", // endpoint
+    "get", // method
+    "indTestimonial" // key
+  );
   var partnerSaysSettings = {
     dots: false,
     infinite: true,
@@ -131,10 +144,10 @@ const VaAdminSolutionPartnersSay = () => {
                         <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0 text-sm">
                           {testimonial.clientMessage}
                         </p>
-                        <div className="logoAndName flex flex-col items-center text-center gap-3 mt-10">
+                        <div className="logoAndName flex items-center gap-3">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
-                            className="w-[120px] mxauto"
+                            className="w-[120px]"
                             src={`../../public/img/${testimonial.clientLogo}`}
                             alt=""
                           />

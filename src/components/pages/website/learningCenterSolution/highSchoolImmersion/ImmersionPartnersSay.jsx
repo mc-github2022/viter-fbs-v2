@@ -1,6 +1,8 @@
 import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -56,6 +58,18 @@ function SamplePrevArrow(props) {
 }
 
 const ImmersionPartnersSay = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: IndtestimonialData,
+  } = useQueryData(
+    "/v1/indTestimonial", // endpoint
+    "get", // method
+    "indTestimonial" // key
+  );
+
   var partnerSaysSettings = {
     dots: false,
     infinite: true,
@@ -106,111 +120,136 @@ const ImmersionPartnersSay = () => {
     <>
       <section className="ImmersionPartnersSay py-10 pb-20 md:py-20">
         <div className="customContainer">
-          <div className="">
-            <p>What Our School and University</p>
-            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              Partners Say
-            </h2>
-          </div>
+          {IndtestimonialData?.data.length > 0 && (
+            <div className="">
+              <p>What Our School and University</p>
+              <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+                Partners Say
+              </h2>
+            </div>
+          )}
           <div className="wrapper ">
-            <Slider {...partnerSaysSettings}>
-              <div className="md:h-[450px]">
-                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
-                  <div className="theMessage  relative">
-                    <div className="absolute top-[-30px] left-[-40px]">
-                      <img
-                        // src={`${devBaseImgUrl}/quote-white.png`}
-                        src={`../../public/img//quote-white.png`}
-                        className="w-[80px]"
-                        alt=""
-                      />
-                    </div>
-                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
-                      We extend our deepest gratitude to Frontline Business
-                      Solutions for being an outstanding partner in our Work
-                      Immersion program. Your organization provided our students
-                      with valuable, real-world experiences that greatly
-                      enhanced their skills and understanding of their chosen
-                      fields. The support and mentorship offered by your team
-                      created an ideal learning environment, fostering both
-                      professional and personal growth. Your commitment to
-                      nurturing young talent and your willingness to involve
-                      them in meaningful projects have had a profound impact on
-                      their future careers. We truly appreciate the
-                      collaboration and look forward to more successful
-                      partnerships in the years to come.
-                    </p>
-                    <div className="logoAndName flex items-center gap-3">
-                      <img
-                        // src={`${devBaseImgUrl}/sti.png`}
-                        className="w-[80px]"
-                        src={`../../public/img/stms.png`}
-                        alt=""
-                      />
-                      <div className="leading-[1] italic">
-                        <p>Ms. Lara Jane P. Yedra</p>
-                        <p className="text-sm">Work Immersion Teacher</p>
-                        <p className="text-sm">St. Therese Montessori School</p>
+            {IndtestimonialData?.data.filter(
+              (item) =>
+                item.industry_testimonial_category ===
+                "High School Work Immersion"
+            ).length > 1 ? (
+              <Slider {...partnerSaysSettings}>
+                {IndtestimonialData?.data.map((item, key) => {
+                  if (
+                    item.industry_testimonial_category ===
+                    "High School Work Immersion"
+                  ) {
+                    return (
+                      <div key={key} className="md:h-[425px]">
+                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                          <div className="theMessage  relative">
+                            <div className="absolute top-[-30px] left-[-40px]">
+                              <img
+                                // src={`${devBaseImgUrl}/quote-white.png`}
+                                src={`${devBaseImgUrl}/quote-white.png`}
+                                className="w-[80px]"
+                                alt=""
+                              />
+                            </div>
+                            <p className="relative z-10 italic mb-8  md:min-h-0">
+                              {item.industry_testimonial_message}
+                            </p>
+                            <div className="logoAndName flex items-center gap-3">
+                              <img
+                                // src={`${devBaseImgUrl}/sti.png`}
+                                className="w-[80px]"
+                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
+                                alt=""
+                              />
+                              <div className="leading-[1] italic">
+                                <p>{item.industry_testimonial_name}</p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_position}
+                                </p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_company
+                                    ? item.industry_testimonial_company
+                                    : ""}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="hidden lg:block">
+                            <img
+                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
+                              className="absolute bottom-0 w-[300px] right-0"
+                              alt=""
+                            />
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="hidden lg:block">
-                    <img
-                      // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                      src={`../../public/img/lara-yedra.png`}
-                      className="absolute bottom-0 w-[300px] right-8"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="md:h-[425px]">
-                <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
-                  <div className="theMessage  relative">
-                    <div className="absolute top-[-30px] left-[-40px]">
-                      <img
-                        // src={`${devBaseImgUrl}/quote-white.png`}
-                        src={`../../public/img//quote-white.png`}
-                        className="w-[80px]"
-                        alt=""
-                      />
-                    </div>
-                    <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0">
-                      Frontline Business Solutions helped my students grow in
-                      every aspect. They were trained as part of the company and
-                      were really excited to tell me their stories. I saw how
-                      the company changed my students in facing problems, way of
-                      learning, discipline and understanding. I would recommend
-                      Frontline Business Solutions if you want exceptional
-                      training and experience.
-                    </p>
-                    <div className="logoAndName flex items-center gap-3">
-                      <img
-                        // src={`${devBaseImgUrl}/sti.png`}
-                        className="w-[80px]"
-                        src={`../../public/img/spc.png`}
-                        alt=""
-                      />
-                      <div className="leading-[1] italic">
-                        <p>Ms. Chelsea Lim</p>
-                        <p className="text-sm">
-                          Senior High School ICT Faculty <br />
-                          San Pablo Colleges
-                        </p>
+                    );
+                  }
+                })}
+              </Slider>
+            ) : (
+              <div>
+                {IndtestimonialData?.data.map((item, key) => {
+                  if (
+                    item.industry_testimonial_category ===
+                    "High School Work Immersion"
+                  ) {
+                    return (
+                      <div className="md:h-[425px]">
+                        <div
+                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
+                          key={key}
+                        >
+                          <div className="theMessage  relative">
+                            <div className="absolute top-[-30px] left-[-40px]">
+                              <img
+                                // src={`${devBaseImgUrl}/quote-white.png`}
+                                src={`${devBaseImgUrl}/quote-white.png`}
+                                className="w-[80px]"
+                                alt=""
+                              />
+                            </div>
+                            <p className="relative z-10 italic mb-8  md:min-h-0">
+                              {item.industry_testimonial_message}
+                            </p>
+                            <div className="logoAndName flex items-center gap-3">
+                              <img
+                                // src={`${devBaseImgUrl}/sti.png`}
+                                className="w-[80px]"
+                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
+                                alt=""
+                              />
+                              <div className="leading-[1] italic">
+                                <p>{item.industry_testimonial_name}</p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_position}
+                                </p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_company
+                                    ? item.industry_testimonial_company
+                                    : ""}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="hidden lg:block">
+                            <img
+                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
+                              className="absolute bottom-0 w-[300px] right-0"
+                              alt=""
+                            />
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="hidden lg:block">
-                    <img
-                      // src={`${devBaseImgUrl}/ariel-ferrer.png`}
-                      src={`../../public/img/chelsea-lim.png`}
-                      className="absolute bottom-0 w-[300px] right-8"
-                      alt=""
-                    />
-                  </div>
-                </div>
+                    );
+                  }
+                  return null;
+                })}
               </div>
-            </Slider>
+            )}
           </div>
         </div>
       </section>
