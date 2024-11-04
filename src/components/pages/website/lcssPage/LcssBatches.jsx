@@ -151,7 +151,7 @@ const LcssBatches = () => {
           </div>
           {lcssBatchesData?.data.filter(
             (item) => item.lcss_batch_category === "College On-the-job Training"
-          ).length > 3 ? ( 
+          ).length > 3 ? (
             <Slider {...settings}>
               {lcssBatchesData?.data.map((item, key) => {
                 if (
@@ -170,18 +170,18 @@ const LcssBatches = () => {
                           }}
                         >
                           <div>
-                            <div className="blogTitle relative z-[1]">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                {item.lcss_batch_name}
-                              </h4>
-                            </div>
-                            <div className="blogExcerpt p-10 relative z-[1]">
+                            <div className="blogExcerpt p-10 relative z-[1] ">
                               <p className="text-light font-bold text-lg">
                                 {item.lcss_batch_school}
                               </p>
                               <p className="text-light">
                                 {item.lcss_batch_course}
                               </p>
+                            </div>
+                            <div className="blogTitle relative z-[1] pb-10">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {item.lcss_batch_name}
+                              </h4>
                             </div>
                           </div>
                           <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
@@ -213,11 +213,6 @@ const LcssBatches = () => {
                           }}
                         >
                           <div>
-                            <div className="blogTitle relative z-[1]">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                {item.lcss_batch_name}
-                              </h4>
-                            </div>
                             <div className="blogExcerpt p-10 relative z-[1]">
                               <p className="text-light font-bold text-lg">
                                 {item.lcss_batch_school}
@@ -225,6 +220,11 @@ const LcssBatches = () => {
                               <p className="text-light">
                                 {item.lcss_batch_course}
                               </p>
+                            </div>
+                            <div className="blogTitle relative z-[1] pb-10">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {item.lcss_batch_name}
+                              </h4>
                             </div>
                           </div>
                           <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>

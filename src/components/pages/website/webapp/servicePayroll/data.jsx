@@ -145,7 +145,7 @@ export const clientSaysTitle = [
 ];
 
 export const clientSays = [
-  {
+  { 
     clientName: "Kimbell John Reyes",
     clientDesc: "Chief Executive Officer",
     clientMessage:
