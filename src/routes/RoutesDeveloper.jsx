@@ -2,6 +2,7 @@ import { devNavUrl } from "../components/helpers/functions-general";
 import Banner from "../components/pages/developer/dashHome/banner/Banner";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
+import IndustryTestimonial from "../components/pages/developer/industry-testimonial/IndustryTestimonial";
 import LcssBatches from "../components/pages/developer/lcss-batches/LcssBatches";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
@@ -186,5 +187,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/lcss-batches`,
     element: <LcssBatches />,
+  },
+  {
+    path: `${devNavUrl}/industry-testimonial`,
+    element: <IndustryTestimonial />,
   },
 ];
