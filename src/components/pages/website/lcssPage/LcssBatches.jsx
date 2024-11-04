@@ -194,7 +194,7 @@ const LcssBatches = () => {
               })}
             </Slider>
           ) : (
-            <div className="flex flex-row gap-2">
+            <div className="flex flex-wrap gap-2 place-content-center">
               {lcssBatchesData?.data.map((item, key) => {
                 // Only render the items that match the category
                 if (

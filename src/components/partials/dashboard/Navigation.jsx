@@ -250,6 +250,24 @@ const Navigation = ({ menu, submenu }) => {
                   </div>
                 </Link>
               </li>
+
+              <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "industry-testimonial"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-[#9ca3af] "
+                  }
+                `}
+              >
+                <Link to={`${devNavUrl}/industry-testimonial`}>
+                  <div className="nav flex items-center">
+                    <span className="ml-2.5 text-[14px]">
+                      Industry Testimonials
+                    </span>
+                  </div>
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

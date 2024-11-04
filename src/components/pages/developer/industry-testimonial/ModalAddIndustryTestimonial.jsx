@@ -1,28 +1,22 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Form, Formik } from "formik";
 import React from "react";
-import { GrFormClose } from "react-icons/gr";
+import { StoreContext } from "../../../store/StoreContext";
+import useUploadPhoto from "../../../custom-hooks/useUploadPhoto";
+import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { queryData } from "../../../helpers/queryData";
+import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
 import * as Yup from "yup";
-import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
+import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
+import { GrFormClose } from "react-icons/gr";
+import { Form, Formik } from "formik";
 import {
+  InputSelect,
   InputText,
-  InputTextArea
-} from "../../../../helpers/FormInputs";
-import {
-  apiVersion,
-  devBaseImgUrl,
-} from "../../../../helpers/functions-general";
-import { queryData } from "../../../../helpers/queryData";
-import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
-import {
-  setError,
-  setMessage,
-  setSuccess,
-} from "../../../../store/StoreAction";
-import { StoreContext } from "../../../../store/StoreContext";
+  InputTextArea,
+} from "../../../helpers/FormInputs";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
-const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
+const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
     `${apiVersion}/upload-photo`,
@@ -68,13 +62,13 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/testimonials/${itemEdit.home_testimonial_aid}` // update
-          : `/v1/testimonials`, // create
+          ? `/v1/indTestimonial/${itemEdit.industry_testimonial_aid}` // update
+          : `/v1/indTestimonial`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["testimonials"] });
+      queryClient.invalidateQueries({ queryKey: ["indTestimonial"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -89,22 +83,28 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   });
 
   const initVal = {
-    home_testimonial_aid: itemEdit ? itemEdit.home_testimonial_aid : "",
-    home_testimonial_message: itemEdit ? itemEdit.home_testimonial_message : "",
-    home_testimonial_name: itemEdit ? itemEdit.home_testimonial_name : "",
-    home_testimonial_position: itemEdit
-      ? itemEdit.home_testimonial_position
+    industry_testimonial_aid: itemEdit ? itemEdit.industry_testimonial_aid : "",
+    industry_testimonial_message: itemEdit
+      ? itemEdit.industry_testimonial_message
       : "",
-    home_testimonial_client_img: itemEdit
-      ? itemEdit.home_testimonial_client_img
+    industry_testimonial_name: itemEdit
+      ? itemEdit.industry_testimonial_name
       : "",
-    home_testimonial_logo_img: itemEdit
-      ? itemEdit.home_testimonial_logo_img
+    industry_testimonial_position: itemEdit
+      ? itemEdit.industry_testimonial_position
+      : "",
+    industry_testimonial_category: itemEdit
+      ? itemEdit.industry_testimonial_category
+      : "",
+    industry_testimonial_img: itemEdit ? itemEdit.industry_testimonial_img : "",
+    industry_testimonial_logo: itemEdit
+      ? itemEdit.industry_testimonial_logo
       : "",
   };
 
-  const yupSchema = Yup.object({});
-
+  const yupSchema = Yup.object({
+    industry_testimonial_category: Yup.string().required("Required"),
+  });
 
   return (
     <ModalAddWrapper
@@ -124,10 +124,10 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              home_testimonial_client_img:
-                clientImage?.name || itemEdit.home_testimonial_client_img,
-              home_testimonial_logo_img:
-                logoImage?.name || itemEdit.home_testimonial_logo_img,
+              industry_testimonial_img:
+                clientImage?.name || itemEdit.industry_testimonial_img,
+              industry_testimonial_logo:
+                logoImage?.name || itemEdit.industry_testimonial_logo,
             };
 
             // Upload photos if they exist
@@ -152,9 +152,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                               alt="Client Preview"
                               className="w-48 h-34 object-cover rounded-md"
                             />
-                          ) : itemEdit?.home_testimonial_client_img ? (
+                          ) : itemEdit?.industry_testimonial_img ? (
                             <img
-                              src={`${devBaseImgUrl}/${itemEdit.home_testimonial_client_img}`}
+                              src={`${devBaseImgUrl}/${itemEdit.industry_testimonial_img}`}
                               alt="Client Testimonial Image"
                               className="w-48 h-34 object-cover rounded-md"
                             />
@@ -168,9 +168,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                               alt="Logo Preview"
                               className="w-48 h-34 object-cover rounded-md"
                             />
-                          ) : itemEdit?.home_testimonial_logo_img ? (
+                          ) : itemEdit?.industry_testimonial_logo ? (
                             <img
-                              src={`${devBaseImgUrl}/${itemEdit.home_testimonial_logo_img}`}
+                              src={`${devBaseImgUrl}/${itemEdit.industry_testimonial_logo}`}
                               alt="Logo Testimonial Image"
                               className="w-48 h-34 object-cover rounded-md"
                             />
@@ -211,7 +211,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                           <InputText
                             label="Name"
                             type="text"
-                            name="home_testimonial_name"
+                            name="industry_testimonial_name"
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -219,9 +219,68 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                           <InputText
                             label="Position"
                             type="text"
-                            name="home_testimonial_position"
+                            name="industry_testimonial_position"
                             disabled={mutation.isPending}
                           />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputSelect
+                            label="*Category"
+                            type="text"
+                            name="industry_testimonial_category"
+                            disabled={mutation.isPending}
+                          >
+                            <option value="" disabled>
+                              Select Category
+                            </option>
+                            <option value="HR Information System">
+                              HR Information System
+                            </option>
+                            <option value="Online Payroll System">
+                              Online Payroll System
+                            </option>
+                            <option value="School Enrollment System">
+                              School Enrollment System
+                            </option>
+                            <option value="Online Payment Integration">
+                              Online Payment Integration
+                            </option>
+                            <option value="Online Donation System">
+                              Online Donation System
+                            </option>
+                            <option value="Asset Inventory System">
+                              Asset Inventory System
+                            </option>
+                            <option value="Business Registration">
+                              Business Registration
+                            </option>
+                            <option value="Bookkeeping / Compliance">
+                              Bookkeeping / Compliance
+                            </option>
+                            <option value="Administrative">
+                              Administrative
+                            </option>
+                            <option value="Business Support">
+                              Business Support
+                            </option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="College On-the-job- Training">
+                              College On-the-job- Training
+                            </option>
+                            <option value="High School Work Immersion">
+                              High School Work Immersion
+                            </option>
+                            <option value="Continuing Studies">
+                              Continuing Studies
+                            </option>
+                            <option value="WordPress CMS Website">
+                              WordPress CMS Website
+                            </option>
+                            <option value="Single Page Website">
+                              Single Page Website
+                            </option>
+                            <option value="Web Design">Web Design</option>
+                          </InputSelect>
                         </div>
                       </div>
                     </div>
@@ -229,7 +288,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                       <InputTextArea
                         label="Message"
                         type="text"
-                        name="home_testimonial_message"
+                        name="industry_testimonial_message"
                         className="h-[500px] w-[478px]"
                         disabled={mutation.isPending}
                       />
@@ -245,10 +304,10 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                         mutation.isPending ||
                         (!props.dirty && !clientImage && !logoImage) || // Check if no new image is selected
                         (clientImage &&
-                          initVal.home_testimonial_client_img ===
+                          initVal.industry_testimonial_img ===
                             clientImage.name) ||
                         (logoImage &&
-                          initVal.home_testimonial_logo_img === logoImage.name)
+                          initVal.industry_testimonial_logo === logoImage.name)
                       }
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
@@ -271,4 +330,4 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   );
 };
 
-export default ModalAddTestimonial;
+export default ModalAddIndustryTestimonial;
