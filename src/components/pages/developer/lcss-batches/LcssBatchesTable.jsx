@@ -55,7 +55,7 @@ const LcssBatchesTable = ({ setItemEdit }) => {
                 <th>Category</th>
                 <th>School</th>
                 <th>Course</th>
-                <th>Image</th>
+                <th className="w-[30rem]">Image</th>
                 <th className="text-right">Actions</th>
               </tr>
             </thead>
@@ -92,7 +92,9 @@ const LcssBatchesTable = ({ setItemEdit }) => {
                   <td className="place-content-start">
                     {item.lcss_batch_course}
                   </td>
-                  <td className="place-content-start">{item.lcss_batch_img}</td>
+                  <td className="place-content-start">
+                    <p className="line-clamp-5">{item.lcss_batch_img}</p>
+                  </td>
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                     <button
                       className="tooltip-action-table"

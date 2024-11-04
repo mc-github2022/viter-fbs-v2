@@ -151,10 +151,9 @@ const LcssBatches = () => {
           </div>
           {lcssBatchesData?.data.filter(
             (item) => item.lcss_batch_category === "College On-the-job Training"
-          ).length > 3 ? ( // Check if there are more than 3 items in the category
+          ).length > 3 ? ( 
             <Slider {...settings}>
               {lcssBatchesData?.data.map((item, key) => {
-                // Only render the items that match the category
                 if (
                   item.lcss_batch_category === "College On-the-job Training"
                 ) {
@@ -165,9 +164,9 @@ const LcssBatches = () => {
                     <div key={key}>
                       <a onClick={() => handleModalBatch(item)}>
                         <div
-                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                           style={{
-                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`, // Use the first batch image
+                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
                           }}
                         >
                           <div>
@@ -208,7 +207,7 @@ const LcssBatches = () => {
                     <div key={key}>
                       <a onClick={() => handleModalBatch(item)}>
                         <div
-                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${firstImage})`, // Use the first batch image
                           }}
