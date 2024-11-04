@@ -71,7 +71,7 @@ export const scope = [
   {
     scopeId: "assignment-asset",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Assignment of Asset",
+    scopeTitle: "Asset Assignment",
     scopeDesc:
       "Allows for the assignment of assets to employees or departments, maintaining a clear record of asset ownership and accountability.",
     scopeImage: "asset-assignment.png",
@@ -89,7 +89,7 @@ export const scope = [
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Settings",
     scopeDesc:
-      "Provides customization options for system configuration to meet the specific needs of the organization and enhance user experience.",
+      "Provides customization options for system configuration to meet the specific needs of the organization and enhance the user experience.",
     scopeImage: "asset-settings.png",
   },
 ];

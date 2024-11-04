@@ -49,10 +49,10 @@ export const webAppOverview = [
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Enhanced Efficiency and Decision-Making",
     overviewAtext:
-      "Streamline operations by managing donations in a single platform, reducing administrative tasks, and enabling data-driven decisions for better resource allocation and fundraising success.",
+      "Streamline operations by managing donations on a single platform, reducing administrative tasks, and enabling data-driven decisions for better resource allocation and fundraising success.",
     overviewBtitle: "Increased Donor Trust and Retention",
     overviewBtext:
-      "Strengthen relationships with donors through transparent transaction history and secure management, leading to long-term support and repeat donations.",
+      "Strengthen relationships with donors through a transparent transaction history and secure management, leading to long-term support and repeat donations.",
     overviewCtitle: "Higher Donations and Optimized Fund Allocation",
     overviewCtext:
       "Encourage more contributions by allowing donors to see the direct impact of their support, resulting in increased donation amounts and more effective program funding.",
@@ -87,7 +87,7 @@ export const scope = [
   {
     scopeId: "donors-record",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Donors Record Management",
+    scopeTitle: "Donor Record Management",
     scopeDesc:
       "Maintains detailed records of donors, including contact information, donation history, and engagement data.",
     scopeImage: "donation-donors-record.png",
@@ -103,7 +103,7 @@ export const scope = [
   {
     scopeId: "donations-record",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Donations Record",
+    scopeTitle: "Donation Record",
     scopeDesc:
       "Keeps a comprehensive log of all donations, tracking amounts, donors, and designated funds.",
     scopeImage: "donation-record.png",
@@ -119,7 +119,7 @@ export const scope = [
   {
     scopeId: "users-setting",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Users Settings",
+    scopeTitle: "User Settings",
     scopeDesc:
       "Enables donors and admins to manage account settings, preferences, and personal information securely.",
     scopeImage: "donation-setting.png",
