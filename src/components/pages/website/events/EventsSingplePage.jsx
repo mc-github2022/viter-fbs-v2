@@ -94,7 +94,7 @@ const EventsSingplePage = () => {
               <img
                 src={`${devBaseImgUrl}/${post.events_activities_img}`}
                 alt=""
-                className="rounded-lg object-cover mb-8 w-full max-h-[700px] object-center"
+                className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
               />
               <div dangerouslySetInnerHTML={{ __html: html }}></div>
             </div>

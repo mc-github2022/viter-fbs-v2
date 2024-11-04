@@ -148,7 +148,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[500px]">
+                    <div className="w-[50%]">
                       <div className="relative w-fit m-auto group">
                         {/* Display images or placeholders */}
                         <div className="flex flex-row justify-between items-center">

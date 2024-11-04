@@ -49,7 +49,7 @@ export const webAppOverview = [
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Payment Flexibility",
     overviewAtext:
-      "By offering multiple credit card payment options, businesses can provide a smoother checkout experience, catering to a broader range of customers and reducing barriers to completing transactions.",
+      "By offering multiple credit/debit card payment options, businesses can provide a smoother checkout experience, catering to a broader range of customers and reducing barriers to completing transactions.",
     overviewBtitle: "Local Market Adaptation",
     overviewBtext:
       "By integrating with GCash, a widely-used payment method in the Philippines, businesses can cater to local customer preferences, offering a more flexible and accessible payment option that enhances the user experience.",
@@ -60,7 +60,7 @@ export const scope = [
   {
     scopeId: "starter",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
-    scopeTitle: "Credit Card Payment (Visa and Mastercard)",
+    scopeTitle: "Credit/Debit Card Payment (Visa and Mastercard)",
     scopeDesc:
       "Enables secure payment processing through Visa and Mastercard, offering customers a trusted and convenient way to complete transactions.",
     scopeImage: "online-payment-cc.png",
@@ -81,7 +81,7 @@ export const pricing = [
     title: "Online Payment Integration",
     rate: "Starts at ₱80K",
     note: "price varies based on system scope",
-    info: ["Credit Card Payment", "Gcash Payment"],
+    info: ["Credit/Debit Card Payment", "Gcash Payment"],
     link: "/free-trial",
     isActive: 0,
     customCss: "text-primary",

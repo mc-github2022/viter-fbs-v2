@@ -32,7 +32,7 @@
     @apply overflow-hidden;
   }
   input[type="text"] {
-    @apply bg-customGray h-8 p-1 text-sm text-dark;
+    @apply bg-customGray h-8 p-1 text-xs text-dark;
   }
   textarea {
     @apply bg-customGray w-full h-20 resize-none text-sm;
@@ -54,7 +54,7 @@
     @apply border-b border-solid border-[#d1d5db];
   }
   table th {
-    @apply font-semibold bg-[#d1d5db] py-1 pr-3 capitalize text-[12px];
+    @apply font-semibold bg-[#d1d5db] py-1 pr-3 capitalize text-xs;
   }
   table td {
     @apply py-2 pr-3 text-[12px];
@@ -64,10 +64,10 @@
   }
   input,
   select {
-    @apply border border-solid border-[#d1d5db] p-2 rounded-lg w-full h-[36px] truncate bg-none outline-none;
+    @apply border border-solid border-[#d1d5db] p-2 rounded-lg w-full h-[36px] truncate bg-none outline-none text-xs;
   }
   textarea {
-    @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none;
+    @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none text-xs;
   }
   label {
     @apply text-xs text-[black] transform -translate-y-6 -translate-x-1 absolute left-3 top-4 px-1 z-10 isolate capitalize;
@@ -230,7 +230,7 @@
     @apply opacity-50 hover:bg-[white] hover:text-[black] hover:border-[#d1d5db];
   }
   .modal {
-    @apply bg-black/0 transition-all opacity-0;
+    @apply transition-all opacity-0;
   }
   .modal > .animate-slideUp {
     @apply translate-y-3 transition-all;

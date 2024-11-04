@@ -54,7 +54,7 @@ const ServicePayrollScope = () => {
                             accordion && accordionItem === scopeList.scopeId
                               ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                               : "text-dark"
-                          } text-[clamp(16px,4vw,20px)] font-semibold cursor-pointer `}
+                          } text-[[clamp(16px,4vw,20px)]] font-semibold cursor-pointer `}
                         >
                           {scopeList.scopeTitle}
                         </p>
@@ -68,13 +68,13 @@ const ServicePayrollScope = () => {
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p>{scopeList.scopeDesc}</p>
+                      <p className="mb-4 text-sm">{scopeList.scopeDesc}</p>
                       <p className="md:hidden py-6">
                         <a
                           href="#"
                           className="btn bg-primary text-light font-semibold"
                         >
-                          Schedule a Demo
+                          SCHEDULE A DEMO
                         </a>
                       </p>
                     </div>

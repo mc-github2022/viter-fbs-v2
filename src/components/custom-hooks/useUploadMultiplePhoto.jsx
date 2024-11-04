@@ -1,8 +1,10 @@
 import React from "react";
 import { devApiUrl, fetchFormData } from "../helpers/functions-general";
 import { setError, setMessage } from "../store/StoreAction";
+import { StoreContext } from "../store/StoreContext";
 
 const useUploadMultiplePhoto = (url, dispatch) => {
+  // const { store, dispatch } = React.useContext(StoreContext);
   const [photoArrayList, setPhotoArrayList] = React.useState([]);
   let isPhotoJsonString = false;
 
@@ -39,44 +41,39 @@ const useUploadMultiplePhoto = (url, dispatch) => {
   };
 
   const handleChangeMultiplePhoto = (
-    e, // onchange file input
-    fileLimit = 2, // limit of file
-    isAcceptImagesOnly = true // isAccept images only
+    e,
+    fileLimit = 50,
+    isAcceptImagesOnly = true
   ) => {
-    // let allImageSizes = 0;
-    // check if input length of file limit
-    let checkIsImageLimited = e.target.files.length > fileLimit;
-    // check if file is empty
-    if (e.target.files.length === 0) {
-      setPhotoArrayList([]);
+    const files = Array.from(e.target.files);
+
+    // Check if no files were selected
+    if (files.length === 0) {
+      setPhotoArrayList([]); // You might not want to clear existing files here
       dispatch(setError(false));
       return;
     }
-    // limit and less length of files
-    if (checkIsImageLimited) {
+
+    // Limit the number of files
+    if (files.length > fileLimit) {
       dispatch(setError(true));
       dispatch(setMessage(`Only ${fileLimit} images can upload.`));
-      const checkCountIfFileIsImage = Array.from(e.target.files).filter(
-        (item) => {
-          // allImageSizes += item.size;
-          return item.type.split("/")[0] !== "image";
-        }
-      );
-      // CHECK IF IMAGE ONLY
-      if (isAcceptImagesOnly && checkCountIfFileIsImage.length > 0) {
-        dispatch(setError(true));
-        dispatch(setMessage(`Invalid file. Input only accept images.`));
-      }
       return;
     }
-    // get files and sort by name
-    const files = Array.from(e.target.files).sort((a, b) => {
-      if (a.name < b.name) return -1;
-      if (a.name > b.name) return 1;
-      return 0;
-    });
-    console.log(photoArrayList);
-    setPhotoArrayList(files);
+
+    // Filter to only accept images
+    if (
+      isAcceptImagesOnly &&
+      files.some((file) => !file.type.startsWith("image/"))
+    ) {
+      dispatch(setError(true));
+      dispatch(setMessage("Invalid file. Input only accept images."));
+      return;
+    }
+
+    // Update the photo array list state
+    // Here you can choose to concatenate with the existing state
+    setPhotoArrayList((prevPhotos) => [...prevPhotos, ...files]);
   };
 
   return {

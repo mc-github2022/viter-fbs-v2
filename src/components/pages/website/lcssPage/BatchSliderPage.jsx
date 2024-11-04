@@ -3,6 +3,10 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
 import Slider from "react-slick";
 import ModalWrapper from "../../../partials/ModalWrapper";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -55,7 +59,19 @@ function SamplePrevArrow(props) {
   );
 }
 
-const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
+const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: lcssBatchesData,
+  } = useQueryData(
+    "/v1/lcssBatches", // endpoint
+    "get", // method
+    "lcssBatches" // key
+  );
+
   var settings = {
     dots: false,
     infinite: true,
@@ -109,6 +125,15 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
     document.body.classList.remove("overflow-hidden");
   };
 
+  const selectedItem = lcssBatchesData?.data.find(
+    (item) => item.lcss_batch_aid === selectedBatchId
+  );
+  const images =
+    selectedItem?.lcss_batch_img
+      .split(",")
+      .map((img) => img.trim())
+      .filter(Boolean) || [];
+
   return (
     <ModalWrapper
       className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[40%] md:w-[60%]  `}
@@ -121,22 +146,34 @@ const BatchSliderPage = ({ setModalBatch, itemEdit }) => {
             onClick={handleClose}
           />
         </div>
-        <Slider {...settings}>
-          {itemEdit.batchImageList.map((image, index) => (
-            <div
-              key={index}
-              className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
-            >
-              <div className="z-[1] max-w-[500px] h-[50vh] place-self-center ">
-                <img
-                  src={`/img/${image}`}
-                  alt={`Batch image ${index + 1}`}
-                  className="object-cover w-[500px] h-[50vh]"
-                />
+        {images.length > 1 ? (
+          <Slider {...settings}>
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
+              >
+                <div className="z-[1] max-w-[500px] h-[50vh] place-self-center">
+                  <img
+                    src={`${devBaseImgUrl}/${image}`} // Use the current image
+                    alt={`Batch image - ${index + 1}`} // Alt text for clarity
+                    className="object-cover w-[500px] h-[50vh]"
+                  />
+                </div>
               </div>
+            ))}
+          </Slider>
+        ) : images.length === 1 ? (
+          <div className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]">
+            <div className="z-[1] max-w-[500px] h-[50vh] place-self-center">
+              <img
+                src={`${devBaseImgUrl}/${images[0]}`} // Use the only image
+                alt="Batch image" // Alt text for clarity
+                className="object-cover w-[500px] h-[50vh]"
+              />
             </div>
-          ))}
-        </Slider>
+          </div>
+        ) : null}
       </div>
     </ModalWrapper>
   );

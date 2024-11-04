@@ -22,7 +22,7 @@ const SpecialOffers = () => {
 
   return (
     <>
-      <section id="home" className="bg-[#f5f5f3]">
+      <section id="specialOffer" className="bg-[#f5f5f3]">
         <Navigation menu="special-offers" />
         <Dashboard>
           <div className="mx-5 pt-2">

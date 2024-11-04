@@ -234,6 +234,22 @@ const Navigation = ({ menu, submenu }) => {
               >
                 <a className="cursor-pointer">Footer</a>
               </li> */}
+
+              <li
+                className={` flex justify-between items-center p-1 pt-3
+                  ${
+                    menu === "lcss-batches"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-[#9ca3af] "
+                  }
+                `}
+              >
+                <Link to={`${devNavUrl}/lcss-batches`}>
+                  <div className="nav flex items-center">
+                    <span className="ml-2.5 text-[14px]">LCSS Batches</span>
+                  </div>
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

@@ -33,3 +33,7 @@ RewriteRule ^eventsAndAct/([0-9]+)$ controllers/developer/events-and-activities/
 # Why FBS - EVENTS AND ACTIVITIES
 RewriteRule ^careers$ controllers/developer/careers/careers.php [L]
 RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careersid=$1 [L]
+
+# Why FBS - EVENTS AND ACTIVITIES
+RewriteRule ^lcssBatches$ controllers/developer/lcss-batches/lcssBatches.php [L]
+RewriteRule ^lcssBatches/([0-9]+)$ controllers/developer/lcss-batches/lcssBatches.php?lcss_batchid=$1 [L]

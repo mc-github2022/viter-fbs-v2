@@ -41,10 +41,10 @@ const MissionVission = () => {
                   Mission
                 </h2>
                 <p>
-                  To be a globally competitive, premier provider of excellent
-                  business solutions, while sustaining a business model that
-                  will create positive social impact and make the Philippines an
-                  outstanding place to live and work.
+                  FBS is a Godly, caring company, committed to holistically
+                  equipping its people, developing local talents, providing high
+                  client satisfaction and positively impacting the communities
+                  in which it exists.
                 </p>
               </div>
             </div>

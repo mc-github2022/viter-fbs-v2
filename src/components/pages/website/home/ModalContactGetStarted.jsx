@@ -110,30 +110,30 @@ const ModalContactGetStarted = ({ setModalContact }) => {
           </div>
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">
             <div className="inputGroup mb-4">
-              <label htmlFor="">Name</label> <br />
+              <span htmlFor="">Name</span> <br />
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Email</label> <br />
+              <span htmlFor="">Email</span> <br />
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Subject</label> <br />
+              <span htmlFor="">Subject</span> <br />
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Mobile Number</label> <br />
+              <span htmlFor="">Mobile Number</span> <br />
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-2">
-              <label htmlFor="">Message</label> <br />
-              <textarea name="" id=""></textarea>
+              <span htmlFor="">Message</span> <br />
+              <textarea name="" id="" className="resize-none"></textarea>
             </div>
             <div className="inputGroup mb-2">
               <input
                 type="submit"
                 value="Send Message"
-                className="btn bg-primary text-light cursor-pointer"
+                className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
               />
             </div>
           </div>

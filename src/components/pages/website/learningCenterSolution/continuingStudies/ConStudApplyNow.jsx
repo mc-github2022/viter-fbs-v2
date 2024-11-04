@@ -27,11 +27,14 @@ const ConStudApplyNow = () => {
                   Resume
                 </li>
                 <li className="mt-4 italic">
-                  <p>
+                  <p className="text-xs md:text-sm">
                     Interested applicants can submit their resumes to our
-                    Learning Center Solutions Department at
-                    herlyn.torres@frontlinebusiness.com.ph, and you will be
-                    scheduled for an online initial interview.
+                    Learning Center Solutions Department at{" "}
+                    <br className="md:hidden" />
+                    <span className="underline">
+                      herlyn.torres@frontlinebusiness.com.ph
+                    </span>
+                    , and you will be scheduled for an online initial interview.
                   </p>
                 </li>
                 {/* <li>
