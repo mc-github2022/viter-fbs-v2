@@ -68,13 +68,13 @@ const ServicePayrollPricing = () => {
                                 className={`${price.customCss} text-light`}
                               />
                             </td>
-                            <td>{info}</td>
+                            <td className="text-[16px]">{info}</td>
                           </tr>
                         ))}
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn bg-light text-primary font-bold"
+                        className="btn px-5  bg-light text-primary font-bold"
                       >
                         LEARN MORE
                       </a>
