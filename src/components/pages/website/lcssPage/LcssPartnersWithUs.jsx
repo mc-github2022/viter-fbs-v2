@@ -55,8 +55,8 @@ const LcssPartnersWithUs = () => {
                       </h3>
                       <p>
                         Students get hands-on, real-world experience, allowing
-                        them toi apply knowledge in practical settings,
-                        preparing them for the demands of their future careers.
+                        them to apply knowledge in practical settings, preparing
+                        them for the demands of their future careers.
                       </p>
                     </div>
                   </div>
@@ -72,7 +72,7 @@ const LcssPartnersWithUs = () => {
                       </h3>
                       <p>
                         Receive guidance and mentorship from industry experts
-                        who provide valuable insights, tecnical skills, and
+                        who provide valuable insights, technical skills, and
                         personalized support to help you excel in your chosen
                         field.
                       </p>
@@ -89,7 +89,7 @@ const LcssPartnersWithUs = () => {
                         Higher Employability
                       </h3>
                       <p>
-                        By gaining insdustry-aligned experience and expert
+                        By gaining industry-aligned experience and expert
                         training, students enhance their employability, making
                         them more competitive in the job market and ready for
                         career opportunities.

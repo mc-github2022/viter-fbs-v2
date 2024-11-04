@@ -171,7 +171,7 @@ const BookkeepingPricing = () => {
                         price.isActive
                           ? "!bg-primary text-light"
                           : "!bg-customGray"
-                      } priceItem mb-5 md:mb-0 relative z-[1] text-center p-10 rounded-lg min-h-[654px] !w-[400px] !ml-[3%] grid place-items-center items-center`}
+                      } priceItem mb-5 md:mb-0 relative z-[1] text-center py-10 px-5 rounded-lg min-h-[654px] !w-fit lg:!w-[90%] grid place-items-center items-center`}
                     >
                       <div className="z-10">
                         <div className="title mb-4">
@@ -193,13 +193,20 @@ const BookkeepingPricing = () => {
                           </p>
 
                           <div className="grid">
-                            <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
+                            {/* <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
                               {price.info.map((info, key) => (
                                 <li key={key} className="mb-1">
                                   {info}
                                 </li>
                               ))}
-                            </ul>
+                            </ul> */}
+                            <table>
+                              {price.info.map((info, key) => (
+                                <tr key={key} className="border-0">
+                                  <td className="text-[16px]">{info}</td>
+                                </tr>
+                              ))}
+                            </table>
                           </div>
                         </div>
                         <div className="absolute bottom-0 my-12 left-0 right-0">

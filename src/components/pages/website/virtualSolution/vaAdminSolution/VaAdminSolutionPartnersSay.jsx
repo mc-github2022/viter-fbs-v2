@@ -131,10 +131,10 @@ const VaAdminSolutionPartnersSay = () => {
                         <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0 text-sm">
                           {testimonial.clientMessage}
                         </p>
-                        <div className="logoAndName flex items-center gap-3">
+                        <div className="logoAndName flex flex-col items-center text-center gap-3 mt-10">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
-                            className="w-[120px]"
+                            className="w-[120px] mxauto"
                             src={`../../public/img/${testimonial.clientLogo}`}
                             alt=""
                           />

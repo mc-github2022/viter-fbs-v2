@@ -68,13 +68,13 @@ const WordPressScope = () => {
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p className="mb-4">{scopeList.scopeDesc}</p>
+                      <p className="text-sm mb-4">{scopeList.scopeDesc}</p>
                       <p className="md:hidden py-6">
                         <a
                           href="#"
-                          className="btn bg-primary text-light font-semibold"
+                          className="btn px-5 bg-primary text-light font-semibold"
                         >
-                          Contact Us
+                          CONTACT US
                         </a>
                       </p>
                     </div>
@@ -97,10 +97,10 @@ const WordPressScope = () => {
                     alt=""
                   />
 
-                  <p className="hidden md:block mb-4 text-center pt-8 pb-8">
+                  <p className="hidden text-sm md:block mb-4 text-center pt-8 pb-8">
                     <a
                       href="#"
-                      className="btn bg-primary text-light font-semibold"
+                      className="btn px-5 bg-primary text-light font-semibold"
                     >
                       CONTACT US
                     </a>

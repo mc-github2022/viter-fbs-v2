@@ -117,7 +117,7 @@ const BusinessRegPricing = () => {
         <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[0]"></div>
         <div className="customContainer">
-          <div className="mb-20 text-center relative z-[3]">
+          <div className="mb-10 lg:mb-20 text-center relative z-[3]">
             <p className="text-light">Choose what's best for your needs</p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Suitable Pricing Plans
@@ -134,7 +134,7 @@ const BusinessRegPricing = () => {
                         price.isActive
                           ? "!bg-primary text-light"
                           : "!bg-customGray"
-                      } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg  min-h-[654px] !w-[400px] !ml-[3%] grid place-items-center items-center`}
+                      } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 m-0 rounded-lg  min-h-[654px] w-fit grid place-items-center items-center`}
                     >
                       <div className="z-10">
                         <div className="title mb-4">
@@ -150,19 +150,26 @@ const BusinessRegPricing = () => {
                             {price.rate}
                           </p>
                           <div className="grid">
-                            <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
+                            {/* <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
                               {price.info.map((info, key) => (
                                 <li key={key} className="mb-1">
                                   {info}
                                 </li>
                               ))}
-                            </ul>
+                            </ul> */}
+                            <table>
+                              {price.info.map((info, key) => (
+                                <tr key={key} className="border-0">
+                                  <td className="text-[16px]">{info}</td>
+                                </tr>
+                              ))}
+                            </table>
                           </div>
                         </div>
-                        <div className="absolute bottom-0 my-12 left-0 right-0">
+                        <div className="mt-8">
                           <a
                             href={price.link}
-                            className="btn bg-light text-primary font-bold  "
+                            className="btn px-5 bg-light text-primary font-bold  "
                           >
                             {price.btnText}
                           </a>

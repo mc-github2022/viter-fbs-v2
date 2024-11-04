@@ -10,7 +10,7 @@ import {
 const VaMarketingServiceList = () => {
   return (
     <>
-      <section className="VaMarketingServiceList pt-20 pb-40">
+      <section className="VaMarketingServiceList pb-40 md:pt-20">
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">
@@ -19,8 +19,8 @@ const VaMarketingServiceList = () => {
               Can We Perform?
             </h2>
             <p className="subDesc mb-10">
-              Our VA for Administrative Assistance offers comprehensive support
-              to streamline your business operations.
+              Our VA for Marketing Support offers comprehensive support to
+              streamline your business operations.
             </p>
             <a
               href="#"

@@ -25,9 +25,7 @@ const WordPressPricing = () => {
                   <div
                     key={key}
                     className={`priceItem mb-5 md:mb-0 relative z-[1] min-h-[500px] text-light text-center p-10 rounded-lg addShadow ${
-                      price.isActive
-                        ? "bg-primary"
-                        : "bg-customGray !text-dark"
+                      price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid place-items-center`}
                   >
                     <div>
@@ -52,7 +50,7 @@ const WordPressPricing = () => {
                           </p>
                         )}
                       </div>
-                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
+                      {/* <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
                         {price.info.map((info, key) => (
                           <li key={key}>
                             <FaCheckCircle
@@ -61,10 +59,22 @@ const WordPressPricing = () => {
                             {info}
                           </li>
                         ))}
-                      </ul>
+                      </ul> */}
+                      <table>
+                        {price.info.map((info, key) => (
+                          <tr key={key} className="border-0">
+                            <td>
+                              <FaCheckCircle
+                                className={`${price.customCss} text-light`}
+                              />
+                            </td>
+                            <td className="text-[16px]">{info}</td>
+                          </tr>
+                        ))}
+                      </table>
                       <a
                         href={`${price.link}`}
-                        className="btn bg-light text-primary font-bold"
+                        className="btn px-5 bg-light text-primary font-bold"
                       >
                         CONTACT US
                       </a>

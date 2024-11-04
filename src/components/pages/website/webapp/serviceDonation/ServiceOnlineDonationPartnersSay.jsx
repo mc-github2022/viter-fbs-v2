@@ -132,7 +132,7 @@ const ServiceOnlineDonationPartnersSay = () => {
                         <p className="relative z-10 italic mb-8 min-h-[260px] md:min-h-0">
                           {testimonial.clientMessage}
                         </p>
-                        <div className="logoAndName flex items-center gap-3">
+                        <div className="logoAndName flex flex-col text-center items-center gap-3">
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
                             className="w-[100px]"

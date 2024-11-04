@@ -14,7 +14,7 @@ const WhyUsTheTeam = () => {
                 </h2>
               </div>
             </div>
-            <div className="flex flex-wrap gap-y-10 gap-20 place-content-center xl:grid xl:grid-cols-4 xl:gap-20">
+            <div className="flex flex-wrap gap-y-0 gap-20 place-content-center xl:grid xl:grid-cols-4 xl:gap-20">
               <div className="theTeamItem relative">
                 <div className="thePill h-[230px] lg:h-[300px] w-[130px] rounded-full bg-gradient-to-b from-[#bd0565] to-blue-[transparent] rotate-[50deg] overflow-hidden relative">
                   <div className="absolute top-2 rotate-[-50deg] w-[220px] ml-2">

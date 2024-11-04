@@ -9,7 +9,7 @@ const VaAdminSolutionPricing = () => {
         <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
         <div className="customContainer">
-          <div className="mb-20 text-center relative z-[3]">
+          <div className="mb-10 text-center relative z-[3]">
             <p className="text-light">Choose what's best for your needs</p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Suitable Pricing Plans
@@ -63,7 +63,7 @@ const VaAdminSolutionPricing = () => {
                       <p className="mb-8">{price.priceDesc}</p>
                       <a
                         href={price.link}
-                        className="btn bg-light text-primary font-bold"
+                        className="btn px-5 bg-light text-primary font-bold"
                       >
                         {price.btnText}
                       </a>

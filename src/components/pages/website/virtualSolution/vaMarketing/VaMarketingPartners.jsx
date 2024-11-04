@@ -4,7 +4,7 @@ import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
 const VaMarketingPartners = () => {
   return (
     <>
-      <section className="VaMarketingPartners pb-16 md:py-20">
+      <section className="VaMarketingPartners pb-16 md:py-20 -translate-y-1 bg-light">
         <div className="customContainer">
           <p>{sectionPartnersTitle[0].subTitle}</p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
