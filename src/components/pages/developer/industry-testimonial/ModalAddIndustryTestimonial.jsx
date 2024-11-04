@@ -96,6 +96,9 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
     industry_testimonial_category: itemEdit
       ? itemEdit.industry_testimonial_category
       : "",
+    industry_testimonial_company: itemEdit
+      ? itemEdit.industry_testimonial_company
+      : "",
     industry_testimonial_img: itemEdit ? itemEdit.industry_testimonial_img : "",
     industry_testimonial_logo: itemEdit
       ? itemEdit.industry_testimonial_logo
@@ -220,6 +223,14 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
                             label="Position"
                             type="text"
                             name="industry_testimonial_position"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Company"
+                            type="text"
+                            name="industry_testimonial_company"
                             disabled={mutation.isPending}
                           />
                         </div>

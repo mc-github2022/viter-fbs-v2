@@ -18,6 +18,7 @@ if (array_key_exists("industry_testimonialid", $_GET)) {
   $industry_testimonial->industry_testimonial_name = $data["industry_testimonial_name"];
   $industry_testimonial->industry_testimonial_position =  $data["industry_testimonial_position"];
   $industry_testimonial->industry_testimonial_message = $data["industry_testimonial_message"];
+  $industry_testimonial->industry_testimonial_company = $data["industry_testimonial_company"];
   $industry_testimonial->industry_testimonial_category = checkIndex($data, "industry_testimonial_category");
 
   $industry_testimonial->industry_testimonial_datetime = date("Y-m-d H:i:s");

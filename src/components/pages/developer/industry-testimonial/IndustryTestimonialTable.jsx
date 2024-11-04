@@ -52,6 +52,7 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
                 <th className="pl-2 w-[1rem]">#</th>
                 <th>Name</th>
                 <th>Position</th>
+                <th>Company</th>
                 <th>Category</th>
                 <th className="w-[30rem]">Message</th>
                 <th>Image</th>
@@ -86,6 +87,9 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
                   </td>
                   <td className="place-content-start">
                     {item.industry_testimonial_position}
+                  </td>
+                  <td className="place-content-start">
+                    {item.industry_testimonial_company}
                   </td>
                   <td className="place-content-start">
                     {item.industry_testimonial_category}
