@@ -11,7 +11,7 @@ const VaResearchPartners = () => {
             {sectionPartnersTitle[0].mainTitle}
           </h2>
 
-          <ul className="flex flex-wrap justify-center gap-20 md:gap-20 items-center">
+          <ul className="flex flex-wrap mt-20 justify-center gap-20 md:gap-20 items-center">
             {sectionPartnersLogos.map((logo, key) => {
               return (
                 <li key={key}>

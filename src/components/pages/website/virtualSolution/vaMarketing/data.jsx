@@ -2,7 +2,7 @@ import { FaRegThumbsUp } from "react-icons/fa6";
 
 export const banner = [
   {
-    bannerTitle: "Boost your Online Presence through our",
+    bannerTitle: "Boost your Online Presence Through Our",
     bannerTitleBoldText: "Marketing Support",
     bannerTextDesc:
       "Our Virtual Assistance Services cover all aspects of marketing, from crafting digital strategies and managing social media content to designing visually compelling materials and editing media. Let us help you enhance your brand’s presence with tailored solutions in digital marketing, content creation, design, media production, and writing.",
