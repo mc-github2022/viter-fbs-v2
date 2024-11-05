@@ -80,7 +80,9 @@ const ServiceHrOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewCtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewCtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewCtext}
+                      </p>
                     </div>
                   </div>
                 </li>
