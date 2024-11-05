@@ -120,7 +120,7 @@ const ServicePayrollPartnersSay = () => {
 
   return (
     <>
-      <section className="ServicePayrollPartnersSay pb-10 md:py-20">
+      <section className="ServicePayrollPartnersSay pb-10 md:pb-20">
         <div className="customContainer">
           {IndtestimonialData?.data.length > 1 && (
             <div className="">

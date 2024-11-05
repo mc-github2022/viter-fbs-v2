@@ -15,7 +15,7 @@ const ImmersionTeam = () => {
             </h3>
             <p>who will provide you with real-world experience and insights.</p>
           </div>
-          <div className="wrapper flex flex-col gap-10 lg:grid lg:grid-cols-2 lg:gap-10">
+          <div className="wrapper flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-10">
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
                 // src={`${devBaseImgUrl}/jhonny.png`}

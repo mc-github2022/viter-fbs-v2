@@ -60,7 +60,7 @@ const ServiceEnrollmentPricing = () => {
                           </li>
                         ))}
                       </ul> */}
-                      <table>
+                      <table className="prices my-5">
                         {price.info.map((info, key) => (
                           <tr key={key} className="border-0">
                             <td>

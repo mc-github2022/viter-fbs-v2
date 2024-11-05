@@ -27,7 +27,7 @@ const VaResearchPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-fit md:h-[700px] max-w-[480px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-fit md:h-[800px] max-w-[480px] grid place-items-center`}
                   >
                     <div className=" mb-5 relative">
                       <div className="title mb-4">
@@ -60,7 +60,7 @@ const VaResearchPricing = () => {
                               </li>
                             ))}
                           </ul> */}
-                          <table>
+                          <table className="prices my-5">
                             {price.info.map((info, key) => (
                               <tr key={key} className="border-0">
                                 <td>

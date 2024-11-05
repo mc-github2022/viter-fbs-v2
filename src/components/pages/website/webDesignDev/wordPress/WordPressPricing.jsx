@@ -60,7 +60,7 @@ const WordPressPricing = () => {
                           </li>
                         ))}
                       </ul> */}
-                      <table>
+                      <table className="prices my-5">
                         {price.info.map((info, key) => (
                           <tr key={key} className="border-0">
                             <td>
@@ -74,7 +74,7 @@ const WordPressPricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn px-5 bg-light text-primary font-bold"
+                        className="btn mt-5 px-5 bg-light text-primary font-bold"
                       >
                         CONTACT US
                       </a>

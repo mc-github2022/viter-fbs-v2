@@ -6,7 +6,7 @@ export const banner = [
     bannerTitle: "Simplify student enrollment and management with our",
     bannerTitleBoldText: "School Enrollment System.",
     bannerTextDesc:
-      "Tailored for educational institutions, this system automates the enrollment process for students. It typically includes features for online registration, course selection, fee payment, document submission, and enrollment status tracking, simplifying administrative tasks for schools and improving the enrollment experience for students and parents.",
+      "Designed for educational institutions, this system automates the enrollment process for students. It typically includes features for online registration, course selection, fee payment, document submission, and enrollment status tracking, simplifying administrative tasks for schools and improving the enrollment experience for students and parents.",
     bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
     bannerImage: "SchoolEnrollment.jpg",

@@ -19,7 +19,7 @@ const ServiceInventoryOverview = () => {
               <img
                 // src={`${devBaseImgUrl}/HRISscreenShot.png`}
                 src={`../../public/img/${webAppOverview[0].webAppImage}`}
-                className="mb-12"
+                className="mb-12 w-full mx-auto"
                 alt=""
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
@@ -52,7 +52,9 @@ const ServiceInventoryOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewAtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewAtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewAtext}
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -65,7 +67,9 @@ const ServiceInventoryOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewBtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewBtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewBtext}
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -78,7 +82,9 @@ const ServiceInventoryOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewCtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewCtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewCtext}
+                      </p>
                     </div>
                   </div>
                 </li>

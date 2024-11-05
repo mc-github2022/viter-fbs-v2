@@ -134,7 +134,8 @@ const BusinessRegPricing = () => {
                         price.isActive
                           ? "!bg-primary text-light"
                           : "!bg-customGray"
-                      } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 m-0 rounded-lg  min-h-[654px] w-fit grid place-items-center items-center`}
+                      } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 m-0 rounded-lg  min-h-[700px] 
+                        max-w-[450px] grid justify-self-center place-items-center mx-auto md:translate-x-[35%] lg:translate-x-[25%]`}
                     >
                       <div className="z-10">
                         <div className="title mb-4">
@@ -157,7 +158,7 @@ const BusinessRegPricing = () => {
                                 </li>
                               ))}
                             </ul> */}
-                            <table>
+                            <table className="prices my-5">
                               {price.info.map((info, key) => (
                                 <tr key={key} className="border-0">
                                   <td className="text-[16px]">{info}</td>
@@ -169,7 +170,7 @@ const BusinessRegPricing = () => {
                         <div className="mt-8">
                           <a
                             href={price.link}
-                            className="btn px-5 bg-light text-primary font-bold  "
+                            className="btn mt-5 px-5 bg-light text-primary font-bold  "
                           >
                             {price.btnText}
                           </a>
