@@ -8,7 +8,7 @@ const WhyUsCompanyProfile = () => {
     <>
       <div className="whyUsIntro py-20">
         <div className="customContainer">
-          <h2 className="text-[clamp(20px,5vw,30px)] text-center">
+          <h2 className="text-[clamp(16px,5vw,20px)] text-center">
             By choosing Frontline Business Solutions, you align your business
             with a purpose-driven organization that combines business excellence
             with Christian values.

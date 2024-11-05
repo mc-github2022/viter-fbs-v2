@@ -5,7 +5,7 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Streamline donations securely with our
+        Streamline Donations Securely With Our
         <br />
       </p>
     ),

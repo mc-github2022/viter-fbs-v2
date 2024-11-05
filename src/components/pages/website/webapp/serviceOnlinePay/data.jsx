@@ -5,13 +5,13 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Integrate into your website
-        <br /> a hassle-free
+        Integrate Into Your Website
+        <br /> A Hassle-free
       </p>
     ),
     bannerTitleBoldText: "Online Payment Transaction",
     bannerTextDesc:
-      "A component that integrates with existing systems to enable online payment processing. It allows businesses to accept payments securely via various channels such as credit/debit cards, e-wallets, or bank transfers, enhancing customer convenience and expanding revenue streams.",
+      "A component that seamlessly integrates with existing systems to enable secured online payment processing. It allows businesses to accept payments securely via various channels such as credit/debit cards, e-wallets, or bank transfers, enhancing customer convenience and expanding revenue streams.",
     bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
     bannerImage: "OnlinePayment.webp",

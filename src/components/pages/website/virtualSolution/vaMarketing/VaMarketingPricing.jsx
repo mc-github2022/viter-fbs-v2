@@ -17,7 +17,7 @@ const VaMarketingPricing = () => {
           </div>
           <div className="grid place-items-center">
             <div
-              className={`wrapper grid lg:grid lg:grid-cols-${pricingCardCount[0].columnNumber} gap-6 items-center`}
+              className={`wrapper grid md:grid md:grid-cols-${pricingCardCount[0].columnNumber} gap-6 items-center`}
             >
               {pricing.map((price, key) => {
                 return (
@@ -27,7 +27,7 @@ const VaMarketingPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[750px] h-fit md:h-[700px] max-w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[900px] h-fit md:h-[700px] max-w-[400px] grid place-items-center`}
                   >
                     <div className=" mb-5 relative">
                       <div className="title mb-4">

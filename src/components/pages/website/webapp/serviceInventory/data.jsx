@@ -5,8 +5,8 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Track and manage <br />
-        assets with our
+        Track And Manage <br />
+        Assets With Our
       </p>
     ),
     bannerTitleBoldText: "Asset Inventory System",
