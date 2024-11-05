@@ -138,7 +138,7 @@ const ConStudBatches = () => {
 
   return (
     <>
-      <section className="ConStudBatches pt-20 pb-40  md:pt-0 md:pb-40">
+      <section className="ConStudBatches py-40 md:pt-0 md:pb-40">
         <div className="customContainer max-w-[90%]">
           <div
             className="mb-12
@@ -205,7 +205,7 @@ const ConStudBatches = () => {
                         <div
                           className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                           style={{
-                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`, // Use the first batch image
+                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
                           }}
                         >
                           <div>
