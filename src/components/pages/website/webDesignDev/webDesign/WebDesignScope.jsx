@@ -44,10 +44,10 @@ const WebDesignScope = () => {
                         accordion && accordionItem === scopeList.scopeId
                           ? "bg-customGray"
                           : ""
-                      } flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
+                      } grid grid-cols-[_3.5fr,_.5fr] justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
                       onClick={() => handleAccordion(scopeList.scopeId)}
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="grid grid-cols-[_2rem,_1fr] items-center gap-4">
                         {scopeList.scopeIcon}
                         <p
                           className={`${
@@ -68,14 +68,14 @@ const WebDesignScope = () => {
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p className="mb-4">{scopeList.scopeDesc}</p>
+                      <p className="text-sm mb-4">{scopeList.scopeDesc}</p>
                       {/* <a href="#" className="btn bg-primary text-light">
                         Schedule a Demo
                       </a> */}
                       <p className="md:hidden py-6">
                         <a
                           href="#"
-                          className="btn bg-primary text-light font-semibold"
+                          className="btn px-5 bg-primary text-light font-semibold"
                         >
                           CONTACT US
                         </a>

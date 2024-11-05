@@ -131,126 +131,49 @@ const WordPressPartnersSay = () => {
             </div>
           )}
           <div className="wrapper ">
-            {IndtestimonialData?.data.filter(
-              (item) =>
-                item.industry_testimonial_category === "WordPress CMS Website"
-            ).length > 1 ? (
-              <Slider {...partnerSaysSettings}>
-                {IndtestimonialData?.data.map((item, key) => {
-                  if (
-                    item.industry_testimonial_category ===
-                    "WordPress CMS Website"
-                  ) {
-                    return (
-                      <div key={key} className="md:h-[425px]">
-                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
-                          <div className="theMessage  relative">
-                            <div className="absolute top-[-30px] left-[-40px]">
-                              <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
-                                src={`${devBaseImgUrl}/quote-white.png`}
-                                className="w-[80px]"
-                                alt=""
-                              />
-                            </div>
-                            <p className="relative z-10 italic mb-8  md:min-h-0">
-                              {item.industry_testimonial_message}
-                            </p>
-                            <div className="logoAndName flex items-center gap-3">
-                              <img
-                                // src={`${devBaseImgUrl}/sti.png`}
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
-                              />
-                              <div className="leading-[1] italic">
-                                <p>{item.industry_testimonial_name}</p>
-                                <p className="text-sm">
-                                  {item.industry_testimonial_position}
-                                </p>
-                                <p className="text-sm">
-                                  {item.industry_testimonial_company
-                                    ? item.industry_testimonial_company
-                                    : ""}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="hidden lg:block">
-                            <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
-                              alt=""
-                            />
+            <Slider {...partnerSaysSettings}>
+              {clientSays.map((testimonial, key) => {
+                return (
+                  <div key={key} className="md:h-[425px]">
+                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                      <div className="theMessage  relative">
+                        <div className="absolute top-[-30px] left-[-40px]">
+                          <img
+                            // src={`${devBaseImgUrl}/quote-white.png`}
+                            src={`../../public/img//quote-white.png`}
+                            className="w-[80px]"
+                            alt=""
+                          />
+                        </div>
+                        <p className="relative z-10 italic mb-4">
+                          {testimonial.clientMessage}
+                        </p>
+                        <div className="logoAndName flex items-center gap-3">
+                          <img
+                            // src={`${devBaseImgUrl}/sti.png`}
+                            className="w-[80px]"
+                            src={`../../public/img/${testimonial.clientLogo}`}
+                            alt=""
+                          />
+                          <div className="leading-[1] italic">
+                            <p>{testimonial.clientName}</p>
+                            <p className="text-sm">{testimonial.clientDesc}</p>
                           </div>
                         </div>
                       </div>
-                    );
-                  }
-                })}
-              </Slider>
-            ) : (
-              <div>
-                {IndtestimonialData?.data.map((item, key) => {
-                  if (
-                    item.industry_testimonial_category ===
-                    "WordPress CMS Website"
-                  ) {
-                    return (
-                      <div className="md:h-[425px]">
-                        <div
-                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
-                          key={key}
-                        >
-                          <div className="theMessage  relative">
-                            <div className="absolute top-[-30px] left-[-40px]">
-                              <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
-                                src={`${devBaseImgUrl}/quote-white.png`}
-                                className="w-[80px]"
-                                alt=""
-                              />
-                            </div>
-                            <p className="relative z-10 italic mb-8  md:min-h-0">
-                              {item.industry_testimonial_message}
-                            </p>
-                            <div className="logoAndName flex items-center gap-3">
-                              <img
-                                // src={`${devBaseImgUrl}/sti.png`}
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
-                              />
-                              <div className="leading-[1] italic">
-                                <p>{item.industry_testimonial_name}</p>
-                                <p className="text-sm">
-                                  {item.industry_testimonial_position}
-                                </p>
-                                <p className="text-sm">
-                                  {item.industry_testimonial_company
-                                    ? item.industry_testimonial_company
-                                    : ""}
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="hidden lg:block">
-                            <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
-                              alt=""
-                            />
-                          </div>
-                        </div>
+                      <div className="hidden lg:block">
+                        <img
+                          // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                          src={`../../public/img/${testimonial.clientProfilePic}`}
+                          className="absolute bottom-0 w-[295px] right-8"
+                          alt=""
+                        />
                       </div>
-                    );
-                  }
-                  return null;
-                })}
-              </div>
-            )}
+                    </div>
+                  </div>
+                );
+              })}
+            </Slider>
           </div>
         </div>
       </section>

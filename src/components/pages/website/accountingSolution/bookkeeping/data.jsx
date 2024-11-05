@@ -43,13 +43,13 @@ export const webAppOverview = [
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Comprehensive Compliance Management",
     overviewAtext:
-      "Our services ensure you stay compliant with all regulatory requirements, including BIR tax filings, government-mandated contributions (SSS, Pag-IBIG, PhilHealth), and business permit renewals.",
+      "Our services ensure compliance with all regulatory requirements, including BIR tax filings, government-mandated contributions (SSS, Pag-IBIG, PhilHealth), and business permit renewals.",
     overviewBtitle: "Flexible Packages for All Business Sizes",
     overviewBtext:
       "We offer tailored packages for startups, small businesses, and corporations, with pricing based on your invoice volume and revenue. Choose the level of support that fits your needs, from basic bookkeeping to premium compliance services.",
     overviewCtitle: "Accurate Financial Reporting",
     overviewCtext:
-      "Receive regular, detailed financial reports that provide a clear overview of your business's financial health, helping you make informed decisions while staying up-to-date with tax obligations.",
+      "Receive regular, detailed financial reports that provide a clear overview of your business's financial health, helping you make informed decisions and stay up-to-date with tax obligations.",
   },
 ];
 

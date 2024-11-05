@@ -38,10 +38,6 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
     const file = e.target.files[0];
     if (file) {
       setClientImage(file); // Store client image file
-      uploadPhoto((prev) => [
-        ...prev.filter((photo) => photo.field !== "client"),
-        { file, field: "client" },
-      ]);
     }
   };
 
@@ -49,10 +45,6 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
     const file = e.target.files[0];
     if (file) {
       setLogoImage(file); // Store logo image file
-      uploadPhoto((prev) => [
-        ...prev.filter((photo) => photo.field !== "logo"),
-        { file, field: "logo" },
-      ]);
     }
   };
 

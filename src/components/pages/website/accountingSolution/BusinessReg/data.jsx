@@ -9,7 +9,7 @@ export const banner = [
     bannerTitle: "Start Your Business Hassle-Free with Our ",
     bannerTitleBoldText: "Registration Services",
     bannerTextDesc:
-      "Choose from comprehensive packages that simplify the registration process for any business type. We handle everything—from essential permits to compliance documents—so you can focus on growing your business.",
+      "Choose from our comprehensive packages that simplify the registration process for any business type. We handle everything—from essential permits to compliance documents—so you can focus on growing your business.",
     bannerBtnText: "PARTNER WITH US",
     bannerBtnLink: "Link",
     bannerImage: "business-reg-bg.webp",
@@ -44,13 +44,13 @@ export const webAppOverview = [
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Comprehensive Registration",
     overviewAtext:
-      "We offer tailored packages for different business types, covering essential registrations like DTI, SEC, BIR, and LGU to simplify the process.",
+      "We offer tailored packages for various business types, covering essential registrations like DTI, SEC, BIR, and LGU to simplify the process.",
     overviewBtitle: "Full Compliance Support",
     overviewBtext:
-      "Our services handle key documents like the Authority to Print, Books of Account, and DST Doc Stamps, ensuring all compliance needs are met.",
+      "Our services handle key documents like the Authority to Print, Books of Accounts, and DST Doc Stamps, ensuring all compliance needs are met.",
     overviewCtitle: "Affordable and Flexible Packages",
     overviewCtext:
-      "Our packages cater to different budgets, making registration accessible for businesses of any size.",
+      "Our packages cater to different budgets, making registration accessible for businesses of all sizes.",
   },
 ];
 
@@ -97,7 +97,7 @@ export const pricing = [
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
+          <li>Books of Accounts</li>
           <li>Annual Registration (0605)</li>
         </ul>
       </div>,
@@ -139,7 +139,7 @@ export const pricing = [
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
+          <li>Books of Accounts</li>
           <li>Annual Registration (0605)</li>
           <li>DST Doc Stamp for Subscribed Capital</li>
         </ul>
@@ -183,7 +183,7 @@ export const pricing = [
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
+          <li>Books of Accounts</li>
           <li>Annual Registration (0605)</li>
         </ul>
       </div>,
@@ -221,7 +221,7 @@ export const pricing = [
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
+          <li>Books of Accounts</li>
           <li>Annual Registration (0605)</li>
           <li>DST Doc Stamp for Subscribed Capital</li>
         </ul>
@@ -266,7 +266,7 @@ export const pricing = [
         </div>
         <ul className="text-sm ml-7">
           <li>Application for 'Authority to Print'</li>
-          <li>Books of Account</li>
+          <li>Books of Accounts</li>
           <li>Annual Registration (0605)</li>
           <li>DST Doc Stamp for Subscribed Capital</li>
         </ul>

@@ -19,7 +19,7 @@ const LcssPartnersWithUs = () => {
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
                 src={`../../public/img//lcssBannerImg.jpg`}
-                className="mb-12"
+                className="mb-12 w-full mx-auto"
                 alt=""
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
@@ -53,10 +53,10 @@ const LcssPartnersWithUs = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         Work-Related Experience
                       </h3>
-                      <p>
+                      <p className="text-justify">
                         Students get hands-on, real-world experience, allowing
-                        them toi apply knowledge in practical settings,
-                        preparing them for the demands of their future careers.
+                        them to apply knowledge in practical settings, preparing
+                        them for the demands of their future careers.
                       </p>
                     </div>
                   </div>
@@ -70,9 +70,9 @@ const LcssPartnersWithUs = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         Expert-Led Training
                       </h3>
-                      <p>
+                      <p className="text-justify">
                         Receive guidance and mentorship from industry experts
-                        who provide valuable insights, tecnical skills, and
+                        who provide valuable insights, technical skills, and
                         personalized support to help you excel in your chosen
                         field.
                       </p>
@@ -88,8 +88,8 @@ const LcssPartnersWithUs = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         Higher Employability
                       </h3>
-                      <p>
-                        By gaining insdustry-aligned experience and expert
+                      <p className="text-justify">
+                        By gaining industry-aligned experience and expert
                         training, students enhance their employability, making
                         them more competitive in the job market and ready for
                         career opportunities.

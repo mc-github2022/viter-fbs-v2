@@ -6,10 +6,10 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 const WhyUsCompanyProfile = () => {
   return (
     <>
-      <div className="whyUsIntro pt-20">
+      <div className="whyUsIntro py-20">
         <div className="customContainer">
           <h2 className="text-[clamp(20px,5vw,30px)] text-center">
-            By choosing Frontline Bussiness Solutions, you align your business
+            By choosing Frontline Business Solutions, you align your business
             with a purpose-driven organization that combines business excellence
             with Christian values.
           </h2>
@@ -58,12 +58,12 @@ const WhyUsCompanyProfile = () => {
                   <div className="flex gap-4 items-start">
                     <div>
                       <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
-                        <span className="font-bold">CARING</span> for Abandonded
+                        <span className="font-bold">CARING</span> for Abandoned
                         Children
                       </h3>
                       <p>
                         In partnership with Face the Children, we provide love,
-                        care and hope for vulnerable children at the Frontline
+                        care, and hope for vulnerable children at the Frontline
                         orphanage.
                       </p>
                     </div>
@@ -74,7 +74,7 @@ const WhyUsCompanyProfile = () => {
                     <div>
                       <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
                         <span className="font-bold">CREATING</span> Jobs and
-                        Supoprting Local Families
+                        Supporting Local Families
                       </h3>
                       <p>
                         We generate new employment opportunities yearly,

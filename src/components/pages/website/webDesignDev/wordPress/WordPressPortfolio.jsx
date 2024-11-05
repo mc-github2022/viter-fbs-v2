@@ -4,7 +4,7 @@ import { RiExternalLinkLine } from "react-icons/ri";
 const WordPressPortfolio = () => {
   return (
     <>
-      <section className="profolioWebsite md:py-40">
+      <section className="profolioWebsite -translate-y-1 bg-light md:py-40">
         <div className="customContainer">
           <div className="">
             <p>Seamless Performance and Stunning Design</p>

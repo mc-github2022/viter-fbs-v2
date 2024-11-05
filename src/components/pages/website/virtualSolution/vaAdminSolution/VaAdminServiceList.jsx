@@ -17,7 +17,7 @@ import { IoFileTrayStackedOutline } from "react-icons/io5";
 const VaAdminServiceList = () => {
   return (
     <>
-      <section className="serviceList pt-20 pb-40">
+      <section className="serviceList pb-40 md:pt-20">
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">

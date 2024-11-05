@@ -44,10 +44,10 @@ const ServiceEnrollmentScope = () => {
                         accordion && accordionItem === scopeList.scopeId
                           ? "bg-customGray"
                           : ""
-                      } flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
+                      } grid grid-cols-[_3.5fr,_.5fr] justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
                       onClick={() => handleAccordion(scopeList.scopeId)}
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="grid grid-cols-[_2rem,_1fr] items-center gap-4">
                         {scopeList.scopeIcon}
                         <p
                           className={`${

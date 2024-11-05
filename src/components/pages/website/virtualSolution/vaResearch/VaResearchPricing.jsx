@@ -17,7 +17,7 @@ const VaResearchPricing = () => {
           </div>
           <div className="grid place-items-center">
             <div
-              className={`wrapper md:grid md:grid-cols-${pricingCardCount[0].columnNumber} gap-6 md:items-center`}
+              className={`wrapper grid lg:grid lg:grid-cols-${pricingCardCount[0].columnNumber} gap-6 md:items-center`}
             >
               {pricing.map((price, key) => {
                 return (
@@ -27,9 +27,9 @@ const VaResearchPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-[700px] max-w-[480px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-fit md:h-[700px] max-w-[480px] grid place-items-center`}
                   >
-                    <div className="min-h-[300px] max-h-[800px] mb-5 relative">
+                    <div className=" mb-5 relative">
                       <div className="title mb-4">
                         {price.icon}
                         <h3
@@ -48,7 +48,7 @@ const VaResearchPricing = () => {
                           {price.duration}
                         </p>
                         <div className="grid place-items-center text-left">
-                          <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
+                          {/* <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
                             {price.info.map((info, key) => (
                               <li key={key}>
                                 <div>
@@ -59,14 +59,26 @@ const VaResearchPricing = () => {
                                 {info}
                               </li>
                             ))}
-                          </ul>
+                          </ul> */}
+                          <table>
+                            {price.info.map((info, key) => (
+                              <tr key={key} className="border-0">
+                                <td>
+                                  <FaCheckCircle
+                                    className={`${price.customCss} text-light`}
+                                  />
+                                </td>
+                                <td className="text-[16px]">{info}</td>
+                              </tr>
+                            ))}
+                          </table>
                         </div>
                       </div>
                       <p className="mb-8">{price.priceDesc}</p>
                     </div>
                     <a
                       href={price.link}
-                      className="btn bg-light text-primary font-bold bottom-0"
+                      className="btn px-5 bg-light text-primary font-bold bottom-0"
                     >
                       {price.btnText}
                     </a>

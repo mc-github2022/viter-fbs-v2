@@ -5,8 +5,8 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Smarter, faster, <br />
-        and more efficient
+        Smarter, Faster, <br />
+        and More Efficient
       </p>
     ),
     bannerTitleBoldText: "HR Information System",
@@ -49,13 +49,13 @@ export const webAppOverview = [
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Compatibility",
     overviewAtext:
-      "Compatible with various timekeeping tools and terminals, both biometric and non-biometric, for easy customization of importing and extracting employee time data.",
+      "Compatible with various timekeeping tools and terminals, both biometric and non-biometric, for easy customization for importing and extracting employee time data.",
     overviewBtitle: "Flexibility",
     overviewBtext:
       "Accessible anytime and anywhere, and fully mobile-ready to accommodate the dynamic needs of your organization.",
     overviewCtitle: "Customizable",
     overviewCtext:
-      "Allowing it to be tailored to meet the specific requirements and unique needs of your organization.",
+      "Tailored to meet the specific requirements and unique needs of your organization.",
   },
 ];
 

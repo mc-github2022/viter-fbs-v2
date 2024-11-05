@@ -4,10 +4,7 @@ import React from "react";
 import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
 import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
-import {
-  InputText,
-  InputTextArea
-} from "../../../../helpers/FormInputs";
+import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
 import {
   apiVersion,
   devBaseImgUrl,
@@ -44,10 +41,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     const file = e.target.files[0];
     if (file) {
       setClientImage(file); // Store client image file
-      uploadPhoto((prev) => [
-        ...prev.filter((photo) => photo.field !== "client"),
-        { file, field: "client" },
-      ]);
     }
   };
 
@@ -55,10 +48,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     const file = e.target.files[0];
     if (file) {
       setLogoImage(file); // Store logo image file
-      uploadPhoto((prev) => [
-        ...prev.filter((photo) => photo.field !== "logo"),
-        { file, field: "logo" },
-      ]);
     }
   };
 
@@ -105,7 +94,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
   const yupSchema = Yup.object({});
 
-
   return (
     <ModalAddWrapper
       className={`transition-all ease-linear transform duration-200`}
@@ -144,8 +132,8 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                   <div className="flex gap-4 justify-between">
                     <div className="w-[50%]">
                       <div className="relative w-fit m-auto group">
-                        {/* Display images or placeholders */}
                         <div className="flex flex-row justify-between items-center">
+                          {/* Display Client Image */}
                           {clientImage ? (
                             <img
                               src={URL.createObjectURL(clientImage)}
@@ -162,6 +150,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                             ""
                           )}
 
+                          {/* Display Logo Image */}
                           {logoImage ? (
                             <img
                               src={URL.createObjectURL(logoImage)}
@@ -179,25 +168,24 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                           )}
                         </div>
 
-                        {/* Separate input fields for client and logo images */}
+                        {/* Input fields for client and logo images */}
                         <div className="flex items-center gap-4 mt-4">
                           <div className="relative">
                             <input
                               type="file"
                               accept="image/*"
-                              className=" my-1"
+                              className="my-1"
                               onChange={handleClientImageUpload}
                             />
                             <label className="absolute top-[20px]">
                               Client Image
                             </label>
                           </div>
-
                           <div className="relative">
                             <input
                               type="file"
                               accept="image/*"
-                              className=" my-1"
+                              className="my-1"
                               onChange={handleLogoImageUpload}
                             />
                             <label className="absolute top-[20px]">
