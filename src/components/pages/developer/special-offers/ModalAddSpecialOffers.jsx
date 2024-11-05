@@ -114,9 +114,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                  <div className="w-[500px]">
-                    
-                  </div>
+                    <div className="w-[500px]"></div>
                   </div>
                   <div className="input-wrapper">
                     <label htmlFor="icon-search">Search Icon</label>
