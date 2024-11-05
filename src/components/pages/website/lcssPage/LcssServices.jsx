@@ -7,7 +7,7 @@ const LcssServices = () => {
     <>
       <section className="lcssServices py-20">
         <div className="customContainer">
-          <div className="wrapper flex flex-wrap place-content-center">
+          <div className="wrapper flex flex-wrap place-content-center md:grid md:grid-cols-2">
             <div className="webDEv w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>Here is what you can learn in our</p>
@@ -51,7 +51,7 @@ const LcssServices = () => {
                   <div>
                     <FaLaptop className="text-2xl text-dark" />
                   </div>
-                  Scripting Language
+                  Scripting Languages
                 </li>
                 <li>
                   <div>
@@ -92,20 +92,20 @@ const LcssServices = () => {
                 <li>
                   <div>
                     <BsCalculator className="text-2xl text-dark" />
-                  </div> Excel Advanced
-                  Functions
+                  </div>{" "}
+                  Excel Advanced Functions
                 </li>
                 <li>
                   <div>
                     <BsCalculator className="text-2xl text-dark" />
-                  </div> Accounting
-                  Source Documents
+                  </div>{" "}
+                  Accounting Source Documents
                 </li>
                 <li>
                   <div>
                     <BsCalculator className="text-2xl text-dark" />
-                  </div> Business
-                  Registration
+                  </div>{" "}
+                  Business Registration
                 </li>
                 <li>
                   <div>
@@ -123,7 +123,7 @@ const LcssServices = () => {
                   <div>
                     <BsCalculator className="text-2xl text-dark" />
                   </div>
-                  Quickbooks
+                  QuickBooks
                 </li>
                 <li>
                   <div>

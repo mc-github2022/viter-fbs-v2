@@ -200,7 +200,7 @@ const BookkeepingPricing = () => {
                                 </li>
                               ))}
                             </ul> */}
-                            <table>
+                            <table className="prices my-5">
                               {price.info.map((info, key) => (
                                 <tr key={key} className="border-0">
                                   <td className="text-[16px]">{info}</td>
@@ -212,7 +212,7 @@ const BookkeepingPricing = () => {
                         <div className="absolute bottom-0 my-12 left-0 right-0">
                           <a
                             href={price.link}
-                            className="btn bg-light text-primary font-bold  "
+                            className="btn mt-5 bg-light text-primary font-bold  "
                           >
                             {price.btnText}
                           </a>
