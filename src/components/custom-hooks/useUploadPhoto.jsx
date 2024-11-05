@@ -5,41 +5,48 @@ import { setError, setMessage } from "../store/StoreAction";
 const useUploadPhoto = (url, dispatch) => {
   const [photo, setPhoto] = React.useState(null);
 
-  const uploadPhoto = async () => {
-    if (photo) {
+  const uploadPhoto = async (photoFile) => {
+    if (photoFile) {
       const fd = new FormData();
-      fd.append("photo", photo);
+      fd.append("photo", photoFile);
 
-      const data = await fetchFormData(devApiUrl + url, fd, dispatch);
+      try {
+        const response = await fetch(devApiUrl + url, {
+          method: "POST",
+          body: fd,
+        });
+        const data = await response.json();
 
-      // consoleLog(data);
+        if (response.ok) {
+          console.log("Upload successful:", data);
+          return data; // Return data if upload is successful
+        } else {
+          console.error("Upload failed:", data);
+          dispatch(setError(true));
+          dispatch(setMessage("Failed to upload the photo."));
+          return null;
+        }
+      } catch (error) {
+        console.error("Upload error:", error);
+        dispatch(setError(true));
+        dispatch(setMessage("An error occurred during the upload."));
+      }
     }
   };
 
   const handleChangePhoto = (e) => {
-    console.log(e.target.files[0]);
-
-    if (!e.target.files[0]) {
+    const img = e.target.files[0];
+    if (!img) {
       setPhoto("");
       dispatch(setError(false));
-      // dispatch(setErrorMessage(""));
       return;
     }
 
-    const img = e.target.files[0];
-    // console.log(img);
-
-    // console.log("img.size", img.size);
     if (img.size > 5000000) {
       dispatch(setError(true));
-      dispatch(
-        setMessage(
-          "Photo is too big. It should be less than 10Kb and 80x80px size for better result."
-        )
-      );
+      dispatch(setMessage("Photo is too big. It should be less than 5MB."));
     } else {
       dispatch(setError(false));
-      // consoleLog("Set photo");
       setPhoto(img);
     }
   };
