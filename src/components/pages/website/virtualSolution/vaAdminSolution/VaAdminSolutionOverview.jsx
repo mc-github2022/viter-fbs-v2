@@ -5,7 +5,7 @@ import { webAppOverview } from "./data";
 const VaAdminSolutionOverview = () => {
   return (
     <>
-      <section className="VaAdminSolutionOverview py-20 ">
+      <section className="VaAdminSolutionOverview pt-20 ">
         <div className="customContainer">
           <p>{webAppOverview[0].subtitle}</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
