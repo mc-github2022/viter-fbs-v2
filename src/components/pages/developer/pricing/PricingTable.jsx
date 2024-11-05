@@ -56,6 +56,8 @@ const PricingTable = ({ setItemEdit }) => {
                 <th>Sub-title</th>
                 <th>Rate</th>
                 <th>Category</th>
+                <th>Button</th>
+                <th>Link</th>
                 <th>List Of Features</th>
                 <th className="text-right">Actions</th>
               </tr>

@@ -138,11 +138,11 @@ const ImmersionBatchSliderPage = ({
 
   return (
     <ModalWrapper
-      className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[40%] md:w-[60%]  `}
+      className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[33%] md:w-[60%]`}
       handleClose={handleClose}
     >
       <div className="bg-transparent h-screen place-items-center place-content-center">
-        <div className="closeBtn absolute top-[10%] right-0 z-[1] cursor-pointer">
+        <div className="closeBtn absolute top-[24%] right-0 z-[1] cursor-pointer">
           <IoCloseCircle
             className="text-3xl text-light"
             onClick={handleClose}
