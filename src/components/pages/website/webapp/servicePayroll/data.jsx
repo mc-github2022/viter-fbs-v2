@@ -5,13 +5,13 @@ export const banner = [
   {
     bannerTitle: (
       <p>
-        Simplify your payroll processing with our
+        Simplify Your Payroll Processing With Our
         <br />
       </p>
     ),
     bannerTitleBoldText: "Online Payroll System",
     bannerTextDesc:
-      "Our Online Payroll System simplifies payroll management for Philippine businesses. It automates salary calculations, tax compliance, and government contributions, ensuring accuracy and timely payouts. With real-time reporting and employee self-service access to payslips, it reduces HR workload and boosts efficiency.",
+      "Our Online Payroll System simplifies payroll management for Philippine businesses by automating salary calculations, tax compliance, and government contributions, ensuring accuracy and timely payouts. With real-time reporting and employee self-service access to payslips, it reduces HR workload and boosts efficiency.",
     bannerBtnText: "SCHEDULE A DEMO",
 
     bannerBtnLink: "Link",
@@ -50,10 +50,10 @@ export const webAppOverview = [
       "Our system automates payroll calculations, ensuring precise processing of hours worked, overtime, and deductions. This minimizes payroll disputes and errors, increasing employee satisfaction and reducing administrative workload.",
     overviewBtitle: "Cost Efficiency and Compliance",
     overviewBtext:
-      "Centralized payroll management cuts administrative costs and ensures compliance with local labor laws and tax regulations. This saves time, reduces potential penalties, and enhances trust among employees by ensuring accurate and timely compensation.",
+      "Centralized payroll management reduces administrative costs and ensures compliance with local labor laws and tax regulations. This saves time, reduces potential penalties, and enhances trust among employees by ensuring accurate and timely compensation.",
     overviewCtitle: "Secure and Transparent Payroll",
     overviewCtext:
-      "With robust security features, our system protects sensitive employee and financial data while ensuring accurate, compliant payroll processes. This fosters trust among stakeholders by guaranteeing transparency and data protection.",
+      "With robust security features, our system protects sensitive employee and financial data while maintaining accurate, compliant payroll processes. This fosters trust among stakeholders by guaranteeing transparency and data protection.",
   },
 ];
 
@@ -145,7 +145,7 @@ export const clientSaysTitle = [
 ];
 
 export const clientSays = [
-  { 
+  {
     clientName: "Kimbell John Reyes",
     clientDesc: "Chief Executive Officer",
     clientMessage:

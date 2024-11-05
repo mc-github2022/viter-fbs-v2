@@ -118,7 +118,7 @@ const ImmersionPartnersSay = () => {
 
   return (
     <>
-      <section className="ImmersionPartnersSay py-10 pb-20 md:py-20">
+      <section className="ImmersionPartnersSay py-10 pb-20 md:py-20 -translate-y-1 bg-light">
         <div className="customContainer">
           {IndtestimonialData?.data.length > 0 && (
             <div className="">
@@ -152,7 +152,7 @@ const ImmersionPartnersSay = () => {
                                 alt=""
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8  md:min-h-0">
+                            <p className="relative text-justify z-10 italic mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
                             <div className="logoAndName flex items-center gap-3">

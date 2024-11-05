@@ -18,7 +18,7 @@ const BookkeepingOverview = () => {
               <img
                 // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
                 src={`../../public/img/${webAppOverview[0].webAppImage}`}
-                className="mb-12 md:mb-12 lg:mb-0 h-full object-cover"
+                className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
                 alt=""
               />
             </div>
@@ -33,7 +33,9 @@ const BookkeepingOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewAtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewAtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewAtext}
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -46,7 +48,9 @@ const BookkeepingOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewBtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewBtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewBtext}
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -59,7 +63,9 @@ const BookkeepingOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewCtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewCtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewCtext}
+                      </p>
                     </div>
                   </div>
                 </li>

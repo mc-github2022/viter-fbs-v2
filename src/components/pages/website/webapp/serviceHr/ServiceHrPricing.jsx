@@ -19,12 +19,12 @@ const ServiceHrPricing = () => {
             </h3>
           </div>
           <div className="grid place-items-center">
-            <div className="wrapper lg:grid lg:grid-cols-2 gap-8 items-center">
+            <div className="wrapper md:grid md:grid-cols-2 gap-6 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 lg:mb-0 relative z-[1] min-h-[594px] md:min-w-[400px] text-light text-center p-10 rounded-lg addShadow ${
+                    className={`priceItem mb-5 lg:mb-0 relative z-[1] min-h-[594px] max-w-[400px] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid `}
                   >
@@ -51,7 +51,7 @@ const ServiceHrPricing = () => {
                             </p>
                           )}
                         </div>
-                        <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
+                        {/* <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 mb-8">
                           {price.info.map((info, key) => (
                             <li key={key} className="text-left">
                               <FaCheckCircle
@@ -60,7 +60,19 @@ const ServiceHrPricing = () => {
                               {info}
                             </li>
                           ))}
-                        </ul>
+                        </ul> */}
+                        <table className="prices my-5">
+                          {price.info.map((info, key) => (
+                            <tr key={key} className="border-0">
+                              <td>
+                                <FaCheckCircle
+                                  className={`${price.customCss} text-light`}
+                                />
+                              </td>
+                              <td className="text-[16px]">{info}</td>
+                            </tr>
+                          ))}
+                        </table>
                       </div>
 
                       <a

@@ -6,7 +6,7 @@ const ImmersionServices = () => {
     <>
       <section className="ImmersionServices py-20">
         <div className="customContainer">
-          <div className="wrapper flex flex-wrap place-content-center">
+          <div className="wrapper flex flex-wrap place-content-center md:grid md:grid-cols-2">
             <div className="webDEv w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>STEM and ICT students can learn</p>
@@ -17,30 +17,45 @@ const ImmersionServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
                   Web Designing using Figma
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> Website Mockup
-                  Designing
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  Website Mockup Designing
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> Frontend Development
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  Frontend Development
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div> Mobile Responsive
-                  Designing
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>{" "}
+                  Mobile Responsive Designing
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
                   HTML5 & CSS3 Programming
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
-                  Basic Scripting Language
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
+                  Basic Scripting Languages
                 </li>
                 <li>
-                  <div><Laptop className="text-2xl text-dark" /></div>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
                   Business Work Ethics
                 </li>
               </ul>
@@ -56,33 +71,52 @@ const ImmersionServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div> Journal Entry
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>{" "}
+                  Journal Entry
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div> Ledger Posting
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>{" "}
+                  Ledger Posting
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div> Trial Balance
-                  Reporting
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>{" "}
+                  Trial Balance Reporting
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div> Adjusting Entry
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>{" "}
+                  Adjusting Entry
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div>
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>
                   Financial Statements & Reports
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div>
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>
                   Excel Advanced Functions & Formulas
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div>
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>
                   Payroll Report
                 </li>
                 <li>
-                  <div><Calculator className="text-2xl text-dark" /></div>
-                  Quickbooks Online
+                  <div>
+                    <Calculator className="text-2xl text-dark" />
+                  </div>
+                  QuickBooks Online
                 </li>
               </ul>
             </div>
@@ -97,35 +131,51 @@ const ImmersionServices = () => {
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Leadership Principles
                 </li>
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Business Correspondence
                 </li>
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Standard Operating Procedures
                 </li>
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Job Interview Simulation
                 </li>
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Basic Accounting Application
                 </li>
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Excel Advanced Functions and Formulas
                 </li>
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Payroll Setup
                 </li>
                 <li>
-                  <div><NotebookPen className="text-2xl text-dark" /></div>
+                  <div>
+                    <NotebookPen className="text-2xl text-dark" />
+                  </div>
                   Business Work Ethics
                 </li>
               </ul>

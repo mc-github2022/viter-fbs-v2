@@ -27,7 +27,7 @@ const VaAdminSolutionPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px]  max-w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[700px]  max-w-[400px] grid place-items-center`}
                   >
                     <div className="">
                       <div className="title mb-4">
@@ -48,7 +48,7 @@ const VaAdminSolutionPricing = () => {
                           {price.duration}
                         </p>
                         <div className="grid place-items-center">
-                          <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
+                          {/* <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
                             {price.info.map((info, key) => (
                               <li key={key}>
                                 <FaCheckCircle
@@ -57,7 +57,19 @@ const VaAdminSolutionPricing = () => {
                                 {info}
                               </li>
                             ))}
-                          </ul>
+                          </ul> */}
+                          <table className="prices my-5">
+                            {price.info.map((info, key) => (
+                              <tr key={key} className="border-0">
+                                <td>
+                                  <FaCheckCircle
+                                    className={`${price.customCss} text-light`}
+                                  />
+                                </td>
+                                <td className="text-[16px]">{info}</td>
+                              </tr>
+                            ))}
+                          </table>
                         </div>
                       </div>
                       <p className="mb-8">{price.priceDesc}</p>

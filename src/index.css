@@ -43,7 +43,6 @@
   /* * {
     @apply outline ;
   } */
-
   table {
     @apply border-collapse border-spacing-2 text-left w-full table-auto;
   }
@@ -88,6 +87,21 @@
   select:focus,
   textarea:focus {
     @apply border border-solid border-primary outline-0;
+  }
+  table.prices {
+    @apply border-collapse border-spacing-2 text-left w-full table-auto;
+  }
+  table.prices tr:hover {
+    @apply bg-[transparent];
+  }
+  table.prices tr {
+    @apply border-b border-none;
+  }
+  table.prices th {
+    @apply font-semibold bg-[#d1d5db] py-1 pr-3 capitalize text-xs;
+  }
+  table.prices td {
+    @apply p-[2px] text-[18px];
   }
 }
 

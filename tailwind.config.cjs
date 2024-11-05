@@ -9,8 +9,8 @@ export default {
       light: "#ffffff",
       dark: "#2b2b2b",
       dashPrimary: "rgb(var(--dashPrimary-color) / <alpha-value>)",
-        dashSecondary: "rgb(var(--dashSecondary-color) / <alpha-value>)",
-        dashAccent: "rgb(var(--dashAccent-color) / <alpha-value>)",
+      dashSecondary: "rgb(var(--dashSecondary-color) / <alpha-value>)",
+      dashAccent: "rgb(var(--dashAccent-color) / <alpha-value>)",
     },
     extend: {
       fontFamily: {

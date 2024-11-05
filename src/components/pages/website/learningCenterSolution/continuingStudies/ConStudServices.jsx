@@ -71,7 +71,7 @@ const ConStudServices = () => {
                   Frontend <br /> Development <br />
                   Training
                 </h3>
-                <p>Minimun of 240 Hours </p>
+                <p>Minimum of 240 Hours </p>
                 <p>Prerequisite: None</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
@@ -109,7 +109,7 @@ const ConStudServices = () => {
                   <div>
                     <Laptop className="text-2xl text-dark" />
                   </div>
-                  Scripting Language
+                  Scripting Languages
                 </li>
                 <li>
                   <div>
@@ -132,7 +132,7 @@ const ConStudServices = () => {
                   Backend <br /> Development <br />
                   Training
                 </h3>
-                <p>Minimun of 160 Hours</p>
+                <p>Minimum of 160 Hours</p>
                 <p>Prerequisite: Frontend Dev.</p>
               </div>
               <ul className="servicesList [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2 ">
@@ -176,7 +176,7 @@ const ConStudServices = () => {
                   <div>
                     <Calculator className="text-2xl text-dark" />
                   </div>
-                  Quickbooks Online
+                  QuickBooks Online
                 </li>
                 <li>
                   <div>

@@ -125,7 +125,7 @@ const WordPressPartnersSay = () => {
           {IndtestimonialData?.data.length > 0 && (
             <div className="">
               <p>What Our</p>
-              <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+              <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-0">
                 Clients Say
               </h2>
             </div>

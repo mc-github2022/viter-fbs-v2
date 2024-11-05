@@ -107,7 +107,7 @@ const ServiceInventoryPartnersSay = () => {
 
   return (
     <>
-      <section className="ServicePayrollPartnersSay py-20">
+      <section className="ServicePayrollPartnersSay py-20 md:pb-20">
         <div className="customContainer">
           {IndtestimonialData?.data.length > 1 && (
             <div className="">

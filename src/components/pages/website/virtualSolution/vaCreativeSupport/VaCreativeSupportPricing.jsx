@@ -48,7 +48,7 @@ const VaCreativeSupportPricing = () => {
                           {price.duration}
                         </p>
                         <div className="grid place-items-center">
-                          <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
+                          {/* <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 my-4">
                             {price.info.map((info, key) => (
                               <li key={key}>
                                 <FaCheckCircle
@@ -57,7 +57,19 @@ const VaCreativeSupportPricing = () => {
                                 {info}
                               </li>
                             ))}
-                          </ul>
+                          </ul> */}
+                          <table className="prices my-5">
+                            {price.info.map((info, key) => (
+                              <tr key={key} className="border-0">
+                                <td>
+                                  <FaCheckCircle
+                                    className={`${price.customCss} text-light`}
+                                  />
+                                </td>
+                                <td className="text-[16px]">{info}</td>
+                              </tr>
+                            ))}
+                          </table>
                         </div>
                       </div>
                       <p className="mb-8">{price.priceDesc}</p>

@@ -26,9 +26,9 @@ const SinglePagePricing = () => {
                     key={key}
                     className={`priceItem mb-5 md:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive
-                        ? "bg-primary min-h-[500px]"
+                        ? "bg-primary "
                         : "bg-customGray !text-dark"
-                    } grid place-items-center`}
+                    } grid place-items-center min-h-[800px]`}
                   >
                     <div>
                       <div className="title mb-4 ">
@@ -62,7 +62,7 @@ const SinglePagePricing = () => {
                           </li>
                         ))}
                       </ul> */}
-                      <table>
+                      <table className="prices my-5">
                         {price.info.map((info, key) => (
                           <tr key={key} className="border-0">
                             <td>
@@ -76,7 +76,7 @@ const SinglePagePricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn px-5 bg-light text-primary font-bold"
+                        className="btn mt-5 px-5 bg-light text-primary font-bold"
                       >
                         CONTACT US
                       </a>

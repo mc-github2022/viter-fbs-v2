@@ -43,7 +43,7 @@ const LcssApplyNow = () => {
                   <div>
                     <FaCheckCircle className="text-primary" />
                   </div>
-                  School's Evaluation Form
+                  School Evaluation Form
                 </li>
               </ul>
               <a
