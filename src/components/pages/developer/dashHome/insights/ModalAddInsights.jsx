@@ -1,37 +1,34 @@
-import React from "react";
-import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import { StoreContext } from "../../../../store/StoreContext";
-import { GrFormClose } from "react-icons/gr";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
+import React from "react";
+import { GrFormClose } from "react-icons/gr";
+import { IoImageOutline } from "react-icons/io5";
+import { MdOutlineFileUpload } from "react-icons/md";
 import * as Yup from "yup";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 import {
   InputPhotoUpload,
   InputText,
   InputTextArea,
 } from "../../../../helpers/FormInputs";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  apiVersion,
+  devBaseImgUrl,
+} from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
-import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
-import {
-  apiVersion,
-  devBaseImgUrl,
-} from "../../../../helpers/functions-general";
-import { IoImageOutline } from "react-icons/io5";
-import { MdOutlineFileUpload } from "react-icons/md";
-import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const { singleUploadPhoto, handleChangePhoto, photo } = useSingleUploadPhoto(
-    `${apiVersion}/upload-photo`,
-    dispatch
-  );
+  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
+    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
   const handleClose = () => {
     setTimeout(() => {
@@ -105,11 +102,11 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              home_insights_img: photo
-                ? photo.name
+              home_insights_img: photoSingle
+                ? photoSingle.name
                 : itemEdit.home_insights_img,
             };
-            if (photo) {
+            if (photoSingle) {
               await singleUploadPhoto(); // to save the photo when submit
             }
             mutation.mutate(data);
@@ -126,8 +123,8 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           Image
                         </span>
                         <div className="relative w-fit m-auto group">
-                          {(itemEdit === null && photo === null) ||
-                          (photo === "" && itemEdit === null) ? (
+                          {(itemEdit === null && photoSingle === null) ||
+                          (photoSingle === "" && itemEdit === null) ? (
                             <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
                               <div className="">
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -138,8 +135,8 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             </div>
                           ) : (itemEdit &&
                               !itemEdit.home_insights_img &&
-                              !photo) ||
-                            (!itemEdit && !photo) ? (
+                              !photoSingle) ||
+                            (!itemEdit && !photoSingle) ? (
                             <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
                               <div>
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -151,8 +148,8 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           ) : (
                             <img
                               src={
-                                photo
-                                  ? URL.createObjectURL(photo) // preview
+                                photoSingle
+                                  ? URL.createObjectURL(photoSingle) // preview
                                   : devBaseImgUrl +
                                     "/" +
                                     itemEdit.home_insights_img // check db
@@ -236,9 +233,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                       type="submit"
                       disabled={
                         ((mutation.isPending || !props.dirty) &&
-                          photo === null) ||
-                        photo === "" ||
-                        initVal.home_insights_img === photo?.name
+                          photoSingle === null) ||
+                        photoSingle === "" ||
+                        initVal.home_insights_img === photoSingle?.name
                       }
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
