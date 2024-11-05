@@ -16,7 +16,7 @@ const ServiceHrBanner = () => {
       >
         <div className="customContainer">
           <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[90vh] md:h-[75vh] lg:min-h-0 transition-all w-full">
-            <div className="text-center lg:text-left">
+            <div className="text-center py-20 lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                 {banner[0].bannerTitle}
 

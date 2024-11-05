@@ -19,7 +19,7 @@ const ServiceHrOverview = () => {
               <img
                 // src={`${devBaseImgUrl}/HRISscreenShot.png`}
                 src={`../../public/img/${webAppOverview[0].webAppImage}`}
-                className="mb-12"
+                className="mb-12 w-fit mx-auto"
                 alt=""
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
@@ -52,7 +52,9 @@ const ServiceHrOverview = () => {
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
                         {webAppOverview[0].overviewAtitle}
                       </h3>
-                      <p>{webAppOverview[0].overviewAtext}</p>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewAtext}
+                      </p>
                     </div>
                   </div>
                 </li>
