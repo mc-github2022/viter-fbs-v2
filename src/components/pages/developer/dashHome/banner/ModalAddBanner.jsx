@@ -24,13 +24,12 @@ import {
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 import * as Yup from "yup";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 
 const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
-    `${apiVersion}/upload-photo`,
-    dispatch
-  );
+  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
+    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
   const handleClose = () => {
     setTimeout(() => {
@@ -92,10 +91,12 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              home_banner_img: photo ? photo.name : itemEdit.home_banner_img,
+              home_banner_img: photoSingle
+                ? photoSingle.name
+                : itemEdit.home_banner_img,
             };
-            if (photo) {
-              await uploadPhoto(); // to save the photo when submit
+            if (photoSingle) {
+              await singleUploadPhoto(); // to save the photo when submit
             }
             mutation.mutate(data);
           }}
@@ -111,8 +112,8 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                           Image
                         </span>
                         <div className="relative w-fit m-auto group">
-                          {(itemEdit === null && photo === null) ||
-                          (photo === "" && itemEdit === null) ? (
+                          {(itemEdit === null && photoSingle === null) ||
+                          (photoSingle === "" && itemEdit === null) ? (
                             <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
                               <div className="">
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -123,8 +124,8 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                             </div>
                           ) : (itemEdit &&
                               !itemEdit.home_banner_img &&
-                              !photo) ||
-                            (!itemEdit && !photo) ? (
+                              !photoSingle) ||
+                            (!itemEdit && !photoSingle) ? (
                             <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
                               <div>
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -136,8 +137,8 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                           ) : (
                             <img
                               src={
-                                photo
-                                  ? URL.createObjectURL(photo) // preview
+                                photoSingle
+                                  ? URL.createObjectURL(photoSingle) // preview
                                   : devBaseImgUrl +
                                     "/" +
                                     itemEdit.home_banner_img // check db
@@ -211,9 +212,9 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                       type="submit"
                       disabled={
                         ((mutation.isPending || !props.dirty) &&
-                          photo === null) ||
-                        photo === "" ||
-                        initVal.home_banner_img === photo?.name
+                          photoSingle === null) ||
+                        photoSingle === "" ||
+                        initVal.home_banner_img === photoSingle?.name
                       }
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}

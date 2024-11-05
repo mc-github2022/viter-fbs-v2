@@ -152,7 +152,7 @@ const Testimonials = () => {
                   <img
                     // src={`${devBaseImgUrl}/tm_logo.png`}
                     src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                    className="object-contain w-[200px] max-h-[87px] "
+                    className="object-contain max-h-[87px] "
                     alt="logo image"
                   />
                 </div>

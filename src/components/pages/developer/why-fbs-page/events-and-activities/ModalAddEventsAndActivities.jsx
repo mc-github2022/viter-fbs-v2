@@ -24,13 +24,12 @@ import {
 } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 
 const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
-    `${apiVersion}/upload-photo`,
-    dispatch
-  );
+  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
+    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
   const handleClose = () => {
     setTimeout(() => {
@@ -102,12 +101,12 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              events_activities_img: photo
-                ? photo.name
+              events_activities_img: photoSingle
+                ? photoSingle.name
                 : itemEdit.events_activities_img,
             };
-            if (photo) {
-              await uploadPhoto(); // to save the photo when submit
+            if (photoSingle) {
+              await singleUploadPhoto(); // to save the photo when submit
             }
             mutation.mutate(data);
           }}
@@ -119,10 +118,12 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                   <div className="flex gap-4 justify-between">
                     <div className="w-[50%]">
                       <div className="mt-5">
-                        <span className="top-20 px-2 text-dark text-xs">Image</span>
+                        <span className="top-20 px-2 text-dark text-xs">
+                          Image
+                        </span>
                         <div className="relative w-fit m-auto group">
-                          {(itemEdit === null && photo === null) ||
-                          (photo === "" && itemEdit === null) ? (
+                          {(itemEdit === null && photoSingle === null) ||
+                          (photoSingle === "" && itemEdit === null) ? (
                             <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
                               <div className="">
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -133,8 +134,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             </div>
                           ) : (itemEdit &&
                               !itemEdit.events_activities_img &&
-                              !photo) ||
-                            (!itemEdit && !photo) ? (
+                              !photoSingle) ||
+                            (!itemEdit && !photoSingle) ? (
                             <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
                               <div>
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -146,8 +147,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                           ) : (
                             <img
                               src={
-                                photo
-                                  ? URL.createObjectURL(photo) // preview
+                                photoSingle
+                                  ? URL.createObjectURL(photoSingle) // preview
                                   : devBaseImgUrl +
                                     "/" +
                                     itemEdit.events_activities_img // check db
@@ -231,9 +232,9 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                       type="submit"
                       disabled={
                         ((mutation.isPending || !props.dirty) &&
-                          photo === null) ||
-                        photo === "" ||
-                        initVal.events_activities_img === photo?.name
+                          photoSingle === null) ||
+                        photoSingle === "" ||
+                        initVal.events_activities_img === photoSingle?.name
                       }
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}

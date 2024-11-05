@@ -1,13 +1,4 @@
 import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../helpers/queryData";
-import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import { InputSelect, InputText } from "../../../helpers/FormInputs";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import * as Yup from "yup";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
@@ -15,6 +6,15 @@ import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
+import { StoreContext } from "../../../store/StoreContext";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { queryData } from "../../../helpers/queryData";
+import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
+import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
+import { GrFormClose } from "react-icons/gr";
+import { Form, Formik } from "formik";
+import { InputText } from "../../../helpers/FormInputs";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
 const icons = {
   ...FaIcons,
@@ -25,7 +25,7 @@ const icons = {
   ...PiIcons,
 };
 
-const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
+const ModalAddPricing = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [icon, setIcon] = React.useState(
@@ -56,13 +56,13 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/specialOffers/${itemEdit.special_offers_aid}` // update
-          : `/v1/specialOffers`, // create
+          ? `/v1/pricing/${itemEdit.special_offers_aid}` // update
+          : `/v1/pricing`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["specialOffers"] });
+      queryClient.invalidateQueries({ queryKey: ["pricing"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -85,14 +85,13 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   };
 
   const yupSchema = Yup.object({});
-
   return (
     <ModalAddWrapper
       className={`transition-all ease-linear transform duration-200 w-[600px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Special Offers</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Pricing</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -209,4 +208,4 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   );
 };
 
-export default ModalAddSpecialOffers;
+export default ModalAddPricing;
