@@ -24,10 +24,11 @@ import {
 } from "../../../../helpers/functions-general";
 import { IoImageOutline } from "react-icons/io5";
 import { MdOutlineFileUpload } from "react-icons/md";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 
 const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto(
+  const { singleUploadPhoto, handleChangePhoto, photo } = useSingleUploadPhoto(
     `${apiVersion}/upload-photo`,
     dispatch
   );
@@ -109,7 +110,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                 : itemEdit.home_insights_img,
             };
             if (photo) {
-              await uploadPhoto(); // to save the photo when submit
+              await singleUploadPhoto(); // to save the photo when submit
             }
             mutation.mutate(data);
           }}
