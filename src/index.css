@@ -321,6 +321,19 @@
   .tooltip-phone:hover::after {
     @apply scale-100 opacity-100;
   }
+
+  .search {
+    @apply flex items-center justify-end w-full lg:w-[25rem] relative my-3;
+  }
+  .search-icon {
+    @apply text-[gray] text-[16px] absolute left-0 h-full flex items-center px-2;
+  }
+  .search input {
+    @apply border-[1px] border-[gray] text-xs pl-7;
+  }
+  .search input:focus {
+    @apply outline-none border-primary;
+  }
 }
 
 .addShadowDash {

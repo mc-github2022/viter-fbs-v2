@@ -1,13 +1,14 @@
 import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import { setIsAdd } from "../../../store/StoreAction";
-import Navigation from "../../../partials/dashboard/Navigation";
-import Dashboard from "../../../partials/dashboard/Dashboard";
+import { StoreContext } from "../../../../store/StoreContext";
+import { setIsAdd } from "../../../../store/StoreAction";
+import Navigation from "../../../../partials/dashboard/Navigation";
+import Dashboard from "../../../../partials/dashboard/Dashboard";
 import { FaPlus } from "react-icons/fa6";
 import PricingTable from "./PricingTable";
 import ModalAddPricing from "./ModalAddPricing";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import ModalError from "../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
+import BreadCrumbs from "../../../../partials/BreadCrumbs";
 
 const Pricing = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -23,7 +24,8 @@ const Pricing = () => {
       <section id="pricing" className="bg-[#f5f5f3]">
         <Navigation menu="pricing" />
         <Dashboard>
-          <div className="mx-5 pt-2">
+          <div className="mx-5 pt-5">
+              <BreadCrumbs param={location.search} />
             <div className="py-5 flex justify-between ">
               <div className="text-sm text-[black] font-semibold">
                 <h2>Pricing</h2>

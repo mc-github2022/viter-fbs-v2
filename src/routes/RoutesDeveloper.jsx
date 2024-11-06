@@ -4,7 +4,6 @@ import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
 import IndustryTestimonial from "../components/pages/developer/industry-testimonial/IndustryTestimonial";
 import LcssBatches from "../components/pages/developer/lcss-batches/LcssBatches";
-import Pricing from "../components/pages/developer/pricing/Pricing";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
@@ -13,8 +12,8 @@ import BusinessRegPage from "../components/pages/website/accountingSolution/Busi
 import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
 import CareerPage from "../components/pages/website/career/CareerPage";
 import EventsAndAct from "../components/pages/website/events/EventsAndAct";
+import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import Home from "../components/pages/website/home/Home";
-import BatchSliderPage from "../components/pages/website/lcssPage/BatchSliderPage";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import ConStudPage from "../components/pages/website/learningCenterSolution/continuingStudies/ConStudPage";
 import ImmersionPage from "../components/pages/website/learningCenterSolution/highSchoolImmersion/ImmersionPage";
@@ -39,6 +38,8 @@ import Dashboard from "../components/partials/dashboard/Dashboard";
 import EULA from "../components/partials/policies/EULA";
 import PrivacyPolicy from "../components/partials/policies/PrivacyPolicy";
 import TermsOfService from "../components/partials/policies/TermsOfService";
+import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
+import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
 
 export const routesDeveloper = [
   {
@@ -195,6 +196,14 @@ export const routesDeveloper = [
   },
   {
     path: `${devNavUrl}/pricing`,
+    element: <PricingMenu />,
+  },
+  {
+    path: `${devNavUrl}/pricing/list`,
     element: <Pricing />,
+  },
+  {
+    path: `${devNavUrl}/pricing-copy`,
+    element: <BusinessRegPageCopy />,
   },
 ];

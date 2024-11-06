@@ -6,15 +6,19 @@ import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
-import { StoreContext } from "../../../store/StoreContext";
+import { StoreContext } from "../../../../store/StoreContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../helpers/queryData";
-import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
+import { queryData } from "../../../../helpers/queryData";
+import {
+  setError,
+  setMessage,
+  setSuccess,
+} from "../../../../store/StoreAction";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
 import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
-import { InputText } from "../../../helpers/FormInputs";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import { InputText } from "../../../../helpers/FormInputs";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 
 const icons = {
   ...FaIcons,

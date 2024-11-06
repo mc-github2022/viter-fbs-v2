@@ -1,8 +1,9 @@
 import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import { clientSays, clientSaysTitle } from "./data";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -57,7 +58,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ImmersionPartnersSay = () => {
+const BusinessRegPartnersSay = () => {
   const {
     isFetching,
     error,
@@ -72,7 +73,7 @@ const ImmersionPartnersSay = () => {
 
   var partnerSaysSettings = {
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -118,30 +119,29 @@ const ImmersionPartnersSay = () => {
 
   return (
     <>
-      <section className="ImmersionPartnersSay py-10 pb-20 md:py-20 -translate-y-1 bg-light">
+      <section className="BusinessRegPartnersSay pb-10 md:py-20">
         <div className="customContainer">
-          {IndtestimonialData?.data.length > 0 && (
+          {IndtestimonialData?.data.length > 1 && (
             <div className="">
-              <p>What Our School and University</p>
+              <p>What Our</p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                Partners Say
+                Clients Say
               </h2>
             </div>
           )}
           <div className="wrapper ">
             {IndtestimonialData?.data.filter(
               (item) =>
-                item.industry_testimonial_category ===
-                "High School Work Immersion"
+                item.industry_testimonial_category === "Business Registration"
             ).length > 1 ? (
               <Slider {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
                   if (
                     item.industry_testimonial_category ===
-                    "High School Work Immersion"
+                    "Business Registration"
                   ) {
                     return (
-                      <div key={key} className="md:h-[450px]">
+                      <div key={key} className="md:h-[425px]">
                         <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
@@ -152,7 +152,7 @@ const ImmersionPartnersSay = () => {
                                 alt=""
                               />
                             </div>
-                            <p className="relative text-justify z-10 italic mb-8  md:min-h-0">
+                            <p className="relative z-10 italic mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
                             <div className="logoAndName flex items-center gap-3">
@@ -194,7 +194,7 @@ const ImmersionPartnersSay = () => {
                 {IndtestimonialData?.data.map((item, key) => {
                   if (
                     item.industry_testimonial_category ===
-                    "High School Work Immersion"
+                    "Business Registration"
                   ) {
                     return (
                       <div className="md:h-[425px]">
@@ -257,4 +257,4 @@ const ImmersionPartnersSay = () => {
   );
 };
 
-export default ImmersionPartnersSay;
+export default BusinessRegPartnersSay;
