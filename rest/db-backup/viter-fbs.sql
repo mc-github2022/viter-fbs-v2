@@ -4,10 +4,14 @@
 --
 -- Host: 127.0.0.1
 <<<<<<< HEAD
+<<<<<<< HEAD
 -- Generation Time: Nov 04, 2024 at 08:51 AM
 =======
 -- Generation Time: Nov 05, 2024 at 09:00 AM
 >>>>>>> fb36c7adc3f9952aa46f269ee06d82714fe3faae
+=======
+-- Generation Time: Nov 06, 2024 at 05:00 AM
+>>>>>>> 313350630234eeda8ee59b6c8e3f1d7bae71026e
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -300,8 +304,26 @@ INSERT INTO `lcss_batch` (`lcss_batch_aid`, `lcss_batch_name`, `lcss_batch_categ
 (51, 'Batch 43', 'Continuing Studies', 'Pamantasan ng Lungsod ng San Pablo', 'BS Computer Engineering', 'b43-1.webp, b43-2.webp, b43-3.webp, b43-4.webp, b43-5.webp, b43-6.webp, b43-7.webp', '2024-11-05 14:57:28', '2024-11-05 14:57:28'),
 (52, 'Batch 45', 'College On-the-job Training', 'ACLC San Pablo', 'BS Accounting Technology', 'B45.webp', '2024-11-05 15:54:33', '2024-11-05 15:54:33'),
 (53, 'Batch 47 - Batch 50', 'High School Work Immersion', 'South Lakes Integrated School', 'STEM, HUMSS, and ABM', 'b47-0.webp, b47-1.webp, b47-2.webp, b47-3.webp, b47-4.webp, b47-5.webp, b47-6.webp, b47-6-2.webp, b47-7.webp, b47-8.webp, b47-9.webp, b47-10.webp', '2024-11-05 15:55:36', '2024-11-05 15:55:36'),
+<<<<<<< HEAD
 (54, 'Batch 51', 'College On-the-job Training', 'DLSU - Lipa, Letran Calamba , and STI San Pablo', 'BS Computer Science and BS Information Technology', 'b51-1.webp, b51-2.webp, b51-3.webp, b51-4.webp, b51-5.webp, b51-6.webp, b51-7.webp, b51-8.webp, b51-9.webp', '2024-11-05 15:57:35', '2024-11-05 15:57:35');
 >>>>>>> fb36c7adc3f9952aa46f269ee06d82714fe3faae
+=======
+(54, 'Batch 51', 'College On-the-job Training', 'DLSU - Lipa, Letran Calamba , and STI San Pablo', 'BS Computer Science and BS Information Technology', 'b51-1.webp, b51-2.webp, b51-3.webp, b51-4.webp, b51-5.webp, b51-6.webp, b51-7.webp, b51-8.webp, b51-9.webp', '2024-11-05 15:57:35', '2024-11-05 15:57:35'),
+(55, 'Batch 52', 'High School Work Immersion', 'Greenville Academy of Sta. Clara', 'STEM', 'B52-0.webp, B52-1.webp, B52-2.webp, B52-3.webp, B52-4.webp, B52-5.webp, B52-10.webp, B52-11.webp, B52-12.webp, B52-15.webp, B52-17.webp, B52-21.webp, B52-22.webp', '2024-11-06 08:10:03', '2024-11-06 08:10:03'),
+(56, 'Batch 53', 'High School Work Immersion', 'Greenville Academy of Sta. Clara', 'STEM', 'B53-1.webp, B53-2.webp, B53-3.webp', '2024-11-06 08:38:02', '2024-11-06 08:38:02'),
+(57, 'Batch 54', 'High School Work Immersion', 'St. Therese Montessori School', 'ABM', 'B54-1.webp, B54-2.webp, B54-3.webp, B54-4.webp', '2024-11-06 08:54:13', '2024-11-06 08:54:13'),
+(58, 'Batch 55', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'b55-0.webp, b55-1.webp, b55-2.webp, b55-3.webp, b55-4.webp, b55-5.webp, b55-6.webp, b55-7.webp', '2024-11-06 09:37:37', '2024-11-06 09:37:37'),
+(59, 'Batch 56', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'B56-1.webp, B56-2.webp, B56-3.webp, B56-4.webp, B56-5.webp, B56-6.webp, B56-7.webp, B56-8.webp, B56-9.webp, B56-10.webp, B56-11.webp', '2024-11-06 09:51:42', '2024-11-06 09:51:42'),
+(60, 'Batch 57', 'High School Work Immersion', 'St. Therese Montessori School', 'ABM', 'B57-1.webp, B57-2.webp, B57-3.webp, B57-4.webp, B57-5.webp, B57-6.webp', '2024-11-06 09:59:17', '2024-11-06 09:59:17'),
+(61, 'Batch 58', 'College On-the-job Training', 'Bicol University - Polangui', 'BS Computer Science', 'B58.webp', '2024-11-06 10:02:40', '2024-11-06 10:02:40'),
+(62, 'Batch 59', 'College On-the-job Training', 'San Pablo Colleges', 'BS Psychology', 'B59.webp', '2024-11-06 10:14:28', '2024-11-06 10:14:28'),
+(63, 'Batch 60', 'Continuing Studies', 'LSPU and ACLC', 'BS Information Technology', 'B60-1.webp, B60-2.webp, B60-3.webp', '0000-00-00 00:00:00', '2024-11-06 10:24:12'),
+(64, 'Batch 61', 'Continuing Studies', 'Laguna College', 'BS Computer Science', 'B61-1.webp, B61-2.webp, B61-3.webp, B61-4.webp, B61-5.webp, B61-6.webp, B61-7.webp', '2024-11-06 10:25:01', '2024-11-06 10:25:01'),
+(65, 'Batch 62', 'College On-the-job Training', 'South Luzon State University', 'BS Computer Engineering', 'b62-1.webp, b62-2.webp, b62-3.webp, B62-4.webp', '0000-00-00 00:00:00', '2024-11-06 10:30:01'),
+(66, 'Batch 63', 'College On-the-job Training', 'Cavite State University', 'BS Computer Engineering', 'B63-1.webp, B63-2.webp, B63-3.webp, B63-4.webp, B63-5.webp, B63-6.webp', '2024-11-06 10:40:10', '2024-11-06 10:40:10'),
+(67, 'Batch 65', 'College On-the-job Training', 'Laguna State Polytechnic Univ. - SPC Campus', 'BS Computer Science', 'B65-1.webp, B65-2.webp, B65-3.webp, B65-4.webp, B65-5.webp, B65-6.webp', '2024-11-06 11:48:05', '2024-11-06 11:48:05'),
+(68, 'Batch 66', 'Continuing Studies', 'PLSP and Laguna College', 'BSCpE and BSCS', 'B66-1.webp, B66-2.webp, B66-3.webp, B66-4.webp, B66-5.webp, B66-6.webp', '2024-11-06 11:52:46', '2024-11-06 11:52:46');
+>>>>>>> 313350630234eeda8ee59b6c8e3f1d7bae71026e
 
 -- --------------------------------------------------------
 
@@ -431,10 +453,14 @@ ALTER TABLE `industry_testimonial`
 --
 ALTER TABLE `lcss_batch`
 <<<<<<< HEAD
+<<<<<<< HEAD
   MODIFY `lcss_batch_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 =======
   MODIFY `lcss_batch_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 >>>>>>> fb36c7adc3f9952aa46f269ee06d82714fe3faae
+=======
+  MODIFY `lcss_batch_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+>>>>>>> 313350630234eeda8ee59b6c8e3f1d7bae71026e
 
 --
 -- AUTO_INCREMENT for table `special_offers`
