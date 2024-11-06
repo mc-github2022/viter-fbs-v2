@@ -24,7 +24,9 @@ const ServiceInventoryPricing = () => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 md:mb-0 relative z-[1] min-h-[594px] max-w-[400px] text-light text-center p-10 rounded-lg addShadow ${
+                    className={`
+                    priceItem mb-5 md:mb-0 relative z-[1] min-h-[594px] max-w-[400px] 
+                    text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid`}
                   >

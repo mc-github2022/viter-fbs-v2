@@ -38,7 +38,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.facebook.com/frontline.business"
+                      href="https://www.linkedin.com/company/frontline-business-solutions-inc"
                       target="_blank"
                     >
                       <FaLinkedin />
@@ -46,7 +46,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.facebook.com/frontline.business"
+                      href="https://www.youtube.com/@frontlinebusinesssolutions6578"
                       target="_blank"
                     >
                       <FaYoutubeSquare />
@@ -54,7 +54,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.facebook.com/frontline.business"
+                      href="https://www.instagram.com/frontline.business"
                       target="_blank"
                     >
                       <FaInstagramSquare />
@@ -62,7 +62,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a
-                      href="https://www.facebook.com/frontline.business"
+                      href="https://www.tiktok.com/@frontlinebusinessinc"
                       target="_blank"
                     >
                       <AiFillTikTok />
