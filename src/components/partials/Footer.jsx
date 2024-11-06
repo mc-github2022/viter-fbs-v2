@@ -29,19 +29,44 @@ const Footer = () => {
               <div className="flex justify-center sm:flex-auto sm:justify-start">
                 <ul className="flex gap-2 text-3xl mb-12 md:mb-0">
                   <li>
-                    <FaFacebookSquare />
+                    <a
+                      href="https://www.facebook.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaFacebookSquare />
+                    </a>
                   </li>
                   <li>
-                    <FaLinkedin />
+                    <a
+                      href="https://www.facebook.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaLinkedin />
+                    </a>
                   </li>
                   <li>
-                    <FaYoutubeSquare />
+                    <a
+                      href="https://www.facebook.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaYoutubeSquare />
+                    </a>
                   </li>
                   <li>
-                    <FaInstagramSquare />
+                    <a
+                      href="https://www.facebook.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaInstagramSquare />
+                    </a>
                   </li>
                   <li>
-                    <AiFillTikTok />
+                    <a
+                      href="https://www.facebook.com/frontline.business"
+                      target="_blank"
+                    >
+                      <AiFillTikTok />
+                    </a>
                   </li>
                 </ul>
               </div>

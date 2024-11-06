@@ -6,7 +6,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 const WhyUsCompanyProfile = () => {
   return (
     <>
-      <div className="whyUsIntro py-20">
+      <div className="whyUsIntro pt-20">
         <div className="customContainer">
           <h2 className="text-[clamp(16px,5vw,20px)] text-center">
             By choosing Frontline Business Solutions, you align your business
