@@ -166,16 +166,22 @@ export const hexToRgb = (hex) => {
 };
 
 // fetch for uploading photo or file
-export const fetchFormData = (url, fd = {}) => {
-  const data = fetch(url, {
-    method: "post",
-    body: fd,
-  })
-    .then((res) => res.json())
-    .catch((error) => {
-      console.error(error + " api endpoint error");
+export const fetchFormData = async (url, fd = {}) => {
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      body: fd,
     });
-  return data;
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return response; // Return response for further processing
+  } catch (error) {
+    console.error("API endpoint error:", error);
+    return null; // Return null to indicate failure
+  }
 };
 
 // Function to calculate tenure
