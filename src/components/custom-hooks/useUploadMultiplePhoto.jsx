@@ -11,11 +11,15 @@ const useUploadMultiplePhoto = (url, dispatch) => {
   const uploadMultiplePhoto = async () => {
     if (photoArrayList.length > 0) {
       const fd = new FormData();
-      // loop file
+
+      // Loop through files
+      let isPhotoJsonString = false;
       for (let i = 0; i < photoArrayList.length; i++) {
         if (
-          photoArrayList[i] instanceof File !== true ||
-          photoArrayList[i] instanceof Blob !== true
+          !(
+            photoArrayList[i] instanceof File ||
+            photoArrayList[i] instanceof Blob
+          )
         ) {
           isPhotoJsonString = true;
           continue;
@@ -26,17 +30,40 @@ const useUploadMultiplePhoto = (url, dispatch) => {
           photoArrayList[i].name.toLowerCase()
         );
       }
-      // if photo is json string return succes and not upload
+
+      // If any file is not a File or Blob, skip upload
       if (isPhotoJsonString) return { success: true };
-      // upload photo
-      const data = await fetchFormData(devApiUrl + url, fd, dispatch);
-      // if not success return error
-      if (!data.success) {
-        dispatch(setError(true));
-        dispatch(setMessage(data.error));
+
+      try {
+        // Upload photo
+        const response = await fetchFormData(devApiUrl + url, fd, dispatch);
+
+        if (response && response.headers) {
+          // Check if response is not null and has headers
+          // Check if the response is in JSON format
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            const data = await response.json();
+
+            if (!data.success) {
+              dispatch(setError(true));
+              dispatch(setMessage(data.error));
+            }
+
+            return data;
+          } else {
+            const errorText = await response.text();
+            console.error("Unexpected response format:", errorText);
+            throw new Error("Response is not JSON.");
+          }
+        } else {
+          console.error("No response or missing headers");
+          throw new Error("No response from server.");
+        }
+      } catch (error) {
+        console.error("API endpoint error:", error);
+        return { success: false, error: "API endpoint error" };
       }
-      // return data
-      return data;
     }
   };
 
