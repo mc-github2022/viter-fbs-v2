@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2024 at 05:00 AM
+-- Generation Time: Nov 06, 2024 at 06:49 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -247,11 +247,11 @@ INSERT INTO `lcss_batch` (`lcss_batch_aid`, `lcss_batch_name`, `lcss_batch_categ
 (17, 'Batch 3', 'College On-the-job Training', 'San Pablo Colleges', 'BS Information Technology', 'college.webp, college-3.jpg, IMG_5234.webp, IMG_5345.webp, IMG_5389.webp, IMG_5391.webp, IMG_5393.webp, IMG_5396.webp, IMG_5398.webp, IMG_5401.webp', '2024-11-04 12:34:11', '2024-11-04 12:34:11'),
 (18, 'Batch 4', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'immersion-60.webp, immersion-61.webp, immersion-62.webp, immersion-63.webp, immersion-64.webp, immersion-65.webp, immersion-81.webp, immersion-83.webp', '2024-11-04 12:40:22', '2024-11-04 12:40:22'),
 (19, 'Batch 5', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'IMG_1450.webp, IMG_1451.webp, IMG_1452.webp, IMG_1453.webp, IMG_1454.webp, IMG_1455.webp, IMG_1456.webp, IMG_1457.webp', '2024-11-04 12:49:44', '2024-11-04 12:49:44'),
-(20, 'Batch 6', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', '3rd batch-75.webp, 3rd batch-76.webp, 3rd-2.webp, 3rd-7.webp, IMG_0391.webp, shots-14.webp, shots-21.webp, shots-27.webp, shots-32.webp', '2024-11-04 13:17:33', '2024-11-04 13:17:33'),
-(21, 'Batch 7', 'High School Work Immersion', 'San Pablo Colleges & ACLC San Pablo', 'STEM', '4th batch-2.webp, 4th batch-8.webp, 4th batch-12.webp, 4th batch-Graduation-70.webp, 4th batch-Graduation-72.webp, 4th batch-Graduation-73.webp, 4th batch-Graduation-74.webp, 4th batch-Graduation-80.webp', '0000-00-00 00:00:00', '2024-11-04 14:31:55'),
+(20, 'Batch 6', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'b6-1.webp, b6-2.webp, b6-3.webp, b6-4.webp, b6-5.webp, b6-6.webp, b6-7.webp, b6-8.webp, b6-9.webp', '0000-00-00 00:00:00', '2024-11-04 13:17:33'),
+(21, 'Batch 7', 'High School Work Immersion', 'San Pablo Colleges & ACLC San Pablo', 'STEM', 'b7-1.webp, b7-2.webp, b7-3.webp, b7-4.webp, b7-5.webp, b7-6.webp, b7-7.webp, b7-8.webp', '0000-00-00 00:00:00', '2024-11-04 14:31:55'),
 (22, 'Batch 8', 'College On-the-job Training', 'Laguna State Polytechnic Univ. - SPC Campus', 'BS Information Technology', 'image1.webp, image4.webp', '0000-00-00 00:00:00', '2024-11-04 14:55:46'),
 (23, 'Batch 9', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'b1.webp, b1-5.webp, b1-new-4.webp, b1-new-11.webp, b9-1.webp, b9-2.webp, image1.webp, image2.webp, IMG_0036.webp, IMG_0040.webp, IMG_0061.webp, IMG_0068.webp', '2024-11-04 15:07:16', '2024-11-04 15:07:16'),
-(24, 'Batch 10', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', '6th Batch-1.webp, 6th Batch-2.webp, 6th Batch-14.webp, 6th Batch-20.webp, 6th-Batch-2.webp, 6th-Batch-5.webp, 6th-Batch-12.webp, 6th-Batch-26.webp', '2024-11-04 15:14:38', '2024-11-04 15:14:38'),
+(24, 'Batch 10', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'b10-1.webp, b10-2.webp, b10-3.webp, b10-4.webp, b10-5.webp, b10-6.webp, b10-7.webp, b10-8.webp, b10-9.webp', '0000-00-00 00:00:00', '2024-11-04 15:14:38'),
 (25, 'Batch 11', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'b11-1.webp, b11-2.webp, b11-3.webp, b11-4.webp, b11-5.webp, b11-6.webp, b11-7.webp, b11-8.webp, b11-9.webp, b11-10.webp', '2024-11-04 15:29:25', '2024-11-04 15:29:25'),
 (26, 'Batch 12', 'High School Work Immersion', 'San Pablo Colleges', 'ICT', 'batch-8.webp, batch-8-1.webp, batch-8-2.webp, batch-8-3.webp, batch-8-5.webp, batch-8-7.webp, batch-8-8.webp, batch-8-9.webp', '2024-11-04 15:34:25', '2024-11-04 15:34:25'),
 (27, 'Batch 13', 'High School Work Immersion', 'Greenville Academy of Sta. Clara', 'ABM', 'gva1.webp, gva2.webp, gva3.webp, gva4.webp, gva5.webp, gva6.webp, gva7.webp', '2024-11-04 15:44:20', '2024-11-04 15:44:20'),
