@@ -141,7 +141,7 @@ const ImmersionPartnersSay = () => {
                     "High School Work Immersion"
                   ) {
                     return (
-                      <div key={key} className="md:h-[425px]">
+                      <div key={key} className="md:h-[450px]">
                         <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">

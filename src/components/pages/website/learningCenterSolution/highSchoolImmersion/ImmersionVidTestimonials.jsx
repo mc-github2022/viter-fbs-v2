@@ -26,8 +26,8 @@ const ImmersionVidTestimonials = () => {
                 allowfullscreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative min-h-[350px] flex flex-col justify-between ">
-                <p className="italic ">
+              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative flex flex-col justify-between ">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> The
                   program was also very beneficial to me—I learned a lot about
                   potential jobs I could take in the future, and it helped me
@@ -35,11 +35,11 @@ const ImmersionVidTestimonials = () => {
                   task we completed.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool mt-10 text-center ">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/slis.png`}
-                    className="w-[60px] mx-auto -translate-y-5"
+                    className="w-[60px] mr-4"
                     alt=""
                   />
                   <div className="italic">
@@ -61,19 +61,19 @@ const ImmersionVidTestimonials = () => {
                 allowfullscreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl min-h-[350px] flex flex-col justify-between ">
-                <p className="italic ">
+              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl flex flex-col justify-between ">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
                   had a very enjoyable experience here at FBS. Everything we did
                   at FBS was truly enjoyable, from web designing using Figma to
                   creating our own websites with HTML and CSS.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool mt-10 text-center ">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/SPC.png`}
-                    className="w-[60px] mx-auto -translate-y-5"
+                    className="w-[60px] mr-4"
                     alt=""
                   />
                   <div className="italic">
@@ -95,19 +95,19 @@ const ImmersionVidTestimonials = () => {
                 allowfullscreen
                 loading="lazy"
               ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl min-h-[350px] flex flex-col justify-between ">
-                <p className="italic ">
+              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl flex flex-col justify-between ">
+                <p className="italic mb-24 min-h-[120px]">
                   <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> My
                   experience was very fun, and all the trainers were kind and
                   approachable. I highly recommend the FBS work immersion
                   program because you will learn a lot here.
                   <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                 </p>
-                <div className="nameAndSchool mt-10 text-center ">
+                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                   <img
                     // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                     src={`../../public/img/MFMC.png`}
-                    className="w-[60px] mx-auto -translate-y-5"
+                    className="w-[60px] mr-4"
                     alt=""
                   />
                   <div className="italic">
