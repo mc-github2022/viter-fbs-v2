@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2024 at 06:49 AM
+-- Generation Time: Nov 06, 2024 at 07:22 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -159,7 +159,7 @@ CREATE TABLE `home_testimonial` (
 
 INSERT INTO `home_testimonial` (`home_testimonial_aid`, `home_testimonial_message`, `home_testimonial_name`, `home_testimonial_position`, `home_testimonial_client_img`, `home_testimonial_logo_img`, `home_testimonial_created`, `home_testimonial_datetime`) VALUES
 (12, 'FBS is a true partner to our firm. They have helped form our vision and trajectory. We are immensely grateful for our partnership. Our expectation is for FBS to grow with us. They are an important part of our success. And beyond the business perspective, they are fantastic people. We are blessed to work with them.', 'Robert Han', 'COO / Partner', 'testimonial-robert-han-2.png', 'tm_logo.png', '2024-10-30 09:15:52', '2024-10-30 09:15:52'),
-(13, 'Frontline has been an incredible organization to work with.  They are friendly, accommodating, and professional, but what stands out most is how responsive they are.  When I have a problem or request, I don’t think there has been a single time that not only have I received a response within the day, but whatever it was that I needed, their team has met that need within the day as well. I would highly recommend working with them.', 'Duane Masters', 'Executive Director', 'testi-duane-masters-2.png', 'logo-world-focus.png', '2024-10-30 09:17:31', '2024-10-30 09:17:31'),
+(13, 'Frontline has been an incredible organization to work with.  They are friendly, accommodating, and professional, but what stands out most is how responsive they are.  When I have a problem or request, I don’t think there has been a single time that not only have I received a response within the day, but whatever it was that I needed, their team has met that need within the day as well. I would highly recommend working with them.', 'Duane Masters', 'Executive Director', 'testi-duane-masters-2.png', 'world-focus-home.png', '0000-00-00 00:00:00', '2024-10-30 09:17:31'),
 (14, 'We love working with FBS because they go the extra mile in doing the work. It’s nice to work with people who have the heart to serve. A mutually respecting relationship.', 'Hiro Isogawa', 'CEO, CPA, Partner', 'testimonial-hiro-isogawa-2.png', 'tm_logo.png', '2024-10-30 09:22:15', '2024-10-30 09:22:15'),
 (15, 'We couldn\'t be more pleased with the incredible work done by the team at Frontline Business Solutions on our latest book design. Their attention to detail, creativity, and dedication to capturing our vision truly exceeded our expectations. The final product is both visually stunning and highly professional. It\'s clear that they are passionate about their craft, and we are grateful for their partnership in bringing this project to life. Thank you for your hard work and excellence!', 'Jared Roberts', 'Partner', 'testimonial-jared-roberts.png', 'sent-ones.png', '2024-10-30 09:33:24', '2024-10-30 09:33:24');
 
