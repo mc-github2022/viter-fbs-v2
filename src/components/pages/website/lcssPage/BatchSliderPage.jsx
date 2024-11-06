@@ -136,11 +136,11 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
 
   return (
     <ModalWrapper
-      className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[33%] md:w-[60%] `}
+      className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[42%] md:w-[60%] `}
       handleClose={handleClose}
     >
       <div className="bg-transparent h-screen place-items-center place-content-center">
-        <div className="closeBtn absolute top-[24%] right-0 z-[1] cursor-pointer">
+        <div className="closeBtn absolute top-[18%] right-0 z-[1] cursor-pointer">
           <IoCloseCircle
             className="text-3xl text-light"
             onClick={handleClose}
@@ -153,11 +153,11 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
                 key={index}
                 className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
               >
-                <div className="z-[1] max-w-[500px] h-[50vh] place-self-center relative">
+                <div className="z-[1] max-w-[700px] h-[60vh] place-self-center relative">
                   <img
                     src={`${devBaseImgUrl}/${image}`}
                     alt={`Batch image - ${index + 1}`}
-                    className="object-contain w-[500px] h-[50vh]"
+                    className="object-contain w-[700px] h-[60vh]"
                   />
                 </div>
               </div>
@@ -165,11 +165,11 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
           </Slider>
         ) : images.length === 1 ? (
           <div className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]">
-            <div className="z-[1] max-w-[500px] h-[50vh] place-self-center">
+            <div className="z-[1] max-w-[700px] h-[60vh] place-self-center">
               <img
                 src={`${devBaseImgUrl}/${images[0]}`}
                 alt="Batch image"
-                className="object-contain w-[500px] h-[50vh]"
+                className="object-contain w-[700px] h-[60vh]"
               />
             </div>
           </div>
