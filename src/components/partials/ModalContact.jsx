@@ -86,19 +86,44 @@ const ModalContact = ({ setModalContact, setToggleMenu = null }) => {
                 <p>Follow Us:</p>
                 <ul className="flex gap-2 text-2xl">
                   <li>
-                    <FaFacebookSquare />
+                    <a
+                      href="https://www.facebook.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaFacebookSquare />
+                    </a>
                   </li>
                   <li>
-                    <FaLinkedin />
+                    <a
+                      href="https://www.linkedin.com/company/frontline-business-solutions-inc"
+                      target="_blank"
+                    >
+                      <FaLinkedin />
+                    </a>
                   </li>
                   <li>
-                    <FaYoutubeSquare />
+                    <a
+                      href="https://www.youtube.com/@frontlinebusinesssolutions6578"
+                      target="_blank"
+                    >
+                      <FaYoutubeSquare />
+                    </a>
                   </li>
                   <li>
-                    <FaInstagramSquare />
+                    <a
+                      href="https://www.instagram.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaInstagramSquare />
+                    </a>
                   </li>
                   <li>
-                    <AiFillTikTok />
+                    <a
+                      href="https://www.tiktok.com/@frontlinebusinessinc"
+                      target="_blank"
+                    >
+                      <AiFillTikTok />
+                    </a>
                   </li>
                 </ul>
               </div>
