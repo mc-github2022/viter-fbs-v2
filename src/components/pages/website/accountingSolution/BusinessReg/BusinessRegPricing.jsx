@@ -13,7 +13,7 @@ function SampleNextArrow(props) {
         color: "white",
         top: "50%",
         transform: "translateY(-50%)",
-        right: "5px",
+        right: "-20px",
         fontSize: "3rem",
         cursor: "pointer",
         background: "#ac1f72",
@@ -101,7 +101,7 @@ const BusinessRegPricing = () => {
         },
       },
       {
-        breakpoint: 886,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -124,56 +124,59 @@ const BusinessRegPricing = () => {
             </h3>
           </div>
           <div className="">
-            <div className="wrapper">
+            <div className="wrapper ">
               <Slider {...eventsSliderSettings}>
                 {pricing.map((price, key) => {
                   return (
-                    <div
-                      key={key}
-                      className={`${
-                        price.isActive
-                          ? "!bg-primary text-light"
-                          : "!bg-customGray"
-                      } priceItem mb-5 md:mb-0 relative z-[1] text-center p-10 m-0 rounded-lg  max-h-[700px] min-h-[700px]
-                        max-w-[400px] grid justify-self-center `}
-                    >
-                      <div className="z-10">
-                        <div className="title mb-4">
-                          {price.icon}
-                          <h3
-                            className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}
-                          >
-                            {price.title}
-                          </h3>
-                          <p
-                            className={`${price.customCss} text-2xl text-dark font-bold`}
-                          >
-                            {price.rate}
-                          </p>
-                          <div className="grid">
-                            {/* <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
+                    <div className="grid place-items-center">
+                      <div
+                        key={key}
+                        className={`${
+                          price.isActive
+                            ? "!bg-primary text-light"
+                            : "!bg-customGray"
+                        } 
+                      priceItem mb-5 relative z-[1] text-center p-10
+                      rounded-lg h-[700px] w-[400px]`}
+                      >
+                        <div className="z-10">
+                          <div className="title mb-4">
+                            {price.icon}
+                            <h3
+                              className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}
+                            >
+                              {price.title}
+                            </h3>
+                            <p
+                              className={`${price.customCss} text-2xl text-dark font-bold`}
+                            >
+                              {price.rate}
+                            </p>
+                            <div className="grid">
+                              {/* <ul className="[&>li]:flex [&>li]:items-start [&>li]:gap-2 my-4">
                               {price.info.map((info, key) => (
                                 <li key={key} className="mb-1">
                                   {info}
                                 </li>
                               ))}
                             </ul> */}
-                            <table className="prices my-5">
-                              {price.info.map((info, key) => (
-                                <tr key={key} className="border-0">
-                                  <td className="text-[16px]">{info}</td>
-                                </tr>
-                              ))}
-                            </table>
+                              <table className="prices my-5">
+                                {price.info.map((info, key) => (
+                                  <tr key={key} className="border-0">
+                                    <td className="text-[16px]">{info}</td>
+                                  </tr>
+                                ))}
+                              </table>
+                            </div>
                           </div>
-                        </div>
-                        <div className="mt-8">
-                          <a
-                            href={price.link}
-                            className="btn mt-5 px-5 bg-light text-primary font-bold  "
-                          >
-                            {price.btnText}
-                          </a>
+                          <div className="absolute bottom-0 my-8 md:my-12 left-0 right-0">
+                            <a
+                              href={price.link}
+                              className="btn mt-5 px-5 bg-light text-primary font-bold  "
+                            >
+                              {price.btnText}
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
