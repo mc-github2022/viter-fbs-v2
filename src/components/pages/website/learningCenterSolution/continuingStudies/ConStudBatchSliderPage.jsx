@@ -142,12 +142,6 @@ const ConStudBatchSliderPage = ({
       handleClose={handleClose}
     >
       <div className="bg-transparent h-screen place-items-center place-content-center">
-        <div className="closeBtn absolute top-[18%] right-0 z-[1] cursor-pointer">
-          <IoCloseCircle
-            className="text-3xl text-light"
-            onClick={handleClose}
-          />
-        </div>
         {images.length > 1 ? (
           <Slider {...settings}>
             {images.map((image, index) => (

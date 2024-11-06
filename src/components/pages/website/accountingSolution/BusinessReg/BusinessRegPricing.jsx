@@ -13,7 +13,7 @@ function SampleNextArrow(props) {
         color: "white",
         top: "50%",
         transform: "translateY(-50%)",
-        right: "-20px",
+        right: "5px",
         fontSize: "3rem",
         cursor: "pointer",
         background: "#ac1f72",
@@ -134,8 +134,8 @@ const BusinessRegPricing = () => {
                         price.isActive
                           ? "!bg-primary text-light"
                           : "!bg-customGray"
-                      } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 m-0 rounded-lg  min-h-[700px] 
-                        max-w-[450px] grid justify-self-center place-items-center mx-auto md:translate-x-[31%] lg:translate-x-[25%]`}
+                      } priceItem mb-5 md:mb-0 relative z-[1] text-center p-10 m-0 rounded-lg  max-h-[700px] min-h-[700px]
+                        max-w-[400px] grid justify-self-center `}
                     >
                       <div className="z-10">
                         <div className="title mb-4">
