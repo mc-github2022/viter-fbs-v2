@@ -32,7 +32,8 @@ const ImmersionPartnersWithUs = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="../../public/img/FBS-Work-Immersion-Program-Proposal-2024.pdf"
+                    download
                     className="flex items-center gap-2 font-bold text-primary"
                   >
                     Download Proposal <FaFileDownload />
