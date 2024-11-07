@@ -53,7 +53,7 @@ const Header = () => {
         >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
-              <img src={logo} alt="" className="w-[80%] md:w-full" />
+              <img src={logo} alt="" className="w-[80%] md:w-[90%]" />
             </div>
             <div
               className={`${
@@ -131,7 +131,7 @@ const Header = () => {
                 onClick={handleModalContact}
                 className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
               >
-                Get Started
+                GET STARTED
               </a>
             </div>
 

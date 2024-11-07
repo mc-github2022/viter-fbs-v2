@@ -50,7 +50,7 @@ const Testimonials = () => {
                   helped them achieve their goals.
                 </p>
               </div>
-              <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[150px] lg:h-[150px] z-[1]">
+              <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[140px] lg:h-[140px] z-[1]">
                 <div>
                   <img
                     // src={`${devBaseImgUrl}/quote.png`}

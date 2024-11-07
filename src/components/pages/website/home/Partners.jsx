@@ -41,7 +41,7 @@ const Partners = () => {
                   <span className="text-primary">Working With Us.</span>
                 </h3>
                 <div className="flex justify-end">
-                  <p className="2xl:w-[300px]">
+                  <p className="lg:w-[400px]">
                     Explore the diverse range of clients and partners who trust
                     us to deliver exceptional solution and services.
                   </p>

@@ -26,7 +26,7 @@ const Services = () => {
                 </h3>
               </div>
               <p className="mb-6">
-                We Deliver cutting-edge web development and custom applications
+                We deliver cutting-edge web development and custom applications
                 to enhance user experience, boost engagement, and drive
                 conversions.
               </p>
@@ -47,9 +47,8 @@ const Services = () => {
                 </h3>
               </div>
               <p className="mb-6">
-                Our Virtual Assistant offer professional, flexible, and
-                realiable support, freeing you to focus on growing your
-                business.
+                Our Virtual Assistant offers professional, flexible, and
+                reliable support, freeing you to focus on growing your business.
               </p>
               <a
                 href="#"
@@ -68,9 +67,9 @@ const Services = () => {
                 </h3>
               </div>
               <p className="mb-6">
-                We partner with Twomiles Corp for foreign clients accouting
+                We partner with Twomiles Corp for foreign clients accounting
                 needs and support local startups with business registration and
-                compliance for systainable growth.
+                compliance for sustainable growth.
               </p>
               <a
                 href="#"
@@ -89,7 +88,7 @@ const Services = () => {
                 </h3>
               </div>
               <p className="mb-6">
-                Our College OJT and Senior High School Immersions programs
+                Our College OJT and Senior High School Immersion programs
                 provide real-world skills development, preparing students for
                 employment and aligning them with industry
               </p>

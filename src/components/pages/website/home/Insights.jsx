@@ -131,9 +131,16 @@ const Insights = () => {
     <>
       <section className="insights py-24 bg-customGray">
         <div className="customContainer p-0 md:px-10">
-          <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
+          {/* <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
             Industry Insights
-          </h3>
+          </h3> */}
+          <div className="mb-20">
+            <p>When share valuable tips and expect advice in our</p>
+            <h2 className="lg:text-[45px] font-semibold text-primary leading-[1.1] text-[clamp(20px,4vw,45px)]">
+              industry insights
+            </h2>
+            <p>section to help you grow your business and stay ahead.</p>
+          </div>
           <div className="wrapper ">
             <div className=" order-2 mb-12 lg:mb-0 ">
               {insightData?.data.length > 3 ? (
