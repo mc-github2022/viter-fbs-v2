@@ -41,7 +41,7 @@ const Testimonials = () => {
           <div className="radialGradient absolute -left-[200px] lg:left-0 w-[500px] h-[500px] bottom-0 lg:hidden"></div>
           <div className="wrapper grid lg:grid-cols-[_1fr_3fr] lg:h-[700px]">
             <div className="grid place-items-center relative">
-              <div className="z-50 text-light mb-20 lg:mb-0">
+              <div className="z-50 text-light mb-10 lg:mb-0">
                 <h3 className="text-[clamp(30px,6vw,45px)] font-semibold  leading-[1.1] mb-8">
                   Our Clients' <span className="text-primary">Experience</span>
                 </h3>
@@ -77,7 +77,7 @@ const Testimonials = () => {
                     <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[455px] ml-auto text-sm ">
                       {item.home_testimonial_message}
                     </p>
-                    <h3 className="text-[24px] font-semibold mb-2">
+                    <h3 className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
                       {item.home_testimonial_name},{" "}
                       {item.home_testimonial_position}
                     </h3>

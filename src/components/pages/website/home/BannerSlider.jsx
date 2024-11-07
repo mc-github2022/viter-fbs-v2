@@ -129,7 +129,7 @@ const BannerSlider = () => {
               }}
             >
               <div className="customContainer">
-                <div className="wrapper flex place-items-center min-h-[90vh] md:h-[90vh] transition-all w-full">
+                <div className="wrapper flex place-items-center min-h-[100vh] md:h-[90vh] transition-all w-full">
                   <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
                     <p className="text-light lg:text-[28px] italic">
                       {item.home_banner_sub_title}
@@ -142,7 +142,7 @@ const BannerSlider = () => {
                     </p>
                     <a
                       href="#"
-                      className="btn bg-transparent text-light font-semibold border-2 md:mb-24 lg:mb-0"
+                      className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-24 lg:mb-0"
                       onClick={handleModalContact}
                     >
                       {item.home_banner_button_text}

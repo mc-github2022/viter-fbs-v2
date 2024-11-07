@@ -18,7 +18,7 @@ const Process = () => {
             alt=""
           />
           <div>
-            <div className="grid place-items-center">
+            <div className="grid place-items-center text-justify">
               <div className="md:grid grid-cols-4">
                 <div className="processItem md:text-center md:translate-y-[-50px] lg:translate-y-[-100px] mb-6">
                   <div>

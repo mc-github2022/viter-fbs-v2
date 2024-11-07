@@ -7,7 +7,7 @@ const PartnerWithUs = () => {
       <section className="partnerWithUs pt-[50%] pb-40 md:pt-20 md:pb-20 relative overflow-hidden">
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
-            <div className="bg-customGray md:bg-opacity-70 py-20 px-10 z-10 rounded-lg addShadow">
+            <div className="bg-customGray md:bg-opacity-70 py-10 md:py-20 px-10 z-10 rounded-lg addShadow">
               <p>Empowering Your Business With</p>
               <h2 className="lg:text-[45px] font-semibold text-primary leading-[1.1] mb-8 text-[clamp(20px,4vw,45px)]">
                 Reliable, Cost-effective, and Expertly Managed Solutions.

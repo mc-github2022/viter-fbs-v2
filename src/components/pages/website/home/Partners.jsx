@@ -36,7 +36,7 @@ const Partners = () => {
             </div>
             <div className="text-right flex items-center justify-end order-1 lg:order-2">
               <div className="mb-20">
-                <h3 className="text-[45px] font-semibold  leading-[1.1] mb-8  text-dark">
+                <h3 className="text-[clamp(30px,6vw,45px)] font-semibold  leading-[1.1] mb-8  text-dark">
                   They Love <br />
                   <span className="text-primary">Working With Us.</span>
                 </h3>
