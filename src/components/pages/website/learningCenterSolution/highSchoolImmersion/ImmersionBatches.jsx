@@ -159,7 +159,7 @@ const ImmersionBatches = () => {
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
-                    <div key={key}>
+                    <div key={key} className="mb-[3rem]">
                       <a onClick={() => handleModalBatch(item)}>
                         <div
                           className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
@@ -177,12 +177,12 @@ const ImmersionBatches = () => {
                               </p>
                             </div>
                             <div className="blogTitle relative z-[1] pb-10">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[220px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
                                 {item.lcss_batch_name}
                               </h4>
                             </div>
                           </div>
-                          [
+
                           <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
                       </a>
@@ -201,7 +201,7 @@ const ImmersionBatches = () => {
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
-                    <div key={key}>
+                    <div key={key} className="mb-[3rem]">
                       <a onClick={() => handleModalBatch(item)}>
                         <div
                           className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
@@ -219,7 +219,7 @@ const ImmersionBatches = () => {
                               </p>
                             </div>
                             <div className="blogTitle relative z-[1] pb-10">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[220px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
                                 {item.lcss_batch_name}
                               </h4>
                             </div>

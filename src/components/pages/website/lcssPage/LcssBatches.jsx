@@ -161,7 +161,7 @@ const LcssBatches = () => {
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
-                    <div key={key}>
+                    <div key={key} className="mb-[3rem]">
                       <a onClick={() => handleModalBatch(item)}>
                         <div
                           className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
@@ -179,7 +179,7 @@ const LcssBatches = () => {
                               </p>
                             </div>
                             <div className="blogTitle relative z-[1] pb-10">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[220px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
                                 {item.lcss_batch_name}
                               </h4>
                             </div>
@@ -222,7 +222,7 @@ const LcssBatches = () => {
                               </p>
                             </div>
                             <div className="blogTitle relative z-[1] pb-10">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[220px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
                                 {item.lcss_batch_name}
                               </h4>
                             </div>

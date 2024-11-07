@@ -1,5 +1,4 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { FaCheckCircle } from "react-icons/fa";
 
 const LcssApplyNow = () => {
@@ -48,7 +47,7 @@ const LcssApplyNow = () => {
               </ul>
               <a
                 href=""
-                className="btn bg-primary text-light my-5  inline-block rounded-full font-bold"
+                className="btn px-3 bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
                 PARTNER WITH US TODAY
               </a>
