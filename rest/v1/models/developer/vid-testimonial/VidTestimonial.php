@@ -2,29 +2,29 @@
 
 class VidTestimonial
 {
-    public $pricing_aid;
-    public $pricing_icon;
-    public $pricing_title;
-    public $pricing_rate;
-    public $pricing_sub_title;
-    public $pricing_button;
-    public $pricing_active;
-    public $pricing_category;
-    public $pricing_created;
-    public $pricing_datetime;
+    public $vid_testimonial_aid;
+    public $vid_testimonial_category;
+    public $vid_testimonial_vid_link;
+    public $vid_testimonial_logo_img;
+    public $vid_testimonial_name;
+    public $vid_testimonial_course;
+    public $vid_testimonial_school;
+    public $vid_testimonial_message;
+    public $vid_testimonial_created;
+    public $vid_testimonial_datetime;
 
     public $connection;
     public $lastInsertedId;
-    public $pricing_start;
-    public $pricing_total;
-    public $pricing_search;
+    public $vid_testimonial_start;
+    public $vid_testimonial_total;
+    public $vid_testimonial_search;
 
-    public $tblPricing;
+    public $tblVidTestimonial;
 
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblPricing = "pricing";
+        $this->tblVidTestimonial = "vid_testimonial";
     }
 
     public function readAll()
@@ -32,8 +32,8 @@ class VidTestimonial
         try {
             $sql = "select * ";
             $sql .= "from ";
-            $sql .= "{$this->tblPricing} ";
-            $sql .= "order by pricing_aid asc ";
+            $sql .= "{$this->tblVidTestimonial} ";
+            $sql .= "order by vid_testimonial_aid desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -46,14 +46,14 @@ class VidTestimonial
         try {
             $sql = "select * ";
             $sql .= "from ";
-            $sql .= "{$this->tblPricing} ";
-            $sql .= "order by pricing_aid asc ";
+            $sql .= "{$this->tblVidTestimonial} ";
+            $sql .= "order by vid_testimonial_aid desc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "start" => $this->pricing_start - 1,
-                "total" => $this->pricing_total,
+                "start" => $this->vid_testimonial_start - 1,
+                "total" => $this->vid_testimonial_total,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -66,21 +66,23 @@ class VidTestimonial
         try {
             $sql = "select * ";
             $sql .= "from ";
-            $sql .= "{$this->tblPricing} ";
-            $sql .= "where pricing_title = pricing_title";
-            $sql .= "and (pricing_title like :pricing_title ";
-            $sql .= "or pricing_rate like :pricing_rate ";
-            $sql .= "or pricing_button like :pricing_button ";
-            $sql .= "or pricing_category like :pricing_category ";
-            $sql .= "or pricing_sub_title like :pricing_sub_title) ";
-            $sql .= "order by pricing_aid asc ";
+            $sql .= "{$this->tblVidTestimonial} ";
+            $sql .= "where vid_testimonial_vid_link = vid_testimonial_vid_link ";
+            $sql .= "and (vid_testimonial_vid_link like :vid_testimonial_vid_link ";
+            $sql .= "or vid_testimonial_logo_img like :vid_testimonial_logo_img ";
+            $sql .= "or vid_testimonial_course like :vid_testimonial_course ";
+            $sql .= "or vid_testimonial_message like :vid_testimonial_message ";
+            $sql .= "or vid_testimonial_category like :vid_testimonial_category ";
+            $sql .= "or vid_testimonial_name like :vid_testimonial_name) ";
+            $sql .= "order by vid_testimonial_aid desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "pricing_title" => "%{$this->pricing_search}%",
-                "pricing_rate" => "%{$this->pricing_search}%",
-                "pricing_button" => "%{$this->pricing_search}%",
-                "pricing_category" => "%{$this->pricing_search}%",
-                "pricing_sub_title" => "%{$this->pricing_search}%",
+                "vid_testimonial_vid_link" => "%{$this->vid_testimonial_search}%",
+                "vid_testimonial_logo_img" => "%{$this->vid_testimonial_search}%",
+                "vid_testimonial_course" => "%{$this->vid_testimonial_search}%",
+                "vid_testimonial_message" => "%{$this->vid_testimonial_search}%",
+                "vid_testimonial_category" => "%{$this->vid_testimonial_search}%",
+                "vid_testimonial_name" => "%{$this->vid_testimonial_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -91,36 +93,36 @@ class VidTestimonial
     public function create()
     {
         try {
-            $sql = "insert into {$this->tblPricing}";
-            $sql .= "(pricing_icon, ";
-            $sql .= "pricing_title, ";
-            $sql .= "pricing_rate, ";
-            $sql .= "pricing_sub_title, ";
-            $sql .= "pricing_button, ";
-            $sql .= "pricing_active, ";
-            $sql .= "pricing_category, ";
-            $sql .= "pricing_created, ";
-            $sql .= "pricing_datetime ) values ( ";
-            $sql .= ":pricing_icon, ";
-            $sql .= ":pricing_title, ";
-            $sql .= ":pricing_rate, ";
-            $sql .= ":pricing_sub_title, ";
-            $sql .= ":pricing_button, ";
-            $sql .= ":pricing_active, ";
-            $sql .= ":pricing_category, ";
-            $sql .= ":pricing_created, ";
-            $sql .= ":pricing_datetime )";
+            $sql = "insert into {$this->tblVidTestimonial}";
+            $sql .= "(vid_testimonial_category, ";
+            $sql .= "vid_testimonial_vid_link, ";
+            $sql .= "vid_testimonial_logo_img, ";
+            $sql .= "vid_testimonial_name, ";
+            $sql .= "vid_testimonial_course, ";
+            $sql .= "vid_testimonial_school, ";
+            $sql .= "vid_testimonial_message, ";
+            $sql .= "vid_testimonial_created, ";
+            $sql .= "vid_testimonial_datetime ) values ( ";
+            $sql .= ":vid_testimonial_category, ";
+            $sql .= ":vid_testimonial_vid_link, ";
+            $sql .= ":vid_testimonial_logo_img, ";
+            $sql .= ":vid_testimonial_name, ";
+            $sql .= ":vid_testimonial_course, ";
+            $sql .= ":vid_testimonial_school, ";
+            $sql .= ":vid_testimonial_message, ";
+            $sql .= ":vid_testimonial_created, ";
+            $sql .= ":vid_testimonial_datetime )";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "pricing_icon" => $this->pricing_icon,
-                "pricing_title" => $this->pricing_title,
-                "pricing_rate" => $this->pricing_rate,
-                "pricing_sub_title" => $this->pricing_sub_title,
-                "pricing_button" => $this->pricing_button,
-                "pricing_active" => $this->pricing_active,
-                "pricing_category" => $this->pricing_category,
-                "pricing_created" => $this->pricing_created,
-                "pricing_datetime" => $this->pricing_datetime,
+                "vid_testimonial_category" => $this->vid_testimonial_category,
+                "vid_testimonial_vid_link" => $this->vid_testimonial_vid_link,
+                "vid_testimonial_logo_img" => $this->vid_testimonial_logo_img,
+                "vid_testimonial_name" => $this->vid_testimonial_name,
+                "vid_testimonial_course" => $this->vid_testimonial_course,
+                "vid_testimonial_school" => $this->vid_testimonial_school,
+                "vid_testimonial_message" => $this->vid_testimonial_message,
+                "vid_testimonial_created" => $this->vid_testimonial_created,
+                "vid_testimonial_datetime" => $this->vid_testimonial_datetime,
             ]);
             $this->lastInsertedId = $this->connection->lastInsertId();
         } catch (PDOException $ex) {
@@ -132,27 +134,27 @@ class VidTestimonial
     public function update()
     {
         try {
-            $sql = "update {$this->tblPricing} set ";
-            $sql .= "pricing_icon = :pricing_icon, ";
-            $sql .= "pricing_title = :pricing_title, ";
-            $sql .= "pricing_rate = :pricing_rate, ";
-            $sql .= "pricing_sub_title = :pricing_sub_title, ";
-            $sql .= "pricing_button = :pricing_button, ";
-            $sql .= "pricing_active = :pricing_active, ";
-            $sql .= "pricing_category = :pricing_category, ";
-            $sql .= "pricing_created = :pricing_created ";
-            $sql .= "where pricing_aid = :pricing_aid ";
+            $sql = "update {$this->tblVidTestimonial} set ";
+            $sql .= "vid_testimonial_category = :vid_testimonial_category, ";
+            $sql .= "vid_testimonial_vid_link = :vid_testimonial_vid_link, ";
+            $sql .= "vid_testimonial_logo_img = :vid_testimonial_logo_img, ";
+            $sql .= "vid_testimonial_name = :vid_testimonial_name, ";
+            $sql .= "vid_testimonial_course = :vid_testimonial_course, ";
+            $sql .= "vid_testimonial_school = :vid_testimonial_school, ";
+            $sql .= "vid_testimonial_message = :vid_testimonial_message, ";
+            $sql .= "vid_testimonial_created = :vid_testimonial_created ";
+            $sql .= "where vid_testimonial_aid = :vid_testimonial_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "pricing_icon" => $this->pricing_icon,
-                "pricing_title" => $this->pricing_title,
-                "pricing_rate" => $this->pricing_rate,
-                "pricing_sub_title" => $this->pricing_sub_title,
-                "pricing_button" => $this->pricing_button,
-                "pricing_active" => $this->pricing_active,
-                "pricing_category" => $this->pricing_category,
-                "pricing_created" => $this->pricing_created,
-                "pricing_aid" => $this->pricing_aid,
+                "vid_testimonial_category" => $this->vid_testimonial_category,
+                "vid_testimonial_vid_link" => $this->vid_testimonial_vid_link,
+                "vid_testimonial_logo_img" => $this->vid_testimonial_logo_img,
+                "vid_testimonial_name" => $this->vid_testimonial_name,
+                "vid_testimonial_course" => $this->vid_testimonial_course,
+                "vid_testimonial_school" => $this->vid_testimonial_school,
+                "vid_testimonial_message" => $this->vid_testimonial_message,
+                "vid_testimonial_created" => $this->vid_testimonial_created,
+                "vid_testimonial_aid" => $this->vid_testimonial_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -163,11 +165,11 @@ class VidTestimonial
     public function delete()
     {
         try {
-            $sql = "delete from {$this->tblPricing} ";
-            $sql .= "where pricing_aid = :pricing_aid ";
+            $sql = "delete from {$this->tblVidTestimonial} ";
+            $sql .= "where vid_testimonial_aid = :vid_testimonial_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "pricing_aid" => $this->pricing_aid,
+                "vid_testimonial_aid" => $this->vid_testimonial_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
