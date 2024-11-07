@@ -26,7 +26,6 @@ const initVal = {
   isLogout: false,
   isUploadFile: false,
   credentials: {},
-  isSearch: false,
 };
 
 const StoreContext = React.createContext();
