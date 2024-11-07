@@ -185,7 +185,7 @@ const ModalContact = ({
                     href="https://drive.google.com/uc?export=download&amp;id=1KCT6R_LE1PCl_RrCaCQRZYLLNixF73cU"
                     className="flex gap-2 items-center font-bold text-primary pointer"
                   >
-                    Download Proposal <FaFileDownload />
+                    Download Portfolio <FaFileDownload />
                   </a>
                 </>
               ) : (
