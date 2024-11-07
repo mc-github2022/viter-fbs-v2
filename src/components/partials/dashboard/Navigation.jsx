@@ -268,6 +268,24 @@ const Navigation = ({ menu, submenu }) => {
                   </div>
                 </Link>
               </li>
+
+              <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "vid-testimonial"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-[#9ca3af] "
+                  }
+                `}
+              >
+                <Link to={`${devNavUrl}/vid-testimonial`}>
+                  <div className="nav flex items-center">
+                    <span className="ml-2.5 text-[14px]">
+                      Video Testimonials
+                    </span>
+                  </div>
+                </Link>
+              </li>
               <li
                 className={` flex justify-between items-center p-1
                   ${
@@ -279,9 +297,7 @@ const Navigation = ({ menu, submenu }) => {
               >
                 <Link to={`${devNavUrl}/pricing`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">
-                      Pricing
-                    </span>
+                    <span className="ml-2.5 text-[14px]">Pricing</span>
                   </div>
                 </Link>
               </li>
