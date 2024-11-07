@@ -145,12 +145,6 @@ export const StoreReducer = (state, action) => {
         credentials: action.payload,
       };
 
-    case "IS_SEARCH":
-      return {
-        ...state,
-        isSearch: action.payload,
-      };
-
     default:
       return state;
   }

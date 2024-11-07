@@ -40,6 +40,7 @@ import PrivacyPolicy from "../components/partials/policies/PrivacyPolicy";
 import TermsOfService from "../components/partials/policies/TermsOfService";
 import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
 import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
+import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTestimonial";
 
 export const routesDeveloper = [
   {
@@ -193,6 +194,10 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/industry-testimonial`,
     element: <IndustryTestimonial />,
+  },
+  {
+    path: `${devNavUrl}/vid-testimonial`,
+    element: <VidTestimonial />,
   },
   {
     path: `${devNavUrl}/pricing`,
