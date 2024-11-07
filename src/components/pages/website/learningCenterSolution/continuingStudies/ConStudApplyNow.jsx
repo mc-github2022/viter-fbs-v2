@@ -7,7 +7,7 @@ const ConStudApplyNow = () => {
       <section className="ConStudApplyNow pt-[40%] pb-40 md:pt-20 md:pb-20 relative overflow-hidden">
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
-            <div className="bg-customGray md:bg-opacity-70 py-20 px-10 z-10 rounded-lg addShadow">
+            <div className="bg-customGray md:bg-opacity-70 py-8 lg:py-20 px-10 z-10 rounded-lg addShadow">
               <p>Join and experience the fun and learning with our team!</p>
               <h2 className="text-[clamp(20px,4vw,45px)] font-semibold text-primary leading-[1.1] mb-8">
                 Join our team now!
