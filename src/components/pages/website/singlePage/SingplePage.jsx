@@ -70,7 +70,7 @@ const SingplePage = () => {
   return (
     <>
       <Header />
-      <section className="singlePost pt-40 mb-20">
+      <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           <div>
             <div className="theTitle ">

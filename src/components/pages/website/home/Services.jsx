@@ -16,7 +16,7 @@ const Services = () => {
           </h2>
           <p>to Help Grow Your Business</p>
         </div>
-        <div className="wrapper grid  grid-cols-1 md:grid-cols-2 ">
+        <div className="wrapper grid gap-5 md:gap-0 grid-cols-1 md:grid-cols-2 ">
           <div className="serviceItem  z-10 grid  hover:addRadialGradient hover:bg-primary hover:addShadow hover:bg-opacity-100 bg-opacity-0 hover:text-light rounded-lg p-5 md:px-10 md:py-10 transition-all hover:addShadow group">
             <div>
               <div className="serviceName  flex items-center gap-4 mb-6">

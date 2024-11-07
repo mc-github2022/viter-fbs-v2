@@ -129,14 +129,14 @@ const Insights = () => {
 
   return (
     <>
-      <section className="insights py-24 bg-customGray">
+      <section className="insights py-16 md:py-24 bg-customGray">
         <div className="customContainer p-0 md:px-10">
           {/* <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
             Industry Insights
           </h3> */}
-          <div className="mb-20">
+          <div className="w-[300px] mb-16 md:w-full md:mb-20">
             <p>When share valuable tips and expect advice in our</p>
-            <h2 className="lg:text-[45px] font-semibold text-primary leading-[1.1] text-[clamp(20px,4vw,45px)]">
+            <h2 className="font-semibold text-primary leading-[1.1] text-[clamp(20px,6vw,45px)]">
               industry insights
             </h2>
             <p>section to help you grow your business and stay ahead.</p>
