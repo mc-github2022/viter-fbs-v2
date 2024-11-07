@@ -6,7 +6,9 @@ import MegaMenu from "./MegaMenu";
 import ModalContact from "./ModalContact";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ contactDetails }) => {
+  console.log(contactDetails);
+
   const [toggleNav, setToggleNav] = React.useState(false);
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
