@@ -185,29 +185,28 @@ const LcssVidTestimonials = () => {
                           {item.vid_testimonial_message}
                           <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                         </p>
-
-                        <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
-                          <img
-                            // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                            src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
-                            className="w-[60px]  mr-4"
-                            alt=""
-                          />
-                          <div className="italic">
-                            <p className="font-semibold">
-                              {item.vid_testimonial_name}
-                            </p>
-                            <p>
-                              {item.vid_testimonial_course
-                                ? item.vid_testimonial_course
-                                : ""}
-                            </p>
-                            <p>
-                              {item.vid_testimonial_school
-                                ? item.vid_testimonial_school
-                                : ""}
-                            </p>
-                          </div>
+                      </div>
+                      <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                        <img
+                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                          src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
+                          className="w-[60px]  mr-4"
+                          alt=""
+                        />
+                        <div className="italic">
+                          <p className="font-semibold">
+                            {item.vid_testimonial_name}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_course
+                              ? item.vid_testimonial_course
+                              : ""}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_school
+                              ? item.vid_testimonial_school
+                              : ""}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -241,29 +240,28 @@ const LcssVidTestimonials = () => {
                           {item.vid_testimonial_message}
                           <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                         </p>
-
-                        <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
-                          <img
-                            // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                            src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
-                            className="w-[60px]  mr-4"
-                            alt=""
-                          />
-                          <div className="italic">
-                            <p className="font-semibold">
-                              {item.vid_testimonial_name}
-                            </p>
-                            <p>
-                              {item.vid_testimonial_course
-                                ? item.vid_testimonial_course
-                                : ""}
-                            </p>
-                            <p>
-                              {item.vid_testimonial_school
-                                ? item.vid_testimonial_school
-                                : ""}
-                            </p>
-                          </div>
+                      </div>
+                      <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                        <img
+                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                          src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
+                          className="w-[60px]  mr-4"
+                          alt=""
+                        />
+                        <div className="italic">
+                          <p className="font-semibold">
+                            {item.vid_testimonial_name}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_course
+                              ? item.vid_testimonial_course
+                              : ""}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_school
+                              ? item.vid_testimonial_school
+                              : ""}
+                          </p>
                         </div>
                       </div>
                     </div>
