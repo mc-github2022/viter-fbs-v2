@@ -18,9 +18,11 @@ import {
 } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 
-const ModalContact = ({ setModalContact, setToggleMenu = null }) => {
-  setToggleMenu(false);
-
+const ModalContact = ({
+  setModalContact,
+  setToggleMenu = null,
+  thePageName,
+}) => {
   const handleClose = () => {
     setModalContact(false);
     console.log("clicked");
@@ -61,27 +63,50 @@ const ModalContact = ({ setModalContact, setToggleMenu = null }) => {
                   Let's work together.
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
-                <li className="!items-start">
-                  <IoMdPin />
-                  <p>
-                    Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
-                    Laguna, 4000
-                  </p>
-                </li>
-                <li>
-                  <FaPhone />
-                  <p>(049) 501 3592</p>
-                </li>
-                <li>
-                  <MdOutlinePhoneIphone />
-                  <p>(+63) 927 168 6810</p>
-                </li>
-                <li>
-                  <IoMailSharp />
-                  <p>mktg@frontlinebusiness.com.ph</p>
-                </li>
-              </ul>
+
+              {thePageName === "lcss" ||
+              thePageName === "conStud" ||
+              thePageName === "immersion" ? (
+                <>
+                  <div className="mb-8">
+                    <h3 className="font-semibold">Computer-Related Course</h3>
+                    <p>Ms. Herlyn Mae Torres</p>
+                    <p>Herlyn.torres@frontlinebusiness.com.ph</p>
+                  </div>
+                  <div className="mb-8">
+                    <h3 className="font-semibold">
+                      Accounting-Related Courses
+                    </h3>
+                    <p>Ms. Thea Lyzette Consignado</p>
+                    <p>thea.consignado@frontlinebusiness.com.ph</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+                    <li className="!items-start">
+                      <IoMdPin />
+                      <p>
+                        Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
+                        Laguna, 4000
+                      </p>
+                    </li>
+                    <li>
+                      <FaPhone />
+                      <p>(049) 501 3592</p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>(+63) 927 168 6810</p>
+                    </li>
+                    <li>
+                      <IoMailSharp />
+                      <p>mktg@frontlinebusiness.com.ph</p>
+                    </li>
+                  </ul>
+                </>
+              )}
+
               <div>
                 <p>Follow Us:</p>
                 <ul className="flex gap-2 text-2xl">
@@ -129,10 +154,51 @@ const ModalContact = ({ setModalContact, setToggleMenu = null }) => {
               </div>
             </div>
             <div className="downloadProposal justify-end py-5 md:py-0">
-              <p className="text-sm">Learn more about our program</p>
-              <p className="flex gap-2 items-center font-bold text-primary">
-                Download Proposal <FaFileDownload />
-              </p>
+              {thePageName === "lcss" ? (
+                <>
+                  <p className="text-sm">Learn more about our OJT program</p>
+                  <a
+                    href="https://drive.google.com/uc?export=download&amp;id=1kSl-0-BtMdzMtsTdPw-N2SqI6jlDUJOE"
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
+                    Download Proposal <FaFileDownload />
+                  </a>
+                </>
+              ) : thePageName === "immersion" ? (
+                <>
+                  <p className="text-sm">
+                    Learn more about our immersion program
+                  </p>
+                  <a
+                    href="https://drive.google.com/uc?export=download&amp;id=1o0xSoctvBb00q81fE_njVJANzVSiEPt_"
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
+                    Download Proposal <FaFileDownload />
+                  </a>
+                </>
+              ) : thePageName === "conStud" ? (
+                <></>
+              ) : thePageName === "cms" ? (
+                <>
+                  <p className="text-sm">Learn more about our CMS program</p>
+                  <a
+                    href="https://drive.google.com/uc?export=download&amp;id=1KCT6R_LE1PCl_RrCaCQRZYLLNixF73cU"
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
+                    Download Proposal <FaFileDownload />
+                  </a>
+                </>
+              ) : (
+                <>
+                  <p className="text-sm">Learn more about our program</p>
+                  <a
+                    href="https://drive.google.com/uc?export=download&amp;id=1NP2OjlbB34H1KVXRSnV1i_p9OgbJY-ND"
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
+                    Download Company Profile <FaFileDownload />
+                  </a>
+                </>
+              )}
             </div>
           </div>
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">

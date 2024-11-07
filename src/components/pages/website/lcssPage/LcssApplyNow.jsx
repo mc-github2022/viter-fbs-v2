@@ -1,8 +1,12 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { FaCheckCircle } from "react-icons/fa";
+import ModalContact from "../../../partials/ModalContact";
 
-const LcssApplyNow = () => {
+const LcssApplyNow = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const handleModalContact = () => {
+    setModalContact(!modalContact);
+  };
   return (
     <>
       <section className="lcssApplyNow pt-[40%] pb-40 md:pt-20 md:pb-20 relative overflow-hidden">
@@ -48,7 +52,7 @@ const LcssApplyNow = () => {
               </ul>
               <a
                 href=""
-                className="btn bg-primary text-light my-5  inline-block rounded-full font-bold"
+                className="btn px-3 bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
                 PARTNER WITH US TODAY
               </a>
@@ -64,6 +68,14 @@ const LcssApplyNow = () => {
           </div>
         </div>
       </section>
+      {modalContact && (
+        <ModalContact
+          thePageName={pageName}
+          setModalContact={setModalContact}
+          modalContact={modalContact}
+          setToggleMenu={setToggleMenu}
+        />
+      )}
     </>
   );
 };

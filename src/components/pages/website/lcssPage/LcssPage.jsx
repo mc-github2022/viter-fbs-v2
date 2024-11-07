@@ -12,14 +12,15 @@ import LcssBanner from "./LcssBanner";
 import LcssBatches from "./LcssBatches";
 
 const LcssPage = () => {
+  const [pageName, setPageName] = React.useState("lcss");
   return (
     <>
-      <Header />
-      <LcssBanner />
+      <Header pageName={pageName} />
+      <LcssBanner pageName={pageName} />
       <LcssPartners />
       <LcssPartnersWithUs />
       <LcssServices />
-      <LcssApplyNow />
+      <LcssApplyNow pageName={pageName} />
       <LcssTeam />
       <LcssBatches />
       <LcssVidTestimonials />

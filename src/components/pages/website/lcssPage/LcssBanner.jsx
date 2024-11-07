@@ -2,8 +2,13 @@ import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { Link } from "react-router-dom";
+import ModalContact from "../../../partials/ModalContact";
 
-const LcssBanner = () => {
+const LcssBanner = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const handleModalContact = () => {
+    setModalContact(!modalContact);
+  };
   return (
     <>
       <section
@@ -39,6 +44,14 @@ const LcssBanner = () => {
           </div>
         </div>
       </section>
+      {modalContact && (
+        <ModalContact
+          thePageName={pageName}
+          setModalContact={setModalContact}
+          modalContact={modalContact}
+          setToggleMenu={setToggleMenu}
+        />
+      )}
     </>
   );
 };

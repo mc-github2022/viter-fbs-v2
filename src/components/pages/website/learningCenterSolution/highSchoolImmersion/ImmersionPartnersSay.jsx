@@ -76,6 +76,7 @@ const ImmersionPartnersSay = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    adaptiveHeight: true,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,

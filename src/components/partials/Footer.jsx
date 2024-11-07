@@ -89,10 +89,18 @@ const Footer = () => {
               <div className="text-center sm:text-left">
                 <p className="font-semibold">QUICKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
-                  <li>Web Solutions</li>
-                  <li>Virtual Assistant Solutions</li>
-                  <li>Accounting Solutions</li>
-                  <li>Learning Center Solutions</li>
+                  <li>
+                    <a href="/webapp-hris">Web Solutions</a>
+                  </li>
+                  <li>
+                    <a href="/adminSolution">Virtual Assistant Solutions</a>
+                  </li>
+                  <li>
+                    <a href="/bookkeeping">Accounting Solutions</a>
+                  </li>
+                  <li>
+                    <a href="/lcss">Learning Center Solutions</a>
+                  </li>
                 </ul>
               </div>
             </div>
