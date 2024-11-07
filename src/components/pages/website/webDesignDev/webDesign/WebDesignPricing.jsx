@@ -28,7 +28,7 @@ const WebDesignPricing = () => {
                       price.isActive
                         ? "bg-primary "
                         : "bg-customGray !text-dark"
-                    } grid place-items-center h-[600px]`}
+                    } grid place-items-center min-h-[650px]`}
                   >
                     <div>
                       <div className="title mb-4 ">

@@ -37,11 +37,7 @@ const LcssBanner = ({ pageName }) => {
                 required internship hours ranging from 150 to 600, ensuring
                 flexibility and comprehensive skills development.
               </p>
-              <a
-                href="#"
-                onClick={handleModalContact}
-                className="btn bg-transparent text-light border-2"
-              >
+              <a href="#" className="btn bg-transparent text-light border-2">
                 SCHEDULE A DEMO
               </a>
             </div>

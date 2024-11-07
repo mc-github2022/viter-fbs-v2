@@ -1,12 +1,151 @@
 import React from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import Slider from "react-slick";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        background: "#ac1e72",
+        position: "absolute",
+        color: "white",
+        top: "50%",
+        right: "-6%",
+        fontSize: "3rem",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowForward className="text-3xl" />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        background: "#ac1e72",
+        color: "white",
+        top: "50%",
+        left: "-6%",
+        fontSize: "3rem",
+        zIndex: "1",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowBack className="text-3xl" />
+    </div>
+  );
+}
 
 const ImmersionVidTestimonials = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: vidTestimonialData,
+  } = useQueryData(
+    "/v1/vid-testimonial", // endpoint
+    "get", // method
+    "vid-testimonial" // key
+  );
+
+  var settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dotsClass: "slickNav slick-dots",
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    appendDots: (dots) => (
+      <div
+        style={{
+          borderRadius: "10px",
+          padding: "10px",
+          bottom: "-60px",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          color: "blue",
+          background: "gray",
+          borderRadius: "50%",
+          opacity: "50%",
+        }}
+      ></div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 786,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: false,
+        },
+      },
+    ],
+  };
+
+  // to extract the youtube link
+  const getYoutubeEmbedUrl = (url) => {
+    if (!url || !url.includes("v=")) {
+      return null;
+    }
+
+    const videoId = url.split("v=")[1]?.split("&")[0];
+
+    if (!videoId) {
+      return null;
+    }
+
+    // Set autoplay to 0, and remove or adjust other parameters as needed
+    return `https://www.youtube.com/embed/${videoId}?playlist=${videoId}&controls=1&showinfo=0&rel=0&loop=1&autoplay=0&mute=1`;
+  };
+
   return (
     <>
-      <section className="ImmersionVidTestimonials py-20 bg-[#000000] relative overflow-hidden">
+      <section className="lcssVidTestimonials py-20 bg-[#000000] relative overflow-hidden">
         <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
-        <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
+        <div className="absolute bg-light h-[180px] w-full bottom-0"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">Here are our</p>
@@ -14,111 +153,121 @@ const ImmersionVidTestimonials = () => {
               Trainees Work Experience
             </h3>
           </div>
-          <div className="wrapper flex flex-wrap place-content-center lg:grid lg:grid-cols-3 gap-6">
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
-              <iframe
-                id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/MlBrBmufpy4?si=tDU-2bcyfzUFNe3T"
-                title="Marks story"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl relative flex flex-col justify-between ">
-                <p className="italic mb-24 min-h-[120px]">
-                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> The
-                  program was also very beneficial to me—I learned a lot about
-                  potential jobs I could take in the future, and it helped me
-                  become a better person thanks to their PLEs after almost every
-                  task we completed.
-                  <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
-                </p>
-                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
-                  <img
-                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/slis.png`}
-                    className="w-[60px] mr-4"
-                    alt=""
-                  />
-                  <div className="italic">
-                    <p className="font-semibold">Christian Jaekhob Dela Cruz</p>
-                    <p>Grade 12 HUMSS</p>
-                    <p>South Lakes Integrated School</p>
-                  </div>
-                </div>
-              </div>
+          {vidTestimonialData?.data.filter(
+            (item) =>
+              item.vid_testimonial_category === "High School Work Immersion"
+          ).length > 3 ? (
+            <Slider {...settings}>
+              {vidTestimonialData?.data.map((item, key) => {
+                if (
+                  item.vid_testimonial_category === "High School Work Immersion"
+                ) {
+                  return (
+                    <div
+                      className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative"
+                      key={key}
+                    >
+                      <iframe
+                        className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                        src={
+                          getYoutubeEmbedUrl(item.vid_testimonial_vid_link) +
+                          "?autoplay=0"
+                        }
+                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                      ></iframe>
+
+                      <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
+                        <p className="italic mb-24 min-h-[120px]">
+                          <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
+                          {item.vid_testimonial_message}
+                          <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
+                        </p>
+                      </div>
+                      <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                        <img
+                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                          src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
+                          className="w-[60px]  mr-4"
+                          alt=""
+                        />
+                        <div className="italic">
+                          <p className="font-semibold">
+                            {item.vid_testimonial_name}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_course
+                              ? item.vid_testimonial_course
+                              : ""}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_school
+                              ? item.vid_testimonial_school
+                              : ""}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </Slider>
+          ) : (
+            <div className="wrapper flex flex-wrap place-content-center lg:grid lg:grid-cols-3 gap-6">
+              {vidTestimonialData?.data.map((item, key) => {
+                if (
+                  item.vid_testimonial_category === "High School Work Immersion"
+                ) {
+                  return (
+                    <div
+                      className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative"
+                      key={key}
+                    >
+                      <iframe
+                        className="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
+                        src={getYoutubeEmbedUrl(item.vid_testimonial_vid_link)}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                      ></iframe>
+                      <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
+                        <p className="italic mb-24 min-h-[120px]">
+                          <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
+                          {item.vid_testimonial_message}
+                          <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
+                        </p>
+                      </div>
+                      <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
+                        <img
+                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                          src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
+                          className="w-[60px]  mr-4"
+                          alt=""
+                        />
+                        <div className="italic">
+                          <p className="font-semibold">
+                            {item.vid_testimonial_name}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_course
+                              ? item.vid_testimonial_course
+                              : ""}
+                          </p>
+                          <p>
+                            {item.vid_testimonial_school
+                              ? item.vid_testimonial_school
+                              : ""}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
             </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
-              <iframe
-                id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/-OI3L6mWmsA?si=IgdftJp8Ike8Cju-"
-                title="Marks story"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl flex flex-col justify-between ">
-                <p className="italic mb-24 min-h-[120px]">
-                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> I
-                  had a very enjoyable experience here at FBS. Everything we did
-                  at FBS was truly enjoyable, from web designing using Figma to
-                  creating our own websites with HTML and CSS.
-                  <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
-                </p>
-                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
-                  <img
-                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/SPC.png`}
-                    className="w-[60px] mr-4"
-                    alt=""
-                  />
-                  <div className="italic">
-                    <p className="font-semibold">Justine Clein Gelindon</p>
-                    <p>Grade 12 ICT</p>
-                    <p>San Pablo Colleges</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative">
-              <iframe
-                id="player"
-                class="w-full h-[223px] rounded-tl-xl rounded-tr-xl"
-                src="https://www.youtube.com/embed/GJNpd6naWUI?si=7yrngP6PCULApJBU"
-                title="Marks story"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
-              <div className="testimonialMessage p-5 bg-customGray rounded-bl-xl rounded-br-xl flex flex-col justify-between ">
-                <p className="italic mb-24 min-h-[120px]">
-                  <RiDoubleQuotesL className="inline-block text-2xl mr-3" /> My
-                  experience was very fun, and all the trainers were kind and
-                  approachable. I highly recommend the FBS work immersion
-                  program because you will learn a lot here.
-                  <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
-                </p>
-                <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
-                  <img
-                    // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                    src={`../../public/img/MFMC.png`}
-                    className="w-[60px] mr-4"
-                    alt=""
-                  />
-                  <div className="italic">
-                    <p className="font-semibold">Althea Mae Lat</p>
-                    <p>Grade 12 HUMSS</p>
-                    <p>Marcelino Fule Memorial College</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
     </>

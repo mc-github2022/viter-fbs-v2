@@ -1,5 +1,4 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { FaCheckCircle } from "react-icons/fa";
 import ModalContact from "../../../partials/ModalContact";
 
@@ -53,7 +52,11 @@ const LcssApplyNow = ({ pageName }) => {
               </ul>
               <a
                 href=""
+<<<<<<< HEAD
                 className="btn bg-primary text-light my-5 text-[12px] md:text-md  inline-block rounded-full font-bold"
+=======
+                className="btn px-3 bg-primary text-light my-5  inline-block rounded-full font-bold"
+>>>>>>> fdc700df01cdf0d75300729b2c71dd8ff0794cf3
               >
                 PARTNER WITH US TODAY
               </a>

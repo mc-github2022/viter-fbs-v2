@@ -41,3 +41,9 @@ RewriteRule ^lcssBatches/([0-9]+)$ controllers/developer/lcss-batches/lcssBatche
 # INDUSTRY TESTIMONIAL
 RewriteRule ^indTestimonial$ controllers/developer/industry-testimonial/industryTestimonial.php [L]
 RewriteRule ^indTestimonial/([0-9]+)$ controllers/developer/industry-testimonial/industryTestimonial.php?industry_testimonialid=$1 [L]
+
+# INDUSTRY TESTIMONIAL
+RewriteRule ^vid-testimonial$ controllers/developer/vid-testimonial/vidTestimonial.php [L]
+RewriteRule ^vid-testimonial/([0-9]+)$ controllers/developer/vid-testimonial/vidTestimonial.php?vid_testimonialid=$1 [L]
+RewriteRule ^vid-testimonial/page/([0-9]+)$ controllers/developer/vid-testimonial/page.php?start=$1 [L]
+RewriteRule ^vid-testimonial/search$ controllers/developer/vid-testimonial/search.php [L]

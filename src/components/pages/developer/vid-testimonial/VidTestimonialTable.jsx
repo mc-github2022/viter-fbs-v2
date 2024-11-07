@@ -35,7 +35,7 @@ const VidTestimonialTable = ({ setItemEdit }) => {
     isLoading,
     status,
   } = useInfiniteQuery({
-    queryKey: ["pricing", onSearch, store.isSearch],
+    queryKey: ["vid-testimonial", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `/v1/vid-testimonial/search`, // search endpoint
