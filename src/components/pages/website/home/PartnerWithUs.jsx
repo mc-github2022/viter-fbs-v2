@@ -8,7 +8,7 @@ const PartnerWithUs = () => {
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
             <div className="bg-customGray md:bg-opacity-70 py-20 px-10 z-10 rounded-lg addShadow">
-              <p>Empowering You Business With</p>
+              <p>Empowering Your Business With</p>
               <h2 className="lg:text-[45px] font-semibold text-primary leading-[1.1] mb-8 text-[clamp(20px,4vw,45px)]">
                 Reliable, Cost-effective, and Expertly Managed Solutions.
               </h2>

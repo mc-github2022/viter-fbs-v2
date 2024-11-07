@@ -207,7 +207,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/lcss">College On-the-job- Training</Link>
+                      <Link to="/lcss">College On-The-Job Training</Link>
                     </li>
                     <li>
                       <Link to="/immersion">High School Work Immersion</Link>
