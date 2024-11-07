@@ -6,8 +6,7 @@ import MegaMenu from "./MegaMenu";
 import ModalContact from "./ModalContact";
 import { Link } from "react-router-dom";
 
-const Header = ({ contactData }) => {
-  // console.log(contactData[0].contactTitle);
+const Header = ({ pageName }) => {
   const [toggleNav, setToggleNav] = React.useState(false);
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
@@ -157,7 +156,7 @@ const Header = ({ contactData }) => {
       )}
       {modalContact && (
         <ModalContact
-          contactDetails={contactData}
+          thePageName={pageName}
           setModalContact={setModalContact}
           modalContact={modalContact}
           setToggleMenu={setToggleMenu}

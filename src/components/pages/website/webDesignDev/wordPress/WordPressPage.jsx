@@ -10,9 +10,10 @@ import WordPressPartnersSay from "./WordPressPartnersSay";
 import WordPressPortfolio from "./WordPressPortfolio";
 
 const WordPressPage = () => {
+  const [pageName, setPageName] = React.useState("cms");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <WordPressBanner />
       <WordPressOverview />
       <WordPressScope />

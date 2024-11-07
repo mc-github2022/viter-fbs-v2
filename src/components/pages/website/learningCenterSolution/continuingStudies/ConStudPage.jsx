@@ -12,10 +12,11 @@ import ConStudTeam from "./ConStudTeam";
 import ConStudVidTestimonials from "./ConStudVidTestimonials";
 
 const ConStudPage = () => {
+  const [pageName, setPageName] = React.useState("conStud");
   return (
     <>
-      <Header />
-      <ConStudBanner />
+      <Header pageName={pageName} />
+      <ConStudBanner pageName={pageName} />
       {/* <ConStudPartners /> */}
       <ConStudPartnersWithUs />
       <ConStudServices />

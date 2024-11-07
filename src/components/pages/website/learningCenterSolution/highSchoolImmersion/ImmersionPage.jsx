@@ -12,10 +12,11 @@ import ImmersionTeam from "./ImmersionTeam";
 import ImmersionVidTestimonials from "./ImmersionVidTestimonials";
 
 const ImmersionPage = () => {
+  const [pageName, setPageName] = React.useState("immersion");
   return (
     <>
-      <Header />
-      <ImmersionBanner />
+      <Header pageName={pageName} />
+      <ImmersionBanner pageName={pageName} />
       <ImmersionPartners />
       <ImmersionPartnersWithUs />
       <ImmersionServices />

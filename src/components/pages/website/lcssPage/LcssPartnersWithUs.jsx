@@ -33,7 +33,7 @@ const LcssPartnersWithUs = () => {
                 </li>
                 <li>
                   <a
-                    href="../../public/img/fbs-ojt-proposal-2024.pdf"
+                    href="https://drive.google.com/uc?export=download&amp;id=1kSl-0-BtMdzMtsTdPw-N2SqI6jlDUJOE"
                     download
                     className="flex items-center gap-2 font-bold text-primary"
                   >
