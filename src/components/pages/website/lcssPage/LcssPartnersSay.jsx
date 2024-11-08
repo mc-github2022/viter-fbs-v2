@@ -77,6 +77,7 @@ const LcssPartnersSay = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    adaptiveHeight: true,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -142,8 +143,8 @@ const LcssPartnersSay = () => {
                     "College On-the-job- Training"
                   ) {
                     return (
-                      <div key={key} className="md:h-[425px]">
-                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                      <div key={key} className="md:h-fit">
+                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
@@ -156,7 +157,10 @@ const LcssPartnersSay = () => {
                             <p className="relative z-10 italic text-justify mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
-                            <div className="logoAndName flex items-center gap-3">
+                            <div
+                              className="logoAndName flex flex-col text-center items-center gap-3
+                            md:flex-row md:text-left"
+                            >
                               <img
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
@@ -198,9 +202,9 @@ const LcssPartnersSay = () => {
                     "College On-the-job- Training"
                   ) {
                     return (
-                      <div className="md:h-[425px]">
+                      <div className="md:h-fit">
                         <div
-                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] md:translate-y-[-50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
+                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
                           key={key}
                         >
                           <div className="theMessage  relative">
@@ -215,7 +219,10 @@ const LcssPartnersSay = () => {
                             <p className="relative z-10 italic mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
-                            <div className="logoAndName flex items-center gap-3">
+                            <div
+                              className="logoAndName flex flex-col text-center items-center gap-3
+                            md:flex-row md:text-left"
+                            >
                               <img
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
