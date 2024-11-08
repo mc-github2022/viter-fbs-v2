@@ -123,6 +123,15 @@ const Header = ({ pageName }) => {
                     </li>
                   </ul>
                 </li>
+                <div className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
+                  <a
+                    href="#"
+                    onClick={handleModalContact}
+                    className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full  from-secondary to-secondary hover:to-primary "
+                  >
+                    GET STARTED
+                  </a>
+                </div>
               </ul>
             </div>
             <div className="w-[200px] lg:flex justify-center hidden">

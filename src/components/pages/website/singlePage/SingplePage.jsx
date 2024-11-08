@@ -136,13 +136,17 @@ const SingplePage = () => {
                   <h3 className="text-2xl font-semibold mb-10 text-dark">
                     Categories
                   </h3>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-3">
+                  <ul>
                     {insightData?.data.map((cat, key) => {
                       return (
-                        <li key={key}>
-                          <BiSolidRightArrow className="text-primary" />
-                          {cat.home_insights_category}
-                        </li>
+                        <div key={key}>
+                          <Link to={`/insight/${cat.home_insights_slug}`}>
+                            <li className="flex items-center gap-2 mb-3">
+                              <BiSolidRightArrow className="text-primary" />
+                              {cat.home_insights_category}
+                            </li>
+                          </Link>
+                        </div>
                       );
                     })}
                   </ul>
