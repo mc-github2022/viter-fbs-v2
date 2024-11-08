@@ -221,7 +221,7 @@ const EventsAndAct = () => {
                 })}
               </Slider>
             ) : (
-              <div className="gap-4 flex flex-col place-self-center lg:flex lg:flex-row lg:gap-4 md:place-content-center">
+              <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
                 {eventsAndActivitiesData?.data.map((post, key) => {
                   if (key <= 2) return null;
                   return (
@@ -233,18 +233,18 @@ const EventsAndAct = () => {
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                           }}
-                          className="blogItem mx-2 bg-center bg-cover h-[350px] w-[410px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem bg-center bg-cover max-w-[418px] min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                         >
                           <div>
-                            <div className="blogTitle relative z-[1]">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                {post.events_activities_category}
-                              </h4>
-                            </div>
-                            <div className="blogExcerpt p-10 relative z-[1]">
+                            <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                               <p className="text-light font-bold text-lg">
                                 {post.events_activities_title}
                               </p>
+                            </div>
+                            <div className="blogTitle  pb-10 relative z-[1]">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {post.events_activities_category}
+                              </h4>
                             </div>
                           </div>
                           <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>

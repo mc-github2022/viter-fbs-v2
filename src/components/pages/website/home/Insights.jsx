@@ -130,7 +130,7 @@ const Insights = () => {
   return (
     <>
       <section className="insights py-16 md:py-24 bg-customGray">
-        <div className="customContainer p-0 md:px-10">
+        <div className="customContainer px-10">
           {/* <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
             Industry Insights
           </h3> */}

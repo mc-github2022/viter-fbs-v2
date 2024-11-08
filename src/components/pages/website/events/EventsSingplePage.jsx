@@ -72,7 +72,7 @@ const EventsSingplePage = () => {
   return (
     <>
       <Header />
-      <section className="singlePost pt-40 mb-20">
+      <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           <div className="theTitle">
             <h2 className="text-dark text-[clamp(30px,5vw,40px)] lg:w-[70%] leading-[1.3] mb-4 font-semibold">

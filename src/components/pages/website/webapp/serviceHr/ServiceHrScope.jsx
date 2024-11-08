@@ -6,6 +6,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { LuCalendarClock, LuClock } from "react-icons/lu";
 import { MdOutlineCalendarToday, MdOutlineDashboard } from "react-icons/md";
 import { scope } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ServiceHrScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
@@ -60,7 +61,7 @@ const ServiceHrScope = () => {
                           {scopeList.scopeTitle}
                         </p>
                       </div>
-                      <IoChevronDown className="" />
+                      <IoChevronDown className={`${accordion && accordionItem === scopeList.scopeId ? "rotate-180" : ""}`} />
                     </div>
                     <div
                       className={`${
@@ -97,8 +98,8 @@ const ServiceHrScope = () => {
                   <img
                     className="hidden md:w-full md:object-contain md:block"
                     // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
-                    src={`../../public/img/${scopedata.scopeImage}`}
-                    alt=""
+                    src={`${devBaseImgUrl}/${scopedata.scopeImage}`}
+                    alt="scope"
                   />
 
                   <p className="hidden md:block mb-4 text-center pt-8 pb-8">
