@@ -221,7 +221,7 @@ const EventsAndAct = () => {
                 })}
               </Slider>
             ) : (
-              <div className="gap-4 flex flex-col place-self-center lg:flex lg:flex-row lg:gap-4 md:place-content-center">
+              <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
                 {eventsAndActivitiesData?.data.map((post, key) => {
                   if (key <= 2) return null;
                   return (

@@ -78,7 +78,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
               <div className="backArrow absolute top-2 right-9 md:hidden">
                 <button>
                   <TiArrowBackOutline
-                    className="text-2xl text-[gray] "
+                    className="text-2xl text-[gray]"
                     onClick={handleClose}
                   />
                 </button>
