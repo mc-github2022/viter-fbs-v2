@@ -6,6 +6,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { LuCalendarClock, LuClock } from "react-icons/lu";
 import { MdOutlineCalendarToday, MdOutlineDashboard } from "react-icons/md";
 import { scope } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ServiceEnrollmentScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
@@ -54,12 +55,12 @@ const ServiceEnrollmentScope = () => {
                             accordion && accordionItem === scopeList.scopeId
                               ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                               : "text-dark"
-                          } text-[clamp(16px,4vw,20px)] font-semibold cursor-pointer `}
+                          } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}
                         >
                           {scopeList.scopeTitle}
                         </p>
                       </div>
-                      <IoChevronDown className="" />
+                      <IoChevronDown className={`${accordion && accordionItem === scopeList.scopeId ? "rotate-180" : ""}`} />
                     </div>
                     <div
                       className={`${
@@ -68,7 +69,7 @@ const ServiceEnrollmentScope = () => {
                           : "h-0 py-0"
                       } accordionContent `}
                     >
-                      <p className="mb-4 text-sm">{scopeList.scopeDesc}</p>
+                      <p>{scopeList.scopeDesc}</p>
                       {/* <a href="#" className="btn bg-primary text-light">
                         Schedule a Demo
                       </a> */}
@@ -96,8 +97,8 @@ const ServiceEnrollmentScope = () => {
                   <img
                     className="hidden md:w-full md:object-contain md:block"
                     // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
-                    src={`../../public/img/${scopedata.scopeImage}`}
-                    alt=""
+                    src={`${devBaseImgUrl}/${scopedata.scopeImage}`}
+                    alt="scope"
                   />
                   <p className="hidden md:block mb-4 text-center pt-8 pb-8">
                     <a
