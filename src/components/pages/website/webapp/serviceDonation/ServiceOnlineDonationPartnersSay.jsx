@@ -78,6 +78,7 @@ const ServiceOnlineDonationPartnersSay = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    adaptiveHeight: true,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -134,8 +135,8 @@ const ServiceOnlineDonationPartnersSay = () => {
             <Slider {...partnerSaysSettings}>
               {clientSays.map((testimonial, key) => {
                 return (
-                  <div key={key} className=" lg:h-[525px]">
-                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%] lg:translate-y-[-50%] py-10 px-10 lg:px-20 lg:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
+                  <div key={key} className=" lg:h-fit">
+                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%]  py-10 px-10 lg:px-20 lg:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img
@@ -148,7 +149,10 @@ const ServiceOnlineDonationPartnersSay = () => {
                         <p className="relative z-10 italic mb-8 min-h-[260px] md:min-h-0">
                           {testimonial.clientMessage}
                         </p>
-                        <div className="logoAndName flex items-center gap-3">
+                        <div
+                          className="logoAndName flex flex-col text-center items-center gap-3
+                            md:flex-row md:text-left"
+                        >
                           <img
                             // src={`${devBaseImgUrl}/sti.png`}
                             className="w-[100px]"
