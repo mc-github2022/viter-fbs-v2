@@ -174,7 +174,7 @@ const BookkeepingPricing = () => {
                             : "!bg-customGray"
                         } 
                       priceItem mb-5 relative z-[1] text-center p-10
-                      rounded-lg h-[700px] w-[400px]`}
+                      rounded-lg h-[700px] w-[300px] md:w-[400px]`}
                       >
                         <div className="z-10">
                           <div className="title mb-4">
