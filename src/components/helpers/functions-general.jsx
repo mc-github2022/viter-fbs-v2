@@ -1,15 +1,15 @@
 import React from "react";
 
-// export const urlPathSinglePageWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2";
-// export const imgUrlPathSinglePageWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
-// export const mediaUrlPathSinglePageWebsite = "media";
-
-export const urlPathSinglePageWebsite = "http://localhost/viter-fbs-v2";
+export const urlPathSinglePageWebsite =
+  "http://localhost/react-vite/viter-fbs-v2";
 export const imgUrlPathSinglePageWebsite =
-  "http://localhost/viter-fbs-v2/public/img";
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
 export const mediaUrlPathSinglePageWebsite = "media";
+
+// export const urlPathSinglePageWebsite = "http://localhost/viter-fbs-v2";
+// export const imgUrlPathSinglePageWebsite =
+//   "http://localhost/viter-fbs-v2/public/img";
+// export const mediaUrlPathSinglePageWebsite = "media";
 
 export const devApiUrl = `${urlPathSinglePageWebsite}/rest`;
 export const devBaseUrl = `${urlPathSinglePageWebsite}`;
