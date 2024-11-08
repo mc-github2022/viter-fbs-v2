@@ -134,7 +134,7 @@ const Header = ({ pageName }) => {
                 </div>
               </ul>
             </div>
-            <div className="w-[200px] lg:flex justify-center hidden">
+            <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
               <a
                 href="#"
                 onClick={handleModalContact}
