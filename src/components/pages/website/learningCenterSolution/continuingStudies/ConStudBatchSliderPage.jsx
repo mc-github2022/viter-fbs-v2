@@ -138,16 +138,16 @@ const ConStudBatchSliderPage = ({
 
   return (
     <ModalWrapper
-      className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[42%] md:w-[60%]`}
+      className={`transition-all ease-linear transform duration-200 w-[80%] lg:w-[42%] md:w-[60%] place-self-center`}
       handleClose={handleClose}
     >
-      <div className="bg-transparent h-screen place-items-center place-content-center">
+      <div className="bg-transparent h-fit place-items-center place-content-center">
         {images.length > 1 ? (
           <Slider {...settings}>
             {images.map((image, index) => (
               <div
                 key={index}
-                className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
+                // className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
               >
                 <div className="z-[1] max-w-[700px] h-[60vh] place-self-center">
                   <img
@@ -160,7 +160,9 @@ const ConStudBatchSliderPage = ({
             ))}
           </Slider>
         ) : images.length === 1 ? (
-          <div className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]">
+          <div
+          // className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
+          >
             <div className="z-[1] max-w-[700px] h-[60vh] place-self-center">
               <img
                 src={`${devBaseImgUrl}/${images[0]}`}
