@@ -126,12 +126,12 @@ const WordPressPartnersSay = () => {
           {IndtestimonialData?.data.length > 0 && (
             <div className="">
               <p>What Our</p>
-              <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-0">
+              <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
                 Clients Say
               </h2>
             </div>
           )}
-          <div className="wrapper ">
+          <div className="wrapper">
             <Slider {...partnerSaysSettings}>
               {clientSays.map((testimonial, key) => {
                 return (

@@ -4,7 +4,7 @@ import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
 const WordPressPartners = () => {
   return (
     <>
-      <section className="WordPressPartners py-0">
+      <section className="WordPressPartners py-24 lg:pb-24 lg:pt-0">
         <div className="customContainer">
           <p>{sectionPartnersTitle[0].subTitle}</p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-10">

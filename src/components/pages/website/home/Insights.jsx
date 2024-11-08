@@ -137,7 +137,7 @@ const Insights = () => {
           <div className="w-[300px] mb-16 md:w-full md:mb-20">
             <p>When share valuable tips and expect advice in our</p>
             <h2 className="font-semibold text-primary leading-[1.1] text-[clamp(20px,6vw,45px)]">
-              industry insights
+              Industry Insights
             </h2>
             <p>section to help you grow your business and stay ahead.</p>
           </div>
@@ -186,7 +186,7 @@ const Insights = () => {
                           className="blogItem bg-center bg-cover max-w-[418px] min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                         >
                           <div>
-                            <div className="blogExcerpt p-10  pb-6 relative z-[1]">
+                            <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                               <p className="text-light font-bold text-lg">
                                 {post.home_insights_title}
                               </p>
