@@ -68,18 +68,41 @@ const ModalContact = ({
               thePageName === "conStud" ||
               thePageName === "immersion" ? (
                 <>
-                  <div className="mb-8">
-                    <h3 className="font-semibold">Computer-Related Course</h3>
-                    <p>Ms. Herlyn Mae Torres</p>
-                    <p>Herlyn.torres@frontlinebusiness.com.ph</p>
-                  </div>
-                  <div className="mb-8">
-                    <h3 className="font-semibold">
-                      Accounting-Related Courses
-                    </h3>
-                    <p>Ms. Thea Lyzette Consignado</p>
-                    <p>thea.consignado@frontlinebusiness.com.ph</p>
-                  </div>
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+                    <li className="!items-start">
+                      <IoMdPin />
+                      <p>
+                        Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
+                        Laguna, 4000
+                      </p>
+                    </li>
+                    <li>
+                      <FaPhone />
+                      <p>(049) 501 3592</p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>(+63) 927 168 6810</p>
+                    </li>
+                    <li>
+                      <div>
+                        <div className="mb-4">
+                          <h3 className="font-semibold">
+                            Computer-Related Course
+                          </h3>
+                          <p>Ms. Herlyn Mae Torres</p>
+                          <p>Herlyn.torres@frontlinebusiness.com.ph</p>
+                        </div>
+                        <div className="mb-8">
+                          <h3 className="font-semibold">
+                            Accounting-Related Courses
+                          </h3>
+                          <p>Ms. Thea Lyzette Consignado</p>
+                          <p>thea.consignado@frontlinebusiness.com.ph</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </>
               ) : (
                 <>
@@ -107,7 +130,7 @@ const ModalContact = ({
                 </>
               )}
 
-              <div>
+              <div className="mb-4">
                 <p>Follow Us:</p>
                 <ul className="flex gap-2 text-2xl">
                   <li>
