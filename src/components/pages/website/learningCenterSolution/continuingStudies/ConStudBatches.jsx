@@ -138,7 +138,7 @@ const ConStudBatches = () => {
 
   return (
     <>
-      <section className="ConStudBatches py-40 md:pt-0 md:pb-40">
+      <section className="ConStudBatches pt-20 md:pt-0 md:pb-40">
         <div className="customContainer max-w-[90%]">
           <div
             className="mb-12

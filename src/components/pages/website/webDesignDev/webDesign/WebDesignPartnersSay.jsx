@@ -140,7 +140,7 @@ const WebDesignPartnersSay = () => {
                   if (item.industry_testimonial_category === "Web Design") {
                     return (
                       <div key={key} className="md:h-fit">
-                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-32 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
@@ -197,7 +197,7 @@ const WebDesignPartnersSay = () => {
                     return (
                       <div className="md:h-fit">
                         <div
-                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
+                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-32 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
                           key={key}
                         >
                           <div className="theMessage  relative">
