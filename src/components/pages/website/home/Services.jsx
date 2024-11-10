@@ -7,7 +7,7 @@ import WebSvg from "../../../partials/customSVG/WebSvg";
 
 const Services = () => {
   return (
-    <section className="services py-20 relative">
+    <section className="services py-10 relative">
       <div className="customContainer">
         <div className="theTitle leading-1 mb-12">
           <p>Here Are</p>

@@ -10,7 +10,7 @@ import {
 const VaMarketingServiceList = () => {
   return (
     <>
-      <section className="VaMarketingServiceList pb-40 md:pt-20">
+      <section className="VaMarketingServiceList py-20">
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">

@@ -122,7 +122,7 @@ const BannerSlider = () => {
           <div key={key}>
             <section
               id="banner"
-              className={`banner  bg-cover bg-center`}
+              className={`banner  bg-cover bg-center py-12`}
               style={{
                 // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                 backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,

@@ -4,7 +4,7 @@ import { devBaseImgUrl } from "../../../helpers/functions-general";
 const Process = () => {
   return (
     <>
-      <section className="process py-20">
+      <section className="process pt-20 pb-10">
         <div className="customContainer">
           <div className="theTitle leading-1 mb-12">
             <p>Key Stages</p>
