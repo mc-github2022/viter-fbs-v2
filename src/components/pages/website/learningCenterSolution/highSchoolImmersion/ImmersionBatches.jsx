@@ -14,7 +14,7 @@ function SampleNextArrow(props) {
         background: "#ac1e72",
         position: "absolute",
         color: "white",
-        top: "50%",
+        top: "35%",
         right: "-6%",
         fontSize: "3rem",
         cursor: "pointer",
@@ -39,7 +39,7 @@ function SamplePrevArrow(props) {
         position: "absolute",
         background: "#ac1e72",
         color: "white",
-        top: "50%",
+        top: "35%",
         left: "-6%",
         fontSize: "3rem",
         zIndex: "1",
@@ -108,9 +108,9 @@ const ImmersionBatches = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
+          // dots: true,
         },
       },
       {
@@ -118,9 +118,9 @@ const ImmersionBatches = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
+          // dots: true,
         },
       },
     ],
@@ -138,7 +138,7 @@ const ImmersionBatches = () => {
 
   return (
     <>
-      <section className="ImmersionBatches py-40 md:pt-0 md:pb-40">
+      <section className="ImmersionBatches pt-20 md:pt-0 md:pb-40">
         <div className="customContainer max-w-[90%]">
           <div
             className="mb-12

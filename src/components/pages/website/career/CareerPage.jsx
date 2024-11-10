@@ -155,7 +155,13 @@ const CareerPage = () => {
                             <p className="text-sm">
                               {item.careers_job_classification}
                             </p>
-                            <p className="text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg md:hidden">
+                            <p
+                              className={`${
+                                item.careers_job_status === "Ongoing"
+                                  ? "text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg md:hidden"
+                                  : "text-xs text-[#ef4444] bg-[#F8B1B1] px-3 py-1 rounded-lg md:hidden"
+                              }`}
+                            >
                               {item.careers_job_status}
                             </p>
                           </div>

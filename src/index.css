@@ -184,7 +184,7 @@
     @apply border-t border-t-customGray border-b-customGray md:border-t-0 cursor-pointer;
   }
   .theNav ul li a {
-    @apply py-3 px-11 w-full;
+    @apply py-3 px-11 md:px-3 lg:px-11 w-full;
   }
   .theNav.active ul {
     @apply right-0 backdrop-brightness-0 transition-all overflow-hidden;
