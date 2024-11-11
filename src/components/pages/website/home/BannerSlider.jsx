@@ -81,7 +81,7 @@ const BannerSlider = () => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "30px",
+          bottom: "15px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -129,7 +129,7 @@ const BannerSlider = () => {
               }}
             >
               <div className="customContainer">
-                <div className="wrapper flex place-items-center min-h-[90vh] md:h-[90vh] transition-all w-full">
+                <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
                   <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
                     <p className="text-light lg:text-[28px] italic">
                       {item.home_banner_sub_title}

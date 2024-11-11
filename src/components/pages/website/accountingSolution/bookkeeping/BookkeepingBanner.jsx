@@ -13,7 +13,7 @@ const BookkeepingBanner = () => {
         }}
       >
         <div className="customContainer">
-          <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center max-h-[80vh] min-h-[80vh] transition-all w-full">
+          <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
             <div className="text-center py-10 lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light">
                 {banner[0].bannerTitle}
