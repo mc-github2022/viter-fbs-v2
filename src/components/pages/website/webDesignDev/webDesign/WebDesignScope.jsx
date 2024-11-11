@@ -102,7 +102,6 @@ const WebDesignScope = () => {
                 >
                   <img
                     className="hidden md:w-full md:object-contain md:block"
-                    // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
                     src={`${devBaseImgUrl}/${scopedata.scopeImage}`}
                     alt="scope"
                   />

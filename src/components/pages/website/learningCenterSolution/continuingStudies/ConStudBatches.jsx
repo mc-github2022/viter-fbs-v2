@@ -132,7 +132,7 @@ const ConStudBatches = () => {
   const handleModalBatch = (item) => {
     setModalBatch(!modalBatch);
     setItemEdit(item);
-    setSelectedBatchId(item.lcss_batch_aid); // Set the selected batch ID
+    setSelectedBatchId(item.lcss_batch_aid);
     document.body.classList.toggle("overflow-hidden");
   };
 
@@ -155,81 +155,86 @@ const ConStudBatches = () => {
             <Slider {...settings}>
               {lcssBatchesData?.data.map((item, key) => {
                 if (item.lcss_batch_category === "Continuing Studies") {
-                  // Split the image string into an array and take the first image
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
-                    <div key={key} className="mb-[3rem]">
-                      <a onClick={() => handleModalBatch(item)}>
-                        <div
-                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                          style={{
-                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
-                          }}
-                        >
-                          <div>
-                            <div className="blogExcerpt p-10 relative z-[1]">
-                              <p className="text-light font-bold text-lg">
-                                {item.lcss_batch_school}
-                              </p>
-                              <p className="text-light">
-                                {item.lcss_batch_course}
-                              </p>
+                    <div className="flex flex-wrap gap-2 place-content-center">
+                      <div className="grid place-content-center">
+                        <div key={key} className="mb-[3rem]">
+                          <a onClick={() => handleModalBatch(item)}>
+                            <div
+                              className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] md:w-[300px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                              style={{
+                                backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
+                              }}
+                            >
+                              <div>
+                                <div className="blogExcerpt p-10 relative z-[1]">
+                                  <p className="text-light font-bold text-lg">
+                                    {item.lcss_batch_school}
+                                  </p>
+                                  <p className="text-light">
+                                    {item.lcss_batch_course}
+                                  </p>
+                                </div>
+                                <div className="blogTitle relative z-[1] pb-10">
+                                  <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[180px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                    {item.lcss_batch_name}
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                             </div>
-                            <div className="blogTitle relative z-[1] pb-10">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[220px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                {item.lcss_batch_name}
-                              </h4>
-                            </div>
-                          </div>
-                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          </a>
                         </div>
-                      </a>
+                      </div>
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </Slider>
           ) : (
             <div className="flex flex-row gap-2">
               {lcssBatchesData?.data.map((item, key) => {
-                // Only render the items that match the category
                 if (item.lcss_batch_category === "Continuing Studies") {
-                  // Split the image string into an array and take the first image
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
-                    <div key={key} className="mb-[3rem]">
-                      <a onClick={() => handleModalBatch(item)}>
-                        <div
-                          className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                          style={{
-                            backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
-                          }}
-                        >
-                          <div>
-                            <div className="blogExcerpt p-10 relative z-[1]">
-                              <p className="text-light font-bold text-lg">
-                                {item.lcss_batch_school}
-                              </p>
-                              <p className="text-light">
-                                {item.lcss_batch_course}
-                              </p>
+                    <div className="flex flex-wrap gap-2 place-content-center">
+                      <div className="grid place-content-center">
+                        <div key={key} className="mb-[3rem]">
+                          <a onClick={() => handleModalBatch(item)}>
+                            <div
+                              className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] lg:min-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                              style={{
+                                backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
+                              }}
+                            >
+                              <div>
+                                <div className="blogExcerpt p-10 relative z-[1]">
+                                  <p className="text-light font-bold text-lg">
+                                    {item.lcss_batch_school}
+                                  </p>
+                                  <p className="text-light">
+                                    {item.lcss_batch_course}
+                                  </p>
+                                </div>
+                                <div className="blogTitle relative z-[1] pb-10">
+                                  <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[180px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                    {item.lcss_batch_name}
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                             </div>
-                            <div className="blogTitle relative z-[1] pb-10">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[220px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                {item.lcss_batch_name}
-                              </h4>
-                            </div>
-                          </div>
-                          <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          </a>
                         </div>
-                      </a>
+                      </div>
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </div>
           )}

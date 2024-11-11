@@ -13,7 +13,7 @@ const VaCreativeSupportServiceList = () => {
       <section className="VaCreativeSupportServiceList pt-20 pb-40">
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
-            <h2 className="text-[clamp(20px,6vw,60px)] leading-[1.1] font-semibold mb-10">
+            <h2 className="text-[clamp(20px,6vw,40px)] leading-[1.1] font-semibold mb-10">
               What <span className="text-primary">Creative Supports </span>{" "}
               <br />
               Can We Perform?

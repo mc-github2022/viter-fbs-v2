@@ -1,5 +1,6 @@
 import React from "react";
 import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const VaAdminSolutionPartners = () => {
   return (
@@ -11,14 +12,14 @@ const VaAdminSolutionPartners = () => {
             {sectionPartnersTitle[0].mainTitle}
           </h2>
 
-          <ul className="flex flex-wrap justify-center gap-0 md:gap-20 items-center">
+          <ul className="flex flex-wrap justify-center gap-7 md:gap-20 items-center">
             {sectionPartnersLogos.map((logo, key) => {
               return (
                 <li key={key}>
                   <img
                     className="w-[150px] h-[150px] object-contain"
                     // src={`${devBaseImgUrl}/web-obich.png`}
-                    src={`../../public/img/${logo.imageName}`}
+                    src={`${devBaseImgUrl}/${logo.imageName}`}
                     alt=""
                   />
                 </li>

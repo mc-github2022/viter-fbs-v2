@@ -28,7 +28,7 @@ const SinglePagePricing = () => {
                       price.isActive
                         ? "bg-primary "
                         : "bg-customGray !text-dark"
-                    } grid place-items-center min-h-[800px]`}
+                    } grid place-items-center min-h-[600px]`}
                   >
                     <div>
                       <div className="title mb-4 ">
@@ -64,10 +64,10 @@ const SinglePagePricing = () => {
                       </ul> */}
                       <table className="prices my-5">
                         {price.info.map((info, key) => (
-                          <tr key={key} className="border-0">
+                          <tr key={key} className="border-0 flex items-start">
                             <td>
                               <FaCheckCircle
-                                className={`${price.customCss} text-light`}
+                                className={`${price.customCss} text-light translate-y-1`}
                               />
                             </td>
                             <td className="text-[16px]">{info}</td>

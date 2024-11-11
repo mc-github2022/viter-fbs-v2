@@ -1,5 +1,6 @@
 import React from "react";
 import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const WordPressPartners = () => {
   return (
@@ -17,9 +18,8 @@ const WordPressPartners = () => {
                 <li key={key}>
                   <img
                     className="w-[200px] object-contain"
-                    // src={`${devBaseImgUrl}/web-obich.png`}
-                    src={`../../public/img/${logo.imageName}`}
-                    alt=""
+                    src={`${devBaseImgUrl}/${logo.imageName}`}
+                    alt="client logo"
                   />
                 </li>
               );

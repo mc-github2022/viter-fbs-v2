@@ -2,6 +2,7 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const SinglePageOverview = () => {
   return (
@@ -17,8 +18,7 @@ const SinglePageOverview = () => {
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
               <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`../../public/img/${webAppOverview[0].webAppImage}`}
+                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
                 alt=""
               />
@@ -33,7 +33,7 @@ const SinglePageOverview = () => {
                 </li>
                 <li>
                   <a
-                    href="../../public/img/website-design-and-development-portfolio-2022-v3.pdf"
+                    href={`${devBaseImgUrl}/website-design-and-development-portfolio-2022-v3.pdf`}
                     download
                     className="flex items-center gap-2 font-bold text-primary"
                   >

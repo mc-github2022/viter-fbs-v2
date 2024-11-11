@@ -1,4 +1,5 @@
 import React from "react";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ImmersionBanner = () => {
   return (
@@ -8,7 +9,7 @@ const ImmersionBanner = () => {
         className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
-          backgroundImage: `url(../../public/img/workimmersion-bg.webp)`,
+          backgroundImage: `url(${devBaseImgUrl}/workimmersion-bg.webp)`,
         }}
       >
         <div className="customContainer">

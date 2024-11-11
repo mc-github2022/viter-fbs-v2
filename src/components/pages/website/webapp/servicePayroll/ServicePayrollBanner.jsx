@@ -2,6 +2,7 @@ import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { banner } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ServicePayrollBanner = () => {
   return (
@@ -11,7 +12,7 @@ const ServicePayrollBanner = () => {
         className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,
-          backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
+          backgroundImage: `url(${devBaseImgUrl}/${banner[0].bannerImage})`,
         }}
       >
         <div className="customContainer">

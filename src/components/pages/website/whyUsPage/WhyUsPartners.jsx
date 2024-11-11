@@ -15,41 +15,36 @@ const WhyUsPartners = () => {
             <li>
               <img
                 className="w-[120px] h-[100px] object-contain"
-                // src={`${devBaseImgUrl}/DTOD-BPO.png`}
-                src={`../../public/img/ftc-logo.png`}
-                alt=""
+                src={`${devBaseImgUrl}/ftc-logo.png`}
+                alt="client logo"
               />
             </li>
             <li>
               <img
                 className="w-[180px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/tazaMia.png`}
-                src={`../../public/img/logo-pfm.png`}
-                alt=""
+                src={`${devBaseImgUrl}/logo-pfm.png`}
+                alt="client logo"
               />
             </li>
             <li>
               <img
                 className="w-[200px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/web-obich.png`}
-                src={`../../public/img/logo-fwc-2.png`}
-                alt=""
+                src={`${devBaseImgUrl}/logo-fwc-2.png`}
+                alt="client logo"
               />
             </li>
             <li>
               <img
                 className="w-[200px] h-[130px] object-contain"
-                // src={`${devBaseImgUrl}/bensHalo.png`}
-                src={`../../public/img/logo-threadworks.png`}
-                alt=""
+                src={`${devBaseImgUrl}/logo-threadworks.png`}
+                alt="client logo"
               />
             </li>
             <li>
               <img
                 className="w-[120px] h-[100px] object-contain"
-                // src={`${devBaseImgUrl}/aka-global.png`}
-                src={`../../public/img/logo-fca.png`}
-                alt=""
+                src={`${devBaseImgUrl}/logo-fca.png`}
+                alt="client logo"
               />
             </li>
           </ul>

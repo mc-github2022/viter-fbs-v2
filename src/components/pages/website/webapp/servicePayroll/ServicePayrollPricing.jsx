@@ -8,7 +8,6 @@ const ServicePayrollPricing = () => {
     <>
       <section className="ServicePayrollPricing py-20 bg-[#000000] relative overflow-hidden">
         <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
-        <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
@@ -62,10 +61,10 @@ const ServicePayrollPricing = () => {
                       </ul> */}
                       <table className="prices my-5">
                         {price.info.map((info, key) => (
-                          <tr key={key} className="border-0">
+                          <tr key={key} className="border-0 flex items-start">
                             <td>
                               <FaCheckCircle
-                                className={`${price.customCss} text-light`}
+                                className={`${price.customCss} text-light translate-y-1`}
                               />
                             </td>
                             <td className="text-[16px]">{info}</td>
@@ -85,6 +84,7 @@ const ServicePayrollPricing = () => {
             </div>
           </div>
         </div>
+        <div className="absolute bg-light h-[180px] w-full bottom-[-2px] "></div>
       </section>
     </>
   );

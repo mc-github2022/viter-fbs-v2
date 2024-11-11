@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const BusinessRegOverview = () => {
   return (
@@ -17,7 +18,7 @@ const BusinessRegOverview = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
-                src={`../../public/img/${webAppOverview[0].webAppImage}`}
+                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
                 alt=""
               />

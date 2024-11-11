@@ -1,15 +1,16 @@
 import React from "react";
 import { banner } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const VaMarketingBanner = () => {
   return (
     <>
       <section
         id="VaMarketingBanner"
-        className={`banner bg-cover bg-center pt-10 pb-0`}
+        className={`banner bg-cover bg-center pt-10 pb-0 lg:pt-16`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/VABG.jpg)`,
-          backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
+          backgroundImage: `url(${devBaseImgUrl}/${banner[0].bannerImage})`,
         }}
       >
         <div className="customContainer">

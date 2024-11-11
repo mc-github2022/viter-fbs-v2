@@ -27,7 +27,8 @@ const VaResearchPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] h-fit md:h-[1000px] max-w-[480px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[630px] 
+                    h-fit md:h-[750px] max-w-[480px] grid place-items-center`}
                   >
                     <div className=" mb-5 relative">
                       <div className="title mb-4">
@@ -62,10 +63,13 @@ const VaResearchPricing = () => {
                           </ul> */}
                           <table className="prices my-5">
                             {price.info.map((info, key) => (
-                              <tr key={key} className="border-0">
+                              <tr
+                                key={key}
+                                className="border-0 flex items-start"
+                              >
                                 <td>
                                   <FaCheckCircle
-                                    className={`${price.customCss} text-light`}
+                                    className={`${price.customCss} text-light translate-y-1`}
                                   />
                                 </td>
                                 <td className="text-[16px]">{info}</td>
@@ -74,7 +78,7 @@ const VaResearchPricing = () => {
                           </table>
                         </div>
                       </div>
-                      <p className="mb-8">{price.priceDesc}</p>
+                      <p className="mb-8 hidden lg:block">{price.priceDesc}</p>
                     </div>
                     <a
                       href={price.link}

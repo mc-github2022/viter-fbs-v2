@@ -2,6 +2,7 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ServicePayrollOverview = () => {
   return (
@@ -18,7 +19,7 @@ const ServicePayrollOverview = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`../../public/img/${webAppOverview[0].webAppImage}`}
+                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
                 alt=""
               />
