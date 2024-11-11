@@ -6,7 +6,7 @@ const ImmersionServices = () => {
     <>
       <section className="ImmersionServices py-20">
         <div className="customContainer">
-          <div className="wrapper flex flex-wrap place-content-center md:grid md:grid-cols-3">
+          <div className="wrapper flex flex-wrap place-content-center md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
             <div className="webDEv w-[387px] py-5 md:px-3 lg:px-0">
               <div className="mb-10">
                 <p>STEM and ICT students can learn</p>
