@@ -306,7 +306,7 @@
     @apply text-[red-500];
   }
   .tooltip-action-table {
-    @apply relative p-1 mr-1.5 bg-none leading-none;
+    @apply relative p-1 bg-none leading-none;
   }
   .tooltip-action-table::after {
     @apply content-[attr(data-tooltip)] capitalize absolute -translate-x-2/4 bottom-full -top-[24px] bg-dark/80 text-[white] p-1 rounded-sm h-fit leading-none z-20 whitespace-nowrap text-center opacity-0 text-[10px] pointer-events-none transition ease-linear scale-0 duration-75 left-1/2;

@@ -6,7 +6,7 @@ const TableSpinner = () => {
       <div className="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center flex-col text-center bg-[white] z-40">
         <svg
           aria-hidden="true"
-          className="w-6 h-6 text-[#374151] animate-spin dark:text-[#d1d5db] fill-primary"
+          className="w-6 h-6 text-[#374151] animate-spin dark:text-[#d1d5db] fill-dashPrimary"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
