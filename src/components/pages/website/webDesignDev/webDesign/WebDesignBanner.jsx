@@ -8,7 +8,7 @@ const WebDesignBanner = () => {
     <>
       <section
         id="WebDesignBanner"
-        className={`banner bg-cover bg-center pt-28 pb-14`}
+        className={`banner bg-cover bg-center pt-28 pb-14 md:pb-8`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,
           backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,

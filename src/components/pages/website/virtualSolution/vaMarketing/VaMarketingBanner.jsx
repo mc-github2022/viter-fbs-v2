@@ -7,7 +7,7 @@ const VaMarketingBanner = () => {
     <>
       <section
         id="VaMarketingBanner"
-        className={`banner bg-cover bg-center pt-10 pb-0`}
+        className={`banner bg-cover bg-center pt-10 pb-0 lg:pt-16`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/VABG.jpg)`,
           backgroundImage: `url(${devBaseImgUrl}/${banner[0].bannerImage})`,
