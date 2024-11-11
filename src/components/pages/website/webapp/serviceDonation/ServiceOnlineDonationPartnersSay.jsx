@@ -136,7 +136,7 @@ const ServiceOnlineDonationPartnersSay = () => {
               {clientSays.map((testimonial, key) => {
                 return (
                   <div key={key} className=" lg:h-fit">
-                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%]  py-10 px-10 lg:px-20 lg:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
+                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center lg:top-[50%]  py-10 px-10 lg:px-20 lg:pt-28 pb-9 rounded-xl md:w-[80%] md:pt-32 mx-auto relative mb-5">
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img
