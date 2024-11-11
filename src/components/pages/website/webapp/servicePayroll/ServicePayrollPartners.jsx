@@ -18,7 +18,6 @@ const ServicePayrollPartners = () => {
                 <li key={key}>
                   <img
                     className="w-[150px] h-[150px] object-contain"
-                    // src={`${devBaseImgUrl}/web-obich.png`}
                     src={`${devBaseImgUrl}/${logo.imageName}`}
                     alt=""
                   />

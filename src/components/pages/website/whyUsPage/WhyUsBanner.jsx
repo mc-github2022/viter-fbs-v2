@@ -13,8 +13,7 @@ const WhyUsBanner = () => {
           id="WhyUsBanner"
           className={`banner bg-cover pt-[59px] md:pt-[95px] bg-top`}
           style={{
-            // backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.jpg)`,
-            backgroundImage: `url(../../public/img/whyfbsBanner.webp)`,
+            backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.webp)`,
           }}
         >
           <div className="customContainer">

@@ -1,4 +1,5 @@
 import React from "react";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const WhyUsTheTeam = () => {
   return (
@@ -20,9 +21,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-2 rotate-[-50deg] w-[220px] ml-2">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/team-jeff.png`}
-                      src={`../../public/img/team-jeff.png`}
-                      alt=""
+                      src={`${devBaseImgUrl}/team-jeff.png`}
+                      alt="sir jeff"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -36,9 +36,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-10px] rotate-[-50deg] w-[230px] ml-4">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/teamRalph.png`}
-                      src={`../../public/img/teamRalph.png`}
-                      alt=""
+                      src={`${devBaseImgUrl}/teamRalph.png`}
+                      alt="sir ralph"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -52,9 +51,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-30px] left-[45px] rotate-[-50deg] w-[180px] ml-2">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/team-bea.png`}
-                      src={`../../public/img/team-ada.png`}
-                      alt=""
+                      src={`${devBaseImgUrl}/team-ada.png`}
+                      alt="maam ada"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -68,9 +66,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-2 left-[10px] rotate-[-50deg] w-[180px] ml-2">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/team-bea.png`}
-                      src={`../../public/img/team-bea.png`}
-                      alt=""
+                      src={`${devBaseImgUrl}/team-bea.png`}
+                      alt="miss bea"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -84,9 +81,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-30px] rotate-[-50deg] w-[220px] ml-[50px]">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/teamJhonny.webp`}
-                      src={`../../public/img/teamJhonny.webp`}
-                      alt=""
+                      src={`${devBaseImgUrl}/teamJhonny.webp`}
+                      alt="sir jhonny"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -100,9 +96,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-[50px]">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/teamPat.webp`}
-                      src={`../../public/img/teamPat.webp`}
-                      alt=""
+                      src={`${devBaseImgUrl}/teamPat.webp`}
+                      alt="sir patrick"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -116,9 +111,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-2">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/sir-carlo.png`}
-                      src={`../../public/img/sir-carlo.png`}
-                      alt=""
+                      src={`${devBaseImgUrl}/sir-carlo.png`}
+                      alt="sir carlo"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -132,9 +126,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-12">
                     <img
                       className="grayscale"
-                      // src={`${devBaseImgUrl}/sirMyk.webp`}
-                      src={`../../public/img/sirMyk.webp`}
-                      alt=""
+                      src={`${devBaseImgUrl}/sirMyk.webp`}
+                      alt="sir michael"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">

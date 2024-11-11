@@ -19,7 +19,7 @@ const VaResearchPartners = () => {
                   <img
                     className="w-[150px] h-[150px] object-contain"
                     src={`${devBaseImgUrl}/${logo.imageName}`}
-                    alt=""
+                    alt="partners logo"
                   />
                 </li>
               );

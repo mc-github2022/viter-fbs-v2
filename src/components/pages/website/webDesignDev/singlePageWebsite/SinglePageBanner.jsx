@@ -11,7 +11,6 @@ const SinglePageBanner = () => {
         id="SinglePageBanner"
         className={`banner bg-cover bg-center pt-28 pb-8`}
         style={{
-          // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,
           backgroundImage: `url(${devBaseImgUrl}/${banner[0].bannerImage})`,
         }}
       >

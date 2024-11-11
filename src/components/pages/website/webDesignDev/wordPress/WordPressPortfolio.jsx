@@ -23,7 +23,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-gomission.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50 transition-all"
-                  alt=""
+                  alt="gomission"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -40,7 +40,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-tazamia.png`}
                   className="w-full h-full object-cover rounded-2xl  group-hover:brightness-50"
-                  alt=""
+                  alt="tazamia"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -57,7 +57,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-ottm.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt=""
+                  alt="ottm"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -74,7 +74,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-ftc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt=""
+                  alt="ftc"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -91,7 +91,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-worldfocus.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt=""
+                  alt="worldfocus"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -108,7 +108,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-fca.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt=""
+                  alt="fca"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -125,7 +125,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-phixgenomics.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt=""
+                  alt="phixgenomics"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -142,7 +142,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-fwc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt=""
+                  alt="fwc"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />

@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
 import useQueryData from "../../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -132,7 +133,6 @@ const SinglePagePartnersSay = () => {
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
                                 alt=""
@@ -143,7 +143,6 @@ const SinglePagePartnersSay = () => {
                             </p>
                             <div className="logoAndName flex items-center gap-3">
                               <img
-                                // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
                                 alt=""
@@ -163,7 +162,6 @@ const SinglePagePartnersSay = () => {
                           </div>
                           <div className="hidden lg:block">
                             <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
                               alt=""
