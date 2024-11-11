@@ -163,7 +163,7 @@ const ConStudBatches = () => {
                         <div key={key} className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
-                              className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] lg:min-w-[405px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                              className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] md:w-[300px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
                               }}

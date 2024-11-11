@@ -62,10 +62,10 @@ const ServiceEnrollmentPricing = () => {
                       </ul> */}
                       <table className="prices my-5">
                         {price.info.map((info, key) => (
-                          <tr key={key} className="border-0 flex items-start">
+                          <tr key={key} className="border-0">
                             <td>
                               <FaCheckCircle
-                                className={`${price.customCss} text-light translate-y-1`}
+                                className={`${price.customCss} text-light`}
                               />
                             </td>
                             <td className="text-[16px]">{info}</td>

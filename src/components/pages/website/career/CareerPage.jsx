@@ -67,7 +67,7 @@ const CareerPage = () => {
 
       if (firstOngoingJob) {
         setJobAccordion(true);
-        setJobIdentifier(firstOngoingJob.careers_aid); // Set to ID of the first ongoing job
+        setJobIdentifier(firstOngoingJob.careers_aid);
       }
     }
   }, [careersData]);
