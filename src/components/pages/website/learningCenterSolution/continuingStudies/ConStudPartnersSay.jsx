@@ -147,7 +147,7 @@ const ConStudPartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt=""
+                                alt="quote"
                               />
                             </div>
                             <p className="relative text-justify z-10 italic mb-8  md:min-h-0">
@@ -160,7 +160,7 @@ const ConStudPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
+                                alt="client logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -179,7 +179,7 @@ const ConStudPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
-                              alt=""
+                              alt="client image"
                             />
                           </div>
                         </div>
@@ -205,17 +205,20 @@ const ConStudPartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt=""
+                                alt="quote"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
-                            <div className="logoAndName flex items-center gap-3">
+                            <div
+                              className="logoAndName flex flex-col text-center items-center gap-3
+                            md:flex-row md:text-left"
+                            >
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
+                                alt="client logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -234,7 +237,7 @@ const ConStudPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
-                              alt=""
+                              alt="client image"
                             />
                           </div>
                         </div>

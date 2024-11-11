@@ -18,7 +18,6 @@ const SinglePageOverview = () => {
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
               <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
                 alt=""

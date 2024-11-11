@@ -19,7 +19,7 @@ const WordPressPartners = () => {
                   <img
                     className="w-[200px] object-contain"
                     src={`${devBaseImgUrl}/${logo.imageName}`}
-                    alt=""
+                    alt="client logo"
                   />
                 </li>
               );

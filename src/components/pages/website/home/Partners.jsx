@@ -1,4 +1,5 @@
 import React from "react";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const Partners = () => {
   return (
@@ -10,56 +11,56 @@ const Partners = () => {
               <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-10 items-center">
                 <li>
                   <img
-                    src="../../public/img/logo-avant-white.png"
+                    src={`${devBaseImgUrl}/logo-avant-white.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
-                    src="../../public/img/FTC-e1716532807623.png"
+                    src={`${devBaseImgUrl}/FTC-e1716532807623.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
-                    src="../../public/img/logo-go-mission-trip.png"
+                    src={`${devBaseImgUrl}/logo-go-mission-trip.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
-                    src="../../public/img/jcceos-logo.png"
+                    src={`${devBaseImgUrl}/jcceos-logo.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
-                    src="../../public/img/lightupToy.png"
+                    src={`${devBaseImgUrl}/lightupToy.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
-                    src="../../public/img/rebekah.png"
+                    src={`${devBaseImgUrl}/rebekah.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
-                    src="../../public/img/tm_logo_dark.png"
+                    src={`${devBaseImgUrl}/tm_logo_dark.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
-                    src="../../public/img/logo-world-focus.png"
+                    src={`${devBaseImgUrl}/logo-world-focus.png`}
                     alt=""
                     className="w-[170px] h-[170px] object-contain"
                   />

@@ -1,5 +1,6 @@
 import React from "react";
 import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const WebDesignPartners = () => {
   return (
@@ -17,9 +18,8 @@ const WebDesignPartners = () => {
                 <li key={key}>
                   <img
                     className="object-contain"
-                    // src={`${devBaseImgUrl}/web-obich.png`}
-                    src={`../../public/img/${logo.imageName}`}
-                    alt=""
+                    src={`${devBaseImgUrl}/${logo.imageName}`}
+                    alt="partners logo"
                   />
                 </li>
               );
