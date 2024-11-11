@@ -101,7 +101,7 @@
     @apply font-semibold bg-[#d1d5db] py-1 pr-3 capitalize text-xs;
   }
   table.prices td {
-    @apply text-[16px];
+    @apply text-[16px] !p-[2px];
   }
 }
 
