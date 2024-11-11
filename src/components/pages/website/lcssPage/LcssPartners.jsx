@@ -15,7 +15,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/aclc.png`}
-                src={`../../public/img/aclc.png`}
+                src={`${devBaseImgUrl}/aclc.png`}
                 alt=""
               />
             </li>
@@ -23,7 +23,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/dlsl_official_logo.png`}
-                src={`../../public/img//dlsl_official_logo.png`}
+                src={`${devBaseImgUrl}/dlsl_official_logo.png`}
                 alt=""
               />
             </li>
@@ -31,7 +31,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/csu.png`}
-                src={`../../public/img/csu.png`}
+                src={`${devBaseImgUrl}/csu.png`}
                 alt=""
               />
             </li>
@@ -39,7 +39,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/bsu.png`}
-                src={`../../public/img//bsu.png`}
+                src={`${devBaseImgUrl}/bsu.png`}
                 alt=""
               />
             </li>
@@ -47,7 +47,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/letran.png`}
-                src={`../../public/img//letran.png`}
+                src={`${devBaseImgUrl}/letran.png`}
                 alt=""
               />
             </li>
@@ -55,7 +55,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/lpu.png`}
-                src={`../../public/img/lpu.png`}
+                src={`${devBaseImgUrl}/lpu.png`}
                 alt=""
               />
             </li>
@@ -63,7 +63,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/Bicol-Univ.png`}
-                src={`../../public/img/Bicol-Univ.png`}
+                src={`${devBaseImgUrl}/Bicol-Univ.png`}
                 alt=""
               />
             </li>
@@ -71,7 +71,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/lspu.png`}
-                src={`../../public/img/lspu.png`}
+                src={`${devBaseImgUrl}/lspu.png`}
                 alt=""
               />
             </li>
@@ -79,7 +79,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/pup.png`}
-                src={`../../public/img/pup.png`}
+                src={`${devBaseImgUrl}/pup.png`}
                 alt=""
               />
             </li>
@@ -87,7 +87,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/spc.png`}
-                src={`../../public/img/spc.png`}
+                src={`${devBaseImgUrl}/spc.png`}
                 alt=""
               />
             </li>
@@ -95,7 +95,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/sti.png`}
-                src={`../../public/img/sti.png`}
+                src={`${devBaseImgUrl}/sti.png`}
                 alt=""
               />
             </li>
@@ -103,7 +103,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/tip.png`}
-                src={`../../public/img/tip.png`}
+                src={`${devBaseImgUrl}/tip.png`}
                 alt=""
               />
             </li>
@@ -111,7 +111,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/tmlc.png`}
-                src={`../../public/img/tmlc.png`}
+                src={`${devBaseImgUrl}/tmlc.png`}
                 alt=""
               />
             </li>
@@ -119,7 +119,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/ub.png`}
-                src={`../../public/img/ub.png`}
+                src={`${devBaseImgUrl}/ub.png`}
                 alt=""
               />
             </li>

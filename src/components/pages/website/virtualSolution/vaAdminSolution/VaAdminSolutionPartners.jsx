@@ -12,7 +12,7 @@ const VaAdminSolutionPartners = () => {
             {sectionPartnersTitle[0].mainTitle}
           </h2>
 
-          <ul className="flex flex-wrap justify-center gap-0 md:gap-20 items-center">
+          <ul className="flex flex-wrap justify-center gap-7 md:gap-20 items-center">
             {sectionPartnersLogos.map((logo, key) => {
               return (
                 <li key={key}>

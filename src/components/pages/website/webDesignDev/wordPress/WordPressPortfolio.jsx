@@ -1,5 +1,6 @@
 import React from "react";
 import { RiExternalLinkLine } from "react-icons/ri";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const WordPressPortfolio = () => {
   return (
@@ -20,7 +21,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-gomission.png`}
+                  src={`${devBaseImgUrl}/portfolio-gomission.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50 transition-all"
                   alt=""
                 />
@@ -37,7 +38,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-tazamia.png`}
+                  src={`${devBaseImgUrl}/portfolio-tazamia.png`}
                   className="w-full h-full object-cover rounded-2xl  group-hover:brightness-50"
                   alt=""
                 />
@@ -54,7 +55,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-ottm.png`}
+                  src={`${devBaseImgUrl}/portfolio-ottm.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
@@ -71,7 +72,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-ftc.png`}
+                  src={`${devBaseImgUrl}/portfolio-ftc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
@@ -88,7 +89,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-worldfocus.png`}
+                  src={`${devBaseImgUrl}/portfolio-worldfocus.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
@@ -105,7 +106,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-fca.png`}
+                  src={`${devBaseImgUrl}/portfolio-fca.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
@@ -122,7 +123,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-phixgenomics.png`}
+                  src={`${devBaseImgUrl}/portfolio-phixgenomics.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />
@@ -139,7 +140,7 @@ const WordPressPortfolio = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`../../public/img/portfolio-fwc.png`}
+                  src={`${devBaseImgUrl}/portfolio-fwc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
                   alt=""
                 />

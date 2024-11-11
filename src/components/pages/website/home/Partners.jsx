@@ -9,28 +9,60 @@ const Partners = () => {
             <div className="order-2 lg:order-1">
               <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-10 items-center">
                 <li>
-                  <img src="../../public/img/logo-avant-white.png" alt="" />
+                  <img
+                    src="../../public/img/logo-avant-white.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
                 <li>
-                  <img src="../../public/img/FTC-e1716532807623.png" alt="" />
+                  <img
+                    src="../../public/img/FTC-e1716532807623.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
                 <li>
-                  <img src="../../public/img/logo-go-mission-trip.png" alt="" />
+                  <img
+                    src="../../public/img/logo-go-mission-trip.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
                 <li>
-                  <img src="../../public/img/jcceos-logo.png" alt="" />
+                  <img
+                    src="../../public/img/jcceos-logo.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
                 <li>
-                  <img src="../../public/img/lightupToy.png" alt="" />
+                  <img
+                    src="../../public/img/lightupToy.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
                 <li>
-                  <img src="../../public/img/rebekah.png" alt="" />
+                  <img
+                    src="../../public/img/rebekah.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
                 <li>
-                  <img src="../../public/img/tm_logo_dark.png" alt="" />
+                  <img
+                    src="../../public/img/tm_logo_dark.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
                 <li>
-                  <img src="../../public/img/logo-world-focus.png" alt="" />
+                  <img
+                    src="../../public/img/logo-world-focus.png"
+                    alt=""
+                    className="w-[170px] h-[170px] object-contain"
+                  />
                 </li>
               </ul>
             </div>

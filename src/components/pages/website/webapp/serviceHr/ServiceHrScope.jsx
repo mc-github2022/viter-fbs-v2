@@ -61,7 +61,13 @@ const ServiceHrScope = () => {
                           {scopeList.scopeTitle}
                         </p>
                       </div>
-                      <IoChevronDown className={`${accordion && accordionItem === scopeList.scopeId ? "rotate-180" : ""}`} />
+                      <IoChevronDown
+                        className={`${
+                          accordion && accordionItem === scopeList.scopeId
+                            ? "rotate-180"
+                            : ""
+                        }`}
+                      />
                     </div>
                     <div
                       className={`${

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { serviceInclusion } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const BusinessRegPartnerWithUs = () => {
   return (
@@ -33,7 +34,7 @@ const BusinessRegPartnerWithUs = () => {
             <div className="bgImage absolute top-0 w-[68%] h-full left-0">
               <img
                 // src={`${devBaseImgUrl}/vaPartnerWithUs.jpg`}
-                src={`../../public/img/${serviceInclusion[0].sectionImage}`}
+                src={`${devBaseImgUrl}/${serviceInclusion[0].sectionImage}`}
                 className="w-full h-full object-cover object-center"
                 alt=""
               />

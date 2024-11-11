@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ConStudPartnersWithUs = () => {
   return (
@@ -16,8 +17,7 @@ const ConStudPartnersWithUs = () => {
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
               <img
-                // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//continuing-studies-img.jpg`}
+                src={`${devBaseImgUrl}/continuing-studies-img.jpg`}
                 className="mb-12 w-full mx-auto"
                 alt=""
               />

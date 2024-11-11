@@ -165,8 +165,8 @@ const ImmersionBatchSliderPage = ({
           >
             <div className="z-[1] max-w-[700px] h-[60vh] place-self-center">
               <img
-                src={`${devBaseImgUrl}/${images[0]}`} // Use the only image
-                alt="Batch image" // Alt text for clarity
+                src={`${devBaseImgUrl}/${images[0]}`}
+                alt="Batch image"
                 className="object-contain w-[700px] h-[60vh]"
               />
             </div>

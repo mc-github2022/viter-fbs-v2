@@ -1,4 +1,5 @@
 import React from "react";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ConStudTeam = () => {
   return (
@@ -18,8 +19,7 @@ const ConStudTeam = () => {
           <div className="wrapper flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-10">
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/jhonny.png`}
-                src={`../../public/img/jhonny.png`}
+                src={`${devBaseImgUrl}/jhonny.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
@@ -34,8 +34,7 @@ const ConStudTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/Thea.png`}
-                src={`../../public/img//Thea.png`}
+                src={`${devBaseImgUrl}/Thea.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
@@ -52,8 +51,7 @@ const ConStudTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/roy.png`}
-                src={`../../public/img/roy.png`}
+                src={`${devBaseImgUrl}/roy.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
@@ -67,8 +65,7 @@ const ConStudTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/ms.-herlyn.png`}
-                src={`../../public/img/ms.-herlyn.png`}
+                src={`${devBaseImgUrl}/ms.-herlyn.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
@@ -82,8 +79,7 @@ const ConStudTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/sir-mon-1.png`}
-                src={`../../public/img/sir-mon-1.png`}
+                src={`${devBaseImgUrl}/sir-mon-1.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
@@ -95,8 +91,7 @@ const ConStudTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/mc.png`}
-                src={`../../public/img/mc.png`}
+                src={`${devBaseImgUrl}/mc.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
@@ -110,8 +105,7 @@ const ConStudTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/ansbert.png`}
-                src={`../../public/img/ansbert.png`}
+                src={`${devBaseImgUrl}/ansbert.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
@@ -125,8 +119,7 @@ const ConStudTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/emman.png`}
-                src={`../../public/img/emman.png`}
+                src={`${devBaseImgUrl}/emman.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />

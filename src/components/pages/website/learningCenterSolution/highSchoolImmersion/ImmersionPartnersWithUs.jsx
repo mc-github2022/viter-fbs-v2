@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ImmersionPartnersWithUs = () => {
   return (
@@ -17,7 +18,7 @@ const ImmersionPartnersWithUs = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//workimmersion-sige-img.jpg`}
+                src={`${devBaseImgUrl}/workimmersion-sige-img.jpg`}
                 className="mb-12 w-full mxauto"
                 alt=""
               />
@@ -32,7 +33,7 @@ const ImmersionPartnersWithUs = () => {
                 </li>
                 <li>
                   <a
-                    href="../../public/img/FBS-Work-Immersion-Program-Proposal-2024.pdf"
+                    href={`${devBaseImgUrl}/FBS-Work-Immersion-Program-Proposal-2024.pdf`}
                     download
                     className="flex items-center gap-2 font-bold text-primary"
                   >

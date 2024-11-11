@@ -145,7 +145,6 @@ const ConStudPartnersSay = () => {
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
                                 alt=""
@@ -159,7 +158,6 @@ const ConStudPartnersSay = () => {
                             md:flex-row md:text-left"
                             >
                               <img
-                                // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
                                 alt=""
@@ -179,7 +177,6 @@ const ConStudPartnersSay = () => {
                           </div>
                           <div className="hidden lg:block">
                             <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
                               alt=""
@@ -206,7 +203,6 @@ const ConStudPartnersSay = () => {
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
                                 alt=""
@@ -217,7 +213,6 @@ const ConStudPartnersSay = () => {
                             </p>
                             <div className="logoAndName flex items-center gap-3">
                               <img
-                                // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
                                 alt=""
@@ -237,7 +232,6 @@ const ConStudPartnersSay = () => {
                           </div>
                           <div className="hidden lg:block">
                             <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
                               alt=""
