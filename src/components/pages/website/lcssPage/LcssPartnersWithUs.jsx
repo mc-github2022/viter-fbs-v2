@@ -18,7 +18,7 @@ const LcssPartnersWithUs = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//lcssBannerImg.jpg`}
+                src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
                 className="mb-12 w-full mx-auto"
                 alt=""
               />

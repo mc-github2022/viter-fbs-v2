@@ -1,5 +1,6 @@
 import React from "react";
 import { banner } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const VaAdminSolutionBanner = () => {
   return (
@@ -9,7 +10,7 @@ const VaAdminSolutionBanner = () => {
         className={`banner bg-cover bg-center pt-20 pb-0`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/VABG.jpg)`,
-          backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
+          backgroundImage: `url(${devBaseImgUrl}/${banner[0].bannerImage})`,
         }}
       >
         <div className="customContainer">

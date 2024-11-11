@@ -203,7 +203,6 @@ const WebDesignPartnersSay = () => {
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
                                 alt=""
@@ -212,12 +211,8 @@ const WebDesignPartnersSay = () => {
                             <p className="relative z-10 italic mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
-                            <div
-                              className="                            md:flex-row md:text-left
-                            md:flex-row md:text-left"
-                            >
+                            <div className="md:flex-row md:text-left">
                               <img
-                                // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
                                 alt=""
@@ -237,7 +232,6 @@ const WebDesignPartnersSay = () => {
                           </div>
                           <div className="hidden lg:block">
                             <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
                               alt=""

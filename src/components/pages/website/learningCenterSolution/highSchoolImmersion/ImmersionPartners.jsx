@@ -1,4 +1,5 @@
 import React from "react";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ImmersionPartners = () => {
   return (
@@ -14,7 +15,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/aclc.png`}
-                src={`../../public/img/aclc.png`}
+                src={`${devBaseImgUrl}/aclc.png`}
                 alt=""
               />
             </li>
@@ -22,7 +23,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/dlsl_official_logo.png`}
-                src={`../../public/img//GVA.png`}
+                src={`${devBaseImgUrl}/GVA.png`}
                 alt=""
               />
             </li>
@@ -30,7 +31,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/csu.png`}
-                src={`../../public/img/MFMC.png`}
+                src={`${devBaseImgUrl}/MFMC.png`}
                 alt=""
               />
             </li>
@@ -38,7 +39,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/bsu.png`}
-                src={`../../public/img//SLIS.png`}
+                src={`${devBaseImgUrl}/SLIS.png`}
                 alt=""
               />
             </li>
@@ -46,7 +47,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/letran.png`}
-                src={`../../public/img//SPC.png`}
+                src={`${devBaseImgUrl}/SPC.png`}
                 alt=""
               />
             </li>
@@ -54,7 +55,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/lpu.png`}
-                src={`../../public/img/STMS.png`}
+                src={`${devBaseImgUrl}/STMS.png`}
                 alt=""
               />
             </li>

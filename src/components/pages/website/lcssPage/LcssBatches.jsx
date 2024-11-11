@@ -132,7 +132,7 @@ const LcssBatches = () => {
   const handleModalBatch = (item) => {
     setModalBatch(!modalBatch);
     setItemEdit(item);
-    setSelectedBatchId(item.lcss_batch_aid); // Set the selected batch ID
+    setSelectedBatchId(item.lcss_batch_aid);
     document.body.classList.toggle("overflow-hidden");
   };
 
@@ -195,13 +195,12 @@ const LcssBatches = () => {
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </Slider>
           ) : (
             <div className="flex flex-wrap gap-2 place-content-center">
               {lcssBatchesData?.data.map((item, key) => {
-                // Only render the items that match the category
                 if (
                   item.lcss_batch_category === "College On-the-job Training"
                 ) {
@@ -243,7 +242,7 @@ const LcssBatches = () => {
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </div>
           )}

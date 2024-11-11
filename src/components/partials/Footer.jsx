@@ -6,6 +6,7 @@ import {
   FaLinkedin,
   FaYoutubeSquare,
 } from "react-icons/fa";
+import { devBaseImgUrl } from "../helpers/functions-general";
 
 const Footer = () => {
   return (
@@ -17,7 +18,7 @@ const Footer = () => {
             <div className="text-center sm:text-left">
               <div className="theLogo">
                 <img
-                  src="../../public/img/logo-fbs.png"
+                  src={`${devBaseImgUrl}/logo-fbs.png`}
                   className="w-[157px] mx-auto sm:mx-0"
                   alt=""
                 />

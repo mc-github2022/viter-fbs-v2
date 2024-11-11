@@ -1,4 +1,5 @@
 import React from "react";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const ConStudBanner = () => {
   return (
@@ -8,7 +9,7 @@ const ConStudBanner = () => {
         className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
-          backgroundImage: `url(../../public/img/continuing-studies-bg.webp)`,
+          backgroundImage: `url(${devBaseImgUrl}/continuing-studies-bg.webp)`,
         }}
       >
         <div className="customContainer">

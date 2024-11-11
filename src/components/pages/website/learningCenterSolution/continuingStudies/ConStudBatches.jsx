@@ -132,7 +132,7 @@ const ConStudBatches = () => {
   const handleModalBatch = (item) => {
     setModalBatch(!modalBatch);
     setItemEdit(item);
-    setSelectedBatchId(item.lcss_batch_aid); // Set the selected batch ID
+    setSelectedBatchId(item.lcss_batch_aid);
     document.body.classList.toggle("overflow-hidden");
   };
 
@@ -155,7 +155,6 @@ const ConStudBatches = () => {
             <Slider {...settings}>
               {lcssBatchesData?.data.map((item, key) => {
                 if (item.lcss_batch_category === "Continuing Studies") {
-                  // Split the image string into an array and take the first image
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
@@ -192,15 +191,13 @@ const ConStudBatches = () => {
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </Slider>
           ) : (
             <div className="flex flex-row gap-2">
               {lcssBatchesData?.data.map((item, key) => {
-                // Only render the items that match the category
                 if (item.lcss_batch_category === "Continuing Studies") {
-                  // Split the image string into an array and take the first image
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
@@ -237,7 +234,7 @@ const ConStudBatches = () => {
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </div>
           )}

@@ -184,7 +184,6 @@ const ConStudVidTestimonials = () => {
                       </div>
                       <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                         <img
-                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                           src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
                           className="w-[60px]  mr-4"
                           alt=""
@@ -236,7 +235,6 @@ const ConStudVidTestimonials = () => {
                       </div>
                       <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                         <img
-                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                           src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
                           className="w-[60px]  mr-4"
                           alt=""

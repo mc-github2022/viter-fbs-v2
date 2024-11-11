@@ -155,7 +155,6 @@ const ImmersionBatches = () => {
             <Slider {...settings}>
               {lcssBatchesData?.data.map((item, key) => {
                 if (item.lcss_batch_category === "High School Work Immersion") {
-                  // Split the image string into an array and take the first image
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
@@ -193,15 +192,13 @@ const ImmersionBatches = () => {
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </Slider>
           ) : (
             <div className="flex flex-row gap-2">
               {lcssBatchesData?.data.map((item, key) => {
-                // Only render the items that match the category
                 if (item.lcss_batch_category === "High School Work Immersion") {
-                  // Split the image string into an array and take the first image
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
@@ -238,7 +235,7 @@ const ImmersionBatches = () => {
                     </div>
                   );
                 }
-                return null; // Return null if the category does not match
+                return null;
               })}
             </div>
           )}
