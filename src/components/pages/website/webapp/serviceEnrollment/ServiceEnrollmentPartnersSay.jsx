@@ -225,14 +225,14 @@ const ServiceEnrollmentPartnersSay = () => {
                             <p className="relative z-10 italic mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
-                            <div className="                            md:flex-row md:text-left">
+                            <div className="flex flex-col text-center md:flex md:flex-row md:text-left">
                               <img
                                 // src={`${devBaseImgUrl}/sti.png`}
-                                className="w-[80px]"
+                                className="w-[80px] mx-auto"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
                                 alt=""
                               />
-                              <div className="leading-[1] italic">
+                              <div className="leading-[1] italic mt-2">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
                                   {item.industry_testimonial_position}

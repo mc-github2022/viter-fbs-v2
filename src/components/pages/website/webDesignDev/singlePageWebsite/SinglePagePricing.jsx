@@ -28,7 +28,7 @@ const SinglePagePricing = () => {
                       price.isActive
                         ? "bg-primary "
                         : "bg-customGray !text-dark"
-                    } grid place-items-center min-h-[800px]`}
+                    } grid place-items-center min-h-[600px]`}
                   >
                     <div>
                       <div className="title mb-4 ">

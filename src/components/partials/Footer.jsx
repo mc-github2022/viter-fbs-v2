@@ -12,8 +12,8 @@ const Footer = () => {
   return (
     <>
       <footer className="footer bg-[#000000] pt-14 text-light relative overflow-hidden">
-        <div className="footerGradientBlack top-[-20%] left-[28%] absolute h-[700px] w-full sm:top-[-70%] sm:left-[-28%]"></div>
         <div className="customContainer">
+          <div className="footerGradientBlack top-[-20%] left-0 absolute h-[700px] w-full sm:top-[-70%] sm:left-[-30rem]"></div>
           <div className="wrapper md:grid md:grid-cols-2 relative z-[1]">
             <div className="text-center sm:text-left">
               <div className="theLogo">

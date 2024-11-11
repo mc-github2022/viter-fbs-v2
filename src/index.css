@@ -103,6 +103,9 @@
   table.prices td {
     @apply text-[16px] !p-[2px];
   }
+  .theMessage {
+    @apply lg:-translate-y-10;
+  }
 }
 
 @layer components {
