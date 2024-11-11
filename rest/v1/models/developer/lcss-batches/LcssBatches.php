@@ -13,6 +13,9 @@ class LcssBatches
 
     public $connection;
     public $lastInsertedId;
+    public $lcss_batch_start;
+    public $lcss_batch_total;
+    public $lcss_batch_search;
 
     public $tblLcssBatch;
 
@@ -30,6 +33,53 @@ class LcssBatches
             $sql .= "{$this->tblLcssBatch} ";
             $sql .= "order by lcss_batch_aid desc ";
             $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readLimit()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblLcssBatch} ";
+            $sql .= "order by lcss_batch_aid desc ";
+            $sql .= "limit :start, ";
+            $sql .= ":total ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "start" => $this->lcss_batch_start - 1,
+                "total" => $this->lcss_batch_total,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function search()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblLcssBatch} ";
+            $sql .= "where lcss_batch_name = lcss_batch_name ";
+            $sql .= "and (lcss_batch_name like :lcss_batch_name ";
+            $sql .= "or lcss_batch_category like :lcss_batch_category ";
+            $sql .= "or lcss_batch_school like :lcss_batch_school ";
+            $sql .= "or lcss_batch_course like :lcss_batch_course ";
+            $sql .= "or lcss_batch_img like :lcss_batch_img) ";
+            $sql .= "order by lcss_batch_aid desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "lcss_batch_name" => "%{$this->lcss_batch_search}%",
+                "lcss_batch_category" => "%{$this->lcss_batch_search}%",
+                "lcss_batch_school" => "%{$this->lcss_batch_search}%",
+                "lcss_batch_course" => "%{$this->lcss_batch_search}%",
+                "lcss_batch_img" => "%{$this->lcss_batch_search}%",
+            ]);
         } catch (PDOException $ex) {
             $query = false;
         }

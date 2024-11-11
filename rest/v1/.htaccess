@@ -37,10 +37,14 @@ RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careers
 # Why FBS - EVENTS AND ACTIVITIES
 RewriteRule ^lcssBatches$ controllers/developer/lcss-batches/lcssBatches.php [L]
 RewriteRule ^lcssBatches/([0-9]+)$ controllers/developer/lcss-batches/lcssBatches.php?lcss_batchid=$1 [L]
+RewriteRule ^lcssBatches/page/([0-9]+)$ controllers/developer/lcss-batches/page.php?start=$1 [L]
+RewriteRule ^lcssBatches/search$ controllers/developer/lcss-batches/search.php [L]
 
 # INDUSTRY TESTIMONIAL
 RewriteRule ^indTestimonial$ controllers/developer/industry-testimonial/industryTestimonial.php [L]
 RewriteRule ^indTestimonial/([0-9]+)$ controllers/developer/industry-testimonial/industryTestimonial.php?industry_testimonialid=$1 [L]
+RewriteRule ^indTestimonial/page/([0-9]+)$ controllers/developer/industry-testimonial/page.php?start=$1 [L]
+RewriteRule ^indTestimonial/search$ controllers/developer/industry-testimonial/search.php [L]
 
 # INDUSTRY TESTIMONIAL
 RewriteRule ^vid-testimonial$ controllers/developer/vid-testimonial/vidTestimonial.php [L]
