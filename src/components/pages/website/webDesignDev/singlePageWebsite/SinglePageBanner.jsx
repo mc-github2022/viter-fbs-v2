@@ -8,15 +8,15 @@ const SinglePageBanner = () => {
     <>
       <section
         id="SinglePageBanner"
-        className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
+        className={`banner bg-cover bg-center pt-28 pb-8`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/ServicesBanner.jpg)`,
           backgroundImage: `url(../../public/img/${banner[0].bannerImage})`,
         }}
       >
         <div className="customContainer">
-          <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center max-h-[80vh] min-h-[80vh] transition-all w-full">
-            <div className="text-center py-10 lg:text-left">
+          <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
+            <div className="text-center lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                 {banner[0].bannerTitle}
 
