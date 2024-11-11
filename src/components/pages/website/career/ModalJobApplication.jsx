@@ -2,7 +2,6 @@ import React from "react";
 import { AiFillTikTok } from "react-icons/ai";
 import {
   FaFacebookSquare,
-  FaFileDownload,
   FaInstagramSquare,
   FaLinkedin,
   FaPhone,
@@ -11,24 +10,12 @@ import {
 import { IoMdPin } from "react-icons/io";
 import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import useQueryData from "../../../custom-hooks/useQueryData";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const ModalJobApplication = ({ setModalJob, jobTitle }) => {
   const handleClose = () => {
     setModalJob(false);
   };
-
-  const {
-    isFetching,
-    error,
-    isLoading,
-    status,
-    data: careersData,
-  } = useQueryData(
-    "/v1/careers", // endpoint
-    "get", // method
-    "careers" // key
-  );
 
   return (
     <>
@@ -52,7 +39,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
           </div>
           <div className="absolute right-0 w-[30%] h-full ">
             <img
-              src="../../public/img/lets-talk.jpg"
+              src={`${devBaseImgUrl}/lets-talk.jpg`}
               className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
               alt=""
             />
@@ -86,59 +73,82 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
                   <p>mktg@frontlinebusiness.com.ph</p>
                 </li>
               </ul>
-              <div>
+              <div className="mb-4">
                 <p>Follow Us:</p>
                 <ul className="flex gap-2 text-2xl">
                   <li>
-                    <FaFacebookSquare />
+                    <a
+                      href="https://www.facebook.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaFacebookSquare />
+                    </a>
                   </li>
                   <li>
-                    <FaLinkedin />
+                    <a
+                      href="https://www.linkedin.com/company/frontline-business-solutions-inc"
+                      target="_blank"
+                    >
+                      <FaLinkedin />
+                    </a>
                   </li>
                   <li>
-                    <FaYoutubeSquare />
+                    <a
+                      href="https://www.youtube.com/@frontlinebusinesssolutions6578"
+                      target="_blank"
+                    >
+                      <FaYoutubeSquare />
+                    </a>
                   </li>
                   <li>
-                    <FaInstagramSquare />
+                    <a
+                      href="https://www.instagram.com/frontline.business"
+                      target="_blank"
+                    >
+                      <FaInstagramSquare />
+                    </a>
                   </li>
                   <li>
-                    <AiFillTikTok />
+                    <a
+                      href="https://www.tiktok.com/@frontlinebusinessinc"
+                      target="_blank"
+                    >
+                      <AiFillTikTok />
+                    </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">
-            {careersData?.data.map((item, key) => {
-              <p className="mb-2 text-lg" key={key}>
-                Job Application: <b>{item.careers_job_title}</b>
-              </p>;
-            })}
+            <p className="mb-2 text-lg">
+              Job Application: <b>{jobTitle}</b>
+            </p>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Full Name</label> <br />
+              <span htmlFor="">Name</span> <br />
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Email</label> <br />
+              <span htmlFor="">Email</span> <br />
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Mobile Number</label> <br />
+              <span htmlFor="">Subject</span> <br />
               <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-4">
-              <label htmlFor="">Resume</label> <br />
-              <input type="file" name="" id="" className="w-full" />
+              <span htmlFor="">Mobile Number</span> <br />
+              <input type="text" name="" id="" className="w-full" />
             </div>
             <div className="inputGroup mb-2">
-              <label htmlFor="">Message</label> <br />
-              <textarea name="" id=""></textarea>
+              <span htmlFor="">Message</span> <br />
+              <textarea name="" id="" className="resize-none"></textarea>
             </div>
             <div className="inputGroup mb-2">
               <input
                 type="submit"
                 value="Submit"
-                className="btn bg-primary text-light cursor-pointer"
+                className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
               />
             </div>
           </div>

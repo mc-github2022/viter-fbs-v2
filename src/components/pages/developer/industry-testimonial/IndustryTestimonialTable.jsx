@@ -9,23 +9,49 @@ import TableSpinner from "../../../partials/spinners/TableSpinner";
 import NoData from "../../../partials/spinners/NoData";
 import TableLoading from "../../../partials/spinners/TableLoading";
 import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import { useInView } from "react-intersection-observer";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
+import SearchBar from "../../../partials/SearchBar";
+import ServerError from "../../../partials/spinners/ServerError";
+import LoadMore from "../../../partials/LoadMore";
 
 const IndustryTestimonialTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
 
+  const [onSearch, setOnSearch] = React.useState(false);
+  const [page, setPage] = React.useState(1);
+  const search = React.useRef({ value: "" });
+  const { ref, inView } = useInView();
+
   const {
-    isFetching,
+    data: result,
     error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
     isLoading,
     status,
-    data: IndtestimonialData,
-  } = useQueryData(
-    "/v1/indTestimonial", // endpoint
-    "get", // method
-    "indTestimonial" // key
-  );
+  } = useInfiniteQuery({
+    queryKey: ["indTestimonial", onSearch, store.isSearch],
+    queryFn: async ({ pageParam = 1 }) =>
+      await queryDataInfinite(
+        `/v1/indTestimonial/search`, // search endpoint
+        `/v1/indTestimonial/page/${pageParam}`, // list endpoint
+        store.isSearch, // search boolean
+        { searchValue: search.current.value, id: "" } // search value
+      ),
+    getNextPageParam: (lastPage) => {
+      if (lastPage.page < lastPage.total) {
+        return lastPage.page + lastPage.count;
+      }
+      return;
+    },
+    refetchOnWindowFocus: false,
+  });
 
   let counter = 1;
 
@@ -40,92 +66,121 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
     setIsId(item.industry_testimonial_aid);
   };
 
+  React.useEffect(() => {
+    if (inView) {
+      setPage((prev) => prev + 1);
+      fetchNextPage();
+    }
+  }, [inView]);
+
   return (
     <>
+      <SearchBar
+        search={search}
+        dispatch={dispatch}
+        store={store}
+        result={result?.pages}
+        isFetching={isFetching}
+        setOnSearch={setOnSearch}
+        onSearch={onSearch}
+      />
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
-        {isFetching ? (
+        {isFetching && !isFetchingNextPage && status !== "loading" && (
           <FetchingSpinner />
-        ) : (
-          <table>
-            <thead>
-              <tr className="text-[black]">
-                <th className="pl-2 w-[1rem]">#</th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Company</th>
-                <th>Category</th>
-                <th className="w-[30rem]">Message</th>
-                <th>Image</th>
-                <th>Logo</th>
-                <th className="text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="relative">
-              {isLoading && status !== "pending" && <TableSpinner />}
-              {(status === "pending" ||
-                IndtestimonialData?.data.length === 0) && (
-                <tr className="text-center">
-                  <td colSpan="100%" className="p-10">
-                    {status === "pending" ? <TableLoading /> : <NoData />}
-                  </td>
-                </tr>
-              )}
-
-              {error && (
-                <tr className="text-center ">
-                  <td colSpan="100%" className="p-10">
-                    <ServerError />
-                  </td>
-                </tr>
-              )}
-
-              {IndtestimonialData?.data.map((item, key) => (
-                <tr key={key} className="place-content-start text-[14px]">
-                  <td className="pl-2 place-content-start">{counter++}</td>
-                  <td className="place-content-start">
-                    {item.industry_testimonial_name}
-                  </td>
-                  <td className="place-content-start">
-                    {item.industry_testimonial_position}
-                  </td>
-                  <td className="place-content-start">
-                    {item.industry_testimonial_company}
-                  </td>
-                  <td className="place-content-start">
-                    {item.industry_testimonial_category}
-                  </td>
-                  <td className="place-content-start">
-                    <p className="line-clamp-5">
-                      {item.industry_testimonial_message}
-                    </p>
-                  </td>
-                  <td>
-                    <p>{item.industry_testimonial_img}</p>
-                  </td>
-                  <td className="place-content-start">
-                    {item.industry_testimonial_logo}
-                  </td>
-                  <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                    <button
-                      className="tooltip-action-table"
-                      data-tooltip="Edit"
-                      onClick={() => handleEdit(item)}
-                    >
-                      <FaEdit className="text-gray-600 text-[18px]" />
-                    </button>
-                    <button
-                      className="tooltip-action-table"
-                      data-tooltip="Delete"
-                      onClick={() => handleDelete(item)}
-                    >
-                      <MdDelete className="text-gray-600 text-[18px]" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         )}
+        <table>
+          <thead>
+            <tr className="text-[black]">
+              <th className="pl-2 w-[1rem]">#</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Company</th>
+              <th>Category</th>
+              <th className="w-[30rem]">Message</th>
+              <th>Image</th>
+              <th>Logo</th>
+              <th className="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="relative">
+            {isLoading && !isFetchingNextPage && status !== "pending" && (
+              <TableSpinner />
+            )}
+            {(status === "pending" || result?.pages[0].data.length === 0) && (
+              <tr className="text-center">
+                <td colSpan="100%" className="p-10">
+                  {status === "pending" ? <TableLoading /> : <NoData />}
+                </td>
+              </tr>
+            )}
+
+            {error && (
+              <tr className="text-center ">
+                <td colSpan="100%" className="p-10">
+                  <ServerError />
+                </td>
+              </tr>
+            )}
+
+            {result?.pages.map((page, key) => (
+              <React.Fragment key={key}>
+                {page?.data.map((item, key) => (
+                  <tr key={key} className="place-content-start text-[14px]">
+                    <td className="pl-2 place-content-start">{counter++}</td>
+                    <td className="place-content-start">
+                      {item.industry_testimonial_name}
+                    </td>
+                    <td className="place-content-start">
+                      {item.industry_testimonial_position}
+                    </td>
+                    <td className="place-content-start">
+                      {item.industry_testimonial_company}
+                    </td>
+                    <td className="place-content-start">
+                      {item.industry_testimonial_category}
+                    </td>
+                    <td className="place-content-start">
+                      <p className="line-clamp-5">
+                        {item.industry_testimonial_message}
+                      </p>
+                    </td>
+                    <td>
+                      <p>{item.industry_testimonial_img}</p>
+                    </td>
+                    <td className="place-content-start">
+                      {item.industry_testimonial_logo}
+                    </td>
+                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Edit"
+                        onClick={() => handleEdit(item)}
+                      >
+                        <FaEdit className="text-gray-600 text-[18px]" />
+                      </button>
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Delete"
+                        onClick={() => handleDelete(item)}
+                      >
+                        <MdDelete className="text-gray-600 text-[18px]" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+        <LoadMore
+          fetchNextPage={fetchNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+          hasNextPage={hasNextPage}
+          result={result?.pages[0]}
+          setPage={setPage}
+          page={page}
+          refView={ref}
+        />
       </div>
 
       {store.isDelete && (
