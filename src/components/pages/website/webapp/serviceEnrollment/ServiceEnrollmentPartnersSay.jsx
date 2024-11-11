@@ -226,12 +226,11 @@ const ServiceEnrollmentPartnersSay = () => {
                             md:flex-row md:text-left"
                             >
                               <img
-                                // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
                                 alt=""
                               />
-                              <div className="leading-[1] italic mt-2">
+                              <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
                                   {item.industry_testimonial_position}
