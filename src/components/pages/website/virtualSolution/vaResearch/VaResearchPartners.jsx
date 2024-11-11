@@ -1,5 +1,6 @@
 import React from "react";
 import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const VaResearchPartners = () => {
   return (
@@ -18,7 +19,7 @@ const VaResearchPartners = () => {
                   <img
                     className="object-contain"
                     // src={`${devBaseImgUrl}/web-obich.png`}
-                    src={`../../public/img/${logo.imageName}`}
+                    src={`${devBaseImgUrl}/${logo.imageName}`}
                     alt=""
                   />
                 </li>

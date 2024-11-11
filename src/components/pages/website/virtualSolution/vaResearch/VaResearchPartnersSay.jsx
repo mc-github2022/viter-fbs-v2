@@ -216,7 +216,7 @@ const VaResearchPartnersSay = () => {
                             <p className="relative z-10 italic mb-8  md:min-h-0">
                               {item.industry_testimonial_message}
                             </p>
-                            <div className="                            md:flex-row md:text-left">
+                            <div className="md:flex-row md:text-left">
                               <img
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"

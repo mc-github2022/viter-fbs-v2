@@ -1,11 +1,12 @@
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const VaMarketingOverview = () => {
   return (
     <>
-      <section className="VaMarketingOverview pt-20 ">
+      <section className="VaMarketingOverview py-20 ">
         <div className="customContainer">
           <p>{webAppOverview[0].subtitle}</p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
@@ -17,7 +18,7 @@ const VaMarketingOverview = () => {
             <div>
               <img
                 // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
-                src={`../../public/img/${webAppOverview[0].webAppImage}`}
+                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
                 alt=""
               />

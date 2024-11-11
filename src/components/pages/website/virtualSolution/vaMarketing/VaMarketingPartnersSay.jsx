@@ -212,8 +212,7 @@ const VaMarketingPartnersSay = () => {
                               {item.industry_testimonial_message}
                             </p>
                             <div
-                              className="                            md:flex-row md:text-left
-                            md:flex-row md:text-left"
+                              className="md:flex-row md:text-left"
                             >
                               <img
                                 // src={`${devBaseImgUrl}/sti.png`}

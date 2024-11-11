@@ -121,59 +121,131 @@ const VaAdminSolutionPartnersSay = () => {
     <>
       <section className="VaPartnersSay pb-10 md:py-20">
         <div className="customContainer">
-          <div className="">
-            <p>{clientSaysTitle[0].subTitle}</p>
-            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              {clientSaysTitle[0].mainTitle}
-            </h2>
-          </div>
-          <div className="">
-            <Slider {...partnerSaysSettings}>
-              {clientSays.map((testimonial, key) => {
-                return (
-                  <div key={key} className="md:h-fit">
-                    <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%]  py-10 px-10 md:px-20 md:pt-16 pb-9 rounded-xl md:w-[80%] mx-auto relative mb-5">
-                      <div className="theMessage  relative">
-                        <div className="absolute top-[-30px] left-[-40px]">
-                          <img
-                            // src={`${devBaseImgUrl}/quote-white.png`}
-                            src={`../../public/img//quote-white.png`}
-                            className="w-[80px]"
-                            alt=""
-                          />
-                        </div>
-                        <p className="relative z-10 italic mb-4 min-h-[260px] md:min-h-0 text-sm">
-                          {testimonial.clientMessage}
-                        </p>
-                        <div
-                          className="logoAndName flex flex-col text-center items-center gap-3
+          {IndtestimonialData?.data.length > 0 && (
+            <div className="">
+              <p>What Our</p>
+              <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+                Clients Say
+              </h2>
+            </div>
+          )}
+          <div className="wrapper ">
+            {IndtestimonialData?.data.filter(
+              (item) => item.industry_testimonial_category === "Administrative"
+            ).length > 1 ? (
+              <Slider {...partnerSaysSettings}>
+                {IndtestimonialData?.data.map((item, key) => {
+                  if (item.industry_testimonial_category === "Administrative") {
+                    return (
+                      <div key={key} className="md:h-fit">
+                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%]  py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                          <div className="theMessage  relative">
+                            <div className="absolute top-[-30px] left-[-40px]">
+                              <img
+                                // src={`${devBaseImgUrl}/quote-white.png`}
+                                src={`${devBaseImgUrl}/quote-white.png`}
+                                className="w-[80px]"
+                                alt=""
+                              />
+                            </div>
+                            <p className="relative z-10 italic mb-8  md:min-h-0">
+                              {item.industry_testimonial_message}
+                            </p>
+                            <div
+                              className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
-                        >
-                          <img
-                            // src={`${devBaseImgUrl}/sti.png`}
-                            className="w-[120px]"
-                            src={`../../public/img/${testimonial.clientLogo}`}
-                            alt=""
-                          />
-                          <div className="leading-[1] italic">
-                            <p>{testimonial.clientName}</p>
-                            <p className="text-sm">{testimonial.clientDesc}</p>
+                            >
+                              <img
+                                // src={`${devBaseImgUrl}/sti.png`}
+                                className="w-[80px]"
+                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
+                                alt=""
+                              />
+                              <div className="leading-[1] italic">
+                                <p>{item.industry_testimonial_name}</p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_position}
+                                </p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_company
+                                    ? item.industry_testimonial_company
+                                    : ""}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="hidden lg:block">
+                            <img
+                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
+                              className="absolute bottom-0 w-[300px] right-0"
+                              alt=""
+                            />
                           </div>
                         </div>
                       </div>
-                      <div className="hidden lg:block">
-                        <img
-                          // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                          src={`../../public/img/${testimonial.clientProfilePic}`}
-                          className="absolute bottom-0 w-[300px] right-8"
-                          alt=""
-                        />
+                    );
+                  }
+                })}
+              </Slider>
+            ) : (
+              <div>
+                {IndtestimonialData?.data.map((item, key) => {
+                  if (item.industry_testimonial_category === "Administrative") {
+                    return (
+                      <div className="md:h-fit">
+                        <div
+                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%]  py-10 px-10 md:px-20 md:pt-16 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
+                          key={key}
+                        >
+                          <div className="theMessage  relative">
+                            <div className="absolute top-[-30px] left-[-40px]">
+                              <img
+                                // src={`${devBaseImgUrl}/quote-white.png`}
+                                src={`${devBaseImgUrl}/quote-white.png`}
+                                className="w-[80px]"
+                                alt=""
+                              />
+                            </div>
+                            <p className="relative z-10 italic mb-8  md:min-h-0">
+                              {item.industry_testimonial_message}
+                            </p>
+                            <div className=" md:flex-row md:text-left">
+                              <img
+                                // src={`${devBaseImgUrl}/sti.png`}
+                                className="w-[80px]"
+                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
+                                alt=""
+                              />
+                              <div className="leading-[1] italic">
+                                <p>{item.industry_testimonial_name}</p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_position}
+                                </p>
+                                <p className="text-sm">
+                                  {item.industry_testimonial_company
+                                    ? item.industry_testimonial_company
+                                    : ""}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="hidden lg:block">
+                            <img
+                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
+                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
+                              className="absolute bottom-0 w-[300px] right-0"
+                              alt=""
+                            />
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </Slider>
+                    );
+                  }
+                  return null;
+                })}
+              </div>
+            )}
           </div>
         </div>
       </section>
