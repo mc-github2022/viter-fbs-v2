@@ -13,7 +13,7 @@ const Process = () => {
             </h2>
           </div>
           <img
-            src="../../public/img/our-process.png"
+            src={`${devBaseImgUrl}/our-process.png`}
             className="hidden md:block h-full object-contain object-top w-[78%] mx-auto mb-2"
             alt=""
           />
@@ -23,7 +23,7 @@ const Process = () => {
                 <div className="processItem md:text-center md:translate-y-[-50px] lg:translate-y-[-100px] mb-6">
                   <div>
                     <img
-                      src="../../public/img/wecollaborate.png"
+                      src={`${devBaseImgUrl}/wecollaborate.png`}
                       className=""
                       alt=""
                     />

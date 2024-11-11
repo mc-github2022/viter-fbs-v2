@@ -147,10 +147,9 @@ const ImmersionPartnersSay = () => {
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt=""
+                                alt="quote"
                               />
                             </div>
                             <p className="relative text-justify z-10 italic mb-8  md:min-h-0">
@@ -161,10 +160,9 @@ const ImmersionPartnersSay = () => {
                             md:flex-row md:text-left"
                             >
                               <img
-                                // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
+                                alt="client logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -181,10 +179,9 @@ const ImmersionPartnersSay = () => {
                           </div>
                           <div className="hidden lg:block">
                             <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
-                              alt=""
+                              alt="client image"
                             />
                           </div>
                         </div>
@@ -209,10 +206,9 @@ const ImmersionPartnersSay = () => {
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
-                                // src={`${devBaseImgUrl}/quote-white.png`}
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt=""
+                                alt="quote"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8  md:min-h-0">
@@ -223,10 +219,9 @@ const ImmersionPartnersSay = () => {
                             md:flex-row md:text-left"
                             >
                               <img
-                                // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
+                                alt="client logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -243,10 +238,9 @@ const ImmersionPartnersSay = () => {
                           </div>
                           <div className="hidden lg:block">
                             <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
-                              alt=""
+                              alt="client image"
                             />
                           </div>
                         </div>

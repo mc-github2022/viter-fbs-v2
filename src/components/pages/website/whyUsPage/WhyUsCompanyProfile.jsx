@@ -27,8 +27,7 @@ const WhyUsCompanyProfile = () => {
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
               <img
-                // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`../../public/img//ftc-children.jpg`}
+                src={`${devBaseImgUrl}/ftc-children.jpg`}
                 className="mb-12"
                 alt=""
               />
@@ -43,7 +42,7 @@ const WhyUsCompanyProfile = () => {
                 </li>
                 <li>
                   <a
-                    href="../../public/img/FBS-Brochure-2024.pdf"
+                    href={`${devBaseImgUrl}/FBS-Brochure-2024.pdf`}
                     download
                     className="flex items-center gap-2 font-bold text-primary text-xl"
                   >

@@ -20,7 +20,7 @@ const WordPressOverview = () => {
               <img
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
-                alt=""
+                alt="web app"
               />
               <ul className="flex flex-col mb-10 md:flex md:flex-row items-center gap-12">
                 <li>

@@ -53,7 +53,6 @@ const Testimonials = () => {
               <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[140px] lg:h-[140px] z-[1]">
                 <div>
                   <img
-                    // src={`${devBaseImgUrl}/quote.png`}
                     src={`${devBaseImgUrl}/quote.png`}
                     className="w-full h-full object-cover object-top block"
                     alt="quote"
@@ -127,7 +126,6 @@ const Testimonials = () => {
               }`}
             >
               <img
-                // src={`${devBaseImgUrl}/Rober_han.png`}
                 src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
                 alt="company logo"
                 className="max-w-[430px] object-cover"
@@ -150,7 +148,6 @@ const Testimonials = () => {
               >
                 <div className="w-[200px] max-h-[87px] py-[25px] ml-[15%]">
                   <img
-                    // src={`${devBaseImgUrl}/tm_logo.png`}
                     src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
                     className="object-contain max-h-[87px] "
                     alt="logo image"
