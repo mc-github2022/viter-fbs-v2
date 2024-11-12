@@ -130,7 +130,7 @@ const EventsAndAct = () => {
   return (
     <>
       <Header />
-      <div className="EventsAndAct pb-20 pt-40">
+      <div className="EventsAndAct pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="theTitle mb-20">
             <p>Through Our</p>
