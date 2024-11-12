@@ -18,7 +18,7 @@ const LcssPage = () => {
       <Header pageName={pageName} />
       <LcssBanner pageName={pageName} />
       <LcssPartners />
-      <LcssPartnersWithUs />
+      <LcssPartnersWithUs pageName={pageName} />
       <LcssServices />
       <LcssApplyNow pageName={pageName} />
       <LcssTeam />
