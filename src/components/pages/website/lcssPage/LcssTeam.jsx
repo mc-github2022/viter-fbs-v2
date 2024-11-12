@@ -36,7 +36,7 @@ const LcssTeam = () => {
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
                 // src={`${devBaseImgUrl}/Thea.png`}
-                src={`${devBaseImgUrl}//Thea.png`}
+                src={`${devBaseImgUrl}/Thea.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
                 alt=""
               />
