@@ -137,7 +137,7 @@ const BusinessRegPricing = () => {
                             : "!bg-customGray"
                         } 
                       priceItem mb-5 relative z-[1] text-center p-10
-                      rounded-lg h-[800px] w-[300px] md:w-[400px] md:h-[700px]`}
+                      rounded-lg h-[650px] max-w-[400px] md:w-[400px] md:h-[700px]`}
                       >
                         <div className="z-10">
                           <div className="title mb-4">

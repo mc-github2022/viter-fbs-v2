@@ -127,7 +127,63 @@ const BookkeepingPricing = () => {
                 SCOPE OF SERVICES
               </h2>
               <p className="">MONTHLY SERVICE:</p>
-              <ul className="text-left [&>li]:gap-2 my-4">
+              <table className="prices mt-5  md:max-w-sm md:mx-auto">
+                <tr className="flex items-start gap-3">
+                  <td className="translate-y-1">
+                    <FaCheckCircle className="text-light" />
+                  </td>
+                  <td>
+                    <p>Bookkeeping</p>
+                  </td>
+                </tr>
+                <tr className="flex items-start gap-3">
+                  <td className="translate-y-1">
+                    <FaCheckCircle className="text-light" />
+                  </td>
+                  <td>
+                    <p>Mandatory Government Deductions & Contributions</p>
+                  </td>
+                </tr>
+                <tr className="flex items-start gap-3">
+                  <td className="translate-y-1">
+                    <FaCheckCircle className="text-light" />
+                  </td>
+                  <td>
+                    <p>Financial Reports</p>
+                  </td>
+                </tr>
+                <tr className="flex items-start gap-3">
+                  <td className="translate-y-1">
+                    <FaCheckCircle className="text-light" />
+                  </td>
+                  <td>
+                    <p>Filing of BIR Tax Returns</p>
+                  </td>
+                </tr>
+              </table>
+              <p className="mt-10">QUARTERLY SERVICE:</p>
+              <table className="prices mt-5  md:max-w-sm md:mx-auto">
+                <tr className="flex items-start gap-3">
+                  <td className="translate-y-1">
+                    <FaCheckCircle className="text-light" />
+                  </td>
+                  <td>
+                    <p>BIR Compliance</p>
+                  </td>
+                </tr>
+              </table>
+              <p className="mt-10">ANNUAL SERVICE:</p>
+              <table className="prices mt-5  md:max-w-sm md:mx-auto">
+                <tr className="flex items-start gap-3">
+                  <td className="translate-y-1">
+                    <FaCheckCircle className="text-light" />
+                  </td>
+                  <td>
+                    <p>Renewals (Business Permit, BIR)</p>
+                  </td>
+                </tr>
+              </table>
+              {/* <ul className="text-left [&>li]:gap-2 my-4">
                 <li className="flex items-center">
                   <FaCheckCircle className="text-light" />
                   <p>Bookkeeping</p>
@@ -157,7 +213,7 @@ const BookkeepingPricing = () => {
                     <p>Renewals (Business Permit, BIR)</p>
                   </li>
                 </ul>
-              </ul>
+              </ul> */}
             </div>
           </div>
           <div className="">
@@ -174,7 +230,7 @@ const BookkeepingPricing = () => {
                             : "!bg-customGray"
                         } 
                       priceItem mb-5 relative z-[1] text-center p-5 md:p-10
-                      rounded-lg h-[600px] w-[275px] md:w-[400px]`}
+                      rounded-lg h-[580px] max-w-[400px] md:w-[400px]`}
                       >
                         <div className="z-10">
                           <div className="title mb-4">

@@ -27,7 +27,7 @@ const VaMarketingPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[400px] h-fit md:h-[700px] max-w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] grid place-items-center  lg:min-h-[800px]`}
                   >
                     <div className=" mb-5 relative">
                       <div className="title mb-4">
@@ -79,7 +79,7 @@ const VaMarketingPricing = () => {
                     </div>
                     <a
                       href={price.link}
-                      className="btn px-5 bg-light text-primary font-bold bottom-0 "
+                      className="btn px-5 mt-10 bg-light text-primary font-bold bottom-0 "
                     >
                       {price.btnText}
                     </a>

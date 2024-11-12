@@ -24,7 +24,7 @@ const SinglePagePricing = () => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 md:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow ${
+                    className={`priceItem mb-5 md:mb-0 relative z-[1] text-light text-center p-10 md:min-h-[700px] lg:min-h-[unset] rounded-lg addShadow ${
                       price.isActive
                         ? "bg-primary "
                         : "bg-customGray !text-dark"
@@ -76,7 +76,7 @@ const SinglePagePricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn mt-5 px-5 bg-light text-primary font-bold"
+                        className="btn mt-10 px-5 bg-light text-primary font-bold"
                       >
                         CONTACT US
                       </a>

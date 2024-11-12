@@ -12,7 +12,7 @@ import {
 const VaResearchServiceList = () => {
   return (
     <>
-      <section className="VaResearchServiceList py-20">
+      <section className="VaResearchServiceList pt-0 pb-20 lg:pt-10">
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,40px)] leading-[1.1] font-semibold mb-10">
