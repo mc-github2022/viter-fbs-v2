@@ -63,7 +63,7 @@ const LcssPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/Bicol-Univ.png`}
-                src={`${devBaseImgUrl}/Bicol-Univ.png`}
+                src={`${devBaseImgUrl}/bicol-univ.png`}
                 alt=""
               />
             </li>
