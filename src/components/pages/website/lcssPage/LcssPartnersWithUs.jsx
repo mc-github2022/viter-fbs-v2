@@ -2,8 +2,19 @@ import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import ModalContact from "../../../partials/ModalContact";
 
-const LcssPartnersWithUs = () => {
+const LcssPartnersWithUs = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const handleModalContact = () => {
+    setModalContact(!modalContact);
+  };
+
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="partnersWithUs py-20 bg-customGray">
@@ -24,12 +35,12 @@ const LcssPartnersWithUs = () => {
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
-                  <a
-                    href="#"
+                  <button
+                    onClick={handleForm}
                     className="btn bg-primary text-light font-semibold"
                   >
                     PARTNER WITH US
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <a
@@ -102,6 +113,16 @@ const LcssPartnersWithUs = () => {
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

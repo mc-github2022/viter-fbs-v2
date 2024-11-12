@@ -1,11 +1,17 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import ModalContact from "../../../partials/ModalContact";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const LcssApplyNow = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const handleModalContact = () => {
     setModalContact(!modalContact);
+  };
+
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
   };
   return (
     <>
@@ -50,17 +56,17 @@ const LcssApplyNow = ({ pageName }) => {
                   School Evaluation Form
                 </li>
               </ul>
-              <a
-                href=""
-                className="btn px-3 bg-primary text-light my-5  inline-block rounded-full font-bold"
+              <button
+                onClick={handleForm}
+                className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
                 PARTNER WITH US TODAY
-              </a>
+              </button>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">
               <img
                 // src={`${devBaseImgUrl}/ojt-accepted.jpg`}
-                src="../../public/img/ojt-accepted.webp"
+                src={`${devBaseImgUrl}/ojt-accepted.webp`}
                 className="w-full h-full object-cover object-top"
                 alt=""
               />
@@ -68,12 +74,13 @@ const LcssApplyNow = ({ pageName }) => {
           </div>
         </div>
       </section>
-      {modalContact && (
+      {contactForm && (
         <ModalContact
-          thePageName={pageName}
           setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
           modalContact={modalContact}
-          setToggleMenu={setToggleMenu}
         />
       )}
     </>

@@ -138,7 +138,7 @@ const VaAdminSolutionPartnersSay = () => {
                   if (item.industry_testimonial_category === "Administrative") {
                     return (
                       <div key={key} className="md:h-fit">
-                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%]  py-10 px-10 md:px-20 md:pt-28 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative">
+                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative">
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
@@ -175,7 +175,7 @@ const VaAdminSolutionPartnersSay = () => {
                           <div className="hidden lg:block">
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
+                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
                               alt="client image"
                             />
                           </div>
@@ -192,7 +192,7 @@ const VaAdminSolutionPartnersSay = () => {
                     return (
                       <div className="md:h-fit">
                         <div
-                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%]  py-10 px-10 md:px-20 md:pt-28 pb-9 mb-5 rounded-xl md:w-[80%] mx-auto relative"
+                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative"
                           key={key}
                         >
                           <div className="theMessage  relative">
@@ -231,7 +231,7 @@ const VaAdminSolutionPartnersSay = () => {
                           <div className="hidden lg:block">
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
+                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
                               alt="client image"
                             />
                           </div>

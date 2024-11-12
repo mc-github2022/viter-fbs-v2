@@ -148,7 +148,9 @@ const Insights = () => {
                   {insightData.data.map((post, key) => {
                     return (
                       <div key={key} className="px-4 md:px-0">
-                        <Link to={`${devNavUrl}/insight/${post.home_insights_slug}`}>
+                        <Link
+                          to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                        >
                           <div
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
@@ -178,7 +180,9 @@ const Insights = () => {
                 <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
                   {insightData?.data.map((post, key) => (
                     <div key={key} className=" px-4 md:px-0">
-                      <Link to={`${devNavUrl}/insight/${post.home_insights_slug}`}>
+                      <Link
+                        to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                      >
                         <div
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,

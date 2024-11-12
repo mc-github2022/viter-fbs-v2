@@ -22,6 +22,10 @@ const SingplePage = () => {
     "insights" // key
   );
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   const { slug } = useParams();
 
   const [html, setHtml] = React.useState("");

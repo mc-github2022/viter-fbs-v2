@@ -9,6 +9,12 @@ const LcssBanner = ({ pageName }) => {
   const handleModalContact = () => {
     setModalContact(!modalContact);
   };
+
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section
@@ -37,13 +43,27 @@ const LcssBanner = ({ pageName }) => {
                 required internship hours ranging from 150 to 600, ensuring
                 flexibility and comprehensive skills development.
               </p>
-              <a href="#" className="btn bg-transparent text-light border-2">
+              <button
+                onClick={handleForm}
+                className="btn bg-transparent text-light border-2"
+              >
                 SCHEDULE A DEMO
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
+
       {modalContact && (
         <ModalContact
           thePageName={pageName}
