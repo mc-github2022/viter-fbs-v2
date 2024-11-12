@@ -1,15 +1,15 @@
 import React from "react";
 
-// export const urlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
-// // export const mediaUrlPathFBSMarketingWebsite = "media";
-
-export const urlPathFBSMarketingWebsite = "http://localhost/viter-fbs-v2";
+export const urlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2";
 export const imgUrlPathFBSMarketingWebsite =
-  "http://localhost/viter-fbs-v2/public/img";
-export const mediaUrlPathFBSMarketingWebsite = "media";
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
+// export const mediaUrlPathFBSMarketingWebsite = "media";
+
+// export const urlPathFBSMarketingWebsite = "http://localhost/viter-fbs-v2";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/viter-fbs-v2/public/img";
+// export const mediaUrlPathFBSMarketingWebsite = "media";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
