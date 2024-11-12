@@ -101,28 +101,34 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/webapp-hris">HR Information System</Link>
+                      <Link to={`${devNavUrl}/webapp-hris`}>
+                        HR Information System
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-payroll">Online Payroll System</Link>
+                      <Link to={`${devNavUrl}/webapp-payroll`}>
+                        Online Payroll System
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-enrollment">
+                      <Link to={`${devNavUrl}/webapp-enrollment`}>
                         School Enrollment System
                       </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-onlinepayment">
+                      <Link to={`${devNavUrl}/webapp-onlinepayment`}>
                         Online Payment Integration
                       </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-onlinedonation">
+                      <Link to={`${devNavUrl}/webapp-onlinedonation`}>
                         Online Donation System
                       </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-inventory">Asset Inventory System</Link>
+                      <Link to={`${devNavUrl}/webapp-inventory`}>
+                        Asset Inventory System
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -143,13 +149,15 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/business-registration">
+                      <Link to={`${devNavUrl}/business-registration`}>
                         Business Registration
                       </Link>
                     </li>
 
                     <li>
-                      <Link to="/bookkeeping">Bookkeeping / Compliance</Link>
+                      <Link to={`${devNavUrl}/bookkeeping`}>
+                        Bookkeeping / Compliance
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -170,13 +178,17 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/adminSolution">Administrative</Link>
+                      <Link to={`${devNavUrl}/adminSolution`}>
+                        Administrative
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/va-research">Business Support</Link>
+                      <Link to={`${devNavUrl}/va-research`}>
+                        Business Support
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/va-marketing">Marketing</Link>
+                      <Link to={`${devNavUrl}/va-marketing`}>Marketing</Link>
                     </li>
                     {/* <li>
                       <Link to="/va-techsupport">Technical Support</Link>
@@ -207,13 +219,19 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/lcss">College On-The-Job Training</Link>
+                      <Link to={`${devNavUrl}/lcss`}>
+                        College On-The-Job Training
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/immersion">High School Work Immersion</Link>
+                      <Link to={`${devNavUrl}/immersion`}>
+                        High School Work Immersion
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/continuing-studies">Continuing Studies</Link>
+                      <Link to={`${devNavUrl}/continuing-studies`}>
+                        Continuing Studies
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -234,13 +252,17 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/web-wordpress">WordPress CMS Website</Link>
+                      <Link to={`${devNavUrl}/web-wordpress`}>
+                        WordPress CMS Website
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/web-singlepage">Single Page Website</Link>
+                      <Link to={`${devNavUrl}/web-singlepage`}>
+                        Single Page Website
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/web-design">Web Design</Link>
+                      <Link to={`${devNavUrl}/web-design`}>Web Design</Link>
                     </li>
                   </ul>
                 </div>
