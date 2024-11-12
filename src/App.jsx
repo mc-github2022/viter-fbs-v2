@@ -6,6 +6,7 @@ import { StoreProvider } from "./components/store/StoreContext";
 import SingplePage from "./components/pages/website/singlePage/SingplePage";
 import EventsSingplePage from "./components/pages/website/events/EventsSingplePage";
 import BatchSliderPage from "./components/pages/website/lcssPage/BatchSliderPage";
+import { devNavUrl } from "./components/helpers/functions-general";
 
 function App() {
   const queryClient = new QueryClient();
@@ -21,9 +22,17 @@ function App() {
                 return <Route key={key} {...routesProps} />;
               })}
               <Route path="*" element={<h1>404</h1>} />
-              <Route path="/insight/:slug" element={<SingplePage />} />
+              {/* <Route path="/insight/:slug" element={<SingplePage />} /> */}
               <Route
+                path={`${devNavUrl}/insight/:slug`}
+                element={<SingplePage />}
+              />
+              {/* <Route
                 path="/events-and-activities/:slug"
+                element={<EventsSingplePage />}
+              /> */}
+              <Route
+                path={`${devNavUrl}/events-and-activities/:slug`}
                 element={<EventsSingplePage />}
               />
             </Routes>
