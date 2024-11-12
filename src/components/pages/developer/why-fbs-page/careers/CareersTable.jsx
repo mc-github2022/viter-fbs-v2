@@ -95,7 +95,9 @@ const CareersTable = ({ setItemEdit }) => {
                     {item.careers_job_status}
                   </td>
                   <td>
-                    <p className="line-clamp-5">{item.careers_job_description}</p>
+                    <p className="line-clamp-5">
+                      {item.careers_job_description}
+                    </p>
                   </td>
 
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
@@ -104,7 +106,7 @@ const CareersTable = ({ setItemEdit }) => {
                       data-tooltip="Edit"
                       onClick={() => handleEdit(item)}
                     >
-                      <FaEdit className="text-gray-600 text-[18px]" />
+                      <FaEdit className="text-gray-600 text-[16px]" />
                     </button>
                     <button
                       className="tooltip-action-table"

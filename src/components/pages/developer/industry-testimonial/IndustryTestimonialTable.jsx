@@ -156,7 +156,7 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
                         data-tooltip="Edit"
                         onClick={() => handleEdit(item)}
                       >
-                        <FaEdit className="text-gray-600 text-[18px]" />
+                        <FaEdit className="text-gray-600 text-[16px]" />
                       </button>
                       <button
                         className="tooltip-action-table"
