@@ -15,7 +15,7 @@ function SampleNextArrow(props) {
         position: "absolute",
         color: "white",
         top: "35%",
-        right: "-6%",
+        right: "-3%",
         fontSize: "3rem",
         cursor: "pointer",
         borderRadius: "100%",
@@ -40,7 +40,7 @@ function SamplePrevArrow(props) {
         background: "#ac1e72",
         color: "white",
         top: "35%",
-        left: "-6%",
+        left: "-3%",
         fontSize: "3rem",
         zIndex: "1",
         cursor: "pointer",
@@ -138,8 +138,8 @@ const LcssBatches = () => {
 
   return (
     <>
-      <section className="batches pt-20 pb-0 md:pt-0 md:pb-40">
-        <div className="customContainer max-w-[90%]">
+      <section className="batches pt-20 pb-0 md:pt-0 md:pb-20">
+        <div className="customContainer">
           <div
             className="mb-12
           "
@@ -166,8 +166,8 @@ const LcssBatches = () => {
                         <div key={key} className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
-                              className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] md:w-[300px] flex items-end relative rounded-xl 
-                            grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                              className="blogItem addShadow bg-center bg-cover h-[400px] w-[350px] lg:w-[410px] flex items-end relative rounded-xl 
+                            grayscale hover:grayscale-0 transition-all group cursor-pointer "
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
                               }}
@@ -213,8 +213,9 @@ const LcssBatches = () => {
                         <div key={key} className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
-                              className="blogItem addShadow mx-3 bg-center bg-cover h-[350px] max-w-[405px] lg:min-w-[405px] flex items-end relative rounded-xl 
-                          grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                              className="blogItem addShadow bg-center bg-cover h-[400px] 
+                              w-[350px] lg:w-[410px] flex items-end relative rounded-xl 
+                              grayscale hover:grayscale-0 transition-all group cursor-pointer"
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
                               }}
