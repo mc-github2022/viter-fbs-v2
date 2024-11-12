@@ -76,10 +76,18 @@ const Testimonials = () => {
                     <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[455px] ml-auto text-sm ">
                       {item.home_testimonial_message}
                     </p>
-                    <h3 className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
-                      {item.home_testimonial_name},{" "}
-                      {item.home_testimonial_position}
-                    </h3>
+                    <div>
+                      {/* <h3 className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
+                        {item.home_testimonial_name},{" "}
+                        {item.home_testimonial_position}
+                      </h3> */}
+                      <ul className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
+                        <li>{item.home_testimonial_name}</li>
+                        <li className="text-sm">
+                          {item.home_testimonial_position}
+                        </li>
+                      </ul>
+                    </div>
                     <div className="justify-end flex lg:hidden">
                       <img
                         src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
@@ -90,7 +98,7 @@ const Testimonials = () => {
                   </div>
                 ))}
 
-                <div className="sliderNavTestimonials flex gap-2 absolute right-[2%] py-3 lg:bottom-[20%] lg:py-0">
+                <div className="sliderNavTestimonials bottom-[-30%] flex gap-2 absolute right-[2%] py-3 lg:bottom-[20%] lg:py-0">
                   {testimonialData?.data.map((item, key) => (
                     <button
                       key={key}

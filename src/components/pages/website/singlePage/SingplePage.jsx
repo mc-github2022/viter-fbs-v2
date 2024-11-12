@@ -104,7 +104,7 @@ const SingplePage = () => {
               <div className="order-1 mt-6 md:mt-0">
                 <div className="mb-12">
                   <h3 className="text-2xl font-semibold mb-10 text-dark">
-                    Popular Posts
+                    Recent Posts
                   </h3>
                   <div className="popularPostLinks">
                     <ul className="[&>li]:my-8">
