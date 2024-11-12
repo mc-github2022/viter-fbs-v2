@@ -6,7 +6,7 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   // base: "/", // local
-  base: "/newwsite", // online
+  base: "/newsite", // online
   build: {
     chunkSizeWarningLimit: 4000,
   },
