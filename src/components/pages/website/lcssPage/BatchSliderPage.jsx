@@ -128,6 +128,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
   const selectedItem = lcssBatchesData?.data.find(
     (item) => item.lcss_batch_aid === selectedBatchId
   );
+
   const images =
     selectedItem?.lcss_batch_img
       .split(",")
