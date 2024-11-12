@@ -17,22 +17,28 @@ import {
   IoMailSharp,
 } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
+import { devBaseImgUrl } from "../helpers/functions-general";
 
 const ModalContact = ({
-  setModalContact,
+  setModalContact = null,
   setToggleMenu = null,
-  thePageName,
+  thePageName = null,
+  setContactForm = null,
 }) => {
   const handleClose = () => {
     setModalContact(false);
-    console.log("clicked");
+  };
+
+  const btnClose = () => {
+    setModalContact(false);
+    setContactForm(false);
   };
 
   return (
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center backdrop-blur-lg overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-90 z-[9999] grid place-items-center backdrop-blur-lg overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
@@ -44,13 +50,13 @@ const ModalContact = ({
             <IoCloseCircle
               className="text-3xl text-light"
               onClick={() => {
-                setModalContact(false);
+                btnClose();
               }}
             />
           </div>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
-              src="../../public/img/lets-talk.jpg"
+              src={`${devBaseImgUrl}/lets-talk.jpg`}
               className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
               alt=""
             />

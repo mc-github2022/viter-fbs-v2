@@ -2,12 +2,13 @@ import React from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import { GoDotFill } from "react-icons/go";
+import { devBaseImgUrl } from "../../helpers/functions-general";
 
 const TermsOfService = () => {
   return (
     <>
       <Header />
-      <section className="career pt-40 pb-20">
+      <section className="career pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="text-center">
             <h2 className="text-primary mb-8 text-[clamp(30px,5vw,40px)] font-semibold">
@@ -189,7 +190,7 @@ const TermsOfService = () => {
 
             <div className="my-10">
               <div>
-                <img src="../../public/img/logo.png" alt="" className="py-2" />
+                <img src={`${devBaseImgUrl}/logo.png`} alt="" className="py-2" />
                 <ul>
                   <li>Baloc Road, Brgy. San Ignacio, San Pablo City,</li>
                   <li>Laguna, Philippines 4000</li>

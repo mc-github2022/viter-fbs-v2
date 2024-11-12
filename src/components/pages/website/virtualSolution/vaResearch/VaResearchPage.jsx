@@ -10,9 +10,10 @@ import VaResearchPartnersSay from "./VaResearchPartnersSay";
 import VaResearchServiceList from "./VaResearchServiceList";
 
 const VaResearchPage = () => {
+  const [pageName, setPageName] = React.useState("va-business-support");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <VaResearchBanner />
       <VaResearchOverview />
       <VaResearchServiceList />

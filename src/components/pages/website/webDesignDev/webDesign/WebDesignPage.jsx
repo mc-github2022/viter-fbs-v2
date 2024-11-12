@@ -9,9 +9,10 @@ import WebDesignPricing from "./WebDesignPricing";
 import WebDesignScope from "./WebDesignScope";
 
 const WebDesignPage = () => {
+  const [pageName, setPageName] = React.useState("web-design");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <WebDesignBanner />
       <WebDesignOverview />
       <WebDesignScope />

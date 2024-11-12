@@ -3,7 +3,7 @@ import { BiSolidRightArrow } from "react-icons/bi";
 import { insight } from "./data";
 import { Link } from "react-router-dom";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import { devBaseImgUrl, devNavUrl } from "../../../helpers/functions-general";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -148,7 +148,9 @@ const Insights = () => {
                   {insightData.data.map((post, key) => {
                     return (
                       <div key={key} className="px-4 md:px-0">
-                        <Link to={`/insight/${post.home_insights_slug}`}>
+                        <Link
+                          to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                        >
                           <div
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
@@ -178,7 +180,9 @@ const Insights = () => {
                 <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
                   {insightData?.data.map((post, key) => (
                     <div key={key} className=" px-4 md:px-0">
-                      <Link to={`/insight/${post.home_insights_slug}`}>
+                      <Link
+                        to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                      >
                         <div
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,

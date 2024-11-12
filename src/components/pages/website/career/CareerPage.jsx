@@ -75,7 +75,7 @@ const CareerPage = () => {
   return (
     <>
       <Header />
-      <section className="career pt-40 pb-20">
+      <section className="career pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="text-center">
             <h2 className="text-primary mb-8 text-[clamp(30px,5vw,40px)] font-semibold">

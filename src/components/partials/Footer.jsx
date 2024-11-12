@@ -6,7 +6,7 @@ import {
   FaLinkedin,
   FaYoutubeSquare,
 } from "react-icons/fa";
-import { devBaseImgUrl } from "../helpers/functions-general";
+import { devBaseImgUrl, devNavUrl } from "../helpers/functions-general";
 
 const Footer = () => {
   return (
@@ -91,16 +91,20 @@ const Footer = () => {
                 <p className="font-semibold">QUICKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   <li>
-                    <a href="/webapp-hris">Web Solutions</a>
+                    <a href={`${devNavUrl}/webapp-hris`}>Web Solutions</a>
                   </li>
                   <li>
-                    <a href="/adminSolution">Virtual Assistant Solutions</a>
+                    <a href={`${devNavUrl}/adminSolution`}>
+                      Virtual Assistant Solutions
+                    </a>
                   </li>
                   <li>
-                    <a href="/bookkeeping">Accounting Solutions</a>
+                    <a href={`${devNavUrl}/bookkeeping`}>
+                      Accounting Solutions
+                    </a>
                   </li>
                   <li>
-                    <a href="/lcss">Learning Center Solutions</a>
+                    <a href={`${devNavUrl}/lcss`}>Learning Center Solutions</a>
                   </li>
                 </ul>
               </div>
@@ -114,10 +118,11 @@ const Footer = () => {
                 reserved.
               </p>
               <p className="text-xs">
-                <a href="/privacy-policy">Privacy Policy</a>
+                <a href={`${devNavUrl}/privacy-policy`}>Privacy Policy</a>
                 <span className="mx-2">|</span>
-                <a href="/terms-of-service">Terms of Service</a>
-                <span className="mx-2">|</span> <a href="/eula">EULA</a>
+                <a href={`${devNavUrl}/terms-of-service`}>Terms of Service</a>
+                <span className="mx-2">|</span>{" "}
+                <a href={`${devNavUrl}/eula`}>EULA</a>
               </p>
             </div>
           </div>

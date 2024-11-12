@@ -9,9 +9,10 @@ import BookkeepingPartners from "./BookkeepingPartners";
 import BookkeepingPartnersSay from "./BookkeepingPartnersSay";
 
 const BookkeepingPage = () => {
+  const [pageName, setPageName] = React.useState("bookkeeping");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <BookkeepingBanner />
       <BookkeepingOverview />
       {/* <BookkeepingServiceList /> */}

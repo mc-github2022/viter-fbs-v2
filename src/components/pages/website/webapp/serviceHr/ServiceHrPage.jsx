@@ -9,9 +9,10 @@ import ServiceHrPricing from "./ServiceHrPricing";
 import ServiceHrPartnersSay from "./ServiceHrPartnersSay";
 
 const ServiceHrPage = () => {
+  const [pageName, setPageName] = React.useState("hris");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <ServiceHrBanner />
       <ServiceHrOverview />
       <ServiceHrScope />

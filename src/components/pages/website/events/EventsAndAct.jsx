@@ -6,7 +6,7 @@ import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import { eventsAndAct } from "./data";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import { devBaseImgUrl, devNavUrl } from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -151,7 +151,7 @@ const EventsAndAct = () => {
                 return (
                   <div key={key} className="postItem">
                     <Link
-                      to={`/events-and-activities/${post.events_activities_slug}`}
+                      to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
                     >
                       <div
                         style={{
@@ -193,7 +193,7 @@ const EventsAndAct = () => {
                   return (
                     <div key={key} className="h-[350px]">
                       <Link
-                        to={`/events-and-activities/${post.events_activities_slug}`}
+                        to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
                       >
                         <div
                           style={{
@@ -227,7 +227,7 @@ const EventsAndAct = () => {
                   return (
                     <div key={key} className="h-[350px]">
                       <Link
-                        to={`/events-and-activities/${post.events_activities_slug}`}
+                        to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
                       >
                         <div
                           style={{
