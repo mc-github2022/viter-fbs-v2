@@ -9,9 +9,10 @@ import ServiceEnrollmentPricing from "./ServiceEnrollmentPricing";
 import ServiceEnrollmentPartnersSay from "./ServiceEnrollmentPartnersSay";
 
 const ServiceEnrollmentPage = () => {
+  const [pageName, setPageName] = React.useState("enrollment");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <ServiceEnrollmentBanner />
       <ServiceEnrollmentOverview />
       <ServiceEnrollmentScope />

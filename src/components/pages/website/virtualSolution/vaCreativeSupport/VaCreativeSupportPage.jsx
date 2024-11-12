@@ -12,7 +12,7 @@ import VaCreativeSupportServiceList from "./VaCreativeSupportServiceList";
 const VaCreativeSupportPage = () => {
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <VaCreativeSupportBanner />
       <VaCreativeSupportOverview />
       <VaCreativeSupportServiceList />

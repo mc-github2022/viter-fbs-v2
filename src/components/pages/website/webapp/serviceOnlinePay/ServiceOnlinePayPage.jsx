@@ -9,9 +9,10 @@ import ServiceOnlinePayPricing from "./ServiceOnlinePayPricing";
 import ServiceOnlinePayPartnersSay from "./ServiceOnlinePayPartnersSay";
 
 const ServiceOnlinePayPage = () => {
+  const [pageName, setPageName] = React.useState("online-payment");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <ServiceOnlinePayBanner />
       <ServiceOnlinePayOverview />
       <ServiceOnlinePayScope />

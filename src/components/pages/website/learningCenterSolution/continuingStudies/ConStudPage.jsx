@@ -18,9 +18,9 @@ const ConStudPage = () => {
       <Header pageName={pageName} />
       <ConStudBanner pageName={pageName} />
       {/* <ConStudPartners /> */}
-      <ConStudPartnersWithUs />
+      <ConStudPartnersWithUs pageName={pageName} />
       <ConStudServices />
-      <ConStudApplyNow />
+      <ConStudApplyNow pageName={pageName} />
       <ConStudTeam />
       <ConStudBatches />
       <ConStudVidTestimonials />

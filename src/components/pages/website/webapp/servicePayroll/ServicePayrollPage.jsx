@@ -9,9 +9,10 @@ import ServicePayrollPricing from "./ServicePayrollPricing";
 import ServicePayrollPartnersSay from "./ServicePayrollPartnersSay";
 
 const ServicePayrollPage = () => {
+  const [pageName, setPageName] = React.useState("payroll");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <ServicePayrollBanner />
       <ServicePayrollOverview />
       <ServicePayrollScope />

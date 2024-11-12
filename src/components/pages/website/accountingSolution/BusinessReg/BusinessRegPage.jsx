@@ -9,9 +9,10 @@ import BusinessRegServiceList from "./BusinessRegServiceList";
 import BusinessRegBanner from "./BusinessRegBanner";
 
 const BusinessRegPage = () => {
+  const [pageName, setPageName] = React.useState("business-reg");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <BusinessRegBanner />
       <BusinessRegOverview />
       {/* <BusinessRegServiceList /> */}

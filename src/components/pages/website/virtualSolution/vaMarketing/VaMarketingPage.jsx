@@ -10,9 +10,10 @@ import VaMarketingPartnersSay from "./VaMarketingPartnersSay";
 import VaMarketingServiceList from "./VaMarketingServiceList";
 
 const VaMarketingPage = () => {
+  const [pageName, setPageName] = React.useState("va-marketing");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <VaMarketingBanner />
       <VaMarketingOverview />
       <VaMarketingServiceList />

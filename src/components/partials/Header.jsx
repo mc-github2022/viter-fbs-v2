@@ -168,7 +168,11 @@ const Header = ({ pageName }) => {
       </section>
 
       {toggleMenu && (
-        <MegaMenu toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
+        <MegaMenu
+          toggleMenu={toggleMenu}
+          setToggleMenu={setToggleMenu}
+          pageName={pageName}
+        />
       )}
       {modalContact && (
         <ModalContact
