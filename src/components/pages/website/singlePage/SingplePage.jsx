@@ -7,7 +7,11 @@ import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import { insight } from "../home/data";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import { devBaseImgUrl, formatDate } from "../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  devNavUrl,
+  formatDate,
+} from "../../../helpers/functions-general";
 
 const SingplePage = () => {
   const {
@@ -113,7 +117,7 @@ const SingplePage = () => {
                           <div key={key}>
                             <li className="my-5">
                               <Link
-                                to={`/insight/${popPost.home_insights_slug}`}
+                                to={`${devNavUrl}/insight/${popPost.home_insights_slug}`}
                               >
                                 <div className="flex items-center gap-4">
                                   <div className="min-w-[100px] max-w-[100px] h-[80px]">

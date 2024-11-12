@@ -155,7 +155,7 @@ const Insights = () => {
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                             }}
-                            className="blogItem bg-center bg-cover max-w-[418px] min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                            className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                           >
                             <div>
                               <div className="blogExcerpt p-10 pb-6 relative z-[1]">
@@ -187,7 +187,7 @@ const Insights = () => {
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                           }}
-                          className="blogItem bg-center bg-cover max-w-[418px] min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                         >
                           <div>
                             <div className="blogExcerpt p-10 pb-6 relative z-[1]">
