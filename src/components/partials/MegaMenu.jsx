@@ -27,7 +27,7 @@ const icons = {
   ...PiIcons,
 };
 
-const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
+const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
   const [serviceDropdown, serServiceDropdown] = React.useState(false);
   const [menuIdentifier, setMenuIdentifier] = React.useState("");
 
@@ -101,28 +101,76 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/webapp-hris">HR Information System</Link>
+                      <Link
+                        to="/webapp-hris"
+                        className={`${
+                          pageName === "hris"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        HR Information System
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-payroll">Online Payroll System</Link>
+                      <Link
+                        to="/webapp-payroll"
+                        className={`${
+                          pageName === "payroll"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Online Payroll System
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-enrollment">
+                      <Link
+                        to="/webapp-enrollment"
+                        className={`${
+                          pageName === "enrollment"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
                         School Enrollment System
                       </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-onlinepayment">
+                      <Link
+                        to="/webapp-onlinepayment"
+                        className={`${
+                          pageName === "online-payment"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
                         Online Payment Integration
                       </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-onlinedonation">
+                      <Link
+                        to="/webapp-onlinedonation"
+                        className={`${
+                          pageName === "donation"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
                         Online Donation System
                       </Link>
                     </li>
                     <li>
-                      <Link to="/webapp-inventory">Asset Inventory System</Link>
+                      <Link
+                        to="/webapp-inventory"
+                        className={`${
+                          pageName === "inventory"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Asset Inventory System
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -143,13 +191,29 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/business-registration">
+                      <Link
+                        to="/business-registration"
+                        className={`${
+                          pageName === "business-reg"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
                         Business Registration
                       </Link>
                     </li>
 
                     <li>
-                      <Link to="/bookkeeping">Bookkeeping / Compliance</Link>
+                      <Link
+                        to="/bookkeeping"
+                        className={`${
+                          pageName === "bookkeeping"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Bookkeeping / Compliance
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -170,13 +234,40 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/adminSolution">Administrative</Link>
+                      <Link
+                        to="/adminSolution"
+                        className={`${
+                          pageName === "va-administrative"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Administrative
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/va-research">Business Support</Link>
+                      <Link
+                        to="/va-research"
+                        className={`${
+                          pageName === "va-business-support"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Business Support
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/va-marketing">Marketing</Link>
+                      <Link
+                        to="/va-marketing"
+                        className={`${
+                          pageName === "va-marketing"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Marketing
+                      </Link>
                     </li>
                     {/* <li>
                       <Link to="/va-techsupport">Technical Support</Link>
@@ -207,13 +298,40 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                     [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/lcss">College On-The-Job Training</Link>
+                      <Link
+                        to="/lcss"
+                        className={`${
+                          pageName === "lcss"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        College On-The-Job Training
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/immersion">High School Work Immersion</Link>
+                      <Link
+                        to="/immersion"
+                        className={`${
+                          pageName === "immersion"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        High School Work Immersion
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/continuing-studies">Continuing Studies</Link>
+                      <Link
+                        to="/continuing-studies"
+                        className={`${
+                          pageName === "conStud"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Continuing Studies
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -234,13 +352,40 @@ const MegaMenu = ({ toggleMenu, setToggleMenu }) => {
                   [&>li]:lg:!mb-2`}
                   >
                     <li>
-                      <Link to="/web-wordpress">WordPress CMS Website</Link>
+                      <Link
+                        to="/web-wordpress"
+                        className={`${
+                          pageName === "cms"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        WordPress CMS Website
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/web-singlepage">Single Page Website</Link>
+                      <Link
+                        to="/web-singlepage"
+                        className={`${
+                          pageName === "singlePageWebsite"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Single Page Website
+                      </Link>
                     </li>
                     <li>
-                      <Link to="/web-design">Web Design</Link>
+                      <Link
+                        to="/web-design"
+                        className={`${
+                          pageName === "web-design"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
+                      >
+                        Web Design
+                      </Link>
                     </li>
                   </ul>
                 </div>

@@ -9,9 +9,10 @@ import ServiceOnlineDonationPricing from "./ServiceOnlineDonationPricing";
 import ServiceOnlineDonationPartnersSay from "./ServiceOnlineDonationPartnersSay";
 
 const ServiceOnlineDonationPage = () => {
+  const [pageName, setPageName] = React.useState("donation");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <ServiceOnlineDonationBanner />
       <ServiceOnlineDonationOverview />
       <ServiceOnlineDonationScope />

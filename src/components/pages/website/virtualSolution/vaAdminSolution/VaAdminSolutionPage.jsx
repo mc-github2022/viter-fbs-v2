@@ -10,9 +10,10 @@ import VaAdminSolutionPricing from "./VaAdminSolutionPricing";
 import VaAdminServiceList from "./VaAdminServiceList";
 
 const VaAdminSolutionPage = () => {
+  const [pageName, setPageName] = React.useState("va-administrative");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <VaAdminSolutionBanner />
       <VaAdminSolutionOverview />
       <VaAdminServiceList />

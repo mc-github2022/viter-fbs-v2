@@ -9,9 +9,10 @@ import ServiceInventoryPricing from "./ServiceInventoryPricing";
 import ServiceInventoryPartnersSay from "./ServiceInventoryPartnersSay";
 
 const ServiceInventoryPage = () => {
+  const [pageName, setPageName] = React.useState("inventory");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <ServiceInventoryBanner />
       {/* <ServiceInventoryPartners /> */}
       <ServiceInventoryOverview />
