@@ -1,5 +1,6 @@
 import React from "react";
 
+<<<<<<< HEAD
 // export const urlPathSinglePageWebsite =
 //   "http://localhost/react-vite/viter-fbs-v2";
 // export const imgUrlPathSinglePageWebsite =
@@ -15,6 +16,23 @@ export const devApiUrl = `${urlPathSinglePageWebsite}/rest`;
 export const devBaseUrl = `${urlPathSinglePageWebsite}`;
 export const devBaseImgUrl = `${imgUrlPathSinglePageWebsite}`;
 // export const devBaseMediaUrl = `${mediaUrlPathSinglePageWebsite}`;
+=======
+export const urlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2";
+export const imgUrlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
+// export const mediaUrlPathFBSMarketingWebsite = "media";
+
+// export const urlPathFBSMarketingWebsite = "http://localhost/viter-fbs-v2";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/viter-fbs-v2/public/img";
+// export const mediaUrlPathFBSMarketingWebsite = "media";
+
+export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
+export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
+export const devBaseImgUrl = `${imgUrlPathFBSMarketingWebsite}`;
+// export const devBaseMediaUrl = `${mediaUrlPathFBSMarketingWebsite}`;
+>>>>>>> 40f2975b31f880116a27bcc6c03959eb1d9e910f
 export const devNavUrl = "";
 export const apiVersion = "/v1";
 

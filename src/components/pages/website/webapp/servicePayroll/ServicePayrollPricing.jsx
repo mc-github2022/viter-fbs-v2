@@ -17,13 +17,13 @@ const ServicePayrollPricing = () => {
               Affordable Pricing Plan
             </h3>
           </div>
-          <div className="grid place-items-center">
+          <div className="md:grid md:place-items-center">
             <div className="wrapper md:grid md:grid-cols-1 gap-6 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg min-h-[550px] addShadow ${
+                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg max-w-[400px] addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid place-items-center`}
                   >
@@ -73,7 +73,7 @@ const ServicePayrollPricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn mt-5 px-5  bg-light text-primary font-bold"
+                        className="btn mt-10 px-5  bg-light text-primary font-bold"
                       >
                         LEARN MORE
                       </a>

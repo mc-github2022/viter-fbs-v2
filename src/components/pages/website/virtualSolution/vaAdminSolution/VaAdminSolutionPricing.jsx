@@ -15,7 +15,7 @@ const VaAdminSolutionPricing = () => {
               Suitable Pricing Plans
             </h3>
           </div>
-          <div className="grid place-items-center">
+          <div className="md:grid md:place-items-center">
             <div
               className={`wrapper md:grid md:grid-cols-${pricingCardCount[0].columnNumber} gap-6 md:items-center`}
             >
@@ -27,7 +27,7 @@ const VaAdminSolutionPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow min-h-[450px] lg:min-h-[650px]  max-w-[400px] grid place-items-center`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] lg:min-h-[700px] `}
                   >
                     <div className="">
                       <div className="title mb-4">
@@ -78,7 +78,7 @@ const VaAdminSolutionPricing = () => {
                       <p className="mb-8 hidden lg:block">{price.priceDesc}</p>
                       <a
                         href={price.link}
-                        className="btn px-5 bg-light text-primary font-bold"
+                        className="btn px-5 mt-10 bg-light text-primary font-bold"
                       >
                         {price.btnText}
                       </a>

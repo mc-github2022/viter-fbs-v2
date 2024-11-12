@@ -18,13 +18,13 @@ const ServiceOnlinePayPricing = () => {
               Affordable Pricing Plan
             </h3>
           </div>
-          <div className="grid place-items-center">
+          <div className="md:grid md:place-items-center">
             <div className="wrapper grid grid-cols-1 gap-6 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg min-h-[550px] addShadow ${
+                    className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg max-w-[400px] addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid place-items-center`}
                   >
@@ -74,7 +74,7 @@ const ServiceOnlinePayPricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn px-5 bg-light text-primary font-bold"
+                        className="btn px-5 mt-10 bg-light text-primary font-bold"
                       >
                         CONTACT US
                       </a>

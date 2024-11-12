@@ -18,13 +18,13 @@ const WordPressPricing = () => {
               Affordable Pricing Plan
             </h3>
           </div>
-          <div className="grid place-items-center">
+          <div className="md:grid md:place-items-center">
             <div className="wrapper md:grid md:grid-cols-2 gap-6 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 md:mb-0 relative z-[1] min-h-[600px] text-light text-center p-10 rounded-lg addShadow ${
+                    className={`priceItem mb-5 md:mb-0 relative z-[1] md:min-h-[700px] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
                     } grid place-items-center`}
                   >
@@ -74,7 +74,7 @@ const WordPressPricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn mt-5 px-5 bg-light text-primary font-bold"
+                        className="btn mt-10 px-5 bg-light text-primary font-bold"
                       >
                         CONTACT US
                       </a>

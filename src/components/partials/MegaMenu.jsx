@@ -102,7 +102,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                   >
                     <li>
                       <Link
-                        to="/webapp-hris"
+                        to={`${devNavUrl}/webapp-hris`}
                         className={`${
                           pageName === "hris"
                             ? "text-primary !cursor-default"
@@ -114,7 +114,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/webapp-payroll"
+                        to={`${devNavUrl}/webapp-payroll`}
                         className={`${
                           pageName === "payroll"
                             ? "text-primary !cursor-default"
@@ -126,7 +126,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/webapp-enrollment"
+                        to={`${devNavUrl}/webapp-enrollment`}
                         className={`${
                           pageName === "enrollment"
                             ? "text-primary !cursor-default"
@@ -138,7 +138,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/webapp-onlinepayment"
+                        to={`${devNavUrl}/webapp-onlinepayment`}
                         className={`${
                           pageName === "online-payment"
                             ? "text-primary !cursor-default"
@@ -150,7 +150,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/webapp-onlinedonation"
+                        to={`${devNavUrl}/webapp-onlinedonation`}
                         className={`${
                           pageName === "donation"
                             ? "text-primary !cursor-default"
@@ -162,7 +162,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/webapp-inventory"
+                        to={`${devNavUrl}/webapp-inventory`}
                         className={`${
                           pageName === "inventory"
                             ? "text-primary !cursor-default"
@@ -192,7 +192,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                   >
                     <li>
                       <Link
-                        to="/business-registration"
+                        to={`${devNavUrl}/business-registration`}
                         className={`${
                           pageName === "business-reg"
                             ? "text-primary !cursor-default"
@@ -205,7 +205,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
 
                     <li>
                       <Link
-                        to="/bookkeeping"
+                        to={`${devNavUrl}/bookkeeping`}
                         className={`${
                           pageName === "bookkeeping"
                             ? "text-primary !cursor-default"
@@ -235,7 +235,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                   >
                     <li>
                       <Link
-                        to="/adminSolution"
+                        to={`${devNavUrl}/adminSolution`}
                         className={`${
                           pageName === "va-administrative"
                             ? "text-primary !cursor-default"
@@ -247,7 +247,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/va-research"
+                        to={`${devNavUrl}/va-research`}
                         className={`${
                           pageName === "va-business-support"
                             ? "text-primary !cursor-default"
@@ -259,7 +259,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/va-marketing"
+                        to={`${devNavUrl}/va-marketing`}
                         className={`${
                           pageName === "va-marketing"
                             ? "text-primary !cursor-default"
@@ -299,7 +299,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                   >
                     <li>
                       <Link
-                        to="/lcss"
+                        to={`${devNavUrl}/lcss`}
                         className={`${
                           pageName === "lcss"
                             ? "text-primary !cursor-default"
@@ -311,7 +311,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/immersion"
+                        to={`${devNavUrl}/immersion`}
                         className={`${
                           pageName === "immersion"
                             ? "text-primary !cursor-default"
@@ -323,7 +323,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/continuing-studies"
+                        to={`${devNavUrl}/continuing-studies`}
                         className={`${
                           pageName === "conStud"
                             ? "text-primary !cursor-default"
@@ -353,7 +353,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                   >
                     <li>
                       <Link
-                        to="/web-wordpress"
+                        to={`${devNavUrl}/web-wordpress`}
                         className={`${
                           pageName === "cms"
                             ? "text-primary !cursor-default"
@@ -365,7 +365,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/web-singlepage"
+                        to={`${devNavUrl}/web-singlepage`}
                         className={`${
                           pageName === "singlePageWebsite"
                             ? "text-primary !cursor-default"
@@ -377,7 +377,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     </li>
                     <li>
                       <Link
-                        to="/web-design"
+                        to={`${devNavUrl}/web-design`}
                         className={`${
                           pageName === "web-design"
                             ? "text-primary !cursor-default"

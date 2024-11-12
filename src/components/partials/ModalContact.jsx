@@ -17,6 +17,7 @@ import {
   IoMailSharp,
 } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
+import { devBaseImgUrl } from "../helpers/functions-general";
 
 const ModalContact = ({
   setModalContact = null,
@@ -55,7 +56,7 @@ const ModalContact = ({
           </div>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
-              src="../../public/img/lets-talk.jpg"
+              src={`${devBaseImgUrl}/lets-talk.jpg`}
               className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
               alt=""
             />

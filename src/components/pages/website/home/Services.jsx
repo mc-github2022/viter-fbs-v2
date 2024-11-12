@@ -4,6 +4,7 @@ import AccountingSvg from "../../../partials/customSVG/AccountingSvg";
 import SkillDevSvg from "../../../partials/customSVG/SkillDevSvg";
 import VASvg from "../../../partials/customSVG/VASvg";
 import WebSvg from "../../../partials/customSVG/WebSvg";
+import { devNavUrl } from "../../../helpers/functions-general";
 
 const Services = () => {
   return (
@@ -31,7 +32,7 @@ const Services = () => {
                 conversions.
               </p>
               <a
-                href="#"
+                href={`${devNavUrl}/webapp-hris`}
                 className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
@@ -51,7 +52,7 @@ const Services = () => {
                 reliable support, freeing you to focus on growing your business.
               </p>
               <a
-                href="#"
+                href={`${devNavUrl}/adminSolution`}
                 className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
@@ -72,7 +73,7 @@ const Services = () => {
                 compliance for sustainable growth.
               </p>
               <a
-                href="#"
+                href={`${devNavUrl}/bookkeeping`}
                 className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />
@@ -93,7 +94,7 @@ const Services = () => {
                 employment and aligning them with industry
               </p>
               <a
-                href="#"
+                href={`${devNavUrl}/lcss`}
                 className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all"
               >
                 Learn More <FaArrowRight />

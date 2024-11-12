@@ -65,7 +65,7 @@ const DashboardNav = ({ menu }) => {
                         louren@gmail.com
                       </span>
                     </a>
-                    <Link to="/changePass">
+                    <Link to={`${devNavUrl}/changePass`}>
                       <span className="text-white text-sm">
                         Change Password
                       </span>

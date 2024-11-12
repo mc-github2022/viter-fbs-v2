@@ -5,6 +5,7 @@ import { BiSolidDownArrow } from "react-icons/bi";
 import MegaMenu from "./MegaMenu";
 import ModalContact from "./ModalContact";
 import { Link } from "react-router-dom";
+import { devNavUrl } from "../helpers/functions-general";
 
 const Header = ({ pageName }) => {
   const [toggleNav, setToggleNav] = React.useState(false);
@@ -62,7 +63,7 @@ const Header = ({ pageName }) => {
             >
               <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to={`${devNavUrl}/`}>Home</Link>
                 </li>
                 <li>
                   <a
@@ -104,20 +105,26 @@ const Header = ({ pageName }) => {
                     } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
                   >
                     <li>
-                      <Link className="!p-0 hover:text-primary" to="/whyus">
+                      <Link
+                        className="!p-0 hover:text-primary"
+                        to={`${devNavUrl}/whyus`}
+                      >
                         Why Work With Us
                       </Link>
                     </li>
                     <li>
                       <Link
                         className="!p-0 hover:text-primary"
-                        to="/events-and-activities"
+                        to={`${devNavUrl}/events-and-activities`}
                       >
                         Events & Activities
                       </Link>
                     </li>
                     <li>
-                      <Link className="!p-0 hover:text-primary" to="/career">
+                      <Link
+                        className="!p-0 hover:text-primary"
+                        to={`${devNavUrl}/career`}
+                      >
                         Career
                       </Link>
                     </li>
