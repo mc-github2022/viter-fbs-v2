@@ -106,24 +106,37 @@ const Header = ({ pageName }) => {
                   >
                     <li>
                       <Link
-                        className="!p-0 hover:text-primary"
+                        // className="!p-0 hover:text-primary"
                         to={`${devNavUrl}/whyus`}
+                        className={`${
+                          pageName === "whyWorkWithUs"
+                            ? "!p-0 text-primary !cursor-default"
+                            : "!p-0 hover:text-primary"
+                        }`}
                       >
                         Why Work With Us
                       </Link>
                     </li>
                     <li>
                       <Link
-                        className="!p-0 hover:text-primary"
                         to={`${devNavUrl}/events-and-activities`}
+                        className={`${
+                          pageName === "events&Activities"
+                            ? "!p-0 text-primary !cursor-default"
+                            : "!p-0 hover:text-primary"
+                        }`}
                       >
                         Events & Activities
                       </Link>
                     </li>
                     <li>
                       <Link
-                        className="!p-0 hover:text-primary"
                         to={`${devNavUrl}/career`}
+                        className={`${
+                          pageName === "career"
+                            ? "!p-0 text-primary !cursor-default"
+                            : "!p-0 hover:text-primary"
+                        }`}
                       >
                         Career
                       </Link>

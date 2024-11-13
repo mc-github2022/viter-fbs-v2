@@ -23,6 +23,7 @@ const icons = {
 };
 
 const CareerPage = () => {
+  const [pageName, setPageName] = React.useState("career");
   const [jobIdentifier, setJobIdentifier] = React.useState("");
   const [jobTitle, setJobTitle] = React.useState("");
 
@@ -74,7 +75,7 @@ const CareerPage = () => {
 
   return (
     <>
-      <Header />
+      <Header pageName={pageName}/>
       <section className="career pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="text-center">

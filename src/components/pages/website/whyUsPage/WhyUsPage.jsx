@@ -8,9 +8,10 @@ import WhyUsPartners from "./WhyUsPartners";
 import WhyUsTheTeam from "./WhyUsTheTeam";
 
 const WhyUsPage = () => {
+  const [pageName, setPageName] = React.useState("whyWorkWithUs");
   return (
     <>
-      <Header />
+      <Header pageName={pageName}/>
       <WhyUsBanner />
       <WhyUsCompanyProfile />
       <MissionVission />

@@ -60,6 +60,8 @@ function SamplePrevArrow(props) {
 }
 
 const EventsAndAct = () => {
+  const [pageName, setPageName] = React.useState("events&Activities");
+
   const {
     isFetching,
     error,
@@ -129,7 +131,7 @@ const EventsAndAct = () => {
   };
   return (
     <>
-      <Header />
+      <Header pageName={pageName}/>
       <div className="EventsAndAct pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="theTitle mb-20">
