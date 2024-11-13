@@ -126,7 +126,7 @@ const ServiceOnlinePayPartnersSay = () => {
                                 alt=""
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8 md:min-h-0 text-justify min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
+                            <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
                               {item.industry_testimonial_message}
                             </p>
                             <div
@@ -187,7 +187,7 @@ const ServiceOnlinePayPartnersSay = () => {
                                 alt="quote"
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8 md:min-h-0 text-justify min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
+                            <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
                               {item.industry_testimonial_message}
                             </p>
                             <div

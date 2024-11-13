@@ -104,7 +104,7 @@ const LcssBatches = () => {
     ),
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1230,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -114,7 +114,7 @@ const LcssBatches = () => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 850,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -166,7 +166,7 @@ const LcssBatches = () => {
                         <div key={key} className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
-                              className="blogItem addShadow bg-center bg-cover h-[400px] w-full md:w-[350px] flex items-end relative rounded-xl 
+                              className="blogItem addShadow bg-center bg-cover h-[400px] min-w-[250px] max-w-[350px] md:min-w-[350px] md:max-w-[350px] flex items-end relative rounded-xl 
                             grayscale hover:grayscale-0 transition-all group cursor-pointer "
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
