@@ -23,7 +23,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/dlsl_official_logo.png`}
-                src={`${devBaseImgUrl}/GVA.png`}
+                src={`${devBaseImgUrl}/gva.png`}
                 alt=""
               />
             </li>
@@ -31,7 +31,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/csu.png`}
-                src={`${devBaseImgUrl}/MFMC.png`}
+                src={`${devBaseImgUrl}/mfmc.png`}
                 alt=""
               />
             </li>
@@ -39,7 +39,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/bsu.png`}
-                src={`${devBaseImgUrl}/SLIS.png`}
+                src={`${devBaseImgUrl}/slis.png`}
                 alt=""
               />
             </li>
@@ -47,7 +47,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/letran.png`}
-                src={`${devBaseImgUrl}/SPC.png`}
+                src={`${devBaseImgUrl}/spc.png`}
                 alt=""
               />
             </li>
@@ -55,7 +55,7 @@ const ImmersionPartners = () => {
               <img
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/lpu.png`}
-                src={`${devBaseImgUrl}/STMS.png`}
+                src={`${devBaseImgUrl}/stms.png`}
                 alt=""
               />
             </li>

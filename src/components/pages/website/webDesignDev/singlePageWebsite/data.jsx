@@ -34,7 +34,7 @@ export const sectionPartnersLogos = [
     imageName: "logo-resound.png",
   },
   {
-    imageName: "logo-tazamia.png",
+    imageName: "logo-tazaMia.png",
   },
   {
     imageName: "logo-threadworks.png",
