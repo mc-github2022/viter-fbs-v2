@@ -10,7 +10,6 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      
       onClick={onClick}
       className="absolute text-[white] top-[20%] md:top-[50%] -translate-y-[50%] md:right-[8%] text-[3rem] bg-primary -right-[8%] cursor-pointer rounded-[50%] w-[48px] h-[48px] grid place-items-center"
     >
@@ -23,7 +22,6 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      
       onClick={onClick}
       className="absolute text-[white] top-[20%] md:top-[50%] -translate-y-[50%] md:left-[8%] text-[3rem] bg-primary -left-[8%] cursor-pointer rounded-[50%] w-[48px] h-[48px] grid place-items-center z-[1]"
     >
@@ -115,8 +113,8 @@ const SinglePagePartnersSay = () => {
                     item.industry_testimonial_category === "Single Page Website"
                   ) {
                     return (
-                      <div key={key} className="md:h-[425px]">
-                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative min-h-[600px] md:min-h-fit">
+                      <div key={key} className="md:min-h-fit min-h-[70vh]">
+                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative ">
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
@@ -170,7 +168,7 @@ const SinglePagePartnersSay = () => {
                     item.industry_testimonial_category === "Single Page Website"
                   ) {
                     return (
-                      <div className="md:h-[425px]">
+                      <div className="md:min-h-fit min-h-[70vh]">
                         <div
                           className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative"
                           key={key}
