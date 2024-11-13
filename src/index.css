@@ -41,7 +41,7 @@
     @apply bg-customGray h-8 p-1 text-sm text-dark;
   }
   /* * {
-    @apply outline ;
+    @apply outline outline-primary ;
   } */
   table {
     @apply border-collapse border-spacing-2 text-left w-full table-auto;
@@ -380,9 +380,9 @@ img.popPost {
   height: 60px !important;
 }
 
-/* @media screen and (min-width: 1366px) {
+@media screen and (min-width: 370px) {
   .slick-track {
     display: flex !important;
     align-items: center !important;
   }
-} */
+}

@@ -21,13 +21,13 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full top-0 h-screen bg-dark bg-opacity-90 z-[9999] grid place-items-center backdrop-blur-lg"
+        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray pl-10 pt-10 pb-10 pr-[150px] grid grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -37,7 +37,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
               }}
             />
           </div>
-          <div className="absolute right-0 w-[30%] h-full ">
+          <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
               src={`${devBaseImgUrl}/lets-talk.jpg`}
               className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
@@ -48,11 +48,11 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
             <div>
               <div className="mb-12">
                 <p>Discover your potential with us.</p>
-                <h3 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
                   Join our Team!
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-12 leading-[1.2]">
+              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p>

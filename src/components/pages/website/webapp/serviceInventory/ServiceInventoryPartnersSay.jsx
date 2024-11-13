@@ -10,22 +10,8 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      style={{
-        position: "absolute",
-        color: "white",
-        top: "50%",
-        transform: "translateY(-50%)",
-        right: "8%",
-        fontSize: "3rem",
-        cursor: "pointer",
-        background: "#ac1f72",
-        borderRadius: "50%",
-        width: "48px",
-        height: "48px",
-        display: "grid",
-        placeItems: "center",
-      }}
       onClick={onClick}
+      className="absolute text-[white] top-[20%] md:top-[50%] -translate-y-[50%] md:right-[8%] text-[3rem] bg-primary -right-[8%] cursor-pointer rounded-[50%] w-[48px] h-[48px] grid place-items-center"
     >
       <IoIosArrowForward className="text-3xl" />
     </div>
@@ -36,23 +22,8 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      style={{
-        position: "absolute",
-        color: "white",
-        top: "50%",
-        transform: "translateY(-50%)",
-        left: "8%",
-        fontSize: "3rem",
-        zIndex: "1",
-        cursor: "pointer",
-        background: "#ac1f72",
-        borderRadius: "50%",
-        width: "48px",
-        height: "48px",
-        display: "grid",
-        placeItems: "center",
-      }}
       onClick={onClick}
+      className="absolute text-[white] top-[20%] md:top-[50%] -translate-y-[50%] md:left-[8%] text-[3rem] bg-primary -left-[8%] cursor-pointer rounded-[50%] w-[48px] h-[48px] grid place-items-center z-[1]"
     >
       <IoIosArrowBack className="text-3xl" />
     </div>
@@ -103,12 +74,26 @@ const ServiceInventoryPartnersSay = () => {
         }}
       ></div>
     ),
+    responsive: [
+      {
+        breakpoint: 350,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          nextArrow: "",
+          prevArrow: "",
+          dots: false,
+          arrows: true,
+          adaptiveHeight: false,
+        },
+      },
+    ],
   };
 
   return (
     <>
       <section className="ServicePayrollPartnersSay py-20 md:pb-20">
-        <div className="customContainer">
+        <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 1 && (
             <div className="">
               <p>What Our</p>
@@ -130,7 +115,7 @@ const ServiceInventoryPartnersSay = () => {
                   ) {
                     return (
                       <div key={key} className="md:h-[425px]">
-                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative">
+                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative min-h-[600px] md:min-h-fit">
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
@@ -140,7 +125,7 @@ const ServiceInventoryPartnersSay = () => {
                                 alt=""
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8  md:min-h-0">
+                            <p className="relative z-10 italic mb-8 md:min-h-0 text-justify min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
                               {item.industry_testimonial_message}
                             </p>
                             <div
@@ -202,7 +187,7 @@ const ServiceInventoryPartnersSay = () => {
                                 alt=""
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8  md:min-h-0">
+                            <p className="relative z-10 italic mb-8 md:min-h-0 text-justify min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
                               {item.industry_testimonial_message}
                             </p>
                             <div

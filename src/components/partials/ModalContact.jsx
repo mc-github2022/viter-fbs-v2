@@ -38,7 +38,7 @@ const ModalContact = ({
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-90 z-[9999] grid place-items-center backdrop-blur-lg overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
@@ -230,7 +230,7 @@ const ModalContact = ({
               )}
             </div>
           </div>
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
             <div className="inputGroup mb-4">
               <span htmlFor="">Name</span> <br />
               <input type="text" name="" id="" className="w-full" />
