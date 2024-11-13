@@ -1,5 +1,6 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
 
 const LcssApplyNow = () => {
   return (
@@ -55,7 +56,7 @@ const LcssApplyNow = () => {
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">
               <img
                 // src={`${devBaseImgUrl}/ojt-accepted.jpg`}
-                src="../../public/img/ojt-accepted.webp"
+                src={`${devBaseImgUrl}/ojt-accepted.webp`}
                 className="w-full h-full object-cover object-top"
                 alt=""
               />

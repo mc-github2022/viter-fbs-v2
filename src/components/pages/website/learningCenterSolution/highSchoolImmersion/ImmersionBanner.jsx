@@ -21,7 +21,7 @@ const ImmersionBanner = () => {
                   Work Immersion
                 </span>
                 <br />
-                <span class="font-light">
+                <span className="font-light">
                   with industry experience practical, work-related skills
                 </span>
               </h2>
