@@ -148,7 +148,9 @@ const SingplePage = () => {
                     {insightData?.data.map((cat, key) => {
                       return (
                         <div key={key}>
-                          <Link to={`/insight/${cat.home_insights_slug}`}>
+                          <Link
+                            to={`${devNavUrl}/insight/${cat.home_insights_slug}`}
+                          >
                             <li className="flex items-center gap-2 mb-3">
                               <BiSolidRightArrow className="text-primary" />
                               {cat.home_insights_category}
