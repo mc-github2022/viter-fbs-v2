@@ -82,7 +82,7 @@ const VaResearchPricing = () => {
                     </div>
                     <a
                       href={price.link}
-                      className="btn px-5 mt-10 bg-light text-primary font-bold bottom-0"
+                      className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] bottom-0"
                     >
                       {price.btnText}
                     </a>

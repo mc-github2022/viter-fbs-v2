@@ -76,7 +76,7 @@ const SinglePagePricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn mt-10 px-5 bg-light text-primary font-bold"
+                        className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px]"
                       >
                         CONTACT US
                       </a>
