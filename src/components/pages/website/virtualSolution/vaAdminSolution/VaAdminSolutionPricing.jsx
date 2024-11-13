@@ -78,7 +78,7 @@ const VaAdminSolutionPricing = () => {
                       <p className="mb-8 hidden lg:block">{price.priceDesc}</p>
                       <a
                         href={price.link}
-                        className="btn px-5 mt-10 bg-light text-primary font-bold"
+                        className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px]"
                       >
                         {price.btnText}
                       </a>
