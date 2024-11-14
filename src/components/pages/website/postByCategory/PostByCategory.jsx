@@ -13,7 +13,7 @@ import {
   formatDate,
 } from "../../../helpers/functions-general";
 
-const SingplePage = () => {
+const PostByCategory = () => {
   const {
     isFetching,
     error,
@@ -25,7 +25,7 @@ const SingplePage = () => {
     "get", // method
     "insights" // key
   );
-
+  console.log(insightData);
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -46,7 +46,7 @@ const SingplePage = () => {
 
     const matchingInsight = insightData.data.find(
       (item) =>
-        item.home_insights_slug?.trim().toLowerCase() ===
+        item.home_insights_category?.trim().toLowerCase() ===
         slug?.trim().toLowerCase()
     );
 
@@ -64,7 +64,7 @@ const SingplePage = () => {
     }
     return insightData.data.find(
       (item) =>
-        item.home_insights_slug?.trim().toLowerCase() ===
+        item.home_insights_category?.trim().toLowerCase() ===
         slug?.trim().toLowerCase()
     );
   };
@@ -148,7 +148,7 @@ const SingplePage = () => {
                       return (
                         <div key={key}>
                           <Link
-                            to={`${devNavUrl}/post-by-category/${cat.home_insights_category}`}>
+                            to={`${devNavUrl}/insight/${cat.home_insights_slug}`}>
                             <li className="flex items-center gap-2 mb-3">
                               <BiSolidRightArrow className="text-primary" />
                               {cat.home_insights_category}
@@ -169,4 +169,4 @@ const SingplePage = () => {
   );
 };
 
-export default SingplePage;
+export default PostByCategory;
