@@ -1,24 +1,24 @@
 import React from "react";
 
 // local url
-// export const urlPathFBSMarketingWebsite =
-//   "https://frontlinebusiness.com.ph/newsite";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
-
-// Online Demo url
 export const urlPathFBSMarketingWebsite =
   "https://frontlinebusiness.com.ph/newsite";
 export const imgUrlPathFBSMarketingWebsite =
-  "https://frontlinebusiness.com.ph/newsite/img";
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
+
+// Online Demo url
+// export const urlPathFBSMarketingWebsite =
+//   "https://frontlinebusiness.com.ph/newsite";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "https://frontlinebusiness.com.ph/newsite/img";
 // export const mediaUrlPathFBSMarketingWebsite = "media";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
 export const devBaseImgUrl = `${imgUrlPathFBSMarketingWebsite}`;
 // export const devBaseMediaUrl = `${mediaUrlPathFBSMarketingWebsite}`;
-export const devNavUrl = "/newsite";
-// export const devNavUrl = "";
+// export const devNavUrl = "/newsite";
+export const devNavUrl = "";
 export const apiVersion = "/v1";
 
 export const UrlDeveloper = "developer";

@@ -32,7 +32,7 @@ class EventsAndActivities
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblEventsAndActivities} ";
-            $sql .= "order by events_activities_aid asc ";
+            $sql .= "order by events_activities_aid desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -46,7 +46,7 @@ class EventsAndActivities
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblEventsAndActivities} ";
-            $sql .= "order by events_activities_aid asc ";
+            $sql .= "order by events_activities_aid desc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -73,7 +73,7 @@ class EventsAndActivities
             $sql .= "or events_activities_slug like :events_activities_slug ";
             $sql .= "or events_activities_date like :events_activities_date ";
             $sql .= "or events_activities_description like :events_activities_description) ";
-            $sql .= "order by events_activities_aid asc ";
+            $sql .= "order by events_activities_aid desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "events_activities_img" => "%{$this->events_activities_search}%",
