@@ -13,10 +13,10 @@ const ServiceOnlineDonationPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <ServiceOnlineDonationBanner />
-      <ServiceOnlineDonationOverview />
-      <ServiceOnlineDonationScope />
-      <ServiceOnlineDonationPricing />
+      <ServiceOnlineDonationBanner pageName={pageName} />
+      <ServiceOnlineDonationOverview pageName={pageName} />
+      <ServiceOnlineDonationScope pageName={pageName} />
+      <ServiceOnlineDonationPricing pageName={pageName} />
       {/* <ServiceOnlineDonationPartners /> */}
       <ServiceOnlineDonationPartnersSay />
       <Footer />

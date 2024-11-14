@@ -13,11 +13,11 @@ const ServiceInventoryPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <ServiceInventoryBanner />
+      <ServiceInventoryBanner pageName={pageName} />
       {/* <ServiceInventoryPartners /> */}
-      <ServiceInventoryOverview />
-      <ServiceInventoryScope />
-      <ServiceInventoryPricing />
+      <ServiceInventoryOverview pageName={pageName} />
+      <ServiceInventoryScope pageName={pageName} />
+      <ServiceInventoryPricing pageName={pageName} />
       {/* <ServiceInventoryPartnersSay /> */}
       <Footer />
     </>

@@ -3,8 +3,15 @@ import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServiceInventoryOverview = () => {
+const ServiceInventoryOverview = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="ServiceInventoryOverview py-20 bg-customGray">
@@ -25,12 +32,11 @@ const ServiceInventoryOverview = () => {
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
-                  <a
-                    href="#"
-                    className="btn bg-primary text-light font-semibold"
-                  >
+                  <button
+                    onClick={handleForm}
+                    className="btn bg-primary text-light font-semibold">
                     {webAppOverview[0].btnText}
-                  </a>
+                  </button>
                 </li>
                 {/* <li>
                   <a
@@ -94,6 +100,15 @@ const ServiceInventoryOverview = () => {
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

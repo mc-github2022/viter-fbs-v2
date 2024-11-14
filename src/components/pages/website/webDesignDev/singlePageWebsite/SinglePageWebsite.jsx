@@ -9,14 +9,14 @@ import SinglePagePartners from "./SinglePagePartners";
 import SinglePagePartnersSay from "./SinglePagePartnersSay";
 
 const SinglePageWebsite = () => {
-  const [pageName, setPageName] = React.useState("singlePageWebsite");
+  const [pageName, setPageName] = React.useState("singlePage Website");
   return (
     <>
       <Header pageName={pageName} />
-      <SinglePageBanner />
-      <SinglePageOverview />
-      <SinglePageScope />
-      <SinglePagePricing />
+      <SinglePageBanner pageName={pageName} />
+      <SinglePageOverview pageName={pageName} />
+      <SinglePageScope pageName={pageName} />
+      <SinglePagePricing pageName={pageName} />
       <SinglePagePartners />
       {/* <SinglePagePartnersSay /> */}
       <Footer />

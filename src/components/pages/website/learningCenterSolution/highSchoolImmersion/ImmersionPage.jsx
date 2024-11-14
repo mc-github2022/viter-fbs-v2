@@ -18,9 +18,9 @@ const ImmersionPage = () => {
       <Header pageName={pageName} />
       <ImmersionBanner pageName={pageName} />
       <ImmersionPartners />
-      <ImmersionPartnersWithUs />
+      <ImmersionPartnersWithUs pageName={pageName} />
       <ImmersionServices />
-      <ImmersionApplyNow />
+      <ImmersionApplyNow pageName={pageName} />
       <ImmersionTeam />
       <ImmersionBatches />
       <ImmersionVidTestimonials />

@@ -2,8 +2,15 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ConStudPartnersWithUs = () => {
+const ConStudPartnersWithUs = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="ConStudPartnersWithUs py-20 bg-customGray">
@@ -23,18 +30,16 @@ const ConStudPartnersWithUs = () => {
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
-                  <a
-                    href="#"
-                    className="btn bg-primary text-light font-semibold"
-                  >
+                  <button
+                    onClick={handleForm}
+                    className="btn bg-primary text-light font-semibold">
                     PARTNER WITH US
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="flex items-center gap-2 font-bold text-primary"
-                  >
+                    className="flex items-center gap-2 font-bold text-primary">
                     Download Proposal <FaFileDownload />
                   </a>
                 </li>
@@ -100,6 +105,15 @@ const ConStudPartnersWithUs = () => {
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

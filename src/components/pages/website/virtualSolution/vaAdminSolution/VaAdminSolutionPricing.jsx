@@ -1,8 +1,16 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { pricing, pricingCardCount } from "./data";
+import ModalContact from "../../../../partials/ModalContact";
 
-const VaAdminSolutionPricing = () => {
+const VaAdminSolutionPricing = ({ pageName }) => {
+  const [contactSubject, setContactSubject] = React.useState("");
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = (item) => {
+    setContactForm(!contactForm);
+    setContactSubject(item);
+  };
   return (
     <>
       <section className="ServiceHrPricing py-20 bg-[#000000] relative overflow-hidden">
@@ -17,8 +25,7 @@ const VaAdminSolutionPricing = () => {
           </div>
           <div className="md:grid md:place-items-center">
             <div
-              className={`wrapper md:grid md:grid-cols-${pricingCardCount[0].columnNumber} gap-6 md:items-center`}
-            >
+              className={`wrapper md:grid md:grid-cols-${pricingCardCount[0].columnNumber} gap-6 md:items-center`}>
               {pricing.map((price, key) => {
                 return (
                   <div
@@ -27,24 +34,20 @@ const VaAdminSolutionPricing = () => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] lg:min-h-[700px] `}
-                  >
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] lg:min-h-[700px] `}>
                     <div className="">
                       <div className="title mb-4">
                         {price.icon}
                         <h3
-                          className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}
-                        >
+                          className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}>
                           {price.title}
                         </h3>
                         <p
-                          className={`${price.customCss} text-2xl text-dark font-bold`}
-                        >
+                          className={`${price.customCss} text-2xl text-dark font-bold`}>
                           {price.rate}
                         </p>
                         <p
-                          className={`${price.customCss} text-xl text-dark font-bold`}
-                        >
+                          className={`${price.customCss} text-xl text-dark font-bold`}>
                           {price.duration}
                         </p>
                         <div className="grid place-items-center">
@@ -62,8 +65,7 @@ const VaAdminSolutionPricing = () => {
                             {price.info.map((info, key) => (
                               <tr
                                 key={key}
-                                className="border-0 flex items-start"
-                              >
+                                className="border-0 flex items-start">
                                 <td>
                                   <FaCheckCircle
                                     className={`${price.customCss} text-light translate-y-1`}
@@ -76,12 +78,11 @@ const VaAdminSolutionPricing = () => {
                         </div>
                       </div>
                       <p className="mb-8 hidden lg:block">{price.priceDesc}</p>
-                      <a
-                        href={price.link}
-                        className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px]"
-                      >
+                      <button
+                        onClick={() => handleForm(price.title)}
+                        className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px]">
                         {price.btnText}
-                      </a>
+                      </button>
                     </div>
                   </div>
                 );
@@ -90,6 +91,16 @@ const VaAdminSolutionPricing = () => {
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={contactSubject}
+        />
+      )}
     </>
   );
 };

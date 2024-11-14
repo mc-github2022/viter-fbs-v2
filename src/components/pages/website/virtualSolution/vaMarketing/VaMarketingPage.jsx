@@ -14,10 +14,10 @@ const VaMarketingPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <VaMarketingBanner />
+      <VaMarketingBanner pageName={pageName} />
       <VaMarketingOverview />
-      <VaMarketingServiceList />
-      <VaMarketingPricing />
+      <VaMarketingServiceList pageName={pageName} />
+      <VaMarketingPricing pageName={pageName} />
       <VaMarketingPartners />
       <VaMarketingPartnersSay />
       <Footer />

@@ -2,8 +2,15 @@ import React from "react";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import { FaCheckCircle, FaRegThumbsUp } from "react-icons/fa";
 import { pricing } from "./data";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServiceEnrollmentPricing = () => {
+const ServiceEnrollmentPricing = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="ServiceCrmPricing py-20 bg-[#000000] relative overflow-hidden">
@@ -26,26 +33,22 @@ const ServiceEnrollmentPricing = () => {
                     key={key}
                     className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg max-w-[400px]  addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
-                    } grid place-items-center`}
-                  >
+                    } grid place-items-center`}>
                     <div>
                       <div className="title mb-4 ">
                         {price.icon}
                         <h3
-                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
-                        >
+                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}>
                           {price.title}
                         </h3>
                         <p
-                          className={`${price.customCss} text-2xl  font-bold text-light`}
-                        >
+                          className={`${price.customCss} text-2xl  font-bold text-light`}>
                           {price.rate}
                         </p>
 
                         {price.note !== "" && (
                           <p
-                            className={`${price.customCss} text-light text-lg italic`}
-                          >
+                            className={`${price.customCss} text-light text-lg italic`}>
                             {price.note}
                           </p>
                         )}
@@ -72,12 +75,11 @@ const ServiceEnrollmentPricing = () => {
                           </tr>
                         ))}
                       </table>
-                      <a
-                        href={`${price.link}`}
-                        className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
-                      >
+                      <button
+                        onClick={handleForm}
+                        className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary">
                         CONTACT US
-                      </a>
+                      </button>
                     </div>
                   </div>
                 );
@@ -86,6 +88,15 @@ const ServiceEnrollmentPricing = () => {
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

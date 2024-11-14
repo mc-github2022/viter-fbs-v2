@@ -14,7 +14,13 @@ import {
 } from "react-icons/md";
 import { BsDatabaseCheck, BsClipboard2Data } from "react-icons/bs";
 import { IoFileTrayStackedOutline } from "react-icons/io5";
-const VaAdminServiceList = () => {
+import ModalContact from "../../../../partials/ModalContact";
+const VaAdminServiceList = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
   return (
     <>
       <section className="serviceList pt-0 pb-20 lg:pt-10">
@@ -28,12 +34,11 @@ const VaAdminServiceList = () => {
               Our VA for Administrative Assistance offers comprehensive support
               to streamline your business operations.
             </p>
-            <a
-              href="#"
-              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
-            >
+            <button
+              onClick={handleForm}
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all">
               GET STARTED
-            </a>
+            </button>
           </div>
           <ul className="serviceInclusion grid md:grid-cols-2 gap-6">
             <li className="flex items-center gap-7">
@@ -102,6 +107,15 @@ const VaAdminServiceList = () => {
           </ul>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

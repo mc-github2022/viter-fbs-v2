@@ -6,8 +6,15 @@ import {
   FileMusic,
   Palette,
 } from "lucide-react";
+import ModalContact from "../../../../partials/ModalContact";
 
-const VaMarketingServiceList = () => {
+const VaMarketingServiceList = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="VaMarketingServiceList pt-0 pb-20 lg:pt-10">
@@ -22,12 +29,11 @@ const VaMarketingServiceList = () => {
               Our VA for Marketing Support offers comprehensive support to
               streamline your business operations.
             </p>
-            <a
-              href="#"
-              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
-            >
+            <button
+              onClick={handleForm}
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all">
               GET STARTED
-            </a>
+            </button>
           </div>
           <ul className="serviceInclusion grid md:grid-cols-2 gap-6">
             <li className="flex items-center gap-7">
@@ -86,6 +92,16 @@ const VaMarketingServiceList = () => {
           </ul>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

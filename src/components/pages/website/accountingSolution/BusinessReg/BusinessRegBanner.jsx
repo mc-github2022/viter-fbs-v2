@@ -1,8 +1,15 @@
 import React from "react";
 import { banner } from "./data";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import ModalContact from "../../../../partials/ModalContact";
 
-const BusinessRegBanner = () => {
+const BusinessRegBanner = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section
@@ -11,8 +18,7 @@ const BusinessRegBanner = () => {
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/VABG.jpg)`,
           backgroundImage: `url(${devBaseImgUrl}/${banner[0].bannerImage})`,
-        }}
-      >
+        }}>
         <div className="customContainer">
           <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
             <div className="text-center py-20 lg:text-left">
@@ -25,13 +31,24 @@ const BusinessRegBanner = () => {
               <p className="text-light font-light mb-10">
                 {banner[0].bannerTextDesc}
               </p>
-              <a href="#" className="btn bg-transparent text-light border-2">
+              <button
+                onClick={handleForm}
+                className="btn bg-transparent text-light border-2">
                 {banner[0].bannerBtnText}
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

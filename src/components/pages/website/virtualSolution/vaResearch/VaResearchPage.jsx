@@ -14,10 +14,10 @@ const VaResearchPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <VaResearchBanner />
+      <VaResearchBanner pageName={pageName} />
       <VaResearchOverview />
-      <VaResearchServiceList />
-      <VaResearchPricing />
+      <VaResearchServiceList pageName={pageName} />
+      <VaResearchPricing pageName={pageName} />
       <VaResearchPartners />
       <VaResearchPartnersSay />
       <Footer />

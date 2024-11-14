@@ -37,8 +37,7 @@ const LcssPartnersWithUs = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
-                  >
+                    className="btn bg-primary text-light font-semibold">
                     PARTNER WITH US
                   </button>
                 </li>
@@ -46,8 +45,7 @@ const LcssPartnersWithUs = ({ pageName }) => {
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1kSl-0-BtMdzMtsTdPw-N2SqI6jlDUJOE"
                     download
-                    className="flex items-center gap-2 font-bold text-primary"
-                  >
+                    className="flex items-center gap-2 font-bold text-primary">
                     Download Proposal <FaFileDownload />
                   </a>
                 </li>

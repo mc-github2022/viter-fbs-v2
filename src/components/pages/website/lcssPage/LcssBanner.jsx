@@ -23,8 +23,7 @@ const LcssBanner = ({ pageName }) => {
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
           backgroundImage: `url(${devBaseImgUrl}/college-ojt-bg.webp)`,
-        }}
-      >
+        }}>
         <div className="customContainer">
           <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
             <div className="text-center py-10 lg:text-left">
@@ -43,12 +42,12 @@ const LcssBanner = ({ pageName }) => {
                 required internship hours ranging from 150 to 600, ensuring
                 flexibility and comprehensive skills development.
               </p>
-              <button
-                onClick={handleForm}
-                className="btn bg-transparent text-light border-2"
-              >
-                SCHEDULE A DEMO
-              </button>
+              <a
+                href="https://calendly.com/carlodm-fbs/demo-discovery-call"
+                target="_blank"
+                className="btn bg-transparent text-light border-2">
+                SCHEDULE A MEETING
+              </a>
             </div>
           </div>
         </div>

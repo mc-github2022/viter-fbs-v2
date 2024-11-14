@@ -13,10 +13,10 @@ const WebDesignPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <WebDesignBanner />
-      <WebDesignOverview />
-      <WebDesignScope />
-      <WebDesignPricing />
+      <WebDesignBanner pageName={pageName} />
+      <WebDesignOverview pageName={pageName} />
+      <WebDesignScope pageName={pageName} />
+      <WebDesignPricing pageName={pageName} />
       <WebDesignPartners />
       <WebDesignPartnersSay />
       <Footer />

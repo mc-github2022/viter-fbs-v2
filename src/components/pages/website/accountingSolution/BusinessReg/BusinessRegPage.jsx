@@ -13,10 +13,10 @@ const BusinessRegPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <BusinessRegBanner />
+      <BusinessRegBanner pageName={pageName} />
       <BusinessRegOverview />
       {/* <BusinessRegServiceList /> */}
-      <BusinessRegPricing />
+      <BusinessRegPricing pageName={pageName} />
       {/* <BusinessRegPartners />
       <BusinessRegPartnersSay /> */}
       <Footer />

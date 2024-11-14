@@ -13,10 +13,10 @@ const ServiceEnrollmentPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <ServiceEnrollmentBanner />
-      <ServiceEnrollmentOverview />
-      <ServiceEnrollmentScope />
-      <ServiceEnrollmentPricing />
+      <ServiceEnrollmentBanner pageName={pageName} />
+      <ServiceEnrollmentOverview pageName={pageName} />
+      <ServiceEnrollmentScope pageName={pageName} />
+      <ServiceEnrollmentPricing pageName={pageName} />
       {/* <ServiceEnrollmentPartners /> */}
       <ServiceEnrollmentPartnersSay />
       <Footer />

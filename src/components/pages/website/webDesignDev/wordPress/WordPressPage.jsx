@@ -14,10 +14,10 @@ const WordPressPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <WordPressBanner />
-      <WordPressOverview />
-      <WordPressScope />
-      <WordPressPricing />
+      <WordPressBanner pageName={pageName} />
+      <WordPressOverview pageName={pageName} />
+      <WordPressScope pageName={pageName} />
+      <WordPressPricing pageName={pageName} />
       <WordPressPortfolio />
       <WordPressPartners />
       <WordPressPartnersSay />

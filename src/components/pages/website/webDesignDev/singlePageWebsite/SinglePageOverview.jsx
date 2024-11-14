@@ -3,8 +3,15 @@ import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import ModalContact from "../../../../partials/ModalContact";
 
-const SinglePageOverview = () => {
+const SinglePageOverview = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="SinglePageOverview py-20 bg-customGray">
@@ -24,19 +31,17 @@ const SinglePageOverview = () => {
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
-                  <a
-                    href="#"
-                    className="btn bg-primary text-light font-semibold"
-                  >
+                  <button
+                    onClick={handleForm}
+                    className="btn bg-primary text-light font-semibold">
                     {webAppOverview[0].btnText}
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <a
                     href={`${devBaseImgUrl}/website-design-and-development-portfolio-2022-v3.pdf`}
                     download
-                    className="flex items-center gap-2 font-bold text-primary"
-                  >
+                    className="flex items-center gap-2 font-bold text-primary">
                     {webAppOverview[0].btnDownloadText} <FaFileDownload />
                   </a>
                 </li>
@@ -94,6 +99,16 @@ const SinglePageOverview = () => {
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

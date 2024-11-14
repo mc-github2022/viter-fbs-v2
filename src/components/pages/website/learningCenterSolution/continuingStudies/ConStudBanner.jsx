@@ -10,8 +10,7 @@ const ConStudBanner = () => {
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
           backgroundImage: `url(${devBaseImgUrl}/continuing-studies-bg.webp)`,
-        }}
-      >
+        }}>
         <div className="customContainer">
           <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center  min-h-[350px] md:min-h-[80vh] transition-all w-full">
             <div className="text-center  py-10 lg:text-left">
@@ -28,8 +27,11 @@ const ConStudBanner = () => {
                 development, backend development, and accounting through
                 hands-on training and real-world experience.
               </p>
-              <a href="#" className="btn bg-transparent text-light border-2">
-                SCHEDULE A DEMO
+              <a
+                href="https://calendly.com/carlodm-fbs/demo-discovery-call"
+                target="_blank"
+                className="btn bg-transparent text-light border-2">
+                SCHEDULE A MEETING
               </a>
             </div>
           </div>

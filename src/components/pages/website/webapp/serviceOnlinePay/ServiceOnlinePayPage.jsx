@@ -13,10 +13,10 @@ const ServiceOnlinePayPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <ServiceOnlinePayBanner />
-      <ServiceOnlinePayOverview />
-      <ServiceOnlinePayScope />
-      <ServiceOnlinePayPricing />
+      <ServiceOnlinePayBanner pageName={pageName} />
+      <ServiceOnlinePayOverview pageName={pageName} />
+      <ServiceOnlinePayScope pageName={pageName} />
+      <ServiceOnlinePayPricing pageName={pageName} />
       {/* <ServiceOnlinePayPartners /> */}
       {/* <ServiceOnlinePayPartnersSay /> */}
       <Footer />

@@ -14,11 +14,11 @@ const VaAdminSolutionPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <VaAdminSolutionBanner />
+      <VaAdminSolutionBanner pageName={pageName} />
       <VaAdminSolutionOverview />
       <VaAdminServiceList />
       {/* <VaAdminSolutionPartnerWithUs /> */}
-      <VaAdminSolutionPricing />
+      <VaAdminSolutionPricing pageName={pageName} />
       <VaAdminSolutionPartners />
       <VaAdminSolutionPartnersSay />
       <Footer />

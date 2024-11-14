@@ -1,8 +1,15 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import ModalContact from "../../../../partials/ModalContact";
 
-const LcssApplyNow = () => {
+const LcssApplyNow = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="lcssApplyNow pt-[40%] pb-40 md:pt-20 md:pb-20 relative overflow-hidden">
@@ -46,12 +53,11 @@ const LcssApplyNow = () => {
                   School Evaluation Form
                 </li>
               </ul>
-              <a
-                href=""
-                className="btn px-3 bg-primary text-light my-5  inline-block rounded-full font-bold"
-              >
+              <button
+                onClick={handleForm}
+                className="btn px-3 bg-primary text-light my-5  inline-block rounded-full font-bold">
                 PARTNER WITH US TODAY
-              </a>
+              </button>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">
               <img
@@ -64,6 +70,15 @@ const LcssApplyNow = () => {
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };
