@@ -74,7 +74,7 @@ const ServiceOnlinePayPricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn px-5 mt-10 bg-primary text-light border-light border-2  font-bold w-[190px]"
+                        className="btn px-5 mt-10 bg-primary text-light border-light border-2  font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
                       >
                         CONTACT US
                       </a>

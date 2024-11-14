@@ -141,13 +141,13 @@ const Insights = () => {
             </h2>
             <p>section to help you grow your business and stay ahead.</p>
           </div>
-          <div className="wrapper ">
+          <div className="wrapper">
             <div className=" order-2 mb-12 lg:mb-0 ">
               {insightData?.data.length > 3 ? (
                 <Slider {...settings}>
                   {insightData.data.map((post, key) => {
                     return (
-                      <div key={key} className="px-4 md:px-0">
+                      <div key={key} className="md:px-0">
                         <Link
                           to={`${devNavUrl}/insight/${post.home_insights_slug}`}
                         >
@@ -179,7 +179,7 @@ const Insights = () => {
               ) : (
                 <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
                   {insightData?.data.map((post, key) => (
-                    <div key={key} className=" px-4 md:px-0">
+                    <div key={key} className="md:px-0">
                       <Link
                         to={`${devNavUrl}/insight/${post.home_insights_slug}`}
                       >

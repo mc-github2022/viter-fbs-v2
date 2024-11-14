@@ -75,7 +75,7 @@ const CareerPage = () => {
 
   return (
     <>
-      <Header pageName={pageName}/>
+      <Header pageName={pageName} />
       <section className="career pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="text-center">
@@ -109,7 +109,7 @@ const CareerPage = () => {
                               ? "min-h-[200px] transition-all !bg-[#eedce8] "
                               : ""
                           }`
-                        : "h-[104px] transition-all"
+                        : "h-[115px] transition-all"
                     } jobItem bg-[#f8f8f8] p-5 rounded-lg addShadow  cursor-pointer  overflow-hidden mb-8 ${
                       item.careers_job_status !== "Ongoing"
                         ? "pointer-events-none"
@@ -117,7 +117,7 @@ const CareerPage = () => {
                     }`}
                   >
                     <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-2 md:gap-6">
+                      <div className="flex items-center gap-2 md:gap-6 ">
                         <div
                           className={`${
                             item.careers_job_status === "Ongoing"
@@ -153,10 +153,13 @@ const CareerPage = () => {
                             </p>
                           </div>
                           <div className="flex items-center gap-3">
-                            <p className="text-sm">
-                              {item.careers_job_classification}
+                            <p className="text-sm flex gap-1">
+                              <p className="text-sm">
+                                {item.careers_job_classification}
+                              </p>
+                              <p className="text-sm">{item.careers_job_mode}</p>
                             </p>
-                            <p
+                            {/* <p
                               className={`${
                                 item.careers_job_status === "Ongoing"
                                   ? "text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg md:hidden"
@@ -164,9 +167,17 @@ const CareerPage = () => {
                               }`}
                             >
                               {item.careers_job_status}
-                            </p>
+                            </p> */}
                           </div>
-                          <p className="text-sm">{item.careers_job_mode}</p>
+                          <p
+                            className={`${
+                              item.careers_job_status === "Ongoing"
+                                ? " w-fit text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg md:hidden"
+                                : " w-fit text-xs text-[#ef4444] bg-[#F8B1B1] px-3 py-1 rounded-lg md:hidden"
+                            }`}
+                          >
+                            {item.careers_job_status}
+                          </p>
                         </div>
                       </div>
                       <div className="flex items-center md:gap-6">
@@ -197,7 +208,7 @@ const CareerPage = () => {
                         )}
                       </div>
                     </div>
-                    <div className="jobDesc px-6 md:px-0 md:mx-[103px] mt-6">
+                    <div className="jobDesc px-6 md:px-0 md:mx-[103px] mt-10">
                       <div
                         dangerouslySetInnerHTML={{
                           __html: item.careers_job_description,

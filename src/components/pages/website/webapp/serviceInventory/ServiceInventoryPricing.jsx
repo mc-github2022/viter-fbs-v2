@@ -79,7 +79,7 @@ const ServiceInventoryPricing = () => {
 
                       <a
                         href={`${price.link}`}
-                        className="btn px-5 bg-primary text-light border-light border-2 mt-10 font-bold w-[190px] mx-auto"
+                        className="btn px-5 bg-primary text-light border-light border-2 mt-10 font-bold w-[190px] mx-auto hover:bg-light hover:text-primary hover:border-primary"
                       >
                         CONTACT US
                       </a>
