@@ -73,7 +73,7 @@ const ServicePayrollPricing = () => {
                       </table>
                       <a
                         href={`${price.link}`}
-                        className="btn mt-10 px-5  bg-primary text-light border-light border-2 w-[190px] font-bold"
+                        className="btn mt-10 px-5  bg-primary text-light border-light border-2 w-[190px] font-bold hover:bg-light hover:text-primary hover:border-primary"
                       >
                         LEARN MORE
                       </a>

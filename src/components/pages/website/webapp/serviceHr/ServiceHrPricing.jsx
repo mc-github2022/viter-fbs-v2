@@ -76,7 +76,7 @@ const ServiceHrPricing = () => {
 
                       <a
                         href={`${price.link}`}
-                        className="btn bg-primary text-light border-light border-2 mt-10 font-bold w-[190px] mx-auto"
+                        className="btn bg-primary text-light border-light border-2 mt-10 font-bold w-[190px] mx-auto hover:bg-light hover:text-primary hover:border-primary"
                       >
                         CHOOSE PLAN
                       </a>
