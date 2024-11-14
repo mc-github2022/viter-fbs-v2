@@ -117,7 +117,8 @@ const SingplePage = () => {
                           <div key={key}>
                             <li className="my-5">
                               <Link
-                                to={`${devNavUrl}/insight/${popPost.home_insights_slug}`}>
+                                to={`${devNavUrl}/insight/${popPost.home_insights_slug}`}
+                              >
                                 <div className="flex items-center gap-4">
                                   <div className="min-w-[100px] max-w-[100px] h-[80px]">
                                     <img
@@ -144,19 +145,25 @@ const SingplePage = () => {
                     Categories
                   </h3>
                   <ul>
-                    {insightData?.data.map((cat, key) => {
-                      return (
-                        <div key={key}>
-                          <Link
-                            to={`${devNavUrl}/post-by-category/${cat.home_insights_category}`}>
-                            <li className="flex items-center gap-2 mb-3">
-                              <BiSolidRightArrow className="text-primary" />
-                              {cat.home_insights_category}
-                            </li>
-                          </Link>
-                        </div>
-                      );
-                    })}
+                    {insightData?.data
+                      .map((cat) => cat.home_insights_category)
+                      .filter(
+                        (value, index, self) => self.indexOf(value) === index
+                      )
+                      .map((uniqueCategory, key) => {
+                        return (
+                          <div key={key}>
+                            <Link
+                              to={`${devNavUrl}/post-by-category/${uniqueCategory}`}
+                            >
+                              <li className="flex items-center gap-2 mb-3">
+                                <BiSolidRightArrow className="text-primary" />
+                                {uniqueCategory}
+                              </li>
+                            </Link>
+                          </div>
+                        );
+                      })}
                   </ul>
                 </div>
               </div>
