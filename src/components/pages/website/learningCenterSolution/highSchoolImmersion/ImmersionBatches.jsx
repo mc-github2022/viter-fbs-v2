@@ -58,6 +58,11 @@ function SamplePrevArrow(props) {
 }
 
 const ImmersionBatches = () => {
+  const [modalBatch, setModalBatch] = React.useState(false);
+  const [itemEdit, setItemEdit] = React.useState(null);
+  const [selectedBatchId, setSelectedBatchId] = React.useState(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
   const {
     isFetching,
     error,
@@ -72,13 +77,14 @@ const ImmersionBatches = () => {
 
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: !modalBatch,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: false,
     dotsClass: "slickNav slick-dots",
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: modalBatch ? null : <SampleNextArrow />,
+    prevArrow: modalBatch ? null : <SamplePrevArrow />,
     appendDots: (dots) => (
       <div
         style={{
@@ -90,6 +96,8 @@ const ImmersionBatches = () => {
         <ul style={{ margin: "0px" }}> {dots} </ul>
       </div>
     ),
+    initialSlide: currentSlide, // Set initial slide to the current one
+    afterChange: (index) => setCurrentSlide(index),
     customPaging: (i) => (
       <div
         style={{
@@ -108,8 +116,8 @@ const ImmersionBatches = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: <SampleNextArrow />,
-          prevArrow: <SamplePrevArrow />,
+          nextArrow: modalBatch ? null : <SampleNextArrow />,
+          prevArrow: modalBatch ? null : <SamplePrevArrow />,
           // dots: true,
         },
       },
@@ -118,17 +126,14 @@ const ImmersionBatches = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          nextArrow: <SampleNextArrow />,
-          prevArrow: <SamplePrevArrow />,
+          nextArrow: modalBatch ? null : <SampleNextArrow />,
+          prevArrow: modalBatch ? null : <SamplePrevArrow />,
           // dots: true,
         },
       },
     ],
   };
 
-  const [modalBatch, setModalBatch] = React.useState(false);
-  const [itemEdit, setItemEdit] = React.useState(null);
-  const [selectedBatchId, setSelectedBatchId] = React.useState(null);
   const handleModalBatch = (item) => {
     setModalBatch(!modalBatch);
     setItemEdit(item);
@@ -152,7 +157,10 @@ const ImmersionBatches = () => {
           {lcssBatchesData?.data.filter(
             (item) => item.lcss_batch_category === "High School Work Immersion"
           ).length > 3 ? (
-            <Slider {...settings}>
+            <Slider
+              {...settings}
+              key={modalBatch ? "modalOpen" : "modalClosed"}
+            >
               {lcssBatchesData?.data.map((item, key) => {
                 if (item.lcss_batch_category === "High School Work Immersion") {
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();

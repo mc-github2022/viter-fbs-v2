@@ -58,6 +58,11 @@ function SamplePrevArrow(props) {
 }
 
 const LcssBatches = () => {
+  const [modalBatch, setModalBatch] = React.useState(false);
+  const [itemEdit, setItemEdit] = React.useState(null);
+  const [selectedBatchId, setSelectedBatchId] = React.useState(null);
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
   const {
     isFetching,
     error,
@@ -72,13 +77,14 @@ const LcssBatches = () => {
 
   var settings = {
     dots: false,
-    infinite: true,
+    infinite: !modalBatch,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: false,
     dotsClass: "slickNav slick-dots",
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: modalBatch ? null : <SampleNextArrow />,
+    prevArrow: modalBatch ? null : <SamplePrevArrow />,
     appendDots: (dots) => (
       <div
         style={{
@@ -102,14 +108,16 @@ const LcssBatches = () => {
         }}
       ></div>
     ),
+    initialSlide: currentSlide, // Set initial slide to the current one
+    afterChange: (index) => setCurrentSlide(index),
     responsive: [
       {
         breakpoint: 1230,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: <SampleNextArrow />,
-          prevArrow: <SamplePrevArrow />,
+          nextArrow: modalBatch ? null : <SampleNextArrow />,
+          prevArrow: modalBatch ? null : <SamplePrevArrow />,
           // dots: true,
         },
       },
@@ -118,17 +126,14 @@ const LcssBatches = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          nextArrow: <SampleNextArrow />,
-          prevArrow: <SamplePrevArrow />,
+          nextArrow: modalBatch ? null : <SampleNextArrow />,
+          prevArrow: modalBatch ? null : <SamplePrevArrow />,
           // dots: true,
         },
       },
     ],
   };
 
-  const [modalBatch, setModalBatch] = React.useState(false);
-  const [itemEdit, setItemEdit] = React.useState(null);
-  const [selectedBatchId, setSelectedBatchId] = React.useState(null);
   const handleModalBatch = (item) => {
     setModalBatch(!modalBatch);
     setItemEdit(item);
@@ -152,7 +157,10 @@ const LcssBatches = () => {
           {lcssBatchesData?.data.filter(
             (item) => item.lcss_batch_category === "College On-the-job Training"
           ).length > 3 ? (
-            <Slider {...settings}>
+            <Slider
+              {...settings}
+              key={modalBatch ? "modalOpen" : "modalClosed"}
+            >
               {lcssBatchesData?.data.map((item, key) => {
                 if (
                   item.lcss_batch_category === "College On-the-job Training"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
 import Slider from "react-slick";
@@ -72,6 +72,8 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
     "lcssBatches" // key
   );
 
+  const sliderRef = useRef(null);
+
   var settings = {
     dots: false,
     infinite: true,
@@ -119,9 +121,28 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
     ],
   };
 
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const handleClose = () => {
     setModalBatch(false);
-    console.log("clicked");
     document.body.classList.remove("overflow-hidden");
   };
 
@@ -148,7 +169,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
           />
         </div> */}
         {images.length > 1 ? (
-          <Slider {...settings}>
+          <Slider ref={sliderRef} {...settings}>
             {images.map((image, index) => (
               <div
                 key={index}

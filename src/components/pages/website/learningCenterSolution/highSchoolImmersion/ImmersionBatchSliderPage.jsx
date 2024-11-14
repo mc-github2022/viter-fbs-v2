@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
 import Slider from "react-slick";
@@ -74,6 +74,8 @@ const ImmersionBatchSliderPage = ({
     "lcssBatches" // key
   );
 
+  const sliderRef = useRef(null);
+
   var settings = {
     dots: false,
     infinite: true,
@@ -121,6 +123,26 @@ const ImmersionBatchSliderPage = ({
     ],
   };
 
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const handleClose = () => {
     setModalBatch(false);
     console.log("clicked");
@@ -143,7 +165,7 @@ const ImmersionBatchSliderPage = ({
     >
       <div className="bg-transparent h-fit place-items-center place-content-center">
         {images.length > 1 ? (
-          <Slider {...settings}>
+          <Slider ref={sliderRef} {...settings}>
             {images.map((image, index) => (
               <div
                 key={index}
