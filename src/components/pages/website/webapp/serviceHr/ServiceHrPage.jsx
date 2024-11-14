@@ -16,7 +16,7 @@ const ServiceHrPage = () => {
       <ServiceHrBanner />
       <ServiceHrOverview />
       <ServiceHrScope />
-      <ServiceHrPricing />
+      <ServiceHrPricing pageName={pageName} />
       <ServiceHrPartners />
       <ServiceHrPartnersSay />
       <Footer />

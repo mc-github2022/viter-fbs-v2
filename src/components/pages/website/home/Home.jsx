@@ -10,13 +10,14 @@ import Footer from "../../../partials/Footer";
 import Process from "./Process";
 
 const Home = () => {
+  const [pageName, setPageName] = React.useState("home");
   return (
     <>
-      <Header />
+      <Header pageName={pageName} />
       <Banner />
       <Process />
       <Services />
-      <PartnerWithUs />
+      <PartnerWithUs pageName={pageName} />
       <Testimonials />
       <Partners />
       <Insights />

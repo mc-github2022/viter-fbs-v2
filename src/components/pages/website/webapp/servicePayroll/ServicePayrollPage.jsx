@@ -16,7 +16,7 @@ const ServicePayrollPage = () => {
       <ServicePayrollBanner />
       <ServicePayrollOverview />
       <ServicePayrollScope />
-      <ServicePayrollPricing />
+      <ServicePayrollPricing pageName={pageName} />
       <ServicePayrollPartners />
       <ServicePayrollPartnersSay />
       <Footer />

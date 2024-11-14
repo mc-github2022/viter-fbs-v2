@@ -2,8 +2,16 @@ import React from "react";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import { FaCheckCircle, FaRegThumbsUp } from "react-icons/fa";
 import { pricing } from "./data";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServiceHrPricing = () => {
+const ServiceHrPricing = ({ pageName }) => {
+  const [contactSubject, setContactSubject] = React.useState("");
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = (item) => {
+    setContactForm(!contactForm);
+    setContactSubject(item);
+  };
   return (
     <>
       <section className="ServiceHrPricing py-20 bg-[#000000] relative sm:overflow-hidden">
@@ -25,27 +33,23 @@ const ServiceHrPricing = () => {
                     key={key}
                     className={`priceItem mb-5 lg:mb-0 relative z-[1]  w-full text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
-                    } grid `}
-                  >
+                    } grid `}>
                     <div className="flex flex-col justify-between">
                       <div>
                         <div className="title mb-4 ">
                           {price.icon}
                           <h3
-                            className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
-                          >
+                            className={`${price.customCss} text-2xl font-bold  text-light mb-6`}>
                             {price.title}
                           </h3>
                           <p
-                            className={`${price.customCss} text-2xl  font-bold text-light`}
-                          >
+                            className={`${price.customCss} text-2xl  font-bold text-light`}>
                             {price.rate}
                           </p>
 
                           {price.note !== "" && (
                             <p
-                              className={`${price.customCss} text-light text-lg italic`}
-                            >
+                              className={`${price.customCss} text-light text-lg italic`}>
                               {price.note}
                             </p>
                           )}
@@ -74,12 +78,13 @@ const ServiceHrPricing = () => {
                         </table>
                       </div>
 
-                      <a
-                        href={`${price.link}`}
-                        className="btn bg-primary text-light border-light border-2 mt-10 font-bold w-[190px] mx-auto hover:bg-light hover:text-primary hover:border-primary"
-                      >
+                      <button
+                        onClick={() => handleForm(price.title)}
+                        className="btn bg-primary text-light border-light
+                        border-2 mt-10 font-bold w-[190px] mx-auto
+                        hover:bg-light hover:text-primary hover:border-primary">
                         CHOOSE PLAN
-                      </a>
+                      </button>
                     </div>
                   </div>
                 );
@@ -89,6 +94,16 @@ const ServiceHrPricing = () => {
         </div>
         <div className="absolute bg-light h-[180px] w-full bottom-[-2px] "></div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={contactSubject}
+        />
+      )}
     </>
   );
 };

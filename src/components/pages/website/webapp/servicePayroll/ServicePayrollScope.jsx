@@ -38,16 +38,14 @@ const ServicePayrollScope = () => {
                 return (
                   <li
                     key={key}
-                    className={"overflow-hidden  border-b border-[#e9e9e9]"}
-                  >
+                    className={"overflow-hidden  border-b border-[#e9e9e9]"}>
                     <div
                       className={`${
                         accordion && accordionItem === scopeList.scopeId
                           ? "bg-customGray"
                           : ""
                       } grid grid-cols-[_3.5fr,_.5fr] justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
-                      onClick={() => handleAccordion(scopeList.scopeId)}
-                    >
+                      onClick={() => handleAccordion(scopeList.scopeId)}>
                       <div className="grid grid-cols-[_2rem,_1fr] items-center gap-4">
                         {scopeList.scopeIcon}
                         <p
@@ -55,8 +53,7 @@ const ServicePayrollScope = () => {
                             accordion && accordionItem === scopeList.scopeId
                               ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                               : "text-dark"
-                          } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}
-                        >
+                          } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}>
                           {scopeList.scopeTitle}
                         </p>
                       </div>
@@ -73,14 +70,13 @@ const ServicePayrollScope = () => {
                         accordion && accordionItem === scopeList.scopeId
                           ? "px-4 pt-4 pb-4"
                           : "h-0 py-0"
-                      } accordionContent `}
-                    >
+                      } accordionContent `}>
                       <p>{scopeList.scopeDesc}</p>
                       <p className="md:hidden py-6">
                         <a
-                          href="#"
-                          className="btn bg-primary text-light font-semibold"
-                        >
+                          href="https://calendly.com/carlodm-fbs/demo-discovery-call"
+                          target="_blank"
+                          className="btn bg-primary text-light font-semibold">
                           SCHEDULE A DEMO
                         </a>
                       </p>
@@ -95,8 +91,7 @@ const ServicePayrollScope = () => {
                   key={key}
                   className={`${
                     accordionItem === scopedata.scopeId ? "block" : "hidden"
-                  }`}
-                >
+                  }`}>
                   <img
                     className="hidden md:w-full md:object-contain md:block"
                     // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
@@ -106,9 +101,9 @@ const ServicePayrollScope = () => {
 
                   <p className="hidden md:block mb-4 text-center pt-8 pb-8">
                     <a
-                      href="#"
-                      className="btn bg-primary text-light font-semibold"
-                    >
+                      href="https://calendly.com/carlodm-fbs/demo-discovery-call"
+                      target="_blank"
+                      className="btn bg-primary text-light font-semibold">
                       SCHEDULE A DEMO
                     </a>
                   </p>

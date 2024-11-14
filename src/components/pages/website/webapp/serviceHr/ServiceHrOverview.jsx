@@ -26,9 +26,9 @@ const ServiceHrOverview = () => {
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <a
-                    href="#"
-                    className="btn bg-primary text-light font-semibold"
-                  >
+                    href="https://calendly.com/carlodm-fbs/demo-discovery-call"
+                    target="_blank"
+                    className="btn bg-primary text-light font-semibold">
                     {webAppOverview[0].btnText}
                   </a>
                 </li>

@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import ModalContactGetStarted from "./ModalContactGetStarted";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
+import ModalContact from "../../../partials/ModalContact";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -20,8 +21,7 @@ function SampleNextArrow(props) {
         fontSize: "3rem",
         cursor: "pointer",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowForward />
     </div>
   );
@@ -41,18 +41,27 @@ function SamplePrevArrow(props) {
         zIndex: "1",
         cursor: "pointer",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowBack />
     </div>
   );
 }
 
-const BannerSlider = () => {
+const BannerSlider = ({ pageName }) => {
+  // const [modalContact, setModalContact] = React.useState(false);
+  // const handleModalContact = () => {
+  //   setModalContact(!modalContact);
+  //   console.log("open");
+  // };
+
   const [modalContact, setModalContact] = React.useState(false);
   const handleModalContact = () => {
     setModalContact(!modalContact);
-    console.log("open");
+  };
+
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
   };
 
   const {
@@ -82,8 +91,7 @@ const BannerSlider = () => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "15px",
-        }}
-      >
+        }}>
         <ul style={{ margin: "0px" }}> {dots} </ul>
       </div>
     ),
@@ -96,8 +104,7 @@ const BannerSlider = () => {
           background: "#F5F5F5",
           borderRadius: "50%",
           opacity: "50%",
-        }}
-      ></div>
+        }}></div>
     ),
     responsive: [
       {
@@ -114,9 +121,9 @@ const BannerSlider = () => {
 
   return (
     <>
-      {modalContact && (
+      {/* {modalContact && (
         <ModalContactGetStarted setModalContact={setModalContact} />
-      )}
+      )} */}
       <Slider {...settings}>
         {bannerData?.data.map((item, key) => (
           <div key={key}>
@@ -126,8 +133,7 @@ const BannerSlider = () => {
               style={{
                 // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                 backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,
-              }}
-            >
+              }}>
               <div className="customContainer">
                 <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
                   <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
@@ -143,8 +149,7 @@ const BannerSlider = () => {
                     <a
                       href="#"
                       className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
-                      onClick={handleModalContact}
-                    >
+                      onClick={handleForm}>
                       {item.home_banner_button_text}
                     </a>
                   </div>
@@ -154,6 +159,15 @@ const BannerSlider = () => {
           </div>
         ))}
       </Slider>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

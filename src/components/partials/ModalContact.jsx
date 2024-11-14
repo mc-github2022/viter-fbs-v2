@@ -24,6 +24,7 @@ const ModalContact = ({
   setToggleMenu = null,
   thePageName = null,
   setContactForm = null,
+  contactSubject = null,
 }) => {
   const handleClose = () => {
     setModalContact(false);
@@ -38,14 +39,12 @@ const ModalContact = ({
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
-      >
+        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0">
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
-        >
+          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow">
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
               className="text-3xl text-light"
@@ -142,40 +141,35 @@ const ModalContact = ({
                   <li>
                     <a
                       href="https://www.facebook.com/frontline.business"
-                      target="_blank"
-                    >
+                      target="_blank">
                       <FaFacebookSquare />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.linkedin.com/company/frontline-business-solutions-inc"
-                      target="_blank"
-                    >
+                      target="_blank">
                       <FaLinkedin />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.youtube.com/@frontlinebusinesssolutions6578"
-                      target="_blank"
-                    >
+                      target="_blank">
                       <FaYoutubeSquare />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.instagram.com/frontline.business"
-                      target="_blank"
-                    >
+                      target="_blank">
                       <FaInstagramSquare />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.tiktok.com/@frontlinebusinessinc"
-                      target="_blank"
-                    >
+                      target="_blank">
                       <AiFillTikTok />
                     </a>
                   </li>
@@ -188,8 +182,7 @@ const ModalContact = ({
                   <p className="text-sm">Learn more about our OJT program</p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1kSl-0-BtMdzMtsTdPw-N2SqI6jlDUJOE"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
+                    className="flex gap-2 items-center font-bold text-primary pointer">
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
@@ -200,8 +193,7 @@ const ModalContact = ({
                   </p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1o0xSoctvBb00q81fE_njVJANzVSiEPt_"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
+                    className="flex gap-2 items-center font-bold text-primary pointer">
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
@@ -212,8 +204,7 @@ const ModalContact = ({
                   <p className="text-sm">Learn more about our CMS program</p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1KCT6R_LE1PCl_RrCaCQRZYLLNixF73cU"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
+                    className="flex gap-2 items-center font-bold text-primary pointer">
                     Download Portfolio <FaFileDownload />
                   </a>
                 </>
@@ -222,8 +213,7 @@ const ModalContact = ({
                   <p className="text-sm">Learn more about our program</p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1NP2OjlbB34H1KVXRSnV1i_p9OgbJY-ND"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
+                    className="flex gap-2 items-center font-bold text-primary pointer">
                     Download Company Profile <FaFileDownload />
                   </a>
                 </>
@@ -231,6 +221,13 @@ const ModalContact = ({
             </div>
           </div>
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
+            {contactSubject ? (
+              <p className="mb-2 text-lg uppercase">
+                {thePageName} : <b>{contactSubject}</b>
+              </p>
+            ) : (
+              <></>
+            )}
             <div className="inputGroup mb-4">
               <span htmlFor="">Name</span> <br />
               <input type="text" name="" id="" className="w-full" />
