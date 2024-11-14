@@ -11,9 +11,9 @@ const WhyUsPage = () => {
   const [pageName, setPageName] = React.useState("whyWorkWithUs");
   return (
     <>
-      <Header pageName={pageName}/>
-      <WhyUsBanner />
-      <WhyUsCompanyProfile />
+      <Header pageName={pageName} />
+      <WhyUsBanner pageName={pageName} />
+      <WhyUsCompanyProfile pageName={pageName} />
       <MissionVission />
       <WhyUsTheTeam />
       <WhyUsPartners />

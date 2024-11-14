@@ -4,8 +4,15 @@ import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import ModalContact from "../../../partials/ModalContact";
 
-const WhyUsBanner = () => {
+const WhyUsBanner = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <div>
@@ -14,8 +21,7 @@ const WhyUsBanner = () => {
           className={`banner bg-cover pt-[59px] md:pt-[95px] bg-top`}
           style={{
             backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.webp)`,
-          }}
-        >
+          }}>
           <div className="customContainer">
             <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center max-h-[80vh] min-h-[80vh] transition-all w-full">
               <div className="text-center py-10 lg:text-left">
@@ -34,17 +40,25 @@ const WhyUsBanner = () => {
                   commitment to purposeful service, we aim to be your trusted
                   partner in driving growth, efficiency, and innovation.
                 </p>
-                <a
-                  href="#"
-                  className="btn bg-transparent text-light font-semibold border-2"
-                >
+                <button
+                  onClick={handleForm}
+                  className="btn bg-transparent text-light font-semibold border-2">
                   GET STARTED
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </section>
       </div>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };

@@ -2,8 +2,15 @@ import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
+import ModalContact from "../../../partials/ModalContact";
 
-const WhyUsCompanyProfile = () => {
+const WhyUsCompanyProfile = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <div className="whyUsIntro py-16 md:pt-20 md:pb-0">
@@ -33,19 +40,17 @@ const WhyUsCompanyProfile = () => {
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
-                  <a
-                    href="#"
-                    className="btn bg-primary text-light font-semibold"
-                  >
+                  <button
+                    onClick={handleForm}
+                    className="btn bg-primary text-light font-semibold">
                     PARTNER WITH US
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <a
                     href={`${devBaseImgUrl}/FBS-Brochure-2024.pdf`}
                     download
-                    className="flex items-center gap-2 font-bold text-primary text-xl"
-                  >
+                    className="flex items-center gap-2 font-bold text-primary text-xl">
                     Company Profile <FaFileDownload />
                   </a>
                 </li>
@@ -118,6 +123,15 @@ const WhyUsCompanyProfile = () => {
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+        />
+      )}
     </>
   );
 };
