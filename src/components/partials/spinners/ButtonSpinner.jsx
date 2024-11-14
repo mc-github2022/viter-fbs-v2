@@ -6,7 +6,7 @@ const ButtonSpinner = () => {
       <div className="flex justify-center items-center flex-col text-center rounded-full">
         <svg
           aria-hidden="true"
-          className="w-5 h-5 text-gray-200 animate-spin dark:text-gray-100 fill-primary"
+          className="w-5 h-5 text-gray-200 animate-spin dark:text-gray-100 fill-dashPrimary"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

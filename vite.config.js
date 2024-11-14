@@ -5,7 +5,7 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // base: "/", // local
+  // base: "", // local
   base: "/newsite", // online
   build: {
     chunkSizeWarningLimit: 15000,

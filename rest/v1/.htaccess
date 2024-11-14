@@ -29,12 +29,14 @@ RewriteRule ^specialOffers/([0-9]+)$ controllers/developer/special-offers/specia
 # Why FBS - EVENTS AND ACTIVITIES
 RewriteRule ^eventsAndAct$ controllers/developer/events-and-activities/eventsAndActivities.php [L]
 RewriteRule ^eventsAndAct/([0-9]+)$ controllers/developer/events-and-activities/eventsAndActivities.php?events_activitiesid=$1 [L]
+RewriteRule ^eventsAndAct/page/([0-9]+)$ controllers/developer/events-and-activities/page.php?start=$1 [L]
+RewriteRule ^eventsAndAct/search$ controllers/developer/events-and-activities/search.php [L]
 
-# Why FBS - EVENTS AND ACTIVITIES
+# Why FBS - CAREERS
 RewriteRule ^careers$ controllers/developer/careers/careers.php [L]
 RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careersid=$1 [L]
 
-# Why FBS - EVENTS AND ACTIVITIES
+# Why FBS - LCSS BATCHES
 RewriteRule ^lcssBatches$ controllers/developer/lcss-batches/lcssBatches.php [L]
 RewriteRule ^lcssBatches/([0-9]+)$ controllers/developer/lcss-batches/lcssBatches.php?lcss_batchid=$1 [L]
 RewriteRule ^lcssBatches/page/([0-9]+)$ controllers/developer/lcss-batches/page.php?start=$1 [L]
@@ -46,7 +48,7 @@ RewriteRule ^indTestimonial/([0-9]+)$ controllers/developer/industry-testimonial
 RewriteRule ^indTestimonial/page/([0-9]+)$ controllers/developer/industry-testimonial/page.php?start=$1 [L]
 RewriteRule ^indTestimonial/search$ controllers/developer/industry-testimonial/search.php [L]
 
-# INDUSTRY TESTIMONIAL
+# VIDEO TESTIMONIAL
 RewriteRule ^vid-testimonial$ controllers/developer/vid-testimonial/vidTestimonial.php [L]
 RewriteRule ^vid-testimonial/([0-9]+)$ controllers/developer/vid-testimonial/vidTestimonial.php?vid_testimonialid=$1 [L]
 RewriteRule ^vid-testimonial/page/([0-9]+)$ controllers/developer/vid-testimonial/page.php?start=$1 [L]
