@@ -32,7 +32,6 @@ import ServiceOnlinePayPage from "../components/pages/website/webapp/serviceOnli
 import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
 import SinglePageWebsite from "../components/pages/website/webDesignDev/singlePageWebsite/SinglePageWebsite";
 import WebDesignPage from "../components/pages/website/webDesignDev/webDesign/WebDesignPage";
-import WordPressPage from "../components/pages/website/webDesignDev/wordPress/wordPressPage";
 import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
 import Dashboard from "../components/partials/dashboard/Dashboard";
 import EULA from "../components/partials/policies/EULA";
@@ -41,6 +40,8 @@ import TermsOfService from "../components/partials/policies/TermsOfService";
 import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
 import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
 import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTestimonial";
+import PostByCategory from "../components/pages/website/postByCategory/PostByCategory";
+import WordPressPage from "../components/pages/website/webDesignDev/wordPress/WordPressPage";
 
 export const routesDeveloper = [
   {
@@ -210,5 +211,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/pricing-copy`,
     element: <BusinessRegPageCopy />,
+  },
+  {
+    path: `${devNavUrl}/post-by-category`,
+    element: <PostByCategory />,
   },
 ];

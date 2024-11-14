@@ -7,6 +7,7 @@ import SingplePage from "./components/pages/website/singlePage/SingplePage";
 import EventsSingplePage from "./components/pages/website/events/EventsSingplePage";
 import BatchSliderPage from "./components/pages/website/lcssPage/BatchSliderPage";
 import { devNavUrl } from "./components/helpers/functions-general";
+import PostByCategory from "./components/pages/website/postByCategory/PostByCategory";
 
 function App() {
   const queryClient = new QueryClient();
@@ -34,6 +35,10 @@ function App() {
               <Route
                 path={`${devNavUrl}/events-and-activities/:slug`}
                 element={<EventsSingplePage />}
+              />
+              <Route
+                path={`${devNavUrl}/post-by-category/:slug`}
+                element={<PostByCategory />}
               />
             </Routes>
           </Router>
