@@ -14,6 +14,9 @@ class EventsAndActivities
 
     public $connection;
     public $lastInsertedId;
+    public $events_activities_start;
+    public $events_activities_total;
+    public $events_activities_search;
 
     public $tblEventsAndActivities;
 
@@ -31,6 +34,55 @@ class EventsAndActivities
             $sql .= "{$this->tblEventsAndActivities} ";
             $sql .= "order by events_activities_aid asc ";
             $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readLimit()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblEventsAndActivities} ";
+            $sql .= "order by events_activities_aid asc ";
+            $sql .= "limit :start, ";
+            $sql .= ":total ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "start" => $this->events_activities_start - 1,
+                "total" => $this->events_activities_total,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function search()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblEventsAndActivities} ";
+            $sql .= "where events_activities_img = events_activities_img ";
+            $sql .= "and (events_activities_img like :events_activities_img ";
+            $sql .= "or events_activities_category like :events_activities_category ";
+            $sql .= "or events_activities_title like :events_activities_title ";
+            $sql .= "or events_activities_slug like :events_activities_slug ";
+            $sql .= "or events_activities_date like :events_activities_date ";
+            $sql .= "or events_activities_description like :events_activities_description) ";
+            $sql .= "order by events_activities_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "events_activities_img" => "%{$this->events_activities_search}%",
+                "events_activities_category" => "%{$this->events_activities_search}%",
+                "events_activities_title" => "%{$this->events_activities_search}%",
+                "events_activities_slug" => "%{$this->events_activities_search}%",
+                "events_activities_date" => "%{$this->events_activities_search}%",
+                "events_activities_description" => "%{$this->events_activities_search}%",
+            ]);
         } catch (PDOException $ex) {
             $query = false;
         }

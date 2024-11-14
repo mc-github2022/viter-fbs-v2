@@ -3,7 +3,7 @@ import React from "react";
 const FetchingSpinner = () => {
   return (
     <>
-      <div className="absolute z-10 top-0 right-0 bottom-0 left-0 pt-10 flex items-center flex-col text-center bg-white/50">
+      <div className="absolute z-10 top-0 right-0 bottom-0 left-0 flex items-center flex-col text-center bg-[white] opacity-50 place-self-center">
         <svg
           aria-hidden="true"
           className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-300 fill-dashPrimary"

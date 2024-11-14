@@ -163,15 +163,17 @@ const LcssBatchesTable = ({ setItemEdit }) => {
             ))}
           </tbody>
         </table>
-        <LoadMore
-          fetchNextPage={fetchNextPage}
-          isFetchingNextPage={isFetchingNextPage}
-          hasNextPage={hasNextPage}
-          result={result?.pages[0]}
-          setPage={setPage}
-          page={page}
-          refView={ref}
-        />
+        <div className="place-self-center">
+          <LoadMore
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+            result={result?.pages[0]}
+            setPage={setPage}
+            page={page}
+            refView={ref}
+          />
+        </div>
       </div>
 
       {store.isDelete && (

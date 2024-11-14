@@ -44,75 +44,71 @@ const SpecialOffersTable = ({ setItemEdit }) => {
   return (
     <>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
-        {isFetching ? (
-          <FetchingSpinner />
-        ) : (
-          <table>
-            <thead>
-              <tr className="text-[black]">
-                <th className="pl-2 w-[1rem]">#</th>
-                <th>Icon Name</th>
-                <th>Services</th>
-                <th>Special Offers</th>
-                <th>Link</th>
-                <th className="text-right">Actions</th>
+        {isFetching && status !== "loading" && <FetchingSpinner />}
+        <table>
+          <thead>
+            <tr className="text-[black]">
+              <th className="pl-2 w-[1rem]">#</th>
+              <th>Icon Name</th>
+              <th>Services</th>
+              <th>Special Offers</th>
+              <th>Link</th>
+              <th className="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="relative">
+            {isLoading && status !== "pending" && <TableSpinner />}
+            {(status === "pending" || specialOffersData?.data.length === 0) && (
+              <tr className="text-center">
+                <td colSpan="100%" className="p-10">
+                  {status === "pending" ? <TableLoading /> : <NoData />}
+                </td>
               </tr>
-            </thead>
-            <tbody className="relative">
-              {isLoading && status !== "pending" && <TableSpinner />}
-              {(status === "pending" ||
-                specialOffersData?.data.length === 0) && (
-                <tr className="text-center">
-                  <td colSpan="100%" className="p-10">
-                    {status === "pending" ? <TableLoading /> : <NoData />}
-                  </td>
-                </tr>
-              )}
+            )}
 
-              {error && (
-                <tr className="text-center ">
-                  <td colSpan="100%" className="p-10">
-                    <ServerError />
-                  </td>
-                </tr>
-              )}
+            {error && (
+              <tr className="text-center ">
+                <td colSpan="100%" className="p-10">
+                  <ServerError />
+                </td>
+              </tr>
+            )}
 
-              {specialOffersData?.data.map((item, key) => (
-                <tr key={key} className="place-content-start text-[14px]">
-                  <td className="pl-2 place-content-start">{counter++}</td>
-                  <td className="place-content-start">
-                    {item.special_offers_icons}
-                  </td>
-                  <td className="place-content-start">
-                    {item.special_offers_services}
-                  </td>
-                  <td className="place-content-start">
-                    {item.special_offers_price}
-                  </td>
-                  <td className="place-content-start">
-                    {item.special_offers_link}
-                  </td>
-                  <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                    <button
-                      className="tooltip-action-table"
-                      data-tooltip="Edit"
-                      onClick={() => handleEdit(item)}
-                    >
-                      <FaEdit className="text-gray-600 text-[16px]" />
-                    </button>
-                    <button
-                      className="tooltip-action-table"
-                      data-tooltip="Delete"
-                      onClick={() => handleDelete(item)}
-                    >
-                      <MdDelete className="text-gray-600 text-[18px]" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+            {specialOffersData?.data.map((item, key) => (
+              <tr key={key} className="place-content-start text-[14px]">
+                <td className="pl-2 place-content-start">{counter++}</td>
+                <td className="place-content-start">
+                  {item.special_offers_icons}
+                </td>
+                <td className="place-content-start">
+                  {item.special_offers_services}
+                </td>
+                <td className="place-content-start">
+                  {item.special_offers_price}
+                </td>
+                <td className="place-content-start">
+                  {item.special_offers_link}
+                </td>
+                <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                  <button
+                    className="tooltip-action-table"
+                    data-tooltip="Edit"
+                    onClick={() => handleEdit(item)}
+                  >
+                    <FaEdit className="text-gray-600 text-[16px]" />
+                  </button>
+                  <button
+                    className="tooltip-action-table"
+                    data-tooltip="Delete"
+                    onClick={() => handleDelete(item)}
+                  >
+                    <MdDelete className="text-gray-600 text-[18px]" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {store.isDelete && (

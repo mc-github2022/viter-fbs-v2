@@ -17,7 +17,7 @@ const LoadMore = ({
           <button
             type="button"
             disabled={isFetchingNextPage}
-            className="loadmore h-full relative my-8 text-primary p-1.5 rounded-full w-36 disabled:opacity-50 disabled:cursor-not-allowed disabled:!bg-transparent"
+            className="loadmore h-full relative my-8 text-dark p-1.5 rounded-full w-36 disabled:opacity-50 disabled:cursor-not-allowed disabled:!bg-transparent"
           >
             <ButtonSpinner />
           </button>

@@ -6,7 +6,11 @@ import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import { eventsAndAct } from "./data";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import { devBaseImgUrl, formatDate } from "../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  devNavUrl,
+  formatDate,
+} from "../../../helpers/functions-general";
 
 const EventsSingplePage = () => {
   const {
@@ -114,7 +118,7 @@ const EventsSingplePage = () => {
                         <div key={key}>
                           <li className="my-5">
                             <Link
-                              to={`/events-and-activities/${popPost.events_activities_slug}`}
+                              to={`${devNavUrl}/events-and-activities/${popPost.events_activities_slug}`}
                             >
                               <div className="flex items-center gap-4">
                                 <div className="min-w-[100px] max-w-[100px] h-[80px]">
