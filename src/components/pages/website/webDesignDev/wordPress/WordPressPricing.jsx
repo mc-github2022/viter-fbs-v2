@@ -34,22 +34,26 @@ const WordPressPricing = ({ pageName }) => {
                     key={key}
                     className={`priceItem mb-5 md:mb-0 relative z-[1] md:min-h-[700px] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
-                    } grid place-items-center`}>
+                    } grid place-items-center`}
+                  >
                     <div>
                       <div className="title mb-4 ">
                         {price.icon}
                         <h3
-                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}>
+                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
+                        >
                           {price.title}
                         </h3>
                         <p
-                          className={`${price.customCss} text-2xl  font-bold text-light`}>
+                          className={`${price.customCss} text-2xl  font-bold text-light`}
+                        >
                           {price.rate}
                         </p>
 
                         {price.note !== "" && (
                           <p
-                            className={`${price.customCss} text-light text-lg italic`}>
+                            className={`${price.customCss} text-light text-lg italic`}
+                          >
                             {price.note}
                           </p>
                         )}
@@ -78,7 +82,8 @@ const WordPressPricing = ({ pageName }) => {
                       </table>
                       <button
                         onClick={() => handleForm(price.title)}
-                        className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px] ">
+                        className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
+                      >
                         CONTACT US
                       </button>
                     </div>
