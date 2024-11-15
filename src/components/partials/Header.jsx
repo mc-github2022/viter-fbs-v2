@@ -47,9 +47,11 @@ const Header = ({ pageName }) => {
     <>
       <section
         id="header"
-        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[999] shadow-md">
+        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[999] shadow-md"
+      >
         <div
-          className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}>
+          className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
+        >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
               <img src={logo} alt="" className="w-[80%] md:w-[90%]" />
@@ -57,7 +59,8 @@ const Header = ({ pageName }) => {
             <div
               className={`${
                 toggleNav ? "active" : ""
-              } theNav flex justify-end md:justify-between items-center `}>
+              } theNav flex justify-end md:justify-between items-center `}
+            >
               <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
                 <li>
                   <Link to={`${devNavUrl}/`}>Home</Link>
@@ -68,7 +71,8 @@ const Header = ({ pageName }) => {
                     onClick={handleToggleMenu}
                     className={`${
                       toggleMenu ? "text-primary" : ""
-                    } flex items-center gap-2`}>
+                    } flex items-center gap-2`}
+                  >
                     Services
                     <BiSolidDownArrow
                       className={`${
@@ -84,7 +88,8 @@ const Header = ({ pageName }) => {
                       toggleWhyUs ? "text-primary" : ""
                     } flex items-center gap-2`}
                     onClick={handdleWhyUs}
-                    ref={ref}>
+                    ref={ref}
+                  >
                     Why FBS?
                     <BiSolidDownArrow
                       className={`${
@@ -97,16 +102,18 @@ const Header = ({ pageName }) => {
                       toggleWhyUs
                         ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:my-2 lg:[&>li]:my-2 py-0 md:p-[20px]  !top-12 pl-20 md:pl-[20px] transition-all md:!bg-light"
                         : "hidden"
-                    } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}>
+                    } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
+                  >
                     <li>
                       <Link
                         // className="!p-0 hover:text-primary"
-                        to={`${devNavUrl}/whyus`}
+                        to={`${devNavUrl}/why-work-with-us`}
                         className={`${
                           pageName === "whyWorkWithUs"
                             ? "!p-0 text-primary !cursor-default"
                             : "!p-0 hover:text-primary"
-                        }`}>
+                        }`}
+                      >
                         Why Work With Us
                       </Link>
                     </li>
@@ -117,7 +124,8 @@ const Header = ({ pageName }) => {
                           pageName === "events&Activities"
                             ? "!p-0 text-primary !cursor-default"
                             : "!p-0 hover:text-primary"
-                        }`}>
+                        }`}
+                      >
                         Events & Activities
                       </Link>
                     </li>
@@ -128,7 +136,8 @@ const Header = ({ pageName }) => {
                           pageName === "career"
                             ? "!p-0 text-primary !cursor-default"
                             : "!p-0 hover:text-primary"
-                        }`}>
+                        }`}
+                      >
                         Career
                       </Link>
                     </li>
@@ -138,7 +147,8 @@ const Header = ({ pageName }) => {
                   <a
                     href="#"
                     onClick={handleModalContact}
-                    className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full  from-secondary to-secondary hover:to-primary ">
+                    className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full  from-secondary to-secondary hover:to-primary "
+                  >
                     GET STARTED
                   </a>
                 </div>
@@ -148,7 +158,8 @@ const Header = ({ pageName }) => {
               <a
                 href="#"
                 onClick={handleModalContact}
-                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary ">
+                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
+              >
                 GET STARTED
               </a>
             </div>
@@ -157,7 +168,8 @@ const Header = ({ pageName }) => {
               onClick={handdleToggle}
               className={`${
                 toggleNav ? "active" : ""
-              } toggleNav block md:hidden relative w-[20px] h-[20px] ml-auto`}>
+              } toggleNav block md:hidden relative w-[20px] h-[20px] ml-auto`}
+            >
               <span></span>
               <span></span>
               <span></span>
