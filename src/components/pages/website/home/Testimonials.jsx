@@ -98,7 +98,7 @@ const Testimonials = () => {
                   </div>
                 ))}
 
-                <div className="sliderNavTestimonials bottom-[-30%] flex gap-2 absolute right-[2%] py-3 lg:bottom-[20%] lg:py-0">
+                <div className="sliderNavTestimonials bottom-[-70px] flex gap-2 absolute left-[50%] translate-x-[-50%] lg:left-[unset] lg:right-[-40px] py-3 lg:bottom-[20%] lg:py-0">
                   {testimonialData?.data.map((item, key) => (
                     <button
                       key={key}
