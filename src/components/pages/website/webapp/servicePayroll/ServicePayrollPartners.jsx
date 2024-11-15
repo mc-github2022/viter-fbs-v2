@@ -19,7 +19,7 @@ const ServicePayrollPartners = () => {
                   <img
                     className="w-[150px] h-[150px] object-contain"
                     src={`${devBaseImgUrl}/${logo.imageName}`}
-                    alt=""
+                    alt="Growth With Us"
                   />
                 </li>
               );

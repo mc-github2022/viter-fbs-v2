@@ -28,7 +28,7 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
                 // src={`${devBaseImgUrl}/HRISscreenShot.png`}
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
-                alt=""
+                alt="Online Donation System"
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>

@@ -27,7 +27,7 @@ const SinglePageOverview = ({ pageName }) => {
               <img
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
-                alt=""
+                alt="Web Development Team"
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>

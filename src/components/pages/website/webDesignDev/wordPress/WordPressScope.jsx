@@ -45,14 +45,16 @@ const WordPressScope = ({ pageName }) => {
                 return (
                   <li
                     key={key}
-                    className={"overflow-hidden  border-b border-[#e9e9e9]"}>
+                    className={"overflow-hidden  border-b border-[#e9e9e9]"}
+                  >
                     <div
                       className={`${
                         accordion && accordionItem === scopeList.scopeId
                           ? "bg-customGray"
                           : ""
                       } flex justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
-                      onClick={() => handleAccordion(scopeList.scopeId)}>
+                      onClick={() => handleAccordion(scopeList.scopeId)}
+                    >
                       <div className="flex items-center gap-4">
                         {scopeList.scopeIcon}
                         <p
@@ -60,7 +62,8 @@ const WordPressScope = ({ pageName }) => {
                             accordion && accordionItem === scopeList.scopeId
                               ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
                               : "text-dark"
-                          } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}>
+                          } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}
+                        >
                           {scopeList.scopeTitle}
                         </p>
                       </div>
@@ -77,12 +80,14 @@ const WordPressScope = ({ pageName }) => {
                         accordion && accordionItem === scopeList.scopeId
                           ? "px-4 pt-4 pb-4"
                           : "h-0 py-0"
-                      } accordionContent `}>
+                      } accordionContent `}
+                    >
                       <p className="">{scopeList.scopeDesc}</p>
                       <p className="md:hidden py-6">
                         <button
                           onClick={handleForm}
-                          className="btn px-5 bg-primary text-light font-semibold">
+                          className="btn px-5 bg-primary text-light font-semibold"
+                        >
                           CONTACT US
                         </button>
                       </p>
@@ -97,17 +102,19 @@ const WordPressScope = ({ pageName }) => {
                   key={key}
                   className={`${
                     accordionItem === scopedata.scopeId ? "block" : "hidden"
-                  }`}>
+                  }`}
+                >
                   <img
                     className="hidden md:w-full md:object-contain md:block"
                     src={`${devBaseImgUrl}/${scopedata.scopeImage}`}
-                    alt="scope"
+                    alt="What Makes Our Website Development"
                   />
 
                   <p className="hidden text-sm md:block mb-4 text-center pt-8 pb-8">
                     <button
                       onClick={handleForm}
-                      className="btn px-5 bg-primary text-light font-semibold">
+                      className="btn px-5 bg-primary text-light font-semibold"
+                    >
                       CONTACT US
                     </button>
                   </p>

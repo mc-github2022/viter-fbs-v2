@@ -35,7 +35,7 @@ const VaAdminSolutionPricing = ({ pageName }) => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] lg:min-h-[700px] `}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] lg:min-h-[670px] `}
                   >
                     <div className="">
                       <div className="title mb-4">
@@ -67,29 +67,33 @@ const VaAdminSolutionPricing = ({ pageName }) => {
                             ))}
                           </ul> */}
                           <table className="prices my-5">
-                            {price.info.map((info, key) => (
-                              <tr
-                                key={key}
-                                className="border-0 flex items-start"
-                              >
-                                <td>
-                                  <FaCheckCircle
-                                    className={`${price.customCss} text-light translate-y-1`}
-                                  />
-                                </td>
-                                <td className="text-[16px]">{info}</td>
-                              </tr>
-                            ))}
+                            <tbody>
+                              {price.info.map((info, key) => (
+                                <tr
+                                  key={key}
+                                  className="border-0 flex items-start"
+                                >
+                                  <td>
+                                    <FaCheckCircle
+                                      className={`${price.customCss} text-light translate-y-1`}
+                                    />
+                                  </td>
+                                  <td className="text-[16px]">{info}</td>
+                                </tr>
+                              ))}
+                            </tbody>
                           </table>
                         </div>
                       </div>
                       <p className="mb-8 hidden lg:block">{price.priceDesc}</p>
-                      <button
-                        onClick={() => handleForm(price.title)}
-                        className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
-                      >
-                        {price.btnText}
-                      </button>
+                      <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
+                        <button
+                          onClick={() => handleForm(price.title)}
+                          className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
+                        >
+                          {price.btnText}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );

@@ -131,7 +131,7 @@ const EventsAndAct = () => {
   };
   return (
     <>
-      <Header pageName={pageName}/>
+      <Header pageName={pageName} />
       <div className="EventsAndAct pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="theTitle mb-20">
@@ -201,7 +201,7 @@ const EventsAndAct = () => {
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                           }}
-                          className="blogItem bg-center bg-cover md:min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem bg-center bg-cover h-[267px] md:min-w-[418px] md:h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer "
                         >
                           <div>
                             <div className="blogExcerpt p-10 pb-6 relative z-[1]">
@@ -215,7 +215,7 @@ const EventsAndAct = () => {
                               </h4>
                             </div>
                           </div>
-                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
                       </Link>
                     </div>
@@ -227,7 +227,7 @@ const EventsAndAct = () => {
                 {eventsAndActivitiesData?.data.map((post, key) => {
                   if (key <= 2) return null;
                   return (
-                    <div key={key} className="h-[350px]">
+                    <div key={key} className=" h-[267px] md:h-[350px]">
                       <Link
                         to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
                       >
@@ -235,7 +235,7 @@ const EventsAndAct = () => {
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                           }}
-                          className="blogItem bg-center bg-cover md:min-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem bg-center bg-cover h-[267px] md:max-w-[418px] md:min-w-[418px] md:h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                         >
                           <div>
                             <div className="blogExcerpt p-10 pb-6 relative z-[1]">
@@ -249,7 +249,7 @@ const EventsAndAct = () => {
                               </h4>
                             </div>
                           </div>
-                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
                       </Link>
                     </div>

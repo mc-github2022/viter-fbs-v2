@@ -20,7 +20,7 @@ const BookkeepingOverview = () => {
                 // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
-                alt=""
+                alt="Right Choice for Your Bookkeeping & Business Compliance needs."
               />
             </div>
             <div>

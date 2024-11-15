@@ -22,7 +22,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/jhonny.png`}
                 src={`${devBaseImgUrl}/jhonny.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Jhonny Dichoso, MIT"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Jhonny Dichoso, MIT</p>
@@ -38,7 +38,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/Thea.png`}
                 src={`${devBaseImgUrl}/thea.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Ms. Thea Lyzette Consignado"
               />
               <div>
                 <p className="font-semibold text-xl">
@@ -56,7 +56,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/roy.png`}
                 src={`${devBaseImgUrl}/roy.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Roy Balaaldia"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Roy Balaaldia</p>
@@ -71,7 +71,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/ms.-herlyn.png`}
                 src={`${devBaseImgUrl}/ms.-herlyn.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Ms. Herlyn Mae Torres"
               />
               <div>
                 <p className="font-semibold text-xl">Ms. Herlyn Mae Torres</p>
@@ -86,7 +86,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/sir-mon-1.png`}
                 src={`${devBaseImgUrl}/sir-mon-1.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Ramon Plaza"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Ramon Plaza</p>
@@ -99,7 +99,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/mc.png`}
                 src={`${devBaseImgUrl}/mc.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Mark Christopher Bumagat"
               />
               <div>
                 <p className="font-semibold text-xl">
@@ -114,7 +114,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/ansbert.png`}
                 src={`${devBaseImgUrl}/ansbert.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Ansbert Gregana"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Ansbert Gregana</p>
@@ -129,7 +129,7 @@ const LcssTeam = () => {
                 // src={`${devBaseImgUrl}/emman.png`}
                 src={`${devBaseImgUrl}/emman.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Emmanuel Manalo"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Emmanuel Manalo</p>

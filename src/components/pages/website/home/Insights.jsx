@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { insight } from "./data";
 import { Link } from "react-router-dom";
@@ -71,6 +71,8 @@ const Insights = () => {
     "insights" // key
   );
 
+  const sliderRef = useRef(null);
+
   var settings = {
     dots: false,
     infinite: true,
@@ -127,6 +129,26 @@ const Insights = () => {
     ],
   };
 
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <section className="insights py-16 md:py-24 bg-customGray">
@@ -144,7 +166,7 @@ const Insights = () => {
           <div className="wrapper">
             <div className=" order-2 mb-12 lg:mb-0 ">
               {insightData?.data.length > 3 ? (
-                <Slider {...settings}>
+                <Slider ref={sliderRef} {...settings}>
                   {insightData.data.map((post, key) => {
                     return (
                       <div key={key} className="md:px-0">

@@ -20,7 +20,7 @@ const Footer = () => {
                 <img
                   src={`${devBaseImgUrl}/logo-fbs.png`}
                   className="w-[157px] mx-auto sm:mx-0"
-                  alt=""
+                  alt="Frontline Business Solutions Company Logo"
                 />
               </div>
               <p className="text-xs my-6">

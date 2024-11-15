@@ -35,7 +35,7 @@ const VaMarketingPricing = ({ pageName }) => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] grid place-items-center  lg:min-h-[800px]`}
+                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] grid place-items-center h-[600px]  lg:min-h-[750px]`}
                   >
                     <div className=" mb-5 relative">
                       <div className="title mb-4">
@@ -67,19 +67,21 @@ const VaMarketingPricing = ({ pageName }) => {
                             ))}
                           </ul> */}
                           <table className="prices my-5">
-                            {price.info.map((info, key) => (
-                              <tr
-                                key={key}
-                                className="border-0 flex items-start"
-                              >
-                                <td>
-                                  <FaCheckCircle
-                                    className={`${price.customCss} text-light translate-y-1`}
-                                  />
-                                </td>
-                                <td className="text-[16px]">{info}</td>
-                              </tr>
-                            ))}
+                            <tbody>
+                              {price.info.map((info, key) => (
+                                <tr
+                                  key={key}
+                                  className="border-0 flex items-start"
+                                >
+                                  <td>
+                                    <FaCheckCircle
+                                      className={`${price.customCss} text-light translate-y-1`}
+                                    />
+                                  </td>
+                                  <td className="text-[16px]">{info}</td>
+                                </tr>
+                              ))}
+                            </tbody>
                           </table>
                         </div>
                       </div>
@@ -87,7 +89,7 @@ const VaMarketingPricing = ({ pageName }) => {
                     </div>
                     <button
                       onClick={() => handleForm(price.title)}
-                      className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] bottom-0 hover:bg-light hover:text-primary hover:border-primary"
+                      className="btn px-5 lg:mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] bottom-0 hover:bg-light hover:text-primary hover:border-primary"
                     >
                       {price.btnText}
                     </button>

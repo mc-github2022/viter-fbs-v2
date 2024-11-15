@@ -16,7 +16,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/aclc.png`}
                 src={`${devBaseImgUrl}/aclc.png`}
-                alt=""
+                alt="ACLC"
               />
             </li>
             <li>
@@ -24,7 +24,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/dlsl_official_logo.png`}
                 src={`${devBaseImgUrl}/dlsl_official_logo.png`}
-                alt=""
+                alt="DLSL"
               />
             </li>
             <li>
@@ -32,7 +32,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/csu.png`}
                 src={`${devBaseImgUrl}/csu.png`}
-                alt=""
+                alt="CSU"
               />
             </li>
             <li>
@@ -40,7 +40,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/bsu.png`}
                 src={`${devBaseImgUrl}/bsu.png`}
-                alt=""
+                alt="BSU"
               />
             </li>
             <li>
@@ -48,7 +48,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/letran.png`}
                 src={`${devBaseImgUrl}/letran.png`}
-                alt=""
+                alt="Letran"
               />
             </li>
             <li>
@@ -56,7 +56,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/lpu.png`}
                 src={`${devBaseImgUrl}/lpu.png`}
-                alt=""
+                alt="LPU"
               />
             </li>
             <li>
@@ -64,7 +64,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/Bicol-Univ.png`}
                 src={`${devBaseImgUrl}/bicol-univ.png`}
-                alt=""
+                alt="Bicol University"
               />
             </li>
             <li>
@@ -72,7 +72,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/lspu.png`}
                 src={`${devBaseImgUrl}/lspu.png`}
-                alt=""
+                alt="LSPU"
               />
             </li>
             <li>
@@ -80,7 +80,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/pup.png`}
                 src={`${devBaseImgUrl}/pup.png`}
-                alt=""
+                alt="PUP"
               />
             </li>
             <li>
@@ -88,7 +88,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/spc.png`}
                 src={`${devBaseImgUrl}/spc.png`}
-                alt=""
+                alt="SPC"
               />
             </li>
             <li>
@@ -96,7 +96,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/sti.png`}
                 src={`${devBaseImgUrl}/sti.png`}
-                alt=""
+                alt="STI"
               />
             </li>
             <li>
@@ -104,7 +104,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/tip.png`}
                 src={`${devBaseImgUrl}/tip.png`}
-                alt=""
+                alt="TIP"
               />
             </li>
             <li>
@@ -112,7 +112,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/tmlc.png`}
                 src={`${devBaseImgUrl}/tmlc.png`}
-                alt=""
+                alt="TMLC"
               />
             </li>
             <li>
@@ -120,7 +120,7 @@ const LcssPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/ub.png`}
                 src={`${devBaseImgUrl}/ub.png`}
-                alt=""
+                alt="UB"
               />
             </li>
           </ul>

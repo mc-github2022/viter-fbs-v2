@@ -26,7 +26,8 @@ function SampleNextArrow(props) {
       // }}
       onClick={onClick}
       className="absolute text-light top-[20%] -translate-y-[50%] right-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center
-      md:top-[50%]">
+      md:top-[50%]"
+    >
       <IoIosArrowForward className="text-[2rem]" />
     </div>
   );
@@ -83,7 +84,8 @@ const BusinessRegPricing = ({ pageName }) => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "-60px",
-        }}>
+        }}
+      >
         <ul style={{ margin: "0px" }}> {dots} </ul>
       </div>
     ),
@@ -96,7 +98,8 @@ const BusinessRegPricing = ({ pageName }) => {
           background: "gray",
           borderRadius: "50%",
           opacity: "50%",
-        }}></div>
+        }}
+      ></div>
     ),
     responsive: [
       {
@@ -150,17 +153,20 @@ const BusinessRegPricing = ({ pageName }) => {
                           <div className="title mb-4">
                             {price.icon}
                             <h3
-                              className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}>
+                              className={`${price.customCss} text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] mb-6`}
+                            >
                               {price.title}
                             </h3>
                             <p
-                              className={`${price.customCss} text-2xl text-dark font-bold`}>
+                              className={`${price.customCss} text-2xl text-dark font-bold`}
+                            >
                               {price.rate}
                             </p>
                             <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
                               <button
                                 onClick={() => handleForm(price.title)}
-                                className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary  ">
+                                className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary  "
+                              >
                                 {price.btnText}
                               </button>
                             </div>
@@ -173,11 +179,13 @@ const BusinessRegPricing = ({ pageName }) => {
                               ))}
                             </ul> */}
                               <table className="prices my-5">
-                                {price.info.map((info, key) => (
-                                  <tr key={key} className="border-0">
-                                    <td className="text-[16px]">{info}</td>
-                                  </tr>
-                                ))}
+                                <tbody>
+                                  {price.info.map((info, key) => (
+                                    <tr key={key} className="border-0">
+                                      <td className="text-[16px]">{info}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
                               </table>
                             </div>
                           </div>

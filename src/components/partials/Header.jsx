@@ -54,7 +54,7 @@ const Header = ({ pageName }) => {
         >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
-              <img src={logo} alt="" className="w-[80%] md:w-[90%]" />
+              <img src={logo} alt="Frontline Business Solutions Logo" className="w-[80%] md:w-[90%]" />
             </div>
             <div
               className={`${

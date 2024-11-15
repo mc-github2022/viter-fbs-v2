@@ -20,7 +20,7 @@ const VaAdminSolutionOverview = () => {
                 // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 md:mb-12 lg:mb-0 h-full object-cover"
-                alt=""
+                alt="Right Choice for Your VA Needs."
               />
             </div>
             <div>

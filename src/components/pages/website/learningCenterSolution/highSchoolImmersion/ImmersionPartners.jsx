@@ -16,7 +16,7 @@ const ImmersionPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/aclc.png`}
                 src={`${devBaseImgUrl}/aclc.png`}
-                alt=""
+                alt="ACLC"
               />
             </li>
             <li>
@@ -24,7 +24,7 @@ const ImmersionPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/dlsl_official_logo.png`}
                 src={`${devBaseImgUrl}/gva.png`}
-                alt=""
+                alt="GVA"
               />
             </li>
             <li>
@@ -32,7 +32,7 @@ const ImmersionPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/csu.png`}
                 src={`${devBaseImgUrl}/mfmc.png`}
-                alt=""
+                alt="MFMC"
               />
             </li>
             <li>
@@ -40,7 +40,7 @@ const ImmersionPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/bsu.png`}
                 src={`${devBaseImgUrl}/slis.png`}
-                alt=""
+                alt="SLIS"
               />
             </li>
             <li>
@@ -48,7 +48,7 @@ const ImmersionPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/letran.png`}
                 src={`${devBaseImgUrl}/spc.png`}
-                alt=""
+                alt="SPC"
               />
             </li>
             <li>
@@ -56,7 +56,7 @@ const ImmersionPartners = () => {
                 className="w-[120px] h-[120px] object-contain"
                 // src={`${devBaseImgUrl}/lpu.png`}
                 src={`${devBaseImgUrl}/stms.png`}
-                alt=""
+                alt="STMS"
               />
             </li>
           </ul>

@@ -19,7 +19,7 @@ const WebDesignPartners = () => {
                   <img
                     className="object-contain"
                     src={`${devBaseImgUrl}/${logo.imageName}`}
-                    alt="partners logo"
+                    alt="Growth With Us."
                   />
                 </li>
               );

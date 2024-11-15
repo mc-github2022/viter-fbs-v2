@@ -12,56 +12,56 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/logo-avant-white.png`}
-                    alt=""
+                    alt="Avant"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
                     src={`${devBaseImgUrl}/FTC-e1716532807623.png`}
-                    alt=""
+                    alt="Face the Children"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
                     src={`${devBaseImgUrl}/logo-go-mission-trip.png`}
-                    alt=""
+                    alt="Go Mission trip"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
                     src={`${devBaseImgUrl}/jcceos-logo.png`}
-                    alt=""
+                    alt="Jesus Christ's CEOs"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
                     src={`${devBaseImgUrl}/lightupToy.png`}
-                    alt=""
+                    alt="Light Up"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
                     src={`${devBaseImgUrl}/rebekah.png`}
-                    alt=""
+                    alt="Rebekah Nicole"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
                     src={`${devBaseImgUrl}/tm_logo_dark.png`}
-                    alt=""
+                    alt="Two Miles"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
                 <li>
                   <img
                     src={`${devBaseImgUrl}/logo-world-focus.png`}
-                    alt=""
+                    alt="World Focus"
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>

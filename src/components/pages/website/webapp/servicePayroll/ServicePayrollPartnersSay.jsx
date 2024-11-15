@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -42,6 +42,8 @@ const ServicePayrollPartnersSay = () => {
     "get", // method
     "indTestimonial" // key
   );
+
+  const sliderRef = useRef(null);
 
   var partnerSaysSettings = {
     dots: false,
@@ -91,6 +93,26 @@ const ServicePayrollPartnersSay = () => {
     ],
   };
 
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <section className="ServicePayrollPartnersSay pb-10 md:pb-20">
@@ -108,7 +130,7 @@ const ServicePayrollPartnersSay = () => {
               (item) =>
                 item.industry_testimonial_category === "Online Payroll System"
             ).length > 1 ? (
-              <Slider {...partnerSaysSettings}>
+              <Slider ref={sliderRef} {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
                   if (
                     item.industry_testimonial_category ===
@@ -123,7 +145,7 @@ const ServicePayrollPartnersSay = () => {
                                 // src={`${devBaseImgUrl}/quote-white.png`}
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt=""
+                                alt="Testimonial quote"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
@@ -137,7 +159,7 @@ const ServicePayrollPartnersSay = () => {
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
+                                alt="Client's Company Logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -157,7 +179,7 @@ const ServicePayrollPartnersSay = () => {
                               // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt=""
+                              alt="Client's Company Logo"
                             />
                           </div>
                         </div>
@@ -184,7 +206,7 @@ const ServicePayrollPartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt="quote"
+                                alt="Testimonial quote"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
@@ -197,7 +219,7 @@ const ServicePayrollPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="client logo"
+                                alt="Client's Company Logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -216,7 +238,7 @@ const ServicePayrollPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="client logo"
+                              alt="Client's Company Logo"
                             />
                           </div>
                         </div>

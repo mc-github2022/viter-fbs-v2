@@ -192,7 +192,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
             <div className="z-[1] max-w-[700px] h-[60vh] place-self-center">
               <img
                 src={`${devBaseImgUrl}/${images[0]}`}
-                alt="Batch image"
+                alt="Successful, Industry-Ready Batches."
                 className="object-contain w-[700px] h-[60vh]"
               />
             </div>

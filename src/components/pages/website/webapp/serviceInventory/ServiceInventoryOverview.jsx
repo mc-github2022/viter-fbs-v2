@@ -28,13 +28,14 @@ const ServiceInventoryOverview = ({ pageName }) => {
                 // src={`${devBaseImgUrl}/HRISscreenShot.png`}
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
-                alt=""
+                alt="Asset Inventory System"
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     {webAppOverview[0].btnText}
                   </button>
                 </li>

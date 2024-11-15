@@ -20,7 +20,7 @@ const ServiceHrPartners = () => {
                     className="w-[150px] h-[150px] object-contain"
                     // src={`${devBaseImgUrl}/web-obich.png`}
                     src={`${devBaseImgUrl}/${logo.imageName}`}
-                    alt=""
+                    alt="Partners Company Logo"
                   />
                 </li>
               );

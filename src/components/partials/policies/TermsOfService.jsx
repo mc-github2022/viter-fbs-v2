@@ -190,7 +190,11 @@ const TermsOfService = () => {
 
             <div className="my-10">
               <div>
-                <img src={`${devBaseImgUrl}/logo.png`} alt="" className="py-2" />
+                <img
+                  src={`${devBaseImgUrl}/logo.png`}
+                  alt="Frontline Business Solutions"
+                  className="py-2"
+                />
                 <ul>
                   <li>Baloc Road, Brgy. San Ignacio, San Pablo City,</li>
                   <li>Laguna, Philippines 4000</li>
