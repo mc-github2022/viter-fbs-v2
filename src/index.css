@@ -110,7 +110,7 @@
 
 @layer components {
   .customContainer {
-    @apply w-[1366px] mx-auto px-10;
+    @apply w-[1366px] mx-auto sm:px-5 md:px-10;
   }
   .btn {
     @apply inline-block py-4 px-8 rounded-full text-center;
