@@ -113,6 +113,11 @@ const SingplePage = () => {
                   <div className="popularPostLinks">
                     <ul className="[&>li]:my-8">
                       {insightData?.data.map((popPost, key) => {
+                        if (
+                          popPost.home_insights_slug === post.home_insights_slug
+                        ) {
+                          return;
+                        }
                         return (
                           <div key={key}>
                             <li className="my-5">
