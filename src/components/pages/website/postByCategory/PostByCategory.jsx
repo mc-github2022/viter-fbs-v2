@@ -102,6 +102,9 @@ const PostByCategory = () => {
       <Header />
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
+          <h4 className="text-lg mb-8">
+            Category &gt; {posts[0].home_insights_category}
+          </h4>
           <div className="wrapper grid lg:grid-cols-[_2.5fr_1fr] gap-20">
             <div>
               {posts.map((post, index) => (
