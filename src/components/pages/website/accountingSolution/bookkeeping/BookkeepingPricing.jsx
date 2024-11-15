@@ -55,7 +55,8 @@ function SamplePrevArrow(props) {
       // }}
       onClick={onClick}
       className="absolute text-light top-[20%] -translate-y-[50%] left-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center z-10
-      md:top-[50%]">
+      md:top-[50%]"
+    >
       <IoIosArrowBack className="text-[2rem]" />
     </div>
   );
@@ -239,7 +240,8 @@ const BookkeepingPricing = ({ pageName }) => {
                             : "!bg-customGray"
                         } 
                       priceItem mb-5 relative z-[1] text-center p-5 md:p-10
-                      rounded-lg h-[550px] max-w-[400px] md:w-[400px]`}>
+                      rounded-lg h-[550px] max-w-[400px] md:w-[400px]`}
+                      >
                         <div className="z-10">
                           <div className="title mb-4">
                             {price.icon}
