@@ -25,7 +25,7 @@ function SampleNextArrow(props) {
       //   placeItems: "center",
       // }}
       onClick={onClick}
-      className="absolute text-light top-[20%] -translate-y-[50%] right-[0px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center
+      className="absolute text-light top-[20%] -translate-y-[50%] right-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center
       md:top-[50%]"
     >
       <IoIosArrowForward className="text-[2rem]" />
@@ -54,9 +54,8 @@ function SamplePrevArrow(props) {
       //   placeItems: "center",
       // }}
       onClick={onClick}
-      className="absolute text-light top-[20%] -translate-y-[50%] left-[0px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center z-10
-      md:top-[50%]"
-    >
+      className="absolute text-light top-[20%] -translate-y-[50%] left-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center z-10
+      md:top-[50%]">
       <IoIosArrowBack className="text-[2rem]" />
     </div>
   );
@@ -240,8 +239,7 @@ const BookkeepingPricing = ({ pageName }) => {
                             : "!bg-customGray"
                         } 
                       priceItem mb-5 relative z-[1] text-center p-5 md:p-10
-                      rounded-lg h-[570px] max-w-[300px] md:w-[400px]`}
-                      >
+                      rounded-lg h-[550px] max-w-[400px] md:w-[400px]`}>
                         <div className="z-10">
                           <div className="title mb-4">
                             {price.icon}
@@ -277,11 +275,13 @@ const BookkeepingPricing = ({ pageName }) => {
                               ))}
                             </ul> */}
                               <table className="prices my-5">
-                                {price.info.map((info, key) => (
-                                  <tr key={key} className="border-0">
-                                    <td className="text-[16px]">{info}</td>
-                                  </tr>
-                                ))}
+                                <tbody>
+                                  {price.info.map((info, key) => (
+                                    <tr key={key} className="border-0">
+                                      <td className="text-[16px]">{info}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
                               </table>
                             </div>
                           </div>

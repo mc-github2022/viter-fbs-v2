@@ -58,7 +58,8 @@ const ConStudApplyNow = ({ pageName }) => {
               </ul>
               <button
                 onClick={handleForm}
-                className="btn bg-primary text-light my-5  inline-block rounded-full font-bold">
+                className="btn bg-primary text-light my-5  inline-block rounded-full font-bold"
+              >
                 APPLY NOW
               </button>
             </div>
@@ -67,7 +68,7 @@ const ConStudApplyNow = ({ pageName }) => {
                 // src={`${devBaseImgUrl}/ojt-accepted.jpg`}
                 src={`${devBaseImgUrl}/ojt-accepted.webp`}
                 className="w-full h-full object-cover object-top"
-                alt=""
+                alt="Join and experience the fun and learning with our team!"
               />
             </div>
           </div>

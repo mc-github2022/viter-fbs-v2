@@ -55,7 +55,7 @@ const Testimonials = () => {
                   <img
                     src={`${devBaseImgUrl}/quote.png`}
                     className="w-full h-full object-cover object-top block"
-                    alt="quote"
+                    alt="Testimonial quote"
                   />
                 </div>
               </div>
@@ -92,7 +92,7 @@ const Testimonials = () => {
                       <img
                         src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
                         className="w-[100px] "
-                        alt="company logo"
+                        alt="Client's company logo"
                       />
                     </div>
                   </div>
@@ -135,7 +135,7 @@ const Testimonials = () => {
             >
               <img
                 src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
-                alt="company logo"
+                alt="Client's company logo"
                 className="max-w-[430px] object-cover"
               />
             </div>
@@ -158,7 +158,7 @@ const Testimonials = () => {
                   <img
                     src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
                     className="object-contain max-h-[87px] "
-                    alt="logo image"
+                    alt="Company logo"
                   />
                 </div>
               </div>

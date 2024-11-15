@@ -26,7 +26,7 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                 // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
                 src={`${devBaseImgUrl}/workimmersion-sige-img.jpg`}
                 className="mb-12 w-full mxauto"
-                alt=""
+                alt="Actual Work-Related Experience."
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>

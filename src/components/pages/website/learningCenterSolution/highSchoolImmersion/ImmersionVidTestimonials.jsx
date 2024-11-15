@@ -190,7 +190,7 @@ const ImmersionVidTestimonials = () => {
                           // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                           src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
                           className="w-[60px]  mr-4"
-                          alt=""
+                          alt="Trainees Work Experience"
                         />
                         <div className="italic">
                           <p className="font-semibold">
@@ -244,7 +244,7 @@ const ImmersionVidTestimonials = () => {
                           // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                           src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
                           className="w-[60px]  mr-4"
-                          alt=""
+                          alt="Trainees Work Experience"
                         />
                         <div className="italic">
                           <p className="font-semibold">

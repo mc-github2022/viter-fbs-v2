@@ -31,7 +31,8 @@ const PartnerWithUs = ({ pageName }) => {
               </p>
               <button
                 onClick={handleForm}
-                className="btn bg-primary text-light my-5  font-semibold inline-block rounded-full ">
+                className="btn bg-primary text-light my-5  font-semibold inline-block rounded-full "
+              >
                 PARTNER WITH US
               </button>
             </div>
@@ -39,7 +40,7 @@ const PartnerWithUs = ({ pageName }) => {
               <img
                 src={`${devBaseImgUrl}/partnerWithUs.jpg`}
                 className="w-full h-full object-cover object-top"
-                alt=""
+                alt="Reliable, Cost-effective, and Expertly Managed Solutions."
               />
             </div>
           </div>

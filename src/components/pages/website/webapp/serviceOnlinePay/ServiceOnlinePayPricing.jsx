@@ -33,22 +33,26 @@ const ServiceOnlinePayPricing = ({ pageName }) => {
                     key={key}
                     className={`priceItem relative z-[1] text-light text-center p-10 rounded-lg max-w-[400px] addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
-                    } grid place-items-center`}>
+                    } grid place-items-center`}
+                  >
                     <div>
                       <div className="title mb-4 ">
                         {price.icon}
                         <h3
-                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}>
+                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
+                        >
                           {price.title}
                         </h3>
                         <p
-                          className={`${price.customCss} text-2xl  font-bold text-light`}>
+                          className={`${price.customCss} text-2xl  font-bold text-light`}
+                        >
                           {price.rate}
                         </p>
 
                         {price.note !== "" && (
                           <p
-                            className={`${price.customCss} text-light text-lg italic`}>
+                            className={`${price.customCss} text-light text-lg italic`}
+                          >
                             {price.note}
                           </p>
                         )}
@@ -64,20 +68,23 @@ const ServiceOnlinePayPricing = ({ pageName }) => {
                         ))}
                       </ul> */}
                       <table className="prices my-5">
-                        {price.info.map((info, key) => (
-                          <tr key={key} className="border-0 flex items-start">
-                            <td>
-                              <FaCheckCircle
-                                className={`${price.customCss} text-light translate-y-1`}
-                              />
-                            </td>
-                            <td className="text-[16px]">{info}</td>
-                          </tr>
-                        ))}
+                        <tbody>
+                          {price.info.map((info, key) => (
+                            <tr key={key} className="border-0 flex items-start">
+                              <td>
+                                <FaCheckCircle
+                                  className={`${price.customCss} text-light translate-y-1`}
+                                />
+                              </td>
+                              <td className="text-[16px]">{info}</td>
+                            </tr>
+                          ))}
+                        </tbody>
                       </table>
                       <button
                         onClick={() => handleForm(price.title)}
-                        className="btn px-5 mt-10 bg-primary text-light border-light border-2  font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary">
+                        className="btn px-5 mt-10 bg-primary text-light border-light border-2  font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
+                      >
                         CONTACT US
                       </button>
                     </div>

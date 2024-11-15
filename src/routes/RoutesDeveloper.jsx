@@ -49,7 +49,7 @@ export const routesDeveloper = [
     element: <Home />,
   },
   {
-    path: `${devNavUrl}/lcss`,
+    path: `${devNavUrl}/college-ojt`,
     element: <LcssPage />,
   },
   {
@@ -57,7 +57,7 @@ export const routesDeveloper = [
     element: <ServiceHrPage />,
   },
   {
-    path: `${devNavUrl}/whyus`,
+    path: `${devNavUrl}/why-work-with-us`,
     element: <WhyUsPage />,
   },
   {
@@ -65,7 +65,7 @@ export const routesDeveloper = [
     element: <EventsAndAct />,
   },
   {
-    path: `${devNavUrl}/adminSolution`,
+    path: `${devNavUrl}/va-administrative`,
     element: <VaAdminSolutionPage />,
   },
   {
@@ -81,7 +81,7 @@ export const routesDeveloper = [
     element: <VaCreativeSupportPage />,
   },
   {
-    path: `${devNavUrl}/va-research`,
+    path: `${devNavUrl}/va-business-support`,
     element: <VaResearchPage />,
   },
   {
@@ -105,7 +105,7 @@ export const routesDeveloper = [
     element: <ServiceOnlineDonationPage />,
   },
   {
-    path: `${devNavUrl}/webapp-inventory`,
+    path: `${devNavUrl}/webapp-asset-inventory`,
     element: <ServiceInventoryPage />,
   },
   {
@@ -125,7 +125,7 @@ export const routesDeveloper = [
     element: <CareerPage />,
   },
   {
-    path: `${devNavUrl}/immersion`,
+    path: `${devNavUrl}/work-immersion`,
     element: <ImmersionPage />,
   },
   {
@@ -137,7 +137,7 @@ export const routesDeveloper = [
     element: <SingplePage />,
   },
   {
-    path: `${devNavUrl}/business-registration`,
+    path: `${devNavUrl}/accounting-business-registration`,
     element: <BusinessRegPage />,
   },
   {
@@ -145,7 +145,7 @@ export const routesDeveloper = [
     element: <CompliancePage />,
   },
   {
-    path: `${devNavUrl}/bookkeeping`,
+    path: `${devNavUrl}/accounting-bookkeeping`,
     element: <BookkeepingPage />,
   },
   {
@@ -181,7 +181,7 @@ export const routesDeveloper = [
     element: <Services />,
   },
   {
-    path: `${devNavUrl}/events-activities`,
+    path: `${devNavUrl}/events-and-activities`,
     element: <EventsAndActivities />,
   },
   {

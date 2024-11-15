@@ -26,20 +26,22 @@ const ConStudPartnersWithUs = ({ pageName }) => {
               <img
                 src={`${devBaseImgUrl}/continuing-studies-img.jpg`}
                 className="mb-12 w-full mx-auto"
-                alt=""
+                alt="Effective Skills Acquisitions."
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     PARTNER WITH US
                   </button>
                 </li>
                 <li>
                   <a
                     href="#"
-                    className="flex items-center gap-2 font-bold text-primary">
+                    className="flex items-center gap-2 font-bold text-primary"
+                  >
                     Download Proposal <FaFileDownload />
                   </a>
                 </li>

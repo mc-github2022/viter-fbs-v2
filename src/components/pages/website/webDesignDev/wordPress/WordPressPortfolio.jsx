@@ -57,7 +57,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-ottm.png`}
                   className="w-full h-full object-cover object-top rounded-2xl group-hover:brightness-50"
-                  alt="ottm"
+                  alt="OTTM"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -69,12 +69,13 @@ const WordPressPortfolio = () => {
               <a
                 href="https://facethechildren.org/"
                 target="_blank"
+                e
                 rel="noopener noreferrer"
               >
                 <img
                   src={`${devBaseImgUrl}/portfolio-ftc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt="ftc"
+                  alt="Face the Children"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -91,7 +92,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-worldfocus.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt="worldfocus"
+                  alt="World Focus"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -108,7 +109,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-fca.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt="fca"
+                  alt="FCA"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -125,7 +126,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-phixgenomics.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt="phixgenomics"
+                  alt="Phixgenomics"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
@@ -142,7 +143,7 @@ const WordPressPortfolio = () => {
                 <img
                   src={`${devBaseImgUrl}/portfolio-fwc.png`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt="fwc"
+                  alt="Frontline Worship Center"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />

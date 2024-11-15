@@ -21,7 +21,8 @@ function SampleNextArrow(props) {
         fontSize: "3rem",
         cursor: "pointer",
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <IoIosArrowForward />
     </div>
   );
@@ -41,7 +42,8 @@ function SamplePrevArrow(props) {
         zIndex: "1",
         cursor: "pointer",
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <IoIosArrowBack />
     </div>
   );
@@ -90,9 +92,10 @@ const BannerSlider = ({ pageName }) => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "15px",
-        }}>
-        <ul style={{ margin: "0px" }}> {dots} </ul>
+          bottom: "0px",
+        }}
+      >
+        <ul className="mb-[-10px] md:mb-[15px]"> {dots} </ul>
       </div>
     ),
     customPaging: (i) => (
@@ -104,7 +107,8 @@ const BannerSlider = ({ pageName }) => {
           background: "#F5F5F5",
           borderRadius: "50%",
           opacity: "50%",
-        }}></div>
+        }}
+      ></div>
     ),
     responsive: [
       {
@@ -129,12 +133,13 @@ const BannerSlider = ({ pageName }) => {
           <div key={key}>
             <section
               id="banner"
-              className={`banner bg-cover bg-center py-12 h-screen place-content-center md:h-fit`}
+              className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit`}
               style={{
                 // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                 backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,
-              }}>
-              <div className="customContainer">
+              }}
+            >
+              <div className="customContainer h-fit">
                 <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
                   <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
                     <p className="text-light lg:text-[28px] italic">
@@ -149,7 +154,8 @@ const BannerSlider = ({ pageName }) => {
                     <a
                       href="#"
                       className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
-                      onClick={handleForm}>
+                      onClick={handleForm}
+                    >
                       {item.home_banner_button_text}
                     </a>
                   </div>

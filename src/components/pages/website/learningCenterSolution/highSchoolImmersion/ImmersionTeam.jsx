@@ -21,7 +21,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/jhonny.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Jhonny Dichoso, MIT"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Jhonny Dichoso, MIT</p>
@@ -36,7 +36,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/thea.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Ms. Thea Lyzette Consignado"
               />
               <div>
                 <p className="font-semibold text-xl">
@@ -53,7 +53,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/roy.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Roy Balaaldia"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Roy Balaaldia</p>
@@ -67,7 +67,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/ms.-herlyn.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Ms. Herlyn Mae Torres"
               />
               <div>
                 <p className="font-semibold text-xl">Ms. Herlyn Mae Torres</p>
@@ -81,7 +81,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/sir-mon-1.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Ramon Plaza"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Ramon Plaza</p>
@@ -93,7 +93,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/mc.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Mark Christopher Bumagat"
               />
               <div>
                 <p className="font-semibold text-xl">
@@ -107,7 +107,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/ansbert.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Ansbert Gregana"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Ansbert Gregana</p>
@@ -121,7 +121,7 @@ const ImmersionTeam = () => {
               <img
                 src={`${devBaseImgUrl}/emman.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt=""
+                alt="Mr. Emmanuel Manalo"
               />
               <div>
                 <p className="font-semibold text-xl">Mr. Emmanuel Manalo</p>

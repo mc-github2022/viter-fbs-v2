@@ -118,10 +118,10 @@ const WebDesignPartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt="quote"
+                                alt="Testimonial quote"
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8 md:min-h-0 text-justify min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
+                            <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
                               {item.industry_testimonial_message}
                             </p>
                             <div
@@ -131,7 +131,7 @@ const WebDesignPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="client logo"
+                                alt="Client's Company logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -150,7 +150,7 @@ const WebDesignPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
-                              alt="client image"
+                              alt="Client's Image"
                             />
                           </div>
                         </div>
@@ -174,10 +174,10 @@ const WebDesignPartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt="quote"
+                                alt="Testimonial quote"
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8 md:min-h-0 text-justify min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
+                            <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
                               {item.industry_testimonial_message}
                             </p>
                             <div
@@ -187,7 +187,7 @@ const WebDesignPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="client logo"
+                                alt="Client's Company logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -206,7 +206,7 @@ const WebDesignPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0"
-                              alt="client image"
+                              alt="Client's Image"
                             />
                           </div>
                         </div>

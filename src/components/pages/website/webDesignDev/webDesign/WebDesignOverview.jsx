@@ -27,13 +27,14 @@ const WebDesignOverview = ({ pageName }) => {
               <img
                 src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
                 className="mb-12 w-full mx-auto"
-                alt=""
+                alt="Web Development Team"
               />
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     {webAppOverview[0].btnText}
                   </button>
                 </li>
@@ -41,7 +42,8 @@ const WebDesignOverview = ({ pageName }) => {
                   <a
                     href={`${devBaseImgUrl}/website-design-and-development-portfolio-2022-v3.pdf`}
                     download
-                    className="flex items-center gap-2 font-bold text-primary">
+                    className="flex items-center gap-2 font-bold text-primary"
+                  >
                     {webAppOverview[0].btnDownloadText} <FaFileDownload />
                   </a>
                 </li>
