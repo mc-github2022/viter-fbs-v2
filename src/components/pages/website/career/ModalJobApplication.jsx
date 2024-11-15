@@ -10,13 +10,72 @@ import {
 import { IoMdPin } from "react-icons/io";
 import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
+import { Form, Formik } from "formik";
+import { useMutation } from "@tanstack/react-query";
+import { queryData } from "../../../helpers/queryData";
+import {
+  setIsAdd,
+  setMessage,
+  setSuccess,
+  setValidate,
+} from "../../../store/StoreAction";
+import * as Yup from "yup";
+import {
+  InputFileUpload,
+  InputText,
+  InputTextArea,
+} from "../../../helpers/FormInputs";
+import useUploadFiles from "../../../custom-hooks/useUploadFiles";
+import { StoreContext } from "../../../store/StoreContext";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
 const ModalJobApplication = ({ setModalJob, jobTitle }) => {
+  const { store, dispatch } = React.useContext(StoreContext);
+
   const handleClose = () => {
     setModalJob(false);
   };
+  const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
+    `${apiVersion}/upload-files`,
+    dispatch
+  );
 
+  const mutation = useMutation({
+    mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["sending-email"] });
+      if (data.success) {
+        dispatch(setIsAdd(false));
+        dispatch(setSuccess(true));
+        dispatch(setMessage(`Message Sent Success`));
+      }
+      // show error box
+      if (!data.success) {
+        dispatch(setValidate(true));
+        dispatch(setMessage(data.error));
+      }
+    },
+  });
+
+  const initVal = {
+    client_name: "",
+    client_email: "",
+    client_phone: "",
+    client_message_subject: "",
+    client_message: "",
+    client_file: "",
+    formTitle: `Job Application: ${jobTitle}`,
+  };
+
+  const yupSchema = Yup.object({
+    client_name: Yup.string().required("Required"),
+    client_email: Yup.string().required("Required"),
+    client_phone: Yup.string().required("Required"),
+    // client_message_subject: Yup.string().required("Required"),
+    client_message: Yup.string().required("Required"),
+  });
   return (
     <>
       <div
@@ -120,37 +179,98 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
               </div>
             </div>
           </div>
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] ">
+
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
             <p className="mb-2 text-lg">
               Job Application: <b>{jobTitle}</b>
             </p>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Name</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Email</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Subject</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Mobile Number</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-2">
-              <span htmlFor="">Message</span> <br />
-              <textarea name="" id="" className="resize-none"></textarea>
-            </div>
-            <div className="inputGroup mb-2">
-              <input
-                type="submit"
-                value="Submit"
-                className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
-              />
-            </div>
+            <Formik
+              initialValues={initVal}
+              validationSchema={yupSchema}
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                // mutate data
+                console.log("values", values, newfile);
+                const data = {
+                  ...values,
+                  client_file: newfile.name,
+                };
+                if (newfile) {
+                  await uploadFiles(); // to save the photo when submit
+                }
+
+                console.log("values", data, newfile);
+                mutation.mutate(data);
+              }}
+            >
+              {(props) => {
+                return (
+                  <Form>
+                    <div className="modal__body">
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Name"
+                          type="text"
+                          name="client_name"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Email"
+                          type="email"
+                          name="client_email"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Mobile Number"
+                          type="text"
+                          name="client_phone"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+
+                      <div className="input-wrapper">
+                        <span htmlFor="">Upload Resume (Optional)</span>
+                        <InputFileUpload
+                          type="file"
+                          name="client_file"
+                          accept="application/pdf"
+                          id="myFile"
+                          disabled={mutation.isPending}
+                          onChange={(e) => handleChangeFiles(e)}
+                        />
+                        <p className="text-xs italic my-1">PDF Only (8mb)</p>
+                      </div>
+
+                      <div className="input-wrapper">
+                        <InputTextArea
+                          label="Message"
+                          type="text"
+                          name="client_message"
+                          className="h-[200px]"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="modal__action flex justify-end mt-6 gap-2">
+                        <button
+                          className="btn bg-primary text-light hover:text-light"
+                          type="submit"
+                          disabled={mutation.isLoading || !props.dirty}
+                        >
+                          {mutation.isPending ? (
+                            <ButtonSpinner />
+                          ) : (
+                            "Send Message"
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </Form>
+                );
+              }}
+            </Formik>
           </div>
         </div>
       </div>

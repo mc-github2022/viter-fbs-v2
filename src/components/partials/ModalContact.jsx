@@ -18,6 +18,18 @@ import {
 } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { devBaseImgUrl } from "../helpers/functions-general";
+import { Form, Formik } from "formik";
+import ButtonSpinner from "./spinners/ButtonSpinner";
+import { InputText, InputTextArea } from "../helpers/FormInputs";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import * as Yup from "yup";
+import { queryData } from "../helpers/queryData";
+import {
+  setIsAdd,
+  setMessage,
+  setSuccess,
+  setValidate,
+} from "../store/StoreAction";
 
 const ModalContact = ({
   setModalContact = null,
@@ -26,6 +38,8 @@ const ModalContact = ({
   setContactForm = null,
   contactSubject = null,
 }) => {
+  const queryClient = useQueryClient();
+
   const handleClose = () => {
     setModalContact(false);
   };
@@ -35,16 +49,54 @@ const ModalContact = ({
     setContactForm(false);
   };
 
+  const mutation = useMutation({
+    mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["sending-email"] });
+      if (data.success) {
+        dispatch(setIsAdd(false));
+        dispatch(setSuccess(true));
+        dispatch(setMessage(`Message Sent Success`));
+      }
+      // show error box
+      if (!data.success) {
+        dispatch(setValidate(true));
+        dispatch(setMessage(data.error));
+      }
+    },
+  });
+
+  const initVal = {
+    client_name: "",
+    client_email: "",
+    client_phone: "",
+    client_message_subject: "",
+    client_message: "",
+    formTitle: "",
+    client_file: "",
+  };
+
+  const yupSchema = Yup.object({
+    client_name: Yup.string().required("Required"),
+    client_email: Yup.string().required("Required"),
+    client_phone: Yup.string().required("Required"),
+    client_message_subject: Yup.string().required("Required"),
+    client_message: Yup.string().required("Required"),
+  });
+
   return (
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0">
+        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+      >
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow">
+          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+        >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
               className="text-3xl text-light"
@@ -141,35 +193,40 @@ const ModalContact = ({
                   <li>
                     <a
                       href="https://www.facebook.com/frontline.business"
-                      target="_blank">
+                      target="_blank"
+                    >
                       <FaFacebookSquare />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.linkedin.com/company/frontline-business-solutions-inc"
-                      target="_blank">
+                      target="_blank"
+                    >
                       <FaLinkedin />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.youtube.com/@frontlinebusinesssolutions6578"
-                      target="_blank">
+                      target="_blank"
+                    >
                       <FaYoutubeSquare />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.instagram.com/frontline.business"
-                      target="_blank">
+                      target="_blank"
+                    >
                       <FaInstagramSquare />
                     </a>
                   </li>
                   <li>
                     <a
                       href="https://www.tiktok.com/@frontlinebusinessinc"
-                      target="_blank">
+                      target="_blank"
+                    >
                       <AiFillTikTok />
                     </a>
                   </li>
@@ -182,7 +239,8 @@ const ModalContact = ({
                   <p className="text-sm">Learn more about our OJT program</p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1kSl-0-BtMdzMtsTdPw-N2SqI6jlDUJOE"
-                    className="flex gap-2 items-center font-bold text-primary pointer">
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
@@ -193,7 +251,8 @@ const ModalContact = ({
                   </p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1o0xSoctvBb00q81fE_njVJANzVSiEPt_"
-                    className="flex gap-2 items-center font-bold text-primary pointer">
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
@@ -204,7 +263,8 @@ const ModalContact = ({
                   <p className="text-sm">Learn more about our CMS program</p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1KCT6R_LE1PCl_RrCaCQRZYLLNixF73cU"
-                    className="flex gap-2 items-center font-bold text-primary pointer">
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
                     Download Portfolio <FaFileDownload />
                   </a>
                 </>
@@ -213,14 +273,15 @@ const ModalContact = ({
                   <p className="text-sm">Learn more about our program</p>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1NP2OjlbB34H1KVXRSnV1i_p9OgbJY-ND"
-                    className="flex gap-2 items-center font-bold text-primary pointer">
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
                     Download Company Profile <FaFileDownload />
                   </a>
                 </>
               )}
             </div>
           </div>
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
+          {/* <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
@@ -255,6 +316,87 @@ const ModalContact = ({
                 className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
               />
             </div>
+          </div> */}
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
+            {contactSubject ? (
+              <p className="mb-2 text-lg uppercase">
+                {thePageName} : <b>{contactSubject}</b>
+              </p>
+            ) : (
+              <></>
+            )}
+            <Formik
+              initialValues={initVal}
+              validationSchema={yupSchema}
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                // mutate data
+                console.log("values", values);
+                mutation.mutate(values);
+              }}
+            >
+              {(props) => {
+                return (
+                  <Form>
+                    <div className="modal__body">
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Name"
+                          type="text"
+                          name="client_name"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Email"
+                          type="email"
+                          name="client_email"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Phone"
+                          type="text"
+                          name="client_phone"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Subject"
+                          type="text"
+                          name="client_message_subject"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputTextArea
+                          label="Message"
+                          type="text"
+                          name="client_message"
+                          className="h-[200px]"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="modal__action flex justify-end mt-6 gap-2">
+                        <button
+                          className="btn bg-primary text-light hover:text-light"
+                          type="submit"
+                          disabled={mutation.isLoading || !props.dirty}
+                        >
+                          {mutation.isPending ? (
+                            <ButtonSpinner />
+                          ) : (
+                            "Send Message"
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </Form>
+                );
+              }}
+            </Formik>
           </div>
         </div>
       </div>

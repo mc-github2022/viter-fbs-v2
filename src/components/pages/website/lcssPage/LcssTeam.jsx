@@ -41,7 +41,7 @@ const LcssTeam = () => {
                 alt=""
               />
               <div>
-                <p className="font-semibold text-xl"> 
+                <p className="font-semibold text-xl">
                   Ms. Thea Lyzette Consignado
                 </p>
                 <p>Accounting Trainer</p>
