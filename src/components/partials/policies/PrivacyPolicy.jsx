@@ -181,7 +181,7 @@ const PrivacyPolicy = () => {
               <div>
                 <img
                   src={`${devBaseImgUrl}/logo.png`}
-                  alt=""
+                  alt="Frontline Business Solutions"
                   className="py-2"
                 />
                 <ul>

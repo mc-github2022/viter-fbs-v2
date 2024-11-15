@@ -114,6 +114,12 @@ const EventsSingplePage = () => {
                 <div className="popularPostLinks [&>ul>li]:flex [&>ul>li]:items-center [&>ul>li]:gap-4">
                   <ul className="[&>li]:my-8">
                     {eventsAndActivitiesData?.data.map((popPost, key) => {
+                      if (
+                        popPost.events_activities_slug ===
+                        post.events_activities_slug
+                      ) {
+                        return;
+                      }
                       return (
                         <div key={key}>
                           <li className="my-5">

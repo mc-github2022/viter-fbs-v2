@@ -92,7 +92,7 @@ const LcssPartnersSay = () => {
 
   return (
     <>
-      <section className="partnersSay pb-10 md:py-20">
+      <section className="partnersSay py-10 pb-20 md:py-20 -translate-y-1 bg-light">
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 0 && (
             <div className="">
@@ -122,7 +122,7 @@ const LcssPartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt="quote"
+                                alt="Testimonials quote"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full ">
@@ -135,7 +135,7 @@ const LcssPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="client logo"
+                                alt="Client's Company logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -154,7 +154,7 @@ const LcssPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="client image"
+                              alt="Client's Image"
                             />
                           </div>
                         </div>
@@ -181,7 +181,7 @@ const LcssPartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt="quote"
+                                alt="Testimonials quote"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
@@ -194,7 +194,7 @@ const LcssPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="client logo"
+                                alt="Client's Company logo"
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -213,7 +213,7 @@ const LcssPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="client image"
+                              alt="Client's Image"
                             />
                           </div>
                         </div>

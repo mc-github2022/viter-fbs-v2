@@ -31,25 +31,29 @@ const ServiceHrPricing = ({ pageName }) => {
                 return (
                   <div
                     key={key}
-                    className={`priceItem mb-5 lg:mb-0 relative z-[1]  w-full text-light text-center p-10 rounded-lg addShadow ${
+                    className={`priceItem mb-5 lg:mb-0 relative z-[1] w-full text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
-                    } grid `}>
+                    } grid `}
+                  >
                     <div className="flex flex-col justify-between">
                       <div>
                         <div className="title mb-4 ">
                           {price.icon}
                           <h3
-                            className={`${price.customCss} text-2xl font-bold  text-light mb-6`}>
+                            className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
+                          >
                             {price.title}
                           </h3>
                           <p
-                            className={`${price.customCss} text-2xl  font-bold text-light`}>
+                            className={`${price.customCss} text-2xl  font-bold text-light`}
+                          >
                             {price.rate}
                           </p>
 
                           {price.note !== "" && (
                             <p
-                              className={`${price.customCss} text-light text-lg italic`}>
+                              className={`${price.customCss} text-light text-lg italic`}
+                            >
                               {price.note}
                             </p>
                           )}
@@ -65,16 +69,21 @@ const ServiceHrPricing = ({ pageName }) => {
                           ))}
                         </ul> */}
                         <table className="prices my-5">
-                          {price.info.map((info, key) => (
-                            <tr key={key} className="border-0 flex items-start">
-                              <td>
-                                <FaCheckCircle
-                                  className={`${price.customCss} text-light translate-y-`}
-                                />
-                              </td>
-                              <td className="text-[16px]">{info}</td>
-                            </tr>
-                          ))}
+                          <tbody>
+                            {price.info.map((info, key) => (
+                              <tr
+                                key={key}
+                                className="border-0 flex items-start"
+                              >
+                                <td>
+                                  <FaCheckCircle
+                                    className={`${price.customCss} text-light translate-y-`}
+                                  />
+                                </td>
+                                <td className="text-[16px]">{info}</td>
+                              </tr>
+                            ))}
+                          </tbody>
                         </table>
                       </div>
 
@@ -82,7 +91,8 @@ const ServiceHrPricing = ({ pageName }) => {
                         onClick={() => handleForm(price.title)}
                         className="btn bg-primary text-light border-light
                         border-2 mt-10 font-bold w-[190px] mx-auto
-                        hover:bg-light hover:text-primary hover:border-primary">
+                        hover:bg-light hover:text-primary hover:border-primary"
+                      >
                         CHOOSE PLAN
                       </button>
                     </div>

@@ -68,7 +68,7 @@ const LcssApplyNow = ({ pageName }) => {
                 // src={`${devBaseImgUrl}/ojt-accepted.jpg`}
                 src={`${devBaseImgUrl}/ojt-accepted.webp`}
                 className="w-full h-full object-cover object-top"
-                alt=""
+                alt="Join and experience the fun and learning with our team!"
               />
             </div>
           </div>

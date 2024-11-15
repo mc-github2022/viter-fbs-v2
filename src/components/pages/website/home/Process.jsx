@@ -15,7 +15,7 @@ const Process = () => {
           <img
             src={`${devBaseImgUrl}/our-process.png`}
             className="hidden md:block h-full object-contain object-top w-[78%] mx-auto mb-2"
-            alt=""
+            alt="Our Process"
           />
           <div>
             <div className="grid place-items-center text-justify">
@@ -24,7 +24,7 @@ const Process = () => {
                   <div>
                     <img
                       src={`${devBaseImgUrl}/wecollaborate.png`}
-                      className=""
+                      className="We Collaborate"
                       alt=""
                     />
                   </div>

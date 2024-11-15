@@ -57,7 +57,7 @@ const ModalContact = ({
             <img
               src={`${devBaseImgUrl}/lets-talk.jpg`}
               className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-              alt=""
+              alt="Frontline Business Solutions Contact Form"
             />
           </div>
           <div className="flex flex-col justify-between">
