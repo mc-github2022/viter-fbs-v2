@@ -36,22 +36,26 @@ const WebDesignPricing = ({ pageName }) => {
                       price.isActive
                         ? "bg-primary "
                         : "bg-customGray !text-dark"
-                    } grid place-items-center min-h-[580px]`}>
+                    } grid place-items-center min-h-[580px]`}
+                  >
                     <div>
                       <div className="title mb-4 ">
                         {price.icon}
                         <h3
-                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}>
+                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
+                        >
                           {price.title}
                         </h3>
                         <p
-                          className={`${price.customCss} text-2xl  font-bold text-light`}>
+                          className={`${price.customCss} text-2xl  font-bold text-light`}
+                        >
                           {price.rate}
                         </p>
 
                         {price.note !== "" && (
                           <p
-                            className={`${price.customCss} text-light text-lg italic`}>
+                            className={`${price.customCss} text-light text-lg italic`}
+                          >
                             {price.note}
                           </p>
                         )}
@@ -80,7 +84,8 @@ const WebDesignPricing = ({ pageName }) => {
                       </table>
                       <button
                         onClick={() => handleForm(price.title)}
-                        className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px]">
+                        className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
+                      >
                         CONTACT US
                       </button>
                     </div>
