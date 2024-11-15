@@ -35,22 +35,26 @@ const ServiceOnlineDonationPricing = ({ pageName }) => {
                     key={key}
                     className={`priceItem mb-5 md:mb-0 relative z-[1] md:min-h-[700px] max-w-[400px] text-light text-center p-10 rounded-lg addShadow ${
                       price.isActive ? "bg-primary" : "bg-customGray !text-dark"
-                    } grid place-items-center`}>
+                    } grid place-items-center`}
+                  >
                     <div>
                       <div className="title mb-4 ">
                         {price.icon}
                         <h3
-                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}>
+                          className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
+                        >
                           {price.title}
                         </h3>
                         <p
-                          className={`${price.customCss} text-2xl  font-bold text-light`}>
+                          className={`${price.customCss} text-2xl  font-bold text-light`}
+                        >
                           {price.rate}
                         </p>
 
                         {price.note !== "" && (
                           <p
-                            className={`${price.customCss} text-light text-lg italic`}>
+                            className={`${price.customCss} text-light text-lg italic`}
+                          >
                             {price.note}
                           </p>
                         )}
@@ -80,7 +84,8 @@ const ServiceOnlineDonationPricing = ({ pageName }) => {
                     </div>
                     <button
                       onClick={() => handleForm(price.title)}
-                      className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary">
+                      className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
+                    >
                       CONTACT US
                     </button>
                   </div>
