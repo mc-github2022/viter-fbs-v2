@@ -317,7 +317,7 @@ const ModalContact = ({
               />
             </div>
           </div> */}
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full md:w-[428px] ">
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
