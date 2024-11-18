@@ -142,7 +142,7 @@ const ModalContact = ({
                       <p>(+63) 927 168 6810</p>
                     </li>
                     <li>
-                      <div className="text-xs">
+                      <div className="text-xs md:text-sm">
                         <div className="mb-4">
                           <h3 className="font-semibold">
                             Computer-Related Course
@@ -163,7 +163,7 @@ const ModalContact = ({
                 </>
               ) : (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
