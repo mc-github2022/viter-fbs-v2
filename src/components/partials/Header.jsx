@@ -7,6 +7,7 @@ import ModalError from "./modals/ModalError";
 import { StoreContext } from "../store/StoreContext";
 import ModalContact from "./ModalContact";
 import logo from "/img/logo.png";
+import MegaMenu from "./MegaMenu";
 
 const Header = ({ pageName }) => {
   const { store, dispatch } = React.useContext(StoreContext);
