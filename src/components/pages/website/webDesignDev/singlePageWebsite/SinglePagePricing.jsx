@@ -36,7 +36,7 @@ const SinglePagePricing = ({ pageName }) => {
                       price.isActive
                         ? "bg-primary "
                         : "bg-customGray !text-dark"
-                    } grid place-items-center min-h-[600px]`}
+                    }  min-h-[600px]`}
                   >
                     <div>
                       <div className="title mb-4 ">
@@ -84,12 +84,14 @@ const SinglePagePricing = ({ pageName }) => {
                           ))}
                         </tbody>
                       </table>
-                      <button
-                        onClick={() => handleForm(price.title)}
-                        className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
-                      >
-                        CONTACT US
-                      </button>
+                      <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
+                        <button
+                          onClick={() => handleForm(price.title)}
+                          className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
+                        >
+                          CONTACT US
+                        </button>
+                      </div>
                     </div>
                   </div>
                 );

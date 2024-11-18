@@ -181,7 +181,7 @@ export const routesDeveloper = [
     element: <Services />,
   },
   {
-    path: `${devNavUrl}/events-and-activities`,
+    path: `${devNavUrl}/events-activities`,
     element: <EventsAndActivities />,
   },
   {

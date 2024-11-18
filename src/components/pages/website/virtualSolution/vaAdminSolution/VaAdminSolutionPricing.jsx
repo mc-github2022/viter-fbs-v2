@@ -35,7 +35,7 @@ const VaAdminSolutionPricing = ({ pageName }) => {
                       price.isActive
                         ? "!bg-primary text-light"
                         : "!bg-customGray"
-                    } priceItem mb-5 md:mb-0 relative z-[1]  text-center p-10 rounded-lg addShadow max-w-[400px] lg:min-h-[670px] `}
+                    } priceItem mb-5 md:mb-0 relative z-[1] min-h-[450px]  text-center p-10 rounded-lg addShadow max-w-[400px] lg:min-h-[670px] `}
                   >
                     <div className="">
                       <div className="title mb-4">
