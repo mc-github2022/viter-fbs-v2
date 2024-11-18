@@ -55,7 +55,7 @@ const LcssApplyNow = ({ pageName }) => {
               </ul>
               <button
                 onClick={handleForm}
-                className="btn px-3 bg-primary text-light my-5  inline-block rounded-full font-bold"
+                className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
                 PARTNER WITH US TODAY
               </button>
