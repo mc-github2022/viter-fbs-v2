@@ -113,8 +113,8 @@ const CareerPage = () => {
                               ? "min-h-[200px] transition-all !bg-[#eedce8] "
                               : ""
                           }`
-                        : "h-[125px] transition-all"
-                    } jobItem bg-[#f8f8f8] p-5 rounded-lg addShadow  cursor-pointer  overflow-hidden mb-8 ${
+                        : "h-[120px] transition-all"
+                    } jobItem bg-[#f8f8f8] p-5 rounded-lg addShadow cursor-pointer overflow-hidden mb-8 ${
                       item.careers_job_status !== "Ongoing"
                         ? "pointer-events-none"
                         : "cursor-pointer"

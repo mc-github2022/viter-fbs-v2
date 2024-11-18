@@ -27,6 +27,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // $emailReceiver = ["mktg@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
     if(str_contains($title,"Job")){
         $emailReceiver = ["mark.bumagat@frontlinebusiness.com.ph"];
+    }elseif(str_contains($title,"lcss")){
+        $emailReceiver = ["herlyn.torres@frontlinebusiness.com.ph"];
     }else{
         $emailReceiver = ["markbumagat87@gmail.com"];
     }
