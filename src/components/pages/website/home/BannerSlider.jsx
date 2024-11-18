@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
@@ -95,7 +95,7 @@ const BannerSlider = ({ pageName }) => {
           bottom: "0px",
         }}
       >
-        <ul className="mb-[-10px] md:mb-[15px]"> {dots} </ul>
+        <ul className="mb-[10px] md:mb-[5px]"> {dots} </ul>
       </div>
     ),
     customPaging: (i) => (
@@ -123,12 +123,33 @@ const BannerSlider = ({ pageName }) => {
     ],
   };
 
+  const sliderRef = useRef(null);
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       {/* {modalContact && (
         <ModalContactGetStarted setModalContact={setModalContact} />
       )} */}
-      <Slider {...settings}>
+      <Slider ref={sliderRef} {...settings}>
         {bannerData?.data.map((item, key) => (
           <div key={key}>
             <section

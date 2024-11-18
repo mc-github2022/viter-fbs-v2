@@ -94,17 +94,19 @@ const Footer = () => {
                     <a href={`${devNavUrl}/webapp-hris`}>Web Solutions</a>
                   </li>
                   <li>
-                    <a href={`${devNavUrl}/adminSolution`}>
+                    <a href={`${devNavUrl}/va-administrative`}>
                       Virtual Assistant Solutions
                     </a>
                   </li>
                   <li>
-                    <a href={`${devNavUrl}/bookkeeping`}>
+                    <a href={`${devNavUrl}/accounting-bookkeeping`}>
                       Accounting Solutions
                     </a>
                   </li>
                   <li>
-                    <a href={`${devNavUrl}/lcss`}>Learning Center Solutions</a>
+                    <a href={`${devNavUrl}/college-ojt`}>
+                      Learning Center Solutions
+                    </a>
                   </li>
                 </ul>
               </div>

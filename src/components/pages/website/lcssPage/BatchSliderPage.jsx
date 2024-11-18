@@ -59,7 +59,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
+const BatchSliderPage = ({ setModalBatch, modalBatch, selectedBatchId }) => {
   const {
     isFetching,
     error,
@@ -124,7 +124,7 @@ const BatchSliderPage = ({ setModalBatch, itemEdit, selectedBatchId }) => {
   // This is for keyboard navigation of slider
   React.useEffect(() => {
     const handleKeyDown = (event) => {
-      if (sliderRef.current) {
+      if (!modalBatch || sliderRef.current) {
         // Check if the ref is defined
         if (event.key === "ArrowRight") {
           sliderRef.current.slickNext();

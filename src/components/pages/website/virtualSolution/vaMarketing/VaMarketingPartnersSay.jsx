@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import { clientSays, clientSaysTitle } from "./data";
@@ -90,6 +90,28 @@ const VaMarketingPartnersSay = () => {
     ],
   };
 
+  const sliderRef = useRef(null);
+
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <section className="VaPartnersSay pb-10 md:py-20">
@@ -106,7 +128,7 @@ const VaMarketingPartnersSay = () => {
             {IndtestimonialData?.data.filter(
               (item) => item.industry_testimonial_category === "Marketing"
             ).length > 1 ? (
-              <Slider {...partnerSaysSettings}>
+              <Slider ref={sliderRef} {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
                   if (item.industry_testimonial_category === "Marketing") {
                     return (

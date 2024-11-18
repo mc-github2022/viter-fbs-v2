@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import useQueryData from "../../../../custom-hooks/useQueryData";
@@ -141,6 +141,28 @@ const ConStudVidTestimonials = () => {
     return `https://www.youtube.com/embed/${videoId}?playlist=${videoId}&controls=1&showinfo=0&rel=0&loop=1&autoplay=0&mute=1`;
   };
 
+  const sliderRef = useRef(null);
+
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <section className="lcssVidTestimonials py-20 bg-[#000000] relative overflow-hidden">
@@ -156,7 +178,7 @@ const ConStudVidTestimonials = () => {
           {vidTestimonialData?.data.filter(
             (item) => item.vid_testimonial_category === "Continuing Studies"
           ).length > 3 ? (
-            <Slider {...settings}>
+            <Slider ref={sliderRef} {...settings}>
               {vidTestimonialData?.data.map((item, key) => {
                 if (item.vid_testimonial_category === "Continuing Studies") {
                   return (

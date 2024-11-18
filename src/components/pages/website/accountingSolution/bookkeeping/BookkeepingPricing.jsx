@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { pricing, pricingCardCount } from "./data";
 import Slider from "react-slick";
@@ -121,6 +121,29 @@ const BookkeepingPricing = ({ pageName }) => {
       },
     ],
   };
+
+  const sliderRef = useRef(null);
+
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <section className="BookkeepingPricing py-20 bg-[#000000] relative overflow-hidden">
@@ -228,7 +251,7 @@ const BookkeepingPricing = ({ pageName }) => {
           </div>
           <div className="">
             <div className="wrapper">
-              <Slider {...bookkeepingSliderSettings}>
+              <Slider ref={sliderRef} {...bookkeepingSliderSettings}>
                 {pricing.map((price, key) => {
                   return (
                     <div className="grid place-items-center">

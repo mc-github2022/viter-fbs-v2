@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -90,6 +90,28 @@ const SinglePagePartnersSay = () => {
     ],
   };
 
+  const sliderRef = useRef(null);
+
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <section className="SinglePagePartnersSay py-20">
@@ -107,7 +129,7 @@ const SinglePagePartnersSay = () => {
               (item) =>
                 item.industry_testimonial_category === "Single Page Website"
             ).length > 1 ? (
-              <Slider {...partnerSaysSettings}>
+              <Slider ref={sliderRef} {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
                   if (
                     item.industry_testimonial_category === "Single Page Website"

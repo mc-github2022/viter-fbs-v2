@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import { immersionBatch } from "./data";

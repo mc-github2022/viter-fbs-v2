@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { pricing, pricingCardCount } from "./data";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -55,7 +55,8 @@ function SamplePrevArrow(props) {
       // }}
       onClick={onClick}
       className="absolute text-light top-[20%] -translate-y-[50%] left-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center z-10
-      md:top-[50%]">
+      md:top-[50%]"
+    >
       <IoIosArrowBack className="text-[2rem]" />
     </div>
   );
@@ -69,6 +70,7 @@ const BusinessRegPricing = ({ pageName }) => {
     setContactForm(!contactForm);
     setContactSubject(item);
   };
+
   var eventsSliderSettings = {
     dots: false,
     infinite: true,
@@ -122,6 +124,29 @@ const BusinessRegPricing = ({ pageName }) => {
       },
     ],
   };
+
+  const sliderRef = useRef(null);
+
+  // This is for keyboard navigation of slider
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (sliderRef.current) {
+        // Check if the ref is defined
+        if (event.key === "ArrowRight") {
+          sliderRef.current.slickNext();
+        } else if (event.key === "ArrowLeft") {
+          sliderRef.current.slickPrev();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <>
       <section className="BusinessRegPricing py-20 bg-[#000000] relative overflow-hidden">
@@ -136,7 +161,7 @@ const BusinessRegPricing = ({ pageName }) => {
           </div>
           <div className="">
             <div className="wrapper ">
-              <Slider {...eventsSliderSettings}>
+              <Slider ref={sliderRef} {...eventsSliderSettings}>
                 {pricing.map((price, key) => {
                   return (
                     <div className="grid place-items-center">
@@ -148,7 +173,8 @@ const BusinessRegPricing = ({ pageName }) => {
                             : "!bg-customGray"
                         } 
                       priceItem mb-5 relative z-[1] text-center p-10 md:h-[750px]
-                      rounded-lg h-[700px] max-w-[400px] md:w-[400px] `}>
+                      rounded-lg h-[700px] max-w-[400px] md:w-[400px] `}
+                      >
                         <div className="z-10">
                           <div className="title mb-4">
                             {price.icon}
