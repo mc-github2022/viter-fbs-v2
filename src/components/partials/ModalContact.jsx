@@ -95,7 +95,7 @@ const ModalContact = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-8 md:px-10  lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -125,7 +125,7 @@ const ModalContact = ({
               thePageName === "conStud" ||
               thePageName === "immersion" ? (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
