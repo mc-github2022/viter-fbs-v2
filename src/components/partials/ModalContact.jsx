@@ -142,13 +142,13 @@ const ModalContact = ({
                       <p>(+63) 927 168 6810</p>
                     </li>
                     <li>
-                      <div>
+                      <div className="text-xs">
                         <div className="mb-4">
                           <h3 className="font-semibold">
                             Computer-Related Course
                           </h3>
                           <p>Ms. Herlyn Mae Torres</p>
-                          <p>Herlyn.torres@frontlinebusiness.com.ph</p>
+                          <p>herlyn.torres@frontlinebusiness.com.ph</p>
                         </div>
                         <div className="mb-8">
                           <h3 className="font-semibold">
