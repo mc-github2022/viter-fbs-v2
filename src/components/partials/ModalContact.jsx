@@ -95,7 +95,7 @@ const ModalContact = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-8 md:px-10  lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -125,7 +125,7 @@ const ModalContact = ({
               thePageName === "conStud" ||
               thePageName === "immersion" ? (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
@@ -142,13 +142,13 @@ const ModalContact = ({
                       <p>(+63) 927 168 6810</p>
                     </li>
                     <li>
-                      <div>
+                      <div className="text-xs md:text-sm">
                         <div className="mb-4">
                           <h3 className="font-semibold">
                             Computer-Related Course
                           </h3>
                           <p>Ms. Herlyn Mae Torres</p>
-                          <p>Herlyn.torres@frontlinebusiness.com.ph</p>
+                          <p>herlyn.torres@frontlinebusiness.com.ph</p>
                         </div>
                         <div className="mb-8">
                           <h3 className="font-semibold">
@@ -163,7 +163,7 @@ const ModalContact = ({
                 </>
               ) : (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
@@ -317,7 +317,7 @@ const ModalContact = ({
               />
             </div>
           </div> */}
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full md:w-[428px] ">
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
