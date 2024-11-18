@@ -7,8 +7,12 @@ import WebDesignPartners from "./WebDesignPartners";
 import WebDesignPartnersSay from "./WebDesignPartnersSay";
 import WebDesignPricing from "./WebDesignPricing";
 import WebDesignScope from "./WebDesignScope";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const WebDesignPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("web-design");
   return (
     <>
@@ -20,6 +24,8 @@ const WebDesignPage = () => {
       <WebDesignPartners />
       <WebDesignPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

@@ -10,22 +10,30 @@ import LcssVidTestimonials from "./LcssVidTestimonials";
 import LcssPartnersSay from "./LcssPartnersSay";
 import LcssBanner from "./LcssBanner";
 import LcssBatches from "./LcssBatches";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
+import { StoreContext } from "../../../store/StoreContext";
 
 const LcssPage = () => {
+  const [contactSubject, setContactSubject] =
+    React.useState("Contact Form: LCSS");
   const [pageName, setPageName] = React.useState("lcss");
+  const { store, dispatch } = React.useContext(StoreContext);
   return (
     <>
-      <Header pageName={pageName} />
-      <LcssBanner pageName={pageName} />
+      <Header pageName={pageName} contactSubject={contactSubject} />
+      <LcssBanner pageName={pageName} contactSubject={contactSubject} />
       <LcssPartners />
-      <LcssPartnersWithUs pageName={pageName} />
+      <LcssPartnersWithUs pageName={pageName} contactSubject={contactSubject} />
       <LcssServices />
-      <LcssApplyNow pageName={pageName} />
+      <LcssApplyNow pageName={pageName} contactSubject={contactSubject} />
       <LcssTeam />
       <LcssBatches />
       <LcssVidTestimonials />
       <LcssPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

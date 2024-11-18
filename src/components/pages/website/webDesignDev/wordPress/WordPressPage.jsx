@@ -8,8 +8,12 @@ import WordPressPricing from "./WordPressPricing";
 import WordPressPartners from "./WordPressPartners";
 import WordPressPartnersSay from "./WordPressPartnersSay";
 import WordPressPortfolio from "./WordPressPortfolio";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const WordPressPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("cms");
   return (
     <>
@@ -22,6 +26,8 @@ const WordPressPage = () => {
       <WordPressPartners />
       <WordPressPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

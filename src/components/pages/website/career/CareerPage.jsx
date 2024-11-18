@@ -12,6 +12,9 @@ import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
+import { StoreContext } from "../../../store/StoreContext";
 
 const icons = {
   ...FaIcons,
@@ -23,6 +26,7 @@ const icons = {
 };
 
 const CareerPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("career");
   const [jobIdentifier, setJobIdentifier] = React.useState("");
   const [jobTitle, setJobTitle] = React.useState("");
@@ -109,28 +113,28 @@ const CareerPage = () => {
                               ? "min-h-[200px] transition-all !bg-[#eedce8] "
                               : ""
                           }`
-                        : "h-[115px] transition-all"
-                    } jobItem bg-[#f8f8f8] rounded-lg addShadow cursor-pointer overflow-hidden mb-8 flex flex-col py-6 px-3 md:px-5 ${
+                        : "h-[125px] transition-all"
+                    } jobItem bg-[#f8f8f8] p-5 rounded-lg addShadow  cursor-pointer  overflow-hidden mb-8 ${
                       item.careers_job_status !== "Ongoing"
                         ? "pointer-events-none"
                         : "cursor-pointer"
                     }`}
                   >
-                    <div className="flex justify-between items-center w-[19rem] mx-auto md:w-full md:mx-0">
+                    <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2 md:gap-6 ">
                         <div
                           className={`${
                             item.careers_job_status === "Ongoing"
-                              ? "bg-[#eedce8] w-12 h-12 md:w-20 md:h-16 grid place-items-center rounded-md"
-                              : "bg-[#0000001a] w-12 h-12 md:w-20 md:h-16 grid place-items-center rounded-md"
+                              ? "bg-[#eedce8] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
+                              : "bg-[#0000001a] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
                           }`}
                         >
                           {SelectedIcon ? (
                             <SelectedIcon
                               className={`${
                                 item.careers_job_status === "Ongoing"
-                                  ? "text-[25px] md:text-[40px] text-primary"
-                                  : "text-[25px] md:text-[40px] text-[#333]"
+                                  ? "text-[40px] text-primary"
+                                  : "text-[40px] text-[#333]"
                               } `}
                             />
                           ) : (
@@ -235,6 +239,9 @@ const CareerPage = () => {
       {modalJob && (
         <ModalJobApplication setModalJob={setModalJob} jobTitle={jobTitle} />
       )}
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

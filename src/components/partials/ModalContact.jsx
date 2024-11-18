@@ -30,6 +30,7 @@ import {
   setSuccess,
   setValidate,
 } from "../store/StoreAction";
+import { StoreContext } from "../store/StoreContext";
 
 const ModalContact = ({
   setModalContact = null,
@@ -38,10 +39,12 @@ const ModalContact = ({
   setContactForm = null,
   contactSubject = null,
 }) => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
 
   const handleClose = () => {
     setModalContact(false);
+    setContactForm(false);
   };
 
   const btnClose = () => {
@@ -55,7 +58,8 @@ const ModalContact = ({
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["sending-email"] });
       if (data.success) {
-        dispatch(setIsAdd(false));
+        setModalContact(false);
+        setContactForm(false);
         dispatch(setSuccess(true));
         dispatch(setMessage(`Message Sent Success`));
       }
@@ -73,7 +77,9 @@ const ModalContact = ({
     client_phone: "",
     client_message_subject: "",
     client_message: "",
-    formTitle: "",
+    formTitle: contactSubject
+      ? `${thePageName} ${contactSubject}`
+      : "New Message from FBS Website",
     client_file: "",
   };
 
@@ -317,7 +323,7 @@ const ModalContact = ({
               />
             </div>
           </div> */}
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full md:w-[428px] ">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
@@ -325,6 +331,7 @@ const ModalContact = ({
             ) : (
               <></>
             )}
+
             <Formik
               initialValues={initVal}
               validationSchema={yupSchema}
@@ -386,7 +393,9 @@ const ModalContact = ({
                           disabled={mutation.isLoading || !props.dirty}
                         >
                           {mutation.isPending ? (
-                            <ButtonSpinner />
+                            <div className="flex items-center gap-2">
+                              <ButtonSpinner /> Send Message
+                            </div>
                           ) : (
                             "Send Message"
                           )}

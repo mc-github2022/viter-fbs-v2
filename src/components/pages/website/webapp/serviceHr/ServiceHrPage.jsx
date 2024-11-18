@@ -7,8 +7,12 @@ import ServiceHrOverview from "./ServiceHrOverview";
 import ServiceHrScope from "./ServiceHrScope";
 import ServiceHrPricing from "./ServiceHrPricing";
 import ServiceHrPartnersSay from "./ServiceHrPartnersSay";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const ServiceHrPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("hris");
   return (
     <>
@@ -20,6 +24,8 @@ const ServiceHrPage = () => {
       <ServiceHrPartners />
       <ServiceHrPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

@@ -2,11 +2,13 @@ import React from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { devNavUrl } from "../helpers/functions-general";
-import MegaMenu from "./MegaMenu";
+import ModalSuccess from "./modals/ModalSuccess";
+import ModalError from "./modals/ModalError";
+import { StoreContext } from "../store/StoreContext";
 import ModalContact from "./ModalContact";
-import logo from "/img/logo.png";
 
 const Header = ({ pageName }) => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
@@ -200,6 +202,9 @@ const Header = ({ pageName }) => {
           setToggleMenu={setToggleMenu}
         />
       )}
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

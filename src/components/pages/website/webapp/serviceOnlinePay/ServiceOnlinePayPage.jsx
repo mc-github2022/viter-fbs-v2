@@ -7,8 +7,12 @@ import ServiceOnlinePayOverview from "./ServiceOnlinePayOverview";
 import ServiceOnlinePayScope from "./ServiceOnlinePayScope";
 import ServiceOnlinePayPricing from "./ServiceOnlinePayPricing";
 import ServiceOnlinePayPartnersSay from "./ServiceOnlinePayPartnersSay";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const ServiceOnlinePayPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("online-payment");
   return (
     <>
@@ -20,6 +24,9 @@ const ServiceOnlinePayPage = () => {
       {/* <ServiceOnlinePayPartners /> */}
       {/* <ServiceOnlinePayPartnersSay /> */}
       <Footer />
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

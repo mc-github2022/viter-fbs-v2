@@ -8,9 +8,13 @@ import VaResearchPricing from "./VaResearchPricing";
 import VaResearchPartners from "./VaResearchPartners";
 import VaResearchPartnersSay from "./VaResearchPartnersSay";
 import VaResearchServiceList from "./VaResearchServiceList";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const VaResearchPage = () => {
   const [pageName, setPageName] = React.useState("va-business-support");
+  const { store, dispatch } = React.useContext(StoreContext);
   return (
     <>
       <Header pageName={pageName} />
@@ -21,6 +25,8 @@ const VaResearchPage = () => {
       <VaResearchPartners />
       <VaResearchPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

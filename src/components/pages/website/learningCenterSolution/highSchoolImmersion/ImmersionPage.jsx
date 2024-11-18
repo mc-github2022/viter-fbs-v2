@@ -10,8 +10,12 @@ import ImmersionPartnersWithUs from "./ImmersionPartnersWithUs";
 import ImmersionServices from "./ImmersionServices";
 import ImmersionTeam from "./ImmersionTeam";
 import ImmersionVidTestimonials from "./ImmersionVidTestimonials";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const ImmersionPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("immersion");
   return (
     <>
@@ -26,6 +30,8 @@ const ImmersionPage = () => {
       <ImmersionVidTestimonials />
       <ImmersionPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

@@ -7,8 +7,12 @@ import ServiceEnrollmentOverview from "./ServiceEnrollmentOverview";
 import ServiceEnrollmentScope from "./ServiceEnrollmentScope";
 import ServiceEnrollmentPricing from "./ServiceEnrollmentPricing";
 import ServiceEnrollmentPartnersSay from "./ServiceEnrollmentPartnersSay";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const ServiceEnrollmentPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("enrollment");
   return (
     <>
@@ -20,6 +24,8 @@ const ServiceEnrollmentPage = () => {
       {/* <ServiceEnrollmentPartners /> */}
       <ServiceEnrollmentPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

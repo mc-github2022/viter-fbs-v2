@@ -7,8 +7,12 @@ import BookkeepingServiceList from "./BookkeepingServiceList";
 import BookkeepingPricing from "./BookkeepingPricing";
 import BookkeepingPartners from "./BookkeepingPartners";
 import BookkeepingPartnersSay from "./BookkeepingPartnersSay";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const BookkeepingPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("bookkeeping");
   return (
     <>
@@ -20,6 +24,8 @@ const BookkeepingPage = () => {
       {/* <BookkeepingPartners />
       <BookkeepingPartnersSay /> */}
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };
