@@ -7,8 +7,12 @@ import ServiceInventoryOverview from "./ServiceInventoryOverview";
 import ServiceInventoryScope from "./ServiceInventoryScope";
 import ServiceInventoryPricing from "./ServiceInventoryPricing";
 import ServiceInventoryPartnersSay from "./ServiceInventoryPartnersSay";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const ServiceInventoryPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("inventory");
   return (
     <>
@@ -20,6 +24,8 @@ const ServiceInventoryPage = () => {
       <ServiceInventoryPricing pageName={pageName} />
       {/* <ServiceInventoryPartnersSay /> */}
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

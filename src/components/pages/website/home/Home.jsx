@@ -8,9 +8,13 @@ import Insights from "./Insights";
 import Header from "../../../partials/Header";
 import Footer from "../../../partials/Footer";
 import Process from "./Process";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
+import { StoreContext } from "../../../store/StoreContext";
 
 const Home = () => {
   const [pageName, setPageName] = React.useState("home");
+  const { store, dispatch } = React.useContext(StoreContext);
   return (
     <>
       <Header pageName={pageName} />
@@ -22,6 +26,8 @@ const Home = () => {
       <Partners />
       <Insights />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

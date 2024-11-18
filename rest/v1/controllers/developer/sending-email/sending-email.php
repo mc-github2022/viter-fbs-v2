@@ -22,9 +22,15 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $email = checkIndex($data, "client_email");
     $mobileNumber = checkIndex($data, "client_phone");
     $message = checkIndex($data, "client_message"); 
-    $message = checkIndex($data, "client_message"); 
+    $message = checkIndex($data, "client_message");
     
-    $emailReceiver = ["mktg@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
+    // $emailReceiver = ["mktg@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
+    if(str_contains($title,"Job")){
+        $emailReceiver = ["mark.bumagat@frontlinebusiness.com.ph"];
+    }else{
+        $emailReceiver = ["markbumagat87@gmail.com"];
+    }
+    
    
     $mail = sendEmail(
         $title,

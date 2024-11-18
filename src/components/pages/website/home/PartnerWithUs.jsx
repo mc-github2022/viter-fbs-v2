@@ -1,8 +1,12 @@
 import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import ModalContact from "../../../partials/ModalContact";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
+import { StoreContext } from "../../../store/StoreContext";
 
 const PartnerWithUs = ({ pageName }) => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [modalContact, setModalContact] = React.useState(false);
   const handleModalContact = () => {
     setModalContact(!modalContact);
