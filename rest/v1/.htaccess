@@ -9,6 +9,7 @@ Header set Access-Control-Allow-Origin *
 
 RewriteRule ^upload-photo$ core/upload-photo.php [L]
 RewriteRule ^upload-multiple-photo$ core/upload-multiple-photo.php [L]
+RewriteRule ^upload-files$ core/upload-files.php [L]
 
 # HOME - BANNER
 RewriteRule ^banner$ controllers/developer/home/banner/banner.php [L]
@@ -53,3 +54,7 @@ RewriteRule ^vid-testimonial$ controllers/developer/vid-testimonial/vidTestimoni
 RewriteRule ^vid-testimonial/([0-9]+)$ controllers/developer/vid-testimonial/vidTestimonial.php?vid_testimonialid=$1 [L]
 RewriteRule ^vid-testimonial/page/([0-9]+)$ controllers/developer/vid-testimonial/page.php?start=$1 [L]
 RewriteRule ^vid-testimonial/search$ controllers/developer/vid-testimonial/search.php [L]
+
+# SENDING EMAIL
+RewriteRule ^sending-email$ controllers/developer/sending-email/sending-email.php [L]
+

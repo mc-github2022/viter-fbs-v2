@@ -18,6 +18,18 @@ import {
 } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { devBaseImgUrl } from "../helpers/functions-general";
+import { Form, Formik } from "formik";
+import ButtonSpinner from "./spinners/ButtonSpinner";
+import { InputText, InputTextArea } from "../helpers/FormInputs";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import * as Yup from "yup";
+import { queryData } from "../helpers/queryData";
+import {
+  setIsAdd,
+  setMessage,
+  setSuccess,
+  setValidate,
+} from "../store/StoreAction";
 
 const ModalContact = ({
   setModalContact = null,
@@ -26,6 +38,8 @@ const ModalContact = ({
   setContactForm = null,
   contactSubject = null,
 }) => {
+  const queryClient = useQueryClient();
+
   const handleClose = () => {
     setModalContact(false);
   };
@@ -34,6 +48,42 @@ const ModalContact = ({
     setModalContact(false);
     setContactForm(false);
   };
+
+  const mutation = useMutation({
+    mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["sending-email"] });
+      if (data.success) {
+        dispatch(setIsAdd(false));
+        dispatch(setSuccess(true));
+        dispatch(setMessage(`Message Sent Success`));
+      }
+      // show error box
+      if (!data.success) {
+        dispatch(setValidate(true));
+        dispatch(setMessage(data.error));
+      }
+    },
+  });
+
+  const initVal = {
+    client_name: "",
+    client_email: "",
+    client_phone: "",
+    client_message_subject: "",
+    client_message: "",
+    formTitle: "",
+    client_file: "",
+  };
+
+  const yupSchema = Yup.object({
+    client_name: Yup.string().required("Required"),
+    client_email: Yup.string().required("Required"),
+    client_phone: Yup.string().required("Required"),
+    client_message_subject: Yup.string().required("Required"),
+    client_message: Yup.string().required("Required"),
+  });
 
   return (
     <>
@@ -231,7 +281,7 @@ const ModalContact = ({
               )}
             </div>
           </div>
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
+          {/* <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
@@ -266,6 +316,87 @@ const ModalContact = ({
                 className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
               />
             </div>
+          </div> */}
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full md:w-[428px] ">
+            {contactSubject ? (
+              <p className="mb-2 text-lg uppercase">
+                {thePageName} : <b>{contactSubject}</b>
+              </p>
+            ) : (
+              <></>
+            )}
+            <Formik
+              initialValues={initVal}
+              validationSchema={yupSchema}
+              onSubmit={async (values, { setSubmitting, resetForm }) => {
+                // mutate data
+                console.log("values", values);
+                mutation.mutate(values);
+              }}
+            >
+              {(props) => {
+                return (
+                  <Form>
+                    <div className="modal__body">
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Name"
+                          type="text"
+                          name="client_name"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Email"
+                          type="email"
+                          name="client_email"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Phone"
+                          type="text"
+                          name="client_phone"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Subject"
+                          type="text"
+                          name="client_message_subject"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputTextArea
+                          label="Message"
+                          type="text"
+                          name="client_message"
+                          className="h-[200px]"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="modal__action flex justify-end mt-6 gap-2">
+                        <button
+                          className="btn bg-primary text-light hover:text-light"
+                          type="submit"
+                          disabled={mutation.isLoading || !props.dirty}
+                        >
+                          {mutation.isPending ? (
+                            <ButtonSpinner />
+                          ) : (
+                            "Send Message"
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </Form>
+                );
+              }}
+            </Formik>
           </div>
         </div>
       </div>

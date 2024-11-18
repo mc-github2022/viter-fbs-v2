@@ -31,7 +31,8 @@
   body .theNav.active {
     @apply overflow-hidden;
   }
-  input[type="text"] {
+  input[type="text"],
+  input[type="email"] {
     @apply bg-customGray h-8 p-1 text-xs text-dark;
   }
   textarea {

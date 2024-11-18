@@ -71,6 +71,25 @@ export const InputSelect = ({ label, onChange = null, ...props }) => {
   );
 };
 
+export const InputFileUpload = ({ label, onChange = null, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <>
+      <input
+        {...field}
+        {...props}
+        onChange={(e) => {
+          onChange !== null && onChange(e);
+          field.onChange(e);
+        }}
+      />
+      {meta.touched && meta.error ? (
+        <span className="error--msg">{meta.error}</span>
+      ) : null}
+    </>
+  );
+};
+
 export const InputTextArea = ({
   label,
   required = true,
