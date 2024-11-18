@@ -166,7 +166,7 @@ const BannerSlider = ({ pageName }) => {
                     <p className="text-light lg:text-[28px] italic">
                       {item.home_banner_sub_title}
                     </p>
-                    <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,56px)] font-bold w-full mb-10 md:mb-10  lg:text-[55px] drop-shadow-2xl">
+                    <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
                       {item.home_banner_title}
                     </h1>
                     <p className="text-light text-center mb-10">
