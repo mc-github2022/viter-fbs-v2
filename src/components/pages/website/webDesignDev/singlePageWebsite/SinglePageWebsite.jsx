@@ -7,8 +7,12 @@ import SinglePageScope from "./SinglePageScope";
 import SinglePagePricing from "./SinglePagePricing";
 import SinglePagePartners from "./SinglePagePartners";
 import SinglePagePartnersSay from "./SinglePagePartnersSay";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const SinglePageWebsite = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("singlePage Website");
   return (
     <>
@@ -20,6 +24,8 @@ const SinglePageWebsite = () => {
       <SinglePagePartners />
       {/* <SinglePagePartnersSay /> */}
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

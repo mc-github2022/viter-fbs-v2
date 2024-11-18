@@ -180,7 +180,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
             </div>
           </div>
 
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
             <p className="mb-2 text-lg">
               Job Application: <b>{jobTitle}</b>
             </p>
@@ -260,7 +260,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
                           disabled={mutation.isLoading || !props.dirty}
                         >
                           {mutation.isPending ? (
-                            <ButtonSpinner />
+                            <div className="flex items-center gap-2">
+                              <ButtonSpinner /> Send Message
+                            </div>
                           ) : (
                             "Send Message"
                           )}

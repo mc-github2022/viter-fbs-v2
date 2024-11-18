@@ -6,8 +6,12 @@ import WhyUsCompanyProfile from "./WhyUsCompanyProfile";
 import MissionVission from "./MissionVission";
 import WhyUsPartners from "./WhyUsPartners";
 import WhyUsTheTeam from "./WhyUsTheTeam";
+import { StoreContext } from "../../../store/StoreContext";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
 
 const WhyUsPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("whyWorkWithUs");
   return (
     <>
@@ -18,6 +22,8 @@ const WhyUsPage = () => {
       <WhyUsTheTeam />
       <WhyUsPartners />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

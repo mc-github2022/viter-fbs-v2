@@ -8,9 +8,13 @@ import VaMarketingPricing from "./VaMarketingPricing";
 import VaMarketingPartners from "./VaMarketingPartners";
 import VaMarketingPartnersSay from "./VaMarketingPartnersSay";
 import VaMarketingServiceList from "./VaMarketingServiceList";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const VaMarketingPage = () => {
   const [pageName, setPageName] = React.useState("va-marketing");
+  const { store, dispatch } = React.useContext(StoreContext);
   return (
     <>
       <Header pageName={pageName} />
@@ -21,6 +25,8 @@ const VaMarketingPage = () => {
       <VaMarketingPartners />
       <VaMarketingPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

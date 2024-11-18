@@ -7,8 +7,12 @@ import BusinessRegPartnersSay from "./BusinessRegPartnersSay";
 import BusinessRegPricing from "./BusinessRegPricing";
 import BusinessRegServiceList from "./BusinessRegServiceList";
 import BusinessRegBanner from "./BusinessRegBanner";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const BusinessRegPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("business-reg");
   return (
     <>
@@ -20,6 +24,8 @@ const BusinessRegPage = () => {
       {/* <BusinessRegPartners />
       <BusinessRegPartnersSay /> */}
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

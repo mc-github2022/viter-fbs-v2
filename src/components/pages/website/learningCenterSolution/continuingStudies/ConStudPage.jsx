@@ -10,8 +10,12 @@ import ConStudPartnersWithUs from "./ConStudPartnersWithUs";
 import ConStudServices from "./ConStudServices";
 import ConStudTeam from "./ConStudTeam";
 import ConStudVidTestimonials from "./ConStudVidTestimonials";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const ConStudPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("conStud");
   return (
     <>
@@ -26,6 +30,9 @@ const ConStudPage = () => {
       <ConStudVidTestimonials />
       <ConStudPartnersSay />
       <Footer />
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

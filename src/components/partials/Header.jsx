@@ -6,8 +6,12 @@ import MegaMenu from "./MegaMenu";
 import ModalContact from "./ModalContact";
 import { Link } from "react-router-dom";
 import { devNavUrl } from "../helpers/functions-general";
+import ModalSuccess from "./modals/ModalSuccess";
+import ModalError from "./modals/ModalError";
+import { StoreContext } from "../store/StoreContext";
 
 const Header = ({ pageName }) => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
@@ -54,7 +58,11 @@ const Header = ({ pageName }) => {
         >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
-              <img src={logo} alt="Frontline Business Solutions Logo" className="w-[80%] md:w-[90%]" />
+              <img
+                src={logo}
+                alt="Frontline Business Solutions Logo"
+                className="w-[80%] md:w-[90%]"
+              />
             </div>
             <div
               className={`${
@@ -195,6 +203,9 @@ const Header = ({ pageName }) => {
           setToggleMenu={setToggleMenu}
         />
       )}
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

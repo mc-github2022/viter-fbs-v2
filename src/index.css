@@ -387,3 +387,7 @@ img.popPost {
     align-items: center !important;
   }
 }
+
+textarea {
+  resize: none;
+}

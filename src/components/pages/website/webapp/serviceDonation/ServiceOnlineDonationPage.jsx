@@ -7,8 +7,12 @@ import ServiceOnlineDonationOverview from "./ServiceOnlineDonationOverview";
 import ServiceOnlineDonationScope from "./ServiceOnlineDonationScope";
 import ServiceOnlineDonationPricing from "./ServiceOnlineDonationPricing";
 import ServiceOnlineDonationPartnersSay from "./ServiceOnlineDonationPartnersSay";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const ServiceOnlineDonationPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("donation");
   return (
     <>
@@ -20,6 +24,8 @@ const ServiceOnlineDonationPage = () => {
       {/* <ServiceOnlineDonationPartners /> */}
       <ServiceOnlineDonationPartnersSay />
       <Footer />
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

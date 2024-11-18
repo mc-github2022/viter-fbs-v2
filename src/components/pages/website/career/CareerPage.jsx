@@ -12,6 +12,9 @@ import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
+import { StoreContext } from "../../../store/StoreContext";
 
 const icons = {
   ...FaIcons,
@@ -23,6 +26,7 @@ const icons = {
 };
 
 const CareerPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("career");
   const [jobIdentifier, setJobIdentifier] = React.useState("");
   const [jobTitle, setJobTitle] = React.useState("");
@@ -235,6 +239,9 @@ const CareerPage = () => {
       {modalJob && (
         <ModalJobApplication setModalJob={setModalJob} jobTitle={jobTitle} />
       )}
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };
