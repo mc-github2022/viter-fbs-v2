@@ -3,7 +3,6 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import ModalContactGetStarted from "./ModalContactGetStarted";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import ModalContact from "../../../partials/ModalContact";
@@ -118,6 +117,7 @@ const BannerSlider = ({ pageName }) => {
           slidesToScroll: 1,
           nextArrow: "",
           prevArrow: "",
+          arrows: false,
         },
       },
     ],

@@ -110,13 +110,13 @@ const CareerPage = () => {
                               : ""
                           }`
                         : "h-[115px] transition-all"
-                    } jobItem bg-[#f8f8f8] rounded-lg addShadow  cursor-pointer  overflow-hidden mb-8 flex flex-col py-6 px-3 md:px-5 ${
+                    } jobItem bg-[#f8f8f8] rounded-lg addShadow cursor-pointer overflow-hidden mb-8 flex flex-col py-6 px-3 md:px-5 ${
                       item.careers_job_status !== "Ongoing"
                         ? "pointer-events-none"
                         : "cursor-pointer"
                     }`}
                   >
-                    <div className="flex justify-between items-center  w-[20rem] mx-auto md:w-full md:mx-0">
+                    <div className="flex justify-between items-center w-[19rem] mx-auto md:w-full md:mx-0">
                       <div className="flex items-center gap-2 md:gap-6 ">
                         <div
                           className={`${
@@ -139,7 +139,7 @@ const CareerPage = () => {
                         </div>
                         <div>
                           <div className="flex items-center gap-2 md:gap-4">
-                            <p className="font-bold text-dark">
+                            <p className="font-bold text-dark text-sm md:text-[16px]">
                               {item.careers_job_title}
                             </p>
                             <p

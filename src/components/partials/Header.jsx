@@ -1,11 +1,10 @@
 import React from "react";
-import logo from "/img/logo.png";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { BiSolidDownArrow } from "react-icons/bi";
-import MegaMenu from "./MegaMenu";
-import ModalContact from "./ModalContact";
 import { Link } from "react-router-dom";
 import { devNavUrl } from "../helpers/functions-general";
+import MegaMenu from "./MegaMenu";
+import ModalContact from "./ModalContact";
+import logo from "/img/logo.png";
 
 const Header = ({ pageName }) => {
   const [toggleNav, setToggleNav] = React.useState(false);
@@ -47,14 +46,20 @@ const Header = ({ pageName }) => {
     <>
       <section
         id="header"
-        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[999] shadow-md"
+        className="header py-2 md:py-0 bg-light fixed w-full z-[99] lg:z-[999] shadow-md"
       >
         <div
           className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
         >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
-              <img src={logo} alt="Frontline Business Solutions Logo" className="w-[80%] md:w-[90%]" />
+              <Link to={`${devNavUrl}/`}>
+                <img
+                  src={logo}
+                  alt="Frontline Business Solutions Logo"
+                  className="w-[80%] md:w-[90%]"
+                />
+              </Link>
             </div>
             <div
               className={`${
