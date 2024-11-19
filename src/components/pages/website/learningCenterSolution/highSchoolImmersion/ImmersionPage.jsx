@@ -16,7 +16,7 @@ import ModalError from "../../../../partials/modals/ModalError";
 
 const ImmersionPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [pageName, setPageName] = React.useState("immersion");
+  const [pageName, setPageName] = React.useState("Work Immersion");
   return (
     <>
       <Header pageName={pageName} />

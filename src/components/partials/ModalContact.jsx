@@ -78,7 +78,7 @@ const ModalContact = ({
     client_phone: "",
     client_message_subject: "",
     client_message: "",
-    formTitle: `${thePageName} ${contactSubject}`,
+    formTitle: `New Message from ${thePageName} page ${contactSubject}`,
     client_file: "",
   };
 
@@ -126,9 +126,9 @@ const ModalContact = ({
                 </h3>
               </div>
 
-              {thePageName === "lcss" ||
-              thePageName === "conStud" ||
-              thePageName === "immersion" ? (
+              {thePageName === "College OJT" ||
+              thePageName === "Work Immersion" ||
+              thePageName === "Continuing Study" ? (
                 <>
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
                     <li className="!items-start">
@@ -239,7 +239,7 @@ const ModalContact = ({
               </div>
             </div>
             <div className="downloadProposal justify-end py-5 md:py-0">
-              {thePageName === "lcss" ? (
+              {thePageName === "College OJT" ? (
                 <>
                   <p className="text-sm">Learn more about our OJT program</p>
                   <a
@@ -249,7 +249,7 @@ const ModalContact = ({
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
-              ) : thePageName === "immersion" ? (
+              ) : thePageName === "Work Immersion" ? (
                 <>
                   <p className="text-sm">
                     Learn more about our immersion program
@@ -261,7 +261,7 @@ const ModalContact = ({
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
-              ) : thePageName === "conStud" ? (
+              ) : thePageName === "Continuing Study" ? (
                 <></>
               ) : thePageName === "cms" ? (
                 <>

@@ -16,7 +16,7 @@ import { StoreContext } from "../../../../store/StoreContext";
 
 const ConStudPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [pageName, setPageName] = React.useState("conStud");
+  const [pageName, setPageName] = React.useState("Continuing Study");
   return (
     <>
       <Header pageName={pageName} />
