@@ -328,8 +328,8 @@ const ModalContact = ({
                 thePageName === "lcss" ||
                 thePageName === "conStud" ||
                 thePageName === "immersion"
-                  ? "invisible"
-                  : "block"
+                  ? "block"
+                  : "invisible"
               }`}
             >
               {contactSubject ? (
