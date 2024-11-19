@@ -65,7 +65,7 @@ export const serviceInclusion = [
     ],
     btnText: "PARTNER WITH US TODAY",
     btnLink: "#link",
-    sectionImage: "vaPartnerWithUs.jpg",
+    sectionImage: "vapartnerwithus.jpg",
   },
 ];
 

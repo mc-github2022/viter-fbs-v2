@@ -187,7 +187,7 @@ const ModalContact = ({
                     </li>
                     <li>
                       <IoMailSharp />
-                      <p>mktg@frontlinebusiness.com.ph</p>
+                      <p>marketing@frontlinebusiness.com.ph</p>
                     </li>
                   </ul>
                 </>
