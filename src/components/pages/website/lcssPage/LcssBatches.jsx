@@ -144,7 +144,7 @@ const LcssBatches = () => {
   return (
     <>
       <section className="batches pt-20 pb-0 md:pt-0 md:pb-20">
-        <div className="customContainer">
+        <div className="customContainer max-w-[90%]">
           <div
             className="mb-12
           "
