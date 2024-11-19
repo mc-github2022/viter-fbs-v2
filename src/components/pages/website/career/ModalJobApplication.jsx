@@ -76,6 +76,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
+    client_file: Yup.string().required("Required"),
   });
   return (
     <>
@@ -233,7 +234,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                       </div>
 
                       <div className="input-wrapper">
-                        <span htmlFor="">Upload Resume (Optional)</span>
+                        <span htmlFor="" className="text-xs">
+                          Upload Resume (PDF Only (8mb)){" "}
+                        </span>
                         <InputFileUpload
                           type="file"
                           name="client_file"
@@ -242,7 +245,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                           disabled={mutation.isPending}
                           onChange={(e) => handleChangeFiles(e)}
                         />
-                        <p className="text-xs italic my-1">PDF Only (8mb)</p>
                       </div>
 
                       <div className="input-wrapper">

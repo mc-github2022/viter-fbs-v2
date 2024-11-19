@@ -26,7 +26,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     // $emailReceiver = ["mktg@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
     if (str_contains($title, "Job")) {
-        $emailReceiver = ["kennie.deriquito@frontlinebusiness.com.ph","rhoda.beloso@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
+        $emailReceiver = ["kennie.deriquito@frontlinebusiness.com.ph", "rhoda.beloso@frontlinebusiness.com.ph", "jhonny.dichoso@frontlinebusiness.com.ph"];
         // $emailReceiver = ["mark.bumagat@frontlinebusiness.com.ph"];
     } elseif (str_contains($title, "College OJT") || str_contains($title, "Work Immersion") || str_contains($title, "Continuing Study")) {
         $emailReceiver = ["herlyn.torres@frontlinebusiness.com.ph", "thea.consignado@frontlinebusiness.com.ph", "jhonny.dichoso@frontlinebusiness.com.ph"];
