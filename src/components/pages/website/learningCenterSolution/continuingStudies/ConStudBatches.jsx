@@ -166,9 +166,12 @@ const ConStudBatches = () => {
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
-                    <div className="flex flex-wrap gap-2 place-content-center">
+                    <div
+                      className="flex flex-wrap gap-2 place-content-center"
+                      key={key}
+                    >
                       <div className="grid place-content-center">
-                        <div key={key} className="mb-[3rem]">
+                        <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
                               className="blogItem addShadow bg-center bg-cover h-[400px] min-w-[280px] max-w-[280px] md:min-w-[350px] md:max-w-[350px] flex items-end relative rounded-xl 
@@ -210,9 +213,12 @@ const ConStudBatches = () => {
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
 
                   return (
-                    <div className="flex flex-wrap gap-2 place-content-center">
+                    <div
+                      className="flex flex-wrap gap-2 place-content-center"
+                      key={key}
+                    >
                       <div className="grid place-content-center">
-                        <div key={key} className="mb-[3rem]">
+                        <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
                               className="blogItem addShadow bg-center bg-cover h-[400px] 

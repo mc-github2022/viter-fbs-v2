@@ -14,7 +14,7 @@ export const banner = [
       "The Online Donation System is a versatile and integrated platform designed to facilitate and manage donations across various client websites. This system supports both one-time and recurring donations for specific projects as well as general donation funds. It includes comprehensive management consoles for both administrators and donors, ensuring a seamless and efficient donation process.",
     bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "OnlineDonation.webp",
+    bannerImage: "onlinedonation.webp",
   },
 ];
 
@@ -30,13 +30,13 @@ export const sectionPartnersLogos = [
     imageName: "web-obich.png",
   },
   {
-    imageName: "AKA-Global.png",
+    imageName: "aka-global.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "dtod-bpo.png",
   },
   {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "web-victorious-virtual-hub.png",
   },
 ];
 

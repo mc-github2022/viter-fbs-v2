@@ -14,7 +14,7 @@ export const banner = [
       "A component that seamlessly integrates with existing systems to enable secured online payment processing. It allows businesses to accept payments securely via various channels such as credit/debit cards, e-wallets, or bank transfers, enhancing customer convenience and expanding revenue streams.",
     bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "OnlinePayment.webp",
+    bannerImage: "onlinepayment.webp",
   },
 ];
 
@@ -30,13 +30,13 @@ export const sectionPartnersLogos = [
     imageName: "web-obich.png",
   },
   {
-    imageName: "AKA-Global.png",
+    imageName: "aka-global.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "dtod-bpo.png",
   },
   {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "web-victorious-virtual-hub.png",
   },
 ];
 

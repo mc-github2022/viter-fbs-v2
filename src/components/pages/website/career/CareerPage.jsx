@@ -157,12 +157,12 @@ const CareerPage = () => {
                             </p>
                           </div>
                           <div className="flex items-center gap-3">
-                            <p className="text-sm flex gap-1">
+                            <div className="text-sm flex gap-1">
                               <p className="text-sm">
                                 {item.careers_job_classification}
                               </p>
                               <p className="text-sm">{item.careers_job_mode}</p>
-                            </p>
+                            </div>
                             {/* <p
                               className={`${
                                 item.careers_job_status === "Ongoing"

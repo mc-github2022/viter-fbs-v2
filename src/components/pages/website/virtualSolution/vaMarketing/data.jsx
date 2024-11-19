@@ -35,7 +35,7 @@ export const webAppOverview = [
   {
     subtitle: "Here's Why We're The",
     mainTitle: "Right Choice for Your VA Needs.",
-    webAppImage: "vaMarketing.jpg",
+    webAppImage: "vamarketing.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Strategic Marketing Expertise",

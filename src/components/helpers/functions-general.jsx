@@ -11,7 +11,6 @@ export const imgUrlPathFBSMarketingWebsite =
 //   "https://frontlinebusiness.com.ph/newsite";
 // export const imgUrlPathFBSMarketingWebsite =
 //   "https://frontlinebusiness.com.ph/newsite/img";
-// export const mediaUrlPathFBSMarketingWebsite = "media";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
