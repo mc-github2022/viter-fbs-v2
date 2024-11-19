@@ -38,7 +38,7 @@ const ModalContact = ({
   thePageName = null,
   setContactForm = null,
   contactForm = null,
-  contactSubject = "Notification",
+  contactSubject = "",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
@@ -323,23 +323,23 @@ const ModalContact = ({
             </div>
           </div> */}
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            <div
+            {/* <div
               className={`${
                 thePageName === "lcss" ||
                 thePageName === "conStud" ||
                 thePageName === "immersion"
-                  ? "invisible"
-                  : "block"
+                  ? "block"
+                  : "invisible"
               }`}
-            >
-              {contactSubject ? (
-                <p className="mb-2 text-lg uppercase">
-                  {thePageName} : <b>{contactSubject}</b>
-                </p>
-              ) : (
-                <></>
-              )}
-            </div>
+            > */}
+            {contactSubject ? (
+              <p className="mb-2 text-lg uppercase">
+                {thePageName} : <b>{contactSubject}</b>
+              </p>
+            ) : (
+              <></>
+            )}
+            {/* </div> */}
 
             <Formik
               initialValues={initVal}
