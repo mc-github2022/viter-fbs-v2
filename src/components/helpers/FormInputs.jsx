@@ -83,8 +83,9 @@ export const InputFileUpload = ({ label, onChange = null, ...props }) => {
           field.onChange(e);
         }}
       />
+
       {meta.touched && meta.error ? (
-        <span className="error--msg">{meta.error}</span>
+        <span className="error-show">{meta.error}</span>
       ) : null}
     </>
   );
