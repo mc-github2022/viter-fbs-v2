@@ -42,7 +42,7 @@
     @apply bg-customGray h-8 p-1 text-sm text-dark;
   }
   /* * {
-    @apply outline outline-primary ;
+    @apply outline outline-primary;
   } */
   table {
     @apply border-collapse border-spacing-2 text-left w-full table-auto;

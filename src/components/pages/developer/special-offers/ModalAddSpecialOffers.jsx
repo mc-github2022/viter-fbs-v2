@@ -189,7 +189,13 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                       type="submit"
                       disabled={mutation.isPending || !icon}
                     >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      {mutation.isPending ? (
+                        <>
+                          <ButtonSpinner /> Save
+                        </>
+                      ) : (
+                        "Save"
+                      )}
                     </button>
                     <button
                       className="btn-modal-cancel"

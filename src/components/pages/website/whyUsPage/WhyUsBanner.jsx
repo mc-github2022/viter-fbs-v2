@@ -1,9 +1,5 @@
 import React from "react";
-import { FaRegCircleCheck } from "react-icons/fa6";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ModalContact from "../../../partials/ModalContact";
 
 const WhyUsBanner = ({ pageName }) => {
@@ -18,12 +14,13 @@ const WhyUsBanner = ({ pageName }) => {
       <div>
         <section
           id="WhyUsBanner"
-          className={`banner bg-cover pt-[59px] md:pt-[95px] bg-top`}
+          className={`banner bg-cover bg-center pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] place-content-center`}
           style={{
             backgroundImage: `url(${devBaseImgUrl}/whyfbsBanner.webp)`,
-          }}>
+          }}
+        >
           <div className="customContainer">
-            <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center max-h-[80vh] min-h-[80vh] transition-all w-full">
+            <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center transition-all w-full">
               <div className="text-center py-10 lg:text-left">
                 <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                   We Are
@@ -42,7 +39,8 @@ const WhyUsBanner = ({ pageName }) => {
                 </p>
                 <button
                   onClick={handleForm}
-                  className="btn bg-transparent text-light font-semibold border-2">
+                  className="btn bg-transparent text-light font-semibold border-2"
+                >
                   GET STARTED
                 </button>
               </div>
