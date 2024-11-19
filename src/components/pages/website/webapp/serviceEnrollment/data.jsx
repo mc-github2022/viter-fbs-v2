@@ -9,7 +9,7 @@ export const banner = [
       "Designed for educational institutions, this system automates the enrollment process for students. It typically includes features for online registration, course selection, fee payment, document submission, and enrollment status tracking, simplifying administrative tasks for schools and improving the enrollment experience for students and parents.",
     bannerBtnText: "CONTACT US",
     bannerBtnLink: "Link",
-    bannerImage: "SchoolEnrollment.jpg",
+    bannerImage: "schoolenrollment.jpg",
   },
 ];
 
@@ -25,13 +25,13 @@ export const sectionPartnersLogos = [
     imageName: "web-obich.png",
   },
   {
-    imageName: "AKA-Global.png",
+    imageName: "aka-global.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "dtod-bpo.png",
   },
   {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "web-victorious-virtual-hub.png",
   },
 ];
 

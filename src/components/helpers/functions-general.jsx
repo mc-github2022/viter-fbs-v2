@@ -1,6 +1,6 @@
 import React from "react";
 
-// // local url
+// local url
 // export const urlPathFBSMarketingWebsite =
 //   "http://localhost/react-vite/viter-fbs-v2";
 // export const imgUrlPathFBSMarketingWebsite =
@@ -11,7 +11,6 @@ export const urlPathFBSMarketingWebsite =
   "https://frontlinebusiness.com.ph/newsite";
 export const imgUrlPathFBSMarketingWebsite =
   "https://frontlinebusiness.com.ph/newsite/img";
-export const mediaUrlPathFBSMarketingWebsite = "media";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;

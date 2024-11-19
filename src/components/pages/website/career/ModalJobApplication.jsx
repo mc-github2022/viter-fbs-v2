@@ -12,7 +12,7 @@ import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
 import { Form, Formik } from "formik";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "../../../helpers/queryData";
 import {
   setIsAdd,
@@ -30,8 +30,9 @@ import useUploadFiles from "../../../custom-hooks/useUploadFiles";
 import { StoreContext } from "../../../store/StoreContext";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
-const ModalJobApplication = ({ setModalJob, jobTitle }) => {
+const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const queryClient = useQueryClient();
 
   const handleClose = () => {
     setModalJob(false);
@@ -49,7 +50,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
       if (data.success) {
         setModalJob(false);
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Message Sent Success`));
+        dispatch(setMessage(`Message Sent Successfully!`));
       }
       // show error box
       if (!data.success) {
@@ -63,9 +64,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle }) => {
     client_name: "",
     client_email: "",
     client_phone: "",
-    client_message_subject: "",
     client_message: "",
     client_file: "",
+    client_message_subject: "",
     formTitle: `Job Application: ${jobTitle}`,
   };
 

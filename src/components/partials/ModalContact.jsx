@@ -41,7 +41,6 @@ const ModalContact = ({
   contactSubject = "",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const queryClient = useQueryClient();
 
   const handleClose = () => {
     setModalContact(false);
@@ -52,6 +51,8 @@ const ModalContact = ({
     setModalContact(false);
     setContactForm(false);
   };
+
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
@@ -186,7 +187,7 @@ const ModalContact = ({
                     </li>
                     <li>
                       <IoMailSharp />
-                      <p>mktg@frontlinebusiness.com.ph</p>
+                      <p>marketing@frontlinebusiness.com.ph</p>
                     </li>
                   </ul>
                 </>
