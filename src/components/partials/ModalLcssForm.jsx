@@ -77,7 +77,7 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
-    // client_file: Yup.string().required("Required"),
+    client_file: Yup.string().required("Required"),
   });
   return (
     <>
@@ -251,8 +251,8 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
                       </div>
 
                       <div className="input-wrapper">
-                        <span className="text-sm" htmlFor="">
-                          Upload Resume
+                        <span htmlFor="" className="text-xs">
+                          Upload Resume (PDF Only (8mb)){" "}
                         </span>
                         <InputFileUpload
                           type="file"
@@ -262,7 +262,6 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
                           disabled={mutation.isPending}
                           onChange={(e) => handleChangeFiles(e)}
                         />
-                        <p className="text-xs italic my-1">PDF Only (8mb)</p>
                       </div>
 
                       <div className="input-wrapper">
