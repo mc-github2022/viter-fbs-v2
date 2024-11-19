@@ -37,10 +37,10 @@ const ModalContact = ({
   setToggleMenu = null,
   thePageName = null,
   setContactForm = null,
-  contactSubject = null,
+  contactForm = null,
+  contactSubject = "",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const queryClient = useQueryClient();
 
   const handleClose = () => {
     setModalContact(false);
@@ -51,6 +51,8 @@ const ModalContact = ({
     setModalContact(false);
     setContactForm(false);
   };
+
+  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
@@ -77,9 +79,7 @@ const ModalContact = ({
     client_phone: "",
     client_message_subject: "",
     client_message: "",
-    formTitle: contactSubject
-      ? `${thePageName} ${contactSubject}`
-      : "New Message from FBS Website",
+    formTitle: `New Message from ${thePageName} page ${contactSubject}`,
     client_file: "",
   };
 
@@ -127,9 +127,9 @@ const ModalContact = ({
                 </h3>
               </div>
 
-              {thePageName === "lcss" ||
-              thePageName === "conStud" ||
-              thePageName === "immersion" ? (
+              {thePageName === "College OJT" ||
+              thePageName === "Work Immersion" ||
+              thePageName === "Continuing Study" ? (
                 <>
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
                     <li className="!items-start">
@@ -187,7 +187,7 @@ const ModalContact = ({
                     </li>
                     <li>
                       <IoMailSharp />
-                      <p>mktg@frontlinebusiness.com.ph</p>
+                      <p>marketing@frontlinebusiness.com.ph</p>
                     </li>
                   </ul>
                 </>
@@ -240,7 +240,7 @@ const ModalContact = ({
               </div>
             </div>
             <div className="downloadProposal justify-end py-5 md:py-0">
-              {thePageName === "lcss" ? (
+              {thePageName === "College OJT" ? (
                 <>
                   <p className="text-sm">Learn more about our OJT program</p>
                   <a
@@ -250,7 +250,7 @@ const ModalContact = ({
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
-              ) : thePageName === "immersion" ? (
+              ) : thePageName === "Work Immersion" ? (
                 <>
                   <p className="text-sm">
                     Learn more about our immersion program
@@ -262,7 +262,7 @@ const ModalContact = ({
                     Download Proposal <FaFileDownload />
                   </a>
                 </>
-              ) : thePageName === "conStud" ? (
+              ) : thePageName === "Continuing Study" ? (
                 <></>
               ) : thePageName === "cms" ? (
                 <>
@@ -324,6 +324,15 @@ const ModalContact = ({
             </div>
           </div> */}
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
+            {/* <div
+              className={`${
+                thePageName === "lcss" ||
+                thePageName === "conStud" ||
+                thePageName === "immersion"
+                  ? "block"
+                  : "invisible"
+              }`}
+            > */}
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
@@ -331,6 +340,7 @@ const ModalContact = ({
             ) : (
               <></>
             )}
+            {/* </div> */}
 
             <Formik
               initialValues={initVal}

@@ -22,7 +22,7 @@ const WhyUsTheTeam = () => {
                     <img
                       className="grayscale"
                       src={`${devBaseImgUrl}/team-jeff.png`}
-                      alt="sir jeff"
+                      alt="effrey Pessina"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -36,8 +36,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-10px] rotate-[-50deg] w-[230px] ml-4">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/teamRalph.png`}
-                      alt="sir ralph"
+                      src={`${devBaseImgUrl}/teamralph.png`}
+                      alt="Ralph Acoba"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -52,7 +52,7 @@ const WhyUsTheTeam = () => {
                     <img
                       className="grayscale"
                       src={`${devBaseImgUrl}/team-ada.png`}
-                      alt="maam ada"
+                      alt="Rhoda Beloso"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -67,7 +67,7 @@ const WhyUsTheTeam = () => {
                     <img
                       className="grayscale"
                       src={`${devBaseImgUrl}/team-bea.png`}
-                      alt="miss bea"
+                      alt="Bhea Del Monte"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -81,8 +81,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-30px] rotate-[-50deg] w-[220px] ml-[50px]">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/teamJhonny.webp`}
-                      alt="sir jhonny"
+                      src={`${devBaseImgUrl}/teamjhonny.webp`}
+                      alt="Jhonny Dichoso"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -96,8 +96,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-[50px]">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/teamPat.webp`}
-                      alt="sir patrick"
+                      src={`${devBaseImgUrl}/teampat.webp`}
+                      alt="Patrick Reyes"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -112,7 +112,7 @@ const WhyUsTheTeam = () => {
                     <img
                       className="grayscale"
                       src={`${devBaseImgUrl}/sir-carlo.png`}
-                      alt="sir carlo"
+                      alt="Carlo Del Monte"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">
@@ -126,8 +126,8 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-12">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/sirMyk.webp`}
-                      alt="sir michael"
+                      src={`${devBaseImgUrl}/sirmyk.webp`}
+                      alt="Michael De Jesus"
                     />
                   </div>
                   <div className="nameAndPos text-light text-center rotate-[-50deg] text-xs ml-3 absolute bottom-[50px] left-3">

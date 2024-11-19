@@ -18,7 +18,7 @@ const Partners = () => {
                 </li>
                 <li>
                   <img
-                    src={`${devBaseImgUrl}/FTC-e1716532807623.png`}
+                    src={`${devBaseImgUrl}/ftc-e1716532807623.png`}
                     alt="Face the Children"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -39,7 +39,7 @@ const Partners = () => {
                 </li>
                 <li>
                   <img
-                    src={`${devBaseImgUrl}/lightupToy.png`}
+                    src={`${devBaseImgUrl}/lightuptoy.png`}
                     alt="Light Up"
                     className="w-[170px] h-[170px] object-contain"
                   />

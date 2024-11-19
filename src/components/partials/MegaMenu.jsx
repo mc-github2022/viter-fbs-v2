@@ -301,7 +301,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       <Link
                         to={`${devNavUrl}/college-ojt`}
                         className={`${
-                          pageName === "lcss"
+                          pageName === "College OJT"
                             ? "text-primary !cursor-default"
                             : ""
                         }`}
@@ -313,7 +313,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       <Link
                         to={`${devNavUrl}/work-immersion`}
                         className={`${
-                          pageName === "immersion"
+                          pageName === "Work Immersion"
                             ? "text-primary !cursor-default"
                             : ""
                         }`}
@@ -325,7 +325,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       <Link
                         to={`${devNavUrl}/continuing-studies`}
                         className={`${
-                          pageName === "conStud"
+                          pageName === "Continuing Study"
                             ? "text-primary !cursor-default"
                             : ""
                         }`}

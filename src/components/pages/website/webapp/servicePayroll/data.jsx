@@ -15,7 +15,7 @@ export const banner = [
     bannerBtnText: "SCHEDULE A DEMO",
 
     bannerBtnLink: "Link",
-    bannerImage: "ServicesBanner.webp",
+    bannerImage: "servicesbanner.webp",
   },
 ];
 
@@ -28,13 +28,13 @@ export const sectionPartnersTitle = [
 
 export const sectionPartnersLogos = [
   {
-    imageName: "AKA-Global.png",
+    imageName: "aka-global.png",
   },
   {
-    imageName: "bensHalo.png",
+    imageName: "benshalo.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "dtod-bpo.png",
   },
 ];
 

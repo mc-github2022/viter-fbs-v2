@@ -32,7 +32,8 @@ const VaResearchServiceList = ({ pageName }) => {
             </p>
             <button
               onClick={handleForm}
-              className="btn bg-primary text-light font-light hover:bg-secondary transition-all">
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
+            >
               GET STARTED
             </button>
           </div>
@@ -90,7 +91,7 @@ const VaResearchServiceList = ({ pageName }) => {
             <li className="flex items-center gap-7">
               <div className="bg-customGray rounded-lg addShadow">
                 <div className="w-16 h-16 grid place-items-center">
-                  <FileUser okPen size={28} className="text-3xl text-primary" />
+                  <FileUser size={28} className="text-3xl text-primary" />
                 </div>
               </div>
               <p className="font-semibold text-xl lg:text-2xl">

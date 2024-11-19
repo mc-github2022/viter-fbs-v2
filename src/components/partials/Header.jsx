@@ -1,16 +1,16 @@
 import React from "react";
-import logo from "/img/logo.png";
-import { IoMdArrowDropdown } from "react-icons/io";
 import { BiSolidDownArrow } from "react-icons/bi";
-import MegaMenu from "./MegaMenu";
-import ModalContact from "./ModalContact";
 import { Link } from "react-router-dom";
 import { devNavUrl } from "../helpers/functions-general";
 import ModalSuccess from "./modals/ModalSuccess";
 import ModalError from "./modals/ModalError";
 import { StoreContext } from "../store/StoreContext";
+import ModalContact from "./ModalContact";
+import logo from "/img/logo.png";
+import MegaMenu from "./MegaMenu";
 
 const Header = ({ pageName }) => {
+  const [contactForm, setContactForm] = React.useState(false);
   const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
   const handdleToggle = () => {
@@ -51,18 +51,20 @@ const Header = ({ pageName }) => {
     <>
       <section
         id="header"
-        className="header py-2 md:py-0 text-[15x] bg-light fixed w-full z-[99] lg:z-[999] shadow-md"
+        className="header py-2 md:py-0 bg-light fixed w-full z-[99] lg:z-[999] shadow-md"
       >
         <div
           className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
         >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo">
-              <img
-                src={logo}
-                alt="Frontline Business Solutions Logo"
-                className="w-[80%] md:w-[90%]"
-              />
+              <Link to={`${devNavUrl}/`}>
+                <img
+                  src={logo}
+                  alt="Frontline Business Solutions Logo"
+                  className="w-[80%] md:w-[90%]"
+                />
+              </Link>
             </div>
             <div
               className={`${
@@ -163,13 +165,12 @@ const Header = ({ pageName }) => {
               </ul>
             </div>
             <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
-              <a
-                href="#"
+              <button
                 onClick={handleModalContact}
                 className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
               >
                 GET STARTED
-              </a>
+              </button>
             </div>
 
             <button
@@ -201,6 +202,8 @@ const Header = ({ pageName }) => {
           setModalContact={setModalContact}
           modalContact={modalContact}
           setToggleMenu={setToggleMenu}
+          setContactForm={setContactForm}
+          contactForm={contactForm}
         />
       )}
 

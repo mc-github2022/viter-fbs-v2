@@ -19,13 +19,14 @@ const LcssBanner = ({ pageName }) => {
     <>
       <section
         id="lcssBanner"
-        className={`banner bg-cover bg-center pt-[59px] md:pt-[95px]`}
+        className={`banner bg-cover bg-center pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] place-content-center`}
         style={{
           // backgroundImage: `url(${devBaseImgUrl}/LCS-Banner.jpg)`,
           backgroundImage: `url(${devBaseImgUrl}/college-ojt-bg.webp)`,
-        }}>
+        }}
+      >
         <div className="customContainer">
-          <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
+          <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center transition-all w-full py-10">
             <div className="text-center py-10 lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                 <span className="text-light font-semibold">
@@ -45,7 +46,8 @@ const LcssBanner = ({ pageName }) => {
               <a
                 href="https://calendly.com/carlodm-fbs/demo-discovery-call"
                 target="_blank"
-                className="btn bg-transparent text-light border-2">
+                className="btn bg-transparent text-light border-2"
+              >
                 SCHEDULE A MEETING
               </a>
             </div>

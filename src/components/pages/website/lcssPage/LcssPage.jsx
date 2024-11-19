@@ -15,10 +15,10 @@ import ModalError from "../../../partials/modals/ModalError";
 import { StoreContext } from "../../../store/StoreContext";
 
 const LcssPage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const [contactSubject, setContactSubject] =
     React.useState("Contact Form: LCSS");
-  const [pageName, setPageName] = React.useState("lcss");
-  const { store, dispatch } = React.useContext(StoreContext);
+  const [pageName, setPageName] = React.useState("College OJT");
   return (
     <>
       <Header pageName={pageName} contactSubject={contactSubject} />

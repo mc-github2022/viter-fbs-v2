@@ -169,12 +169,13 @@ const ImmersionBatchSliderPage = ({
             {images.map((image, index) => (
               <div
                 key={index}
+                className="justify-items-center"
                 // className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
               >
-                <div className="z-[1] max-w-[700px] h-[60vh] place-self-center">
+                <div className="z-[1] max-w-[700px] h-[60vh] place-self-center mx-1">
                   <img
                     src={`${devBaseImgUrl}/${image}`} // Use the current image
-                    alt={`Batch image - ${index + 1}`} // Alt text for clarity
+                    alt={`Batch image - ${index + 1}`}
                     className="object-contain w-[700px] h-[60vh] "
                   />
                 </div>

@@ -10,32 +10,33 @@ import {
 import { IoMdPin } from "react-icons/io";
 import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
+
 import { Form, Formik } from "formik";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../helpers/queryData";
-import {
-  setIsAdd,
-  setMessage,
-  setSuccess,
-  setValidate,
-} from "../../../store/StoreAction";
+
 import * as Yup from "yup";
+import { apiVersion, devBaseImgUrl } from "../helpers/functions-general";
+import { queryData } from "../helpers/queryData";
 import {
   InputFileUpload,
   InputText,
   InputTextArea,
-} from "../../../helpers/FormInputs";
-import useUploadFiles from "../../../custom-hooks/useUploadFiles";
-import { StoreContext } from "../../../store/StoreContext";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+} from "../helpers/FormInputs";
+import useUploadFiles from "../custom-hooks/useUploadFiles";
+import ButtonSpinner from "./spinners/ButtonSpinner";
+import { setMessage, setSuccess, setValidate } from "../store/StoreAction";
+import { StoreContext } from "../store/StoreContext";
+import {
+  QueryClient,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
 
-const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
+const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
 
   const handleClose = () => {
-    setModalJob(false);
+    setLcssForm(false);
   };
   const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
     `${apiVersion}/upload-files`,
@@ -48,9 +49,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["sending-email"] });
       if (data.success) {
-        setModalJob(false);
+        setLcssForm(false);
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Message Sent Successfully!`));
+        dispatch(setMessage(`Message Sent Success`));
       }
       // show error box
       if (!data.success) {
@@ -64,10 +65,10 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_name: "",
     client_email: "",
     client_phone: "",
+    client_message_subject: "",
     client_message: "",
     client_file: "",
-    client_message_subject: "",
-    formTitle: `Job Application: ${jobTitle}`,
+    formTitle: `${thePageName} Application`,
   };
 
   const yupSchema = Yup.object({
@@ -94,7 +95,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
             <IoCloseCircle
               className="text-3xl text-light"
               onClick={() => {
-                setModalJob(false);
+                setLcssForm(false);
               }}
             />
           </div>
@@ -129,11 +130,27 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   <MdOutlinePhoneIphone />
                   <p>(+63) 927 168 6810</p>
                 </li>
+              </ul>
+
+              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
                 <li>
-                  <IoMailSharp />
-                  <p>mktg@frontlinebusiness.com.ph</p>
+                  <div className="text-xs md:text-sm">
+                    <div className="mb-4">
+                      <h3 className="font-semibold">Computer-Related Course</h3>
+                      <p>Ms. Herlyn Mae Torres</p>
+                      <p>herlyn.torres@frontlinebusiness.com.ph</p>
+                    </div>
+                    <div className="mb-8">
+                      <h3 className="font-semibold">
+                        Accounting-Related Courses
+                      </h3>
+                      <p>Ms. Thea Lyzette Consignado</p>
+                      <p>thea.consignado@frontlinebusiness.com.ph</p>
+                    </div>
+                  </div>
                 </li>
               </ul>
+
               <div className="mb-4">
                 <p>Follow Us:</p>
                 <ul className="flex gap-2 text-2xl">
@@ -184,7 +201,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
             <p className="mb-2 text-lg">
-              Job Application: <b>{jobTitle}</b>
+              <b className="uppercase">{thePageName}</b> Application
             </p>
             <Formik
               initialValues={initVal}
@@ -283,4 +300,4 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
   );
 };
 
-export default ModalJobApplication;
+export default ModalLcssForm;
