@@ -30,13 +30,13 @@ export const sectionPartnersLogos = [
     imageName: "web-obich.png",
   },
   {
-    imageName: "AKA-Global.png",
+    imageName: "aka-global.png",
   },
   {
-    imageName: "DTOD-BPO.png",
+    imageName: "dtod-bpo.png",
   },
   {
-    imageName: "web-victorious-Virtual-Hub.png",
+    imageName: "web-victorious-virtual-hub.png",
   },
 ];
 
