@@ -25,19 +25,11 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // $message = checkIndex($data, "client_message");
 
     // $emailReceiver = ["mktg@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
-<<<<<<< HEAD
-    if(str_contains($title,"Job")){
-        // $emailReceiver = ["kennie.deriquito@frontlinebusiness.com.ph","rhoda.beloso@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
-        $emailReceiver = ["mark.bumagat@frontlinebusiness.com.ph"];
-    }elseif(str_contains($title,"College OJT") || str_contains($title,"Work Immersion") || str_contains($title,"Continuing Study")){
-        $emailReceiver = ["herlyn.torres@frontlinebusiness.com.ph","thea.consignado@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
-=======
     if (str_contains($title, "Job")) {
         // $emailReceiver = ["kennie.deriquito@frontlinebusiness.com.ph","rhoda.beloso@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
         $emailReceiver = ["mark.bumagat@frontlinebusiness.com.ph"];
     } elseif (str_contains($title, "College OJT") || str_contains($title, "Work Immersion") || str_contains($title, "Continuing Study")) {
         $emailReceiver = ["herlyn.torres@frontlinebusiness.com.ph", "thea.consignado@frontlinebusiness.com.ph", "jhonny.dichoso@frontlinebusiness.com.ph"];
->>>>>>> 558fa787b5fea3007dc1c8b8c37b42fef52707bd
         // $emailReceiver = ["markbumagat87@gmail.com"];
     } else {
         $emailReceiver = ["jhonny.dichoso@frontlinebusiness.com.ph", "marketing@frontlinebusiness.com.ph"];

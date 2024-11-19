@@ -237,7 +237,11 @@ const CareerPage = () => {
       </section>
       <Footer />
       {modalJob && (
-        <ModalJobApplication setModalJob={setModalJob} jobTitle={jobTitle} />
+        <ModalJobApplication
+          setModalJob={setModalJob}
+          jobTitle={jobTitle}
+          modalJob={modalJob}
+        />
       )}
 
       {store.success && <ModalSuccess />}
