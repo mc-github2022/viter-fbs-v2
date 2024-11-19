@@ -66,6 +66,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_phone: "",
     client_message: "",
     client_file: "",
+    client_message_subject: "",
     formTitle: `Job Application: ${jobTitle}`,
   };
 
