@@ -37,7 +37,8 @@ const ModalContact = ({
   setToggleMenu = null,
   thePageName = null,
   setContactForm = null,
-  contactSubject = null,
+  contactForm = null,
+  contactSubject = "Notification",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
@@ -77,9 +78,7 @@ const ModalContact = ({
     client_phone: "",
     client_message_subject: "",
     client_message: "",
-    formTitle: contactSubject
-      ? `${thePageName} ${contactSubject}`
-      : "New Message from FBS Website",
+    formTitle: `${thePageName} ${contactSubject}`,
     client_file: "",
   };
 

@@ -10,6 +10,7 @@ import logo from "/img/logo.png";
 import MegaMenu from "./MegaMenu";
 
 const Header = ({ pageName }) => {
+  const [contactForm, setContactForm] = React.useState(false);
   const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
   const handdleToggle = () => {
@@ -164,13 +165,12 @@ const Header = ({ pageName }) => {
               </ul>
             </div>
             <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
-              <a
-                href="#"
+              <button
                 onClick={handleModalContact}
                 className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
               >
                 GET STARTED
-              </a>
+              </button>
             </div>
 
             <button
@@ -202,6 +202,8 @@ const Header = ({ pageName }) => {
           setModalContact={setModalContact}
           modalContact={modalContact}
           setToggleMenu={setToggleMenu}
+          setContactForm={setContactForm}
+          contactForm={contactForm}
         />
       )}
 
