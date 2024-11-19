@@ -2,12 +2,18 @@ import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import ModalLcssForm from "../../../../partials/ModalLcssForm";
 
 const LcssApplyNow = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
   const handleForm = () => {
     setContactForm(!contactForm);
+  };
+
+  const [lcssForm, setLcssForm] = React.useState(false);
+  const handleLcssForm = () => {
+    setLcssForm(!lcssForm);
   };
 
   return (
@@ -54,10 +60,10 @@ const LcssApplyNow = ({ pageName }) => {
                 </li>
               </ul>
               <button
-                onClick={handleForm}
+                onClick={handleLcssForm}
                 className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
-                PARTNER WITH US TODAY
+                APPLY NOW
               </button>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">
@@ -71,13 +77,13 @@ const LcssApplyNow = ({ pageName }) => {
           </div>
         </div>
       </section>
-      {contactForm && (
-        <ModalContact
-          setModalContact={setModalContact}
+      {lcssForm && (
+        <ModalLcssForm
+          // setModalContact={setModalContact}
           thePageName={pageName}
-          contactForm={contactForm}
-          setContactForm={setContactForm}
-          modalContact={modalContact}
+          lcssForm={lcssForm}
+          setLcssForm={setLcssForm}
+          // modalContact={modalContact}
         />
       )}
     </>

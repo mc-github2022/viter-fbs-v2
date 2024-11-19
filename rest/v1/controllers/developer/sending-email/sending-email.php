@@ -13,7 +13,7 @@ $returnData = [];
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();  
     checkPayload($data);
- 
+    
     $title = $data["formTitle"];
     $fileName = $data["client_file"];
     $subject = $data["client_message_subject"];
@@ -22,15 +22,18 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $email = checkIndex($data, "client_email");
     $mobileNumber = checkIndex($data, "client_phone");
     $message = checkIndex($data, "client_message"); 
-    $message = checkIndex($data, "client_message");
+    // $message = checkIndex($data, "client_message");
     
     // $emailReceiver = ["mktg@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
-    if(str_contains($title,"Job")){
-        $emailReceiver = ["mark.bumagat@frontlinebusiness.com.ph"];
-    }elseif(str_contains($title,"lcss")){
-        $emailReceiver = ["herlyn.torres@frontlinebusiness.com.ph"];
+    if(str_contains($title,"career")){
+        $emailReceiver = ["kennie.deriquito@frontlinebusiness.com.ph","rhoda.beloso@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
+        // $emailReceiver = ["mark.bumagat@frontlinebusiness.com.ph"];
+    }elseif(str_contains($title,"lcss") || str_contains($title,"immersion") || str_contains($title,"conStud")){
+        $emailReceiver = ["herlyn.torres@frontlinebusiness.com.ph","thea.consignado@frontlinebusiness.com.ph","jhonny.dichoso@frontlinebusiness.com.ph"];
+        // $emailReceiver = ["markbumagat87@gmail.com"];
     }else{
-        $emailReceiver = ["markbumagat87@gmail.com"];
+        $emailReceiver = ["jhonny.dichoso@frontlinebusiness.com.ph","mktg@frontlinebusiness.com.ph"];
+        // $emailReceiver = ["markbumagat87@gmail.com"];
     }
     
    
