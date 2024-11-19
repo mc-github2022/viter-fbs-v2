@@ -12,7 +12,7 @@ import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
 import { Form, Formik } from "formik";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "../../../helpers/queryData";
 import {
   setIsAdd,
@@ -32,6 +32,7 @@ import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
 const ModalJobApplication = ({ setModalJob, jobTitle }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const queryClient = useQueryClient();
 
   const handleClose = () => {
     setModalJob(false);

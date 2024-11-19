@@ -46,8 +46,8 @@ const LcssPartners = () => {
             <li>
               <img
                 className="w-[120px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/letran.png`}
-                src={`${devBaseImgUrl}/letran.png`}
+                // src={`${devBaseImgUrl}/Letran.png`}
+                src={`${devBaseImgUrl}/Letran.png`}
                 alt="Letran"
               />
             </li>
