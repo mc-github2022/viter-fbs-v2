@@ -161,60 +161,66 @@ const BookkeepingPricing = ({ pageName }) => {
               </h2>
               <p className="">MONTHLY SERVICE:</p>
               <table className="prices mt-5  md:max-w-sm md:mx-auto">
-                <tr className="flex items-start gap-3">
-                  <td className="translate-y-1">
-                    <FaCheckCircle className="text-light" />
-                  </td>
-                  <td>
-                    <p>Bookkeeping</p>
-                  </td>
-                </tr>
-                <tr className="flex items-start gap-3">
-                  <td className="translate-y-1">
-                    <FaCheckCircle className="text-light" />
-                  </td>
-                  <td>
-                    <p>Mandatory Government Deductions & Contributions</p>
-                  </td>
-                </tr>
-                <tr className="flex items-start gap-3">
-                  <td className="translate-y-1">
-                    <FaCheckCircle className="text-light" />
-                  </td>
-                  <td>
-                    <p>Financial Reports</p>
-                  </td>
-                </tr>
-                <tr className="flex items-start gap-3">
-                  <td className="translate-y-1">
-                    <FaCheckCircle className="text-light" />
-                  </td>
-                  <td>
-                    <p>Filing of BIR Tax Returns</p>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr className="flex items-start gap-3">
+                    <td className="translate-y-1">
+                      <FaCheckCircle className="text-light" />
+                    </td>
+                    <td>
+                      <p>Bookkeeping</p>
+                    </td>
+                  </tr>
+                  <tr className="flex items-start gap-3">
+                    <td className="translate-y-1">
+                      <FaCheckCircle className="text-light" />
+                    </td>
+                    <td>
+                      <p>Mandatory Government Deductions & Contributions</p>
+                    </td>
+                  </tr>
+                  <tr className="flex items-start gap-3">
+                    <td className="translate-y-1">
+                      <FaCheckCircle className="text-light" />
+                    </td>
+                    <td>
+                      <p>Financial Reports</p>
+                    </td>
+                  </tr>
+                  <tr className="flex items-start gap-3">
+                    <td className="translate-y-1">
+                      <FaCheckCircle className="text-light" />
+                    </td>
+                    <td>
+                      <p>Filing of BIR Tax Returns</p>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <p className="mt-10">QUARTERLY SERVICE:</p>
               <table className="prices mt-5  md:max-w-sm md:mx-auto">
-                <tr className="flex items-start gap-3">
-                  <td className="translate-y-1">
-                    <FaCheckCircle className="text-light" />
-                  </td>
-                  <td>
-                    <p>BIR Compliance</p>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr className="flex items-start gap-3">
+                    <td className="translate-y-1">
+                      <FaCheckCircle className="text-light" />
+                    </td>
+                    <td>
+                      <p>BIR Compliance</p>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <p className="mt-10">ANNUAL SERVICE:</p>
               <table className="prices mt-5  md:max-w-sm md:mx-auto">
-                <tr className="flex items-start gap-3">
-                  <td className="translate-y-1">
-                    <FaCheckCircle className="text-light" />
-                  </td>
-                  <td>
-                    <p>Renewals (Business Permit, BIR)</p>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr className="flex items-start gap-3">
+                    <td className="translate-y-1">
+                      <FaCheckCircle className="text-light" />
+                    </td>
+                    <td>
+                      <p>Renewals (Business Permit, BIR)</p>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               {/* <ul className="text-left [&>li]:gap-2 my-4">
                 <li className="flex items-center">
@@ -254,9 +260,8 @@ const BookkeepingPricing = ({ pageName }) => {
               <Slider ref={sliderRef} {...bookkeepingSliderSettings}>
                 {pricing.map((price, key) => {
                   return (
-                    <div className="grid place-items-center">
+                    <div className="grid place-items-center" key={key}>
                       <div
-                        key={key}
                         className={`${
                           price.isActive
                             ? "!bg-primary text-light"

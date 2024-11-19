@@ -15,6 +15,7 @@ import ModalError from "../../../../partials/modals/ModalError";
 const WordPressPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("cms");
+  
   return (
     <>
       <Header pageName={pageName} />

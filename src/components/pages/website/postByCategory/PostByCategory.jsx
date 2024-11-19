@@ -57,18 +57,6 @@ const PostByCategory = () => {
     }
   }, [slug, insightData]);
 
-  // // Function to get the post based on slug
-  // const getInsights = () => {
-  //   if (!insightData || !Array.isArray(insightData.data)) {
-  //     return undefined;
-  //   }
-  //   return insightData.data.find(
-  //     (item) =>
-  //       item.home_insights_category?.trim().toLowerCase() ===
-  //       slug?.trim().toLowerCase()
-  //   );
-  // };
-
   // Function to get the posts based on the category slug
   const getInsights = () => {
     if (!insightData || !Array.isArray(insightData.data)) {
