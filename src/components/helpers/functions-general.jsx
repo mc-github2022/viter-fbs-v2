@@ -31,23 +31,6 @@ export const UrlDeveloper = "developer";
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
 
-// get focus on a button
-export const GetFocus = (id) => {
-  React.useEffect(() => {
-    const obj = document.getElementById(id);
-    obj.focus();
-  }, []);
-};
-
-// get the id of specific data
-export const getUrlParam = (id) => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  // const param = urlParams.get(id);
-  // return param;
-  return urlParams;
-};
-
 // formatting date and time
 export const setTimeZone = "Asia/Taipei";
 
@@ -135,43 +118,6 @@ export const options = (format) => {
   return options;
 };
 
-//time format
-export const getTimeFormat = (time) => {
-  let result = "";
-
-  if (typeof time !== "undefined" && time !== "") {
-    let getTime = time.split(" ");
-    let newTime = time;
-    if (getTime?.length > 1) {
-      newTime = getTime[1];
-    }
-
-    result = `${newTime} AM `;
-    if (
-      Number(newTime.split(":")[0]) >= 12 &&
-      Number(newTime.split(":")[0]) !== 24
-    ) {
-      result = `${newTime} PM `;
-    }
-  }
-  return result;
-};
-
-//rgb to hex
-export const hexToRgb = (hex) => {
-  let result = "";
-  console.log(hex);
-  if (typeof hex !== "undefined" && hex !== "") {
-    result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    result = `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(
-      result[3],
-      16
-    )} `;
-  }
-
-  return result;
-};
-
 // fetch for uploading photo or file
 export const fetchFormData = async (url, fd = {}) => {
   try {
@@ -189,28 +135,4 @@ export const fetchFormData = async (url, fd = {}) => {
     console.error("API endpoint error:", error);
     return null; // Return null to indicate failure
   }
-};
-
-// Function to calculate tenure
-export const calculateTenure = (date) => {
-  const currentDate = new Date();
-  const hire = new Date(date);
-
-  let years = currentDate.getFullYear() - hire.getFullYear();
-  let months = currentDate.getMonth() - hire.getMonth();
-
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
-
-  if (currentDate.getDate() < hire.getDate()) {
-    months--;
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-  }
-
-  return { years, months };
 };
