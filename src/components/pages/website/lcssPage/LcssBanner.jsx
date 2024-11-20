@@ -44,7 +44,7 @@ const LcssBanner = ({ pageName }) => {
                 flexibility and comprehensive skills development.
               </p>
               <a
-                href="https://calendly.com/carlodm-fbs/demo-discovery-call"
+                href="https://calendly.com/herlyn-torres-frontlinebusiness/30min"
                 target="_blank"
                 className="btn bg-transparent text-light border-2"
               >

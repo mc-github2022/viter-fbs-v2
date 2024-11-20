@@ -29,7 +29,7 @@ const ConStudBanner = () => {
                 hands-on training and real-world experience.
               </p>
               <a
-                href="https://calendly.com/carlodm-fbs/demo-discovery-call"
+                href="https://calendly.com/herlyn-torres-frontlinebusiness/30min"
                 target="_blank"
                 className="btn bg-transparent text-light border-2"
               >
