@@ -13,6 +13,7 @@ const Header = ({ pageName }) => {
   const [contactForm, setContactForm] = React.useState(false);
   const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
+
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
     setToggleMenu(false);
@@ -73,7 +74,14 @@ const Header = ({ pageName }) => {
             >
               <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
                 <li>
-                  <Link to={`${devNavUrl}/`}>Home</Link>
+                  <Link
+                    to={`${devNavUrl}/`}
+                    className={`${
+                      pageName === "home" ? "text-primary !cursor-default" : ""
+                    }`}
+                  >
+                    Home
+                  </Link>
                 </li>
                 <li>
                   <a

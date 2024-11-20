@@ -1,16 +1,16 @@
 import React from "react";
 
 // local url
-export const urlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2";
-export const imgUrlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2/public/img";
-
-// Online Demo url
 // export const urlPathFBSMarketingWebsite =
-//   "https://frontlinebusiness.com.ph/newsite";
+//   "http://localhost/react-vite/viter-fbs-v2";
 // export const imgUrlPathFBSMarketingWebsite =
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
+
+// Online Demo url
+export const urlPathFBSMarketingWebsite =
+  "https://frontlinebusiness.com.ph/newsite";
+export const imgUrlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
 // export const urlPathFBSMarketingWebsite =
@@ -21,8 +21,8 @@ export const imgUrlPathFBSMarketingWebsite =
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
 export const devBaseImgUrl = `${imgUrlPathFBSMarketingWebsite}`;
-// export const devNavUrl = "/newsite";
-export const devNavUrl = "";
+export const devNavUrl = "/newsite";
+// export const devNavUrl = "";
 export const apiVersion = "/v1";
 
 export const UrlDeveloper = "developer";

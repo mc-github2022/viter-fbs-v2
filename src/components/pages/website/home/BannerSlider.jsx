@@ -149,43 +149,45 @@ const BannerSlider = ({ pageName }) => {
       {/* {modalContact && (
         <ModalContactGetStarted setModalContact={setModalContact} />
       )} */}
-      <Slider ref={sliderRef} {...settings}>
-        {bannerData?.data.map((item, key) => (
-          <div key={key}>
-            <section
-              id="banner"
-              className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit`}
-              style={{
-                // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-                backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,
-              }}
-            >
-              <div className="customContainer h-fit">
-                <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
-                  <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
-                    <p className="text-light lg:text-[28px] italic">
-                      {item.home_banner_sub_title}
-                    </p>
-                    <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
-                      {item.home_banner_title}
-                    </h1>
-                    <p className="text-light text-center mb-10">
-                      {item.home_banner_description}
-                    </p>
-                    <a
-                      href="#"
-                      className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
-                      onClick={handleForm}
-                    >
-                      {item.home_banner_button_text}
-                    </a>
+      <section id="HomeBanner" className="banner h-[80vh] place-content-center">
+        <Slider ref={sliderRef} {...settings}>
+          {bannerData?.data.map((item, key) => (
+            <div key={key}>
+              <div
+                id="banner"
+                className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit`}
+                style={{
+                  // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+                  backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,
+                }}
+              >
+                <div className="customContainer h-fit">
+                  <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
+                    <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
+                      <p className="text-light lg:text-[28px] italic">
+                        {item.home_banner_sub_title}
+                      </p>
+                      <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
+                        {item.home_banner_title}
+                      </h1>
+                      <p className="text-light text-center mb-10">
+                        {item.home_banner_description}
+                      </p>
+                      <a
+                        href="#"
+                        className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
+                        onClick={handleForm}
+                      >
+                        {item.home_banner_button_text}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </section>
-          </div>
-        ))}
-      </Slider>
+            </div>
+          ))}
+        </Slider>
+      </section>
       {contactForm && (
         <ModalContact
           setModalContact={setModalContact}

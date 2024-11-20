@@ -51,7 +51,7 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
       if (data.success) {
         setLcssForm(false);
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Message Sent Success`));
+        dispatch(setMessage(`Message Sent Successfully!`));
       }
       // show error box
       if (!data.success) {
