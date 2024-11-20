@@ -149,7 +149,7 @@ const BannerSlider = ({ pageName }) => {
       {/* {modalContact && (
         <ModalContactGetStarted setModalContact={setModalContact} />
       )} */}
-      <section id="HomeBanner" className="banner h-[80vh] place-content-center">
+      
         <Slider ref={sliderRef} {...settings}>
           {bannerData?.data.map((item, key) => (
             <div key={key}>
@@ -187,7 +187,7 @@ const BannerSlider = ({ pageName }) => {
             </div>
           ))}
         </Slider>
-      </section>
+      
       {contactForm && (
         <ModalContact
           setModalContact={setModalContact}
