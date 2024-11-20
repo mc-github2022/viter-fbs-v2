@@ -80,7 +80,7 @@ export const scope = [
     scopeTitle: "Responsive Design",
     scopeDesc:
       "We create websites that adapt seamlessly across all devices, ensuring optimal viewing and interaction on desktops, tablets, and smartphones.",
-    scopeImage: "mobile-compatability.png",
+    scopeImage: "mobile-compatability.webp",
   },
   {
     scopeId: "user-friendly",

@@ -130,8 +130,18 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   <p>(+63) 927 168 6810</p>
                 </li>
                 <li>
-                  <IoMailSharp />
-                  <p>mktg@frontlinebusiness.com.ph</p>
+                  <div className="text-xs md:text-sm">
+                    <div className="mb-4">
+                      <h3 className="font-semibold">Human Resource Manager</h3>
+                      <p>Mrs. Rhoda Beloso</p>
+                      <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                    </div>
+                    <div className="mb-8">
+                      <h3 className="font-semibold">Human Resource Staff</h3>
+                      <p>Mrs. Kennie Deriquito</p>
+                      <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                    </div>
+                  </div>
                 </li>
               </ul>
               <div className="mb-4">

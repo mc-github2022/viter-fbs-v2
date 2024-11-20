@@ -167,6 +167,40 @@ const ModalContact = ({
                     </li>
                   </ul>
                 </>
+              ) : thePageName === "career" ? (
+                <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
+                  <li className="!items-start">
+                    <IoMdPin />
+                    <p>
+                      Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
+                      Laguna, 4000
+                    </p>
+                  </li>
+                  <li>
+                    <FaPhone />
+                    <p>(049) 501 3592</p>
+                  </li>
+                  <li>
+                    <MdOutlinePhoneIphone />
+                    <p>(+63) 927 168 6810</p>
+                  </li>
+                  <li>
+                    <div className="text-xs md:text-sm">
+                      <div className="mb-4">
+                        <h3 className="font-semibold">
+                          Human Resource Manager
+                        </h3>
+                        <p>Mrs. Rhoda Beloso</p>
+                        <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                      </div>
+                      <div className="mb-8">
+                        <h3 className="font-semibold">Human Resource Staff</h3>
+                        <p>Mrs. Kennie Deriquito</p>
+                        <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               ) : (
                 <>
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
