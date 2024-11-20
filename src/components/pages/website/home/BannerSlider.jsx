@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import ModalContact from "../../../partials/ModalContact";
+import BannerSliderLoader from "./bannerSliderLoader";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -20,8 +21,7 @@ function SampleNextArrow(props) {
         fontSize: "3rem",
         cursor: "pointer",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowForward />
     </div>
   );
@@ -41,8 +41,7 @@ function SamplePrevArrow(props) {
         zIndex: "1",
         cursor: "pointer",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowBack />
     </div>
   );
@@ -92,8 +91,7 @@ const BannerSlider = ({ pageName }) => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "0px",
-        }}
-      >
+        }}>
         <ul className="mb-[10px] md:mb-[5px]"> {dots} </ul>
       </div>
     ),
@@ -106,8 +104,7 @@ const BannerSlider = ({ pageName }) => {
           background: "#F5F5F5",
           borderRadius: "50%",
           opacity: "50%",
-        }}
-      ></div>
+        }}></div>
     ),
     responsive: [
       {
@@ -149,7 +146,10 @@ const BannerSlider = ({ pageName }) => {
       {/* {modalContact && (
         <ModalContactGetStarted setModalContact={setModalContact} />
       )} */}
-      
+
+      {isLoading ? (
+        <BannerSliderLoader />
+      ) : (
         <Slider ref={sliderRef} {...settings}>
           {bannerData?.data.map((item, key) => (
             <div key={key}>
@@ -159,8 +159,7 @@ const BannerSlider = ({ pageName }) => {
                 style={{
                   // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
                   backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,
-                }}
-              >
+                }}>
                 <div className="customContainer h-fit">
                   <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
                     <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
@@ -176,8 +175,7 @@ const BannerSlider = ({ pageName }) => {
                       <a
                         href="#"
                         className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
-                        onClick={handleForm}
-                      >
+                        onClick={handleForm}>
                         {item.home_banner_button_text}
                       </a>
                     </div>
@@ -187,7 +185,8 @@ const BannerSlider = ({ pageName }) => {
             </div>
           ))}
         </Slider>
-      
+      )}
+
       {contactForm && (
         <ModalContact
           setModalContact={setModalContact}
