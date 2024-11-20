@@ -39,7 +39,7 @@ export const webAppOverview = [
   {
     subtitle: "Why Choose Our Online",
     mainTitle: "School Enrollment System",
-    webAppImage: "enrollment-ss.png",
+    webAppImage: "enrollment-ss.webp",
     btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Streamlined Registration and Enrollment",

@@ -91,7 +91,7 @@ export const scope = [
     scopeTitle: "Mobile Compatibility",
     scopeDesc:
       "Our website development service includes Mobile Compatibility, ensuring that your website is fully optimized for various mobile devices. This feature involves responsive design techniques that adapt the website’s layout and content to different screen sizes and orientations.",
-    scopeImage: "mobile-compatability.png",
+    scopeImage: "mobile-compatability.webp",
   },
   {
     scopeId: "malware-protection",

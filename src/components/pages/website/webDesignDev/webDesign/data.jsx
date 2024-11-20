@@ -112,7 +112,7 @@ export const scope = [
     scopeTitle: "Custom Design Tailored to Your Brand",
     scopeDesc:
       "Each website is uniquely designed to reflect your brand’s identity, ensuring a cohesive and visually appealing online presence.",
-    scopeImage: "custom-design.png",
+    scopeImage: "custom-design.webp",
   },
   {
     scopeId: "high-quality",
@@ -120,7 +120,7 @@ export const scope = [
     scopeTitle: "High-Quality Visuals",
     scopeDesc:
       "Our design service includes high-quality graphics and imagery, ensuring that your website is both engaging and professional.",
-    scopeImage: "high-quality-visuals.png",
+    scopeImage: "high-quality-visuals.webp",
   },
 ];
 
