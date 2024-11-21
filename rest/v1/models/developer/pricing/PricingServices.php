@@ -22,8 +22,8 @@ class PricingServices
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblPricingServices = "pricing_services";
-        $this->tblPricing = "pricing";
+        $this->tblPricingServices = "fbsv2_pricing_services";
+        $this->tblPricing = "fbsv2_pricing";
     }
 
     public function readAll()
@@ -128,7 +128,7 @@ class PricingServices
             $sql .= "pricing_services_icon = :pricing_services_icon, ";
             $sql .= "pricing_services_list = :pricing_services_list, ";
             $sql .= "pricing_services_sub_services = :pricing_services_sub_services, ";
-            $sql .= "pricing_services_created = :pricing_services_created ";
+            $sql .= "pricing_services_datetime = :pricing_services_datetime ";
             $sql .= "where pricing_services_aid = :pricing_services_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -136,7 +136,7 @@ class PricingServices
                 "pricing_services_icon" => $this->pricing_services_icon,
                 "pricing_services_list" => $this->pricing_services_list,
                 "pricing_services_sub_services" => $this->pricing_services_sub_services,
-                "pricing_services_created" => $this->pricing_services_created,
+                "pricing_services_datetime" => $this->pricing_services_datetime,
                 "pricing_services_aid" => $this->pricing_services_aid,
             ]);
         } catch (PDOException $ex) {

@@ -30,7 +30,7 @@ const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
         console.log("May error!");
       } else {
         setIsDelete(false);
-        console.log("Naysuu!");
+        console.log("Naysuu! HAHAHAHAHAHA");
         dispatch(setSuccess(true));
         dispatch(setMessage("Successfully Deleted!"));
       }

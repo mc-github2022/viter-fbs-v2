@@ -1,8 +1,6 @@
 import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import ModalContact from "../../../partials/ModalContact";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import ModalError from "../../../partials/modals/ModalError";
 import { StoreContext } from "../../../store/StoreContext";
 
 const PartnerWithUs = ({ pageName }) => {
@@ -43,6 +41,7 @@ const PartnerWithUs = ({ pageName }) => {
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full ">
               <img
                 src={`${devBaseImgUrl}/partnerWithUs.jpg`}
+                loading="lazy"
                 className="w-full h-full object-cover object-top"
                 alt="Reliable, Cost-effective, and Expertly Managed Solutions."
               />
@@ -57,6 +56,9 @@ const PartnerWithUs = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"partner-with-us-home"}
+          emailSubject={"Partner with us"}
         />
       )}
     </>

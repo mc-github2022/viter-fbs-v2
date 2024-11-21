@@ -58,3 +58,10 @@ RewriteRule ^vid-testimonial/search$ controllers/developer/vid-testimonial/searc
 # SENDING EMAIL
 RewriteRule ^sending-email$ controllers/developer/sending-email/sending-email.php [L]
 
+# NOTIFICATIONS
+RewriteRule ^notification-email$ controllers/developer/notification/notification.php [L]
+RewriteRule ^notification-email/([0-9]+)$ controllers/developer/notification/notification.php?notificationId=$1 [L]
+RewriteRule ^notification-email/active/([0-9]+)$ controllers/developer/notification/active.php?notificationId=$1 [L]
+RewriteRule ^notification-email/page/([0-9]+)$ controllers/developer/notification/page.php?start=$1 [L]
+RewriteRule ^notification-email/search$ controllers/developer/notification/search.php [L] 
+

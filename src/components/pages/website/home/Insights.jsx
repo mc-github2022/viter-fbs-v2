@@ -107,13 +107,11 @@ const Insights = () => {
     ),
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1330,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
       {
@@ -121,9 +119,7 @@ const Insights = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
     ],
@@ -152,7 +148,7 @@ const Insights = () => {
   return (
     <>
       <section className="insights py-16 md:py-24 bg-customGray">
-        <div className="customContainer px-10">
+        <div className="customContainer px-10 max-w-[90%]">
           {/* <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
             Industry Insights
           </h3> */}
@@ -177,7 +173,7 @@ const Insights = () => {
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                             }}
-                            className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                            className="blogItem bg-center bg-cover md:w-[380px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                           >
                             <div>
                               <div className="blogExcerpt p-10 pb-6 relative z-[1]">
@@ -209,7 +205,7 @@ const Insights = () => {
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                           }}
-                          className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem bg-center bg-cover md:w-[400px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                         >
                           <div>
                             <div className="blogExcerpt p-10 pb-6 relative z-[1]">

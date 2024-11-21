@@ -24,7 +24,7 @@ class VidTestimonial
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblVidTestimonial = "vid_testimonial";
+        $this->tblVidTestimonial = "fbsv2_vid_testimonial";
     }
 
     public function readAll()
@@ -142,7 +142,7 @@ class VidTestimonial
             $sql .= "vid_testimonial_course = :vid_testimonial_course, ";
             $sql .= "vid_testimonial_school = :vid_testimonial_school, ";
             $sql .= "vid_testimonial_message = :vid_testimonial_message, ";
-            $sql .= "vid_testimonial_created = :vid_testimonial_created ";
+            $sql .= "vid_testimonial_datetime = :vid_testimonial_datetime ";
             $sql .= "where vid_testimonial_aid = :vid_testimonial_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -153,7 +153,7 @@ class VidTestimonial
                 "vid_testimonial_course" => $this->vid_testimonial_course,
                 "vid_testimonial_school" => $this->vid_testimonial_school,
                 "vid_testimonial_message" => $this->vid_testimonial_message,
-                "vid_testimonial_created" => $this->vid_testimonial_created,
+                "vid_testimonial_datetime" => $this->vid_testimonial_datetime,
                 "vid_testimonial_aid" => $this->vid_testimonial_aid,
             ]);
         } catch (PDOException $ex) {

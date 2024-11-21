@@ -110,10 +110,10 @@ const WordPressScope = ({ pageName }) => {
                     alt="What Makes Our Website Development"
                   />
 
-                  <p className="hidden text-sm md:block mb-4 text-center pt-8 pb-8">
+                  <p className="hidden md:block mb-4 text-center pt-8 pb-8">
                     <button
                       onClick={handleForm}
-                      className="btn px-5 bg-primary text-light font-semibold"
+                      className="btn bg-primary text-light font-semibold"
                     >
                       CONTACT US
                     </button>

@@ -21,7 +21,7 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-2 rotate-[-50deg] w-[220px] ml-2">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/team-jeff.png`}
+                      src={`${devBaseImgUrl}/team-jeff.webp`}
                       alt="effrey Pessina"
                     />
                   </div>
@@ -36,7 +36,7 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-10px] rotate-[-50deg] w-[230px] ml-4">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/teamralph.png`}
+                      src={`${devBaseImgUrl}/teamralph.webp`}
                       alt="Ralph Acoba"
                     />
                   </div>
@@ -51,7 +51,7 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-30px] left-[45px] rotate-[-50deg] w-[180px] ml-2">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/team-ada.png`}
+                      src={`${devBaseImgUrl}/team-ada.webp`}
                       alt="Rhoda Beloso"
                     />
                   </div>
@@ -66,7 +66,7 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-2 left-[10px] rotate-[-50deg] w-[180px] ml-2">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/team-bea.png`}
+                      src={`${devBaseImgUrl}/team-bea.webp`}
                       alt="Bhea Del Monte"
                     />
                   </div>
@@ -111,7 +111,7 @@ const WhyUsTheTeam = () => {
                   <div className="absolute top-[-20px] rotate-[-50deg] w-[200px] ml-2">
                     <img
                       className="grayscale"
-                      src={`${devBaseImgUrl}/sir-carlo.png`}
+                      src={`${devBaseImgUrl}/sir-carlo.webp`}
                       alt="Carlo Del Monte"
                     />
                   </div>

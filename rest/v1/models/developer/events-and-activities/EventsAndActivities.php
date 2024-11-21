@@ -23,7 +23,7 @@ class EventsAndActivities
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblEventsAndActivities = "events_activities";
+        $this->tblEventsAndActivities = "fbsv2_events_activities";
     }
 
     public function readAll()
@@ -137,7 +137,7 @@ class EventsAndActivities
             $sql .= "events_activities_slug = :events_activities_slug, ";
             $sql .= "events_activities_date = :events_activities_date, ";
             $sql .= "events_activities_description = :events_activities_description, ";
-            $sql .= "events_activities_created = :events_activities_created ";
+            $sql .= "events_activities_datetime = :events_activities_datetime ";
             $sql .= "where events_activities_aid = :events_activities_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -147,7 +147,7 @@ class EventsAndActivities
                 "events_activities_slug" => $this->events_activities_slug,
                 "events_activities_date" => $this->events_activities_date,
                 "events_activities_description" => $this->events_activities_description,
-                "events_activities_created" => $this->events_activities_created,
+                "events_activities_datetime" => $this->events_activities_datetime,
                 "events_activities_aid" => $this->events_activities_aid,
             ]);
         } catch (PDOException $ex) {

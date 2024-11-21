@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { devBaseImgUrl, devNavUrl } from "../../helpers/functions-general";
-import { IoMdSettings } from "react-icons/io";
-import { GoChevronDown } from "react-icons/go";
 import { StoreContext } from "../../store/StoreContext";
-import { setIsHome, setIsWhyFBS } from "../../store/StoreAction";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -298,6 +295,21 @@ const Navigation = ({ menu, submenu }) => {
                 <Link to={`${devNavUrl}/pricing`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">Pricing</span>
+                  </div>
+                </Link>
+              </li>
+              <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "notification"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-[#9ca3af] "
+                  }
+                `}
+              >
+                <Link to={`${devNavUrl}/notification`}>
+                  <div className="nav flex items-center">
+                    <span className="ml-2.5 text-[14px]">Notification</span>
                   </div>
                 </Link>
               </li>

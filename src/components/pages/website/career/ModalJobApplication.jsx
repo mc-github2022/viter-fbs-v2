@@ -76,6 +76,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
+    client_file: Yup.string().required("Required"),
   });
   return (
     <>
@@ -129,8 +130,18 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   <p>(+63) 927 168 6810</p>
                 </li>
                 <li>
-                  <IoMailSharp />
-                  <p>mktg@frontlinebusiness.com.ph</p>
+                  <div className="text-xs md:text-sm">
+                    <div className="mb-4">
+                      <h3 className="font-semibold">Human Resource Manager</h3>
+                      <p>Mrs. Rhoda Beloso</p>
+                      <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                    </div>
+                    <div className="mb-8">
+                      <h3 className="font-semibold">Human Resource Staff</h3>
+                      <p>Mrs. Kennie Deriquito</p>
+                      <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                    </div>
+                  </div>
                 </li>
               </ul>
               <div className="mb-4">
@@ -233,7 +244,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                       </div>
 
                       <div className="input-wrapper">
-                        <span htmlFor="">Upload Resume (Optional)</span>
+                        <span htmlFor="" className="text-xs">
+                          Upload Resume (PDF Only (8mb)){" "}
+                        </span>
                         <InputFileUpload
                           type="file"
                           name="client_file"
@@ -242,7 +255,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                           disabled={mutation.isPending}
                           onChange={(e) => handleChangeFiles(e)}
                         />
-                        <p className="text-xs italic my-1">PDF Only (8mb)</p>
                       </div>
 
                       <div className="input-wrapper">

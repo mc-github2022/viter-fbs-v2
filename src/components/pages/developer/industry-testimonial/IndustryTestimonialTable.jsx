@@ -33,7 +33,6 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
     hasNextPage,
     isFetching,
     isFetchingNextPage,
-    isLoading,
     status,
   } = useInfiniteQuery({
     queryKey: ["indTestimonial", onSearch, store.isSearch],
@@ -85,7 +84,7 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
         onSearch={onSearch}
       />
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
-        {isFetching && !isFetchingNextPage && status !== "loading" && (
+        {isFetching && !isFetchingNextPage && status !== "pending" && (
           <FetchingSpinner />
         )}
         <table>
@@ -103,9 +102,6 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
             </tr>
           </thead>
           <tbody className="relative">
-            {isLoading && !isFetchingNextPage && status !== "pending" && (
-              <TableSpinner />
-            )}
             {(status === "pending" || result?.pages[0].data.length === 0) && (
               <tr className="text-center">
                 <td colSpan="100%" className="p-10">

@@ -21,7 +21,6 @@ const InsightsTable = ({ setItemEdit }) => {
     isFetching,
     error,
     isLoading,
-    status,
     data: insightData,
   } = useQueryData(
     "/v1/insights", // endpoint
@@ -45,7 +44,7 @@ const InsightsTable = ({ setItemEdit }) => {
   return (
     <>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
-        {isFetching && status !== "loading" && <FetchingSpinner />}
+        {isFetching && !isLoading && <FetchingSpinner />}
         <table>
           <thead>
             <tr className="text-[black]">
@@ -60,11 +59,10 @@ const InsightsTable = ({ setItemEdit }) => {
             </tr>
           </thead>
           <tbody className="relative">
-            {isLoading && status !== "pending" && <TableSpinner />}
-            {(status === "pending" || insightData?.data.length === 0) && (
+            {(isLoading || insightData?.data.length === 0) && (
               <tr className="text-center">
                 <td colSpan="100%" className="p-10">
-                  {status === "pending" ? <TableLoading /> : <NoData />}
+                  {isLoading ? <TableLoading /> : <NoData />}
                 </td>
               </tr>
             )}

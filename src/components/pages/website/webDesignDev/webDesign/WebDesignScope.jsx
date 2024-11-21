@@ -1,13 +1,8 @@
 import React, { useEffect } from "react";
-import { FaRegFileAlt } from "react-icons/fa";
-import { FaBuildingUser } from "react-icons/fa6";
-import { HiOutlineMegaphone } from "react-icons/hi2";
 import { IoChevronDown } from "react-icons/io5";
-import { LuCalendarClock, LuClock } from "react-icons/lu";
-import { MdOutlineCalendarToday, MdOutlineDashboard } from "react-icons/md";
-import { scope } from "./data";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import { scope } from "./data";
 
 const WebDesignScope = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);

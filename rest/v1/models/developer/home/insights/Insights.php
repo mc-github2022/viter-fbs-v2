@@ -22,7 +22,7 @@ class Insights
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblInsights = "home_insights";
+        $this->tblInsights = "fbsv2_home_insights";
     }
 
     public function readAll()
@@ -95,7 +95,7 @@ class Insights
             $sql .= "home_insights_paragraph_a = :home_insights_paragraph_a, ";
             $sql .= "home_insights_paragraph_b = :home_insights_paragraph_b, ";
             $sql .= "home_insights_paragraph_c = :home_insights_paragraph_c, ";
-            $sql .= "home_insights_created = :home_insights_created ";
+            $sql .= "home_insights_datetime = :home_insights_datetime ";
             $sql .= "where home_insights_aid = :home_insights_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -107,7 +107,7 @@ class Insights
                 "home_insights_paragraph_a" => $this->home_insights_paragraph_a,
                 "home_insights_paragraph_b" => $this->home_insights_paragraph_b,
                 "home_insights_paragraph_c" => $this->home_insights_paragraph_c,
-                "home_insights_created" => $this->home_insights_created,
+                "home_insights_datetime" => $this->home_insights_datetime,
                 "home_insights_aid" => $this->home_insights_aid,
             ]);
         } catch (PDOException $ex) {

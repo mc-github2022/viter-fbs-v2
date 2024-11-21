@@ -94,7 +94,7 @@ export const scope = [
     scopeTitle: "Content Management System",
     scopeDesc:
       "With our Content Management System, you have complete control over your website content, allowing you to update pages, blog posts, and media without needing a developer. This gives you the flexibility to keep your website fresh and relevant, putting you in charge of your own digital presence.",
-    scopeImage: "wordpress-dashboard.png",
+    scopeImage: "wordpress-dashboard.webp",
   },
   {
     scopeId: "mobile-compatibility",
@@ -102,7 +102,7 @@ export const scope = [
     scopeTitle: "Mobile Compatibility",
     scopeDesc:
       "Our website development service includes Mobile Compatibility, ensuring that your website is fully optimized for various mobile devices. This feature involves responsive design techniques that adapt the website’s layout and content to different screen sizes and orientations.",
-    scopeImage: "mobile-compatability.png",
+    scopeImage: "mobile-compatability.webp",
   },
   {
     scopeId: "malware-protection",

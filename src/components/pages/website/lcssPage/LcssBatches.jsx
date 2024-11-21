@@ -177,7 +177,7 @@ const LcssBatches = () => {
                         <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
-                              className="blogItem addShadow bg-center bg-cover h-[400px] min-w-[280px] max-w-[280px] md:min-w-[350px] md:max-w-[350px] flex items-end relative rounded-xl 
+                              className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] sm:w-[320px] flex items-end relative rounded-xl 
                             grayscale hover:grayscale-0 transition-all group cursor-pointer"
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
