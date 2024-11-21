@@ -19,7 +19,7 @@ class Testimonials
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblTestimonials = "home_testimonial";
+        $this->tblTestimonials = "fbsv2_home_testimonial";
     }
 
     public function readAll()

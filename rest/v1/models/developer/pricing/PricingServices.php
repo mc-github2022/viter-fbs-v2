@@ -22,8 +22,8 @@ class PricingServices
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblPricingServices = "pricing_services";
-        $this->tblPricing = "pricing";
+        $this->tblPricingServices = "fbsv2_pricing_services";
+        $this->tblPricing = "fbsv2_pricing";
     }
 
     public function readAll()

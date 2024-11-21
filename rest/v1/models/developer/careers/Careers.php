@@ -20,7 +20,7 @@ class Careers
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblCareers = "careers";
+        $this->tblCareers = "fbsv2_careers";
     }
 
     public function readAll()

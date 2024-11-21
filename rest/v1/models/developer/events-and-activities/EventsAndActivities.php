@@ -23,7 +23,7 @@ class EventsAndActivities
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblEventsAndActivities = "events_activities";
+        $this->tblEventsAndActivities = "fbsv2_events_activities";
     }
 
     public function readAll()

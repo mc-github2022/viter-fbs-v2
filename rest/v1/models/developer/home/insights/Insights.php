@@ -22,7 +22,7 @@ class Insights
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblInsights = "home_insights";
+        $this->tblInsights = "fbsv2_home_insights";
     }
 
     public function readAll()

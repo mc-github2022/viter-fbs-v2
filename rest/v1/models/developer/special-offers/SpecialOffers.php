@@ -18,7 +18,7 @@ class SpecialOffers
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblSpecialOffers = "special_offers";
+        $this->tblSpecialOffers = "fbsv2_special_offers";
     }
 
     public function readAll()

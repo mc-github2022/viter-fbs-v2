@@ -24,7 +24,7 @@ class VidTestimonial
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblVidTestimonial = "vid_testimonial";
+        $this->tblVidTestimonial = "fbsv2_vid_testimonial";
     }
 
     public function readAll()

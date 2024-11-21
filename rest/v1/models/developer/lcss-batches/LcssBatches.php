@@ -22,7 +22,7 @@ class LcssBatches
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblLcssBatch = "lcss_batch";
+        $this->tblLcssBatch = "fbsv2_lcss_batch";
     }
 
     public function readAll()

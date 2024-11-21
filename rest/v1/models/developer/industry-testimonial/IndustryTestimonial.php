@@ -24,7 +24,7 @@ class IndustryTestimonial
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblIndustryTestimonial = "industry_testimonial";
+        $this->tblIndustryTestimonial = "fbsv2_industry_testimonial";
     }
 
     public function readAll()

@@ -19,7 +19,7 @@ class Banner
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblBanner = "home_banner";
+        $this->tblBanner = "fbsv2_home_banner";
     }
 
     public function readAll()
