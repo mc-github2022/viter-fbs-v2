@@ -12,6 +12,9 @@ import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
 import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import Status from "../../../partials/Status";
+import { purposeValue } from "./functions-notification";
+import LoadMore from "../../../partials/LoadMore";
 
 const NotificationTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -32,11 +35,11 @@ const NotificationTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["notification", onSearch, store.isSearch],
+    queryKey: ["notification-email", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/notification/search`, // search endpoint
-        `/v1/notification/page/${pageParam}`, // list endpoint
+        `/v1/notification-email/search`, // search endpoint
+        `/v1/notification-email/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -58,8 +61,8 @@ const NotificationTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.careers_job_title);
-    setIsId(item.careers_aid);
+    setIsData(item.notification_name);
+    setIsId(item.notification_aid);
   };
 
   React.useEffect(() => {
@@ -86,11 +89,11 @@ const NotificationTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone/Mobile no.</th>
-              <th>Purpose</th>
-              <th>Page</th>
+              <th className="min-w-[10rem]">Status</th>
+              <th className="min-w-[10rem]">Name</th>
+              <th className="min-w-[10rem]">Email</th>
+              <th className="min-w-[10rem]">Phone/Mobile no.</th>
+              <th className="min-w-[10rem]">Purpose</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -114,20 +117,20 @@ const NotificationTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
-                  <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}</td>
-                    <td className="place-content-start">{item.careers_icon}</td>
-                    <td className="place-content-start">
-                      {item.careers_job_title}
+                  <tr key={key} className="text-[14px]">
+                    <td className="pl-2">{counter++}.</td>
+                    <td className="">
+                      <Status status={item.notification_is_active} />
                     </td>
-                    <td className="place-content-start">
-                      {item.careers_job_classification}
-                    </td>
-                    <td className="place-content-start">
-                      {item.careers_job_mode}
-                    </td>
-                    <td className="place-content-start">
-                      {item.careers_job_mode}
+                    <td className="">{item.notification_name}</td>
+                    <td className="">{item.notification_email}</td>
+                    <td className="">{item.notification_phone_no}</td>
+                    <td className="">
+                      {
+                        purposeValue()?.filter(
+                          (pitem) => item.notification_purpose === pitem.code
+                        )[0].name
+                      }
                     </td>
 
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
@@ -152,13 +155,24 @@ const NotificationTable = ({ setItemEdit }) => {
             ))}
           </tbody>
         </table>
+        <div className="place-self-center">
+          <LoadMore
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+            result={result?.pages[0]}
+            setPage={setPage}
+            page={page}
+            refView={ref}
+          />
+        </div>
       </div>
 
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"notification"}
-          mysqlEndpoint={`/v1/notification/${id}`}
+          queryKey={"notification-email"}
+          mysqlEndpoint={`/v1/notification-email/${id}`}
           item={isData}
         />
       )}

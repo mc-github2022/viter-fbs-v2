@@ -39,6 +39,8 @@ const ModalContact = ({
   setContactForm = null,
   contactForm = null,
   contactSubject = "",
+  notification_purpose = "",
+  emailSubject = "",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
@@ -81,6 +83,8 @@ const ModalContact = ({
     client_message: "",
     formTitle: `New Message from ${thePageName} page ${contactSubject}`,
     client_file: "",
+    notification_purpose,
+    email_subject: emailSubject,
   };
 
   const yupSchema = Yup.object({

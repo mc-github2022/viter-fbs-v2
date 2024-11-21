@@ -6,6 +6,8 @@ import { StoreContext } from "../../../store/StoreContext";
 import { setIsAdd, setIsWhyFBS } from "../../../store/StoreAction";
 import Navigation from "../../../partials/dashboard/Navigation";
 import Dashboard from "../../../partials/dashboard/Dashboard";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
 
 const Notification = () => {
   const { store, dispatch } = React.useContext(StoreContext);

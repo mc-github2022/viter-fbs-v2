@@ -23,7 +23,7 @@ SET
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `viter-fbs-v2`
+-- Database: `viter_fbs_v2`
 --
 -- --------------------------------------------------------
 --

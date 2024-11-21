@@ -211,6 +211,9 @@ const BannerSlider = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"get-started-home"}
+          emailSubject={"Get started "}
         />
       )}
     </>

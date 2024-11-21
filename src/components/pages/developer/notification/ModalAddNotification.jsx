@@ -1,24 +1,21 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
-import * as Yup from "yup";
-import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import * as FaIcons from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
 import * as IoIcons from "react-icons/io";
-import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import * as TiIcons from "react-icons/ti";
+import * as Yup from "yup";
+import { InputSelect, InputText } from "../../../helpers/FormInputs";
 import { queryData } from "../../../helpers/queryData";
-import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
 import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import {
-  InputSelect,
-  InputText,
-  InputTextArea,
-} from "../../../helpers/FormInputs";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import { purposeValue } from "./functions-notification";
 
 const icons = {
   ...FaIcons,
@@ -60,19 +57,18 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/careers/${itemEdit.careers_aid}` // update
-          : `/v1/careers`, // create
+          ? `/v1/notification-email/${itemEdit.notification_aid}` // update
+          : `/v1/notification-email`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["careers"] });
+      queryClient.invalidateQueries({ queryKey: ["notification-email"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
         dispatch(setSuccess(false));
       } else {
-        console.log("Success");
         dispatch(setIsAdd(false));
         dispatch(setSuccess(true));
         dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
@@ -81,26 +77,29 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
   });
 
   const initVal = {
-    careers_aid: itemEdit ? itemEdit.careers_aid : "",
-    careers_job_title: itemEdit ? itemEdit.careers_job_title : "",
-    careers_job_classification: itemEdit
-      ? itemEdit.careers_job_classification
-      : "",
-    careers_job_mode: itemEdit ? itemEdit.careers_job_mode : "",
-    careers_job_status: itemEdit ? itemEdit.careers_job_status : "",
-    careers_job_description: itemEdit ? itemEdit.careers_job_description : "",
-    careers_icon: itemEdit ? itemEdit.careers_icon : "",
+    notification_aid: itemEdit ? itemEdit.notification_aid : "",
+    notification_name: itemEdit ? itemEdit.notification_name : "",
+    notification_email: itemEdit ? itemEdit.notification_email : "",
+    notification_phone_no: itemEdit ? itemEdit.notification_phone_no : "",
+    notification_purpose: itemEdit ? itemEdit.notification_purpose : "",
+    notification_name_old: itemEdit ? itemEdit.notification_name : "",
   };
 
-  const yupSchema = Yup.object({});
+  const yupSchema = Yup.object({
+    notification_email: Yup.string()
+      .required("Required")
+      .email("Invalid email"),
+    notification_name: Yup.string().required("Required"),
+    notification_purpose: Yup.string().required("Required"),
+  });
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200`}
+      className={`transition-all ease-linear transform duration-200 w-[30rem] h-[22rem]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Career</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Notification</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -112,127 +111,64 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              careers_icon: icon,
             };
             mutation.mutate(data);
           }}
         >
           {(props) => {
             return (
-              <Form className="modal-form">
-                <div className="form-input">
-                  <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
-                      <div className="input-wrapper">
-                        <label htmlFor="icon-search">Search Icon</label>
-                        <input
-                          id="icon-search"
-                          type="text"
-                          placeholder="Type to search icons..."
-                          value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                          className="border p-2 w-full"
-                          disabled={mutation.isPending}
-                        />
+              <Form>
+                <div className="input-wrapper">
+                  <InputText
+                    label="Name"
+                    type="text"
+                    name="notification_name"
+                    disabled={mutation.isPending}
+                  />
+                </div>
+                <div className="input-wrapper">
+                  <InputText
+                    label="Email"
+                    type="text"
+                    name="notification_email"
+                    disabled={mutation.isPending}
+                  />
+                </div>
+                <div className="input-wrapper">
+                  <InputText
+                    label="Phone/Mobile no."
+                    type="text"
+                    name="notification_phone_no"
+                    disabled={mutation.isPending}
+                  />
+                </div>
 
-                        <select
-                          name="home_insights_category"
-                          value={icon}
-                          onChange={(e) => setIcon(e.target.value)}
-                          className="border p-2 w-full mt-2"
-                          disabled={mutation.isPending}
-                        >
-                          <option value="" disabled>
-                            Select an icon
-                          </option>
-                          {filteredIcons.map((iconKey) => (
-                            <option
-                              key={iconKey}
-                              value={iconKey}
-                              className="text-sm"
-                            >
-                              {iconKey}
-                            </option>
-                          ))}
-                        </select>
+                <div className="input-wrapper">
+                  <InputSelect
+                    label="Purpose"
+                    type="text"
+                    name="notification_purpose"
+                    disabled={mutation.isPending}
+                  >
+                    <optgroup label="Select Category">
+                      <option value="" hidden>
+                        --
+                      </option>
 
-                        {icon ? (
-                          <div className="flex items-center gap-4 mt-2">
-                            Selected icon: <Icon />
-                          </div>
-                        ) : (
-                          "No icon selected"
-                        )}
-                      </div>
-                      <div className="input-wrapper">
-                        <InputText
-                          label="Job Title"
-                          type="text"
-                          name="careers_job_title"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div className="input-wrapper">
-                        <InputSelect
-                          label="Employee Classification"
-                          type="text"
-                          name="careers_job_classification"
-                          disabled={mutation.isPending}
-                        >
-                          <option value="" disabled>
-                            Select Employee Classification
-                          </option>
-                          <option value="Full-time">Full-time</option>
-                          <option value="Part-time">Part-time</option>
-                        </InputSelect>
-                      </div>
-                      <div className="input-wrapper">
-                        <InputSelect
-                          label="Mode of Work"
-                          type="text"
-                          name="careers_job_mode"
-                          disabled={mutation.isPending}
-                        >
-                          <option value="" disabled>
-                            Select Mode of Work
-                          </option>
-                          <option value="On-site">On-site</option>
-                          <option value="Remote">Remote</option>
-                          <option value="Hybrid">Hybrid</option>
-                        </InputSelect>
-                      </div>
-                      <div className="input-wrapper">
-                        <InputSelect
-                          label="Job Status"
-                          type="text"
-                          name="careers_job_status"
-                          disabled={mutation.isPending}
-                        >
-                          <option value="" disabled>
-                            Select Job Status
-                          </option>
-                          <option value="Ongoing">Ongoing</option>
-                          <option value="Closed">Closed</option>
-                        </InputSelect>
-                      </div>
-                    </div>
-                    <div className="input-wrapper">
-                      <InputTextArea
-                        label="Job Description"
-                        type="text"
-                        name="careers_job_description"
-                        className="h-[500px] w-[478px]"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-                  </div>
+                      {purposeValue()?.map((item, key) => (
+                        <option key={key} value={item.code}>
+                          {item.name}
+                        </option>
+                      ))}
+                    </optgroup>
+                  </InputSelect>
                 </div>
                 <div className="form-action">
                   <div className="form-btn">
                     <button
                       className="btn-modal-submit"
                       type="submit"
-                      disabled={mutation.isPending || !icon}
+                      disabled={mutation.isPending}
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
                     </button>

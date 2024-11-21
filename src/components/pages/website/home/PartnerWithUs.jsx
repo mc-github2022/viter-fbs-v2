@@ -1,8 +1,6 @@
 import React from "react";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import ModalContact from "../../../partials/ModalContact";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import ModalError from "../../../partials/modals/ModalError";
 import { StoreContext } from "../../../store/StoreContext";
 
 const PartnerWithUs = ({ pageName }) => {
@@ -35,7 +33,8 @@ const PartnerWithUs = ({ pageName }) => {
               </p>
               <button
                 onClick={handleForm}
-                className="btn bg-primary text-light my-5  font-semibold inline-block rounded-full ">
+                className="btn bg-primary text-light my-5  font-semibold inline-block rounded-full "
+              >
                 PARTNER WITH US
               </button>
             </div>
@@ -57,6 +56,9 @@ const PartnerWithUs = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"partner-with-us-home"}
+          emailSubject={"Partner with us"}
         />
       )}
     </>

@@ -15,6 +15,7 @@ function sendEmail(
 	$title,
 	$name,
 	$email,
+	$emailSubject,
 	$subject,
 	$mobileNumber,
 	$message,
@@ -35,7 +36,7 @@ function sendEmail(
 		$mail->SMTPAuth = true;
 		$mail->Username = USERNAME; // if gmail use your gmail email
 		$mail->Password = PASSWORD; // if gmail use your email password
-		$mail->Subject = $title;
+		$mail->Subject = `{$emailSubject}{$title}`;
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
 		$mail->Body = getHtmlSendMessage(
@@ -56,9 +57,8 @@ function sendEmail(
 		$sent_count = 0;
 		$else_error_count = 0;
 		if (count($emailReceiver) > 0) {
-
 			for ($a = 0; $a < count($emailReceiver); $a++) {
-				$newEmailReceiver = trim($emailReceiver[$a]);
+				$newEmailReceiver = trim($emailReceiver[$a]["notification_email"]);
 				if (trim($newEmailReceiver) != "") {
 					$mail->addAddress($newEmailReceiver);
 					if ($mail->Send()) {

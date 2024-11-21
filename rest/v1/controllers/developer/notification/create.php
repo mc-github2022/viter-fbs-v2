@@ -14,7 +14,6 @@ $readNotification->notification_name = $data["notification_name"];
 $readNotification->notification_email = $data["notification_email"];
 $readNotification->notification_phone_no = $data["notification_phone_no"];
 $readNotification->notification_purpose = $data["notification_purpose"];
-$readNotification->notification_page = $data["notification_page"];
 $readNotification->notification_created = date("Y-m-d H:i:s");
 $readNotification->notification_updated = date("Y-m-d H:i:s");
 

@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `viter-fbs-v2`
+-- Database: `viter_fbs_v2`
 --
 
 -- --------------------------------------------------------
@@ -28,15 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `fbsv2_notification` (
-  `fbsv2_notification_aid` int(11) NOT NULL,
-  `fbsv2_notification_is_active` tinyint(1) NOT NULL,
-  `fbsv2_notification_name` varchar(200) NOT NULL,
-  `fbsv2_notification_email` varchar(200) NOT NULL,
-  `fbsv2_notification_phone_no` varchar(20) NOT NULL,
-  `fbsv2_notification_purpose` varchar(200) NOT NULL,
-  `fbsv2_notification_page` varchar(200) NOT NULL,
-  `fbsv2_notification_created` datetime NOT NULL,
-  `fbsv2_notification_updated` datetime NOT NULL
+  `notification_aid` int(11) NOT NULL,
+  `notification_is_active` tinyint(1) NOT NULL,
+  `notification_name` varchar(200) NOT NULL,
+  `notification_email` varchar(200) NOT NULL,
+  `notification_phone_no` varchar(20) NOT NULL,
+  `notification_purpose` varchar(200) NOT NULL,
+  `notification_page` varchar(200) NOT NULL,
+  `notification_created` datetime NOT NULL,
+  `notification_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `fbsv2_notification` (
 -- Indexes for table `fbsv2_notification`
 --
 ALTER TABLE `fbsv2_notification`
-  ADD PRIMARY KEY (`fbsv2_notification_aid`);
+  ADD PRIMARY KEY (`notification_aid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -57,7 +57,7 @@ ALTER TABLE `fbsv2_notification`
 -- AUTO_INCREMENT for table `fbsv2_notification`
 --
 ALTER TABLE `fbsv2_notification`
-  MODIFY `fbsv2_notification_aid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notification_aid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
