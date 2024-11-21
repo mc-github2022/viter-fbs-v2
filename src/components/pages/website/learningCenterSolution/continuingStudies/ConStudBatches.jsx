@@ -24,8 +24,7 @@ function SampleNextArrow(props) {
         display: "grid",
         placeItems: "center",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowForward className="text-3xl" />
     </div>
   );
@@ -50,8 +49,7 @@ function SamplePrevArrow(props) {
         display: "grid",
         placeItems: "center",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowBack className="text-3xl" />
     </div>
   );
@@ -91,8 +89,7 @@ const ConStudBatches = () => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "-60px",
-        }}
-      >
+        }}>
         <ul style={{ margin: "0px" }}> {dots} </ul>
       </div>
     ),
@@ -105,24 +102,13 @@ const ConStudBatches = () => {
           background: "gray",
           borderRadius: "50%",
           opacity: "50%",
-        }}
-      ></div>
+        }}></div>
     ),
     initialSlide: currentSlide, // Set initial slide to the current one
     afterChange: (index) => setCurrentSlide(index),
     responsive: [
       {
         breakpoint: 1230,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          nextArrow: modalBatch ? null : <SampleNextArrow />,
-          prevArrow: modalBatch ? null : <SamplePrevArrow />,
-          // dots: true,
-        },
-      },
-      {
-        breakpoint: 850,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -131,6 +117,16 @@ const ConStudBatches = () => {
           // dots: true,
         },
       },
+      // {
+      //   breakpoint: 850,
+      //   settings: {
+      //     slidesToShow: 1,
+      //     slidesToScroll: 1,
+      //     nextArrow: modalBatch ? null : <SampleNextArrow />,
+      //     prevArrow: modalBatch ? null : <SamplePrevArrow />,
+      //     // dots: true,
+      //   },
+      // },
     ],
   };
 
@@ -147,8 +143,7 @@ const ConStudBatches = () => {
         <div className="customContainer max-w-[90%]">
           <div
             className="mb-12
-          "
-          >
+          ">
             <p>Professional Journey of Our</p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
               Successful, Industry-ready Batches
@@ -159,8 +154,7 @@ const ConStudBatches = () => {
           ).length > 3 ? (
             <Slider
               {...settings}
-              key={modalBatch ? "modalOpen" : "modalClosed"}
-            >
+              key={modalBatch ? "modalOpen" : "modalClosed"}>
               {lcssBatchesData?.data.map((item, key) => {
                 if (item.lcss_batch_category === "Continuing Studies") {
                   const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
@@ -168,8 +162,7 @@ const ConStudBatches = () => {
                   return (
                     <div
                       className="flex flex-wrap gap-2 place-content-center"
-                      key={key}
-                    >
+                      key={key}>
                       <div className="grid place-content-center">
                         <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
@@ -178,8 +171,7 @@ const ConStudBatches = () => {
                             grayscale hover:grayscale-0 transition-all group cursor-pointer "
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
-                              }}
-                            >
+                              }}>
                               <div>
                                 <div className="blogExcerpt p-10 relative z-[1]">
                                   <p className="text-light font-bold text-lg">
@@ -215,8 +207,7 @@ const ConStudBatches = () => {
                   return (
                     <div
                       className="flex flex-wrap gap-2 place-content-center"
-                      key={key}
-                    >
+                      key={key}>
                       <div className="grid place-content-center">
                         <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
@@ -226,8 +217,7 @@ const ConStudBatches = () => {
                                   grayscale hover:grayscale-0 transition-all group cursor-pointer"
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
-                              }}
-                            >
+                              }}>
                               <div>
                                 <div className="blogExcerpt p-10 relative z-[1]">
                                   <p className="text-light font-bold text-lg">
