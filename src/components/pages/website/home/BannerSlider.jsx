@@ -21,8 +21,7 @@ function SampleNextArrow(props) {
         fontSize: "3rem",
         cursor: "pointer",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowForward />
     </div>
   );
@@ -42,8 +41,7 @@ function SamplePrevArrow(props) {
         zIndex: "1",
         cursor: "pointer",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowBack />
     </div>
   );
@@ -93,8 +91,7 @@ const BannerSlider = ({ pageName }) => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "0px",
-        }}
-      >
+        }}>
         <ul className="mb-[10px] md:mb-[5px]"> {dots} </ul>
       </div>
     ),
@@ -107,8 +104,7 @@ const BannerSlider = ({ pageName }) => {
           background: "#F5F5F5",
           borderRadius: "50%",
           opacity: "50%",
-        }}
-      ></div>
+        }}></div>
     ),
     responsive: [
       {
@@ -156,33 +152,32 @@ const BannerSlider = ({ pageName }) => {
               <div
                 id="banner"
                 className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit relative`}
-                style={{
-                  // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-                  backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img})`,
-                }}
+                // style={{
+                //   // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+                //   backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img})`,
+                // }}
               >
-                {/* <img
+                <img
                   src={`${devBaseImgUrl}/${item.home_banner_img}`}
+                  className="absolute top-0 w-full h-full object-cover"
                   alt=""
-                  className="absolute"
-                /> */}
+                />
                 <div className="customContainer h-fit">
                   <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
                     <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
                       <p className="text-light lg:text-[28px] italic">
                         {item.home_banner_sub_title}
                       </p>
-                      <p className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
+                      <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
                         {item.home_banner_title}
-                      </p>
-                      <p className="text-light text-center mb-10">
+                      </h1>
+                      <p className="text-light text-center mb-10 relative z-1">
                         {item.home_banner_description}
                       </p>
                       <a
                         href="#"
                         className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
-                        onClick={handleForm}
-                      >
+                        onClick={handleForm}>
                         {item.home_banner_button_text}
                       </a>
                     </div>

@@ -35,14 +35,14 @@ const PartnerWithUs = ({ pageName }) => {
               </p>
               <button
                 onClick={handleForm}
-                className="btn bg-primary text-light my-5  font-semibold inline-block rounded-full "
-              >
+                className="btn bg-primary text-light my-5  font-semibold inline-block rounded-full ">
                 PARTNER WITH US
               </button>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full ">
               <img
                 src={`${devBaseImgUrl}/partnerWithUs.jpg`}
+                loading="lazy"
                 className="w-full h-full object-cover object-top"
                 alt="Reliable, Cost-effective, and Expertly Managed Solutions."
               />

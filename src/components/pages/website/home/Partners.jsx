@@ -12,6 +12,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/logo-avant-white.png`}
+                    loading="lazy"
                     alt="Avant"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -19,6 +20,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/ftc-e1716532807623.png`}
+                    loading="lazy"
                     alt="Face the Children"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -26,6 +28,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/logo-go-mission-trip.png`}
+                    loading="lazy"
                     alt="Go Mission trip"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -33,6 +36,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/jcceos-logo.png`}
+                    loading="lazy"
                     alt="Jesus Christ's CEOs"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -40,6 +44,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/lightuptoy.png`}
+                    loading="lazy"
                     alt="Light Up"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -47,6 +52,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/rebekah.png`}
+                    loading="lazy"
                     alt="Rebekah Nicole"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -54,6 +60,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/tm_logo_dark.png`}
+                    loading="lazy"
                     alt="Two Miles"
                     className="w-[170px] h-[170px] object-contain"
                   />
@@ -61,6 +68,7 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/logo-world-focus.png`}
+                    loading="lazy"
                     alt="World Focus"
                     className="w-[170px] h-[170px] object-contain"
                   />
