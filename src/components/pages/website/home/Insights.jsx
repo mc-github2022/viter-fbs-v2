@@ -25,7 +25,8 @@ function SampleNextArrow(props) {
         display: "grid",
         placeItems: "center",
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <IoIosArrowForward className="text-3xl" />
     </div>
   );
@@ -50,7 +51,8 @@ function SamplePrevArrow(props) {
         display: "grid",
         placeItems: "center",
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <IoIosArrowBack className="text-3xl" />
     </div>
   );
@@ -86,7 +88,8 @@ const Insights = () => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "-60px",
-        }}>
+        }}
+      >
         <ul style={{ margin: "0px" }}> {dots} </ul>
       </div>
     ),
@@ -99,17 +102,16 @@ const Insights = () => {
           background: "gray",
           borderRadius: "50%",
           opacity: "50%",
-        }}></div>
+        }}
+      ></div>
     ),
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1330,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
       {
@@ -117,9 +119,7 @@ const Insights = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
     ],
@@ -148,7 +148,7 @@ const Insights = () => {
   return (
     <>
       <section className="insights py-16 md:py-24 bg-customGray">
-        <div className="customContainer px-10">
+        <div className="customContainer px-10 max-w-[90%]">
           {/* <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
             Industry Insights
           </h3> */}
@@ -167,12 +167,14 @@ const Insights = () => {
                     return (
                       <div key={key} className="md:px-0">
                         <Link
-                          to={`${devNavUrl}/insight/${post.home_insights_slug}`}>
+                          to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                        >
                           <div
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                             }}
-                            className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+                            className="blogItem bg-center bg-cover md:w-[380px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                          >
                             <div>
                               <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                                 <p className="text-light font-bold text-lg">
@@ -197,12 +199,14 @@ const Insights = () => {
                   {insightData?.data.map((post, key) => (
                     <div key={key} className="md:px-0">
                       <Link
-                        to={`${devNavUrl}/insight/${post.home_insights_slug}`}>
+                        to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                      >
                         <div
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                           }}
-                          className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
+                          className="blogItem bg-center bg-cover md:w-[400px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                        >
                           <div>
                             <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                               <p className="text-light font-bold text-lg">

@@ -110,6 +110,16 @@ const ConStudBatches = () => {
       {
         breakpoint: 1230,
         settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          nextArrow: modalBatch ? null : <SampleNextArrow />,
+          prevArrow: modalBatch ? null : <SamplePrevArrow />,
+          // dots: true,
+        },
+      },
+      {
+        breakpoint: 850,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           nextArrow: modalBatch ? null : <SampleNextArrow />,
@@ -117,16 +127,6 @@ const ConStudBatches = () => {
           // dots: true,
         },
       },
-      // {
-      //   breakpoint: 850,
-      //   settings: {
-      //     slidesToShow: 1,
-      //     slidesToScroll: 1,
-      //     nextArrow: modalBatch ? null : <SampleNextArrow />,
-      //     prevArrow: modalBatch ? null : <SamplePrevArrow />,
-      //     // dots: true,
-      //   },
-      // },
     ],
   };
 
@@ -167,8 +167,8 @@ const ConStudBatches = () => {
                         <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
-                              className="blogItem addShadow bg-center bg-cover h-[400px] min-w-[280px] max-w-[413px] md:min-w-[413px] flex items-end relative rounded-xl 
-                            grayscale hover:grayscale-0 transition-all group cursor-pointer "
+                              className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] sm:w-[320px] flex items-end relative rounded-xl 
+                            grayscale hover:grayscale-0 transition-all group cursor-pointer"
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
                               }}>

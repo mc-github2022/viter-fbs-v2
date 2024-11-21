@@ -76,7 +76,7 @@ const EventsAndAct = () => {
 
   var EventsSliderSettings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -108,23 +108,19 @@ const EventsAndAct = () => {
     ),
     responsive: [
       {
-        breakpoint: 1086,
+        breakpoint: 1230,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
       {
-        breakpoint: 760,
+        breakpoint: 850,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
     ],
@@ -202,8 +198,8 @@ const EventsAndAct = () => {
                         style={{
                           backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
                         }}
-                        className="blogItem addShadow bg-center bg-cover h-[400px] min-w-[280px] max-w-[413px] md:min-w-[413px] flex items-end relative rounded-xl 
-                            grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                        className="blogItem addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
+                            grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                       >
                         <div>
                           <div className="blogExcerpt p-10 pb-6 relative z-[1]">
