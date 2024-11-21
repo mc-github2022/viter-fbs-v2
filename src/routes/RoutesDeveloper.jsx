@@ -42,6 +42,7 @@ import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing"
 import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTestimonial";
 import PostByCategory from "../components/pages/website/postByCategory/PostByCategory";
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/WordPressPage";
+import Notification from "../components/pages/developer/notification/Notification";
 
 export const routesDeveloper = [
   {
@@ -215,5 +216,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/post-by-category`,
     element: <PostByCategory />,
+  },
+  {
+    path: `${devNavUrl}/notification`,
+    element: <Notification />,
   },
 ];
