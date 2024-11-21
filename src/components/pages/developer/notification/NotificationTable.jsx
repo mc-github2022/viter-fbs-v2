@@ -1,22 +1,19 @@
-import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
-import ModalDelete from "../../../partials/modals/ModalDelete";
-import { MdDelete } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
-import TableSpinner from "../../../partials/spinners/TableSpinner";
-import NoData from "../../../partials/spinners/NoData";
-import TableLoading from "../../../partials/spinners/TableLoading";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
-import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import React from "react";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { useInView } from "react-intersection-observer";
 import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
+import ModalDelete from "../../../partials/modals/ModalDelete";
 import SearchBar from "../../../partials/SearchBar";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../partials/spinners/NoData";
 import ServerError from "../../../partials/spinners/ServerError";
-import LoadMore from "../../../partials/LoadMore";
+import TableLoading from "../../../partials/spinners/TableLoading";
+import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
 
-const IndustryTestimonialTable = ({ setItemEdit }) => {
+const NotificationTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -35,11 +32,11 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["indTestimonial", onSearch, store.isSearch],
+    queryKey: ["notification", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/indTestimonial/search`, // search endpoint
-        `/v1/indTestimonial/page/${pageParam}`, // list endpoint
+        `/v1/notification/search`, // search endpoint
+        `/v1/notification/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -61,8 +58,8 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.industry_testimonial_name);
-    setIsId(item.industry_testimonial_aid);
+    setIsData(item.careers_job_title);
+    setIsId(item.careers_aid);
   };
 
   React.useEffect(() => {
@@ -84,20 +81,16 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
         onSearch={onSearch}
       />
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
-        {isFetching && !isFetchingNextPage && status !== "pending" && (
-          <FetchingSpinner />
-        )}
+        {isFetching && status !== "pending" && <FetchingSpinner />}
         <table>
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
               <th>Name</th>
-              <th>Position</th>
-              <th>Company</th>
-              <th>Category</th>
-              <th className="w-[30rem]">Message</th>
-              <th>Image</th>
-              <th>Logo</th>
+              <th>Email</th>
+              <th>Phone/Mobile no.</th>
+              <th>Purpose</th>
+              <th>Page</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -123,29 +116,20 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
                 {page?.data.map((item, key) => (
                   <tr key={key} className="place-content-start text-[14px]">
                     <td className="pl-2 place-content-start">{counter++}</td>
+                    <td className="place-content-start">{item.careers_icon}</td>
                     <td className="place-content-start">
-                      {item.industry_testimonial_name}
-                    </td>
-                    <td className="place-content-start">
-                      {item.industry_testimonial_position}
+                      {item.careers_job_title}
                     </td>
                     <td className="place-content-start">
-                      {item.industry_testimonial_company}
+                      {item.careers_job_classification}
                     </td>
                     <td className="place-content-start">
-                      {item.industry_testimonial_category}
+                      {item.careers_job_mode}
                     </td>
                     <td className="place-content-start">
-                      <p className="line-clamp-5">
-                        {item.industry_testimonial_message}
-                      </p>
+                      {item.careers_job_mode}
                     </td>
-                    <td>
-                      <p>{item.industry_testimonial_img}</p>
-                    </td>
-                    <td className="place-content-start">
-                      {item.industry_testimonial_logo}
-                    </td>
+
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                       <button
                         className="tooltip-action-table"
@@ -168,24 +152,13 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
             ))}
           </tbody>
         </table>
-        <div className="place-self-center">
-          <LoadMore
-            fetchNextPage={fetchNextPage}
-            isFetchingNextPage={isFetchingNextPage}
-            hasNextPage={hasNextPage}
-            result={result?.pages[0]}
-            setPage={setPage}
-            page={page}
-            refView={ref}
-          />
-        </div>
       </div>
 
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"indTestimonial"}
-          mysqlEndpoint={`/v1/indTestimonial/${id}`}
+          queryKey={"notification"}
+          mysqlEndpoint={`/v1/notification/${id}`}
           item={isData}
         />
       )}
@@ -193,4 +166,4 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
   );
 };
 
-export default IndustryTestimonialTable;
+export default NotificationTable;
