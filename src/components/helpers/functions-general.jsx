@@ -21,13 +21,9 @@ export const imgUrlPathFBSMarketingWebsite =
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
 export const devBaseImgUrl = `${imgUrlPathFBSMarketingWebsite}`;
-<<<<<<< HEAD
-// export const devNavUrl = "/newsite";
-export const devNavUrl = "";
-=======
+
 export const devNavUrl = "/newsite";
 // export const devNavUrl = "";
->>>>>>> 8dea161afa661808ac4a6fdcb8b842ed5b183938
 export const apiVersion = "/v1";
 
 export const UrlDeveloper = "developer";
