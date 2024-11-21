@@ -24,7 +24,7 @@ class Pricing
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblPricing = "pricing";
+        $this->tblPricing = "fbsv2_pricing";
     }
 
     public function readAll()
@@ -140,7 +140,7 @@ class Pricing
             $sql .= "pricing_button = :pricing_button, ";
             $sql .= "pricing_active = :pricing_active, ";
             $sql .= "pricing_category = :pricing_category, ";
-            $sql .= "pricing_created = :pricing_created ";
+            $sql .= "pricing_datetime = :pricing_datetime ";
             $sql .= "where pricing_aid = :pricing_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -151,7 +151,7 @@ class Pricing
                 "pricing_button" => $this->pricing_button,
                 "pricing_active" => $this->pricing_active,
                 "pricing_category" => $this->pricing_category,
-                "pricing_created" => $this->pricing_created,
+                "pricing_datetime" => $this->pricing_datetime,
                 "pricing_aid" => $this->pricing_aid,
             ]);
         } catch (PDOException $ex) {

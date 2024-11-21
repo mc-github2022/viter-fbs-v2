@@ -25,8 +25,7 @@ function SampleNextArrow(props) {
         display: "grid",
         placeItems: "center",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowForward className="text-3xl" />
     </div>
   );
@@ -51,8 +50,7 @@ function SamplePrevArrow(props) {
         display: "grid",
         placeItems: "center",
       }}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       <IoIosArrowBack className="text-3xl" />
     </div>
   );
@@ -88,8 +86,7 @@ const Insights = () => {
           borderRadius: "10px",
           padding: "10px",
           bottom: "-60px",
-        }}
-      >
+        }}>
         <ul style={{ margin: "0px" }}> {dots} </ul>
       </div>
     ),
@@ -102,8 +99,7 @@ const Insights = () => {
           background: "gray",
           borderRadius: "50%",
           opacity: "50%",
-        }}
-      ></div>
+        }}></div>
     ),
     responsive: [
       {
@@ -171,14 +167,12 @@ const Insights = () => {
                     return (
                       <div key={key} className="md:px-0">
                         <Link
-                          to={`${devNavUrl}/insight/${post.home_insights_slug}`}
-                        >
+                          to={`${devNavUrl}/insight/${post.home_insights_slug}`}>
                           <div
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                             }}
-                            className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                          >
+                            className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                             <div>
                               <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                                 <p className="text-light font-bold text-lg">
@@ -203,14 +197,12 @@ const Insights = () => {
                   {insightData?.data.map((post, key) => (
                     <div key={key} className="md:px-0">
                       <Link
-                        to={`${devNavUrl}/insight/${post.home_insights_slug}`}
-                      >
+                        to={`${devNavUrl}/insight/${post.home_insights_slug}`}>
                         <div
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                           }}
-                          className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                        >
+                          className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer">
                           <div>
                             <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                               <p className="text-light font-bold text-lg">

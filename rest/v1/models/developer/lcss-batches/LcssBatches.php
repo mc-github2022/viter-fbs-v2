@@ -22,7 +22,7 @@ class LcssBatches
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblLcssBatch = "lcss_batch";
+        $this->tblLcssBatch = "fbsv2_lcss_batch";
     }
 
     public function readAll()
@@ -145,7 +145,7 @@ class LcssBatches
             $sql .= "lcss_batch_school = :lcss_batch_school, ";
             $sql .= "lcss_batch_course = :lcss_batch_course, ";
             $sql .= "lcss_batch_img = :lcss_batch_img, ";
-            $sql .= "lcss_batch_created = :lcss_batch_created ";
+            $sql .= "lcss_batch_datetime = :lcss_batch_datetime ";
             $sql .= "where lcss_batch_aid = :lcss_batch_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -154,7 +154,7 @@ class LcssBatches
                 "lcss_batch_school" => $this->lcss_batch_school,
                 "lcss_batch_course" => $this->lcss_batch_course,
                 "lcss_batch_img" => $this->lcss_batch_img,
-                "lcss_batch_created" => $this->lcss_batch_created,
+                "lcss_batch_datetime" => $this->lcss_batch_datetime,
                 "lcss_batch_aid" => $this->lcss_batch_aid,
             ]);
         } catch (PDOException $ex) {
