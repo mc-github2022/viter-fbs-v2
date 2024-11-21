@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 09:03 AM
+-- Generation Time: Nov 21, 2024 at 09:37 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -300,6 +300,24 @@ INSERT INTO `fbsv2_lcss_batch` (`lcss_batch_aid`, `lcss_batch_name`, `lcss_batch
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fbsv2_notification`
+--
+
+CREATE TABLE `fbsv2_notification` (
+  `fbsv2_notification_aid` int(11) NOT NULL,
+  `fbsv2_notification_is_active` tinyint(1) NOT NULL,
+  `fbsv2_notification_name` varchar(200) NOT NULL,
+  `fbsv2_notification_email` varchar(200) NOT NULL,
+  `fbsv2_notification_phone_no` varchar(20) NOT NULL,
+  `fbsv2_notification_purpose` varchar(200) NOT NULL,
+  `fbsv2_notification_page` varchar(200) NOT NULL,
+  `fbsv2_notification_created` datetime NOT NULL,
+  `fbsv2_notification_updated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fbsv2_pricing`
 --
 
@@ -440,6 +458,12 @@ ALTER TABLE `fbsv2_lcss_batch`
   ADD PRIMARY KEY (`lcss_batch_aid`);
 
 --
+-- Indexes for table `fbsv2_notification`
+--
+ALTER TABLE `fbsv2_notification`
+  ADD PRIMARY KEY (`fbsv2_notification_aid`);
+
+--
 -- Indexes for table `fbsv2_pricing`
 --
 ALTER TABLE `fbsv2_pricing`
@@ -508,6 +532,12 @@ ALTER TABLE `fbsv2_industry_testimonial`
 --
 ALTER TABLE `fbsv2_lcss_batch`
   MODIFY `lcss_batch_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT for table `fbsv2_notification`
+--
+ALTER TABLE `fbsv2_notification`
+  MODIFY `fbsv2_notification_aid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_pricing`
