@@ -27,8 +27,6 @@ const CareersTable = ({ setItemEdit }) => {
     "careers" // key
   );
 
-  console.log("useQueryData", useQueryData);
-
   let counter = 1;
 
   const handleEdit = (item) => {

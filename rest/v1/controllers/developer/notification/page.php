@@ -17,10 +17,10 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
 
     if (array_key_exists("start", $_GET)) {
-        $readNotification->notification_start = $_GET['start'];
-        $readNotification->notification_total = 15;
+        $readNotification->fbsv2_notification_start = $_GET['start'];
+        $readNotification->fbsv2_notification_total = 15;
 
-        checkLimitId($readNotification->notification_start, $readNotification->notification_total);
+        checkLimitId($readNotification->fbsv2_notification_start, $readNotification->fbsv2_notification_total);
 
         $query = checkReadLimit($readNotification);
         $total_result = checkReadAll($readNotification);
@@ -29,8 +29,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         checkReadQuery(
             $query,
             $total_result,
-            $readNotification->notification_total,
-            $readNotification->notification_start
+            $readNotification->fbsv2_notification_total,
+            $readNotification->fbsv2_notification_start
         );
 
         // return 404 error if endpoint not available
