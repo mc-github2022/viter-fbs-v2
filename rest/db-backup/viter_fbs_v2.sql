@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 09:37 AM
+-- Generation Time: Nov 21, 2024 at 11:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -304,16 +304,22 @@ INSERT INTO `fbsv2_lcss_batch` (`lcss_batch_aid`, `lcss_batch_name`, `lcss_batch
 --
 
 CREATE TABLE `fbsv2_notification` (
-  `fbsv2_notification_aid` int(11) NOT NULL,
-  `fbsv2_notification_is_active` tinyint(1) NOT NULL,
-  `fbsv2_notification_name` varchar(200) NOT NULL,
-  `fbsv2_notification_email` varchar(200) NOT NULL,
-  `fbsv2_notification_phone_no` varchar(20) NOT NULL,
-  `fbsv2_notification_purpose` varchar(200) NOT NULL,
-  `fbsv2_notification_page` varchar(200) NOT NULL,
-  `fbsv2_notification_created` datetime NOT NULL,
-  `fbsv2_notification_updated` datetime NOT NULL
+  `notification_aid` int(11) NOT NULL,
+  `notification_is_active` tinyint(1) NOT NULL,
+  `notification_name` varchar(200) NOT NULL,
+  `notification_email` varchar(200) NOT NULL,
+  `notification_phone_no` varchar(20) NOT NULL,
+  `notification_purpose` varchar(200) NOT NULL,
+  `notification_created` datetime NOT NULL,
+  `notification_updated` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fbsv2_notification`
+--
+
+INSERT INTO `fbsv2_notification` (`notification_aid`, `notification_is_active`, `notification_name`, `notification_email`, `notification_phone_no`, `notification_purpose`, `notification_created`, `notification_updated`) VALUES
+(2, 1, 'Zaicy Lumabas', 'cyrenemlumabas@gmail.com', '', 'get-started-home', '2024-11-21 17:07:31', '2024-11-21 17:07:54');
 
 -- --------------------------------------------------------
 
@@ -461,7 +467,7 @@ ALTER TABLE `fbsv2_lcss_batch`
 -- Indexes for table `fbsv2_notification`
 --
 ALTER TABLE `fbsv2_notification`
-  ADD PRIMARY KEY (`fbsv2_notification_aid`);
+  ADD PRIMARY KEY (`notification_aid`);
 
 --
 -- Indexes for table `fbsv2_pricing`
@@ -501,7 +507,7 @@ ALTER TABLE `fbsv2_careers`
 -- AUTO_INCREMENT for table `fbsv2_events_activities`
 --
 ALTER TABLE `fbsv2_events_activities`
-  MODIFY `events_activities_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `events_activities_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_home_banner`
@@ -513,7 +519,7 @@ ALTER TABLE `fbsv2_home_banner`
 -- AUTO_INCREMENT for table `fbsv2_home_insights`
 --
 ALTER TABLE `fbsv2_home_insights`
-  MODIFY `home_insights_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `home_insights_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_home_testimonial`
@@ -537,7 +543,7 @@ ALTER TABLE `fbsv2_lcss_batch`
 -- AUTO_INCREMENT for table `fbsv2_notification`
 --
 ALTER TABLE `fbsv2_notification`
-  MODIFY `fbsv2_notification_aid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `notification_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_pricing`
