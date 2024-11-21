@@ -80,7 +80,7 @@ class Banner
             $sql .= "home_banner_description = :home_banner_description, ";
             $sql .= "home_banner_button_text = :home_banner_button_text, ";
             $sql .= "home_banner_img = :home_banner_img, ";
-            $sql .= "home_banner_created = :home_banner_created ";
+            $sql .= "home_banner_datetime = :home_banner_datetime ";
             $sql .= "where home_banner_aid = :home_banner_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -89,7 +89,7 @@ class Banner
                 "home_banner_description" => $this->home_banner_description,
                 "home_banner_button_text" => $this->home_banner_button_text,
                 "home_banner_img" => $this->home_banner_img,
-                "home_banner_created" => $this->home_banner_created,
+                "home_banner_datetime" => $this->home_banner_datetime,
                 "home_banner_aid" => $this->home_banner_aid,
             ]);
         } catch (PDOException $ex) {

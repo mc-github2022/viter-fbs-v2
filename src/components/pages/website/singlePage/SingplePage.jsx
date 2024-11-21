@@ -112,35 +112,39 @@ const SingplePage = () => {
                   </h3>
                   <div className="popularPostLinks">
                     <ul className="[&>li]:my-8">
-                      {insightData?.data.map((popPost, key) => {
-                        if (
-                          popPost.home_insights_slug === post.home_insights_slug
-                        ) {
-                          return;
-                        }
-                        return (
-                          <div key={key}>
-                            <li className="my-5">
-                              <Link
-                                to={`${devNavUrl}/insight/${popPost.home_insights_slug}`}
-                              >
-                                <div className="flex items-center gap-4">
-                                  <div className="min-w-[100px] max-w-[100px] h-[80px]">
-                                    <img
-                                      src={`${devBaseImgUrl}/${popPost.home_insights_img}`}
-                                      alt="Industry insights"
-                                      className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
-                                    />
+                      {insightData?.data
+                        .filter(
+                          (popPost) =>
+                            popPost.home_insights_slug !==
+                            post.home_insights_slug
+                        )
+                        .slice(0, 5)
+                        .map((popPost, key) => {
+                          return (
+                            <div key={key}>
+                              <li className="my-5">
+                                <Link
+                                  to={`${devNavUrl}/insight/${popPost.home_insights_slug}`}
+                                >
+                                  <div className="flex items-center gap-4">
+                                    <div className="min-w-[100px] max-w-[100px] h-[80px]">
+                                      <img
+                                        src={`${devBaseImgUrl}/${popPost.home_insights_img}`}
+                                        alt="Industry insights"
+                                        className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
+                                      />
+                                    </div>
+                                    <div>
+                                      <p className="line-clamp-3">
+                                        {popPost.home_insights_title}
+                                      </p>
+                                    </div>
                                   </div>
-                                  <div>
-                                    <p className="line-clamp-3">{popPost.home_insights_title}</p>
-                                  </div>
-                                </div>
-                              </Link>
-                            </li>
-                          </div>
-                        );
-                      })}
+                                </Link>
+                              </li>
+                            </div>
+                          );
+                        })}
                     </ul>
                     <hr />
                   </div>

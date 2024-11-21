@@ -135,7 +135,6 @@ const BannerSlider = ({ pageName }) => {
   React.useEffect(() => {
     const handleKeyDown = (event) => {
       if (sliderRef.current) {
-        // Check if the ref is defined
         if (event.key === "ArrowRight") {
           sliderRef.current.slickNext();
         } else if (event.key === "ArrowLeft") {
@@ -168,7 +167,7 @@ const BannerSlider = ({ pageName }) => {
                   className={`absolute top-0 w-full h-full object-cover ${
                     imageLoaded ? "opacity-100" : "opacity-0"
                   }`}
-                  alt={`Banner ${key + 1}`}
+                  alt="Your Trusted Christian Partner in Managed Services"
                   loading="lazy"
                   onLoad={handleImageLoad}
                   style={{ transition: "opacity 0.1s ease-in" }}

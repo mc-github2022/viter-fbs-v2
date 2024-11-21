@@ -80,7 +80,7 @@ class Testimonials
             $sql .= "home_testimonial_position = :home_testimonial_position, ";
             $sql .= "home_testimonial_client_img = :home_testimonial_client_img, ";
             $sql .= "home_testimonial_logo_img = :home_testimonial_logo_img, ";
-            $sql .= "home_testimonial_created = :home_testimonial_created ";
+            $sql .= "home_testimonial_datetime = :home_testimonial_datetime ";
             $sql .= "where home_testimonial_aid = :home_testimonial_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -89,7 +89,7 @@ class Testimonials
                 "home_testimonial_position" => $this->home_testimonial_position,
                 "home_testimonial_client_img" => $this->home_testimonial_client_img,
                 "home_testimonial_logo_img" => $this->home_testimonial_logo_img,
-                "home_testimonial_created" => $this->home_testimonial_created,
+                "home_testimonial_datetime" => $this->home_testimonial_datetime,
                 "home_testimonial_aid" => $this->home_testimonial_aid,
             ]);
         } catch (PDOException $ex) {

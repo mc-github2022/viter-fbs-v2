@@ -75,7 +75,7 @@ class SpecialOffers
             $sql .= "special_offers_services = :special_offers_services, ";
             $sql .= "special_offers_price = :special_offers_price, ";
             $sql .= "special_offers_link = :special_offers_link, ";
-            $sql .= "special_offers_created = :special_offers_created ";
+            $sql .= "special_offers_datetime = :special_offers_datetime ";
             $sql .= "where special_offers_aid = :special_offers_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -83,7 +83,7 @@ class SpecialOffers
                 "special_offers_services" => $this->special_offers_services,
                 "special_offers_price" => $this->special_offers_price,
                 "special_offers_link" => $this->special_offers_link,
-                "special_offers_created" => $this->special_offers_created,
+                "special_offers_datetime" => $this->special_offers_datetime,
                 "special_offers_aid" => $this->special_offers_aid,
             ]);
         } catch (PDOException $ex) {
