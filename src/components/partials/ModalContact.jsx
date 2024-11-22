@@ -124,7 +124,7 @@ const ModalContact = ({
               thePageName === "Work Immersion" ||
               thePageName === "Continuing Study" ? (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
@@ -196,7 +196,7 @@ const ModalContact = ({
                 </ul>
               ) : (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
