@@ -199,7 +199,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
           </div>
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            <p className="mb-2 text-lg">
+            <p className="mb-2 text-sm md:text-lg">
               Job Application: <b>{jobTitle}</b>
             </p>
             <Formik
