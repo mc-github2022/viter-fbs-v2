@@ -28,7 +28,7 @@ const ProtectedRouteDeveloper = ({ children }) => {
 
       const isUserKeyMatched =
         login.success &&
-        login.data.user_key === login.data.user_system_password;
+        login.data.user_other_key === login.data.user_other_system_password;
 
       // check if the password from database is matched
       // to the password used to login
@@ -48,8 +48,8 @@ const ProtectedRouteDeveloper = ({ children }) => {
         dispatch(setCredentials(login.data));
         setIsAuth("123");
         setLoading(false);
-        delete login.data.user_system_password;
-        delete login.data.user_key;
+        delete login.data.user_other_system_password;
+        delete login.data.user_other_key;
         delete login.data.role_description;
         delete login.data.role_created;
         delete login.data.role_datetime;

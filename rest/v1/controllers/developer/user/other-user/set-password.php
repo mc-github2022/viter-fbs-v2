@@ -23,9 +23,9 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // check data
     checkPayload($data);
 
-    $user->user_password = $encrypt->doPasswordHash($data["new_password"]);
-    $user->user_key = $data["key"];
-    $user->user_datetime = date("Y-m-d H:i:s");
+    $user->user_other_password = $encrypt->doPasswordHash($data["new_password"]);
+    $user->user_other_key = $data["key"];
+    $user->user_other_datetime = date("Y-m-d H:i:s");
 
     $query = checkSetPassword($user);
     http_response_code(200);

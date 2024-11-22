@@ -18,13 +18,17 @@ const SystemLogin = () => {
         <Formik>
           <Form>
             <div className="input-wrapper">
-              <InputText label="Name" type="text" name="user_system_email" />
+              <InputText
+                label="Name"
+                type="text"
+                name="user_other_system_email"
+              />
             </div>
             <div className="input-wrapper">
               <InputText
                 label="Password"
                 type="text"
-                name="user_system_password"
+                name="user_other_system_password"
               />
             </div>
             <div className="flex items-center gap-1 pt-3 mb-4">

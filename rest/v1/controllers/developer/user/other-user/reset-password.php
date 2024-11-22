@@ -24,9 +24,9 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // check data
     checkPayload($data);
 
-    $user->user_key = $encrypt->doHash(rand());
-    $user->user_datetime = date("Y-m-d H:i:s");
-    $user->user_email = trim($data["email"]);
+    $user->user_other_key = $encrypt->doHash(rand());
+    $user->user_other_datetime = date("Y-m-d H:i:s");
+    $user->user_other_email = trim($data["email"]);
     $password_link = "/create-password";
 
     $query = $user->readLogin();
@@ -39,8 +39,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // if ($query->rowCount() > 0) {
     //     $mailData = sendEmail(
     //         $password_link,
-    //         $user->user_email,
-    //         $user->user_key
+    //         $user->user_other_email,
+    //         $user->user_other_key
     //     );
     // }
 

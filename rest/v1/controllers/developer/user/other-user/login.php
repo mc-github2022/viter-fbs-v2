@@ -20,7 +20,7 @@ $data = json_decode($body, true);
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
 
-    $user->user_email = $data['user_email'];
+    $user->user_other_email = $data['user_other_email'];
     $password = $data['password'];
 
     $key = "jwt_admin_ko_ito";
@@ -30,7 +30,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $row = $result->fetch(PDO::FETCH_ASSOC);
     extract($row);
 
-    loginAccess($password, $user_password, $user_email, $row, $result, $key);
+    loginAccess($password, $user_other_password, $user_other_email, $row, $result, $key);
 }
 
 http_response_code(200);

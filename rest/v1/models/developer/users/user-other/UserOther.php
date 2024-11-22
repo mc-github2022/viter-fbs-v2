@@ -1,25 +1,25 @@
 <?php
 class UserOther
 {
-    public $user_aid;
-    public $user_is_active;
-    public $user_fname;
-    public $user_lname;
-    public $user_email;
-    public $user_email_new;
-    public $user_role_id;
-    public $user_key;
-    public $user_password;
-    public $user_created;
-    public $user_datetime;
+    public $user_other_aid;
+    public $user_other_is_active;
+    public $user_other_fname;
+    public $user_other_lname;
+    public $user_other_email;
+    public $user_other_email_new;
+    public $user_other_role_id;
+    public $user_other_key;
+    public $user_other_password;
+    public $user_other_created;
+    public $user_other_datetime;
 
     public $role_code;
 
     public $connection;
     public $lastInsertedId;
-    public $user_start;
-    public $user_total;
-    public $user_search;
+    public $user_other_start;
+    public $user_other_total;
+    public $user_other_search;
     public $tblUser;
     public $tblRole;
 
@@ -35,32 +35,32 @@ class UserOther
     {
         try {
             $sql = "insert into {$this->tblUser} ";
-            $sql .= "( user_fname, ";
-            $sql .= "user_lname, ";
-            $sql .= "user_is_active, ";
-            $sql .= "user_email, ";
-            $sql .= "user_role_id, ";
-            $sql .= "user_key, ";
-            $sql .= "user_created, ";
-            $sql .= "user_datetime ) values ( ";
-            $sql .= ":user_fname, ";
-            $sql .= ":user_lname, ";
-            $sql .= ":user_is_active, ";
-            $sql .= ":user_email, ";
-            $sql .= ":user_role_id, ";
-            $sql .= ":user_key, ";
-            $sql .= ":user_created, ";
-            $sql .= ":user_datetime ) ";
+            $sql .= "( user_other_fname, ";
+            $sql .= "user_other_lname, ";
+            $sql .= "user_other_is_active, ";
+            $sql .= "user_other_email, ";
+            $sql .= "user_other_role_id, ";
+            $sql .= "user_other_key, ";
+            $sql .= "user_other_created, ";
+            $sql .= "user_other_datetime ) values ( ";
+            $sql .= ":user_other_fname, ";
+            $sql .= ":user_other_lname, ";
+            $sql .= ":user_other_is_active, ";
+            $sql .= ":user_other_email, ";
+            $sql .= ":user_other_role_id, ";
+            $sql .= ":user_other_key, ";
+            $sql .= ":user_other_created, ";
+            $sql .= ":user_other_datetime ) ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_fname" => $this->user_fname,
-                "user_lname" => $this->user_lname,
-                "user_is_active" => $this->user_is_active,
-                "user_email" => $this->user_email,
-                "user_role_id" => $this->user_role_id,
-                "user_key" => $this->user_key,
-                "user_created" => $this->user_created,
-                "user_datetime" => $this->user_datetime
+                "user_other_fname" => $this->user_other_fname,
+                "user_other_lname" => $this->user_other_lname,
+                "user_other_is_active" => $this->user_other_is_active,
+                "user_other_email" => $this->user_other_email,
+                "user_other_role_id" => $this->user_other_role_id,
+                "user_other_key" => $this->user_other_key,
+                "user_other_created" => $this->user_other_created,
+                "user_other_datetime" => $this->user_other_datetime
             ]);
             $this->lastInsertedId = $this->connection->lastInsertId();
         } catch (PDOException $ex) {
@@ -73,20 +73,20 @@ class UserOther
     public function readAll()
     {
         try {
-            $sql = "select user.user_fname, ";
-            $sql .= "user.user_lname, ";
-            $sql .= "concat(user.user_lname, ', ' , user.user_fname) as fullname, ";
-            $sql .= "user.user_is_active, ";
-            $sql .= "user.user_email, ";
-            $sql .= "user.user_role_id, ";
+            $sql = "select user.user_other_fname, ";
+            $sql .= "user.user_other_lname, ";
+            $sql .= "concat(user.user_other_lname, ', ' , user.user_other_fname) as fullname, ";
+            $sql .= "user.user_other_is_active, ";
+            $sql .= "user.user_other_email, ";
+            $sql .= "user.user_other_role_id, ";
             $sql .= "role.*, ";
-            $sql .= "user.user_aid ";
+            $sql .= "user.user_other_aid ";
             $sql .= "from {$this->tblUser} as user, ";
             $sql .= "{$this->tblRole} as role ";
-            $sql .= "where user.user_role_id = role.role_aid ";
+            $sql .= "where user.user_other_role_id = role.role_aid ";
             $sql .= "and role.role_code != :role_code ";
-            $sql .= "order by user.user_is_active desc, ";
-            $sql .= "user.user_fname asc ";
+            $sql .= "order by user.user_other_is_active desc, ";
+            $sql .= "user.user_other_fname asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "role_code" => $this->role_code,
@@ -102,27 +102,27 @@ class UserOther
     public function readLimit()
     {
         try {
-            $sql = "select user.user_fname, ";
-            $sql .= "user.user_lname, ";
-            $sql .= "concat(user.user_lname, ', ' , user.user_fname) as fullname, ";
-            $sql .= "user.user_is_active, ";
-            $sql .= "user.user_email, ";
-            $sql .= "user.user_role_id, ";
+            $sql = "select user.user_other_fname, ";
+            $sql .= "user.user_other_lname, ";
+            $sql .= "concat(user.user_other_lname, ', ' , user.user_other_fname) as fullname, ";
+            $sql .= "user.user_other_is_active, ";
+            $sql .= "user.user_other_email, ";
+            $sql .= "user.user_other_role_id, ";
             $sql .= "role.*, ";
-            $sql .= "user.user_aid ";
+            $sql .= "user.user_other_aid ";
             $sql .= "from {$this->tblUser} as user, ";
             $sql .= "{$this->tblRole} as role ";
-            $sql .= "where user.user_role_id = role.role_aid ";
+            $sql .= "where user.user_other_role_id = role.role_aid ";
             $sql .= "and role.role_code != :role_code ";
-            $sql .= "order by user.user_is_active desc, ";
-            $sql .= "user.user_fname asc ";
+            $sql .= "order by user.user_other_is_active desc, ";
+            $sql .= "user.user_other_fname asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "role_code" => $this->role_code,
-                "start" => $this->user_start - 1,
-                "total" => $this->user_total,
+                "start" => $this->user_other_start - 1,
+                "total" => $this->user_other_total,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -134,21 +134,21 @@ class UserOther
     public function readLogin()
     {
         try {
-            $sql = "select user.user_aid, ";
-            $sql .= "user.user_is_active, ";
-            $sql .= "user.user_fname, ";
-            $sql .= "user.user_lname, ";
-            $sql .= "user.user_email, ";
-            $sql .= "user.user_password, ";
+            $sql = "select user.user_other_aid, ";
+            $sql .= "user.user_other_is_active, ";
+            $sql .= "user.user_other_fname, ";
+            $sql .= "user.user_other_lname, ";
+            $sql .= "user.user_other_email, ";
+            $sql .= "user.user_other_password, ";
             $sql .= "role.* ";
             $sql .= "from {$this->tblUser} as user, ";
             $sql .= "{$this->tblRole} as role ";
-            $sql .= "where user.user_role_id = role.role_aid ";
-            $sql .= "and user.user_email like :user_email ";
-            $sql .= "and user.user_is_active = 1 ";
+            $sql .= "where user.user_other_role_id = role.role_aid ";
+            $sql .= "and user.user_other_email like :user_other_email ";
+            $sql .= "and user.user_other_is_active = 1 ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_email" => $this->user_email,
+                "user_other_email" => $this->user_other_email,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -160,32 +160,32 @@ class UserOther
     public function search()
     {
         try {
-            $sql = "select user.user_fname, ";
-            $sql .= "user.user_lname, ";
-            $sql .= "concat(user.user_lname, ', ' , user.user_fname) as fullname, ";
-            $sql .= "user.user_is_active, ";
-            $sql .= "user.user_email, ";
-            $sql .= "user.user_role_id, ";
+            $sql = "select user.user_other_fname, ";
+            $sql .= "user.user_other_lname, ";
+            $sql .= "concat(user.user_other_lname, ', ' , user.user_other_fname) as fullname, ";
+            $sql .= "user.user_other_is_active, ";
+            $sql .= "user.user_other_email, ";
+            $sql .= "user.user_other_role_id, ";
             $sql .= "role.*, ";
-            $sql .= "user.user_aid ";
+            $sql .= "user.user_other_aid ";
             $sql .= "from {$this->tblUser} as user, ";
             $sql .= "{$this->tblRole} as role ";
-            $sql .= "where user.user_role_id = role.role_aid ";
+            $sql .= "where user.user_other_role_id = role.role_aid ";
             $sql .= "and role.role_code != :role_code ";
-            $sql .= "and ( user.user_fname like :user_fname ";
-            $sql .= "or user.user_lname like :user_lname ";
-            $sql .= "or user.user_email like :user_email ";
-            $sql .= "or concat(user.user_lname, ', ' , user.user_fname) like :fullname ";
+            $sql .= "and ( user.user_other_fname like :user_other_fname ";
+            $sql .= "or user.user_other_lname like :user_other_lname ";
+            $sql .= "or user.user_other_email like :user_other_email ";
+            $sql .= "or concat(user.user_other_lname, ', ' , user.user_other_fname) like :fullname ";
             $sql .= ") ";
-            $sql .= "order by user.user_is_active desc, ";
-            $sql .= "user.user_fname asc ";
+            $sql .= "order by user.user_other_is_active desc, ";
+            $sql .= "user.user_other_fname asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "role_code" => $this->role_code,
-                "user_fname" => "%{$this->user_search}%",
-                "user_lname" => "%{$this->user_search}%",
-                "user_email" => "%{$this->user_search}%",
-                "fullname" => "%{$this->user_search}%",
+                "user_other_fname" => "%{$this->user_other_search}%",
+                "user_other_lname" => "%{$this->user_other_search}%",
+                "user_other_email" => "%{$this->user_other_search}%",
+                "fullname" => "%{$this->user_other_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -198,11 +198,11 @@ class UserOther
     {
         try {
             $sql = "select * from {$this->tblUser} ";
-            $sql .= "where user_aid = :user_aid ";
-            $sql .= "order by user_fname asc ";
+            $sql .= "where user_other_aid = :user_other_aid ";
+            $sql .= "order by user_other_fname asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_aid" => $this->user_aid,
+                "user_other_aid" => $this->user_other_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -214,11 +214,11 @@ class UserOther
     public function readKey()
     {
         try {
-            $sql = "select user_key from {$this->tblUser} ";
-            $sql .= "where user_key = :user_key ";
+            $sql = "select user_other_key from {$this->tblUser} ";
+            $sql .= "where user_other_key = :user_other_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_key" => $this->user_key,
+                "user_other_key" => $this->user_other_key,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -231,13 +231,13 @@ class UserOther
     {
         try {
             $sql = "select ";
-            $sql .= "user_key, ";
-            $sql .= "user_email_new ";
+            $sql .= "user_other_key, ";
+            $sql .= "user_other_email_new ";
             $sql .= "from {$this->tblUser} ";
-            $sql .= "where user_key = :user_key ";
+            $sql .= "where user_other_key = :user_other_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_key" => $this->user_key,
+                "user_other_key" => $this->user_other_key,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -269,18 +269,18 @@ class UserOther
     {
         try {
             $sql = "update {$this->tblUser} set ";
-            $sql .= "user_fname = :user_fname, ";
-            $sql .= "user_lname = :user_lname, ";
-            $sql .= "user_role_id = :user_role_id, ";
-            $sql .= "user_datetime = :user_datetime ";
-            $sql .= "where user_aid = :user_aid ";
+            $sql .= "user_other_fname = :user_other_fname, ";
+            $sql .= "user_other_lname = :user_other_lname, ";
+            $sql .= "user_other_role_id = :user_other_role_id, ";
+            $sql .= "user_other_datetime = :user_other_datetime ";
+            $sql .= "where user_other_aid = :user_other_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_fname" => $this->user_fname,
-                "user_lname" => $this->user_lname,
-                "user_role_id" => $this->user_role_id,
-                "user_datetime" => $this->user_datetime,
-                "user_aid" => $this->user_aid,
+                "user_other_fname" => $this->user_other_fname,
+                "user_other_lname" => $this->user_other_lname,
+                "user_other_role_id" => $this->user_other_role_id,
+                "user_other_datetime" => $this->user_other_datetime,
+                "user_other_aid" => $this->user_other_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -293,16 +293,16 @@ class UserOther
     {
         try {
             $sql = "update {$this->tblUser} set ";
-            $sql .= "user_key = :user_key, ";
-            $sql .= "user_email_new = :user_email, ";
-            $sql .= "user_datetime = :user_datetime ";
-            $sql .= "where user_aid  = :user_aid ";
+            $sql .= "user_other_key = :user_other_key, ";
+            $sql .= "user_other_email_new = :user_other_email, ";
+            $sql .= "user_other_datetime = :user_other_datetime ";
+            $sql .= "where user_other_aid  = :user_other_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_key" => $this->user_key,
-                "user_email" => $this->user_email,
-                "user_datetime" => $this->user_datetime,
-                "user_aid" => $this->user_aid,
+                "user_other_key" => $this->user_other_key,
+                "user_other_email" => $this->user_other_email,
+                "user_other_datetime" => $this->user_other_datetime,
+                "user_other_aid" => $this->user_other_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -315,15 +315,15 @@ class UserOther
     {
         try {
             $sql = "update {$this->tblUser} set ";
-            $sql .= "user_password = :user_password, ";
-            $sql .= "user_key = '', ";
-            $sql .= "user_datetime = :user_datetime ";
-            $sql .= "where user_key  = :user_key ";
+            $sql .= "user_other_password = :user_other_password, ";
+            $sql .= "user_other_key = '', ";
+            $sql .= "user_other_datetime = :user_other_datetime ";
+            $sql .= "where user_other_key  = :user_other_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_password" => $this->user_password,
-                "user_datetime" => $this->user_datetime,
-                "user_key" => $this->user_key,
+                "user_other_password" => $this->user_other_password,
+                "user_other_datetime" => $this->user_other_datetime,
+                "user_other_key" => $this->user_other_key,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -336,14 +336,14 @@ class UserOther
     {
         try {
             $sql = "update {$this->tblUser} set ";
-            $sql .= "user_key = :user_key, ";
-            $sql .= "user_datetime = :user_datetime ";
-            $sql .= "where user_email = :user_email ";
+            $sql .= "user_other_key = :user_other_key, ";
+            $sql .= "user_other_datetime = :user_other_datetime ";
+            $sql .= "where user_other_email = :user_other_email ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_key" => $this->user_key,
-                "user_datetime" => $this->user_datetime,
-                "user_email" => $this->user_email,
+                "user_other_key" => $this->user_other_key,
+                "user_other_datetime" => $this->user_other_datetime,
+                "user_other_email" => $this->user_other_email,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -356,14 +356,14 @@ class UserOther
     {
         try {
             $sql = "update {$this->tblUser} set ";
-            $sql .= "user_is_active = :user_is_active, ";
-            $sql .= "user_datetime = :user_datetime ";
-            $sql .= "where user_aid = :user_aid ";
+            $sql .= "user_other_is_active = :user_other_is_active, ";
+            $sql .= "user_other_datetime = :user_other_datetime ";
+            $sql .= "where user_other_aid = :user_other_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_is_active" => $this->user_is_active,
-                "user_datetime" => $this->user_datetime,
-                "user_aid" => $this->user_aid,
+                "user_other_is_active" => $this->user_other_is_active,
+                "user_other_datetime" => $this->user_other_datetime,
+                "user_other_aid" => $this->user_other_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -376,10 +376,10 @@ class UserOther
     {
         try {
             $sql = "delete from {$this->tblUser} ";
-            $sql .= "where user_aid = :user_aid ";
+            $sql .= "where user_other_aid = :user_other_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_aid" => $this->user_aid,
+                "user_other_aid" => $this->user_other_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -393,11 +393,11 @@ class UserOther
     public function checkEmail()
     {
         try {
-            $sql = "select user_email from {$this->tblUser} ";
-            $sql .= "where user_email = :user_email ";
+            $sql = "select user_other_email from {$this->tblUser} ";
+            $sql .= "where user_other_email = :user_other_email ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_email" => "{$this->user_email}",
+                "user_other_email" => "{$this->user_other_email}",
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -411,11 +411,11 @@ class UserOther
         try {
             $sql = "select * ";
             $sql .= "from {$this->tblUser} ";
-            $sql .= "where user_is_active = :user_is_active  ";
-            $sql .= "order by user_is_active desc ";
+            $sql .= "where user_other_is_active = :user_other_is_active  ";
+            $sql .= "order by user_other_is_active desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_is_active" => $this->user_is_active,
+                "user_other_is_active" => $this->user_other_is_active,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -429,16 +429,16 @@ class UserOther
             $sql = "select * ";
             $sql .= "from {$this->tblUser} ";
             $sql .= "where ";
-            $sql .= "user_is_active = :user_is_active ";
-            $sql .= "and user_fname like :user_fname ";
-            $sql .= "and user_lname like :user_lname ";
-            $sql .= "order by user_is_active desc, ";
-            $sql .= "user_name asc ";
+            $sql .= "user_other_is_active = :user_other_is_active ";
+            $sql .= "and user_other_fname like :user_other_fname ";
+            $sql .= "and user_other_lname like :user_other_lname ";
+            $sql .= "order by user_other_is_active desc, ";
+            $sql .= "user_other_name asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_fname" => "%{$this->user_search}%",
-                "user_lname" => "%{$this->user_search}%",
-                "user_is_active" => $this->user_is_active,
+                "user_other_fname" => "%{$this->user_other_search}%",
+                "user_other_lname" => "%{$this->user_other_search}%",
+                "user_other_is_active" => $this->user_other_is_active,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -450,16 +450,16 @@ class UserOther
     {
         try {
             $sql = "update {$this->tblUser} set ";
-            $sql .= "user_email = :user_email, ";
-            $sql .= "user_email_new = '', ";
-            $sql .= "user_key = '', ";
-            $sql .= "user_datetime = :user_datetime ";
-            $sql .= "where user_key = :user_key ";
+            $sql .= "user_other_email = :user_other_email, ";
+            $sql .= "user_other_email_new = '', ";
+            $sql .= "user_other_key = '', ";
+            $sql .= "user_other_datetime = :user_other_datetime ";
+            $sql .= "where user_other_key = :user_other_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "user_email" => $this->user_email,
-                "user_datetime" => $this->user_datetime,
-                "user_key" => $this->user_key,
+                "user_other_email" => $this->user_other_email,
+                "user_other_datetime" => $this->user_other_datetime,
+                "user_other_key" => $this->user_other_key,
             ]);
         } catch (PDOException $ex) {
             $query = false;

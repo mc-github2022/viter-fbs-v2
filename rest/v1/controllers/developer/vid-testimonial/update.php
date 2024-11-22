@@ -25,8 +25,8 @@ if (array_key_exists("vid_testimonialid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_vid_testimonial_fname_old = checkIndex($data, 'user_vid_testimonial_fname_old');
-  // compareName($vid_testimonial, $user_vid_testimonial_fname_old, $vid_testimonial->user_vid_testimonial_fname);
+  // $user_other_vid_testimonial_fname_old = checkIndex($data, 'user_other_vid_testimonial_fname_old');
+  // compareName($vid_testimonial, $user_other_vid_testimonial_fname_old, $vid_testimonial->user_other_vid_testimonial_fname);
 
   // update
   $query = checkUpdate($vid_testimonial);

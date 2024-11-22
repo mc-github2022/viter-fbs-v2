@@ -23,8 +23,8 @@ if (array_key_exists("home_bannerid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_home_banner_fname_old = checkIndex($data, 'user_home_banner_fname_old');
-  // compareName($home_banner, $user_home_banner_fname_old, $home_banner->user_home_banner_fname);
+  // $user_other_home_banner_fname_old = checkIndex($data, 'user_other_home_banner_fname_old');
+  // compareName($home_banner, $user_other_home_banner_fname_old, $home_banner->user_other_home_banner_fname);
 
   // update
   $query = checkUpdate($home_banner);

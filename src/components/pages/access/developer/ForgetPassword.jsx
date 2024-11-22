@@ -18,7 +18,11 @@ const ForgetPassword = () => {
         <Formik>
           <Form>
             <div className="input-wrapper">
-              <InputText label="Email" type="Email" name="user_system_email" />
+              <InputText
+                label="Email"
+                type="Email"
+                name="user_other_system_email"
+              />
             </div>
             <div className="flex items-center gap-1 pt-3 mb-4">
               <button
