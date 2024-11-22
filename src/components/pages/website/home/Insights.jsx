@@ -182,7 +182,7 @@ const Insights = () => {
                                 </h4>
                               </div>
                             </div>
-                            <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                           </div>
                         </Link>
                       </div>
@@ -214,7 +214,7 @@ const Insights = () => {
                               </h4>
                             </div>
                           </div>
-                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
                       </Link>
                     </div>
