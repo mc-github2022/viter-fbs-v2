@@ -5,12 +5,12 @@ require '../../../../core/header.php';
 require '../../../../core/functions.php';
 require 'functions.php';
 // use needed classes
-require '../../../../models/developer/settings/User.php';
+require '../../../../models/developer/users/user-other/UserOther.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new User($conn);
+$user = new UserOther($conn);
 $response = new Response();
 $error = [];
 $returnData = [];

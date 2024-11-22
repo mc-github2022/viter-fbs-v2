@@ -7,12 +7,12 @@ require '../../../../core/functions.php';
 // use notification template
 require '../../../../notification/reset-password.php';
 // use needed classes
-require '../../../../models/developer/settings/User.php';
+require '../../../../models/developer/users/user-other/UserOther.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new User($conn);
+$user = new UserOther($conn);
 $encrypt = new Encryption();
 // get payload
 $body = file_get_contents("php://input");
@@ -36,18 +36,18 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     $query = checkResetPassword($user);
 
-    if ($query->rowCount() > 0) {
-        $mailData = sendEmail(
-            $password_link,
-            $user->user_email,
-            $user->user_key
-        );
-    }
+    // if ($query->rowCount() > 0) {
+    //     $mailData = sendEmail(
+    //         $password_link,
+    //         $user->user_email,
+    //         $user->user_key
+    //     );
+    // }
 
-    if ($mailData["mail_success"] == true) {
-        http_response_code(200);
-        returnSuccess($developer, "User", $query);
-    }
+    // if ($mailData["mail_success"] == true) {
+    http_response_code(200);
+    returnSuccess($developer, "User", $query);
+    // }
 
     returnError($mailData["error"]);
     checkEndpoint();

@@ -15,6 +15,7 @@ import { StoreContext } from "../../../store/StoreContext";
 import Status from "../../../partials/Status";
 import { purposeValue } from "./functions-notification";
 import LoadMore from "../../../partials/LoadMore";
+import { apiVersion } from "../../../helpers/functions-general";
 
 const NotificationTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -38,8 +39,8 @@ const NotificationTable = ({ setItemEdit }) => {
     queryKey: ["notification-email", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/notification-email/search`, // search endpoint
-        `/v1/notification-email/page/${pageParam}`, // list endpoint
+        `/${apiVersion}/notification-email/search`, // search endpoint
+        `/${apiVersion}/notification-email/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -119,8 +120,12 @@ const NotificationTable = ({ setItemEdit }) => {
                 {page?.data.map((item, key) => (
                   <tr key={key} className="text-[14px]">
                     <td className="pl-2">{counter++}.</td>
-                    <td className="">
-                      <Status status={item.notification_is_active} />
+                    <td>
+                      {item.notification_is_active === 1 ? (
+                        <Status text="Active" />
+                      ) : (
+                        <Status text="Inactive" />
+                      )}
                     </td>
                     <td className="">{item.notification_name}</td>
                     <td className="">{item.notification_email}</td>
@@ -172,7 +177,7 @@ const NotificationTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"notification-email"}
-          mysqlEndpoint={`/v1/notification-email/${id}`}
+          mysqlEndpoint={`/${apiVersion}/notification-email/${id}`}
           item={isData}
         />
       )}

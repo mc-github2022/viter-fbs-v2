@@ -314,52 +314,8 @@ const ModalContact = ({
               )}
             </div>
           </div>
-          {/* <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
-            {contactSubject ? (
-              <p className="mb-2 text-lg uppercase">
-                {thePageName} : <b>{contactSubject}</b>
-              </p>
-            ) : (
-              <></>
-            )}
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Name</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Email</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Subject</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Mobile Number</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-2">
-              <span htmlFor="">Message</span> <br />
-              <textarea name="" id="" className="resize-none"></textarea>
-            </div>
-            <div className="inputGroup mb-2">
-              <input
-                type="submit"
-                value="Send Message"
-                className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
-              />
-            </div>
-          </div> */}
+
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            {/* <div
-              className={`${
-                thePageName === "lcss" ||
-                thePageName === "conStud" ||
-                thePageName === "immersion"
-                  ? "block"
-                  : "invisible"
-              }`}
-            > */}
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
@@ -367,7 +323,6 @@ const ModalContact = ({
             ) : (
               <></>
             )}
-            {/* </div> */}
 
             <Formik
               initialValues={initVal}

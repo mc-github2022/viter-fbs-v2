@@ -1,15 +1,17 @@
 import React from "react";
-import { setIsAdd, setIsWhyFBS } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import Navigation from "../../../../partials/dashboard/Navigation";
-import { FaPlus } from "react-icons/fa6";
-import EventsAndActivitiesTable from "./EventsAndActivitiesTable";
-import ModalAddEventsAndActivities from "./ModalAddEventsAndActivities";
+import { setIsAdd } from "../../../../store/StoreAction";
+import { FaPlus } from "react-icons/fa";
+import OtherUserTable from "./OtherUserTable";
+import Dashboard from "../../../../partials/dashboard/Dashboard";
+import ModalAddOtherUser from "./ModalAddOtherUser";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../partials/modals/ModalError";
-import Dashboard from "../../../../partials/dashboard/Dashboard";
+import Navigation from "../../../../partials/dashboard/Navigation";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../helpers/functions-general";
 
-const EventsAndActivities = () => {
+const OtherUser = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
 
@@ -18,16 +20,22 @@ const EventsAndActivities = () => {
     setItemEdit(null);
   };
 
+  const { data: roleData } = useQueryData(
+    `/${apiVersion}/user-other/role`, // endpoint
+    "post", // method
+    "user-other-role", // key
+    { role_code: "role_is_developer" }
+  );
 
   return (
     <>
-      <section id="whyFBS" className="bg-[#f5f5f3]">
-        <Navigation menu="whyFBS" submenu="events-activities" />
+      <section id="user" className="bg-[#f5f5f3]">
+        <Navigation menu="user" submenu="other-user" />
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
               <div className="text-sm text-[black] font-semibold">
-                <h2>Events And Activities</h2>
+                <h2>Other User</h2>
               </div>
               <button
                 className="flex items-center gap-1 text-[white] hover:underline bg-[black] py-1 px-2 rounded-lg text-sm"
@@ -38,14 +46,18 @@ const EventsAndActivities = () => {
               </button>
             </div>
             <div className="pb-4">
-              <EventsAndActivitiesTable setItemEdit={setItemEdit} />
+              <OtherUserTable setItemEdit={setItemEdit} />
             </div>
           </div>
         </Dashboard>
       </section>
 
       {store.isAdd && (
-        <ModalAddEventsAndActivities setIsAdd={setIsAdd} itemEdit={itemEdit} />
+        <ModalAddOtherUser
+          setIsAdd={setIsAdd}
+          itemEdit={itemEdit}
+          roleData={roleData}
+        />
       )}
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}
@@ -53,4 +65,4 @@ const EventsAndActivities = () => {
   );
 };
 
-export default EventsAndActivities;
+export default OtherUser;

@@ -1,33 +1,21 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Form, Formik } from "formik";
 import React from "react";
-import * as AiIcons from "react-icons/ai";
-import * as FaIcons from "react-icons/fa";
-import { GrFormClose } from "react-icons/gr";
-import * as IoIcons from "react-icons/io";
-import * as LuIcons from "react-icons/lu";
-import * as PiIcons from "react-icons/pi";
-import * as TiIcons from "react-icons/ti";
+import { StoreContext } from "../../../../store/StoreContext";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  setError,
+  setMessage,
+  setSuccess,
+} from "../../../../store/StoreAction";
 import * as Yup from "yup";
-import { InputSelect, InputText } from "../../../helpers/FormInputs";
-import { apiVersion } from "../../../helpers/functions-general";
-import { queryData } from "../../../helpers/queryData";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
-import { StoreContext } from "../../../store/StoreContext";
-import { purposeValue } from "./functions-notification";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import { GrFormClose } from "react-icons/gr";
+import { Form, Formik } from "formik";
+import { InputSelect, InputText } from "../../../../helpers/FormInputs";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import { queryData } from "../../../../helpers/queryData";
+import { apiVersion } from "../../../../helpers/functions-general";
 
-const icons = {
-  ...FaIcons,
-  ...AiIcons,
-  ...IoIcons,
-  ...TiIcons,
-  ...LuIcons,
-  ...PiIcons,
-};
-
-const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
+const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
   const handleClose = () => {
@@ -37,23 +25,24 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
   };
 
   const queryClient = useQueryClient();
-
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/${apiVersion}/notification-email/${itemEdit.notification_aid}` // update
-          : `/${apiVersion}/notification-email`, // create
+          ? `/${apiVersion}/user-other/${itemEdit.user_aid}` // update
+          : `/${apiVersion}/user-other`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["notification-email"] });
+      queryClient.invalidateQueries({ queryKey: ["user-other"] });
       if (!data.success) {
+        console.log("error");
         dispatch(setError(true));
         dispatch(setMessage(data.error));
         dispatch(setSuccess(false));
       } else {
+        console.log("Success");
         dispatch(setIsAdd(false));
         dispatch(setSuccess(true));
         dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
@@ -61,30 +50,32 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
     },
   });
 
+  const defaultRoleAid = roleData?.data.filter(
+    (role) => role.role_code === "role_is_admin"
+  )[0]["role_aid"];
+
   const initVal = {
-    notification_aid: itemEdit ? itemEdit.notification_aid : "",
-    notification_name: itemEdit ? itemEdit.notification_name : "",
-    notification_email: itemEdit ? itemEdit.notification_email : "",
-    notification_phone_no: itemEdit ? itemEdit.notification_phone_no : "",
-    notification_purpose: itemEdit ? itemEdit.notification_purpose : "",
-    notification_name_old: itemEdit ? itemEdit.notification_name : "",
+    user_fname: itemEdit ? itemEdit.user_fname : "",
+    user_lname: itemEdit ? itemEdit.user_lname : "",
+    user_email: itemEdit ? itemEdit.user_email : "",
+    user_role_id: itemEdit ? itemEdit.user_role_id : defaultRoleAid,
+    user_email_old: itemEdit ? itemEdit.user_email : "",
   };
 
   const yupSchema = Yup.object({
-    notification_email: Yup.string()
-      .required("Required")
-      .email("Invalid email"),
-    notification_name: Yup.string().required("Required"),
-    notification_purpose: Yup.string().required("Required"),
+    user_lname: Yup.string().required("Required"),
+    user_fname: Yup.string().required("Required"),
+    user_role_id: Yup.string().required("Required"),
+    user_email: Yup.string().required("Required").email("Invalid email"),
   });
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 w-[30rem] h-[22rem]`}
+      className={`transition-all ease-linear transform duration-200 w-[45dvh] h-[37dvh]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Notification</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Other User</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -105,9 +96,17 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
               <Form>
                 <div className="input-wrapper">
                   <InputText
-                    label="Name"
+                    label="First Name"
                     type="text"
-                    name="notification_name"
+                    name="user_fname"
+                    disabled={mutation.isPending}
+                  />
+                </div>
+                <div className="input-wrapper">
+                  <InputText
+                    label="Last Name"
+                    type="text"
+                    name="user_lname"
                     disabled={mutation.isPending}
                   />
                 </div>
@@ -115,36 +114,29 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
                   <InputText
                     label="Email"
                     type="text"
-                    name="notification_email"
-                    disabled={mutation.isPending}
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <InputText
-                    label="Phone/Mobile no."
-                    type="text"
-                    name="notification_phone_no"
+                    name="user_email"
                     disabled={mutation.isPending}
                   />
                 </div>
 
                 <div className="input-wrapper">
                   <InputSelect
-                    label="Purpose"
+                    label="Role"
                     type="text"
-                    name="notification_purpose"
+                    name="user_role_id"
                     disabled={mutation.isPending}
                   >
-                    <optgroup label="Select Category">
-                      <option value="" hidden>
-                        --
-                      </option>
-
-                      {purposeValue()?.map((item, key) => (
-                        <option key={key} value={item.code}>
-                          {item.name}
-                        </option>
-                      ))}
+                    <option hidden>--</option>
+                    <optgroup label="Select Role">
+                      {roleData?.count === 0 ? (
+                        <option>No Data</option>
+                      ) : (
+                        roleData?.data.map((item, key) => (
+                          <option value={item.role_aid} key={key}>
+                            {item.role_name}
+                          </option>
+                        ))
+                      )}
                     </optgroup>
                   </InputSelect>
                 </div>
@@ -175,4 +167,4 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
   );
 };
 
-export default ModalAddNotification;
+export default ModalAddOtherUser;

@@ -1,12 +1,12 @@
 <?php
 require '../../../../core/header.php';
 require '../../../../core/functions.php';
-require '../../../../models/developer/settings/User.php';
+require '../../../../models/developer/users/user-other/UserOther.php';
 require 'functions.php';
 $conn = null;
 $conn = checkDbConnection();
 
-$user = new User($conn);
+$user = new UserOther($conn);
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
 
@@ -14,6 +14,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
     $user->user_search = $data["searchValue"];    // get data
+    $user->role_code = $data['role_code'];
+
     if ($data["isFilter"] == true) {
 
         if ($user->user_search != "") {

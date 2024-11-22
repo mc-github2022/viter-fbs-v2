@@ -1,11 +1,11 @@
 <?php
-// use notification template
-require '../../../../notification/verify-email.php';
+// // use notification template
+// require '../../../../notification/verify-email.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new User($conn);
+$user = new UserOther($conn);
 $encrypt = new Encryption();
 
 if (array_key_exists("userid", $_GET)) {
@@ -25,17 +25,17 @@ if (array_key_exists("userid", $_GET)) {
     checkId($user->user_aid);
     // check name
     compareEmail($user, $user_email_old, $user->user_email);
-    // update
-    if ($user->user_email != $user_email_old) {
-        checkUpdateUserKeyAndNewEmail($user);
-        sendEmailVerify(
-            $link,
-            $user->user_fname,
-            $user_email_old,
-            $user->user_email,
-            $user->user_key
-        );
-    }
+    // // update
+    // if ($user->user_email != $user_email_old) {
+    //     checkUpdateUserKeyAndNewEmail($user);
+    //     sendEmailVerify(
+    //         $link,
+    //         $user->user_fname,
+    //         $user_email_old,
+    //         $user->user_email,
+    //         $user->user_key
+    //     );
+    // }
     $query = checkUpdate($user);
     returnSuccess($user, "User", $query);
 }

@@ -5,17 +5,21 @@ require '../../../../core/header.php';
 require '../../../../core/functions.php';
 require 'functions.php';
 // use needed classes
-require '../../../../models/developer/settings/User.php';
+require '../../../../models/developer/users/user-other/UserOther.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new User($conn);
+$user = new UserOther($conn);
+$body = file_get_contents("php://input");
+$data = json_decode($body, true);
 
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
+    checkPayload($data);
 
+    $user->role_code = $data['role_code'];
     $query = checkReadRole($user);
     http_response_code(200);
     getQueriedData($query);

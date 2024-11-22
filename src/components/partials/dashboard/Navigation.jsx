@@ -146,17 +146,6 @@ const Navigation = ({ menu, submenu }) => {
               </li>
 
               <ul className="submenu ml-5 my-1 text-[12px] ">
-                {/* <Link className="!p-0" to={`${devNavUrl}/why-work-with-us`}>
-                    <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
-                        submenu === "why-work-with-us"
-                          ? "text-[black] font-bold"
-                          : "border-none text-[#9ca3af]"
-                      }`}
-                    >
-                      Why Work With Us
-                    </li>
-                  </Link> */}
                 <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
@@ -180,57 +169,6 @@ const Navigation = ({ menu, submenu }) => {
                   </li>
                 </Link>
               </ul>
-
-              {/* <li
-                className={
-                  activeSection === "ourOrigin"
-                    ? "text-[black] bg-primary underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("ourOrigin")}
-              >
-                <a className="cursor-pointer">Our Origin</a>
-              </li>
-              <li
-                className={
-                  activeSection === "ourTaste"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("ourTaste")}
-              >
-                <a className="cursor-pointer">Our Taste</a>
-              </li>
-              <li
-                className={
-                  activeSection === "reserveSeat"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("reserveSeat")}
-              >
-                <a className="cursor-pointer">Reserve Seat</a>
-              </li>
-              <li
-                className={
-                  activeSection === "events"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("events")}
-              >
-                <a className="cursor-pointer">Events</a>
-              </li>
-              <li
-                className={
-                  activeSection === "footer"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("footer")}
-              >
-                <a className="cursor-pointer">Footer</a>
-              </li> */}
 
               <li
                 className={` flex justify-between items-center p-1 pt-3
@@ -313,6 +251,55 @@ const Navigation = ({ menu, submenu }) => {
                   </div>
                 </Link>
               </li>
+              <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "user"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-[#9ca3af] "
+                  }
+                `}
+              >
+                <div className="nav flex items-center">
+                  <span className="ml-2.5 text-[14px]">Users</span>
+                </div>
+              </li>
+
+              <ul className="submenu ml-5 my-1 text-[12px] ">
+                <Link className="!p-0" to={`${devNavUrl}/other-user`}>
+                  <li
+                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      submenu === "other-user"
+                        ? "text-[black] font-bold"
+                        : "border-none text-[#9ca3af]"
+                    }`}
+                  >
+                    Other User
+                  </li>
+                </Link>
+                <Link className="!p-0" to={`${devNavUrl}/user-developer`}>
+                  <li
+                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      submenu === "user-developer"
+                        ? "text-[black] font-bold"
+                        : "border-none text-[#9ca3af]"
+                    }`}
+                  >
+                    Developer
+                  </li>
+                </Link>
+                <Link className="!p-0" to={`${devNavUrl}/user-role`}>
+                  <li
+                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      submenu === "user-role"
+                        ? "text-[black] font-bold"
+                        : "border-none text-[#9ca3af]"
+                    }`}
+                  >
+                    Role
+                  </li>
+                </Link>
+              </ul>
             </ul>
           </nav>
         </div>

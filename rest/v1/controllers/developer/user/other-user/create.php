@@ -1,11 +1,11 @@
 <?php
 // use notification template
-require '../../../../notification/verify-account.php';
+// require '../../../../notification/verify-account.php';
 
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new User($conn);
+$user = new UserOther($conn);
 $encrypt = new Encryption();
 // get should not be present
 if (array_key_exists("userid", $_GET)) {
@@ -27,18 +27,18 @@ $password_link = "/create-password";
 isEmailExist($user, $user->user_email);
 $query = checkCreate($user);
 
-if ($query->rowCount() > 0) {
-    $mailData = sendEmail(
-        $password_link,
-        $user->user_fname,
-        $user->user_email,
-        $user->user_key
-    );
-}
-returnError($mailData);
-// create
-if ($mailData["mail_success"] == true) {
-    returnSuccess($user, "User", $query);
-}
+// if ($query->rowCount() > 0) {
+//     $mailData = sendEmail(
+//         $password_link,
+//         $user->user_fname,
+//         $user->user_email,
+//         $user->user_key
+//     );
+// }
+// returnError($mailData);
+// // create
+// if ($mailData["mail_success"] == true) {
+returnSuccess($user, "User", $query);
+// }
 
 returnError($mailData["error"]);

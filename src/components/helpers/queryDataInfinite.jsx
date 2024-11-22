@@ -4,11 +4,8 @@ export const queryDataInfinite = (
   urlSearch,
   urlList,
   isSearch = false,
-  searchData = {}
+  searchData = {},
+  method = isSearch ? "post" : "get"
 ) => {
-  return queryData(
-    isSearch ? urlSearch : urlList,
-    isSearch ? "post" : "get",
-    searchData
-  );
+  return queryData(isSearch ? urlSearch : urlList, method, searchData);
 };

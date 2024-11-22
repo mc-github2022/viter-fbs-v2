@@ -5,19 +5,25 @@ require '../../../../core/header.php';
 // use needed functions
 require '../../../../core/functions.php';
 // use needed classes
-require '../../../../models/developer/settings/User.php';
+require '../../../../models/developer/users/user-other/UserOther.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new User($conn);
+$user = new UserOther($conn);
+// get payload
+$body = file_get_contents("php://input");
+$data = json_decode($body, true);
+
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
+    checkPayload($data);
 
     if (array_key_exists("start", $_GET)) {
         // get data
         $user->user_start = $_GET['start'];
         $user->user_total = 10;
+        $user->role_code = $data['role_code'];
 
         checkLimitId($user->user_start, $user->user_total);
         $query = checkReadLimit($user);

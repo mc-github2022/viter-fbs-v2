@@ -3,7 +3,7 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new User($conn);
+$user = new UserOther($conn);
 
 if (array_key_exists("userid", $_GET)) {
     $user->user_aid = $_GET['userid'];
