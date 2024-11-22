@@ -65,3 +65,10 @@ RewriteRule ^notification-email/active/([0-9]+)$ controllers/developer/notificat
 RewriteRule ^notification-email/page/([0-9]+)$ controllers/developer/notification/page.php?start=$1 [L]
 RewriteRule ^notification-email/search$ controllers/developer/notification/search.php [L] 
 
+# USER - ROLE
+RewriteRule ^role$ controllers/developer/role/role.php [L]
+RewriteRule ^role/([0-9]+)$ controllers/developer/role/role.php?roleId=$1 [L]
+RewriteRule ^role/active/([0-9]+)$ controllers/developer/role/active.php?roleId=$1 [L]
+RewriteRule ^role/page/([0-9]+)$ controllers/developer/role/page.php?start=$1 [L]
+RewriteRule ^role/search$ controllers/developer/role/search.php [L] 
+

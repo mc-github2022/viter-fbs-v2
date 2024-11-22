@@ -46,6 +46,7 @@ import Notification from "../components/pages/developer/notification/Notificatio
 import SystemLogin from "../components/pages/access/developer/SystemLogin";
 import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
 import Developer from "../components/pages/developer/user/developer/Developer";
+import Role from "../components/pages/developer/user/role/Role";
 
 export const routesDeveloper = [
   {
@@ -235,5 +236,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/user-developer`,
     element: <Developer />,
+  },
+  {
+    path: `${devNavUrl}/user-role`,
+    element: <Role />,
   },
 ];
