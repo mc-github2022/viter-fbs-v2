@@ -76,13 +76,13 @@ const OtherUserTable = ({ setItemEdit }) => {
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
     setIsData(item.user_email);
-    setIsId(item.role_aid);
+    setIsId(item.user_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
     setIsData(item.user_email);
-    setIsId(item.role_aid);
+    setIsId(item.user_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
@@ -90,7 +90,7 @@ const OtherUserTable = ({ setItemEdit }) => {
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
     setIsData(item.user_email);
-    setIsId(item.role_aid);
+    setIsId(item.user_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
@@ -228,7 +228,7 @@ const OtherUserTable = ({ setItemEdit }) => {
         <ModalArchive
           setIsArchive={setIsArchive}
           queryKey={"user-other"}
-          mysqlEndpoint={`/v2/user-other/active/${id}`}
+          mysqlEndpoint={`/${apiVersion}/user-other/active/${id}`}
           item={isData}
           archive={isArchiving}
         />
@@ -237,7 +237,7 @@ const OtherUserTable = ({ setItemEdit }) => {
         <ModalRestore
           setIsRestore={setIsRestore}
           queryKey={"user-other"}
-          mysqlEndpoint={`/v2/user-other/active/${id}`}
+          mysqlEndpoint={`/${apiVersion}/user-other/active/${id}`}
           item={isData}
         />
       )}

@@ -26,7 +26,7 @@ class UserOther
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblUser = "fbsv2_settings_user";
+        $this->tblUser = "fbsv2_user_other";
         $this->tblRole = "fbsv2_settings_role";
     }
 
