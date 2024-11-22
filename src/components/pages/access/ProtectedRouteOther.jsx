@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { StoreContext } from "../../../store/StoreContext";
 import { devNavUrl, hexToRgb } from "../../helpers/functions-general";
 import { queryData } from "../../helpers/queryData";
-import PageNotFound from "../../partials/PageNotFound";
 import FetchingSpinner from "../../partials/spinners/FetchingSpinner";
+import PageNotFound from "@/components/partials/PageNotFound";
 
 const ProtectedRouteOther = ({ children }) => {
   const { store, dispatch } = React.useContext(StoreContext);

@@ -1,6 +1,6 @@
 <?php
 // use notification template
-// require '../../../../notification/verify-account.php';
+require '../../../../notification/verify-account.php';
 
 $conn = null;
 $conn = checkDbConnection();
@@ -27,18 +27,20 @@ $password_link = "/create-password";
 isEmailExist($user, $user->user_email);
 $query = checkCreate($user);
 
-// if ($query->rowCount() > 0) {
-//     $mailData = sendEmail(
-//         $password_link,
-//         $user->user_fname,
-//         $user->user_email,
-//         $user->user_key
-//     );
-// }
-// returnError($mailData);
-// // create
-// if ($mailData["mail_success"] == true) {
-returnSuccess($user, "User", $query);
-// }
+if ($query->rowCount() > 0) {
+    $mailData = sendEmail(
+        $password_link,
+        $user->user_fname,
+        $user->user_email,
+        $user->user_key
+    );
+} else {
+    $user->user_aid = $user->lastInsertedId;
+    $query = checkDelete($user);
+}
+// create
+if ($mailData["mail_success"] == true) {
+    returnSuccess($user, "User", $query);
+}
 
 returnError($mailData["error"]);

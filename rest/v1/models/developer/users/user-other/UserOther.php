@@ -27,7 +27,7 @@ class UserOther
     {
         $this->connection = $db;
         $this->tblUser = "fbsv2_user_other";
-        $this->tblRole = "fbsv2_settings_role";
+        $this->tblRole = "fbsv2_role";
     }
 
     // create

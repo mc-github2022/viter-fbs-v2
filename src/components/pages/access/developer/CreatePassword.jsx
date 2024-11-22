@@ -1,74 +1,276 @@
-import { InputText } from "@/components/helpers/FormInputs";
-import React from "react";
-import logo from "/img/logo.png";
+import useQueryData from "@/components/custom-hooks/useQueryData";
+import { InputText, InputTextOnChange } from "@/components/helpers/FormInputs";
+import {
+  apiVersion,
+  devNavUrl,
+  getUrlParam,
+} from "@/components/helpers/functions-general";
+import { queryData } from "@/components/helpers/queryData";
+import ButtonSpinner from "@/components/partials/spinners/ButtonSpinner";
+import ServerError from "@/components/partials/spinners/ServerError";
+import TableLoading from "@/components/partials/spinners/TableLoading";
+import TableSpinner from "@/components/partials/spinners/TableSpinner";
+import FbsLogoXl from "@/components/svg/FbsLogoXl";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
-import { devNavUrl } from "../../../helpers/functions-general";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import { FaCircleCheck } from "react-icons/fa6";
+import React from "react";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { BsCheckCircleFill } from "react-icons/bs";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import * as Yup from "yup";
+import {
+  setCreatePassSuccess,
+  setError,
+  setMessage,
+} from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
+import PageNotFound from "@/components/partials/PageNotFound";
 
-const CreatePassword = () => {
+const CreateOtherPassword = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  const paramKey = getUrlParam().get("key");
+  const [isSuccess, setIsSuccess] = React.useState(false);
+  const [newPasswordShown, setNewPasswordShown] = React.useState(false);
+  const [confirmPasswordShown, setConfirmPasswordShown] = React.useState(false);
+  const [lowerValidated, setLowerValidated] = React.useState(false);
+  const [upperValidated, setUpperValidated] = React.useState(false);
+  const [numberValidated, setNumberValidated] = React.useState(false);
+  const [specialValidated, setSpecialValidated] = React.useState(false);
+  const [lengthValidated, setLengthValidated] = React.useState(false);
+  const queryClient = useQueryClient();
+
+  const {
+    isLoading,
+    error,
+    isFetching,
+    data: otherKey,
+  } = useQueryData(
+    `/v1/user-other/key/${paramKey}`, // endpoint
+    "get", // method
+    "other-key" // key
+  );
+
+  const mutation = useMutation({
+    mutationFn: (values) =>
+      queryData(`/${apiVersion}/user-other/password`, "post", values),
+    onSuccess: (data) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["other"] });
+
+      // show error box
+      if (!data.success) {
+        dispatch(setError(true));
+        dispatch(setMessage(data.error));
+      } else {
+        setIsSuccess(true);
+      }
+    },
+  });
+
+  const toggleNewPassword = () => {
+    setNewPasswordShown(!newPasswordShown);
+  };
+
+  const toggleConfirmPassword = () => {
+    setConfirmPasswordShown(!confirmPasswordShown);
+  };
+
+  const initVal = {
+    new_password: "",
+    confirm_password: "",
+    key: paramKey,
+  };
+
+  const yupSchema = Yup.object({
+    new_password: Yup.string()
+      .required("Required")
+      .min(8, "Password must be at least 8 characters.")
+      .matches("(?=.*[a-z])", "At least one lowercase letter.")
+      .matches("(?=.*[A-Z])", "At least one uppercase letter.")
+      .matches("(?=.*[!@#$%^&*`{;:',<.>/?}_-])", "Atleast 1 special character.")
+      .matches("(?=.*[0-9])", "Atleast 1 number."),
+    confirm_password: Yup.string()
+      .required("Required")
+      .oneOf([Yup.ref("new_password"), null], "Passwords does not match."),
+  });
+
+  const handleChange = (value) => {
+    const lower = new RegExp("(?=.*[a-z])");
+    const upper = new RegExp("(?=.*[A-Z])");
+    const number = new RegExp("(?=.*[0-9])");
+    const special = new RegExp("(?=.*[!@#$%^&*`{;:',<.>/?}_-])");
+    const length = new RegExp("(?=.{8,})");
+
+    if (lower.test(value)) {
+      setLowerValidated(true);
+    } else {
+      setLowerValidated(false);
+    }
+    if (upper.test(value)) {
+      setUpperValidated(true);
+    } else {
+      setUpperValidated(false);
+    }
+    if (number.test(value)) {
+      setNumberValidated(true);
+    } else {
+      setNumberValidated(false);
+    }
+    if (special.test(value)) {
+      setSpecialValidated(true);
+    } else {
+      setSpecialValidated(false);
+    }
+    if (length.test(value)) {
+      setLengthValidated(true);
+    } else {
+      setLengthValidated(false);
+    }
+  };
+
+  React.useEffect(() => {
+    dispatch(setCreatePassSuccess(true));
+  }, []);
+
   return (
-    <div className="h-screen w-full flex justify-center">
-      <div className="login w-full max-w-[380px] py-8 px-4 transYclamp rounded-md ">
-        <div className="theLogo">
-          <img src={logo} alt="" className="mx-auto" />
+    <>
+      {isLoading ? (
+        <TableLoading />
+      ) : error ? (
+        <div style={{ transform: "translateY(clamp(5rem,12vw,8rem))" }}>
+          <ServerError />
         </div>
-        <div className="mb-4">
-          <h2 className="mb-0 mt-10 text-lg">CREATE PASSWORD</h2>
-        </div>
-        <Formik>
-          <Form>
-            <div className="input-wrapper">
-              <InputText
-                label="New Password"
-                type="password"
-                name="user_system_new_password"
-              />
-            </div>
-            <div className="input-wrapper">
-              <InputText
-                label="Confirm Password"
-                type="password"
-                name="user_system_new_password_confirm"
-              />
-            </div>
-            <div className="flex items-center gap-1 pt-3 mb-4">
-              <button
-                type="submit"
-                className="btn bg-disable text-light rounded-lg py-2  text-sm w-full relative"
+      ) : otherKey?.count === 0 ? (
+        <PageNotFound />
+      ) : (
+        <div
+          className="relative"
+          style={{ transform: "translateY(clamp(5rem,12vw,8rem))" }}
+        >
+          <div className="flex justify-center items-center ">
+            {isFetching && <TableSpinner />}
+            <div className="w-96 p-6">
+              <div className="relative flex justify-center">
+                <FbsLogoXl />
+              </div>
+
+              <p className="mt-8 mb-5 text-lg font-bold">CREATE PASSWORD</p>
+              <Formik
+                initialValues={initVal}
+                validationSchema={yupSchema}
+                onSubmit={async (values, { setSubmitting, resetForm }) => {
+                  mutation.mutate(values);
+                }}
               >
-                <div className="flex justify-center gap-1">
-                  <ButtonSpinner /> Create Password
-                </div>
-              </button>
+                {(props) => {
+                  return (
+                    <Form>
+                      <div className="relative mb-7">
+                        <InputTextOnChange
+                          label="New password"
+                          type={newPasswordShown ? "text" : "password"}
+                          name="new_password"
+                          disabled={mutation.isPending}
+                          onChange={(e) => handleChange(e.target.value)}
+                        />
+                        {props.values.new_password && (
+                          <span
+                            className="text-base absolute bottom-1/2 right-4 text-gray-400 translate-y-1/2 cursor-pointer"
+                            onClick={toggleNewPassword}
+                          >
+                            {newPasswordShown ? <FaEyeSlash /> : <FaEye />}
+                          </span>
+                        )}
+                      </div>
+                      <div className="relative mb-5">
+                        <InputText
+                          label="Confirm password"
+                          type={confirmPasswordShown ? "text" : "password"}
+                          name="confirm_password"
+                          disabled={
+                            mutation.isPending ||
+                            props.values.new_password === ""
+                          }
+                        />
+                        {props.values.confirm_password && (
+                          <span
+                            className="text-base absolute bottom-1/2 right-4 text-gray-400 translate-y-1/2 cursor-pointer
+                    "
+                            onClick={toggleConfirmPassword}
+                          >
+                            {confirmPasswordShown ? <FaEyeSlash /> : <FaEye />}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-1 pt-3">
+                        <button
+                          type="submit"
+                          disabled={
+                            mutation.isPending ||
+                            props.values.new_password === "" ||
+                            props.values.confirm_password === ""
+                          }
+                          className="btn-modal-submit relative"
+                        >
+                          {mutation.isPending && <ButtonSpinner />} Create
+                          Password
+                        </button>
+                      </div>
+                    </Form>
+                  );
+                }}
+              </Formik>
+              <div className="p-3 mt-5 rounded-sm mb-6">
+                <h5 className="text-xs text-body mb-5">Password Requirement</h5>
+                <ul className="text-sm">
+                  <li className="text-body text-xs flex gap-2 items-center mb-3">
+                    <BsCheckCircleFill
+                      className={`duration-200 ${
+                        lengthValidated ? "fill-green-600" : "opacity-50"
+                      }`}
+                    />
+                    Must have 8 characters
+                  </li>
+                  <li className="text-body  text-xs flex gap-2 items-center mb-3">
+                    <BsCheckCircleFill
+                      className={`duration-200 ${
+                        upperValidated ? "fill-green-600" : "opacity-50"
+                      }`}
+                    />
+                    At least 1 uppercase
+                  </li>
+                  <li className="text-body  text-xs flex gap-2 items-center mb-3">
+                    <BsCheckCircleFill
+                      className={`duration-200 ${
+                        lowerValidated ? "fill-green-600" : "opacity-50"
+                      }`}
+                    />
+                    At least 1 lowercase
+                  </li>
+                  <li className="text-body  text-xs flex gap-2 items-center mb-3">
+                    <BsCheckCircleFill
+                      className={`duration-200 ${
+                        numberValidated ? "fill-green-600" : "opacity-50"
+                      }`}
+                    />
+                    At least 1 number
+                  </li>
+                  <li className="text-body  text-xs flex gap-2 items-center mb-1">
+                    <BsCheckCircleFill
+                      className={`duration-200 ${
+                        specialValidated ? "fill-green-600" : "opacity-50"
+                      }`}
+                    />
+                    At least 1 symbol
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="text-xs p-4">
-              <p className="font-semibold mb-5">Password Requirement</p>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-2">
-                <li>
-                  <FaCircleCheck className="text-disable" /> Must have 8
-                  character
-                </li>
-                <li>
-                  <FaCircleCheck className="text-disable" /> At least 1
-                  uppercase
-                </li>
-                <li>
-                  <FaCircleCheck className="text-disable" /> At least 1
-                  lowercase
-                </li>
-                <li>
-                  <FaCircleCheck className="text-disable" /> At least 1 number
-                </li>
-                <li>
-                  <FaCircleCheck className="text-disable" /> At least 1 symbol
-                </li>
-              </ul>
-            </div>
-          </Form>
-        </Formik>
-      </div>
-    </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
-export default CreatePassword;
+
+export default CreateOtherPassword;

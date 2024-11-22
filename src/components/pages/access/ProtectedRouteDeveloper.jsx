@@ -8,8 +8,8 @@ import {
 import { StoreContext } from "../../../store/StoreContext";
 import { devNavUrl } from "../../helpers/functions-general";
 import { queryData } from "../../helpers/queryData";
-import PageNotFound from "../../partials/PageNotFound";
 import FetchingSpinner from "../../partials/spinners/FetchingSpinner";
+import PageNotFound from "@/components/partials/PageNotFound";
 
 const ProtectedRouteDeveloper = ({ children }) => {
   const { store, dispatch } = React.useContext(StoreContext);

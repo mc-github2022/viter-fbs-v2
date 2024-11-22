@@ -25,6 +25,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
         $user->user_aid = $_GET['userid'];
         $user->user_is_active = trim($data["isActive"]);
+        $user->user_datetime = date("Y-m-d H:i:s");
 
         checkId($user->user_aid);
         $query = checkActive($user);
