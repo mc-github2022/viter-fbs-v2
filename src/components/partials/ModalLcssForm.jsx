@@ -87,7 +87,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -197,7 +197,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
             </div>
           </div>
 
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px]">
             <p className="mb-2 text-lg">
               <b className="uppercase">{thePageName}</b> Application
             </p>
