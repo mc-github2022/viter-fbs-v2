@@ -1,17 +1,17 @@
 <?php
 
 // set http header
-require '../../../core/header.php';
+require '../../../../core/header.php';
 // use needed functions
-require '../../../core/functions.php';
+require '../../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../models/developer/notification/Notification.php';
+require '../../../../models/developer/users/role/Role.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$readNotification = new Notification($conn);
+$role = new Role($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -19,19 +19,19 @@ $data = json_decode($body, true);
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
-    if (array_key_exists("notificationId", $_GET)) {
+    if (array_key_exists("roleId", $_GET)) {
         // check data
         checkPayload($data);
 
-        $readNotification->notification_aid = $_GET['notificationId'];
-        $readNotification->notification_is_active = trim($data["isActive"]);
-        $readNotification->notification_updated = date("Y-m-d H:i:s");
+        $role->role_aid = $_GET['roleId'];
+        $role->role_is_active = trim($data["isActive"]);
+        $role->role_datetime = date("Y-m-d H:i:s");
 
-        checkId($readNotification->notification_aid);
+        checkId($role->role_aid);
 
-        $query = checkActive($readNotification);
+        $query = checkActive($role);
         http_response_code(200);
-        returnSuccess($readNotification, "Notification", $query);
+        returnSuccess($role, "role", $query);
     }
     // return 404 error if endpoint not available
     checkEndpoint();
