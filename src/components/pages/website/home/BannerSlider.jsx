@@ -178,7 +178,7 @@ const BannerSlider = ({ pageName }) => {
                   }`}
                 >
                   <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
-                    <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
+                    <div className="mx-auto w-full md:w-[865px] text-center place-content-center z-1 relative">
                       <p className="text-light lg:text-[28px] italic">
                         {item.home_banner_sub_title}
                       </p>
@@ -190,7 +190,7 @@ const BannerSlider = ({ pageName }) => {
                       </p>
                       <a
                         href="#"
-                        className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
+                        className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0 "
                         onClick={handleForm}
                       >
                         {item.home_banner_button_text}

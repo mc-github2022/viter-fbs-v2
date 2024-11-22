@@ -119,8 +119,12 @@ const NotificationTable = ({ setItemEdit }) => {
                 {page?.data.map((item, key) => (
                   <tr key={key} className="text-[14px]">
                     <td className="pl-2">{counter++}.</td>
-                    <td className="">
-                      <Status status={item.notification_is_active} />
+                    <td>
+                      {item.notification_is_active === 1 ? (
+                        <Status text="Active" />
+                      ) : (
+                        <Status text="Inactive" />
+                      )}
                     </td>
                     <td className="">{item.notification_name}</td>
                     <td className="">{item.notification_email}</td>

@@ -1,30 +1,29 @@
-import React from "react";
-import * as Yup from "yup";
-import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
-import {
-  apiVersion,
-  devBaseImgUrl,
-} from "../../../../helpers/functions-general";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../../helpers/queryData";
-import {
-  setError,
-  setMessage,
-  setSuccess,
-} from "../../../../store/StoreAction";
-import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
+import React from "react";
+import { GrFormClose } from "react-icons/gr";
 import { IoImageOutline } from "react-icons/io5";
 import { MdOutlineFileUpload } from "react-icons/md";
+import * as Yup from "yup";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 import {
   InputPhotoUpload,
   InputText,
   InputTextArea,
 } from "../../../../helpers/FormInputs";
+import {
+  apiVersion,
+  devBaseImgUrl,
+} from "../../../../helpers/functions-general";
+import { queryData } from "../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import {
+  setError,
+  setMessage,
+  setSuccess,
+} from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 
 const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);

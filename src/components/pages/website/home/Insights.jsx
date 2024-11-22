@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
-import { BiSolidRightArrow } from "react-icons/bi";
-import { insight } from "./data";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl, devNavUrl } from "../../../helpers/functions-general";
-import Slider from "react-slick";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -148,10 +146,7 @@ const Insights = () => {
   return (
     <>
       <section className="insights py-16 md:py-24 bg-customGray">
-        <div className="customContainer px-10 max-w-[90%]">
-          {/* <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
-            Industry Insights
-          </h3> */}
+        <div className="customContainer max-w-[90%]">
           <div className="w-[300px] mb-16 md:w-full md:mb-20">
             <p>When share valuable tips and expect advice in our</p>
             <h2 className="font-semibold text-primary leading-[1.1] text-[clamp(20px,6vw,45px)]">

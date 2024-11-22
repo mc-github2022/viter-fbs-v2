@@ -187,7 +187,7 @@
   .theNav ul li {
     @apply border-t border-t-customGray border-b-customGray md:border-t-0 cursor-pointer;
   }
-  .theNav ul li a {
+  .theNav ul li button {
     @apply py-3 px-11 md:px-3 lg:px-11 w-full;
   }
   .theNav.active ul {
