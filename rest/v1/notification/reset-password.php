@@ -15,8 +15,6 @@ function sendEmail(
 	$password_link,
 	$email,
 	$key,
-	$companyName = FROM,
-	$companyLogo = 'fbs-logo.png'
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -33,13 +31,12 @@ function sendEmail(
 		$mail->Username = USERNAME; // if gmail use your gmail email
 		$mail->Password = PASSWORD; // if gmail use your email password
 		$mail->Subject = RESET_PASSWORD;
-		$mail->setFrom(USERNAME, $companyName);
+		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
 		$mail->Body = getHtmlResetPassword(
 			$password_link,
 			$email,
 			$key,
-			$companyLogo,
 			ROOT_DOMAIN,
 			IMAGES_URL
 		);

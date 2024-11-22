@@ -1,16 +1,17 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { StoreContext } from "../../../store/StoreContext";
-import { devNavUrl, hexToRgb } from "../../helpers/functions-general";
-import { queryData } from "../../helpers/queryData";
-import FetchingSpinner from "../../partials/spinners/FetchingSpinner";
 import PageNotFound from "@/components/partials/PageNotFound";
+import { StoreContext } from "@/components/store/StoreContext";
+import { queryData } from "@/components/helpers/queryData";
+import { setCredentials } from "@/components/store/StoreAction";
+import FetchingSpinner from "@/components/partials/spinners/FetchingSpinner";
+import { devNavUrl } from "@/components/helpers/functions-general";
 
 const ProtectedRouteOther = ({ children }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [loading, setLoading] = React.useState(true);
   const [isAuth, setIsAuth] = React.useState("");
-  const localhristoken = JSON.parse(localStorage.getItem("localhristoken"));
+  const localfbstoken = JSON.parse(localStorage.getItem("localfbstoken"));
   const [pageStatus, setPageStatus] = React.useState(false);
 
   // console.log(currentPath);
@@ -18,12 +19,12 @@ const ProtectedRouteOther = ({ children }) => {
   React.useEffect(() => {
     const fetchLogin = async () => {
       const login = await queryData(`/v1/user-other/token`, "post", {
-        token: localhristoken.token,
+        token: localfbstoken.token,
       });
 
       const isUserKeyMatched =
         login.success &&
-        login.data.user_other_key === login.data.user_other_other_password;
+        login.data.user_other_key === login.data.user_other_password;
 
       // check if the password from database is matched
       // to the password used to login
@@ -32,7 +33,7 @@ const ProtectedRouteOther = ({ children }) => {
       if (isUserKeyMatched === false) {
         setLoading(false);
         setIsAuth("456");
-        localStorage.removeItem("localhristoken");
+        localStorage.removeItem("localfbstoken");
         return;
       }
 
@@ -50,7 +51,7 @@ const ProtectedRouteOther = ({ children }) => {
 
         setIsAuth("123");
         setLoading(false);
-        delete login.data.user_other_other_password;
+        delete login.data.user_other_password;
         delete login.data.user_other_key;
         delete login.data.role_description;
         delete login.data.role_created;
@@ -66,11 +67,11 @@ const ProtectedRouteOther = ({ children }) => {
       }
     };
 
-    if (localhristoken !== null) {
+    if (localfbstoken !== null) {
       fetchLogin();
     } else {
       setLoading(false);
-      localStorage.removeItem("localhristoken");
+      localStorage.removeItem("localfbstoken");
       setIsAuth("456");
     }
   }, [dispatch]);

@@ -34,20 +34,20 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         returnError("Invalid email. Please use a registered one.");
     }
 
-    $query = checkResetPassword($user);
 
-    // if ($query->rowCount() > 0) {
-    //     $mailData = sendEmail(
-    //         $password_link,
-    //         $user->user_other_email,
-    //         $user->user_other_key
-    //     );
-    // }
+    if ($query->rowCount() > 0) {
+        $mailData = sendEmail(
+            $password_link,
+            $user->user_other_email,
+            $user->user_other_key
+        );
+    }
 
-    // if ($mailData["mail_success"] == true) {
-    http_response_code(200);
-    returnSuccess($developer, "User", $query);
-    // }
+    if ($mailData["mail_success"] == true) {
+        $query = checkResetPassword($user);
+        http_response_code(200);
+        returnSuccess($user, "User Other", $query);
+    }
 
     returnError($mailData["error"]);
     checkEndpoint();

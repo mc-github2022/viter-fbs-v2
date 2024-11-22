@@ -8,6 +8,9 @@ import EventsSingplePage from "./components/pages/website/events/EventsSingplePa
 import BatchSliderPage from "./components/pages/website/lcssPage/BatchSliderPage";
 import { devNavUrl } from "./components/helpers/functions-general";
 import PostByCategory from "./components/pages/website/postByCategory/PostByCategory";
+import { routesAdmin } from "./routes/RoutesAdmin";
+import PageNotFound from "./components/partials/PageNotFound";
+import { RoutesWebsite } from "./routes/RoutesWebsite";
 
 function App() {
   const queryClient = new QueryClient();
@@ -19,19 +22,20 @@ function App() {
         <StoreProvider>
           <Router>
             <Routes>
-              {routesDeveloper.map(({ ...routesProps }, key) => {
+              {RoutesWebsite.map(({ ...routesProps }, key) => {
                 return <Route key={key} {...routesProps} />;
               })}
-              <Route path="*" element={<h1>404</h1>} />
-              {/* <Route path="/insight/:slug" element={<SingplePage />} /> */}
+              {/* {routesDeveloper.map(({ ...routesProps }, key) => {
+                return <Route key={key} {...routesProps} />;
+              })} */}
+              {routesAdmin.map(({ ...routesProps }, key) => {
+                return <Route key={key} {...routesProps} />;
+              })}
+              <Route path="*" element={<PageNotFound />} />
               <Route
                 path={`${devNavUrl}/insight/:slug`}
                 element={<SingplePage />}
               />
-              {/* <Route
-                path="/events-and-activities/:slug"
-                element={<EventsSingplePage />}
-              /> */}
               <Route
                 path={`${devNavUrl}/events-and-activities/:slug`}
                 element={<EventsSingplePage />}

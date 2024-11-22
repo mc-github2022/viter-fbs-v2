@@ -15,13 +15,13 @@ const ProtectedRouteDeveloper = ({ children }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [loading, setLoading] = React.useState(true);
   const [isAuth, setIsAuth] = React.useState("");
-  const localhristoken = JSON.parse(localStorage.getItem("localhristoken"));
+  const localfbstoken = JSON.parse(localStorage.getItem("localfbstoken"));
   const [pageStatus, setPageStatus] = React.useState(false);
 
   React.useEffect(() => {
     const fetchLogin = async () => {
       const login = await queryData(`/v1/user-system/token`, "post", {
-        token: localhristoken.token,
+        token: localfbstoken.token,
       });
 
       console.log(login);
@@ -37,7 +37,7 @@ const ProtectedRouteDeveloper = ({ children }) => {
       if (isUserKeyMatched === false) {
         setLoading(false);
         setIsAuth("456");
-        localStorage.removeItem("localhristoken");
+        localStorage.removeItem("localfbstoken");
         return;
       }
 
@@ -65,11 +65,11 @@ const ProtectedRouteDeveloper = ({ children }) => {
       }
     };
 
-    if (localhristoken !== null) {
+    if (localfbstoken !== null) {
       fetchLogin();
     } else {
       setLoading(false);
-      localStorage.removeItem("localhristoken");
+      localStorage.removeItem("localfbstoken");
       setIsAuth("456");
     }
   }, [dispatch]);
