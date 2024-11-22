@@ -3,6 +3,7 @@ import React from "react";
 import logo from "/img/logo.png";
 import { Form, Formik } from "formik";
 import { devNavUrl } from "../../../helpers/functions-general";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
 const ForgetPassword = () => {
   return (
@@ -24,7 +25,9 @@ const ForgetPassword = () => {
                 type="submit"
                 className="btn bg-disable text-light rounded-lg py-2  text-sm w-full relative"
               >
-                Login
+                <div className="flex justify-center gap-1">
+                  <ButtonSpinner /> Submit
+                </div>
               </button>
             </div>
             <div className="text-xs">
