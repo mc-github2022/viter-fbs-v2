@@ -114,6 +114,9 @@ const ConStudPartnersWithUs = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"partner-with-us-lcs"}
+          emailSubject={"Parner with us - "}
         />
       )}
     </>

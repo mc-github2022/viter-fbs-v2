@@ -68,6 +68,8 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_file: "",
     client_message_subject: "",
     formTitle: `Job Application: ${jobTitle}`,
+    notification_purpose: "apply-now-careers",
+    email_subject: `Apply Now - ${jobTitle}`,
   };
 
   const yupSchema = Yup.object({
@@ -205,7 +207,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 // mutate data
-                console.log("values", values, newfile);
                 const data = {
                   ...values,
                   client_file: newfile.name,
@@ -214,7 +215,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   await uploadFiles(); // to save the photo when submit
                 }
 
-                console.log("values", data, newfile);
                 mutation.mutate(data);
               }}
             >

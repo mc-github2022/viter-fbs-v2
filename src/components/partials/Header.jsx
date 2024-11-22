@@ -55,7 +55,7 @@ const Header = ({ pageName }) => {
     ) {
       setSubjectNotif("get-started-lcs");
     } else {
-      setSubjectNotif("get-started-home");
+      setSubjectNotif("get-started-default");
     }
     document.addEventListener("click", clickOutsideRef);
     return () => document.addEventListener("click", clickOutsideRef);
@@ -89,17 +89,21 @@ const Header = ({ pageName }) => {
             >
               <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
                 <li>
-                  <Link
-                    to={`${devNavUrl}/`}
-                    className={`${
-                      pageName === "home" ? "text-primary !cursor-default" : ""
-                    }`}
-                  >
-                    Home
-                  </Link>
+                  <button>
+                    <Link
+                      to={`${devNavUrl}/`}
+                      className={`${
+                        pageName === "home"
+                          ? "text-primary !cursor-default"
+                          : ""
+                      }`}
+                    >
+                      Home
+                    </Link>
+                  </button>
                 </li>
                 <li>
-                  <a
+                  <button
                     href="#"
                     onClick={handleToggleMenu}
                     className={`${
@@ -112,10 +116,10 @@ const Header = ({ pageName }) => {
                         toggleMenu ? "!rotate-180 transition-all" : ""
                       } transition-all -rotate-90 md:rotate-0 md:block`}
                     />
-                  </a>
+                  </button>
                 </li>
                 <li className="relative ">
-                  <a
+                  <button
                     href="#"
                     className={`${
                       toggleWhyUs ? "text-primary" : ""
@@ -129,7 +133,7 @@ const Header = ({ pageName }) => {
                         toggleWhyUs ? "!rotate-180 transition-all" : ""
                       } transition-all -rotate-90 md:rotate-0 md:block`}
                     />
-                  </a>
+                  </button>
                   <ul
                     className={`${
                       toggleWhyUs

@@ -16,7 +16,7 @@ import React from "react";
 export const urlPathFBSMarketingWebsite =
   "https://frontlinebusiness.com.ph/newsite";
 export const imgUrlPathFBSMarketingWebsite =
-  "https://frontlinebusiness.com.ph/newsite/img";
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;

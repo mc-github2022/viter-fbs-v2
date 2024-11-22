@@ -44,7 +44,12 @@ import PostByCategory from "../components/pages/website/postByCategory/PostByCat
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/WordPressPage";
 import Notification from "../components/pages/developer/notification/Notification";
 import SystemLogin from "../components/pages/access/developer/SystemLogin";
+<<<<<<< HEAD
 import ForgetPassword from "../components/pages/access/developer/ForgetPassword";
+=======
+import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
+import Developer from "../components/pages/developer/user/developer/Developer";
+>>>>>>> 181a68b1a2f3c16fff5feaa7dfd52a0110ba3772
 
 export const routesDeveloper = [
   {
@@ -230,5 +235,11 @@ export const routesDeveloper = [
   {
     path: `/${devNavUrl}/system/forgot-password`,
     element: <ForgetPassword />,
+    path: `${devNavUrl}/other-user`,
+    element: <OtherUser />,
+  },
+  {
+    path: `${devNavUrl}/user-developer`,
+    element: <Developer />,
   },
 ];

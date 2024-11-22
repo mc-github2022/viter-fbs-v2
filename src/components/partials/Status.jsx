@@ -1,14 +1,20 @@
 import React from "react";
 
-const Status = ({ status = 0 }) => {
+const Status = ({ text }) => {
   return (
-    <span
-      className={`${
-        Number(status) === 0 ? "!opacity-[0.50] " : "text-green-700"
-      } font-bold capitalize`}
-    >
-      {Number(status) === 1 ? "active" : "inactive"}
-    </span>
+    <>
+      <span
+        className={` ${
+          text === "Active"
+            ? "bg-[#dcfce7] text-[#166534]  border border-[#bbf7d0] text-xs font-medium mr-2 px-2 py-0.5 rounded-md"
+            : text === "Inactive"
+            ? "bg-[#f9fafb] text-[#6b7280] border border-[#e5e7eb] text-xs font-medium mr-2 px-2 py-0.5 rounded-md"
+            : ""
+        }`}
+      >
+        {text}
+      </span>
+    </>
   );
 };
 

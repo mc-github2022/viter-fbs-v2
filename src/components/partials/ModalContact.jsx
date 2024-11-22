@@ -1,6 +1,7 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
 import { AiFillTikTok } from "react-icons/ai";
-import { CiMail } from "react-icons/ci";
 import {
   FaFacebookSquare,
   FaFileDownload,
@@ -9,28 +10,16 @@ import {
   FaPhone,
   FaYoutubeSquare,
 } from "react-icons/fa";
-import { FiMail } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
-import {
-  IoCloseCircle,
-  IoCloseCircleOutline,
-  IoMailSharp,
-} from "react-icons/io5";
+import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { devBaseImgUrl } from "../helpers/functions-general";
-import { Form, Formik } from "formik";
-import ButtonSpinner from "./spinners/ButtonSpinner";
-import { InputText, InputTextArea } from "../helpers/FormInputs";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as Yup from "yup";
+import { InputText, InputTextArea } from "../helpers/FormInputs";
+import { devBaseImgUrl } from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
-import {
-  setIsAdd,
-  setMessage,
-  setSuccess,
-  setValidate,
-} from "../store/StoreAction";
+import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
+import ButtonSpinner from "./spinners/ButtonSpinner";
 
 const ModalContact = ({
   setModalContact = null,
@@ -69,7 +58,7 @@ const ModalContact = ({
       }
       // show error box
       if (!data.success) {
-        dispatch(setValidate(true));
+        dispatch(setError(true));
         dispatch(setMessage(data.error));
       }
     },
@@ -325,52 +314,8 @@ const ModalContact = ({
               )}
             </div>
           </div>
-          {/* <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
-            {contactSubject ? (
-              <p className="mb-2 text-lg uppercase">
-                {thePageName} : <b>{contactSubject}</b>
-              </p>
-            ) : (
-              <></>
-            )}
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Name</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Email</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Subject</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Mobile Number</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-2">
-              <span htmlFor="">Message</span> <br />
-              <textarea name="" id="" className="resize-none"></textarea>
-            </div>
-            <div className="inputGroup mb-2">
-              <input
-                type="submit"
-                value="Send Message"
-                className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
-              />
-            </div>
-          </div> */}
+
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            {/* <div
-              className={`${
-                thePageName === "lcss" ||
-                thePageName === "conStud" ||
-                thePageName === "immersion"
-                  ? "block"
-                  : "invisible"
-              }`}
-            > */}
             {contactSubject ? (
               <p className="mb-2 text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
@@ -378,7 +323,6 @@ const ModalContact = ({
             ) : (
               <></>
             )}
-            {/* </div> */}
 
             <Formik
               initialValues={initVal}

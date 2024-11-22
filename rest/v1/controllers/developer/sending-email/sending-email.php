@@ -36,7 +36,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     // update if first load
     if (count($emailReceiver) == 0) {
-        returnError("Please contact admin");
+        returnError("Our sending message is unavailable. Please try again later.");
     }
 
     if (count($emailReceiver) > 0) {
