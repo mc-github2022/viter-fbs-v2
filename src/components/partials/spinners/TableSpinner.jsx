@@ -3,10 +3,10 @@ import React from "react";
 const TableSpinner = () => {
   return (
     <>
-      <div className="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center flex-col text-center bg-[white] z-40">
+      <div className="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center flex-col text-center bg-[white] z-40 opacity-50">
         <svg
           aria-hidden="true"
-          className="w-6 h-6 text-[#374151] animate-spin dark:text-[#d1d5db] fill-dashPrimary"
+          className="w-6 h-6 text-[black] animate-spin dark:text-[black] fill-dashPrimary"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@ const TableSpinner = () => {
             fill="currentFill"
           />
         </svg>
-        <span className="mt-1 text-[12px] text-[#9ca3af]">Loading...</span>
+        <span className="mt-1 text-[12px] text-[black]">Loading...</span>
       </div>
     </>
   );

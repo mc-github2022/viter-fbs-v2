@@ -8,7 +8,7 @@ define("RESET_PASSWORD", "Reset Password");
 define("VERIFY_EMAIL", "Email Verification");
 
 // local
-define("ROOT_DOMAIN", "http://127.0.0.1:5173");
+define("ROOT_DOMAIN", "http://127.0.0.1:5173/newsite");
 define("IMAGES_URL", "http://127.0.0.1:5173/img");
 
 // online
