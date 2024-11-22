@@ -90,13 +90,7 @@ const ConStudApplyNow = ({ pageName }) => {
         />
       )} */}
       {lcssForm && (
-        <ModalLcssForm
-          // setModalContact={setModalContact}
-          thePageName={pageName}
-          lcssForm={lcssForm}
-          setLcssForm={setLcssForm}
-          // modalContact={modalContact}
-        />
+        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
       )}
     </>
   );

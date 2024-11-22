@@ -36,7 +36,7 @@ function sendEmail(
 		$mail->SMTPAuth = true;
 		$mail->Username = USERNAME; // if gmail use your gmail email
 		$mail->Password = PASSWORD; // if gmail use your email password
-		$mail->Subject = `{$emailSubject}{$title}`;
+		$mail->Subject = "{$emailSubject} {$subject}";
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
 		$mail->Body = getHtmlSendMessage(

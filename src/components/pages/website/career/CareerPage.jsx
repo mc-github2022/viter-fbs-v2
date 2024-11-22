@@ -36,7 +36,6 @@ const CareerPage = () => {
     isFetching,
     error,
     isLoading,
-    status,
     data: careersData,
   } = useQueryData(
     "/v1/careers", // endpoint

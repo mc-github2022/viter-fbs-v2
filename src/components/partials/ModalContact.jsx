@@ -1,6 +1,7 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
 import { AiFillTikTok } from "react-icons/ai";
-import { CiMail } from "react-icons/ci";
 import {
   FaFacebookSquare,
   FaFileDownload,
@@ -9,28 +10,16 @@ import {
   FaPhone,
   FaYoutubeSquare,
 } from "react-icons/fa";
-import { FiMail } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
-import {
-  IoCloseCircle,
-  IoCloseCircleOutline,
-  IoMailSharp,
-} from "react-icons/io5";
+import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { devBaseImgUrl } from "../helpers/functions-general";
-import { Form, Formik } from "formik";
-import ButtonSpinner from "./spinners/ButtonSpinner";
-import { InputText, InputTextArea } from "../helpers/FormInputs";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as Yup from "yup";
+import { InputText, InputTextArea } from "../helpers/FormInputs";
+import { devBaseImgUrl } from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
-import {
-  setIsAdd,
-  setMessage,
-  setSuccess,
-  setValidate,
-} from "../store/StoreAction";
+import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
+import ButtonSpinner from "./spinners/ButtonSpinner";
 
 const ModalContact = ({
   setModalContact = null,
@@ -69,7 +58,7 @@ const ModalContact = ({
       }
       // show error box
       if (!data.success) {
-        dispatch(setValidate(true));
+        dispatch(setError(true));
         dispatch(setMessage(data.error));
       }
     },
