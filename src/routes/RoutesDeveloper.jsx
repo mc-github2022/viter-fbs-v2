@@ -44,6 +44,7 @@ import PostByCategory from "../components/pages/website/postByCategory/PostByCat
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/WordPressPage";
 import Notification from "../components/pages/developer/notification/Notification";
 import SystemLogin from "../components/pages/access/developer/SystemLogin";
+import ForgetPassword from "../components/pages/access/developer/ForgetPassword";
 
 export const routesDeveloper = [
   {
@@ -223,7 +224,11 @@ export const routesDeveloper = [
     element: <Notification />,
   },
   {
-    path: `/${devNavUrl}/system/login`,
+    path: `/${devNavUrl}/system-login`,
     element: <SystemLogin />,
+  },
+  {
+    path: `/${devNavUrl}/system/forgot-password`,
+    element: <ForgetPassword />,
   },
 ];

@@ -4,7 +4,7 @@ import logo from "/img/logo.png";
 import { Form, Formik } from "formik";
 import { devNavUrl } from "../../../helpers/functions-general";
 
-const SystemLogin = () => {
+const ForgetPassword = () => {
   return (
     <div className="h-screen w-full flex justify-center">
       <div className="login w-full max-w-[380px] py-8 px-4 transYclamp rounded-md ">
@@ -17,14 +17,7 @@ const SystemLogin = () => {
         <Formik>
           <Form>
             <div className="input-wrapper">
-              <InputText label="Name" type="text" name="user_system_email" />
-            </div>
-            <div className="input-wrapper">
-              <InputText
-                label="Password"
-                type="text"
-                name="user_system_password"
-              />
+              <InputText label="Email" type="Email" name="user_system_email" />
             </div>
             <div className="flex items-center gap-1 pt-3 mb-4">
               <button
@@ -36,12 +29,12 @@ const SystemLogin = () => {
             </div>
             <div className="text-xs">
               <p>
-                Did you forgot your password?
+                Go back to
                 <a
-                  href={`${devNavUrl}/system/forgot-password`}
+                  href={`${devNavUrl}/system-login`}
                   className="text-primary ml-1"
                 >
-                  Forgot Password
+                  Login
                 </a>
               </p>
             </div>
@@ -64,4 +57,4 @@ const SystemLogin = () => {
     </div>
   );
 };
-export default SystemLogin;
+export default ForgetPassword;
