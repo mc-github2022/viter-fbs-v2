@@ -46,10 +46,10 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
   return (
     <div className=" fixed top-0 left-0 h-screen w-full flex justify-center items-center z-[999]">
       <div
-        className=" backdrop bg-black/55 h-full w-full absolute top-0 left-0 z-[-1] "
+        className=" backdrop bg-[black] opacity-[50] h-full w-full absolute top-0 left-0 z-[-1] "
         onClick={handleClose}
       ></div>
-      <div className="max-w-[450px] w-full bg-white rounded-md">
+      <div className="max-w-[450px] w-full bg-[white] rounded-md">
         <div className="flex items-center justify-between p-4 pb-2 ">
           <div></div>
           <h2 className="translate-y-2">
@@ -65,14 +65,14 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
           </h3>
           <div className="flex justify-center mt-5 gap-2">
             <button
-              className="inline-block rounded-md w-full px-5 py-2 bg-primary text-white"
+              className="inline-block rounded-md w-full px-5 py-2 bg-primary text-[white]"
               onClick={handleYes}
               disabled={mutation.isPending}
             >
               {mutation.isPending ? <ButtonSpinner /> : "Yes"}
             </button>
             <button
-              className="inline-block rounded-md w-full px-5 py-2 bg-gray-200 text-gray-800"
+              className="inline-block rounded-md w-full px-5 py-2 bg-[#e5e7eb] text-[#1f2937]"
               onClick={handleClose}
             >
               Cancel

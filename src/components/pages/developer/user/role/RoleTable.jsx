@@ -1,29 +1,28 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEdit, FaUserAltSlash } from "react-icons/fa";
-import { MdDelete, MdRestore } from "react-icons/md";
-import { useInView } from "react-intersection-observer";
+import { StoreContext } from "../../../../store/StoreContext";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
-import LoadMore from "../../../../partials/LoadMore";
-import SearchBar from "../../../../partials/SearchBar";
-import Status from "../../../../partials/Status";
-import ModalArchive from "../../../../partials/modals/ModalArchive";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import ModalRestore from "../../../../partials/modals/ModalRestore";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import NoData from "../../../../partials/spinners/NoData";
-import ServerError from "../../../../partials/spinners/ServerError";
-import TableLoading from "../../../../partials/spinners/TableLoading";
 import {
   setIsAdd,
   setIsArchive,
   setIsDelete,
   setIsRestore,
 } from "../../../../store/StoreAction";
-import { StoreContext } from "../../../../store/StoreContext";
-import { apiVersion } from "../../../../helpers/functions-general";
+import { useInView } from "react-intersection-observer";
+import ModalRestore from "../../../../partials/modals/ModalRestore";
+import ModalArchive from "../../../../partials/modals/ModalArchive";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import LoadMore from "../../../../partials/LoadMore";
+import { MdDelete, MdRestore } from "react-icons/md";
+import { FaArchive, FaEdit } from "react-icons/fa";
+import Status from "../../../../partials/Status";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+import NoData from "../../../../partials/spinners/NoData";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import SearchBar from "../../../../partials/SearchBar";
 
-const OtherUserTable = ({ setItemEdit }) => {
+const RoleTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -43,19 +42,13 @@ const OtherUserTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["user-other", onSearch, store.isSearch],
+    queryKey: ["role", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/${apiVersion}/user-other/search`, // search endpoint
-        `/${apiVersion}/user-other/page/${pageParam}`, // list endpoint
+        `/v1/role/search`, // search endpoint
+        `/v1/role/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
-        {
-          searchValue: search.current.value,
-          id: "",
-          role_code: "role_is_developer",
-          isFilter: false,
-        }, // search value
-        "post"
+        { searchValue: search.current.value, id: "" } // search value
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -75,22 +68,22 @@ const OtherUserTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.user_email);
-    setIsId(item.user_aid);
+    setIsData(item.user_role_name);
+    setIsId(item.user_role_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsData(item.user_email);
-    setIsId(item.user_aid);
+    setIsData(item.user_role_name);
+    setIsId(item.user_role_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item.user_email);
-    setIsId(item.user_aid);
+    setIsData(item.user_role_name);
+    setIsId(item.user_role_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
@@ -122,9 +115,8 @@ const OtherUserTable = ({ setItemEdit }) => {
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
               <th>Status</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
+              <th>Role Name</th>
+              <th>Role Description</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -148,20 +140,25 @@ const OtherUserTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
-                  <tr key={key} className="text-[14px]">
-                    <td className="pl-2 ">{counter++}</td>
+                  <tr key={key} className="place-content-start text-[14px]">
+                    <td className="pl-2 place-content-start">{counter++}</td>
                     <td>
-                      {item.user_is_active === 1 ? (
+                      {item.user_role_is_active === 1 ? (
                         <Status text="Active" />
                       ) : (
                         <Status text="Inactive" />
                       )}
                     </td>
-                    <td className="">{item.fullname}</td>
-                    <td className="">{item.user_email}</td>
-                    <td className="">{item.role_name}</td>
-                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0 mr-2">
-                      {item.user_is_active ? (
+                    <td className="place-content-start">
+                      {item.user_role_name}
+                    </td>
+                    <td>
+                      <p className="line-clamp-5">
+                        {item.user_role_description}
+                      </p>
+                    </td>
+                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                      {item.user_role_is_active ? (
                         <>
                           <button
                             className="tooltip-action-table"
@@ -175,7 +172,7 @@ const OtherUserTable = ({ setItemEdit }) => {
                             data-tooltip="Archive"
                             onClick={() => handleArchive(item)}
                           >
-                            <FaUserAltSlash className=" text-gray-600 text-[10px]" />
+                            <FaArchive className=" text-gray-600 text-[14px]" />
                           </button>
                         </>
                       ) : (
@@ -185,7 +182,7 @@ const OtherUserTable = ({ setItemEdit }) => {
                             data-tooltip="Restore"
                             onClick={() => handleRestore(item)}
                           >
-                            <MdRestore className="text-gray-600" />
+                            <MdRestore className="text-gray-600 text-[18px]" />
                           </button>
                           <button
                             className="tooltip-action-table"
@@ -219,16 +216,16 @@ const OtherUserTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"user-other"}
-          mysqlEndpoint={`/${apiVersion}/user-other/${id}`}
+          queryKey={"role"}
+          mysqlEndpoint={`/v1/role/${id}`}
           item={isData}
         />
       )}
       {store.isArchive && (
         <ModalArchive
           setIsArchive={setIsArchive}
-          queryKey={"user-other"}
-          mysqlEndpoint={`/${apiVersion}/user-other/active/${id}`}
+          queryKey={"role"}
+          mysqlEndpoint={`/v1/role/active/${id}`}
           item={isData}
           archive={isArchiving}
         />
@@ -236,8 +233,8 @@ const OtherUserTable = ({ setItemEdit }) => {
       {store.isRestore && (
         <ModalRestore
           setIsRestore={setIsRestore}
-          queryKey={"user-other"}
-          mysqlEndpoint={`/${apiVersion}/user-other/active/${id}`}
+          queryKey={"role"}
+          mysqlEndpoint={`/v1/role/active/${id}`}
           item={isData}
         />
       )}
@@ -245,4 +242,4 @@ const OtherUserTable = ({ setItemEdit }) => {
   );
 };
 
-export default OtherUserTable;
+export default RoleTable;

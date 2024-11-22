@@ -1,24 +1,24 @@
-import React from "react";
-import * as Yup from "yup";
-import { StoreContext } from "../../../../store/StoreContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import React from "react";
+import { GrFormClose } from "react-icons/gr";
+import * as Yup from "yup";
+import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
-import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import {
-  InputSelect,
-  InputText,
-  InputTextArea,
-} from "../../../../helpers/FormInputs";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import { StoreContext } from "../../../../store/StoreContext";
+import { queryData } from "../../../../helpers/queryData";
 
-const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
+const ModalAddRole = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  // const [roleName, setRoleName] = React.useState(
+  //   itemEdit ? itemEdit.user_role_name : ""
+  // );
 
   const handleClose = () => {
     setTimeout(() => {
@@ -32,13 +32,13 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/developer/${itemEdit.events_activities_aid}` // update
-          : `/v1/developer`, // create
+          ? `/v1/role/${itemEdit.user_role_aid}` // update
+          : `/v1/role`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["developer"] });
+      queryClient.invalidateQueries({ queryKey: ["role"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -52,37 +52,24 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
     },
   });
 
-  // const activeRole = roleData?.data.filter(
-  //   (role) =>
-  //     role.user_role_is_active === 1 &&
-  //     role.user_role_name.toLowerCase() !== "developer"
-  // );
-
   const initVal = {
-    events_activities_aid: itemEdit ? itemEdit.events_activities_aid : "",
-    events_activities_category: itemEdit
-      ? itemEdit.events_activities_category
-      : "",
-    events_activities_title: itemEdit ? itemEdit.events_activities_title : "",
-    events_activities_slug: itemEdit ? itemEdit.events_activities_slug : "",
-    events_activities_date: itemEdit ? itemEdit.events_activities_date : "",
-    events_activities_description: itemEdit
-      ? itemEdit.events_activities_description
-      : "",
-    events_activities_img: itemEdit ? itemEdit.events_activities_img : "",
+    user_role_aid: itemEdit ? itemEdit.user_role_aid : "",
+    user_role_name: itemEdit ? itemEdit.user_role_name : "",
+    user_role_description: itemEdit ? itemEdit.user_role_description : "",
+    user_role_code: itemEdit ? itemEdit.user_role_code : "",
   };
 
   const yupSchema = Yup.object({
-    events_activities_slug: Yup.string().required("Required"),
+    user_role_name: Yup.string().required("Required"),
   });
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 w-[30rem] h-[18rem]`}
+      className={`transition-all ease-linear transform duration-200 w-[30rem] h-[20rem]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Developer</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Role</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -92,9 +79,15 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
+            const { user_role_name } = values;
+            const formattedRoleName = user_role_name // lowercase the role name and replace the space to underscore.
+              .toLowerCase()
+              .replace(/ /g, "_");
             const data = {
               ...values,
+              user_role_code: `role_is_${formattedRoleName}`,
             };
+            console.log(data);
             mutation.mutate(data);
           }}
         >
@@ -103,37 +96,21 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
               <Form>
                 <div className="input-wrapper">
                   <InputText
-                    label="Name"
+                    label="Role Name"
                     type="text"
-                    name="notification_name"
+                    name="user_role_name"
                     disabled={mutation.isPending}
                   />
                 </div>
                 <div className="input-wrapper">
-                  <InputText
-                    label="Email"
+                  <InputTextArea
+                    label="Role Description"
                     type="text"
-                    name="notification_email"
+                    name="user_role_description"
                     disabled={mutation.isPending}
                   />
                 </div>
 
-                <div className="input-wrapper">
-                  {/* {activeRole ? (
-                    activeRole.map((item, key) => (
-                      <InputText
-                        label="*Role"
-                        type="text"
-                        value={item.user_role_name}
-                        name="user_system_role_id"
-                        key={key}
-                        disabled
-                      />
-                    ))
-                  ) : (
-                    <span>No developer role found</span>
-                  )} */}
-                </div>
                 <div className="form-action">
                   <div className="form-btn">
                     <button
@@ -161,4 +138,4 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
   );
 };
 
-export default ModalAddDeveloper;
+export default ModalAddRole;

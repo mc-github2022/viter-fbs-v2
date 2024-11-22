@@ -50,6 +50,7 @@ import Developer from "../components/pages/developer/user/developer/Developer";
 import ForgotPasswordSuccess from "../components/pages/access/developer/ForgotPasswordSuccess";
 import CreatePasswordSuccess from "../components/pages/access/developer/CreatePasswordSuccess";
 import CreatePassword from "../components/pages/access/developer/CreatePassword";
+import Role from "../components/pages/developer/user/role/Role";
 
 export const routesDeveloper = [
   {
@@ -255,5 +256,9 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/user-developer`,
     element: <Developer />,
+  },
+  {
+    path: `${devNavUrl}/user-role`,
+    element: <Role />,
   },
 ];
