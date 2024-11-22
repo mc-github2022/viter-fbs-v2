@@ -81,7 +81,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full px-4 h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
@@ -112,7 +112,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                   Join our Team!
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p>
@@ -198,7 +198,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
           </div>
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px]">
-            <p className="mb-2 text-lg">
+            <p className="mb-2 text-sm md:text-lg">
               <b className="uppercase">{thePageName}</b> Application
             </p>
             <Formik

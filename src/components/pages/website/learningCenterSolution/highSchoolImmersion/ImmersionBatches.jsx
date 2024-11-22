@@ -196,7 +196,7 @@ const ImmersionBatches = () => {
                                 </div>
                               </div>
 
-                              <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                             </div>
                           </a>
                         </div>
@@ -244,7 +244,7 @@ const ImmersionBatches = () => {
                                   </h4>
                                 </div>
                               </div>
-                              <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                              <div className="bottomGradient bg-gradient-to-t from-dark !to-[transparent] h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                             </div>
                           </a>
                         </div>

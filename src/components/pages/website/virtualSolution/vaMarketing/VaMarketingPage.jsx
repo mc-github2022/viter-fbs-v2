@@ -15,6 +15,11 @@ import ModalError from "../../../../partials/modals/ModalError";
 const VaMarketingPage = () => {
   const [pageName, setPageName] = React.useState("va-marketing");
   const { store, dispatch } = React.useContext(StoreContext);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <>
       <Header pageName={pageName} />

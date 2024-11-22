@@ -88,7 +88,7 @@ const ModalContact = ({
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full h-screen px-4 top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
@@ -124,7 +124,7 @@ const ModalContact = ({
               thePageName === "Work Immersion" ||
               thePageName === "Continuing Study" ? (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
@@ -196,7 +196,7 @@ const ModalContact = ({
                 </ul>
               ) : (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
@@ -317,7 +317,7 @@ const ModalContact = ({
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
             {contactSubject ? (
-              <p className="mb-2 text-lg uppercase">
+              <p className="mb-2 text-sm md:text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
               </p>
             ) : (
