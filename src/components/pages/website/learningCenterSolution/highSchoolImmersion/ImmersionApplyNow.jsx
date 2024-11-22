@@ -1,15 +1,10 @@
 import React from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
-import ModalContact from "../../../../partials/ModalContact";
 import ModalLcssForm from "../../../../partials/ModalLcssForm";
 
 const LcssApplyNow = ({ pageName }) => {
-  const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
-  const handleForm = () => {
-    setContactForm(!contactForm);
-  };
 
   const [lcssForm, setLcssForm] = React.useState(false);
   const handleLcssForm = () => {
@@ -78,13 +73,7 @@ const LcssApplyNow = ({ pageName }) => {
         </div>
       </section>
       {lcssForm && (
-        <ModalLcssForm
-          // setModalContact={setModalContact}
-          thePageName={pageName}
-          lcssForm={lcssForm}
-          setLcssForm={setLcssForm}
-          // modalContact={modalContact}
-        />
+        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
       )}
     </>
   );

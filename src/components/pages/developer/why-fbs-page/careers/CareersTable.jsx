@@ -1,15 +1,14 @@
 import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import TableSpinner from "../../../../partials/spinners/TableSpinner";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import ServerError from "../../../../partials/spinners/ServerError";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const CareersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);

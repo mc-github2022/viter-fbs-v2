@@ -32,7 +32,8 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     PARTNER WITH US
                   </button>
                 </li>
@@ -40,7 +41,8 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                   <a
                     href={`${devBaseImgUrl}/FBS-Work-Immersion-Program-Proposal-2024.pdf`}
                     download
-                    className="flex items-center gap-2 font-bold text-primary">
+                    className="flex items-center gap-2 font-bold text-primary"
+                  >
                     Download Proposal <FaFileDownload />
                   </a>
                 </li>
@@ -113,6 +115,9 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"partner-with-us-lcs"}
+          emailSubject={"Parner with us - "}
         />
       )}
     </>
