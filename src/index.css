@@ -388,6 +388,10 @@ img.popPost {
   }
 }
 
+.transYclamp {
+  transform: translateY(clamp(5rem, 12vw, 8rem));
+}
+
 textarea {
   resize: none;
 }
