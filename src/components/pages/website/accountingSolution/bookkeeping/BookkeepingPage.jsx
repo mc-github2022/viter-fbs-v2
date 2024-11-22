@@ -14,6 +14,11 @@ import { StoreContext } from "../../../../store/StoreContext";
 const BookkeepingPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("bookkeeping");
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <>
       <Header pageName={pageName} />
