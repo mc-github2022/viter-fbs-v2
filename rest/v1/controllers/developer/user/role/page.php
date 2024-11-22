@@ -1,36 +1,37 @@
 <?php
 
-// set http header 
-require '../../../core/header.php';
+// set http header
+require '../../../../core/header.php';
 // use needed functions
-require '../../../core/functions.php';
+require '../../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../models/developer/notification/Notification.php';
+require '../../../../models/developer/users/role/Role.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$readNotification = new Notification($conn);
+$role = new Role($conn);
 // validate api key
+
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
 
     if (array_key_exists("start", $_GET)) {
-        $readNotification->notification_start = $_GET['start'];
-        $readNotification->notification_total = 15;
+        $role->role_start = $_GET['start'];
+        $role->role_total = 15;
 
-        checkLimitId($readNotification->notification_start, $readNotification->notification_total);
+        checkLimitId($role->role_start, $role->role_total);
 
-        $query = checkReadLimit($readNotification);
-        $total_result = checkReadAll($readNotification);
+        $query = checkReadLimit($role);
+        $total_result = checkReadAll($role);
         http_response_code(200);
 
         checkReadQuery(
             $query,
             $total_result,
-            $readNotification->notification_total,
-            $readNotification->notification_start
+            $role->role_total,
+            $role->role_start
         );
 
         // return 404 error if endpoint not available

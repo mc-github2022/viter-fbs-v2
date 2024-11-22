@@ -68,22 +68,22 @@ const RoleTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.user_role_name);
-    setIsId(item.user_role_aid);
+    setIsData(item.role_name);
+    setIsId(item.role_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsData(item.user_role_name);
-    setIsId(item.user_role_aid);
+    setIsData(item.role_name);
+    setIsId(item.role_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item.user_role_name);
-    setIsId(item.user_role_aid);
+    setIsData(item.role_name);
+    setIsId(item.role_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
@@ -143,22 +143,18 @@ const RoleTable = ({ setItemEdit }) => {
                   <tr key={key} className="place-content-start text-[14px]">
                     <td className="pl-2 place-content-start">{counter++}</td>
                     <td>
-                      {item.user_role_is_active === 1 ? (
+                      {item.role_is_active === 1 ? (
                         <Status text="Active" />
                       ) : (
                         <Status text="Inactive" />
                       )}
                     </td>
-                    <td className="place-content-start">
-                      {item.user_role_name}
-                    </td>
+                    <td className="place-content-start">{item.role_name}</td>
                     <td>
-                      <p className="line-clamp-5">
-                        {item.user_role_description}
-                      </p>
+                      <p className="line-clamp-5">{item.role_description}</p>
                     </td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      {item.user_role_is_active ? (
+                      {item.role_is_active ? (
                         <>
                           <button
                             className="tooltip-action-table"
