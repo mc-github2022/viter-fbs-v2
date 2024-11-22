@@ -170,7 +170,7 @@ const EventsAndAct = () => {
                             </h4>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[200px] md:h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>
@@ -213,7 +213,7 @@ const EventsAndAct = () => {
                             </h4>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>
@@ -247,7 +247,7 @@ const EventsAndAct = () => {
                             </h4>
                           </div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                        <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                       </div>
                     </Link>
                   </div>
