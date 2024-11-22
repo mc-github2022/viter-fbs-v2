@@ -87,7 +87,7 @@ const ModalReset = ({
               <div className="text-sm flex gap-2">
                 <button
                   type="submit"
-                  className="btn-modal-submit"
+                  className="text-sm btn-modal-submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
@@ -95,7 +95,7 @@ const ModalReset = ({
                 </button>
                 <button
                   type="reset"
-                  className="btn-modal-cancel"
+                  className="text-sm btn-modal-cancel"
                   onClick={handleClose}
                   disabled={mutation.isLoading}
                 >

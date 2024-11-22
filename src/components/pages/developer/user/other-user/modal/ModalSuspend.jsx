@@ -103,7 +103,7 @@ const ModalSuspend = ({
               <div className="flex gap-2">
                 <button
                   type="submit"
-                  className="btn-modal-submit"
+                  className="text-sm btn-modal-submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
@@ -111,7 +111,7 @@ const ModalSuspend = ({
                 </button>
                 <button
                   type="reset"
-                  className="btn-modal-cancel"
+                  className="text-sm btn-modal-cancel"
                   onClick={handleClose}
                   disabled={mutation.isPending}
                 >

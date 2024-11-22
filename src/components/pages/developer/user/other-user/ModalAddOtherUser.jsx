@@ -143,14 +143,14 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                 <div className="form-action">
                   <div className="form-btn">
                     <button
-                      className="btn-modal-submit"
+                      className="text-sm btn-modal-submit"
                       type="submit"
                       disabled={mutation.isPending}
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
                     </button>
                     <button
-                      className="btn-modal-cancel"
+                      className="text-sm btn-modal-cancel"
                       type="button"
                       onClick={handleClose}
                     >
