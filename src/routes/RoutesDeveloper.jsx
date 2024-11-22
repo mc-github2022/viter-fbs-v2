@@ -43,6 +43,7 @@ import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTes
 import PostByCategory from "../components/pages/website/postByCategory/PostByCategory";
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/WordPressPage";
 import Notification from "../components/pages/developer/notification/Notification";
+import SystemLogin from "../components/pages/access/developer/SystemLogin";
 import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
 import Developer from "../components/pages/developer/user/developer/Developer";
 
@@ -222,6 +223,10 @@ export const routesDeveloper = [
   {
     path: `${devNavUrl}/notification`,
     element: <Notification />,
+  },
+  {
+    path: `/${devNavUrl}/system/login`,
+    element: <SystemLogin />,
   },
   {
     path: `${devNavUrl}/other-user`,

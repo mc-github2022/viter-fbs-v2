@@ -82,13 +82,13 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed px-4 w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -113,7 +113,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   Join our Team!
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+              <ul className=" text-sm [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p>
@@ -130,16 +130,20 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   <p>(+63) 927 168 6810</p>
                 </li>
                 <li>
-                  <div className="text-xs md:text-sm">
+                  <div className="text-xs md:text-sm  ">
                     <div className="mb-4">
                       <h3 className="font-semibold">Human Resource Manager</h3>
                       <p>Mrs. Rhoda Beloso</p>
-                      <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                      <p className="truncate">
+                        rhoda.beloso@frontlinebusiness.com.ph
+                      </p>
                     </div>
                     <div className="mb-8">
                       <h3 className="font-semibold">Human Resource Staff</h3>
                       <p>Mrs. Kennie Deriquito</p>
-                      <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                      <p className="truncate">
+                        kennie.deriquito@frontlinebusiness.com.ph
+                      </p>
                     </div>
                   </div>
                 </li>
