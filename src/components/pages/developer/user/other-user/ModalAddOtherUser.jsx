@@ -29,7 +29,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/${apiVersion}/user-other/${itemEdit.user_aid}` // update
+          ? `/${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
           : `/${apiVersion}/user-other`, // create
         itemEdit ? "put" : "post",
         values
@@ -55,18 +55,18 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   )[0]["role_aid"];
 
   const initVal = {
-    user_fname: itemEdit ? itemEdit.user_fname : "",
-    user_lname: itemEdit ? itemEdit.user_lname : "",
-    user_email: itemEdit ? itemEdit.user_email : "",
-    user_role_id: itemEdit ? itemEdit.user_role_id : defaultRoleAid,
-    user_email_old: itemEdit ? itemEdit.user_email : "",
+    user_other_fname: itemEdit ? itemEdit.user_other_fname : "",
+    user_other_lname: itemEdit ? itemEdit.user_other_lname : "",
+    user_other_email: itemEdit ? itemEdit.user_other_email : "",
+    user_other_role_id: itemEdit ? itemEdit.user_other_role_id : defaultRoleAid,
+    user_other_email_old: itemEdit ? itemEdit.user_other_email : "",
   };
 
   const yupSchema = Yup.object({
-    user_lname: Yup.string().required("Required"),
-    user_fname: Yup.string().required("Required"),
-    user_role_id: Yup.string().required("Required"),
-    user_email: Yup.string().required("Required").email("Invalid email"),
+    user_other_lname: Yup.string().required("Required"),
+    user_other_fname: Yup.string().required("Required"),
+    user_other_role_id: Yup.string().required("Required"),
+    user_other_email: Yup.string().required("Required").email("Invalid email"),
   });
 
   return (
@@ -98,7 +98,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                   <InputText
                     label="First Name"
                     type="text"
-                    name="user_fname"
+                    name="user_other_fname"
                     disabled={mutation.isPending}
                   />
                 </div>
@@ -106,7 +106,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                   <InputText
                     label="Last Name"
                     type="text"
-                    name="user_lname"
+                    name="user_other_lname"
                     disabled={mutation.isPending}
                   />
                 </div>
@@ -114,7 +114,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                   <InputText
                     label="Email"
                     type="text"
-                    name="user_email"
+                    name="user_other_email"
                     disabled={mutation.isPending}
                   />
                 </div>
@@ -123,7 +123,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                   <InputSelect
                     label="Role"
                     type="text"
-                    name="user_role_id"
+                    name="user_other_role_id"
                     disabled={mutation.isPending}
                   >
                     <option hidden>--</option>

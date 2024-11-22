@@ -137,3 +137,12 @@ export const fetchFormData = async (url, fd = {}) => {
     return null; // Return null to indicate failure
   }
 };
+
+// get the url id parameter
+export const getUrlParam = (id) => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  // const param = urlParams.get(id);
+  // return param;
+  return urlParams;
+};

@@ -3,8 +3,8 @@ import { Navigate } from "react-router-dom";
 import { StoreContext } from "../../../store/StoreContext";
 import { devNavUrl, hexToRgb } from "../../helpers/functions-general";
 import { queryData } from "../../helpers/queryData";
-import PageNotFound from "../../partials/PageNotFound";
 import FetchingSpinner from "../../partials/spinners/FetchingSpinner";
+import PageNotFound from "@/components/partials/PageNotFound";
 
 const ProtectedRouteOther = ({ children }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -22,7 +22,8 @@ const ProtectedRouteOther = ({ children }) => {
       });
 
       const isUserKeyMatched =
-        login.success && login.data.user_key === login.data.user_other_password;
+        login.success &&
+        login.data.user_other_key === login.data.user_other_other_password;
 
       // check if the password from database is matched
       // to the password used to login
@@ -49,8 +50,8 @@ const ProtectedRouteOther = ({ children }) => {
 
         setIsAuth("123");
         setLoading(false);
-        delete login.data.user_other_password;
-        delete login.data.user_key;
+        delete login.data.user_other_other_password;
+        delete login.data.user_other_key;
         delete login.data.role_description;
         delete login.data.role_created;
         delete login.data.role_datetime;

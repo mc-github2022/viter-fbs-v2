@@ -23,7 +23,7 @@ const CreatePasswordSuccess = () => {
         <div className="text-xs flex justify-center">
           <p>
             <a
-              href={`${devNavUrl}/system-login`}
+              href={`${devNavUrl}/login`}
               className="text-primary ml-1 underline"
             >
               Go to Login

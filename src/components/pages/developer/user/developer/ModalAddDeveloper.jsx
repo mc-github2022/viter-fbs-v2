@@ -54,8 +54,8 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
 
   // const activeRole = roleData?.data.filter(
   //   (role) =>
-  //     role.user_role_is_active === 1 &&
-  //     role.user_role_name.toLowerCase() !== "developer"
+  //     role.user_other_role_is_active === 1 &&
+  //     role.user_other_role_name.toLowerCase() !== "developer"
   // );
 
   const initVal = {
@@ -124,8 +124,8 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
                       <InputText
                         label="*Role"
                         type="text"
-                        value={item.user_role_name}
-                        name="user_system_role_id"
+                        value={item.user_other_role_name}
+                        name="user_other_system_role_id"
                         key={key}
                         disabled
                       />

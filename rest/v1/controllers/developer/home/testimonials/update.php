@@ -23,8 +23,8 @@ if (array_key_exists("home_testimonialid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_home_testimonial_fname_old = checkIndex($data, 'user_home_testimonial_fname_old');
-  // compareName($home_testimonial, $user_home_testimonial_fname_old, $home_testimonial->user_home_testimonial_fname);
+  // $user_other_home_testimonial_fname_old = checkIndex($data, 'user_other_home_testimonial_fname_old');
+  // compareName($home_testimonial, $user_other_home_testimonial_fname_old, $home_testimonial->user_other_home_testimonial_fname);
 
   // update
   $query = checkUpdate($home_testimonial);

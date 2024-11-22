@@ -246,7 +246,7 @@ export const routesDeveloper = [
     element: <CreatePasswordSuccess />,
   },
   {
-    path: `/${devNavUrl}/system/create-password`,
+    path: `/${devNavUrl}/create-password`,
     element: <CreatePassword />,
   },
   {

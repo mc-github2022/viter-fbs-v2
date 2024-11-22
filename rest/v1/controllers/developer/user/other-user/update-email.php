@@ -19,8 +19,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     if (array_key_exists("userkey", $_GET)) {
         // get data
-        $user->user_key = $_GET['userkey'];
-        $user->user_datetime = date("Y-m-d H:i:s");
+        $user->user_other_key = $_GET['userkey'];
+        $user->user_other_datetime = date("Y-m-d H:i:s");
 
         // check if email exist
         $readKey = $user->readKeyChangeEmail();
@@ -32,7 +32,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         if ($readKey->rowCount() > 0) {
             $row = $readKey->fetch(PDO::FETCH_ASSOC);
             extract($row);
-            $user->user_email = $user_email_new;
+            $user->user_other_email = $user_other_email_new;
             // update
             $query = checkUpdateEmailForUser($user);
             returnSuccess($user, "System user", $query);

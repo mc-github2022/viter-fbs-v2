@@ -27,8 +27,8 @@ if (array_key_exists("home_insightsid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_home_insights_fname_old = checkIndex($data, 'user_home_insights_fname_old');
-  // compareName($home_insights, $user_home_insights_fname_old, $home_insights->user_home_insights_fname);
+  // $user_other_home_insights_fname_old = checkIndex($data, 'user_other_home_insights_fname_old');
+  // compareName($home_insights, $user_other_home_insights_fname_old, $home_insights->user_other_home_insights_fname);
 
   // update
   $query = checkUpdate($home_insights);

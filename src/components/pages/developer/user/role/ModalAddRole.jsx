@@ -16,9 +16,6 @@ import { queryData } from "../../../../helpers/queryData";
 
 const ModalAddRole = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  // const [roleName, setRoleName] = React.useState(
-  //   itemEdit ? itemEdit.user_role_name : ""
-  // );
 
   const handleClose = () => {
     setTimeout(() => {
@@ -32,7 +29,7 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/role/${itemEdit.user_role_aid}` // update
+          ? `/v1/role/${itemEdit.role_aid}` // update
           : `/v1/role`, // create
         itemEdit ? "put" : "post",
         values
@@ -53,14 +50,16 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
   });
 
   const initVal = {
-    user_role_aid: itemEdit ? itemEdit.user_role_aid : "",
-    user_role_name: itemEdit ? itemEdit.user_role_name : "",
-    user_role_description: itemEdit ? itemEdit.user_role_description : "",
-    user_role_code: itemEdit ? itemEdit.user_role_code : "",
+    role_aid: itemEdit ? itemEdit.role_aid : "",
+    role_name: itemEdit ? itemEdit.role_name : "",
+    role_description: itemEdit ? itemEdit.role_description : "",
+    role_code: itemEdit ? itemEdit.role_code : "",
+
+    role_name_old: itemEdit ? itemEdit.role_name : "",
   };
 
   const yupSchema = Yup.object({
-    user_role_name: Yup.string().required("Required"),
+    role_name: Yup.string().required("Required"),
   });
 
   return (
@@ -79,15 +78,15 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
-            const { user_role_name } = values;
-            const formattedRoleName = user_role_name // lowercase the role name and replace the space to underscore.
+            const { role_name } = values;
+            // lowercase the role name and replace the space to underscore.
+            const formattedRoleName = role_name
               .toLowerCase()
               .replace(/ /g, "_");
             const data = {
               ...values,
-              user_role_code: `role_is_${formattedRoleName}`,
+              role_code: `role_is_${formattedRoleName}`,
             };
-            console.log(data);
             mutation.mutate(data);
           }}
         >
@@ -98,7 +97,7 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
                   <InputText
                     label="Role Name"
                     type="text"
-                    name="user_role_name"
+                    name="role_name"
                     disabled={mutation.isPending}
                   />
                 </div>
@@ -106,7 +105,7 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
                   <InputTextArea
                     label="Role Description"
                     type="text"
-                    name="user_role_description"
+                    name="role_description"
                     disabled={mutation.isPending}
                   />
                 </div>

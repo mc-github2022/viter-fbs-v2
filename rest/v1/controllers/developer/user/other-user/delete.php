@@ -6,9 +6,9 @@ $conn = checkDbConnection();
 $user = new UserOther($conn);
 
 if (array_key_exists("userid", $_GET)) {
-    $user->user_aid = $_GET['userid'];
+    $user->user_other_aid = $_GET['userid'];
 
-    checkId($user->user_aid);
+    checkId($user->user_other_aid);
     // delete
     $query = checkDelete($user);
     returnSuccess($user, "User", $query);

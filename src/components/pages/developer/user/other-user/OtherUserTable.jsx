@@ -75,22 +75,22 @@ const OtherUserTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.user_email);
-    setIsId(item.user_aid);
+    setIsData(item.user_other_email);
+    setIsId(item.user_other_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsData(item.user_email);
-    setIsId(item.user_aid);
+    setIsData(item.user_other_email);
+    setIsId(item.user_other_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item.user_email);
-    setIsId(item.user_aid);
+    setIsData(item.user_other_email);
+    setIsId(item.user_other_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
@@ -151,17 +151,17 @@ const OtherUserTable = ({ setItemEdit }) => {
                   <tr key={key} className="text-[14px]">
                     <td className="pl-2 ">{counter++}</td>
                     <td>
-                      {item.user_is_active === 1 ? (
+                      {item.user_other_is_active === 1 ? (
                         <Status text="Active" />
                       ) : (
                         <Status text="Inactive" />
                       )}
                     </td>
                     <td className="">{item.fullname}</td>
-                    <td className="">{item.user_email}</td>
+                    <td className="">{item.user_other_email}</td>
                     <td className="">{item.role_name}</td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0 mr-2">
-                      {item.user_is_active ? (
+                      {item.user_other_is_active ? (
                         <>
                           <button
                             className="tooltip-action-table"

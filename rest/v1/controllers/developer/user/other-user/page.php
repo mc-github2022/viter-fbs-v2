@@ -21,11 +21,11 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     if (array_key_exists("start", $_GET)) {
         // get data
-        $user->user_start = $_GET['start'];
-        $user->user_total = 10;
+        $user->user_other_start = $_GET['start'];
+        $user->user_other_total = 10;
         $user->role_code = $data['role_code'];
 
-        checkLimitId($user->user_start, $user->user_total);
+        checkLimitId($user->user_other_start, $user->user_other_total);
         $query = checkReadLimit($user);
         $total_result = checkReadAll($user);
         http_response_code(200);
@@ -33,8 +33,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         checkReadQuery(
             $query,
             $total_result,
-            $user->user_total,
-            $user->user_start
+            $user->user_other_total,
+            $user->user_other_start
         );
     }
     // return 404 error if endpoint not available

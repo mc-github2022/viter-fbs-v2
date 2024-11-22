@@ -19,7 +19,7 @@ $data = json_decode($body, true);
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     if (array_key_exists("userkey", $_GET)) {
-        $user->user_key = $_GET['userkey'];
+        $user->user_other_key = $_GET['userkey'];
         $query = checkReadKey($user);
         http_response_code(200);
         getQueriedData($query);

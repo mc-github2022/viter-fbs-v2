@@ -26,8 +26,8 @@ if (array_key_exists("industry_testimonialid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_industry_testimonial_fname_old = checkIndex($data, 'user_industry_testimonial_fname_old');
-  // compareName($industry_testimonial, $user_industry_testimonial_fname_old, $industry_testimonial->user_industry_testimonial_fname);
+  // $user_other_industry_testimonial_fname_old = checkIndex($data, 'user_other_industry_testimonial_fname_old');
+  // compareName($industry_testimonial, $user_other_industry_testimonial_fname_old, $industry_testimonial->user_other_industry_testimonial_fname);
 
   // update
   $query = checkUpdate($industry_testimonial);

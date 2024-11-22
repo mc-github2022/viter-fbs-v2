@@ -25,8 +25,8 @@ if (array_key_exists("events_activitiesid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_events_activities_fname_old = checkIndex($data, 'user_events_activities_fname_old');
-  // compareName($events_activities, $user_events_activities_fname_old, $events_activities->user_events_activities_fname);
+  // $user_other_events_activities_fname_old = checkIndex($data, 'user_other_events_activities_fname_old');
+  // compareName($events_activities, $user_other_events_activities_fname_old, $events_activities->user_other_events_activities_fname);
 
   // update
   $query = checkUpdate($events_activities);

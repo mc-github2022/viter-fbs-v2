@@ -66,11 +66,11 @@ RewriteRule ^notification-email/page/([0-9]+)$ controllers/developer/notificatio
 RewriteRule ^notification-email/search$ controllers/developer/notification/search.php [L] 
 
 # USER - ROLE
-RewriteRule ^role$ controllers/developer/role/role.php [L]
-RewriteRule ^role/([0-9]+)$ controllers/developer/role/role.php?roleId=$1 [L]
-RewriteRule ^role/active/([0-9]+)$ controllers/developer/role/active.php?roleId=$1 [L]
-RewriteRule ^role/page/([0-9]+)$ controllers/developer/role/page.php?start=$1 [L]
-RewriteRule ^role/search$ controllers/developer/role/search.php [L] 
+RewriteRule ^role$ controllers/developer/user/role/role.php [L]
+RewriteRule ^role/([0-9]+)$ controllers/developer/user/role/role.php?roleId=$1 [L]
+RewriteRule ^role/active/([0-9]+)$ controllers/developer/user/role/active.php?roleId=$1 [L]
+RewriteRule ^role/page/([0-9]+)$ controllers/developer/user/role/page.php?start=$1 [L]
+RewriteRule ^role/search$ controllers/developer/user/role/search.php [L] 
 
 ### SETTINGS USERS SYSTEM ###
 RewriteRule ^user-other$ controllers/developer/user/other-user/user-other.php [L]

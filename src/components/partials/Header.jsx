@@ -89,7 +89,7 @@ const Header = ({ pageName }) => {
             >
               <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
                 <li>
-                  <button>
+                  <button className="text-left">
                     <Link
                       to={`${devNavUrl}/`}
                       className={`${
