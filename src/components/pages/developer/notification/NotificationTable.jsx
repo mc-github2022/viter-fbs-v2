@@ -15,6 +15,7 @@ import { StoreContext } from "../../../store/StoreContext";
 import Status from "../../../partials/Status";
 import { purposeValue } from "./functions-notification";
 import LoadMore from "../../../partials/LoadMore";
+import { apiVersion } from "../../../helpers/functions-general";
 
 const NotificationTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -38,8 +39,8 @@ const NotificationTable = ({ setItemEdit }) => {
     queryKey: ["notification-email", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/notification-email/search`, // search endpoint
-        `/v1/notification-email/page/${pageParam}`, // list endpoint
+        `/${apiVersion}/notification-email/search`, // search endpoint
+        `/${apiVersion}/notification-email/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -176,7 +177,7 @@ const NotificationTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"notification-email"}
-          mysqlEndpoint={`/v1/notification-email/${id}`}
+          mysqlEndpoint={`/${apiVersion}/notification-email/${id}`}
           item={isData}
         />
       )}

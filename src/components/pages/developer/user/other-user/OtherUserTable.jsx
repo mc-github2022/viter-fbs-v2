@@ -1,26 +1,27 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
+import { FaEdit, FaUserAltSlash } from "react-icons/fa";
+import { MdDelete, MdRestore } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
+import LoadMore from "../../../../partials/LoadMore";
+import SearchBar from "../../../../partials/SearchBar";
+import Status from "../../../../partials/Status";
+import ModalArchive from "../../../../partials/modals/ModalArchive";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import ModalRestore from "../../../../partials/modals/ModalRestore";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../partials/spinners/TableLoading";
 import {
   setIsAdd,
   setIsArchive,
   setIsDelete,
   setIsRestore,
 } from "../../../../store/StoreAction";
-import SearchBar from "../../../../partials/SearchBar";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import ServerError from "../../../../partials/spinners/ServerError";
-import { FaArchive, FaEdit, FaUserAltSlash } from "react-icons/fa";
-import { MdDelete, MdRestore } from "react-icons/md";
-import LoadMore from "../../../../partials/LoadMore";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
 import { StoreContext } from "../../../../store/StoreContext";
-import Status from "../../../../partials/Status";
-import ModalArchive from "../../../../partials/modals/ModalArchive";
-import ModalRestore from "../../../../partials/modals/ModalRestore";
+import { apiVersion } from "../../../../helpers/functions-general";
 
 const OtherUserTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -42,13 +43,19 @@ const OtherUserTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["otheruser", onSearch, store.isSearch],
+    queryKey: ["user-other", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/otheruser/search`, // search endpoint
-        `/v1/otheruser/page/${pageParam}`, // list endpoint
+        `/${apiVersion}/user-other/search`, // search endpoint
+        `/${apiVersion}/user-other/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
-        { searchValue: search.current.value, id: "" } // search value
+        {
+          searchValue: search.current.value,
+          id: "",
+          role_code: "role_is_developer",
+          isFilter: false,
+        }, // search value
+        "post"
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -68,22 +75,22 @@ const OtherUserTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.events_activities_title);
-    setIsId(item.events_activities_aid);
+    setIsData(item.user_email);
+    setIsId(item.role_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsData(item.department_name);
-    setIsId(item.department_aid);
+    setIsData(item.user_email);
+    setIsId(item.role_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item.department_name);
-    setIsId(item.department_aid);
+    setIsData(item.user_email);
+    setIsId(item.role_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
@@ -141,26 +148,20 @@ const OtherUserTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
-                  <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}</td>
+                  <tr key={key} className="text-[14px]">
+                    <td className="pl-2 ">{counter++}</td>
                     <td>
-                      {item.department_is_active === 1 ? (
+                      {item.user_is_active === 1 ? (
                         <Status text="Active" />
                       ) : (
                         <Status text="Inactive" />
                       )}
                     </td>
-                    <td className="place-content-start">
-                      {item.events_activities_category}
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_title}
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_slug}
-                    </td>
-                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      {item.department_is_active ? (
+                    <td className="">{item.fullname}</td>
+                    <td className="">{item.user_email}</td>
+                    <td className="">{item.role_name}</td>
+                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0 mr-2">
+                      {item.user_is_active ? (
                         <>
                           <button
                             className="tooltip-action-table"
@@ -218,16 +219,16 @@ const OtherUserTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"otheruser"}
-          mysqlEndpoint={`/v1/otheruser/${id}`}
+          queryKey={"user-other"}
+          mysqlEndpoint={`/${apiVersion}/user-other/${id}`}
           item={isData}
         />
       )}
       {store.isArchive && (
         <ModalArchive
           setIsArchive={setIsArchive}
-          queryKey={"otheruser"}
-          mysqlEndpoint={`/v2/otheruser/active/${id}`}
+          queryKey={"user-other"}
+          mysqlEndpoint={`/v2/user-other/active/${id}`}
           item={isData}
           archive={isArchiving}
         />
@@ -235,8 +236,8 @@ const OtherUserTable = ({ setItemEdit }) => {
       {store.isRestore && (
         <ModalRestore
           setIsRestore={setIsRestore}
-          queryKey={"otheruser"}
-          mysqlEndpoint={`/v2/otheruser/active/${id}`}
+          queryKey={"user-other"}
+          mysqlEndpoint={`/v2/user-other/active/${id}`}
           item={isData}
         />
       )}

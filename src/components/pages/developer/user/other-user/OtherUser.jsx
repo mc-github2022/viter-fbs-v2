@@ -9,6 +9,7 @@ import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../partials/modals/ModalError";
 import Navigation from "../../../../partials/dashboard/Navigation";
 import useQueryData from "../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../helpers/functions-general";
 
 const OtherUser = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -19,15 +20,11 @@ const OtherUser = () => {
     setItemEdit(null);
   };
 
-  const {
-    isFetching,
-    error,
-    isLoading,
-    data: roleData,
-  } = useQueryData(
-    "/v1/role", // endpoint
-    "get", // method
-    "role" // key
+  const { data: roleData } = useQueryData(
+    `/${apiVersion}/user-other/role`, // endpoint
+    "post", // method
+    "user-other-role", // key
+    { role_code: "role_is_developer" }
   );
 
   return (
@@ -56,7 +53,11 @@ const OtherUser = () => {
       </section>
 
       {store.isAdd && (
-        <ModalAddOtherUser setIsAdd={setIsAdd} itemEdit={itemEdit} roleData={roleData}/>
+        <ModalAddOtherUser
+          setIsAdd={setIsAdd}
+          itemEdit={itemEdit}
+          roleData={roleData}
+        />
       )}
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

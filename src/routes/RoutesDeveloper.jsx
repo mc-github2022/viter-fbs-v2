@@ -44,8 +44,12 @@ import PostByCategory from "../components/pages/website/postByCategory/PostByCat
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/WordPressPage";
 import Notification from "../components/pages/developer/notification/Notification";
 import SystemLogin from "../components/pages/access/developer/SystemLogin";
+import ForgetPassword from "../components/pages/access/developer/ForgetPassword";
 import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
 import Developer from "../components/pages/developer/user/developer/Developer";
+import ForgotPasswordSuccess from "../components/pages/access/developer/ForgotPasswordSuccess";
+import CreatePasswordSuccess from "../components/pages/access/developer/CreatePasswordSuccess";
+import CreatePassword from "../components/pages/access/developer/CreatePassword";
 import Role from "../components/pages/developer/user/role/Role";
 
 export const routesDeveloper = [
@@ -226,8 +230,24 @@ export const routesDeveloper = [
     element: <Notification />,
   },
   {
-    path: `/${devNavUrl}/system/login`,
+    path: `/${devNavUrl}/system-login`,
     element: <SystemLogin />,
+  },
+  {
+    path: `/${devNavUrl}/system/forgot-password`,
+    element: <ForgetPassword />,
+  },
+  {
+    path: `/${devNavUrl}/system/forgot-password-success`,
+    element: <ForgotPasswordSuccess />,
+  },
+  {
+    path: `/${devNavUrl}/system/create-password-success`,
+    element: <CreatePasswordSuccess />,
+  },
+  {
+    path: `/${devNavUrl}/system/create-password`,
+    element: <CreatePassword />,
   },
   {
     path: `${devNavUrl}/other-user`,

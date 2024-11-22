@@ -216,8 +216,8 @@ function loginAccess(
     checkAccess();
 }
 
-// Token
-function token(
+// Token USER OTHER
+function tokenUser(
     $object,
     $token,
     $key
@@ -229,8 +229,7 @@ function token(
     if (!empty($token)) {
         try {
             $decoded = JWT::decode($token, $key, array('HS256'));
-            ($object->user_system_email = $decoded->data->email
-                or $object->user_other_email = $decoded->data->email);
+            $object->user_email = $decoded->data->email;
             $result = checkLogin($object);
             $row = $result->fetch(PDO::FETCH_ASSOC);
 
@@ -660,4 +659,19 @@ function console_log($output, $with_script_tags = true)
         $js_code = '<script>' . $js_code . '</script>';
     }
     echo $js_code;
+}
+
+function checkFilterByStatus($object)
+{
+    $query = $object->filterByStatus();
+    checkQuery($query, "Empty records. (filter by status)");
+    return $query;
+}
+
+// Read all
+function checkFilterByStatusAndSearch($object)
+{
+    $query = $object->filterByStatusAndSearch();
+    checkQuery($query, "Empty records. (filter by status and search)");
+    return $query;
 }

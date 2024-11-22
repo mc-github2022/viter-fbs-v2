@@ -10,6 +10,7 @@ import * as PiIcons from "react-icons/pi";
 import * as TiIcons from "react-icons/ti";
 import * as Yup from "yup";
 import { InputSelect, InputText } from "../../../helpers/FormInputs";
+import { apiVersion } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
 import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
@@ -28,22 +29,6 @@ const icons = {
 
 const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [icon, setIcon] = React.useState(
-    itemEdit ? itemEdit.special_offers_icons : ""
-  );
-
-  const Icon = icon ? icons[icon] : null;
-
-  const filteredIcons = Object.keys(icons).filter((iconKey) =>
-    iconKey.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  React.useEffect(() => {
-    if (itemEdit) {
-      setIcon(itemEdit.careers_icon);
-    }
-  }, [itemEdit]);
 
   const handleClose = () => {
     setTimeout(() => {
@@ -57,8 +42,8 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/notification-email/${itemEdit.notification_aid}` // update
-          : `/v1/notification-email`, // create
+          ? `/${apiVersion}/notification-email/${itemEdit.notification_aid}` // update
+          : `/${apiVersion}/notification-email`, // create
         itemEdit ? "put" : "post",
         values
       ),

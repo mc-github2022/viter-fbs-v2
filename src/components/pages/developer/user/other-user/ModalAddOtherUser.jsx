@@ -12,7 +12,8 @@ import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
 import { InputSelect, InputText } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
-
+import { queryData } from "../../../../helpers/queryData";
+import { apiVersion } from "../../../../helpers/functions-general";
 
 const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -24,19 +25,19 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   };
 
   const queryClient = useQueryClient();
-
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/otheruser/${itemEdit.events_activities_aid}` // update
-          : `/v1/otheruser`, // create
+          ? `/${apiVersion}/user-other/${itemEdit.user_aid}` // update
+          : `/${apiVersion}/user-other`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["otheruser"] });
+      queryClient.invalidateQueries({ queryKey: ["user-other"] });
       if (!data.success) {
+        console.log("error");
         dispatch(setError(true));
         dispatch(setMessage(data.error));
         dispatch(setSuccess(false));
@@ -49,33 +50,28 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
     },
   });
 
-  // const activeRole = roleData?.data.filter(
-  //   (role) =>
-  //     role.user_role_is_active === 1 &&
-  //     role.user_role_name.toLowerCase() !== "admin"
-  // );
+  const defaultRoleAid = roleData?.data.filter(
+    (role) => role.role_code === "role_is_admin"
+  )[0]["role_aid"];
 
   const initVal = {
-    events_activities_aid: itemEdit ? itemEdit.events_activities_aid : "",
-    events_activities_category: itemEdit
-      ? itemEdit.events_activities_category
-      : "",
-    events_activities_title: itemEdit ? itemEdit.events_activities_title : "",
-    events_activities_slug: itemEdit ? itemEdit.events_activities_slug : "",
-    events_activities_date: itemEdit ? itemEdit.events_activities_date : "",
-    events_activities_description: itemEdit
-      ? itemEdit.events_activities_description
-      : "",
-    events_activities_img: itemEdit ? itemEdit.events_activities_img : "",
+    user_fname: itemEdit ? itemEdit.user_fname : "",
+    user_lname: itemEdit ? itemEdit.user_lname : "",
+    user_email: itemEdit ? itemEdit.user_email : "",
+    user_role_id: itemEdit ? itemEdit.user_role_id : defaultRoleAid,
+    user_email_old: itemEdit ? itemEdit.user_email : "",
   };
 
   const yupSchema = Yup.object({
-    events_activities_slug: Yup.string().required("Required"),
+    user_lname: Yup.string().required("Required"),
+    user_fname: Yup.string().required("Required"),
+    user_role_id: Yup.string().required("Required"),
+    user_email: Yup.string().required("Required").email("Invalid email"),
   });
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 w-[30rem] h-[18rem]`}
+      className={`transition-all ease-linear transform duration-200 w-[45dvh] h-[37dvh]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -100,9 +96,17 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
               <Form>
                 <div className="input-wrapper">
                   <InputText
-                    label="Name"
+                    label="First Name"
                     type="text"
-                    name="notification_name"
+                    name="user_fname"
+                    disabled={mutation.isPending}
+                  />
+                </div>
+                <div className="input-wrapper">
+                  <InputText
+                    label="Last Name"
+                    type="text"
+                    name="user_lname"
                     disabled={mutation.isPending}
                   />
                 </div>
@@ -110,7 +114,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                   <InputText
                     label="Email"
                     type="text"
-                    name="notification_email"
+                    name="user_email"
                     disabled={mutation.isPending}
                   />
                 </div>
@@ -119,19 +123,21 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                   <InputSelect
                     label="Role"
                     type="text"
-                    name="notification_purpose"
+                    name="user_role_id"
                     disabled={mutation.isPending}
                   >
-                    <option hidden></option>
-                    {/* {activeRole.length === 0 ? (
-                      <option>No Data</option>
-                    ) : (
-                      activeRole?.map((item, key) => (
-                        <option value={item.user_role_aid} key={key}>
-                          {item.user_role_name}
-                        </option>
-                      ))
-                    )} */}
+                    <option hidden>--</option>
+                    <optgroup label="Select Role">
+                      {roleData?.count === 0 ? (
+                        <option>No Data</option>
+                      ) : (
+                        roleData?.data.map((item, key) => (
+                          <option value={item.role_aid} key={key}>
+                            {item.role_name}
+                          </option>
+                        ))
+                      )}
+                    </optgroup>
                   </InputSelect>
                 </div>
                 <div className="form-action">
