@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { devNavUrl } from "../helpers/functions-general";
 
 const PageNotFound = () => {
-  const currentRole = location.pathname.split("/")[1];
-
   return (
     <>
       <div className="flex items-center justify-center flex-col gap-2 h-[70dvh] p-5">
@@ -17,10 +15,7 @@ const PageNotFound = () => {
           You don't have access to this page or you enter the wrong path.
         </p>
         <p>Please check your URL</p>
-        <Link
-          to={`${devNavUrl}/${currentRole}/`}
-          className="underline text-primary"
-        >
+        <Link to={`${devNavUrl}/`} className="underline text-primary">
           Home
         </Link>
       </div>

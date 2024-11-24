@@ -19,6 +19,11 @@ const LcssPage = () => {
   const [contactSubject, setContactSubject] =
     React.useState("Contact Form: LCSS");
   const [pageName, setPageName] = React.useState("College OJT");
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <>
       <Header pageName={pageName} contactSubject={contactSubject} />

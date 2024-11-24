@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2024 at 11:28 AM
+-- Generation Time: Nov 22, 2024 at 09:00 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -319,7 +319,9 @@ CREATE TABLE `fbsv2_notification` (
 --
 
 INSERT INTO `fbsv2_notification` (`notification_aid`, `notification_is_active`, `notification_name`, `notification_email`, `notification_phone_no`, `notification_purpose`, `notification_created`, `notification_updated`) VALUES
-(2, 1, 'Zaicy Lumabas', 'cyrenemlumabas@gmail.com', '', 'get-started-home', '2024-11-21 17:07:31', '2024-11-21 17:07:54');
+(2, 1, 'Zaicy Lumabas', 'lourenisobel18@gmail.com', '', 'apply-now-default', '2024-11-21 17:07:31', '2024-11-22 09:58:27'),
+(3, 1, 'MC Bumagat', 'mark.bumagat@frontlinebusiness.com.ph', '', 'partner-with-us-default', '2024-11-22 07:53:55', '2024-11-22 09:58:23'),
+(4, 1, 'Cyrene Lumabas', 'cyrene.lumabas@frontlinebusiness.com.ph', '', 'get-started-default', '2024-11-22 07:54:28', '2024-11-22 09:58:20');
 
 -- --------------------------------------------------------
 
@@ -359,6 +361,29 @@ CREATE TABLE `fbsv2_pricing_services` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fbsv2_role`
+--
+
+CREATE TABLE `fbsv2_role` (
+  `role_aid` int(11) NOT NULL,
+  `role_is_active` tinyint(1) NOT NULL,
+  `role_name` varchar(20) NOT NULL,
+  `role_code` varchar(100) NOT NULL,
+  `role_description` text NOT NULL,
+  `role_created` varchar(20) NOT NULL,
+  `role_datetime` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fbsv2_role`
+--
+
+INSERT INTO `fbsv2_role` (`role_aid`, `role_is_active`, `role_name`, `role_code`, `role_description`, `role_created`, `role_datetime`) VALUES
+(7, 1, 'Admin', 'role_is_admin', 'Admin User', '2024-09-17 15:01:54', '2024-09-17 15:01:54');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fbsv2_special_offers`
 --
 
@@ -382,6 +407,33 @@ INSERT INTO `fbsv2_special_offers` (`special_offers_aid`, `special_offers_icons`
 (5, 'FaCalculator', 'Online Payroll System', '₱40 / Employee / Mo.', '/webapp-payroll', '0000-00-00 00:00:00', '2024-10-29 07:41:35'),
 (6, 'FaGlobe', 'One-Page Website', '30 Days Trial', '/web-singlepage', '2024-10-29 07:55:23', '2024-10-29 07:55:23'),
 (7, 'FaHeadphones', 'Virtual Assistant Service', '$8 / 40 Hours / Week', '/va-administrative', '0000-00-00 00:00:00', '2024-10-29 08:22:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fbsv2_user_other`
+--
+
+CREATE TABLE `fbsv2_user_other` (
+  `user_other_aid` int(11) NOT NULL,
+  `user_other_is_active` tinyint(1) NOT NULL,
+  `user_other_fname` varchar(50) NOT NULL,
+  `user_other_lname` varchar(50) NOT NULL,
+  `user_other_email` varchar(100) NOT NULL,
+  `user_other_email_new` varchar(100) NOT NULL,
+  `user_other_role_id` int(11) NOT NULL,
+  `user_other_key` varchar(255) NOT NULL,
+  `user_other_password` varchar(255) NOT NULL,
+  `user_other_datetime` varchar(20) NOT NULL,
+  `user_other_created` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fbsv2_user_other`
+--
+
+INSERT INTO `fbsv2_user_other` (`user_other_aid`, `user_other_is_active`, `user_other_fname`, `user_other_lname`, `user_other_email`, `user_other_email_new`, `user_other_role_id`, `user_other_key`, `user_other_password`, `user_other_datetime`, `user_other_created`) VALUES
+(6, 0, 'Cyrene', 'Lumabas', 'cyrene.lumabas@frontlinebusiness.com.ph', '', 7, '', '$2y$10$kBR21Wbs.edc9GdV.lfHH.uI7p0bfQELCgyr8roR1NSmryWmmkSJ.', '2024-11-22 15:58:27', '2024-11-22 14:26:00');
 
 -- --------------------------------------------------------
 
@@ -482,10 +534,22 @@ ALTER TABLE `fbsv2_pricing_services`
   ADD PRIMARY KEY (`pricing_services_aid`);
 
 --
+-- Indexes for table `fbsv2_role`
+--
+ALTER TABLE `fbsv2_role`
+  ADD PRIMARY KEY (`role_aid`);
+
+--
 -- Indexes for table `fbsv2_special_offers`
 --
 ALTER TABLE `fbsv2_special_offers`
   ADD PRIMARY KEY (`special_offers_aid`);
+
+--
+-- Indexes for table `fbsv2_user_other`
+--
+ALTER TABLE `fbsv2_user_other`
+  ADD PRIMARY KEY (`user_other_aid`);
 
 --
 -- Indexes for table `fbsv2_vid_testimonial`
@@ -543,7 +607,7 @@ ALTER TABLE `fbsv2_lcss_batch`
 -- AUTO_INCREMENT for table `fbsv2_notification`
 --
 ALTER TABLE `fbsv2_notification`
-  MODIFY `notification_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `notification_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_pricing`
@@ -558,10 +622,22 @@ ALTER TABLE `fbsv2_pricing_services`
   MODIFY `pricing_services_aid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `fbsv2_role`
+--
+ALTER TABLE `fbsv2_role`
+  MODIFY `role_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `fbsv2_special_offers`
 --
 ALTER TABLE `fbsv2_special_offers`
   MODIFY `special_offers_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `fbsv2_user_other`
+--
+ALTER TABLE `fbsv2_user_other`
+  MODIFY `user_other_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_vid_testimonial`

@@ -114,7 +114,7 @@ const RoleTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
-              <th>Status</th>
+              <th className=" w-[5rem]">Status</th>
               <th>Role Name</th>
               <th>Role Description</th>
               <th className="text-right">Actions</th>
@@ -141,7 +141,7 @@ const RoleTable = ({ setItemEdit }) => {
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
                   <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}</td>
+                    <td className="pl-2 place-content-start">{counter++}.</td>
                     <td>
                       {item.role_is_active === 1 ? (
                         <Status text="Active" />

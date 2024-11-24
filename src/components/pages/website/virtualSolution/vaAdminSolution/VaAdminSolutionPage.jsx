@@ -15,6 +15,11 @@ import ModalError from "../../../../partials/modals/ModalError";
 const VaAdminSolutionPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("va-administrative");
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <>
       <Header pageName={pageName} />

@@ -4,7 +4,6 @@ function getHtmlResetPassword(
   $password_link,
   $email,
   $key,
-
   $ROOT_DOMAIN,
   $IMAGES_URL
 ) {
@@ -43,7 +42,7 @@ function getHtmlResetPassword(
     <div style="padding: 10px 10px 0px">
       <div style="text-align: left">
         <img
-          src="' . $IMAGES_URL . '/fbs-lcss-logo-email.png"
+          src="' . $IMAGES_URL . '/fbs-logo.png"
           alt="lcss"
         />
       </div>

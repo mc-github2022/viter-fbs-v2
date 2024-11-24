@@ -1,22 +1,22 @@
 import React from "react";
 
 // local url
+// export const urlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2/public/img";
+
+// Online Demo url
+// export const urlPathFBSMarketingWebsite =
+//   "https://frontlinebusiness.com.ph/newsite";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2/public/img";
+
+// Online Demo url
 export const urlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2";
+  "https://frontlinebusiness.com.ph/newsite";
 export const imgUrlPathFBSMarketingWebsite =
   "http://localhost/react-vite/viter-fbs-v2/public/img";
-
-// Online Demo url
-// export const urlPathFBSMarketingWebsite =
-//   "https://frontlinebusiness.com.ph/newsite";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
-
-// Online Demo url
-// export const urlPathFBSMarketingWebsite =
-//   "https://frontlinebusiness.com.ph/newsite";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
@@ -27,6 +27,7 @@ export const devNavUrl = "/newsite";
 export const apiVersion = "/v1";
 
 export const UrlDeveloper = "developer";
+export const UrlAdmin = "admin";
 
 // dev key from thunder client
 export const devKey =
@@ -145,4 +146,30 @@ export const getUrlParam = (id) => {
   // const param = urlParams.get(id);
   // return param;
   return urlParams;
+};
+
+export const getDateNow = () => {
+  return new Date().toISOString("en", options("plain-date")).split("T")[0];
+};
+
+// Copyright year
+export const copyrightYear = () => {
+  return getDateNow().split("-")[0];
+};
+
+// storage after login
+export function setStorageRoute(jwt, isDev) {
+  localStorage.setItem("localfbstoken", JSON.stringify({ token: jwt, isDev }));
+}
+
+export const handleEscape = (handleClose) => {
+  React.useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.keyCode === 27) {
+        handleClose();
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  });
 };

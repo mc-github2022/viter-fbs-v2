@@ -1,15 +1,14 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEdit, FaUserAltSlash } from "react-icons/fa";
+import { FaEdit, FaKey, FaUserAltSlash } from "react-icons/fa";
 import { MdDelete, MdRestore } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
+import { apiVersion } from "../../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
 import LoadMore from "../../../../partials/LoadMore";
 import SearchBar from "../../../../partials/SearchBar";
 import Status from "../../../../partials/Status";
-import ModalArchive from "../../../../partials/modals/ModalArchive";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
-import ModalRestore from "../../../../partials/modals/ModalRestore";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
@@ -21,13 +20,16 @@ import {
   setIsRestore,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import { apiVersion } from "../../../../helpers/functions-general";
+import ModalReset from "./modal/ModalReset";
+import ModalSuspend from "./modal/ModalSuspend";
+import ModalRestore from "./modal/ModalRestore";
 
 const OtherUserTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
+  const [isReset, setIsReset] = React.useState(false);
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -95,6 +97,11 @@ const OtherUserTable = ({ setItemEdit }) => {
     setIsRestore(true);
   };
 
+  const handleReset = (item) => {
+    setIsReset(true);
+    setIsId(item.user_other_aid);
+    setIsData(item);
+  };
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
@@ -121,7 +128,7 @@ const OtherUserTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
-              <th>Status</th>
+              <th className=" w-[5rem]">Status</th>
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
@@ -149,7 +156,7 @@ const OtherUserTable = ({ setItemEdit }) => {
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
                   <tr key={key} className="text-[14px]">
-                    <td className="pl-2 ">{counter++}</td>
+                    <td className="pl-2 ">{counter++}.</td>
                     <td>
                       {item.user_other_is_active === 1 ? (
                         <Status text="Active" />
@@ -169,6 +176,14 @@ const OtherUserTable = ({ setItemEdit }) => {
                             onClick={() => handleEdit(item)}
                           >
                             <FaEdit className="text-gray-600 text-[16px]" />
+                          </button>
+                          <button
+                            type="button"
+                            className="btn-action-table tooltip-action-table"
+                            data-tooltip="Reset"
+                            onClick={() => handleReset(item)}
+                          >
+                            <FaKey />
                           </button>
                           <button
                             className="tooltip-action-table"
@@ -220,25 +235,41 @@ const OtherUserTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"user-other"}
-          mysqlEndpoint={`/${apiVersion}/user-other/${id}`}
+          mysqlEndpoint={`${apiVersion}/user-other/${id}`}
           item={isData}
         />
       )}
+
       {store.isArchive && (
-        <ModalArchive
-          setIsArchive={setIsArchive}
+        <ModalSuspend
+          mysqlApiArchive={`${apiVersion}/user-other/active/${id}`}
+          msg={"Are you sure you want to suspend this user?"}
+          successMsg={"Suspended succesfully."}
           queryKey={"user-other"}
-          mysqlEndpoint={`/${apiVersion}/user-other/active/${id}`}
-          item={isData}
-          archive={isArchiving}
+          email={isData}
         />
       )}
+
       {store.isRestore && (
         <ModalRestore
-          setIsRestore={setIsRestore}
+          mysqlApiRestore={`${apiVersion}/user-other/active/${id}`}
+          msg={"Are you sure you want to restore this user?"}
+          successMsg={"Restored succesfully."}
           queryKey={"user-other"}
-          mysqlEndpoint={`/${apiVersion}/user-other/active/${id}`}
-          item={isData}
+          setIsRestore={setIsRestore}
+        />
+      )}
+
+      {isReset && (
+        <ModalReset
+          mysqlApiReset={`${apiVersion}/user-other/reset`}
+          msg={"Are you sure you want to reset the password of this user?"}
+          successMsg={
+            "Reset succesfully. Please check your email to continue resetting password."
+          }
+          queryKey={"user-other"}
+          setIsReset={setIsReset}
+          dataItem={isData}
         />
       )}
     </>

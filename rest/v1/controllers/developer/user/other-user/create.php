@@ -25,7 +25,6 @@ $user->user_other_datetime = date("Y-m-d H:i:s");
 $password_link = "/create-password";
 // check email 
 isEmailExist($user, $user->user_other_email);
-$query = checkCreate($user);
 
 if ($query->rowCount() > 0) {
     $mailData = sendEmail(
@@ -34,12 +33,10 @@ if ($query->rowCount() > 0) {
         $user->user_other_email,
         $user->user_other_key
     );
-} else {
-    $user->user_other_aid = $user->lastInsertedId;
-    $query = checkDelete($user);
 }
 // create
 if ($mailData["mail_success"] == true) {
+    $query = checkCreate($user);
     returnSuccess($user, "User", $query);
 }
 

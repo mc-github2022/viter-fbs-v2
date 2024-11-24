@@ -177,7 +177,7 @@ const NotificationTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"notification-email"}
-          mysqlEndpoint={`/${apiVersion}/notification-email/${id}`}
+          mysqlEndpoint={`${apiVersion}/notification-email/${id}`}
           item={isData}
         />
       )}

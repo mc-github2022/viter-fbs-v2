@@ -15,6 +15,10 @@ import ModalError from "../../../../partials/modals/ModalError";
 const WordPressPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("cms");
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   
   return (
     <>
