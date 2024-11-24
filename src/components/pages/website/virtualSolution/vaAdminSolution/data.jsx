@@ -8,7 +8,7 @@ export const banner = [
       "Our Virtual Assistance Services provide reliable and efficient administrative support tailored to your needs. From managing schedules and coordinating communication to handling data, organizing documents, and supporting financial tasks, we ensure your daily operations run smoothly. Whether you need secretarial assistance, executive support, or help with project coordination, our team is here to optimize your workflow and free up your time for what matters most.",
     bannerBtnText: "PARTNER WITH US",
     bannerBtnLink: "Link",
-    bannerImage: "vabg.webp",
+    bannerImage: "VABG.webp",
   },
 ];
 
@@ -35,7 +35,7 @@ export const webAppOverview = [
   {
     subtitle: "Here's Why We're The",
     mainTitle: "Right Choice for Your VA Needs.",
-    webAppImage: "vaoverviewimage.jpg",
+    webAppImage: "vaOverviewImage.jpg",
     btnText: "Schedule A Demo",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Enhanced Efficiency and Productivity",
@@ -65,7 +65,7 @@ export const serviceInclusion = [
     ],
     btnText: "PARTNER WITH US TODAY",
     btnLink: "#link",
-    sectionImage: "vapartnerwithus.jpg",
+    sectionImage: "vaPartnerWithUs.jpg",
   },
 ];
 
