@@ -7,9 +7,18 @@ import { IoChevronDownSharp } from "react-icons/io5";
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
-  const [navOpen, setNavOpen] = React.useState("");
+  const [navName, setNavName] = React.useState("");
+  const [navHomeOpen, setNavOpen] = React.useState(false);
+  const [whyUsOpen, setwhyUsOpen] = React.useState(false);
+
   const handleNavOpen = (navTitle) => {
-    setNavOpen(navTitle);
+    setNavName(navTitle);
+    setNavOpen(!navHomeOpen);
+  };
+
+  const handleWhyUsOpen = (navTitle) => {
+    setNavName(navTitle);
+    setwhyUsOpen(!whyUsOpen);
   };
 
   return (
@@ -39,14 +48,20 @@ const Navigation = ({ menu, submenu }) => {
               >
                 <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Home</span>
-                  <IoChevronDownSharp />
+                  <IoChevronDownSharp
+                    className={`${
+                      navHomeOpen ? "" : "rotate-180"
+                    } transition-all`}
+                  />
                 </div>
               </li>
 
               <ul
                 className={`${
-                  navOpen === "home" ? "" : "h-0 overflow-hidden"
-                } submenu ml-5 my-2 text-[14px]`}
+                  navHomeOpen && navName === "home"
+                    ? "h-0 overflow-hidden"
+                    : "my-2"
+                } submenu ml-5  text-[14px]`}
               >
                 <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
                   <li
@@ -144,21 +159,32 @@ const Navigation = ({ menu, submenu }) => {
               </li>
 
               <li
-                className={` flex justify-between items-center p-1
+                className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "whyFBS"
                       ? "text-[black] underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
+                onClick={() => handleWhyUsOpen("whyFbs")}
               >
                 <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Why FBS?</span>
-                  <IoChevronDownSharp />
+                  <IoChevronDownSharp
+                    className={`${
+                      whyUsOpen ? "" : "rotate-180"
+                    } transition-all`}
+                  />
                 </div>
               </li>
 
-              <ul className="submenu ml-5 my-1 text-[12px] ">
+              <ul
+                className={`${
+                  whyUsOpen && navName === "whyFbs"
+                    ? "h-0 overflow-hidden"
+                    : "my-2"
+                } submenu ml-5  text-[14px]`}
+              >
                 <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
