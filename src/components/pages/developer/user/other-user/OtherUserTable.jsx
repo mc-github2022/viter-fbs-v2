@@ -54,7 +54,6 @@ const OtherUserTable = ({ setItemEdit }) => {
         {
           searchValue: search.current.value,
           id: "",
-          role_code: "role_is_developer",
           isFilter: false,
         }, // search value
         "post"

@@ -1,4 +1,5 @@
 import React from "react";
+import { StoreContext } from "../store/StoreContext";
 
 // local url
 // export const urlPathFBSMarketingWebsite =
@@ -27,7 +28,6 @@ export const devNavUrl = "/newsite";
 export const apiVersion = "/v1";
 
 export const UrlDeveloper = "developer";
-export const UrlAdmin = "admin";
 
 // dev key from thunder client
 export const devKey =
@@ -172,4 +172,16 @@ export const handleEscape = (handleClose) => {
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   });
+};
+
+// get user type
+export const getUserType = () => {
+  const { store } = React.useContext(StoreContext);
+
+  let link =
+    store.credentials.data?.role === "admin"
+      ? ``
+      : `/${store.credentials.data?.role.toLowerCase().replaceAll(" ", "-")}`;
+
+  return link;
 };

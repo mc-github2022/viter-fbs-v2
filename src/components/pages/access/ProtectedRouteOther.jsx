@@ -23,8 +23,7 @@ const ProtectedRouteOther = ({ children }) => {
       });
 
       const isUserKeyMatched =
-        login.success &&
-        login.data.user_other_key === login.data.user_other_password;
+        login.success && login.data.user_key === login.data.user_other_password;
 
       // check if the password from database is matched
       // to the password used to login
@@ -56,8 +55,6 @@ const ProtectedRouteOther = ({ children }) => {
         delete login.data.role_description;
         delete login.data.role_created;
         delete login.data.role_datetime;
-        delete login.data.access_created;
-        delete login.data.access_datetime;
       }
       if (
         !login.success ||

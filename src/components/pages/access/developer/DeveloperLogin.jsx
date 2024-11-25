@@ -1,10 +1,11 @@
-import useLoginNavigate from "@/components/custom-hooks/useLoginNavigate";
+import useDeveloperLogin from "@/components/custom-hooks/useDeveloperLogin";
 import { InputText } from "@/components/helpers/FormInputs";
 import {
   apiVersion,
   copyrightYear,
   devNavUrl,
   setStorageRoute,
+  UrlDeveloper,
 } from "@/components/helpers/functions-general";
 import { checkRoleToRedirect } from "@/components/helpers/login-functions";
 import { queryData } from "@/components/helpers/queryData";
@@ -26,26 +27,26 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
-const OtherUserLogin = () => {
+const DeveloperLogin = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
   const [passwordShown, setPasswordShown] = React.useState(false);
   const navigate = useNavigate();
-  const { loginLoading } = useLoginNavigate(navigate);
+  const { loginLoading } = useDeveloperLogin(navigate);
 
   const mutation = useMutation({
     mutationFn: (values) =>
-      queryData(`${apiVersion}/user-other/login`, "post", values),
+      queryData(`${apiVersion}/user-developer/login`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["other"] });
+      queryClient.invalidateQueries({ queryKey: ["user-developer"] });
       // show error box
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
       } else {
         if (store.isLogin) {
-          delete data.data[0].user_other_password;
+          delete data.data[0].user_developer_password;
           delete data.data[0].role_description;
           delete data.data[0].role_created;
           delete data.data[0].role_datetime;
@@ -58,18 +59,19 @@ const OtherUserLogin = () => {
       }
     },
   });
-
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
 
   const initVal = {
-    user_other_email: "",
+    user_developer_email: "",
     password: "",
   };
 
   const yupSchema = Yup.object({
-    user_other_email: Yup.string().required("Required").email("Invalid email"),
+    user_developer_email: Yup.string()
+      .required("Required")
+      .email("Invalid email"),
     password: Yup.string().required("Required"),
   });
 
@@ -88,7 +90,7 @@ const OtherUserLogin = () => {
             </div>
 
             <div className="mb-4">
-              <h2 className="mb-0 mt-10 text-lg">LOGIN</h2>
+              <h2 className="mb-0 mt-10 text-lg">DEVELOPER LOGIN</h2>
             </div>
             <Formik
               initialValues={initVal}
@@ -104,7 +106,7 @@ const OtherUserLogin = () => {
                       <InputText
                         label="Email"
                         type="text"
-                        name="user_other_email"
+                        name="user_developer_email"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -115,7 +117,7 @@ const OtherUserLogin = () => {
                         name="password"
                         disabled={
                           mutation.isPending ||
-                          props.values.user_other_email === ""
+                          props.values.user_developer_email === ""
                         }
                       />
                       {props.values.password && (
@@ -143,7 +145,7 @@ const OtherUserLogin = () => {
             <p className="mt-5 text-xs">
               Did you forget your password?{" "}
               <Link
-                to={`${devNavUrl}/forgot-password`}
+                to={`${devNavUrl}/${UrlDeveloper}/forgot-password`}
                 className="w-full text-primary"
               >
                 <span>Forgot password</span>
@@ -191,4 +193,4 @@ const OtherUserLogin = () => {
   );
 };
 
-export default OtherUserLogin;
+export default DeveloperLogin;

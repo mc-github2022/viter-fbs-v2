@@ -12,14 +12,11 @@ import Notification from "../components/pages/developer/notification/Notificatio
 import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
 import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
-import Developer from "../components/pages/developer/user/developer/Developer";
 import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
-import Role from "../components/pages/developer/user/role/Role";
 import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTestimonial";
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
-import PostByCategory from "../components/pages/website/postByCategory/PostByCategory";
 
 export const routesAdmin = [
   {
