@@ -29,8 +29,8 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
-          : `/${apiVersion}/user-other`, // create
+          ? `${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
+          : `${apiVersion}/user-other`, // create
         itemEdit ? "put" : "post",
         values
       ),
@@ -71,7 +71,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 w-[45dvh] h-[37dvh]`}
+      className={`transition-all ease-linear transform duration-200 w-[45dvh] h-[44dvh]`}
       handleClose={handleClose}
     >
       <div className="modal-title">

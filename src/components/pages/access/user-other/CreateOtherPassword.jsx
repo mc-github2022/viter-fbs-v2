@@ -45,14 +45,14 @@ const CreateOtherPassword = () => {
     isFetching,
     data: otherKey,
   } = useQueryData(
-    `/v1/user-other/key/${paramKey}`, // endpoint
+    `${apiVersion}/user-other/key/${paramKey}`, // endpoint
     "get", // method
     "other-key" // key
   );
 
   const mutation = useMutation({
     mutationFn: (values) =>
-      queryData(`/${apiVersion}/user-other/password`, "post", values),
+      queryData(`${apiVersion}/user-other/password`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["other"] });

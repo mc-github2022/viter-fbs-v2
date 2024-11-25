@@ -8,6 +8,7 @@ import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import ConStudPage from "../components/pages/website/learningCenterSolution/continuingStudies/ConStudPage";
 import ImmersionPage from "../components/pages/website/learningCenterSolution/highSchoolImmersion/ImmersionPage";
+import PostByCategory from "../components/pages/website/postByCategory/PostByCategory";
 import SingplePage from "../components/pages/website/singlePage/SingplePage";
 import VaAdminSolutionPage from "../components/pages/website/virtualSolution/vaAdminSolution/VaAdminSolutionPage";
 import VaCreativeSupportPage from "../components/pages/website/virtualSolution/vaCreativeSupport/VaCreativeSupportPage";
@@ -145,5 +146,9 @@ export const RoutesWebsite = [
   {
     path: `${devNavUrl}/eula`,
     element: <EULA />,
+  },
+  {
+    path: `${devNavUrl}/post-by-category`,
+    element: <PostByCategory />,
   },
 ];

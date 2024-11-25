@@ -21,6 +21,7 @@ import TableLoading from "../../../../partials/spinners/TableLoading";
 import NoData from "../../../../partials/spinners/NoData";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import SearchBar from "../../../../partials/SearchBar";
+import { apiVersion } from "@/components/helpers/functions-general";
 
 const RoleTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -45,8 +46,8 @@ const RoleTable = ({ setItemEdit }) => {
     queryKey: ["role", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/role/search`, // search endpoint
-        `/v1/role/page/${pageParam}`, // list endpoint
+        `${apiVersion}/role/search`, // search endpoint
+        `${apiVersion}/role/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -213,7 +214,7 @@ const RoleTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"role"}
-          mysqlEndpoint={`/v1/role/${id}`}
+          mysqlEndpoint={`${apiVersion}/role/${id}`}
           item={isData}
         />
       )}
@@ -221,7 +222,7 @@ const RoleTable = ({ setItemEdit }) => {
         <ModalArchive
           setIsArchive={setIsArchive}
           queryKey={"role"}
-          mysqlEndpoint={`/v1/role/active/${id}`}
+          mysqlEndpoint={`${apiVersion}/role/active/${id}`}
           item={isData}
           archive={isArchiving}
         />
@@ -230,7 +231,7 @@ const RoleTable = ({ setItemEdit }) => {
         <ModalRestore
           setIsRestore={setIsRestore}
           queryKey={"role"}
-          mysqlEndpoint={`/v1/role/active/${id}`}
+          mysqlEndpoint={`${apiVersion}/role/active/${id}`}
           item={isData}
         />
       )}

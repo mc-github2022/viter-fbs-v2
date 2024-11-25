@@ -52,7 +52,7 @@ const CreateOtherPassword = () => {
 
   const mutation = useMutation({
     mutationFn: (values) =>
-      queryData(`/${apiVersion}/user-other/password`, "post", values),
+      queryData(`${apiVersion}/user-other/password`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["other"] });

@@ -42,8 +42,8 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/${apiVersion}/notification-email/${itemEdit.notification_aid}` // update
-          : `/${apiVersion}/notification-email`, // create
+          ? `${apiVersion}/notification-email/${itemEdit.notification_aid}` // update
+          : `${apiVersion}/notification-email`, // create
         itemEdit ? "put" : "post",
         values
       ),
