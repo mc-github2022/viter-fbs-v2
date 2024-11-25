@@ -11,13 +11,11 @@ const Navigation = ({ menu, submenu }) => {
   const [navHomeOpen, setNavOpen] = React.useState(false);
   const [whyUsOpen, setwhyUsOpen] = React.useState(false);
 
-  const handleNavOpen = (navTitle) => {
-    setNavName(navTitle);
+  const handleNavOpen = () => {
     setNavOpen(!navHomeOpen);
   };
 
-  const handleWhyUsOpen = (navTitle) => {
-    setNavName(navTitle);
+  const handleWhyUsOpen = () => {
     setwhyUsOpen(!whyUsOpen);
   };
 
@@ -44,7 +42,7 @@ const Navigation = ({ menu, submenu }) => {
                       : "text-[#9ca3af] "
                   }
                 `}
-                onClick={() => handleNavOpen("home")}
+                onClick={() => handleNavOpen()}
               >
                 <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Home</span>
@@ -58,9 +56,7 @@ const Navigation = ({ menu, submenu }) => {
 
               <ul
                 className={`${
-                  navHomeOpen && navName === "home"
-                    ? "h-0 overflow-hidden"
-                    : "my-2"
+                  navHomeOpen ? "h-0 overflow-hidden hidden" : "my-2"
                 } submenu ml-5  text-[14px]`}
               >
                 <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
@@ -166,7 +162,7 @@ const Navigation = ({ menu, submenu }) => {
                       : "text-[#9ca3af] "
                   }
                 `}
-                onClick={() => handleWhyUsOpen("whyFbs")}
+                onClick={() => handleWhyUsOpen()}
               >
                 <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Why FBS?</span>
@@ -180,9 +176,7 @@ const Navigation = ({ menu, submenu }) => {
 
               <ul
                 className={`${
-                  whyUsOpen && navName === "whyFbs"
-                    ? "h-0 overflow-hidden"
-                    : "my-2"
+                  whyUsOpen ? "h-0 overflow-hidden" : "my-2"
                 } submenu ml-5  text-[14px]`}
               >
                 <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
