@@ -17,7 +17,7 @@ const Navigation = ({ menu, submenu }) => {
         <div className="theLogo ">
           <div className="w-[130px] h-[44px] my-5">
             <img
-              src={`${devBaseImgUrl}${link}/logo.png`}
+              src={`${devBaseImgUrl}/logo.png`}
               alt="Frontline Business Solutions"
               className="object-cover"
             />

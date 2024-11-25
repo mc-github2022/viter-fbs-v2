@@ -28,7 +28,6 @@ const useDeveloperLogin = (navigate) => {
         setLoading(false);
       } else {
         setLoading(false);
-        // console.log("useIsLogin", login.data);
         checkRoleToRedirect(navigate, login.data);
       }
     };
@@ -43,7 +42,7 @@ const useDeveloperLogin = (navigate) => {
       setLoading(false);
       dispatch(setIsLogin(true));
     }
-  }, []);
+  }, [store.isLogin]);
 
   return { loginLoading };
 };
