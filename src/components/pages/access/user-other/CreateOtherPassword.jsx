@@ -25,6 +25,7 @@ import {
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import PageNotFound from "@/components/partials/PageNotFound";
+import LoginFooter from "../../../partials/LoginFooter";
 
 const CreateOtherPassword = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -240,8 +241,8 @@ const CreateOtherPassword = () => {
                           }
                           className="btn-modal-submit relative"
                         >
-                          {mutation.isPending && <ButtonSpinner />} Create
-                          Password
+                          {mutation.isPending && <ButtonSpinner />} FBS WEBSITE
+                          Create Password
                         </button>
                       </div>
                     </Form>
@@ -293,6 +294,7 @@ const CreateOtherPassword = () => {
                   </li>
                 </ul>
               </div>
+              <LoginFooter />
             </div>
           </div>
         </div>
