@@ -2,9 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { devBaseImgUrl, devNavUrl } from "../../helpers/functions-general";
 import { StoreContext } from "../../store/StoreContext";
+import { IoChevronDownSharp } from "react-icons/io5";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+
+  const [navOpen, setNavOpen] = React.useState("");
+  const handleNavOpen = (navTitle) => {
+    setNavOpen(navTitle);
+  };
 
   return (
     <>
@@ -20,22 +26,28 @@ const Navigation = ({ menu, submenu }) => {
         </div>
         <div>
           <nav>
-            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold [&>li]:mb-[15px] text-[14px]">
+            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold  text-[14px]">
               <li
-                className={` flex justify-between items-center p-1
+                className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "home"
                       ? "text-[black] underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
+                onClick={() => handleNavOpen("home")}
               >
-                <div className="nav flex items-center">
+                <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Home</span>
+                  <IoChevronDownSharp />
                 </div>
               </li>
 
-              <ul className="submenu ml-5 my-2 text-[14px] ">
+              <ul
+                className={`${
+                  navOpen === "home" ? "" : "h-0 overflow-hidden"
+                } submenu ml-5 my-2 text-[14px]`}
+              >
                 <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
@@ -140,8 +152,9 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <div className="nav flex items-center">
+                <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Why FBS?</span>
+                  <IoChevronDownSharp />
                 </div>
               </li>
 
