@@ -119,14 +119,6 @@ export const routesAdmin = [
     ),
   },
   {
-    path: `${devNavUrl}/post-by-category`,
-    element: (
-      <ProtectedRouteOther>
-        <PostByCategory />
-      </ProtectedRouteOther>
-    ),
-  },
-  {
     path: `${devNavUrl}/notification`,
     element: (
       <ProtectedRouteOther>

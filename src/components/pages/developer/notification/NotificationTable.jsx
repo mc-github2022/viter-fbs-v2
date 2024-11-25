@@ -134,7 +134,7 @@ const NotificationTable = ({ setItemEdit }) => {
                       {
                         purposeValue()?.filter(
                           (pitem) => item.notification_purpose === pitem.code
-                        )[0].name
+                        )[0]?.name
                       }
                     </td>
 

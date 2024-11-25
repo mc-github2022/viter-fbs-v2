@@ -73,10 +73,6 @@ export const routesDeveloper = [
     element: <BusinessRegPageCopy />,
   },
   {
-    path: `${devNavUrl}/${UrlDeveloper}/post-by-category`,
-    element: <PostByCategory />,
-  },
-  {
     path: `${devNavUrl}/${UrlDeveloper}/notification`,
     element: <Notification />,
   },
