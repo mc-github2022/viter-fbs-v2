@@ -39,8 +39,8 @@ const NotificationTable = ({ setItemEdit }) => {
     queryKey: ["notification-email", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/${apiVersion}/notification-email/search`, // search endpoint
-        `/${apiVersion}/notification-email/page/${pageParam}`, // list endpoint
+        `${apiVersion}/notification-email/search`, // search endpoint
+        `${apiVersion}/notification-email/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),

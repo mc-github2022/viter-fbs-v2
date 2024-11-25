@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2024 at 09:00 AM
+-- Generation Time: Nov 25, 2024 at 06:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -379,7 +379,8 @@ CREATE TABLE `fbsv2_role` (
 --
 
 INSERT INTO `fbsv2_role` (`role_aid`, `role_is_active`, `role_name`, `role_code`, `role_description`, `role_created`, `role_datetime`) VALUES
-(7, 1, 'Admin', 'role_is_admin', 'Admin User', '2024-09-17 15:01:54', '2024-09-17 15:01:54');
+(7, 1, 'Admin', 'role_is_admin', 'Admin User', '2024-09-17 15:01:54', '2024-09-17 15:01:54'),
+(8, 1, 'developer', 'role_is_developer', 'developer', '2024-09-17 15:01:54', '2024-09-17 15:01:54');
 
 -- --------------------------------------------------------
 
@@ -411,6 +412,34 @@ INSERT INTO `fbsv2_special_offers` (`special_offers_aid`, `special_offers_icons`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `fbsv2_user_developer`
+--
+
+CREATE TABLE `fbsv2_user_developer` (
+  `user_developer_aid` int(11) NOT NULL,
+  `user_developer_is_active` tinyint(1) NOT NULL,
+  `user_developer_fname` varchar(50) NOT NULL,
+  `user_developer_lname` varchar(50) NOT NULL,
+  `user_developer_email` varchar(100) NOT NULL,
+  `user_developer_email_new` varchar(100) NOT NULL,
+  `user_developer_role_id` int(11) NOT NULL,
+  `user_developer_key` varchar(255) NOT NULL,
+  `user_developer_password` varchar(255) NOT NULL,
+  `user_developer_datetime` varchar(20) NOT NULL,
+  `user_developer_created` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `fbsv2_user_developer`
+--
+
+INSERT INTO `fbsv2_user_developer` (`user_developer_aid`, `user_developer_is_active`, `user_developer_fname`, `user_developer_lname`, `user_developer_email`, `user_developer_email_new`, `user_developer_role_id`, `user_developer_key`, `user_developer_password`, `user_developer_datetime`, `user_developer_created`) VALUES
+(1, 1, 'Ramon', 'Plaza', 'ramon.plaza@frontlinebusiness.com.ph', 'cyrene.lumabas@frontlinebusiness.com.ph', 8, 'bc392118f3fa063536f05706f432e521dbff73e67ff41ffcb20ef0ee744c2aed', '$2y$10$kBR21Wbs.edc9GdV.lfHH.uI7p0bfQELCgyr8roR1NSmryWmmkSJ.', '2024-11-25 12:57:23', '2024-09-18 08:41:58'),
+(2, 1, 'Cyrene', 'Lumabas', 'cyrenemlumabas@gmail.com', '', 8, '427b498ae4fefe83d5d0c6a52654200793db6f867838e04b9c3ac232da0bb355', '$2y$10$C0UfMAfFjt1VwuhUg4p1uurQJVG4/Tdl4eZ4uDbsuzy8ZarsLt21W', '', '2024-11-25 12:19:35');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fbsv2_user_other`
 --
 
@@ -433,7 +462,7 @@ CREATE TABLE `fbsv2_user_other` (
 --
 
 INSERT INTO `fbsv2_user_other` (`user_other_aid`, `user_other_is_active`, `user_other_fname`, `user_other_lname`, `user_other_email`, `user_other_email_new`, `user_other_role_id`, `user_other_key`, `user_other_password`, `user_other_datetime`, `user_other_created`) VALUES
-(6, 0, 'Cyrene', 'Lumabas', 'cyrene.lumabas@frontlinebusiness.com.ph', '', 7, '', '$2y$10$kBR21Wbs.edc9GdV.lfHH.uI7p0bfQELCgyr8roR1NSmryWmmkSJ.', '2024-11-22 15:58:27', '2024-11-22 14:26:00');
+(6, 1, 'Cyrene', 'Lumabas', 'cyrene.lumabas@frontlinebusiness.com.ph', '', 7, '5198efa914e8ad174ae14fa7f9594313cadd4dbd0445036fe11e856f672ce513', '$2y$10$kBR21Wbs.edc9GdV.lfHH.uI7p0bfQELCgyr8roR1NSmryWmmkSJ.', '2024-11-25 09:23:29', '2024-11-22 14:26:00');
 
 -- --------------------------------------------------------
 
@@ -546,6 +575,12 @@ ALTER TABLE `fbsv2_special_offers`
   ADD PRIMARY KEY (`special_offers_aid`);
 
 --
+-- Indexes for table `fbsv2_user_developer`
+--
+ALTER TABLE `fbsv2_user_developer`
+  ADD PRIMARY KEY (`user_developer_aid`);
+
+--
 -- Indexes for table `fbsv2_user_other`
 --
 ALTER TABLE `fbsv2_user_other`
@@ -625,13 +660,19 @@ ALTER TABLE `fbsv2_pricing_services`
 -- AUTO_INCREMENT for table `fbsv2_role`
 --
 ALTER TABLE `fbsv2_role`
-  MODIFY `role_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `role_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_special_offers`
 --
 ALTER TABLE `fbsv2_special_offers`
   MODIFY `special_offers_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `fbsv2_user_developer`
+--
+ALTER TABLE `fbsv2_user_developer`
+  MODIFY `user_developer_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `fbsv2_user_other`

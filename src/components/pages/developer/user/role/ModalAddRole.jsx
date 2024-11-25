@@ -13,6 +13,7 @@ import {
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import { queryData } from "../../../../helpers/queryData";
+import { apiVersion } from "@/components/helpers/functions-general";
 
 const ModalAddRole = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -29,8 +30,8 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/role/${itemEdit.role_aid}` // update
-          : `/v1/role`, // create
+          ? `${apiVersion}/role/${itemEdit.role_aid}` // update
+          : `${apiVersion}/role`, // create
         itemEdit ? "put" : "post",
         values
       ),

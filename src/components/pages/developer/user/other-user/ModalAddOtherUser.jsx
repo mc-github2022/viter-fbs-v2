@@ -29,8 +29,8 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
-          : `/${apiVersion}/user-other`, // create
+          ? `${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
+          : `${apiVersion}/user-other`, // create
         itemEdit ? "put" : "post",
         values
       ),

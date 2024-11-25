@@ -1,39 +1,34 @@
 <?php
 
-// set http header
 require '../../../../core/header.php';
 // use needed functions
 require '../../../../core/functions.php';
+require 'functions.php';
 // use needed classes
-require '../../../../models/developer/users/user-other/UserOther.php';
+require '../../../../models/developer/users/developer/UserDeveloper.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$user = new UserOther($conn);
-// get payload
-$body = file_get_contents("php://input");
-$data = json_decode($body, true);
-
+$user_system = new UserDeveloper($conn);
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
-    checkPayload($data);
 
     if (array_key_exists("start", $_GET)) {
         // get data
-        $user->user_other_start = $_GET['start'];
-        $user->user_other_total = 10;
+        $user_system->user_developer_start = $_GET['start'];
+        $user_system->user_developer_total = 10;
 
-        checkLimitId($user->user_other_start, $user->user_other_total);
-        $query = checkReadLimit($user);
-        $total_result = checkReadAll($user);
+        checkLimitId($user_system->user_developer_start, $user_system->user_developer_total);
+        $query = checkReadLimit($user_system);
+        $total_result = checkReadAll($user_system);
         http_response_code(200);
 
         checkReadQuery(
             $query,
             $total_result,
-            $user->user_other_total,
-            $user->user_other_start
+            $user_system->user_developer_total,
+            $user_system->user_developer_start
         );
     }
     // return 404 error if endpoint not available

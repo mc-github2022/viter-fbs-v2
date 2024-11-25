@@ -1,32 +1,35 @@
-import React from "react";
-import { useInView } from "react-intersection-observer";
-import { StoreContext } from "../../../../store/StoreContext";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import React from "react";
+import { FaEdit, FaKey, FaUserAltSlash } from "react-icons/fa";
+import { MdDelete, MdRestore } from "react-icons/md";
+import { useInView } from "react-intersection-observer";
+import { apiVersion } from "../../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
+import LoadMore from "../../../../partials/LoadMore";
+import SearchBar from "../../../../partials/SearchBar";
+import Status from "../../../../partials/Status";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../partials/spinners/TableLoading";
 import {
   setIsAdd,
   setIsArchive,
   setIsDelete,
   setIsRestore,
 } from "../../../../store/StoreAction";
-import ModalRestore from "../../../../partials/modals/ModalRestore";
-import ModalArchive from "../../../../partials/modals/ModalArchive";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import LoadMore from "../../../../partials/LoadMore";
-import { MdDelete, MdRestore } from "react-icons/md";
-import { FaArchive, FaEdit, FaUserAltSlash } from "react-icons/fa";
-import Status from "../../../../partials/Status";
-import ServerError from "../../../../partials/spinners/ServerError";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import SearchBar from "../../../../partials/SearchBar";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalReset from "./modal/ModalReset";
+import ModalSuspend from "./modal/ModalSuspend";
+import ModalRestore from "./modal/ModalRestore";
 
 const DeveloperTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
+  const [isReset, setIsReset] = React.useState(false);
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -42,13 +45,18 @@ const DeveloperTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["developer", onSearch, store.isSearch],
+    queryKey: ["user-developer", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/developer/search`, // search endpoint
-        `/v1/developer/page/${pageParam}`, // list endpoint
+        `${apiVersion}/user-developer/search`, // search endpoint
+        `${apiVersion}/user-developer/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
-        { searchValue: search.current.value, id: "" } // search value
+        {
+          searchValue: search.current.value,
+          id: "",
+          isFilter: false,
+        }, // search value
+        "post"
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -68,26 +76,31 @@ const DeveloperTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.events_activities_title);
-    setIsId(item.events_activities_aid);
+    setIsData(item.user_developer_email);
+    setIsId(item.user_developer_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsData(item.department_name);
-    setIsId(item.department_aid);
+    setIsData(item.user_developer_email);
+    setIsId(item.user_developer_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item.department_name);
-    setIsId(item.department_aid);
+    setIsData(item.user_developer_email);
+    setIsId(item.user_developer_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
 
+  const handleReset = (item) => {
+    setIsReset(true);
+    setIsId(item.user_developer_aid);
+    setIsData(item);
+  };
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
@@ -114,7 +127,7 @@ const DeveloperTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
-              <th>Status</th>
+              <th className=" w-[5rem]">Status</th>
               <th>Name</th>
               <th>Email</th>
               <th className="text-right">Actions</th>
@@ -140,26 +153,19 @@ const DeveloperTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
-                  <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}</td>
+                  <tr key={key} className="text-[14px]">
+                    <td className="pl-2 ">{counter++}.</td>
                     <td>
-                      {item.department_is_active === 1 ? (
+                      {item.user_developer_is_active === 1 ? (
                         <Status text="Active" />
                       ) : (
                         <Status text="Inactive" />
                       )}
                     </td>
-                    <td className="place-content-start">
-                      {item.events_activities_category}
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_title}
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_slug}
-                    </td>
-                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      {item.department_is_active ? (
+                    <td className="">{item.fullname}</td>
+                    <td className="">{item.user_developer_email}</td>
+                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0 mr-2">
+                      {item.user_developer_is_active ? (
                         <>
                           <button
                             className="tooltip-action-table"
@@ -167,6 +173,14 @@ const DeveloperTable = ({ setItemEdit }) => {
                             onClick={() => handleEdit(item)}
                           >
                             <FaEdit className="text-gray-600 text-[16px]" />
+                          </button>
+                          <button
+                            type="button"
+                            className="btn-action-table tooltip-action-table"
+                            data-tooltip="Reset"
+                            onClick={() => handleReset(item)}
+                          >
+                            <FaKey />
                           </button>
                           <button
                             className="tooltip-action-table"
@@ -217,26 +231,42 @@ const DeveloperTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"otheruser"}
-          mysqlEndpoint={`/v1/otheruser/${id}`}
+          queryKey={"user-developer"}
+          mysqlEndpoint={`${apiVersion}/user-developer/${id}`}
           item={isData}
         />
       )}
+
       {store.isArchive && (
-        <ModalArchive
-          setIsArchive={setIsArchive}
-          queryKey={"otheruser"}
-          mysqlEndpoint={`/v2/otheruser/active/${id}`}
-          item={isData}
-          archive={isArchiving}
+        <ModalSuspend
+          mysqlApiArchive={`${apiVersion}/user-developer/active/${id}`}
+          msg={"Are you sure you want to suspend this user?"}
+          successMsg={"Suspended succesfully."}
+          queryKey={"user-developer"}
+          email={isData}
         />
       )}
+
       {store.isRestore && (
         <ModalRestore
+          mysqlApiRestore={`${apiVersion}/user-developer/active/${id}`}
+          msg={"Are you sure you want to restore this user?"}
+          successMsg={"Restored succesfully."}
+          queryKey={"user-developer"}
           setIsRestore={setIsRestore}
-          queryKey={"otheruser"}
-          mysqlEndpoint={`/v2/otheruser/active/${id}`}
-          item={isData}
+        />
+      )}
+
+      {isReset && (
+        <ModalReset
+          mysqlApiReset={`${apiVersion}/user-developer/reset`}
+          msg={"Are you sure you want to reset the password of this user?"}
+          successMsg={
+            "Reset succesfully. Please check your email to continue resetting password."
+          }
+          queryKey={"user-developer"}
+          setIsReset={setIsReset}
+          dataItem={isData}
         />
       )}
     </>

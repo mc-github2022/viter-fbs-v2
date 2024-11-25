@@ -48,13 +48,12 @@ const OtherUserTable = ({ setItemEdit }) => {
     queryKey: ["user-other", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/${apiVersion}/user-other/search`, // search endpoint
-        `/${apiVersion}/user-other/page/${pageParam}`, // list endpoint
+        `${apiVersion}/user-other/search`, // search endpoint
+        `${apiVersion}/user-other/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         {
           searchValue: search.current.value,
           id: "",
-          role_code: "role_is_developer",
           isFilter: false,
         }, // search value
         "post"

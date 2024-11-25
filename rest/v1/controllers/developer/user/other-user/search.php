@@ -13,8 +13,7 @@ $data = json_decode($body, true);
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
-    $user->user_other_search = $data["searchValue"];    // get data
-    $user->role_code = $data['role_code'];
+    $user->user_other_search = $data["searchValue"];    // get data 
 
     if ($data["isFilter"] == true) {
 

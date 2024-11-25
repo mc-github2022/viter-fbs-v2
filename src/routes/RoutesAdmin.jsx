@@ -1,7 +1,8 @@
 import ProtectedRouteOther from "@/components/pages/access/ProtectedRouteOther";
+import CreateOtherPassword from "@/components/pages/access/user-other/CreateOtherPassword";
+import OtherUserForgetPassword from "@/components/pages/access/user-other/OtherUserForgetPassword";
 import OtherUserLogin from "@/components/pages/access/user-other/OtherUserLogin";
 import { devNavUrl } from "../components/helpers/functions-general";
-import ForgetPassword from "../components/pages/access/developer/ForgetPassword";
 import Banner from "../components/pages/developer/dashHome/banner/Banner";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
@@ -11,15 +12,11 @@ import Notification from "../components/pages/developer/notification/Notificatio
 import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
 import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
-import Developer from "../components/pages/developer/user/developer/Developer";
 import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
-import Role from "../components/pages/developer/user/role/Role";
 import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTestimonial";
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
-import PostByCategory from "../components/pages/website/postByCategory/PostByCategory";
-import CreateOtherPassword from "@/components/pages/access/user-other/CreateOtherPassword";
 
 export const routesAdmin = [
   {
@@ -134,22 +131,22 @@ export const routesAdmin = [
       </ProtectedRouteOther>
     ),
   },
-  {
-    path: `${devNavUrl}/user-developer`,
-    element: (
-      <ProtectedRouteOther>
-        <Developer />
-      </ProtectedRouteOther>
-    ),
-  },
-  {
-    path: `${devNavUrl}/user-role`,
-    element: (
-      <ProtectedRouteOther>
-        <Role />
-      </ProtectedRouteOther>
-    ),
-  },
+  // {
+  //   path: `${devNavUrl}/user-developer`,
+  //   element: (
+  //     <ProtectedRouteOther>
+  //       <Developer />
+  //     </ProtectedRouteOther>
+  //   ),
+  // },
+  // {
+  //   path: `${devNavUrl}/user-role`,
+  //   element: (
+  //     <ProtectedRouteOther>
+  //       <Role />
+  //     </ProtectedRouteOther>
+  //   ),
+  // },
 
   // LOGIN PAGES
   // LOGIN PAGES
@@ -160,7 +157,7 @@ export const routesAdmin = [
   },
   {
     path: `${devNavUrl}/forgot-password`,
-    element: <ForgetPassword />,
+    element: <OtherUserForgetPassword />,
   },
   {
     path: `${devNavUrl}/create-password`,

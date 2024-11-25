@@ -1,10 +1,10 @@
+import DeveloperUserForgetPassword from "@/components/pages/access/developer/DeveloperUserForgetPassword";
 import {
   devNavUrl,
   UrlDeveloper,
 } from "../components/helpers/functions-general";
-import CreatePassword from "../components/pages/access/developer/CreatePassword";
-import ForgetPassword from "../components/pages/access/developer/ForgetPassword";
-import SystemLogin from "../components/pages/access/developer/SystemLogin";
+import { default as CreateDeveloperPassword } from "../components/pages/access/developer/CreateDeveloperPassword";
+import { default as DeveloperLogin } from "../components/pages/access/developer/DeveloperLogin";
 import Banner from "../components/pages/developer/dashHome/banner/Banner";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
@@ -21,83 +21,151 @@ import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTes
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
-import PostByCategory from "../components/pages/website/postByCategory/PostByCategory";
+import ProtectedRouteDeveloper from "@/components/pages/access/ProtectedRouteDeveloper";
 
 export const routesDeveloper = [
   {
     path: `${devNavUrl}/${UrlDeveloper}/home-insights`,
-    element: <Insights />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Insights />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/home-banner`,
-    element: <Banner />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Banner />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/home-testimonial`,
-    element: <Testimonial />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Testimonial />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/special-offers`,
-    element: <Services />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Services />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/events-activities`,
-    element: <EventsAndActivities />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <EventsAndActivities />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/whyFBS-careers`,
-    element: <Careers />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Careers />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/lcss-batches`,
-    element: <LcssBatches />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <LcssBatches />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/industry-testimonial`,
-    element: <IndustryTestimonial />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <IndustryTestimonial />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/vid-testimonial`,
-    element: <VidTestimonial />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <VidTestimonial />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/pricing`,
-    element: <PricingMenu />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <PricingMenu />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/pricing/list`,
-    element: <Pricing />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Pricing />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/pricing-copy`,
-    element: <BusinessRegPageCopy />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <BusinessRegPageCopy />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/notification`,
-    element: <Notification />,
-  },
-  {
-    path: `${devNavUrl}/${UrlDeveloper}/developer/login`,
-    element: <SystemLogin />,
-  },
-  {
-    path: `${devNavUrl}/${UrlDeveloper}/system/forgot-password`,
-    element: <ForgetPassword />,
-  },
-  {
-    path: `${devNavUrl}/${UrlDeveloper}/create-password`,
-    element: <CreatePassword />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Notification />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/other-user`,
-    element: <OtherUser />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <OtherUser />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/user-developer`,
-    element: <Developer />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Developer />
+      </ProtectedRouteDeveloper>
+    ),
   },
   {
     path: `${devNavUrl}/${UrlDeveloper}/user-role`,
-    element: <Role />,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Role />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+
+  // LOGIN PAGES
+  // LOGIN PAGES
+  // LOGIN PAGES
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/login`,
+    element: <DeveloperLogin />,
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/forgot-password`,
+    element: <DeveloperUserForgetPassword />,
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/create-password`,
+    element: <CreateDeveloperPassword />,
   },
 ];
