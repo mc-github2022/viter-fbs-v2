@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 import { FaDesktop } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { devNavUrl } from "../../helpers/functions-general";
+import { apiVersion, devNavUrl } from "../../helpers/functions-general";
+import useQueryData from "../../custom-hooks/useQueryData";
+import { setIsArchive } from "../../store/StoreAction";
+import { StoreContext } from "../../store/StoreContext";
+import ModalLogout from "../modals/ModalLogout";
 
 const DashboardNav = ({ menu }) => {
   const ref = React.useRef();
+  const { store, dispatch } = React.useContext(StoreContext);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [id, setIsId] = React.useState("");
+  const [isData, setIsData] = React.useState("");
+  const [isArchiving, setIsArchiving] = React.useState(false);
+  const [isLogout, setIsLogout] = React.useState(false);
+
+  const {
+    isFetching,
+    error,
+    isLoading,
+    data: userOtherData,
+  } = useQueryData(
+    `${apiVersion}/user-other`, // endpoint
+    "get", // method
+    "user-other" // key
+  );
+
+  const handleLogout = (item) => {
+    setIsLogout(true);
+    setIsData(item.user_other_email);
+    setIsId(item.user_other_aid);
+    setIsArchiving(true);
+  };
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
-
-  const clickOutsideRef = (e) => {
-    if (!ref.current?.contains(e.target)) {
-      setIsOpen(false);
-    }
-  };
-
-  React.useEffect(() => {
-    document.addEventListener("click", clickOutsideRef);
-    return () => document.addEventListener("click", clickOutsideRef);
-  }, []);
 
   return (
     <>
@@ -49,13 +65,12 @@ const DashboardNav = ({ menu }) => {
                 className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10  ${
                   isOpen && "!border-primary"
                 }`}
-                onClick={handleOpen}
-                ref={ref}
+                onClick={handleLogout}
               >
                 <div className="bg-[white] p-1.5 rounded-full ">
-                  <span className="text-white p-1 rounded-full ">LR</span>
+                  <span className=" p-1 rounded-full ">LR</span>
                 </div>
-                {isOpen && (
+                {/* {isOpen && (
                   <div className="absolute top-10 -left-[160px] bg-[white] shadow-md flex flex-col gap-2 p-3 min-w-[180px]">
                     <h6 className="text-white font-[inter-regular] text-[15px]">
                       Louren Rubico
@@ -76,12 +91,22 @@ const DashboardNav = ({ menu }) => {
                       </Link>
                     </div>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {isLogout && (
+        <ModalLogout
+          setIsLogout={setIsLogout}
+          queryKey={"user-other"}
+          mysqlEndpoint={`${apiVersion}/user-other/active/${id}`}
+          item={isData}
+          archive={isArchiving}
+        />
+      )}
     </>
   );
 };
