@@ -152,7 +152,7 @@ const OtherUserLogin = () => {
                 <li className="after:content-['|'] after:ml-2 last:after:hidden after:text-dark">
                   <a
                     className="hover:text-primary transition ease-linear duration-200"
-                    href="https://frontlinebusiness.com.ph/privacy-policy/"
+                    href={`${devNavUrl}/privacy-policy`}
                   >
                     Privacy Policy
                   </a>
@@ -160,7 +160,7 @@ const OtherUserLogin = () => {
                 <li className="after:content-['|'] after:ml-2 last:after:hidden after:text-dark">
                   <a
                     className="hover:text-primary transition ease-linear duration-200"
-                    href="https://frontlinebusiness.com.ph/terms-of-service/"
+                    href={`${devNavUrl}/terms-of-service`}
                   >
                     Terms of Service
                   </a>
@@ -168,7 +168,7 @@ const OtherUserLogin = () => {
                 <li className="after:content-['|'] after:ml-2 last:after:hidden after:text-dark">
                   <a
                     className="hover:text-primary transition ease-linear duration-200"
-                    href="https://frontlinebusiness.com.ph/eula/"
+                    href={`${devNavUrl}/eula`}
                   >
                     EULA
                   </a>
