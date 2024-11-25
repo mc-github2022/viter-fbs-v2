@@ -61,7 +61,7 @@ const Navigation = ({ menu, submenu }) => {
 
               <ul
                 className={`${
-                  navHomeOpen ? "h-0 overflow-hidden hidden" : "my-2"
+                  navHomeOpen ? "h-0 overflow-hidden" : "my-2"
                 } submenu ml-5  text-[14px]`}
               >
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
@@ -185,7 +185,7 @@ const Navigation = ({ menu, submenu }) => {
               <ul
                 className={`${
                   whyUsOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5  text-[14px]`}
+                } submenu ml-5  text-[12px]`}
               >
                 <Link
                   className="!p-0"
