@@ -32,7 +32,7 @@ const useUploadFiles = (url, dispatch) => {
     // console.log("val.size", val.size);
     if (val.size > 8000000) {
       dispatch(setError(true));
-      dispatch(setMessage("file is too big. It should be less than 8MB."));
+      dispatch(setMessage("File is too big. It should be less than 8MB."));
     } else {
       dispatch(setError(false));
       // consoleLog("Set file");

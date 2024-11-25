@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
-import { BiSolidRightArrow } from "react-icons/bi";
-import { insight } from "./data";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl, devNavUrl } from "../../../helpers/functions-general";
-import Slider from "react-slick";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -107,13 +105,11 @@ const Insights = () => {
     ),
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1330,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
       {
@@ -121,9 +117,7 @@ const Insights = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          nextArrow: "",
-          prevArrow: "",
-          dots: true,
+          arrows: true,
         },
       },
     ],
@@ -152,10 +146,7 @@ const Insights = () => {
   return (
     <>
       <section className="insights py-16 md:py-24 bg-customGray">
-        <div className="customContainer px-10">
-          {/* <h3 className="text-[clamp(30px,4vw,45px)] font-semibold  leading-[1.1] mb-24 text-dark text-center">
-            Industry Insights
-          </h3> */}
+        <div className="customContainer max-w-[90%]">
           <div className="w-[300px] mb-16 md:w-full md:mb-20">
             <p>When share valuable tips and expect advice in our</p>
             <h2 className="font-semibold text-primary leading-[1.1] text-[clamp(20px,6vw,45px)]">
@@ -177,7 +168,7 @@ const Insights = () => {
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                             }}
-                            className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                            className="blogItem bg-center bg-cover md:w-[380px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                           >
                             <div>
                               <div className="blogExcerpt p-10 pb-6 relative z-[1]">
@@ -191,7 +182,7 @@ const Insights = () => {
                                 </h4>
                               </div>
                             </div>
-                            <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                           </div>
                         </Link>
                       </div>
@@ -209,7 +200,7 @@ const Insights = () => {
                           style={{
                             backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                           }}
-                          className="blogItem bg-center bg-cover md:min-w-[418px] md:max-w-[418px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          className="blogItem bg-center bg-cover md:w-[400px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                         >
                           <div>
                             <div className="blogExcerpt p-10 pb-6 relative z-[1]">
@@ -223,7 +214,7 @@ const Insights = () => {
                               </h4>
                             </div>
                           </div>
-                          <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
                       </Link>
                     </div>

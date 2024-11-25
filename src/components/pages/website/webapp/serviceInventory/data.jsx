@@ -44,7 +44,7 @@ export const webAppOverview = [
   {
     subtitle: "Why Choose Our",
     mainTitle: "Asset Inventory System",
-    webAppImage: "asset-inventory-ss.png",
+    webAppImage: "asset-inventory-ss.webp",
     btnText: "LEARN MORE",
     btnDownloadText: "Download Proposal",
     overviewAtitle: "Improved Asset Visibility and Control",

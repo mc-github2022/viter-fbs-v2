@@ -22,8 +22,8 @@ if (array_key_exists("special_offersid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_special_offers_fname_old = checkIndex($data, 'user_special_offers_fname_old');
-  // compareName($special_offers, $user_special_offers_fname_old, $special_offers->user_special_offers_fname);
+  // $user_other_special_offers_fname_old = checkIndex($data, 'user_other_special_offers_fname_old');
+  // compareName($special_offers, $user_other_special_offers_fname_old, $special_offers->user_other_special_offers_fname);
 
   // update
   $query = checkUpdate($special_offers);

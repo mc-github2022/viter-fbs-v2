@@ -1,6 +1,7 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
 import { AiFillTikTok } from "react-icons/ai";
-import { CiMail } from "react-icons/ci";
 import {
   FaFacebookSquare,
   FaFileDownload,
@@ -9,28 +10,16 @@ import {
   FaPhone,
   FaYoutubeSquare,
 } from "react-icons/fa";
-import { FiMail } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
-import {
-  IoCloseCircle,
-  IoCloseCircleOutline,
-  IoMailSharp,
-} from "react-icons/io5";
+import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { devBaseImgUrl } from "../helpers/functions-general";
-import { Form, Formik } from "formik";
-import ButtonSpinner from "./spinners/ButtonSpinner";
-import { InputText, InputTextArea } from "../helpers/FormInputs";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as Yup from "yup";
+import { InputText, InputTextArea } from "../helpers/FormInputs";
+import { devBaseImgUrl } from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
-import {
-  setIsAdd,
-  setMessage,
-  setSuccess,
-  setValidate,
-} from "../store/StoreAction";
+import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
+import ButtonSpinner from "./spinners/ButtonSpinner";
 
 const ModalContact = ({
   setModalContact = null,
@@ -39,6 +28,8 @@ const ModalContact = ({
   setContactForm = null,
   contactForm = null,
   contactSubject = "",
+  notification_purpose = "",
+  emailSubject = "",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
@@ -67,7 +58,7 @@ const ModalContact = ({
       }
       // show error box
       if (!data.success) {
-        dispatch(setValidate(true));
+        dispatch(setError(true));
         dispatch(setMessage(data.error));
       }
     },
@@ -81,6 +72,8 @@ const ModalContact = ({
     client_message: "",
     formTitle: `New Message from ${thePageName} page ${contactSubject}`,
     client_file: "",
+    notification_purpose,
+    email_subject: emailSubject,
   };
 
   const yupSchema = Yup.object({
@@ -95,7 +88,7 @@ const ModalContact = ({
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full h-screen px-4 top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
@@ -131,7 +124,7 @@ const ModalContact = ({
               thePageName === "Work Immersion" ||
               thePageName === "Continuing Study" ? (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
@@ -167,9 +160,43 @@ const ModalContact = ({
                     </li>
                   </ul>
                 </>
+              ) : thePageName === "career" ? (
+                <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
+                  <li className="!items-start">
+                    <IoMdPin />
+                    <p>
+                      Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
+                      Laguna, 4000
+                    </p>
+                  </li>
+                  <li>
+                    <FaPhone />
+                    <p>(049) 501 3592</p>
+                  </li>
+                  <li>
+                    <MdOutlinePhoneIphone />
+                    <p>(+63) 927 168 6810</p>
+                  </li>
+                  <li>
+                    <div className="text-xs md:text-sm">
+                      <div className="mb-4">
+                        <h3 className="font-semibold">
+                          Human Resource Manager
+                        </h3>
+                        <p>Mrs. Rhoda Beloso</p>
+                        <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                      </div>
+                      <div className="mb-8">
+                        <h3 className="font-semibold">Human Resource Staff</h3>
+                        <p>Mrs. Kennie Deriquito</p>
+                        <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               ) : (
                 <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p>
@@ -287,60 +314,15 @@ const ModalContact = ({
               )}
             </div>
           </div>
-          {/* <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] md:w-[428px] ">
-            {contactSubject ? (
-              <p className="mb-2 text-lg uppercase">
-                {thePageName} : <b>{contactSubject}</b>
-              </p>
-            ) : (
-              <></>
-            )}
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Name</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Email</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Subject</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-4">
-              <span htmlFor="">Mobile Number</span> <br />
-              <input type="text" name="" id="" className="w-full" />
-            </div>
-            <div className="inputGroup mb-2">
-              <span htmlFor="">Message</span> <br />
-              <textarea name="" id="" className="resize-none"></textarea>
-            </div>
-            <div className="inputGroup mb-2">
-              <input
-                type="submit"
-                value="Send Message"
-                className="btn bg-primary text-light cursor-pointer py-2 h-[50px]"
-              />
-            </div>
-          </div> */}
+
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            {/* <div
-              className={`${
-                thePageName === "lcss" ||
-                thePageName === "conStud" ||
-                thePageName === "immersion"
-                  ? "block"
-                  : "invisible"
-              }`}
-            > */}
             {contactSubject ? (
-              <p className="mb-2 text-lg uppercase">
+              <p className="mb-2 text-sm md:text-lg uppercase">
                 {thePageName} : <b>{contactSubject}</b>
               </p>
             ) : (
               <></>
             )}
-            {/* </div> */}
 
             <Formik
               initialValues={initVal}

@@ -58,3 +58,45 @@ RewriteRule ^vid-testimonial/search$ controllers/developer/vid-testimonial/searc
 # SENDING EMAIL
 RewriteRule ^sending-email$ controllers/developer/sending-email/sending-email.php [L]
 
+# NOTIFICATIONS
+RewriteRule ^notification-email$ controllers/developer/notification/notification.php [L]
+RewriteRule ^notification-email/([0-9]+)$ controllers/developer/notification/notification.php?notificationId=$1 [L]
+RewriteRule ^notification-email/active/([0-9]+)$ controllers/developer/notification/active.php?notificationId=$1 [L]
+RewriteRule ^notification-email/page/([0-9]+)$ controllers/developer/notification/page.php?start=$1 [L]
+RewriteRule ^notification-email/search$ controllers/developer/notification/search.php [L] 
+
+# USER - ROLE
+RewriteRule ^role$ controllers/developer/user/role/role.php [L]
+RewriteRule ^role/([0-9]+)$ controllers/developer/user/role/role.php?roleId=$1 [L]
+RewriteRule ^role/active/([0-9]+)$ controllers/developer/user/role/active.php?roleId=$1 [L]
+RewriteRule ^role/page/([0-9]+)$ controllers/developer/user/role/page.php?start=$1 [L]
+RewriteRule ^role/search$ controllers/developer/user/role/search.php [L] 
+
+### SETTINGS USERS OTHER ###
+RewriteRule ^user-other$ controllers/developer/user/other-user/user-other.php [L]
+RewriteRule ^user-other/([0-9]+)$ controllers/developer/user/other-user/user-other.php?userid=$1 [L]
+RewriteRule ^user-other/page/([0-9]+)$ controllers/developer/user/other-user/page.php?start=$1 [L]
+RewriteRule ^user-other/search$ controllers/developer/user/other-user/search.php [L]
+RewriteRule ^user-other/active/([0-9]+)$ controllers/developer/user/other-user/active.php?userid=$1 [L]
+RewriteRule ^user-other/verify-email/(.*)$ controllers/developer/user/other-user/update-email.php?userkey=$1 [L]
+RewriteRule ^user-other/key/(.*)$ controllers/developer/user/other-user/key.php?userkey=$1 [L]
+RewriteRule ^user-other/password$ controllers/developer/user/other-user/set-password.php [L]
+RewriteRule ^user-other/login$ controllers/developer/user/other-user/login.php [L]
+RewriteRule ^user-other/token$ controllers/developer/user/other-user/token.php [L]
+RewriteRule ^user-other/reset$ controllers/developer/user/other-user/reset-password.php [L]
+RewriteRule ^user-other/role$ controllers/developer/user/other-user/role.php [L] 
+
+### SETTINGS USERS DEVELOPER ### 
+RewriteRule ^user-developer$ controllers/developer/user/developer/developer.php [L]
+RewriteRule ^user-developer/([0-9]+)$ controllers/developer/user/developer/developer.php?userdeveloperid=$1 [L]
+RewriteRule ^user-developer/page/([0-9]+)$ controllers/developer/user/developer/page.php?start=$1 [L]
+RewriteRule ^user-developer/search$ controllers/developer/user/developer/search.php [L]
+RewriteRule ^user-developer/active/([0-9]+)$ controllers/developer/user/developer/active.php?userdeveloperid=$1 [L]
+RewriteRule ^user-developer/verify-email/(.*)$ controllers/developer/user/developer/update-email.php?userdeveloperkey=$1 [L]
+RewriteRule ^user-developer/key/(.*)$ controllers/developer/user/developer/key.php?userdeveloperkey=$1 [L]
+RewriteRule ^user-developer/password$ controllers/developer/user/developer/set-password.php [L]
+RewriteRule ^user-developer/login$ controllers/developer/user/developer/login.php [L]
+RewriteRule ^user-developer/token$ controllers/developer/user/developer/token.php [L]
+RewriteRule ^user-developer/reset$ controllers/developer/user/developer/reset-password.php [L]
+RewriteRule ^user-developer/role$ controllers/developer/user/developer/role.php [L] 
+ 

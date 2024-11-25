@@ -187,7 +187,7 @@
   .theNav ul li {
     @apply border-t border-t-customGray border-b-customGray md:border-t-0 cursor-pointer;
   }
-  .theNav ul li a {
+  .theNav ul li button {
     @apply py-3 px-11 md:px-3 lg:px-11 w-full;
   }
   .theNav.active ul {
@@ -236,13 +236,13 @@
 @layer components {
   /* Modals */
   .btn-modal-submit {
-    @apply flex items-center justify-center text-[white] gap-2 px-3 py-1.5 bg-primary rounded-md border-primary border hover:bg-secondary hover:text-[white] hover:border-[#d1d5db] duration-300 ease-in w-full;
+    @apply flex items-center justify-center text-[white] gap-2 px-3 py-1.5 bg-primary rounded-md border-primary border hover:bg-secondary hover:text-[white] hover:border-[#d1d5db] duration-300 ease-in w-full text-[14px];
   }
   .btn-modal-submit:disabled {
     @apply opacity-50 hover:bg-primary hover:text-[white];
   }
   .btn-modal-cancel {
-    @apply flex items-center justify-center text-[black] gap-2 px-3 py-1.5 bg-[white] rounded-md border-[#d1d5db] border w-full;
+    @apply flex items-center justify-center text-[black] gap-2 px-3 py-1.5 bg-[white] rounded-md border-[#d1d5db] border w-full text-[14px];
   }
   .btn-modal-cancel:disabled {
     @apply opacity-50 hover:bg-[white] hover:text-[black] hover:border-[#d1d5db];
@@ -260,7 +260,7 @@
     @apply translate-y-0;
   }
   .modal-wrapper {
-    @apply bg-[white] h-[650px] flex flex-col max-w-[1000px] w-full p-5 place-self-center rounded-lg;
+    @apply bg-[white] h-[82dvh] flex flex-col max-w-[110dvh] w-full p-5 place-self-center rounded-lg;
   }
   .modal-wrapper-menu {
     @apply bg-[white] h-full flex flex-col max-w-[506px] w-full p-5;
@@ -386,6 +386,10 @@ img.popPost {
     display: flex !important;
     align-items: center !important;
   }
+}
+
+.transYclamp {
+  transform: translateY(clamp(5rem, 12vw, 8rem));
 }
 
 textarea {

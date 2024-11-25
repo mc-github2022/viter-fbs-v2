@@ -1,13 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { devBaseImgUrl, devNavUrl } from "../../helpers/functions-general";
-import { IoMdSettings } from "react-icons/io";
-import { GoChevronDown } from "react-icons/go";
+import {
+  devBaseImgUrl,
+  devNavUrl,
+  getUserType,
+} from "../../helpers/functions-general";
 import { StoreContext } from "../../store/StoreContext";
-import { setIsHome, setIsWhyFBS } from "../../store/StoreAction";
+import { IoChevronDownSharp } from "react-icons/io5";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const link = getUserType();
+
+  const [navName, setNavName] = React.useState("");
+  const [navHomeOpen, setNavOpen] = React.useState(false);
+  const [whyUsOpen, setwhyUsOpen] = React.useState(false);
+
+  const handleNavOpen = () => {
+    setNavOpen(!navHomeOpen);
+  };
+
+  const handleWhyUsOpen = () => {
+    setwhyUsOpen(!whyUsOpen);
+  };
 
   return (
     <>
@@ -23,23 +38,33 @@ const Navigation = ({ menu, submenu }) => {
         </div>
         <div>
           <nav>
-            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold [&>li]:mb-[15px] text-[14px]">
+            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold  text-[14px]">
               <li
-                className={` flex justify-between items-center p-1
+                className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "home"
                       ? "text-[black] underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
+                onClick={() => handleNavOpen()}
               >
-                <div className="nav flex items-center">
+                <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Home</span>
+                  <IoChevronDownSharp
+                    className={`${
+                      navHomeOpen ? "" : "rotate-180"
+                    } transition-all`}
+                  />
                 </div>
               </li>
 
-              <ul className="submenu ml-5 my-2 text-[14px] ">
-                <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
+              <ul
+                className={`${
+                  navHomeOpen ? "h-0 overflow-hidden" : "my-2"
+                } submenu ml-5  text-[14px]`}
+              >
+                <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-banner"
@@ -50,7 +75,7 @@ const Navigation = ({ menu, submenu }) => {
                     Banner
                   </li>
                 </Link>
-                {/* <Link className="!p-0" to={`${devNavUrl}/home-process`}>
+                {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-process`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-process"
@@ -61,7 +86,7 @@ const Navigation = ({ menu, submenu }) => {
                       Process
                     </li>
                   </Link>
-                  <Link className="!p-0" to={`${devNavUrl}/home-services`}>
+                  <Link className="!p-0" to={`${devNavUrl}${link}/home-services`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-services"
@@ -72,7 +97,7 @@ const Navigation = ({ menu, submenu }) => {
                       Services
                     </li>
                   </Link>
-                  <Link className="!p-0" to={`${devNavUrl}/home-partnerWithUs`}>
+                  <Link className="!p-0" to={`${devNavUrl}${link}/home-partnerWithUs`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partnerWithUs"
@@ -83,7 +108,10 @@ const Navigation = ({ menu, submenu }) => {
                       Partner With Us
                     </li>
                   </Link> */}
-                <Link className="!p-0" to={`${devNavUrl}/home-testimonial`}>
+                <Link
+                  className="!p-0"
+                  to={`${devNavUrl}${link}/home-testimonial`}
+                >
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-testimonial"
@@ -94,7 +122,7 @@ const Navigation = ({ menu, submenu }) => {
                     Testimonials
                   </li>
                 </Link>
-                {/* <Link className="!p-0" to={`${devNavUrl}/home-partners`}>
+                {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-partners`}>
                     <li
                       className={` text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partners"
@@ -105,7 +133,7 @@ const Navigation = ({ menu, submenu }) => {
                       Partners
                     </li>
                   </Link> */}
-                <Link className="!p-0" to={`${devNavUrl}/home-insights`}>
+                <Link className="!p-0" to={`${devNavUrl}${link}/home-insights`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-insights"
@@ -127,7 +155,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}/special-offers`}>
+                <Link to={`${devNavUrl}${link}/special-offers`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">Special Offers</span>
                   </div>
@@ -135,32 +163,34 @@ const Navigation = ({ menu, submenu }) => {
               </li>
 
               <li
-                className={` flex justify-between items-center p-1
+                className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "whyFBS"
                       ? "text-[black] underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
+                onClick={() => handleWhyUsOpen()}
               >
-                <div className="nav flex items-center">
+                <div className="nav flex items-center justify-between w-full">
                   <span className="ml-2.5 text-[14px]">Why FBS?</span>
+                  <IoChevronDownSharp
+                    className={`${
+                      whyUsOpen ? "" : "rotate-180"
+                    } transition-all`}
+                  />
                 </div>
               </li>
 
-              <ul className="submenu ml-5 my-1 text-[12px] ">
-                {/* <Link className="!p-0" to={`${devNavUrl}/why-work-with-us`}>
-                    <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
-                        submenu === "why-work-with-us"
-                          ? "text-[black] font-bold"
-                          : "border-none text-[#9ca3af]"
-                      }`}
-                    >
-                      Why Work With Us
-                    </li>
-                  </Link> */}
-                <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
+              <ul
+                className={`${
+                  whyUsOpen ? "h-0 overflow-hidden" : "my-2"
+                } submenu ml-5  text-[12px]`}
+              >
+                <Link
+                  className="!p-0"
+                  to={`${devNavUrl}${link}/events-activities`}
+                >
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "events-activities"
@@ -171,7 +201,10 @@ const Navigation = ({ menu, submenu }) => {
                     Events & Activities
                   </li>
                 </Link>
-                <Link className="!p-0" to={`${devNavUrl}/whyFBS-careers`}>
+                <Link
+                  className="!p-0"
+                  to={`${devNavUrl}${link}/whyFBS-careers`}
+                >
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "whyFBS-careers"
@@ -184,57 +217,6 @@ const Navigation = ({ menu, submenu }) => {
                 </Link>
               </ul>
 
-              {/* <li
-                className={
-                  activeSection === "ourOrigin"
-                    ? "text-[black] bg-primary underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("ourOrigin")}
-              >
-                <a className="cursor-pointer">Our Origin</a>
-              </li>
-              <li
-                className={
-                  activeSection === "ourTaste"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("ourTaste")}
-              >
-                <a className="cursor-pointer">Our Taste</a>
-              </li>
-              <li
-                className={
-                  activeSection === "reserveSeat"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("reserveSeat")}
-              >
-                <a className="cursor-pointer">Reserve Seat</a>
-              </li>
-              <li
-                className={
-                  activeSection === "events"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("events")}
-              >
-                <a className="cursor-pointer">Events</a>
-              </li>
-              <li
-                className={
-                  activeSection === "footer"
-                    ? "text-black underline underline-offset-4"
-                    : "text-[#9ca3af]"
-                }
-                onClick={() => scrollToSection("footer")}
-              >
-                <a className="cursor-pointer">Footer</a>
-              </li> */}
-
               <li
                 className={` flex justify-between items-center p-1 pt-3
                   ${
@@ -244,7 +226,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}/lcss-batches`}>
+                <Link to={`${devNavUrl}${link}/lcss-batches`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">LCSS Batches</span>
                   </div>
@@ -260,7 +242,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}/industry-testimonial`}>
+                <Link to={`${devNavUrl}${link}/industry-testimonial`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">
                       Industry Testimonials
@@ -278,7 +260,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}/vid-testimonial`}>
+                <Link to={`${devNavUrl}${link}/vid-testimonial`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">
                       Video Testimonials
@@ -295,12 +277,103 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}/pricing`}>
+                <Link to={`${devNavUrl}${link}/pricing`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">Pricing</span>
                   </div>
                 </Link>
               </li>
+              <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "notification"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-[#9ca3af] "
+                  }
+                `}
+              >
+                <Link to={`${devNavUrl}${link}/notification`}>
+                  <div className="nav flex items-center">
+                    <span className="ml-2.5 text-[14px]">Notification</span>
+                  </div>
+                </Link>
+              </li>
+
+              {store.credentials.data.role_code === "role_is_developer" ? (
+                <>
+                  <li
+                    className={` flex justify-between items-center p-1
+                  ${
+                    menu === "user"
+                      ? "text-[black] underline underline-offset-4 "
+                      : "text-[#9ca3af] "
+                  }
+                `}
+                  >
+                    <div className="nav flex items-center">
+                      <span className="ml-2.5 text-[14px]">Users</span>
+                    </div>
+                  </li>
+
+                  <ul className="submenu ml-5 my-1 text-[12px] ">
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/other-user`}
+                    >
+                      <li
+                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                          submenu === "other-user"
+                            ? "text-[black] font-bold"
+                            : "border-none text-[#9ca3af]"
+                        }`}
+                      >
+                        Other User
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/user-developer`}
+                    >
+                      <li
+                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                          submenu === "user-developer"
+                            ? "text-[black] font-bold"
+                            : "border-none text-[#9ca3af]"
+                        }`}
+                      >
+                        Developer
+                      </li>
+                    </Link>
+                    <Link className="!p-0" to={`${devNavUrl}${link}/user-role`}>
+                      <li
+                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                          submenu === "user-role"
+                            ? "text-[black] font-bold"
+                            : "border-none text-[#9ca3af]"
+                        }`}
+                      >
+                        Role
+                      </li>
+                    </Link>
+                  </ul>
+                </>
+              ) : (
+                <li
+                  className={` flex justify-between items-center p-1
+                ${
+                  menu === "user"
+                    ? "text-[black] underline underline-offset-4 "
+                    : "text-[#9ca3af] "
+                }
+              `}
+                >
+                  <Link to={`${devNavUrl}${link}/other-user`}>
+                    <div className="nav flex items-center">
+                      <span className="ml-2.5 text-[14px]">User</span>
+                    </div>
+                  </Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

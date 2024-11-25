@@ -1,4 +1,5 @@
 import React from "react";
+import { StoreContext } from "../store/StoreContext";
 
 // local url
 // export const urlPathFBSMarketingWebsite =
@@ -7,10 +8,16 @@ import React from "react";
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
+// export const urlPathFBSMarketingWebsite =
+//   "https://frontlinebusiness.com.ph/newsite";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2/public/img";
+
+// Online Demo url
 export const urlPathFBSMarketingWebsite =
   "https://frontlinebusiness.com.ph/newsite";
 export const imgUrlPathFBSMarketingWebsite =
-  "https://frontlinebusiness.com.ph/newsite/img";
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
@@ -24,23 +31,6 @@ export const UrlDeveloper = "developer";
 // dev key from thunder client
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
-
-// get focus on a button
-export const GetFocus = (id) => {
-  React.useEffect(() => {
-    const obj = document.getElementById(id);
-    obj.focus();
-  }, []);
-};
-
-// get the id of specific data
-export const getUrlParam = (id) => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  // const param = urlParams.get(id);
-  // return param;
-  return urlParams;
-};
 
 // formatting date and time
 export const setTimeZone = "Asia/Taipei";
@@ -129,43 +119,6 @@ export const options = (format) => {
   return options;
 };
 
-//time format
-export const getTimeFormat = (time) => {
-  let result = "";
-
-  if (typeof time !== "undefined" && time !== "") {
-    let getTime = time.split(" ");
-    let newTime = time;
-    if (getTime?.length > 1) {
-      newTime = getTime[1];
-    }
-
-    result = `${newTime} AM `;
-    if (
-      Number(newTime.split(":")[0]) >= 12 &&
-      Number(newTime.split(":")[0]) !== 24
-    ) {
-      result = `${newTime} PM `;
-    }
-  }
-  return result;
-};
-
-//rgb to hex
-export const hexToRgb = (hex) => {
-  let result = "";
-  console.log(hex);
-  if (typeof hex !== "undefined" && hex !== "") {
-    result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    result = `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(
-      result[3],
-      16
-    )} `;
-  }
-
-  return result;
-};
-
 // fetch for uploading photo or file
 export const fetchFormData = async (url, fd = {}) => {
   try {
@@ -185,26 +138,49 @@ export const fetchFormData = async (url, fd = {}) => {
   }
 };
 
-// Function to calculate tenure
-export const calculateTenure = (date) => {
-  const currentDate = new Date();
-  const hire = new Date(date);
+// get the url id parameter
+export const getUrlParam = (id) => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  // const param = urlParams.get(id);
+  // return param;
+  return urlParams;
+};
 
-  let years = currentDate.getFullYear() - hire.getFullYear();
-  let months = currentDate.getMonth() - hire.getMonth();
+export const getDateNow = () => {
+  return new Date().toISOString("en", options("plain-date")).split("T")[0];
+};
 
-  if (months < 0) {
-    years--;
-    months += 12;
-  }
+// Copyright year
+export const copyrightYear = () => {
+  return getDateNow().split("-")[0];
+};
 
-  if (currentDate.getDate() < hire.getDate()) {
-    months--;
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-  }
+// storage after login
+export function setStorageRoute(jwt, isDev) {
+  localStorage.setItem("localfbstoken", JSON.stringify({ token: jwt, isDev }));
+}
 
-  return { years, months };
+export const handleEscape = (handleClose) => {
+  React.useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.keyCode === 27) {
+        handleClose();
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  });
+};
+
+// get user type
+export const getUserType = () => {
+  const { store } = React.useContext(StoreContext);
+
+  let link =
+    store.credentials.data?.role_code === "role_is_admin"
+      ? ``
+      : `/${store.credentials.data?.role.toLowerCase().replaceAll(" ", "-")}`;
+
+  return link;
 };

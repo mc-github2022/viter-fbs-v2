@@ -1,20 +1,19 @@
 import React, { Fragment, useEffect } from "react";
+import * as AiIcons from "react-icons/ai";
+import * as FaIcons from "react-icons/fa";
 import { FiChevronsUp } from "react-icons/fi";
+import * as IoIcons from "react-icons/io";
+import * as LuIcons from "react-icons/lu";
 import { LuChevronsDown } from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
+import * as TiIcons from "react-icons/ti";
+import useQueryData from "../../../custom-hooks/useQueryData";
 import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
-import { jobOpening } from "./data";
-import ModalJobApplication from "./ModalJobApplication";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
-import * as TiIcons from "react-icons/ti";
-import * as LuIcons from "react-icons/lu";
-import * as PiIcons from "react-icons/pi";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import ModalError from "../../../partials/modals/ModalError";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import { StoreContext } from "../../../store/StoreContext";
+import ModalJobApplication from "./ModalJobApplication";
 
 const icons = {
   ...FaIcons,
@@ -37,7 +36,6 @@ const CareerPage = () => {
     isFetching,
     error,
     isLoading,
-    status,
     data: careersData,
   } = useQueryData(
     "/v1/careers", // endpoint

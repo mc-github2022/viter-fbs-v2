@@ -24,7 +24,7 @@ class IndustryTestimonial
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblIndustryTestimonial = "industry_testimonial";
+        $this->tblIndustryTestimonial = "fbsv2_industry_testimonial";
     }
 
     public function readAll()
@@ -144,7 +144,7 @@ class IndustryTestimonial
             $sql .= "industry_testimonial_message = :industry_testimonial_message, ";
             $sql .= "industry_testimonial_category = :industry_testimonial_category, ";
             $sql .= "industry_testimonial_company = :industry_testimonial_company, ";
-            $sql .= "industry_testimonial_created = :industry_testimonial_created ";
+            $sql .= "industry_testimonial_datetime = :industry_testimonial_datetime ";
             $sql .= "where industry_testimonial_aid = :industry_testimonial_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -155,7 +155,7 @@ class IndustryTestimonial
                 "industry_testimonial_message" => $this->industry_testimonial_message,
                 "industry_testimonial_category" => $this->industry_testimonial_category,
                 "industry_testimonial_company" => $this->industry_testimonial_company,
-                "industry_testimonial_created" => $this->industry_testimonial_created,
+                "industry_testimonial_datetime" => $this->industry_testimonial_datetime,
                 "industry_testimonial_aid" => $this->industry_testimonial_aid,
             ]);
         } catch (PDOException $ex) {

@@ -20,7 +20,7 @@ class Careers
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblCareers = "careers";
+        $this->tblCareers = "fbsv2_careers";
     }
 
     public function readAll()
@@ -85,7 +85,7 @@ class Careers
             $sql .= "careers_job_mode = :careers_job_mode, ";
             $sql .= "careers_job_status = :careers_job_status, ";
             $sql .= "careers_job_description = :careers_job_description, ";
-            $sql .= "careers_created = :careers_created ";
+            $sql .= "careers_datetime = :careers_datetime ";
             $sql .= "where careers_aid = :careers_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -95,7 +95,7 @@ class Careers
                 "careers_job_mode" => $this->careers_job_mode,
                 "careers_job_status" => $this->careers_job_status,
                 "careers_job_description" => $this->careers_job_description,
-                "careers_created" => $this->careers_created,
+                "careers_datetime" => $this->careers_datetime,
                 "careers_aid" => $this->careers_aid,
             ]);
         } catch (PDOException $ex) {

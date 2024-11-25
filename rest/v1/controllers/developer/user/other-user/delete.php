@@ -1,0 +1,18 @@
+<?php
+// check database connection
+$conn = null;
+$conn = checkDbConnection();
+// make instance of classes
+$user = new UserOther($conn);
+
+if (array_key_exists("userid", $_GET)) {
+    $user->user_other_aid = $_GET['userid'];
+
+    checkId($user->user_other_aid);
+    // delete
+    $query = checkDelete($user);
+    returnSuccess($user, "User", $query);
+}
+
+// return 404 error if endpoint not available
+checkEndpoint();

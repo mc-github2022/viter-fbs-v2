@@ -11,8 +11,10 @@ import MegaMenu from "./MegaMenu";
 
 const Header = ({ pageName }) => {
   const [contactForm, setContactForm] = React.useState(false);
+  const [subjectNotif, setSubjectNotif] = React.useState("get-started-home");
   const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
+
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
     setToggleMenu(false);
@@ -43,6 +45,18 @@ const Header = ({ pageName }) => {
   };
 
   React.useEffect(() => {
+    let pathName = location.pathname.replaceAll(`${devNavUrl}/`, "");
+    if (pathName === "career") {
+      setSubjectNotif("get-started-careers");
+    } else if (
+      pathName === "college-ojt" ||
+      pathName === "work-immersion" ||
+      pathName === "continuing-studies"
+    ) {
+      setSubjectNotif("get-started-lcs");
+    } else {
+      setSubjectNotif("get-started-default");
+    }
     document.addEventListener("click", clickOutsideRef);
     return () => document.addEventListener("click", clickOutsideRef);
   }, []);
@@ -73,10 +87,21 @@ const Header = ({ pageName }) => {
             >
               <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
                 <li>
-                  <Link to={`${devNavUrl}/`}>Home</Link>
+                  <button className="text-left">
+                    <Link
+                      to={`${devNavUrl}/`}
+                      className={`${
+                        pageName === "home"
+                          ? "text-primary !cursor-default"
+                          : ""
+                      }`}
+                    >
+                      Home
+                    </Link>
+                  </button>
                 </li>
                 <li>
-                  <a
+                  <button
                     href="#"
                     onClick={handleToggleMenu}
                     className={`${
@@ -89,10 +114,10 @@ const Header = ({ pageName }) => {
                         toggleMenu ? "!rotate-180 transition-all" : ""
                       } transition-all -rotate-90 md:rotate-0 md:block`}
                     />
-                  </a>
+                  </button>
                 </li>
                 <li className="relative ">
-                  <a
+                  <button
                     href="#"
                     className={`${
                       toggleWhyUs ? "text-primary" : ""
@@ -106,11 +131,11 @@ const Header = ({ pageName }) => {
                         toggleWhyUs ? "!rotate-180 transition-all" : ""
                       } transition-all -rotate-90 md:rotate-0 md:block`}
                     />
-                  </a>
+                  </button>
                   <ul
                     className={`${
                       toggleWhyUs
-                        ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:my-2 lg:[&>li]:my-2 py-0 md:p-[20px]  !top-12 pl-20 md:pl-[20px] transition-all md:!bg-light"
+                        ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:my-2 lg:[&>li]:my-2 py-0 md:p-[20px]  !top-12 pl-[2.75rem] md:pl-[20px] transition-all md:!bg-light"
                         : "hidden"
                     } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
                   >
@@ -204,6 +229,9 @@ const Header = ({ pageName }) => {
           setToggleMenu={setToggleMenu}
           setContactForm={setContactForm}
           contactForm={contactForm}
+          contactSubject={""}
+          notification_purpose={subjectNotif}
+          emailSubject={"Get started - "}
         />
       )}
 

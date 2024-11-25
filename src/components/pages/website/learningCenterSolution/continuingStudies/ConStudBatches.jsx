@@ -174,8 +174,8 @@ const ConStudBatches = () => {
                         <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
                             <div
-                              className="blogItem addShadow bg-center bg-cover h-[400px] min-w-[280px] max-w-[280px] md:min-w-[350px] md:max-w-[350px] flex items-end relative rounded-xl 
-                            grayscale hover:grayscale-0 transition-all group cursor-pointer "
+                              className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] sm:w-[320px] flex items-end relative rounded-xl 
+                            grayscale hover:grayscale-0 transition-all group cursor-pointer"
                               style={{
                                 backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
                               }}
@@ -195,7 +195,7 @@ const ConStudBatches = () => {
                                   </h4>
                                 </div>
                               </div>
-                              <div className="bottomGradient bg-gradient-to-t from-[#000] to-blue-500 h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                             </div>
                           </a>
                         </div>
@@ -243,7 +243,7 @@ const ConStudBatches = () => {
                                   </h4>
                                 </div>
                               </div>
-                              <div className="bottomGradient bg-gradient-to-t from-dark to-blue-500 h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                              <div className="bottomGradient bg-gradient-to-t from-dark !to-[transparent] h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                             </div>
                           </a>
                         </div>

@@ -8,32 +8,27 @@ import {
   FaYoutubeSquare,
 } from "react-icons/fa";
 import { IoMdPin } from "react-icons/io";
-import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
+import { IoCloseCircle } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 
 import { Form, Formik } from "formik";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import * as Yup from "yup";
-import { apiVersion, devBaseImgUrl } from "../helpers/functions-general";
-import { queryData } from "../helpers/queryData";
+import useUploadFiles from "../custom-hooks/useUploadFiles";
 import {
   InputFileUpload,
   InputText,
   InputTextArea,
 } from "../helpers/FormInputs";
-import useUploadFiles from "../custom-hooks/useUploadFiles";
-import ButtonSpinner from "./spinners/ButtonSpinner";
+import { apiVersion, devBaseImgUrl } from "../helpers/functions-general";
+import { queryData } from "../helpers/queryData";
 import { setMessage, setSuccess, setValidate } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
-import {
-  QueryClient,
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import ButtonSpinner from "./spinners/ButtonSpinner";
 
-const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
+const ModalLcssForm = ({ thePageName, setLcssForm }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const queryClient = useQueryClient();
 
   const handleClose = () => {
     setLcssForm(false);
@@ -43,6 +38,7 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
     dispatch
   );
 
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
     onSuccess: (data) => {
@@ -51,7 +47,7 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
       if (data.success) {
         setLcssForm(false);
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Message Sent Success`));
+        dispatch(setMessage(`Message Sent Successfully!`));
       }
       // show error box
       if (!data.success) {
@@ -69,6 +65,8 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
     client_message: "",
     client_file: "",
     formTitle: `${thePageName} Application`,
+    notification_purpose: "apply-now-lcs",
+    email_subject: `Apply no - ${thePageName} Application`,
   };
 
   const yupSchema = Yup.object({
@@ -83,13 +81,13 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full px-4 h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -114,7 +112,7 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
                   Join our Team!
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p>
@@ -199,8 +197,8 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
             </div>
           </div>
 
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            <p className="mb-2 text-lg">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px]">
+            <p className="mb-2 text-sm md:text-lg">
               <b className="uppercase">{thePageName}</b> Application
             </p>
             <Formik
@@ -208,7 +206,6 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 // mutate data
-                console.log("values", values, newfile);
                 const data = {
                   ...values,
                   client_file: newfile.name,
@@ -217,7 +214,6 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
                   await uploadFiles(); // to save the photo when submit
                 }
 
-                console.log("values", data, newfile);
                 mutation.mutate(data);
               }}
             >
@@ -252,7 +248,7 @@ const ModalLcssForm = ({ thePageName, lcssForm, setLcssForm }) => {
 
                       <div className="input-wrapper">
                         <span htmlFor="" className="text-xs">
-                          Upload Resume (PDF Only (8mb)){" "}
+                          Upload Resume (PDF Only (8mb))
                         </span>
                         <InputFileUpload
                           type="file"

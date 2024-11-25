@@ -24,8 +24,8 @@ if (array_key_exists("careersid", $_GET)) {
 
 
   // //checks current data to avoid same entries from being updated
-  // $user_careers_fname_old = checkIndex($data, 'user_careers_fname_old');
-  // compareName($careers, $user_careers_fname_old, $careers->user_careers_fname);
+  // $user_other_careers_fname_old = checkIndex($data, 'user_other_careers_fname_old');
+  // compareName($careers, $user_other_careers_fname_old, $careers->user_other_careers_fname);
 
   // update
   $query = checkUpdate($careers);

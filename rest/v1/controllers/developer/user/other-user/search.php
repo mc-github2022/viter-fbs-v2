@@ -1,0 +1,45 @@
+<?php
+require '../../../../core/header.php';
+require '../../../../core/functions.php';
+require '../../../../models/developer/users/user-other/UserOther.php';
+require 'functions.php';
+$conn = null;
+$conn = checkDbConnection();
+
+$user = new UserOther($conn);
+$body = file_get_contents("php://input");
+$data = json_decode($body, true);
+
+if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+    checkApiKey();
+    checkPayload($data);
+    $user->user_other_search = $data["searchValue"];    // get data 
+
+    if ($data["isFilter"] == true) {
+
+        if ($user->user_other_search != "") {
+
+            checkKeyword($user->user_other_search);
+            $user->user_other_is_active = checkIndex($data, "user_other_is_active");
+            $query = checkFilterByStatusAndSearch($user);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+
+
+        $user->user_other_is_active = checkIndex($data, "user_other_is_active");
+        $query = checkFilterByStatus($user);
+        http_response_code(200);
+        getQueriedData($query);
+    }
+
+    checkKeyword($user->user_other_search);
+    $query = checkSearch($user);
+    http_response_code(200);
+    getQueriedData($query);
+
+    checkEndpoint();
+}
+
+http_response_code(200);
+checkAccess();

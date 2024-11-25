@@ -14,6 +14,11 @@ import ModalError from "../../../../partials/modals/ModalError";
 const ServicePayrollPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("payroll");
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <>
       <Header pageName={pageName} />

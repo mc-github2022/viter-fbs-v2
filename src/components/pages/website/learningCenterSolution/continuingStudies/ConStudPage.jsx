@@ -17,6 +17,11 @@ import { StoreContext } from "../../../../store/StoreContext";
 const ConStudPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("Continuing Study");
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
     <>
       <Header pageName={pageName} />

@@ -1,27 +1,27 @@
 import React from "react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
-import { FaDesktop } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { devNavUrl } from "../../helpers/functions-general";
+import { apiVersion, devNavUrl } from "../../helpers/functions-general";
+import { StoreContext } from "../../store/StoreContext";
+import ModalLogout from "../modals/ModalLogout";
 
 const DashboardNav = ({ menu }) => {
-  const ref = React.useRef();
-  const [isOpen, setIsOpen] = React.useState(false);
+  const { store, dispatch } = React.useContext(StoreContext);
+  const [id, setIsId] = React.useState("");
+  const [isData, setIsData] = React.useState("");
+  const [isArchiving, setIsArchiving] = React.useState(false);
+  const [isLogout, setIsLogout] = React.useState(false);
 
-  const handleOpen = () => {
-    setIsOpen(!isOpen);
+  const handleLogout = (item) => {
+    setIsLogout(true);
+    setIsData(item.user_other_email);
+    setIsId(item.user_other_aid);
+    setIsArchiving(true);
   };
 
-  const clickOutsideRef = (e) => {
-    if (!ref.current?.contains(e.target)) {
-      setIsOpen(false);
-    }
-  };
+  const firstname = store.credentials.data.first_name.substring(0, 1);
 
-  React.useEffect(() => {
-    document.addEventListener("click", clickOutsideRef);
-    return () => document.addEventListener("click", clickOutsideRef);
-  }, []);
+  const lastname = store.credentials.data.last_name.substring(0, 1);
 
   return (
     <>
@@ -46,42 +46,30 @@ const DashboardNav = ({ menu }) => {
             </div>
             <div>
               <div
-                className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10  ${
-                  isOpen && "!border-primary"
-                }`}
-                onClick={handleOpen}
-                ref={ref}
+                className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 `}
+                onClick={handleLogout}
               >
                 <div className="bg-[white] p-1.5 rounded-full ">
-                  <span className="text-white p-1 rounded-full ">LR</span>
+                  <span className="pl-[1px] p-1 rounded-full ">
+                    {firstname}
+                    {lastname}
+                  </span>
                 </div>
-                {isOpen && (
-                  <div className="absolute top-10 -left-[160px] bg-[white] shadow-md flex flex-col gap-2 p-3 min-w-[180px]">
-                    <h6 className="text-white font-[inter-regular] text-[15px]">
-                      Louren Rubico
-                    </h6>
-                    <a>
-                      <span className="text-white text-sm">
-                        louren@gmail.com
-                      </span>
-                    </a>
-                    <Link to={`${devNavUrl}/changePass`}>
-                      <span className="text-white text-sm">
-                        Change Password
-                      </span>
-                    </Link>
-                    <div className="flex flex-row gap-4 items-center">
-                      <Link>
-                        <button className=" text-white text-sm">Users</button>
-                      </Link>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {isLogout && (
+        <ModalLogout
+          setIsLogout={setIsLogout}
+          queryKey={"user-other"}
+          mysqlEndpoint={`${apiVersion}/user-other/${id}`}
+          item={isData}
+          archive={isArchiving}
+        />
+      )}
     </>
   );
 };

@@ -68,6 +68,8 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_file: "",
     client_message_subject: "",
     formTitle: `Job Application: ${jobTitle}`,
+    notification_purpose: "apply-now-careers",
+    email_subject: `Apply Now - ${jobTitle}`,
   };
 
   const yupSchema = Yup.object({
@@ -82,13 +84,13 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed px-4 w-full h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
             <IoCloseCircle
@@ -113,7 +115,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   Join our Team!
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
+              <ul className=" text-sm [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p>
@@ -130,8 +132,22 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   <p>(+63) 927 168 6810</p>
                 </li>
                 <li>
-                  <IoMailSharp />
-                  <p>mktg@frontlinebusiness.com.ph</p>
+                  <div className="text-xs md:text-sm  ">
+                    <div className="mb-4">
+                      <h3 className="font-semibold">Human Resource Manager</h3>
+                      <p>Mrs. Rhoda Beloso</p>
+                      <p className="truncate">
+                        rhoda.beloso@frontlinebusiness.com.ph
+                      </p>
+                    </div>
+                    <div className="mb-8">
+                      <h3 className="font-semibold">Human Resource Staff</h3>
+                      <p>Mrs. Kennie Deriquito</p>
+                      <p className="truncate">
+                        kennie.deriquito@frontlinebusiness.com.ph
+                      </p>
+                    </div>
+                  </div>
                 </li>
               </ul>
               <div className="mb-4">
@@ -183,7 +199,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
           </div>
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            <p className="mb-2 text-lg">
+            <p className="mb-2 text-sm md:text-lg">
               Job Application: <b>{jobTitle}</b>
             </p>
             <Formik
@@ -191,7 +207,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 // mutate data
-                console.log("values", values, newfile);
                 const data = {
                   ...values,
                   client_file: newfile.name,
@@ -200,7 +215,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   await uploadFiles(); // to save the photo when submit
                 }
 
-                console.log("values", data, newfile);
                 mutation.mutate(data);
               }}
             >

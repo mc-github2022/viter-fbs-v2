@@ -18,9 +18,6 @@ const EventsAndActivities = () => {
     setItemEdit(null);
   };
 
-  React.useEffect(() => {
-    dispatch(setIsWhyFBS(true));
-  }, []);
 
   return (
     <>

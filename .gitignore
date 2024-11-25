@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# API
+rest/v1/notification/PHPMailer
+rest/v1/jwt
+rest/v1/google-api
+apikey.php
+jsconfig.json
+
 # Editor directories and files
 rest/v1/notification/PHPMailer
 .vscode/*

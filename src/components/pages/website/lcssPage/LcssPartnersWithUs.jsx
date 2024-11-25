@@ -5,11 +5,6 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import ModalContact from "../../../partials/ModalContact";
 
 const LcssPartnersWithUs = ({ pageName }) => {
-  const [modalContact, setModalContact] = React.useState(false);
-  const handleModalContact = () => {
-    setModalContact(!modalContact);
-  };
-
   const [contactForm, setContactForm] = React.useState(false);
   const handleForm = () => {
     setContactForm(!contactForm);
@@ -116,11 +111,14 @@ const LcssPartnersWithUs = ({ pageName }) => {
 
       {contactForm && (
         <ModalContact
-          setModalContact={setModalContact}
+          setModalContact={setContactForm}
           thePageName={pageName}
           contactForm={contactForm}
           setContactForm={setContactForm}
-          modalContact={modalContact}
+          modalContact={contactForm}
+          contactSubject={""}
+          notification_purpose={"partner-with-us-lcs"}
+          emailSubject={"Parner with us - "}
         />
       )}
     </>

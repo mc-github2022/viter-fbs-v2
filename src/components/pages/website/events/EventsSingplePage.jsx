@@ -113,14 +113,14 @@ const EventsSingplePage = () => {
                 </h3>
                 <div className="popularPostLinks [&>ul>li]:flex [&>ul>li]:items-center [&>ul>li]:gap-4">
                   <ul className="[&>li]:my-8">
-                    {eventsAndActivitiesData?.data.map((popPost, key) => {
-                      if (
-                        popPost.events_activities_slug ===
-                        post.events_activities_slug
-                      ) {
-                        return;
-                      }
-                      return (
+                    {eventsAndActivitiesData?.data
+                      .filter(
+                        (popPost) =>
+                          popPost.events_activities_slug !==
+                          post.events_activities_slug
+                      )
+                      .slice(0, 5)
+                      .map((popPost, key) => (
                         <div key={key}>
                           <li className="my-5">
                             <Link
@@ -141,8 +141,7 @@ const EventsSingplePage = () => {
                             </Link>
                           </li>
                         </div>
-                      );
-                    })}
+                      ))}
                   </ul>
                 </div>
               </div>

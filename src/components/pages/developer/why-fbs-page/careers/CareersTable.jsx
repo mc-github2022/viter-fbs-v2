@@ -1,15 +1,14 @@
 import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import TableSpinner from "../../../../partials/spinners/TableSpinner";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import ServerError from "../../../../partials/spinners/ServerError";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const CareersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -20,7 +19,6 @@ const CareersTable = ({ setItemEdit }) => {
     isFetching,
     error,
     isLoading,
-    status,
     data: careersData,
   } = useQueryData(
     "/v1/careers", // endpoint
@@ -44,7 +42,7 @@ const CareersTable = ({ setItemEdit }) => {
   return (
     <>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
-        {isFetching && status !== "loading" && <FetchingSpinner />}
+        {isFetching && !isLoading && <FetchingSpinner />}
         <table>
           <thead>
             <tr className="text-[black]">
@@ -59,11 +57,10 @@ const CareersTable = ({ setItemEdit }) => {
             </tr>
           </thead>
           <tbody className="relative">
-            {isLoading && status !== "pending" && <TableSpinner />}
-            {(status === "pending" || careersData?.data.length === 0) && (
+            {(isLoading || careersData?.data.length === 0) && (
               <tr className="text-center">
                 <td colSpan="100%" className="p-10">
-                  {status === "pending" ? <TableLoading /> : <NoData />}
+                  {isLoading ? <TableLoading /> : <NoData />}
                 </td>
               </tr>
             )}

@@ -14,6 +14,11 @@ import ModalError from "../../../../partials/modals/ModalError";
 const ServiceOnlineDonationPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("donation");
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+  
   return (
     <>
       <Header pageName={pageName} />

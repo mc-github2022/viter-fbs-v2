@@ -14,6 +14,7 @@ const Process = () => {
           </div>
           <img
             src={`${devBaseImgUrl}/our-process.png`}
+            loading="lazy"
             className="hidden md:block h-full object-contain object-top w-[78%] mx-auto mb-2"
             alt="Our Process"
           />

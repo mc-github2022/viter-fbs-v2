@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { devBaseImgUrl } from "../../../helpers/functions-general";
 import ModalContact from "../../../partials/ModalContact";
+import BannerSliderLoader from "./bannerSliderLoader";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -63,6 +64,12 @@ const BannerSlider = ({ pageName }) => {
   const [contactForm, setContactForm] = React.useState(false);
   const handleForm = () => {
     setContactForm(!contactForm);
+  };
+
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
   };
 
   const {
@@ -128,7 +135,6 @@ const BannerSlider = ({ pageName }) => {
   React.useEffect(() => {
     const handleKeyDown = (event) => {
       if (sliderRef.current) {
-        // Check if the ref is defined
         if (event.key === "ArrowRight") {
           sliderRef.current.slickNext();
         } else if (event.key === "ArrowLeft") {
@@ -146,46 +152,58 @@ const BannerSlider = ({ pageName }) => {
 
   return (
     <>
-      {/* {modalContact && (
-        <ModalContactGetStarted setModalContact={setModalContact} />
-      )} */}
-      <Slider ref={sliderRef} {...settings}>
-        {bannerData?.data.map((item, key) => (
-          <div key={key}>
-            <section
-              id="banner"
-              className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit`}
-              style={{
-                // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-                backgroundImage: `url(${devBaseImgUrl}/${item.home_banner_img}`,
-              }}
-            >
-              <div className="customContainer h-fit">
-                <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
-                  <div className="mx-auto w-full md:w-[865px] text-center place-content-center ">
-                    <p className="text-light lg:text-[28px] italic">
-                      {item.home_banner_sub_title}
-                    </p>
-                    <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
-                      {item.home_banner_title}
-                    </h1>
-                    <p className="text-light text-center mb-10">
-                      {item.home_banner_description}
-                    </p>
-                    <a
-                      href="#"
-                      className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0"
-                      onClick={handleForm}
-                    >
-                      {item.home_banner_button_text}
-                    </a>
+      {isLoading ? (
+        <BannerSliderLoader />
+      ) : (
+        <Slider ref={sliderRef} {...settings}>
+          {bannerData?.data.map((item, key) => (
+            <div key={key}>
+              <div
+                id="banner"
+                className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit relative`}
+              >
+                <img
+                  src={`${devBaseImgUrl}/${item.home_banner_img}`}
+                  className={`absolute top-0 w-full h-full object-cover ${
+                    imageLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                  alt="Your Trusted Christian Partner in Managed Services"
+                  loading="lazy"
+                  onLoad={handleImageLoad}
+                  style={{ transition: "opacity 0.1s ease-in" }}
+                />
+                <div
+                  className={`customContainer h-fit ${
+                    imageLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
+                    <div className="mx-auto w-full md:w-[865px] text-center place-content-center z-1 relative">
+                      <p className="text-light lg:text-[28px] italic">
+                        {item.home_banner_sub_title}
+                      </p>
+                      <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
+                        {item.home_banner_title}
+                      </h1>
+                      <p className="text-light text-center mb-10 relative z-1">
+                        {item.home_banner_description}
+                      </p>
+                      <a
+                        href="#"
+                        className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0 "
+                        onClick={handleForm}
+                      >
+                        {item.home_banner_button_text}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </section>
-          </div>
-        ))}
-      </Slider>
+            </div>
+          ))}
+        </Slider>
+      )}
+
       {contactForm && (
         <ModalContact
           setModalContact={setModalContact}
@@ -193,6 +211,9 @@ const BannerSlider = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"get-started-home"}
+          emailSubject={"Get started "}
         />
       )}
     </>
