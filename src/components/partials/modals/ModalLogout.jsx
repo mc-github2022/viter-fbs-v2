@@ -1,28 +1,18 @@
-import React from "react";
-import { FaArchive } from "react-icons/fa";
-import { GrFormClose } from "react-icons/gr";
-import { queryData } from "../../helpers/queryData";
-import { StoreContext } from "../../store/StoreContext";
-import { setError, setMessage, setSuccess } from "../../store/StoreAction";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import ButtonSpinner from "../spinners/ButtonSpinner";
+import React from "react";
+import { GrFormClose } from "react-icons/gr";
 import { IoLogOut } from "react-icons/io5";
-import { Navigate, useNavigate } from "react-router-dom";
 import { devNavUrl, UrlDeveloper } from "../../helpers/functions-general";
-import FetchingSpinner from "../spinners/FetchingSpinner";
-import TableSpinner from "../spinners/TableSpinner";
 import { checkLocalStorage } from "../../helpers/login-functions";
+import { queryData } from "../../helpers/queryData";
+import { setError, setMessage, setSuccess } from "../../store/StoreAction";
+import { StoreContext } from "../../store/StoreContext";
+import ButtonSpinner from "../spinners/ButtonSpinner";
+import TableSpinner from "../spinners/TableSpinner";
 
-const ModalLogout = ({
-  setIsLogout,
-  mysqlEndpoint,
-  queryKey,
-  item,
-  isLogout,
-}) => {
+const ModalLogout = ({ setIsLogout, mysqlEndpoint, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [loading, setLoading] = React.useState(false);
-  const navigate = useNavigate();
 
   const handleClose = () => {
     setIsLogout(false);
@@ -63,7 +53,7 @@ const ModalLogout = ({
         return;
       }
       setLoading(false);
-    }, 1500);
+    }, 1200);
   };
 
   return (
@@ -96,7 +86,7 @@ const ModalLogout = ({
               <div className="flex justify-center mt-5 gap-2">
                 <button
                   className="inline-block rounded-md w-full px-5 py-2 bg-primary text-[white]"
-                  onClick={handleLogout} // Trigger handleLogout function here
+                  onClick={handleLogout}
                   disabled={mutation.isPending || loading}
                 >
                   {mutation.isPending || loading ? <ButtonSpinner /> : "Yes"}
@@ -112,8 +102,6 @@ const ModalLogout = ({
           </div>
         </div>
       )}
-
-      {console.log(loading)}
     </>
   );
 };

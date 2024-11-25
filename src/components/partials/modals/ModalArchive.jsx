@@ -55,8 +55,11 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
           <h2 className="translate-y-2">
             <FaArchive className="text-[30px]" />
           </h2>
-          <button onClick={handleClose}>
-            <GrFormClose className="text-[35px]" />
+          <button
+            onClick={handleClose}
+            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-6 h-8"
+          >
+            <GrFormClose className="text-[25px]" />
           </button>
         </div>
         <div className="p-5 text-center">
@@ -65,16 +68,13 @@ const ModalArchive = ({ setIsArchive, mysqlEndpoint, queryKey, item }) => {
           </h3>
           <div className="flex justify-center mt-5 gap-2">
             <button
-              className="inline-block rounded-md w-full px-5 py-2 bg-primary text-[white]"
+              className="text-sm btn-modal-submit"
               onClick={handleYes}
               disabled={mutation.isPending}
             >
               {mutation.isPending ? <ButtonSpinner /> : "Yes"}
             </button>
-            <button
-              className="inline-block rounded-md w-full px-5 py-2 bg-[#e5e7eb] text-[#1f2937]"
-              onClick={handleClose}
-            >
+            <button className="text-sm btn-modal-cancel" onClick={handleClose}>
               Cancel
             </button>
           </div>

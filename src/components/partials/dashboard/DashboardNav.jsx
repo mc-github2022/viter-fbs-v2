@@ -77,7 +77,6 @@ const DashboardNav = ({ menu }) => {
           mysqlEndpoint={`${apiVersion}/user-other/${id}`}
           item={isData}
           archive={isArchiving}
-          isLogout={isLogout}
         />
       )}
     </>
