@@ -179,7 +179,7 @@ export const getUserType = () => {
   const { store } = React.useContext(StoreContext);
 
   let link =
-    store.credentials.data?.role === "admin"
+    store.credentials.data?.role_code === "role_is_admin"
       ? ``
       : `/${store.credentials.data?.role.toLowerCase().replaceAll(" ", "-")}`;
 

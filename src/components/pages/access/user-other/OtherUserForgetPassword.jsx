@@ -16,6 +16,7 @@ import React from "react";
 import { MdMarkEmailRead } from "react-icons/md";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import LoginFooter from "../../../partials/LoginFooter";
 
 const OtherUserForgetPassword = () => {
   const queryClient = useQueryClient();
@@ -75,7 +76,7 @@ const OtherUserForgetPassword = () => {
             </>
           ) : (
             <>
-              <p className="mt-8 mb-5 text-lg">FORGOT PASSWORD</p>
+              <p className="mt-8 mb-5 text-lg">FBS WEBSITE Forgot Password</p>
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}
@@ -92,6 +93,7 @@ const OtherUserForgetPassword = () => {
                           type="text"
                           name="email"
                           disabled={mutation.isPending}
+                          className="!bg-white"
                         />
                       </div>
                       <div className="flex items-center gap-1 mb-4">
@@ -118,19 +120,7 @@ const OtherUserForgetPassword = () => {
                   <span>Login</span>
                 </Link>
               </p>
-              <div className="text-xs mt-12 grid place-items-center ">
-                <div className="mb-2">
-                  <ul className="flex items-center [&>li]:px-2">
-                    <li>Privacy Policy</li>
-                    <li className="border-x border-dark">Terms of Service</li>
-                    <li>EULA</li>
-                  </ul>
-                </div>
-                <p className="text-center">
-                  &copy; {copyrightYear()} Frontline Business Solutions, Inc.{" "}
-                  <br /> All rights reserved.
-                </p>
-              </div>
+              <LoginFooter />
             </>
           )}
         </div>

@@ -25,6 +25,7 @@ import React from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import LoginFooter from "../../../partials/LoginFooter";
 
 const OtherUserLogin = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -88,7 +89,7 @@ const OtherUserLogin = () => {
             </div>
 
             <div className="mb-4">
-              <h2 className="mb-0 mt-10 text-lg">LOGIN</h2>
+              <h2 className="mb-0 mt-10 text-lg">FBS WEBSITE Login</h2>
             </div>
             <Formik
               initialValues={initVal}
@@ -106,6 +107,7 @@ const OtherUserLogin = () => {
                         type="text"
                         name="user_other_email"
                         disabled={mutation.isPending}
+                        className="!bg-white"
                       />
                     </div>
                     <div className="relative mb-5">
@@ -149,39 +151,7 @@ const OtherUserLogin = () => {
                 <span>Forgot password</span>
               </Link>
             </p>
-
-            <div className="text-xs mt-12 grid place-items-center ">
-              <ul className="flex items-center mb-2 [&>li]:px-2">
-                <li>
-                  <a
-                    className="hover:text-primary transition ease-linear duration-200"
-                    href={`${devNavUrl}/privacy-policy`}
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li className="border-x border-dark">
-                  <a
-                    className="hover:text-primary transition ease-linear duration-200"
-                    href={`${devNavUrl}/terms-of-service`}
-                  >
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className="hover:text-primary transition ease-linear duration-200"
-                    href={`${devNavUrl}/eula`}
-                  >
-                    EULA
-                  </a>
-                </li>
-              </ul>
-              <p className="text-center ">
-                &copy; {copyrightYear()} Frontline Business Solutions, Inc.
-                <br /> All rights reserved.
-              </p>
-            </div>
+            <LoginFooter />
           </div>
         </div>
       )}
