@@ -1,9 +1,12 @@
 import React from "react";
-import { checkLocalStorage } from "../helpers/CheckLocalStorage.jsx";
-import { checkRoleToRedirect } from "../helpers/login-functions.jsx";
-import { queryData } from "../helpers/queryData.jsx";
-import { setIsLogin } from "../store/StoreAction.jsx";
-import { StoreContext } from "../store/StoreContext.jsx";
+import { StoreContext } from "../store/StoreContext";
+import { queryData } from "../helpers/queryData";
+import {
+  checkLocalStorage,
+  checkRoleToRedirect,
+} from "../helpers/login-functions";
+import { apiVersion } from "../helpers/functions-general";
+import { setIsLogin } from "../store/StoreAction";
 
 const useOtherLogin = (navigate) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -12,15 +15,16 @@ const useOtherLogin = (navigate) => {
   React.useEffect(() => {
     setLoading(true);
     const fetchLogin = async () => {
-      const login = await queryData(`/v2/user-other/token`, "post", {
+      const login = await queryData(`${apiVersion}/user-other/token`, "post", {
         token: checkLocalStorage().token,
       });
 
       if (typeof login === "undefined" || !login.success) {
-        localStorage.removeItem("fcatoken");
+        localStorage.removeItem("localfbstoken");
         setLoading(false);
       } else {
         setLoading(false);
+        // console.log("useIsLogin", login.data);
         checkRoleToRedirect(navigate, login.data);
       }
     };

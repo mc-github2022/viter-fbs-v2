@@ -1,4 +1,4 @@
-import useLoginNavigate from "@/components/custom-hooks/useLoginNavigate";
+import useOtherLogin from "@/components/custom-hooks/useOtherLogin";
 import { InputText } from "@/components/helpers/FormInputs";
 import {
   apiVersion,
@@ -31,7 +31,7 @@ const OtherUserLogin = () => {
   const queryClient = useQueryClient();
   const [passwordShown, setPasswordShown] = React.useState(false);
   const navigate = useNavigate();
-  const { loginLoading } = useLoginNavigate(navigate);
+  const { loginLoading } = useOtherLogin(navigate);
 
   const mutation = useMutation({
     mutationFn: (values) =>
