@@ -149,21 +149,10 @@ const OtherUserLogin = () => {
                 <span>Forgot password</span>
               </Link>
             </p>
-<<<<<<< HEAD
+
             <div className="text-xs mt-12 grid place-items-center ">
-              <div className="mb-2">
-                <ul className="flex items-center [&>li]:px-2">
-                  <li>Privacy Policy</li>
-                  <li className="border-x border-dark">Terms of Service</li>
-                  <li>EULA</li>
-                </ul>
-              </div>
-              <p className="text-center">
-                &copy; {copyrightYear()} Frontline Business Solutions, Inc.{" "}
-=======
-            <div className="text-xs mt-10">
-              <ul className="flex items-center gap-2 justify-center">
-                <li className="after:content-['|'] after:ml-2 last:after:hidden after:text-dark">
+              <ul className="flex items-center mb-2 [&>li]:px-2">
+                <li>
                   <a
                     className="hover:text-primary transition ease-linear duration-200"
                     href={`${devNavUrl}/privacy-policy`}
@@ -171,7 +160,7 @@ const OtherUserLogin = () => {
                     Privacy Policy
                   </a>
                 </li>
-                <li className="after:content-['|'] after:ml-2 last:after:hidden after:text-dark">
+                <li className="border-x border-dark">
                   <a
                     className="hover:text-primary transition ease-linear duration-200"
                     href={`${devNavUrl}/terms-of-service`}
@@ -179,7 +168,7 @@ const OtherUserLogin = () => {
                     Terms of Service
                   </a>
                 </li>
-                <li className="after:content-['|'] after:ml-2 last:after:hidden after:text-dark">
+                <li>
                   <a
                     className="hover:text-primary transition ease-linear duration-200"
                     href={`${devNavUrl}/eula`}
@@ -188,9 +177,8 @@ const OtherUserLogin = () => {
                   </a>
                 </li>
               </ul>
-              <p className="mt-2 text-center">
+              <p className="text-center ">
                 &copy; {copyrightYear()} Frontline Business Solutions, Inc.
->>>>>>> 5b4f71056c9a9bbe3dfd3c84c861a568366f4f8c
                 <br /> All rights reserved.
               </p>
             </div>
