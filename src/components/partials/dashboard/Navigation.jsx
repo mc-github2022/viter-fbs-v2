@@ -59,17 +59,8 @@ const Navigation = ({ menu, submenu }) => {
                 </div>
               </li>
 
-<<<<<<< HEAD
-              <ul
-                className={`${
-                  navHomeOpen ? "h-0 overflow-hidden hidden" : "my-2"
-                } submenu ml-5  text-[14px]`}
-              >
-                <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
-=======
               <ul className="submenu ml-5 my-2 text-[14px] ">
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
->>>>>>> 4d9287d19898c58916ae41502ac7b6aa6064170a
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-banner"
@@ -187,20 +178,11 @@ const Navigation = ({ menu, submenu }) => {
                 </div>
               </li>
 
-<<<<<<< HEAD
-              <ul
-                className={`${
-                  whyUsOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5  text-[14px]`}
-              >
-                <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
-=======
               <ul className="submenu ml-5 my-1 text-[12px] ">
                 <Link
                   className="!p-0"
                   to={`${devNavUrl}${link}/events-activities`}
                 >
->>>>>>> 4d9287d19898c58916ae41502ac7b6aa6064170a
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "events-activities"
