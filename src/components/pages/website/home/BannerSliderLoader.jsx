@@ -4,7 +4,7 @@ const BannerSliderLoader = () => {
   return (
     <>
       <div
-        className={`banner bg-cover  bg-center py-[30px] h-[100%] grid place-content-center`}
+        className={`banner bg-cover  bg-center py-[30px] h-screen grid place-content-center`}
       >
         <div>
           <div className="animate-pulse space-y-2 mb-5">
