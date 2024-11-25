@@ -1,28 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  devBaseImgUrl,
-  devNavUrl,
-  getUserType,
-} from "../../helpers/functions-general";
+import { devBaseImgUrl, devNavUrl } from "../../helpers/functions-general";
 import { StoreContext } from "../../store/StoreContext";
-import { IoChevronDownSharp } from "react-icons/io5";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const link = getUserType();
-
-  const [navName, setNavName] = React.useState("");
-  const [navHomeOpen, setNavOpen] = React.useState(false);
-  const [whyUsOpen, setwhyUsOpen] = React.useState(false);
-
-  const handleNavOpen = () => {
-    setNavOpen(!navHomeOpen);
-  };
-
-  const handleWhyUsOpen = () => {
-    setwhyUsOpen(!whyUsOpen);
-  };
 
   return (
     <>
@@ -38,33 +20,23 @@ const Navigation = ({ menu, submenu }) => {
         </div>
         <div>
           <nav>
-            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold  text-[14px]">
+            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold [&>li]:mb-[15px] text-[14px]">
               <li
-                className={` flex justify-between items-center p-1 cursor-pointer
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "home"
                       ? "text-[black] underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
-                onClick={() => handleNavOpen()}
               >
-                <div className="nav flex items-center justify-between w-full">
+                <div className="nav flex items-center">
                   <span className="ml-2.5 text-[14px]">Home</span>
-                  <IoChevronDownSharp
-                    className={`${
-                      navHomeOpen ? "" : "rotate-180"
-                    } transition-all`}
-                  />
                 </div>
               </li>
 
-              <ul
-                className={`${
-                  navHomeOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5  text-[14px]`}
-              >
-                <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
+              <ul className="submenu ml-5 my-2 text-[14px] ">
+                <Link className="!p-0" to={`${devNavUrl}/home-banner`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-banner"
@@ -75,7 +47,7 @@ const Navigation = ({ menu, submenu }) => {
                     Banner
                   </li>
                 </Link>
-                {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-process`}>
+                {/* <Link className="!p-0" to={`${devNavUrl}/home-process`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-process"
@@ -86,7 +58,7 @@ const Navigation = ({ menu, submenu }) => {
                       Process
                     </li>
                   </Link>
-                  <Link className="!p-0" to={`${devNavUrl}${link}/home-services`}>
+                  <Link className="!p-0" to={`${devNavUrl}/home-services`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-services"
@@ -97,7 +69,7 @@ const Navigation = ({ menu, submenu }) => {
                       Services
                     </li>
                   </Link>
-                  <Link className="!p-0" to={`${devNavUrl}${link}/home-partnerWithUs`}>
+                  <Link className="!p-0" to={`${devNavUrl}/home-partnerWithUs`}>
                     <li
                       className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partnerWithUs"
@@ -108,10 +80,7 @@ const Navigation = ({ menu, submenu }) => {
                       Partner With Us
                     </li>
                   </Link> */}
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/home-testimonial`}
-                >
+                <Link className="!p-0" to={`${devNavUrl}/home-testimonial`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-testimonial"
@@ -122,7 +91,7 @@ const Navigation = ({ menu, submenu }) => {
                     Testimonials
                   </li>
                 </Link>
-                {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-partners`}>
+                {/* <Link className="!p-0" to={`${devNavUrl}/home-partners`}>
                     <li
                       className={` text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                         submenu === "home-partners"
@@ -133,7 +102,7 @@ const Navigation = ({ menu, submenu }) => {
                       Partners
                     </li>
                   </Link> */}
-                <Link className="!p-0" to={`${devNavUrl}${link}/home-insights`}>
+                <Link className="!p-0" to={`${devNavUrl}/home-insights`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "home-insights"
@@ -155,7 +124,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}${link}/special-offers`}>
+                <Link to={`${devNavUrl}/special-offers`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">Special Offers</span>
                   </div>
@@ -163,34 +132,21 @@ const Navigation = ({ menu, submenu }) => {
               </li>
 
               <li
-                className={` flex justify-between items-center p-1 cursor-pointer
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "whyFBS"
                       ? "text-[black] underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
-                onClick={() => handleWhyUsOpen()}
               >
-                <div className="nav flex items-center justify-between w-full">
+                <div className="nav flex items-center">
                   <span className="ml-2.5 text-[14px]">Why FBS?</span>
-                  <IoChevronDownSharp
-                    className={`${
-                      whyUsOpen ? "" : "rotate-180"
-                    } transition-all`}
-                  />
                 </div>
               </li>
 
-              <ul
-                className={`${
-                  whyUsOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5  text-[12px]`}
-              >
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/events-activities`}
-                >
+              <ul className="submenu ml-5 my-1 text-[12px] ">
+                <Link className="!p-0" to={`${devNavUrl}/events-activities`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "events-activities"
@@ -201,10 +157,7 @@ const Navigation = ({ menu, submenu }) => {
                     Events & Activities
                   </li>
                 </Link>
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/whyFBS-careers`}
-                >
+                <Link className="!p-0" to={`${devNavUrl}/whyFBS-careers`}>
                   <li
                     className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
                       submenu === "whyFBS-careers"
@@ -226,7 +179,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}${link}/lcss-batches`}>
+                <Link to={`${devNavUrl}/lcss-batches`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">LCSS Batches</span>
                   </div>
@@ -242,7 +195,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}${link}/industry-testimonial`}>
+                <Link to={`${devNavUrl}/industry-testimonial`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">
                       Industry Testimonials
@@ -260,7 +213,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}${link}/vid-testimonial`}>
+                <Link to={`${devNavUrl}/vid-testimonial`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">
                       Video Testimonials
@@ -277,7 +230,7 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}${link}/pricing`}>
+                <Link to={`${devNavUrl}/pricing`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">Pricing</span>
                   </div>
@@ -292,88 +245,61 @@ const Navigation = ({ menu, submenu }) => {
                   }
                 `}
               >
-                <Link to={`${devNavUrl}${link}/notification`}>
+                <Link to={`${devNavUrl}/notification`}>
                   <div className="nav flex items-center">
                     <span className="ml-2.5 text-[14px]">Notification</span>
                   </div>
                 </Link>
               </li>
-
-              {store.credentials.data.role_code === "role_is_developer" ? (
-                <>
-                  <li
-                    className={` flex justify-between items-center p-1
+              <li
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "user"
                       ? "text-[black] underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
-                  >
-                    <div className="nav flex items-center">
-                      <span className="ml-2.5 text-[14px]">Users</span>
-                    </div>
-                  </li>
+              >
+                <div className="nav flex items-center">
+                  <span className="ml-2.5 text-[14px]">Users</span>
+                </div>
+              </li>
 
-                  <ul className="submenu ml-5 my-1 text-[12px] ">
-                    <Link
-                      className="!p-0"
-                      to={`${devNavUrl}${link}/other-user`}
-                    >
-                      <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
-                          submenu === "other-user"
-                            ? "text-[black] font-bold"
-                            : "border-none text-[#9ca3af]"
-                        }`}
-                      >
-                        Other User
-                      </li>
-                    </Link>
-                    <Link
-                      className="!p-0"
-                      to={`${devNavUrl}${link}/user-developer`}
-                    >
-                      <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
-                          submenu === "user-developer"
-                            ? "text-[black] font-bold"
-                            : "border-none text-[#9ca3af]"
-                        }`}
-                      >
-                        Developer
-                      </li>
-                    </Link>
-                    <Link className="!p-0" to={`${devNavUrl}${link}/user-role`}>
-                      <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
-                          submenu === "user-role"
-                            ? "text-[black] font-bold"
-                            : "border-none text-[#9ca3af]"
-                        }`}
-                      >
-                        Role
-                      </li>
-                    </Link>
-                  </ul>
-                </>
-              ) : (
-                <li
-                  className={` flex justify-between items-center p-1
-                ${
-                  menu === "user"
-                    ? "text-[black] underline underline-offset-4 "
-                    : "text-[#9ca3af] "
-                }
-              `}
-                >
-                  <Link to={`${devNavUrl}${link}/other-user`}>
-                    <div className="nav flex items-center">
-                      <span className="ml-2.5 text-[14px]">User</span>
-                    </div>
-                  </Link>
-                </li>
-              )}
+              <ul className="submenu ml-5 my-1 text-[12px] ">
+                <Link className="!p-0" to={`${devNavUrl}/other-user`}>
+                  <li
+                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      submenu === "other-user"
+                        ? "text-[black] font-bold"
+                        : "border-none text-[#9ca3af]"
+                    }`}
+                  >
+                    Other User
+                  </li>
+                </Link>
+                <Link className="!p-0" to={`${devNavUrl}/user-developer`}>
+                  <li
+                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      submenu === "user-developer"
+                        ? "text-[black] font-bold"
+                        : "border-none text-[#9ca3af]"
+                    }`}
+                  >
+                    Developer
+                  </li>
+                </Link>
+                <Link className="!p-0" to={`${devNavUrl}/user-role`}>
+                  <li
+                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      submenu === "user-role"
+                        ? "text-[black] font-bold"
+                        : "border-none text-[#9ca3af]"
+                    }`}
+                  >
+                    Role
+                  </li>
+                </Link>
+              </ul>
             </ul>
           </nav>
         </div>

@@ -61,8 +61,6 @@ const Header = ({ pageName }) => {
     return () => document.addEventListener("click", clickOutsideRef);
   }, []);
 
-  console.log("subjectNotif", subjectNotif);
-
   return (
     <>
       <section

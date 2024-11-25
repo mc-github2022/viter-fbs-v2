@@ -180,14 +180,14 @@ const DeveloperTable = ({ setItemEdit }) => {
                             data-tooltip="Reset"
                             onClick={() => handleReset(item)}
                           >
-                            <FaKey />
+                            <FaKey className="text-gray-600" />
                           </button>
                           <button
                             className="tooltip-action-table"
                             data-tooltip="Archive"
                             onClick={() => handleArchive(item)}
                           >
-                            <FaUserAltSlash className=" text-gray-600 text-[10px]" />
+                            <FaUserAltSlash className=" text-gray-600 text-[15px]" />
                           </button>
                         </>
                       ) : (

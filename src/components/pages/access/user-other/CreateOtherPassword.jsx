@@ -25,6 +25,7 @@ import {
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import PageNotFound from "@/components/partials/PageNotFound";
+import LoginFooter from "../../../partials/LoginFooter";
 
 const CreateOtherPassword = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -182,6 +183,9 @@ const CreateOtherPassword = () => {
                 <FbsLogoXl />
               </div>
 
+              <p className="mb-0 mt-2 font-bold text-center text-lg">
+                FBS WEBSITE
+              </p>
               <p className="mt-8 mb-5 text-lg font-bold">CREATE PASSWORD</p>
               <Formik
                 initialValues={initVal}
@@ -240,8 +244,8 @@ const CreateOtherPassword = () => {
                           }
                           className="btn-modal-submit relative"
                         >
-                          {mutation.isPending && <ButtonSpinner />} Create
-                          Password
+                          {mutation.isPending && <ButtonSpinner />} FBS WEBSITE
+                          Create Password
                         </button>
                       </div>
                     </Form>
@@ -293,6 +297,7 @@ const CreateOtherPassword = () => {
                   </li>
                 </ul>
               </div>
+              <LoginFooter />
             </div>
           </div>
         </div>

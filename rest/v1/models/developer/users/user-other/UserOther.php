@@ -132,6 +132,8 @@ class UserOther
             $sql .= "user.user_other_is_active, ";
             $sql .= "user.user_other_fname, ";
             $sql .= "user.user_other_lname, ";
+            $sql .= "user.user_other_fname as first_name, ";
+            $sql .= "user.user_other_lname as last_name, ";
             $sql .= "user.user_other_email, ";
             $sql .= "user.user_other_password, ";
             $sql .= "role.* ";

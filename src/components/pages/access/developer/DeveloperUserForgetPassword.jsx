@@ -17,6 +17,7 @@ import React from "react";
 import { MdMarkEmailRead } from "react-icons/md";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import LoginFooter from "@/components/partials/LoginFooter";
 
 const DeveloperUserForgetPassword = () => {
   const queryClient = useQueryClient();
@@ -76,6 +77,9 @@ const DeveloperUserForgetPassword = () => {
             </>
           ) : (
             <>
+              <p className="mb-0 mt-2 font-bold text-center text-lg">
+                FBS WEBSITE
+              </p>
               <p className="mt-8 mb-5 text-lg uppercase">
                 Developer FORGOT PASSWORD
               </p>
@@ -121,19 +125,8 @@ const DeveloperUserForgetPassword = () => {
                   <span>Login</span>
                 </Link>
               </p>
-              <div className="text-xs mt-12 grid place-items-center ">
-                <div className="mb-2">
-                  <ul className="flex items-center [&>li]:px-2">
-                    <li>Privacy Policy</li>
-                    <li className="border-x border-dark">Terms of Service</li>
-                    <li>EULA</li>
-                  </ul>
-                </div>
-                <p className="text-center">
-                  &copy; {copyrightYear()} Frontline Business Solutions, Inc.{" "}
-                  <br /> All rights reserved.
-                </p>
-              </div>
+
+              <LoginFooter />
             </>
           )}
         </div>

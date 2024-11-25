@@ -26,6 +26,7 @@ import {
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import PageNotFound from "@/components/partials/PageNotFound";
+import LoginFooter from "@/components/partials/LoginFooter";
 
 const CreateDeveloperPassword = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -183,6 +184,9 @@ const CreateDeveloperPassword = () => {
                 <FbsLogoXl />
               </div>
 
+              <p className="mb-0 mt-2 font-bold text-center text-lg">
+                FBS WEBSITE
+              </p>
               <p className="mt-8 mb-5 text-lg font-bold">CREATE PASSWORD</p>
               <Formik
                 initialValues={initVal}
@@ -295,6 +299,8 @@ const CreateDeveloperPassword = () => {
                 </ul>
               </div>
             </div>
+
+            <LoginFooter />
           </div>
         </div>
       )}

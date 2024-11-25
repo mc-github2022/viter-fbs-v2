@@ -9,6 +9,7 @@ import {
 } from "@/components/helpers/functions-general";
 import { checkRoleToRedirect } from "@/components/helpers/login-functions";
 import { queryData } from "@/components/helpers/queryData";
+import LoginFooter from "@/components/partials/LoginFooter";
 import ModalError from "@/components/partials/modals/ModalError";
 import ButtonSpinner from "@/components/partials/spinners/ButtonSpinner";
 import TableSpinner from "@/components/partials/spinners/TableSpinner";
@@ -90,6 +91,9 @@ const DeveloperLogin = () => {
             </div>
 
             <div className="mb-4">
+              <p className="mb-0 mt-2 font-bold text-center text-lg">
+                FBS WEBSITE
+              </p>
               <h2 className="mb-0 mt-10 text-lg">DEVELOPER LOGIN</h2>
             </div>
             <Formik
@@ -107,6 +111,7 @@ const DeveloperLogin = () => {
                         label="Email"
                         type="text"
                         name="user_developer_email"
+                        className="!bg-white"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -152,7 +157,8 @@ const DeveloperLogin = () => {
               </Link>
             </p>
 
-            <div className="text-xs mt-12 grid place-items-center ">
+            <LoginFooter />
+            {/* <div className="text-xs mt-12 grid place-items-center ">
               <ul className="flex items-center mb-2 [&>li]:px-2">
                 <li>
                   <a
@@ -183,7 +189,7 @@ const DeveloperLogin = () => {
                 &copy; {copyrightYear()} Frontline Business Solutions, Inc.
                 <br /> All rights reserved.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

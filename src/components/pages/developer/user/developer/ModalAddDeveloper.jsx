@@ -72,7 +72,7 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 w-[45dvh] h-[30dvh]`}
+      className={`transition-all ease-linear transform duration-200 w-[45dvh] h-[35dvh]`}
       handleClose={handleClose}
     >
       <div className="modal-title">

@@ -128,6 +128,8 @@ class UserDeveloper
             $sql .= "user.user_developer_is_active, ";
             $sql .= "user.user_developer_fname, ";
             $sql .= "user.user_developer_lname, ";
+            $sql .= "user.user_developer_fname as first_name, ";
+            $sql .= "user.user_developer_lname as last_name, ";
             $sql .= "user.user_developer_email, ";
             $sql .= "user.user_developer_password, ";
             $sql .= "role.* ";
