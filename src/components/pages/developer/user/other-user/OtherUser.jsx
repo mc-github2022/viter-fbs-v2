@@ -21,7 +21,7 @@ const OtherUser = () => {
   };
 
   const { data: roleData } = useQueryData(
-    `/${apiVersion}/user-other/role`, // endpoint
+    `${apiVersion}/user-other/role`, // endpoint
     "post", // method
     "user-other-role", // key
     { role_code: "role_is_developer" }
