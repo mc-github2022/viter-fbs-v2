@@ -25,9 +25,9 @@ function App() {
               {RoutesWebsite.map(({ ...routesProps }, key) => {
                 return <Route key={key} {...routesProps} />;
               })}
-              {/* {routesDeveloper.map(({ ...routesProps }, key) => {
+              {routesDeveloper.map(({ ...routesProps }, key) => {
                 return <Route key={key} {...routesProps} />;
-              })} */}
+              })}
               {routesAdmin.map(({ ...routesProps }, key) => {
                 return <Route key={key} {...routesProps} />;
               })}

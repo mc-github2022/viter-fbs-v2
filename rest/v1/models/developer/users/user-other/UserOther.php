@@ -84,13 +84,9 @@ class UserOther
             $sql .= "from {$this->tblUser} as user, ";
             $sql .= "{$this->tblRole} as role ";
             $sql .= "where user.user_other_role_id = role.role_aid ";
-            $sql .= "and role.role_code != :role_code ";
             $sql .= "order by user.user_other_is_active desc, ";
             $sql .= "user.user_other_fname asc ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "role_code" => $this->role_code,
-            ]);
+            $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
         }
@@ -113,14 +109,12 @@ class UserOther
             $sql .= "from {$this->tblUser} as user, ";
             $sql .= "{$this->tblRole} as role ";
             $sql .= "where user.user_other_role_id = role.role_aid ";
-            $sql .= "and role.role_code != :role_code ";
             $sql .= "order by user.user_other_is_active desc, ";
             $sql .= "user.user_other_fname asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "role_code" => $this->role_code,
                 "start" => $this->user_other_start - 1,
                 "total" => $this->user_other_total,
             ]);
@@ -171,7 +165,6 @@ class UserOther
             $sql .= "from {$this->tblUser} as user, ";
             $sql .= "{$this->tblRole} as role ";
             $sql .= "where user.user_other_role_id = role.role_aid ";
-            $sql .= "and role.role_code != :role_code ";
             $sql .= "and ( user.user_other_fname like :user_other_fname ";
             $sql .= "or user.user_other_lname like :user_other_lname ";
             $sql .= "or user.user_other_email like :user_other_email ";
@@ -181,7 +174,6 @@ class UserOther
             $sql .= "user.user_other_fname asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "role_code" => $this->role_code,
                 "user_other_fname" => "%{$this->user_other_search}%",
                 "user_other_lname" => "%{$this->user_other_search}%",
                 "user_other_email" => "%{$this->user_other_search}%",

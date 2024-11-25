@@ -4,6 +4,7 @@ import {
   apiVersion,
   devNavUrl,
   getUrlParam,
+  UrlDeveloper,
 } from "@/components/helpers/functions-general";
 import { queryData } from "@/components/helpers/queryData";
 import ButtonSpinner from "@/components/partials/spinners/ButtonSpinner";
@@ -26,7 +27,7 @@ import {
 import { StoreContext } from "../../../store/StoreContext";
 import PageNotFound from "@/components/partials/PageNotFound";
 
-const CreateOtherPassword = () => {
+const CreateDeveloperPassword = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const paramKey = getUrlParam().get("key");
   const [isSuccess, setIsSuccess] = React.useState(false);
@@ -45,17 +46,17 @@ const CreateOtherPassword = () => {
     isFetching,
     data: otherKey,
   } = useQueryData(
-    `/v1/user-other/key/${paramKey}`, // endpoint
+    `${apiVersion}/user-developer/key/${paramKey}`, // endpoint
     "get", // method
     "other-key" // key
   );
 
   const mutation = useMutation({
     mutationFn: (values) =>
-      queryData(`${apiVersion}/user-other/password`, "post", values),
+      queryData(`${apiVersion}/user-developer/password`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["other"] });
+      queryClient.invalidateQueries({ queryKey: ["developer"] });
 
       // show error box
       if (!data.success) {
@@ -160,7 +161,7 @@ const CreateOtherPassword = () => {
                 </p>
                 <a
                   className="text-primary text-xs block text-center mt-6 underline"
-                  href={`${devNavUrl}/login`}
+                  href={`${devNavUrl}/${UrlDeveloper}/login`}
                 >
                   Go to Login
                 </a>
@@ -301,4 +302,4 @@ const CreateOtherPassword = () => {
   );
 };
 
-export default CreateOtherPassword;
+export default CreateDeveloperPassword;
