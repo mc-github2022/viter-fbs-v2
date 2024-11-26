@@ -273,7 +273,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                       </div>
                       <div className="modal__action flex justify-end mt-6 gap-2">
                         <button
-                          className="btn bg-primary text-light hover:text-light"
+                          className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
                           type="submit"
                           disabled={mutation.isPending || !props.dirty}
                         >
