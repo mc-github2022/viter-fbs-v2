@@ -122,7 +122,6 @@ const OtherUserLogin = () => {
                           mutation.isPending ||
                           props.values.user_other_email === ""
                         }
-                        className={`${passwordShown ? "!bg-white" : ""}`}
                       />
                       {props.values.password && (
                         <span
