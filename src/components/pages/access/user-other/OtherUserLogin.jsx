@@ -120,7 +120,8 @@ const OtherUserLogin = () => {
                         name="password"
                         disabled={
                           mutation.isPending ||
-                          props.values.user_other_email === ""
+                          (props.values.user_other_email === "" &&
+                            props.values.password === "")
                         }
                       />
                       {props.values.password && (
