@@ -315,7 +315,7 @@ const Navigation = ({ menu, submenu }) => {
               {store.credentials.data.role_code === "role_is_developer" ? (
                 <>
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "user"
                       ? "text-primary underline underline-offset-4 "
