@@ -238,7 +238,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="input-wrapper h-[450px] w-[478px]">
+                    <div className="input-wrapper textAreaWrapper h-[450px] w-[478px]">
                       <InputTextArea
                         label="Description"
                         type="text"

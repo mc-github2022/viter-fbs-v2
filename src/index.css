@@ -43,6 +43,7 @@
   textarea {
     @apply w-full h-20 resize-none text-sm;
   }
+
   select {
     @apply h-8 p-1 text-sm text-dark;
   }
@@ -399,4 +400,20 @@ img.popPost {
 
 textarea {
   resize: none;
+}
+
+.textAreaWrapper::after,
+.textAreaWrapper::before {
+  content: "";
+  position: absolute !important;
+  bottom: 0.9px !important;
+  height: 10px !important;
+  width: 93% !important;
+  background-color: white;
+  display: block !important;
+  left: 8px;
+  z-index: 1;
+}
+.textAreaWrapper::before {
+  top: 1.1px !important;
 }

@@ -103,7 +103,7 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[650px] max-w-[1000px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[600px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -137,7 +137,7 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
+                    <div className="w-[50%] relative">
                       <div className="relative w-fit m-auto group">
                         {/* Display images or placeholders */}
                         <div className="flex flex-row justify-between items-center">
@@ -285,9 +285,36 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
                             <option value="Web Design">Web Design</option>
                           </InputSelect>
                         </div>
+                        <div className="form-action absolute bottom-0 w-full mb-2">
+                          <div className="form-btn">
+                            <button
+                              className="btn-modal-submit"
+                              type="submit"
+                              disabled={
+                                mutation.isPending ||
+                                (!props.dirty && !clientImage && !logoImage) || // Check if no new image is selected
+                                (clientImage &&
+                                  initVal.industry_testimonial_img ===
+                                    clientImage.name) ||
+                                (logoImage &&
+                                  initVal.industry_testimonial_logo ===
+                                    logoImage.name)
+                              }
+                            >
+                              {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                            </button>
+                            <button
+                              className="btn-modal-cancel"
+                              type="button"
+                              onClick={handleClose}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="input-wrapper">
+                    <div className="input-wrapper textAreaWrapper">
                       <InputTextArea
                         label="Message"
                         type="text"
@@ -296,32 +323,6 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
                         disabled={mutation.isPending}
                       />
                     </div>
-                  </div>
-                </div>
-                <div className="form-action">
-                  <div className="form-btn">
-                    <button
-                      className="btn-modal-submit"
-                      type="submit"
-                      disabled={
-                        mutation.isPending ||
-                        (!props.dirty && !clientImage && !logoImage) || // Check if no new image is selected
-                        (clientImage &&
-                          initVal.industry_testimonial_img ===
-                            clientImage.name) ||
-                        (logoImage &&
-                          initVal.industry_testimonial_logo === logoImage.name)
-                      }
-                    >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                    </button>
-                    <button
-                      className="btn-modal-cancel"
-                      type="button"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </button>
                   </div>
                 </div>
               </Form>

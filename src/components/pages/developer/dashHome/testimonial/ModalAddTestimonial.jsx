@@ -238,12 +238,12 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="input-wrapper">
+                    <div className="input-wrapper textAreaWrapper">
                       <InputTextArea
                         label="Message"
                         type="text"
                         name="home_testimonial_message"
-                        className="h-[450px] w-[478px] "
+                        className="h-[455px] w-[478px] "
                         disabled={mutation.isPending}
                       />
                     </div>
