@@ -6,7 +6,11 @@ import {
   FaLinkedin,
   FaYoutubeSquare,
 } from "react-icons/fa";
-import { devBaseImgUrl, devNavUrl } from "../helpers/functions-general";
+import {
+  copyrightYear,
+  devBaseImgUrl,
+  devNavUrl,
+} from "../helpers/functions-general";
 
 const Footer = () => {
   return (
@@ -116,8 +120,8 @@ const Footer = () => {
           <div className="py-10 relative z-[1]">
             <div className="wrapper text-center lg:text-left lg:flex lg:justify-between items-center">
               <p className="text-xs mb-4 lg:mb-0">
-                Copyright 2024 | Frontline Business Solutions, Inc. All rights
-                reserved.
+                Copyright {copyrightYear()} | Frontline Business Solutions, Inc.
+                All rights reserved.
               </p>
               <p className="text-xs">
                 <a href={`${devNavUrl}/privacy-policy`}>Privacy Policy</a>
