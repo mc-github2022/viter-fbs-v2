@@ -17,7 +17,7 @@ import { StoreContext } from "../store/StoreContext";
 export const urlPathFBSMarketingWebsite =
   "https://frontlinebusiness.com.ph/newsite";
 export const imgUrlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2/public/img";
+  "http://frontlinebusiness.com.ph/newsite/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
