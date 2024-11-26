@@ -64,7 +64,6 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     client_message_subject: "",
     client_message: "",
     client_file: "",
-    formTitle: `${thePageName} Application`,
     notification_purpose: "apply-now-lcs",
     email_subject: `Apply no - ${thePageName} Application`,
   };
@@ -89,14 +88,17 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
           }}
           className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
-          <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
+          <button
+            className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed"
+            disabled={mutation.isPending}
+          >
             <IoCloseCircle
               className="text-3xl text-light"
               onClick={() => {
                 setLcssForm(false);
               }}
             />
-          </div>
+          </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
               src={`${devBaseImgUrl}/lets-talk.jpg`}
@@ -273,7 +275,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                         <button
                           className="btn bg-primary text-light hover:text-light"
                           type="submit"
-                          disabled={mutation.isLoading || !props.dirty}
+                          disabled={mutation.isPending || !props.dirty}
                         >
                           {mutation.isPending ? (
                             <div className="flex items-center gap-2">

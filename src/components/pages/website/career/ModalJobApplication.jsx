@@ -67,7 +67,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_message: "",
     client_file: "",
     client_message_subject: "",
-    formTitle: `Job Application: ${jobTitle}`,
     notification_purpose: "apply-now-careers",
     email_subject: `Apply Now - ${jobTitle}`,
   };
@@ -92,14 +91,17 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
           }}
           className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
-          <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
+          <button
+            className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed"
+            disabled={mutation.isPending}
+          >
             <IoCloseCircle
               className="text-3xl text-light"
               onClick={() => {
                 setModalJob(false);
               }}
             />
-          </div>
+          </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
               src={`${devBaseImgUrl}/lets-talk.jpg`}
@@ -274,7 +276,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                         <button
                           className="btn bg-primary text-light hover:text-light"
                           type="submit"
-                          disabled={mutation.isLoading || !props.dirty}
+                          disabled={mutation.isPending || !props.dirty}
                         >
                           {mutation.isPending ? (
                             <div className="flex items-center gap-2">
