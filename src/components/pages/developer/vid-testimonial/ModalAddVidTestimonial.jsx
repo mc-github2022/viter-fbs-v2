@@ -116,8 +116,8 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
                           (photoSingle === "" && itemEdit === null) ? (
                             <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
                               <div className="">
-                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                                <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight text-[gray] text-sm text-center">
                                   Upload Image
                                 </h1>
                               </div>
@@ -128,7 +128,7 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
                             (!itemEdit && !photoSingle) ? (
                             <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
                               <div>
-                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
                                 <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
                                   Upload Image
                                 </h1>

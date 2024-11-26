@@ -82,7 +82,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[650px] max-w-[1000px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -115,7 +115,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
+                    <div className="w-[50%] relative">
                       <div className="mt-5">
                         <span className="top-20 px-2 text-dark text-xs">
                           Image
@@ -125,8 +125,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                           (photoSingle === "" && itemEdit === null) ? (
                             <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
                               <div className="">
-                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                                <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight text-[gray] text-sm text-center">
                                   Upload Image
                                 </h1>
                               </div>
@@ -137,7 +137,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             (!itemEdit && !photoSingle) ? (
                             <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
                               <div>
-                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
                                 <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
                                   Upload Image
                                 </h1>
@@ -212,39 +212,40 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                           />
                         </div>
                       </div>
+                      <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
+                        <div className="form-btn">
+                          <button
+                            className="btn-modal-submit"
+                            type="submit"
+                            disabled={
+                              ((mutation.isPending || !props.dirty) &&
+                                photoSingle === null) ||
+                              photoSingle === "" ||
+                              initVal.events_activities_img ===
+                                photoSingle?.name
+                            }
+                          >
+                            {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                          </button>
+                          <button
+                            className="btn-modal-cancel"
+                            type="button"
+                            onClick={handleClose}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="input-wrapper">
+                    <div className="input-wrapper textAreaWrapper">
                       <InputTextArea
                         label="Description"
                         type="text"
                         name="events_activities_description"
-                        className="h-[500px] w-[478px]"
+                        className="h-[450px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>
-                  </div>
-                </div>
-                <div className="form-action">
-                  <div className="form-btn">
-                    <button
-                      className="btn-modal-submit"
-                      type="submit"
-                      disabled={
-                        ((mutation.isPending || !props.dirty) &&
-                          photoSingle === null) ||
-                        photoSingle === "" ||
-                        initVal.events_activities_img === photoSingle?.name
-                      }
-                    >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                    </button>
-                    <button
-                      className="btn-modal-cancel"
-                      type="button"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </button>
                   </div>
                 </div>
               </Form>
