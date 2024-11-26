@@ -324,10 +324,15 @@ const Navigation = ({ menu, submenu }) => {
                 `}
                     onClick={() => handleUserOpen()}
                   >
-                    <div className="nav flex items-center">
+                    <div className="nav flex items-center justify-between w-full">
                       <span className="ml-2.5 text-[14px] uppercase">
                         Users
                       </span>
+                      <IoChevronDownSharp
+                        className={`${
+                          userOpen ? "" : "rotate-180"
+                        } transition-all`}
+                      />
                     </div>
                   </li>
 
