@@ -50,7 +50,10 @@ const ModalRestore = ({ mysqlApiRestore, msg, successMsg, queryKey }) => {
 
   return (
     <>
-      <div className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[99] flex justify-center items-center w-full md:inset-0 max-h-full">
+      <div
+        className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[99] flex justify-center items-center w-full md:inset-0 max-h-full"
+        onClick={handleClose}
+      >
         <div className="relative p-4 w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-lg shadow">
             <button
@@ -58,7 +61,7 @@ const ModalRestore = ({ mysqlApiRestore, msg, successMsg, queryKey }) => {
               className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
               data-modal-hide="popup-modal"
               onClick={handleClose}
-              disabled={mutation.isLoading}
+              disabled={mutation.isPending}
             >
               <svg
                 className="w-3 h-3"
@@ -84,19 +87,19 @@ const ModalRestore = ({ mysqlApiRestore, msg, successMsg, queryKey }) => {
               <div className="flex gap-2">
                 <button
                   type="submit"
-                  className="text-sm btn-modal-submit"
+                  className=" btn-modal-submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending && <ButtonSpinner />} Yes, confirm
+                  {mutation.isPending && <ButtonSpinner />} Yes
                 </button>
                 <button
                   type="reset"
-                  className="text-sm btn-modal-cancel"
+                  className="btn-modal-cancel"
                   onClick={handleClose}
                   disabled={mutation.isPending}
                 >
-                  No, cancel
+                  No
                 </button>
               </div>
             </div>

@@ -85,7 +85,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200`}
+      className={`transition-all ease-linear transform duration-200 max-h-[450px] max-w-[900px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -115,7 +115,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
+                    <div className="w-[50%] overflow-auto">
                       <div className="input-wrapper">
                         <InputText
                           label="Batch"
@@ -231,7 +231,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                 </div>
 
                 <div className="form-action">
-                  <div className="form-btn">
+                  <div className="form-btn mb-1">
                     <button
                       className="btn-modal-submit"
                       type="submit"

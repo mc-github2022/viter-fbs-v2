@@ -186,7 +186,9 @@ const CreateOtherPassword = () => {
               <p className="mb-0 mt-2 font-bold text-center text-lg">
                 FBS WEBSITE
               </p>
-              <p className="mt-8 mb-5 text-lg font-bold">CREATE PASSWORD</p>
+              <p className="mt-8 mb-5 text-[16px] font-semibold">
+                CREATE PASSWORD
+              </p>
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}

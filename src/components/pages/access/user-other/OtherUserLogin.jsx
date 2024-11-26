@@ -92,7 +92,7 @@ const OtherUserLogin = () => {
               <p className="mb-0 mt-2 font-bold text-center text-lg">
                 FBS WEBSITE
               </p>
-              <h2 className="mb-0 mt-10 text-lg">Login</h2>
+              <h2 className="mb-0 mt-10 text-[16px] font-semibold">LOGIN</h2>
             </div>
             <Formik
               initialValues={initVal}
@@ -122,6 +122,7 @@ const OtherUserLogin = () => {
                           mutation.isPending ||
                           props.values.user_other_email === ""
                         }
+                        className={`${passwordShown ? "!bg-white" : ""}`}
                       />
                       {props.values.password && (
                         <span

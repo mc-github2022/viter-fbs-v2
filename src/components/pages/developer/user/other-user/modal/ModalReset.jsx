@@ -53,7 +53,10 @@ const ModalReset = ({
 
   return (
     <>
-      <div className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[99] flex justify-center items-center w-full md:inset-0 max-h-full">
+      <div
+        className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[99] flex justify-center items-center w-full md:inset-0 max-h-full"
+        onClick={handleClose}
+      >
         <div className="relative p-4 w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-lg shadow">
             <button
@@ -87,19 +90,19 @@ const ModalReset = ({
               <div className="text-sm flex gap-2">
                 <button
                   type="submit"
-                  className="text-sm btn-modal-submit"
+                  className=" btn-modal-submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending && <ButtonSpinner />} Yes, confirm
+                  {mutation.isPending && <ButtonSpinner />} Yes
                 </button>
                 <button
                   type="reset"
-                  className="text-sm btn-modal-cancel"
+                  className=" btn-modal-cancel"
                   onClick={handleClose}
-                  disabled={mutation.isLoading}
+                  disabled={mutation.isPending}
                 >
-                  No, cancel
+                  No
                 </button>
               </div>
             </div>

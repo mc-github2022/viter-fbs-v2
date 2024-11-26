@@ -85,16 +85,13 @@ const ModalLogout = ({ setIsLogout, mysqlEndpoint, queryKey, item }) => {
               </h3>
               <div className="flex justify-center mt-5 gap-2">
                 <button
-                  className="inline-block rounded-md w-full px-5 py-2 bg-primary text-[white]"
+                  className="btn-modal-submit"
                   onClick={handleLogout}
                   disabled={mutation.isPending || loading}
                 >
                   {mutation.isPending || loading ? <ButtonSpinner /> : "Yes"}
                 </button>
-                <button
-                  className="inline-block rounded-md w-full px-5 py-2 bg-[#e5e7eb] text-[#1f2937]"
-                  onClick={handleClose}
-                >
+                <button className="btn-modal-cancel" onClick={handleClose}>
                   Cancel
                 </button>
               </div>
