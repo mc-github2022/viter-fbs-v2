@@ -111,10 +111,10 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                         <span className="top-20 px-2 text-dark text-xs">
                           Image
                         </span>
-                        <div className="relative w-fit m-auto group">
+                        <div className="relative w-fit group">
                           {(itemEdit === null && photoSingle === null) ||
                           (photoSingle === "" && itemEdit === null) ? (
-                            <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
+                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
                               <div className="">
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                                 <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
@@ -126,7 +126,7 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                               !itemEdit.home_banner_img &&
                               !photoSingle) ||
                             (!itemEdit && !photoSingle) ? (
-                            <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
+                            <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
                               <div>
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                                 <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
@@ -144,19 +144,19 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                                     itemEdit.home_banner_img // check db
                               }
                               alt="Logo"
-                              className="group-hover:opacity-30 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
+                              className="group-hover:opacity-20 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
                             />
                           )}
 
                           <div className="btnImgUpload">
                             <button>
-                              <MdOutlineFileUpload />
+                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
                               <InputPhotoUpload
                                 name="photo"
                                 type="file"
                                 id="myFile"
                                 accept="image/*"
-                                title="Upload image"
+                                title="Upload Image"
                                 onChange={(e) =>
                                   handleChangePhoto(e, initVal.home_banner_img)
                                 }

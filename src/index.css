@@ -32,8 +32,9 @@
     @apply overflow-hidden;
   }
   input[type="text"],
-  input[type="email"] {
-    @apply bg-customGray h-8 p-1 text-xs text-dark;
+  input[type="email"],
+  input[type="password"] {
+    @apply bg-customGray h-8 px-3 text-xs text-dark;
   }
   textarea {
     @apply bg-customGray w-full h-20 resize-none text-sm;
@@ -281,7 +282,7 @@
     @apply flex gap-2 pt-4;
   }
   .btnImgUpload button {
-    @apply text-2xl text-[white] bg-[black] bg-opacity-50 transition-all opacity-0 group-hover:opacity-40 w-full grid place-items-center h-full absolute top-0 left-0;
+    @apply text-2xl text-[white] bg-opacity-10 transition-all opacity-0 group-hover:opacity-40 w-full grid place-items-center h-full absolute top-0 left-0;
   }
   .postContent p {
     @apply pb-4;

@@ -29,7 +29,7 @@ const IndustryTestimonial = () => {
                 <h2>Industry Testimonials</h2>
               </div>
               <button
-                className="flex items-center gap-1 text-[white] hover:underline bg-[black] py-1 px-2 rounded-lg text-sm"
+                className="flex items-center gap-1 text-[white] hover:underline bg-primary py-1 px-2 rounded-lg text-sm"
                 onClick={handleAdd}
               >
                 <FaPlus />

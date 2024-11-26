@@ -12,7 +12,6 @@ include_once("mail-config.php");
 include_once("template/contact-form-message.php");
 
 function sendEmail(
-	$title,
 	$name,
 	$email,
 	$emailSubject,
@@ -40,12 +39,10 @@ function sendEmail(
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
 		$mail->Body = getHtmlSendMessage(
-			$title,
 			$name,
 			$email,
-			$subject,
 			$mobileNumber,
-			$message,
+			$message
 		);
 
 		if ($fileName != "") {

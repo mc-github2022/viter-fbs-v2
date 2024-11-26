@@ -1,6 +1,4 @@
-import React from "react";
 import { AiFillTikTok } from "react-icons/ai";
-import { CiMail } from "react-icons/ci";
 import {
   FaFacebookSquare,
   FaFileDownload,
@@ -9,13 +7,8 @@ import {
   FaPhone,
   FaYoutubeSquare,
 } from "react-icons/fa";
-import { FiMail } from "react-icons/fi";
 import { IoMdPin } from "react-icons/io";
-import {
-  IoCloseCircle,
-  IoCloseCircleOutline,
-  IoMailSharp,
-} from "react-icons/io5";
+import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 
 const ModalContactGetStarted = ({ setModalContact }) => {
@@ -36,14 +29,14 @@ const ModalContactGetStarted = ({ setModalContact }) => {
           }}
           className="theModal bg-customGray px-10 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
-          <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
+          <button className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed">
             <IoCloseCircle
               className="text-3xl text-light"
               onClick={() => {
                 setModalContact(false);
               }}
             />
-          </div>
+          </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
               src="../../public/img/lets-talk.jpg"

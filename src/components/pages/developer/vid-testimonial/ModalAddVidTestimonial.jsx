@@ -111,10 +111,10 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
                         <span className="top-20 px-2 text-dark text-xs">
                           School Logo
                         </span>
-                        <div className="relative w-fit m-auto group">
+                        <div className="relative w-fit group">
                           {(itemEdit === null && photoSingle === null) ||
                           (photoSingle === "" && itemEdit === null) ? (
-                            <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
+                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
                               <div className="">
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                                 <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
@@ -126,7 +126,7 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
                               !itemEdit.vid_testimonial_logo_img &&
                               !photoSingle) ||
                             (!itemEdit && !photoSingle) ? (
-                            <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
+                            <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
                               <div>
                                 <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                                 <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
@@ -150,13 +150,13 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
 
                           <div className="btnImgUpload">
                             <button>
-                              <MdOutlineFileUpload />
+                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
                               <InputPhotoUpload
                                 name="photo"
                                 type="file"
                                 id="myFile"
                                 accept="image/*"
-                                title="Upload image"
+                                title="Upload Image"
                                 onChange={(e) =>
                                   handleChangePhoto(
                                     e,

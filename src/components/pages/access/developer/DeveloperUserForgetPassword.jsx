@@ -80,8 +80,8 @@ const DeveloperUserForgetPassword = () => {
               <p className="mb-0 mt-2 font-bold text-center text-lg">
                 FBS WEBSITE
               </p>
-              <p className="mt-8 mb-5 text-lg uppercase">
-                Developer FORGOT PASSWORD
+              <p className="mt-8 mb-5 text-[16px] uppercase font-semibold">
+                DEVELOPER FORGOT PASSWORD
               </p>
               <Formik
                 initialValues={initVal}
@@ -93,12 +93,13 @@ const DeveloperUserForgetPassword = () => {
                 {(props) => {
                   return (
                     <Form>
-                      <div className="relative mb-4">
+                      <div className="relative mb-6">
                         <InputText
                           label="Email"
                           type="text"
                           name="email"
                           disabled={mutation.isPending}
+                          className="!bg-white"
                         />
                       </div>
                       <div className="flex items-center gap-1 mb-4">

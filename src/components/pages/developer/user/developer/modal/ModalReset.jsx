@@ -100,7 +100,7 @@ const ModalReset = ({
                   type="reset"
                   className=" btn-modal-cancel"
                   onClick={handleClose}
-                  disabled={mutation.isLoading}
+                  disabled={mutation.isPending}
                 >
                   No
                 </button>

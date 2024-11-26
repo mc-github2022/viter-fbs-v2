@@ -43,7 +43,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "home"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -66,9 +66,9 @@ const Navigation = ({ menu, submenu }) => {
               >
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-sm mb-1 my-2 border-transparent ${
                       submenu === "home-banner"
-                        ? "text-[black] font-bold"
+                        ? "text-primary font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -77,9 +77,9 @@ const Navigation = ({ menu, submenu }) => {
                 </Link>
                 {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-process`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-process"
-                          ? "text-[black] font-bold"
+                          ? "text-primary font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -88,9 +88,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}${link}/home-services`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-services"
-                          ? "text-[black] font-bold"
+                          ? "text-primary font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -99,9 +99,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}${link}/home-partnerWithUs`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-partnerWithUs"
-                          ? "text-[black] font-bold"
+                          ? "text-primary font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -113,9 +113,9 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/home-testimonial`}
                 >
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-sm mb-1 my-2  border-transparent ${
                       submenu === "home-testimonial"
-                        ? "text-[black] font-bold"
+                        ? "text-primary font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -124,9 +124,9 @@ const Navigation = ({ menu, submenu }) => {
                 </Link>
                 {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-partners`}>
                     <li
-                      className={` text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={` text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-partners"
-                          ? "text-[black] font-bold"
+                          ? "text-primary font-bold"
                           : "border-none text-[#9ca3af]"
                       }`}
                     >
@@ -135,9 +135,9 @@ const Navigation = ({ menu, submenu }) => {
                   </Link> */}
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-insights`}>
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-sm mb-1 my-2 border-transparent ${
                       submenu === "home-insights"
-                        ? "text-[black] font-bold"
+                        ? "text-primary font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -150,7 +150,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1 pt-3
                   ${
                     menu === "special-offers"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -166,7 +166,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "whyFBS"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -192,9 +192,9 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/events-activities`}
                 >
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-sm mb-1 my-2 border-transparent ${
                       submenu === "events-activities"
-                        ? "text-[black] font-bold"
+                        ? "text-primary font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -206,9 +206,9 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/whyFBS-careers`}
                 >
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-sm mb-1 my-2 border-transparent ${
                       submenu === "whyFBS-careers"
-                        ? "text-[black] font-bold"
+                        ? "text-primary font-bold"
                         : "border-none text-[#9ca3af]"
                     }`}
                   >
@@ -221,7 +221,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1 pt-3
                   ${
                     menu === "lcss-batches"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -237,7 +237,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "industry-testimonial"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -255,7 +255,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "vid-testimonial"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -272,7 +272,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "pricing"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -287,7 +287,7 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "notification"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -305,7 +305,7 @@ const Navigation = ({ menu, submenu }) => {
                     className={` flex justify-between items-center p-1
                   ${
                     menu === "user"
-                      ? "text-[black] underline underline-offset-4 "
+                      ? "text-primary underline underline-offset-4 "
                       : "text-[#9ca3af] "
                   }
                 `}
@@ -321,9 +321,9 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/other-user`}
                     >
                       <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                        className={`text-sm mb-1 my-2 border-transparent ${
                           submenu === "other-user"
-                            ? "text-[black] font-bold"
+                            ? "text-primary font-bold"
                             : "border-none text-[#9ca3af]"
                         }`}
                       >
@@ -335,9 +335,9 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/user-developer`}
                     >
                       <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                        className={`text-sm mb-1 my-2 border-transparent ${
                           submenu === "user-developer"
-                            ? "text-[black] font-bold"
+                            ? "text-primary font-bold"
                             : "border-none text-[#9ca3af]"
                         }`}
                       >
@@ -346,9 +346,9 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                     <Link className="!p-0" to={`${devNavUrl}${link}/user-role`}>
                       <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                        className={`text-sm mb-1 my-2 border-transparent ${
                           submenu === "user-role"
-                            ? "text-[black] font-bold"
+                            ? "text-primary font-bold"
                             : "border-none text-[#9ca3af]"
                         }`}
                       >
@@ -362,7 +362,7 @@ const Navigation = ({ menu, submenu }) => {
                   className={` flex justify-between items-center p-1
                 ${
                   menu === "user"
-                    ? "text-[black] underline underline-offset-4 "
+                    ? "text-primary underline underline-offset-4 "
                     : "text-[#9ca3af] "
                 }
               `}
