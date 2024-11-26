@@ -110,7 +110,7 @@ const ModalSuspend = ({
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending && <ButtonSpinner />} Yes, confirm
+                  {mutation.isPending && <ButtonSpinner />} Yes
                 </button>
                 <button
                   type="reset"
@@ -118,7 +118,7 @@ const ModalSuspend = ({
                   onClick={handleClose}
                   disabled={mutation.isPending}
                 >
-                  No, cancel
+                  No
                 </button>
               </div>
             </div>

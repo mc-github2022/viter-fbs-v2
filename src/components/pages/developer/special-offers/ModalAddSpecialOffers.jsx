@@ -88,7 +88,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 w-[50dvh] h-[55dvh]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[450px] max-w-[500px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
