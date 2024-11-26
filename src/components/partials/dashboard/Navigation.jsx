@@ -15,6 +15,7 @@ const Navigation = ({ menu, submenu }) => {
   const [navName, setNavName] = React.useState("");
   const [navHomeOpen, setNavOpen] = React.useState(false);
   const [whyUsOpen, setwhyUsOpen] = React.useState(false);
+  const [userOpen, setUserOpen] = React.useState(false);
 
   const handleNavOpen = () => {
     setNavOpen(!navHomeOpen);
@@ -22,6 +23,10 @@ const Navigation = ({ menu, submenu }) => {
 
   const handleWhyUsOpen = () => {
     setwhyUsOpen(!whyUsOpen);
+  };
+
+  const handleUserOpen = () => {
+    setUserOpen(!userOpen);
   };
 
   return (
@@ -309,19 +314,24 @@ const Navigation = ({ menu, submenu }) => {
                       : "text-[#9ca3af] "
                   }
                 `}
+                    onClick={() => handleUserOpen()}
                   >
                     <div className="nav flex items-center">
                       <span className="ml-2.5 text-[14px]">Users</span>
                     </div>
                   </li>
 
-                  <ul className="submenu ml-5 my-1 text-[12px] ">
+                  <ul
+                    className={`${
+                      userOpen ? "h-0 overflow-hidden" : "my-2"
+                    }submenu ml-5 my-1 text-[12px]`}
+                  >
                     <Link
                       className="!p-0"
                       to={`${devNavUrl}${link}/other-user`}
                     >
                       <li
-                        className={`text-sm mb-1 my-2 border-transparent ${
+                        className={`text-sm mb-1  border-transparent ${
                           submenu === "other-user"
                             ? "text-primary font-bold"
                             : "border-none text-[#9ca3af]"
