@@ -10,7 +10,7 @@ const ImmersionBanner = () => {
       >
         <img
           src={`${devBaseImgUrl}/workimmersion-bg.webp`}
-          alt=""
+          alt="Senior High School Work Immersion with industry experience practical, work-related skills"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">

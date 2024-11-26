@@ -49,8 +49,8 @@ const DashboardNav = ({ menu }) => {
                 className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 `}
                 onClick={handleLogout}
               >
-                <div className="bg-[white] p-1.5 rounded-full ">
-                  <span className="pl-[1px] p-1 rounded-full ">
+                <div className="bg-[gray] p-1.5 rounded-full ">
+                  <span className="pl-[1px] p-1 rounded-full text-white ">
                     {firstname}
                     {lastname}
                   </span>

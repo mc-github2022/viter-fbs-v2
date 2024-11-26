@@ -18,7 +18,7 @@ const BookkeepingBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Keep Your Business Compliant and Financially Organized"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">
