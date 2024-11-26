@@ -20,7 +20,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
 
-    $title = $data["formTitle"];
     $fileName = $data["client_file"];
     $emailSubject = $data["email_subject"];
     $subject = $data["client_message_subject"];
@@ -41,7 +40,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     if (count($emailReceiver) > 0) {
         $mail = sendEmail(
-            $title,
             $name,
             $email,
             $emailSubject,

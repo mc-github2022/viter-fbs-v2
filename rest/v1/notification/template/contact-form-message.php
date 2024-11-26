@@ -1,17 +1,12 @@
 <?php
 
 function getHtmlSendMessage(
-    $title,
-    $name,
-    $email,
-    $subject,
-    $mobileNumber,
-    $message,
+  $name,
+  $email,
+  $mobileNumber,
+  $message,
 ) {
-  $newSubject="";
-  if($subject!=""){
-    $newSubject='<p>Subject: ' .$subject. '</p>';
-  }
+
 
   $html = '
   <style>
@@ -37,23 +32,16 @@ function getHtmlSendMessage(
   >
     <div>
       <div>
-        <p><b>From: </b>' .$name. '</p>
-        <p style="margin-bottom: 20px">
-          <b>Initial Subject: </b> ' .$title. '
-        </p>
+        <p style="margin-bottom: 5px; margin-top: 5px"><b>From: </b>' . $name . '</p> 
+        <p style="margin-bottom: 5px; margin-top: 5px"><b>Email:  </b>' . $email . '</p>
+        <p style="margin-bottom: 5px; margin-top: 5px"><b>Mobile Number:  </b>' . $mobileNumber . '</p>
         <div style="margin-bottom: 20px">
-          <p><b>Message: </b></p>
+          <p style="margin-top: 5px"><b>Message: </b></p>
           <p>
-            ' .$message. '
+            ' . $message . '
           </p>
         </div>
-      </div>
-      <div>
-        <p><b>Information</b></p>
-        <p>Email: ' .$email. '</p>
-        ' .$newSubject. '
-        <p>Mobile Number: ' .$mobileNumber. '</p>
-      </div>
+      </div> 
     </div>
   </body>
 ';

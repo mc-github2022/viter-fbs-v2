@@ -1,10 +1,9 @@
 import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { IoCloseCircle } from "react-icons/io5";
 import Slider from "react-slick";
-import ModalWrapper from "../../../../partials/ModalWrapper";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import ModalWrapper from "../../../../partials/ModalWrapper";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;

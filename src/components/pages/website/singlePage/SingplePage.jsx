@@ -72,7 +72,7 @@ const SingplePage = () => {
   const post = getInsights();
 
   if (!post) {
-    return <div>Post not found</div>;
+    return "";
   }
 
   return (

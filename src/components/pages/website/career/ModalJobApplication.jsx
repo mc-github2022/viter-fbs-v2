@@ -1,3 +1,5 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
 import { AiFillTikTok } from "react-icons/ai";
 import {
@@ -8,27 +10,24 @@ import {
   FaYoutubeSquare,
 } from "react-icons/fa";
 import { IoMdPin } from "react-icons/io";
-import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
+import { IoCloseCircle } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
-import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
-import { Form, Formik } from "formik";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../helpers/queryData";
-import {
-  setIsAdd,
-  setMessage,
-  setSuccess,
-  setValidate,
-} from "../../../store/StoreAction";
 import * as Yup from "yup";
+import useUploadFiles from "../../../custom-hooks/useUploadFiles";
 import {
   InputFileUpload,
   InputText,
   InputTextArea,
 } from "../../../helpers/FormInputs";
-import useUploadFiles from "../../../custom-hooks/useUploadFiles";
-import { StoreContext } from "../../../store/StoreContext";
+import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
+import { queryData } from "../../../helpers/queryData";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import {
+  setMessage,
+  setSuccess,
+  setValidate,
+} from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
 
 const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -67,7 +66,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_message: "",
     client_file: "",
     client_message_subject: "",
-    formTitle: `Job Application: ${jobTitle}`,
     notification_purpose: "apply-now-careers",
     email_subject: `Apply Now - ${jobTitle}`,
   };
@@ -92,14 +90,17 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
           }}
           className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
-          <div className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer ">
+          <button
+            className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed"
+            disabled={mutation.isPending}
+          >
             <IoCloseCircle
               className="text-3xl text-light"
               onClick={() => {
                 setModalJob(false);
               }}
             />
-          </div>
+          </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             <img
               src={`${devBaseImgUrl}/lets-talk.jpg`}
@@ -272,9 +273,9 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                       </div>
                       <div className="modal__action flex justify-end mt-6 gap-2">
                         <button
-                          className="btn bg-primary text-light hover:text-light"
+                          className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
                           type="submit"
-                          disabled={mutation.isLoading || !props.dirty}
+                          disabled={mutation.isPending || !props.dirty}
                         >
                           {mutation.isPending ? (
                             <div className="flex items-center gap-2">
