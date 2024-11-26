@@ -72,7 +72,7 @@ const PostByCategory = () => {
   const posts = getInsights();
 
   if (posts.length === 0) {
-    return <div>No posts found for this category</div>;
+    return "";
   }
 
   function TruncatedHtml({ content, maxLength }) {

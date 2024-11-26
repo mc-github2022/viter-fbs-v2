@@ -86,7 +86,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200`}
+      className={`transition-all ease-linear transform duration-200 max-h-[650px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">

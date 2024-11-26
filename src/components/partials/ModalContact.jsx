@@ -382,7 +382,7 @@ const ModalContact = ({
                         <button
                           className="btn bg-primary text-light hover:text-light"
                           type="submit"
-                          disabled={mutation.isLoading || !props.dirty}
+                          disabled={mutation.isPending || !props.dirty}
                         >
                           {mutation.isPending ? (
                             <div className="flex items-center gap-2">

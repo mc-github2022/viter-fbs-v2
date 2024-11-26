@@ -90,19 +90,19 @@ const ModalReset = ({
               <div className="text-sm flex gap-2">
                 <button
                   type="submit"
-                  className="text-sm btn-modal-submit"
+                  className=" btn-modal-submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending && <ButtonSpinner />} Yes, confirm
+                  {mutation.isPending && <ButtonSpinner />} Yes
                 </button>
                 <button
                   type="reset"
-                  className="text-sm btn-modal-cancel"
+                  className=" btn-modal-cancel"
                   onClick={handleClose}
                   disabled={mutation.isLoading}
                 >
-                  No, cancel
+                  No
                 </button>
               </div>
             </div>
