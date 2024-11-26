@@ -170,7 +170,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                       <div className="relative w-fit m-auto group mt-3">
                         {/* Conditional Rendering Based on Image Availability */}
                         {!itemEdit && !photoArrayList.length ? (
-                          <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[350px] h-[180px] border rounded-md p-2 place-content-center">
+                          <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[350px] h-[180px] p-2 place-content-center">
                             <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                             <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
                               Upload Image
@@ -199,7 +199,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                             ))}
                           </div>
                         ) : (
-                          <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[115px] h-[37px] border rounded-md p-2 grid place-items-center">
+                          <div className="group-hover:opacity-20  mb-4 items-center gap-2 w-[115px] h-[37px] p-2 grid place-items-center">
                             <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                             <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
                               No Images Available
@@ -210,13 +210,13 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                         {/* Upload Button */}
                         <div className="btnImgUpload">
                           <button>
-                            <MdOutlineFileUpload />
+                            <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
                             <InputPhotoUpload
                               name="photo"
                               type="file"
                               id="myFile"
                               accept="image/*"
-                              title="Upload Logo"
+                              title="Upload Images"
                               multiple
                               onChange={(e) =>
                                 handleChangeMultiplePhoto(e, 50, true)
