@@ -19,7 +19,7 @@ const ServiceEnrollmentBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Simplify student enrollment and management with our School Enrollment System."
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">

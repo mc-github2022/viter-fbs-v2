@@ -18,7 +18,7 @@ const VaResearchBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Streamline your Business Operations with our Business Support"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">

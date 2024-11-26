@@ -13,7 +13,7 @@ const ServiceHrBanner = () => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Smarter, Faster, and More Efficient HR Information System"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
 

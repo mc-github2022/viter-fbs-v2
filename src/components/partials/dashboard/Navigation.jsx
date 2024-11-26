@@ -49,13 +49,13 @@ const Navigation = ({ menu, submenu }) => {
                   ${
                     menu === "home"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
                 onClick={() => handleNavOpen()}
               >
                 <div className="nav flex items-center justify-between w-full">
-                  <span className="ml-2.5 text-[14px]">Home</span>
+                  <span className="ml-2.5 text-[14px] uppercase">Home</span>
                   <IoChevronDownSharp
                     className={`${
                       navHomeOpen ? "" : "rotate-180"
@@ -71,10 +71,10 @@ const Navigation = ({ menu, submenu }) => {
               >
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
                   <li
-                    className={`text-sm mb-1 my-2 border-transparent ${
+                    className={`text-xs ml-2 my-1 border-transparent ${
                       submenu === "home-banner"
                         ? "text-primary font-bold"
-                        : "border-none text-[#9ca3af]"
+                        : "border-none text-dark"
                     }`}
                   >
                     Banner
@@ -85,7 +85,7 @@ const Navigation = ({ menu, submenu }) => {
                       className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-process"
                           ? "text-primary font-bold"
-                          : "border-none text-[#9ca3af]"
+                          : "border-none text-dark"
                       }`}
                     >
                       Process
@@ -96,7 +96,7 @@ const Navigation = ({ menu, submenu }) => {
                       className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-services"
                           ? "text-primary font-bold"
-                          : "border-none text-[#9ca3af]"
+                          : "border-none text-dark"
                       }`}
                     >
                       Services
@@ -107,7 +107,7 @@ const Navigation = ({ menu, submenu }) => {
                       className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-partnerWithUs"
                           ? "text-primary font-bold"
-                          : "border-none text-[#9ca3af]"
+                          : "border-none text-dark"
                       }`}
                     >
                       Partner With Us
@@ -118,10 +118,10 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/home-testimonial`}
                 >
                   <li
-                    className={`text-sm mb-1 my-2  border-transparent ${
+                    className={`text-xs ml-2 mb-1 border-transparent ${
                       submenu === "home-testimonial"
                         ? "text-primary font-bold"
-                        : "border-none text-[#9ca3af]"
+                        : "border-none text-dark"
                     }`}
                   >
                     Testimonials
@@ -132,7 +132,7 @@ const Navigation = ({ menu, submenu }) => {
                       className={` text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-partners"
                           ? "text-primary font-bold"
-                          : "border-none text-[#9ca3af]"
+                          : "border-none text-dark"
                       }`}
                     >
                       Partners
@@ -140,10 +140,10 @@ const Navigation = ({ menu, submenu }) => {
                   </Link> */}
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-insights`}>
                   <li
-                    className={`text-sm mb-1 my-2 border-transparent ${
+                    className={`text-xs ml-2  border-transparent ${
                       submenu === "home-insights"
                         ? "text-primary font-bold"
-                        : "border-none text-[#9ca3af]"
+                        : "border-none text-dark"
                     }`}
                   >
                     Insights
@@ -152,17 +152,19 @@ const Navigation = ({ menu, submenu }) => {
               </ul>
 
               <li
-                className={` flex justify-between items-center p-1 pt-3
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "special-offers"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/special-offers`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">Special Offers</span>
+                    <span className="ml-2.5 text-[14px] uppercase">
+                      Special Offers
+                    </span>
                   </div>
                 </Link>
               </li>
@@ -172,13 +174,13 @@ const Navigation = ({ menu, submenu }) => {
                   ${
                     menu === "whyFBS"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
                 onClick={() => handleWhyUsOpen()}
               >
                 <div className="nav flex items-center justify-between w-full">
-                  <span className="ml-2.5 text-[14px]">Why FBS?</span>
+                  <span className="ml-2.5 text-[14px] uppercase">Why FBS?</span>
                   <IoChevronDownSharp
                     className={`${
                       whyUsOpen ? "" : "rotate-180"
@@ -190,17 +192,17 @@ const Navigation = ({ menu, submenu }) => {
               <ul
                 className={`${
                   whyUsOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5  text-[12px]`}
+                } submenu ml-5`}
               >
                 <Link
                   className="!p-0"
                   to={`${devNavUrl}${link}/events-activities`}
                 >
                   <li
-                    className={`text-sm mb-1 my-2 border-transparent ${
+                    className={`text-xs ml-2  border-transparent ${
                       submenu === "events-activities"
                         ? "text-primary font-bold"
-                        : "border-none text-[#9ca3af]"
+                        : "border-none text-dark"
                     }`}
                   >
                     Events & Activities
@@ -211,10 +213,10 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/whyFBS-careers`}
                 >
                   <li
-                    className={`text-sm mb-1 my-2 border-transparent ${
+                    className={`text-xs ml-2 my-2 border-transparent ${
                       submenu === "whyFBS-careers"
                         ? "text-primary font-bold"
-                        : "border-none text-[#9ca3af]"
+                        : "border-none text-dark"
                     }`}
                   >
                     Careers
@@ -223,17 +225,19 @@ const Navigation = ({ menu, submenu }) => {
               </ul>
 
               <li
-                className={` flex justify-between items-center p-1 pt-3
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "lcss-batches"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/lcss-batches`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">LCSS Batches</span>
+                    <span className="ml-2.5 text-[14px] uppercase">
+                      LCSS Batches
+                    </span>
                   </div>
                 </Link>
               </li>
@@ -243,13 +247,13 @@ const Navigation = ({ menu, submenu }) => {
                   ${
                     menu === "industry-testimonial"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/industry-testimonial`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">
+                    <span className="ml-2.5 text-[14px] uppercase">
                       Industry Testimonials
                     </span>
                   </div>
@@ -261,13 +265,13 @@ const Navigation = ({ menu, submenu }) => {
                   ${
                     menu === "vid-testimonial"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/vid-testimonial`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">
+                    <span className="ml-2.5 text-[14px] uppercase">
                       Video Testimonials
                     </span>
                   </div>
@@ -278,13 +282,15 @@ const Navigation = ({ menu, submenu }) => {
                   ${
                     menu === "pricing"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/pricing`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">Pricing</span>
+                    <span className="ml-2.5 text-[14px] uppercase">
+                      Pricing
+                    </span>
                   </div>
                 </Link>
               </li>
@@ -293,13 +299,15 @@ const Navigation = ({ menu, submenu }) => {
                   ${
                     menu === "notification"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/notification`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">Notification</span>
+                    <span className="ml-2.5 text-[14px] uppercase">
+                      Notification
+                    </span>
                   </div>
                 </Link>
               </li>
@@ -311,30 +319,32 @@ const Navigation = ({ menu, submenu }) => {
                   ${
                     menu === "user"
                       ? "text-primary underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      : "text-dark "
                   }
                 `}
                     onClick={() => handleUserOpen()}
                   >
                     <div className="nav flex items-center">
-                      <span className="ml-2.5 text-[14px]">Users</span>
+                      <span className="ml-2.5 text-[14px] uppercase">
+                        Users
+                      </span>
                     </div>
                   </li>
 
                   <ul
                     className={`${
                       userOpen ? "h-0 overflow-hidden" : "my-2"
-                    }submenu ml-5 my-1 text-[12px]`}
+                    } submenu ml-5 my-1`}
                   >
                     <Link
                       className="!p-0"
                       to={`${devNavUrl}${link}/other-user`}
                     >
                       <li
-                        className={`text-sm mb-1  border-transparent ${
+                        className={`text-xs ml-2 mb-1  border-transparent ${
                           submenu === "other-user"
                             ? "text-primary font-bold"
-                            : "border-none text-[#9ca3af]"
+                            : "border-none text-dark"
                         }`}
                       >
                         Other User
@@ -345,10 +355,10 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/user-developer`}
                     >
                       <li
-                        className={`text-sm mb-1 my-2 border-transparent ${
+                        className={`text-xs ml-2 mb-1 my-2 border-transparent ${
                           submenu === "user-developer"
                             ? "text-primary font-bold"
-                            : "border-none text-[#9ca3af]"
+                            : "border-none text-dark"
                         }`}
                       >
                         Developer
@@ -356,10 +366,10 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                     <Link className="!p-0" to={`${devNavUrl}${link}/user-role`}>
                       <li
-                        className={`text-sm mb-1 my-2 border-transparent ${
+                        className={`text-xs ml-2 mb-1 my-2 border-transparent ${
                           submenu === "user-role"
                             ? "text-primary font-bold"
-                            : "border-none text-[#9ca3af]"
+                            : "border-none text-dark"
                         }`}
                       >
                         Role
@@ -373,13 +383,13 @@ const Navigation = ({ menu, submenu }) => {
                 ${
                   menu === "user"
                     ? "text-primary underline underline-offset-4 "
-                    : "text-[#9ca3af] "
+                    : "text-dark "
                 }
               `}
                 >
                   <Link to={`${devNavUrl}${link}/other-user`}>
                     <div className="nav flex items-center">
-                      <span className="ml-2.5 text-[14px]">User</span>
+                      <span className="ml-2.5 text-[14px] uppercase">User</span>
                     </div>
                   </Link>
                 </li>
