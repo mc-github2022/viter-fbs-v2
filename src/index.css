@@ -33,7 +33,7 @@
   }
   input[type="text"],
   input[type="email"] {
-    @apply bg-customGray h-8 px-3 text-xs text-dark;
+    @apply h-8 px-3 text-xs text-dark;
   }
 
   input[type="password"] {
@@ -41,10 +41,10 @@
   }
 
   textarea {
-    @apply bg-customGray w-full h-20 resize-none text-sm;
+    @apply w-full h-20 resize-none text-sm;
   }
   select {
-    @apply bg-customGray h-8 p-1 text-sm text-dark;
+    @apply h-8 p-1 text-sm text-dark;
   }
   /* * {
     @apply outline outline-primary;
