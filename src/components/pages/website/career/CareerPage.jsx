@@ -43,8 +43,6 @@ const CareerPage = () => {
     "careers" // key
   );
 
-  console.log(careersData);
-
   const [html, setHtml] = React.useState("");
   //Initial useEffect to set default html if careersData is available
   useEffect(() => {
