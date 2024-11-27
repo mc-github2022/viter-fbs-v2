@@ -151,6 +151,24 @@ export const StoreReducer = (state, action) => {
         credentials: action.payload,
       };
 
+    case "IS_NAVIGATION_OPEN":
+      return {
+        ...state,
+        isNavOpen: action.payload,
+      };
+
+    case "IS_WHYUS_OPEN":
+      return {
+        ...state,
+        isWhyUsOpen: action.payload,
+      };
+
+    case "IS_USER_OPEN":
+      return {
+        ...state,
+        isUserOpen: action.payload,
+      };
+
     default:
       return state;
   }
