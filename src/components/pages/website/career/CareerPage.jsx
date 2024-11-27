@@ -116,8 +116,7 @@ const CareerPage = () => {
                       item.careers_job_status !== "Ongoing"
                         ? "pointer-events-none"
                         : "cursor-pointer"
-                    }`}
-                  >
+                    }`}>
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2 md:gap-6 ">
                         <div
@@ -125,8 +124,7 @@ const CareerPage = () => {
                             item.careers_job_status === "Ongoing"
                               ? "bg-[#eedce8] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
                               : "bg-[#0000001a] w-16 h-16 md:w-20 md:h-16 grid place-items-center rounded-md"
-                          }`}
-                        >
+                          }`}>
                           {SelectedIcon ? (
                             <SelectedIcon
                               className={`${
@@ -149,8 +147,7 @@ const CareerPage = () => {
                                 item.careers_job_status === "Ongoing"
                                   ? "text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg hidden md:block"
                                   : "text-xs text-[#ef4444] bg-[#F8B1B1] px-3 py-1 rounded-lg hidden md:block"
-                              }`}
-                            >
+                              }`}>
                               {item.careers_job_status}
                             </p>
                           </div>
@@ -176,8 +173,7 @@ const CareerPage = () => {
                               item.careers_job_status === "Ongoing"
                                 ? " w-fit text-xs bg-[#b1f8d6] text-[#158754] px-3 py-1 rounded-lg md:hidden"
                                 : " w-fit text-xs text-[#ef4444] bg-[#F8B1B1] px-3 py-1 rounded-lg md:hidden"
-                            }`}
-                          >
+                            }`}>
                             {item.careers_job_status}
                           </p>
                         </div>
@@ -190,8 +186,7 @@ const CareerPage = () => {
                               onClick={() =>
                                 handleModalJob(item.careers_job_title)
                               }
-                              className="btn bg-secondary text-light !py-1.5 !px-12 hidden md:block "
-                            >
+                              className="btn bg-secondary text-light !py-1.5 !px-12 hidden md:block ">
                               APPLY
                             </a>
                           </div>
@@ -211,17 +206,36 @@ const CareerPage = () => {
                       </div>
                     </div>
                     <div className="jobDesc px-6 md:px-0 md:mx-[103px] mt-10">
+                      <div>
+                        <h3></h3>
+                        <img
+                          className="jobImage w-[280px] mb-6 mx-auto  lg:float-left lg:mb-0 lg:mr-6"
+                          src="https://www.techmonitor.ai/wp-content/uploads/sites/29/2017/02/shutterstock_552493561.webp"
+                          alt=""
+                        />
+                        <p className="jobOverview">
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Phasellus imperdiet, nulla et dictum interdum,
+                          nisi lorem egestas odio, vitae scelerisque enim ligula
+                          venenatis dolor. Maecenas nisl est, ultrices nec
+                          congue eget, auctor vitae massa. Fusce luctus
+                          vestibulum augue ut aliquet. Mauris ante ligula,
+                          facilisis sed ornare eu, lobortis in odio. Praesent
+                          convallis urna a lacus interdum ut hendrerit risus
+                          congue. Nunc sagittis dictum nisi, sed ullamcorper
+                          ipsum dignissim ac...
+                        </p>
+                      </div>
                       <div
                         dangerouslySetInnerHTML={{
                           __html: item.careers_job_description,
                         }}
-                      ></div>
+                        className="jobDetails"></div>
                       <div className="my-8">
                         <a
                           href="#"
                           onClick={() => handleModalJob(item.careers_job_title)}
-                          className="btn bg-secondary text-light !py-1.5 !px-12 md:hidden"
-                        >
+                          className="btn bg-secondary text-light !py-1.5 !px-12 md:hidden">
                           APPLY
                         </a>
                       </div>
