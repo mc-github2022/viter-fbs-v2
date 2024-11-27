@@ -17,12 +17,20 @@ import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
 import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
 import {
+  InputPhotoUpload,
   InputSelect,
   InputText,
   InputTextArea,
 } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
+import {
+  apiVersion,
+  devBaseImgUrl,
+} from "../../../../helpers/functions-general";
+import { MdOutlineFileUpload } from "react-icons/md";
+import { IoImageOutline } from "react-icons/io5";
 
 const icons = {
   ...FaIcons,
@@ -39,6 +47,8 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
   const [icon, setIcon] = React.useState(
     itemEdit ? itemEdit.special_offers_icons : ""
   );
+  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
+    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
   const Icon = icon ? icons[icon] : null;
 
@@ -94,13 +104,15 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
     careers_job_status: itemEdit ? itemEdit.careers_job_status : "",
     careers_job_description: itemEdit ? itemEdit.careers_job_description : "",
     careers_icon: itemEdit ? itemEdit.careers_icon : "",
+    careers_img: itemEdit ? itemEdit.careers_img : "",
+    careers_job_overview: itemEdit ? itemEdit.careers_job_overview : "",
   };
 
   const yupSchema = Yup.object({});
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[635px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -117,7 +129,13 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
             const data = {
               ...values,
               careers_icon: icon,
+              careers_img: photoSingle
+                ? photoSingle.name
+                : itemEdit.careers_img,
             };
+            if (photoSingle) {
+              await singleUploadPhoto(); // to save the photo when submit
+            }
             mutation.mutate(data);
           }}
         >
@@ -127,6 +145,63 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
                     <div className="w-[50%] relative">
+                      <div className="mt-5">
+                        <span className="top-20 px-2 text-dark text-xs">
+                          Image
+                        </span>
+                        <div className="relative w-fit group">
+                          {(itemEdit === null && photoSingle === null) ||
+                          (photoSingle === "" && itemEdit === null) ? (
+                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
+                              <div className="">
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight text-[gray] text-sm text-center">
+                                  Upload Image
+                                </h1>
+                              </div>
+                            </div>
+                          ) : (itemEdit &&
+                              !itemEdit.careers_img &&
+                              !photoSingle) ||
+                            (!itemEdit && !photoSingle) ? (
+                            <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
+                              <div>
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
+                                  Upload Image
+                                </h1>
+                              </div>
+                            </div>
+                          ) : (
+                            <img
+                              src={
+                                photoSingle
+                                  ? URL.createObjectURL(photoSingle) // preview
+                                  : devBaseImgUrl + "/" + itemEdit.careers_img // check db
+                              }
+                              alt="Logo"
+                              className="group-hover:opacity-20 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
+                            />
+                          )}
+
+                          <div className="btnImgUpload">
+                            <button>
+                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
+                              <InputPhotoUpload
+                                name="photo"
+                                type="file"
+                                id="myFile"
+                                accept="image/*"
+                                title="Upload Image"
+                                onChange={(e) =>
+                                  handleChangePhoto(e, initVal.careers_img)
+                                }
+                                className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                       <div className="input-wrapper">
                         <label htmlFor="icon-search">Search Icon</label>
                         <input
@@ -224,7 +299,12 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                           <button
                             className="btn-modal-submit"
                             type="submit"
-                            disabled={mutation.isPending || !icon}
+                            disabled={
+                              ((mutation.isPending || !icon) &&
+                                photoSingle === null) ||
+                              photoSingle === "" ||
+                              initVal.careers_img === photoSingle?.name
+                            }
                           >
                             {mutation.isPending ? <ButtonSpinner /> : "Save"}
                           </button>
@@ -238,14 +318,25 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="input-wrapper textAreaWrapper">
-                      <InputTextArea
-                        label="Job Description"
-                        type="text"
-                        name="careers_job_description"
-                        className="h-[457px] w-[478px]"
-                        disabled={mutation.isPending}
-                      />
+                    <div>
+                      <div className="input-wrapper textAreaWrapper">
+                        <InputTextArea
+                          label="Job Overview"
+                          type="text"
+                          name="careers_job_overview"
+                          className="h-[260px] w-[478px]"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper textAreaWrapper">
+                        <InputTextArea
+                          label="Job Description"
+                          type="text"
+                          name="careers_job_description"
+                          className="h-[260px] w-[478px]"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

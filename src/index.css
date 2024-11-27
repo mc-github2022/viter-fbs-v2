@@ -60,7 +60,7 @@
     @apply border-b border-solid border-[#d1d5db];
   }
   table th {
-    @apply font-semibold bg-[#d1d5db] py-1 pr-3 capitalize text-xs;
+    @apply font-semibold bg-[#d1d5db] py-2 pr-3 capitalize text-xs;
   }
   table td {
     @apply py-2 pr-3 text-[12px];

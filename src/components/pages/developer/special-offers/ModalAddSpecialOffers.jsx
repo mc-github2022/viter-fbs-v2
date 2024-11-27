@@ -27,28 +27,50 @@ const icons = {
 
 const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [icon, setIcon] = React.useState(
+  const [searchTerm, setSearchTerm] = React.useState(
     itemEdit ? itemEdit.special_offers_icons : ""
   );
-
-  const Icon = icon ? icons[icon] : null;
+  const [onFocusSearch, setOnFocusSearch] = React.useState(false);
+  const [selectedIcon, setSelectedIcon] = React.useState(
+    itemEdit ? itemEdit.special_offers_icons : ""
+  );
 
   const filteredIcons = Object.keys(icons).filter((iconKey) =>
     iconKey.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  React.useEffect(() => {
-    if (itemEdit) {
-      setIcon(itemEdit.special_offers_icons);
-    }
-  }, [itemEdit]);
+  // React.useEffect(() => {
+  //   if (itemEdit) {
+  //     setSelectedIcon(itemEdit.special_offers_icons);
+  //   }
+  // }, [itemEdit]);
 
   const handleClose = () => {
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
   };
+
+  const refSearch = React.useRef();
+
+  const clickOutsideRefSearch = (e) => {
+    if (refSearch.current && !refSearch.current.contains(e.target)) {
+      setOnFocusSearch(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefSearch);
+    return () => document.removeEventListener("click", clickOutsideRefSearch);
+  }, []);
+
+  const handleIconSelect = (iconKey) => {
+    setSelectedIcon(iconKey);
+    setSearchTerm(iconKey);
+    setOnFocusSearch(false);
+  };
+
+  const SelectedIcon = selectedIcon ? icons[selectedIcon] : null;
 
   const queryClient = useQueryClient();
 
@@ -104,7 +126,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              special_offers_icons: icon,
+              special_offers_icons: selectedIcon,
             };
             mutation.mutate(data);
           }}
@@ -116,7 +138,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                   <div className="flex gap-4 justify-between">
                     <div className="w-[500px]"></div>
                   </div>
-                  <div className="input-wrapper">
+                  <div className="input-wrapper" ref={refSearch}>
                     <label htmlFor="icon-search">Search Icon</label>
                     <input
                       id="icon-search"
@@ -125,38 +147,33 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                       className="border p-2 w-full"
-                      disabled={mutation.isPending}
+                      onFocus={() => setOnFocusSearch(true)}
                     />
-
-                    <select
-                      name="home_insights_category"
-                      value={icon}
-                      onChange={(e) => setIcon(e.target.value)}
-                      className="border p-2 w-full mt-2"
-                      disabled={mutation.isPending}
-                    >
-                      <option value="" disabled>
-                        Select an icon
-                      </option>
-                      {filteredIcons.map((iconKey) => (
-                        <option
-                          key={iconKey}
-                          value={iconKey}
-                          className="text-sm"
-                        >
-                          {iconKey}
-                        </option>
-                      ))}
-                    </select>
-
-                    {icon ? (
+                    {onFocusSearch && (
+                      <div className="w-full max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                        {filteredIcons.map((iconKey) => {
+                          const CurrentIcon = icons[iconKey];
+                          return (
+                            <div
+                              key={iconKey}
+                              className="cursor-pointer hover:bg-gray-100 px-2 flex items-center gap-2"
+                              onClick={() => handleIconSelect(iconKey)} // Handle selection
+                            >
+                              <CurrentIcon /> {iconKey}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                    {/* {selectedIcon ? (
                       <div className="flex items-center gap-4 mt-2">
-                        Selected icon: <Icon />
+                        Selected icon: <SelectedIcon />
                       </div>
                     ) : (
                       "No icon selected"
-                    )}
+                    )} */}
                   </div>
+
                   <div className="input-wrapper">
                     <InputText
                       label="Services"
@@ -187,7 +204,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                     <button
                       className="btn-modal-submit"
                       type="submit"
-                      disabled={mutation.isPending || !icon}
+                      disabled={mutation.isPending || !selectedIcon}
                     >
                       {mutation.isPending ? (
                         <>
