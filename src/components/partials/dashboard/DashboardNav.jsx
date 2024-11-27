@@ -49,7 +49,7 @@ const DashboardNav = ({ menu }) => {
                 className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 `}
                 onClick={handleLogout}
               >
-                <div className="bg-[gray] p-1.5 rounded-full ">
+                <div className="bg-[gray] p-[5px] rounded-full ">
                   <span className=" rounded-full text-white flex justify-center">
                     {firstname}
                     {lastname}
