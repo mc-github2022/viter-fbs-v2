@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import PageNotFound from "@/components/partials/PageNotFound";
-import { StoreContext } from "@/components/store/StoreContext";
 import { queryData } from "@/components/helpers/queryData";
 import { setCredentials } from "@/components/store/StoreAction";
 import FetchingSpinner from "@/components/partials/spinners/FetchingSpinner";
@@ -10,6 +9,7 @@ import {
   devNavUrl,
   UrlDeveloper,
 } from "@/components/helpers/functions-general";
+import { StoreContext } from "../../store/StoreContext";
 
 const ProtectedRouteDeveloper = ({ children }) => {
   const { store, dispatch } = React.useContext(StoreContext);
