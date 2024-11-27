@@ -37,14 +37,6 @@ const ConStudPartnersWithUs = ({ pageName }) => {
                     PARTNER WITH US
                   </button>
                 </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 font-bold text-primary"
-                  >
-                    Download Proposal <FaFileDownload />
-                  </a>
-                </li>
               </ul>
             </div>
             <div className="mt-14 lg:mt-0">

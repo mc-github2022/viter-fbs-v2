@@ -42,8 +42,8 @@ function getHtmlResetPassword(
     <div style="padding: 10px 10px 0px">
       <div style="text-align: left">
         <img
-          src="' . $IMAGES_URL . '/fbs-logo.png"
-          alt="lcss"
+          src="' . $IMAGES_URL . '/logo.png"
+          alt="FBS Logo"
         />
       </div>
     </div>

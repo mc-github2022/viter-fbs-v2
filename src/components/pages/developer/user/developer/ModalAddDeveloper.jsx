@@ -76,7 +76,7 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Other User</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Developer</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>

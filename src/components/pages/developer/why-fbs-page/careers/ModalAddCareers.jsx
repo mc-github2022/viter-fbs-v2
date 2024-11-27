@@ -243,7 +243,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                         label="Job Description"
                         type="text"
                         name="careers_job_description"
-                        className="h-[450px] w-[478px]"
+                        className="h-[457px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>

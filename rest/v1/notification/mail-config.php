@@ -8,9 +8,9 @@ define("RESET_PASSWORD", "Reset Password");
 define("VERIFY_EMAIL", "Email Verification");
 
 // local
-define("ROOT_DOMAIN", "http://127.0.0.1:5173/newsite");
-define("IMAGES_URL", "http://127.0.0.1:5173/img");
+// define("ROOT_DOMAIN", "http://127.0.0.1:5173/newsite");
+// define("IMAGES_URL", "http://127.0.0.1:5173/public/img");
 
 // online
-// define("ROOT_DOMAIN", "https://local-hr.frontlinebusiness.com.ph");
-// define("IMAGES_URL", "https://local-hr.frontlinebusiness.com.ph/img");
+define("ROOT_DOMAIN", "https://frontlinebusiness.com.ph/newsite");
+define("IMAGES_URL", "http://frontlinebusiness.com.ph/newsite/img");

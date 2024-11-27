@@ -71,7 +71,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[22rem]`}
+      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[21.5rem]`}
       handleClose={handleClose}
     >
       <div className="modal-title">

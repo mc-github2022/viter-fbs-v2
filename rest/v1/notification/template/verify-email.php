@@ -44,7 +44,7 @@ function getHtmlVerifyEmail(
     <div style="padding: 10px 10px 0px">
     <div style="text-align: left">
     <img
-    src="' . $IMAGES_URL . '/fbs-logo.png"
+    src="' . $IMAGES_URL . '/logo.png"
     alt="fbs-logo"
     />
   </div>

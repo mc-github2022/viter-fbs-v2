@@ -106,7 +106,7 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input ">
                   <div className="flex gap-4 justify-between ">
-                    <div className="w-[50%] ">
+                    <div className="w-[50%] relative">
                       <div className="mt-5">
                         <span className="top-20 px-2 text-dark text-xs">
                           Image
@@ -192,7 +192,7 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                             disabled={mutation.isPending}
                           />
                         </div>
-                        <div className="form-action mt-[119px]">
+                        <div className="form-action absolute w-full bottom-0 mb-2">
                           <div className="form-btn">
                             <button
                               className="btn-modal-submit"
@@ -217,12 +217,12 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="input-wrapper textAreaWrapper h-[450px] w-[478px]">
+                    <div className="input-wrapper textAreaWrapper">
                       <InputTextArea
                         label="Description"
                         type="text"
                         name="home_banner_description"
-                        className="h-[450px] w-[478px]"
+                        className="h-[457px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>
