@@ -43,24 +43,50 @@ const icons = {
 
 const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [icon, setIcon] = React.useState(
-    itemEdit ? itemEdit.special_offers_icons : ""
+  const [searchTerm, setSearchTerm] = React.useState(
+    itemEdit ? itemEdit.careers_icon : ""
   );
+  const [onFocusSearch, setOnFocusSearch] = React.useState(false);
+  const [selectedIcon, setSelectedIcon] = React.useState(
+    itemEdit ? itemEdit.careers_icon : ""
+  );
+  const [itemsLimit, setItemsLimit] = React.useState(20);
+
   const { singleUploadPhoto, handleChangePhoto, photoSingle } =
     useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
-  const Icon = icon ? icons[icon] : null;
+  const SelectedIcon = selectedIcon ? icons[selectedIcon] : null;
 
   const filteredIcons = Object.keys(icons).filter((iconKey) =>
     iconKey.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  React.useEffect(() => {
-    if (itemEdit) {
-      setIcon(itemEdit.careers_icon);
+  // Limit the number of icons displayed
+  const limitedIcons = filteredIcons.slice(0, itemsLimit);
+
+  // sets the limit of icons being show
+  const handleShowMore = () => {
+    setItemsLimit(itemsLimit + 20);
+  };
+
+  const refSearch = React.useRef();
+
+  const clickOutsideRefSearch = (e) => {
+    if (refSearch.current && !refSearch.current.contains(e.target)) {
+      setOnFocusSearch(false);
     }
-  }, [itemEdit]);
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefSearch);
+    return () => document.removeEventListener("click", clickOutsideRefSearch);
+  }, []);
+
+  const handleIconSelect = (iconKey) => {
+    setSelectedIcon(iconKey);
+    setSearchTerm(iconKey);
+    setOnFocusSearch(false);
+  };
 
   const handleClose = () => {
     setTimeout(() => {
@@ -128,7 +154,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              careers_icon: icon,
+              careers_icon: selectedIcon,
               careers_img: photoSingle
                 ? photoSingle.name
                 : itemEdit.careers_img,
@@ -202,7 +228,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="input-wrapper">
+                      <div className="input-wrapper" ref={refSearch}>
                         <label htmlFor="icon-search">Search Icon</label>
                         <input
                           id="icon-search"
@@ -211,36 +237,42 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
                           className="border p-2 w-full"
-                          disabled={mutation.isPending}
+                          onFocus={() => setOnFocusSearch(true)}
                         />
-
-                        <select
-                          name="home_insights_category"
-                          value={icon}
-                          onChange={(e) => setIcon(e.target.value)}
-                          className="border p-2 w-full mt-2"
-                          disabled={mutation.isPending}
-                        >
-                          <option value="" disabled>
-                            Select an icon
-                          </option>
-                          {filteredIcons.map((iconKey) => (
-                            <option
-                              key={iconKey}
-                              value={iconKey}
-                              className="text-sm"
-                            >
-                              {iconKey}
-                            </option>
-                          ))}
-                        </select>
-
-                        {icon ? (
-                          <div className="flex items-center gap-4 mt-2">
-                            Selected icon: <Icon />
+                        {onFocusSearch && (
+                          <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                            {limitedIcons.map((iconKey) => {
+                              const IconComponent = icons[iconKey];
+                              return (
+                                <div
+                                  key={iconKey}
+                                  className="icon-item cursor-pointer flex items-center gap-2 px-2 py-1 hover:bg-gray-100"
+                                  onClick={() => handleIconSelect(iconKey)}
+                                >
+                                  <IconComponent />
+                                  <span>{iconKey}</span>
+                                </div>
+                              );
+                            })}
+                            {filteredIcons.length > itemsLimit && (
+                              <div className="load-more">
+                                <button
+                                  type="button"
+                                  onClick={handleShowMore}
+                                  className="text-primary p-1 ml-1.5 rounded"
+                                >
+                                  Show More Icons ...
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        {selectedIcon ? (
+                          <div className="flex items-center gap-4 ml-3 text-xs">
+                            Selected icon: <SelectedIcon />
                           </div>
                         ) : (
-                          "No icon selected"
+                          <div className="text-xs ml-3">No icon selected</div>
                         )}
                       </div>
                       <div className="input-wrapper">
@@ -300,7 +332,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                             className="btn-modal-submit"
                             type="submit"
                             disabled={
-                              ((mutation.isPending || !icon) &&
+                              ((mutation.isPending || !props.dirty) &&
                                 photoSingle === null) ||
                               photoSingle === "" ||
                               initVal.careers_img === photoSingle?.name

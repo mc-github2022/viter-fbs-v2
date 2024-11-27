@@ -34,15 +34,11 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   const [selectedIcon, setSelectedIcon] = React.useState(
     itemEdit ? itemEdit.special_offers_icons : ""
   );
+  const [itemsLimit, setItemsLimit] = React.useState(20);
 
-  const filteredIcons = Object.keys(icons).filter((iconKey) =>
-    iconKey.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleClose = () => {
-    setTimeout(() => {
-      dispatch(setIsAdd(false));
-    }, 200);
+  // sets the limit of icons being show
+  const handleShowMore = () => {
+    setItemsLimit(itemsLimit + 20);
   };
 
   const refSearch = React.useRef();
@@ -62,6 +58,19 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
     setSelectedIcon(iconKey);
     setSearchTerm(iconKey);
     setOnFocusSearch(false);
+  };
+
+  const filteredIcons = Object.keys(icons).filter((iconKey) =>
+    iconKey.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Limit the number of icons displayed
+  const limitedIcons = filteredIcons.slice(0, itemsLimit);
+
+  const handleClose = () => {
+    setTimeout(() => {
+      dispatch(setIsAdd(false));
+    }, 200);
   };
 
   const SelectedIcon = selectedIcon ? icons[selectedIcon] : null;
@@ -144,27 +153,39 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                       onFocus={() => setOnFocusSearch(true)}
                     />
                     {onFocusSearch && (
-                      <div className="w-full max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
-                        {filteredIcons.map((iconKey) => {
-                          const CurrentIcon = icons[iconKey];
+                      <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                        {limitedIcons.map((iconKey) => {
+                          const IconComponent = icons[iconKey];
                           return (
                             <div
                               key={iconKey}
-                              className="cursor-pointer hover:bg-gray-100 px-2 flex items-center gap-2"
-                              onClick={() => handleIconSelect(iconKey)} // Handle selection
+                              className="icon-item cursor-pointer flex items-center gap-2 px-2 py-1 hover:bg-gray-100"
+                              onClick={() => handleIconSelect(iconKey)}
                             >
-                              <CurrentIcon /> {iconKey}
+                              <IconComponent />
+                              <span>{iconKey}</span>
                             </div>
                           );
                         })}
+                        {filteredIcons.length > itemsLimit && (
+                          <div className="load-more">
+                            <button
+                              type="button"
+                              onClick={handleShowMore}
+                              className="text-primary p-1 ml-1.5 rounded"
+                            >
+                              Show More Icons ...
+                            </button>
+                          </div>
+                        )}
                       </div>
                     )}
                     {selectedIcon ? (
-                      <div className="flex items-center gap-4 mt-2">
+                      <div className="flex items-center gap-4 ml-3 text-xs">
                         Selected icon: <SelectedIcon />
                       </div>
                     ) : (
-                      "No icon selected"
+                      <div className="text-xs ml-3">No icon selected</div>
                     )}
                   </div>
 
@@ -198,7 +219,9 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                     <button
                       className="btn-modal-submit"
                       type="submit"
-                      disabled={mutation.isPending || !selectedIcon}
+                      disabled={
+                        mutation.isPending || !selectedIcon || !props.dirty
+                      }
                     >
                       {mutation.isPending ? (
                         <>

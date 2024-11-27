@@ -52,7 +52,7 @@ const CareersTable = ({ setItemEdit }) => {
               <th>employee classification</th>
               <th>Mode of Work</th>
               <th>Job Status</th>
-              <th className="w-[18rem]">Job Overview</th>
+              <th className="">Job Overview</th>
               <th className="w-[18rem]">Job Description</th>
               <th>Image</th>
               <th className="text-right">Actions</th>
