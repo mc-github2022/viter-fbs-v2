@@ -215,7 +215,7 @@ const CareerPage = () => {
                       <div>
                         <h3></h3>
                         <img
-                          className="jobImage w-[280px] mb-6 mx-auto  lg:float-left lg:mb-0 lg:mr-6"
+                          className="jobImage w-[380px] mb-6 mx-auto  lg:float-left lg:mb-0 lg:mr-6"
                           src={`${devBaseImgUrl}/${item.careers_img}`}
                           alt=""
                         />
