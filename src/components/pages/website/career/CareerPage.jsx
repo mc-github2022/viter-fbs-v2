@@ -14,6 +14,7 @@ import ModalError from "../../../partials/modals/ModalError";
 import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import { StoreContext } from "../../../store/StoreContext";
 import ModalJobApplication from "./ModalJobApplication";
+import { devBaseImgUrl } from "../../../helpers/functions-general";
 
 const icons = {
   ...FaIcons,
@@ -47,7 +48,10 @@ const CareerPage = () => {
   //Initial useEffect to set default html if careersData is available
   useEffect(() => {
     if (careersData?.data.length > 0) {
-      setHtml(careersData?.data[0].careers_job_description);
+      setHtml(
+        careersData?.data[0].careers_job_description &&
+          careersData?.data[0].careers_job_overview
+      );
     }
   }, [careersData]);
 
@@ -215,21 +219,15 @@ const CareerPage = () => {
                         <h3></h3>
                         <img
                           className="jobImage w-[280px] mb-6 mx-auto  lg:float-left lg:mb-0 lg:mr-6"
-                          src="https://www.techmonitor.ai/wp-content/uploads/sites/29/2017/02/shutterstock_552493561.webp"
+                          src={`${devBaseImgUrl}/${item.careers_img}`}
                           alt=""
                         />
-                        <p className="jobOverview">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Phasellus imperdiet, nulla et dictum interdum,
-                          nisi lorem egestas odio, vitae scelerisque enim ligula
-                          venenatis dolor. Maecenas nisl est, ultrices nec
-                          congue eget, auctor vitae massa. Fusce luctus
-                          vestibulum augue ut aliquet. Mauris ante ligula,
-                          facilisis sed ornare eu, lobortis in odio. Praesent
-                          convallis urna a lacus interdum ut hendrerit risus
-                          congue. Nunc sagittis dictum nisi, sed ullamcorper
-                          ipsum dignissim ac...
-                        </p>
+                        <div
+                          className="jobOverview"
+                          dangerouslySetInnerHTML={{
+                            __html: item.careers_job_overview,
+                          }}
+                        ></div>
                       </div>
                       <div
                         dangerouslySetInnerHTML={{
