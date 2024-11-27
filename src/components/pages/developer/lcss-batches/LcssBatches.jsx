@@ -29,7 +29,7 @@ const LcssBatches = () => {
                 <h2>LCSS Batches</h2>
               </div>
               <button
-                className="flex items-center gap-1 text-[white] hover:underline py-1 px-2 bg-[black] rounded-lg text-sm"
+                className="flex items-center gap-1 text-[white] hover:underline py-1 px-2 bg-primary rounded-lg text-sm"
                 onClick={handleAdd}
               >
                 <FaPlus />

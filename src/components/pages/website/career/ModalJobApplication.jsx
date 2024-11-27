@@ -262,7 +262,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                         />
                       </div>
 
-                      <div className="input-wrapper">
+                      <div className="input-wrapper textAreaWrapper">
                         <InputTextArea
                           label="Message"
                           type="text"

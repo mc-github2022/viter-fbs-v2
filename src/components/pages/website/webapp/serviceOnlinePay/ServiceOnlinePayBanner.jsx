@@ -20,7 +20,7 @@ const ServiceOnlinePayBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Integrate Into Your Website A Hassle-free Online Payment Transaction"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">

@@ -10,7 +10,7 @@ const LcssBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/college-ojt-bg.webp`}
-          alt=""
+          alt="College On-the-job with industry experience practical, work-related skills"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">

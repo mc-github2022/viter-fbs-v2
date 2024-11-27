@@ -75,7 +75,7 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
   const yupSchema = Yup.object({});
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[650px] max-w-[1000px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -104,20 +104,20 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
           {(props) => {
             return (
               <Form className="modal-form">
-                <div className="form-input">
-                  <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
+                <div className="form-input ">
+                  <div className="flex gap-4 justify-between ">
+                    <div className="w-[50%] relative">
                       <div className="mt-5">
                         <span className="top-20 px-2 text-dark text-xs">
                           Image
                         </span>
-                        <div className="relative w-fit m-auto group">
+                        <div className="relative w-fit group">
                           {(itemEdit === null && photoSingle === null) ||
                           (photoSingle === "" && itemEdit === null) ? (
-                            <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[200px] h-[100px] border rounded-md p-2 grid place-items-center">
+                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
                               <div className="">
-                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                                <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight text-[gray] text-sm text-center">
                                   Upload Image
                                 </h1>
                               </div>
@@ -126,9 +126,9 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                               !itemEdit.home_banner_img &&
                               !photoSingle) ||
                             (!itemEdit && !photoSingle) ? (
-                            <div className="group-hover:opacity-20 mb-4 bg-dashAccent grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2">
+                            <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
                               <div>
-                                <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
                                 <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
                                   Upload Image
                                 </h1>
@@ -144,19 +144,19 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                                     itemEdit.home_banner_img // check db
                               }
                               alt="Logo"
-                              className="group-hover:opacity-30 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
+                              className="group-hover:opacity-20 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
                             />
                           )}
 
                           <div className="btnImgUpload">
                             <button>
-                              <MdOutlineFileUpload />
+                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
                               <InputPhotoUpload
                                 name="photo"
                                 type="file"
                                 id="myFile"
                                 accept="image/*"
-                                title="Upload image"
+                                title="Upload Image"
                                 onChange={(e) =>
                                   handleChangePhoto(e, initVal.home_banner_img)
                                 }
@@ -192,40 +192,40 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                             disabled={mutation.isPending}
                           />
                         </div>
+                        <div className="form-action absolute w-full bottom-0 mb-2">
+                          <div className="form-btn">
+                            <button
+                              className="btn-modal-submit"
+                              type="submit"
+                              disabled={
+                                ((mutation.isPending || !props.dirty) &&
+                                  photoSingle === null) ||
+                                photoSingle === "" ||
+                                initVal.home_banner_img === photoSingle?.name
+                              }
+                            >
+                              {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                            </button>
+                            <button
+                              className="btn-modal-cancel"
+                              type="button"
+                              onClick={handleClose}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="input-wrapper">
+                    <div className="input-wrapper textAreaWrapper">
                       <InputTextArea
                         label="Description"
                         type="text"
                         name="home_banner_description"
-                        className="h-[500px] w-[478px]"
+                        className="h-[457px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>
-                  </div>
-                </div>
-                <div className="form-action">
-                  <div className="form-btn">
-                    <button
-                      className="btn-modal-submit"
-                      type="submit"
-                      disabled={
-                        ((mutation.isPending || !props.dirty) &&
-                          photoSingle === null) ||
-                        photoSingle === "" ||
-                        initVal.home_banner_img === photoSingle?.name
-                      }
-                    >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                    </button>
-                    <button
-                      className="btn-modal-cancel"
-                      type="button"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </button>
                   </div>
                 </div>
               </Form>

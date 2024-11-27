@@ -100,7 +100,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[650px] max-w-[1000px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -126,7 +126,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
+                    <div className="w-[50%] relative">
                       <div className="input-wrapper">
                         <label htmlFor="icon-search">Search Icon</label>
                         <input
@@ -219,34 +219,34 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                           <option value="Closed">Closed</option>
                         </InputSelect>
                       </div>
+                      <div className="form-action absolute bottom-0 w-full mb-2">
+                        <div className="form-btn">
+                          <button
+                            className="btn-modal-submit"
+                            type="submit"
+                            disabled={mutation.isPending || !icon}
+                          >
+                            {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                          </button>
+                          <button
+                            className="btn-modal-cancel"
+                            type="button"
+                            onClick={handleClose}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="input-wrapper">
+                    <div className="input-wrapper textAreaWrapper">
                       <InputTextArea
                         label="Job Description"
                         type="text"
                         name="careers_job_description"
-                        className="h-[500px] w-[478px]"
+                        className="h-[457px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>
-                  </div>
-                </div>
-                <div className="form-action">
-                  <div className="form-btn">
-                    <button
-                      className="btn-modal-submit"
-                      type="submit"
-                      disabled={mutation.isPending || !icon}
-                    >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                    </button>
-                    <button
-                      className="btn-modal-cancel"
-                      type="button"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </button>
                   </div>
                 </div>
               </Form>

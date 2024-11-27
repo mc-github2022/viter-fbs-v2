@@ -17,7 +17,7 @@ const VaMarketingBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Boost your Online Presence Through Our Marketing Support"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">

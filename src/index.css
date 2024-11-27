@@ -33,7 +33,7 @@
   }
   input[type="text"],
   input[type="email"] {
-    @apply bg-customGray h-8 px-3 text-xs text-dark;
+    @apply h-8 px-3 text-xs text-dark;
   }
 
   input[type="password"] {
@@ -41,10 +41,11 @@
   }
 
   textarea {
-    @apply bg-customGray w-full h-20 resize-none text-sm;
+    @apply w-full h-20 resize-none text-sm;
   }
+
   select {
-    @apply bg-customGray h-8 p-1 text-sm text-dark;
+    @apply h-8 p-1 text-sm text-dark;
   }
   /* * {
     @apply outline outline-primary;
@@ -286,7 +287,7 @@
     @apply flex gap-2 pt-4;
   }
   .btnImgUpload button {
-    @apply text-2xl text-[white] bg-[black] bg-opacity-50 transition-all opacity-0 group-hover:opacity-40 w-full grid place-items-center h-full absolute top-0 left-0;
+    @apply text-2xl text-[white] bg-opacity-10 transition-all opacity-0 group-hover:opacity-40 w-full grid place-items-center h-full absolute top-0 left-0;
   }
   .postContent p {
     @apply pb-4;
@@ -399,4 +400,20 @@ img.popPost {
 
 textarea {
   resize: none;
+}
+
+.textAreaWrapper::after,
+.textAreaWrapper::before {
+  content: "";
+  position: absolute !important;
+  bottom: 0.9px !important;
+  height: 10px !important;
+  width: 93% !important;
+  background-color: white;
+  display: block !important;
+  left: 8px;
+  z-index: 1;
+}
+.textAreaWrapper::before {
+  top: 1.1px !important;
 }

@@ -124,9 +124,9 @@ const DeveloperLogin = () => {
                         name="password"
                         disabled={
                           mutation.isPending ||
-                          props.values.user_developer_email === ""
+                          (props.values.user_developer_email === "" &&
+                            props.values.password === "")
                         }
-                        className={`${passwordShown ? "!bg-white" : ""}`}
                       />
                       {props.values.password && (
                         <span
