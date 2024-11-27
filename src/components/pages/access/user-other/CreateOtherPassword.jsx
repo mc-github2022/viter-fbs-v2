@@ -174,11 +174,11 @@ const CreateOtherPassword = () => {
       ) : (
         <div
           className="relative"
-          style={{ transform: "translateY(clamp(5rem,12vw,8rem))" }}
+          style={{ transform: "translateY(clamp(5rem,5vw,8rem))" }}
         >
           <div className="flex justify-center items-center ">
             {isFetching && <TableSpinner />}
-            <div className="w-96 p-6">
+            <div className="w-96">
               <div className="relative flex justify-center">
                 <FbsLogoXl />
               </div>

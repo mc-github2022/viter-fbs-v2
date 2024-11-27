@@ -255,7 +255,7 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
                         label="Message"
                         type="text"
                         name="vid_testimonial_message"
-                        className="h-[450px] w-[478px]"
+                        className="h-[457px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>

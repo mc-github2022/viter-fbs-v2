@@ -182,7 +182,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                     />
                   </div>
                 </div>
-                <div className="form-action">
+                <div className="form-action mb-1">
                   <div className="form-btn">
                     <button
                       className="btn-modal-submit"

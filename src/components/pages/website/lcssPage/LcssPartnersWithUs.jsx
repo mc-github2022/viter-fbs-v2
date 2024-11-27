@@ -40,7 +40,6 @@ const LcssPartnersWithUs = ({ pageName }) => {
                 <li>
                   <a
                     href="https://drive.google.com/uc?export=download&amp;id=1kSl-0-BtMdzMtsTdPw-N2SqI6jlDUJOE"
-                    download
                     className="flex items-center gap-2 font-bold text-primary"
                   >
                     Download Proposal <FaFileDownload />

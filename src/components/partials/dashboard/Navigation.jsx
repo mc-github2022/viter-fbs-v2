@@ -266,7 +266,7 @@ const Navigation = ({ menu, submenu }) => {
                   </div>
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "pricing"
@@ -281,7 +281,7 @@ const Navigation = ({ menu, submenu }) => {
                     </span>
                   </div>
                 </Link>
-              </li>
+              </li> */}
               <li
                 className={` flex justify-between items-center p-1
                   ${

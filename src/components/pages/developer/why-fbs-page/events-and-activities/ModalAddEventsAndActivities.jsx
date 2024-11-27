@@ -242,7 +242,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                         label="Description"
                         type="text"
                         name="events_activities_description"
-                        className="h-[450px] w-[478px]"
+                        className="h-[457px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>

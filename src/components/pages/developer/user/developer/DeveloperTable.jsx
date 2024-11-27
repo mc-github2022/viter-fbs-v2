@@ -197,7 +197,7 @@ const DeveloperTable = ({ setItemEdit }) => {
                             data-tooltip="Restore"
                             onClick={() => handleRestore(item)}
                           >
-                            <MdRestore className="text-gray-600" />
+                            <MdRestore className="text-gray-600 text-[18px]" />
                           </button>
                           <button
                             className="tooltip-action-table"

@@ -50,7 +50,7 @@ const DashboardNav = ({ menu }) => {
                 onClick={handleLogout}
               >
                 <div className="bg-[gray] p-1.5 rounded-full ">
-                  <span className="pl-[1px] p-1 rounded-full text-white ">
+                  <span className=" rounded-full text-white flex justify-center">
                     {firstname}
                     {lastname}
                   </span>

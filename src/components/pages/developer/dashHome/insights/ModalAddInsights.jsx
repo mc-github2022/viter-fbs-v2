@@ -238,12 +238,12 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="input-wrapper textAreaWrapper h-[450px] w-[478px]">
+                    <div className="input-wrapper textAreaWrapper ">
                       <InputTextArea
                         label="Description"
                         type="text"
                         name="home_insights_paragraph_a"
-                        className="h-[450px] w-[478px]"
+                        className="h-[457px] w-[478px]"
                         disabled={mutation.isPending}
                       />
                     </div>

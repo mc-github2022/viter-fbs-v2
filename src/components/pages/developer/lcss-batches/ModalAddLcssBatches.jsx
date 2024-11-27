@@ -168,8 +168,9 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                             className="btn-modal-submit"
                             type="submit"
                             disabled={
-                              ((mutation.isPending || !props.dirty) &&
-                                photoArrayList === null) ||
+                              mutation.isPending ||
+                              !props.dirty ||
+                              photoArrayList === null ||
                               photoArrayList === "" ||
                               initVal.lcss_batch_img === photoArrayList?.name
                             }
@@ -191,7 +192,6 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                         Upload Images
                       </span>
                       <div className="relative w-fit m-auto group mt-3">
-                        {/* Conditional Rendering Based on Image Availability */}
                         {!itemEdit && !photoArrayList.length ? (
                           <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[350px] h-[180px] p-2 place-content-center">
                             <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
@@ -215,7 +215,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                             {imageList.map((img, index) => (
                               <img
                                 key={index}
-                                src={`${devBaseImgUrl}/${img.trim()}`} // Use trim to remove any accidental whitespace
+                                src={`${devBaseImgUrl}/${img.trim()}`}
                                 alt={`Existing Batch Image ${index + 1}`}
                                 className="w-[350px] h-[180px] object-cover"
                               />
@@ -230,7 +230,6 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                           </div>
                         )}
 
-                        {/* Upload Button */}
                         <div className="btnImgUpload">
                           <button>
                             <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
