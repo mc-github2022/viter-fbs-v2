@@ -39,12 +39,6 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
     iconKey.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // React.useEffect(() => {
-  //   if (itemEdit) {
-  //     setSelectedIcon(itemEdit.special_offers_icons);
-  //   }
-  // }, [itemEdit]);
-
   const handleClose = () => {
     setTimeout(() => {
       dispatch(setIsAdd(false));
@@ -165,13 +159,13 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                         })}
                       </div>
                     )}
-                    {/* {selectedIcon ? (
+                    {selectedIcon ? (
                       <div className="flex items-center gap-4 mt-2">
                         Selected icon: <SelectedIcon />
                       </div>
                     ) : (
                       "No icon selected"
-                    )} */}
+                    )}
                   </div>
 
                   <div className="input-wrapper">

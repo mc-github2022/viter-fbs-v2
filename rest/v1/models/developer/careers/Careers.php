@@ -31,7 +31,7 @@ class Careers
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblCareers} ";
-            $sql .= "order by careers_aid asc ";
+            $sql .= "order by careers_job_status desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
