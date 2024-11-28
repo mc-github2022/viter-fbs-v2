@@ -7,16 +7,6 @@ import ModalError from "../../../partials/modals/ModalError";
 import { StoreContext } from "../../../store/StoreContext";
 
 const LcssApplyNow = ({ pageName }) => {
-  const [modalContact, setModalContact] = React.useState(false);
-  const handleModalContact = () => {
-    setModalContact(!modalContact);
-  };
-
-  const [contactForm, setContactForm] = React.useState(false);
-  const handleForm = () => {
-    setContactForm(!contactForm);
-  };
-
   const [lcssForm, setLcssForm] = React.useState(false);
   const handleLcssForm = () => {
     setLcssForm(!lcssForm);

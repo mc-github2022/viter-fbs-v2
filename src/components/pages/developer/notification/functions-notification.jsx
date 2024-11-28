@@ -13,9 +13,10 @@ export const purposeValue = () => {
     { code: "partner-with-us-lcs", name: "Partner with us LCS page" },
     { code: "apply-now-lcs", name: "Apply now LCS page" },
     { code: "apply-now-careers", name: "Apply now careers page" },
-    { code: "get-started-default", name: "Get started default" },
-    { code: "partner-with-us-default", name: "Partner with us default" },
-    { code: "apply-now-default", name: "Apply now default" },
+    // { code: "default-receiver", name: "Get started default" },
+    // { code: "default-receiver", name: "Partner with us default" },
+    // { code: "default-receiver", name: "Apply now default" },
+    { code: "default-receiver", name: "Default receiver email" },
   ];
 
   return result;

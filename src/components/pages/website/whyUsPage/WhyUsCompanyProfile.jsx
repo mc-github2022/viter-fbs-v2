@@ -42,7 +42,8 @@ const WhyUsCompanyProfile = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     PARTNER WITH US
                   </button>
                 </li>
@@ -50,7 +51,8 @@ const WhyUsCompanyProfile = ({ pageName }) => {
                   <a
                     href={`${devBaseImgUrl}/FBS-Brochure-2024.pdf`}
                     download
-                    className="flex items-center gap-2 font-bold text-primary text-xl">
+                    className="flex items-center gap-2 font-bold text-primary text-xl"
+                  >
                     Company Profile <FaFileDownload />
                   </a>
                 </li>
@@ -130,6 +132,9 @@ const WhyUsCompanyProfile = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`Partner with us - `}
         />
       )}
     </>

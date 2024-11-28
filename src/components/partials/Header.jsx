@@ -55,7 +55,7 @@ const Header = ({ pageName }) => {
     ) {
       setSubjectNotif("get-started-lcs");
     } else {
-      setSubjectNotif("get-started-default");
+      setSubjectNotif("default-receiver");
     }
     document.addEventListener("click", clickOutsideRef);
     return () => document.addEventListener("click", clickOutsideRef);
@@ -231,7 +231,7 @@ const Header = ({ pageName }) => {
           contactForm={contactForm}
           contactSubject={""}
           notification_purpose={subjectNotif}
-          emailSubject={"Get started - "}
+          emailSubject={"GET STARTED - "}
         />
       )}
 

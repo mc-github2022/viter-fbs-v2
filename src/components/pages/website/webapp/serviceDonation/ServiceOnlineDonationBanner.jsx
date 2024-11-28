@@ -51,6 +51,9 @@ const ServiceOnlineDonationBanner = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${banner[0]?.bannerBtnText} / Online Donation System - `}
         />
       )}
     </>

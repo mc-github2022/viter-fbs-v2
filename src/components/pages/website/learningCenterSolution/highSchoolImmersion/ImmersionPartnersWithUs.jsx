@@ -5,7 +5,6 @@ import { devBaseImgUrl } from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
 
 const ImmersionPartnersWithUs = ({ pageName }) => {
-  const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
   const handleForm = () => {
     setContactForm(!contactForm);
@@ -110,14 +109,14 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
       </section>
       {contactForm && (
         <ModalContact
-          setModalContact={setModalContact}
+          setModalContact={setContactForm}
           thePageName={pageName}
           contactForm={contactForm}
           setContactForm={setContactForm}
-          modalContact={modalContact}
+          modalContact={contactForm}
           contactSubject={""}
           notification_purpose={"partner-with-us-lcs"}
-          emailSubject={"Parner with us - "}
+          emailSubject={"PARTNER WITH US / High School Work Immersion - "}
         />
       )}
     </>

@@ -105,6 +105,8 @@ const ServiceOnlineDonationPricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          notification_purpose={"default-receiver"}
+          emailSubject={`CONTACT US / Online Donation System (${contactSubject}) - `}
         />
       )}
     </>

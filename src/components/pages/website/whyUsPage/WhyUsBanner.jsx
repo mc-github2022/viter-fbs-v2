@@ -55,6 +55,9 @@ const WhyUsBanner = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`Get started - `}
         />
       )}
     </>

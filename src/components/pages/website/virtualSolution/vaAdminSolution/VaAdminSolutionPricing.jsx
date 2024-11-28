@@ -110,6 +110,8 @@ const VaAdminSolutionPricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          notification_purpose={"default-receiver"}
+          emailSubject={`CHOOSE PLAN / Administrative (${contactSubject}) - `}
         />
       )}
     </>
