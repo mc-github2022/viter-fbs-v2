@@ -332,10 +332,13 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                             className="btn-modal-submit"
                             type="submit"
                             disabled={
-                              ((mutation.isPending || !props.dirty) &&
-                                photoSingle === null) ||
-                              photoSingle === "" ||
-                              initVal.careers_img === photoSingle?.name
+                              mutation.isPending ||
+                              (!props.dirty &&
+                                photoSingle === null &&
+                                !selectedIcon) ||
+                              (photoSingle === "" && !selectedIcon) ||
+                              (initVal.careers_img === photoSingle?.name &&
+                                !selectedIcon)
                             }
                           >
                             {mutation.isPending ? <ButtonSpinner /> : "Save"}
