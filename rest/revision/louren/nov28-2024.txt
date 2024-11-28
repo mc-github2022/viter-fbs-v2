@@ -33,7 +33,10 @@ DEVELOPER
             -> 
 
         * DB BACKUP
-            -> viter_fbs_v2.sql
+            -> rest/db-backup/fbsv2_careers.sql
+            note: add new column
+             `careers_img` varchar(100) NOT NULL,
+             `careers_job_overview` text NOT NULL,
             ->
             ->
             ->
