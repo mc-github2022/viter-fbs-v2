@@ -322,9 +322,9 @@ CREATE TABLE `fbsv2_notification` (
 --
 
 INSERT INTO `fbsv2_notification` (`notification_aid`, `notification_is_active`, `notification_name`, `notification_email`, `notification_phone_no`, `notification_purpose`, `notification_created`, `notification_updated`) VALUES
-(2, 1, 'Zaicy Lumabas', 'lourenisobel18@gmail.com', '', 'apply-now-default', '2024-11-21 17:07:31', '2024-11-22 09:58:27'),
-(3, 1, 'MC Bumagat', 'mark.bumagat@frontlinebusiness.com.ph', '', 'partner-with-us-default', '2024-11-22 07:53:55', '2024-11-22 09:58:23'),
-(4, 1, 'Cyrene Lumabas', 'cyrene.lumabas@frontlinebusiness.com.ph', '', 'get-started-default', '2024-11-22 07:54:28', '2024-11-22 09:58:20');
+(2, 1, 'Zaicy Lumabas', 'lourenisobel18@gmail.com', '', 'default-receiver', '2024-11-21 17:07:31', '2024-11-22 09:58:27'),
+(3, 1, 'MC Bumagat', 'mark.bumagat@frontlinebusiness.com.ph', '', 'default-receiver', '2024-11-22 07:53:55', '2024-11-22 09:58:23'),
+(4, 1, 'Cyrene Lumabas', 'cyrene.lumabas@frontlinebusiness.com.ph', '', 'default-receiver', '2024-11-22 07:54:28', '2024-11-22 09:58:20');
 
 -- --------------------------------------------------------
 

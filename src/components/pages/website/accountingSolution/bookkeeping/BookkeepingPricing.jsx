@@ -290,7 +290,12 @@ const BookkeepingPricing = ({ pageName }) => {
                             </p>
                             <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
                               <button
-                                onClick={() => handleForm(price.title)}
+                                onClick={() =>
+                                  handleForm({
+                                    title: price.title,
+                                    btnText: price.btnText,
+                                  })
+                                }
                                 className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary "
                               >
                                 {price.btnText}
@@ -332,7 +337,9 @@ const BookkeepingPricing = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
-          contactSubject={contactSubject}
+          contactSubject={contactSubject?.title}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${contactSubject?.btnText} - `}
         />
       )}
     </>

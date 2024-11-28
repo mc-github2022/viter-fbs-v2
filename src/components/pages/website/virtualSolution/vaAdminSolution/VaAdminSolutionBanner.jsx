@@ -52,6 +52,9 @@ const VaAdminSolutionBanner = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${banner[0].bannerBtnText} - `}
         />
       )}
     </>

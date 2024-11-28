@@ -104,6 +104,8 @@ const ServicePayrollPricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          notification_purpose={"default-receiver"}
+          emailSubject={`Learn more - `}
         />
       )}
     </>

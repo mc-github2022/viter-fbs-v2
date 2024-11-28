@@ -134,6 +134,9 @@ const ServiceInventoryScope = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`Contact us - `}
         />
       )}
     </>

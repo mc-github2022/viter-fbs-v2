@@ -87,6 +87,9 @@ const ConStudApplyNow = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"apply-now-lcs"}
+          emailSubject={"Apply now - "}
         />
       )} */}
       {lcssForm && (

@@ -34,7 +34,8 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     {webAppOverview[0].btnText}
                   </button>
                 </li>
@@ -107,6 +108,9 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${webAppOverview[0]?.btnText} - `}
         />
       )}
     </>

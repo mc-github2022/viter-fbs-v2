@@ -14,20 +14,20 @@ const SinglePagePricing = ({ pageName }) => {
   };
   return (
     <>
-      <section className='SinglePagePricing py-20 bg-[#000000] relative overflow-hidden'>
-        <div className='footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]'></div>
-        <div className='absolute bg-light h-[180px] w-full bottom-0 z-[1]'></div>
-        <div className='customContainer'>
-          <div className='mb-20 text-center relative z-[3]'>
-            <p className='text-light'>
+      <section className="SinglePagePricing py-20 bg-[#000000] relative overflow-hidden">
+        <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
+        <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
+        <div className="customContainer">
+          <div className="mb-20 text-center relative z-[3]">
+            <p className="text-light">
               Single page website development for your online branding
             </p>
-            <h3 className='text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light'>
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               Affordable Pricing Plan
             </h3>
           </div>
-          <div className='grid place-items-center'>
-            <div className='wrapper md:grid md:grid-cols-2 gap-8 items-center'>
+          <div className="grid place-items-center">
+            <div className="wrapper md:grid md:grid-cols-2 gap-8 items-center">
               {pricing.map((price, key) => {
                 return (
                   <div
@@ -39,7 +39,7 @@ const SinglePagePricing = ({ pageName }) => {
                     }  min-h-[600px]`}
                   >
                     <div>
-                      <div className='title mb-4 '>
+                      <div className="title mb-4 ">
                         {price.icon}
                         <h3
                           className={`${price.customCss} text-2xl font-bold  text-light mb-6`}
@@ -70,24 +70,24 @@ const SinglePagePricing = ({ pageName }) => {
                           </li>
                         ))}
                       </ul> */}
-                      <table className='prices my-5'>
+                      <table className="prices my-5">
                         <tbody>
                           {price.info.map((info, key) => (
-                            <tr key={key} className='border-0 flex items-start'>
+                            <tr key={key} className="border-0 flex items-start">
                               <td>
                                 <FaCheckCircle
                                   className={`${price.customCss} text-light translate-y-1`}
                                 />
                               </td>
-                              <td className='text-[16px]'>{info}</td>
+                              <td className="text-[16px]">{info}</td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
-                      <div className='md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12'>
+                      <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
                         <button
                           onClick={() => handleForm(price.title)}
-                          className='btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary'
+                          className="btn mt-10 px-5 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
                         >
                           CONTACT US
                         </button>
@@ -108,6 +108,8 @@ const SinglePagePricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          notification_purpose={"default-receiver"}
+          emailSubject={`Contact us - `}
         />
       )}
     </>

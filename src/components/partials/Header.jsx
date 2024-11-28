@@ -55,7 +55,7 @@ const Header = ({ pageName }) => {
     ) {
       setSubjectNotif("get-started-lcs");
     } else {
-      setSubjectNotif("get-started-default");
+      setSubjectNotif("default-receiver");
     }
     document.addEventListener("click", clickOutsideRef);
     return () => document.addEventListener("click", clickOutsideRef);

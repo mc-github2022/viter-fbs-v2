@@ -33,7 +33,8 @@ const SinglePageOverview = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold">
+                    className="btn bg-primary text-light font-semibold"
+                  >
                     {webAppOverview[0].btnText}
                   </button>
                 </li>
@@ -41,7 +42,8 @@ const SinglePageOverview = ({ pageName }) => {
                   <a
                     href={`${devBaseImgUrl}/website-design-and-development-portfolio-2022-v3.pdf`}
                     download
-                    className="flex items-center gap-2 font-bold text-primary">
+                    className="flex items-center gap-2 font-bold text-primary"
+                  >
                     {webAppOverview[0].btnDownloadText} <FaFileDownload />
                   </a>
                 </li>
@@ -107,6 +109,9 @@ const SinglePageOverview = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${webAppOverview[0]?.btnText} - `}
         />
       )}
     </>

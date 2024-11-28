@@ -88,7 +88,12 @@ const VaAdminSolutionPricing = ({ pageName }) => {
                       <p className="mb-8 hidden lg:block">{price.priceDesc}</p>
                       <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
                         <button
-                          onClick={() => handleForm(price.title)}
+                          onClick={() =>
+                            handleForm({
+                              title: price.title,
+                              btnText: price.btnText,
+                            })
+                          }
                           className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
                         >
                           {price.btnText}
@@ -109,7 +114,9 @@ const VaAdminSolutionPricing = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
-          contactSubject={contactSubject}
+          contactSubject={contactSubject?.title}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${contactSubject?.btnText} - `}
         />
       )}
     </>

@@ -112,6 +112,8 @@ const ServiceInventoryPricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          notification_purpose={"default-receiver"}
+          emailSubject={`Contact us - `}
         />
       )}
     </>
