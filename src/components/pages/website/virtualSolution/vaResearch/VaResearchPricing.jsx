@@ -91,12 +91,7 @@ const VaResearchPricing = ({ pageName }) => {
                       <p className="mb-8 hidden lg:block">{price.priceDesc}</p>
                     </div>
                     <button
-                      onClick={() =>
-                        handleForm({
-                          title: price.title,
-                          btnText: price.btnText,
-                        })
-                      }
+                      onClick={() => handleForm(price.title)}
                       className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] bottom-0 hover:bg-light hover:text-primary hover:border-primary"
                     >
                       {price.btnText}
@@ -115,9 +110,9 @@ const VaResearchPricing = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
-          contactSubject={contactSubject?.title}
+          contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
-          emailSubject={`${contactSubject?.btnText} - `}
+          emailSubject={`CHOOSE PLAN / Business Support (${contactSubject}) - `}
         />
       )}
     </>

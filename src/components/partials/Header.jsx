@@ -231,7 +231,7 @@ const Header = ({ pageName }) => {
           contactForm={contactForm}
           contactSubject={""}
           notification_purpose={subjectNotif}
-          emailSubject={"Get started - "}
+          emailSubject={"GET STARTED - "}
         />
       )}
 

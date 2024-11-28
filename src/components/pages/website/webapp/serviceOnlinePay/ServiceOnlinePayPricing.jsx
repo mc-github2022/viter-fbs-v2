@@ -8,8 +8,9 @@ const ServiceOnlinePayPricing = ({ pageName }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
-  const handleForm = () => {
+  const handleForm = (item) => {
     setContactForm(!contactForm);
+    setContactSubject(item);
   };
   return (
     <>
@@ -104,7 +105,7 @@ const ServiceOnlinePayPricing = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
-          emailSubject={`Contact us - `}
+          emailSubject={`CONTACT US / Online Payment Integration (${contactSubject}) - `}
         />
       )}
     </>

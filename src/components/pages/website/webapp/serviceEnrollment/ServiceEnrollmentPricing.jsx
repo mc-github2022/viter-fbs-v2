@@ -5,10 +5,12 @@ import { pricing } from "./data";
 import ModalContact from "../../../../partials/ModalContact";
 
 const ServiceEnrollmentPricing = ({ pageName }) => {
+  const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
-  const handleForm = () => {
+  const handleForm = (item) => {
     setContactForm(!contactForm);
+    setContactSubject(item);
   };
 
   return (
@@ -82,7 +84,7 @@ const ServiceEnrollmentPricing = ({ pageName }) => {
                         </tbody>
                       </table>
                       <button
-                        onClick={handleForm}
+                        onClick={() => handleForm(price.title)}
                         className="btn px-5 mt-10 bg-primary text-light border-light border-2 font-bold w-[190px] hover:bg-light hover:text-primary hover:border-primary"
                       >
                         CONTACT US
@@ -102,9 +104,9 @@ const ServiceEnrollmentPricing = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
-          contactSubject={""}
+          contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
-          emailSubject={`Contact us - `}
+          emailSubject={`CONTACT US / School Enrollment System (${contactSubject}) - `}
         />
       )}
     </>

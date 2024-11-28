@@ -109,7 +109,7 @@ const SinglePagePricing = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
-          emailSubject={`Contact us - `}
+          emailSubject={`CONTACT US / Single Page Website (${contactSubject}) - `}
         />
       )}
     </>

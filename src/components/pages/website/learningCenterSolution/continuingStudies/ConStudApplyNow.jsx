@@ -5,12 +5,6 @@ import ModalContact from "../../../../partials/ModalContact";
 import ModalLcssForm from "../../../../partials/ModalLcssForm";
 
 const ConStudApplyNow = ({ pageName }) => {
-  const [modalContact, setModalContact] = React.useState(false);
-  const [contactForm, setContactForm] = React.useState(false);
-  const handleForm = () => {
-    setContactForm(!contactForm);
-  };
-
   const [lcssForm, setLcssForm] = React.useState(false);
   const handleLcssForm = () => {
     setLcssForm(!lcssForm);

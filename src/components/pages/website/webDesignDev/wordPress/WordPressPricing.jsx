@@ -107,7 +107,7 @@ const WordPressPricing = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
-          emailSubject={`Countact us - `}
+          emailSubject={`CONTACT US / WordPress CMS Website (${contactSubject}) - `}
         />
       )}
     </>

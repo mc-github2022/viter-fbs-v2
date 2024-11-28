@@ -19,7 +19,7 @@ const ServiceOnlinePayScope = ({ pageName }) => {
 
   useEffect(() => {
     setAccordion(true);
-    setAccordionItem("starter");
+    setAccordionItem("Credit/Debit Card Payment (Visa and Mastercard)");
   }, []);
 
   const [accordion, setAccordion] = React.useState(false);
@@ -135,7 +135,7 @@ const ServiceOnlinePayScope = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           notification_purpose={"default-receiver"}
-          emailSubject={`Learn more - `}
+          emailSubject={`LEARN MORE / Online Payment Integration (${accordionItem}) - `}
         />
       )}
     </>

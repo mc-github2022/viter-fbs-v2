@@ -117,7 +117,7 @@ const VaAdminServiceList = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           notification_purpose={"default-receiver"}
-          emailSubject={"Get started - "}
+          emailSubject={"GET STARTED / Administrative - "}
         />
       )}
     </>

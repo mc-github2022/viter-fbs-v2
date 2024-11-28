@@ -15,7 +15,7 @@ const WebDesignScope = ({ pageName }) => {
 
   useEffect(() => {
     setAccordion(true);
-    setAccordionItem("starter");
+    setAccordionItem("Responsive Design");
   }, []);
 
   const [accordion, setAccordion] = React.useState(false);
@@ -132,7 +132,7 @@ const WebDesignScope = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           notification_purpose={"default-receiver"}
-          emailSubject={`Contact us - `}
+          emailSubject={`CONTACT US / Web Design (${accordionItem}) - `}
         />
       )}
     </>

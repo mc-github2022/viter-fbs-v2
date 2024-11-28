@@ -113,7 +113,7 @@ const ServiceHrPricing = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
-          emailSubject={`Choose plan - `}
+          emailSubject={`CHOOSE PLAN / HR Information System (${contactSubject}) - `}
         />
       )}
     </>

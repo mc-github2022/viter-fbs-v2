@@ -61,7 +61,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "Admin Console",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Admin Console",
     scopeDesc:
@@ -69,7 +69,7 @@ export const scope = [
     scopeImage: "donation-admin-console.png",
   },
   {
-    scopeId: "donor-console",
+    scopeId: "Donor Console",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Donor Console",
     scopeDesc:
@@ -77,7 +77,7 @@ export const scope = [
     scopeImage: "donation-donor-console.png",
   },
   {
-    scopeId: "donation-designations",
+    scopeId: "Donation Designations",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Donation Designations",
     scopeDesc:
@@ -85,7 +85,7 @@ export const scope = [
     scopeImage: "donation-designation.png",
   },
   {
-    scopeId: "donors-record",
+    scopeId: "Donor Record Management",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Donor Record Management",
     scopeDesc:
@@ -93,7 +93,7 @@ export const scope = [
     scopeImage: "donation-donors-record.png",
   },
   {
-    scopeId: "payment-method",
+    scopeId: "Payment Method Management",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Payment Method Management",
     scopeDesc:
@@ -101,7 +101,7 @@ export const scope = [
     scopeImage: "donation-payment-method.png",
   },
   {
-    scopeId: "donations-record",
+    scopeId: "Donation Record",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Donation Record",
     scopeDesc:
@@ -109,7 +109,7 @@ export const scope = [
     scopeImage: "donation-record.png",
   },
   {
-    scopeId: "donations-frequency",
+    scopeId: "Donation Frequency (One-time, Recurring, Manual)",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Donation Frequency (One-time, Recurring, Manual)",
     scopeDesc:
@@ -117,7 +117,7 @@ export const scope = [
     scopeImage: "donation-frequency.png",
   },
   {
-    scopeId: "users-setting",
+    scopeId: "User Settings",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "User Settings",
     scopeDesc:

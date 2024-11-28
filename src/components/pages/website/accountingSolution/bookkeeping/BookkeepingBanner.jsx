@@ -53,7 +53,7 @@ const BookkeepingBanner = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           notification_purpose={"default-receiver"}
-          emailSubject={`${banner[0]?.bannerBtnText} - `}
+          emailSubject={`${banner[0]?.bannerBtnText} / Bookkeeping / Compliance - `}
         />
       )}
     </>

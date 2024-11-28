@@ -105,7 +105,7 @@ const ServicePayrollPricing = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
-          emailSubject={`Learn more - `}
+          emailSubject={`LEARN MORE / Online Payroll System (${contactSubject}) - `}
         />
       )}
     </>

@@ -20,7 +20,7 @@ const ServiceInventoryScope = ({ pageName }) => {
 
   useEffect(() => {
     setAccordion(true);
-    setAccordionItem("starter");
+    setAccordionItem("Asset Management");
   }, []);
 
   const [accordion, setAccordion] = React.useState(false);
@@ -136,7 +136,7 @@ const ServiceInventoryScope = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           notification_purpose={"default-receiver"}
-          emailSubject={`Contact us - `}
+          emailSubject={`CONTACT US / Asset Inventory System (${accordionItem}) - `}
         />
       )}
     </>

@@ -20,7 +20,7 @@ const ServiceEnrollmentScope = ({ pageName }) => {
 
   useEffect(() => {
     setAccordion(true);
-    setAccordionItem("starter");
+    setAccordionItem("Registration and Enrollment");
   }, []);
 
   const [accordion, setAccordion] = React.useState(false);
@@ -136,7 +136,7 @@ const ServiceEnrollmentScope = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           notification_purpose={"default-receiver"}
-          emailSubject={`Learn more - `}
+          emailSubject={`LEARN MORE / School Enrollment System (${accordionItem}) - `}
         />
       )}
     </>

@@ -110,7 +110,7 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           notification_purpose={"default-receiver"}
-          emailSubject={`${webAppOverview[0]?.btnText} - `}
+          emailSubject={`${webAppOverview[0]?.btnText} / Online Donation System - `}
         />
       )}
     </>
