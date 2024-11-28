@@ -35,7 +35,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     // update if first load
     if (count($emailReceiver) == 0) {
-        returnError("Our sending message is unavailable. Please try again later.");
+        returnError("Something went wrong, Please try again later.");
     }
 
     if (count($emailReceiver) > 0) {

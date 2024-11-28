@@ -1,0 +1,44 @@
+Upload JSX
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/careers/create.php
+            -> rest/v1/controllers/developer/careers/update.php
+            -> 
+            -> 
+            -> 
+            -> 
+        
+
+
+        * MODELS
+            -> rest/v1/models/developer/careers/Careers.php
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> viter_fbs_v2.sql
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+
