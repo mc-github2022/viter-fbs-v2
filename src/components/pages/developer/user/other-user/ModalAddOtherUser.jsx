@@ -145,7 +145,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                     <button
                       className="text-sm btn-modal-submit"
                       type="submit"
-                      disabled={mutation.isPending}
+                      disabled={mutation.isPending || !props.dirty}
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
                     </button>

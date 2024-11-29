@@ -138,10 +138,6 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <div className="flex gap-4 justify-between">
-                    <div className="w-[500px]"></div>
-                  </div>
-
                   <div className="input-wrapper" ref={refSearch}>
                     <InputText
                       label="Search Icon"
@@ -232,7 +228,9 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                       className="btn-modal-submit"
                       type="submit"
                       disabled={
-                        (mutation.isPending || !props.dirty) || !selectedIcon === ""
+                        mutation.isPending ||
+                        !props.dirty ||
+                        !selectedIcon === ""
                       }
                     >
                       {mutation.isPending ? (

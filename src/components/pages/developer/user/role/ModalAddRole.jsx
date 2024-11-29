@@ -116,7 +116,7 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
                     <button
                       className="btn-modal-submit"
                       type="submit"
-                      disabled={mutation.isPending}
+                      disabled={mutation.isPending || !props.dirty}
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
                     </button>
