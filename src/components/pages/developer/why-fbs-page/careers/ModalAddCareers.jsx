@@ -345,7 +345,7 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                             disabled={
                               mutation.isPending ||
                               !props.dirty ||
-                              (photoSingle === null && !selectedIcon) ||
+                              (photoSingle === null && !selectedIcon === "") ||
                               (photoSingle === "" && !selectedIcon) ||
                               (initVal.careers_img === photoSingle?.name &&
                                 !selectedIcon)
@@ -360,11 +360,6 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                           >
                             Cancel
                           </button>
-                          {/* {// mutation.isPending || // (!props.dirty && // }
-                          // photoSingle === null && // !selectedIcon) || //
-                          // (photoSingle === "" && !selectedIcon) || //
-                          // (initVal.careers_img === photoSingle?.name && //
-                          // !selectedIcon) */}
                         </div>
                       </div>
                     </div>

@@ -232,7 +232,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                       className="btn-modal-submit"
                       type="submit"
                       disabled={
-                        mutation.isPending || !props.dirty || !selectedIcon
+                        (mutation.isPending || !props.dirty) || !selectedIcon === ""
                       }
                     >
                       {mutation.isPending ? (
