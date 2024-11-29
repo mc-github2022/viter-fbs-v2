@@ -171,7 +171,7 @@ const WebDesignPartnersSay = () => {
                           <div className="hidden lg:block">
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
+                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
                               alt="Client's Image"
                             />
                           </div>
@@ -227,7 +227,7 @@ const WebDesignPartnersSay = () => {
                           <div className="hidden lg:block">
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
+                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
                               alt="Client's Image"
                             />
                           </div>

@@ -75,7 +75,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "Responsive Design",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Responsive Design",
     scopeDesc:
@@ -83,7 +83,7 @@ export const scope = [
     scopeImage: "mobile-compatability.webp",
   },
   {
-    scopeId: "user-friendly",
+    scopeId: "User-Friendly Interface",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "User-Friendly Interface",
     scopeDesc:
@@ -91,7 +91,7 @@ export const scope = [
     scopeImage: "user-friendly-interface.png",
   },
   {
-    scopeId: "optimized",
+    scopeId: "Optimized for Fast Load Times",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Optimized for Fast Load Times",
     scopeDesc:
@@ -99,7 +99,7 @@ export const scope = [
     scopeImage: "page-insights.png",
   },
   {
-    scopeId: "seo-ready",
+    scopeId: "SEO-Ready Design",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "SEO-Ready Design",
     scopeDesc:
@@ -107,7 +107,7 @@ export const scope = [
     scopeImage: "seo.png",
   },
   {
-    scopeId: "custom-design",
+    scopeId: "Custom Design Tailored to Your Brand",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Custom Design Tailored to Your Brand",
     scopeDesc:
@@ -115,7 +115,7 @@ export const scope = [
     scopeImage: "custom-design.webp",
   },
   {
-    scopeId: "high-quality",
+    scopeId: "High-Quality Visuals",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "High-Quality Visuals",
     scopeDesc:

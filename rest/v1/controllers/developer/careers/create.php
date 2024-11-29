@@ -15,6 +15,8 @@ $careers->careers_job_classification = $data["careers_job_classification"];
 $careers->careers_job_mode = $data["careers_job_mode"];
 $careers->careers_job_status = $data["careers_job_status"];
 $careers->careers_job_description = $data["careers_job_description"];
+$careers->careers_img = $data["careers_img"];
+$careers->careers_job_overview = $data["careers_job_overview"];
 $careers->careers_created = date("Y-m-d H:i:s");
 $careers->careers_datetime = date("Y-m-d H:i:s");
 

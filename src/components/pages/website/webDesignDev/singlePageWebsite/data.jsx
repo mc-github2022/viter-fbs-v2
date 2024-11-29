@@ -62,7 +62,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "Quick Deployment",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Quick Deployment",
     scopeDesc:
@@ -70,7 +70,7 @@ export const scope = [
     scopeImage: "quick-deployment.png",
   },
   {
-    scopeId: "page-insights",
+    scopeId: "Optimized Fast Load Time",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Optimized Fast Load Time",
     scopeDesc:
@@ -78,7 +78,7 @@ export const scope = [
     scopeImage: "page-insights.png",
   },
   {
-    scopeId: "seo",
+    scopeId: "Basic SEO",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Basic SEO",
     scopeDesc:
@@ -86,7 +86,7 @@ export const scope = [
     scopeImage: "seo.png",
   },
   {
-    scopeId: "mobile-compatibility",
+    scopeId: "Mobile Compatibility",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Mobile Compatibility",
     scopeDesc:
@@ -94,7 +94,7 @@ export const scope = [
     scopeImage: "mobile-compatability.webp",
   },
   {
-    scopeId: "malware-protection",
+    scopeId: "Malware Protection",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Malware Protection",
     scopeDesc:
@@ -102,7 +102,7 @@ export const scope = [
     scopeImage: "security.png",
   },
   {
-    scopeId: "ssl-certificate",
+    scopeId: "SSL Certificate",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "SSL Certificate",
     scopeDesc:

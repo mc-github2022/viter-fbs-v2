@@ -1,0 +1,48 @@
+Upload JSX
+Upload img
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/careers/create.php
+            -> rest/v1/controllers/developer/careers/update.php
+            -> 
+            -> 
+            -> 
+            -> 
+        
+
+
+        * MODELS
+            -> rest/v1/models/developer/careers/Careers.php
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_careers.sql
+            note: add new column
+             `careers_img` varchar(100) NOT NULL,
+             `careers_job_overview` text NOT NULL,
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+

@@ -65,7 +65,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     client_message: "",
     client_file: "",
     notification_purpose: "apply-now-lcs",
-    email_subject: `Apply no - ${thePageName} Application`,
+    email_subject: `APPLY NOW - ${thePageName} Application`,
   };
 
   const yupSchema = Yup.object({

@@ -57,8 +57,8 @@ const PartnerWithUs = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          notification_purpose={"partner-with-us-default"}
-          emailSubject={"Partner with us - "}
+          notification_purpose={"default-receiver"}
+          emailSubject={"PARTNER WITH US - "}
         />
       )}
     </>

@@ -108,6 +108,8 @@ const VaMarketingPricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          notification_purpose={"default-receiver"}
+          emailSubject={`CHOOSE PLAN / Marketing (${contactSubject}) - `}
         />
       )}
     </>

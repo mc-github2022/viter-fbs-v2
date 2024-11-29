@@ -31,7 +31,8 @@ const VaMarketingServiceList = ({ pageName }) => {
             </p>
             <button
               onClick={handleForm}
-              className="btn bg-primary text-light font-light hover:bg-secondary transition-all">
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
+            >
               GET STARTED
             </button>
           </div>
@@ -100,6 +101,9 @@ const VaMarketingServiceList = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`GET STARTED / Marketing - `}
         />
       )}
     </>

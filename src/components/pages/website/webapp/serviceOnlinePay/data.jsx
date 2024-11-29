@@ -58,7 +58,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "Credit/Debit Card Payment (Visa and Mastercard)",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Credit/Debit Card Payment (Visa and Mastercard)",
     scopeDesc:
@@ -66,7 +66,7 @@ export const scope = [
     scopeImage: "online-payment-cc.png",
   },
   {
-    scopeId: "e-wallet",
+    scopeId: "Gcash Payment",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Gcash Payment",
     scopeDesc:
