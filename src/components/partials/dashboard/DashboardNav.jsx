@@ -4,19 +4,14 @@ import { Link } from "react-router-dom";
 import { apiVersion, devNavUrl } from "../../helpers/functions-general";
 import { StoreContext } from "../../store/StoreContext";
 import ModalLogout from "../modals/ModalLogout";
+import Profile from "./Profile";
 
 const DashboardNav = ({ menu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [id, setIsId] = React.useState("");
-  const [isData, setIsData] = React.useState("");
-  const [isArchiving, setIsArchiving] = React.useState(false);
   const [isLogout, setIsLogout] = React.useState(false);
 
-  const handleLogout = (item) => {
-    setIsLogout(true);
-    setIsData(item.user_other_email);
-    setIsId(item.user_other_aid);
-    setIsArchiving(true);
+  const handleLogout = () => {
+    setIsLogout(!isLogout);
   };
 
   const firstname = store.credentials.data.first_name.substring(0, 1);
@@ -61,7 +56,7 @@ const DashboardNav = ({ menu }) => {
         </div>
       </div>
 
-      {isLogout && (
+      {/* {isLogout && (
         <ModalLogout
           setIsLogout={setIsLogout}
           queryKey={"user-other"}
@@ -69,7 +64,8 @@ const DashboardNav = ({ menu }) => {
           item={isData}
           archive={isArchiving}
         />
-      )}
+      )} */}
+      {isLogout && <Profile />}
     </>
   );
 };

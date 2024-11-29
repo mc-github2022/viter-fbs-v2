@@ -27,7 +27,7 @@ export default defineConfig({
   // base: "", // local
   base: "/newsite", // online
   build: {
-    chunkSizeWarningLimit: 4000,
+    chunkSizeWarningLimit: 10000,
   },
   resolve: {
     alias: {
