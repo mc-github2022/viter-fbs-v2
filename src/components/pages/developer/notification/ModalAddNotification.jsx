@@ -148,6 +148,11 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
                     </optgroup>
                   </InputSelect>
                 </div>
+                {purposeValue()?.map((item, key) => (
+                  <span className="text-xs" key={key}>
+                    {item.name}
+                  </span>
+                ))}
                 <div className="form-action">
                   <div className="form-btn">
                     <button
