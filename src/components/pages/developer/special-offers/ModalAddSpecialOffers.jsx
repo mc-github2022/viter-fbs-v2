@@ -5,7 +5,7 @@ import { queryData } from "../../../helpers/queryData";
 import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
 import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
 import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { InputSelect, InputText } from "../../../helpers/FormInputs";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import * as Yup from "yup";
@@ -141,16 +141,21 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                   <div className="flex gap-4 justify-between">
                     <div className="w-[500px]"></div>
                   </div>
+
                   <div className="input-wrapper" ref={refSearch}>
-                    <label htmlFor="icon-search">Search Icon</label>
-                    <input
-                      id="icon-search"
+                    <InputText
+                      label="Search Icon"
                       type="text"
+                      name="special_offers_icons"
                       placeholder="Type to search icons..."
                       value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="border p-2 w-full"
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        setSearchTerm(value);
+                        props.setFieldValue("special_offers_icons", value);
+                      }}
                       onFocus={() => setOnFocusSearch(true)}
+                      className="border p-2 w-full"
                     />
                     {onFocusSearch && (
                       <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
@@ -160,7 +165,14 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                             <div
                               key={iconKey}
                               className="icon-item cursor-pointer flex items-center gap-2 px-2 py-1 hover:bg-gray-100"
-                              onClick={() => handleIconSelect(iconKey)}
+                              onClick={() => {
+                                handleIconSelect(iconKey);
+                                props.setFieldValue(
+                                  "special_offers_icons",
+                                  iconKey
+                                );
+                                setOnFocusSearch(false);
+                              }}
                             >
                               <IconComponent />
                               <span>{iconKey}</span>
@@ -220,7 +232,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
                       className="btn-modal-submit"
                       type="submit"
                       disabled={
-                        mutation.isPending || !selectedIcon || !props.dirty
+                        mutation.isPending || !props.dirty || !selectedIcon
                       }
                     >
                       {mutation.isPending ? (

@@ -229,15 +229,19 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                       <div className="input-wrapper" ref={refSearch}>
-                        <label htmlFor="icon-search">Search Icon</label>
-                        <input
-                          id="icon-search"
+                        <InputText
+                          label="Search Icon"
                           type="text"
+                          name="careers_icon"
                           placeholder="Type to search icons..."
                           value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                          className="border p-2 w-full"
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            setSearchTerm(value);
+                            props.setFieldValue("careers_icon", value);
+                          }}
                           onFocus={() => setOnFocusSearch(true)}
+                          className="border p-2 w-full"
                         />
                         {onFocusSearch && (
                           <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
@@ -247,7 +251,14 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                                 <div
                                   key={iconKey}
                                   className="icon-item cursor-pointer flex items-center gap-2 px-2 py-1 hover:bg-gray-100"
-                                  onClick={() => handleIconSelect(iconKey)}
+                                  onClick={() => {
+                                    handleIconSelect(iconKey);
+                                    props.setFieldValue(
+                                      "careers_icon",
+                                      iconKey
+                                    );
+                                    setOnFocusSearch(false);
+                                  }}
                                 >
                                   <IconComponent />
                                   <span>{iconKey}</span>
@@ -333,9 +344,8 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                             type="submit"
                             disabled={
                               mutation.isPending ||
-                              (!props.dirty &&
-                                photoSingle === null &&
-                                !selectedIcon) ||
+                              !props.dirty ||
+                              (photoSingle === null && !selectedIcon) ||
                               (photoSingle === "" && !selectedIcon) ||
                               (initVal.careers_img === photoSingle?.name &&
                                 !selectedIcon)
@@ -350,6 +360,11 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                           >
                             Cancel
                           </button>
+                          {/* {// mutation.isPending || // (!props.dirty && // }
+                          // photoSingle === null && // !selectedIcon) || //
+                          // (photoSingle === "" && !selectedIcon) || //
+                          // (initVal.careers_img === photoSingle?.name && //
+                          // !selectedIcon) */}
                         </div>
                       </div>
                     </div>
