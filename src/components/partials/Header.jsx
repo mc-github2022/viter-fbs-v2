@@ -231,7 +231,17 @@ const Header = ({ pageName }) => {
           contactForm={contactForm}
           contactSubject={""}
           notification_purpose={subjectNotif}
-          emailSubject={"GET STARTED - "}
+          emailSubject={`GET STARTED ${
+            pageName === "College OJT"
+              ? "/ College On-The-Job Training"
+              : "" || pageName === "Continuing Study"
+              ? "/ Continuing Studies"
+              : "" || pageName === "Work Immersion"
+              ? "/ High School Work Immersion"
+              : "" || pageName === "career"
+              ? "/ Career"
+              : ""
+          } -  `}
         />
       )}
 
