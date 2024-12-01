@@ -25,7 +25,7 @@ export const InputText = ({
         {...props}
         className={
           meta.touched && meta.error
-            ? `error-show ${className} border border-[red]`
+            ? `error-show ${className} border border-al`
             : className
         }
         onChange={(e) => {
