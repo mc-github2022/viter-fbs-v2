@@ -61,6 +61,9 @@ function SamplePrevArrow(props) {
 
 const EventsAndAct = () => {
   const [pageName, setPageName] = React.useState("events&Activities");
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const {
     isFetching,
