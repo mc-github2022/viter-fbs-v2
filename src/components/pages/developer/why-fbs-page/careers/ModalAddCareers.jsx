@@ -344,8 +344,8 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                             type="submit"
                             disabled={
                               mutation.isPending ||
-                              !props.dirty ||
-                              (photoSingle === null && !selectedIcon === "") ||
+                              (!props.dirty && photoSingle === null) ||
+                              !selectedIcon === "" ||
                               (photoSingle === "" && !selectedIcon) ||
                               (initVal.careers_img === photoSingle?.name &&
                                 !selectedIcon)
