@@ -1,0 +1,43 @@
+Upload JSX
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> 
+            -> 
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * MODELS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            -> rest/v1/notification/template/reset-password.php
+            -> rest/v1/notification/template/verify-account.php
+            -> rest/v1/notification/template/verify-email.php
+            -> rest/v1/notification/mail-config.php
+
+        * DB BACKUP
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+

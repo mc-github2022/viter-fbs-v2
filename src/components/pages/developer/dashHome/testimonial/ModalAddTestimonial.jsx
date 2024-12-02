@@ -96,7 +96,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[650px] max-w-[1000px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -129,11 +129,10 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
+                  <div className="flex gap-4 justify-between h-[480px]">
+                    <div className="w-[50%] relative">
                       <div className="relative w-fit m-auto group">
                         <div className="flex flex-row justify-between items-center">
-                          {/* Display Client Image */}
                           {clientImage ? (
                             <img
                               src={URL.createObjectURL(clientImage)}
@@ -168,7 +167,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                           )}
                         </div>
 
-                        {/* Input fields for client and logo images */}
                         <div className="flex items-center gap-4 mt-4">
                           <div className="relative">
                             <input
@@ -211,43 +209,44 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                             disabled={mutation.isPending}
                           />
                         </div>
+                        <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
+                          <div className="form-btn">
+                            <button
+                              className="btn-modal-submit"
+                              type="submit"
+                              disabled={
+                                mutation.isPending ||
+                                (!props.dirty && !clientImage && !logoImage) || // Check if no new image is selected
+                                (clientImage &&
+                                  initVal.home_testimonial_client_img ===
+                                    clientImage.name) ||
+                                (logoImage &&
+                                  initVal.home_testimonial_logo_img ===
+                                    logoImage.name)
+                              }
+                            >
+                              {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                            </button>
+                            <button
+                              className="btn-modal-cancel"
+                              type="button"
+                              onClick={handleClose}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div className="input-wrapper">
+                    <div className="input-wrapper textAreaWrapper">
                       <InputTextArea
                         label="Message"
                         type="text"
                         name="home_testimonial_message"
-                        className="h-[500px] w-[478px]"
+                        className="h-[457px] w-[478px] "
                         disabled={mutation.isPending}
                       />
                     </div>
-                  </div>
-                </div>
-                <div className="form-action">
-                  <div className="form-btn">
-                    <button
-                      className="btn-modal-submit"
-                      type="submit"
-                      disabled={
-                        mutation.isPending ||
-                        (!props.dirty && !clientImage && !logoImage) || // Check if no new image is selected
-                        (clientImage &&
-                          initVal.home_testimonial_client_img ===
-                            clientImage.name) ||
-                        (logoImage &&
-                          initVal.home_testimonial_logo_img === logoImage.name)
-                      }
-                    >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                    </button>
-                    <button
-                      className="btn-modal-cancel"
-                      type="button"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </button>
                   </div>
                 </div>
               </Form>

@@ -61,7 +61,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "Asset Management",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Asset Management",
     scopeDesc:
@@ -69,7 +69,7 @@ export const scope = [
     scopeImage: "asset-inventory.png",
   },
   {
-    scopeId: "assignment-asset",
+    scopeId: "Asset Assignment",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Asset Assignment",
     scopeDesc:
@@ -85,7 +85,7 @@ export const scope = [
   //   scopeImage: "hrScopdeSS_overview.jpg",
   // },
   {
-    scopeId: "settings",
+    scopeId: "Settings",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Settings",
     scopeDesc:

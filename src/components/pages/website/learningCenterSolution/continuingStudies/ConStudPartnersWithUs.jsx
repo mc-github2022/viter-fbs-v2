@@ -5,7 +5,6 @@ import { devBaseImgUrl } from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
 
 const ConStudPartnersWithUs = ({ pageName }) => {
-  const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
   const handleForm = () => {
     setContactForm(!contactForm);
@@ -36,14 +35,6 @@ const ConStudPartnersWithUs = ({ pageName }) => {
                   >
                     PARTNER WITH US
                   </button>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 font-bold text-primary"
-                  >
-                    Download Proposal <FaFileDownload />
-                  </a>
                 </li>
               </ul>
             </div>
@@ -109,14 +100,14 @@ const ConStudPartnersWithUs = ({ pageName }) => {
       </section>
       {contactForm && (
         <ModalContact
-          setModalContact={setModalContact}
+          setModalContact={setContactForm}
           thePageName={pageName}
           contactForm={contactForm}
           setContactForm={setContactForm}
-          modalContact={modalContact}
+          modalContact={contactForm}
           contactSubject={""}
           notification_purpose={"partner-with-us-lcs"}
-          emailSubject={"Parner with us - "}
+          emailSubject={"PARTNER WITH US / Continuing Studies - "}
         />
       )}
     </>

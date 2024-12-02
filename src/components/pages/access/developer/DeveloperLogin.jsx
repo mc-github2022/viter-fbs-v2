@@ -94,7 +94,9 @@ const DeveloperLogin = () => {
               <p className="mb-0 mt-2 font-bold text-center text-lg">
                 FBS WEBSITE
               </p>
-              <h2 className="mb-0 mt-10 text-lg">DEVELOPER LOGIN</h2>
+              <h2 className="mb-0 mt-10 text-[16px] font-semibold">
+                DEVELOPER LOGIN
+              </h2>
             </div>
             <Formik
               initialValues={initVal}
@@ -122,7 +124,8 @@ const DeveloperLogin = () => {
                         name="password"
                         disabled={
                           mutation.isPending ||
-                          props.values.user_developer_email === ""
+                          (props.values.user_developer_email === "" &&
+                            props.values.password === "")
                         }
                       />
                       {props.values.password && (

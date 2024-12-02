@@ -19,7 +19,7 @@ const ServiceOnlineDonationBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Streamline Donations Securely With Our Online Donation System"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">
@@ -51,6 +51,9 @@ const ServiceOnlineDonationBanner = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${banner[0]?.bannerBtnText} / Online Donation System - `}
         />
       )}
     </>

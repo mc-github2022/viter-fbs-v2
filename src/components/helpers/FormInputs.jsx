@@ -24,7 +24,9 @@ export const InputText = ({
         {...field}
         {...props}
         className={
-          meta.touched && meta.error ? `error-show ${className}` : className
+          meta.touched && meta.error
+            ? `error-show ${className} border border-[red]`
+            : className
         }
         onChange={(e) => {
           onChange !== null && onChange(e);

@@ -17,12 +17,20 @@ import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
 import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
 import {
+  InputPhotoUpload,
   InputSelect,
   InputText,
   InputTextArea,
 } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
+import {
+  apiVersion,
+  devBaseImgUrl,
+} from "../../../../helpers/functions-general";
+import { MdOutlineFileUpload } from "react-icons/md";
+import { IoImageOutline } from "react-icons/io5";
 
 const icons = {
   ...FaIcons,
@@ -35,22 +43,50 @@ const icons = {
 
 const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const [icon, setIcon] = React.useState(
-    itemEdit ? itemEdit.special_offers_icons : ""
+  const [searchTerm, setSearchTerm] = React.useState(
+    itemEdit ? itemEdit.careers_icon : ""
   );
+  const [onFocusSearch, setOnFocusSearch] = React.useState(false);
+  const [selectedIcon, setSelectedIcon] = React.useState(
+    itemEdit ? itemEdit.careers_icon : ""
+  );
+  const [itemsLimit, setItemsLimit] = React.useState(20);
 
-  const Icon = icon ? icons[icon] : null;
+  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
+    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
+
+  const SelectedIcon = selectedIcon ? icons[selectedIcon] : null;
 
   const filteredIcons = Object.keys(icons).filter((iconKey) =>
     iconKey.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  React.useEffect(() => {
-    if (itemEdit) {
-      setIcon(itemEdit.careers_icon);
+  // Limit the number of icons displayed
+  const limitedIcons = filteredIcons.slice(0, itemsLimit);
+
+  // sets the limit of icons being show
+  const handleShowMore = () => {
+    setItemsLimit(itemsLimit + 20);
+  };
+
+  const refSearch = React.useRef();
+
+  const clickOutsideRefSearch = (e) => {
+    if (refSearch.current && !refSearch.current.contains(e.target)) {
+      setOnFocusSearch(false);
     }
-  }, [itemEdit]);
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefSearch);
+    return () => document.removeEventListener("click", clickOutsideRefSearch);
+  }, []);
+
+  const handleIconSelect = (iconKey) => {
+    setSelectedIcon(iconKey);
+    setSearchTerm(iconKey);
+    setOnFocusSearch(false);
+  };
 
   const handleClose = () => {
     setTimeout(() => {
@@ -94,13 +130,15 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
     careers_job_status: itemEdit ? itemEdit.careers_job_status : "",
     careers_job_description: itemEdit ? itemEdit.careers_job_description : "",
     careers_icon: itemEdit ? itemEdit.careers_icon : "",
+    careers_img: itemEdit ? itemEdit.careers_img : "",
+    careers_job_overview: itemEdit ? itemEdit.careers_job_overview : "",
   };
 
   const yupSchema = Yup.object({});
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[650px] max-w-[1000px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[635px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -116,8 +154,14 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              careers_icon: icon,
+              careers_icon: selectedIcon,
+              careers_img: photoSingle
+                ? photoSingle.name
+                : itemEdit.careers_img,
             };
+            if (photoSingle) {
+              await singleUploadPhoto(); // to save the photo when submit
+            }
             mutation.mutate(data);
           }}
         >
@@ -126,46 +170,120 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[50%]">
-                      <div className="input-wrapper">
-                        <label htmlFor="icon-search">Search Icon</label>
-                        <input
-                          id="icon-search"
+                    <div className="w-[50%] relative">
+                      <div className="mt-5">
+                        <span className="top-20 px-2 text-dark text-xs">
+                          Image
+                        </span>
+                        <div className="relative w-fit group">
+                          {(itemEdit === null && photoSingle === null) ||
+                          (photoSingle === "" && itemEdit === null) ? (
+                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
+                              <div className="">
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight text-[gray] text-sm text-center">
+                                  Upload Image
+                                </h1>
+                              </div>
+                            </div>
+                          ) : (itemEdit &&
+                              !itemEdit.careers_img &&
+                              !photoSingle) ||
+                            (!itemEdit && !photoSingle) ? (
+                            <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
+                              <div>
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
+                                  Upload Image
+                                </h1>
+                              </div>
+                            </div>
+                          ) : (
+                            <img
+                              src={
+                                photoSingle
+                                  ? URL.createObjectURL(photoSingle) // preview
+                                  : devBaseImgUrl + "/" + itemEdit.careers_img // check db
+                              }
+                              alt="Logo"
+                              className="group-hover:opacity-20 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
+                            />
+                          )}
+
+                          <div className="btnImgUpload">
+                            <button>
+                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
+                              <InputPhotoUpload
+                                name="photo"
+                                type="file"
+                                id="myFile"
+                                accept="image/*"
+                                title="Upload Image"
+                                onChange={(e) =>
+                                  handleChangePhoto(e, initVal.careers_img)
+                                }
+                                className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="input-wrapper" ref={refSearch}>
+                        <InputText
+                          label="Search Icon"
                           type="text"
+                          name="careers_icon"
                           placeholder="Type to search icons..."
                           value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
+                          onChange={(e) => {
+                            const value = e.target.value;
+                            setSearchTerm(value);
+                            props.setFieldValue("careers_icon", value);
+                          }}
+                          onFocus={() => setOnFocusSearch(true)}
                           className="border p-2 w-full"
-                          disabled={mutation.isPending}
                         />
-
-                        <select
-                          name="home_insights_category"
-                          value={icon}
-                          onChange={(e) => setIcon(e.target.value)}
-                          className="border p-2 w-full mt-2"
-                          disabled={mutation.isPending}
-                        >
-                          <option value="" disabled>
-                            Select an icon
-                          </option>
-                          {filteredIcons.map((iconKey) => (
-                            <option
-                              key={iconKey}
-                              value={iconKey}
-                              className="text-sm"
-                            >
-                              {iconKey}
-                            </option>
-                          ))}
-                        </select>
-
-                        {icon ? (
-                          <div className="flex items-center gap-4 mt-2">
-                            Selected icon: <Icon />
+                        {onFocusSearch && (
+                          <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                            {limitedIcons.map((iconKey) => {
+                              const IconComponent = icons[iconKey];
+                              return (
+                                <div
+                                  key={iconKey}
+                                  className="icon-item cursor-pointer flex items-center gap-2 px-2 py-1 hover:bg-gray-100"
+                                  onClick={() => {
+                                    handleIconSelect(iconKey);
+                                    props.setFieldValue(
+                                      "careers_icon",
+                                      iconKey
+                                    );
+                                    setOnFocusSearch(false);
+                                  }}
+                                >
+                                  <IconComponent />
+                                  <span>{iconKey}</span>
+                                </div>
+                              );
+                            })}
+                            {filteredIcons.length > itemsLimit && (
+                              <div className="load-more">
+                                <button
+                                  type="button"
+                                  onClick={handleShowMore}
+                                  className="text-primary p-1 ml-1.5 rounded"
+                                >
+                                  Show More Icons ...
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        {selectedIcon ? (
+                          <div className="flex items-center gap-4 ml-3 text-xs">
+                            Selected icon: <SelectedIcon />
                           </div>
                         ) : (
-                          "No icon selected"
+                          <div className="text-xs ml-3">No icon selected</div>
                         )}
                       </div>
                       <div className="input-wrapper">
@@ -219,34 +337,52 @@ const ModalAddCareers = ({ setIsAdd, itemEdit }) => {
                           <option value="Closed">Closed</option>
                         </InputSelect>
                       </div>
+                      <div className="form-action absolute bottom-0 w-full mb-2">
+                        <div className="form-btn">
+                          <button
+                            className="btn-modal-submit"
+                            type="submit"
+                            disabled={
+                              mutation.isPending ||
+                              (!props.dirty && photoSingle === null) ||
+                              !selectedIcon === "" ||
+                              (photoSingle === "" && !selectedIcon) ||
+                              (initVal.careers_img === photoSingle?.name &&
+                                !selectedIcon)
+                            }
+                          >
+                            {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                          </button>
+                          <button
+                            className="btn-modal-cancel"
+                            type="button"
+                            onClick={handleClose}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className="input-wrapper">
-                      <InputTextArea
-                        label="Job Description"
-                        type="text"
-                        name="careers_job_description"
-                        className="h-[500px] w-[478px]"
-                        disabled={mutation.isPending}
-                      />
+                    <div>
+                      <div className="input-wrapper textAreaWrapper">
+                        <InputTextArea
+                          label="Job Overview"
+                          type="text"
+                          name="careers_job_overview"
+                          className="h-[260px] w-[478px]"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper textAreaWrapper">
+                        <InputTextArea
+                          label="Job Description"
+                          type="text"
+                          name="careers_job_description"
+                          className="h-[260px] w-[478px]"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="form-action">
-                  <div className="form-btn">
-                    <button
-                      className="btn-modal-submit"
-                      type="submit"
-                      disabled={mutation.isPending || !icon}
-                    >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                    </button>
-                    <button
-                      className="btn-modal-cancel"
-                      type="button"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </button>
                   </div>
                 </div>
               </Form>

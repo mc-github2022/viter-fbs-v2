@@ -111,6 +111,8 @@ const VaResearchPricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          notification_purpose={"default-receiver"}
+          emailSubject={`CHOOSE PLAN / Business Support (${contactSubject}) - `}
         />
       )}
     </>

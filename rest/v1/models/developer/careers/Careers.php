@@ -9,6 +9,8 @@ class Careers
     public $careers_job_mode;
     public $careers_job_status;
     public $careers_job_description;
+    public $careers_img;
+    public $careers_job_overview;
     public $careers_created;
     public $careers_datetime;
 
@@ -29,7 +31,7 @@ class Careers
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblCareers} ";
-            $sql .= "order by careers_aid asc ";
+            $sql .= "order by careers_job_status desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -47,6 +49,8 @@ class Careers
             $sql .= "careers_job_mode, ";
             $sql .= "careers_job_status, ";
             $sql .= "careers_job_description, ";
+            $sql .= "careers_img, ";
+            $sql .= "careers_job_overview, ";
             $sql .= "careers_created, ";
             $sql .= "careers_datetime ) values ( ";
             $sql .= ":careers_icon, ";
@@ -55,6 +59,8 @@ class Careers
             $sql .= ":careers_job_mode, ";
             $sql .= ":careers_job_status, ";
             $sql .= ":careers_job_description, ";
+            $sql .= ":careers_img, ";
+            $sql .= ":careers_job_overview, ";
             $sql .= ":careers_created, ";
             $sql .= ":careers_datetime )";
             $query = $this->connection->prepare($sql);
@@ -65,6 +71,8 @@ class Careers
                 "careers_job_mode" => $this->careers_job_mode,
                 "careers_job_status" => $this->careers_job_status,
                 "careers_job_description" => $this->careers_job_description,
+                "careers_img" => $this->careers_img,
+                "careers_job_overview" => $this->careers_job_overview,
                 "careers_created" => $this->careers_created,
                 "careers_datetime" => $this->careers_datetime,
             ]);
@@ -85,6 +93,8 @@ class Careers
             $sql .= "careers_job_mode = :careers_job_mode, ";
             $sql .= "careers_job_status = :careers_job_status, ";
             $sql .= "careers_job_description = :careers_job_description, ";
+            $sql .= "careers_img = :careers_img, ";
+            $sql .= "careers_job_overview = :careers_job_overview, ";
             $sql .= "careers_datetime = :careers_datetime ";
             $sql .= "where careers_aid = :careers_aid ";
             $query = $this->connection->prepare($sql);
@@ -95,6 +105,8 @@ class Careers
                 "careers_job_mode" => $this->careers_job_mode,
                 "careers_job_status" => $this->careers_job_status,
                 "careers_job_description" => $this->careers_job_description,
+                "careers_img" => $this->careers_img,
+                "careers_job_overview" => $this->careers_job_overview,
                 "careers_datetime" => $this->careers_datetime,
                 "careers_aid" => $this->careers_aid,
             ]);

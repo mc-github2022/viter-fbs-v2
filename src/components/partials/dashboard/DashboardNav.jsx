@@ -1,5 +1,8 @@
 import React from "react";
 import { BsBoxArrowUpRight } from "react-icons/bs";
+import { IoLogOutOutline } from "react-icons/io5";
+import { LuUser2 } from "react-icons/lu";
+import { MdOutlineMailOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { apiVersion, devNavUrl } from "../../helpers/functions-general";
 import { StoreContext } from "../../store/StoreContext";
@@ -7,21 +10,46 @@ import ModalLogout from "../modals/ModalLogout";
 
 const DashboardNav = ({ menu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [isLogout, setIsLogout] = React.useState(false);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
-  const [isLogout, setIsLogout] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
-  const handleLogout = (item) => {
-    setIsLogout(true);
+  const handleLogout = () => {
+    setIsLogout(!isLogout);
     setIsData(item.user_other_email);
     setIsId(item.user_other_aid);
     setIsArchiving(true);
   };
 
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   const firstname = store.credentials.data.first_name.substring(0, 1);
 
   const lastname = store.credentials.data.last_name.substring(0, 1);
+
+  const email = store.credentials.data.user_developer_email
+    ? store.credentials.data.user_developer_email
+    : store.credentials.data.user_other_email;
+  const firstnameProfile = store.credentials.data.first_name;
+  const lastnameProfile = store.credentials.data.last_name;
+  const role = store.credentials.data.role_name;
+  console.log(store.credentials.data);
+  // to close the modal when clicking outside
+  const ref = React.useRef();
+
+  const clickOutsideRef = (e) => {
+    if (!ref.current?.contains(e.target)) {
+      setOpen(false);
+    }
+  };
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRef);
+    return () => document.addEventListener("click", clickOutsideRef);
+  }, []);
 
   return (
     <>
@@ -47,10 +75,11 @@ const DashboardNav = ({ menu }) => {
             <div>
               <div
                 className={`p-px rounded-full border-2 hover:border-primary/50 border-transparent cursor-pointer relative w-10 `}
-                onClick={handleLogout}
+                onClick={handleOpen}
+                ref={ref}
               >
-                <div className="bg-[white] p-1.5 rounded-full ">
-                  <span className="pl-[1px] p-1 rounded-full ">
+                <div className="bg-[gray] p-[5px] rounded-full ">
+                  <span className=" rounded-full text-white flex justify-center">
                     {firstname}
                     {lastname}
                   </span>
@@ -60,6 +89,33 @@ const DashboardNav = ({ menu }) => {
           </div>
         </div>
       </div>
+
+      {open && (
+        <div className="absolute top-[70px] right-[40px] z-[10] bg-white p-4 rounded-lg shadow-lg">
+          <ul className="text-xs [&>li]:mb-2 [&>li]:flex [&>li]:items-center [&>li]:gap-1">
+            <li className="text-sm font-semibold">
+              {`${firstnameProfile} ${lastnameProfile}`}
+            </li>
+            <li>
+              <MdOutlineMailOutline />
+              {email}
+            </li>
+            <li className="uppercase">
+              <LuUser2 />
+              {role}
+            </li>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-1 hover:text-primary uppercase"
+              >
+                <IoLogOutOutline />
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      )}
 
       {isLogout && (
         <ModalLogout

@@ -85,7 +85,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[450px] max-w-[900px]`}
+      className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -115,7 +115,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
               <Form className="modal-form">
                 <div className="form-input">
                   <div className="flex gap-4 justify-between">
-                    <div className="w-[50%] overflow-auto">
+                    <div className="w-[50%] relative">
                       <div className="input-wrapper">
                         <InputText
                           label="Batch"
@@ -162,15 +162,38 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                           disabled={mutation.isPending}
                         />
                       </div>
+                      <div className="form-action absolute bottom-0 w-full">
+                        <div className="form-btn">
+                          <button
+                            className="btn-modal-submit"
+                            type="submit"
+                            disabled={
+                              mutation.isPending ||
+                              !props.dirty ||
+                              photoArrayList === null ||
+                              photoArrayList === "" ||
+                              initVal.lcss_batch_img === photoArrayList?.name
+                            }
+                          >
+                            {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                          </button>
+                          <button
+                            className="btn-modal-cancel"
+                            type="button"
+                            onClick={handleClose}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
                     </div>
-                    <div className=" w-[50%]">
+                    <div className="w-[50%] h-[475px] overflow-auto">
                       <span className="top-20 px-2 text-dark text-[12px]">
                         Upload Images
                       </span>
                       <div className="relative w-fit m-auto group mt-3">
-                        {/* Conditional Rendering Based on Image Availability */}
                         {!itemEdit && !photoArrayList.length ? (
-                          <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[350px] h-[180px] border rounded-md p-2 place-content-center">
+                          <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[350px] h-[180px] p-2 place-content-center">
                             <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                             <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
                               Upload Image
@@ -192,14 +215,14 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                             {imageList.map((img, index) => (
                               <img
                                 key={index}
-                                src={`${devBaseImgUrl}/${img.trim()}`} // Use trim to remove any accidental whitespace
+                                src={`${devBaseImgUrl}/${img.trim()}`}
                                 alt={`Existing Batch Image ${index + 1}`}
                                 className="w-[350px] h-[180px] object-cover"
                               />
                             ))}
                           </div>
                         ) : (
-                          <div className="group-hover:opacity-20 bg-dashAccent mb-4 items-center gap-2 w-[115px] h-[37px] border rounded-md p-2 grid place-items-center">
+                          <div className="group-hover:opacity-20  mb-4 items-center gap-2 w-[115px] h-[37px] p-2 grid place-items-center">
                             <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
                             <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
                               No Images Available
@@ -207,16 +230,15 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                           </div>
                         )}
 
-                        {/* Upload Button */}
                         <div className="btnImgUpload">
                           <button>
-                            <MdOutlineFileUpload />
+                            <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
                             <InputPhotoUpload
                               name="photo"
                               type="file"
                               id="myFile"
                               accept="image/*"
-                              title="Upload Logo"
+                              title="Upload Images"
                               multiple
                               onChange={(e) =>
                                 handleChangeMultiplePhoto(e, 50, true)
@@ -227,30 +249,6 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-
-                <div className="form-action">
-                  <div className="form-btn mb-1">
-                    <button
-                      className="btn-modal-submit"
-                      type="submit"
-                      disabled={
-                        ((mutation.isPending || !props.dirty) &&
-                          photoArrayList === null) ||
-                        photoArrayList === "" ||
-                        initVal.lcss_batch_img === photoArrayList?.name
-                      }
-                    >
-                      {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                    </button>
-                    <button
-                      className="btn-modal-cancel"
-                      type="button"
-                      onClick={handleClose}
-                    >
-                      Cancel
-                    </button>
                   </div>
                 </div>
               </Form>

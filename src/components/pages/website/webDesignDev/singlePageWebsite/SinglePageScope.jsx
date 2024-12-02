@@ -20,7 +20,7 @@ const SinglePageScope = ({ pageName }) => {
 
   useEffect(() => {
     setAccordion(true);
-    setAccordionItem("starter");
+    setAccordionItem("Quick Deployment");
   }, []);
 
   const [accordion, setAccordion] = React.useState(false);
@@ -135,6 +135,9 @@ const SinglePageScope = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`CONTACT US / Single Page Website (${accordionItem}) - `}
         />
       )}
     </>

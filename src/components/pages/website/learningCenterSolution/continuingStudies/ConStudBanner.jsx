@@ -10,7 +10,7 @@ const ConStudBanner = () => {
       >
         <img
           src={`${devBaseImgUrl}/continuing-studies-bg.webp`}
-          alt=""
+          alt="Unlock Your Potential with our Continuing Study Program"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">

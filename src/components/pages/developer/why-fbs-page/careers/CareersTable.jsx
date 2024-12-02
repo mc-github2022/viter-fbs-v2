@@ -41,7 +41,7 @@ const CareersTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
+      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isLoading && <FetchingSpinner />}
         <table>
           <thead>
@@ -52,7 +52,9 @@ const CareersTable = ({ setItemEdit }) => {
               <th>employee classification</th>
               <th>Mode of Work</th>
               <th>Job Status</th>
-              <th className="w-[15rem]">Job Description</th>
+              <th className="">Job Overview</th>
+              <th className="w-[18rem]">Job Description</th>
+              <th>Image</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -88,8 +90,12 @@ const CareersTable = ({ setItemEdit }) => {
                   {item.careers_job_status}
                 </td>
                 <td>
+                  <p className="line-clamp-5">{item.careers_job_overview}</p>
+                </td>
+                <td>
                   <p className="line-clamp-5">{item.careers_job_description}</p>
                 </td>
+                <td className="place-content-start">{item.careers_img}</td>
 
                 <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                   <button

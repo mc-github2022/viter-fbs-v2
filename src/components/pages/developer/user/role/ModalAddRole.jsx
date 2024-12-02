@@ -65,7 +65,7 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[20rem]`}
+      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[19.5rem]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -116,7 +116,7 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
                     <button
                       className="btn-modal-submit"
                       type="submit"
-                      disabled={mutation.isPending}
+                      disabled={mutation.isPending || !props.dirty}
                     >
                       {mutation.isPending ? <ButtonSpinner /> : "Save"}
                     </button>

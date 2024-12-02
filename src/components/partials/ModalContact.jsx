@@ -28,7 +28,7 @@ const ModalContact = ({
   setContactForm = null,
   contactForm = null,
   contactSubject = "",
-  notification_purpose = "",
+  notification_purpose = "default-receiver",
   emailSubject = "",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -371,7 +371,7 @@ const ModalContact = ({
                           disabled={mutation.isPending}
                         />
                       </div>
-                      <div className="input-wrapper">
+                      <div className="input-wrapper textAreaWrapper">
                         <InputTextArea
                           label="Message"
                           type="text"

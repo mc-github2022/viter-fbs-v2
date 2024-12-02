@@ -56,7 +56,7 @@ export const webAppOverview = [
 
 export const scope = [
   {
-    scopeId: "starter",
+    scopeId: "Registration and Enrollment",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Registration and Enrollment",
     scopeDesc:
@@ -64,7 +64,7 @@ export const scope = [
     scopeImage: "school-registration.png",
   },
   {
-    scopeId: "student-record",
+    scopeId: "Students Record Management",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Students Record Management",
     scopeDesc:
@@ -72,7 +72,7 @@ export const scope = [
     scopeImage: "school-student.png",
   },
   {
-    scopeId: "parent-record",
+    scopeId: "Parents Record Management",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Parents Record Management",
     scopeDesc:
@@ -80,7 +80,7 @@ export const scope = [
     scopeImage: "school-parent.png",
   },
   {
-    scopeId: "notification",
+    scopeId: "Notification of Enrollment Process",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Notification of Enrollment Process",
     scopeDesc:
@@ -88,7 +88,7 @@ export const scope = [
     scopeImage: "school-notification.png",
   },
   {
-    scopeId: "tuition",
+    scopeId: "Tuition Fee Schedule",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Tuition Fee Schedule",
     scopeDesc:
@@ -96,7 +96,7 @@ export const scope = [
     scopeImage: "school-tuition.png",
   },
   {
-    scopeId: "user-management",
+    scopeId: "User Management",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "User Management",
     scopeDesc:
@@ -104,7 +104,7 @@ export const scope = [
     scopeImage: "school-user.png",
   },
   {
-    scopeId: "settings",
+    scopeId: "Customizable Settings",
     scopeIcon: <MdOutlineDashboard className="text-3xl text-primary" />,
     scopeTitle: "Customizable Settings",
     scopeDesc:

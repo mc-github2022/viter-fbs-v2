@@ -7,28 +7,38 @@ import {
 } from "../../helpers/functions-general";
 import { StoreContext } from "../../store/StoreContext";
 import { IoChevronDownSharp } from "react-icons/io5";
+import {
+  setIsNavOpen,
+  setIsUserOpen,
+  setIswhyUsOpen,
+} from "../../store/StoreAction";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const link = getUserType();
 
   const [navName, setNavName] = React.useState("");
-  const [navHomeOpen, setNavOpen] = React.useState(false);
-  const [whyUsOpen, setwhyUsOpen] = React.useState(false);
+  // const [navHomeOpen, setNavOpen] = React.useState(false);
+  // const [whyUsOpen, setwhyUsOpen] = React.useState(false);
+  // const [userOpen, setUserOpen] = React.useState(false);
 
   const handleNavOpen = () => {
-    setNavOpen(!navHomeOpen);
+    dispatch(setIsNavOpen(!store.isNavOpen));
   };
 
   const handleWhyUsOpen = () => {
-    setwhyUsOpen(!whyUsOpen);
+    dispatch(setIswhyUsOpen(!store.isWhyUsOpen));
+  };
+
+  const handleUserOpen = () => {
+    dispatch(setIsUserOpen(!store.isUserOpen));
   };
 
   return (
     <>
       <div className="thedashnav bg-[#f5f5f3] w-[211px] h-screen fixed top-0 p-4 z-50  border-customGray flex flex-col ">
         <div className="theLogo ">
-          <div className="w-[130px] h-[44px] my-5">
+          <div className="w-[130px] h-[44px] my-5 ml-1">
             <img
               src={`${devBaseImgUrl}/logo.png`}
               alt="Frontline Business Solutions"
@@ -38,22 +48,22 @@ const Navigation = ({ menu, submenu }) => {
         </div>
         <div>
           <nav>
-            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold  text-[14px]">
+            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold text-[14px]">
               <li
                 className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "home"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
                 onClick={() => handleNavOpen()}
               >
                 <div className="nav flex items-center justify-between w-full">
-                  <span className="ml-2.5 text-[14px]">Home</span>
+                  <span className=" text-[14px] uppercase">Home</span>
                   <IoChevronDownSharp
                     className={`${
-                      navHomeOpen ? "" : "rotate-180"
+                      store.isNavOpen ? "" : "rotate-180"
                     } transition-all`}
                   />
                 </div>
@@ -61,15 +71,15 @@ const Navigation = ({ menu, submenu }) => {
 
               <ul
                 className={`${
-                  navHomeOpen ? "h-0 overflow-hidden" : "my-2"
+                  store.isNavOpen ? "h-0 overflow-hidden bg-[red]" : "my-2"
                 } submenu ml-5  text-[14px]`}
               >
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-xs border-transparent ${
                       submenu === "home-banner"
-                        ? "text-[black] font-bold"
-                        : "border-none text-[#9ca3af]"
+                        ? "text-primary font-bold"
+                        : "border-none text-dark"
                     }`}
                   >
                     Banner
@@ -77,10 +87,10 @@ const Navigation = ({ menu, submenu }) => {
                 </Link>
                 {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-process`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-process"
-                          ? "text-[black] font-bold"
-                          : "border-none text-[#9ca3af]"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
                       }`}
                     >
                       Process
@@ -88,10 +98,10 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}${link}/home-services`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-services"
-                          ? "text-[black] font-bold"
-                          : "border-none text-[#9ca3af]"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
                       }`}
                     >
                       Services
@@ -99,10 +109,10 @@ const Navigation = ({ menu, submenu }) => {
                   </Link>
                   <Link className="!p-0" to={`${devNavUrl}${link}/home-partnerWithUs`}>
                     <li
-                      className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-partnerWithUs"
-                          ? "text-[black] font-bold"
-                          : "border-none text-[#9ca3af]"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
                       }`}
                     >
                       Partner With Us
@@ -113,10 +123,10 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/home-testimonial`}
                 >
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-xs my-2 border-transparent ${
                       submenu === "home-testimonial"
-                        ? "text-[black] font-bold"
-                        : "border-none text-[#9ca3af]"
+                        ? "text-primary font-bold"
+                        : "border-none text-dark"
                     }`}
                   >
                     Testimonials
@@ -124,10 +134,10 @@ const Navigation = ({ menu, submenu }) => {
                 </Link>
                 {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-partners`}>
                     <li
-                      className={` text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                      className={` text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-partners"
-                          ? "text-[black] font-bold"
-                          : "border-none text-[#9ca3af]"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
                       }`}
                     >
                       Partners
@@ -135,10 +145,10 @@ const Navigation = ({ menu, submenu }) => {
                   </Link> */}
                 <Link className="!p-0" to={`${devNavUrl}${link}/home-insights`}>
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-xs  border-transparent ${
                       submenu === "home-insights"
-                        ? "text-[black] font-bold"
-                        : "border-none text-[#9ca3af]"
+                        ? "text-primary font-bold"
+                        : "border-none text-dark"
                     }`}
                   >
                     Insights
@@ -147,17 +157,19 @@ const Navigation = ({ menu, submenu }) => {
               </ul>
 
               <li
-                className={` flex justify-between items-center p-1 pt-3
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "special-offers"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/special-offers`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">Special Offers</span>
+                    <span className=" text-[14px] uppercase">
+                      Special Offers
+                    </span>
                   </div>
                 </Link>
               </li>
@@ -166,17 +178,17 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "whyFBS"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
                 onClick={() => handleWhyUsOpen()}
               >
                 <div className="nav flex items-center justify-between w-full">
-                  <span className="ml-2.5 text-[14px]">Why FBS?</span>
+                  <span className=" text-[14px] uppercase">Why FBS?</span>
                   <IoChevronDownSharp
                     className={`${
-                      whyUsOpen ? "" : "rotate-180"
+                      store.isWhyUsOpen ? "" : "rotate-180"
                     } transition-all`}
                   />
                 </div>
@@ -184,18 +196,18 @@ const Navigation = ({ menu, submenu }) => {
 
               <ul
                 className={`${
-                  whyUsOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5  text-[12px]`}
+                  store.isWhyUsOpen ? "h-0 overflow-hidden" : "my-2"
+                } submenu ml-5`}
               >
                 <Link
                   className="!p-0"
                   to={`${devNavUrl}${link}/events-activities`}
                 >
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-xs  border-transparent ${
                       submenu === "events-activities"
-                        ? "text-[black] font-bold"
-                        : "border-none text-[#9ca3af]"
+                        ? "text-primary font-bold"
+                        : "border-none text-dark"
                     }`}
                   >
                     Events & Activities
@@ -206,10 +218,10 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/whyFBS-careers`}
                 >
                   <li
-                    className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                    className={`text-xs my-2 border-transparent ${
                       submenu === "whyFBS-careers"
-                        ? "text-[black] font-bold"
-                        : "border-none text-[#9ca3af]"
+                        ? "text-primary font-bold"
+                        : "border-none text-dark"
                     }`}
                   >
                     Careers
@@ -218,17 +230,17 @@ const Navigation = ({ menu, submenu }) => {
               </ul>
 
               <li
-                className={` flex justify-between items-center p-1 pt-3
+                className={` flex justify-between items-center p-1
                   ${
                     menu === "lcss-batches"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/lcss-batches`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">LCSS Batches</span>
+                    <span className=" text-[14px] uppercase">LCSS Batches</span>
                   </div>
                 </Link>
               </li>
@@ -237,15 +249,15 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "industry-testimonial"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/industry-testimonial`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">
-                      Industry Testimonials
+                    <span className=" text-[14px] uppercase">
+                      Industry Testi.
                     </span>
                   </div>
                 </Link>
@@ -255,46 +267,47 @@ const Navigation = ({ menu, submenu }) => {
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "vid-testimonial"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/vid-testimonial`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">
+                    <span className=" text-[14px] uppercase">
                       Video Testimonials
                     </span>
                   </div>
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "pricing"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
-                `}
-              >
+                `}>
                 <Link to={`${devNavUrl}${link}/pricing`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">Pricing</span>
+                    <span className=" text-[14px] uppercase">
+                      Pricing
+                    </span>
                   </div>
                 </Link>
-              </li>
+              </li> */}
               <li
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "notification"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
               >
                 <Link to={`${devNavUrl}${link}/notification`}>
                   <div className="nav flex items-center">
-                    <span className="ml-2.5 text-[14px]">Notification</span>
+                    <span className=" text-[14px] uppercase">Notification</span>
                   </div>
                 </Link>
               </li>
@@ -302,29 +315,39 @@ const Navigation = ({ menu, submenu }) => {
               {store.credentials.data.role_code === "role_is_developer" ? (
                 <>
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "user"
-                      ? "text-[black] underline underline-offset-4 "
-                      : "text-[#9ca3af] "
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
                   }
                 `}
+                    onClick={() => handleUserOpen()}
                   >
-                    <div className="nav flex items-center">
-                      <span className="ml-2.5 text-[14px]">Users</span>
+                    <div className="nav flex items-center justify-between w-full">
+                      <span className=" text-[14px] uppercase">Users</span>
+                      <IoChevronDownSharp
+                        className={`${
+                          store.isUserOpen ? "" : "rotate-180"
+                        } transition-all`}
+                      />
                     </div>
                   </li>
 
-                  <ul className="submenu ml-5 my-1 text-[12px] ">
+                  <ul
+                    className={`${
+                      store.isUserOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5 my-1`}
+                  >
                     <Link
                       className="!p-0"
                       to={`${devNavUrl}${link}/other-user`}
                     >
                       <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                        className={`text-xs  border-transparent ${
                           submenu === "other-user"
-                            ? "text-[black] font-bold"
-                            : "border-none text-[#9ca3af]"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
                         }`}
                       >
                         Other User
@@ -335,10 +358,10 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/user-developer`}
                     >
                       <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                        className={`text-xs my-2 border-transparent ${
                           submenu === "user-developer"
-                            ? "text-[black] font-bold"
-                            : "border-none text-[#9ca3af]"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
                         }`}
                       >
                         Developer
@@ -346,10 +369,10 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                     <Link className="!p-0" to={`${devNavUrl}${link}/user-role`}>
                       <li
-                        className={`text-sm pl-2 mb-1 my-2 border-l-[3px] border-transparent ${
+                        className={`text-xs my-2 border-transparent ${
                           submenu === "user-role"
-                            ? "text-[black] font-bold"
-                            : "border-none text-[#9ca3af]"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
                         }`}
                       >
                         Role
@@ -362,14 +385,14 @@ const Navigation = ({ menu, submenu }) => {
                   className={` flex justify-between items-center p-1
                 ${
                   menu === "user"
-                    ? "text-[black] underline underline-offset-4 "
-                    : "text-[#9ca3af] "
+                    ? "text-primary underline underline-offset-4 "
+                    : "text-dark "
                 }
               `}
                 >
                   <Link to={`${devNavUrl}${link}/other-user`}>
                     <div className="nav flex items-center">
-                      <span className="ml-2.5 text-[14px]">User</span>
+                      <span className=" text-[14px] uppercase">User</span>
                     </div>
                   </Link>
                 </li>

@@ -119,7 +119,7 @@ const DeveloperTable = ({ setItemEdit }) => {
         setOnSearch={setOnSearch}
         onSearch={onSearch}
       />
-      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(100vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
+      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (
           <FetchingSpinner />
         )}
@@ -184,7 +184,7 @@ const DeveloperTable = ({ setItemEdit }) => {
                           </button>
                           <button
                             className="tooltip-action-table"
-                            data-tooltip="Archive"
+                            data-tooltip="Suspend"
                             onClick={() => handleArchive(item)}
                           >
                             <FaUserAltSlash className=" text-gray-600 text-[15px]" />
@@ -197,7 +197,7 @@ const DeveloperTable = ({ setItemEdit }) => {
                             data-tooltip="Restore"
                             onClick={() => handleRestore(item)}
                           >
-                            <MdRestore className="text-gray-600" />
+                            <MdRestore className="text-gray-600 text-[18px]" />
                           </button>
                           <button
                             className="tooltip-action-table"

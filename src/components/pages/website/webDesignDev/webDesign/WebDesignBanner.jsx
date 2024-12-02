@@ -20,7 +20,7 @@ const WebDesignBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Visually Stunning and User-Friendly Website Design"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">
@@ -52,6 +52,9 @@ const WebDesignBanner = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${banner[0]?.bannerBtnText} / Web Design - `}
         />
       )}
     </>

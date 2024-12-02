@@ -18,7 +18,7 @@ const BookkeepingBanner = ({ pageName }) => {
       >
         <img
           src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt=""
+          alt="Keep Your Business Compliant and Financially Organized"
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div className="customContainer relative z-10 h-full">
@@ -51,6 +51,9 @@ const BookkeepingBanner = ({ pageName }) => {
           contactForm={contactForm}
           setContactForm={setContactForm}
           modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${banner[0]?.bannerBtnText} / Bookkeeping / Compliance - `}
         />
       )}
     </>

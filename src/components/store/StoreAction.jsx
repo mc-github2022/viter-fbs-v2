@@ -165,6 +165,27 @@ export const setIsAccountUpdated = (val) => {
   };
 };
 
+export const setIsNavOpen = (val) => {
+  return {
+    type: "IS_NAVIGATION_OPEN",
+    payload: val,
+  };
+};
+
+export const setIswhyUsOpen = (val) => {
+  return {
+    type: "IS_WHYUS_OPEN",
+    payload: val,
+  };
+};
+
+export const setIsUserOpen = (val) => {
+  return {
+    type: "IS_USER_OPEN",
+    payload: val,
+  };
+};
+
 export const setCredentials = (data) => {
   return {
     type: "CREDENTIALS",

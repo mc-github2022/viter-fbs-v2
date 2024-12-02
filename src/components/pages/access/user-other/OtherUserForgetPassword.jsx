@@ -79,7 +79,9 @@ const OtherUserForgetPassword = () => {
               <p className="mb-0 mt-2 font-bold text-center text-lg">
                 FBS WEBSITE
               </p>
-              <p className="mt-8 mb-5 text-lg">Forgot Password</p>
+              <p className="mt-8 mb-5 text-[16px] font-semibold">
+                FORGOT PASSWORD
+              </p>
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}
@@ -90,7 +92,7 @@ const OtherUserForgetPassword = () => {
                 {(props) => {
                   return (
                     <Form>
-                      <div className="relative mb-4">
+                      <div className="relative mb-6">
                         <InputText
                           label="Email"
                           type="text"
