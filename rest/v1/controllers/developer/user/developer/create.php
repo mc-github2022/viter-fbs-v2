@@ -26,12 +26,20 @@ $password_link = "/developer/create-password";
 // check email
 isEmailExist($user_system, $user_system->user_developer_email);
 // send email notification
-sendEmail(
-    $password_link,
-    $user_system->user_developer_fname,
-    $user_system->user_developer_email,
-    $user_system->user_developer_key
-);
+
+if (trim($user_system->user_developer_email) != "") {
+    $mailData = sendEmail(
+        $password_link,
+        $user_system->user_developer_fname,
+        $user_system->user_developer_email,
+        $user_system->user_developer_key
+    );
+}
+
 // create
-$query = checkCreate($user_system);
-returnSuccess($user_system, "User system", $query);
+if ($mailData["mail_success"] == true) {
+    $query = checkCreate($user_system);
+    returnSuccess($user_system, "User system", $query);
+}
+
+returnError($mailData["error"]);

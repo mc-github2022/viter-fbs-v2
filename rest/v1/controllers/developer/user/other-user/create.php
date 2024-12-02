@@ -26,7 +26,7 @@ $password_link = "/create-password";
 // check email 
 isEmailExist($user, $user->user_other_email);
 
-if ($query->rowCount() > 0) {
+if (trim($user->user_other_email) != "") {
     $mailData = sendEmail(
         $password_link,
         $user->user_other_fname,

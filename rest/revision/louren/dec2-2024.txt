@@ -1,0 +1,46 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            ->
+            -> 
+            -> 
+            -> 
+            -> 
+        
+        * CORE 
+            -> rest/v1/core/upload-photo.php
+
+
+        * MODELS
+            ->
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+
