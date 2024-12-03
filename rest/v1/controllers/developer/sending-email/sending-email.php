@@ -51,15 +51,21 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         );
     }
 
-    if ($mailData["mail_success"] == true) {
+    if ($mail["mail_success"] == true) {
         $returnData["data"] = $mail;
+        // $returnData["data"] = $mail["error"];
         $returnData["count"] = 0;
         $returnData["success"] = true;
         $response->setData($returnData);
         $response->send();
         exit;
     } else {
-        returnError($mailData["mail_error"]);
+        $returnData["data"] = $mail;
+        $returnData["count"] = 0;
+        $returnData["success"] = false;
+        $response->setData($returnData);
+        $response->send();
+        exit;
     }
 }
 
