@@ -14,15 +14,14 @@ import { StoreContext } from "../store/StoreContext";
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
-export const urlPathFBSMarketingWebsite =
-  "https://frontlinebusiness.com.ph/newsite";
+export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
 export const imgUrlPathFBSMarketingWebsite =
-  "http://frontlinebusiness.com.ph/newsite/img";
+  "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
 export const devBaseImgUrl = `${imgUrlPathFBSMarketingWebsite}`;
-export const devNavUrl = "/newsite";
+export const devNavUrl = "";
 // export const devNavUrl = "";
 export const apiVersion = "/v1";
 
