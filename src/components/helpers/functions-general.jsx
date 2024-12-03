@@ -2,25 +2,8 @@ import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
 // local url
-// export const urlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
-
-// Online Demo url
-<<<<<<< HEAD
-// export const urlPathFBSMarketingWebsite =
-//   "https://frontlinebusiness.com.ph/newsite";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
-
-// Online Demo url
-export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph/";
-export const imgUrlPathFBSMarketingWebsite =
-  "http://frontlinebusiness.com.ph/img";
-=======
 export const urlPathFBSMarketingWebsite =
-  "https://frontlinebusiness.com.ph/newsite";
+  "http://localhost/react-vite/viter-fbs-v2";
 export const imgUrlPathFBSMarketingWebsite =
   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
@@ -28,8 +11,13 @@ export const imgUrlPathFBSMarketingWebsite =
 // export const urlPathFBSMarketingWebsite =
 //   "https://frontlinebusiness.com.ph/newsite";
 // export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2/public/img";
+
+// Online Demo url
+// export const urlPathFBSMarketingWebsite =
+//   "https://frontlinebusiness.com.ph/newsite";
+// export const imgUrlPathFBSMarketingWebsite =
 //   "http://frontlinebusiness.com.ph/newsite/img";
->>>>>>> 1be1ed343127700a7d71b781792d5143225890ba
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
