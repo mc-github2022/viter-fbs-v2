@@ -23,7 +23,7 @@ import {
 } from "../helpers/FormInputs";
 import { apiVersion, devBaseImgUrl } from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
-import { setMessage, setSuccess, setValidate } from "../store/StoreAction";
+import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
 import ButtonSpinner from "./spinners/ButtonSpinner";
 
@@ -44,6 +44,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["sending-email"] });
+
       if (data.success) {
         setLcssForm(false);
         dispatch(setSuccess(true));
@@ -51,8 +52,8 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
       }
       // show error box
       if (!data.success) {
-        dispatch(setValidate(true));
-        dispatch(setMessage(data.error));
+        dispatch(setError(true));
+        dispatch(setMessage(`${data.error} ${data.mail_error}`));
       }
     },
   });
@@ -243,6 +244,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                         <InputText
                           label="Mobile Number"
                           type="text"
+                          number="number"
                           name="client_phone"
                           disabled={mutation.isPending}
                         />

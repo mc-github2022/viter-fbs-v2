@@ -1,0 +1,36 @@
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/sending-email/sending-email.php
+            -> 
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * MODELS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+

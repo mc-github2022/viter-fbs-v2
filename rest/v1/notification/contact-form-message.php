@@ -47,7 +47,7 @@ function sendEmail(
 
 		if ($fileName != "") {
 			$path2 = dirname(__DIR__, 3) . "/public/files/{$fileName}";
-			// $path1 = $_SERVER["DOCUMENT_ROOT"] . "/files/{$fileName}"; 
+			// $path2 = $_SERVER["DOCUMENT_ROOT"] . "/files/{$fileName}";
 			$mail->addAttachment($path2);
 		}
 

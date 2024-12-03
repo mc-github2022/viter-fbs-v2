@@ -12,12 +12,12 @@ const useUploadFiles = (url, dispatch) => {
 
       const data = await fetchFormData(devApiUrl + url, fd, dispatch);
 
-      console.log(data);
+      // console.log(data);
     }
   };
 
   const handleChangeFiles = (e) => {
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
 
     if (!e.target.files[0]) {
       setFiles("");
@@ -27,7 +27,7 @@ const useUploadFiles = (url, dispatch) => {
     }
 
     const val = e.target.files[0];
-    console.log("val", val);
+    // console.log("val", val);
 
     // console.log("val.size", val.size);
     if (val.size > 8000000) {
