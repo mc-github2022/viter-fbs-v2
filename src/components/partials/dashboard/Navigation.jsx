@@ -9,6 +9,7 @@ import { StoreContext } from "../../store/StoreContext";
 import { IoChevronDownSharp } from "react-icons/io5";
 import {
   setIsNavOpen,
+  setIsNotifOpen,
   setIsUserOpen,
   setIswhyUsOpen,
 } from "../../store/StoreAction";
@@ -32,6 +33,10 @@ const Navigation = ({ menu, submenu }) => {
 
   const handleUserOpen = () => {
     dispatch(setIsUserOpen(!store.isUserOpen));
+  };
+
+  const handleNotifOpen = () => {
+    dispatch(setIsNotifOpen(!store.isNotifOpen));
   };
 
   return (
@@ -297,20 +302,59 @@ const Navigation = ({ menu, submenu }) => {
                 </Link>
               </li> */}
               <li
-                className={` flex justify-between items-center p-1
+                className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "notification"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
+                onClick={() => handleNotifOpen()}
               >
-                <Link to={`${devNavUrl}${link}/notification`}>
-                  <div className="nav flex items-center">
-                    <span className=" text-[14px] uppercase">Notification</span>
-                  </div>
-                </Link>
+                <div className="nav flex items-center justify-between w-full">
+                  <span className=" text-[14px] uppercase">Notification</span>
+                  <IoChevronDownSharp
+                    className={`${
+                      store.isNotifOpen ? "" : "rotate-180"
+                    } transition-all`}
+                  />
+                </div>
               </li>
+
+              <ul
+                className={`${
+                  store.isNotifOpen ? "h-0 overflow-hidden" : "my-2"
+                } submenu ml-5`}
+              >
+                <Link
+                  className="!p-0"
+                  to={`${devNavUrl}${link}/notification-receiver`}
+                >
+                  <li
+                    className={`text-xs  border-transparent ${
+                      submenu === "notification-receiver"
+                        ? "text-primary font-bold"
+                        : "border-none text-dark"
+                    }`}
+                  >
+                    Receiver
+                  </li>
+                </Link>
+                <Link
+                  className="!p-0"
+                  to={`${devNavUrl}${link}/notification-log`}
+                >
+                  <li
+                    className={`text-xs  border-transparent ${
+                      submenu === "notification-log"
+                        ? "text-primary font-bold"
+                        : "border-none text-dark"
+                    }`}
+                  >
+                    Log
+                  </li>
+                </Link>
+              </ul>
 
               {store.credentials.data.role_code === "role_is_developer" ? (
                 <>

@@ -26,10 +26,11 @@ const initVal = {
   isLogin: false,
   isLogout: false,
   isUploadFile: false,
-  credentials: {},
   isNavOpen: false,
   isWhyUsOpen: false,
   isUserOpen: false,
+  isNotifOpen: false,
+  credentials: {},
 };
 
 const StoreContext = React.createContext();

@@ -186,6 +186,13 @@ export const setIsUserOpen = (val) => {
   };
 };
 
+export const setIsNotifOpen = (val) => {
+  return {
+    type: "IS_NOTIF_OPEN",
+    payload: val,
+  };
+};
+
 export const setCredentials = (data) => {
   return {
     type: "CREDENTIALS",

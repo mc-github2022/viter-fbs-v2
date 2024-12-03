@@ -37,7 +37,7 @@ const DashboardNav = ({ menu }) => {
   const firstnameProfile = store.credentials.data.first_name;
   const lastnameProfile = store.credentials.data.last_name;
   const role = store.credentials.data.role_name;
-  console.log(store.credentials.data);
+  // console.log(store.credentials.data);
   // to close the modal when clicking outside
   const ref = React.useRef();
 

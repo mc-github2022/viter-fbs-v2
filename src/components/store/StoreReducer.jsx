@@ -169,6 +169,12 @@ export const StoreReducer = (state, action) => {
         isUserOpen: action.payload,
       };
 
+    case "IS_NOTIF_OPEN":
+      return {
+        ...state,
+        isNotifOpen: action.payload,
+      };
+
     default:
       return state;
   }
