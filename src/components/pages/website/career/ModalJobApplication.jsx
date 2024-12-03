@@ -22,11 +22,7 @@ import {
 import { apiVersion, devBaseImgUrl } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import {
-  setMessage,
-  setSuccess,
-  setValidate,
-} from "../../../store/StoreAction";
+import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 
 const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
@@ -53,7 +49,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
       }
       // show error box
       if (!data.success) {
-        dispatch(setValidate(true));
+        dispatch(setError(true));
         dispatch(setMessage(data.error));
       }
     },
@@ -243,6 +239,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                         <InputText
                           label="Mobile Number"
                           type="text"
+                          number="number"
                           name="client_phone"
                           disabled={mutation.isPending}
                         />
