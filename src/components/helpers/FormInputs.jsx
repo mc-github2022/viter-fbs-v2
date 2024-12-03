@@ -1,4 +1,5 @@
 import { useField } from "formik";
+import { NumericFormat } from "react-number-format";
 
 // INPUT
 export const InputText = ({
@@ -10,9 +11,43 @@ export const InputText = ({
   ...props
 }) => {
   const [field, meta] = useField(props);
+  if (props.number === "number") {
+    return (
+      <>
+        {label !== "" && typeof label !== "undefined" && (
+          <label
+            htmlFor={props.id || props.name}
+            className={meta.touched && meta.error ? `error-show` : ""}
+          >
+            {label}
+          </label>
+        )}
+        <NumericFormat
+          {...field}
+          {...props}
+          allowLeadingZeros
+          autoComplete="off"
+          className={
+            meta.touched && meta.error
+              ? `error-show ${className} border border-al`
+              : className
+          }
+          onChange={(e) => {
+            onChange !== null && onChange(e);
+            field.onChange(e);
+          }}
+        />
+
+        {meta.touched && meta.error ? (
+          <span className={`error-show`}>{meta.error}</span>
+        ) : null}
+      </>
+    );
+  }
+
   return (
     <>
-      {label !== "" && (
+      {label !== "" && typeof label !== "undefined" && (
         <label
           htmlFor={props.id || props.name}
           className={meta.touched && meta.error ? `error-show` : ""}
