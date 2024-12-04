@@ -331,7 +331,7 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/notification-receiver`}
                 >
                   <li
-                    className={`text-xs  border-transparent ${
+                    className={`text-xs my-2 border-transparent ${
                       submenu === "notification-receiver"
                         ? "text-primary font-bold"
                         : "border-none text-dark"
@@ -345,7 +345,7 @@ const Navigation = ({ menu, submenu }) => {
                   to={`${devNavUrl}${link}/notification-log`}
                 >
                   <li
-                    className={`text-xs  border-transparent ${
+                    className={`text-xs my-2  border-transparent ${
                       submenu === "notification-log"
                         ? "text-primary font-bold"
                         : "border-none text-dark"

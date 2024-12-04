@@ -8,9 +8,9 @@ import Dashboard from "../../../../partials/dashboard/Dashboard";
 const NotificationLog = () => {
   const { store, dispatch } = React.useContext(StoreContext);
 
-  React.useEffect(() => {
-    dispatch(setIsNotifOpen(true));
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(setIsNotifOpen(true));
+  // }, []);
 
   return (
     <>

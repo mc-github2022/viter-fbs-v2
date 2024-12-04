@@ -22,9 +22,9 @@ const Notification = () => {
     setItemEdit(null);
   };
 
-  React.useEffect(() => {
-    dispatch(setIsNotifOpen(true));
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(setIsNotifOpen(true));
+  // }, []);
 
   return (
     <>
