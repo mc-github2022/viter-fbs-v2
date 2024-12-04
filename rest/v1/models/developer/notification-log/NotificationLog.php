@@ -10,7 +10,7 @@ class NotificationLog
     public $notification_log_subject;
     public $notification_log_message;
     public $notification_log_file;
-    // public $notification_log_receiver;
+    public $notification_log_receiver;
     public $notification_log_created;
 
     public $connection;
@@ -81,7 +81,7 @@ class NotificationLog
             $sql .= "or notification_log_phone like :notification_log_phone ";
             $sql .= "or notification_log_message like :notification_log_message ";
             $sql .= "or notification_log_file like :notification_log_file ";
-            // // $sql .= "or notification_log_receiver like :notification_log_receiver ";
+            $sql .= "or notification_log_receiver like :notification_log_receiver ";
             $sql .= "or notification_log_purpose like :notification_log_purpose ";
             $sql .= ") ";
             $sql .= "order by notification_log_created desc, ";
@@ -95,7 +95,7 @@ class NotificationLog
                 "notification_log_phone" => "%{$this->notification_log_search}%",
                 "notification_log_message" => "%{$this->notification_log_search}%",
                 "notification_log_file" => "%{$this->notification_log_search}%",
-                // "notification_log_receiver" => "%{$this->notification_log_search}%",
+                "notification_log_receiver" => "%{$this->notification_log_search}%",
                 "notification_log_purpose" => "%{$this->notification_log_search}%",
             ]);
         } catch (PDOException $ex) {
@@ -131,15 +131,14 @@ class NotificationLog
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblNotificationLog} ";
-            $sql .= "where notification_log_name = :notification_log_name ";
-            $sql .= "and notification_log_name like :notification_log_name ";
+            $sql .= "where notification_log_purpose = :notification_log_purpose ";
+            $sql .= "and (notification_log_name like :notification_log_name ";
             $sql .= "or notification_log_email like :notification_log_email ";
             $sql .= "or notification_log_subject like :notification_log_subject ";
             $sql .= "or notification_log_phone like :notification_log_phone ";
             $sql .= "or notification_log_message like :notification_log_message ";
             $sql .= "or notification_log_file like :notification_log_file ";
-            // // $sql .= "or notification_log_receiver like :notification_log_receiver ";
-            $sql .= "or notification_log_purpose like :notification_log_purpose) ";
+            $sql .= "or notification_log_receiver like :notification_log_receiver) ";
             $sql .= "order by notification_log_created desc, ";
             $sql .= "notification_log_name asc, ";
             $sql .= "notification_log_purpose asc ";
@@ -151,8 +150,7 @@ class NotificationLog
                 "notification_log_phone" => "%{$this->notification_log_search}%",
                 "notification_log_message" => "%{$this->notification_log_search}%",
                 "notification_log_file" => "%{$this->notification_log_search}%",
-                // "notification_log_receiver" => "%{$this->notification_log_search}%",
-                "notification_log_purpose" => "%{$this->notification_log_search}%",
+                "notification_log_receiver" => "%{$this->notification_log_search}%",
                 "notification_log_purpose" => $this->notification_log_purpose,
             ]);
         } catch (PDOException $ex) {

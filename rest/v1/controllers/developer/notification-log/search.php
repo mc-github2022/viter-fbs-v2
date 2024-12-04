@@ -20,21 +20,20 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkPayload($data);
 
     // get data
-    $NotificationLog->notification_log_search = $data["searchValue"];    // get data 
+    $NotificationLog->notification_log_search = $data["searchValue"];
 
     //filtering
     if ($data["isFilter"]) {
         $NotificationLog->notification_log_purpose = $data["notification_log_purpose"];
 
-        // search by purpose only
-        if ($NotificationLog->notification_log_purpose != "") {
-            $query = checkFilterByPurpose($NotificationLog);
+        // purpose and search
+        if ($NotificationLog->notification_log_search != "" && $NotificationLog->notification_log_purpose != "") {
+            $query = checkSearchAndPurpose($NotificationLog);
             http_response_code(200);
             getQueriedData($query);
         }
-
-        // purpose and search
-        if ($NotificationLog->notification_log_purpose != "" && $NotificationLog->notification_log_search != "") {
+        // search by purpose only
+        if ($NotificationLog->notification_log_purpose != "") {
             $query = checkFilterByPurpose($NotificationLog);
             http_response_code(200);
             getQueriedData($query);

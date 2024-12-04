@@ -12,7 +12,7 @@ class SendingEmail
     public $notification_log_subject;
     public $notification_log_message;
     public $notification_log_file;
-    // public $notification_log_receiver;
+    public $notification_log_receiver;
     public $notification_log_created;
 
 
@@ -51,7 +51,7 @@ class SendingEmail
     public function create()
     {
         try {
-            $sql = "insert into {$this->tblNotificationLog}";
+            $sql = "insert into {$this->tblNotificationLog} ";
             $sql .= "(notification_log_name, ";
             $sql .= "notification_log_email, ";
             $sql .= "notification_log_phone, ";
@@ -59,7 +59,7 @@ class SendingEmail
             $sql .= "notification_log_subject, ";
             $sql .= "notification_log_message, ";
             $sql .= "notification_log_file, ";
-            // $sql .= "notification_log_receiver, ";
+            $sql .= "notification_log_receiver, ";
             $sql .= "notification_log_created ) values ( ";
             $sql .= ":notification_log_name, ";
             $sql .= ":notification_log_email, ";
@@ -68,8 +68,8 @@ class SendingEmail
             $sql .= ":notification_log_subject, ";
             $sql .= ":notification_log_message, ";
             $sql .= ":notification_log_file, ";
-            // $sql .= ":notification_log_receiver, ";
-            $sql .= ":notification_log_created )";
+            $sql .= ":notification_log_receiver, ";
+            $sql .= ":notification_log_created ) ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "notification_log_name" => $this->notification_log_name,
@@ -79,7 +79,7 @@ class SendingEmail
                 "notification_log_subject" => $this->notification_log_subject,
                 "notification_log_message" => $this->notification_log_message,
                 "notification_log_file" => $this->notification_log_file,
-                // // "notification_log_receiver" => $this->notification_log_receiver,
+                "notification_log_receiver" => $this->notification_log_receiver,
                 "notification_log_created" => $this->notification_log_created,
             ]);
             $this->lastInsertedId = $this->connection->lastInsertId();

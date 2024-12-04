@@ -30,13 +30,22 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $message = checkIndex($data, "client_message");
     $notif->notification_purpose = $data["notification_purpose"];
 
-    // check email is exist
+    // Check email existence
     $emailReceiver = getResultData($notif->readEmailsByPurpose());
+    $newEmailReceiver = [];
 
-    // update if first load
+    // Validate email receiver
     if (count($emailReceiver) == 0) {
         returnError("Something went wrong, Please try again later.");
     }
+
+    // THIS IS FOR GETTING EMAIL RECEIVER LIST
+    for ($i = 0; $i < count($emailReceiver); $i++) {
+        array_push($newEmailReceiver, $emailReceiver[$i]['notification_email']);
+    }
+    // separated the array by comma
+    $arrayNewReceiver = array_merge($newEmailReceiver);
+    $receiverList = implode(', ', $arrayNewReceiver);
 
     if (count($emailReceiver) > 0) {
         $mail = sendEmail(
@@ -58,14 +67,13 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $notif->notification_log_purpose = $data["notification_purpose"];
         $notif->notification_log_subject = $data["client_message_subject"];
         $notif->notification_log_file = $data["client_file"];
-        // $notif->notification_log_receiver = $data["notification_log_receiver"];
+        $notif->notification_log_message = $data["client_message"];
+        $notif->notification_log_receiver = $receiverList;
         $notif->notification_log_created = date("Y-m-d H:i:s");
 
         $query = checkCreate($notif);
-        returnSuccess($notif, "notificationlog", $query);
 
         $returnData["data"] = $mail;
-        // $returnData["data"] = $mail["error"];
         $returnData["count"] = 0;
         $returnData["success"] = true;
         $response->setData($returnData);
