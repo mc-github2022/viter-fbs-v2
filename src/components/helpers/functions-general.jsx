@@ -1,7 +1,7 @@
 import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
-// local url
+// // local url
 // export const urlPathFBSMarketingWebsite =
 //   "http://localhost/react-vite/viter-fbs-v2";
 // export const imgUrlPathFBSMarketingWebsite =

@@ -22,6 +22,7 @@ import Careers from "../components/pages/developer/why-fbs-page/careers/Careers"
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import ProtectedRouteDeveloper from "@/components/pages/access/ProtectedRouteDeveloper";
+import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
 
 export const routesDeveloper = [
   {
@@ -121,10 +122,18 @@ export const routesDeveloper = [
     ),
   },
   {
-    path: `${devNavUrl}/${UrlDeveloper}/notification`,
+    path: `${devNavUrl}/${UrlDeveloper}/notification-receiver`,
     element: (
       <ProtectedRouteDeveloper>
         <Notification />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/notification-log`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <NotificationLog />
       </ProtectedRouteDeveloper>
     ),
   },

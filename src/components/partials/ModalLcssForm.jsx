@@ -71,7 +71,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
 
   const yupSchema = Yup.object({
     client_name: Yup.string().required("Required"),
-    client_email: Yup.string().required("Required"),
+    client_email: Yup.string().required("Required").email("Invalid email"),
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),

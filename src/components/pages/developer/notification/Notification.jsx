@@ -3,7 +3,11 @@ import { FaPlus } from "react-icons/fa6";
 import ModalAddNotification from "./ModalAddNotification";
 import NotificationTable from "./NotificationTable";
 import { StoreContext } from "../../../store/StoreContext";
-import { setIsAdd, setIsWhyFBS } from "../../../store/StoreAction";
+import {
+  setIsAdd,
+  setIsNotifOpen,
+  setIsWhyFBS,
+} from "../../../store/StoreAction";
 import Navigation from "../../../partials/dashboard/Navigation";
 import Dashboard from "../../../partials/dashboard/Dashboard";
 import ModalSuccess from "../../../partials/modals/ModalSuccess";
@@ -18,14 +22,14 @@ const Notification = () => {
     setItemEdit(null);
   };
 
-  React.useEffect(() => {
-    dispatch(setIsWhyFBS(true));
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch(setIsNotifOpen(true));
+  // }, []);
 
   return (
     <>
-      <section id="notification" className="bg-[#f5f5f3]">
-        <Navigation menu="notification" />
+      <section id="notification-receiver" className="bg-[#f5f5f3]">
+        <Navigation menu="notification" submenu="notification-receiver" />
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">

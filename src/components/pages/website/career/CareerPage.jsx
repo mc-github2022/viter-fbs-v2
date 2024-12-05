@@ -33,10 +33,6 @@ const CareerPage = () => {
 
   const [jobAccordion, setJobAccordion] = React.useState(false);
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   const {
     isFetching,
     error,

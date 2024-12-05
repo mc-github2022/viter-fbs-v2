@@ -17,6 +17,7 @@ import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTes
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
+import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
 
 export const routesAdmin = [
   {
@@ -116,10 +117,18 @@ export const routesAdmin = [
     ),
   },
   {
-    path: `${devNavUrl}/notification`,
+    path: `${devNavUrl}/notification-receiver`,
     element: (
       <ProtectedRouteOther>
         <Notification />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/notification-log`,
+    element: (
+      <ProtectedRouteOther>
+        <NotificationLog />
       </ProtectedRouteOther>
     ),
   },

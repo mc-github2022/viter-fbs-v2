@@ -77,7 +77,7 @@ const ModalContact = ({
 
   const yupSchema = Yup.object({
     client_name: Yup.string().required("Required"),
-    client_email: Yup.string().required("Required"),
+    client_email: Yup.string().required("Required").email("Invalid email"),
     client_phone: Yup.string().required("Required"),
     client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
@@ -331,7 +331,7 @@ const ModalContact = ({
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 // mutate data
-                console.log("values", values);
+                // console.log("values", values);
                 mutation.mutate(values);
               }}
             >
@@ -360,6 +360,7 @@ const ModalContact = ({
                           label="Phone"
                           type="text"
                           name="client_phone"
+                          number="number"
                           disabled={mutation.isPending}
                         />
                       </div>

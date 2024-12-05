@@ -6,8 +6,7 @@ const ImmersionBanner = () => {
     <>
       <section
         id="ImmersionBanner"
-        className={`banner pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] relative flex items-center`}
-      >
+        className={`banner pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] relative flex items-center`}>
         <img
           src={`${devBaseImgUrl}/workimmersion-bg.webp`}
           alt="Senior High School Work Immersion with industry experience practical, work-related skills"
@@ -29,17 +28,17 @@ const ImmersionBanner = () => {
               <p className="text-light mb-10">
                 Join us for an innovative Senior High School Work Immersion
                 program designed for students from the STEM, ABM, HUMSS, and GAS
-                strands, equipping them with real-world skills. Our program
-                bridges classroom learning with practical workplace expertise.
-                With a focus on flexibility and comprehensive skills
-                development, we prepare future professionals for success in IT,
-                Accounting, Administration, and beyond.
+                strands, equipping them with real-world skills. This 80-hour
+                (10-day) program bridges classroom learning with practical
+                workplace expertise. With a focus on flexibility and
+                comprehensive skills development, we prepare future
+                professionals for success in IT, Accounting, Administration, and
+                beyond.
               </p>
               <a
                 href="https://calendly.com/herlyn-torres-frontlinebusiness/30min"
                 target="_blank"
-                className="btn bg-transparent text-light border-2"
-              >
+                className="btn bg-transparent text-light border-2">
                 SCHEDULE A MEETING
               </a>
             </div>
