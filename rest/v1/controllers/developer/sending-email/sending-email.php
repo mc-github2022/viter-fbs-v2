@@ -36,8 +36,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $captchaResponse = verifyRecaptcha($captchaValue);
     // END OF reCAPTCHA VERIFICATION
 
-    exit;
-
     // Check email existence
     $emailReceiver = getResultData($notif->readEmailsByPurpose());
     $newEmailReceiver = [];
