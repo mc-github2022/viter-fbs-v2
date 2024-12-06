@@ -65,6 +65,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $notif->notification_log_email = $data["client_email"];
         $notif->notification_log_phone = $data["client_phone"];
         $notif->notification_log_purpose = $data["notification_purpose"];
+        $notif->notification_log_email_subject = $data["email_subject"];
         $notif->notification_log_subject = $data["client_message_subject"];
         $notif->notification_log_file = $data["client_file"];
         $notif->notification_log_message = $data["client_message"];

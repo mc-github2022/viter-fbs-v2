@@ -1,7 +1,6 @@
-
 export const purposeValue = () => {
   let result = [
-    { code: "default-receiver", name: "Default receiver email" },
+    { code: "default-receiver", name: "Default" },
     { code: "get-started-lcs", name: "Get started LCS page" },
     { code: "get-started-careers", name: "Get started Careers page" },
     { code: "apply-now-lcs", name: "Apply now LCS page" },

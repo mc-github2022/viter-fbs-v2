@@ -11,6 +11,7 @@ class NotificationLog
     public $notification_log_message;
     public $notification_log_file;
     public $notification_log_receiver;
+    public $notification_log_email_subject;
     public $notification_log_created;
 
     public $connection;
@@ -82,6 +83,7 @@ class NotificationLog
             $sql .= "or notification_log_message like :notification_log_message ";
             $sql .= "or notification_log_file like :notification_log_file ";
             $sql .= "or notification_log_receiver like :notification_log_receiver ";
+            $sql .= "or notification_log_email_subject like :notification_log_email_subject ";
             $sql .= "or notification_log_purpose like :notification_log_purpose ";
             $sql .= ") ";
             $sql .= "order by notification_log_created desc, ";
@@ -96,6 +98,7 @@ class NotificationLog
                 "notification_log_message" => "%{$this->notification_log_search}%",
                 "notification_log_file" => "%{$this->notification_log_search}%",
                 "notification_log_receiver" => "%{$this->notification_log_search}%",
+                "notification_log_email_subject" => "%{$this->notification_log_search}%",
                 "notification_log_purpose" => "%{$this->notification_log_search}%",
             ]);
         } catch (PDOException $ex) {
@@ -138,7 +141,8 @@ class NotificationLog
             $sql .= "or notification_log_phone like :notification_log_phone ";
             $sql .= "or notification_log_message like :notification_log_message ";
             $sql .= "or notification_log_file like :notification_log_file ";
-            $sql .= "or notification_log_receiver like :notification_log_receiver) ";
+            $sql .= "or notification_log_receiver like :notification_log_receiver ";
+            $sql .= "or notification_log_email_subject like :notification_log_email_subject) ";
             $sql .= "order by notification_log_created desc, ";
             $sql .= "notification_log_name asc, ";
             $sql .= "notification_log_purpose asc ";

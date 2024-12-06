@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2024 at 06:13 AM
+-- Generation Time: Dec 06, 2024 at 03:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -37,6 +37,7 @@ CREATE TABLE `fbsv2_notification_log` (
   `notification_log_message` text NOT NULL,
   `notification_log_file` varchar(100) NOT NULL,
   `notification_log_receiver` text NOT NULL,
+  `notification_log_email_subject` varchar(100) NOT NULL,
   `notification_log_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -44,10 +45,8 @@ CREATE TABLE `fbsv2_notification_log` (
 -- Dumping data for table `fbsv2_notification_log`
 --
 
-INSERT INTO `fbsv2_notification_log` (`notification_log_aid`, `notification_log_name`, `notification_log_email`, `notification_log_phone`, `notification_log_purpose`, `notification_log_subject`, `notification_log_message`, `notification_log_file`, `notification_log_receiver`, `notification_log_created`) VALUES
-(5, 'Mark', 'mark@gmail.com', '0990909', 'default-receiver', 'test email', 'test email', '', '{cyrenemlumabas@gmail.com, lourenisobel18@gmail.com}', '2024-12-04 10:42:37'),
-(6, 'Luke', 'luke@gmail.com', '09090909', 'default-receiver', 'test', 'test', '', 'cyrenemlumabas@gmail.com, lourenisobel18@gmail.com', '2024-12-04 10:43:48'),
-(7, 'Louren Isobel Rubico', 'louren@gmail.com', '909090909', 'default-receiver', 'Test Email', 'test email in get started home.', '', 'cyrenemlumabas@gmail.com, lourenisobel18@gmail.com, mark.bumagat@frontlinebusiness.com.ph', '2024-12-04 13:10:57');
+INSERT INTO `fbsv2_notification_log` (`notification_log_aid`, `notification_log_name`, `notification_log_email`, `notification_log_phone`, `notification_log_purpose`, `notification_log_subject`, `notification_log_message`, `notification_log_file`, `notification_log_receiver`, `notification_log_email_subject`, `notification_log_created`) VALUES
+(16, 'Louren Isobel Rubico', 'louren@gmail.com', '09090909', 'default-receiver', 'test in home', 'test email in home get started', '', 'lourenisobel18@gmail.com', 'GET STARTED / HOME-  ', '2024-12-06 10:01:24');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +66,7 @@ ALTER TABLE `fbsv2_notification_log`
 -- AUTO_INCREMENT for table `fbsv2_notification_log`
 --
 ALTER TABLE `fbsv2_notification_log`
-  MODIFY `notification_log_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `notification_log_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
