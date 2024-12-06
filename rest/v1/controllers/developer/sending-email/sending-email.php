@@ -3,6 +3,7 @@
 require '../../../models/developer/sending-email/SendingEmail.php';
 require '../../../core/header.php';
 require '../../../notification/contact-form-message.php';
+require '../../../recaptcha/verify-recaptcha.php';
 require '../../../core/functions.php';
 
 // check database connection
@@ -29,6 +30,13 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $mobileNumber = checkIndex($data, "client_phone");
     $message = checkIndex($data, "client_message");
     $notif->notification_purpose = $data["notification_purpose"];
+
+    // START OF reCAPTCHA VERIFICATION
+    $captchaValue = $data["captchaValue"];
+    $captchaResponse = verifyRecaptcha($captchaValue);
+    // END OF reCAPTCHA VERIFICATION
+
+    exit;
 
     // Check email existence
     $emailReceiver = getResultData($notif->readEmailsByPurpose());

@@ -14,6 +14,7 @@ import { MdOutlinePhoneIphone } from "react-icons/md";
 import { Form, Formik } from "formik";
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import ReCAPTCHA from "react-google-recaptcha";
 import * as Yup from "yup";
 import useUploadFiles from "../custom-hooks/useUploadFiles";
 import {
@@ -21,7 +22,11 @@ import {
   InputText,
   InputTextArea,
 } from "../helpers/FormInputs";
-import { apiVersion, devBaseImgUrl } from "../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  siteKey,
+} from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
 import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
@@ -29,6 +34,7 @@ import ButtonSpinner from "./spinners/ButtonSpinner";
 
 const ModalLcssForm = ({ thePageName, setLcssForm }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const recaptchaRef = React.useRef();
 
   const handleClose = () => {
     setLcssForm(false);
@@ -77,6 +83,12 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     client_message: Yup.string().required("Required"),
     client_file: Yup.string().required("Required"),
   });
+
+  const handleChange = (value) => {
+    console.log(value);
+    // setCaptcha(value);
+  };
+
   return (
     <>
       <div
@@ -208,6 +220,17 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
               initialValues={initVal}
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
+                const captchaValue = recaptchaRef.current.getValue();
+                if (!captchaValue) {
+                  dispatch(setError(true));
+                  dispatch(
+                    setMessage(
+                      "Please verify that you are not a robot by completing the reCAPTCHA below."
+                    )
+                  );
+                  return;
+                }
+
                 // mutate data
                 const data = {
                   ...values,
@@ -217,7 +240,8 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                   await uploadFiles(); // to save the photo when submit
                 }
 
-                mutation.mutate(data);
+                mutation.mutate({ ...data, captchaValue });
+                recaptchaRef.current?.reset();
               }}
             >
               {(props) => {
@@ -238,6 +262,14 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                           type="email"
                           name="client_email"
                           disabled={mutation.isPending}
+                          onPaste={(e) => e.preventDefault()}
+                          onCut={(e) => e.preventDefault()}
+                          onCopy={(e) => e.preventDefault()}
+                          onDrag={(e) => e.preventDefault()}
+                          onDrop={(e) => e.preventDefault()}
+                          onSelect={(e) => e.preventDefault()}
+                          autoComplete="off"
+                          required
                         />
                       </div>
                       <div className="input-wrapper">
@@ -273,6 +305,15 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                           disabled={mutation.isPending}
                         />
                       </div>
+
+                      <div className="input-wrapper">
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={siteKey}
+                          onChange={(e) => handleChange(e)}
+                        />
+                      </div>
+
                       <div className="modal__action flex justify-end mt-6 gap-2">
                         <button
                           className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
