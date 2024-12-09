@@ -302,11 +302,19 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                         />
                       </div>
 
-                      <div className="input-wrapper">
+                      <div className="input-wrapper hidden md:block ">
                         <ReCAPTCHA
                           ref={recaptchaRef}
                           sitekey={siteKey}
                           onChange={(e) => handleChange(e)}
+                        />
+                      </div>
+                      <div className="input-wrapper block md:hidden ">
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={siteKey}
+                          onChange={(e) => handleChange(e)}
+                          size="compact"
                         />
                       </div>
 
