@@ -1,7 +1,7 @@
 import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
-// local url
+// // local url
 export const urlPathFBSMarketingWebsite =
   "http://localhost/react-vite/viter-fbs-v2";
 export const imgUrlPathFBSMarketingWebsite =
@@ -14,15 +14,14 @@ export const imgUrlPathFBSMarketingWebsite =
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
-// export const urlPathFBSMarketingWebsite =
-//   "https://frontlinebusiness.com.ph/newsite";
+// export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
 // export const imgUrlPathFBSMarketingWebsite =
-//   "http://frontlinebusiness.com.ph/newsite/img";
+//   "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
 export const devBaseImgUrl = `${imgUrlPathFBSMarketingWebsite}`;
-export const devNavUrl = "/newsite";
+export const devNavUrl = "";
 // export const devNavUrl = "";
 export const apiVersion = "/v1";
 
@@ -31,6 +30,13 @@ export const UrlDeveloper = "developer";
 // dev key from thunder client
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
+
+// reCAPTCHA site key TEST
+export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
+
+// reCAPTCHA site key PRODUCTION
+// export const siteKey =
+//   "";
 
 // formatting date and time
 export const setTimeZone = "Asia/Taipei";

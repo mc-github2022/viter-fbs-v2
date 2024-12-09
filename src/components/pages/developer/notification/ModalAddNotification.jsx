@@ -127,7 +127,7 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
                       id="notification_purpose"
                       name="notification_purpose"
                       disabled={mutation.isPending}
-                      value={props.values.notification_purpose} 
+                      value={props.values.notification_purpose}
                       onChange={props.handleChange}
                       className="input-select"
                     >
@@ -186,7 +186,7 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
                               </span>
                             );
                           }
-                          if (item.name === "Default receiver email") {
+                          if (item.name === "Default") {
                             return (
                               <span className="text-xs" key={key}>
                                 Note: This applies to the following pages.

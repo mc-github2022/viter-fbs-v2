@@ -1,0 +1,47 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+        note: new added notification log in controllers
+            -> rest/v1/controllers/developer/notification-log
+            -> rest/v1/controllers/developer/sending-email/sending-email.php
+            -> 
+            -> 
+            -> 
+            -> 
+        
+
+
+        * MODELS
+        note: new added notification log in models
+            -> rest/v1/models/developer/notification-log
+            -> rest/v1/models/developer/sending-email/SendingEmail.php
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> NOTIFICATION LOG is added
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_notification_log.sql
+            note: add new table
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+

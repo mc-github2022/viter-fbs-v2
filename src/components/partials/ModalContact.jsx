@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import React from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { AiFillTikTok } from "react-icons/ai";
 import {
   FaFacebookSquare,
@@ -15,7 +16,7 @@ import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import { MdOutlinePhoneIphone } from "react-icons/md";
 import * as Yup from "yup";
 import { InputText, InputTextArea } from "../helpers/FormInputs";
-import { devBaseImgUrl } from "../helpers/functions-general";
+import { devBaseImgUrl, siteKey } from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
 import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
@@ -32,6 +33,7 @@ const ModalContact = ({
   emailSubject = "",
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const recaptchaRef = React.useRef();
 
   const handleClose = () => {
     setModalContact(false);
@@ -82,6 +84,11 @@ const ModalContact = ({
     client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
   });
+
+  const handleChange = (value) => {
+    console.log(value);
+    // setCaptcha(value);
+  };
 
   return (
     <>
@@ -330,9 +337,24 @@ const ModalContact = ({
               initialValues={initVal}
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
+                const captchaValue = recaptchaRef.current.getValue();
+                if (!captchaValue) {
+                  dispatch(setError(true));
+                  dispatch(
+                    setMessage(
+                      "Please verify that you are not a robot by completing the reCAPTCHA below."
+                    )
+                  );
+                  return;
+                }
+
                 // mutate data
-                console.log("values", values);
-                mutation.mutate(values);
+                mutation.mutate({ ...values, captchaValue });
+                recaptchaRef.current?.reset();
+
+                // mutate data
+                // console.log("values", { ...values, captchaValue });
+                // mutation.mutate(values);
               }}
             >
               {(props) => {
@@ -353,6 +375,14 @@ const ModalContact = ({
                           type="email"
                           name="client_email"
                           disabled={mutation.isPending}
+                          onPaste={(e) => e.preventDefault()}
+                          onCut={(e) => e.preventDefault()}
+                          onCopy={(e) => e.preventDefault()}
+                          onDrag={(e) => e.preventDefault()}
+                          onDrop={(e) => e.preventDefault()}
+                          onSelect={(e) => e.preventDefault()}
+                          autoComplete="off"
+                          required
                         />
                       </div>
                       <div className="input-wrapper">
@@ -381,6 +411,14 @@ const ModalContact = ({
                           disabled={mutation.isPending}
                         />
                       </div>
+                      <div className="input-wrapper reCaptcha">
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={siteKey}
+                          onChange={(e) => handleChange(e)}
+                        />
+                      </div>
+
                       <div className="modal__action flex justify-end mt-6 gap-2">
                         <button
                           className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"

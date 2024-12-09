@@ -160,17 +160,17 @@ const NotificationLogTable = () => {
                     <td className="">{item.notification_log_email}</td>
                     <td className="">{item.notification_log_phone}</td>
                     <td className="">
-                      {
+                      {`${item.notification_log_email_subject} ( ${
                         purposeValue()?.filter(
                           (pitem) =>
                             item.notification_log_purpose === pitem.code
                         )[0]?.name
-                      }
+                      } )`}
                     </td>
                     <td className="">{item.notification_log_subject}</td>
                     <td className="">{item.notification_log_message}</td>
                     <td className="">{item.notification_log_file}</td>
-                    <td className="">{item.notification_log_reciever}</td>
+                    <td className="">{item.notification_log_receiver}</td>
                   </tr>
                 ))}
               </React.Fragment>
