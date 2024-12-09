@@ -306,11 +306,19 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                         />
                       </div>
 
-                      <div className="input-wrapper reCaptcha">
+                      <div className="input-wrapper hidden md:block ">
                         <ReCAPTCHA
                           ref={recaptchaRef}
                           sitekey={siteKey}
                           onChange={(e) => handleChange(e)}
+                        />
+                      </div>
+                      <div className="input-wrapper block md:hidden ">
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={siteKey}
+                          onChange={(e) => handleChange(e)}
+                          size="compact"
                         />
                       </div>
 
