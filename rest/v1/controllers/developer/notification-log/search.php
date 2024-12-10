@@ -34,30 +34,24 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             http_response_code(200);
             getQueriedData($query);
         }
-
-        // // filter for date if any of them has entry
-        // if ($NotificationLog->dateFrom != "" || $NotificationLog->dateTo != "") {
-        //     $query = checkFilterBySingleDate($NotificationLog);
-        //     http_response_code(200);
-        //     getQueriedData($query);
-        // }
-
+        // filter for date if any of them has entry
+        if ($NotificationLog->dateFrom != "" || $NotificationLog->dateTo != "") {
+            $query = checkFilterBySingleDate($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
         // filter for purpose and all date
         if ($NotificationLog->dateFrom != "" && $NotificationLog->dateTo != "" && $NotificationLog->notification_log_purpose != "") {
             $query = checkFilterByPurposeAndAllDate($NotificationLog);
             http_response_code(200);
             getQueriedData($query);
         }
-
-
-
         // filter for date if both has entry
         if ($NotificationLog->dateFrom != "" && $NotificationLog->dateTo != "") {
             $query = checkFilterByAllDate($NotificationLog);
             http_response_code(200);
             getQueriedData($query);
         }
-
         // purpose and search
         if ($NotificationLog->notification_log_search != "" && $NotificationLog->notification_log_purpose != "") {
             $query = checkSearchAndPurpose($NotificationLog);

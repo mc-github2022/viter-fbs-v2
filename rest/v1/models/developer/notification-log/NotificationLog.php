@@ -257,10 +257,8 @@ class NotificationLog
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblNotificationLog} ";
-            $sql .= "where notification_log_created = :date_from ";
-            $sql .= "and notification_log_created = :date_to ";
-            $sql .= "and (notification_log_created = :date_to ";
-            $sql .= "or notification_log_created = :date_from) ";
+            $sql .= "where notification_log_created = :date_from or :date_from is null ";
+            $sql .= "and notification_log_created = :date_to or :date_to is null ";
             $sql .= "order by notification_log_created desc, ";
             $sql .= "notification_log_name asc, ";
             $sql .= "notification_log_created asc ";

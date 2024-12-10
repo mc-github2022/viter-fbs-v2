@@ -84,24 +84,14 @@ const NotificationLogTable = () => {
     console.log(purposeData);
   };
 
-  // const handleDateChange = (from, to) => {
-  //   if (from && to && new Date(from) <= new Date(to)) {
-  //     setIsFilter(true);
-  //     // Perform your filtering logic here
-  //     console.log("Filter data from", from, "to", to);
-  //   } else {
-  //     setIsFilter(false);
-  //     console.log("Invalid date range or missing dates");
-  //   }
-  // };
-
-  React.useEffect(() => {
-    if (dateFrom && dateTo) {
-      setIsFilter(true);
-    } else {
-      setIsFilter(false);
-    }
-  }, [dateFrom, dateTo]);
+  const handleDateChange = (setter, comparisonDate, dateValue) => {
+    setter(dateValue);
+    setIsFilter(
+      comparisonDate && dateValue // If both dates have values
+        ? new Date(comparisonDate) >= new Date(dateValue) // Ensure "Date From" is not greater than "Date To"
+        : !!dateValue || !!comparisonDate // Allow filtering if either date has a value
+    );
+  };
 
   React.useEffect(() => {
     if (dateFrom && dateTo && new Date(dateFrom) > new Date(dateTo)) {
@@ -141,33 +131,15 @@ const NotificationLogTable = () => {
             </select>
           </div>
 
-          <div className="flex flex-col md:flex md:flex-row gap-2">
+          <div className="flex flex-col md:flex-row gap-2">
             <div className="relative flex flex-col gap-2 w-[200px]">
               <label className="z-10">Date From</label>
               <input
                 type="date"
                 value={dateFrom}
-                onChange={(e) => {
-                  const fromDate = e.target.value;
-                  setDateFrom(fromDate);
-                  if (
-                    fromDate &&
-                    dateTo &&
-                    new Date(fromDate) <= new Date(dateTo)
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                  if (
-                    fromDate ||
-                    (dateTo && new Date(fromDate) <= new Date(dateTo))
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                }}
+                onChange={(e) =>
+                  handleDateChange(setDateFrom, dateTo, e.target.value)
+                }
                 disabled={isFetching || status === "pending"}
               />
             </div>
@@ -176,19 +148,9 @@ const NotificationLogTable = () => {
               <input
                 type="date"
                 value={dateTo}
-                onChange={(e) => {
-                  const toDate = e.target.value;
-                  setDateTo(toDate);
-                  if (
-                    dateFrom &&
-                    toDate &&
-                    new Date(dateFrom) <= new Date(toDate)
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                }}
+                onChange={(e) =>
+                  handleDateChange(setDateTo, dateFrom, e.target.value)
+                }
                 disabled={isFetching || status === "pending"}
               />
             </div>
