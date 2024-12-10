@@ -159,7 +159,7 @@ const ServiceOnlineDonationPartnersSay = () => {
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="Client's Company Logo"
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -179,7 +179,7 @@ const ServiceOnlineDonationPartnersSay = () => {
                               // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="Client's Image"
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>
@@ -202,9 +202,9 @@ const ServiceOnlineDonationPartnersSay = () => {
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
                                 // src={`${devBaseImgUrl}/quote-white.png`}
-                                src={`${devBaseImgUrl}/quote-white.png`}
+                                src={`${devBaseImgUrl}/c.png`}
                                 className="w-[80px]"
-                                alt=""
+                                alt="quote-white"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
@@ -218,7 +218,7 @@ const ServiceOnlineDonationPartnersSay = () => {
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -238,7 +238,7 @@ const ServiceOnlineDonationPartnersSay = () => {
                               // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt=""
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>

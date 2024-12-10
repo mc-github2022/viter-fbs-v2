@@ -100,7 +100,7 @@ const SingplePage = () => {
               <div className="postContent">
                 <img
                   src={`${devBaseImgUrl}/${post.home_insights_img}`}
-                  alt="Industry insights"
+                  alt={`${post.home_insights_title}`}
                   className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
                 />
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
@@ -130,7 +130,7 @@ const SingplePage = () => {
                                     <div className="min-w-[100px] max-w-[100px] h-[80px]">
                                       <img
                                         src={`${devBaseImgUrl}/${popPost.home_insights_img}`}
-                                        alt="Industry insights"
+                                        alt={`${popPost.home_insights_title}`}
                                         className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
                                       />
                                     </div>

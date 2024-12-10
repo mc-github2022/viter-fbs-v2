@@ -152,7 +152,7 @@ const VaMarketingPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="Client's Company logo"
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -171,7 +171,7 @@ const VaMarketingPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="Client's image"
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>
@@ -205,7 +205,7 @@ const VaMarketingPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="Client's Company logo"
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -224,7 +224,7 @@ const VaMarketingPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="Client's Image"
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>

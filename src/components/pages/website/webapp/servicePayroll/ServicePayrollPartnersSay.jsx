@@ -159,7 +159,7 @@ const ServicePayrollPartnersSay = () => {
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="Client's Company Logo"
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -179,7 +179,7 @@ const ServicePayrollPartnersSay = () => {
                               // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="Client's Company Logo"
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>
@@ -216,7 +216,7 @@ const ServicePayrollPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="Client's Company Logo"
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -235,7 +235,7 @@ const ServicePayrollPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="Client's Company Logo"
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>
