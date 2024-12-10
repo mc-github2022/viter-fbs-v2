@@ -94,7 +94,7 @@ const ModalContact = ({
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen px-4 top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full h-screen px-4 top-0 bg-dark bg-opacity-70 z-[9999] sm:grid sm:place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
@@ -413,7 +413,7 @@ const ModalContact = ({
                           disabled={mutation.isPending}
                         />
                       </div>
-                      <div className="input-wrapper w-1/2 reCaptcha">
+                      <div className="input-wrapper reCaptcha">
                         <ReCAPTCHA
                           ref={recaptchaRef}
                           sitekey={siteKey}
