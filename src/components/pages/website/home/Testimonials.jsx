@@ -72,7 +72,8 @@ const Testimonials = () => {
                         `slider-index-${item.home_testimonial_aid}`
                         ? "addEntrance block"
                         : "hidden"
-                    }`}>
+                    }`}
+                  >
                     <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[455px] ml-auto text-sm ">
                       {item.home_testimonial_message}
                     </p>
@@ -93,7 +94,7 @@ const Testimonials = () => {
                         src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
                         loading="lazy"
                         className="w-[100px] "
-                        alt="Client's company logo"
+                        alt={`${item.home_testimonial_logo_img}`}
                       />
                     </div>
                   </div>
@@ -114,7 +115,8 @@ const Testimonials = () => {
                         handleTestimonial(
                           `slider-index-${item.home_testimonial_aid}`
                         )
-                      }></button>
+                      }
+                    ></button>
                   ))}
                 </div>
               </div>
@@ -131,11 +133,12 @@ const Testimonials = () => {
                 testimonialItem == `slider-index-${item.home_testimonial_aid}`
                   ? "addEntrance block"
                   : "hidden"
-              }`}>
+              }`}
+            >
               <img
                 src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
                 loading="lazy"
-                alt="Client's company logo"
+                alt={`${item.home_testimonial_name}`}
                 className="max-w-[430px] object-cover"
               />
             </div>
@@ -152,13 +155,14 @@ const Testimonials = () => {
                   testimonialItem == `slider-index-${item.home_testimonial_aid}`
                     ? "addEntrance block"
                     : "hidden"
-                }`}>
+                }`}
+              >
                 <div className="w-[200px] max-h-[87px] py-[25px] ml-[15%]">
                   <img
                     src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
                     loading="lazy"
                     className="object-contain max-h-[87px] "
-                    alt="Company logo"
+                    alt={`${item.home_testimonial_logo_img}`}
                   />
                 </div>
               </div>

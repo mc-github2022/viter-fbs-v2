@@ -424,3 +424,7 @@ textarea {
 .textAreaWrapper::before {
   top: 1.1px !important;
 }
+
+/* .rc-anchor-normal {
+  @apply !w-[2rem];
+} */
