@@ -20,6 +20,8 @@ class NotificationLog
     public $notification_log_start;
     public $notification_log_total;
     public $notification_log_search;
+    public $dateFrom;
+    public $dateTo;
 
     public $tblNotificationLog;
     public $tblNotification;
@@ -161,6 +163,111 @@ class NotificationLog
                 "notification_log_created" => "%{$this->notification_log_search}%",
                 "notification_log_email_subject" => "%{$this->notification_log_search}%",
                 "notification_log_purpose" => $this->notification_log_purpose,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByPurposeAndAllDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblNotificationLog} ";
+            $sql .= "where notification_log_purpose = :notification_log_purpose ";
+            $sql .= "and notification_log_created between :date_from and :date_to ";
+            $sql .= "order by notification_log_created desc, ";
+            $sql .= "notification_log_name asc, ";
+            $sql .= "notification_log_created asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "date_from" => $this->dateFrom,
+                "date_to" => $this->dateTo,
+                "notification_log_purpose" => $this->notification_log_purpose,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterBySearchPurposeAndAllDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblNotificationLog} ";
+            $sql .= "where notification_log_purpose = :notification_log_purpose ";
+            $sql .= "and notification_log_created between :date_from and :date_to ";
+            $sql .= "and (notification_log_name like :notification_log_name ";
+            $sql .= "or notification_log_email like :notification_log_email ";
+            $sql .= "or notification_log_subject like :notification_log_subject ";
+            $sql .= "or notification_log_file like :notification_log_file ";
+            $sql .= "or notification_log_receiver like :notification_log_receiver ";
+            $sql .= "or DATE_FORMAT(notification_log_created, '%M %e, %Y') LIKE :notification_log_created ";
+            $sql .= "or notification_log_email_subject like :notification_log_email_subject) ";
+            $sql .= "order by notification_log_created desc, ";
+            $sql .= "notification_log_name asc, ";
+            $sql .= "notification_log_created asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "notification_log_name" => "%{$this->notification_log_search}%",
+                "notification_log_email" => "%{$this->notification_log_search}%",
+                "notification_log_subject" => "%{$this->notification_log_search}%",
+                "notification_log_file" => "%{$this->notification_log_search}%",
+                "notification_log_receiver" => "%{$this->notification_log_search}%",
+                "notification_log_created" => "%{$this->notification_log_search}%",
+                "notification_log_email_subject" => "%{$this->notification_log_search}%",
+                "date_from" => $this->dateFrom,
+                "date_to" => $this->dateTo,
+                "notification_log_purpose" => $this->notification_log_purpose,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByAllDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblNotificationLog} ";
+            $sql .= "where notification_log_created between :date_from and :date_to ";
+            $sql .= "order by notification_log_created desc, ";
+            $sql .= "notification_log_name asc, ";
+            $sql .= "notification_log_created asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "date_from" => $this->dateFrom,
+                "date_to" => $this->dateTo,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterBySingleDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblNotificationLog} ";
+            $sql .= "where notification_log_created = :date_from ";
+            $sql .= "and notification_log_created = :date_to ";
+            $sql .= "and (notification_log_created = :date_to ";
+            $sql .= "or notification_log_created = :date_from) ";
+            $sql .= "order by notification_log_created desc, ";
+            $sql .= "notification_log_name asc, ";
+            $sql .= "notification_log_created asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "date_from" => $this->dateFrom,
+                "date_to" => $this->dateTo,
             ]);
         } catch (PDOException $ex) {
             $query = false;

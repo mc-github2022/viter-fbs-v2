@@ -1,0 +1,42 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            ->rest/v1/controllers/developer/notification-log/functions.php
+            ->rest/v1/controllers/developer/notification-log/search.php
+            -> 
+            -> 
+            -> 
+        
+
+
+        * MODELS
+            -> rest/v1/models/developer/notification-log/NotificationLog.php
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
