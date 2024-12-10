@@ -167,7 +167,7 @@ const BannerSlider = ({ pageName }) => {
                   className={`absolute top-0 w-full h-full object-cover ${
                     imageLoaded ? "opacity-100" : "opacity-0"
                   }`}
-                  alt="Your Trusted Christian Partner in Managed Services"
+                  alt={`${item.home_banner_title}`}
                   loading="lazy"
                   onLoad={handleImageLoad}
                   style={{ transition: "opacity 0.1s ease-in" }}

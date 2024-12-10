@@ -174,7 +174,7 @@ const ConStudBatchSliderPage = ({
                 <div className="z-[1] max-w-[700px] h-[60vh] place-self-center mx-1">
                   <img
                     src={`${devBaseImgUrl}/${image}`}
-                    alt={`Batch image - ${index + 1}`}
+                    alt={`Batch image ${image} - ${index + 1}`}
                     className="object-contain w-[700px] h-[60vh]"
                   />
                 </div>

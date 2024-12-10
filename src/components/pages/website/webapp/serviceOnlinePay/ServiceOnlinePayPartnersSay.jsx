@@ -159,7 +159,7 @@ const ServiceOnlinePayPartnersSay = () => {
                                 // src={`${devBaseImgUrl}/sti.png`}
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt=""
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -179,7 +179,7 @@ const ServiceOnlinePayPartnersSay = () => {
                               // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt=""
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>
@@ -216,7 +216,7 @@ const ServiceOnlinePayPartnersSay = () => {
                               <img
                                 className="w-[80px]"
                                 src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="client logo"
+                                alt={`${item.industry_testimonial_name}`}
                               />
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
@@ -235,7 +235,7 @@ const ServiceOnlinePayPartnersSay = () => {
                             <img
                               src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
                               className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt="client image"
+                              alt={`${item.industry_testimonial_name}`}
                             />
                           </div>
                         </div>

@@ -132,7 +132,7 @@ const PostByCategory = () => {
                                 <div className="min-w-[100px] max-w-[100px] h-[80px]">
                                   <img
                                     src={`${devBaseImgUrl}/${popPost.home_insights_img}`}
-                                    alt="Events and Activities"
+                                    alt={`${popPost.home_insights_title}`}
                                     className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
                                   />
                                 </div>

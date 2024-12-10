@@ -96,7 +96,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-6 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-6 lg:my-5 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <button
             className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed"
