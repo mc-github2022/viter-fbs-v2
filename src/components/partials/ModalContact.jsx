@@ -338,7 +338,9 @@ const ModalContact = ({
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 const captchaValue = recaptchaRef.current.getValue();
-                if (!captchaValue) {
+
+                console.log(captchaValue);
+                if (captchaValue === "") {
                   dispatch(setError(true));
                   dispatch(
                     setMessage(
@@ -411,23 +413,11 @@ const ModalContact = ({
                           disabled={mutation.isPending}
                         />
                       </div>
-<<<<<<< HEAD
-                      <div className="input-wrapper reCaptcha">
-=======
-                      <div className="input-wrapper hidden md:block ">
->>>>>>> e62bdd21f8864a50c2b35ca7ad17c582f20570c0
+                      <div className="input-wrapper w-1/2">
                         <ReCAPTCHA
                           ref={recaptchaRef}
                           sitekey={siteKey}
                           onChange={(e) => handleChange(e)}
-                        />
-                      </div>
-                      <div className="input-wrapper block md:hidden ">
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey={siteKey}
-                          onChange={(e) => handleChange(e)}
-                          size="compact"
                         />
                       </div>
 

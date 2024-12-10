@@ -425,7 +425,6 @@ textarea {
   top: 1.1px !important;
 }
 
-<<<<<<< HEAD
 .pesoSign::before {
   content: "₱";
   position: absolute;
@@ -436,8 +435,6 @@ textarea {
 .pesoSign input[type="text"] {
   padding-left: 23px;
 }
-=======
 /* .rc-anchor-normal {
   @apply !w-[2rem];
 } */
->>>>>>> e62bdd21f8864a50c2b35ca7ad17c582f20570c0
