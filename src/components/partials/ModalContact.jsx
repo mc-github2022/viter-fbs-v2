@@ -94,13 +94,13 @@ const ModalContact = ({
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full h-screen px-4 top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full h-screen px-4 top-0 bg-dark bg-opacity-70 z-[9999] sm:grid sm:place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-8 md:px-10 lg:my-5 lg:pl-10 py-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow h-fit "
+          className="theModal bg-customGray px-4 md:px-10 lg:my-5 lg:pl-10 py-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow h-fit "
         >
           <button
             className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed"
@@ -338,7 +338,9 @@ const ModalContact = ({
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 const captchaValue = recaptchaRef.current.getValue();
-                if (!captchaValue) {
+
+                console.log(captchaValue);
+                if (captchaValue === "") {
                   dispatch(setError(true));
                   dispatch(
                     setMessage(
@@ -411,19 +413,11 @@ const ModalContact = ({
                           disabled={mutation.isPending}
                         />
                       </div>
-                      <div className="input-wrapper hidden md:block ">
+                      <div className="input-wrapper reCaptcha">
                         <ReCAPTCHA
                           ref={recaptchaRef}
                           sitekey={siteKey}
                           onChange={(e) => handleChange(e)}
-                        />
-                      </div>
-                      <div className="input-wrapper block md:hidden ">
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey={siteKey}
-                          onChange={(e) => handleChange(e)}
-                          size="compact"
                         />
                       </div>
 

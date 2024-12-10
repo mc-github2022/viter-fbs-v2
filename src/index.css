@@ -425,6 +425,34 @@ textarea {
   top: 1.1px !important;
 }
 
+.pesoSign::before {
+  content: "₱";
+  position: absolute;
+  left: 10px;
+  top: 5px;
+  color: gray;
+}
+.pesoSign input[type="text"] {
+  padding-left: 23px;
+}
 /* .rc-anchor-normal {
   @apply !w-[2rem];
 } */
+
+@media screen and (max-width: 375px) {
+  .reCaptcha > div > div > div {
+    width: 100% !important;
+  }
+  .reCaptcha > div > div > div > div iframe {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 376px) {
+  .reCaptcha > div > div > div {
+    width: 304px !important;
+  }
+  .reCaptcha > div > div > div > div iframe {
+    width: 304px !important;
+  }
+}

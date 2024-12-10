@@ -93,13 +93,13 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     <>
       <div
         onClick={handleClose}
-        className="ModalContact fixed w-full px-4 h-screen top-0 bg-dark bg-opacity-70 z-[9999] grid place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
+        className="ModalContact fixed w-full px-4 h-screen top-0 bg-dark bg-opacity-70 z-[9999] sm:grid sm:place-items-center backdrop-blur-sm overflow-auto py-6 md:py-0"
       >
         <div
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-6 lg:my-5 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
+          className="theModal bg-customGray px-4 lg:pl-10 pt-10 pb-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow"
         >
           <button
             className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed"
@@ -221,7 +221,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 const captchaValue = recaptchaRef.current.getValue();
-                if (!captchaValue) {
+                if (captchaValue === "") {
                   dispatch(setError(true));
                   dispatch(
                     setMessage(
@@ -306,19 +306,11 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                         />
                       </div>
 
-                      <div className="input-wrapper hidden md:block ">
+                      <div className="input-wrapper reCaptcha ">
                         <ReCAPTCHA
                           ref={recaptchaRef}
                           sitekey={siteKey}
                           onChange={(e) => handleChange(e)}
-                        />
-                      </div>
-                      <div className="input-wrapper block md:hidden ">
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey={siteKey}
-                          onChange={(e) => handleChange(e)}
-                          size="compact"
                         />
                       </div>
 
