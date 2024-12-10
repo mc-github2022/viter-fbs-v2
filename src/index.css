@@ -438,3 +438,23 @@ textarea {
 /* .rc-anchor-normal {
   @apply !w-[2rem];
 } */
+
+.reCaptcha > div > div > div {
+  width: 200px !important;
+}
+.reCaptcha > div > div > div > div iframe {
+  width: 200px !important;
+}
+.reCaptcha > div > div > div > .rc-anchor-logo-portrait {
+  margin: 10px 0 0 -57px !important;
+  border: 1px solid red !important;
+}
+
+@media screen and (min-width: 376px) {
+  .reCaptcha > div > div > div {
+    width: 280px !important;
+  }
+  .reCaptcha > div > div > div > div iframe {
+    width: 280px !important;
+  }
+}

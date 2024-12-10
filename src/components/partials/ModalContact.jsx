@@ -100,7 +100,7 @@ const ModalContact = ({
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="theModal bg-customGray px-8 md:px-10 lg:my-5 lg:pl-10 py-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow h-fit "
+          className="theModal bg-customGray px-4 md:px-10 lg:my-5 lg:pl-10 py-10 lg:pr-[150px] md:grid md:grid-cols-2 gap-10 rounded-lg relative addShadow h-fit "
         >
           <button
             className="closeBtn absolute right-[-14px] top-[-14px] z-[1] cursor-pointer disabled:cursor-not-allowed"
@@ -413,7 +413,7 @@ const ModalContact = ({
                           disabled={mutation.isPending}
                         />
                       </div>
-                      <div className="input-wrapper w-1/2">
+                      <div className="input-wrapper w-1/2 reCaptcha">
                         <ReCAPTCHA
                           ref={recaptchaRef}
                           sitekey={siteKey}
