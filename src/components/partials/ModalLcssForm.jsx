@@ -221,7 +221,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 const captchaValue = recaptchaRef.current.getValue();
-                if (!captchaValue) {
+                if (captchaValue === "") {
                   dispatch(setError(true));
                   dispatch(
                     setMessage(
@@ -311,14 +311,6 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                           ref={recaptchaRef}
                           sitekey={siteKey}
                           onChange={(e) => handleChange(e)}
-                        />
-                      </div>
-                      <div className="input-wrapper block md:hidden ">
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey={siteKey}
-                          onChange={(e) => handleChange(e)}
-                          size="compact"
                         />
                       </div>
 
