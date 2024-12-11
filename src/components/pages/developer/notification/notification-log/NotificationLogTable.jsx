@@ -17,6 +17,8 @@ const NotificationLogTable = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isFilter, setIsFilter] = React.useState(false);
   const [purposeData, setPurposeData] = React.useState("all");
+  const [dateFrom, setDateFrom] = React.useState("");
+  const [dateTo, setDateTo] = React.useState("");
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -38,17 +40,22 @@ const NotificationLogTable = () => {
       store.isSearch,
       isFilter,
       purposeData,
+      dateFrom,
+      dateTo,
     ],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `${apiVersion}/notificationlog/search`, // search endpoint
         `${apiVersion}/notificationlog/page/${pageParam}`, // list endpoint
-        store.isSearch || isFilter, // search boolean
+        store.isSearch || isFilter,
+        // search boolean
         {
           searchValue: search.current.value,
           id: "",
           isFilter,
           notification_log_purpose: purposeData === "all" ? "" : purposeData,
+          dateFrom: isFilter ? dateFrom : null,
+          dateTo: isFilter ? dateTo : null,
         }, // search value
         "post"
       ),
@@ -66,6 +73,8 @@ const NotificationLogTable = () => {
   const handleChangePurpose = (e) => {
     setPurposeData(e.target.value);
     setIsFilter(false);
+    setDateFrom("");
+    setDateTo("");
     dispatch(setIsSearch(false));
     search.current.value = "";
     if (e.target.value !== "all") {
@@ -74,6 +83,15 @@ const NotificationLogTable = () => {
     setPage(1);
     console.log(purposeData);
   };
+
+  React.useEffect(() => {
+    if (dateFrom && dateTo && new Date(dateFrom) > new Date(dateTo)) {
+      console.error(
+        "Invalid date range: dateFrom should not be later than dateTo."
+      );
+      setDateTo("");
+    }
+  }, [dateFrom, dateTo]);
 
   React.useEffect(() => {
     if (inView) {
@@ -85,23 +103,87 @@ const NotificationLogTable = () => {
   return (
     <>
       <div className="flex items-center justify-between">
-        <div className="relative flex flex-col gap-2 w-[250px]">
-          <label className="z-10">Purpose</label>
-          <select
-            name="purpose"
-            value={purposeData}
-            onChange={(e) => handleChangePurpose(e)}
-            disabled={isFetching || status === "pending"}
-          >
-            <option value="all">All</option>
+        <div className="flex gap-5">
+          <div className="relative flex flex-col gap-2 w-[250px]">
+            <label className="z-10">Purpose</label>
+            <select
+              name="purpose"
+              value={purposeData}
+              onChange={(e) => handleChangePurpose(e)}
+              disabled={isFetching || status === "pending"}
+            >
+              <option value="all">All</option>
 
-            {purposeValue()?.map((item, key) => (
-              <option key={key} value={item.code}>
-                {item.name}
-              </option>
-            ))}
-          </select>
+              {purposeValue()?.map((item, key) => (
+                <option key={key} value={item.code}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex flex-col md:flex md:flex-row gap-2">
+            <div className="relative flex flex-col gap-2 w-[200px]">
+              <label className="z-10">Date From</label>
+              <input
+                type="date"
+                value={dateFrom}
+                onChange={(e) => {
+                  const fromDate = e.target.value;
+                  setDateFrom(fromDate);
+                  if (
+                    fromDate &&
+                    dateTo &&
+                    new Date(fromDate) <= new Date(dateTo)
+                  ) {
+                    setIsFilter(true);
+                  } else {
+                    setIsFilter(false);
+                  }
+                  if (
+                    fromDate ||
+                    (dateTo && new Date(fromDate) <= new Date(dateTo))
+                  ) {
+                    setIsFilter(true);
+                  } else {
+                    setIsFilter(false);
+                  }
+                }}
+                disabled={isFetching || status === "pending"}
+              />
+            </div>
+            <div className="relative flex flex-col gap-2 w-[200px]">
+              <label className="z-10">Date To</label>
+              <input
+                type="date"
+                value={dateTo}
+                onChange={(e) => {
+                  const toDate = e.target.value;
+                  setDateTo(toDate);
+                  if (
+                    toDate &&
+                    dateFrom &&
+                    new Date(toDate) <= new Date(dateFrom)
+                  ) {
+                    setIsFilter(true);
+                  } else {
+                    setIsFilter(false);
+                  }
+                  if (
+                    toDate ||
+                    (dateFrom && new Date(toDate) <= new Date(dateFrom))
+                  ) {
+                    setIsFilter(true);
+                  } else {
+                    setIsFilter(false);
+                  }
+                }}
+                disabled={isFetching || status === "pending"}
+              />
+            </div>
+          </div>
         </div>
+
         <SearchBar
           search={search}
           dispatch={dispatch}
