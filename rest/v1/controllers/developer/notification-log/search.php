@@ -22,7 +22,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // get data
     $NotificationLog->notification_log_search = $data["searchValue"];
 
-    //filtering
     if ($data["isFilter"]) {
         $NotificationLog->notification_log_purpose = $data["notification_log_purpose"];
         $NotificationLog->dateTo = $data["dateTo"];
@@ -34,22 +33,55 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             http_response_code(200);
             getQueriedData($query);
         }
-
-        // // filter for date if any of them has entry
-        // if ($NotificationLog->dateFrom != "" || $NotificationLog->dateTo != "") {
-        //     $query = checkFilterBySingleDate($NotificationLog);
-        //     http_response_code(200);
-        //     getQueriedData($query);
-        // }
-
         // filter for purpose and all date
         if ($NotificationLog->dateFrom != "" && $NotificationLog->dateTo != "" && $NotificationLog->notification_log_purpose != "") {
             $query = checkFilterByPurposeAndAllDate($NotificationLog);
             http_response_code(200);
             getQueriedData($query);
         }
+        // filter search and both date
+        if ($NotificationLog->dateFrom != "" && $NotificationLog->dateTo != "" && $NotificationLog->notification_log_search != "") {
+            $query = checkFilterBySearchAndAllDate($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+        // filter purpose, date from, and search
+        if ($NotificationLog->notification_log_search != "" && $NotificationLog->notification_log_purpose != "" && $NotificationLog->dateFrom != "") {
+            $query = checkFilterByPurposeDateFromSearch($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+        // filter purpose, date to, and search
+        if ($NotificationLog->notification_log_search != "" && $NotificationLog->notification_log_purpose != "" && $NotificationLog->dateTo != "") {
+            $query = checkFilterByPurposeDateToSearch($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+        // filter search and date from
+        if ($NotificationLog->notification_log_search != "" && $NotificationLog->dateFrom != "") {
+            $query = checkFilterSearchAndDateFrom($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+        // filter search and date to
+        if ($NotificationLog->notification_log_search != "" && $NotificationLog->dateTo != "") {
+            $query = checkFilterSearchAndDateTo($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
 
-
+        // filter purpose and date from
+        if ($NotificationLog->notification_log_purpose != "" && $NotificationLog->dateFrom != "") {
+            $query = checkFilterByPurposeAndDateFrom($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+        // filter purpose and date to
+        if ($NotificationLog->notification_log_purpose != "" && $NotificationLog->dateTo != "") {
+            $query = checkFilterByPurposeAndDateTo($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
 
         // filter for date if both has entry
         if ($NotificationLog->dateFrom != "" && $NotificationLog->dateTo != "") {
@@ -57,7 +89,12 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             http_response_code(200);
             getQueriedData($query);
         }
-
+        // filter for date if any of them has entry
+        if ($NotificationLog->dateFrom != "" || $NotificationLog->dateTo != "") {
+            $query = checkFilterBySingleDate($NotificationLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
         // purpose and search
         if ($NotificationLog->notification_log_search != "" && $NotificationLog->notification_log_purpose != "") {
             $query = checkSearchAndPurpose($NotificationLog);

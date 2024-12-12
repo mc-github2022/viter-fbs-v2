@@ -84,25 +84,6 @@ const NotificationLogTable = () => {
     console.log(purposeData);
   };
 
-  // const handleDateChange = (from, to) => {
-  //   if (from && to && new Date(from) <= new Date(to)) {
-  //     setIsFilter(true);
-  //     // Perform your filtering logic here
-  //     console.log("Filter data from", from, "to", to);
-  //   } else {
-  //     setIsFilter(false);
-  //     console.log("Invalid date range or missing dates");
-  //   }
-  // };
-
-  React.useEffect(() => {
-    if (dateFrom && dateTo) {
-      setIsFilter(true);
-    } else {
-      setIsFilter(false);
-    }
-  }, [dateFrom, dateTo]);
-
   React.useEffect(() => {
     if (dateFrom && dateTo && new Date(dateFrom) > new Date(dateTo)) {
       console.error(
@@ -180,9 +161,17 @@ const NotificationLogTable = () => {
                   const toDate = e.target.value;
                   setDateTo(toDate);
                   if (
-                    dateFrom &&
                     toDate &&
-                    new Date(dateFrom) <= new Date(toDate)
+                    dateFrom &&
+                    new Date(toDate) <= new Date(dateFrom)
+                  ) {
+                    setIsFilter(true);
+                  } else {
+                    setIsFilter(false);
+                  }
+                  if (
+                    toDate ||
+                    (dateFrom && new Date(toDate) <= new Date(dateFrom))
                   ) {
                     setIsFilter(true);
                   } else {
