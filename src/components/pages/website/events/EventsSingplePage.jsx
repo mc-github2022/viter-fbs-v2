@@ -68,13 +68,17 @@ function SamplePrevArrow(props) {
 
 const EventsSingplePage = () => {
   const [isEventsImg, setIsEventsImg] = React.useState(false);
-  const [itemEdit, setItemEdit] = React.useState(null);
+  const [selectedImage, setSelectedImage] = React.useState(null);
 
   const handleEventImg = (post) => {
     setIsEventsImg(true);
-    setItemEdit(post.events_activities_aid);
+    setSelectedImage(post.events_activities_aid);
     document.body.classList.toggle("overflow-hidden");
   };
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const {
     isFetching,
@@ -122,9 +126,9 @@ const EventsSingplePage = () => {
     ),
     responsive: [
       {
-        breakpoint: 1530,
+        breakpoint: 1300,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           arrows: true,
         },
@@ -140,23 +144,20 @@ const EventsSingplePage = () => {
     ],
   };
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   const { slug } = useParams();
 
   const [html, setHtml] = React.useState("");
   // Initial useEffect to set default html if eventsAndActivitiesData is available
+  const [images, setImages] = React.useState([]);
+
   useEffect(() => {
     if (eventsAndActivitiesData?.data.length > 0) {
       setHtml(eventsAndActivitiesData?.data[0].events_activities_description);
     }
   }, [eventsAndActivitiesData]);
 
-  // Update html based on slug and eventsAndActivitiesData
   useEffect(() => {
-    if (!eventsAndActivitiesData) return; // Early return if eventsAndActivitiesData is not yet available
+    if (!eventsAndActivitiesData) return;
 
     const matchingInsight = eventsAndActivitiesData.data.find(
       (item) =>
@@ -166,8 +167,16 @@ const EventsSingplePage = () => {
 
     if (matchingInsight) {
       setHtml(matchingInsight.events_activities_description);
+
+      // Extract and split the images list into an array
+      const imgList = matchingInsight.events_activities_img_list
+        ?.split(",")
+        .map((img) => img.trim())
+        .filter(Boolean); // Remove empty strings
+      setImages(imgList || []);
     } else {
-      setHtml(""); // Clear HTML if no match is found
+      setHtml("");
+      setImages([]);
     }
   }, [slug, eventsAndActivitiesData]);
 
@@ -213,61 +222,52 @@ const EventsSingplePage = () => {
             </li>
           </ul>
           <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12 gap-8">
-            <div className="postContent lg:max-w-[940px]">
+            <div className="postContent lg:min-w-[700px] lg:max-w-[890px] xl:max-w-[940px]">
               <img
                 src={`${devBaseImgUrl}/${post.events_activities_img}`}
                 alt=""
                 className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
               />
               <div dangerouslySetInnerHTML={{ __html: html }}></div>
-              <div className=" mx-auto my-4 max-w-[90%]">
-                {eventsAndActivitiesData?.data.length > 3 ? (
+              <div className="mx-auto my-4 max-w-[90%]">
+                {images.length > 1 ? (
                   <Slider {...SinglePageSettings}>
-                    {eventsAndActivitiesData?.data.map((post, key) => {
-                      if (key <= 2) return null;
-                      return (
-                        <div key={key} className="">
-                          <a onClick={() => handleEventImg(post)}>
-                            <div
-                              style={{
-                                backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
-                              }}
-                              className="blogItem addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
-                            grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
-                            >
-                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                            </div>
-                          </a>
-                        </div>
-                      );
-                    })}
+                    {images.map((image, index) => (
+                      <div key={index}>
+                        <a onClick={() => handleEventImg(post)}>
+                          <div
+                            style={{
+                              backgroundImage: `url(${devBaseImgUrl}/${image})`,
+                            }}
+                            className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
+                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                          >
+                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          </div>
+                        </a>
+                      </div>
+                    ))}
                   </Slider>
+                ) : images.length === 1 ? (
+                  <a onClick={() => handleEventImg(post)}>
+                    <div
+                      className=" h-[330px] w-[450px]
+                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                    >
+                      <img
+                        src={`${devBaseImgUrl}/${images[0]}`}
+                        alt="Successful, Industry-Ready Batches."
+                      />
+                    </div>
+                  </a>
                 ) : (
-                  <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
-                    {eventsAndActivitiesData?.data.map((post, key) => {
-                      if (key <= 2) return null;
-                      return (
-                        <div key={key} className=" h-[267px] md:h-[350px]">
-                          <a onClick={() => handleEventImg(post)}>
-                            <div
-                              style={{
-                                backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
-                              }}
-                              className="blogItem bg-center bg-cover h-[267px] md:max-w-[418px] md:min-w-[418px] md:h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                            >
-                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                            </div>
-                          </a>
-                        </div>
-                      );
-                    })}
-                  </div>
+                  ""
                 )}
               </div>
             </div>
             <div className="order-1 mt-6 lg:mt-0">
               <div className="mb-12">
-                <h3 className="text-2xl font-semibold mb-10 text-dark">
+                <h3 className="text-2xl font-semibold md:my-10 lg:mb-10 lg:my-0 text-dark">
                   Recent Activities
                 </h3>
                 <div className="popularPostLinks [&>ul>li]:flex [&>ul>li]:items-center [&>ul>li]:gap-4">
@@ -309,7 +309,10 @@ const EventsSingplePage = () => {
         </div>
       </section>
       {isEventsImg && (
-        <EventsSliderPage setIsEventsImg={setIsEventsImg} itemEdit={itemEdit} />
+        <EventsSliderPage
+          setIsEventsImg={setIsEventsImg}
+          selectedImage={selectedImage}
+        />
       )}
       <Footer />
     </>

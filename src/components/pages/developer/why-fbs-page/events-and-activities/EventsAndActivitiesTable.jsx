@@ -97,6 +97,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
               <th className="w-[8rem]">Date</th>
               <th>Content</th>
               <th className="w-[8rem]">Image</th>
+              <th className="w-[8rem]">Gallery</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -141,6 +142,11 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                     </td>
                     <td className="place-content-start">
                       {item.events_activities_img}
+                    </td>
+                    <td className="place-content-start">
+                      <p className="line-clamp-5">
+                        {item.events_activities_img_list}
+                      </p>
                     </td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                       <button
