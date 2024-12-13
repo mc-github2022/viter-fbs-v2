@@ -30,17 +30,6 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
   const { singleUploadPhoto, handleChangePhoto, photoSingle } =
     useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
-  const [activeTab, setActiveTab] = React.useState("text");
-  const [eventsImage, setEventsImage] = React.useState(false);
-  const handleEventsImage = (tabName) => {
-    setEventsImage(true);
-    setActiveTab(tabName);
-  };
-  const eventsImageClose = (tabName) => {
-    setEventsImage(false);
-    setActiveTab(tabName);
-  };
-
   const handleClose = () => {
     setTimeout(() => {
       dispatch(setIsAdd(false));
@@ -125,8 +114,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
             return (
               <Form className="modal-form">
                 <div className="form-input">
-                  <div className="grid grid-cols-2 gap-4 relative overflow-hidden">
-                    <div className=" relative">
+                  <div className="flex gap-4 justify-between">
+                    <div className="w-[50%] relative">
                       <div className="mt-5">
                         <span className="top-20 px-2 text-dark text-xs">
                           Image
@@ -248,72 +237,14 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="px-1 rounded-lg">
-                      <ul className="text-sm flex [&>li]:px-2 [&>li]:cursor-pointer justify-end">
-                        <li
-                          className={`${
-                            activeTab === "text"
-                              ? "border-b border-primary"
-                              : "text-gray-400"
-                          }`}
-                          onClick={() => eventsImageClose("text")}
-                        >
-                          Add Text
-                        </li>
-                        <li
-                          className={`${
-                            activeTab === "image"
-                              ? "border-b border-primary"
-                              : "text-gray-400"
-                          }`}
-                          onClick={() => handleEventsImage("image")}
-                        >
-                          Add Image
-                        </li>
-                      </ul>
-                      <div className="input-wrapper textAreaWrapper">
-                        <InputTextArea
-                          label="Description"
-                          type="text"
-                          name="events_activities_description"
-                          className="h-[430px]"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div
-                        className={`h-[445px] overflow-auto absolute ${
-                          eventsImage ? "top-7" : "bottom-[100%]"
-                        }  bg-white z-20 w-[464px]`}
-                      >
-                        <span className="top-20 px-2 text-dark text-[12px]">
-                          Upload Images
-                        </span>
-                        <div className="relative w-fit m-auto group mt-3">
-                          <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[350px] h-[180px] p-2 place-content-center">
-                            <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                            <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
-                              Upload Image
-                            </h1>
-                          </div>
-                          <div className="btnImgUpload">
-                            <button>
-                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
-                              <InputPhotoUpload
-                                name="photo"
-                                type="file"
-                                id="myFile"
-                                accept="image/*"
-                                title="Upload Images"
-                                multiple
-                                // onChange={(e) =>
-                                //   handleChangeMultiplePhoto(e, 50, true)
-                                // }
-                                className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
-                              />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                    <div className="input-wrapper textAreaWrapper">
+                      <InputTextArea
+                        label="Description"
+                        type="text"
+                        name="events_activities_description"
+                        className="h-[457px] w-[478px]"
+                        disabled={mutation.isPending}
+                      />
                     </div>
                   </div>
                 </div>
