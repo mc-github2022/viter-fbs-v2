@@ -11,8 +11,71 @@ import {
   devNavUrl,
   formatDate,
 } from "../../../helpers/functions-general";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Slider from "react-slick/lib/slider";
+import EventsSliderPage from "./EventsSliderPage";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        background: "#ac1e72",
+        position: "absolute",
+        color: "white",
+        top: "50%",
+        right: "-6%",
+        fontSize: "3rem",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowForward className="text-3xl" />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        background: "#ac1e72",
+        color: "white",
+        top: "50%",
+        left: "-6%",
+        fontSize: "3rem",
+        zIndex: "1",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowBack className="text-3xl" />
+    </div>
+  );
+}
 
 const EventsSingplePage = () => {
+  const [isEventsImg, setIsEventsImg] = React.useState(false);
+  const [itemEdit, setItemEdit] = React.useState(null);
+
+  const handleEventImg = (post) => {
+    setIsEventsImg(true);
+    setItemEdit(post.events_activities_aid);
+    document.body.classList.toggle("overflow-hidden");
+  };
+
   const {
     isFetching,
     error,
@@ -24,6 +87,58 @@ const EventsSingplePage = () => {
     "get", // method
     "eventsAndAct" // key
   );
+
+  var SinglePageSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    dotsClass: "slickNav slick-dots",
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    appendDots: (dots) => (
+      <div
+        style={{
+          borderRadius: "10px",
+          padding: "10px",
+          bottom: "-5rem",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          color: "blue",
+          background: "gray",
+          borderRadius: "50%",
+          opacity: "50%",
+        }}
+      ></div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1530,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 850,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+    ],
+  };
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -74,7 +189,7 @@ const EventsSingplePage = () => {
   const post = getEventsAndAct();
 
   if (!post) {
-    return <div>Post not found</div>;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -98,13 +213,57 @@ const EventsSingplePage = () => {
             </li>
           </ul>
           <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12 gap-8">
-            <div className="postContent">
+            <div className="postContent lg:max-w-[940px]">
               <img
                 src={`${devBaseImgUrl}/${post.events_activities_img}`}
                 alt=""
                 className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
               />
               <div dangerouslySetInnerHTML={{ __html: html }}></div>
+              <div className=" mx-auto my-4 max-w-[90%]">
+                {eventsAndActivitiesData?.data.length > 3 ? (
+                  <Slider {...SinglePageSettings}>
+                    {eventsAndActivitiesData?.data.map((post, key) => {
+                      if (key <= 2) return null;
+                      return (
+                        <div key={key} className="">
+                          <a onClick={() => handleEventImg(post)}>
+                            <div
+                              style={{
+                                backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
+                              }}
+                              className="blogItem addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
+                            grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                            >
+                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                            </div>
+                          </a>
+                        </div>
+                      );
+                    })}
+                  </Slider>
+                ) : (
+                  <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
+                    {eventsAndActivitiesData?.data.map((post, key) => {
+                      if (key <= 2) return null;
+                      return (
+                        <div key={key} className=" h-[267px] md:h-[350px]">
+                          <a onClick={() => handleEventImg(post)}>
+                            <div
+                              style={{
+                                backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
+                              }}
+                              className="blogItem bg-center bg-cover h-[267px] md:max-w-[418px] md:min-w-[418px] md:h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                            >
+                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                            </div>
+                          </a>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
             <div className="order-1 mt-6 lg:mt-0">
               <div className="mb-12">
@@ -149,6 +308,9 @@ const EventsSingplePage = () => {
           </div>
         </div>
       </section>
+      {isEventsImg && (
+        <EventsSliderPage setIsEventsImg={setIsEventsImg} itemEdit={itemEdit} />
+      )}
       <Footer />
     </>
   );
