@@ -12,6 +12,7 @@ import {
   devNavUrl,
   formatDate,
 } from "../../../helpers/functions-general";
+import Subscribe from "../../../partials/Subscribe";
 
 const SingplePage = () => {
   const {
@@ -26,9 +27,12 @@ const SingplePage = () => {
     "insights" // key
   );
 
+  const [subscribe, setSubscribe] = React.useState(false);
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  });
+    setSubscribe(!subscribe);
+  }, []);
 
   const { slug } = useParams();
 
@@ -181,6 +185,7 @@ const SingplePage = () => {
         </div>
       </section>
       <Footer />
+      {subscribe && <Subscribe setSubscribe={setSubscribe} />}
     </>
   );
 };
