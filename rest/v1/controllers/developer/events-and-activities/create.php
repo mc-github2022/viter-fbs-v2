@@ -10,6 +10,7 @@ $events_activities = new EventsAndActivities($conn);
 checkPayload($data);
 // get data
 $events_activities->events_activities_img = $data["events_activities_img"];
+$events_activities->events_activities_img_list = $data["events_activities_img_list"];
 $events_activities->events_activities_category = $data["events_activities_category"];
 $events_activities->events_activities_title = $data["events_activities_title"];
 $events_activities->events_activities_slug =  checkIndex($data, "events_activities_slug");

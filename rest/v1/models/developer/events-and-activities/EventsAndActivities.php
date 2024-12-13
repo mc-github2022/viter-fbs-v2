@@ -4,6 +4,7 @@ class EventsAndActivities
 {
     public $events_activities_aid;
     public $events_activities_img;
+    public $events_activities_img_list;
     public $events_activities_category;
     public $events_activities_title;
     public $events_activities_slug;
@@ -72,6 +73,7 @@ class EventsAndActivities
             $sql .= "or events_activities_title like :events_activities_title ";
             $sql .= "or events_activities_slug like :events_activities_slug ";
             $sql .= "or events_activities_date like :events_activities_date ";
+            $sql .= "or events_activities_img_list like :events_activities_img_list ";
             $sql .= "or events_activities_description like :events_activities_description) ";
             $sql .= "order by events_activities_aid desc ";
             $query = $this->connection->prepare($sql);
@@ -81,6 +83,7 @@ class EventsAndActivities
                 "events_activities_title" => "%{$this->events_activities_search}%",
                 "events_activities_slug" => "%{$this->events_activities_search}%",
                 "events_activities_date" => "%{$this->events_activities_search}%",
+                "events_activities_img_list" => "%{$this->events_activities_search}%",
                 "events_activities_description" => "%{$this->events_activities_search}%",
             ]);
         } catch (PDOException $ex) {
@@ -99,6 +102,7 @@ class EventsAndActivities
             $sql .= "events_activities_slug, ";
             $sql .= "events_activities_date, ";
             $sql .= "events_activities_description, ";
+            $sql .= "events_activities_img_list, ";
             $sql .= "events_activities_created, ";
             $sql .= "events_activities_datetime ) values ( ";
             $sql .= ":events_activities_img, ";
@@ -107,6 +111,7 @@ class EventsAndActivities
             $sql .= ":events_activities_slug, ";
             $sql .= ":events_activities_date, ";
             $sql .= ":events_activities_description, ";
+            $sql .= ":events_activities_img_list, ";
             $sql .= ":events_activities_created, ";
             $sql .= ":events_activities_datetime )";
             $query = $this->connection->prepare($sql);
@@ -117,6 +122,7 @@ class EventsAndActivities
                 "events_activities_slug" => $this->events_activities_slug,
                 "events_activities_date" => $this->events_activities_date,
                 "events_activities_description" => $this->events_activities_description,
+                "events_activities_img_list" => $this->events_activities_img_list,
                 "events_activities_created" => $this->events_activities_created,
                 "events_activities_datetime" => $this->events_activities_datetime,
             ]);
@@ -137,6 +143,7 @@ class EventsAndActivities
             $sql .= "events_activities_slug = :events_activities_slug, ";
             $sql .= "events_activities_date = :events_activities_date, ";
             $sql .= "events_activities_description = :events_activities_description, ";
+            $sql .= "events_activities_img_list = :events_activities_img_list, ";
             $sql .= "events_activities_datetime = :events_activities_datetime ";
             $sql .= "where events_activities_aid = :events_activities_aid ";
             $query = $this->connection->prepare($sql);
@@ -147,6 +154,7 @@ class EventsAndActivities
                 "events_activities_slug" => $this->events_activities_slug,
                 "events_activities_date" => $this->events_activities_date,
                 "events_activities_description" => $this->events_activities_description,
+                "events_activities_img_list" => $this->events_activities_img_list,
                 "events_activities_datetime" => $this->events_activities_datetime,
                 "events_activities_aid" => $this->events_activities_aid,
             ]);
