@@ -70,15 +70,15 @@ const EventsSingplePage = () => {
   const [isEventsImg, setIsEventsImg] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState(null);
 
-  const handleEventImg = (post) => {
+  const handleEventImg = (post, index) => {
     setIsEventsImg(true);
-    setSelectedImage(post.events_activities_aid);
+    setSelectedImage({ id: post.events_activities_aid, index });
     document.body.classList.toggle("overflow-hidden");
   };
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  // React.useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   const {
     isFetching,
@@ -234,7 +234,7 @@ const EventsSingplePage = () => {
                   <Slider {...SinglePageSettings}>
                     {images.map((image, index) => (
                       <div key={index}>
-                        <a onClick={() => handleEventImg(post)}>
+                        <a onClick={() => handleEventImg(post, index)}>
                           <div
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${image})`,
@@ -249,7 +249,7 @@ const EventsSingplePage = () => {
                     ))}
                   </Slider>
                 ) : images.length === 1 ? (
-                  <a onClick={() => handleEventImg(post)}>
+                  <a onClick={() => handleEventImg(post, 0)}>
                     <div
                       className=" h-[330px] w-[450px]
                 grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
