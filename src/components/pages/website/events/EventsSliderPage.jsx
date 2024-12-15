@@ -25,18 +25,18 @@ const EventsSliderPage = ({ setIsEventsImg, selectedImage }) => {
     document.body.classList.remove("overflow-hidden");
   };
 
+  // find the id and its matched index
   const selectedItem = eventsAndActivitiesData?.data.find(
-    (item) => item.events_activities_aid === selectedImage
+    (item) => item.events_activities_aid === selectedImage?.id
   );
 
-  const images =
-    selectedItem?.events_activities_img_list
-      .split(",")
-      .map((img) => img.trim())
-      .filter(Boolean) || [];
+  const images = selectedItem?.events_activities_img_list
+    ? selectedItem.events_activities_img_list
+        .split(",")
+        .map((img) => img.trim())
+    : [];
 
-  // Choose a specific image from the list, e.g., the first image
-  const specificImage = images[0]; // Change 0 to the desired index if needed
+  const specificImage = selectedImage ? images[selectedImage.index] : null;
 
   return (
     <ModalWrapper
@@ -44,31 +44,16 @@ const EventsSliderPage = ({ setIsEventsImg, selectedImage }) => {
       handleClose={handleClose}
     >
       <div className="bg-transparent h-fit place-items-center place-content-center">
-        {/* {eventsAndActivitiesData?.data[0].map((image, index) => (
-          <div
-            key={index}
-            className="justify-items-center"
-            // className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
-          >
-            <div className="z-[1] max-w-[700px] h-[60vh] place-self-center relative mx-1">
-              <img
-                src={`${devBaseImgUrl}/${image[0]}`}
-                alt={`Event image ${image} - ${index + 1}`}
-                className="object-contain w-[700px] h-[60vh]"
-              />
-            </div>
-          </div>
-        ))} */}
         <div className="justify-items-center">
           <div className="z-[1] max-w-[700px] h-[60vh] place-self-center relative mx-1">
             {specificImage ? (
               <img
                 src={`${devBaseImgUrl}/${specificImage}`}
-                alt={`Event image ${specificImage}`}
+                alt={`Selected Event Image`}
                 className="object-contain w-[700px] h-[60vh]"
               />
             ) : (
-              <p>No image available</p> // Handle the case where no image is found
+              <p>No image available</p>
             )}
           </div>
         </div>
