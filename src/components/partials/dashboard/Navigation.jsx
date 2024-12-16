@@ -54,43 +54,66 @@ const Navigation = ({ menu, submenu }) => {
         <div>
           <nav>
             <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold text-[14px]">
-              <li
-                className={` flex justify-between items-center p-1 cursor-pointer
+              {store.credentials.data.role_code === "role_is_marketing" ? (
+                <li
+                  className={` flex justify-between items-center p-1
+                ${
+                  menu === "subscribers"
+                    ? "text-primary underline underline-offset-4 "
+                    : "text-dark "
+                }
+              `}
+                >
+                  <Link to={`${devNavUrl}${link}/subscribers`}>
+                    <div className="nav flex items-center">
+                      <span className=" text-[14px] uppercase">
+                        Subscribers
+                      </span>
+                    </div>
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li
+                    className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "home"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-                onClick={() => handleNavOpen()}
-              >
-                <div className="nav flex items-center justify-between w-full">
-                  <span className=" text-[14px] uppercase">Home</span>
-                  <IoChevronDownSharp
-                    className={`${
-                      store.isNavOpen ? "" : "rotate-180"
-                    } transition-all`}
-                  />
-                </div>
-              </li>
-
-              <ul
-                className={`${
-                  store.isNavOpen ? "h-0 overflow-hidden bg-[red]" : "my-2"
-                } submenu ml-5  text-[14px]`}
-              >
-                <Link className="!p-0" to={`${devNavUrl}${link}/home-banner`}>
-                  <li
-                    className={`text-xs border-transparent ${
-                      submenu === "home-banner"
-                        ? "text-primary font-bold"
-                        : "border-none text-dark"
-                    }`}
+                    onClick={() => handleNavOpen()}
                   >
-                    Banner
+                    <div className="nav flex items-center justify-between w-full">
+                      <span className=" text-[14px] uppercase">Home</span>
+                      <IoChevronDownSharp
+                        className={`${
+                          store.isNavOpen ? "" : "rotate-180"
+                        } transition-all`}
+                      />
+                    </div>
                   </li>
-                </Link>
-                {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-process`}>
+
+                  <ul
+                    className={`${
+                      store.isNavOpen ? "h-0 overflow-hidden bg-[red]" : "my-2"
+                    } submenu ml-5  text-[14px]`}
+                  >
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/home-banner`}
+                    >
+                      <li
+                        className={`text-xs border-transparent ${
+                          submenu === "home-banner"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Banner
+                      </li>
+                    </Link>
+                    {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-process`}>
                     <li
                       className={`text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-process"
@@ -123,21 +146,21 @@ const Navigation = ({ menu, submenu }) => {
                       Partner With Us
                     </li>
                   </Link> */}
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/home-testimonial`}
-                >
-                  <li
-                    className={`text-xs my-2 border-transparent ${
-                      submenu === "home-testimonial"
-                        ? "text-primary font-bold"
-                        : "border-none text-dark"
-                    }`}
-                  >
-                    Testimonials
-                  </li>
-                </Link>
-                {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-partners`}>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/home-testimonial`}
+                    >
+                      <li
+                        className={`text-xs my-2 border-transparent ${
+                          submenu === "home-testimonial"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Testimonials
+                      </li>
+                    </Link>
+                    {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-partners`}>
                     <li
                       className={` text-sm mb-1 my-2 border-transparent ${
                         submenu === "home-partners"
@@ -148,144 +171,149 @@ const Navigation = ({ menu, submenu }) => {
                       Partners
                     </li>
                   </Link> */}
-                <Link className="!p-0" to={`${devNavUrl}${link}/home-insights`}>
-                  <li
-                    className={`text-xs  border-transparent ${
-                      submenu === "home-insights"
-                        ? "text-primary font-bold"
-                        : "border-none text-dark"
-                    }`}
-                  >
-                    Insights
-                  </li>
-                </Link>
-              </ul>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/home-insights`}
+                    >
+                      <li
+                        className={`text-xs  border-transparent ${
+                          submenu === "home-insights"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Insights
+                      </li>
+                    </Link>
+                  </ul>
 
-              <li
-                className={` flex justify-between items-center p-1
+                  <li
+                    className={` flex justify-between items-center p-1
                   ${
                     menu === "special-offers"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-              >
-                <Link to={`${devNavUrl}${link}/special-offers`}>
-                  <div className="nav flex items-center">
-                    <span className=" text-[14px] uppercase">
-                      Special Offers
-                    </span>
-                  </div>
-                </Link>
-              </li>
+                  >
+                    <Link to={`${devNavUrl}${link}/special-offers`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Special Offers
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
 
-              <li
-                className={` flex justify-between items-center p-1 cursor-pointer
+                  <li
+                    className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "whyFBS"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-                onClick={() => handleWhyUsOpen()}
-              >
-                <div className="nav flex items-center justify-between w-full">
-                  <span className=" text-[14px] uppercase">Why FBS?</span>
-                  <IoChevronDownSharp
+                    onClick={() => handleWhyUsOpen()}
+                  >
+                    <div className="nav flex items-center justify-between w-full">
+                      <span className=" text-[14px] uppercase">Why FBS?</span>
+                      <IoChevronDownSharp
+                        className={`${
+                          store.isWhyUsOpen ? "" : "rotate-180"
+                        } transition-all`}
+                      />
+                    </div>
+                  </li>
+
+                  <ul
                     className={`${
-                      store.isWhyUsOpen ? "" : "rotate-180"
-                    } transition-all`}
-                  />
-                </div>
-              </li>
-
-              <ul
-                className={`${
-                  store.isWhyUsOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5`}
-              >
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/events-activities`}
-                >
-                  <li
-                    className={`text-xs  border-transparent ${
-                      submenu === "events-activities"
-                        ? "text-primary font-bold"
-                        : "border-none text-dark"
-                    }`}
+                      store.isWhyUsOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5`}
                   >
-                    Events & Activities
-                  </li>
-                </Link>
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/whyFBS-careers`}
-                >
-                  <li
-                    className={`text-xs my-2 border-transparent ${
-                      submenu === "whyFBS-careers"
-                        ? "text-primary font-bold"
-                        : "border-none text-dark"
-                    }`}
-                  >
-                    Careers
-                  </li>
-                </Link>
-              </ul>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/events-activities`}
+                    >
+                      <li
+                        className={`text-xs  border-transparent ${
+                          submenu === "events-activities"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Events & Activities
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/whyFBS-careers`}
+                    >
+                      <li
+                        className={`text-xs my-2 border-transparent ${
+                          submenu === "whyFBS-careers"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Careers
+                      </li>
+                    </Link>
+                  </ul>
 
-              <li
-                className={` flex justify-between items-center p-1
+                  <li
+                    className={` flex justify-between items-center p-1
                   ${
                     menu === "lcss-batches"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-              >
-                <Link to={`${devNavUrl}${link}/lcss-batches`}>
-                  <div className="nav flex items-center">
-                    <span className=" text-[14px] uppercase">LCSS Batches</span>
-                  </div>
-                </Link>
-              </li>
+                  >
+                    <Link to={`${devNavUrl}${link}/lcss-batches`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          LCSS Batches
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
 
-              <li
-                className={` flex justify-between items-center p-1
+                  <li
+                    className={` flex justify-between items-center p-1
                   ${
                     menu === "industry-testimonial"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-              >
-                <Link to={`${devNavUrl}${link}/industry-testimonial`}>
-                  <div className="nav flex items-center">
-                    <span className=" text-[14px] uppercase">
-                      Industry Testi.
-                    </span>
-                  </div>
-                </Link>
-              </li>
+                  >
+                    <Link to={`${devNavUrl}${link}/industry-testimonial`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Industry Testi.
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
 
-              <li
-                className={` flex justify-between items-center p-1
+                  <li
+                    className={` flex justify-between items-center p-1
                   ${
                     menu === "vid-testimonial"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-              >
-                <Link to={`${devNavUrl}${link}/vid-testimonial`}>
-                  <div className="nav flex items-center">
-                    <span className=" text-[14px] uppercase">
-                      Video Testimonials
-                    </span>
-                  </div>
-                </Link>
-              </li>
-              {/* <li
+                  >
+                    <Link to={`${devNavUrl}${link}/vid-testimonial`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Video Testimonials
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                  {/* <li
                 className={` flex justify-between items-center p-1
                   ${
                     menu === "pricing"
@@ -301,78 +329,23 @@ const Navigation = ({ menu, submenu }) => {
                   </div>
                 </Link>
               </li> */}
-              <li
-                className={` flex justify-between items-center p-1 cursor-pointer
+                  <li
+                    className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "notification"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-                onClick={() => handleNotifOpen()}
-              >
-                <div className="nav flex items-center justify-between w-full">
-                  <span className=" text-[14px] uppercase">Notification</span>
-                  <IoChevronDownSharp
-                    className={`${
-                      store.isNotifOpen ? "" : "rotate-180"
-                    } transition-all`}
-                  />
-                </div>
-              </li>
-
-              <ul
-                className={`${
-                  store.isNotifOpen ? "h-0 overflow-hidden" : "my-2"
-                } submenu ml-5`}
-              >
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/notification-receiver`}
-                >
-                  <li
-                    className={`text-xs my-2 border-transparent ${
-                      submenu === "notification-receiver"
-                        ? "text-primary font-bold"
-                        : "border-none text-dark"
-                    }`}
-                  >
-                    Receiver
-                  </li>
-                </Link>
-                <Link
-                  className="!p-0"
-                  to={`${devNavUrl}${link}/notification-log`}
-                >
-                  <li
-                    className={`text-xs my-2  border-transparent ${
-                      submenu === "notification-log"
-                        ? "text-primary font-bold"
-                        : "border-none text-dark"
-                    }`}
-                  >
-                    Log
-                  </li>
-                </Link>
-              </ul>
-
-              {store.credentials.data.role_code === "role_is_developer" ? (
-                <>
-                  <li
-                    className={` flex justify-between items-center p-1 cursor-pointer
-                  ${
-                    menu === "user"
-                      ? "text-primary underline underline-offset-4 "
-                      : "text-dark "
-                  }
-                `}
-                    onClick={() => handleUserOpen()}
+                    onClick={() => handleNotifOpen()}
                   >
                     <div className="nav flex items-center justify-between w-full">
-                      <span className=" text-[14px] uppercase">Users</span>
+                      <span className=" text-[14px] uppercase">
+                        Notification
+                      </span>
                       <IoChevronDownSharp
                         className={`${
-                          store.isUserOpen ? "" : "rotate-180"
+                          store.isNotifOpen ? "" : "rotate-180"
                         } transition-all`}
                       />
                     </div>
@@ -380,66 +353,148 @@ const Navigation = ({ menu, submenu }) => {
 
                   <ul
                     className={`${
-                      store.isUserOpen ? "h-0 overflow-hidden" : "my-2"
-                    } submenu ml-5 my-1`}
+                      store.isNotifOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5`}
                   >
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/other-user`}
+                      to={`${devNavUrl}${link}/notification-receiver`}
                     >
                       <li
-                        className={`text-xs  border-transparent ${
-                          submenu === "other-user"
+                        className={`text-xs my-2 border-transparent ${
+                          submenu === "notification-receiver"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
                         }`}
                       >
-                        Other User
+                        Receiver
                       </li>
                     </Link>
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/user-developer`}
+                      to={`${devNavUrl}${link}/notification-log`}
                     >
                       <li
-                        className={`text-xs my-2 border-transparent ${
-                          submenu === "user-developer"
+                        className={`text-xs my-2  border-transparent ${
+                          submenu === "notification-log"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
                         }`}
                       >
-                        Developer
-                      </li>
-                    </Link>
-                    <Link className="!p-0" to={`${devNavUrl}${link}/user-role`}>
-                      <li
-                        className={`text-xs my-2 border-transparent ${
-                          submenu === "user-role"
-                            ? "text-primary font-bold"
-                            : "border-none text-dark"
-                        }`}
-                      >
-                        Role
+                        Log
                       </li>
                     </Link>
                   </ul>
-                </>
-              ) : (
-                <li
-                  className={` flex justify-between items-center p-1
+
+                  {store.credentials.data.role_code === "role_is_developer" ? (
+                    <>
+                      <li
+                        className={` flex justify-between items-center p-1 cursor-pointer
+                  ${
+                    menu === "user"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                        onClick={() => handleUserOpen()}
+                      >
+                        <div className="nav flex items-center justify-between w-full">
+                          <span className=" text-[14px] uppercase">Users</span>
+                          <IoChevronDownSharp
+                            className={`${
+                              store.isUserOpen ? "" : "rotate-180"
+                            } transition-all`}
+                          />
+                        </div>
+                      </li>
+
+                      <ul
+                        className={`${
+                          store.isUserOpen ? "h-0 overflow-hidden" : "my-2"
+                        } submenu ml-5 my-1`}
+                      >
+                        <Link
+                          className="!p-0"
+                          to={`${devNavUrl}${link}/other-user`}
+                        >
+                          <li
+                            className={`text-xs  border-transparent ${
+                              submenu === "other-user"
+                                ? "text-primary font-bold"
+                                : "border-none text-dark"
+                            }`}
+                          >
+                            Other User
+                          </li>
+                        </Link>
+                        <Link
+                          className="!p-0"
+                          to={`${devNavUrl}${link}/user-developer`}
+                        >
+                          <li
+                            className={`text-xs my-2 border-transparent ${
+                              submenu === "user-developer"
+                                ? "text-primary font-bold"
+                                : "border-none text-dark"
+                            }`}
+                          >
+                            Developer
+                          </li>
+                        </Link>
+                        <Link
+                          className="!p-0"
+                          to={`${devNavUrl}${link}/user-role`}
+                        >
+                          <li
+                            className={`text-xs my-2 border-transparent ${
+                              submenu === "user-role"
+                                ? "text-primary font-bold"
+                                : "border-none text-dark"
+                            }`}
+                          >
+                            Role
+                          </li>
+                        </Link>
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <li
+                        className={` flex justify-between items-center p-1
                 ${
                   menu === "user"
                     ? "text-primary underline underline-offset-4 "
                     : "text-dark "
                 }
               `}
-                >
-                  <Link to={`${devNavUrl}${link}/other-user`}>
-                    <div className="nav flex items-center">
-                      <span className=" text-[14px] uppercase">User</span>
-                    </div>
-                  </Link>
-                </li>
+                      >
+                        <Link to={`${devNavUrl}${link}/other-user`}>
+                          <div className="nav flex items-center">
+                            <span className=" text-[14px] uppercase">User</span>
+                          </div>
+                        </Link>
+                      </li>
+                    </>
+                  )}
+
+                  <li
+                    className={` flex justify-between items-center p-1
+                ${
+                  menu === "subscribers"
+                    ? "text-primary underline underline-offset-4 "
+                    : "text-dark "
+                }
+              `}
+                  >
+                    <Link to={`${devNavUrl}${link}/subscribers`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Subscribers
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                </>
               )}
             </ul>
           </nav>

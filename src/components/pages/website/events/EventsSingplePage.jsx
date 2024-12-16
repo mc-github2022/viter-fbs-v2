@@ -76,9 +76,9 @@ const EventsSingplePage = () => {
     document.body.classList.toggle("overflow-hidden");
   };
 
-  // React.useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // });
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const {
     isFetching,
@@ -128,13 +128,13 @@ const EventsSingplePage = () => {
       {
         breakpoint: 1300,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
           arrows: true,
         },
       },
       {
-        breakpoint: 850,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,

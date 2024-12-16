@@ -23,6 +23,7 @@ import EventsAndActivities from "../components/pages/developer/why-fbs-page/even
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import ProtectedRouteDeveloper from "@/components/pages/access/ProtectedRouteDeveloper";
 import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
+import Subscribers from "../components/pages/developer/subscribers/Subscribers";
 
 export const routesDeveloper = [
   {
@@ -158,6 +159,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <Role />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/subscribers`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Subscribers />
       </ProtectedRouteDeveloper>
     ),
   },

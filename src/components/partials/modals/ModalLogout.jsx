@@ -47,7 +47,8 @@ const ModalLogout = ({ setIsLogout, mysqlEndpoint, queryKey, item }) => {
         localStorage.removeItem("localfbstoken");
         store.credentials.data.role_code === "role_is_developer"
           ? window.location.replace(`${devNavUrl}/${UrlDeveloper}/login`)
-          : store.credentials.data.role_code === "role_is_admin"
+          : store.credentials.data.role_code === "role_is_admin" ||
+            "role_is_marketing"
           ? window.location.replace(`${devNavUrl}/login`)
           : "";
         return;
