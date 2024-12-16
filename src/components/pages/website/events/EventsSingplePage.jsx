@@ -76,9 +76,9 @@ const EventsSingplePage = () => {
     document.body.classList.toggle("overflow-hidden");
   };
 
-  // React.useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // });
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const {
     isFetching,

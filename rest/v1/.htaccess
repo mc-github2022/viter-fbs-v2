@@ -106,3 +106,6 @@ RewriteRule ^user-developer/token$ controllers/developer/user/developer/token.ph
 RewriteRule ^user-developer/reset$ controllers/developer/user/developer/reset-password.php [L]
 RewriteRule ^user-developer/role$ controllers/developer/user/developer/role.php [L] 
  
+# Why FBS - SUBSCRIBER
+RewriteRule ^subscribe$ controllers/developer/subscribe/subscribe.php [L]
+RewriteRule ^subscribe/([0-9]+)$ controllers/developer/subscribe/subscribe.php?subscribeid=$1 [L]

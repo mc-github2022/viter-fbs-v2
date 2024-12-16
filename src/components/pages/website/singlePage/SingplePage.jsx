@@ -13,8 +13,12 @@ import {
   formatDate,
 } from "../../../helpers/functions-general";
 import Subscribe from "../../../partials/Subscribe";
+import { StoreContext } from "../../../store/StoreContext";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
 
 const SingplePage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const {
     isFetching,
     error,
