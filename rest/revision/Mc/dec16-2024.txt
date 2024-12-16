@@ -1,0 +1,42 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            ->rest/v1/controllers/developer/subscribe
+            ->
+            -> 
+            -> 
+            -> 
+        
+
+
+        * MODELS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
