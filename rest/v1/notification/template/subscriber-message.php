@@ -106,7 +106,7 @@ function getHtmlSendMessage(
         </div>
       </div>
       <div style="text-align: center; line-height: 1">
-        <p style="font-family: Poppins, sans-serif">
+        <p style="font-family: "Poppins", sans-serif">
           <small>
             Frontline Business Solutions Inc. <br />
             Baloc Road, Brgy. San Ignacio <br />
