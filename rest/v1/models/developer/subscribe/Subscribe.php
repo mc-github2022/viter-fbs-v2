@@ -7,9 +7,13 @@ class Subscribe
     public $subscriber_is_active;
     public $subscriber_created;
     public $subscriber_datetime;
-  
+
     public $connection;
     public $lastInsertedId;
+
+    public $subscriber_start;
+    public $subscriber_total;
+    public $subscriber_search;
 
     public $tblSubscriber;
 
@@ -25,8 +29,67 @@ class Subscribe
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblSubscriber} ";
-            $sql .= "order by subscriber_aid desc ";
+            $sql .= "order by subscriber_is_active desc, ";
+            $sql .= "subscriber_email asc ";
             $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readLimit()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSubscriber} ";
+            $sql .= "order by subscriber_is_active desc, ";
+            $sql .= "subscriber_email asc ";
+            $sql .= "limit :start, ";
+            $sql .= ":total ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "start" => $this->subscriber_start - 1,
+                "total" => $this->subscriber_total,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readEmails()
+    {
+        try {
+            $sql = "select subscriber_email ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSubscriber} ";
+            $sql .= "where subscriber_email = :subscriber_email ";
+            $sql .= "order by subscriber_email ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_email" => $this->subscriber_email,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function active()
+    {
+        try {
+            $sql = "update {$this->tblSubscriber} set ";
+            $sql .= "subscriber_is_active = :subscriber_is_active, ";
+            $sql .= "subscriber_datetime = :subscriber_datetime ";
+            $sql .= "where subscriber_aid = :subscriber_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_is_active" => $this->subscriber_is_active,
+                "subscriber_datetime" => $this->subscriber_datetime,
+                "subscriber_aid" => $this->subscriber_aid,
+            ]);
         } catch (PDOException $ex) {
             $query = false;
         }
@@ -37,7 +100,7 @@ class Subscribe
     {
         try {
             $sql = "insert into {$this->tblSubscriber}";
-            $sql .= "(subscriber_email, ";
+            $sql .= "( subscriber_email, ";
             $sql .= "subscriber_is_active, ";
             $sql .= "subscriber_created, ";
             $sql .= "subscriber_datetime ) values ( ";
@@ -59,32 +122,19 @@ class Subscribe
         return $query;
     }
 
+
     public function update()
     {
         try {
-            $sql = "update {$this->tblCareers} set ";
-            $sql .= "careers_icon = :careers_icon, ";
-            $sql .= "careers_job_title = :careers_job_title, ";
-            $sql .= "careers_job_classification = :careers_job_classification, ";
-            $sql .= "careers_job_mode = :careers_job_mode, ";
-            $sql .= "careers_job_status = :careers_job_status, ";
-            $sql .= "careers_job_description = :careers_job_description, ";
-            $sql .= "careers_img = :careers_img, ";
-            $sql .= "careers_job_overview = :careers_job_overview, ";
-            $sql .= "careers_datetime = :careers_datetime ";
-            $sql .= "where careers_aid = :careers_aid ";
+            $sql = "update {$this->tblSubscriber} set ";
+            $sql .= "subscriber_email = :subscriber_email, ";
+            $sql .= "subscriber_datetime = :subscriber_datetime ";
+            $sql .= "where subscriber_aid = :subscriber_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "careers_icon" => $this->careers_icon,
-                "careers_job_title" => $this->careers_job_title,
-                "careers_job_classification" => $this->careers_job_classification,
-                "careers_job_mode" => $this->careers_job_mode,
-                "careers_job_status" => $this->careers_job_status,
-                "careers_job_description" => $this->careers_job_description,
-                "careers_img" => $this->careers_img,
-                "careers_job_overview" => $this->careers_job_overview,
-                "careers_datetime" => $this->careers_datetime,
-                "careers_aid" => $this->careers_aid,
+                "subscriber_email" => $this->subscriber_email,
+                "subscriber_datetime" => $this->subscriber_datetime,
+                "subscriber_aid" => $this->subscriber_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -92,6 +142,25 @@ class Subscribe
         return $query;
     }
 
+    public function search()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblSubscriber} ";
+            $sql .= "where ";
+            $sql .= "subscriber_email like :subscriber_email ";
+            $sql .= "order by subscriber_is_active desc, ";
+            $sql .= "subscriber_email asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_email" => "%{$this->subscriber_search}%",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 
     public function delete()
     {
@@ -108,7 +177,7 @@ class Subscribe
         return $query;
     }
 
-    
+
     // validator
     // email
     public function checkEmail()

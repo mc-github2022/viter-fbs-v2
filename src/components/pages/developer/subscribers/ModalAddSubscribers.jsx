@@ -13,6 +13,8 @@ import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
 import { InputText } from "../../../helpers/FormInputs";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import { apiVersion } from "../../../helpers/functions-general";
+import { queryData } from "../../../helpers/queryData";
 
 const ModalAddSubscribers = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -29,13 +31,13 @@ const ModalAddSubscribers = ({ itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `${apiVersion}/subscriber/${itemEdit.subscriber_aid}` // update
-          : `${apiVersion}/subscriber`, // create
+          ? `${apiVersion}/subscribe/${itemEdit.subscriber_aid}` // update
+          : `${apiVersion}/subscribe`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["subscriber"] });
+      queryClient.invalidateQueries({ queryKey: ["subscribe"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -57,7 +59,7 @@ const ModalAddSubscribers = ({ itemEdit }) => {
   };
 
   const yupSchema = Yup.object({
-    subscriber_email: Yup.string().required("Required"),
+    subscriber_email: Yup.string().required("Required").email("Invalid Email"),
   });
   return (
     <ModalAddWrapper

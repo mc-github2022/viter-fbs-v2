@@ -3,18 +3,18 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$careers = new Careers($conn);
+$subscribe = new Subscribe($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
-if (array_key_exists("careersid", $_GET)) {
+if (array_key_exists("subscribeid", $_GET)) {
   // get data
-  $careers->careers_aid = $_GET['careersid'];
-  checkId($careers->careers_aid);
+  $subscribe->subscriber_aid = $_GET['subscribeid'];
+  checkId($subscribe->subscriber_aid);
 
-  $query = checkDelete($careers);
+  $query = checkDelete($subscribe);
 
-  returnSuccess($careers, "careers", $query);
+  returnSuccess($subscribe, "subscribe", $query);
 }
 
 // return 404 error if endpoint not available
