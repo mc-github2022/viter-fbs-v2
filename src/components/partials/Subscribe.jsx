@@ -23,7 +23,8 @@ const Subscribe = ({ setSubscribe }) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(`${apiVersion}/subscribe`, "post", values),
+    mutationFn: (values) =>
+      queryData(`${apiVersion}/subscribe`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["subscribe"] });
