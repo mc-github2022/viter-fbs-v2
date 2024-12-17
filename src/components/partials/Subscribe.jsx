@@ -34,6 +34,7 @@ const Subscribe = ({ setSubscribe }) => {
         setSubscribe(false);
         dispatch(setSuccess(true));
         dispatch(setMessage(`Subscribed, Thank you!`));
+        sessionStorage.setItem("subscribed", JSON.stringify(true));
       }
     },
   });
