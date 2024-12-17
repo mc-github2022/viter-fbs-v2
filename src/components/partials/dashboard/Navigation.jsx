@@ -411,7 +411,7 @@ const Navigation = ({ menu, submenu }) => {
                       <ul
                         className={`${
                           store.isUserOpen ? "h-0 overflow-hidden" : "my-2"
-                        } submenu ml-5 my-1`}
+                        } submenu ml-5`}
                       >
                         <Link
                           className="!p-0"

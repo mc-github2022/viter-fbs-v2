@@ -12,8 +12,7 @@ include_once("mail-config.php");
 include_once("template/subscriber-message.php");
 
 function sendEmailSubscriber(
-	$email,
-	$emailReceiver
+	$email
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -37,40 +36,41 @@ function sendEmailSubscriber(
 		);
 
 
-		$sent_count = 0;
-		$else_error_count = 0;
-		if (count($emailReceiver) > 0) {
-			for ($a = 0; $a < count($emailReceiver); $a++) {
-				$newEmailReceiver = trim($emailReceiver[$a]["subscriber_email"]);
-				if (trim($newEmailReceiver) != "") {
-					$mail->addAddress($newEmailReceiver);
-					if ($mail->Send()) {
-						$sent_count += 1;
-						$mail->clearAddresses(trim($newEmailReceiver));
-						continue;
-					} else {
-						$else_error_count += 1;
-						continue;
-					}
-				}
-			}
+		// $sent_count = 0;
+		// $else_error_count = 0;
+		// if (count($emailReceiver) > 0) {
+		// 	for ($a = 0; $a < count($emailReceiver); $a++) {
+		// 		$newEmailReceiver = trim($emailReceiver[$a]["subscriber_email"]);
+		// 		if (trim($newEmailReceiver) != "") {
+		// 			$mail->addAddress($newEmailReceiver);
+		// 			if ($mail->Send()) {
+		// 				$sent_count += 1;
+		// 				$mail->clearAddresses(trim($newEmailReceiver));
+		// 				continue;
+		// 			} else {
+		// 				$else_error_count += 1;
+		// 				continue;
+		// 			}
+		// 		}
+		// 	}
+		// } else {
+		// 	return array(
+		// 		"error" => "No email receiver found!.",
+		// 		"mail_success" => false
+		// 	);
+		// }
+
+		if ($email != "") {
+			$mail->addAddress($email);
+		}
+		if ($mail->Send()) {
+			return array(
+				"error" => "Sucessfully sent",
+				"mail_success" => true
+			);
 		} else {
 			return array(
-				"error" => "No email receiver found!.",
-				"mail_success" => false
-			);
-		}
-
-		if ($sent_count > 0 && $else_error_count == 0) {
-			return array(
-				"mail_success" => true,
-				"error" => "No Error.",
-			);
-		}
-
-		if ($else_error_count > 0) {
-			return array(
-				"error" => "Could not send email. Please refresh your page and try again.",
+				"error" => "No email receiver found!",
 				"mail_success" => false
 			);
 		}
