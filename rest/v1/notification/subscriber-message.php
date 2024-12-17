@@ -36,30 +36,7 @@ function sendEmailSubscriber(
 		);
 
 
-		// $sent_count = 0;
-		// $else_error_count = 0;
-		// if (count($emailReceiver) > 0) {
-		// 	for ($a = 0; $a < count($emailReceiver); $a++) {
-		// 		$newEmailReceiver = trim($emailReceiver[$a]["subscriber_email"]);
-		// 		if (trim($newEmailReceiver) != "") {
-		// 			$mail->addAddress($newEmailReceiver);
-		// 			if ($mail->Send()) {
-		// 				$sent_count += 1;
-		// 				$mail->clearAddresses(trim($newEmailReceiver));
-		// 				continue;
-		// 			} else {
-		// 				$else_error_count += 1;
-		// 				continue;
-		// 			}
-		// 		}
-		// 	}
-		// } else {
-		// 	return array(
-		// 		"error" => "No email receiver found!.",
-		// 		"mail_success" => false
-		// 	);
-		// }
-
+		// only 1 email can receiver
 		if ($email != "") {
 			$mail->addAddress($email);
 		}
