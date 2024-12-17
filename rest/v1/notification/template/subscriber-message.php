@@ -13,7 +13,9 @@ function getHtmlSendMessage(
         margin: 0;
         box-sizing: border-box;
       }
-
+      body{
+        font-family: "Poppins";
+      }
       p {
         font-size: 14px;
       }
