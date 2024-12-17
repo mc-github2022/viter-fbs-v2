@@ -23,7 +23,8 @@ const Subscribe = ({ setSubscribe }) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(`${apiVersion}/subscribe`, "post", values),
+    mutationFn: (values) =>
+      queryData(`${apiVersion}/subscribe`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["subscribe"] });
@@ -50,7 +51,7 @@ const Subscribe = ({ setSubscribe }) => {
 
   return (
     <>
-      <div className="grid place-items-center fixed w-full h-screen top-0 z-[999] backdrop-blur-md">
+      <div className="grid place-items-center fixed w-full h-screen top-0 px-8 z-[999] backdrop-blur-md">
         <div className="modalSubscribe bg-[#fafafc] p-10 rounded-md shadow-xl relative">
           <h3 className="text-center text-xl font-semibold mb-2">
             Enjoyed the read?
@@ -85,7 +86,7 @@ const Subscribe = ({ setSubscribe }) => {
                     />
                   </div>
                   <div className="input-wrapper !m-0">
-                    <div className="flex items-start gap-2 w-[300px]">
+                    <div className="flex items-start gap-2 w-full sm:w-[300px]">
                       <div className="flex">
                         <input
                           type="checkbox"
