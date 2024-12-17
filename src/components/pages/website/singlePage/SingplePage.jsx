@@ -35,7 +35,11 @@ const SingplePage = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    setSubscribe(!subscribe);
+    if (window.sessionStorage.getItem("subscribed")) {
+      setSubscribe(subscribe);
+    } else {
+      setSubscribe(!subscribe);
+    }
   }, []);
 
   const { slug } = useParams();

@@ -36,6 +36,7 @@ const Subscribe = ({ setSubscribe }) => {
         setSubscribe(false);
         dispatch(setSuccess(true));
         dispatch(setMessage(`Subscribed, Thank you!`));
+        sessionStorage.setItem("subscribed", JSON.stringify(true));
       }
     },
   });
@@ -50,10 +51,10 @@ const Subscribe = ({ setSubscribe }) => {
 
   return (
     <>
-      <div className="grid place-items-center fixed w-full h-screen top-0 z-[999] backdrop-blur-md">
-        <div className="modalSubscribe bg-[#fafafc] p-10 rounded-md shadow-xl relative">
+      <div className="grid place-items-center fixed w-full h-screen top-0 px-8 z-[999] backdrop-blur-sm">
+        <div className="modalSubscribe bg-[#fafafc] p-10 rounded-xl shadow-2xl shadow-primary relative">
           <h3 className="text-center text-xl font-semibold mb-2">
-            Enjoyed the read?
+            Subscribe to our newsletter
           </h3>
           <p className="text-sm text-center mb-8">
             Join our monthly newsletter for <br /> helpful tips on design and
@@ -85,7 +86,7 @@ const Subscribe = ({ setSubscribe }) => {
                     />
                   </div>
                   <div className="input-wrapper !m-0">
-                    <div className="flex items-start gap-2 w-[300px]">
+                    <div className="flex items-start gap-2 w-full sm:w-[300px]">
                       <div className="flex">
                         <input
                           type="checkbox"
