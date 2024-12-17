@@ -13,14 +13,14 @@ DEVELOPER
 
 
         * MODELS
-            -> 
+            -> rest/v1/models/developer/subscribe/Subscribe.php
             -> 
             -> 
             -> 
 
 
         * HTACESS
-            -> 
+            -> INSIGHT SUBSCRIBER
             -> 
             -> 
             -> 
@@ -32,7 +32,7 @@ DEVELOPER
             -> 
 
         * DB BACKUP
-            -> 
+            -> fbsv2_subscriber_list
             ->
             ->
             ->
