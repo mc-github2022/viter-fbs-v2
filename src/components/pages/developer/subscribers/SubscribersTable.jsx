@@ -21,6 +21,7 @@ import {
   setIsRestore,
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import { apiVersion } from "../../../helpers/functions-general";
 
 const SubscribersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -42,11 +43,11 @@ const SubscribersTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["notification-email", onSearch, store.isSearch],
+    queryKey: ["subscribe", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `${apiVersion}/notification-email/search`, // search endpoint
-        `${apiVersion}/notification-email/page/${pageParam}`, // list endpoint
+        `${apiVersion}/subscribe/search`, // search endpoint
+        `${apiVersion}/subscribe/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -68,22 +69,22 @@ const SubscribersTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.role_name);
-    setIsId(item.role_aid);
+    setIsData(item.subscriber_email);
+    setIsId(item.subscriber_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsData(item.role_name);
-    setIsId(item.role_aid);
+    setIsData(item.subscriber_email);
+    setIsId(item.subscriber_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item.role_name);
-    setIsId(item.role_aid);
+    setIsData(item.subscriber_email);
+    setIsId(item.subscriber_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
@@ -140,20 +141,19 @@ const SubscribersTable = ({ setItemEdit }) => {
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
                   <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}.</td>
+                    <td className="pl-2 place-content-start">{counter++}</td>
                     <td>
-                      {item.role_is_active === 1 ? (
+                      {item.subscriber_is_active === 1 ? (
                         <Status text="Active" />
                       ) : (
                         <Status text="Inactive" />
                       )}
                     </td>
-                    <td className="place-content-start">{item.role_name}</td>
-                    <td>
-                      <p className="line-clamp-5">{item.role_description}</p>
+                    <td className="place-content-start">
+                      {item.subscriber_email}
                     </td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      {item.role_is_active ? (
+                      {item.subscriber_is_active ? (
                         <>
                           <button
                             className="tooltip-action-table"
@@ -211,16 +211,16 @@ const SubscribersTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"role"}
-          mysqlEndpoint={`${apiVersion}/role/${id}`}
+          queryKey={"subscribe"}
+          mysqlEndpoint={`${apiVersion}/subscribe/${id}`}
           item={isData}
         />
       )}
       {store.isArchive && (
         <ModalArchive
           setIsArchive={setIsArchive}
-          queryKey={"role"}
-          mysqlEndpoint={`${apiVersion}/role/active/${id}`}
+          queryKey={"subscribe"}
+          mysqlEndpoint={`${apiVersion}/subscribe/active/${id}`}
           item={isData}
           archive={isArchiving}
         />
@@ -228,8 +228,8 @@ const SubscribersTable = ({ setItemEdit }) => {
       {store.isRestore && (
         <ModalRestore
           setIsRestore={setIsRestore}
-          queryKey={"role"}
-          mysqlEndpoint={`${apiVersion}/role/active/${id}`}
+          queryKey={"subscribe"}
+          mysqlEndpoint={`${apiVersion}/subscribe/active/${id}`}
           item={isData}
         />
       )}

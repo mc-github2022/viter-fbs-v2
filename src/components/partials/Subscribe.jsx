@@ -8,6 +8,7 @@ import { setMessage, setSuccess, setError } from "../store/StoreAction";
 import { queryData } from "../helpers/queryData";
 import { StoreContext } from "../store/StoreContext";
 import ButtonSpinner from "./spinners/ButtonSpinner";
+import { apiVersion } from "../helpers/functions-general";
 
 const Subscribe = ({ setSubscribe }) => {
   const handleSubsClose = () => {
@@ -22,7 +23,7 @@ const Subscribe = ({ setSubscribe }) => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(`/v1/subscribe`, "post", values),
+    mutationFn: (values) => queryData(`${apiVersion}/subscribe`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["subscribe"] });
