@@ -44,17 +44,17 @@ function getHtmlSendMessage(
           src="https://lh3.googleusercontent.com/pw/AP1GczPOrI4VlHIVcs953bbNvcOw_cvIEjO90HRe7nI-VZJbEb_6y3WbAqe6P6W9wlRvKmgfebdlx18fw-GC25ceAidRxi2u0YNjJ3-u2-K7jkhsNNCgXqQ3PJFooo-KDBPUHWkRS5fKmZNzd8eK4OHB0Txt=w512-h207-s-no-gm?authuser=0"
           alt=""
         />
-        <p style="margin-bottom: 20px">Hey there,</p>
-        <p style="margin-bottom: 20px">
+        <p style="margin-bottom: 20px;  font-family: Poppins;">Hey there,</p>
+        <p style="margin-bottom: 20px;  font-family: Poppins;">
           Thanks you for subscribing to Frontline Business Solution newsletter.
         </p>
-        <p style="margin-bottom: 20px">
+        <p style="margin-bottom: 20px;  font-family: Poppins;">
           Once or twice a month, you will receive a newsletter with information
           about our services updates, special offers, great deals , insights,
           and much more.
         </p>
-        <p style="margin-bottom: 20px">We are happy to have you on board!</p>
-        <p>
+        <p style="margin-bottom: 20px;  font-family: Poppins;">We are happy to have you on board!</p>
+        <p style="font-family: Poppins;">
           All the best, <br />
           <i>Frontline Business Solutions</i>
         </p>
@@ -106,7 +106,7 @@ function getHtmlSendMessage(
         </div>
       </div>
       <div style="text-align: center; line-height: 1">
-        <p style="font-family: "Poppins", sans-serif">
+        <p style="font-family: Poppins;">
           <small>
             Frontline Business Solutions Inc. <br />
             Baloc Road, Brgy. San Ignacio <br />
@@ -116,7 +116,7 @@ function getHtmlSendMessage(
             >
           </small>
           <div>
-            <a style="font-size: 11.66px;" href="#">Unsubscribe</a>
+            <a style="font-size: 11.66px; font-family: Poppins;" href="#">Unsubscribe</a>
           </div>
         </p>
       </div>
