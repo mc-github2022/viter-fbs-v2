@@ -10,7 +10,7 @@ import { StoreContext } from "../store/StoreContext";
 import ButtonSpinner from "./spinners/ButtonSpinner";
 import { apiVersion } from "../helpers/functions-general";
 
-const Subscribe = ({ setSubscribe }) => {
+const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
   const handleSubsClose = () => {
     setSubscribe(false);
   };
@@ -19,6 +19,12 @@ const Subscribe = ({ setSubscribe }) => {
   const handleCheckBox = (e) => {
     setChecked(e.target.checked);
   };
+
+  // const endpoint = [`${apiVersion}/subscribe`, `${apiVersion}/subscribe/notif`];
+
+  //   [`${apiVersion}/subscribe`, `${apiVersion}/subscribe/notif`].forEach((endpoint) => {
+  //     queryData(endpoint, "post", values);
+  //   });
 
   const queryClient = useQueryClient();
 
@@ -41,8 +47,57 @@ const Subscribe = ({ setSubscribe }) => {
     },
   });
 
+  // const queryClient = useQueryClient();
+
+  // const mutation = useMutation({
+  //   mutationFn: (values) => {
+  //     const endpoints = [
+  //       `${apiVersion}/subscribe`,
+  //       // `${apiVersion}/subscribe/notif`,
+  //     ];
+
+  //     return Promise.all(
+  //       endpoints.map((endpoint) => queryData(endpoint, "post", values))
+  //     );
+  //   },
+
+  //   onSuccess: (results) => {
+  //     // Invalidate and refetch
+  //     queryClient.invalidateQueries({
+  //       queryKey: ["subscribe"],
+  //     });
+
+  //     // Check if all requests succeeded
+  //     const allSuccess = results.every((result) => result.success);
+
+  //     if (allSuccess) {
+  //       setSubscribe(false);
+  //       dispatch(setSuccess(true));
+  //       dispatch(setMessage(`Subscribed, Thank you!`));
+  //       sessionStorage.setItem("subscribed", JSON.stringify(true));
+  //     } else {
+  //       // Find the first error message
+  //       const errorMessage =
+  //         results.find((result) => !result.success)?.error ||
+  //         "An error occurred.";
+  //       dispatch(setError(true));
+  //       dispatch(setMessage(errorMessage));
+  //       dispatch(setSuccess(false));
+  //     }
+  //   },
+
+  //   onError: (error) => {
+  //     // Handle any unexpected errors from the mutation
+  //     dispatch(setError(true));
+  //     dispatch(setMessage("Failed to subscribe. Please try again later."));
+  //     dispatch(setSuccess(false));
+  //     console.error(error);
+  //   },
+  // });
+
   const initVal = {
     subscriber_email: "",
+    notification_purpose,
   };
 
   const yupSchema = Yup.object({

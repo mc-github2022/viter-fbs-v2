@@ -8,6 +8,8 @@ class Subscribe
     public $subscriber_created;
     public $subscriber_datetime;
 
+    public $notification_purpose;
+
     public $connection;
     public $lastInsertedId;
 
@@ -16,11 +18,13 @@ class Subscribe
     public $subscriber_search;
 
     public $tblSubscriber;
+    public $tblNotification;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblSubscriber = "fbsv2_subscriber_list";
+        $this->tblNotification = "fbsv2_notification";
     }
 
     public function readAll()
@@ -59,23 +63,7 @@ class Subscribe
         return $query;
     }
 
-    public function readEmails()
-    {
-        try {
-            $sql = "select subscriber_email ";
-            $sql .= "from ";
-            $sql .= "{$this->tblSubscriber} ";
-            $sql .= "where subscriber_email = :subscriber_email ";
-            $sql .= "order by subscriber_email ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_email" => $this->subscriber_email,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
+
 
     public function active()
     {
@@ -188,6 +176,42 @@ class Subscribe
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => "{$this->subscriber_email}",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readEmailsByPurpose()
+    {
+        try {
+            $sql = "select notification_email ";
+            $sql .= "from ";
+            $sql .= "{$this->tblNotification} ";
+            $sql .= "where notification_purpose = :notification_purpose ";
+            $sql .= "order by notification_email ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "notification_purpose" => $this->notification_purpose,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readEmails()
+    {
+        try {
+            $sql = "select subscriber_email ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSubscriber} ";
+            $sql .= "where subscriber_email = :subscriber_email ";
+            $sql .= "order by subscriber_email ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_email" => $this->subscriber_email,
             ]);
         } catch (PDOException $ex) {
             $query = false;

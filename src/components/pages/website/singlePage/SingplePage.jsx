@@ -193,7 +193,12 @@ const SingplePage = () => {
         </div>
       </section>
       <Footer />
-      {subscribe && <Subscribe setSubscribe={setSubscribe} />}
+      {subscribe && (
+        <Subscribe
+          setSubscribe={setSubscribe}
+          notification_purpose={"subscribers"}
+        />
+      )}
     </>
   );
 };
