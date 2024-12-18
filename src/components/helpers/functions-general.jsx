@@ -32,7 +32,7 @@ export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
 
 // reCAPTCHA site key TEST
-export const siteKey = "";
+export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
 
 // reCAPTCHA site key PRODUCTION
 // export const siteKey =
