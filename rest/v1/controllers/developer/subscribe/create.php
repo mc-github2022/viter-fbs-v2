@@ -14,11 +14,9 @@ checkPayload($data);
 
 $email = checkIndex($data, "subscriber_email");
 
-
-// // Validate email receiver
-// if (trim($email) == "") {
-//     returnError("Something went wrong, Please try again later.");
-// }
+$subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+// checks newly added data if it already exists
+isEmailExist($subscribe, $subscribe->subscriber_email);
 
 if (trim($email) != "") {
     $mail = sendEmailSubscriber(
@@ -28,12 +26,9 @@ if (trim($email) != "") {
 
 if ($mail["mail_success"] == true) {
     $subscribe->subscriber_is_active = 1;
-    $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+
     $subscribe->subscriber_created = date("Y-m-d H:i:s");
     $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
-
-    // checks newly added data if it already exists
-    isEmailExist($subscribe, $subscribe->subscriber_email);
 
     $query = checkCreate($subscribe);
 
