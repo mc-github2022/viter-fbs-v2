@@ -106,7 +106,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
 
   return (
     <>
-      <div className="grid place-items-center fixed w-full h-screen top-0 px-8 z-[999] backdrop-blur-sm">
+      <div className="grid place-items-center fixed w-full h-screen top-0 px-8 z-[999] backdrop-blur-lg">
         <div className="modalSubscribe bg-[#fafafc] p-10 rounded-xl shadow-2xl shadow-primary relative">
           <h3 className="text-center text-xl font-semibold mb-2">
             Subscribe to our newsletter
@@ -117,8 +117,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
           </p>
           <div
             onClick={handleSubsClose}
-            className="absolute top-2 p-1 px right-2 cursor-pointer shadow-lg rounded-full hover:bg-slate-300"
-          >
+            className="absolute top-2 p-1 px right-2 cursor-pointer shadow-lg bg-primary text-light rounded-full hover:bg-secondary">
             <IoMdClose className="text-2xl  rounded-full " />
           </div>
           <Formik
@@ -127,8 +126,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
             onSubmit={async (values, { setSubmitting, resetForm }) => {
               // console.log(values);
               mutation.mutate(values);
-            }}
-          >
+            }}>
             {(props) => {
               return (
                 <Form>
@@ -137,7 +135,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                       label="Your Email Address"
                       type="text"
                       name="subscriber_email"
-                      className="w-full md:w-[300px]"
+                      className="w-full md:w-[300px] !h-[40px]"
                     />
                   </div>
                   <div className="input-wrapper !m-0">
@@ -160,8 +158,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                     <button
                       className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
                       type="submit"
-                      disabled={mutation.isPending || !props.dirty || !check}
-                    >
+                      disabled={mutation.isPending || !props.dirty || !check}>
                       <div className="flex items-center gap-2">
                         {mutation.isPending ? (
                           <div className="flex items-center gap-2">
