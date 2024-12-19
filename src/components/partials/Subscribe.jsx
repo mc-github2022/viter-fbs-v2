@@ -26,74 +26,74 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
   //     queryData(endpoint, "post", values);
   //   });
 
-  const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: (values) =>
-      queryData(`${apiVersion}/subscribe`, "post", values),
-    onSuccess: (data) => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["subscribe"] });
-      if (!data.success) {
-        dispatch(setError(true));
-        dispatch(setMessage(data.error));
-        dispatch(setSuccess(false));
-      } else {
-        setSubscribe(false);
-        dispatch(setSuccess(true));
-        dispatch(setMessage(`Subscribed, Thank you!`));
-        sessionStorage.setItem("subscribed", JSON.stringify(true));
-      }
-    },
-  });
-
   // const queryClient = useQueryClient();
 
   // const mutation = useMutation({
-  //   mutationFn: (values) => {
-  //     const endpoints = [
-  //       `${apiVersion}/subscribe`,
-  //       // `${apiVersion}/subscribe/notif`,
-  //     ];
-
-  //     return Promise.all(
-  //       endpoints.map((endpoint) => queryData(endpoint, "post", values))
-  //     );
-  //   },
-
-  //   onSuccess: (results) => {
+  //   mutationFn: (values) =>
+  //     queryData(`${apiVersion}/subscribe`, "post", values),
+  //   onSuccess: (data) => {
   //     // Invalidate and refetch
-  //     queryClient.invalidateQueries({
-  //       queryKey: ["subscribe"],
-  //     });
-
-  //     // Check if all requests succeeded
-  //     const allSuccess = results.every((result) => result.success);
-
-  //     if (allSuccess) {
+  //     queryClient.invalidateQueries({ queryKey: ["subscribe"] });
+  //     if (!data.success) {
+  //       dispatch(setError(true));
+  //       dispatch(setMessage(data.error));
+  //       dispatch(setSuccess(false));
+  //     } else {
   //       setSubscribe(false);
   //       dispatch(setSuccess(true));
   //       dispatch(setMessage(`Subscribed, Thank you!`));
   //       sessionStorage.setItem("subscribed", JSON.stringify(true));
-  //     } else {
-  //       // Find the first error message
-  //       const errorMessage =
-  //         results.find((result) => !result.success)?.error ||
-  //         "An error occurred.";
-  //       dispatch(setError(true));
-  //       dispatch(setMessage(errorMessage));
-  //       dispatch(setSuccess(false));
   //     }
   //   },
-
-  //   onError: (error) => {
-  //     // Handle any unexpected errors from the mutation
-  //     dispatch(setError(true));
-  //     dispatch(setMessage("Failed to subscribe. Please try again later."));
-  //     dispatch(setSuccess(false));
-  //     console.error(error);
-  //   },
   // });
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (values) => {
+      const endpoints = [
+        `${apiVersion}/subscribe`,
+        `${apiVersion}/subscribe/notif`,
+      ];
+
+      return Promise.all(
+        endpoints.map((endpoint) => queryData(endpoint, "post", values))
+      );
+    },
+
+    onSuccess: (results) => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({
+        queryKey: ["subscribe"],
+      });
+
+      // Check if all requests succeeded
+      const allSuccess = results.every((result) => result.success);
+
+      if (allSuccess) {
+        setSubscribe(false);
+        dispatch(setSuccess(true));
+        dispatch(setMessage(`Subscribed, Thank you!`));
+        sessionStorage.setItem("subscribed", JSON.stringify(true));
+      } else {
+        // Find the first error message
+        const errorMessage =
+          results.find((result) => !result.success)?.error ||
+          "An error occurred.";
+        dispatch(setError(true));
+        dispatch(setMessage(errorMessage));
+        dispatch(setSuccess(false));
+      }
+    },
+
+    onError: (error) => {
+      // Handle any unexpected errors from the mutation
+      dispatch(setError(true));
+      dispatch(setMessage("Failed to subscribe. Please try again later."));
+      dispatch(setSuccess(false));
+      console.error(error);
+    },
+  });
 
   const initVal = {
     subscriber_email: "",
@@ -117,7 +117,8 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
           </p>
           <div
             onClick={handleSubsClose}
-            className="absolute top-2 p-1 px right-2 cursor-pointer shadow-lg bg-primary text-light rounded-full hover:bg-secondary">
+            className="absolute top-2 p-1 px right-2 cursor-pointer shadow-lg bg-primary text-light rounded-full hover:bg-secondary"
+          >
             <IoMdClose className="text-2xl  rounded-full " />
           </div>
           <Formik
@@ -126,7 +127,8 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
             onSubmit={async (values, { setSubmitting, resetForm }) => {
               // console.log(values);
               mutation.mutate(values);
-            }}>
+            }}
+          >
             {(props) => {
               return (
                 <Form>
@@ -158,7 +160,8 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                     <button
                       className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
                       type="submit"
-                      disabled={mutation.isPending || !props.dirty || !check}>
+                      disabled={mutation.isPending || !props.dirty || !check}
+                    >
                       <div className="flex items-center gap-2">
                         {mutation.isPending ? (
                           <div className="flex items-center gap-2">
