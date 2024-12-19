@@ -57,7 +57,7 @@ function getHtmlSendMessage(
           <div
             style="background-color: white; padding: 20px; text-align: center">
             <p style="font-weight: 600; font-size: 20px; margin-bottom: 10px">
-              Good news! <br />
+              New Website Subscriber <br />
             </p>
             <p style="font-size: 16px; margin-bottom: 20px">
               You have a <b style="color: #6a1141">new subscriber</b> for your
