@@ -20,63 +20,25 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
     setChecked(e.target.checked);
   };
 
-  // const endpoint = [`${apiVersion}/subscribe`, `${apiVersion}/subscribe/notif`];
-
-  //   [`${apiVersion}/subscribe`, `${apiVersion}/subscribe/notif`].forEach((endpoint) => {
-  //     queryData(endpoint, "post", values);
-  //   });
-
-  // const queryClient = useQueryClient();
-
-  // const mutation = useMutation({
-  //   mutationFn: (values) =>
-  //     queryData(`${apiVersion}/subscribe`, "post", values),
-  //   onSuccess: (data) => {
-  //     // Invalidate and refetch
-  //     queryClient.invalidateQueries({ queryKey: ["subscribe"] });
-  //     if (!data.success) {
-  //       dispatch(setError(true));
-  //       dispatch(setMessage(data.error));
-  //       dispatch(setSuccess(false));
-  //     } else {
-  //       setSubscribe(false);
-  //       dispatch(setSuccess(true));
-  //       dispatch(setMessage(`Subscribed, Thank you!`));
-  //       sessionStorage.setItem("subscribed", JSON.stringify(true));
-  //     }
-  //   },
-  // });
-
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => {
-      const endpoints = [
-        `${apiVersion}/subscribe`,
-        `${apiVersion}/subscribe/notif`,
-      ];
-
-      return Promise.all(
-        endpoints.map((endpoint) => queryData(endpoint, "post", values))
-      );
-    },
+    mutationFn: (values) =>
+      Promise.all(
+        [`${apiVersion}/subscribe`, `${apiVersion}/subscribe/notif`].map(
+          (endpoint) => queryData(endpoint, "post", values)
+        )
+      ),
 
     onSuccess: (results) => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({
-        queryKey: ["subscribe"],
-      });
+      queryClient.invalidateQueries({ queryKey: ["subscribe"] });
 
-      // Check if all requests succeeded
-      const allSuccess = results.every((result) => result.success);
-
-      if (allSuccess) {
+      if (results.every((result) => result.success)) {
         setSubscribe(false);
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Subscribed, Thank you!`));
+        dispatch(setMessage("Subscribed, Thank you!"));
         sessionStorage.setItem("subscribed", JSON.stringify(true));
       } else {
-        // Find the first error message
         const errorMessage =
           results.find((result) => !result.success)?.error ||
           "An error occurred.";
@@ -84,14 +46,6 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
         dispatch(setMessage(errorMessage));
         dispatch(setSuccess(false));
       }
-    },
-
-    onError: (error) => {
-      // Handle any unexpected errors from the mutation
-      dispatch(setError(true));
-      dispatch(setMessage("Failed to subscribe. Please try again later."));
-      dispatch(setSuccess(false));
-      console.error(error);
     },
   });
 

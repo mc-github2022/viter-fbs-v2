@@ -24,6 +24,9 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $email = checkIndex($data, "subscriber_email");
     $subscribe->notification_purpose = $data["notification_purpose"];
 
+    $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+    // checks newly added data if it already exists
+    isEmailExist($subscribe, $subscribe->subscriber_email);
 
     // Check email existence
     $emailReceiver = getResultData($subscribe->readEmailsByPurpose());
@@ -33,7 +36,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     if (count($emailReceiver) == 0) {
         returnError("Something went wrong, Please try again later.");
     }
-    
+
     // Check email existence
     if (isEmailExist($subscribe, $subscribe->subscriber_email)) {
         returnError("This email is already subscribed.");

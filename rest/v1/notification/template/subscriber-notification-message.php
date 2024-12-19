@@ -44,10 +44,10 @@ function getHtmlSendMessage(
   <body>
     <div class="bgHolder" style="padding: 10px 0; background-color: #ebf0f4">
       <section style="width: 680px; margin: 0 auto" class="container">
-        <section class="canvas" style="padding: 20px">
+        <section class="canvas" style="padding: 20px;">
           <div
             class="theImage"
-            style="display: flex; justify-content: center; margin-bottom: 20px">
+            style="display: flex; justify-content: center; margin-bottom: 20px; text-align: center;">
             <a href="#">
               <img style="width: 150px""
               src="https://frontlinebusiness.com.ph/img/logo.png" alt="FBS
@@ -57,7 +57,7 @@ function getHtmlSendMessage(
           <div
             style="background-color: white; padding: 20px; text-align: center">
             <p style="font-weight: 600; font-size: 20px; margin-bottom: 10px">
-              Good news! <br />
+              New Website Subscriber <br />
             </p>
             <p style="font-size: 16px; margin-bottom: 20px">
               You have a <b style="color: #6a1141">new subscriber</b> for your
