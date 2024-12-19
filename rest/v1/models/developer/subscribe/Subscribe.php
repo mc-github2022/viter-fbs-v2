@@ -9,6 +9,7 @@ class Subscribe
     public $subscriber_datetime;
 
     public $notification_purpose;
+    public $subscriber_count;
 
     public $connection;
     public $lastInsertedId;
@@ -217,5 +218,21 @@ class Subscribe
             $query = false;
         }
         return $query;
+    }
+
+    // count the subscribers
+    public function readSubscriberCount()
+    {
+        try {
+            $sql = "SELECT COUNT(*) AS subscriber_count ";
+            $sql .= "FROM {$this->tblSubscriber}";
+
+            $query = $this->connection->prepare($sql);
+            $query->execute();
+
+            return (int)$query->fetchColumn() + 1; // This will return 0 if no rows found
+        } catch (PDOException $ex) {
+            return false; // Return false in case of an error
+        }
     }
 }

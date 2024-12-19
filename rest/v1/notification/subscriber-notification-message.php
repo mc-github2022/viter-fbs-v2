@@ -14,6 +14,8 @@ include_once("template/subscriber-notification-message.php");
 function sendNotificationEmailSubscriber(
 	$email,
 	$emailReceiver,
+	$emailDate,
+	$subscriberCount
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -35,6 +37,8 @@ function sendNotificationEmailSubscriber(
 		$mail->Body = getHtmlSendMessage(
 			$email,
 			$emailReceiver,
+			$emailDate,
+			$subscriberCount
 		);
 
 

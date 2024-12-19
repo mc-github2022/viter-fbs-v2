@@ -4,6 +4,7 @@ require '../../../models/developer/subscribe/Subscribe.php';
 require '../../../core/header.php';
 require '../../../notification/subscriber-notification-message.php';
 require '../../../core/functions.php';
+require 'functions.php';
 
 $conn = null;
 $conn = checkDbConnection();
@@ -23,6 +24,11 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     $email = checkIndex($data, "subscriber_email");
     $subscribe->notification_purpose = $data["notification_purpose"];
+    $emailDate = (new DateTime())->format("F j, Y");
+
+    // subscriber count
+    $subscriberCount = checkReadSubscriberCount($subscribe);
+
 
     $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
     // checks newly added data if it already exists
@@ -45,7 +51,9 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     if (count($emailReceiver) > 0) {
         $mail = sendNotificationEmailSubscriber(
             $email,
-            $emailReceiver
+            $emailReceiver,
+            $emailDate,
+            $subscriberCount
         );
     }
 
