@@ -44,10 +44,10 @@ function getHtmlSendMessage(
   <body>
     <div class="bgHolder" style="padding: 10px 0; background-color: #ebf0f4">
       <section style="width: 680px; margin: 0 auto" class="container">
-        <section class="canvas" style="padding: 20px">
+        <section class="canvas" style="padding: 20px;">
           <div
             class="theImage"
-            style="display: flex; justify-content: center; margin-bottom: 20px">
+            style="display: flex; justify-content: center; margin-bottom: 20px; text-align: center;">
             <a href="#">
               <img style="width: 150px""
               src="https://frontlinebusiness.com.ph/img/logo.png" alt="FBS
