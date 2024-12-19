@@ -3,6 +3,8 @@
 function getHtmlSendMessage(
   $email,
   $emailReceiver,
+  $emailDate,
+  $subscriberCount
 ) {
 
 
@@ -74,11 +76,11 @@ function getHtmlSendMessage(
               ">
               <tr>
                 <td style="color: gray">Email:</td>
-                <td style="color: blue">'. $email .'</td>
+                <td style="color: blue">' . $email . '</td>
               </tr>
               <tr>
                 <td style="color: gray">Subscribe Date:</td>
-                <td>December 19, 2024</td>
+                <td>' . $emailDate . '</td>
               </tr>
             </table>
 
@@ -87,7 +89,7 @@ function getHtmlSendMessage(
                 You now have
                 <span
                   style="color: #6a1141; font-size: larger; font-weight: 600"
-                  >1000</span
+                  >' . $subscriberCount . '</span
                 >
                 Subscribers
               </p>
