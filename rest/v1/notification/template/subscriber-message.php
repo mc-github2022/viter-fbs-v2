@@ -17,7 +17,7 @@ function getHtmlSendMessage(
         font-family: "Arial";
       }
       p {
-        font-size: 14px;
+        font-size: 16px;
       }
     </style>
   </head>
