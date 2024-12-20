@@ -12,7 +12,9 @@ include_once("mail-config.php");
 include_once("template/subscriber-message.php");
 
 function sendEmailSubscriber(
-	$email
+	$unsubscribe_link,
+	$email,
+	$key
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -32,7 +34,10 @@ function sendEmailSubscriber(
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
 		$mail->Body = getHtmlSendMessage(
-			$email
+			$unsubscribe_link,
+			$email,
+			$key,
+			ROOT_DOMAIN,
 		);
 
 

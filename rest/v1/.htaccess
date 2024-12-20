@@ -113,3 +113,4 @@ RewriteRule ^subscribe/page/([0-9]+)$ controllers/developer/subscribe/page.php?s
 RewriteRule ^subscribe/search$ controllers/developer/subscribe/search.php [L]
 RewriteRule ^subscribe/active/([0-9]+)$ controllers/developer/subscribe/active.php?subscribeid=$1 [L]
 RewriteRule ^subscribe/notif$ controllers/developer/subscribe/notification-subscriber.php [L]
+RewriteRule ^subscribe/key/(.*)$ controllers/developer/subscribe/key.php?userkey=$1 [L]
