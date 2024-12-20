@@ -12,7 +12,7 @@ const Unsubscribe = () => {
           <div className="text-left md:w-[650px] m-auto">
             <div className="sadMailImage pt-[70px] md:pt-[152px] mb-4">
               <img
-                className="m-auto w-full xs:w-[400px] lg:w-[400px]"
+                className="m-auto w-[400px]"
                 src="https://lh3.googleusercontent.com/pw/AP1GczNODh0erMDN3ufWLI5vUtQZD-U8tE5vnwLwKUMem38E591ciKK0AZDGTOCGnCGXL9gafpUSlblVKsdlpn1A-Ir2IuUko-OXfg71KKh7adklFYZzqjQcfgvT6W-w5otfEHJ6TwgxeeEE968OtkrSMOc3=w698-h406-s-no-gm?authuser=0"
                 alt=""
               />
