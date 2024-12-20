@@ -8,6 +8,7 @@ import { queryData } from "../helpers/queryData";
 import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import * as Yup from "yup";
 import PageNotFound from "@/components/partials/PageNotFound";
+import { InputTextArea } from "../helpers/FormInputs";
 
 const Unsubscribe = () => {
   const paramKey = getUrlParam().get("key");
@@ -56,12 +57,12 @@ const Unsubscribe = () => {
       ) : (
         <>
           <Header />
-          <div className="unsubscibe">
+          <div className="unsubscibe pb-[56px]">
             <div className="customContainer">
-              <div className="text-left w-[650px] m-auto">
-                <div className="sadMailImage pt-[176px] mb-4">
+              <div className="text-left md:w-[650px] m-auto">
+                <div className="sadMailImage pt-[70px] md:pt-[152px] mb-4">
                   <img
-                    className="m-auto w-full md:w-[400px]"
+                    className="m-auto w-[450px] xs:w-[400px]"
                     src="https://lh3.googleusercontent.com/pw/AP1GczNODh0erMDN3ufWLI5vUtQZD-U8tE5vnwLwKUMem38E591ciKK0AZDGTOCGnCGXL9gafpUSlblVKsdlpn1A-Ir2IuUko-OXfg71KKh7adklFYZzqjQcfgvT6W-w5otfEHJ6TwgxeeEE968OtkrSMOc3=w698-h406-s-no-gm?authuser=0"
                     alt=""
                   />
@@ -82,44 +83,77 @@ const Unsubscribe = () => {
                   {(props) => {
                     return (
                       <Form>
-                        <div className="input-wrapper !m-0">
-                          <div className="flex items-start gap-2 w-full">
-                            <div className="flex">
-                              <input type="checkbox" name="agree" id="agree" />
+                        <div className="flex justify-between">
+                          <div className="feedbackCheckboxes">
+                            <div className="input-wrapper !m-0">
+                              <div className="flex items-start gap-2 w-full">
+                                <div className="flex">
+                                  <input
+                                    type="checkbox"
+                                    name="agree"
+                                    id="agree"
+                                  />
+                                </div>
+                                <p className="text-xs mt-2.5">
+                                  I no longer want to receive these emails
+                                </p>
+                              </div>
                             </div>
-                            <p className="text-xs mt-2.5">
-                              I no longer want to receive these emails
-                            </p>
+                            <div className="input-wrapper !m-0">
+                              <div className="flex items-start gap-2 w-full">
+                                <div className="flex">
+                                  <input
+                                    type="checkbox"
+                                    name="agree"
+                                    id="agree"
+                                  />
+                                </div>
+                                <p className="text-xs mt-2.5">
+                                  Emails are too frequent
+                                </p>
+                              </div>
+                            </div>
+                            <div className="input-wrapper !m-0">
+                              <div className="flex items-start gap-2 w-full">
+                                <div className="flex">
+                                  <input
+                                    type="checkbox"
+                                    name="agree"
+                                    id="agree"
+                                  />
+                                </div>
+                                <p className="text-xs mt-2.5">
+                                  I never signed up to receive this emails.
+                                </p>
+                              </div>
+                            </div>
+                            <div className="input-wrapper !m-0">
+                              <div className="flex items-start gap-2 w-full">
+                                <div className="flex">
+                                  <input
+                                    type="checkbox"
+                                    name="agree"
+                                    id="agree"
+                                  />
+                                </div>
+                                <p className="text-xs mt-2.5">
+                                  Emails are in appropriate
+                                </p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div className="input-wrapper !m-0">
-                          <div className="flex items-start gap-2 w-full">
-                            <div className="flex">
-                              <input type="checkbox" name="agree" id="agree" />
+                          <div className="othersMessage grid place-items-center">
+                            <div className="input-wrapper m-0">
+                              <div className="flex items-start gap-2 w-full">
+                                <InputTextArea
+                                  label="Others"
+                                  type="text"
+                                  name="home_banner_description"
+                                  className="w-[300px] !h-[20px]"
+                                  placeholder="Add your reasons or recommendation here"
+                                />
+                              </div>
                             </div>
-                            <p className="text-xs mt-2.5">
-                              Emails are too frequent
-                            </p>
-                          </div>
-                        </div>
-                        <div className="input-wrapper !m-0">
-                          <div className="flex items-start gap-2 w-full">
-                            <div className="flex">
-                              <input type="checkbox" name="agree" id="agree" />
-                            </div>
-                            <p className="text-xs mt-2.5">
-                              I never signed up to receive this emails.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="input-wrapper !m-0">
-                          <div className="flex items-start gap-2 w-full">
-                            <div className="flex">
-                              <input type="checkbox" name="agree" id="agree" />
-                            </div>
-                            <p className="text-xs mt-2.5">
-                              Emails are in appropriate
-                            </p>
                           </div>
                         </div>
 
