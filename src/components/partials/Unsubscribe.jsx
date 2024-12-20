@@ -76,7 +76,7 @@ const Unsubscribe = () => {
                           type="text"
                           name="home_banner_description"
                           className="w-full md:w-[300px] !h-[20px]"
-                          placeholder="Add your reasons or recommendation here"
+                          placeholder="Your Message"
                         />
                       </div>
                     </div>
