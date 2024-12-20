@@ -12,7 +12,7 @@ const Unsubscribe = () => {
           <div className="text-left md:w-[650px] m-auto">
             <div className="sadMailImage pt-[70px] md:pt-[152px] mb-4">
               <img
-                className="m-auto w-full xs:w-[400px]"
+                className="m-auto w-full xs:w-[400px] lg:w-[400px]"
                 src="https://lh3.googleusercontent.com/pw/AP1GczNODh0erMDN3ufWLI5vUtQZD-U8tE5vnwLwKUMem38E591ciKK0AZDGTOCGnCGXL9gafpUSlblVKsdlpn1A-Ir2IuUko-OXfg71KKh7adklFYZzqjQcfgvT6W-w5otfEHJ6TwgxeeEE968OtkrSMOc3=w698-h406-s-no-gm?authuser=0"
                 alt=""
               />
@@ -25,7 +25,7 @@ const Unsubscribe = () => {
             </p>
             <Formik>
               <Form>
-                <div className="flex justify-between">
+                <div className="md:flex justify-between">
                   <div className="feedbackCheckboxes">
                     <div className="input-wrapper !m-0">
                       <div className="flex items-start gap-2 w-full">
@@ -68,14 +68,14 @@ const Unsubscribe = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="othersMessage grid place-items-center">
+                  <div className="othersMessage mt-2.5 md:grid md:place-items-center">
                     <div className="input-wrapper m-0">
                       <div className="flex items-start gap-2 w-full">
                         <InputTextArea
                           label="Others"
                           type="text"
                           name="home_banner_description"
-                          className="w-[300px] !h-[20px]"
+                          className="w-full md:w-[300px] !h-[20px]"
                           placeholder="Add your reasons or recommendation here"
                         />
                       </div>
@@ -83,7 +83,7 @@ const Unsubscribe = () => {
                   </div>
                 </div>
 
-                <div className="modal__action  md:flex justify-center text-center mt-12 gap-2 text-xs">
+                <div className="modal__action  sm:flex justify-center text-center mt-12 gap-2 text-xs">
                   <button
                     className="btn bg-white border w-[80%] md:w-[unset] border-primary hover:text-primary disabled:opacity-[0.5] mb-4"
                     type="submit"
