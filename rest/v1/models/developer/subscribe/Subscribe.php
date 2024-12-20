@@ -7,6 +7,7 @@ class Subscribe
     public $subscriber_is_active;
     public $subscriber_key;
     public $subscriber_email_new;
+    public $subscriber_feedback;
     public $subscriber_created;
     public $subscriber_datetime;
 
@@ -65,8 +66,6 @@ class Subscribe
         }
         return $query;
     }
-
-
 
     public function active()
     {
@@ -311,6 +310,30 @@ class Subscribe
             $sql .= "where subscriber_key = :subscriber_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
+                "subscriber_key" => $this->subscriber_key,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // update unsubscribe
+    public function updateUnsubscribe()
+    {
+        try {
+            $sql = "update {$this->tblSubscriber} set ";
+            $sql .= "subscriber_key = '', ";
+            $sql .= "subscriber_feedback = :subscriber_feedback, ";
+            $sql .= "subscriber_is_active = :subscriber_is_active, ";
+            $sql .= "subscriber_datetime = :subscriber_datetime ";
+            $sql .= "where subscriber_key  = :subscriber_key ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_key" => $this->subscriber_key,
+                "subscriber_feedback" => $this->subscriber_feedback,
+                "subscriber_is_active" => $this->subscriber_is_active,
+                "subscriber_datetime" => $this->subscriber_datetime,
                 "subscriber_key" => $this->subscriber_key,
             ]);
         } catch (PDOException $ex) {
