@@ -13,8 +13,9 @@ import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
 import { InputText } from "../../../helpers/FormInputs";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import { apiVersion } from "../../../helpers/functions-general";
+import { apiVersion, getUrlParam } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
+import useQueryData from "@/components/custom-hooks/useQueryData";
 
 const ModalAddSubscribers = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);

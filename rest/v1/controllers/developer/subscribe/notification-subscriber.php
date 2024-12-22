@@ -2,6 +2,7 @@
 // check database connection
 require '../../../models/developer/subscribe/Subscribe.php';
 require '../../../core/header.php';
+require '../../../core/Encryption.php';
 require '../../../notification/subscriber-notification-message.php';
 require '../../../core/functions.php';
 require 'functions.php';

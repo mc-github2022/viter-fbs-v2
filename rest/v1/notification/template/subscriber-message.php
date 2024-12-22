@@ -1,7 +1,10 @@
 <?php
 
 function getHtmlSendMessage(
-  $email
+  $unsubscribe_link,
+  $email,
+  $key,
+  $ROOT_DOMAIN,
 ) {
 
 
@@ -116,8 +119,23 @@ function getHtmlSendMessage(
             >
           </small>
           <div>
-            <a style="font-size: 11.66px; font-family: Poppins;" href="#">Unsubscribe</a>
+            <a style="font-size: 11.66px; font-family: Poppins;" href="' . $ROOT_DOMAIN . '' . $unsubscribe_link . '?key=' . $key . '">Unsubscribe</a>
           </div>
+          <p style="font-size: 12px; padding: 0 10px">
+            Having issues with the link? Try to paste this text on your browser
+            URL:
+            <a
+              target="_blank"
+              rel="nofollow"
+              style="
+                font-size: 12px;
+                font-family: Helvetica Neue, sans-serif;
+                text-decoration: none;
+                color: #505050;
+              "
+              >' . $ROOT_DOMAIN . '' . $unsubscribe_link . '?key=' . $key . '</a
+      >
+          </p>
         </p>
       </div>
     </div>

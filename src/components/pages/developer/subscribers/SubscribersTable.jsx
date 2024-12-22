@@ -119,6 +119,7 @@ const SubscribersTable = ({ setItemEdit }) => {
               <th className="pl-2 w-[1rem]">#</th>
               <th className=" w-[5rem]">Status</th>
               <th>Email</th>
+              <th>Feedback</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -153,6 +154,9 @@ const SubscribersTable = ({ setItemEdit }) => {
                     </td>
                     <td className="place-content-start">
                       {item.subscriber_email}
+                    </td>
+                    <td className="place-content-start">
+                      {item.subscriber_feedback}
                     </td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                       {item.subscriber_is_active ? (
