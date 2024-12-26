@@ -156,12 +156,12 @@ const Unsubscribe = () => {
                             <div className="input-wrapper m-0">
                               <div className="flex items-start gap-2 w-full">
                                 <textarea
-                                  label="Others"
                                   name="subscriber_feedback"
                                   className="w-full md:w-[300px] !h-[20px]"
                                   placeholder="Add your reasons or recommendation here"
                                   onChange={handleTextChange}
                                 />
+                                <label>Others</label>
                               </div>
                             </div>
                           </div>
