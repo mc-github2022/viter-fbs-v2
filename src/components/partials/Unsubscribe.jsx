@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "./Header";
 import { Form, Formik } from "formik";
 import {
@@ -13,9 +13,16 @@ import * as Yup from "yup";
 import PageNotFound from "@/components/partials/PageNotFound";
 import { InputText, InputTextArea } from "../helpers/FormInputs";
 import { queryData } from "../helpers/queryData";
+import ButtonSpinner from "./spinners/ButtonSpinner";
+import { Link, useNavigate } from "react-router-dom";
+import ModalSuccess from "./modals/ModalSuccess";
+import { StoreContext } from "../store/StoreContext";
 
 const Unsubscribe = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const paramKey = getUrlParam().get("key");
+  const navigate = useNavigate();
+
   const {
     isLoading,
     error,
@@ -55,7 +62,7 @@ const Unsubscribe = () => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        `${apiVersion}/subscribe/update-unsubscribe/${paramKey}`,
+        `${apiVersion}/subscribe/unsubscribe/${paramKey}`,
         "put",
         values
       ),
@@ -63,26 +70,25 @@ const Unsubscribe = () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["subscribe"] });
 
-      // show error box
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
       } else {
         dispatch(setSuccess(true));
+        dispatch(setMessage("You are now unsubscribed. Thank you!"));
+
+        setTimeout(() => {
+          navigate("*");
+        }, 2000);
       }
     },
   });
 
-  const handleYes = async () => {
-    // mutate data
-    mutation.mutate({
-      isActive: 0,
-    });
-  };
-
   const initVal = {
     subscriber_feedback: "",
     key: paramKey,
+    isActive: "0",
   };
 
   const yupSchema = Yup.object({});
@@ -126,79 +132,6 @@ const Unsubscribe = () => {
                   {(props) => {
                     return (
                       <Form>
-                        {/* <div className="md:flex justify-between">
-                          <div className="feedbackCheckboxes">
-                            <div className="input-wrapper !m-0">
-                              <div className="flex items-start gap-2 w-full">
-                                <div className="flex">
-                                  <InputText
-                                    type="checkbox"
-                                    name="subscriber_feedback"
-                                    id="agree"
-                                  />
-                                </div>
-                                <p className="text-xs mt-2.5">
-                                  I no longer want to receive these emails
-                                </p>
-                              </div>
-                            </div>
-                            <div className="input-wrapper !m-0">
-                              <div className="flex items-start gap-2 w-full">
-                                <div className="flex">
-                                  <InputText
-                                    type="checkbox"
-                                    name="subscriber_feedback"
-                                    id="agree"
-                                  />
-                                </div>
-                                <p className="text-xs mt-2.5">
-                                  Emails are too frequent
-                                </p>
-                              </div>
-                            </div>
-                            <div className="input-wrapper !m-0">
-                              <div className="flex items-start gap-2 w-full">
-                                <div className="flex">
-                                  <InputText
-                                    type="checkbox"
-                                    name="subscriber_feedback"
-                                    id="agree"
-                                  />
-                                </div>
-                                <p className="text-xs mt-2.5">
-                                  I never signed up to receive this emails.
-                                </p>
-                              </div>
-                            </div>
-                            <div className="input-wrapper !m-0">
-                              <div className="flex items-start gap-2 w-full">
-                                <div className="flex">
-                                  <InputText
-                                    type="checkbox"
-                                    name="subscriber_feedback"
-                                    id="agree"
-                                  />
-                                </div>
-                                <p className="text-xs mt-2.5">
-                                  Emails are in appropriate
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="othersMessage mt-2.5 md:grid md:place-items-center">
-                            <div className="input-wrapper m-0">
-                              <div className="flex items-start gap-2 w-full">
-                                <InputTextArea
-                                  label="Others"
-                                  type="text"
-                                  name="subscriber_feedback"
-                                  className="w-full md:w-[300px] !h-[20px]"
-                                  placeholder="Add your reasons or recommendation here"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div> */}
                         <div className="md:flex justify-between">
                           <div className="feedbackCheckboxes">
                             {feedbackOptions.map((option, index) => (
@@ -238,17 +171,22 @@ const Unsubscribe = () => {
                           <button
                             className="btn bg-white border w-[80%] md:w-[unset] border-primary hover:text-primary disabled:opacity-[0.5] mb-4"
                             type="submit"
-                            onClick={handleYes}
                           >
-                            Unsubscribe
+                            {mutation.isPending ? (
+                              <div className="flex items-center gap-2">
+                                <ButtonSpinner /> Unsubscribe
+                              </div>
+                            ) : (
+                              "Unsubscribe"
+                            )}
                           </button>
-                          <button
+                          <Link
                             className="btn bg-primary text-light w-[80%] md:w-[unset]  hover:bg-secondary hover:text-light disabled:opacity-[0.5] mb-4"
-                            href={`${devNavUrl}/`}
-                            type="submit"
+                            to={`${devNavUrl}/`}
+                            type="button"
                           >
                             I'd rather stay
-                          </button>
+                          </Link>
                         </div>
                       </Form>
                     );
@@ -259,6 +197,7 @@ const Unsubscribe = () => {
           </div>
         </>
       )}
+      {store.success && <ModalSuccess />}
     </>
   );
 };

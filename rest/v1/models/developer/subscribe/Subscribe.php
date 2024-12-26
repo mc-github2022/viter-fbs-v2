@@ -230,7 +230,6 @@ class Subscribe
         try {
             $sql = "SELECT COUNT(*) AS subscriber_count ";
             $sql .= "FROM {$this->tblSubscriber}";
-
             $query = $this->connection->prepare($sql);
             $query->execute();
 
@@ -327,14 +326,13 @@ class Subscribe
             $sql .= "subscriber_feedback = :subscriber_feedback, ";
             $sql .= "subscriber_is_active = :subscriber_is_active, ";
             $sql .= "subscriber_datetime = :subscriber_datetime ";
-            $sql .= "where subscriber_key  = :subscriber_key ";
+            $sql .= "where subscriber_key  = :original_subscriber_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "subscriber_key" => $this->subscriber_key,
+                "original_subscriber_key" => $this->subscriber_key,
                 "subscriber_feedback" => $this->subscriber_feedback,
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_datetime" => $this->subscriber_datetime,
-                "subscriber_key" => $this->subscriber_key,
             ]);
         } catch (PDOException $ex) {
             $query = false;
