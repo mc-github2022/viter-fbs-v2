@@ -21,6 +21,15 @@ $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
 $subscribe->subscriber_key = $encrypt->doHash(rand());
 $unsubscribe_link = "/unsubscribe";
 // checks newly added data if it already exists
+
+
+// // Assuming $subscribe is an instance of your subscriber class
+// if (checkEmailSetActive($subscribe)) {
+//     $returnData["message"] = "Email status updated to active.";
+// } else {
+//     $returnData["message"] = "Email is already active or does not exist.";
+// }
+
 isEmailExist($subscribe, $subscribe->subscriber_email);
 
 if (trim($email) != "") {

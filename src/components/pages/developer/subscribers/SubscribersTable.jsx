@@ -22,6 +22,7 @@ import {
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import { apiVersion } from "../../../helpers/functions-general";
+import { FaUserGroup } from "react-icons/fa6";
 
 const SubscribersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -98,7 +99,13 @@ const SubscribersTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <div className="place-self-end">
+      <div className="flex items-center gap-5 place-self-end">
+        <div className="flex items-center gap-2">
+          <span>
+            <FaUserGroup className="text-gray-500" />
+          </span>
+          {store.isSearch ? result?.pages[0].count : result?.pages[0].total}
+        </div>
         <SearchBar
           search={search}
           dispatch={dispatch}
