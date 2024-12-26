@@ -5,6 +5,7 @@ $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
 $subscribe = new Subscribe($conn);
+$encrypt = new Encryption();
 // get $_GET data
 $error = [];
 $returnData = [];
@@ -14,13 +15,13 @@ if (array_key_exists("subscribeid", $_GET)) {
   // get data
   $subscribe->subscriber_aid = $_GET['subscribeid'];
   $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
-
+  $subscribe->subscriber_key = $encrypt->doHash(rand());
   $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
   checkId($subscribe->subscriber_aid);
 
 
   //checks current data to avoid same entries from being updated
-  $subscriber_email_old = checkIndex($data, 'subscriber_email_old');
+  $subscriber_email_old = strtolower($data["subscriber_email_old"]);
   compareEmail($subscribe, $subscriber_email_old, $subscribe->subscriber_email);
 
   // update

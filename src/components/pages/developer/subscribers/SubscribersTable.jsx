@@ -98,15 +98,17 @@ const SubscribersTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <SearchBar
-        search={search}
-        dispatch={dispatch}
-        store={store}
-        result={result?.pages}
-        isFetching={isFetching}
-        setOnSearch={setOnSearch}
-        onSearch={onSearch}
-      />
+      <div className="place-self-end">
+        <SearchBar
+          search={search}
+          dispatch={dispatch}
+          store={store}
+          result={result?.pages}
+          isFetching={isFetching}
+          setOnSearch={setOnSearch}
+          onSearch={onSearch}
+        />
+      </div>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (
           <FetchingSpinner />
@@ -117,6 +119,7 @@ const SubscribersTable = ({ setItemEdit }) => {
               <th className="pl-2 w-[1rem]">#</th>
               <th className=" w-[5rem]">Status</th>
               <th>Email</th>
+              <th>Feedback</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -151,6 +154,9 @@ const SubscribersTable = ({ setItemEdit }) => {
                     </td>
                     <td className="place-content-start">
                       {item.subscriber_email}
+                    </td>
+                    <td className="place-content-start">
+                      {item.subscriber_feedback}
                     </td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                       {item.subscriber_is_active ? (

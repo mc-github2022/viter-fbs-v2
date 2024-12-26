@@ -9,12 +9,13 @@ require 'PHPMailer/SMTP.php';
 require 'PHPMailer/Exception.php';
 
 include_once("mail-config.php");
-include_once("template/subscriber-message.php");
+include_once("template/subscriber-notification-message.php");
 
-function sendEmailSubscriber(
-	$unsubscribe_link,
+function sendNotificationEmailSubscriber(
 	$email,
-	$key
+	$emailReceiver,
+	$emailDate,
+	$subscriberCount
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -30,29 +31,51 @@ function sendEmailSubscriber(
 		$mail->SMTPAuth = true;
 		$mail->Username = USERNAME; // if gmail use your gmail email
 		$mail->Password = PASSWORD; // if gmail use your email password
-		$mail->Subject = "Welcome to Frontline Business Solutions Newsletter";
+		$mail->Subject = "New Subscriber!";
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
 		$mail->Body = getHtmlSendMessage(
-			$unsubscribe_link,
 			$email,
-			$key,
-			ROOT_DOMAIN,
+			$emailReceiver,
+			$emailDate,
+			$subscriberCount
 		);
 
 
-		// only 1 email can receiver
-		if ($email != "") {
-			$mail->addAddress($email);
-		}
-		if ($mail->Send()) {
-			return array(
-				"error" => "Sucessfully sent",
-				"mail_success" => true
-			);
+		$sent_count = 0;
+		$else_error_count = 0;
+		if (count($emailReceiver) > 0) {
+			for ($a = 0; $a < count($emailReceiver); $a++) {
+				$newEmailReceiver = trim($emailReceiver[$a]["notification_email"]);
+				if (trim($newEmailReceiver) != "") {
+					$mail->addAddress($newEmailReceiver);
+					if ($mail->Send()) {
+						$sent_count += 1;
+						$mail->clearAddresses(trim($newEmailReceiver));
+						continue;
+					} else {
+						$else_error_count += 1;
+						continue;
+					}
+				}
+			}
 		} else {
 			return array(
-				"error" => "No email receiver found!",
+				"error" => "No email receiver found!.",
+				"mail_success" => false
+			);
+		}
+
+		if ($sent_count > 0 && $else_error_count == 0) {
+			return array(
+				"mail_success" => true,
+				"error" => "No Error.",
+			);
+		}
+
+		if ($else_error_count > 0) {
+			return array(
+				"error" => "Could not send email. Please refresh your page and try again.",
 				"mail_success" => false
 			);
 		}

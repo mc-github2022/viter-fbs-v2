@@ -10,7 +10,7 @@ import { StoreContext } from "../store/StoreContext";
 import ButtonSpinner from "./spinners/ButtonSpinner";
 import { apiVersion } from "../helpers/functions-general";
 
-const Subscribe = ({ setSubscribe }) => {
+const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
   const handleSubsClose = () => {
     setSubscribe(false);
   };
@@ -24,25 +24,34 @@ const Subscribe = ({ setSubscribe }) => {
 
   const mutation = useMutation({
     mutationFn: (values) =>
-      queryData(`${apiVersion}/subscribe`, "post", values),
-    onSuccess: (data) => {
-      // Invalidate and refetch
+      Promise.all(
+        [`${apiVersion}/subscribe`, `${apiVersion}/subscribe/notif`].map(
+          (endpoint) => queryData(endpoint, "post", values)
+        )
+      ),
+
+    onSuccess: (results) => {
       queryClient.invalidateQueries({ queryKey: ["subscribe"] });
-      if (!data.success) {
-        dispatch(setError(true));
-        dispatch(setMessage(data.error));
-        dispatch(setSuccess(false));
-      } else {
+
+      if (results.every((result) => result.success)) {
         setSubscribe(false);
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Subscribed, Thank you!`));
+        dispatch(setMessage("Subscribed, Thank you!"));
         sessionStorage.setItem("subscribed", JSON.stringify(true));
+      } else {
+        const errorMessage =
+          results.find((result) => !result.success)?.error ||
+          "An error occurred.";
+        dispatch(setError(true));
+        dispatch(setMessage(errorMessage));
+        dispatch(setSuccess(false));
       }
     },
   });
 
   const initVal = {
     subscriber_email: "",
+    notification_purpose,
   };
 
   const yupSchema = Yup.object({
@@ -51,7 +60,7 @@ const Subscribe = ({ setSubscribe }) => {
 
   return (
     <>
-      <div className="grid place-items-center fixed w-full h-screen top-0 px-8 z-[999] backdrop-blur-sm">
+      <div className="grid place-items-center fixed w-full h-screen top-0 px-8 z-[999] backdrop-blur-lg">
         <div className="modalSubscribe bg-[#fafafc] p-10 rounded-xl shadow-2xl shadow-primary relative">
           <h3 className="text-center text-xl font-semibold mb-2">
             Subscribe to our newsletter
@@ -62,7 +71,7 @@ const Subscribe = ({ setSubscribe }) => {
           </p>
           <div
             onClick={handleSubsClose}
-            className="absolute top-2 p-1 px right-2 cursor-pointer shadow-lg rounded-full hover:bg-slate-300"
+            className="absolute top-2 p-1 px right-2 cursor-pointer shadow-lg bg-primary text-light rounded-full hover:bg-secondary"
           >
             <IoMdClose className="text-2xl  rounded-full " />
           </div>
@@ -82,7 +91,7 @@ const Subscribe = ({ setSubscribe }) => {
                       label="Your Email Address"
                       type="text"
                       name="subscriber_email"
-                      className="w-full md:w-[300px]"
+                      className="w-full md:w-[300px] !h-[40px]"
                     />
                   </div>
                   <div className="input-wrapper !m-0">

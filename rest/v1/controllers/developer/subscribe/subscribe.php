@@ -1,9 +1,10 @@
 <?php
 // set http header
 require '../../../core/header.php';
+require '../../../core/Encryption.php';
 // use needed functions
 require '../../../core/functions.php';
-// require 'functions.php';
+require 'functions.php';
 // use needed classes
 require '../../../models/developer/subscribe/Subscribe.php';
 // get payload
