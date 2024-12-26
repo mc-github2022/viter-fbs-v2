@@ -11,8 +11,75 @@ import {
   devNavUrl,
   formatDate,
 } from "../../../helpers/functions-general";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Slider from "react-slick/lib/slider";
+import EventsSliderPage from "./EventsSliderPage";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        background: "#ac1e72",
+        position: "absolute",
+        color: "white",
+        top: "50%",
+        right: "-6%",
+        fontSize: "3rem",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowForward className="text-3xl" />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        background: "#ac1e72",
+        color: "white",
+        top: "50%",
+        left: "-6%",
+        fontSize: "3rem",
+        zIndex: "1",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowBack className="text-3xl" />
+    </div>
+  );
+}
 
 const EventsSingplePage = () => {
+  const [isEventsImg, setIsEventsImg] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState(null);
+
+  const handleEventImg = (post, index) => {
+    setIsEventsImg(true);
+    setSelectedImage({ id: post.events_activities_aid, index });
+    document.body.classList.toggle("overflow-hidden");
+  };
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     isFetching,
     error,
@@ -25,23 +92,72 @@ const EventsSingplePage = () => {
     "eventsAndAct" // key
   );
 
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  var SinglePageSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    dotsClass: "slickNav slick-dots",
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    appendDots: (dots) => (
+      <div
+        style={{
+          borderRadius: "10px",
+          padding: "10px",
+          bottom: "-5rem",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          color: "blue",
+          background: "gray",
+          borderRadius: "50%",
+          opacity: "50%",
+        }}
+      ></div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+    ],
+  };
 
   const { slug } = useParams();
 
   const [html, setHtml] = React.useState("");
   // Initial useEffect to set default html if eventsAndActivitiesData is available
+  const [images, setImages] = React.useState([]);
+
   useEffect(() => {
     if (eventsAndActivitiesData?.data.length > 0) {
       setHtml(eventsAndActivitiesData?.data[0].events_activities_description);
     }
   }, [eventsAndActivitiesData]);
 
-  // Update html based on slug and eventsAndActivitiesData
   useEffect(() => {
-    if (!eventsAndActivitiesData) return; // Early return if eventsAndActivitiesData is not yet available
+    if (!eventsAndActivitiesData) return;
 
     const matchingInsight = eventsAndActivitiesData.data.find(
       (item) =>
@@ -51,8 +167,16 @@ const EventsSingplePage = () => {
 
     if (matchingInsight) {
       setHtml(matchingInsight.events_activities_description);
+
+      // Extract and split the images list into an array
+      const imgList = matchingInsight.events_activities_img_list
+        ?.split(",")
+        .map((img) => img.trim())
+        .filter(Boolean); // Remove empty strings
+      setImages(imgList || []);
     } else {
-      setHtml(""); // Clear HTML if no match is found
+      setHtml("");
+      setImages([]);
     }
   }, [slug, eventsAndActivitiesData]);
 
@@ -74,7 +198,7 @@ const EventsSingplePage = () => {
   const post = getEventsAndAct();
 
   if (!post) {
-    return <div>Post not found</div>;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -98,17 +222,52 @@ const EventsSingplePage = () => {
             </li>
           </ul>
           <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12 gap-8">
-            <div className="postContent">
+            <div className="postContent lg:min-w-[700px] lg:max-w-[890px] xl:max-w-[940px]">
               <img
                 src={`${devBaseImgUrl}/${post.events_activities_img}`}
                 alt=""
                 className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
               />
               <div dangerouslySetInnerHTML={{ __html: html }}></div>
+              <div className="mx-auto my-4 max-w-[90%]">
+                {images.length > 1 ? (
+                  <Slider {...SinglePageSettings}>
+                    {images.map((image, index) => (
+                      <div key={index}>
+                        <a onClick={() => handleEventImg(post, index)}>
+                          <div
+                            style={{
+                              backgroundImage: `url(${devBaseImgUrl}/${image})`,
+                            }}
+                            className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
+                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                          >
+                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                          </div>
+                        </a>
+                      </div>
+                    ))}
+                  </Slider>
+                ) : images.length === 1 ? (
+                  <a onClick={() => handleEventImg(post, 0)}>
+                    <div
+                      className=" h-[330px] w-[450px]
+                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                    >
+                      <img
+                        src={`${devBaseImgUrl}/${images[0]}`}
+                        alt="Successful, Industry-Ready Batches."
+                      />
+                    </div>
+                  </a>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
             <div className="order-1 mt-6 lg:mt-0">
               <div className="mb-12">
-                <h3 className="text-2xl font-semibold mb-10 text-dark">
+                <h3 className="text-2xl font-semibold md:my-10 lg:mb-10 lg:my-0 text-dark">
                   Recent Activities
                 </h3>
                 <div className="popularPostLinks [&>ul>li]:flex [&>ul>li]:items-center [&>ul>li]:gap-4">
@@ -149,6 +308,12 @@ const EventsSingplePage = () => {
           </div>
         </div>
       </section>
+      {isEventsImg && (
+        <EventsSliderPage
+          setIsEventsImg={setIsEventsImg}
+          selectedImage={selectedImage}
+        />
+      )}
       <Footer />
     </>
   );

@@ -30,7 +30,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
 
   const handleClose = () => {
     setTimeout(() => {
-      dispatch(setIsAdd(false));
+      dispatch(setIsAdd(false)); 
     }, 200);
   };
 

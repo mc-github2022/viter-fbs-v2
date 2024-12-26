@@ -1,0 +1,42 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            ->rest/v1/controllers/developer/subscribe
+            ->
+            -> 
+            -> 
+            -> 
+        
+
+
+        * MODELS
+            -> rest/v1/models/developer/subscribe/Subscribe.php
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> INSIGHT SUBSCRIBER
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> fbsv2_subscriber_list
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+

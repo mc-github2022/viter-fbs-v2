@@ -74,15 +74,17 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <SearchBar
-        search={search}
-        dispatch={dispatch}
-        store={store}
-        result={result?.pages}
-        isFetching={isFetching}
-        setOnSearch={setOnSearch}
-        onSearch={onSearch}
-      />
+      <div className="place-self-end">
+        <SearchBar
+          search={search}
+          dispatch={dispatch}
+          store={store}
+          result={result?.pages}
+          isFetching={isFetching}
+          setOnSearch={setOnSearch}
+          onSearch={onSearch}
+        />
+      </div>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (
           <FetchingSpinner />
@@ -97,6 +99,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
               <th className="w-[8rem]">Date</th>
               <th>Content</th>
               <th className="w-[8rem]">Image</th>
+              <th className="w-[8rem]">Gallery</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -141,6 +144,11 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                     </td>
                     <td className="place-content-start">
                       {item.events_activities_img}
+                    </td>
+                    <td className="place-content-start">
+                      <p className="line-clamp-5">
+                        {item.events_activities_img_list}
+                      </p>
                     </td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                       <button

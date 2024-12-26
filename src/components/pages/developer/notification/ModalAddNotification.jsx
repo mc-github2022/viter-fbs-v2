@@ -200,6 +200,14 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
                               </span>
                             );
                           }
+                          if (item.name === "Subscribers") {
+                            return (
+                              <span className="text-xs" key={key}>
+                                This is specifically for the "Subscribe" form on
+                                the Insight section.
+                              </span>
+                            );
+                          }
                         }
                         return null;
                       })}

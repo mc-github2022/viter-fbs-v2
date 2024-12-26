@@ -18,6 +18,7 @@ import Careers from "../components/pages/developer/why-fbs-page/careers/Careers"
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
+import Subscribers from "../components/pages/developer/subscribers/Subscribers";
 
 export const routesAdmin = [
   {
@@ -137,6 +138,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <OtherUser />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/subscribers`,
+    element: (
+      <ProtectedRouteOther>
+        <Subscribers />
       </ProtectedRouteOther>
     ),
   },

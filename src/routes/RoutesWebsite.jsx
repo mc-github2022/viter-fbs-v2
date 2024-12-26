@@ -30,6 +30,7 @@ import WhyUsPage from "../components/pages/website/whyUsPage/WhyUsPage";
 import EULA from "../components/partials/policies/EULA";
 import PrivacyPolicy from "../components/partials/policies/PrivacyPolicy";
 import TermsOfService from "../components/partials/policies/TermsOfService";
+import Unsubscribe from "../components/partials/Unsubscribe";
 
 export const RoutesWebsite = [
   {
@@ -151,6 +152,10 @@ export const RoutesWebsite = [
   {
     path: `${devNavUrl}/post-by-category`,
     element: <PostByCategory />,
+  },
+  {
+    path: `${devNavUrl}/unsubscribe`,
+    element: <Unsubscribe />,
   },
   {
     path: `${devNavUrl}/payment`,

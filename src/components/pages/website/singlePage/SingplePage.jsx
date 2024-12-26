@@ -12,8 +12,13 @@ import {
   devNavUrl,
   formatDate,
 } from "../../../helpers/functions-general";
+import Subscribe from "../../../partials/Subscribe";
+import { StoreContext } from "../../../store/StoreContext";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import ModalError from "../../../partials/modals/ModalError";
 
 const SingplePage = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
   const {
     isFetching,
     error,
@@ -26,9 +31,16 @@ const SingplePage = () => {
     "insights" // key
   );
 
+  const [subscribe, setSubscribe] = React.useState(false);
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  });
+    if (window.sessionStorage.getItem("subscribed")) {
+      setSubscribe(subscribe);
+    } else {
+      setSubscribe(!subscribe);
+    }
+  }, []);
 
   const { slug } = useParams();
 
@@ -181,6 +193,12 @@ const SingplePage = () => {
         </div>
       </section>
       <Footer />
+      {subscribe && (
+        <Subscribe
+          setSubscribe={setSubscribe}
+          notification_purpose={"subscribers"}
+        />
+      )}
     </>
   );
 };
