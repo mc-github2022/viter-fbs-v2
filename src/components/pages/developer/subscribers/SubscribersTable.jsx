@@ -6,7 +6,7 @@ import ModalRestore from "../../../partials/modals/ModalRestore";
 import ModalArchive from "../../../partials/modals/ModalArchive";
 import ModalDelete from "../../../partials/modals/ModalDelete";
 import LoadMore from "../../../partials/LoadMore";
-import { MdDelete, MdRestore } from "react-icons/md";
+import { MdDelete, MdRestore, MdSend } from "react-icons/md";
 import { FaArchive, FaEdit } from "react-icons/fa";
 import Status from "../../../partials/Status";
 import ServerError from "../../../partials/spinners/ServerError";
@@ -23,12 +23,14 @@ import {
 import { StoreContext } from "../../../store/StoreContext";
 import { apiVersion } from "../../../helpers/functions-general";
 import { FaUserGroup } from "react-icons/fa6";
+import ModalResend from "./ModalResend";
 
 const SubscribersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
+  const [isResend, setIsResend] = React.useState(false);
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -88,6 +90,12 @@ const SubscribersTable = ({ setItemEdit }) => {
     setIsId(item.subscriber_aid);
     setIsArchiving(false);
     setIsRestore(true);
+  };
+
+  const handleResend = (item) => {
+    setIsResend(true);
+    setIsId(item.subscriber_aid);
+    setIsData(item.subscriber_email);
   };
 
   React.useEffect(() => {
@@ -187,6 +195,13 @@ const SubscribersTable = ({ setItemEdit }) => {
                         <>
                           <button
                             className="tooltip-action-table"
+                            data-tooltip="Resend"
+                            onClick={() => handleResend(item)}
+                          >
+                            <MdSend className="text-gray-600 text-[16px]" />
+                          </button>
+                          <button
+                            className="tooltip-action-table"
                             data-tooltip="Restore"
                             onClick={() => handleRestore(item)}
                           >
@@ -244,6 +259,16 @@ const SubscribersTable = ({ setItemEdit }) => {
           queryKey={"subscribe"}
           mysqlEndpoint={`${apiVersion}/subscribe/active/${id}`}
           item={isData}
+        />
+      )}
+      {isResend && (
+        <ModalResend
+          mysqlApiResend={`${apiVersion}/subscribe/resend`}
+          msg={"Are you sure you want to resend the email to this user?"}
+          successMsg={"Resend succesfully!"}
+          queryKey={"subscribe"}
+          setIsResend={setIsResend}
+          dataItem={isData}
         />
       )}
     </>

@@ -178,6 +178,7 @@ class Subscribe
         try {
             $sql = "select subscriber_email from {$this->tblSubscriber} ";
             $sql .= "where subscriber_email = :subscriber_email ";
+            $sql .= "and subscriber_is_active = 1 ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => "{$this->subscriber_email}",
@@ -229,7 +230,8 @@ class Subscribe
     {
         try {
             $sql = "SELECT COUNT(*) AS subscriber_count ";
-            $sql .= "FROM {$this->tblSubscriber}";
+            $sql .= "FROM {$this->tblSubscriber} ";
+            $sql .= "where subscriber_is_active = 1 ";
             $query = $this->connection->prepare($sql);
             $query->execute();
 
@@ -340,38 +342,26 @@ class Subscribe
         return $query;
     }
 
-    public function emailSetActive()
+
+    // email resend
+    public function emailResend()
     {
         try {
-            // Step 1: Check if the email exists and get the current status
-            $sql = "SELECT status FROM {$this->tblSubscriber} 
-                WHERE subscriber_email = :subscriber_email";
+            $sql = "update {$this->tblSubscriber} set ";
+            $sql .= "subscriber_key = :subscriber_key, ";
+            $sql .= "subscriber_is_active = :subscriber_is_active, ";
+            $sql .= "subscriber_datetime = :subscriber_datetime ";
+            $sql .= "where subscriber_email = :subscriber_email ";
             $query = $this->connection->prepare($sql);
             $query->execute([
+                "subscriber_key" => $this->subscriber_key,
+                "subscriber_is_active" => $this->subscriber_is_active,
+                "subscriber_datetime" => $this->subscriber_datetime,
                 "subscriber_email" => $this->subscriber_email,
             ]);
-
-            // Step 2: Fetch the result
-            $result = $query->fetch(PDO::FETCH_ASSOC);
-
-            // Step 3: Check if the email exists and the status is inactive
-            if ($result && $result['status'] === 'inactive') {
-                // Step 4: Update the status to active
-                $updateSql = "UPDATE {$this->tblSubscriber} 
-                           SET status = 'active' 
-                           WHERE subscriber_email = :subscriber_email";
-                $updateQuery = $this->connection->prepare($updateSql);
-                $updateQuery->execute([
-                    "subscriber_email" => $this->subscriber_email,
-                ]);
-                return true; // Successfully updated to active
-            }
-
-            // Step 5: Return false if email does not exist or is already active
-            return false;
         } catch (PDOException $ex) {
-            // Handle exception (e.g., log it)
-            return false;
+            $query = false;
         }
+        return $query;
     }
 }
