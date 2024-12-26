@@ -6,7 +6,6 @@ class Subscribe
     public $subscriber_email;
     public $subscriber_is_active;
     public $subscriber_key;
-    public $subscriber_email_new;
     public $subscriber_feedback;
     public $subscriber_created;
     public $subscriber_datetime;
@@ -207,23 +206,6 @@ class Subscribe
         return $query;
     }
 
-    public function readEmails()
-    {
-        try {
-            $sql = "select subscriber_email ";
-            $sql .= "from ";
-            $sql .= "{$this->tblSubscriber} ";
-            $sql .= "where subscriber_email = :subscriber_email ";
-            $sql .= "order by subscriber_email ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_email" => $this->subscriber_email,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
 
     // count the subscribers
     public function readSubscriberCount()
@@ -235,7 +217,7 @@ class Subscribe
             $query = $this->connection->prepare($sql);
             $query->execute();
 
-            return (int)$query->fetchColumn() + 1; // This will return 0 if no rows found
+            return (int)$query->fetchColumn() + 1;
         } catch (PDOException $ex) {
             return false;
         }
@@ -246,68 +228,6 @@ class Subscribe
     {
         try {
             $sql = "select subscriber_key from {$this->tblSubscriber} ";
-            $sql .= "where subscriber_key = :subscriber_key ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_key" => $this->subscriber_key,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
-    // update key and new email
-    public function updateUserKeyAndNewEmail()
-    {
-        try {
-            $sql = "update {$this->tblSubscriber} set ";
-            $sql .= "subscriber_key = :subscriber_key, ";
-            $sql .= "subscriber_email_new = :subscriber_email, ";
-            $sql .= "subscriber_datetime = :subscriber_datetime ";
-            $sql .= "where subscriber_aid  = :subscriber_aid ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_key" => $this->subscriber_key,
-                "subscriber_email" => $this->subscriber_email,
-                "subscriber_datetime" => $this->subscriber_datetime,
-                "subscriber_aid" => $this->subscriber_aid,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
-    public function updateEmailForUser()
-    {
-        try {
-            $sql = "update {$this->tblSubscriber} set ";
-            $sql .= "subscriber_email = :subscriber_email, ";
-            $sql .= "subscriber_email_new = '', ";
-            $sql .= "subscriber_key = '', ";
-            $sql .= "subscriber_datetime = :subscriber_datetime ";
-            $sql .= "where subscriber_key = :subscriber_key ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_email" => $this->subscriber_email,
-                "subscriber_datetime" => $this->subscriber_datetime,
-                "subscriber_key" => $this->subscriber_key,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
-    // read key for email verification
-    public function readKeyChangeEmail()
-    {
-        try {
-            $sql = "select ";
-            $sql .= "subscriber_key, ";
-            $sql .= "subscriber_email_new ";
-            $sql .= "from {$this->tblSubscriber} ";
             $sql .= "where subscriber_key = :subscriber_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -335,29 +255,6 @@ class Subscribe
                 "subscriber_feedback" => $this->subscriber_feedback,
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_datetime" => $this->subscriber_datetime,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
-
-    // email resend
-    public function emailResend()
-    {
-        try {
-            $sql = "update {$this->tblSubscriber} set ";
-            $sql .= "subscriber_key = :subscriber_key, ";
-            $sql .= "subscriber_is_active = :subscriber_is_active, ";
-            $sql .= "subscriber_datetime = :subscriber_datetime ";
-            $sql .= "where subscriber_email = :subscriber_email ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_key" => $this->subscriber_key,
-                "subscriber_is_active" => $this->subscriber_is_active,
-                "subscriber_datetime" => $this->subscriber_datetime,
-                "subscriber_email" => $this->subscriber_email,
             ]);
         } catch (PDOException $ex) {
             $query = false;

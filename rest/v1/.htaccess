@@ -115,4 +115,3 @@ RewriteRule ^subscribe/active/([0-9]+)$ controllers/developer/subscribe/active.p
 RewriteRule ^subscribe/notif$ controllers/developer/subscribe/notification-subscriber.php [L]
 RewriteRule ^subscribe/key/(.*)$ controllers/developer/subscribe/key.php?subscriberkey=$1 [L]
 RewriteRule ^subscribe/unsubscribe/(.*)$ controllers/developer/subscribe/update-unsubscribe.php?subscriberkey=$1 [L]
-RewriteRule ^subscribe/resend$ controllers/developer/subscribe/email-resend.php?subscriberkey=$1 [L]

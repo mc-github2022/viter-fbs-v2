@@ -16,18 +16,5 @@ function checkUpdateUnsubscribe($object)
     return $query;
 }
 
-// // validation when email is inactive and want it to be active
-// function checkEmailSetActive($object)
-// {
-//     $query = $object->emailSetActive();
-//     checkQuery($query, "Inactive email is not being updated to active");
-//     return $query;
-// }
 
-// email resend
-function checkEmailResend($object)
-{
-    $query = $object->emailResend();
-    checkQuery($query, "Resend email failed");
-    return $query;
-}
+

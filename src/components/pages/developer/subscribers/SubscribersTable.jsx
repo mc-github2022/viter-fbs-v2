@@ -1,19 +1,21 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
+import { FaArchive, FaEdit } from "react-icons/fa";
+import { FaUserGroup } from "react-icons/fa6";
+import { MdDelete, MdRestore } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
+import { apiVersion } from "../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import ModalRestore from "../../../partials/modals/ModalRestore";
+import LoadMore from "../../../partials/LoadMore";
+import SearchBar from "../../../partials/SearchBar";
+import Status from "../../../partials/Status";
 import ModalArchive from "../../../partials/modals/ModalArchive";
 import ModalDelete from "../../../partials/modals/ModalDelete";
-import LoadMore from "../../../partials/LoadMore";
-import { MdDelete, MdRestore, MdSend } from "react-icons/md";
-import { FaArchive, FaEdit } from "react-icons/fa";
-import Status from "../../../partials/Status";
+import ModalRestore from "../../../partials/modals/ModalRestore";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../partials/spinners/NoData";
 import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
-import NoData from "../../../partials/spinners/NoData";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
-import SearchBar from "../../../partials/SearchBar";
 import {
   setIsAdd,
   setIsArchive,
@@ -21,16 +23,12 @@ import {
   setIsRestore,
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
-import { apiVersion } from "../../../helpers/functions-general";
-import { FaUserGroup } from "react-icons/fa6";
-import ModalResend from "./ModalResend";
 
 const SubscribersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
-  const [isResend, setIsResend] = React.useState(false);
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -90,12 +88,6 @@ const SubscribersTable = ({ setItemEdit }) => {
     setIsId(item.subscriber_aid);
     setIsArchiving(false);
     setIsRestore(true);
-  };
-
-  const handleResend = (item) => {
-    setIsResend(true);
-    setIsId(item.subscriber_aid);
-    setIsData(item.subscriber_email);
   };
 
   React.useEffect(() => {
@@ -195,13 +187,6 @@ const SubscribersTable = ({ setItemEdit }) => {
                         <>
                           <button
                             className="tooltip-action-table"
-                            data-tooltip="Resend"
-                            onClick={() => handleResend(item)}
-                          >
-                            <MdSend className="text-gray-600 text-[16px]" />
-                          </button>
-                          <button
-                            className="tooltip-action-table"
                             data-tooltip="Restore"
                             onClick={() => handleRestore(item)}
                           >
@@ -259,16 +244,6 @@ const SubscribersTable = ({ setItemEdit }) => {
           queryKey={"subscribe"}
           mysqlEndpoint={`${apiVersion}/subscribe/active/${id}`}
           item={isData}
-        />
-      )}
-      {isResend && (
-        <ModalResend
-          mysqlApiResend={`${apiVersion}/subscribe/resend`}
-          msg={"Are you sure you want to resend the email to this user?"}
-          successMsg={"Resend succesfully!"}
-          queryKey={"subscribe"}
-          setIsResend={setIsResend}
-          dataItem={isData}
         />
       )}
     </>
