@@ -60,3 +60,5 @@ Upload JSX
         -> rest/db-backup/fbsv2_subscriber_list.sql
              note: column added
              `subscriber_is_agree` tinyint(1) NOT NULL,
+
+Uploaded Dec 27 3:06 to prod.
