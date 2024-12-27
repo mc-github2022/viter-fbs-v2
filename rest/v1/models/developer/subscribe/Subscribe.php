@@ -7,6 +7,7 @@ class Subscribe
     public $subscriber_is_active;
     public $subscriber_key;
     public $subscriber_feedback;
+    public $subscriber_terms_agreement;
     public $subscriber_created;
     public $subscriber_datetime;
 
@@ -92,11 +93,13 @@ class Subscribe
             $sql .= "( subscriber_email, ";
             $sql .= "subscriber_is_active, ";
             $sql .= "subscriber_key, ";
+            $sql .= "subscriber_terms_agreement, ";
             $sql .= "subscriber_created, ";
             $sql .= "subscriber_datetime ) values ( ";
             $sql .= ":subscriber_email, ";
             $sql .= ":subscriber_is_active, ";
             $sql .= ":subscriber_key, ";
+            $sql .= ":subscriber_terms_agreement, ";
             $sql .= ":subscriber_created, ";
             $sql .= ":subscriber_datetime )";
             $query = $this->connection->prepare($sql);
@@ -104,6 +107,7 @@ class Subscribe
                 "subscriber_email" => $this->subscriber_email,
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_key" => $this->subscriber_key,
+                "subscriber_terms_agreement" => $this->subscriber_terms_agreement,
                 "subscriber_created" => $this->subscriber_created,
                 "subscriber_datetime" => $this->subscriber_datetime,
             ]);

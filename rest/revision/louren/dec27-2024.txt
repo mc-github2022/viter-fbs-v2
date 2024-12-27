@@ -8,7 +8,7 @@ DEVELOPER
             ->rest/v1/controllers/developer/events-and-activities/create.php
             ->rest/v1/controllers/developer/events-and-activities/update.php
             ->rest/v1/controllers/developer/subscribe
-            -> 
+            ->rest/v1/controllers/developer/subscribe/create.php
             -> 
         
 
@@ -29,6 +29,7 @@ DEVELOPER
         * OTHER FILES
             -> rest/v1/notification/subscriber-message.php
             -> rest/v1/notification/subscriber-notification-message.php
+            -> rest/v1/notification/mail-config.php
 
             * TEMPLATE
             -> rest/v1/notification/template/subscriber-message.php
@@ -40,6 +41,8 @@ DEVELOPER
                 note: column added
                 `events_activities_img_list` text NOT NULL,
             -> rest/db-backup/fbsv2_subscriber_list.sql
+                note: column added
+                `subscriber_terms_agreement` tinyint(1) NOT NULL,
             ->
             ->
             ->
