@@ -18,7 +18,7 @@ checkPayload($data);
 
 $email = checkIndex($data, "subscriber_email");
 $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
-$subscribe->subscriber_terms_agreement = checkIndex($data, "subscriber_terms_agreement");
+$subscribe->subscriber_is_agree = checkIndex($data, "subscriber_is_agree");
 $subscribe->subscriber_key = $encrypt->doHash(rand());
 $unsubscribe_link = "/unsubscribe";
 // checks newly added data if it already exists

@@ -59,4 +59,4 @@ Upload JSX
     * DB BACKUP
         -> rest/db-backup/fbsv2_subscriber_list.sql
              note: column added
-            `subscriber_terms_agreement` tinyint(1) NOT NULL,
+             `subscriber_is_agree` tinyint(1) NOT NULL,
