@@ -54,7 +54,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
 
   const initVal = {
     subscriber_email: "",
-    subscriber_terms_agreement: false,
+    subscriber_is_agree: false,
     notification_purpose,
   };
 
@@ -99,7 +99,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                 );
                 return;
               }
-              values.subscriber_terms_agreement = check;
+              values.subscriber_is_agree = check;
               mutation.mutate({ ...values, captchaValue });
               recaptchaRef.current?.reset();
             }}
@@ -129,7 +129,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                       <div className="flex">
                         <input
                           type="checkbox"
-                          name="subscriber_terms_agreement"
+                          name="subscriber_is_agree"
                           checked={check}
                           id="agree"
                           onChange={handleCheckBox}
