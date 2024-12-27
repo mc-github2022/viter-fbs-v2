@@ -9,7 +9,6 @@ DEVELOPER
             ->rest/v1/controllers/developer/events-and-activities/update.php
             ->rest/v1/controllers/developer/subscribe
             -> 
-            -> 
         
 
         * MODELS
@@ -39,7 +38,6 @@ DEVELOPER
             -> rest/db-backup/fbsv2_events_activities.sql
                 note: column added
                 `events_activities_img_list` text NOT NULL,
-            -> rest/db-backup/fbsv2_subscriber_list.sql
             ->
             ->
             ->
@@ -47,3 +45,18 @@ DEVELOPER
             ->
 
 Uploaded Dec 27 7:57 to prod.
+
+To Upload
+
+Upload JSX
+
+     * CONTROLLERS
+        ->rest/v1/controllers/developer/subscribe/create.php
+    * MODELS
+        -> rest/v1/models/developer/subscribe/Subscribe.php
+     * OTHER FILES
+        -> rest/v1/notification/mail-config.php
+    * DB BACKUP
+        -> rest/db-backup/fbsv2_subscriber_list.sql
+             note: column added
+            `subscriber_terms_agreement` tinyint(1) NOT NULL,

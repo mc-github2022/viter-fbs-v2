@@ -12,5 +12,5 @@ define("VERIFY_EMAIL", "Email Verification");
 // define("IMAGES_URL", "http://127.0.0.1:5173/public/img");
 
 // online
-define("ROOT_DOMAIN", "https://frontlinebusiness.com.ph/newsite");
-define("IMAGES_URL", "http://frontlinebusiness.com.ph/newsite/img");
+define("ROOT_DOMAIN", "https://frontlinebusiness.com.ph");
+define("IMAGES_URL", "http://frontlinebusiness.com.ph/img");
