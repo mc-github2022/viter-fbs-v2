@@ -280,7 +280,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             {mutation.isPending ? <ButtonSpinner /> : "Publish"}
                           </button>
                           <button
-                            className="btn-modal-submit"
+                            className="btn-modal-submit bg-white text-primary"
                             type="submit"
                             disabled={
                               mutation.isPending ||

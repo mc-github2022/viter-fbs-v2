@@ -119,7 +119,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <a href={`${devNavUrl}/accounting-bookkeeping`}>
-                      Accounting Solutionsss
+                      Accounting Solutions
                     </a>
                   </li>
                   <li>
