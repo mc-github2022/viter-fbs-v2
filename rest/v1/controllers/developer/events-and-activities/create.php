@@ -9,7 +9,7 @@ $events_activities = new EventsAndActivities($conn);
 // check data
 checkPayload($data);
 // get data
-$events_activities->events_activities_is_active = 0;
+$events_activities->events_activities_is_active = $data["events_activities_is_active"];
 $events_activities->events_activities_img = $data["events_activities_img"];
 $events_activities->events_activities_img_list = $data["events_activities_img_list"];
 $events_activities->events_activities_category = $data["events_activities_category"];
@@ -19,6 +19,7 @@ $events_activities->events_activities_date = $data["events_activities_date"];
 $events_activities->events_activities_description = $data["events_activities_description"];
 $events_activities->events_activities_created = date("Y-m-d H:i:s");
 $events_activities->events_activities_datetime = date("Y-m-d H:i:s");
+
 
 // //checks newly added data if it already exists
 // isNameExist($events_activities, $events_activities->events_activities_name);

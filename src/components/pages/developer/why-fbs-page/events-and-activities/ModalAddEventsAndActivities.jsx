@@ -40,6 +40,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
 
   const [activeTab, setActiveTab] = React.useState("text");
   const [eventsImage, setEventsImage] = React.useState(false);
+  const [isDraft, setIsDraft] = React.useState(false);
+
   const handleEventsImage = (tabName) => {
     setEventsImage(true);
     setActiveTab(tabName);
@@ -96,6 +98,9 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     events_activities_img_list: itemEdit
       ? itemEdit.events_activities_img_list
       : "",
+    events_activities_is_active: itemEdit
+      ? itemEdit.events_activities_is_active
+      : "",
   };
 
   const yupSchema = Yup.object({
@@ -127,6 +132,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
+              events_activities_is_active: isDraft ? 0 : 1,
               events_activities_img: photoSingle
                 ? photoSingle.name
                 : itemEdit.events_activities_img,
@@ -271,18 +277,30 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             //     photoSingle?.name
                             // }
                           >
+                            {mutation.isPending ? <ButtonSpinner /> : "Publish"}
+                          </button>
+                          <button
+                            className="btn-modal-submit"
+                            type="submit"
+                            disabled={
+                              mutation.isPending ||
+                              (!props.dirty &&
+                                !photoSingle &&
+                                (!photoArrayList ||
+                                  photoArrayList.length === 0)) ||
+                              (initVal.events_activities_img ===
+                                photoSingle?.name &&
+                                (!initVal.events_activities_img_list ||
+                                  initVal.events_activities_img_list ===
+                                    photoArrayList?.name))
+                            }
+                            onClick={() => setIsDraft(true)} // Save as Draft button
+                          >
                             {mutation.isPending ? (
                               <ButtonSpinner />
                             ) : (
                               "Save as Draft"
                             )}
-                          </button>
-                          <button
-                            className="btn-modal-cancel"
-                            type="button"
-                            onClick={handleClose}
-                          >
-                            Cancel
                           </button>
                         </div>
                       </div>

@@ -7,8 +7,8 @@ DEVELOPER
         * CONTROLLERS
             -> rest/v1/controllers/developer/events-and-activities/create.php
             -> rest/v1/controllers/developer/events-and-activities/active.php
+            -> rest/v1/controllers/developer/events-and-activities/update.php
             -> rest/v1/controllers/developer/subscribe/create.php
-            -> 
         
 
         * MODELS
