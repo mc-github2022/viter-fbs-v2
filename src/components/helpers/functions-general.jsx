@@ -2,10 +2,10 @@ import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
 // local url
-// export const urlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
+ export const urlPathFBSMarketingWebsite =
+   "http://localhost/react-vite/viter-fbs-v2";
+ export const imgUrlPathFBSMarketingWebsite =
+   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
 // export const urlPathFBSMarketingWebsite =
@@ -14,9 +14,9 @@ import { StoreContext } from "../store/StoreContext";
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // // Online Demo url
-export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
-export const imgUrlPathFBSMarketingWebsite =
-  "http://frontlinebusiness.com.ph/img";
+//export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
+//export const imgUrlPathFBSMarketingWebsite =
+//  "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
@@ -32,11 +32,7 @@ export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
 
 // reCAPTCHA site key TEST
-<<<<<<< HEAD
-export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
-=======
 // export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
->>>>>>> 099c77d810b973b8a4891e63c67975c257101fff
 
 // reCAPTCHA site key PRODUCTION
 export const siteKey = "";
