@@ -145,11 +145,10 @@ const EventsAndAct = () => {
           </div>
           <div className="wrapper mb-24">
             <div className="grid grid-cols-1 md:grid-cols-[_2fr_1fr] md:grid-rows-2 gap-4 order-2  mb-12 lg:mb-0">
-              {eventsAndActivitiesData?.data.map((post, key) => {
-                if (key > 2) {
-                  return;
-                }
-                return (
+              {eventsAndActivitiesData?.data
+                .filter((post) => post.events_activities_is_active === 1)
+                .slice(0, 3)
+                .map((post, key) => (
                   <div key={key} className="postItem">
                     <Link
                       to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
@@ -177,18 +176,21 @@ const EventsAndAct = () => {
                       </div>
                     </Link>
                   </div>
-                );
-              })}
+                ))}
             </div>
           </div>
         </div>
         <div className="customContainer my-4 max-w-[90%]">
-          {eventsAndActivitiesData?.data.length > 3 && (
+          {eventsAndActivitiesData?.data.filter(
+            (post) => post.events_activities_is_active === 1
+          ).length > 3 && (
             <h2 className="text-3xl font-semibold text-primary mb-8">
               See More
             </h2>
           )}
-          {eventsAndActivitiesData?.data.length > 6 ? (
+          {eventsAndActivitiesData?.data.filter(
+            (post) => post.events_activities_is_active === 1
+          ).length > 6 ? (
             <Slider {...EventsSliderSettings}>
               {eventsAndActivitiesData?.data.map((post, key) => {
                 if (key <= 2) return null;
@@ -225,9 +227,10 @@ const EventsAndAct = () => {
             </Slider>
           ) : (
             <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
-              {eventsAndActivitiesData?.data.map((post, key) => {
-                if (key <= 2) return null;
-                return (
+              {eventsAndActivitiesData?.data
+                .filter((post) => post.events_activities_is_active === 1)
+                .slice(3)
+                .map((post, key) => (
                   <div key={key} className=" h-[267px] md:h-[350px]">
                     <Link
                       to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
@@ -254,8 +257,7 @@ const EventsAndAct = () => {
                       </div>
                     </Link>
                   </div>
-                );
-              })}
+                ))}
             </div>
           )}
         </div>
