@@ -163,6 +163,7 @@ class EventsAndActivities
     {
         try {
             $sql = "update {$this->tblEventsAndActivities} set ";
+            $sql .= "events_activities_is_active = :events_activities_is_active, ";
             $sql .= "events_activities_img = :events_activities_img, ";
             $sql .= "events_activities_category = :events_activities_category, ";
             $sql .= "events_activities_title = :events_activities_title, ";
@@ -174,6 +175,7 @@ class EventsAndActivities
             $sql .= "where events_activities_aid = :events_activities_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
+                "events_activities_is_active" => $this->events_activities_is_active,
                 "events_activities_img" => $this->events_activities_img,
                 "events_activities_category" => $this->events_activities_category,
                 "events_activities_title" => $this->events_activities_title,

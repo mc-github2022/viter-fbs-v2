@@ -143,7 +143,6 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
               </tr>
             )}
 
-
             {error && (
               <tr className="text-center ">
                 <td colSpan="100%" className="p-10">
@@ -211,7 +210,14 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                         <>
                           <button
                             className="tooltip-action-table"
-                            data-tooltip="Upload"
+                            data-tooltip="Edit"
+                            onClick={() => handleEdit(item)}
+                          >
+                            <FaEdit className="text-gray-600 text-[16px]" />
+                          </button>
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Publish"
                             onClick={() => handleRestore(item)}
                           >
                             <MdOutlineFileUpload className="text-gray-600 text-[18px]" />
@@ -265,7 +271,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
       {store.isRestore && (
         <ModalUpload
           mysqlApiRestore={`${apiVersion}/eventsAndAct/active/${id}`}
-          msg={"Are you sure you want to upload this post?"}
+          msg={"Are you sure you want to publish this post?"}
           successMsg={"Upload succesfully."}
           queryKey={"eventsAndAct"}
           setIsRestore={setIsRestore}
