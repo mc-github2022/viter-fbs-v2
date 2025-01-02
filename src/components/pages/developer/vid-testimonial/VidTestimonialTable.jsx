@@ -1,19 +1,18 @@
-import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
-import SearchBar from "../../../partials/SearchBar";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
-import TableSpinner from "../../../partials/spinners/TableSpinner";
-import TableLoading from "../../../partials/spinners/TableLoading";
-import NoData from "../../../partials/spinners/NoData";
-import ServerError from "../../../partials/spinners/ServerError";
+import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { useInView } from "react-intersection-observer";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import LoadMore from "../../../partials/LoadMore";
 import ModalDelete from "../../../partials/modals/ModalDelete";
+import SearchBar from "../../../partials/SearchBar";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../partials/spinners/NoData";
+import ServerError from "../../../partials/spinners/ServerError";
+import TableLoading from "../../../partials/spinners/TableLoading";
+import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
 
 const VidTestimonialTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -84,7 +83,7 @@ const VidTestimonialTable = ({ setItemEdit }) => {
           onSearch={onSearch}
         />
       </div>
-      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
+      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-150px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (
           <FetchingSpinner />
         )}
