@@ -15,3 +15,6 @@ function checkUpdateUnsubscribe($object)
     checkQuery($query, "Empty records. (unsubscribe)");
     return $query;
 }
+
+
+

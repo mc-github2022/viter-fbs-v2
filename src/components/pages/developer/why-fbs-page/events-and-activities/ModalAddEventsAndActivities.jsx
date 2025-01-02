@@ -14,6 +14,7 @@ import {
 import {
   apiVersion,
   devBaseImgUrl,
+  devNavUrl,
 } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
@@ -39,6 +40,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
 
   const [activeTab, setActiveTab] = React.useState("text");
   const [eventsImage, setEventsImage] = React.useState(false);
+  const [isDraft, setIsDraft] = React.useState(false);
+
   const handleEventsImage = (tabName) => {
     setEventsImage(true);
     setActiveTab(tabName);
@@ -60,8 +63,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/eventsAndAct/${itemEdit.events_activities_aid}` // update
-          : `/v1/eventsAndAct`, // create
+          ? `${apiVersion}/eventsAndAct/${itemEdit.events_activities_aid}` // update
+          : `${apiVersion}/eventsAndAct`, // create
         itemEdit ? "put" : "post",
         values
       ),
@@ -75,7 +78,9 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
         console.log("Success");
         dispatch(setIsAdd(false));
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
+        dispatch(
+          setMessage(`Successfully ${isDraft ? "added to draft" : "Publish"}.`)
+        );
       }
     },
   });
@@ -94,6 +99,9 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     events_activities_img: itemEdit ? itemEdit.events_activities_img : "",
     events_activities_img_list: itemEdit
       ? itemEdit.events_activities_img_list
+      : "",
+    events_activities_is_active: itemEdit
+      ? itemEdit.events_activities_is_active
       : "",
   };
 
@@ -126,6 +134,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
+              events_activities_is_active: isDraft ? 0 : 1,
               events_activities_img: photoSingle
                 ? photoSingle.name
                 : itemEdit.events_activities_img,
@@ -248,6 +257,29 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                       <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
                         <div className="form-btn">
                           <button
+                            className="btn-modal-submit bg-white text-primary"
+                            type="submit"
+                            disabled={
+                              mutation.isPending ||
+                              (!props.dirty &&
+                                !photoSingle &&
+                                (!photoArrayList ||
+                                  photoArrayList.length === 0)) ||
+                              (initVal.events_activities_img ===
+                                photoSingle?.name &&
+                                (!initVal.events_activities_img_list ||
+                                  initVal.events_activities_img_list ===
+                                    photoArrayList?.name))
+                            }
+                            onClick={() => setIsDraft(true)}
+                          >
+                            {mutation.isPending ? (
+                              <ButtonSpinner />
+                            ) : (
+                              "Save as Draft"
+                            )}
+                          </button>
+                          <button
                             className="btn-modal-submit"
                             type="submit"
                             disabled={
@@ -262,15 +294,15 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                                   initVal.events_activities_img_list ===
                                     photoArrayList?.name))
                             }
+                            // disabled={
+                            //   ((mutation.isPending || !props.dirty) &&
+                            //     photoSingle === null) ||
+                            //   photoSingle === "" ||
+                            //   initVal.events_activities_img ===
+                            //     photoSingle?.name
+                            // }
                           >
-                            {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                          </button>
-                          <button
-                            className="btn-modal-cancel"
-                            type="button"
-                            onClick={handleClose}
-                          >
-                            Cancel
+                            {mutation.isPending ? <ButtonSpinner /> : "Publish"}
                           </button>
                         </div>
                       </div>

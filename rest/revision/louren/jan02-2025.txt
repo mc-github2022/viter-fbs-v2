@@ -1,0 +1,43 @@
+
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/events-and-activities/create.php
+            -> rest/v1/controllers/developer/events-and-activities/active.php
+            -> rest/v1/controllers/developer/events-and-activities/update.php
+            -> rest/v1/controllers/developer/subscribe/create.php
+        
+
+        * MODELS
+            -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> EVENTS AND ACTIVITIES
+            note: active is added in htaccess
+            RewriteRule ^eventsAndAct/active/([0-9]+)$ controllers/developer/events-and-activities/active.php?events_activitiesid=$1 [L]
+            -> 
+            -> 
+            -> 
+
+
+        * OTHER FILES
+            -> 
+            ->
+
+
+        * DB BACKUP
+            ->  rest/db-backup/fbsv2_events_activities.sql
+                note: column added
+                `events_activities_is_active` tinyint(1) NOT NULL,
+            ->
+            ->
+            ->
+            ->
+            ->

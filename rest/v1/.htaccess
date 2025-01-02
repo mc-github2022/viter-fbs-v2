@@ -29,6 +29,7 @@ RewriteRule ^specialOffers/([0-9]+)$ controllers/developer/special-offers/specia
 
 # Why FBS - EVENTS AND ACTIVITIES
 RewriteRule ^eventsAndAct$ controllers/developer/events-and-activities/eventsAndActivities.php [L]
+RewriteRule ^eventsAndAct/active/([0-9]+)$ controllers/developer/events-and-activities/active.php?events_activitiesid=$1 [L]
 RewriteRule ^eventsAndAct/([0-9]+)$ controllers/developer/events-and-activities/eventsAndActivities.php?events_activitiesid=$1 [L]
 RewriteRule ^eventsAndAct/page/([0-9]+)$ controllers/developer/events-and-activities/page.php?start=$1 [L]
 RewriteRule ^eventsAndAct/search$ controllers/developer/events-and-activities/search.php [L]
@@ -114,4 +115,4 @@ RewriteRule ^subscribe/search$ controllers/developer/subscribe/search.php [L]
 RewriteRule ^subscribe/active/([0-9]+)$ controllers/developer/subscribe/active.php?subscribeid=$1 [L]
 RewriteRule ^subscribe/notif$ controllers/developer/subscribe/notification-subscriber.php [L]
 RewriteRule ^subscribe/key/(.*)$ controllers/developer/subscribe/key.php?subscriberkey=$1 [L]
-RewriteRule ^subscribe/update-unsubscribe/([0-9]+)$ controllers/developer/subscribe/update-unsubscribe.php?subscriberkey=$1 [L]
+RewriteRule ^subscribe/unsubscribe/(.*)$ controllers/developer/subscribe/update-unsubscribe.php?subscriberkey=$1 [L]

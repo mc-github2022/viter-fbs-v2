@@ -1,19 +1,21 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
+import { FaArchive, FaEdit } from "react-icons/fa";
+import { FaUserGroup } from "react-icons/fa6";
+import { MdDelete, MdRestore } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
+import { apiVersion } from "../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import ModalRestore from "../../../partials/modals/ModalRestore";
+import LoadMore from "../../../partials/LoadMore";
+import SearchBar from "../../../partials/SearchBar";
+import Status from "../../../partials/Status";
 import ModalArchive from "../../../partials/modals/ModalArchive";
 import ModalDelete from "../../../partials/modals/ModalDelete";
-import LoadMore from "../../../partials/LoadMore";
-import { MdDelete, MdRestore } from "react-icons/md";
-import { FaArchive, FaEdit } from "react-icons/fa";
-import Status from "../../../partials/Status";
+import ModalRestore from "../../../partials/modals/ModalRestore";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../partials/spinners/NoData";
 import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
-import NoData from "../../../partials/spinners/NoData";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
-import SearchBar from "../../../partials/SearchBar";
 import {
   setIsAdd,
   setIsArchive,
@@ -21,7 +23,6 @@ import {
   setIsRestore,
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
-import { apiVersion } from "../../../helpers/functions-general";
 
 const SubscribersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -98,7 +99,13 @@ const SubscribersTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <div className="place-self-end">
+      <div className="flex items-center gap-5 place-self-end">
+        <div className="flex items-center gap-2">
+          <span>
+            <FaUserGroup className="text-gray-500" />
+          </span>
+          {store.isSearch ? result?.pages[0].count : result?.pages[0].total}
+        </div>
         <SearchBar
           search={search}
           dispatch={dispatch}

@@ -6,8 +6,8 @@ class Subscribe
     public $subscriber_email;
     public $subscriber_is_active;
     public $subscriber_key;
-    public $subscriber_email_new;
     public $subscriber_feedback;
+    public $subscriber_is_agree;
     public $subscriber_created;
     public $subscriber_datetime;
 
@@ -93,11 +93,13 @@ class Subscribe
             $sql .= "( subscriber_email, ";
             $sql .= "subscriber_is_active, ";
             $sql .= "subscriber_key, ";
+            $sql .= "subscriber_is_agree, ";
             $sql .= "subscriber_created, ";
             $sql .= "subscriber_datetime ) values ( ";
             $sql .= ":subscriber_email, ";
             $sql .= ":subscriber_is_active, ";
             $sql .= ":subscriber_key, ";
+            $sql .= ":subscriber_is_agree, ";
             $sql .= ":subscriber_created, ";
             $sql .= ":subscriber_datetime )";
             $query = $this->connection->prepare($sql);
@@ -105,6 +107,7 @@ class Subscribe
                 "subscriber_email" => $this->subscriber_email,
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_key" => $this->subscriber_key,
+                "subscriber_is_agree" => $this->subscriber_is_agree,
                 "subscriber_created" => $this->subscriber_created,
                 "subscriber_datetime" => $this->subscriber_datetime,
             ]);
@@ -178,6 +181,7 @@ class Subscribe
         try {
             $sql = "select subscriber_email from {$this->tblSubscriber} ";
             $sql .= "where subscriber_email = :subscriber_email ";
+            $sql .= "and subscriber_is_active = 1 ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => "{$this->subscriber_email}",
@@ -206,35 +210,18 @@ class Subscribe
         return $query;
     }
 
-    public function readEmails()
-    {
-        try {
-            $sql = "select subscriber_email ";
-            $sql .= "from ";
-            $sql .= "{$this->tblSubscriber} ";
-            $sql .= "where subscriber_email = :subscriber_email ";
-            $sql .= "order by subscriber_email ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_email" => $this->subscriber_email,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
 
     // count the subscribers
     public function readSubscriberCount()
     {
         try {
             $sql = "SELECT COUNT(*) AS subscriber_count ";
-            $sql .= "FROM {$this->tblSubscriber}";
-
+            $sql .= "FROM {$this->tblSubscriber} ";
+            $sql .= "where subscriber_is_active = 1 ";
             $query = $this->connection->prepare($sql);
             $query->execute();
 
-            return (int)$query->fetchColumn() + 1; // This will return 0 if no rows found
+            return (int)$query->fetchColumn() + 1;
         } catch (PDOException $ex) {
             return false;
         }
@@ -256,68 +243,6 @@ class Subscribe
         return $query;
     }
 
-    // update key and new email
-    public function updateUserKeyAndNewEmail()
-    {
-        try {
-            $sql = "update {$this->tblSubscriber} set ";
-            $sql .= "subscriber_key = :subscriber_key, ";
-            $sql .= "subscriber_email_new = :subscriber_email, ";
-            $sql .= "subscriber_datetime = :subscriber_datetime ";
-            $sql .= "where subscriber_aid  = :subscriber_aid ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_key" => $this->subscriber_key,
-                "subscriber_email" => $this->subscriber_email,
-                "subscriber_datetime" => $this->subscriber_datetime,
-                "subscriber_aid" => $this->subscriber_aid,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
-    public function updateEmailForUser()
-    {
-        try {
-            $sql = "update {$this->tblSubscriber} set ";
-            $sql .= "subscriber_email = :subscriber_email, ";
-            $sql .= "subscriber_email_new = '', ";
-            $sql .= "subscriber_key = '', ";
-            $sql .= "subscriber_datetime = :subscriber_datetime ";
-            $sql .= "where subscriber_key = :subscriber_key ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_email" => $this->subscriber_email,
-                "subscriber_datetime" => $this->subscriber_datetime,
-                "subscriber_key" => $this->subscriber_key,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
-    // read key for email verification
-    public function readKeyChangeEmail()
-    {
-        try {
-            $sql = "select ";
-            $sql .= "subscriber_key, ";
-            $sql .= "subscriber_email_new ";
-            $sql .= "from {$this->tblSubscriber} ";
-            $sql .= "where subscriber_key = :subscriber_key ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_key" => $this->subscriber_key,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
     // update unsubscribe
     public function updateUnsubscribe()
     {
@@ -327,14 +252,13 @@ class Subscribe
             $sql .= "subscriber_feedback = :subscriber_feedback, ";
             $sql .= "subscriber_is_active = :subscriber_is_active, ";
             $sql .= "subscriber_datetime = :subscriber_datetime ";
-            $sql .= "where subscriber_key  = :subscriber_key ";
+            $sql .= "where subscriber_key  = :original_subscriber_key ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "subscriber_key" => $this->subscriber_key,
+                "original_subscriber_key" => $this->subscriber_key,
                 "subscriber_feedback" => $this->subscriber_feedback,
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_datetime" => $this->subscriber_datetime,
-                "subscriber_key" => $this->subscriber_key,
             ]);
         } catch (PDOException $ex) {
             $query = false;
