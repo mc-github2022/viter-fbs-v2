@@ -114,14 +114,14 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                       name="subscriber_email"
                       className="w-full md:w-[300px] !h-[40px]"
                       disabled={mutation.isPending}
-                      onPaste={(e) => e.preventDefault()}
-                      onCut={(e) => e.preventDefault()}
-                      onCopy={(e) => e.preventDefault()}
-                      onDrag={(e) => e.preventDefault()}
-                      onDrop={(e) => e.preventDefault()}
-                      onSelect={(e) => e.preventDefault()}
-                      autoComplete="off"
-                      required
+                      // onPaste={(e) => e.preventDefault()}
+                      // onCut={(e) => e.preventDefault()}
+                      // onCopy={(e) => e.preventDefault()}
+                      // onDrag={(e) => e.preventDefault()}
+                      // onDrop={(e) => e.preventDefault()}
+                      // onSelect={(e) => e.preventDefault()}
+                      // autoComplete="off"
+                      // required
                     />
                   </div>
                   <div className="input-wrapper !m-0">

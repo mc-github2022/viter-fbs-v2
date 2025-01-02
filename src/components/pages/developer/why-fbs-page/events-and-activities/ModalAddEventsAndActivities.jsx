@@ -294,7 +294,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                                   initVal.events_activities_img_list ===
                                     photoArrayList?.name))
                             }
-                            onClick={() => setIsDraft(true)} // Save as Draft button
+                            onClick={() => setIsDraft(true)}
                           >
                             {mutation.isPending ? (
                               <ButtonSpinner />
