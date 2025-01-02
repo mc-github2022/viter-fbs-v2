@@ -51,9 +51,9 @@ const Navigation = ({ menu, submenu }) => {
             />
           </div>
         </div>
-        <div>
+        <div className="overflow-y-auto">
           <nav>
-            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold text-[14px]">
+            <ul className="flex-col [&>li]:text-left [&>li]:text-[16px] font-semibold text-[14px] ">
               {store.credentials.data.role_code === "role_is_marketing" ? (
                 <li
                   className={` flex justify-between items-center p-1
