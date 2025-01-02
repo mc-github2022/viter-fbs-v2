@@ -9,6 +9,7 @@ $events_activities = new EventsAndActivities($conn);
 // check data
 checkPayload($data);
 // get data
+$events_activities->events_activities_is_active = 0;
 $events_activities->events_activities_img = $data["events_activities_img"];
 $events_activities->events_activities_img_list = $data["events_activities_img_list"];
 $events_activities->events_activities_category = $data["events_activities_category"];

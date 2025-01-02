@@ -14,6 +14,7 @@ import {
 import {
   apiVersion,
   devBaseImgUrl,
+  devNavUrl,
 } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
@@ -60,8 +61,8 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/eventsAndAct/${itemEdit.events_activities_aid}` // update
-          : `/v1/eventsAndAct`, // create
+          ? `${apiVersion}/eventsAndAct/${itemEdit.events_activities_aid}` // update
+          : `${apiVersion}/eventsAndAct`, // create
         itemEdit ? "put" : "post",
         values
       ),
@@ -262,8 +263,19 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                                   initVal.events_activities_img_list ===
                                     photoArrayList?.name))
                             }
+                            // disabled={
+                            //   ((mutation.isPending || !props.dirty) &&
+                            //     photoSingle === null) ||
+                            //   photoSingle === "" ||
+                            //   initVal.events_activities_img ===
+                            //     photoSingle?.name
+                            // }
                           >
-                            {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                            {mutation.isPending ? (
+                              <ButtonSpinner />
+                            ) : (
+                              "Save as Draft"
+                            )}
                           </button>
                           <button
                             className="btn-modal-cancel"

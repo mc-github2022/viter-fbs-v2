@@ -1,9 +1,9 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { FaArchive, FaEdit } from "react-icons/fa";
+import { MdDelete, MdOutlineFileUpload, MdRestore } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
-import { formatDate } from "../../../../helpers/functions-general";
+import { apiVersion, formatDate } from "../../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
 import LoadMore from "../../../../partials/LoadMore";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
@@ -13,13 +13,27 @@ import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import TableSpinner from "../../../../partials/spinners/TableSpinner";
-import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
+import {
+  setIsAdd,
+  setIsArchive,
+  setIsDelete,
+  setIsRestore,
+} from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
+import Status from "../../../../partials/Status";
+import ModalArchive from "../../../../partials/modals/ModalArchive";
+import StatusEventsAndActivities from "./DraftStatusEventsAndActivities";
+import DraftStatusEventsAndActivities from "./DraftStatusEventsAndActivities";
+import ModalRestore from "../../user/other-user/modal/ModalRestore";
+import ModalUpload from "./modals/ModalUpload";
+import ModalDraft from "./modals/ModalDraft";
+import { RiDraftFill, RiDraftLine } from "react-icons/ri";
 
 const EventsAndActivitiesTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
+  const [isArchiving, setIsArchiving] = React.useState(false);
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -38,8 +52,8 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
     queryKey: ["eventsAndAct", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/eventsAndAct/search`, // search endpoint
-        `/v1/eventsAndAct/page/${pageParam}`, // list endpoint
+        `${apiVersion}/eventsAndAct/search`, // search endpoint
+        `${apiVersion}/eventsAndAct/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -63,6 +77,22 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
     dispatch(setIsDelete(true));
     setIsData(item.events_activities_title);
     setIsId(item.events_activities_aid);
+  };
+
+  const handleArchive = (item) => {
+    dispatch(setIsArchive(true));
+    setIsData(item.events_activities_title);
+    setIsId(item.events_activities_aid);
+    setIsArchiving(true);
+    setIsRestore(false);
+  };
+
+  const handleRestore = (item) => {
+    dispatch(setIsRestore(true));
+    setIsData(item.events_activities_title);
+    setIsId(item.events_activities_aid);
+    setIsArchiving(false);
+    setIsRestore(true);
   };
 
   React.useEffect(() => {
@@ -93,6 +123,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
+              <th className=" w-[5rem]">Status</th>
               <th>Category</th>
               <th className="w-[10rem]">Title</th>
               <th className="w-[10rem]">Slug</th>
@@ -126,6 +157,13 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                   <tr key={key} className="place-content-start text-[14px]">
                     <td className="pl-2 place-content-start">{counter++}</td>
                     <td className="place-content-start">
+                      {item.events_activities_is_active === 1 ? (
+                        <DraftStatusEventsAndActivities text="Active" />
+                      ) : (
+                        <DraftStatusEventsAndActivities text="Draft" />
+                      )}
+                    </td>
+                    <td className="place-content-start">
                       {item.events_activities_category}
                     </td>
                     <td className="place-content-start">
@@ -151,20 +189,41 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                       </p>
                     </td>
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Edit"
-                        onClick={() => handleEdit(item)}
-                      >
-                        <FaEdit className="text-gray-600 text-[16px]" />
-                      </button>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Delete"
-                        onClick={() => handleDelete(item)}
-                      >
-                        <MdDelete className="text-gray-600 text-[18px]" />
-                      </button>
+                      {item.events_activities_is_active ? (
+                        <>
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Edit"
+                            onClick={() => handleEdit(item)}
+                          >
+                            <FaEdit className="text-gray-600 text-[16px]" />
+                          </button>
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Draft"
+                            onClick={() => handleArchive(item)}
+                          >
+                            <RiDraftFill className=" text-gray-600 text-[16px]" />
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Upload"
+                            onClick={() => handleRestore(item)}
+                          >
+                            <MdOutlineFileUpload className="text-gray-600 text-[18px]" />
+                          </button>
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Delete"
+                            onClick={() => handleDelete(item)}
+                          >
+                            <MdDelete className="text-gray-600 text-[18px]" />
+                          </button>
+                        </>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -189,8 +248,26 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"eventsAndAct"}
-          mysqlEndpoint={`/v1/eventsAndAct/${id}`}
+          mysqlEndpoint={`${apiVersion}/eventsAndAct/${id}`}
           item={isData}
+        />
+      )}
+      {store.isArchive && (
+        <ModalDraft
+          mysqlApiArchive={`${apiVersion}/eventsAndAct/active/${id}`}
+          msg={"Are you sure you want to draft this post?"}
+          successMsg={"Draft succesfully."}
+          queryKey={"eventsAndAct"}
+          setIsArchive={setIsArchive}
+        />
+      )}
+      {store.isRestore && (
+        <ModalUpload
+          mysqlApiRestore={`${apiVersion}/eventsAndAct/active/${id}`}
+          msg={"Are you sure you want to upload this post?"}
+          successMsg={"Upload succesfully."}
+          queryKey={"eventsAndAct"}
+          setIsRestore={setIsRestore}
         />
       )}
     </>
