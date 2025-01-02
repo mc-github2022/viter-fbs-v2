@@ -33,7 +33,9 @@ DEVELOPER
 
 
         * DB BACKUP
-            -> 
+            ->  rest/db-backup/fbsv2_events_activities.sql
+                note: column added
+                `events_activities_is_active` tinyint(1) NOT NULL,
             ->
             ->
             ->
