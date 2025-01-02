@@ -78,7 +78,9 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
         console.log("Success");
         dispatch(setIsAdd(false));
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
+        dispatch(
+          setMessage(`Successfully ${isDraft ? "added to draft" : "Publish"}.`)
+        );
       }
     },
   });
@@ -253,7 +255,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                       <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
-                        <div className="form-btn">    
+                        <div className="form-btn">
                           <button
                             className="btn-modal-submit bg-white text-primary"
                             type="submit"
