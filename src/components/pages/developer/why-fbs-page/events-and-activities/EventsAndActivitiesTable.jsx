@@ -143,6 +143,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
               </tr>
             )}
 
+
             {error && (
               <tr className="text-center ">
                 <td colSpan="100%" className="p-10">
