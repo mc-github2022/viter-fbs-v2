@@ -11,8 +11,15 @@ import {
   devBaseImgUrl,
   devNavUrl,
 } from "../helpers/functions-general";
+import Subscribe from "./Subscribe";
 
 const Footer = () => {
+  const [subscribe, setSubscribe] = React.useState(false);
+
+  const handleSubscribe = () => {
+    setSubscribe(true);
+  };
+
   return (
     <>
       <footer className="footer bg-[#000000] pt-14 text-light relative overflow-hidden">
@@ -90,6 +97,14 @@ const Footer = () => {
                   <p className="font-semibold mb-1">Email</p>
                   <p>marketing@frontlinebusiness.com.ph</p>
                 </div>
+                <div className="text-xs mt-6">
+                  <a
+                    onClick={handleSubscribe}
+                    className="font-semibold mb-1 cursor-pointer"
+                  >
+                    Subscribe to our newsletter
+                  </a>
+                </div>
               </div>
               <div className="text-center sm:text-left">
                 <p className="font-semibold">QUICKLINKS</p>
@@ -139,6 +154,12 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      {subscribe && (
+        <Subscribe
+          setSubscribe={setSubscribe}
+          notification_purpose={"subscribers"}
+        />
+      )}
     </>
   );
 };

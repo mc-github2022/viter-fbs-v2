@@ -1,6 +1,7 @@
 <?php
 // check database connection
 require '../../../notification/subscriber-message.php';
+require '../../../recaptcha/verify-recaptcha.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
@@ -16,8 +17,15 @@ if (array_key_exists("subscribeid", $_GET)) {
 checkPayload($data);
 // get data
 
+
+// START OF reCAPTCHA VERIFICATION
+$captchaValue = $data["captchaValue"];
+$captchaResponse = verifyRecaptcha($captchaValue);
+// END OF reCAPTCHA VERIFICATION
+
 $email = checkIndex($data, "subscriber_email");
 $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+$subscribe->subscriber_is_agree = checkIndex($data, "subscriber_is_agree");
 $subscribe->subscriber_key = $encrypt->doHash(rand());
 $unsubscribe_link = "/unsubscribe";
 // checks newly added data if it already exists

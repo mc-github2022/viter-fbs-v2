@@ -8,9 +8,12 @@ import { setMessage, setSuccess, setError } from "../store/StoreAction";
 import { queryData } from "../helpers/queryData";
 import { StoreContext } from "../store/StoreContext";
 import ButtonSpinner from "./spinners/ButtonSpinner";
-import { apiVersion } from "../helpers/functions-general";
+import { apiVersion, siteKey } from "../helpers/functions-general";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
+  const recaptchaRef = React.useRef();
+
   const handleSubsClose = () => {
     setSubscribe(false);
   };
@@ -51,12 +54,18 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
 
   const initVal = {
     subscriber_email: "",
+    subscriber_is_agree: false,
     notification_purpose,
   };
 
   const yupSchema = Yup.object({
     subscriber_email: Yup.string().required("Required").email("Invalid email"),
   });
+
+  const handleChange = (value) => {
+    console.log(value);
+    // setCaptcha(value);
+  };
 
   return (
     <>
@@ -78,9 +87,21 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
           <Formik
             initialValues={initVal}
             validationSchema={yupSchema}
-            onSubmit={async (values, { setSubmitting, resetForm }) => {
-              // console.log(values);
-              mutation.mutate(values);
+            onSubmit={async (values) => {
+              const captchaValue = recaptchaRef.current.getValue();
+              console.log(captchaValue);
+              if (captchaValue === "") {
+                dispatch(setError(true));
+                dispatch(
+                  setMessage(
+                    "Please verify that you are not a robot by completing the reCAPTCHA below."
+                  )
+                );
+                return;
+              }
+              values.subscriber_is_agree = check;
+              mutation.mutate({ ...values, captchaValue });
+              recaptchaRef.current?.reset();
             }}
           >
             {(props) => {
@@ -92,6 +113,15 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                       type="text"
                       name="subscriber_email"
                       className="w-full md:w-[300px] !h-[40px]"
+                      disabled={mutation.isPending}
+                      onPaste={(e) => e.preventDefault()}
+                      onCut={(e) => e.preventDefault()}
+                      onCopy={(e) => e.preventDefault()}
+                      onDrag={(e) => e.preventDefault()}
+                      onDrop={(e) => e.preventDefault()}
+                      onSelect={(e) => e.preventDefault()}
+                      autoComplete="off"
+                      required
                     />
                   </div>
                   <div className="input-wrapper !m-0">
@@ -99,7 +129,8 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                       <div className="flex">
                         <input
                           type="checkbox"
-                          name="agree"
+                          name="subscriber_is_agree"
+                          checked={check}
                           id="agree"
                           onChange={handleCheckBox}
                         />
@@ -110,22 +141,47 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                       </p>
                     </div>
                   </div>
+                  <div className="input-wrapper reCaptcha">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={siteKey}
+                      onChange={(e) => handleChange(e)}
+                    />
+                  </div>
                   <div className="modal__action flex justify-center mt-6 gap-2">
-                    <button
-                      className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
-                      type="submit"
-                      disabled={mutation.isPending || !props.dirty || !check}
-                    >
-                      <div className="flex items-center gap-2">
-                        {mutation.isPending ? (
-                          <div className="flex items-center gap-2">
-                            <ButtonSpinner /> Subscribe
-                          </div>
-                        ) : (
-                          "Subscribe"
-                        )}
-                      </div>
-                    </button>
+                    {!check || mutation.isPending || !props.dirty ? (
+                      <button
+                        className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
+                        type="button"
+                        disabled={mutation.isPending || !props.dirty || !check}
+                      >
+                        <div className="flex items-center gap-2">
+                          {mutation.isPending ? (
+                            <div className="flex items-center gap-2">
+                              <ButtonSpinner /> Subscribe
+                            </div>
+                          ) : (
+                            "Subscribe"
+                          )}
+                        </div>
+                      </button>
+                    ) : (
+                      <button
+                        className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || !check}
+                      >
+                        <div className="flex items-center gap-2">
+                          {mutation.isPending ? (
+                            <div className="flex items-center gap-2">
+                              <ButtonSpinner /> Subscribe
+                            </div>
+                          ) : (
+                            "Subscribe"
+                          )}
+                        </div>
+                      </button>
+                    )}
                   </div>
                 </Form>
               );
