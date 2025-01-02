@@ -253,7 +253,30 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
                       <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
-                        <div className="form-btn">
+                        <div className="form-btn">    
+                          <button
+                            className="btn-modal-submit bg-white text-primary"
+                            type="submit"
+                            disabled={
+                              mutation.isPending ||
+                              (!props.dirty &&
+                                !photoSingle &&
+                                (!photoArrayList ||
+                                  photoArrayList.length === 0)) ||
+                              (initVal.events_activities_img ===
+                                photoSingle?.name &&
+                                (!initVal.events_activities_img_list ||
+                                  initVal.events_activities_img_list ===
+                                    photoArrayList?.name))
+                            }
+                            onClick={() => setIsDraft(true)}
+                          >
+                            {mutation.isPending ? (
+                              <ButtonSpinner />
+                            ) : (
+                              "Save as Draft"
+                            )}
+                          </button>
                           <button
                             className="btn-modal-submit"
                             type="submit"
@@ -278,29 +301,6 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             // }
                           >
                             {mutation.isPending ? <ButtonSpinner /> : "Publish"}
-                          </button>
-                          <button
-                            className="btn-modal-submit bg-white text-primary"
-                            type="submit"
-                            disabled={
-                              mutation.isPending ||
-                              (!props.dirty &&
-                                !photoSingle &&
-                                (!photoArrayList ||
-                                  photoArrayList.length === 0)) ||
-                              (initVal.events_activities_img ===
-                                photoSingle?.name &&
-                                (!initVal.events_activities_img_list ||
-                                  initVal.events_activities_img_list ===
-                                    photoArrayList?.name))
-                            }
-                            onClick={() => setIsDraft(true)}
-                          >
-                            {mutation.isPending ? (
-                              <ButtonSpinner />
-                            ) : (
-                              "Save as Draft"
-                            )}
                           </button>
                         </div>
                       </div>
