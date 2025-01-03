@@ -1,7 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaArchive, FaEdit } from "react-icons/fa";
-import { MdDelete, MdOutlineFileUpload, MdRestore } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete, MdOutlineFileUpload } from "react-icons/md";
+import { RiDraftFill } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
 import { apiVersion, formatDate } from "../../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
@@ -12,7 +13,6 @@ import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
-import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import {
   setIsAdd,
   setIsArchive,
@@ -20,14 +20,9 @@ import {
   setIsRestore,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import Status from "../../../../partials/Status";
-import ModalArchive from "../../../../partials/modals/ModalArchive";
-import StatusEventsAndActivities from "./DraftStatusEventsAndActivities";
 import DraftStatusEventsAndActivities from "./DraftStatusEventsAndActivities";
-import ModalRestore from "../../user/other-user/modal/ModalRestore";
-import ModalUpload from "./modals/ModalUpload";
 import ModalDraft from "./modals/ModalDraft";
-import { RiDraftFill, RiDraftLine } from "react-icons/ri";
+import ModalUpload from "./modals/ModalUpload";
 
 const EventsAndActivitiesTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -115,7 +110,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
           onSearch={onSearch}
         />
       </div>
-      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-250px)] mb-10 lg:mb-0 lg:min-h-0 relative">
+      <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-150px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (
           <FetchingSpinner />
         )}
