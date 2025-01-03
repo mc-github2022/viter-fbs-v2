@@ -1,0 +1,39 @@
+
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> 
+            -> 
+            ->
+            -> 
+        
+
+        * MODELS
+            -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * OTHER FILES
+            -> 
+            ->
+
+
+        * DB BACKUP
+            ->  
+            ->
+            ->
+            ->
+            ->
+            ->
