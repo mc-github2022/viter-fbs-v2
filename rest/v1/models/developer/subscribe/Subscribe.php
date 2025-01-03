@@ -265,4 +265,49 @@ class Subscribe
         }
         return $query;
     }
+
+    //create a key when restore
+    public function createKeyRestore()
+    {
+        try {
+            $sql = "update {$this->tblSubscriber} set ";
+            $sql .= "subscriber_is_active = :subscriber_is_active, ";
+            $sql .= "subscriber_datetime = :subscriber_datetime ";
+            $sql .= "where subscriber_aid = :subscriber_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_is_active" => $this->subscriber_is_active,
+                "subscriber_datetime" => $this->subscriber_datetime,
+                "subscriber_aid" => $this->subscriber_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // // create a key when restore
+    // public function createKeyRestore()
+    // {
+    //     try {
+    //         $sql = "insert into {$this->tblSubscriber}";
+    //         $sql .= "( subscriber_key, ";
+    //         $sql .= "subscriber_is_active, ";
+    //         $sql .= "subscriber_key, ";
+    //         $sql .= "subscriber_datetime ) values ( ";
+    //         $sql .= ":subscriber_key, ";
+    //         $sql .= ":subscriber_is_active, ";
+    //         $sql .= ":subscriber_key, ";
+    //         $sql .= ":subscriber_datetime )";
+    //         $query = $this->connection->prepare($sql);
+    //         $query->execute([
+    //             "subscriber_is_active" => $this->subscriber_is_active,
+    //             "subscriber_key" => $this->subscriber_key,
+    //             "subscriber_datetime" => $this->subscriber_datetime,
+    //         ]);
+    //     } catch (PDOException $ex) {
+    //         $query = false;
+    //     }
+    //     return $query;
+    // }
 }

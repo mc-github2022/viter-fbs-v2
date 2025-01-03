@@ -18,6 +18,7 @@ checkPayload($data);
 // get data
 
 
+    
 // START OF reCAPTCHA VERIFICATION
 $captchaValue = $data["captchaValue"];
 $captchaResponse = verifyRecaptcha($captchaValue);

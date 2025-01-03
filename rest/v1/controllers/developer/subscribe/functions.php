@@ -16,5 +16,10 @@ function checkUpdateUnsubscribe($object)
     return $query;
 }
 
-
-
+// create a key when restore
+function checkCreateKeyRestore($object)
+{
+    $query = $object->createKeyRestore();
+    checkQuery($query, "Empty records. (restore key)");
+    return $query;
+}

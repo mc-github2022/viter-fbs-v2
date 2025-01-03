@@ -242,7 +242,7 @@ const SubscribersTable = ({ setItemEdit }) => {
         <ModalRestore
           setIsRestore={setIsRestore}
           queryKey={"subscribe"}
-          mysqlEndpoint={`${apiVersion}/subscribe/active/${id}`}
+          mysqlEndpoint={`${apiVersion}/subscribe/restore-key/${id}`}
           item={isData}
         />
       )}

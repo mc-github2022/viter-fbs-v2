@@ -42,6 +42,12 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
   const [eventsImage, setEventsImage] = React.useState(false);
   const [isDraft, setIsDraft] = React.useState(false);
 
+  // const [isCheck, setIsCheck] = React.useState(false);
+
+  // const handleCheckBox = (e) => {
+  //   setIsCheck(e.target.checked);
+  // };
+
   const handleEventsImage = (tabName) => {
     setEventsImage(true);
     setActiveTab(tabName);
@@ -245,6 +251,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             disabled={mutation.isPending}
                           />
                         </div>
+
                         <div className="input-wrapper">
                           <InputText
                             label="Date"
@@ -253,6 +260,44 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             disabled={mutation.isPending}
                           />
                         </div>
+                        {/* <div className="input-wrapper !m-0">
+                          <div className="flex items-start gap-2 w-full sm:w-[300px]">
+                            <div className="flex">
+                              <input
+                                type="checkbox"
+                                name="subscriber_is_agree"
+                                id="agree"
+                                onChange={handleCheckBox}
+                                checked={isCheck}
+                              />
+                            </div>
+                            <p className="text-xs mt-2.5">
+                              Schedule Date and Time of posting
+                            </p>
+                          </div>
+                        </div>
+                        {!isCheck ? (
+                          ""
+                        ) : (
+                          <div className="flex gap-5">
+                            <div className="input-wrapper">
+                              <InputText
+                                label="Date"
+                                type="date"
+                                name="events_activities_schedule_date"
+                                disabled={mutation.isPending}
+                              />
+                            </div>
+                            <div className="input-wrapper">
+                              <InputText
+                                label="Time"
+                                type="time"
+                                name="events_activities_schedule_time"
+                                disabled={mutation.isPending}
+                              />
+                            </div>
+                          </div>
+                        )} */}
                       </div>
                       <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
                         <div className="form-btn">
