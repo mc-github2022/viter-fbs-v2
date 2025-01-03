@@ -82,7 +82,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
             onClick={handleSubsClose}
             className="absolute top-2 p-1 px right-2 cursor-pointer shadow-lg bg-primary text-light rounded-full hover:bg-secondary"
           >
-            <IoMdClose className="text-2xl  rounded-full " />
+            <IoMdClose className="text-lg  rounded-full " />
           </div>
           <Formik
             initialValues={initVal}
