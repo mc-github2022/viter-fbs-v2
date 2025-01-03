@@ -70,7 +70,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
   return (
     <>
       <div className="grid place-items-center fixed w-full h-screen top-0 px-4 md:px-8 z-[999] backdrop-blur-lg">
-        <div className="modalSubscribe bg-[#fafafc] p-6 lg:p-10 rounded-xl shadow-2xl shadow-primary relative">
+        <div className="modalSubscribe bg-[#fafafc] px-6 py-10 lg:px-10 rounded-xl shadow-2xl shadow-primary relative">
           <h3 className="text-center lg:text-xl font-semibold mb-2">
             Subscribe to our newsletter
           </h3>
