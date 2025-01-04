@@ -23,3 +23,11 @@ function checkCreateKeyRestore($object)
     checkQuery($query, "Empty records. (restore key)");
     return $query;
 }
+
+// create subscriber from add
+function checkCreateSubscriber($object)
+{
+    $query = $object->createSubscriber();
+    checkQuery($query, "Empty records. (create subscriber)");
+    return $query;
+}

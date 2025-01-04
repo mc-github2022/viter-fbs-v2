@@ -5,21 +5,23 @@ Upload JSX
 DEVELOPER  
 
         * CONTROLLERS
-            -> 
-            -> 
-            ->
+            -> rest/v1/controllers/developer/subscribe/createSubscriber.php
+            -> rest/v1/controllers/developer/subscribe/functions.php
+            -> rest/v1/controllers/developer/subscribe/restore-key.php
             -> 
         
 
         * MODELS
             -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
-            -> 
+            -> rest/v1/models/developer/subscribe/Subscribe.php
             -> 
             -> 
 
 
         * HTACESS
-            -> 
+            -> SUBSCRIBER
+            note: added in subscriber
+            RewriteRule ^subscribe/create-subscriber$ controllers/developer/subscribe/createSubscriber.php?subscribeid=$1 [L]
             -> 
             -> 
             -> 

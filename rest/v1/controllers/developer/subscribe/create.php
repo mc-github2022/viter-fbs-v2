@@ -17,8 +17,7 @@ if (array_key_exists("subscribeid", $_GET)) {
 checkPayload($data);
 // get data
 
-
-    
+   
 // START OF reCAPTCHA VERIFICATION
 $captchaValue = $data["captchaValue"];
 $captchaResponse = verifyRecaptcha($captchaValue);

@@ -1,21 +1,20 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
+import { GrFormClose } from "react-icons/gr";
+import * as Yup from "yup";
+import { InputText } from "../../../helpers/FormInputs";
+import { apiVersion } from "../../../helpers/functions-general";
+import { queryData } from "../../../helpers/queryData";
+import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setIsAdd,
   setMessage,
   setSuccess,
 } from "../../../store/StoreAction";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import * as Yup from "yup";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import { InputText } from "../../../helpers/FormInputs";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import { apiVersion, getUrlParam } from "../../../helpers/functions-general";
-import { queryData } from "../../../helpers/queryData";
-import useQueryData from "@/components/custom-hooks/useQueryData";
+import { StoreContext } from "../../../store/StoreContext";
 
 const ModalAddSubscribers = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -33,7 +32,7 @@ const ModalAddSubscribers = ({ itemEdit }) => {
       queryData(
         itemEdit
           ? `${apiVersion}/subscribe/${itemEdit.subscriber_aid}` // update
-          : `${apiVersion}/subscribe`, // create
+          : `${apiVersion}/subscribe/create-subscriber`, // create
         itemEdit ? "put" : "post",
         values
       ),

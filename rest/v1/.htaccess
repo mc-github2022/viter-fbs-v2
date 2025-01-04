@@ -117,3 +117,4 @@ RewriteRule ^subscribe/notif$ controllers/developer/subscribe/notification-subsc
 RewriteRule ^subscribe/key/(.*)$ controllers/developer/subscribe/key.php?subscriberkey=$1 [L]
 RewriteRule ^subscribe/unsubscribe/(.*)$ controllers/developer/subscribe/update-unsubscribe.php?subscriberkey=$1 [L]
 RewriteRule ^subscribe/restore-key/([0-9]+)$ controllers/developer/subscribe/restore-key.php?subscribeid=$1 [L]
+RewriteRule ^subscribe/create-subscriber$ controllers/developer/subscribe/createSubscriber.php?subscribeid=$1 [L]
