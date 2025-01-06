@@ -11,7 +11,6 @@ import SearchBar from "../../../partials/SearchBar";
 import Status from "../../../partials/Status";
 import ModalArchive from "../../../partials/modals/ModalArchive";
 import ModalDelete from "../../../partials/modals/ModalDelete";
-import ModalRestore from "../../../partials/modals/ModalRestore";
 import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../partials/spinners/NoData";
 import ServerError from "../../../partials/spinners/ServerError";
@@ -23,6 +22,7 @@ import {
   setIsRestore,
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import ModalRestore from "./ModalRestore";
 
 const SubscribersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -84,7 +84,7 @@ const SubscribersTable = ({ setItemEdit }) => {
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item.subscriber_email);
+    setIsData(item);
     setIsId(item.subscriber_aid);
     setIsArchiving(false);
     setIsRestore(true);
@@ -240,9 +240,11 @@ const SubscribersTable = ({ setItemEdit }) => {
       )}
       {store.isRestore && (
         <ModalRestore
-          setIsRestore={setIsRestore}
+          mysqlApiRestore={`${apiVersion}/subscribe/restore-key/${id}`}
+          msg={"Are you sure you want to restore this subscriber?"}
+          successMsg={"Restore succesfully."}
           queryKey={"subscribe"}
-          mysqlEndpoint={`${apiVersion}/subscribe/restore-key/${id}`}
+          setIsRestore={setIsRestore}
           item={isData}
         />
       )}
