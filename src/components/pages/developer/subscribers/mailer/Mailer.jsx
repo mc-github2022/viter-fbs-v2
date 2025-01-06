@@ -35,6 +35,7 @@ const Mailer = () => {
   const [subscriberValue, setSubscriberValue] = React.useState("");
   const [subscriberId, setSubscriberId] = React.useState("");
   const [subscriber, setSubscriber] = React.useState("");
+  const [selectedRecipients, setSelectedRecipients] = React.useState([]);
 
   const {
     isFetching: subscriberDataIsFetching,
@@ -52,10 +53,6 @@ const Mailer = () => {
     },
     true // refetchOnWindowFocus
   );
-
-  // const activeSubscribers = subscriberData?.data.filter(
-  //   (item) => item.subscriber_is_active === 1
-  // );
 
   // const handlePreview = () => {
   //   setPreview(true);
@@ -81,33 +78,107 @@ const Mailer = () => {
     },
   });
 
-  const handleClickRecipient = (item) => {
-    setSubscriber(item.subscriber_email);
-    setSubscriberValue(item.subscriber_email);
-    setSubscriberId(item.subscriber_aid);
+  // const handleClickRecipient = (item) => {
+  //   if (item === "all") {
+  //     setSelectedRecipients(
+  //       subscriberData.data.map((sub) => sub.subscriber_email)
+  //     );
+  //     setSubscriberValue("All Recipients");
+  //     setSubscriberId("all"); // Or another valid identifier for all
+  //   } else {
+  //     setSelectedRecipients([item.subscriber_email]);
+  //     setSubscriberValue(item.subscriber_email);
+  //     setSubscriberId(item.subscriber_aid); // Use the correct field here
+  //   }
+  //   setOnRecipient(false);
+  // };
+
+  // const handleClickRecipient = (item) => {
+  //   if (item === "all") {
+  //     const allEmails = subscriberData.data.map((sub) => sub.subscriber_email);
+  //     setSelectedRecipients(allEmails);
+  //     setSubscriberValue("All Recipients");
+  //     setFormValues((prev) => ({
+  //       ...prev,
+  //       subscriber_email: "All Recipients", // Ensure this line is executed
+  //     }));
+  //     setSubscriber(""); // Reset subscriber for "all"
+  //   } else {
+  //     setSelectedRecipients([item.subscriber_email]);
+  //     setSubscriberValue(item.subscriber_email);
+  //     setFormValues((prev) => ({
+  //       ...prev,
+  //       subscriber_email: item.subscriber_email, // Ensure this line is executed
+  //     }));
+  //     setSubscriber(item.subscriber_email); // Update for search
+  //   }
+  //   console.log("Updated Form Values:", formValues); // Check updated form values
+  //   setOnRecipient(false);
+  // };
+
+  const handleClickRecipient = (item, setFieldValue) => {
+    if (item === "all") {
+      const allEmails = subscriberData.data.map((sub) => sub.subscriber_email);
+      setSelectedRecipients(allEmails);
+      setSubscriberValue("All Recipients");
+      setFieldValue("subscriber_email", "All Recipients");
+      setSubscriber(""); // Reset subscriber for "all"
+    } else {
+      setSelectedRecipients([item.subscriber_email]);
+      setSubscriberValue(item.subscriber_email);
+      setFieldValue("subscriber_email", item.subscriber_email);
+      setSubscriber(item.subscriber_email); // Update for search
+    }
+    console.log("Selected Recipient:", item);
     setOnRecipient(false);
   };
 
-  const handleOnChangeSubscriber = (e) => {
-    setSubscriberValue(e.target.value);
+  // React.useEffect(() => {
+  //   setFormValues((prev) => ({
+  //     ...prev,
+  //     subscriber_email: subscriberValue,
+  //   }));
+  // }, [subscriberValue]);
+
+  // const handleOnChangeSubscriber = (e) => {
+  //   setSubscriberValue(e.target.value);
+  //   setLoading(true);
+  //   setSubscriberId("");
+  //   if (e.target.value === "") {
+  //     setLoading(false);
+  //   }
+
+  //   let timeOut;
+
+  //   timeOut = setTimeout(() => {
+  //     clearTimeout(timeOut);
+  //     let val = e.target.value;
+  //     if (val === "") {
+  //       setSubscriber(val);
+  //       return;
+  //     }
+  //     setSubscriber(val);
+  //     setLoading(false);
+  //   }, 500); // debounce seconds to fetch
+  // };
+
+  let timeOut;
+
+  const handleOnChangeSubscriber = (e, setFieldValue) => {
+    const newValue = e.target.value;
+    setSubscriberValue(newValue);
     setLoading(true);
     setSubscriberId("");
-    if (e.target.value === "") {
-      setLoading(false);
-    }
 
-    let timeOut;
+    clearTimeout(timeOut);
 
+    // Set a new timeout for debouncing
     timeOut = setTimeout(() => {
-      clearTimeout(timeOut);
-      let val = e.target.value;
-      if (val === "") {
-        setSubscriber(val);
-        return;
-      }
-      setSubscriber(val);
+      setSubscriber(newValue);
       setLoading(false);
-    }, 500); // debounce seconds to fetch
+
+      setFieldValue("subscriber_email", newValue); // Set subscriber_email to the new value
+    }, 500);
   };
 
   // to close the modal when clicking outside for Subscriber
@@ -135,12 +206,16 @@ const Mailer = () => {
     subscriber_key: "",
   };
 
-  const [formValues, setFormValues] = React.useState(initVal);
-
   const yupSchema = Yup.object({
     newsletter: Yup.string().required("Required"),
     newsletter_subject: Yup.string().required("Required"),
-    subscriber_email: Yup.string().required("Required"),
+    subscriber_email: Yup.string()
+      .test(
+        "isValidRecipient",
+        "Required",
+        (value) => value === "All Recipients" || Boolean(value?.trim())
+      )
+      .required("Required"),
   });
 
   return (
@@ -159,8 +234,11 @@ const Mailer = () => {
                 initialValues={initVal}
                 validationSchema={yupSchema}
                 onSubmit={async (values) => {
-                  // to set error message when the input of Subscriber doesnt have input or laman
-                  if (subscriberId === "" || !subscriberId) {
+                  // Validate the subscriber_email field
+                  if (
+                    !values.subscriber_email ||
+                    values.subscriber_email.trim() === ""
+                  ) {
                     dispatch(setError(true));
                     dispatch(setMessage("Subscriber is Required."));
                     return;
@@ -168,40 +246,54 @@ const Mailer = () => {
                   mutation.mutate(values);
                 }}
               >
-                {(props) => {
-                  return (
-                    <Form>
-                      <div className="grid grid-cols-[_1.5fr_2fr] gap-5">
-                        <div>
-                          <div className="input-wrapper">
-                            <InputText
-                              label="Recipient"
-                              type="text"
-                              value={subscriberValue}
-                              name="subscriber_email"
-                              disabled={mutation.isPending}
-                              onFocus={() => setOnRecipient(true)}
-                              onChange={handleOnChangeSubscriber}
-                              refVal={refSubscriber}
-                            />
-                            {onRecipient && (
-                              <div className="w-full text-xs h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
-                                {loading || subscriberDataIsFetching ? (
-                                  <TableSpinner />
-                                ) : subscriberDataError ? (
-                                  <div className="my-7">
-                                    <ServerError />
+                {({ setFieldValue, values }) => (
+                  <Form>
+                    <div className="grid grid-cols-[_1.5fr_2fr] gap-5">
+                      <div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Recipient"
+                            type="text"
+                            value={subscriberValue}
+                            name="subscriber_email"
+                            onFocus={() => setOnRecipient(true)}
+                            onChange={(e) =>
+                              handleOnChangeSubscriber(e, setFieldValue)
+                            }
+                            refVal={refSubscriber}
+                          />
+                          {onRecipient && (
+                            <div className="w-full text-xs h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                              {loading || subscriberDataIsFetching ? (
+                                <TableSpinner />
+                              ) : subscriberDataError ? (
+                                <div className="my-7">
+                                  <ServerError />
+                                </div>
+                              ) : subscriberData?.count > 0 ? (
+                                <>
+                                  <div
+                                    className="cursor-pointer hover:bg-gray-100 px-2"
+                                    onClick={() =>
+                                      handleClickRecipient("all", setFieldValue)
+                                    }
+                                  >
+                                    All Recipients
                                   </div>
-                                ) : subscriberData?.count > 0 ? (
-                                  subscriberData?.data.map((item, key) => (
+                                  {subscriberData?.data.map((item, key) => (
                                     <div
                                       className="cursor-pointer hover:bg-gray-100 px-2"
-                                      value={item.subscriber_aid}
                                       key={key}
-                                      onClick={() => handleClickRecipient(item)}
+                                      onClick={() =>
+                                        handleClickRecipient(
+                                          item,
+                                          setFieldValue
+                                        )
+                                      }
                                     >
                                       {item.subscriber_email}
                                     </div>
+<<<<<<< HEAD
                                   ))
                                 ) : (
                                   <div className="my-7">
@@ -245,29 +337,79 @@ const Mailer = () => {
                                 Send
                               </button>
                               {/* <button
+=======
+                                  ))}
+                                </>
+                              ) : (
+                                <div className="my-7">
+                                  <NoData />
+                                </div>
+                              )}
+                            </div>
+                          )}
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Subject"
+                            type="text"
+                            name="newsletter_subject"
+                            className="w-full"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper ">
+                          <InputTextArea
+                            label="Paste Your HTML Code Here"
+                            type="text"
+                            name="newsletter"
+                            className="h-[430px] bg-black text-white "
+                            value={values.newsletter}
+                            onChange={(e) =>
+                              setFieldValue("newsletter", e.target.value)
+                            }
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="form-action  bottom-0 w-full">
+                          <div className="form-btn place-content-end">
+                            <button
+                              className="btn-modal-submit w-[200px]"
+                              type="submit"
+                            >
+                              Send
+                            </button>
+                            {/* <button
+>>>>>>> 6e0eef33f0f3f89a1176196ff199f0b370244d82
                                 className="btn-modal-cancel hover:bg-[#f3f3f3]  bg-[white] w-[200px]"
                                 type="button"
                                 onClick={handlePreview}
                               >
                                 View Preview
                               </button> */}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="Preview h-[600px] grid place-items-center overflow-y-auto">
-                          <div className="newsletter-content">
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: formValues.newsletter,
-                              }}
-                              className="newsletter-content"
-                            />
                           </div>
                         </div>
                       </div>
-                    </Form>
-                  );
-                }}
+                      <div className="Preview h-[600px]">
+                        <div className="newsletter-content">
+                          {/* <div
+                            dangerouslySetInnerHTML={{
+                              __html: values.newsletter,
+                            }}
+                            className="newsletter-content"
+                          /> */}
+                          <iframe
+                            srcDoc={values.newsletter}
+                            style={{
+                              width: "100%",
+                              height: "600px",
+                              border: "none",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </Form>
+                )}
               </Formik>
             </div>
           </div>
