@@ -8,13 +8,13 @@ DEVELOPER
             -> rest/v1/controllers/developer/subscribe/createSubscriber.php
             -> rest/v1/controllers/developer/subscribe/functions.php
             -> rest/v1/controllers/developer/subscribe/restore-key.php
-            -> 
+            -> rest/v1/controllers/developer/sending-newsletter
         
 
         * MODELS
             -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
             -> rest/v1/models/developer/subscribe/Subscribe.php
-            -> 
+            -> rest/v1/models/developer/sending-newsletter
             -> 
 
 
@@ -22,14 +22,14 @@ DEVELOPER
             -> SUBSCRIBER
             note: added in subscriber
             RewriteRule ^subscribe/create-subscriber$ controllers/developer/subscribe/createSubscriber.php?subscribeid=$1 [L]
-            -> 
+            -> SENDING NEWSLETTER
             -> 
             -> 
 
 
         * OTHER FILES
-            -> 
-            ->
+            -> rest/v1/notification/template/subscriber-newsletter.php
+            -> rest/v1/notification/subscriber-newsletter.php
 
 
         * DB BACKUP
