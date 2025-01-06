@@ -351,6 +351,17 @@
   .search input:focus {
     @apply outline-none border-primary;
   }
+  /* mailer textArea */
+  .newsletter-content {
+    font-family: inherit; /* Inherits the system font */
+    all: unset; /* Resets all styles */
+    display: block; /* Resets inline styles */
+  }
+  .newsletter-content * {
+    all: revert; /* Reverts to browser's default styles */
+    font-family: inherit; /* Inherits the parent font */
+  }
+
 }
 
 .addShadowDash {

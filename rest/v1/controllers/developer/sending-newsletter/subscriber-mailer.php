@@ -1,6 +1,6 @@
 <?php
 // set http header 
-require '../../../models/developer/subscribe/Subscribe.php';
+require '../../../models/developer/sending-newsletter/SendingNewsletter.php';
 require '../../../notification/subscriber-newsletter.php';
 require '../../../core/header.php';
 require '../../../core/functions.php';
@@ -9,7 +9,7 @@ require 'functions.php';
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$subscribe = new Subscribe($conn);
+$sendingNewsletter = new SendingNewsletter($conn);
 $response = new Response();
 $returnData = [];
 
@@ -20,15 +20,15 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
 
-    $subscribe->subscriber_aid = $_GET['subscribeid'];
+    $sendingNewsletter->subscriber_aid = $_GET['subscribeid'];
     $email = trim($data["subscriber_email"]);
-    $newsletter = $data["newsletter"];
-    $newsletterSubject = $data["newsletter_subject"];
-    $subscribe->subscriber_key = $data["subscriber_key"];
+    $newsletter = checkIndex($data, "newsletter");
+    $newsletterSubject = checkIndex($data, "newsletter_subject");
+    $sendingNewsletter->subscriber_key = $data["subscriber_key"];
     $unsubscribe_link = "/unsubscribe";
 
     // Check email existence
-    $emailReceiver = getResultData($subscribe->readEmailNewsletter());
+    $emailReceiver = getResultData($sendingNewsletter->readEmailNewsletter());
     $newEmailReceiver = [];
 
     // Validate email receiver
@@ -42,7 +42,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             $newsletter,
             $newsletterSubject,
             $emailReceiver,
-            $subscribe->subscriber_key
+            $sendingNewsletter->subscriber_key
         );
     }
 

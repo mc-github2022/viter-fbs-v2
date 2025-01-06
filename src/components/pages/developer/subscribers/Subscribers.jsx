@@ -8,6 +8,7 @@ import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import ModalError from "../../../partials/modals/ModalError";
 import ModalAddSubscribers from "./ModalAddSubscribers";
 import { setIsAdd } from "../../../store/StoreAction";
+import Mailer from "./mailer/Mailer";
 
 const Subscribers = () => {
   const { store, dispatch } = React.useContext(StoreContext);

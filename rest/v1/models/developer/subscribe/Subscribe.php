@@ -322,22 +322,5 @@ class Subscribe
         return $query;
     }
 
-    // read email to send newsletter
-    public function readEmailNewsletter()
-    {
-        try {
-            $sql = "select subscriber_email ";
-            $sql .= "from ";
-            $sql .= "{$this->tblSubscriber} ";
-            $sql .= "where subscriber_aid = :subscriber_aid ";
-            $sql .= "order by subscriber_email ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "subscriber_aid" => $this->subscriber_aid,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
+    
 }
