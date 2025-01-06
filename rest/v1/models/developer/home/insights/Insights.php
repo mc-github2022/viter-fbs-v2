@@ -3,6 +3,7 @@
 class Insights
 {
     public $home_insights_aid;
+    public $home_insights_is_active;
     public $home_insights_img;
     public $home_insights_category;
     public $home_insights_title;
@@ -43,7 +44,8 @@ class Insights
     {
         try {
             $sql = "insert into {$this->tblInsights}";
-            $sql .= "(home_insights_img, ";
+            $sql .= "(home_insights_is_active, ";
+            $sql .= "home_insights_img, ";
             $sql .= "home_insights_category, ";
             $sql .= "home_insights_title, ";
             $sql .= "home_insights_slug, ";
@@ -53,6 +55,7 @@ class Insights
             $sql .= "home_insights_paragraph_c, ";
             $sql .= "home_insights_created, ";
             $sql .= "home_insights_datetime ) values ( ";
+            $sql .= ":home_insights_is_active, ";
             $sql .= ":home_insights_img, ";
             $sql .= ":home_insights_category, ";
             $sql .= ":home_insights_title, ";
@@ -65,6 +68,7 @@ class Insights
             $sql .= ":home_insights_datetime )";
             $query = $this->connection->prepare($sql);
             $query->execute([
+                "home_insights_is_active" => $this->home_insights_is_active,
                 "home_insights_img" => $this->home_insights_img,
                 "home_insights_category" => $this->home_insights_category,
                 "home_insights_title" => $this->home_insights_title,
@@ -87,6 +91,7 @@ class Insights
     {
         try {
             $sql = "update {$this->tblInsights} set ";
+            $sql .= "home_insights_is_active = :home_insights_is_active, ";
             $sql .= "home_insights_img = :home_insights_img, ";
             $sql .= "home_insights_category = :home_insights_category, ";
             $sql .= "home_insights_title = :home_insights_title, ";
@@ -99,6 +104,7 @@ class Insights
             $sql .= "where home_insights_aid = :home_insights_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
+                "home_insights_is_active" => $this->home_insights_is_active,
                 "home_insights_img" => $this->home_insights_img,
                 "home_insights_category" => $this->home_insights_category,
                 "home_insights_title" => $this->home_insights_title,
@@ -130,4 +136,24 @@ class Insights
         }
         return $query;
     }
+
+    public function active()
+    {
+        try {
+            $sql = "update {$this->tblInsights} set ";
+            $sql .= "home_insights_is_active = :home_insights_is_active, ";
+            $sql .= "home_insights_datetime = :home_insights_datetime ";
+            $sql .= "where home_insights_aid = :home_insights_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "home_insights_is_active" => $this->home_insights_is_active,
+                "home_insights_datetime" => $this->home_insights_datetime,
+                "home_insights_aid" => $this->home_insights_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
 }

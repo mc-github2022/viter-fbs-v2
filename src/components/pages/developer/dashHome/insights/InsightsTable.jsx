@@ -11,6 +11,7 @@ import TableLoading from "../../../../partials/spinners/TableLoading";
 import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
+import DraftStatusInsights from "./DraftStatusInsights";
 
 const InsightsTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -49,6 +50,7 @@ const InsightsTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
+              <th>Status</th>
               <th>Category</th>
               <th className="w-[10rem]">Title</th>
               <th className="w-[10rem]">Slug</th>
@@ -78,6 +80,13 @@ const InsightsTable = ({ setItemEdit }) => {
             {insightData?.data.map((item, key) => (
               <tr key={key} className="place-content-start text-[14px]">
                 <td className="pl-2 place-content-start">{counter++}</td>
+                <td className="place-content-start">
+                  {item.events_activities_is_active === 1 ? (
+                    <DraftStatusInsights text="Active" />
+                  ) : (
+                    <DraftStatusInsights text="Draft" />
+                  )}
+                </td>
                 <td className="place-content-start">
                   {item.home_insights_category}
                 </td>

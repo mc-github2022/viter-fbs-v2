@@ -9,6 +9,7 @@ $home_insights = new Insights($conn);
 // check data
 checkPayload($data);
 // get data
+$home_insights->home_insights_is_active = $data["home_insights_is_active"];
 $home_insights->home_insights_img = $data["home_insights_img"];
 $home_insights->home_insights_category = $data["home_insights_category"];
 $home_insights->home_insights_title = $data["home_insights_title"];

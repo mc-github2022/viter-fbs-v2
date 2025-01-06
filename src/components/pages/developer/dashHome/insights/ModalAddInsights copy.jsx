@@ -29,7 +29,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const { singleUploadPhoto, handleChangePhoto, photoSingle } =
     useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
-  const [isDraft, setIsDraft] = React.useState(false);
 
   const handleClose = () => {
     setTimeout(() => {
@@ -43,8 +42,8 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `${apiVersion}/insights/${itemEdit.home_insights_aid}` // update
-          : `${apiVersion}/insights`, // create
+          ? `/v1/insights/${itemEdit.home_insights_aid}` // update
+          : `/v1/insights`, // create
         itemEdit ? "put" : "post",
         values
       ),
@@ -79,7 +78,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
       ? itemEdit.home_insights_paragraph_c
       : "",
     home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
-    home_insights_is_active: itemEdit ? itemEdit.home_insights_is_active : "",
   };
 
   const yupSchema = Yup.object({
@@ -104,7 +102,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           onSubmit={async (values) => {
             const data = {
               ...values,
-              home_insights_is_active: isDraft ? 0 : 1,
               home_insights_img: photoSingle
                 ? photoSingle.name
                 : itemEdit.home_insights_img,
@@ -220,37 +217,23 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                       <div className="form-action absolute w-full bottom-0 mb-2">
                         <div className="form-btn">
                           <button
-                            className="btn-modal-submit bg-white text-primary"
-                            type="submit"
-                            disabled={
-                              mutation.isPending ||
-                              (!props.dirty && !photoSingle)
-                            }
-                            onClick={() => setIsDraft(true)}
-                          >
-                            {mutation.isPending ? (
-                              <ButtonSpinner />
-                            ) : (
-                              "Save as Draft"
-                            )}
-                          </button>
-                          <button
                             className="btn-modal-submit"
                             type="submit"
-                            onClick={() => setIsDraft(false)}
                             disabled={
-                              mutation.isPending ||
-                              (!props.dirty && !photoSingle)
+                              ((mutation.isPending || !props.dirty) &&
+                                photoSingle === null) ||
+                              photoSingle === "" ||
+                              initVal.home_insights_img === photoSingle?.name
                             }
-                            // disabled={
-                            //   ((mutation.isPending || !props.dirty) &&
-                            //     photoSingle === null) ||
-                            //   photoSingle === "" ||
-                            //   initVal.events_activities_img ===
-                            //     photoSingle?.name
-                            // }
                           >
-                            {mutation.isPending ? <ButtonSpinner /> : "Publish"}
+                            {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                          </button>
+                          <button
+                            className="btn-modal-cancel"
+                            type="button"
+                            onClick={handleClose}
+                          >
+                            Cancel
                           </button>
                         </div>
                       </div>
