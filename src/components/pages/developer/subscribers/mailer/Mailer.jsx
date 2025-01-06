@@ -225,7 +225,7 @@ const Mailer = () => {
                               label="Paste Your HTML Code Here"
                               type="text"
                               name="newsletter"
-                              className="h-[430px] bg-black text-white "
+                              className="h-[430px] bg-[#2b2b2b] text-white "
                               value={formValues.newsletter}
                               onChange={(e) =>
                                 setFormValues({
