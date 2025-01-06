@@ -30,6 +30,7 @@ const initVal = {
   isWhyUsOpen: false,
   isUserOpen: false,
   isNotifOpen: false,
+  isSubsOpen: false,
   credentials: {},
 };
 

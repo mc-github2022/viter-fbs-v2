@@ -175,6 +175,12 @@ export const StoreReducer = (state, action) => {
         isNotifOpen: action.payload,
       };
 
+    case "IS_SUBSCRIBERS_OPEN":
+      return {
+        ...state,
+        isSubsOpen: action.payload,
+      };
+
     default:
       return state;
   }

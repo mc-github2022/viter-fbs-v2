@@ -12,6 +12,7 @@ import {
   setIsNotifOpen,
   setIsUserOpen,
   setIswhyUsOpen,
+  setIsSubsOpen,
 } from "../../store/StoreAction";
 
 const Navigation = ({ menu, submenu }) => {
@@ -37,6 +38,10 @@ const Navigation = ({ menu, submenu }) => {
 
   const handleNotifOpen = () => {
     dispatch(setIsNotifOpen(!store.isNotifOpen));
+  };
+
+  const handleSubsOpen = () => {
+    dispatch(setIsSubsOpen(!store.isSubsOpen));
   };
 
   return (
@@ -478,22 +483,58 @@ const Navigation = ({ menu, submenu }) => {
                   )}
 
                   <li
-                    className={` flex justify-between items-center p-1
-                ${
-                  menu === "subscribers"
-                    ? "text-primary underline underline-offset-4 "
-                    : "text-dark "
-                }
-              `}
+                    className={` flex justify-between items-center p-1 cursor-pointer
+                  ${
+                    menu === "subscribers"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                    onClick={() => handleSubsOpen()}
                   >
-                    <Link to={`${devNavUrl}${link}/subscribers`}>
-                      <div className="nav flex items-center">
-                        <span className=" text-[14px] uppercase">
-                          Subscribers
-                        </span>
-                      </div>
-                    </Link>
+                    <div className="nav flex items-center justify-between w-full">
+                      <span className=" text-[14px] uppercase">
+                        Subscribers
+                      </span>
+                      <IoChevronDownSharp
+                        className={`${
+                          store.isSubsOpen ? "" : "rotate-180"
+                        } transition-all`}
+                      />
+                    </div>
                   </li>
+
+                  <ul
+                    className={`${
+                      store.isSubsOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5`}
+                  >
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/subscribers`}
+                    >
+                      <li
+                        className={`text-xs my-2 border-transparent ${
+                          submenu === "subscribers"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Subscriber List
+                      </li>
+                    </Link>
+                    <Link className="!p-0" to={`${devNavUrl}${link}/mailer`}>
+                      <li
+                        className={`text-xs my-2  border-transparent ${
+                          submenu === "mailer"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Mailer
+                      </li>
+                    </Link>
+                  </ul>
                 </>
               )}
             </ul>

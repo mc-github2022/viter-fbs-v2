@@ -193,6 +193,13 @@ export const setIsNotifOpen = (val) => {
   };
 };
 
+export const setIsSubsOpen = (val) => {
+  return {
+    type: "IS_SUBSCRIBERS_OPEN",
+    payload: val,
+  };
+};
+
 export const setCredentials = (data) => {
   return {
     type: "CREDENTIALS",

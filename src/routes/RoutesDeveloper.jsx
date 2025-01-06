@@ -24,6 +24,7 @@ import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/Bu
 import ProtectedRouteDeveloper from "@/components/pages/access/ProtectedRouteDeveloper";
 import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
 import Subscribers from "../components/pages/developer/subscribers/Subscribers";
+import Mailer from "../components/pages/developer/subscribers/mailer/Mailer";
 
 export const routesDeveloper = [
   {
@@ -167,6 +168,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <Subscribers />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/mailer`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Mailer />
       </ProtectedRouteDeveloper>
     ),
   },
