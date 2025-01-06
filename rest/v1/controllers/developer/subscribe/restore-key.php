@@ -24,14 +24,43 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         checkPayload($data);
 
         $subscribe->subscriber_aid = $_GET['subscribeid'];
-        $subscribe->subscriber_key = $encrypt->doHash(rand());
-        $subscribe->subscriber_is_active = trim($data["isActive"]);
-        $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
+        $email = trim($data["subscriber_email"]);
 
+        $subscribe->subscriber_key = $encrypt->doHash(rand());
+        $unsubscribe_link = "/unsubscribe";
         checkId($subscribe->subscriber_aid);
-        $query = checkCreateKeyRestore($subscribe);
-        http_response_code(200);
-        returnSuccess($subscribe, "subscribe", $query);
+
+        if (trim($email) != "") {
+            $mail = sendEmailSubscriber(
+                $unsubscribe_link,
+                $email,
+                $subscribe->subscriber_key
+            );
+        }
+
+        if ($mail["mail_success"] == true) {
+            $subscribe->subscriber_email = trim($data["subscriber_email"]);
+            $subscribe->subscriber_is_active = trim($data["isActive"]);
+            $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
+
+            $query = checkCreateKeyRestore($subscribe);
+            http_response_code(200);
+            returnSuccess($subscribe, "subscribe", $query);
+
+            $returnData["data"] = $mail;
+            $returnData["count"] = 0;
+            $returnData["success"] = true;
+            $response->setData($returnData);
+            $response->send();
+            exit;
+        } else {
+            $returnData["data"] = $mail;
+            $returnData["count"] = 0;
+            $returnData["success"] = false;
+            $response->setData($returnData);
+            $response->send();
+            exit;
+        }
     }
     // return 404 error if endpoint not available
     checkEndpoint();

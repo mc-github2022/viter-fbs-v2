@@ -305,13 +305,15 @@ class Subscribe
             $sql = "update {$this->tblSubscriber} set ";
             $sql .= "subscriber_is_active = :subscriber_is_active, ";
             $sql .= "subscriber_key = :subscriber_key, ";
-            $sql .= "subscriber_datetime = :subscriber_datetime ";
+            $sql .= "subscriber_datetime = :subscriber_datetime, ";
+            $sql .= "subscriber_email = :subscriber_email ";
             $sql .= "where subscriber_aid = :subscriber_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_key" => $this->subscriber_key,
                 "subscriber_datetime" => $this->subscriber_datetime,
+                "subscriber_email" => $this->subscriber_email,
                 "subscriber_aid" => $this->subscriber_aid,
             ]);
         } catch (PDOException $ex) {
@@ -320,23 +322,22 @@ class Subscribe
         return $query;
     }
 
-    // // read subscriber email to send email when restore
-    // public function readSubscriberEmails()
-    // {
-    //     try {
-    //         $sql = "select subscriber_email ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSubscriber} ";
-    //         $sql .= "where subscriber_aid = :subscriber_aid ";
-    //         $sql .= "order by subscriber_email ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "subscriber_aid" => $this->subscriber_aid,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
-
+    // read email to send newsletter
+    public function readEmailNewsletter()
+    {
+        try {
+            $sql = "select subscriber_email ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSubscriber} ";
+            $sql .= "where subscriber_aid = :subscriber_aid ";
+            $sql .= "order by subscriber_email ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_aid" => $this->subscriber_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 }
