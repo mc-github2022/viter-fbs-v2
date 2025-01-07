@@ -20,16 +20,23 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
 
-    $sendingNewsletter->subscriber_aid = $_GET['subscribeid'];
-    $email = trim($data["subscriber_email"]);
-    $newsletter = checkIndex($data, "newsletter");
+    $newsletter = stripslashes(checkIndex($data, "newsletter"));
     $newsletterSubject = checkIndex($data, "newsletter_subject");
-    $sendingNewsletter->subscriber_key = $data["subscriber_key"];
+
     $unsubscribe_link = "/unsubscribe";
 
-    // Check email existence
-    $emailReceiver = getResultData($sendingNewsletter->readEmailNewsletter());
-    $newEmailReceiver = [];
+    // recipient filter
+    $filterValue = $data["filterValue"];
+
+    $sendingNewsletter->subscriber_email = $filterValue;
+    if ($filterValue != "" && $filterValue != "all") {
+        $emailReceiver = getResultData($sendingNewsletter->readEmailNewsletter());
+    }
+    if ($filterValue == "" || $filterValue == "all") {
+        // Check email existence
+        $emailReceiver = getResultData($sendingNewsletter->readAllEmailNewsletter());
+    }
+
 
     // Validate email receiver
     if (count($emailReceiver) == 0) {
@@ -41,8 +48,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             $unsubscribe_link,
             $newsletter,
             $newsletterSubject,
-            $emailReceiver,
-            $sendingNewsletter->subscriber_key
+            $emailReceiver
+
         );
     }
 

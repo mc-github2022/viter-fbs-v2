@@ -15,8 +15,7 @@ function sendNewsletter(
 	$unsubscribe_link,
 	$newsletter,
 	$newsletterSubject,
-	$emailReceiver,
-	$key
+	$emailReceiver
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -35,22 +34,39 @@ function sendNewsletter(
 		$mail->Subject = "{$newsletterSubject}";
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
-		$mail->Body = getHtmlSendMessage(
-			$unsubscribe_link,
-			$newsletter,
-			$newsletterSubject,
-			$emailReceiver,
-			$key,
-			ROOT_DOMAIN,
-		);
 
+
+
+		// 	// only 1 email can receiver
+		// 	if ($emailReceiver != "") {
+		// 		$mail->addAddress($emailReceiver);
+		// 	}
+		// 	if ($mail->Send()) {
+		// 		return array(
+		// 			"error" => "Sucessfully sent",
+		// 			"mail_success" => true
+		// 		);
+		// 	} else {
+		// 		return array(
+		// 			"error" => "No email receiver found!",
+		// 			"mail_success" => false
+		// 		);
+		// 	}
+		// }
 
 		$sent_count = 0;
 		$else_error_count = 0;
 		if (count($emailReceiver) > 0) {
 			for ($a = 0; $a < count($emailReceiver); $a++) {
 				$newEmailReceiver = trim($emailReceiver[$a]["subscriber_email"]);
+				$newKey = trim($emailReceiver[$a]["subscriber_key"]);
 				if (trim($newEmailReceiver) != "") {
+					$mail->Body = getHtmlSendMessage(
+						$unsubscribe_link,
+						$newsletter,
+						$newKey,
+						ROOT_DOMAIN
+					);
 					$mail->addAddress($newEmailReceiver);
 					if ($mail->Send()) {
 						$sent_count += 1;
