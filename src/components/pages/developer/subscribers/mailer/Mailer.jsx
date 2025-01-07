@@ -61,15 +61,15 @@ const Mailer = () => {
       queryData(`${apiVersion}/sending-newsletter`, "post", values),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["sending-newsletter"] });
-      if (data.success) {
-        dispatch(setSuccess(true));
-        dispatch(setMessage(`Newsletter sucessfully sent.`));
-      }
-      // show error box
-      if (!data.success) {
-        dispatch(setError(true));
-        dispatch(setMessage(data.error));
-      }
+      // if (data.success) {
+      //   dispatch(setSuccess(true));
+      //   dispatch(setMessage(`Newsletter sucessfully sent.`));
+      // }
+      // // show error box
+      // if (!data.success) {
+      //   dispatch(setError(true));
+      //   dispatch(setMessage(data.error));
+      // }
     },
   });
 
@@ -81,18 +81,15 @@ const Mailer = () => {
     setOnRecipient(false);
   };
 
-  // console.log("filter", filterValue);
-
   let timeOut;
 
   const handleOnChangeSubscriber = (e, setFieldValue) => {
     const newValue = e.target.value;
     setSubscriberValue(newValue);
     setLoading(true);
-    // setSubscriberId(item.subscriber_aid);
 
     clearTimeout(timeOut);
-    // Set a new timeout for debouncing
+
     timeOut = setTimeout(() => {
       setSubscriber(newValue);
       setLoading(false);
@@ -152,7 +149,7 @@ const Mailer = () => {
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}
-                onSubmit={async (values) => {
+                onSubmit={async (values, { resetForm }) => {
                   // Validate the subscriber_email field
                   if (
                     !values.subscriber_email ||
@@ -162,8 +159,25 @@ const Mailer = () => {
                     dispatch(setMessage("Subscriber is Required."));
                     return;
                   }
-                  console.log(values);
-                  mutation.mutate({ ...values, filterValue });
+
+                  mutation.mutate(
+                    { ...values, filterValue },
+                    {
+                      onSuccess: (data) => {
+                        if (data.success) {
+                          // Reset the form after successful submission
+                          resetForm();
+                          setSubscriberValue("");
+
+                          dispatch(setSuccess(true));
+                          dispatch(setMessage(`Newsletter successfully sent.`));
+                        } else {
+                          dispatch(setError(true));
+                          dispatch(setMessage(data.error));
+                        }
+                      },
+                    }
+                  );
                 }}
               >
                 {({ setFieldValue, values, dirty }) => (
@@ -181,6 +195,7 @@ const Mailer = () => {
                               handleOnChangeSubscriber(e, setFieldValue)
                             }
                             refVal={refSubscriber}
+                            disabled={mutation.isPending}
                           />
                           {onRecipient && (
                             <div className="w-full text-xs h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
@@ -247,14 +262,6 @@ const Mailer = () => {
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
                             }
-                            // onChange={(e) => {
-                            //   // Remove newline characters
-                            //   const cleanedValue = e.target.value.replace(
-                            //     /\n/g,
-                            //     ""
-                            //   ); // or replace(/\n/g, ' ') to replace with a space
-                            //   setFieldValue("newsletter", cleanedValue);
-                            // }}
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -267,24 +274,11 @@ const Mailer = () => {
                             >
                               {mutation.isPending ? <ButtonSpinner /> : "Send"}
                             </button>
-                            {/* <button
-                                className="btn-modal-cancel hover:bg-[#f3f3f3]  bg-[white] w-[200px]"
-                                type="button"
-                                onClick={handlePreview}
-                              >
-                                View Preview
-                              </button> */}
                           </div>
                         </div>
                       </div>
                       <div className="Preview h-[600px]">
                         <div className="newsletter-content">
-                          {/* <div
-                            dangerouslySetInnerHTML={{
-                              __html: values.newsletter,
-                            }}
-                            className="newsletter-content"
-                          /> */}
                           <iframe
                             srcDoc={values.newsletter}
                             style={{

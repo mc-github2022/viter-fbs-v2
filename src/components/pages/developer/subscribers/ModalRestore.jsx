@@ -90,7 +90,7 @@ const ModalRestore = ({ mysqlApiRestore, msg, successMsg, queryKey, item }) => {
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
-                  {mutation.isPending && <ButtonSpinner />} Yes
+                  {mutation.isPending ? <ButtonSpinner /> : "Yes"}
                 </button>
                 <button
                   type="reset"
