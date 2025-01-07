@@ -37,6 +37,11 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     }, 200);
   };
 
+  const handleDraft = () => {
+    setIsDraft(true);
+    console.log(isDraft);
+  };
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -226,7 +231,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               mutation.isPending ||
                               (!props.dirty && !photoSingle)
                             }
-                            onClick={() => setIsDraft(true)}
+                            onClick={handleDraft}
                           >
                             {mutation.isPending ? (
                               <ButtonSpinner />
@@ -237,7 +242,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           <button
                             className="btn-modal-submit"
                             type="submit"
-                            onClick={() => setIsDraft(false)}
                             disabled={
                               mutation.isPending ||
                               (!props.dirty && !photoSingle)

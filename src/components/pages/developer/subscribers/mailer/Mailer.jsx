@@ -293,51 +293,6 @@ const Mailer = () => {
                                     >
                                       {item.subscriber_email}
                                     </div>
-<<<<<<< HEAD
-                                  ))
-                                ) : (
-                                  <div className="my-7">
-                                    <NoData />
-                                  </div>
-                                )}
-                              </div>
-                            )}
-                          </div>
-                          <div className="input-wrapper">
-                            <InputText
-                              label="Subject"
-                              type="text"
-                              name="newsletter_subject"
-                              className="w-full"
-                              disabled={mutation.isPending}
-                            />
-                          </div>
-                          <div className="input-wrapper ">
-                            <InputTextArea
-                              label="Paste Your HTML Code Here"
-                              type="text"
-                              name="newsletter"
-                              className="h-[430px] bg-[#2b2b2b] text-white "
-                              value={formValues.newsletter}
-                              onChange={(e) =>
-                                setFormValues({
-                                  ...formValues,
-                                  newsletter: e.target.value,
-                                })
-                              }
-                              disabled={mutation.isPending}
-                            />
-                          </div>
-                          <div className="form-action  bottom-0 w-full">
-                            <div className="form-btn place-content-end">
-                              <button
-                                className="btn-modal-submit w-[200px]"
-                                type="submit"
-                              >
-                                Send
-                              </button>
-                              {/* <button
-=======
                                   ))}
                                 </>
                               ) : (
@@ -379,7 +334,6 @@ const Mailer = () => {
                               Send
                             </button>
                             {/* <button
->>>>>>> 6e0eef33f0f3f89a1176196ff199f0b370244d82
                                 className="btn-modal-cancel hover:bg-[#f3f3f3]  bg-[white] w-[200px]"
                                 type="button"
                                 onClick={handlePreview}
