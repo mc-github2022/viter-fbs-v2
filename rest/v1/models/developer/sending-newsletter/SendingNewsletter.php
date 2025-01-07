@@ -21,17 +21,34 @@ class SendingNewsletter
     }
 
     // read email to send newsletter
+    public function readAllEmailNewsletter()
+    {
+        try {
+            $sql = "select subscriber_email, subscriber_key ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSubscriber} ";
+            $sql .= "where subscriber_is_active = 1 ";
+            $sql .= "order by subscriber_email ";
+            $query = $this->connection->query($sql);
+            $query->execute([]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
     public function readEmailNewsletter()
     {
         try {
-            $sql = "select subscriber_email ";
-            $sql .= "from ";
-            $sql .= "{$this->tblSubscriber} ";
-            $sql .= "where subscriber_aid = :subscriber_aid ";
-            $sql .= "order by subscriber_email ";
+            $sql = "select subscriber_email, subscriber_key ";
+            $sql .= "from {$this->tblSubscriber} ";
+            $sql .= "where subscriber_email = :subscriber_email ";
+            $sql .= "and subscriber_is_active = 1 ";
+            $sql .= "order by ";
+            $sql .= "subscriber_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "subscriber_aid" => $this->subscriber_aid,
+                "subscriber_email" => $this->subscriber_email,
             ]);
         } catch (PDOException $ex) {
             $query = false;

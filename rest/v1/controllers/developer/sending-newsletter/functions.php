@@ -7,3 +7,11 @@ function checkSearchSubcribers($object)
     checkQuery($query, "Empty records. (filter by search subscribers)");
     return $query;
 }
+
+// select specific recipient
+function checkReadEmailNewsletter($object)
+{
+    $query = $object->readEmailNewsletter();
+    checkQuery($query, "Empty records. (individual email)");
+    return $query;
+}

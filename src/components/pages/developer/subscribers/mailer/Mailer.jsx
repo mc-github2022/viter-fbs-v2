@@ -24,18 +24,18 @@ import { apiVersion } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import NoData from "../../../../partials/spinners/NoData";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import { StoreContext } from "../../../../store/StoreContext";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ModalError from "../../../../partials/modals/ModalError";
 
 const Mailer = () => {
-  // const [itemEdit, setItemEdit] = React.useState(null);
-  // const [preview, setPreview] = React.useState(false);
-  const [recipient, setRecipient] = React.useState("all");
-
+  const { store, dispatch } = React.useContext(StoreContext);
   const [onRecipient, setOnRecipient] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [subscriberValue, setSubscriberValue] = React.useState("");
-  const [subscriberId, setSubscriberId] = React.useState("");
   const [subscriber, setSubscriber] = React.useState("");
-  const [selectedRecipients, setSelectedRecipients] = React.useState([]);
+  const [filterValue, setFilterValue] = React.useState("");
 
   const {
     isFetching: subscriberDataIsFetching,
@@ -54,10 +54,6 @@ const Mailer = () => {
     true // refetchOnWindowFocus
   );
 
-  // const handlePreview = () => {
-  //   setPreview(true);
-  // };
-
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -66,7 +62,6 @@ const Mailer = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["sending-newsletter"] });
       if (data.success) {
-        setPreview(false);
         dispatch(setSuccess(true));
         dispatch(setMessage(`Newsletter sucessfully sent.`));
       }
@@ -78,89 +73,15 @@ const Mailer = () => {
     },
   });
 
-  // const handleClickRecipient = (item) => {
-  //   if (item === "all") {
-  //     setSelectedRecipients(
-  //       subscriberData.data.map((sub) => sub.subscriber_email)
-  //     );
-  //     setSubscriberValue("All Recipients");
-  //     setSubscriberId("all"); // Or another valid identifier for all
-  //   } else {
-  //     setSelectedRecipients([item.subscriber_email]);
-  //     setSubscriberValue(item.subscriber_email);
-  //     setSubscriberId(item.subscriber_aid); // Use the correct field here
-  //   }
-  //   setOnRecipient(false);
-  // };
-
-  // const handleClickRecipient = (item) => {
-  //   if (item === "all") {
-  //     const allEmails = subscriberData.data.map((sub) => sub.subscriber_email);
-  //     setSelectedRecipients(allEmails);
-  //     setSubscriberValue("All Recipients");
-  //     setFormValues((prev) => ({
-  //       ...prev,
-  //       subscriber_email: "All Recipients", // Ensure this line is executed
-  //     }));
-  //     setSubscriber(""); // Reset subscriber for "all"
-  //   } else {
-  //     setSelectedRecipients([item.subscriber_email]);
-  //     setSubscriberValue(item.subscriber_email);
-  //     setFormValues((prev) => ({
-  //       ...prev,
-  //       subscriber_email: item.subscriber_email, // Ensure this line is executed
-  //     }));
-  //     setSubscriber(item.subscriber_email); // Update for search
-  //   }
-  //   console.log("Updated Form Values:", formValues); // Check updated form values
-  //   setOnRecipient(false);
-  // };
-
-  const handleClickRecipient = (item, setFieldValue) => {
-    if (item === "all") {
-      const allEmails = subscriberData.data.map((sub) => sub.subscriber_email);
-      setSelectedRecipients(allEmails);
-      setSubscriberValue("All Recipients");
-      setFieldValue("subscriber_email", "All Recipients");
-      setSubscriber(""); // Reset subscriber for "all"
-    } else {
-      setSelectedRecipients([item.subscriber_email]);
-      setSubscriberValue(item.subscriber_email);
-      setFieldValue("subscriber_email", item.subscriber_email);
-      setSubscriber(item.subscriber_email); // Update for search
-    }
+  const handleClickRecipient = (item, setFieldValue, val) => {
     console.log("Selected Recipient:", item);
+    setSubscriberValue(item);
+    setFieldValue("subscriber_email", item);
+    setFilterValue(val);
     setOnRecipient(false);
   };
 
-  // React.useEffect(() => {
-  //   setFormValues((prev) => ({
-  //     ...prev,
-  //     subscriber_email: subscriberValue,
-  //   }));
-  // }, [subscriberValue]);
-
-  // const handleOnChangeSubscriber = (e) => {
-  //   setSubscriberValue(e.target.value);
-  //   setLoading(true);
-  //   setSubscriberId("");
-  //   if (e.target.value === "") {
-  //     setLoading(false);
-  //   }
-
-  //   let timeOut;
-
-  //   timeOut = setTimeout(() => {
-  //     clearTimeout(timeOut);
-  //     let val = e.target.value;
-  //     if (val === "") {
-  //       setSubscriber(val);
-  //       return;
-  //     }
-  //     setSubscriber(val);
-  //     setLoading(false);
-  //   }, 500); // debounce seconds to fetch
-  // };
+  // console.log("filter", filterValue);
 
   let timeOut;
 
@@ -168,10 +89,9 @@ const Mailer = () => {
     const newValue = e.target.value;
     setSubscriberValue(newValue);
     setLoading(true);
-    setSubscriberId("");
+    // setSubscriberId(item.subscriber_aid);
 
     clearTimeout(timeOut);
-
     // Set a new timeout for debouncing
     timeOut = setTimeout(() => {
       setSubscriber(newValue);
@@ -203,7 +123,6 @@ const Mailer = () => {
     newsletter: "",
     newsletter_subject: "",
     subscriber_email: "",
-    subscriber_key: "",
   };
 
   const yupSchema = Yup.object({
@@ -243,10 +162,11 @@ const Mailer = () => {
                     dispatch(setMessage("Subscriber is Required."));
                     return;
                   }
-                  mutation.mutate(values);
+                  console.log(values);
+                  mutation.mutate({ ...values, filterValue });
                 }}
               >
-                {({ setFieldValue, values }) => (
+                {({ setFieldValue, values, dirty }) => (
                   <Form>
                     <div className="grid grid-cols-[_1.5fr_2fr] gap-5">
                       <div>
@@ -275,7 +195,11 @@ const Mailer = () => {
                                   <div
                                     className="cursor-pointer hover:bg-gray-100 px-2"
                                     onClick={() =>
-                                      handleClickRecipient("all", setFieldValue)
+                                      handleClickRecipient(
+                                        "All Recipients",
+                                        setFieldValue,
+                                        "all"
+                                      )
                                     }
                                   >
                                     All Recipients
@@ -286,8 +210,9 @@ const Mailer = () => {
                                       key={key}
                                       onClick={() =>
                                         handleClickRecipient(
-                                          item,
-                                          setFieldValue
+                                          item.subscriber_email,
+                                          setFieldValue,
+                                          item.subscriber_email
                                         )
                                       }
                                     >
@@ -322,6 +247,14 @@ const Mailer = () => {
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
                             }
+                            // onChange={(e) => {
+                            //   // Remove newline characters
+                            //   const cleanedValue = e.target.value.replace(
+                            //     /\n/g,
+                            //     ""
+                            //   ); // or replace(/\n/g, ' ') to replace with a space
+                            //   setFieldValue("newsletter", cleanedValue);
+                            // }}
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -330,8 +263,9 @@ const Mailer = () => {
                             <button
                               className="btn-modal-submit w-[200px]"
                               type="submit"
+                              disabled={mutation.isPending || !dirty}
                             >
-                              Send
+                              {mutation.isPending ? <ButtonSpinner /> : "Send"}
                             </button>
                             {/* <button
                                 className="btn-modal-cancel hover:bg-[#f3f3f3]  bg-[white] w-[200px]"
@@ -369,6 +303,9 @@ const Mailer = () => {
           </div>
         </Dashboard>
       </section>
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };
