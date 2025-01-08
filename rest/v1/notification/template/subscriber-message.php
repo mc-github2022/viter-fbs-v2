@@ -49,7 +49,7 @@ function getHtmlSendMessage(
         />
         <p style="margin-bottom: 20px;  font-family: Poppins;">Hey there,</p>
         <p style="margin-bottom: 20px;  font-family: Poppins;">
-          Thanks you for subscribing to Frontline Business Solution newsletter.
+          Thank you for subscribing to Frontline Business Solution newsletter.
         </p>
         <p style="margin-bottom: 20px;  font-family: Poppins;">
           Once or twice a month, you will receive a newsletter with information

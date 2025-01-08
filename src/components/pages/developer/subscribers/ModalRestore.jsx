@@ -3,7 +3,6 @@ import { queryData } from "@/components/helpers/queryData";
 import ButtonSpinner from "@/components/partials/spinners/ButtonSpinner";
 import {
   setError,
-  setIsRestore,
   setMessage,
   setSuccess,
 } from "@/components/store/StoreAction";
@@ -12,7 +11,14 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { FaHistory } from "react-icons/fa";
 
-const ModalRestore = ({ mysqlApiRestore, msg, successMsg, queryKey, item }) => {
+const ModalRestore = ({
+  mysqlApiRestore,
+  msg,
+  successMsg,
+  queryKey,
+  item,
+  setIsRestore,
+}) => {
   const { dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
 
@@ -21,12 +27,13 @@ const ModalRestore = ({ mysqlApiRestore, msg, successMsg, queryKey, item }) => {
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [queryKey] });
-      dispatch(setIsRestore(false));
 
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
       } else {
+        setIsRestore(false);
         dispatch(setSuccess(true));
         dispatch(setMessage(successMsg));
       }
@@ -96,7 +103,6 @@ const ModalRestore = ({ mysqlApiRestore, msg, successMsg, queryKey, item }) => {
                   type="reset"
                   className="text-sm btn-modal-cancel"
                   onClick={handleClose}
-                  disabled={mutation.isPending}
                 >
                   No
                 </button>
