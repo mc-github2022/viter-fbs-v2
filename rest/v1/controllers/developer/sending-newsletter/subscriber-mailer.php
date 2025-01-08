@@ -27,7 +27,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     // recipient filter
     $filterValue = $data["filterValue"];
-
     $sendingNewsletter->subscriber_email = $filterValue;
     if ($filterValue != "" && $filterValue != "all") {
         $emailReceiver = getResultData($sendingNewsletter->readEmailNewsletter());

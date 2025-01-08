@@ -21,7 +21,7 @@ function getHtmlSendMessage(
       <div
         class="footer"
         style="
-        padding: 32px 0;
+        padding: 0 50px 32px 50px;
         margin-bottom: 0;
         text-align: center;
         background-color: #fff;">

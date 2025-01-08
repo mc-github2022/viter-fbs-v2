@@ -28,6 +28,7 @@ import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../partials/modals/ModalError";
+import ModalSend from "./ModalSend";
 
 const Mailer = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -36,6 +37,7 @@ const Mailer = () => {
   const [subscriberValue, setSubscriberValue] = React.useState("");
   const [subscriber, setSubscriber] = React.useState("");
   const [filterValue, setFilterValue] = React.useState("");
+  const [isSend, setIsSend] = React.useState(false);
 
   const {
     isFetching: subscriberDataIsFetching,
@@ -133,6 +135,10 @@ const Mailer = () => {
       )
       .required("Required"),
   });
+
+  const handleClickSend = () => {
+    setIsSend(true);
+  };
 
   return (
     <>
@@ -269,8 +275,9 @@ const Mailer = () => {
                           <div className="form-btn place-content-end">
                             <button
                               className="btn-modal-submit w-[200px]"
-                              type="submit"
+                              type="button"
                               disabled={mutation.isPending || !dirty}
+                              onClick={() => handleClickSend(values)}
                             >
                               {mutation.isPending ? <ButtonSpinner /> : "Send"}
                             </button>
@@ -290,6 +297,19 @@ const Mailer = () => {
                         </div>
                       </div>
                     </div>
+                    {isSend && (
+                      <ModalSend
+                        mysqlApiRestore={`${apiVersion}/sending-newsletter`}
+                        msg={"Are you sure you want send this newsletter?"}
+                        successMsg={`Newsletter successfully sent.`}
+                        queryKey={"sending-newsletter"}
+                        setIsSend={setIsSend}
+                        item={{
+                          ...values, // All form values
+                          filterValue,
+                        }}
+                      />
+                    )}
                   </Form>
                 )}
               </Formik>
