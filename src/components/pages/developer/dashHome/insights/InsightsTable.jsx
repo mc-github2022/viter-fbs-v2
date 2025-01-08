@@ -81,7 +81,7 @@ const InsightsTable = ({ setItemEdit }) => {
               <tr key={key} className="place-content-start text-[14px]">
                 <td className="pl-2 place-content-start">{counter++}</td>
                 <td className="place-content-start">
-                  {item.events_activities_is_active === 1 ? (
+                  {item.home_insights_is_active === 1 ? (
                     <DraftStatusInsights text="Active" />
                   ) : (
                     <DraftStatusInsights text="Draft" />
@@ -111,15 +111,13 @@ const InsightsTable = ({ setItemEdit }) => {
                   <button
                     className="tooltip-action-table"
                     data-tooltip="Edit"
-                    onClick={() => handleEdit(item)}
-                  >
+                    onClick={() => handleEdit(item)}>
                     <FaEdit className="text-gray-600 text-[16px]" />
                   </button>
                   <button
                     className="tooltip-action-table"
                     data-tooltip="Delete"
-                    onClick={() => handleDelete(item)}
-                  >
+                    onClick={() => handleDelete(item)}>
                     <MdDelete className="text-gray-600 text-[18px]" />
                   </button>
                 </td>
