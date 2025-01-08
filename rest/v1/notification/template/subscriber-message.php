@@ -44,7 +44,7 @@ function getHtmlSendMessage(
       <div>
         <img
           style="width: 100%; margin-bottom: 50px"
-          src="https://lh3.googleusercontent.com/pw/AP1GczPOrI4VlHIVcs953bbNvcOw_cvIEjO90HRe7nI-VZJbEb_6y3WbAqe6P6W9wlRvKmgfebdlx18fw-GC25ceAidRxi2u0YNjJ3-u2-K7jkhsNNCgXqQ3PJFooo-KDBPUHWkRS5fKmZNzd8eK4OHB0Txt=w512-h207-s-no-gm?authuser=0"
+          src="https://lh3.googleusercontent.com/pw/AP1GczMEqJnAhgSj4nt7iWGYtFeQoCVNgGQ1mcEYYsJ22wnia-btS_o1i9yhW9tM3lMnxDJ9ebLVIPkv8XLzg5aueEAc7yKm6RFzmhI7VNJTb3pHOdBwKdqUTpJLde8vEcNuC3GRgCcjkvDHoYhga8yHK5je=w512-h207-s-no-gm?authuser=0"
           alt=""
         />
         <p style="margin-bottom: 20px;  font-family: Poppins;">Hey there,</p>
