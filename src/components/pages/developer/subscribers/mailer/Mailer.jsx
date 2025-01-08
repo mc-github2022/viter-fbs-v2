@@ -286,20 +286,21 @@ const Mailer = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="Preview h-[600px] ">
+                      <div className="Preview h-[600px] border-[2px] border-gray-200 place-content-center place-items-center rounded-lg">
                         {values.newsletter ? (
-                          <div className="newsletter-content">
+                          <div className="newsletter-content p-1">
                             <iframe
                               srcDoc={values.newsletter}
                               style={{
                                 width: "100%",
                                 height: "600px",
-                                border: "none",
                               }}
                             />
                           </div>
                         ) : (
-                          <p className="text-gray-500 ">No Preview Available</p>
+                          <p className="text-gray-400 text-xs ">
+                            No Preview Available
+                          </p>
                         )}
                       </div>
                     </div>
