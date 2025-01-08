@@ -3,30 +3,27 @@ import { queryData } from "@/components/helpers/queryData";
 import ButtonSpinner from "@/components/partials/spinners/ButtonSpinner";
 import {
   setError,
-  setIsRestore,
   setMessage,
   setSuccess,
 } from "@/components/store/StoreAction";
 import { StoreContext } from "@/components/store/StoreContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import { FaHistory } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
-import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 
 const ModalSend = ({
-  mysqlApiRestore,
+  mysqlApiSend,
   msg,
   successMsg,
   queryKey,
   item,
   setIsSend,
 }) => {
-  const { store, dispatch } = React.useContext(StoreContext);
+  const { dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(mysqlApiRestore, "post", values),
+    mutationFn: (values) => queryData(mysqlApiSend, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: [queryKey] });
@@ -116,8 +113,6 @@ const ModalSend = ({
           </div>
         </div>
       </div>
-
-      {store.success && <ModalSuccess />}
     </>
   );
 };

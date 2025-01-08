@@ -155,40 +155,40 @@ const Mailer = () => {
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}
-                onSubmit={async (values, { resetForm }) => {
-                  // Validate the subscriber_email field
-                  if (
-                    !values.subscriber_email ||
-                    values.subscriber_email.trim() === ""
-                  ) {
-                    dispatch(setError(true));
-                    dispatch(setMessage("Subscriber is Required."));
-                    return;
-                  }
+                // onSubmit={async (values, { resetForm }) => {
+                //   // Validate the subscriber_email field
+                //   if (
+                //     !values.subscriber_email ||
+                //     values.subscriber_email.trim() === ""
+                //   ) {
+                //     dispatch(setError(true));
+                //     dispatch(setMessage("Subscriber is Required."));
+                //     return;
+                //   }
 
-                  mutation.mutate(
-                    { ...values, filterValue },
-                    {
-                      onSuccess: (data) => {
-                        if (data.success) {
-                          // Reset the form after successful submission
-                          resetForm();
-                          setSubscriberValue("");
+                //   mutation.mutate(
+                //     { ...values, filterValue },
+                //     {
+                //       onSuccess: (data) => {
+                //         if (data.success) {
+                //           // Reset the form after successful submission
+                //           resetForm();
+                //           setSubscriberValue("");
 
-                          dispatch(setSuccess(true));
-                          dispatch(setMessage(`Newsletter successfully sent.`));
-                        } else {
-                          dispatch(setError(true));
-                          dispatch(setMessage(data.error));
-                        }
-                      },
-                    }
-                  );
-                }}
+                //           dispatch(setSuccess(true));
+                //           dispatch(setMessage(`Newsletter successfully sent.`));
+                //         } else {
+                //           dispatch(setError(true));
+                //           dispatch(setMessage(data.error));
+                //         }
+                //       },
+                //     }
+                //   );
+                // }}
               >
                 {({ setFieldValue, values, dirty }) => (
                   <Form>
-                    <div className="grid grid-cols-[_1.5fr_2fr] gap-5">
+                    <div className="grid grid-cols-[_1.5fr_2fr] gap-5 max-h-[19.5rem]">
                       <div>
                         <div className="input-wrapper">
                           <InputText
@@ -258,12 +258,14 @@ const Mailer = () => {
                             disabled={mutation.isPending}
                           />
                         </div>
-                        <div className="input-wrapper ">
+                        <div className="input-wrapper">
+                          <span className="text-xs bg-[#f5f5f3]">
+                            Paste Your HTML Code Here
+                          </span>
                           <InputTextArea
-                            label="Paste Your HTML Code Here"
                             type="text"
                             name="newsletter"
-                            className="h-[430px] bg-black text-white "
+                            className="newsletter h-[430px] bg-black text-white "
                             value={values.newsletter}
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
@@ -284,22 +286,26 @@ const Mailer = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="Preview h-[600px]">
-                        <div className="newsletter-content">
-                          <iframe
-                            srcDoc={values.newsletter}
-                            style={{
-                              width: "100%",
-                              height: "600px",
-                              border: "none",
-                            }}
-                          />
-                        </div>
+                      <div className="Preview h-[600px] ">
+                        {values.newsletter ? (
+                          <div className="newsletter-content">
+                            <iframe
+                              srcDoc={values.newsletter}
+                              style={{
+                                width: "100%",
+                                height: "600px",
+                                border: "none",
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <p className="text-gray-500 ">No Preview Available</p>
+                        )}
                       </div>
                     </div>
                     {isSend && (
                       <ModalSend
-                        mysqlApiRestore={`${apiVersion}/sending-newsletter`}
+                        mysqlApiSend={`${apiVersion}/sending-newsletter`}
                         msg={"Are you sure you want send this newsletter?"}
                         successMsg={`Newsletter successfully sent.`}
                         queryKey={"sending-newsletter"}

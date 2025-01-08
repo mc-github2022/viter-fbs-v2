@@ -83,7 +83,7 @@
     @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none text-xs;
   }
   label {
-    @apply text-xs text-[black] transform -translate-y-6 -translate-x-1 absolute left-3 top-4 px-1 z-10 isolate capitalize;
+    @apply text-xs text-[black] transform -translate-y-6 -translate-x-1 absolute left-3 top-4 px-1 z-[1] isolate capitalize;
   }
   label:after {
     @apply content-[''] w-[97%] h-[2.5px] absolute left-px top-[7.2px] bg-[white] -z-10;
@@ -362,6 +362,12 @@
     font-family: inherit; /* Inherits the parent font */
   }
 
+  .newsletter textarea {
+    @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none text-xs;
+  }
+  .newsletter span.error-show {
+    @apply text-[11px]  right-1 bottom-5 text-[red] italic z-40;
+  }
 }
 
 .addShadowDash {

@@ -118,7 +118,7 @@ const Unsubscribe = () => {
                     />
                   </div>
                   <h2 className="font-bold text-center text-lg mb-4">
-                    You are about to unsubscibe to FBS newsletter
+                    You are about to unsubscribe to FBS newsletter
                   </h2>
                   <p className="mb-4">
                     If you have a moment, please let us know why:
