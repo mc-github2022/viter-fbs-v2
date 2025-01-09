@@ -20,19 +20,23 @@ const ModalSend = ({
   setIsSend,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (values) => queryData(mysqlApiSend, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
+      setIsSend(true);
       queryClient.invalidateQueries({ queryKey: [queryKey] });
-      setIsSend(false);
 
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
       } else {
+        setIsSend(false);
+        console.log("success");
         dispatch(setSuccess(true));
         dispatch(setMessage(successMsg));
       }
@@ -40,7 +44,7 @@ const ModalSend = ({
   });
 
   const handleYes = async () => {
-    // mutate data
+    // Mutate data
     mutation.mutate({
       newsletter: item.newsletter,
       newsletter_subject: item.newsletter_subject,
@@ -52,8 +56,6 @@ const ModalSend = ({
   const handleClose = () => {
     setIsSend(false);
   };
-
-  handleEscape(() => handleClose());
 
   return (
     <>
@@ -93,7 +95,6 @@ const ModalSend = ({
               <h3 className="mb-8 text-sm font-normal text-dark">{msg}</h3>
               <div className="flex gap-2">
                 <button
-                  type="submit"
                   className="text-sm btn-modal-submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}

@@ -77,9 +77,20 @@ const Mailer = () => {
 
   const handleClickRecipient = (item, setFieldValue, val) => {
     console.log("Selected Recipient:", item);
-    setSubscriberValue(item);
-    setFieldValue("subscriber_email", item);
-    setFilterValue(val);
+
+    // Check if the selected item is "All Recipients"
+    if (item === "All Recipients") {
+      setSubscriberValue("All Recipients");
+      setFieldValue("subscriber_email", item);
+      setFilterValue(val);
+    } else {
+      // show only the selected individual email
+      setSubscriberValue(item);
+      setFieldValue("subscriber_email", item);
+      setSubscriber(item);
+      setFilterValue(val);
+    }
+
     setOnRecipient(false);
   };
 
@@ -89,6 +100,7 @@ const Mailer = () => {
     const newValue = e.target.value;
     setSubscriberValue(newValue);
     setLoading(true);
+    setSubscriber(newValue);
 
     clearTimeout(timeOut);
 
@@ -155,41 +167,39 @@ const Mailer = () => {
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}
-                // onSubmit={async (values, { resetForm }) => {
-                //   // Validate the subscriber_email field
-                //   if (
-                //     !values.subscriber_email ||
-                //     values.subscriber_email.trim() === ""
-                //   ) {
-                //     dispatch(setError(true));
-                //     dispatch(setMessage("Subscriber is Required."));
-                //     return;
-                //   }
-
-                //   mutation.mutate(
-                //     { ...values, filterValue },
-                //     {
-                //       onSuccess: (data) => {
-                //         if (data.success) {
-                //           // Reset the form after successful submission
-                //           resetForm();
-                //           setSubscriberValue("");
-
-                //           dispatch(setSuccess(true));
-                //           dispatch(setMessage(`Newsletter successfully sent.`));
-                //         } else {
-                //           dispatch(setError(true));
-                //           dispatch(setMessage(data.error));
-                //         }
-                //       },
-                //     }
-                //   );
-                // }}
+                onSubmit={async (values, { resetForm }) => {
+                  // // Validate the subscriber_email field
+                  // if (
+                  //   !values.subscriber_email ||
+                  //   values.subscriber_email.trim() === ""
+                  // ) {
+                  //   dispatch(setError(true));
+                  //   dispatch(setMessage("Subscriber is Required."));
+                  //   return;
+                  // }
+                  // mutation.mutate(
+                  //   { ...values, filterValue },
+                  //   {
+                  //     onSuccess: (data) => {
+                  //       if (data.success) {
+                  //         // Reset the form after successful submission
+                  //         resetForm();
+                  //         setSubscriberValue("");
+                  //         dispatch(setSuccess(true));
+                  //         dispatch(setMessage(`Newsletter successfully sent.`));
+                  //       } else {
+                  //         dispatch(setError(true));
+                  //         dispatch(setMessage(data.error));
+                  //       }
+                  //     },
+                  //   }
+                  // );
+                }}
               >
-                {({ setFieldValue, values, dirty }) => (
+                {({ setFieldValue, values, dirty, isValid }) => (
                   <Form>
-                    <div className="grid grid-cols-[_1.5fr_2fr] gap-5 max-h-[19.5rem]">
-                      <div>
+                    <div className="grid grid-cols-[_1.5fr_2fr] gap-5 ">
+                      <div className="">
                         <div className="input-wrapper">
                           <InputText
                             label="Recipient"
@@ -265,7 +275,7 @@ const Mailer = () => {
                           <InputTextArea
                             type="text"
                             name="newsletter"
-                            className="newsletter h-[430px] bg-black text-white "
+                            className="newsletter  bg-black text-white md:min-h-[calc(55vh-30px)] lg:max-h-[calc(90vh-150px)]"
                             value={values.newsletter}
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
@@ -277,28 +287,29 @@ const Mailer = () => {
                           <div className="form-btn place-content-end">
                             <button
                               className="btn-modal-submit w-[200px]"
-                              type="button"
+                              type="submit"
                               disabled={mutation.isPending || !dirty}
-                              onClick={() => handleClickSend(values)}
+                              onClick={() => {
+                                if (isValid) {
+                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete
+                                }
+                              }}
                             >
                               {mutation.isPending ? <ButtonSpinner /> : "Send"}
                             </button>
                           </div>
                         </div>
                       </div>
-                      <div className="Preview h-[600px] border-[2px] border-gray-200 place-content-center place-items-center rounded-lg">
+                      <div className="Preview md:min-h-[calc(75vh-35px)] lg:max-h-[calc(80vh-150px)] w-full border-[2px] border-gray-200 flex justify-center items-center rounded-lg">
                         {values.newsletter ? (
-                          <div className="newsletter-content p-1">
+                          <div className="w-full">
                             <iframe
                               srcDoc={values.newsletter}
-                              style={{
-                                width: "100%",
-                                height: "600px",
-                              }}
+                              className="md:min-h-[calc(75vh-35px)] lg:max-h-[calc(80vh-150px)] border-none w-full"
                             />
                           </div>
                         ) : (
-                          <p className="text-gray-400 text-xs ">
+                          <p className="text-gray-400 text-xs">
                             No Preview Available
                           </p>
                         )}
@@ -312,7 +323,7 @@ const Mailer = () => {
                         queryKey={"sending-newsletter"}
                         setIsSend={setIsSend}
                         item={{
-                          ...values, // All form values
+                          ...values,
                           filterValue,
                         }}
                       />

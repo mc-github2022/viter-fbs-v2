@@ -352,15 +352,6 @@
     @apply outline-none border-primary;
   }
   /* mailer textArea */
-  .newsletter-content {
-    font-family: inherit; /* Inherits the system font */
-    all: unset; /* Resets all styles */
-    display: block; /* Resets inline styles */
-  }
-  .newsletter-content * {
-    all: revert; /* Reverts to browser's default styles */
-    font-family: inherit; /* Inherits the parent font */
-  }
 
   .newsletter textarea {
     @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none text-xs;
