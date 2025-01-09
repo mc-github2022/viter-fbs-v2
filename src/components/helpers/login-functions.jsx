@@ -13,12 +13,12 @@ export const checkLocalStorage = () => {
 
 export const checkRoleToRedirect = (navigate, data) => {
   if (data.role_code === "role_is_admin") {
-    navigate(`${devNavUrl}/home-banner`);
+    navigate(`${devNavUrl}/special-offers`);
   } else if (data.role_code === "role_is_marketing") {
     navigate(`${devNavUrl}/subscribers`);
   } else {
     const rolePath = data.role.toLowerCase().replaceAll(" ", "-");
-    navigate(`${devNavUrl}/${rolePath}/home-banner`);
+    navigate(`${devNavUrl}/${rolePath}/special-offers`);
   }
 
   // data.role_is_developer === 1

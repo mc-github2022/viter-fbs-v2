@@ -37,11 +37,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     }, 200);
   };
 
-  const handleDraft = () => {
-    setIsDraft(true);
-    console.log(isDraft);
-  };
-
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -228,10 +223,13 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             className="btn-modal-submit bg-white text-primary"
                             type="submit"
                             disabled={
-                              mutation.isPending ||
-                              (!props.dirty && !photoSingle)
+                              ((mutation.isPending || !props.dirty) &&
+                                photoSingle === null) ||
+                              photoSingle === "" ||
+                              initVal.events_activities_img ===
+                                photoSingle?.name
                             }
-                            onClick={handleDraft}
+                            onClick={() => setIsDraft(true)}
                           >
                             {mutation.isPending ? (
                               <ButtonSpinner />
@@ -243,16 +241,12 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             className="btn-modal-submit"
                             type="submit"
                             disabled={
-                              mutation.isPending ||
-                              (!props.dirty && !photoSingle)
+                              ((mutation.isPending || !props.dirty) &&
+                                photoSingle === null) ||
+                              photoSingle === "" ||
+                              initVal.events_activities_img ===
+                                photoSingle?.name
                             }
-                            // disabled={
-                            //   ((mutation.isPending || !props.dirty) &&
-                            //     photoSingle === null) ||
-                            //   photoSingle === "" ||
-                            //   initVal.events_activities_img ===
-                            //     photoSingle?.name
-                            // }
                           >
                             {mutation.isPending ? <ButtonSpinner /> : "Publish"}
                           </button>

@@ -27,15 +27,14 @@ const ModalSend = ({
     mutationFn: (values) => queryData(mysqlApiSend, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
-      setIsSend(true);
       queryClient.invalidateQueries({ queryKey: [queryKey] });
+      setIsSend(false);
 
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
         dispatch(setSuccess(false));
       } else {
-        setIsSend(false);
         console.log("success");
         dispatch(setSuccess(true));
         dispatch(setMessage(successMsg));
@@ -96,13 +95,13 @@ const ModalSend = ({
               <div className="flex gap-2">
                 <button
                   className="text-sm btn-modal-submit"
+                  type="submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
                   {mutation.isPending ? <ButtonSpinner /> : "Yes"}
                 </button>
                 <button
-                  type="reset"
                   className="text-sm btn-modal-cancel"
                   onClick={handleClose}
                   disabled={mutation.isPending}

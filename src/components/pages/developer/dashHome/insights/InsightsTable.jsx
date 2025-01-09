@@ -1,22 +1,32 @@
 import React from "react";
 import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdOutlineFileUpload } from "react-icons/md";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { formatDate } from "../../../../helpers/functions-general";
+import { apiVersion, formatDate } from "../../../../helpers/functions-general";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import TableSpinner from "../../../../partials/spinners/TableSpinner";
-import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
+import {
+  setIsAdd,
+  setIsArchive,
+  setIsDelete,
+  setIsRestore,
+} from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import DraftStatusInsights from "./DraftStatusInsights";
+import DraftStatusEventsAndActivities from "../../why-fbs-page/events-and-activities/DraftStatusEventsAndActivities";
+import { RiDraftFill } from "react-icons/ri";
+import ModalDraft from "../../why-fbs-page/events-and-activities/modals/ModalDraft";
+import ModalUpload from "../../why-fbs-page/events-and-activities/modals/ModalUpload";
 
 const InsightsTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
+  const [isArchiving, setIsArchiving] = React.useState(false);
 
   const {
     isFetching,
@@ -24,7 +34,7 @@ const InsightsTable = ({ setItemEdit }) => {
     isLoading,
     data: insightData,
   } = useQueryData(
-    "/v1/insights", // endpoint
+    `${apiVersion}/insights`, // endpoint
     "get", // method
     "insights" // key
   );
@@ -40,6 +50,22 @@ const InsightsTable = ({ setItemEdit }) => {
     dispatch(setIsDelete(true));
     setIsData(item.home_insights_title);
     setIsId(item.home_insights_aid);
+  };
+
+  const handleArchive = (item) => {
+    dispatch(setIsArchive(true));
+    setIsData(item.home_insights_title);
+    setIsId(item.home_insights_aid);
+    setIsArchiving(true);
+    setIsRestore(false);
+  };
+
+  const handleRestore = (item) => {
+    dispatch(setIsRestore(true));
+    setIsData(item.home_insights_title);
+    setIsId(item.home_insights_aid);
+    setIsArchiving(false);
+    setIsRestore(true);
   };
 
   return (
@@ -82,9 +108,9 @@ const InsightsTable = ({ setItemEdit }) => {
                 <td className="pl-2 place-content-start">{counter++}</td>
                 <td className="place-content-start">
                   {item.home_insights_is_active === 1 ? (
-                    <DraftStatusInsights text="Active" />
+                    <DraftStatusEventsAndActivities text="Active" />
                   ) : (
-                    <DraftStatusInsights text="Draft" />
+                    <DraftStatusEventsAndActivities text="Draft" />
                   )}
                 </td>
                 <td className="place-content-start">
@@ -108,18 +134,48 @@ const InsightsTable = ({ setItemEdit }) => {
                   {item.home_insights_img}
                 </td>
                 <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                  <button
-                    className="tooltip-action-table"
-                    data-tooltip="Edit"
-                    onClick={() => handleEdit(item)}>
-                    <FaEdit className="text-gray-600 text-[16px]" />
-                  </button>
-                  <button
-                    className="tooltip-action-table"
-                    data-tooltip="Delete"
-                    onClick={() => handleDelete(item)}>
-                    <MdDelete className="text-gray-600 text-[18px]" />
-                  </button>
+                  {item.home_insights_is_active ? (
+                    <>
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Edit"
+                        onClick={() => handleEdit(item)}
+                      >
+                        <FaEdit className="text-gray-600 text-[16px]" />
+                      </button>
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Draft"
+                        onClick={() => handleArchive(item)}
+                      >
+                        <RiDraftFill className=" text-gray-600 text-[16px]" />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Edit"
+                        onClick={() => handleEdit(item)}
+                      >
+                        <FaEdit className="text-gray-600 text-[16px]" />
+                      </button>
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Publish"
+                        onClick={() => handleRestore(item)}
+                      >
+                        <MdOutlineFileUpload className="text-gray-600 text-[18px]" />
+                      </button>
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Delete"
+                        onClick={() => handleDelete(item)}
+                      >
+                        <MdDelete className="text-gray-600 text-[18px]" />
+                      </button>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}
@@ -131,8 +187,26 @@ const InsightsTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"insights"}
-          mysqlEndpoint={`/v1/insights/${id}`}
+          mysqlEndpoint={`${apiVersion}/insights/${id}`}
           item={isData}
+        />
+      )}
+      {store.isArchive && (
+        <ModalDraft
+          mysqlApiArchive={`${apiVersion}/insights/active/${id}`}
+          msg={"Are you sure you want to draft this post?"}
+          successMsg={"Draft succesfully."}
+          queryKey={"insights"}
+          setIsArchive={setIsArchive}
+        />
+      )}
+      {store.isRestore && (
+        <ModalUpload
+          mysqlApiRestore={`${apiVersion}/insights/active/${id}`}
+          msg={"Are you sure you want to publish this post?"}
+          successMsg={"Upload succesfully."}
+          queryKey={"insights"}
+          setIsRestore={setIsRestore}
         />
       )}
     </>

@@ -156,10 +156,46 @@ const Insights = () => {
           </div>
           <div className="wrapper">
             <div className=" order-2 mb-12 lg:mb-0 ">
-              {insightData?.data.length > 3 ? (
+              {insightData?.data.filter((post) => post.home_insights_is_active === 1).length > 3 ? (
                 <Slider ref={sliderRef} {...settings}>
-                  {insightData.data.map((post, key) => {
-                    return (
+                  {insightData.data
+                    .filter((post) => post.home_insights_is_active === 1)
+                    .map((post, key) => {
+                      return (
+                        <div key={key} className="md:px-0">
+                          <Link
+                            to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                          >
+                            <div
+                              style={{
+                                backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
+                              }}
+                              className="blogItem bg-center bg-cover md:w-[380px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                            >
+                              <div>
+                                <div className="blogExcerpt p-10 pb-6 relative z-[1]">
+                                  <p className="text-light font-bold text-lg">
+                                    {post.home_insights_title}
+                                  </p>
+                                </div>
+                                <div className="blogTitle  pb-10  relative z-[1]">
+                                  <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                    {post.home_insights_category}
+                                  </h4>
+                                </div>
+                              </div>
+                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                </Slider>
+              ) : (
+                <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
+                  {insightData?.data
+                    .filter((post) => post.home_insights_is_active === 1)
+                    .map((post, key) => (
                       <div key={key} className="md:px-0">
                         <Link
                           to={`${devNavUrl}/insight/${post.home_insights_slug}`}
@@ -168,7 +204,7 @@ const Insights = () => {
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
                             }}
-                            className="blogItem bg-center bg-cover md:w-[380px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                            className="blogItem bg-center bg-cover md:w-[400px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                           >
                             <div>
                               <div className="blogExcerpt p-10 pb-6 relative z-[1]">
@@ -176,7 +212,7 @@ const Insights = () => {
                                   {post.home_insights_title}
                                 </p>
                               </div>
-                              <div className="blogTitle  pb-10  relative z-[1]">
+                              <div className="blogTitle pb-10 relative z-[1]">
                                 <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
                                   {post.home_insights_category}
                                 </h4>
@@ -186,39 +222,7 @@ const Insights = () => {
                           </div>
                         </Link>
                       </div>
-                    );
-                  })}
-                </Slider>
-              ) : (
-                <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">
-                  {insightData?.data.map((post, key) => (
-                    <div key={key} className="md:px-0">
-                      <Link
-                        to={`${devNavUrl}/insight/${post.home_insights_slug}`}
-                      >
-                        <div
-                          style={{
-                            backgroundImage: `url(${devBaseImgUrl}/${post.home_insights_img})`,
-                          }}
-                          className="blogItem bg-center bg-cover md:w-[400px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                        >
-                          <div>
-                            <div className="blogExcerpt p-10 pb-6 relative z-[1]">
-                              <p className="text-light font-bold text-lg">
-                                {post.home_insights_title}
-                              </p>
-                            </div>
-                            <div className="blogTitle pb-10 relative z-[1]">
-                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                {post.home_insights_category}
-                              </h4>
-                            </div>
-                          </div>
-                          <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               )}
             </div>

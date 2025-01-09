@@ -118,79 +118,6 @@ const Navigation = ({ menu, submenu }) => {
               ) : (
                 <>
                   <li
-                    className={` flex justify-between items-center p-1
-                  ${
-                    menu === "special-offers"
-                      ? "text-primary underline underline-offset-4 "
-                      : "text-dark "
-                  }
-                `}
-                  >
-                    <Link to={`${devNavUrl}${link}/special-offers`}>
-                      <div className="nav flex items-center">
-                        <span className=" text-[14px] uppercase">
-                          Special Offers
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-
-                  <li
-                    className={` flex justify-between items-center p-1
-                  ${
-                    menu === "lcss-batches"
-                      ? "text-primary underline underline-offset-4 "
-                      : "text-dark "
-                  }
-                `}
-                  >
-                    <Link to={`${devNavUrl}${link}/lcss-batches`}>
-                      <div className="nav flex items-center">
-                        <span className=" text-[14px] uppercase">
-                          LCSS Batches
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-
-                  <li
-                    className={` flex justify-between items-center p-1
-                  ${
-                    menu === "industry-testimonial"
-                      ? "text-primary underline underline-offset-4 "
-                      : "text-dark "
-                  }
-                `}
-                  >
-                    <Link to={`${devNavUrl}${link}/industry-testimonial`}>
-                      <div className="nav flex items-center">
-                        <span className=" text-[14px] uppercase">
-                          Industry Testi.
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-
-                  <li
-                    className={` flex justify-between items-center p-1
-                  ${
-                    menu === "vid-testimonial"
-                      ? "text-primary underline underline-offset-4 "
-                      : "text-dark "
-                  }
-                `}
-                  >
-                    <Link to={`${devNavUrl}${link}/vid-testimonial`}>
-                      <div className="nav flex items-center">
-                        <span className=" text-[14px] uppercase">
-                          Video Testimonials
-                        </span>
-                      </div>
-                    </Link>
-                  </li>
-
-                  {/* HOME */}
-                  <li
                     className={` flex justify-between items-center p-1 cursor-pointer
                   ${
                     menu === "home"
@@ -229,7 +156,39 @@ const Navigation = ({ menu, submenu }) => {
                         Banner
                       </li>
                     </Link>
-
+                    {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-process`}>
+                    <li
+                      className={`text-sm mb-1 my-2 border-transparent ${
+                        submenu === "home-process"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
+                      }`}
+                    >
+                      Process
+                    </li>
+                  </Link>
+                  <Link className="!p-0" to={`${devNavUrl}${link}/home-services`}>
+                    <li
+                      className={`text-sm mb-1 my-2 border-transparent ${
+                        submenu === "home-services"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
+                      }`}
+                    >
+                      Services
+                    </li>
+                  </Link>
+                  <Link className="!p-0" to={`${devNavUrl}${link}/home-partnerWithUs`}>
+                    <li
+                      className={`text-sm mb-1 my-2 border-transparent ${
+                        submenu === "home-partnerWithUs"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
+                      }`}
+                    >
+                      Partner With Us
+                    </li>
+                  </Link> */}
                     <Link
                       className="!p-0"
                       to={`${devNavUrl}${link}/home-testimonial`}
@@ -244,7 +203,17 @@ const Navigation = ({ menu, submenu }) => {
                         Testimonials
                       </li>
                     </Link>
-
+                    {/* <Link className="!p-0" to={`${devNavUrl}${link}/home-partners`}>
+                    <li
+                      className={` text-sm mb-1 my-2 border-transparent ${
+                        submenu === "home-partners"
+                          ? "text-primary font-bold"
+                          : "border-none text-dark"
+                      }`}
+                    >
+                      Partners
+                    </li>
+                  </Link> */}
                     <Link
                       className="!p-0"
                       to={`${devNavUrl}${link}/home-insights`}
@@ -261,7 +230,24 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                   </ul>
 
-                  {/* WHY FBS */}
+                  <li
+                    className={` flex justify-between items-center p-1
+                  ${
+                    menu === "special-offers"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                  >
+                    <Link to={`${devNavUrl}${link}/special-offers`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Special Offers
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+
                   <li
                     className={` flex justify-between items-center p-1 cursor-pointer
                   ${
@@ -317,6 +303,75 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                   </ul>
 
+                  <li
+                    className={` flex justify-between items-center p-1
+                  ${
+                    menu === "lcss-batches"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                  >
+                    <Link to={`${devNavUrl}${link}/lcss-batches`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          LCSS Batches
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+
+                  <li
+                    className={` flex justify-between items-center p-1
+                  ${
+                    menu === "industry-testimonial"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                  >
+                    <Link to={`${devNavUrl}${link}/industry-testimonial`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Industry Testi.
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+
+                  <li
+                    className={` flex justify-between items-center p-1
+                  ${
+                    menu === "vid-testimonial"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                  >
+                    <Link to={`${devNavUrl}${link}/vid-testimonial`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Video Testimonials
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                  {/* <li
+                className={` flex justify-between items-center p-1
+                  ${
+                    menu === "pricing"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}>
+                <Link to={`${devNavUrl}${link}/pricing`}>
+                  <div className="nav flex items-center">
+                    <span className=" text-[14px] uppercase">
+                      Pricing
+                    </span>
+                  </div>
+                </Link>
+              </li> */}
                   <li
                     className={` flex justify-between items-center p-1 cursor-pointer
                   ${

@@ -287,7 +287,7 @@ const Mailer = () => {
                           <div className="form-btn place-content-end">
                             <button
                               className="btn-modal-submit w-[200px]"
-                              type="submit"
+                              type="button"
                               disabled={mutation.isPending || !dirty}
                               onClick={() => {
                                 if (isValid) {

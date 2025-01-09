@@ -9,13 +9,14 @@ DEVELOPER
             -> rest/v1/controllers/developer/subscribe/functions.php
             -> rest/v1/controllers/developer/subscribe/restore-key.php
             -> rest/v1/controllers/developer/sending-newsletter
+            -> rest/v1/controllers/developer/home/insights/active.php
         
 
         * MODELS
             -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
             -> rest/v1/models/developer/subscribe/Subscribe.php
             -> rest/v1/models/developer/sending-newsletter
-            -> 
+            -> rest/v1/models/developer/home/insights/Insights.php
 
 
         * HTACESS
@@ -23,7 +24,9 @@ DEVELOPER
             note: added in subscriber
             RewriteRule ^subscribe/create-subscriber$ controllers/developer/subscribe/createSubscriber.php?subscribeid=$1 [L]
             -> SENDING NEWSLETTER
-            -> 
+            -> INSIGHT
+             note: added in insight
+            RewriteRule ^insights/active/([0-9]+)$ controllers/developer/home/insights/active.php?home_insightsid=$1 [L]
             -> 
 
 
@@ -33,7 +36,9 @@ DEVELOPER
 
 
         * DB BACKUP
-            ->  
+            -> rest/db-backup/fbsv2_home_insights.sql
+            note: column added
+                `home_insights_is_active` tinyint(1) NOT NULL,
             ->
             ->
             ->

@@ -19,6 +19,7 @@ import EventsAndActivities from "../components/pages/developer/why-fbs-page/even
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
 import Subscribers from "../components/pages/developer/subscribers/Subscribers";
+import Mailer from "../components/pages/developer/subscribers/mailer/Mailer";
 
 export const routesAdmin = [
   {
@@ -146,6 +147,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <Subscribers />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/mailer`,
+    element: (
+      <ProtectedRouteOther>
+        <Mailer />
       </ProtectedRouteOther>
     ),
   },
