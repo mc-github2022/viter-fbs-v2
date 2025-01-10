@@ -10,6 +10,8 @@ DEVELOPER
             -> rest/v1/controllers/developer/subscribe/restore-key.php
             -> rest/v1/controllers/developer/sending-newsletter
             -> rest/v1/controllers/developer/home/insights/active.php
+            -> rest/v1/controllers/developer/home/insights/create.php
+            -> rest/v1/controllers/developer/home/insights/update.php
         
 
         * MODELS
