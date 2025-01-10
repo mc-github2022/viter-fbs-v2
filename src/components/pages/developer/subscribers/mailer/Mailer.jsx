@@ -67,7 +67,6 @@ const Mailer = () => {
       if (data.success) {
         dispatch(setSuccess(true));
         setSubscriberValue("");
-        setSubscriberValue("");
         dispatch(setMessage(`Newsletter sucessfully sent!`));
       }
       // show error box
@@ -267,7 +266,7 @@ const Mailer = () => {
                               disabled={mutation.isPending || !dirty}
                               onClick={() => {
                                 if (isValid) {
-                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete 
+                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete
                                 }
                               }}
                             >
