@@ -480,3 +480,9 @@ textarea {
     width: 304px !important;
   }
 }
+
+@media screen and (min-height: 1100px) {
+  .newsletter {
+    height: 60vh;
+  }
+}

@@ -251,7 +251,7 @@ const Mailer = () => {
                           <InputTextArea
                             type="text"
                             name="newsletter"
-                            className="newsletter bg-black text-white md:min-h-[calc(55vh-30px)] lg:max-h-[calc(100vh-150px)]"
+                            className="newsletter bg-[#2b2b2b] text-white h-[445px]"
                             value={values.newsletter}
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
@@ -267,7 +267,7 @@ const Mailer = () => {
                               disabled={mutation.isPending || !dirty}
                               onClick={() => {
                                 if (isValid) {
-                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete 
+                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete
                                 }
                               }}
                             >
