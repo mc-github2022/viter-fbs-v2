@@ -267,7 +267,7 @@ const Mailer = () => {
                               disabled={mutation.isPending || !dirty}
                               onClick={() => {
                                 if (isValid) {
-                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete
+                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete 
                                 }
                               }}
                             >
