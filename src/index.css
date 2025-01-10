@@ -481,8 +481,8 @@ textarea {
   }
 }
 
-@media screen and (min-height: 1100px) {
+@media screen and (min-height: 700px) {
   .newsletter {
-    height: 60vh;
+    height: 50vh;
   }
 }

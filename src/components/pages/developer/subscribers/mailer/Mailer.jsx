@@ -275,12 +275,12 @@ const Mailer = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="Preview md:min-h-[calc(75vh-35px)] lg:max-h-[calc(80vh-150px)] w-full border-[2px] border-gray-200 flex justify-center items-center rounded-lg">
+                      <div className="Preview md:min-h-[calc(75vh-35px)] lg:max-h-[calc(100vh-150px)] w-full border-[2px] border-gray-200 flex justify-center items-center rounded-lg">
                         {values.newsletter ? (
                           <div className="w-full">
                             <iframe
                               srcDoc={values.newsletter}
-                              className="md:min-h-[calc(75vh-35px)] lg:max-h-[calc(80vh-150px)] border-none w-full"
+                              className="md:min-h-[calc(78vh-35px)] lg:max-h-[calc(90vh-150px)] border-none w-full"
                             />
                           </div>
                         ) : (

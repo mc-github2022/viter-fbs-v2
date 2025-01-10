@@ -178,6 +178,13 @@ const Header = ({ pageName }) => {
                     </li>
                   </ul>
                 </li>
+                <li>
+                  <button className="text-left">
+                    <a href="https://frontlinebusiness.com.ph/payment/">
+                      Payment
+                    </a>
+                  </button>
+                </li>
                 <div className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
                   <a
                     href="#"
@@ -192,7 +199,7 @@ const Header = ({ pageName }) => {
             <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
               <button
                 onClick={handleModalContact}
-                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary "
+                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
               >
                 GET STARTED
               </button>
