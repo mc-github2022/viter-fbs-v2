@@ -354,7 +354,7 @@
   /* mailer textArea */
 
   .newsletter textarea {
-    @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full min-h-28 resize-y bg-none outline-none text-xs;
+    @apply block border border-solid border-[#d1d5db] p-2 rounded-lg w-full resize-y bg-none outline-none text-xs;
   }
   .newsletter span.error-show {
     @apply text-[11px]  right-1 bottom-5 text-[red] italic z-40;
@@ -478,5 +478,11 @@ textarea {
   }
   .reCaptcha > div > div > div > div iframe {
     width: 304px !important;
+  }
+}
+
+@media screen and (min-height: 1100px) {
+  .newsletter {
+    height: 60vh;
   }
 }
