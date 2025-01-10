@@ -8,41 +8,21 @@ import {
 } from "@/components/store/StoreAction";
 import { StoreContext } from "@/components/store/StoreContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
 import { IoIosSend } from "react-icons/io";
 
 const ModalSend = ({
-  mysqlApiSend,
   msg,
-  successMsg,
-  queryKey,
   item,
-  setIsSend,
+  handleClose,
+  mutation,
+  resetForm,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
 
-  const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: (values) => queryData(mysqlApiSend, "post", values),
-    onSuccess: (data) => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: [queryKey] });
-      setIsSend(false);
-
-      if (!data.success) {
-        dispatch(setError(true));
-        dispatch(setMessage(data.error));
-        dispatch(setSuccess(false));
-      } else {
-        console.log("success");
-        dispatch(setSuccess(true));
-        dispatch(setMessage(successMsg));
-      }
-    },
-  });
-
   const handleYes = async () => {
+    resetForm();
     // Mutate data
     mutation.mutate({
       newsletter: item.newsletter,
@@ -50,10 +30,6 @@ const ModalSend = ({
       subscriber_email: item.subscriber_email,
       filterValue: item.filterValue,
     });
-  };
-
-  const handleClose = () => {
-    setIsSend(false);
   };
 
   return (
@@ -95,16 +71,15 @@ const ModalSend = ({
               <div className="flex gap-2">
                 <button
                   className="text-sm btn-modal-submit"
-                  type="submit"
                   onClick={handleYes}
                   disabled={mutation.isPending}
                 >
                   {mutation.isPending ? <ButtonSpinner /> : "Yes"}
                 </button>
+
                 <button
                   className="text-sm btn-modal-cancel"
                   onClick={handleClose}
-                  disabled={mutation.isPending}
                 >
                   No
                 </button>

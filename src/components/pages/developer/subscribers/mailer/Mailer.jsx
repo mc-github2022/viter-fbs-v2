@@ -29,6 +29,7 @@ import { StoreContext } from "../../../../store/StoreContext";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../partials/modals/ModalError";
 import ModalSend from "./ModalSend";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 
 const Mailer = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -63,15 +64,17 @@ const Mailer = () => {
       queryData(`${apiVersion}/sending-newsletter`, "post", values),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["sending-newsletter"] });
-      // if (data.success) {
-      //   dispatch(setSuccess(true));
-      //   dispatch(setMessage(`Newsletter sucessfully sent.`));
-      // }
-      // // show error box
-      // if (!data.success) {
-      //   dispatch(setError(true));
-      //   dispatch(setMessage(data.error));
-      // }
+      if (data.success) {
+        dispatch(setSuccess(true));
+        setSubscriberValue("");
+        setSubscriberValue("");
+        dispatch(setMessage(`Newsletter sucessfully sent!`));
+      }
+      // show error box
+      if (!data.success) {
+        dispatch(setError(true));
+        dispatch(setMessage(data.error));
+      }
     },
   });
 
@@ -167,36 +170,9 @@ const Mailer = () => {
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}
-                onSubmit={async (values, { resetForm }) => {
-                  // // Validate the subscriber_email field
-                  // if (
-                  //   !values.subscriber_email ||
-                  //   values.subscriber_email.trim() === ""
-                  // ) {
-                  //   dispatch(setError(true));
-                  //   dispatch(setMessage("Subscriber is Required."));
-                  //   return;
-                  // }
-                  // mutation.mutate(
-                  //   { ...values, filterValue },
-                  //   {
-                  //     onSuccess: (data) => {
-                  //       if (data.success) {
-                  //         // Reset the form after successful submission
-                  //         resetForm();
-                  //         setSubscriberValue("");
-                  //         dispatch(setSuccess(true));
-                  //         dispatch(setMessage(`Newsletter successfully sent.`));
-                  //       } else {
-                  //         dispatch(setError(true));
-                  //         dispatch(setMessage(data.error));
-                  //       }
-                  //     },
-                  //   }
-                  // );
-                }}
+                onSubmit={async (values, { resetForm }) => {}}
               >
-                {({ setFieldValue, values, dirty, isValid }) => (
+                {({ setFieldValue, values, dirty, isValid, resetForm }) => (
                   <Form>
                     <div className="grid grid-cols-[_1.5fr_2fr] gap-5 ">
                       <div className="">
@@ -275,7 +251,11 @@ const Mailer = () => {
                           <InputTextArea
                             type="text"
                             name="newsletter"
+<<<<<<< HEAD
                             className="newsletter bg-black text-white "
+=======
+                            className="newsletter bg-black text-white md:min-h-[calc(55vh-30px)] lg:max-h-[calc(100vh-150px)]"
+>>>>>>> 2c889b42142e5638e23369abfec7bb8773070165
                             value={values.newsletter}
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
@@ -287,7 +267,7 @@ const Mailer = () => {
                           <div className="form-btn place-content-end">
                             <button
                               className="btn-modal-submit w-[200px]"
-                              type="button"
+                              type="submit"
                               disabled={mutation.isPending || !dirty}
                               onClick={() => {
                                 if (isValid) {
@@ -317,15 +297,14 @@ const Mailer = () => {
                     </div>
                     {isSend && (
                       <ModalSend
-                        mysqlApiSend={`${apiVersion}/sending-newsletter`}
                         msg={"Are you sure you want send this newsletter?"}
-                        successMsg={`Newsletter successfully sent.`}
-                        queryKey={"sending-newsletter"}
-                        setIsSend={setIsSend}
                         item={{
                           ...values,
                           filterValue,
                         }}
+                        mutation={mutation}
+                        handleClose={() => setIsSend(false)}
+                        resetForm={resetForm}
                       />
                     )}
                   </Form>
