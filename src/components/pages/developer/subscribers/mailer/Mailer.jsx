@@ -275,7 +275,7 @@ const Mailer = () => {
                           <InputTextArea
                             type="text"
                             name="newsletter"
-                            className="newsletter  bg-black text-white md:min-h-[calc(55vh-30px)] lg:max-h-[calc(90vh-150px)]"
+                            className="newsletter bg-black text-white "
                             value={values.newsletter}
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
