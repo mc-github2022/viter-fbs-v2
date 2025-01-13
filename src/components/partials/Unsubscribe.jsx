@@ -162,10 +162,10 @@ const Unsubscribe = () => {
                             <div className="othersMessage mt-2.5 md:grid">
                               <div className="input-wrapper m-0">
                                 <div className="flex-col items-start gap-2 w-full">
-                                  <span className="text-xs pl-3">Others</span>
+                                  <span className="text-xs">Others</span>
                                   <textarea
                                     name="subscriber_feedback"
-                                    className=" w-[280px] md:w-[280px] !h-[20px]"
+                                    className=" w-[257px] md:w-[257px] !h-[20px]"
                                     placeholder="Add your reasons or recommendation here"
                                     onChange={handleTextChange}
                                   />
