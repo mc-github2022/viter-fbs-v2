@@ -1,0 +1,36 @@
+
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/subscribe/createSubscriber.php
+        
+
+        * MODELS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * OTHER FILES
+            -> 
+            ->
+
+
+        * DB BACKUP
+            ->  
+            ->
+            ->
+            ->
+            ->
+            ->

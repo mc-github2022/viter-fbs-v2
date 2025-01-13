@@ -1,6 +1,6 @@
 <?php
 // check database connection
-require '../../../notification/subscriber-message.php';
+
 require '../../../models/developer/subscribe/Subscribe.php';
 require '../../../core/header.php';
 require '../../../core/Encryption.php';
@@ -19,53 +19,24 @@ $data = json_decode($body, true);
 
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
+    // check data
+    checkPayload($data);
+    // get data
 
-    if (array_key_exists("subscribeid", $_GET)) {
+    $email = checkIndex($data, "subscriber_email");
+    $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+    $subscribe->subscriber_key = $encrypt->doHash(rand());
 
-        // check data
-        checkPayload($data);
-        // get data
+    // checks newly added data if it already exists
+    isEmailExist($subscribe, $subscribe->subscriber_email);
 
-        $email = checkIndex($data, "subscriber_email");
-        $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
-        $subscribe->subscriber_key = $encrypt->doHash(rand());
-        $unsubscribe_link = "/unsubscribe";
-        // checks newly added data if it already exists
-        isEmailExist($subscribe, $subscribe->subscriber_email);
+    $subscribe->subscriber_is_active = 1;
+    $subscribe->subscriber_is_agree = 1;
+    $subscribe->subscriber_created = date("Y-m-d H:i:s");
+    $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
 
-        if (trim($email) != "") {
-            $mail = sendEmailSubscriber(
-                $unsubscribe_link,
-                $email,
-                $subscribe->subscriber_key
-            );
-        }
-
-        if ($mail["mail_success"] == true) {
-            $subscribe->subscriber_is_active = 1;
-            $subscribe->subscriber_is_agree = 1;
-            $subscribe->subscriber_created = date("Y-m-d H:i:s");
-            $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
-
-            $query = checkCreateSubscriber($subscribe);
-
-            $returnData["data"] = $mail;
-            $returnData["count"] = 0;
-            $returnData["success"] = true;
-            $response->setData($returnData);
-            $response->send();
-            exit;
-        } else {
-            $returnData["data"] = $mail;
-            $returnData["count"] = 0;
-            $returnData["success"] = false;
-            $response->setData($returnData);
-            $response->send();
-            exit;
-        }
-    }
-    // return 404 error if endpoint not available
-    checkEndpoint();
+    $query = checkCreateSubscriber($subscribe);
+    returnSuccess($subscribe, "subscribe", $query);
 }
 
 http_response_code(200);
