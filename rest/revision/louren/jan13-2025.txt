@@ -5,7 +5,7 @@ Upload JSX
 DEVELOPER  
 
         * CONTROLLERS
-            -> rest/v1/controllers/developer/subscribe/createSubscriber.php
+            -> rest/v1/controllers/developer/subscribe/create-subscriber.php
         
 
         * MODELS
@@ -16,7 +16,9 @@ DEVELOPER
 
 
         * HTACESS
-            -> 
+            -> SUBSCRIBER
+            note: updated htaccess in subscriber  
+            RewriteRule ^subscribe/create-subscriber$ controllers/developer/subscribe/create-subscriber.php?subscribeid=$1 [L]
             -> 
             -> 
             -> 
