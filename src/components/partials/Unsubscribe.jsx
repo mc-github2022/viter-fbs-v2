@@ -112,7 +112,7 @@ const Unsubscribe = () => {
                 <div className="text-left md:w-[650px] m-auto">
                   <div className="sadMailImage pt-[20px] md:pt-[30px] mb-4">
                     <img
-                      className="m-auto w-[450px] xs:w-[400px] lg:w-[400px]"
+                      className="m-auto w-[180px] xs:w-[400px] lg:w-[200px]"
                       src="https://lh3.googleusercontent.com/pw/AP1GczNODh0erMDN3ufWLI5vUtQZD-U8tE5vnwLwKUMem38E591ciKK0AZDGTOCGnCGXL9gafpUSlblVKsdlpn1A-Ir2IuUko-OXfg71KKh7adklFYZzqjQcfgvT6W-w5otfEHJ6TwgxeeEE968OtkrSMOc3=w698-h406-s-no-gm?authuser=0"
                       alt=""
                     />
@@ -120,7 +120,7 @@ const Unsubscribe = () => {
                   <h2 className="font-bold text-center text-lg mb-4">
                     You are about to unsubscribe to FBS newsletter
                   </h2>
-                  <p className="mb-4">
+                  <p className="mb-4 text-center">
                     If you have a moment, please let us know why:
                   </p>
                   <Formik
@@ -139,7 +139,7 @@ const Unsubscribe = () => {
                     {(props) => {
                       return (
                         <Form>
-                          <div className="md:flex justify-between">
+                          <div className="md:flex-col lg:flex-col place-items-center">
                             <div className="feedbackCheckboxes">
                               {feedbackOptions.map((option, index) => (
                                 <div className="input-wrapper !m-0" key={index}>
@@ -159,22 +159,22 @@ const Unsubscribe = () => {
                                 </div>
                               ))}
                             </div>
-                            <div className="othersMessage mt-2.5 md:grid md:place-items-center">
+                            <div className="othersMessage mt-2.5 md:grid">
                               <div className="input-wrapper m-0">
-                                <div className="flex items-start gap-2 w-full">
+                                <div className="flex-col items-start gap-2 w-full">
+                                  <span className="text-xs pl-3">Others</span>
                                   <textarea
                                     name="subscriber_feedback"
-                                    className="w-full md:w-[300px] !h-[20px]"
+                                    className=" w-[280px] md:w-[280px] !h-[20px]"
                                     placeholder="Add your reasons or recommendation here"
                                     onChange={handleTextChange}
                                   />
-                                  <label>Others</label>
                                 </div>
                               </div>
                             </div>
                           </div>
 
-                          <div className="modal__action  sm:flex justify-center text-center mt-12 gap-2 text-xs">
+                          <div className="modal__action  sm:flex justify-center text-center mt-8 gap-2 text-xs">
                             <button
                               className="btn bg-white border w-[80%] md:w-[unset] border-primary hover:text-primary disabled:opacity-[0.5] mb-4"
                               type="submit"
