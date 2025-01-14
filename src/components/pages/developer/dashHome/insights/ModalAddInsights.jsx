@@ -226,8 +226,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               ((mutation.isPending || !props.dirty) &&
                                 photoSingle === null) ||
                               photoSingle === "" ||
-                              initVal.events_activities_img ===
-                                photoSingle?.name
+                              initVal.home_insights_img === photoSingle?.name
                             }
                             onClick={() => setIsDraft(true)}
                           >
@@ -244,8 +243,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               ((mutation.isPending || !props.dirty) &&
                                 photoSingle === null) ||
                               photoSingle === "" ||
-                              initVal.events_activities_img ===
-                                photoSingle?.name
+                              initVal.home_insights_img === photoSingle?.name
                             }
                           >
                             {mutation.isPending ? <ButtonSpinner /> : "Publish"}
