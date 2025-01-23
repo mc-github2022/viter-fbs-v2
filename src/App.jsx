@@ -11,6 +11,8 @@ import { routesAdmin } from "./routes/RoutesAdmin";
 import { routesDeveloper } from "./routes/RoutesDeveloper";
 import { routesMarketing } from "./routes/RoutesMarketing";
 import { RoutesWebsite } from "./routes/RoutesWebsite";
+import PreviewPage from "./components/pages/developer/dashHome/insights/PreviewPage";
+import PreviewPageEventsAndActivities from "./components/pages/developer/why-fbs-page/events-and-activities/PreviewPageEventsAndActivities";
 
 function App() {
   const queryClient = new QueryClient();
@@ -46,6 +48,14 @@ function App() {
               <Route
                 path={`${devNavUrl}/post-by-category/:slug`}
                 element={<PostByCategory />}
+              />
+              <Route
+                path={`${devNavUrl}/preview/:slug`}
+                element={<PreviewPage />}
+              />
+              <Route
+                path={`${devNavUrl}/preview/eventsAndActivities/:slug`}
+                element={<PreviewPageEventsAndActivities />}
               />
             </Routes>
           </Router>

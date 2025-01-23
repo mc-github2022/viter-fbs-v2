@@ -63,6 +63,11 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     }, 200);
   };
 
+  const handlePreview = () => {
+    const previewSlug = initVal.events_activities_slug || "default-slug";
+    window.open(`/preview/eventsAndActivities/${previewSlug}`);
+  };
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -354,6 +359,16 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                     </div>
                     <div className="px-1 rounded-lg">
                       <ul className="text-sm flex [&>li]:px-2 [&>li]:cursor-pointer justify-end">
+                        {itemEdit ? (
+                          <a
+                            className="text-xs hover:text-primary underline"
+                            onClick={handlePreview}
+                          >
+                            Preview
+                          </a>
+                        ) : (
+                          ""
+                        )}
                         <li
                           className={`${
                             activeTab === "text"
