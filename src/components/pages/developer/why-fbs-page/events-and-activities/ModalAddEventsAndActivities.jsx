@@ -358,17 +358,20 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                       </div>
                     </div>
                     <div className="px-1 rounded-lg">
-                      <ul className="text-sm flex [&>li]:px-2 [&>li]:cursor-pointer justify-end">
+                      <div className="absolute">
                         {itemEdit ? (
                           <a
-                            className="text-xs hover:text-primary underline"
+                            className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
                             onClick={handlePreview}
+                            role="button"
                           >
                             Preview
                           </a>
                         ) : (
                           ""
                         )}
+                      </div>
+                      <ul className="text-sm flex [&>li]:px-2 [&>li]:cursor-pointer justify-end">
                         <li
                           className={`${
                             activeTab === "text"
@@ -390,12 +393,12 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                           Add Image
                         </li>
                       </ul>
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper textAreaWrapper mt-8">
                         <InputTextArea
                           label="Description"
                           type="text"
                           name="events_activities_description"
-                          className="h-[430px]"
+                          className="h-[420px] py-3"
                           disabled={mutation.isPending}
                         />
                       </div>

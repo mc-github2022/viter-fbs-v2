@@ -42,6 +42,12 @@ export const sectionPartnersLogos = [
   {
     imageName: "logo-fwc.png",
   },
+  {
+    imageName: "logo-twomiles.png",
+  },
+  {
+    imageName: "logo-hiro-isogawa.png",
+  },
 ];
 
 export const webAppOverview = [
