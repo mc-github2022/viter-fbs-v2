@@ -96,7 +96,7 @@ const EventsSingplePage = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
@@ -128,7 +128,7 @@ const EventsSingplePage = () => {
       {
         breakpoint: 1300,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           arrows: true,
         },
@@ -239,10 +239,10 @@ const EventsSingplePage = () => {
                             style={{
                               backgroundImage: `url(${devBaseImgUrl}/${image})`,
                             }}
-                            className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
-                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                            className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[500px] sm:w-[320px] flex items-end relative rounded-xl 
+                 hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                           >
-                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                            {/* <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div> */}
                           </div>
                         </a>
                       </div>
