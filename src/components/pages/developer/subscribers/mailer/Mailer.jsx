@@ -265,6 +265,9 @@ const Mailer = () => {
                                     All Recipients
                                   </div>
 
+                                  <span className="font-bold px-2 py-1">
+                                    By Audience
+                                  </span>
                                   {subscriberCategories.map(
                                     (category, index) => (
                                       <div
@@ -282,6 +285,10 @@ const Mailer = () => {
                                       </div>
                                     )
                                   )}
+
+                                  <span className="font-bold px-2 py-1">
+                                    By Email
+                                  </span>
                                   {subscriberData?.data.map((item, key) => (
                                     <div
                                       className="cursor-pointer hover:bg-gray-100 px-2 py-1"

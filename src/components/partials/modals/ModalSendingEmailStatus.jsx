@@ -2,7 +2,7 @@ import React from "react";
 import ModalAddWrapper from "../dashboard/ModalAddWrapper";
 import ButtonSpinner from "../spinners/ButtonSpinner";
 
-const ModalSendingEmailStatusCenter = () => {
+const ModalSendingEmailStatus = () => {
   return (
     <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
       <div className="">
@@ -12,7 +12,7 @@ const ModalSendingEmailStatusCenter = () => {
           <span className="text-sm">2 of 2</span>
           <div class="w-full bg-gray-200 rounded-sm dark:bg-gray-400">
             <div
-              class="bg-green-700 text-xs font-medium text-blue-100 text-center p-1 leading-none rounded-sm"
+              className="bg-green-700 text-xs font-medium text-blue-100 text-center p-1 leading-none rounded-sm"
               style={{ width: "45%" }}
             >
               45%
@@ -24,4 +24,4 @@ const ModalSendingEmailStatusCenter = () => {
   );
 };
 
-export default ModalSendingEmailStatusCenter;
+export default ModalSendingEmailStatus;

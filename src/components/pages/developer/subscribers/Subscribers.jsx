@@ -11,7 +11,8 @@ import { setIsAdd } from "../../../store/StoreAction";
 import Mailer from "./mailer/Mailer";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { apiVersion } from "../../../helpers/functions-general";
-import ModalSendingEmailStatusCenter from "../../../partials/modals/ModalSendingEmailStatusCenter";
+import ModalSendingEmailStatus from "../../../partials/modals/ModalSendingEmailStatus";
+import ModalSentEmailSummary from "../../../partials/modals/ModalSentEmailSummary";
 
 const Subscribers = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -64,8 +65,9 @@ const Subscribers = () => {
         </Dashboard>
       </section>
 
-      {/* <ModalSendingEmailStatusCenter /> */}
-      
+      {/* <ModalSendingEmailStatus /> */}
+      {/* <ModalSentEmailSummary /> */}
+
       {store.isAdd && (
         <ModalAddSubscribers itemEdit={itemEdit} audienceData={audienceData} />
       )}
