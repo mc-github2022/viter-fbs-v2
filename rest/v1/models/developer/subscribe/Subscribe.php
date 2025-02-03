@@ -6,6 +6,7 @@ class Subscribe
     public $subscriber_email;
     public $subscriber_is_active;
     public $subscriber_key;
+    public $subscriber_audience_id;
     public $subscriber_feedback;
     public $subscriber_is_agree;
     public $subscriber_created;
@@ -13,6 +14,7 @@ class Subscribe
 
     public $notification_purpose;
     public $subscriber_count;
+    public $audience_code;
 
     public $connection;
     public $lastInsertedId;
@@ -23,12 +25,14 @@ class Subscribe
 
     public $tblSubscriber;
     public $tblNotification;
+    public $tblAudience;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblSubscriber = "fbsv2_subscriber_list";
         $this->tblNotification = "fbsv2_notification";
+        $this->tblAudience = "fbsv2_audience";
     }
 
     public function readAll()
@@ -36,9 +40,11 @@ class Subscribe
         try {
             $sql = "select * ";
             $sql .= "from ";
-            $sql .= "{$this->tblSubscriber} ";
-            $sql .= "order by subscriber_is_active desc, ";
-            $sql .= "subscriber_email asc ";
+            $sql .= "{$this->tblSubscriber} as subscriber, ";
+            $sql .= "{$this->tblAudience} as audience ";
+            $sql .= "where subscriber.subscriber_audience_id = audience.audience_aid ";
+            $sql .= "order by subscriber.subscriber_is_active desc, ";
+            $sql .= "subscriber.subscriber_email asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -46,14 +52,56 @@ class Subscribe
         return $query;
     }
 
+    // read audience
+    public function readAudience()
+    {
+        try {
+            $sql = "select * from {$this->tblAudience} ";
+            $sql .= "where audience_is_active = 1 ";
+            $sql .= "and audience_code != :audience_code ";
+            $sql .= "order by audience_is_active desc, ";
+            $sql .= "role_name asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "audience_code" => $this->audience_code,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // public function readById()
+    // {
+    //     try {
+    //         $sql = "select * ";
+    //         $sql .= "from ";
+    //         $sql .= "{$this->tblSubscriber} as subscriber, ";
+    //         $sql .= "{$this->tblAudience} as audience ";
+    //         $sql .= "where subscriber.subscriber_audience_id = audience.audience_aid ";
+    //         $sql .= "where subscriber.subscriber_aid = :subscriber_aid ";
+    //         $sql .= "order by subscriber.subscriber_is_active desc, ";
+    //         $sql .= "subscriber.subscriber_email asc ";
+    //         $query = $this->connection->prepare($sql);
+    //         $query->execute([
+    //             "subscriber_aid" => $this->subscriber_aid,
+    //         ]);
+    //     } catch (PDOException $ex) {
+    //         $query = false;
+    //     }
+    //     return $query;
+    // }
+
     public function readLimit()
     {
         try {
             $sql = "select * ";
             $sql .= "from ";
-            $sql .= "{$this->tblSubscriber} ";
-            $sql .= "order by subscriber_is_active desc, ";
-            $sql .= "subscriber_email asc ";
+            $sql .= "{$this->tblSubscriber} as subscriber, ";
+            $sql .= "{$this->tblAudience} as audience ";
+            $sql .= "where subscriber.subscriber_audience_id = audience.audience_aid ";
+            $sql .= "order by subscriber.subscriber_is_active desc, ";
+            $sql .= "subscriber.subscriber_email asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -93,12 +141,14 @@ class Subscribe
             $sql .= "( subscriber_email, ";
             $sql .= "subscriber_is_active, ";
             $sql .= "subscriber_key, ";
+            $sql .= "subscriber_audience_id, ";
             $sql .= "subscriber_is_agree, ";
             $sql .= "subscriber_created, ";
             $sql .= "subscriber_datetime ) values ( ";
             $sql .= ":subscriber_email, ";
             $sql .= ":subscriber_is_active, ";
             $sql .= ":subscriber_key, ";
+            $sql .= ":subscriber_audience_id, ";
             $sql .= ":subscriber_is_agree, ";
             $sql .= ":subscriber_created, ";
             $sql .= ":subscriber_datetime )";
@@ -107,6 +157,7 @@ class Subscribe
                 "subscriber_email" => $this->subscriber_email,
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_key" => $this->subscriber_key,
+                "subscriber_audience_id" => $this->subscriber_audience_id,
                 "subscriber_is_agree" => $this->subscriber_is_agree,
                 "subscriber_created" => $this->subscriber_created,
                 "subscriber_datetime" => $this->subscriber_datetime,
@@ -126,12 +177,14 @@ class Subscribe
             $sql .= "( subscriber_email, ";
             $sql .= "subscriber_is_active, ";
             $sql .= "subscriber_key, ";
+            $sql .= "subscriber_audience_id, ";
             $sql .= "subscriber_is_agree, ";
             $sql .= "subscriber_created, ";
             $sql .= "subscriber_datetime ) values ( ";
             $sql .= ":subscriber_email, ";
             $sql .= ":subscriber_is_active, ";
             $sql .= ":subscriber_key, ";
+            $sql .= ":subscriber_audience_id, ";
             $sql .= ":subscriber_is_agree, ";
             $sql .= ":subscriber_created, ";
             $sql .= ":subscriber_datetime )";
@@ -140,6 +193,7 @@ class Subscribe
                 "subscriber_email" => $this->subscriber_email,
                 "subscriber_is_active" => $this->subscriber_is_active,
                 "subscriber_key" => $this->subscriber_key,
+                "subscriber_audience_id" => $this->subscriber_audience_id,
                 "subscriber_is_agree" => $this->subscriber_is_agree,
                 "subscriber_created" => $this->subscriber_created,
                 "subscriber_datetime" => $this->subscriber_datetime,
@@ -156,11 +210,13 @@ class Subscribe
         try {
             $sql = "update {$this->tblSubscriber} set ";
             $sql .= "subscriber_email = :subscriber_email, ";
+            $sql .= "subscriber_audience_id = :subscriber_audience_id, ";
             $sql .= "subscriber_datetime = :subscriber_datetime ";
             $sql .= "where subscriber_aid = :subscriber_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => $this->subscriber_email,
+                "subscriber_audience_id" => $this->subscriber_audience_id,
                 "subscriber_datetime" => $this->subscriber_datetime,
                 "subscriber_aid" => $this->subscriber_aid,
             ]);
@@ -243,6 +299,7 @@ class Subscribe
     }
 
 
+
     // count the subscribers
     public function readSubscriberCount()
     {
@@ -321,6 +378,4 @@ class Subscribe
         }
         return $query;
     }
-
-    
 }

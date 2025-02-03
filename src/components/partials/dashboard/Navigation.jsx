@@ -456,6 +456,17 @@ const Navigation = ({ menu, submenu }) => {
                       store.isSubsOpen ? "h-0 overflow-hidden" : "my-2"
                     } submenu ml-5`}
                   >
+                    <Link className="!p-0" to={`${devNavUrl}${link}/audience`}>
+                      <li
+                        className={`text-xs my-2 border-transparent ${
+                          submenu === "audience"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Audience
+                      </li>
+                    </Link>
                     <Link
                       className="!p-0"
                       to={`${devNavUrl}${link}/subscribers`}

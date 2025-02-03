@@ -17,7 +17,7 @@ if (array_key_exists("subscribeid", $_GET)) {
 checkPayload($data);
 // get data
 
-   
+
 // START OF reCAPTCHA VERIFICATION
 $captchaValue = $data["captchaValue"];
 $captchaResponse = verifyRecaptcha($captchaValue);
@@ -25,6 +25,7 @@ $captchaResponse = verifyRecaptcha($captchaValue);
 
 $email = checkIndex($data, "subscriber_email");
 $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+$subscribe->subscriber_audience_id = checkIndex($data, "subscriber_audience_id");
 $subscribe->subscriber_is_agree = checkIndex($data, "subscriber_is_agree");
 $subscribe->subscriber_key = $encrypt->doHash(rand());
 $unsubscribe_link = "/unsubscribe";

@@ -15,6 +15,7 @@ if (array_key_exists("subscribeid", $_GET)) {
   // get data
   $subscribe->subscriber_aid = $_GET['subscribeid'];
   $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+  $subscribe->subscriber_audience_id = checkIndex($data, "subscriber_audience_id");
   $subscribe->subscriber_key = $encrypt->doHash(rand());
   $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
   checkId($subscribe->subscriber_aid);

@@ -1,22 +1,22 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Form, Formik } from "formik";
 import React from "react";
-import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
-import { InputSelect, InputText } from "../../../helpers/FormInputs";
-import { apiVersion } from "../../../helpers/functions-general";
-import { queryData } from "../../../helpers/queryData";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setIsAdd,
   setMessage,
   setSuccess,
-} from "../../../store/StoreAction";
-import { StoreContext } from "../../../store/StoreContext";
+} from "../../../../store/StoreAction";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiVersion } from "../../../../helpers/functions-general";
+import { queryData } from "../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import { GrFormClose } from "react-icons/gr";
+import { Form, Formik } from "formik";
+import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import { StoreContext } from "../../../../store/StoreContext";
 
-const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
+const ModalAddAudience = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
   const handleClose = () => {
@@ -31,13 +31,13 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `${apiVersion}/subscribe/${itemEdit.subscriber_aid}` // update
-          : `${apiVersion}/subscribe/create-subscriber`, // create
+          ? `${apiVersion}/audience/${itemEdit.audience_aid}` // update
+          : `${apiVersion}/audience`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["subscribe"] });
+      queryClient.invalidateQueries({ queryKey: ["audience"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -51,42 +51,45 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
     },
   });
 
-  const defaultAudienceAid = audienceData?.data.filter(
-    (item) => item.audience_code === "audience_is_client"
-  )[0]["audience_aid"];
-
-  console.log(defaultAudienceAid);
-
   const initVal = {
-    subscriber_aid: itemEdit ? itemEdit.subscriber_aid : "",
-    subscriber_email: itemEdit ? itemEdit.subscriber_email : "",
-    subscriber_audience_id: itemEdit
-      ? itemEdit.subscriber_audience_id
-      : defaultAudienceAid,
-    subscriber_email_old: itemEdit ? itemEdit.subscriber_email : "",
+    audience_aid: itemEdit ? itemEdit.audience_aid : "",
+    audience_name: itemEdit ? itemEdit.audience_name : "",
+    audience_description: itemEdit ? itemEdit.audience_description : "",
+    audience_code: itemEdit ? itemEdit.audience_code : "",
+
+    audience_name_old: itemEdit ? itemEdit.audience_name : "",
   };
 
   const yupSchema = Yup.object({
-    subscriber_email: Yup.string().required("Required").email("Invalid Email"),
+    audience_name: Yup.string().required("Required"),
   });
-  
+
   return (
     <ModalAddWrapper
       className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[19.5rem]`}
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Subscriber</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Audience</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
       </div>
-      <div className="modal-content relative">
+      <div className="modal-content">
         <Formik
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
-            mutation.mutate(values);
+            const { audience_name } = values;
+            // lowercase the role name and replace the space to underscore.
+            const formattedAudienceName = audience_name
+              .toLowerCase()
+              .replace(/ /g, "_");
+            const data = {
+              ...values,
+              audience_code: `audience_is_${formattedAudienceName}`,
+            };
+            mutation.mutate(data);
           }}
         >
           {(props) => {
@@ -94,35 +97,22 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
               <Form>
                 <div className="input-wrapper">
                   <InputText
-                    label="Email"
+                    label="Audience Name"
                     type="text"
-                    name="subscriber_email"
+                    name="audience_name"
                     disabled={mutation.isPending}
                   />
                 </div>
                 <div className="input-wrapper">
-                  <InputSelect
-                    label="Audience"
+                  <InputTextArea
+                    label="Audience Description"
                     type="text"
-                    name="subscriber_audience_id"
+                    name="audience_description"
                     disabled={mutation.isPending}
-                  >
-                    <option hidden>--</option>
-                    <optgroup label="Select Audience">
-                      {audienceData?.count === 0 ? (
-                        <option>No Data</option>
-                      ) : (
-                        audienceData?.data.map((item, key) => (
-                          <option value={item.audience_aid} key={key}>
-                            {item.audience_name}
-                          </option>
-                        ))
-                      )}
-                    </optgroup>
-                  </InputSelect>
+                  />
                 </div>
 
-                <div className="form-action absolute bottom-0 w-full">
+                <div className="form-action">
                   <div className="form-btn">
                     <button
                       className="btn-modal-submit"
@@ -149,4 +139,4 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
   );
 };
 
-export default ModalAddSubscribers;
+export default ModalAddAudience;
