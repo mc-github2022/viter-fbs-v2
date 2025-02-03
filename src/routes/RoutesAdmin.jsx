@@ -20,6 +20,7 @@ import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/Bu
 import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
 import Subscribers from "../components/pages/developer/subscribers/Subscribers";
 import Mailer from "../components/pages/developer/subscribers/mailer/Mailer";
+import Audience from "../components/pages/developer/subscribers/audience/Audience";
 
 export const routesAdmin = [
   {
@@ -147,6 +148,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <Subscribers />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/audience`,
+    element: (
+      <ProtectedRouteOther>
+        <Audience />
       </ProtectedRouteOther>
     ),
   },

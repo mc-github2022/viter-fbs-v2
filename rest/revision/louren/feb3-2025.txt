@@ -1,0 +1,45 @@
+
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/audience
+            -> rest/v1/controllers/developer/subscribe/create-subscriber.php
+            -> rest/v1/controllers/developer/subscribe/create.php
+            -> rest/v1/controllers/developer/subscribe/functions.php
+            -> rest/v1/controllers/developer/subscribe/readAllAudience.php
+            -> rest/v1/controllers/developer/subscribe/update.php
+        
+
+        * MODELS
+            -> rest/v1/models/developer/audience
+            -> rest/v1/models/developer/subscribe/Subscribe.php
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> SUBSCRIBER
+            note: updated htaccess in subscriber  
+            RewriteRule ^subscribe/audience$ controllers/developer/subscribe/readAllAudience.php [L]
+            -> AUDIENCE is added
+            -> 
+            -> 
+
+
+        * OTHER FILES
+            -> 
+            ->
+
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_audience.sql
+            -> rest/db-backup/fbsv2_subscriber_list.sql
+                note: new column is added 
+                     `subscriber_audience_id` int(11) NOT NULL,
+            ->
+            ->
+            ->
+            ->

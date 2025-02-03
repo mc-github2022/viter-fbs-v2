@@ -25,6 +25,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     $email = checkIndex($data, "subscriber_email");
     $subscribe->subscriber_email = checkIndex($data, "subscriber_email");
+    $subscribe->subscriber_audience_id = checkIndex($data, "subscriber_audience_id");
     $subscribe->subscriber_key = $encrypt->doHash(rand());
 
     // checks newly added data if it already exists

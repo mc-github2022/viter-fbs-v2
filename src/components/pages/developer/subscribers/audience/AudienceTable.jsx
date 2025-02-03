@@ -1,30 +1,30 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaArchive, FaEdit } from "react-icons/fa";
-import { FaUserGroup } from "react-icons/fa6";
-import { MdDelete, MdRestore } from "react-icons/md";
+import { StoreContext } from "../../../../store/StoreContext";
 import { useInView } from "react-intersection-observer";
-import { apiVersion } from "../../../helpers/functions-general";
-import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import LoadMore from "../../../partials/LoadMore";
-import SearchBar from "../../../partials/SearchBar";
-import Status from "../../../partials/Status";
-import ModalArchive from "../../../partials/modals/ModalArchive";
-import ModalDelete from "../../../partials/modals/ModalDelete";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
-import NoData from "../../../partials/spinners/NoData";
-import ServerError from "../../../partials/spinners/ServerError";
-import TableLoading from "../../../partials/spinners/TableLoading";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
 import {
   setIsAdd,
   setIsArchive,
   setIsDelete,
   setIsRestore,
-} from "../../../store/StoreAction";
-import { StoreContext } from "../../../store/StoreContext";
-import ModalRestore from "./ModalRestore";
+} from "../../../../store/StoreAction";
+import { FaUserGroup } from "react-icons/fa6";
+import SearchBar from "../../../../partials/SearchBar";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import Status from "../../../../partials/Status";
+import { FaArchive, FaEdit } from "react-icons/fa";
+import { MdDelete, MdRestore } from "react-icons/md";
+import LoadMore from "../../../../partials/LoadMore";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import ModalArchive from "../../../../partials/modals/ModalArchive";
+import { apiVersion } from "../../../../helpers/functions-general";
+import ModalRestore from "../../../../partials/modals/ModalRestore";
 
-const SubscribersTable = ({ setItemEdit }) => {
+const AudienceTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -44,11 +44,11 @@ const SubscribersTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["subscribe", onSearch, store.isSearch],
+    queryKey: ["audience", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `${apiVersion}/subscribe/search`, // search endpoint
-        `${apiVersion}/subscribe/page/${pageParam}`, // list endpoint
+        `${apiVersion}/audience/search`, // search endpoint
+        `${apiVersion}/audience/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -70,22 +70,22 @@ const SubscribersTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.subscriber_email);
-    setIsId(item.subscriber_aid);
+    setIsData(item.audience_name);
+    setIsId(item.audience_aid);
   };
 
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsData(item.subscriber_email);
-    setIsId(item.subscriber_aid);
+    setIsData(item.audience_name);
+    setIsId(item.audience_aid);
     setIsArchiving(true);
     setIsRestore(false);
   };
 
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsData(item);
-    setIsId(item.subscriber_aid);
+    setIsData(item.audience_name);
+    setIsId(item.audience_aid);
     setIsArchiving(false);
     setIsRestore(true);
   };
@@ -96,7 +96,6 @@ const SubscribersTable = ({ setItemEdit }) => {
       fetchNextPage();
     }
   }, [inView]);
-
   return (
     <>
       <div className="flex items-center gap-5 place-self-end">
@@ -125,9 +124,8 @@ const SubscribersTable = ({ setItemEdit }) => {
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
               <th className=" w-[5rem]">Status</th>
-              <th>Email</th>
-              <th>Audience</th>
-              <th>Feedback</th>
+              <th>Audience Category</th>
+              <th>Description</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -154,23 +152,21 @@ const SubscribersTable = ({ setItemEdit }) => {
                   <tr key={key} className="place-content-start text-[14px]">
                     <td className="pl-2 place-content-start">{counter++}</td>
                     <td>
-                      {item.subscriber_is_active === 1 ? (
+                      {item.audience_is_active === 1 ? (
                         <Status text="Active" />
                       ) : (
                         <Status text="Inactive" />
                       )}
                     </td>
                     <td className="place-content-start">
-                      {item.subscriber_email}
-                    </td>
-                    <td className="place-content-start">
                       {item.audience_name}
                     </td>
                     <td className="place-content-start">
-                      {item.subscriber_feedback}
+                      {item.audience_description}
                     </td>
+
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      {item.subscriber_is_active ? (
+                      {item.audience_is_active ? (
                         <>
                           <button
                             className="tooltip-action-table"
@@ -228,27 +224,25 @@ const SubscribersTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"subscribe"}
-          mysqlEndpoint={`${apiVersion}/subscribe/${id}`}
+          queryKey={"audience"}
+          mysqlEndpoint={`${apiVersion}/audience/${id}`}
           item={isData}
         />
       )}
       {store.isArchive && (
         <ModalArchive
           setIsArchive={setIsArchive}
-          queryKey={"subscribe"}
-          mysqlEndpoint={`${apiVersion}/subscribe/active/${id}`}
+          queryKey={"audience"}
+          mysqlEndpoint={`${apiVersion}/audience/active/${id}`}
           item={isData}
           archive={isArchiving}
         />
       )}
       {store.isRestore && (
         <ModalRestore
-          mysqlApiRestore={`${apiVersion}/subscribe/restore-key/${id}`}
-          msg={"Are you sure you want to restore this subscriber?"}
-          successMsg={"Restore succesfully."}
-          queryKey={"subscribe"}
           setIsRestore={setIsRestore}
+          queryKey={"audience"}
+          mysqlEndpoint={`${apiVersion}/audience/active/${id}`}
           item={isData}
         />
       )}
@@ -256,4 +250,4 @@ const SubscribersTable = ({ setItemEdit }) => {
   );
 };
 
-export default SubscribersTable;
+export default AudienceTable;

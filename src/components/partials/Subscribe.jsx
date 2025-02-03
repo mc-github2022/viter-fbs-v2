@@ -10,6 +10,7 @@ import { StoreContext } from "../store/StoreContext";
 import ButtonSpinner from "./spinners/ButtonSpinner";
 import { apiVersion, siteKey } from "../helpers/functions-general";
 import ReCAPTCHA from "react-google-recaptcha";
+import useQueryData from "../custom-hooks/useQueryData";
 
 const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
   const recaptchaRef = React.useRef();
@@ -52,9 +53,25 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
     },
   });
 
+  const {
+    isLoading: roleIsLoading,
+    isFetching: roleIsFetching,
+    error: roleError,
+    data: audienceData,
+  } = useQueryData(
+    `${apiVersion}/audience`, // endpoint
+    "get", // method
+    "audience" // key
+  );
+
+  const defaultAudienceAid = audienceData?.data.filter(
+    (item) => item.audience_code === "audience_is_client"
+  )[0]["audience_aid"];
+
   const initVal = {
     subscriber_email: "",
     subscriber_is_agree: false,
+    subscriber_audience_id: defaultAudienceAid,
     notification_purpose,
   };
 
@@ -100,6 +117,7 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                 return;
               }
               values.subscriber_is_agree = check;
+              values.subscriber_audience_id = defaultAudienceAid;
               mutation.mutate({ ...values, captchaValue });
               recaptchaRef.current?.reset();
             }}

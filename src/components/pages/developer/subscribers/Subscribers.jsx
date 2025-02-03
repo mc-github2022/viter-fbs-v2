@@ -9,6 +9,8 @@ import ModalError from "../../../partials/modals/ModalError";
 import ModalAddSubscribers from "./ModalAddSubscribers";
 import { setIsAdd } from "../../../store/StoreAction";
 import Mailer from "./mailer/Mailer";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../helpers/functions-general";
 
 const Subscribers = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -17,6 +19,24 @@ const Subscribers = () => {
     dispatch(setIsAdd(true));
     setItemEdit(null);
   };
+
+  const {
+    isLoading: roleIsLoading,
+    isFetching: roleIsFetching,
+    error: roleError,
+    data: audienceData,
+  } = useQueryData(
+    `${apiVersion}/audience`, // endpoint
+    "get", // method
+    "audience" // key
+  );
+
+  // const { data: audienceData } = useQueryData(
+  //   `${apiVersion}/subscribe/audience`, // endpoint
+  //   "post", // method
+  //   "subscribe-audience", // key
+  //   { audience_code: "audience_is_test" }
+  // );
 
   return (
     <>
@@ -43,7 +63,9 @@ const Subscribers = () => {
         </Dashboard>
       </section>
 
-      {store.isAdd && <ModalAddSubscribers itemEdit={itemEdit} />}
+      {store.isAdd && (
+        <ModalAddSubscribers itemEdit={itemEdit} audienceData={audienceData} />
+      )}
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}
     </>

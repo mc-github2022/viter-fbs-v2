@@ -31,3 +31,11 @@ function checkCreateSubscriber($object)
     checkQuery($query, "Empty records. (create subscriber)");
     return $query;
 }
+
+// read audience
+function checkReadAudience($object)
+{
+    $query = $object->readAudience();
+    checkQuery($query, "Empty records. (read audience)");
+    return $query;
+}
