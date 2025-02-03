@@ -48,6 +48,17 @@ const Mailer = () => {
     true // refetchOnWindowFocus
   );
 
+  const {
+    isLoading: roleIsLoading,
+    isFetching: roleIsFetching,
+    error: roleError,
+    data: audienceData,
+  } = useQueryData(
+    `${apiVersion}/audience`, // endpoint
+    "get", // method
+    "audience" // key
+  );
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -68,20 +79,72 @@ const Mailer = () => {
     },
   });
 
+  // Join subscriberData with audienceData to get audience_name
+  const enrichedSubscribers = subscriberData?.data?.map((subscriber) => {
+    const matchingAudience = audienceData?.data?.find(
+      (audience) => audience.audience_aid === subscriber.subscriber_audience_id
+    );
+    return {
+      ...subscriber,
+      audience_name: matchingAudience
+        ? matchingAudience.audience_name
+        : "Unknown",
+    };
+  });
+
+  const subscriberCategories = [
+    ...new Map(
+      enrichedSubscribers?.map((sub) => [
+        sub.subscriber_audience_id,
+        {
+          subscriber_audience_id: sub.subscriber_audience_id,
+          audience_name: sub.audience_name,
+        },
+      ])
+    ).values(),
+  ];
+
+  // const handleClickRecipient = (item, setFieldValue, val) => {
+  //   console.log("Selected Recipient:", item);
+
+  //   // Check if the selected item is "All Recipients"
+  //   if (item === "All Recipients") {
+  //     setSubscriberValue("All Recipients");
+  //     setFieldValue("subscriber_email", item);
+  //     setFilterValue(val);
+  //   } else {
+  //     // show only the selected individual email
+  //     setSubscriberValue(item);
+  //     setFieldValue("subscriber_email", item);
+  //     setSubscriber(item);
+  //     setFilterValue(val);
+  //   }
+
+  //   setOnRecipient(false);
+  // };
+
   const handleClickRecipient = (item, setFieldValue, val) => {
-    console.log("Selected Recipient:", item);
+    console.log("Selected Recipient:", item, val);
 
     // Check if the selected item is "All Recipients"
     if (item === "All Recipients") {
       setSubscriberValue("All Recipients");
       setFieldValue("subscriber_email", item);
+      setFilterValue("all"); // Set filterValue to "all"
+    } else if (
+      subscriberCategories.filter((category) =>
+        category.audience_name.toLowerCase().includes(item)
+      )
+    ) {
+      setSubscriberValue(item); // Set the category name
+      setFieldValue("subscriber_email", item);
       setFilterValue(val);
+      console.log("Category:", item);
     } else {
-      // show only the selected individual email
+      // Single email selection
       setSubscriberValue(item);
       setFieldValue("subscriber_email", item);
-      setSubscriber(item);
-      setFilterValue(val);
+      setFilterValue(item); // Set filterValue to the specific email
     }
 
     setOnRecipient(false);
@@ -201,6 +264,24 @@ const Mailer = () => {
                                   >
                                     All Recipients
                                   </div>
+
+                                  {subscriberCategories.map(
+                                    (category, index) => (
+                                      <div
+                                        key={index}
+                                        className="cursor-pointer hover:bg-gray-100 px-2 py-1"
+                                        onClick={() =>
+                                          handleClickRecipient(
+                                            category.audience_name,
+                                            setFieldValue,
+                                            category.subscriber_audience_id
+                                          )
+                                        }
+                                      >
+                                        {category.audience_name}
+                                      </div>
+                                    )
+                                  )}
                                   {subscriberData?.data.map((item, key) => (
                                     <div
                                       className="cursor-pointer hover:bg-gray-100 px-2 py-1"
@@ -225,6 +306,7 @@ const Mailer = () => {
                             </div>
                           )}
                         </div>
+
                         <div className="input-wrapper">
                           <InputText
                             label="Subject"

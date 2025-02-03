@@ -28,6 +28,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // recipient filter
     $filterValue = $data["filterValue"];
     $sendingNewsletter->subscriber_email = $filterValue;
+    $sendingNewsletter->subscriber_audience_id = $filterValue;
     if ($filterValue != "" && $filterValue != "all") {
         $emailReceiver = getResultData($sendingNewsletter->readEmailNewsletter());
     }
@@ -43,6 +44,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     }
 
     if (count($emailReceiver) > 0) {
+
         $mail = sendNewsletter(
             $unsubscribe_link,
             $newsletter,

@@ -64,7 +64,8 @@ const Subscribers = () => {
         </Dashboard>
       </section>
 
-      <ModalSendingEmailStatusCenter />
+      {/* <ModalSendingEmailStatusCenter /> */}
+      
       {store.isAdd && (
         <ModalAddSubscribers itemEdit={itemEdit} audienceData={audienceData} />
       )}

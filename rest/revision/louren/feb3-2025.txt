@@ -16,7 +16,7 @@ DEVELOPER
         * MODELS
             -> rest/v1/models/developer/audience
             -> rest/v1/models/developer/subscribe/Subscribe.php
-            -> 
+            -> rest/v1/models/developer/sending-newsletter/SendingNewsletter.php
             -> 
 
 
