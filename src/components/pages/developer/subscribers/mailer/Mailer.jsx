@@ -1,35 +1,26 @@
-import React from "react";
-import Navigation from "../../../../partials/dashboard/Navigation";
-import Dashboard from "../../../../partials/dashboard/Dashboard";
-import { Form, Formik } from "formik";
-import {
-  InputSelect,
-  InputText,
-  InputTextArea,
-} from "../../../../helpers/FormInputs";
-import { FaPlay } from "react-icons/fa";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import React from "react";
+import * as Yup from "yup";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
+import { apiVersion } from "../../../../helpers/functions-general";
+import { queryData } from "../../../../helpers/queryData";
+import Dashboard from "../../../../partials/dashboard/Dashboard";
+import Navigation from "../../../../partials/dashboard/Navigation";
+import ModalError from "../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import {
   setError,
-  setIsAdd,
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
-import { FaBedPulse } from "react-icons/fa6";
-import * as Yup from "yup";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import { apiVersion } from "../../../../helpers/functions-general";
-import { queryData } from "../../../../helpers/queryData";
-import ServerError from "../../../../partials/spinners/ServerError";
-import NoData from "../../../../partials/spinners/NoData";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
-import ModalSuccess from "../../../../partials/modals/ModalSuccess";
-import ModalError from "../../../../partials/modals/ModalError";
 import ModalSend from "./ModalSend";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 
 const Mailer = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -189,7 +180,7 @@ const Mailer = () => {
                             disabled={mutation.isPending}
                           />
                           {onRecipient && (
-                            <div className="w-full text-xs h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                            <div className="w-full text-xs h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200">
                               {loading || subscriberDataIsFetching ? (
                                 <TableSpinner />
                               ) : subscriberDataError ? (
@@ -199,7 +190,7 @@ const Mailer = () => {
                               ) : subscriberData?.count > 0 ? (
                                 <>
                                   <div
-                                    className="cursor-pointer hover:bg-gray-100 px-2"
+                                    className="cursor-pointer hover:bg-gray-100 px-2 py-1"
                                     onClick={() =>
                                       handleClickRecipient(
                                         "All Recipients",
@@ -212,7 +203,7 @@ const Mailer = () => {
                                   </div>
                                   {subscriberData?.data.map((item, key) => (
                                     <div
-                                      className="cursor-pointer hover:bg-gray-100 px-2"
+                                      className="cursor-pointer hover:bg-gray-100 px-2 py-1"
                                       key={key}
                                       onClick={() =>
                                         handleClickRecipient(

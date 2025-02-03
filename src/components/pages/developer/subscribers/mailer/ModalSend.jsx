@@ -1,24 +1,9 @@
-import { handleEscape } from "@/components/helpers/functions-general";
-import { queryData } from "@/components/helpers/queryData";
 import ButtonSpinner from "@/components/partials/spinners/ButtonSpinner";
-import {
-  setError,
-  setMessage,
-  setSuccess,
-} from "@/components/store/StoreAction";
 import { StoreContext } from "@/components/store/StoreContext";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Form, Formik } from "formik";
 import React from "react";
 import { IoIosSend } from "react-icons/io";
 
-const ModalSend = ({
-  msg,
-  item,
-  handleClose,
-  mutation,
-  resetForm,
-}) => {
+const ModalSend = ({ msg, item, handleClose, mutation, resetForm }) => {
   const { dispatch } = React.useContext(StoreContext);
 
   const handleYes = async () => {

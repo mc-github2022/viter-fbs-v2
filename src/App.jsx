@@ -1,7 +1,8 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { devNavUrl } from "./components/helpers/functions-general";
+import PreviewPage from "./components/pages/developer/dashHome/insights/PreviewPage";
+import PreviewPageEventsAndActivities from "./components/pages/developer/why-fbs-page/events-and-activities/PreviewPageEventsAndActivities";
 import EventsSingplePage from "./components/pages/website/events/EventsSingplePage";
 import PostByCategory from "./components/pages/website/postByCategory/PostByCategory";
 import SingplePage from "./components/pages/website/singlePage/SingplePage";
@@ -11,12 +12,9 @@ import { routesAdmin } from "./routes/RoutesAdmin";
 import { routesDeveloper } from "./routes/RoutesDeveloper";
 import { routesMarketing } from "./routes/RoutesMarketing";
 import { RoutesWebsite } from "./routes/RoutesWebsite";
-import PreviewPage from "./components/pages/developer/dashHome/insights/PreviewPage";
-import PreviewPageEventsAndActivities from "./components/pages/developer/why-fbs-page/events-and-activities/PreviewPageEventsAndActivities";
 
 function App() {
   const queryClient = new QueryClient();
-  const [count, setCount] = useState(0);
 
   return (
     <>
