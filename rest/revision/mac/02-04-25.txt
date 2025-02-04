@@ -1,0 +1,12 @@
+notification
+1. rest/v1/notification/subscriber-newsletter.php 
+
+core
+1. rest/v1/core/functions.php 
+
+controllers
+1. rest/v1/controllers/developer/sending-newsletter/sending-newsletter.php
+    -> modified the line 99
+
+htaccess
+1. rest/v1/.htaccess 

@@ -1,24 +1,19 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
 import { apiVersion } from "../../../../helpers/functions-general";
-import { queryData } from "../../../../helpers/queryData";
 import Dashboard from "../../../../partials/dashboard/Dashboard";
 import Navigation from "../../../../partials/dashboard/Navigation";
 import ModalError from "../../../../partials/modals/ModalError";
+import ModalSendingEmailStatus from "../../../../partials/modals/ModalSendingEmailStatus";
+import ModalSentEmailSummary from "../../../../partials/modals/ModalSentEmailSummary";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableSpinner from "../../../../partials/spinners/TableSpinner";
-import {
-  setError,
-  setMessage,
-  setSuccess,
-} from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import ModalSend from "./ModalSend";
 
@@ -28,9 +23,14 @@ const Mailer = () => {
   const [loading, setLoading] = React.useState(false);
   const [subscriberValue, setSubscriberValue] = React.useState("");
   const [subscriber, setSubscriber] = React.useState("");
-  const [filterValue, setFilterValue] = React.useState("");
   const [isSend, setIsSend] = React.useState(false);
-
+  const [recipientList, setRecipientList] = React.useState([]);
+  const [queryCount, setQueryCount] = React.useState(0);
+  const [confirmSend, setConfirmSend] = React.useState(false);
+  const [isSendingLoading, setIsSendingLoading] = React.useState(false);
+  const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
+    React.useState(false);
+  // let queryCount = 0;
   const {
     isFetching: subscriberDataIsFetching,
     error: subscriberDataError,
@@ -58,26 +58,6 @@ const Mailer = () => {
     "get", // method
     "audience" // key
   );
-
-  const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: (values) =>
-      queryData(`${apiVersion}/sending-newsletter`, "post", values),
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["sending-newsletter"] });
-      if (data.success) {
-        dispatch(setSuccess(true));
-        setSubscriberValue("");
-        dispatch(setMessage(`Newsletter sucessfully sent!`));
-      }
-      // show error box
-      if (!data.success) {
-        dispatch(setError(true));
-        dispatch(setMessage(data.error));
-      }
-    },
-  });
 
   // Join subscriberData with audienceData to get audience_name
   const enrichedSubscribers = subscriberData?.data?.map((subscriber) => {
@@ -111,13 +91,11 @@ const Mailer = () => {
   //   if (item === "All Recipients") {
   //     setSubscriberValue("All Recipients");
   //     setFieldValue("subscriber_email", item);
-  //     setFilterValue(val);
   //   } else {
   //     // show only the selected individual email
   //     setSubscriberValue(item);
   //     setFieldValue("subscriber_email", item);
   //     setSubscriber(item);
-  //     setFilterValue(val);
   //   }
 
   //   setOnRecipient(false);
@@ -130,25 +108,46 @@ const Mailer = () => {
     if (item === "All Recipients") {
       setSubscriberValue("All Recipients");
       setFieldValue("subscriber_email", item);
-      setFilterValue("all"); // Set filterValue to "all"
-    } else if (
+      setRecipientList(subscriberData);
+    }
+
+    if (
       subscriberCategories.filter((category) =>
         category.audience_name.toLowerCase().includes(item)
       )
     ) {
+      let res = [];
       setSubscriberValue(item); // Set the category name
       setFieldValue("subscriber_email", item);
-      setFilterValue(val);
-      console.log("Category:", item);
-    } else {
-      // Single email selection
-      setSubscriberValue(item);
-      setFieldValue("subscriber_email", item);
-      setFilterValue(item); // Set filterValue to the specific email
+
+      subscriberData?.count > 0 &&
+        subscriberData?.data.map((item) => {
+          if (item.subscriber_audience_id === val) {
+            res.push(item);
+          }
+        });
+
+      setRecipientList(res);
     }
+
+    //  if (
+    //   subscriberCategories.filter((category) =>
+    //     category.audience_name.toLowerCase().includes(item)
+    //   )
+    // ) {
+    //   setSubscriberValue(item); // Set the category name
+    //   setFieldValue("subscriber_email", item);
+    //   console.log("Category:", item);
+    // } else {
+    //   // Single email selection
+    //   setSubscriberValue(item);
+    //   setFieldValue("subscriber_email", item);
+    // }
 
     setOnRecipient(false);
   };
+
+  console.log(recipientList);
 
   let timeOut;
 
@@ -204,10 +203,6 @@ const Mailer = () => {
       .required("Required"),
   });
 
-  const handleClickSend = () => {
-    setIsSend(true);
-  };
-
   return (
     <>
       <section id="subscribers" className="bg-[#f5f5f3]">
@@ -223,7 +218,9 @@ const Mailer = () => {
               <Formik
                 initialValues={initVal}
                 validationSchema={yupSchema}
-                onSubmit={async (values, { resetForm }) => {}}
+                onSubmit={async (values, { resetForm }) => {
+                  setIsSend(true);
+                }}
               >
                 {({ setFieldValue, values, dirty, isValid, resetForm }) => (
                   <Form>
@@ -240,7 +237,7 @@ const Mailer = () => {
                               handleOnChangeSubscriber(e, setFieldValue)
                             }
                             refVal={refSubscriber}
-                            disabled={mutation.isPending}
+                            disabled={isSendingLoading}
                           />
                           {onRecipient && (
                             <div className="w-full text-xs h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200">
@@ -320,7 +317,7 @@ const Mailer = () => {
                             type="text"
                             name="newsletter_subject"
                             className="w-full"
-                            disabled={mutation.isPending}
+                            disabled={isSendingLoading}
                           />
                         </div>
                         <div className="input-wrapper">
@@ -335,7 +332,7 @@ const Mailer = () => {
                             onChange={(e) =>
                               setFieldValue("newsletter", e.target.value)
                             }
-                            disabled={mutation.isPending}
+                            disabled={isSendingLoading}
                           />
                         </div>
                         <div className="form-action  bottom-0 w-full">
@@ -343,14 +340,9 @@ const Mailer = () => {
                             <button
                               className="btn-modal-submit w-[200px]"
                               type="submit"
-                              disabled={mutation.isPending || !dirty}
-                              onClick={() => {
-                                if (isValid) {
-                                  handleClickSend(); // Only call handleClickSend if form is valid or the form is complete
-                                }
-                              }}
+                              disabled={isSendingLoading || !dirty}
                             >
-                              {mutation.isPending ? <ButtonSpinner /> : "Send"}
+                              {isSendingLoading ? <ButtonSpinner /> : "Send"}
                             </button>
                           </div>
                         </div>
@@ -372,13 +364,14 @@ const Mailer = () => {
                     </div>
                     {isSend && (
                       <ModalSend
-                        msg={"Are you sure you want send this newsletter?"}
-                        item={{
-                          ...values,
-                          filterValue,
-                        }}
-                        mutation={mutation}
-                        handleClose={() => setIsSend(false)}
+                        item={values}
+                        recipientList={recipientList}
+                        setIsSend={setIsSend}
+                        setConfirmSend={setConfirmSend}
+                        setQueryCount={setQueryCount}
+                        setIsSendingLoading={setIsSendingLoading}
+                        isSendingLoading={isSendingLoading}
+                        setIsSuccessSendingEmail={setIsSuccessSendingEmail}
                         resetForm={resetForm}
                       />
                     )}
@@ -389,6 +382,21 @@ const Mailer = () => {
           </div>
         </Dashboard>
       </section>
+
+      {confirmSend && (
+        <ModalSendingEmailStatus
+          queryCount={queryCount}
+          recipientList={recipientList}
+        />
+      )}
+
+      {isSuccessSendingEmail && (
+        <ModalSentEmailSummary
+          queryCount={queryCount}
+          recipientList={recipientList}
+          setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+        />
+      )}
 
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

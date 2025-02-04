@@ -123,7 +123,7 @@ RewriteRule ^subscribe/create-subscriber$ controllers/developer/subscribe/create
 RewriteRule ^subscribe/audience$ controllers/developer/subscribe/readAllAudience.php [L]
 
 # SENDING NEWSLETTER
-RewriteRule ^sending-newsletter$ controllers/developer/sending-newsletter/subscriber-mailer.php [L]
+RewriteRule ^sending-newsletter$ controllers/developer/sending-newsletter/sending-newsletter.php [L]
 RewriteRule ^subscriber-search$ controllers/developer/sending-newsletter/search-subscribers.php [L]
 
 # AUDIENCE

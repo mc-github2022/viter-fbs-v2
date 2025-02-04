@@ -20,39 +20,49 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
 
-    $newsletter = stripslashes(checkIndex($data, "newsletter"));
+    $newsletter = checkIndex($data, "newsletter");
     $newsletterSubject = checkIndex($data, "newsletter_subject");
+    $subscriberEmail = checkIndex($data, "subscriber_email");
+    $subscriberKey = checkIndex($data, "subscriber_key");
 
     $unsubscribe_link = "/unsubscribe";
 
-    // recipient filter
-    $filterValue = $data["filterValue"];
-    $sendingNewsletter->subscriber_email = $filterValue;
-    $sendingNewsletter->subscriber_audience_id = $filterValue;
-    if ($filterValue != "" && $filterValue != "all") {
-        $emailReceiver = getResultData($sendingNewsletter->readEmailNewsletter());
-    }
-    if ($filterValue == "" || $filterValue == "all") {
-        // Check email existence
-        $emailReceiver = getResultData($sendingNewsletter->readAllEmailNewsletter());
-    }
+    // // recipient filter
+    // $filterValue = $data["filterValue"];
+    // $sendingNewsletter->subscriber_email = $filterValue;
+    // $sendingNewsletter->subscriber_audience_id = $filterValue;
+    // if ($filterValue != "" && $filterValue != "all") {
+    //     $emailReceiver = getResultData($sendingNewsletter->readEmailNewsletter());
+    // }
+    // if ($filterValue == "" || $filterValue == "all") {
+    //     // Check email existence
+    //     $emailReceiver = getResultData($sendingNewsletter->readAllEmailNewsletter());
+    // }
 
 
     // Validate email receiver
-    if (count($emailReceiver) == 0) {
-        returnError("Something went wrong, Please try again later.");
-    }
+    // if (count($emailReceiver) == 0) {
+    //     returnError("Something went wrong, Please try again later.");
+    // }
 
-    if (count($emailReceiver) > 0) {
+    // if (count($emailReceiver) > 0) {
 
-        $mail = sendNewsletter(
-            $unsubscribe_link,
-            $newsletter,
-            $newsletterSubject,
-            $emailReceiver
+    //     $mail = sendNewsletter(
+    //         $unsubscribe_link,
+    //         $newsletter,
+    //         $newsletterSubject,
+    //         $emailReceiver
 
-        );
-    }
+    //     );
+    // }
+
+    $mail = sendNewsletter(
+        $unsubscribe_link,
+        $newsletter,
+        $newsletterSubject,
+        $subscriberEmail,
+        $subscriberKey
+    );
 
     if ($mail["mail_success"] == true) {
         $returnData["data"] = $mail;

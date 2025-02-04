@@ -15,7 +15,8 @@ function sendNewsletter(
 	$unsubscribe_link,
 	$newsletter,
 	$newsletterSubject,
-	$emailReceiver
+	$subscriberEmail,
+	$subscriberKey
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -34,67 +35,31 @@ function sendNewsletter(
 		$mail->Subject = "{$newsletterSubject}";
 		$mail->setFrom(USERNAME, FROM);
 		$mail->isHTML(true);
+		$mail->Body = getHtmlSendMessage(
+			$unsubscribe_link,
+			$newsletter,
+			$subscriberKey,
+			ROOT_DOMAIN
+		);
 
-
-
-		// 	// only 1 email can receiver
-		// 	if ($emailReceiver != "") {
-		// 		$mail->addAddress($emailReceiver);
-		// 	}
-		// 	if ($mail->Send()) {
-		// 		return array(
-		// 			"error" => "Sucessfully sent",
-		// 			"mail_success" => true
-		// 		);
-		// 	} else {
-		// 		return array(
-		// 			"error" => "No email receiver found!",
-		// 			"mail_success" => false
-		// 		);
-		// 	}
-		// }
-
-		$sent_count = 0;
-		$else_error_count = 0;
-		if (count($emailReceiver) > 0) {
-			for ($a = 0; $a < count($emailReceiver); $a++) {
-				$newEmailReceiver = trim($emailReceiver[$a]["subscriber_email"]);
-				$newKey = trim($emailReceiver[$a]["subscriber_key"]);
-				if (trim($newEmailReceiver) != "") {
-					$mail->Body = getHtmlSendMessage(
-						$unsubscribe_link,
-						$newsletter,
-						$newKey,
-						ROOT_DOMAIN
-					);
-					$mail->addAddress($newEmailReceiver);
-					if ($mail->Send()) {
-						$sent_count += 1;
-						$mail->clearAddresses(trim($newEmailReceiver));
-						continue;
-					} else {
-						$else_error_count += 1;
-						continue;
-					}
-				}
+		// if email is not empty
+		// send email
+		if ($subscriberEmail != "") {
+			$mail->addAddress($subscriberEmail);
+			if ($mail->Send()) {
+				// if successfully send
+				// return response
+				return array(
+					"mail_success" => true,
+					"error" => "No Error.",
+				);
 			}
-		} else {
+		}
+		// if email is empty
+		// return error response
+		else {
 			return array(
 				"error" => "No email receiver found!.",
-				"mail_success" => false
-			);
-		}
-
-		if ($sent_count > 0 && $else_error_count == 0) {
-			return array(
-				"mail_success" => true,
-				"error" => "No Error.",
-			);
-		}
-
-		if ($else_error_count > 0) {
-			return array(
-				"error" => "Could not send email. Please refresh your page and try again.",
 				"mail_success" => false
 			);
 		}

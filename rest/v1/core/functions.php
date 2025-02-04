@@ -96,7 +96,8 @@ function checkIndex($jsonData, $index)
         invalidInput();
     }
 
-    return addslashes(trim($jsonData[$index]));
+    return trim($jsonData[$index]);
+    // return addslashes(trim($jsonData[$index]));
 }
 
 // check id

@@ -1,28 +1,77 @@
-import ButtonSpinner from "@/components/partials/spinners/ButtonSpinner";
-import { StoreContext } from "@/components/store/StoreContext";
 import React from "react";
 import { IoIosSend } from "react-icons/io";
+import { apiVersion } from "../../../../helpers/functions-general";
+import { queryData } from "../../../../helpers/queryData";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 
-const ModalSend = ({ msg, item, handleClose, mutation, resetForm }) => {
-  const { dispatch } = React.useContext(StoreContext);
+const ModalSend = ({
+  item,
+  recipientList,
+  setIsSend,
+  setConfirmSend,
+  setQueryCount,
+  setIsSendingLoading,
+  isSendingLoading,
+  setIsSuccessSendingEmail,
+  resetForm,
+}) => {
+  let query;
+  let count = 0;
 
   const handleYes = async () => {
-    resetForm();
-    // Mutate data
-    mutation.mutate({
-      newsletter: item.newsletter,
-      newsletter_subject: item.newsletter_subject,
-      subscriber_email: item.subscriber_email,
-      filterValue: item.filterValue,
-    });
+    // // close the confirmation modal
+    setIsSend(false);
+
+    // show the status of sending email
+    setConfirmSend(true);
+
+    // add loading state
+    // disabled all input field and button
+    setIsSendingLoading(true);
+
+    // loop through the list of recipient email
+    for (let i = 0; i < recipientList?.count; i++) {
+      let recipientEmail = recipientList?.data[i]["subscriber_email"];
+      let recipientKey = recipientList?.data[i]["subscriber_key"];
+
+      query = await queryData(`${apiVersion}/sending-newsletter`, "post", {
+        newsletter: item.newsletter,
+        newsletter_subject: item.newsletter_subject,
+        subscriber_email: recipientEmail,
+        subscriber_key: recipientKey,
+      });
+
+      // increment count whenever there's a successful query
+      if (query.success) {
+        count++;
+      }
+
+      // update the counter state to be passed on Modal Sending Email Status
+      setQueryCount(count);
+
+      // if all query are successfull
+      // close the Modal Sending Email Status after 1 second,
+      // so that user could see the status for 1 second after the successfull query
+      // set the loading state to false
+      // show the sending email summary
+      if (count === recipientList?.count) {
+        setTimeout(() => {
+          setConfirmSend(false);
+          setIsSendingLoading(false);
+          setIsSuccessSendingEmail(true);
+          resetForm();
+        }, 1000);
+      }
+    }
+  };
+
+  const handleClose = () => {
+    setIsSend(false);
   };
 
   return (
     <>
-      <div
-        className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[99] flex justify-center items-center w-full md:inset-0 max-h-full"
-        onClick={handleClose}
-      >
+      <div className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[99] flex justify-center items-center w-full md:inset-0 max-h-full">
         <div className="relative p-4 w-full max-w-md max-h-full">
           <div className="relative bg-white rounded-lg shadow">
             <button
@@ -30,7 +79,7 @@ const ModalSend = ({ msg, item, handleClose, mutation, resetForm }) => {
               className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
               data-modal-hide="popup-modal"
               onClick={handleClose}
-              disabled={mutation.isPending}
+              // disabled={mutation.isPending}
             >
               <svg
                 className="w-3 h-3"
@@ -52,14 +101,16 @@ const ModalSend = ({ msg, item, handleClose, mutation, resetForm }) => {
             <div className="p-4 md:p-5 text-center">
               <IoIosSend className="mx-auto mb-8 text-warning w-12 h-12" />
 
-              <h3 className="mb-8 text-sm font-normal text-dark">{msg}</h3>
+              <h3 className="mb-8 text-sm font-normal text-dark">
+                Are you sure you want send this newsletter?
+              </h3>
               <div className="flex gap-2">
                 <button
                   className="text-sm btn-modal-submit"
                   onClick={handleYes}
-                  disabled={mutation.isPending}
+                  disabled={isSendingLoading}
                 >
-                  {mutation.isPending ? <ButtonSpinner /> : "Yes"}
+                  {isSendingLoading ? <ButtonSpinner /> : "Yes"}
                 </button>
 
                 <button
