@@ -492,6 +492,17 @@ const Navigation = ({ menu, submenu }) => {
                         Mailer
                       </li>
                     </Link>
+                    <Link className="!p-0" to={`${devNavUrl}${link}/email-log`}>
+                      <li
+                        className={`text-xs my-2  border-transparent ${
+                          submenu === "email-log"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Email Log
+                      </li>
+                    </Link>
                   </ul>
                 </>
               )}

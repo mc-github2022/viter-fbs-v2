@@ -1,18 +1,15 @@
 import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import Navigation from "../../../partials/dashboard/Navigation";
 import { FaPlus } from "react-icons/fa";
-import Dashboard from "../../../partials/dashboard/Dashboard";
-import SubscribersTable from "./SubscribersTable";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import ModalError from "../../../partials/modals/ModalError";
-import ModalAddSubscribers from "./ModalAddSubscribers";
-import { setIsAdd } from "../../../store/StoreAction";
-import Mailer from "./mailer/Mailer";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import { apiVersion } from "../../../helpers/functions-general";
-import ModalSendingEmailStatus from "../../../partials/modals/ModalSendingEmailStatus";
-import ModalSentEmailSummary from "../../../partials/modals/ModalSentEmailSummary";
+import Dashboard from "../../../partials/dashboard/Dashboard";
+import Navigation from "../../../partials/dashboard/Navigation";
+import ModalError from "../../../partials/modals/ModalError";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import { setIsAdd } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
+import ModalAddSubscribers from "./ModalAddSubscribers";
+import SubscribersTable from "./SubscribersTable";
 
 const Subscribers = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -23,22 +20,15 @@ const Subscribers = () => {
   };
 
   const {
-    isLoading: roleIsLoading,
-    isFetching: roleIsFetching,
-    error: roleError,
+    isLoading: isLoading,
+    isFetching: isFetching,
+    error: error,
     data: audienceData,
   } = useQueryData(
     `${apiVersion}/audience`, // endpoint
     "get", // method
     "audience" // key
   );
-
-  // const { data: audienceData } = useQueryData(
-  //   `${apiVersion}/subscribe/audience`, // endpoint
-  //   "post", // method
-  //   "subscribe-audience", // key
-  //   { audience_code: "audience_is_test" }
-  // );
 
   return (
     <>
@@ -64,9 +54,6 @@ const Subscribers = () => {
           </div>
         </Dashboard>
       </section>
-
-      {/* <ModalSendingEmailStatus /> */}
-      {/* <ModalSentEmailSummary /> */}
 
       {store.isAdd && (
         <ModalAddSubscribers itemEdit={itemEdit} audienceData={audienceData} />

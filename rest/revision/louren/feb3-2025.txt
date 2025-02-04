@@ -22,7 +22,7 @@ DEVELOPER
 
         * HTACESS
             -> SUBSCRIBER
-            note: updated htaccess in subscriber  
+            note: added htaccess in subscriber  
             RewriteRule ^subscribe/audience$ controllers/developer/subscribe/readAllAudience.php [L]
             -> AUDIENCE is added
             -> 

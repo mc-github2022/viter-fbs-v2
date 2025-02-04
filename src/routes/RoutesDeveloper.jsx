@@ -26,6 +26,7 @@ import NotificationLog from "../components/pages/developer/notification/notifica
 import Subscribers from "../components/pages/developer/subscribers/Subscribers";
 import Mailer from "../components/pages/developer/subscribers/mailer/Mailer";
 import Audience from "../components/pages/developer/subscribers/audience/Audience";
+import EmailLog from "../components/pages/developer/subscribers/email-log/EmailLog";
 
 export const routesDeveloper = [
   {
@@ -185,6 +186,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <Mailer />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/email-log`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <EmailLog />
       </ProtectedRouteDeveloper>
     ),
   },
