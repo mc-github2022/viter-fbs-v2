@@ -139,6 +139,7 @@ const Mailer = () => {
       setSubscriberValue(item); // Set the category name
       setFieldValue("subscriber_email", item);
       setFilterValue(val);
+      setSubscriber(item);
       console.log("Category:", item);
     } else {
       // Single email selection
@@ -265,45 +266,49 @@ const Mailer = () => {
                                     All Recipients
                                   </div>
 
-                                  <span className="font-bold px-2 py-1">
-                                    By Audience
-                                  </span>
-                                  {subscriberCategories.map(
-                                    (category, index) => (
+                                  <div className="border-b-[1px] my-2">
+                                    <div className="font-bold px-2 py-1 border-b-[1px]">
+                                      By Audience
+                                    </div>
+                                    {subscriberCategories.map(
+                                      (category, index) => (
+                                        <div
+                                          key={index}
+                                          className="cursor-pointer hover:bg-gray-100 px-2 py-1 "
+                                          onClick={() =>
+                                            handleClickRecipient(
+                                              category.audience_name,
+                                              setFieldValue,
+                                              category.subscriber_audience_id
+                                            )
+                                          }
+                                        >
+                                          {category.audience_name}
+                                        </div>
+                                      )
+                                    )}
+                                  </div>
+
+                                  <div className="border-b-[1px] my-2">
+                                    <div className="font-bold px-2 py-1 border-b-[1px]">
+                                      By Email
+                                    </div>
+                                    {subscriberData?.data.map((item, key) => (
                                       <div
-                                        key={index}
                                         className="cursor-pointer hover:bg-gray-100 px-2 py-1"
+                                        key={key}
                                         onClick={() =>
                                           handleClickRecipient(
-                                            category.audience_name,
+                                            item.subscriber_email,
                                             setFieldValue,
-                                            category.subscriber_audience_id
+                                            item.subscriber_email
                                           )
                                         }
                                       >
-                                        {category.audience_name}
+                                        {item.subscriber_email}
                                       </div>
-                                    )
-                                  )}
-
-                                  <span className="font-bold px-2 py-1">
-                                    By Email
-                                  </span>
-                                  {subscriberData?.data.map((item, key) => (
-                                    <div
-                                      className="cursor-pointer hover:bg-gray-100 px-2 py-1"
-                                      key={key}
-                                      onClick={() =>
-                                        handleClickRecipient(
-                                          item.subscriber_email,
-                                          setFieldValue,
-                                          item.subscriber_email
-                                        )
-                                      }
-                                    >
-                                      {item.subscriber_email}
-                                    </div>
-                                  ))}
+                                    ))}
+                                  </div>
                                 </>
                               ) : (
                                 <div className="my-7">
