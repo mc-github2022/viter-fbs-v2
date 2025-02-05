@@ -128,6 +128,7 @@ const Mailer = () => {
         });
 
       setRecipientList(res);
+ 
     }
 
     //  if (

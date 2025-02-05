@@ -1,6 +1,6 @@
 import React from "react";
 
-const EmailLogStatus = ({ text }) => {
+const MailerLogStatus = ({ text }) => {
   return (
     <>
       <span
@@ -18,4 +18,4 @@ const EmailLogStatus = ({ text }) => {
   );
 };
 
-export default EmailLogStatus;
+export default MailerLogStatus;

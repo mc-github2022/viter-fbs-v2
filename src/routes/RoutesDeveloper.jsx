@@ -1,4 +1,5 @@
 import DeveloperUserForgetPassword from "@/components/pages/access/developer/DeveloperUserForgetPassword";
+import ProtectedRouteDeveloper from "@/components/pages/access/ProtectedRouteDeveloper";
 import {
   devNavUrl,
   UrlDeveloper,
@@ -11,9 +12,14 @@ import Testimonial from "../components/pages/developer/dashHome/testimonial/Test
 import IndustryTestimonial from "../components/pages/developer/industry-testimonial/IndustryTestimonial";
 import LcssBatches from "../components/pages/developer/lcss-batches/LcssBatches";
 import Notification from "../components/pages/developer/notification/Notification";
+import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
 import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
 import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
+import Audience from "../components/pages/developer/subscribers/audience/Audience";
+import MailerLog from "../components/pages/developer/subscribers/mailer-log/MailerLog";
+import Mailer from "../components/pages/developer/subscribers/mailer/Mailer";
+import Subscribers from "../components/pages/developer/subscribers/Subscribers";
 import Developer from "../components/pages/developer/user/developer/Developer";
 import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
 import Role from "../components/pages/developer/user/role/Role";
@@ -21,12 +27,6 @@ import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTes
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
-import ProtectedRouteDeveloper from "@/components/pages/access/ProtectedRouteDeveloper";
-import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
-import Subscribers from "../components/pages/developer/subscribers/Subscribers";
-import Mailer from "../components/pages/developer/subscribers/mailer/Mailer";
-import Audience from "../components/pages/developer/subscribers/audience/Audience";
-import EmailLog from "../components/pages/developer/subscribers/email-log/EmailLog";
 
 export const routesDeveloper = [
   {
@@ -190,10 +190,10 @@ export const routesDeveloper = [
     ),
   },
   {
-    path: `${devNavUrl}/${UrlDeveloper}/email-log`,
+    path: `${devNavUrl}/${UrlDeveloper}/mailer-log`,
     element: (
       <ProtectedRouteDeveloper>
-        <EmailLog />
+        <MailerLog />
       </ProtectedRouteDeveloper>
     ),
   },
