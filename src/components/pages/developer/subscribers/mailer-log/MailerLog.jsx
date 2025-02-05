@@ -1,11 +1,11 @@
 import React from "react";
-import EmailLogTable from "./EmailLogTable";
-import Navigation from "../../../../partials/dashboard/Navigation";
-import Dashboard from "../../../../partials/dashboard/Dashboard";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import { apiVersion } from "../../../../helpers/functions-general";
+import Dashboard from "../../../../partials/dashboard/Dashboard";
+import Navigation from "../../../../partials/dashboard/Navigation";
+import MailerLogTable from "./MailerLogTable";
 
-const EmailLog = () => {
+const MailerLog = () => {
   const {
     isLoading: isLoading,
     isFetching: isFetching,
@@ -30,8 +30,8 @@ const EmailLog = () => {
 
   return (
     <>
-      <section id="email-log" className="bg-[#f5f5f3]">
-        <Navigation menu="subscribers" submenu="email-log" />
+      <section id="mailer-log" className="bg-[#f5f5f3]">
+        <Navigation menu="subscribers" submenu="mailer-log" />
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
@@ -40,7 +40,7 @@ const EmailLog = () => {
               </div>
             </div>
             <div className="pb-4">
-              <EmailLogTable audienceData={audienceData} subscribeData={subscribeData} />
+              <MailerLogTable audienceData={audienceData} subscribeData={subscribeData} />
             </div>
           </div>
         </Dashboard>
@@ -49,4 +49,4 @@ const EmailLog = () => {
   );
 };
 
-export default EmailLog;
+export default MailerLog;

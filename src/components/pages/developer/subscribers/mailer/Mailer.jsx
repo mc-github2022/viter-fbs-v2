@@ -102,7 +102,7 @@ const Mailer = () => {
 
       setSubscriberValue(item);
       setFieldValue("subscriber_email", item);
-
+      setSubscriber(item);
       subscriberData?.count > 0 &&
         subscriberData?.data.filter((subsItem) => {
           if (subsItem.subscriber_email === item) {
@@ -289,6 +289,20 @@ const Mailer = () => {
                                     ))}
                                   </div>
                                 </>
+                              ) : subscriber === "All Recipients" ||
+                                subscriber === "all recipients" ? (
+                                <div
+                                  className="cursor-pointer hover:bg-gray-100 px-2 py-1"
+                                  onClick={() =>
+                                    handleClickRecipient(
+                                      "All Recipients",
+                                      setFieldValue,
+                                      "all"
+                                    )
+                                  }
+                                >
+                                  All Recipients
+                                </div>
                               ) : (
                                 <div className="my-7">
                                   <NoData />

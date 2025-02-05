@@ -74,42 +74,47 @@ class SendingNewsletter
     }
 
 
-    // public function readEmailsByAudience()
-    // {
-    //     try {
-    //         $sql = "select subscriber_email, subscriber_key ";
-    //         $sql .= "FROM {$this->tblSubscriber} ";
-    //         $sql .= "WHERE subscriber_audience_id = :subscriber_audience_id "; // Filter by subscriber_audience_id
-    //         $sql .= "and subscriber_is_active = 1 ";
-    //         $sql .= "ORDER BY subscriber_email ASC";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "subscriber_audience_id" => $this->subscriber_audience_id,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
-
     public function searchSubcribers() // for Subscribers debounce
     {
         try {
             $sql = "select * ";
-            $sql .= "from {$this->tblSubscriber} ";
-            $sql .= "where subscriber_email like :subscriber_email ";
+            $sql .= "from {$this->tblSubscriber} as subscriber, ";
+            $sql .= "{$this->tblAudience} as audience ";
+            $sql .= "where subscriber.subscriber_audience_id = audience.audience_aid ";
+            $sql .= "and (subscriber.subscriber_email like :subscriber_email ";
+            $sql .= "or audience.audience_name like :audience_name) ";
             $sql .= "and subscriber_is_active = 1 ";
             $sql .= "order by ";
             $sql .= "subscriber_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => "%{$this->subscriber_search}%",
+                "audience_name" => "%{$this->subscriber_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
         }
         return $query;
     }
+
+    // public function searchSubcribers() // for Subscribers debounce
+    // {
+    //     try {
+    //         $sql = "select * ";
+    //         $sql .= "from {$this->tblSubscriber} ";
+    //         $sql .= "where subscriber_email like :subscriber_email ";
+    //         $sql .= "and subscriber_is_active = 1 ";
+    //         $sql .= "order by ";
+    //         $sql .= "subscriber_email asc ";
+    //         $query = $this->connection->prepare($sql);
+    //         $query->execute([
+    //             "subscriber_email" => "%{$this->subscriber_search}%",
+    //         ]);
+    //     } catch (PDOException $ex) {
+    //         $query = false;
+    //     }
+    //     return $query;
+    // }
 
     public function createMailerLog()
     {

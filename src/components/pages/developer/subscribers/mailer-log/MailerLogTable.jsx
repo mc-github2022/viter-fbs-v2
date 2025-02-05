@@ -9,15 +9,16 @@ import TableLoading from "../../../../partials/spinners/TableLoading";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import LoadMore from "../../../../partials/LoadMore";
-import EmailLogStatus from "./EmailLogStatus";
+import EmailLogStatus from "./MailerLogStatus";
 import { InputCheckbox } from "../../../../helpers/FormInputs";
 import { FaEnvelope } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 
 import { formatDate, getDateNow } from "../../../../helpers/functions-general";
 import { setIsSearch } from "../../../../store/StoreAction";
+import MailerLogStatus from "./MailerLogStatus";
 
-const EmailLogTable = ({ audienceData, subscribeData }) => {
+const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isFilter, setIsFilter] = React.useState(false);
   const [filterData, setfilterData] = React.useState("all");
@@ -160,7 +161,7 @@ const EmailLogTable = ({ audienceData, subscribeData }) => {
                 <input
                   type="checkbox"
                   name="subscriber_is_agree"
-                  className="w-[14px]"
+                  className="w-[14px] h-4"
                 />
                 <span>All</span>
               </th>
@@ -195,9 +196,9 @@ const EmailLogTable = ({ audienceData, subscribeData }) => {
                     <td className="w-[10rem]">{formatDate(getDateNow())}</td>
                     <td className="">
                       {item.sending_email_log_is_success === 1 ? (
-                        <EmailLogStatus text="Sent" />
+                        <MailerLogStatus text="Sent" />
                       ) : (
-                        <EmailLogStatus text="Failed" />
+                        <MailerLogStatus text="Failed" />
                       )}
                     </td>
                     <td>
@@ -235,4 +236,4 @@ const EmailLogTable = ({ audienceData, subscribeData }) => {
   );
 };
 
-export default EmailLogTable;
+export default MailerLogTable;
