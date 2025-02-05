@@ -10,12 +10,21 @@ class SendingNewsletter
     public $subscriber_key;
     public $subscriber_audience_id;
 
+    public $sending_email_log_aid;
+    public $sending_email_log_is_active;
+    public $sending_email_log_audience_id;
+    public $sending_email_log_email;
+    public $sending_email_log_is_success;
+    public $sending_email_log_created;
+    public $sending_email_log_datetime;
+
     public $connection;
     public $lastInsertedId;
     public $subscriber_search;
 
     public $tblSubscriber;
     public $tblAudience;
+    public $tblSendingEmailLog;
 
 
     public function __construct($db)
@@ -23,6 +32,7 @@ class SendingNewsletter
         $this->connection = $db;
         $this->tblSubscriber = "fbsv2_subscriber_list";
         $this->tblAudience = "fbsv2_audience";
+        $this->tblSendingEmailLog = "fbsv2_sending_email_log";
     }
 
     // read email to send newsletter
@@ -105,4 +115,49 @@ class SendingNewsletter
     //     }
     //     return $query;
     // }
+
+    public function createMailerLog()
+    {
+        try {
+            $sql = "insert into {$this->tblSendingEmailLog} ";
+            $sql .= "(sending_email_log_audience_id, ";
+            $sql .= "sending_email_log_email, ";
+            $sql .= "sending_email_log_created, ";
+            $sql .= "sending_email_log_datetime ) values ( ";
+            $sql .= ":sending_email_log_audience_id, ";
+            $sql .= ":sending_email_log_email, ";
+            $sql .= ":sending_email_log_created, ";
+            $sql .= ":sending_email_log_datetime ) ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
+                "sending_email_log_email" => $this->sending_email_log_email,
+                "sending_email_log_created" => $this->sending_email_log_created,
+                "sending_email_log_datetime" => $this->sending_email_log_datetime,
+            ]);
+            $this->lastInsertedId = $this->connection->lastInsertId();
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function updateMailerLog()
+    {
+        try {
+            $sql = "update {$this->tblSendingEmailLog} set ";
+            $sql .= "sending_email_log_is_success = :sending_email_log_is_success, ";
+            $sql .= "sending_email_log_datetime = :sending_email_log_datetime ";
+            $sql .= "where sending_email_log_email = :sending_email_log_email ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_is_success" => $this->sending_email_log_is_success,
+                "sending_email_log_datetime" => $this->sending_email_log_datetime,
+                "sending_email_log_email" => $this->sending_email_log_email,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 }

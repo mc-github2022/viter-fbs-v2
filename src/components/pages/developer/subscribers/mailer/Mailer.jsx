@@ -30,6 +30,7 @@ const Mailer = () => {
   const [isSendingLoading, setIsSendingLoading] = React.useState(false);
   const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
     React.useState(false);
+  const [queryStatus, setQueryStatus] = React.useState(null);
   // let queryCount = 0;
   const {
     isFetching: subscriberDataIsFetching,
@@ -84,23 +85,6 @@ const Mailer = () => {
     ).values(),
   ];
 
-  // const handleClickRecipient = (item, setFieldValue, val) => {
-  //   console.log("Selected Recipient:", item);
-
-  //   // Check if the selected item is "All Recipients"
-  //   if (item === "All Recipients") {
-  //     setSubscriberValue("All Recipients");
-  //     setFieldValue("subscriber_email", item);
-  //   } else {
-  //     // show only the selected individual email
-  //     setSubscriberValue(item);
-  //     setFieldValue("subscriber_email", item);
-  //     setSubscriber(item);
-  //   }
-
-  //   setOnRecipient(false);
-  // };
-
   const handleClickRecipient = (item, setFieldValue, val) => {
     console.log("Selected Recipient:", item, val);
 
@@ -109,46 +93,44 @@ const Mailer = () => {
       setSubscriberValue("All Recipients");
       setFieldValue("subscriber_email", item);
       setRecipientList(subscriberData);
-      setSubscriber("All Recipients");
+      console.log("all-recipient");
+      return;
     }
 
-    if (
-      subscriberCategories.filter((category) =>
-        category.audience_name.toLowerCase().includes(item)
-      )
-    ) {
+    if (val === "by-email") {
       let res = [];
-      setSubscriberValue(item); // Set the category name
+
+      setSubscriberValue(item);
       setFieldValue("subscriber_email", item);
       setSubscriber(item);
       subscriberData?.count > 0 &&
-        subscriberData?.data.map((item) => {
-          if (item.subscriber_audience_id === val) {
-            res.push(item);
+        subscriberData?.data.filter((subsItem) => {
+          if (subsItem.subscriber_email === item) {
+            res.push(subsItem);
           }
         });
 
-      setRecipientList(res);
+      setRecipientList({ data: res, count: res?.length });
+      console.log("per email");
+      return;
     }
 
-    //  if (
-    //   subscriberCategories.filter((category) =>
-    //     category.audience_name.toLowerCase().includes(item)
-    //   )
-    // ) {
-    //   setSubscriberValue(item); // Set the category name
-    //   setFieldValue("subscriber_email", item);
-    //   console.log("Category:", item);
-    // } else {
-    //   // Single email selection
-    //   setSubscriberValue(item);
-    //   setFieldValue("subscriber_email", item);
-    // }
+    let res = [];
+    setSubscriberValue(item); // Set the category name
+    setFieldValue("subscriber_email", item);
+
+    subscriberData?.count > 0 &&
+      subscriberData?.data.filter((subsItem) => {
+        if (subsItem.subscriber_audience_id === val) {
+          res.push(subsItem);
+        }
+      });
+
+    setRecipientList({ data: res, count: res?.length });
+    console.log("per audience");
 
     setOnRecipient(false);
   };
-
-  console.log(recipientList);
 
   let timeOut;
 
@@ -263,7 +245,7 @@ const Mailer = () => {
                                     All Recipients
                                   </div>
 
-                                  <div className="my-1 ">
+                                  <div className="">
                                     <div className="font-bold px-2 py-1 border-b-[1px]">
                                       By Audience
                                     </div>
@@ -298,7 +280,7 @@ const Mailer = () => {
                                           handleClickRecipient(
                                             item.subscriber_email,
                                             setFieldValue,
-                                            item.subscriber_email
+                                            "by-email"
                                           )
                                         }
                                       >
@@ -392,6 +374,8 @@ const Mailer = () => {
                         isSendingLoading={isSendingLoading}
                         setIsSuccessSendingEmail={setIsSuccessSendingEmail}
                         resetForm={resetForm}
+                        setSubscriberValue={setSubscriberValue}
+                        setQueryStatus={setQueryStatus}
                       />
                     )}
                   </Form>
@@ -414,6 +398,8 @@ const Mailer = () => {
           queryCount={queryCount}
           recipientList={recipientList}
           setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryCount={setQueryCount}
+          queryStatus={queryStatus}
         />
       )}
 

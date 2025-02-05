@@ -52,6 +52,12 @@ function sendNewsletter(
 				return array(
 					"mail_success" => true,
 					"error" => "No Error.",
+					"email" => $subscriberEmail,
+				);
+			} else {
+				return array(
+					"error" => "Could not send email. Please refresh your page and try again.",
+					"mail_success" => false
 				);
 			}
 		}

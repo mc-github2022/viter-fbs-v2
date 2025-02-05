@@ -15,3 +15,19 @@ function checkReadEmailNewsletter($object)
     checkQuery($query, "Empty records. (individual email)");
     return $query;
 }
+
+// create mailer log 
+function checkCreateMailerLog($object)
+{
+    $query = $object->createMailerLog();
+    checkQuery($query, "There's a problem processing your request. (create mailer log)");
+    return $query;
+}
+
+// update mailer log 
+function checkUpdateMailerLog($object)
+{
+    $query = $object->updateMailerLog();
+    checkQuery($query, "There's a problem processing your request. (update mailer log)");
+    return $query;
+}

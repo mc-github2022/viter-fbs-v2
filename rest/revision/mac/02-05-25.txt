@@ -1,0 +1,8 @@
+models
+1. rest/v1/models/developer/sending-newsletter/SendingNewsletter.php 
+
+controllers
+1. rest/v1/controllers/developer/sending-newsletter/sending-newsletter.php
+
+notification
+1. rest/v1/notification/subscriber-newsletter.php 

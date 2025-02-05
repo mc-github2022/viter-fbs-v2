@@ -14,6 +14,8 @@ const ModalSend = ({
   isSendingLoading,
   setIsSuccessSendingEmail,
   resetForm,
+  setSubscriberValue,
+  setQueryStatus,
 }) => {
   let query;
   let count = 0;
@@ -33,18 +35,35 @@ const ModalSend = ({
     for (let i = 0; i < recipientList?.count; i++) {
       let recipientEmail = recipientList?.data[i]["subscriber_email"];
       let recipientKey = recipientList?.data[i]["subscriber_key"];
+      let recipientAudienceId =
+        recipientList?.data[i]["subscriber_audience_id"];
 
       query = await queryData(`${apiVersion}/sending-newsletter`, "post", {
         newsletter: item.newsletter,
         newsletter_subject: item.newsletter_subject,
         subscriber_email: recipientEmail,
         subscriber_key: recipientKey,
+        subscriber_audience_id: recipientAudienceId,
+        recipientList: recipientList,
       });
 
       // increment count whenever there's a successful query
       if (query.success) {
         count++;
+        setQueryStatus(query);
       }
+
+      if (!query.success) {
+        setConfirmSend(false);
+        setIsSendingLoading(false);
+        setIsSuccessSendingEmail(true);
+        resetForm();
+        setSubscriberValue("");
+        setQueryStatus(query);
+        return;
+      }
+
+      console.log(query);
 
       // update the counter state to be passed on Modal Sending Email Status
       setQueryCount(count);
@@ -60,6 +79,7 @@ const ModalSend = ({
           setIsSendingLoading(false);
           setIsSuccessSendingEmail(true);
           resetForm();
+          setSubscriberValue("");
         }, 1000);
       }
     }
