@@ -6,6 +6,7 @@ const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
   let sucessCount = queryCount;
   let totalCount = recipientList?.count;
   let percentageValue = (sucessCount / totalCount) * 100;
+
   return (
     <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
       <div className="">
@@ -19,10 +20,10 @@ const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
           </span>
           <div className="w-full bg-gray-200 rounded-sm dark:bg-gray-400 h-5 relative">
             <div
-              className="bg-green-700 text-xs font-medium text-blue-100 h-full rounded-sm duration-500 ease-linear flex items-center justify-center absolute left-0"
+              className="bg-green-700 text-xs text-gray-200 font-medium h-full rounded-sm duration-500 ease-linear flex items-center justify-center absolute left-0"
               style={{ width: `${percentageValue}%` }}
             >
-              {percentageValue}%
+              {Math.floor(percentageValue)}%
             </div>
           </div>
         </div>

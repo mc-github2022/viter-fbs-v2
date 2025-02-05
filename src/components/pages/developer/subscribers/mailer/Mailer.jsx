@@ -30,6 +30,7 @@ const Mailer = () => {
   const [isSendingLoading, setIsSendingLoading] = React.useState(false);
   const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
     React.useState(false);
+  const [queryStatus, setQueryStatus] = React.useState(null);
   // let queryCount = 0;
   const {
     isFetching: subscriberDataIsFetching,
@@ -83,23 +84,6 @@ const Mailer = () => {
       ])
     ).values(),
   ];
-
-  // const handleClickRecipient = (item, setFieldValue, val) => {
-  //   console.log("Selected Recipient:", item);
-
-  //   // Check if the selected item is "All Recipients"
-  //   if (item === "All Recipients") {
-  //     setSubscriberValue("All Recipients");
-  //     setFieldValue("subscriber_email", item);
-  //   } else {
-  //     // show only the selected individual email
-  //     setSubscriberValue(item);
-  //     setFieldValue("subscriber_email", item);
-  //     setSubscriber(item);
-  //   }
-
-  //   setOnRecipient(false);
-  // };
 
   const handleClickRecipient = (item, setFieldValue, val) => {
     console.log("Selected Recipient:", item, val);
@@ -261,7 +245,7 @@ const Mailer = () => {
                                     All Recipients
                                   </div>
 
-                                  <div className="my-1 ">
+                                  <div className="">
                                     <div className="font-bold px-2 py-1 border-b-[1px]">
                                       By Audience
                                     </div>
@@ -376,6 +360,8 @@ const Mailer = () => {
                         isSendingLoading={isSendingLoading}
                         setIsSuccessSendingEmail={setIsSuccessSendingEmail}
                         resetForm={resetForm}
+                        setSubscriberValue={setSubscriberValue}
+                        setQueryStatus={setQueryStatus}
                       />
                     )}
                   </Form>
@@ -398,6 +384,8 @@ const Mailer = () => {
           queryCount={queryCount}
           recipientList={recipientList}
           setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryCount={setQueryCount}
+          queryStatus={queryStatus}
         />
       )}
 
