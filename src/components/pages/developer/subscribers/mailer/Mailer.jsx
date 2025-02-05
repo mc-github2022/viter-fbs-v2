@@ -109,6 +109,7 @@ const Mailer = () => {
       setSubscriberValue("All Recipients");
       setFieldValue("subscriber_email", item);
       setRecipientList(subscriberData);
+      setSubscriber("All Recipients");
     }
 
     if (
@@ -119,7 +120,7 @@ const Mailer = () => {
       let res = [];
       setSubscriberValue(item); // Set the category name
       setFieldValue("subscriber_email", item);
-
+      setSubscriber(item);
       subscriberData?.count > 0 &&
         subscriberData?.data.map((item) => {
           if (item.subscriber_audience_id === val) {
@@ -128,7 +129,6 @@ const Mailer = () => {
         });
 
       setRecipientList(res);
- 
     }
 
     //  if (
@@ -307,6 +307,20 @@ const Mailer = () => {
                                     ))}
                                   </div>
                                 </>
+                              ) : subscriber === "All Recipients" ||
+                                subscriber === "all recipients" ? (
+                                <div
+                                  className="cursor-pointer hover:bg-gray-100 px-2 py-1"
+                                  onClick={() =>
+                                    handleClickRecipient(
+                                      "All Recipients",
+                                      setFieldValue,
+                                      "all"
+                                    )
+                                  }
+                                >
+                                  All Recipients
+                                </div>
                               ) : (
                                 <div className="my-7">
                                   <NoData />
