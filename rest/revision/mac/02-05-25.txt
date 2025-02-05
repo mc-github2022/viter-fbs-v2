@@ -6,3 +6,19 @@ controllers
 
 notification
 1. rest/v1/notification/subscriber-newsletter.php 
+
+
+TO UPLOAD 4:00pm
+
+db-backup
+1. rest/db-backup/fbsv2_sending_email_log.sql 
+
+controllers
+1. rest/v1/controllers/developer/sending-newsletter/create.php 
+2. rest/v1/controllers/developer/sending-newsletter/sending-newsletter.php 
+
+models
+1. rest/v1/models/developer/sending-newsletter/SendingNewsletter.php 
+
+htaccess
+1. rest/v1/.htaccess

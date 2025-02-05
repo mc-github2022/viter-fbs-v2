@@ -24,10 +24,12 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $newsletterSubject = checkIndex($data, "newsletter_subject");
     $subscriberEmail = checkIndex($data, "subscriber_email");
     $subscriberKey = checkIndex($data, "subscriber_key");
-    $recipientList = $data["recipientList"];
     $audienceId = checkIndex($data, "subscriber_audience_id");
 
     $unsubscribe_link = "/unsubscribe";
+
+    $mailerLogList = getResultData($sendingNewsletter->readEmailLog());
+
 
     $mail = sendNewsletter(
         $unsubscribe_link,
@@ -37,36 +39,28 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $subscriberKey
     );
 
-    // // create mailer log
-    // // insert all email
-    // for ($i = 0; $i < $recipientList["count"]; $i++) {
-    //     $sendingNewsletter->sending_email_log_audience_id = $recipientList["data"][$i]["sending_email_log_audience_id"];
-    //     $sendingNewsletter->sending_email_log_email = $recipientList["data"][$i]["sending_email_log_email"];
-    //     $sendingNewsletter->sending_email_log_created = date("Y-m-d H:i:s");
-    //     $sendingNewsletter->sending_email_log_datetime = date("Y-m-d H:i:s");
 
-    //     checkCreateMailerLog($sendingNewsletter);
-    // }
-
-
-    // $successEmailList = [];
-
+    $successEmailList = [];
 
     if ($mail["mail_success"] == true) {
 
-        // array_push($successEmailList,array("email" => $mail["email"]));
+        for ($i = 0; $i < count($mailerLogList); $i++) {
+            // // if mail is success
+            // // update the success status
+            if ($mailerLogList[$i]["sending_email_log_email"] == $mail["email"]) {
+                $sendingNewsletter->sending_email_log_is_success = 1;
+                checkUpdate($sendingNewsletter);
 
+                array_push($successEmailList, array("email" => $mail["email"]));
+            }
+        }
 
-        // // if mail is success
-        // // update the success status
-        // if($sendingNewsletter->sending_email_log_email == $mail["email"]) {
-        //     $sendingNewsletter->sending_email_log_is_success = 1;
-        //     checkUpdateMailerLog($sendingNewsletter);
-        // }
+        // array_push($successEmailList, array("email" => $mail["email"]));
 
         $returnData["data"] = $mail;
         $returnData["count"] = 0;
         $returnData["success"] = true;
+        $returnData["emailList"] = $successEmailList;
         $response->setData($returnData);
         $response->send();
         exit;

@@ -116,7 +116,20 @@ class SendingNewsletter
     //     return $query;
     // }
 
-    public function createMailerLog()
+    public function readEmailLog()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from {$this->tblSendingEmailLog} ";
+            $sql .= "where sending_email_log_is_success = 0 ";
+            $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function create()
     {
         try {
             $sql = "insert into {$this->tblSendingEmailLog} ";
@@ -142,7 +155,7 @@ class SendingNewsletter
         return $query;
     }
 
-    public function updateMailerLog()
+    public function update()
     {
         try {
             $sql = "update {$this->tblSendingEmailLog} set ";

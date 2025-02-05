@@ -124,6 +124,7 @@ RewriteRule ^subscribe/audience$ controllers/developer/subscribe/readAllAudience
 
 # SENDING NEWSLETTER
 RewriteRule ^sending-newsletter$ controllers/developer/sending-newsletter/sending-newsletter.php [L]
+RewriteRule ^sending-newsletter/create$ controllers/developer/sending-newsletter/create.php [L]
 RewriteRule ^subscriber-search$ controllers/developer/sending-newsletter/search-subscribers.php [L]
 
 # AUDIENCE
