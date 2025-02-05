@@ -10,13 +10,17 @@ import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import LoadMore from "../../../../partials/LoadMore";
 import EmailLogStatus from "./EmailLogStatus";
+import { InputCheckbox } from "../../../../helpers/FormInputs";
+import { FaEnvelope } from "react-icons/fa";
+import { IoIosSend } from "react-icons/io";
 
-const EmailLogTable = () => {
+import { formatDate, getDateNow } from "../../../../helpers/functions-general";
+import { setIsSearch } from "../../../../store/StoreAction";
+
+const EmailLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isFilter, setIsFilter] = React.useState(false);
-  const [purposeData, setPurposeData] = React.useState("all");
-  const [dateFrom, setDateFrom] = React.useState("");
-  const [dateTo, setDateTo] = React.useState("");
+  const [filterData, setfilterData] = React.useState("all");
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -32,15 +36,7 @@ const EmailLogTable = () => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: [
-      "email-log",
-      onSearch,
-      store.isSearch,
-      isFilter,
-      purposeData,
-      dateFrom,
-      dateTo,
-    ],
+    queryKey: ["email-log", onSearch, store.isSearch, isFilter, setfilterData],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `${apiVersion}/email-log/search`, // search endpoint
@@ -51,8 +47,8 @@ const EmailLogTable = () => {
           searchValue: search.current.value,
           id: "",
           isFilter,
-          sending_email_log_audience_id:
-            purposeData === "all" ? "" : purposeData,
+          sending_email_log_is_success:
+            setfilterData === "all" ? "" : setfilterData,
         }, // search value
         "post"
       ),
@@ -65,12 +61,50 @@ const EmailLogTable = () => {
     refetchOnWindowFocus: false,
   });
 
+  let counter = 1;
+
+  const handleChangeFilter = (e) => {
+    setfilterData(e.target.value);
+    setIsFilter(false);
+    dispatch(setIsSearch(false));
+    search.current.value = "";
+    if (e.target.value !== "all") {
+      setIsFilter(true);
+    }
+    setPage(1);
+  };
+
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
       fetchNextPage();
     }
   }, [inView]);
+
+  // Join subscribeData with audienceData to get audience_name
+  const enrichedSubscribers = subscribeData?.data?.map((subscriber) => {
+    const matchingAudience = audienceData?.data?.find(
+      (audience) => audience.audience_aid === subscriber.subscriber_audience_id
+    );
+    return {
+      ...subscriber,
+      audience_name: matchingAudience
+        ? matchingAudience.audience_name
+        : "Unknown",
+    };
+  });
+
+  const subscriberCategories = [
+    ...new Map(
+      enrichedSubscribers?.map((sub) => [
+        sub.subscriber_audience_id,
+        {
+          subscriber_audience_id: sub.subscriber_audience_id,
+          audience_name: sub.audience_name,
+        },
+      ])
+    ).values(),
+  ];
 
   return (
     <>
@@ -79,14 +113,23 @@ const EmailLogTable = () => {
           <div className="relative flex flex-col gap-2 w-[250px]">
             <label className="z-10">Filter</label>
 
-            <select>
-              <option value="volvo">All</option>
+            <select
+              name="filter"
+              value={filterData}
+              onChange={(e) => handleChangeFilter(e)}
+              disabled={isFetching || status === "pending"}
+            >
+              <option value="all">All</option>
               <optgroup label="Status">
-                <option value="volvo">Sent</option>
-                <option value="saab">Failed</option>
+                <option value="1">Sent</option>
+                <option value="0">Failed</option>
               </optgroup>
               <optgroup label="Audience">
-                <option value="mercedes">Web-LCS</option>
+                {subscriberCategories.map((item, key) => (
+                  <option key={key} value={item.sending_email_log_audience_id}>
+                    {item.audience_name}
+                  </option>
+                ))}
               </optgroup>
             </select>
           </div>
@@ -113,6 +156,14 @@ const EmailLogTable = () => {
               <th>Email</th>
               <th>Date</th>
               <th>Status</th>
+              <th className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="subscriber_is_agree"
+                  className="w-[14px]"
+                />
+                <span>All</span>
+              </th>
               <th>Action</th>
             </tr>
           </thead>
@@ -136,16 +187,31 @@ const EmailLogTable = () => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => (
-                  <tr key={key} className="text-[14px]">
+                  <tr className="text-[14px]">
                     <td className="pl-2 ">{counter++}.</td>
-                    <td className="">{item.sending_email_log_email}</td>
-                    <td className="">{item.sending_email_log_created}</td>
-                    <td className="place-content-start">
-                      {item.sending_email_log_is_active === 1 ? (
+                    <td className="w-[15rem]">
+                      {item.sending_email_log_email}
+                    </td>
+                    <td className="w-[10rem]">{formatDate(getDateNow())}</td>
+                    <td className="">
+                      {item.sending_email_log_is_success === 1 ? (
                         <EmailLogStatus text="Sent" />
                       ) : (
                         <EmailLogStatus text="Failed" />
                       )}
+                    </td>
+                    <td>
+                      <input type="checkbox" className="w-[14px]" />
+                    </td>
+                    <td className="flex items-center gap-3 mt-2 lg:mt-0">
+                      <>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Resend"
+                        >
+                          <IoIosSend className=" text-gray-600 w-5 h-5" />
+                        </button>
+                      </>
                     </td>
                   </tr>
                 ))}

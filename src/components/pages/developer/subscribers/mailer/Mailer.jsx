@@ -261,7 +261,7 @@ const Mailer = () => {
                                     All Recipients
                                   </div>
 
-                                  <div className="border-b-[1px] my-2">
+                                  <div className="my-1 ">
                                     <div className="font-bold px-2 py-1 border-b-[1px]">
                                       By Audience
                                     </div>
@@ -269,7 +269,7 @@ const Mailer = () => {
                                       (category, index) => (
                                         <div
                                           key={index}
-                                          className="cursor-pointer hover:bg-gray-100 px-2 py-1 "
+                                          className="cursor-pointer hover:bg-gray-100 px-2 py-1 indent-3"
                                           onClick={() =>
                                             handleClickRecipient(
                                               category.audience_name,
@@ -284,13 +284,13 @@ const Mailer = () => {
                                     )}
                                   </div>
 
-                                  <div className="border-b-[1px] my-2">
+                                  <div className="">
                                     <div className="font-bold px-2 py-1 border-b-[1px]">
                                       By Email
                                     </div>
                                     {subscriberData?.data.map((item, key) => (
                                       <div
-                                        className="cursor-pointer hover:bg-gray-100 px-2 py-1"
+                                        className="cursor-pointer hover:bg-gray-100 px-2 py-1 indent-3"
                                         key={key}
                                         onClick={() =>
                                           handleClickRecipient(
