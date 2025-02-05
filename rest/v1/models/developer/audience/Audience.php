@@ -18,11 +18,13 @@ class Audience
     public $audience_search;
 
     public $tblAudience;
+    public $tblSubscriber;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblAudience = "fbsv2_audience";
+        $this->tblSubscriber = "fbsv2_subscriber_list";
     }
 
     public function readAll()
@@ -184,6 +186,21 @@ class Audience
             $query->execute([
                 "audience_name" => $this->audience_name,
                 "audience_description" => $this->audience_description,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function checkAssociationSubscriberAudienceName()
+    {
+        try {
+            $sql = "select subscriber_audience_id from {$this->tblSubscriber} ";
+            $sql .= "where subscriber_audience_id = :subscriber_audience_id ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_audience_id" => $this->audience_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;

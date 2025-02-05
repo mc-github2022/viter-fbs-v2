@@ -64,12 +64,15 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
       ? itemEdit.subscriber_audience_id
       : defaultAudienceAid,
     subscriber_email_old: itemEdit ? itemEdit.subscriber_email : "",
+    subscriber_audience_id_old: itemEdit
+      ? itemEdit.subscriber_audience_id
+      : defaultAudienceAid,
   };
 
   const yupSchema = Yup.object({
     subscriber_email: Yup.string().required("Required").email("Invalid Email"),
   });
-  
+
   return (
     <ModalAddWrapper
       className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[19.5rem]`}

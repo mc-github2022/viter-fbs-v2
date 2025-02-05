@@ -4,7 +4,7 @@ import { FaArchive, FaEdit } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { MdDelete, MdRestore } from "react-icons/md";
 import { useInView } from "react-intersection-observer";
-import { apiVersion } from "../../../helpers/functions-general";
+import { apiVersion, formatDate } from "../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import LoadMore from "../../../partials/LoadMore";
 import SearchBar from "../../../partials/SearchBar";
@@ -127,6 +127,7 @@ const SubscribersTable = ({ setItemEdit }) => {
               <th className=" w-[5rem]">Status</th>
               <th>Email</th>
               <th>Audience</th>
+              <th>Date</th>
               <th>Feedback</th>
               <th className="text-right">Actions</th>
             </tr>
@@ -167,8 +168,12 @@ const SubscribersTable = ({ setItemEdit }) => {
                       {item.audience_name}
                     </td>
                     <td className="place-content-start">
+                      {formatDate(item.subscriber_datetime)}
+                    </td>
+                    <td className="place-content-start">
                       {item.subscriber_feedback}
                     </td>
+
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                       {item.subscriber_is_active ? (
                         <>

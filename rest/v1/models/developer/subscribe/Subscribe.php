@@ -71,26 +71,6 @@ class Subscribe
         return $query;
     }
 
-    // public function readById()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSubscriber} as subscriber, ";
-    //         $sql .= "{$this->tblAudience} as audience ";
-    //         $sql .= "where subscriber.subscriber_audience_id = audience.audience_aid ";
-    //         $sql .= "where subscriber.subscriber_aid = :subscriber_aid ";
-    //         $sql .= "order by subscriber.subscriber_is_active desc, ";
-    //         $sql .= "subscriber.subscriber_email asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "subscriber_aid" => $this->subscriber_aid,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
 
     public function readLimit()
     {
@@ -134,6 +114,7 @@ class Subscribe
         return $query;
     }
 
+    // create from website subscribe
     public function create()
     {
         try {
@@ -169,7 +150,7 @@ class Subscribe
         return $query;
     }
 
-    // create subscriber from add
+    // create subscriber from subscriber list (add)
     public function createSubscriber()
     {
         try {
@@ -231,14 +212,18 @@ class Subscribe
         try {
             $sql = "select ";
             $sql .= "* ";
-            $sql .= "from {$this->tblSubscriber} ";
+            $sql .= "from {$this->tblSubscriber} as subscriber, ";
+            $sql .= " {$this->tblAudience} as audience ";
             $sql .= "where ";
-            $sql .= "subscriber_email like :subscriber_email ";
+            $sql .= "subscriber.subscriber_audience_id = audience.audience_aid ";
+            $sql .= "and (subscriber.subscriber_email like :subscriber_email ";
+            $sql .= "or audience.audience_name like :audience_name) ";
             $sql .= "order by subscriber_is_active desc, ";
             $sql .= "subscriber_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => "%{$this->subscriber_search}%",
+                "audience_name" => "%{$this->subscriber_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -269,10 +254,12 @@ class Subscribe
         try {
             $sql = "select subscriber_email from {$this->tblSubscriber} ";
             $sql .= "where subscriber_email = :subscriber_email ";
+            $sql .= "and subscriber_audience_id = :subscriber_audience_id ";
             $sql .= "and subscriber_is_active = 1 ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => "{$this->subscriber_email}",
+                "subscriber_audience_id" => "{$this->subscriber_audience_id}",
             ]);
         } catch (PDOException $ex) {
             $query = false;
