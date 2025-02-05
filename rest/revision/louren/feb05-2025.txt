@@ -43,3 +43,22 @@ DEVELOPER
             ->
             ->
             ->
+
+
+To Upload
+ 
+ upload JSX
+
+     * CONTROLLERS 
+        ->rest/v1/controllers/developer/audience/audience.php
+        ->rest/v1/controllers/developer/audience/delete.php
+        ->rest/v1/controllers/developer/audience/functions.php
+        ->rest/v1/controllers/developer/subscribe/create-subscriber.php
+        ->rest/v1/controllers/developer/subscribe/update.php
+    * MODELS
+        -> rest/v1/models/developer/audience/Audience.php
+        -> rest/v1/models/developer/subscribe/Subscribe.php
+     * OTHER FILES
+        -> 
+    * DB BACKUP
+        ->

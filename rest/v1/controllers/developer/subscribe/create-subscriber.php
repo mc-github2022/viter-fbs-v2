@@ -28,14 +28,15 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $subscribe->subscriber_audience_id = checkIndex($data, "subscriber_audience_id");
     $subscribe->subscriber_key = $encrypt->doHash(rand());
 
-    // checks newly added data if it already exists
-    isEmailExist($subscribe, $subscribe->subscriber_email);
+
 
     $subscribe->subscriber_is_active = 1;
     $subscribe->subscriber_is_agree = 1;
     $subscribe->subscriber_created = date("Y-m-d H:i:s");
     $subscribe->subscriber_datetime = date("Y-m-d H:i:s");
 
+    // checks newly added data if it already exists
+    isEmailExist($subscribe, $subscribe->subscriber_email, $subscribe->subscriber_audience_id);
     $query = checkCreateSubscriber($subscribe);
     returnSuccess($subscribe, "subscribe", $query);
 }

@@ -11,6 +11,7 @@ if (array_key_exists("audienceId", $_GET)) {
   // get data
   $audience->audience_aid = $_GET['audienceId'];
   checkId($audience->audience_aid);
+  isAssociatedSubscriberAudienceName($audience);
 
   $query = checkDelete($audience);
 
