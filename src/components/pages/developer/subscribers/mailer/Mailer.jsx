@@ -109,45 +109,44 @@ const Mailer = () => {
       setSubscriberValue("All Recipients");
       setFieldValue("subscriber_email", item);
       setRecipientList(subscriberData);
+      console.log("all-recipient");
+      return;
     }
 
-    if (
-      subscriberCategories.filter((category) =>
-        category.audience_name.toLowerCase().includes(item)
-      )
-    ) {
+    if (val === "by-email") {
       let res = [];
-      setSubscriberValue(item); // Set the category name
+
+      setSubscriberValue(item);
       setFieldValue("subscriber_email", item);
 
       subscriberData?.count > 0 &&
-        subscriberData?.data.map((item) => {
-          if (item.subscriber_audience_id === val) {
-            res.push(item);
+        subscriberData?.data.filter((subsItem) => {
+          if (subsItem.subscriber_email === item) {
+            res.push(subsItem);
           }
         });
 
-      setRecipientList(res);
+      setRecipientList({ data: res, count: res?.length });
+      console.log("per email");
+      return;
     }
 
-    //  if (
-    //   subscriberCategories.filter((category) =>
-    //     category.audience_name.toLowerCase().includes(item)
-    //   )
-    // ) {
-    //   setSubscriberValue(item); // Set the category name
-    //   setFieldValue("subscriber_email", item);
-    //   console.log("Category:", item);
-    // } else {
-    //   // Single email selection
-    //   setSubscriberValue(item);
-    //   setFieldValue("subscriber_email", item);
-    // }
+    let res = [];
+    setSubscriberValue(item); // Set the category name
+    setFieldValue("subscriber_email", item);
+
+    subscriberData?.count > 0 &&
+      subscriberData?.data.filter((subsItem) => {
+        if (subsItem.subscriber_audience_id === val) {
+          res.push(subsItem);
+        }
+      });
+
+    setRecipientList({ data: res, count: res?.length });
+    console.log("per audience");
 
     setOnRecipient(false);
   };
-
-  console.log(recipientList);
 
   let timeOut;
 
@@ -297,7 +296,7 @@ const Mailer = () => {
                                           handleClickRecipient(
                                             item.subscriber_email,
                                             setFieldValue,
-                                            item.subscriber_email
+                                            "by-email"
                                           )
                                         }
                                       >
