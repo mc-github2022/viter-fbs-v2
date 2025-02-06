@@ -14,9 +14,22 @@ import { InputSelect, InputText } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { queryData } from "../../../../helpers/queryData";
 import { apiVersion } from "../../../../helpers/functions-general";
+import ModalSend from "./modal/ModalSend";
+import ModalSendingEmailStatus from "./modal/ModalSendingEmailStatus";
 
 const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [isSend, setIsSend] = React.useState(false);
+  const [isSendingLoading, setIsSendingLoading] = React.useState(false);
+  const [queryCount, setQueryCount] = React.useState(0);
+  const [emailCount, setEmailCount] = React.useState(0);
+  const [confirmSend, setConfirmSend] = React.useState(false);
+  const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
+    React.useState(false);
+  const [queryStatus, setQueryStatus] = React.useState(null);
+  const [payloadData, setPayloadData] = React.useState(null); // Store form values
+  const [sendingPercentage, setSendingPercentage] = React.useState(0);
+
 
   const handleClose = () => {
     setTimeout(() => {
@@ -28,10 +41,8 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        itemEdit
-          ? `${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
-          : `${apiVersion}/user-other`, // create
-        itemEdit ? "put" : "post",
+        `${apiVersion}/user-other/${itemEdit.user_other_aid}`, // update
+        "put",
         values
       ),
     onSuccess: (data) => {
@@ -49,6 +60,25 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
       }
     },
   });
+
+  const handleSubmit = (values) => {
+    if (itemEdit) {
+      mutation.mutate(values);
+    } else {
+      setPayloadData(values);
+
+      // Ensure `user_other_email` is an array or single email
+      const recipientEmails = Array.isArray(values.user_other_email)
+        ? values.user_other_email
+        : values.user_other_email
+        ? [values.user_other_email]
+        : [];
+
+      setEmailCount(recipientEmails.length); // Store total number of emails
+      setIsSend(true);
+      console.log(recipientEmails);
+    }
+  };
 
   const defaultRoleAid = roleData?.data.filter(
     (role) => role.role_code === "role_is_admin"
@@ -84,14 +114,13 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
         <Formik
           initialValues={initVal}
           validationSchema={yupSchema}
-          onSubmit={async (values) => {
-            const data = {
-              ...values,
-            };
-            mutation.mutate(data);
-          }}
+          // onSubmit={async (values) => {
+          //   handleSubmit(values);
+
+          // }}
+          onSubmit={handleSubmit} // Use the modified handleSubmit
         >
-          {(props) => {
+          {(props, values) => {
             return (
               <Form>
                 <div className="input-wrapper">
@@ -158,6 +187,44 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                     </button>
                   </div>
                 </div>
+
+                {!itemEdit && isSend && (
+                  <ModalSend
+                    payloadData={payloadData}
+                    itemEdit={itemEdit}
+                    item={values}
+                    emailCount={emailCount} // <-- Pass the email count
+                    defaultRoleAid={defaultRoleAid}
+                    setIsSend={setIsSend}
+                    setConfirmSend={setConfirmSend}
+                    setQueryCount={setQueryCount}
+                    setIsSendingLoading={setIsSendingLoading}
+                    isSendingLoading={isSendingLoading}
+                    setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+                    setQueryStatus={setQueryStatus}
+                    setSendingPercentage={setSendingPercentage}
+                  />
+                )}
+
+                {confirmSend && (
+                  <ModalSendingEmailStatus
+                    queryCount={queryCount}
+                    emailCount={emailCount} // <-- Pass total emails
+                    payloadData={payloadData}
+                    sendingPercentage={sendingPercentage}
+                  />
+                )}
+
+                {/* {isSuccessSendingEmail && (
+                  <ModalSentEmailSummary
+                    queryCount={queryCount}
+                    recipientList={recipientList}
+                    setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+                    setQueryCount={setQueryCount}
+                    queryStatus={queryStatus}
+                    payloadData={payloadData}
+                  />
+                )} */}
               </Form>
             );
           }}
