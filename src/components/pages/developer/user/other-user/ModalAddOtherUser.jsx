@@ -24,6 +24,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const [queryCount, setQueryCount] = React.useState(0);
   const [emailCount, setEmailCount] = React.useState(0);
   const [confirmSend, setConfirmSend] = React.useState(false);
+  const [recipientList, setRecipientList] = React.useState([]);
   const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
     React.useState(false);
   const [queryStatus, setQueryStatus] = React.useState(null);
@@ -77,7 +78,8 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
 
       setEmailCount(recipientEmails.length); // Store total number of emails
       setIsSend(true);
-      console.log(recipientEmails);
+      setRecipientList(recipientEmails)
+      console.log("Recipient: ",recipientEmails.length);
     }
   };
 
@@ -191,6 +193,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
 
                 {!itemEdit && isSend && (
                   <ModalSend
+                  recipientList={recipientList}
                     payloadData={payloadData}
                     itemEdit={itemEdit}
                     item={values}
@@ -209,6 +212,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
 
                 {confirmSend && (
                   <ModalSendingEmailStatus
+                  recipientList={recipientList}
                     queryCount={queryCount}
                     emailCount={emailCount} // <-- Pass total emails
                     payloadData={payloadData}

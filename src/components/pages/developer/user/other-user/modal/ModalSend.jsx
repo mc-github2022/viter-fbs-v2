@@ -23,143 +23,92 @@ const ModalSend = ({
 }) => {
   const { dispatch } = React.useContext(StoreContext);
 
-  let query;
-  let count = 0;
-
-  // const handleYes = async () => {
-
-  //   // // close the confirmation modal
-  //   setIsSend(false);
-
-  //   // show the status of sending email
-  //   setConfirmSend(true);
-
-  //   // add loading state
-  //   // disabled all input field and button
-  //   setIsSendingLoading(true);
-
-  //   const queryCreateOtherUser = await queryData(
-  //     itemEdit
-  //       ? `${apiVersion}/user-other/${itemEdit.user_other_aid}`
-  //       : `${apiVersion}/user-other`,
-  //     itemEdit ? "put" : "post",
-  //     payloadData // Ensure this contains valid data
-  //   );
-
-  //   if (queryCreateOtherUser?.success) {
-  //     // loop through the list of recipient email
-  //     for (let i = 0; i < payloadData?.count; i++) {
-  //       let user_other_email = payloadData?.data[i]["user_other_email"];
-
-  //       query = await queryData(`${apiVersion}/user-other`, "post", {
-  //         user_other_fname: itemEdit ? itemEdit.user_other_fname : "",
-  //         user_other_email: user_other_email,
-  //         user_other_key: user_other_key,
-  //       });
-
-  //       // increment count whenever there's a successful query
-  //       if (query.success) {
-  //         count++;
-  //         setQueryStatus(query);
-  //       }
-
-  //       if (!query.success) {
-  //         setConfirmSend(false);
-  //         setIsSendingLoading(false);
-  //         setIsSuccessSendingEmail(true);
-  //         setQueryStatus(query);
-  //         return;
-  //       }
-
-  //       console.log(query);
-
-  //       // update the counter state to be passed on Modal Sending Email Status
-  //       setQueryCount(count);
-
-  //       // if all query are successfull
-  //       // close the Modal Sending Email Status after 1 second,
-  //       // so that user could see the status for 1 second after the successfull query
-  //       // set the loading state to false
-  //       // show the sending email summary
-  //       if (count === payloadData?.count) {
-  //         setTimeout(() => {
-  //           setConfirmSend(false);
-  //           setIsSendingLoading(false);
-  //           setIsSuccessSendingEmail(true);
-  //         }, 1000);
-  //       }
-  //     }
-  //   } else {
-  //     dispatch(setError(true));
-  //     dispatch(setMessage(queryCreateOtherUser?.error));
-  //     setConfirmSend(false);
-  //     setIsSendingLoading(false);
-  //     setIsSuccessSendingEmail(true);
-  //     return;
-  //   }
-  // };
-
   const handleYes = async () => {
-    setIsSend(false);
-    setConfirmSend(true);
-    setIsSendingLoading(true);
-
-    const queryCreateOtherUser = await queryData(
-      itemEdit
-        ? `${apiVersion}/user-other/${itemEdit.user_other_aid}`
-        : `${apiVersion}/user-other`,
-      itemEdit ? "put" : "post",
-      payloadData
-    );
-
-    if (queryCreateOtherUser?.success) {
-      let count = 0;
-
-      // Get all emails from payloadData
-      const emailList = Array.isArray(payloadData.user_other_email)
-        ? payloadData.user_other_email
-        : [payloadData.user_other_email];
-
-      for (const email of emailList) {
-        const query = await queryData(`${apiVersion}/user-other`, "post", {
-          user_other_fname: itemEdit ? itemEdit.user_other_fname : "",
-          user_other_lname: itemEdit ? itemEdit.user_other_lname : "",
-          user_other_email: email,
-        });
-
-        if (query.success) {
-          count++;
-          setQueryStatus(query);
-
-          // Calculate percentage after every successful email
-          const percentage = Math.round((count / emailList.length) * 100);
-          console.log("Email Count:", emailList.length);
-          setQueryCount(count);
-          setSendingPercentage(percentage); // Track progress
-        } else {
-          setConfirmSend(false);
-          setIsSendingLoading(false);
-          setIsSuccessSendingEmail(true);
-          setQueryStatus(query);
-          return;
-        }
-
-        if (count === emailList.length) {
-          setTimeout(() => {
+      // // close the confirmation modal
+      setIsSend(false);
+  
+      // show the status of sending email
+      setConfirmSend(true);
+  
+      // add loading state
+      // disabled all input field and button
+      setIsSendingLoading(true);
+  
+      const queryCreateMailerLog = await queryData(
+        `${apiVersion}/user-other`,
+        "post",
+        payloadData,
+      );
+      console.log("Query: ", queryCreateMailerLog)
+      if (queryCreateMailerLog?.success) {
+        // loop through the list of recipient email
+        
+        for (let i = 0; i <= recipientList.length; i++) {
+          /* const recipientData = recipientList?.data[i];
+          
+          const user_other_fname = itemEdit ? itemEdit.user_other_fname : "";
+          const user_other_lname = itemEdit ? itemEdit.user_other_lname : "";
+          const user_other_email = itemEdit ? itemEdit.user_other_email : "";
+          const user_other_role_id = itemEdit ? itemEdit.user_other_role_id : defaultRoleAid;
+          const user_other_email_old = itemEdit ? itemEdit.user_other_email : "";
+      
+          // Construct the payload for the API call
+          const payload = {
+            user_other_fname: user_other_fname,
+            user_other_lname: user_other_lname,
+            user_other_email: user_other_email,
+            user_other_role_id: user_other_role_id,
+            user_other_email_old: user_other_email_old
+          }; */
+      
+          try {
+            /* const query = await queryData(`${apiVersion}/user-other`, "post", payload); */
+            if (queryCreateMailerLog?.success) {
+              setQueryStatus(queryCreateMailerLog);
+              setQueryCount(i); // Update the counter *after* a successful query.
+            } else {
+              // Handle failure immediately
+              setConfirmSend(false);
+              setIsSendingLoading(false);
+              setIsSuccessSendingEmail(true);
+              setQueryStatus(queryCreateMailerLog); // Important to set the status even on failure
+              return; // Exit the loop on the first failure.  No point in continuing.
+            }
+      
+            /* console.log(query); */ // Keep the logging for debugging.
+      
+            // Check for completion *inside* the loop *after* the query:
+            if (i === recipientList.length) {
+              setTimeout(() => {
+                setConfirmSend(false);
+                setIsSendingLoading(false);
+                setIsSuccessSendingEmail(true);
+                /* resetForm(); */
+                /* setSubscriberValue(""); */
+              }, 1000);
+            }
+      
+          } catch (error) {
+            // Handle errors from queryData (e.g., network errors, JSON parsing issues)
+            console.error("Error sending newsletter:", error);
             setConfirmSend(false);
             setIsSendingLoading(false);
-            setIsSuccessSendingEmail(true);
-          }, 1000);
+            setIsSuccessSendingEmail(true); // Consider a different state for a true error.
+            setQueryStatus({ success: false, message: "An error occurred during sending." }); // Set an appropriate error message.
+            return; // Exit the loop.
+          }
         }
+      } else {
+        dispatch(setError(true));
+        dispatch(setMessage(queryCreateMailerLog?.error));
+        setConfirmSend(false);
+        setIsSendingLoading(false);
+        setIsSuccessSendingEmail(true);
+        /* resetForm(); */
+        /* setSubscriberValue(""); */
+        return;
       }
-    } else {
-      dispatch(setError(true));
-      dispatch(setMessage(queryCreateOtherUser?.error));
-      setConfirmSend(false);
-      setIsSendingLoading(false);
-      setIsSuccessSendingEmail(true);
-    }
-  };
+    };
 
   const handleClose = () => {
     setIsSend(false);
@@ -175,7 +124,6 @@ const ModalSend = ({
               className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
               data-modal-hide="popup-modal"
               onClick={handleClose}
-              // disabled={mutation.isPending}
             >
               <svg
                 className="w-3 h-3"

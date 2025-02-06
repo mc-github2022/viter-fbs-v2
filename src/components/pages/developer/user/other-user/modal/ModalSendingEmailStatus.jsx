@@ -2,15 +2,11 @@ import React from "react";
 import ModalAddWrapper from "../../../../../partials/dashboard/ModalAddWrapper";
 import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
 
-const ModalSendingEmailStatus = ({
-  queryCount,
-  emailCount,
-  sendingPercentage,
-}) => {
-  // let sucessCount = queryCount;
-  // let totalCount = emailCount?.count;
-  // let percentageValue = (sucessCount / totalCount) * 100;
-  const percentage = sendingPercentage ?? 0;
+const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
+  let sucessCount = queryCount;
+  let totalCount = recipientList.length;
+  let percentageValue = (sucessCount / totalCount) * 100;
+ /*  const percentage = sendingPercentage ?? 0; */
 
   return (
     <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
@@ -20,7 +16,7 @@ const ModalSendingEmailStatus = ({
             <h3 className="text-sm">Sending, please wait...</h3>
             <ButtonSpinner color="text-black" />
           </div>
-          {/* <span className="text-sm">
+          <span className="text-sm">
             {sucessCount} of {totalCount}
           </span>
           <div className="w-full bg-gray-200 rounded-sm dark:bg-gray-400 h-5 relative">
@@ -30,8 +26,8 @@ const ModalSendingEmailStatus = ({
             >
               {Math.floor(percentageValue)}%
             </div>
-          </div> */}
-          <p>Email sending progress: {percentage}%</p>
+          </div>
+          {/* <p>Email sending progress: {sucessCount}%</p> */}
         </div>
       </div>
     </ModalAddWrapper>
