@@ -38,7 +38,7 @@ const ModalSentEmailSummary = ({
             {sucessCount} of {totalCount}
           </span>
           <button
-            className="inline-block rounded-md w-full px-5 py-2 bg-[#e5e7eb] text-[#1f2937]"
+            className="inline-block rounded-md w-full px-5 py-2 bg-primary text-white"
             onClick={() => handleClose()}
           >
             Close

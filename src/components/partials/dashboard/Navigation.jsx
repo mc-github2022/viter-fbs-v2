@@ -153,97 +153,6 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                   </li>
 
-                  {store.credentials.data.role_code === "role_is_developer" ? (
-                    <>
-                      <li
-                        className={` flex justify-between items-center p-1 cursor-pointer
-                  ${
-                    menu === "user"
-                      ? "text-primary underline underline-offset-4 "
-                      : "text-dark "
-                  }
-                `}
-                        onClick={() => handleUserOpen()}
-                      >
-                        <div className="nav flex items-center justify-between w-full">
-                          <span className=" text-[14px] uppercase">Users</span>
-                          <IoChevronDownSharp
-                            className={`${
-                              store.isUserOpen ? "" : "rotate-180"
-                            } transition-all`}
-                          />
-                        </div>
-                      </li>
-
-                      <ul
-                        className={`${
-                          store.isUserOpen ? "h-0 overflow-hidden" : "my-2"
-                        } submenu ml-5`}
-                      >
-                        <Link
-                          className="!p-0"
-                          to={`${devNavUrl}${link}/other-user`}
-                        >
-                          <li
-                            className={`text-xs  border-transparent ${
-                              submenu === "other-user"
-                                ? "text-primary font-bold"
-                                : "border-none text-dark"
-                            }`}
-                          >
-                            Other User
-                          </li>
-                        </Link>
-                        <Link
-                          className="!p-0"
-                          to={`${devNavUrl}${link}/user-developer`}
-                        >
-                          <li
-                            className={`text-xs my-2 border-transparent ${
-                              submenu === "user-developer"
-                                ? "text-primary font-bold"
-                                : "border-none text-dark"
-                            }`}
-                          >
-                            Developer
-                          </li>
-                        </Link>
-                        <Link
-                          className="!p-0"
-                          to={`${devNavUrl}${link}/user-role`}
-                        >
-                          <li
-                            className={`text-xs my-2 border-transparent ${
-                              submenu === "user-role"
-                                ? "text-primary font-bold"
-                                : "border-none text-dark"
-                            }`}
-                          >
-                            Role
-                          </li>
-                        </Link>
-                      </ul>
-                    </>
-                  ) : (
-                    <>
-                      <li
-                        className={` flex justify-between items-center p-1
-                ${
-                  menu === "user"
-                    ? "text-primary underline underline-offset-4 "
-                    : "text-dark "
-                }
-              `}
-                      >
-                        <Link to={`${devNavUrl}${link}/other-user`}>
-                          <div className="nav flex items-center">
-                            <span className=" text-[14px] uppercase">User</span>
-                          </div>
-                        </Link>
-                      </li>
-                    </>
-                  )}
-
                   {/* HOME */}
                   <li
                     className={` flex justify-between items-center p-1 cursor-pointer
@@ -507,6 +416,97 @@ const Navigation = ({ menu, submenu }) => {
                       </li>
                     </Link>
                   </ul>
+
+                  {store.credentials.data.role_code === "role_is_developer" ? (
+                    <>
+                      <li
+                        className={` flex justify-between items-center p-1 cursor-pointer
+                  ${
+                    menu === "user"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                        onClick={() => handleUserOpen()}
+                      >
+                        <div className="nav flex items-center justify-between w-full">
+                          <span className=" text-[14px] uppercase">Users</span>
+                          <IoChevronDownSharp
+                            className={`${
+                              store.isUserOpen ? "" : "rotate-180"
+                            } transition-all`}
+                          />
+                        </div>
+                      </li>
+
+                      <ul
+                        className={`${
+                          store.isUserOpen ? "h-0 overflow-hidden" : "my-2"
+                        } submenu ml-5`}
+                      >
+                        <Link
+                          className="!p-0"
+                          to={`${devNavUrl}${link}/other-user`}
+                        >
+                          <li
+                            className={`text-xs  border-transparent ${
+                              submenu === "other-user"
+                                ? "text-primary font-bold"
+                                : "border-none text-dark"
+                            }`}
+                          >
+                            Other User
+                          </li>
+                        </Link>
+                        <Link
+                          className="!p-0"
+                          to={`${devNavUrl}${link}/user-developer`}
+                        >
+                          <li
+                            className={`text-xs my-2 border-transparent ${
+                              submenu === "user-developer"
+                                ? "text-primary font-bold"
+                                : "border-none text-dark"
+                            }`}
+                          >
+                            Developer
+                          </li>
+                        </Link>
+                        <Link
+                          className="!p-0"
+                          to={`${devNavUrl}${link}/user-role`}
+                        >
+                          <li
+                            className={`text-xs my-2 border-transparent ${
+                              submenu === "user-role"
+                                ? "text-primary font-bold"
+                                : "border-none text-dark"
+                            }`}
+                          >
+                            Role
+                          </li>
+                        </Link>
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <li
+                        className={` flex justify-between items-center p-1
+                ${
+                  menu === "user"
+                    ? "text-primary underline underline-offset-4 "
+                    : "text-dark "
+                }
+              `}
+                      >
+                        <Link to={`${devNavUrl}${link}/other-user`}>
+                          <div className="nav flex items-center">
+                            <span className=" text-[14px] uppercase">User</span>
+                          </div>
+                        </Link>
+                      </li>
+                    </>
+                  )}
                 </>
               )}
             </ul>
