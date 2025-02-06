@@ -1,20 +1,24 @@
-import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
-import SearchBar from "../../../../partials/SearchBar";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import ServerError from "../../../../partials/spinners/ServerError";
-import LoadMore from "../../../../partials/LoadMore";
-import EmailLogStatus from "./MailerLogStatus";
-import { InputCheckbox } from "../../../../helpers/FormInputs";
+import React from "react";
 import { FaEnvelope } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
+import { useInView } from "react-intersection-observer";
+import { InputCheckbox } from "../../../../helpers/FormInputs";
+import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
+import LoadMore from "../../../../partials/LoadMore";
+import SearchBar from "../../../../partials/SearchBar";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+import { StoreContext } from "../../../../store/StoreContext";
+import EmailLogStatus from "./MailerLogStatus";
 
-import { formatDate, getDateNow } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  formatDate,
+  getDateNow,
+} from "../../../../helpers/functions-general";
 import { setIsSearch } from "../../../../store/StoreAction";
 import MailerLogStatus from "./MailerLogStatus";
 
@@ -37,11 +41,11 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["email-log", onSearch, store.isSearch, isFilter, setfilterData],
+    queryKey: ["mailer-log", onSearch, store.isSearch, isFilter, setfilterData],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `${apiVersion}/email-log/search`, // search endpoint
-        `${apiVersion}/email-log/page/${pageParam}`, // list endpoint
+        `${apiVersion}/mailer-log/search`, // search endpoint
+        `${apiVersion}/mailer-log/page/${pageParam}`, // list endpoint
         store.isSearch || isFilter,
         // search boolean
         {

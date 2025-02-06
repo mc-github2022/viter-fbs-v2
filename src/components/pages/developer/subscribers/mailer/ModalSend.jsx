@@ -66,13 +66,15 @@ const ModalSend = ({
         }
 
         if (!query.success) {
-          setConfirmSend(false);
-          setIsSendingLoading(false);
-          setIsSuccessSendingEmail(true);
-          resetForm();
-          setSubscriberValue("");
-          setQueryStatus(query);
-          return;
+          setTimeout(() => {
+            setConfirmSend(false);
+            setIsSendingLoading(false);
+            setIsSuccessSendingEmail(true);
+            resetForm();
+            setSubscriberValue("");
+            setQueryStatus(query);
+            return;
+          }, 1000);
         }
 
         console.log(query);

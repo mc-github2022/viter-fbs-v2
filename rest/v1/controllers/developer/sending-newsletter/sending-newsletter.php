@@ -48,6 +48,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             // // if mail is success
             // // update the success status
             if ($mailerLogList[$i]["sending_email_log_email"] == $mail["email"]) {
+                $sendingNewsletter->sending_email_log_email = $mail["email"];
                 $sendingNewsletter->sending_email_log_is_success = 1;
                 checkUpdate($sendingNewsletter);
 

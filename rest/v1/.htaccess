@@ -133,3 +133,7 @@ RewriteRule ^audience/([0-9]+)$ controllers/developer/audience/audience.php?audi
 RewriteRule ^audience/active/([0-9]+)$ controllers/developer/audience/active.php?audienceId=$1 [L]
 RewriteRule ^audience/page/([0-9]+)$ controllers/developer/audience/page.php?start=$1 [L]
 RewriteRule ^audience/search$ controllers/developer/audience/search.php [L] 
+
+# MAILER LOG
+RewriteRule ^mailer-log/page/([0-9]+)$ controllers/developer/mailer-log/page.php?start=$1 [L]
+RewriteRule ^mailer-log/search$ controllers/developer/mailer-log/search.php [L] 

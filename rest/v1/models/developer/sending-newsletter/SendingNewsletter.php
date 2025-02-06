@@ -135,10 +135,12 @@ class SendingNewsletter
             $sql = "insert into {$this->tblSendingEmailLog} ";
             $sql .= "(sending_email_log_audience_id, ";
             $sql .= "sending_email_log_email, ";
+            $sql .= "sending_email_log_is_active, ";
             $sql .= "sending_email_log_created, ";
             $sql .= "sending_email_log_datetime ) values ( ";
             $sql .= ":sending_email_log_audience_id, ";
             $sql .= ":sending_email_log_email, ";
+            $sql .= "1, ";
             $sql .= ":sending_email_log_created, ";
             $sql .= ":sending_email_log_datetime ) ";
             $query = $this->connection->prepare($sql);
@@ -162,6 +164,7 @@ class SendingNewsletter
             $sql .= "sending_email_log_is_success = :sending_email_log_is_success, ";
             $sql .= "sending_email_log_datetime = :sending_email_log_datetime ";
             $sql .= "where sending_email_log_email = :sending_email_log_email ";
+            $sql .= "and sending_email_log_is_success = 0 ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "sending_email_log_is_success" => $this->sending_email_log_is_success,

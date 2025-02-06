@@ -1,0 +1,10 @@
+models
+1. rest/v1/models/developer/sending-newsletter 
+2. rest/v1/models/developer/mailer-log 
+
+controllers
+1. rest/v1/controllers/developer/sending-newsletter/sending-newsletter.php 
+2. rest/v1/controllers/developer/mailer-log
+
+htaccess
+1. rest/v1/.htaccess 
