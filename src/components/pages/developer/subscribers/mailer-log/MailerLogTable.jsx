@@ -17,11 +17,13 @@ import { IoIosSend } from "react-icons/io";
 import { formatDate, getDateNow } from "../../../../helpers/functions-general";
 import { setIsSearch } from "../../../../store/StoreAction";
 import MailerLogStatus from "./MailerLogStatus";
+import MailerLogResendModal from "./MailerLogResendModal";
 
 const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isFilter, setIsFilter] = React.useState(false);
   const [filterData, setfilterData] = React.useState("all");
+  const [isResend, setIsResend] = React.useState(false);
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -107,6 +109,9 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     ).values(),
   ];
 
+  const handleResend = () => {
+    setIsResend(true)
+  } 
   return (
     <>
       <div className="flex items-center justify-between">
@@ -185,21 +190,21 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
               </tr>
             )}
 
-            {result?.pages.map((page, key) => (
+            {/* {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
-                {page?.data.map((item, key) => (
+                {page?.data.map((item, key) => ( */}
                   <tr className="text-[14px]">
                     <td className="pl-2 ">{counter++}.</td>
                     <td className="w-[15rem]">
-                      {item.sending_email_log_email}
+                      lourenisobel@gmail.com
                     </td>
                     <td className="w-[10rem]">{formatDate(getDateNow())}</td>
                     <td className="">
-                      {item.sending_email_log_is_success === 1 ? (
+                      {/* {item.sending_email_log_is_success === 1 ? (
                         <MailerLogStatus text="Sent" />
                       ) : (
                         <MailerLogStatus text="Failed" />
-                      )}
+                      )} */}
                     </td>
                     <td>
                       <input type="checkbox" className="w-[14px]" />
@@ -209,15 +214,16 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                         <button
                           className="tooltip-action-table"
                           data-tooltip="Resend"
+                          onClick={handleResend}
                         >
                           <IoIosSend className=" text-gray-600 w-5 h-5" />
                         </button>
                       </>
                     </td>
                   </tr>
-                ))}
+                {/* ))}
               </React.Fragment>
-            ))}
+            ))} */}
           </tbody>
         </table>
         <div className="place-self-center">
@@ -232,6 +238,8 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           />
         </div>
       </div>
+
+      {isResend && <MailerLogResendModal setIsResend={setIsResend}/>}
     </>
   );
 };
