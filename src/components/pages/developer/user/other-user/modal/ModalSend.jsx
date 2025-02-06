@@ -100,13 +100,6 @@ const ModalSend = ({
   // };
 
   const handleYes = async () => {
-    console.log("Payload Data Before Sending:", payloadData);
-
-    if (!payloadData) {
-      console.error("Payload data is missing!");
-      return;
-    }
-
     setIsSend(false);
     setConfirmSend(true);
     setIsSendingLoading(true);
@@ -130,6 +123,7 @@ const ModalSend = ({
       for (const email of emailList) {
         const query = await queryData(`${apiVersion}/user-other`, "post", {
           user_other_fname: itemEdit ? itemEdit.user_other_fname : "",
+          user_other_lname: itemEdit ? itemEdit.user_other_lname : "",
           user_other_email: email,
         });
 
@@ -139,6 +133,7 @@ const ModalSend = ({
 
           // Calculate percentage after every successful email
           const percentage = Math.round((count / emailList.length) * 100);
+          console.log("Email Count:", emailList.length);
           setQueryCount(count);
           setSendingPercentage(percentage); // Track progress
         } else {

@@ -30,7 +30,6 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const [payloadData, setPayloadData] = React.useState(null); // Store form values
   const [sendingPercentage, setSendingPercentage] = React.useState(0);
 
-
   const handleClose = () => {
     setTimeout(() => {
       dispatch(setIsAdd(false));
@@ -41,8 +40,10 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        `${apiVersion}/user-other/${itemEdit.user_other_aid}`, // update
-        "put",
+        itemEdit
+          ? `${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
+          : `${apiVersion}/user-other`, // create
+        itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
