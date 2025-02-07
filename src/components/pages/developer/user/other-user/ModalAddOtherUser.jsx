@@ -69,7 +69,7 @@ const ModalAddOtherUser = ({
         : [];
 
       setEmailCount(recipientEmails.length);
-      setIsSend(true); // Open second modal
+      setIsSend(true); 
       setRecipientList(recipientEmails);
 
       console.log("Recipient: ", recipientEmails.length);

@@ -111,9 +111,19 @@ const OtherUserTable = ({ setItemEdit }) => {
     setIsReset(true);
     setIsId(item.user_other_aid);
     setIsData(item);
-    setRecipientList(item.user_other_email);
-    console.log("recipient ", recipientList);
+
+    // to get all the email
+    const recipientEmails = Array.isArray(item.user_other_email)
+      ? item.user_other_email
+      : item.user_other_email
+      ? [item.user_other_email]
+      : [];
+
+    setEmailCount(recipientEmails.length);
+    setRecipientList(recipientEmails);
+   
   };
+  
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);

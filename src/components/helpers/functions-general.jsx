@@ -35,7 +35,7 @@ export const devKey =
 // export const siteKey = "";
 
 // reCAPTCHA site key PRODUCTION
-export const siteKey = "";
+export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
 
 // formatting date and time
 export const setTimeZone = "Asia/Taipei";

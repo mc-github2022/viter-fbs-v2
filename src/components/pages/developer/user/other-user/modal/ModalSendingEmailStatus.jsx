@@ -4,11 +4,8 @@ import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
 
 const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
   let sucessCount = queryCount;
-  console.log("emailCount", queryCount);
   let totalCount = recipientList.length;
-  console.log("total", recipientList.length);
   let percentageValue = (sucessCount / totalCount) * 100;
-  /*  const percentage = sendingPercentage ?? 0; */
 
   return (
     <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
@@ -29,7 +26,6 @@ const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
               {Math.floor(percentageValue)}%
             </div>
           </div>
-          {/* <p>Email sending progress: {sucessCount}%</p> */}
         </div>
       </div>
     </ModalAddWrapper>
