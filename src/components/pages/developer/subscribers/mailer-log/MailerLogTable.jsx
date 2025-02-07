@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEnvelope } from "react-icons/fa";
+import { FaEdit, FaEnvelope } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 import { useInView } from "react-intersection-observer";
 import { InputCheckbox } from "../../../../helpers/FormInputs";
@@ -35,6 +35,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   const [isCheck, setIsCheck] = React.useState(false);
   const [isCheckAll, setIsCheckAll] = React.useState(false);
   const [selectedEmail, setSelectedEmail] = React.useState([]);
+  const [itemEdit, setItemEdit] = React.useState(null);
 
   const {
     data: result,
@@ -133,6 +134,10 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     // }
   };
 
+  const handleEdit = (item) => {
+    setItemEdit(item);
+  };
+
   console.log(selectedEmail);
 
   React.useEffect(() => {
@@ -228,11 +233,28 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                   <tr key={key} className="text-[14px]">
                     <td className="pl-2 ">{counter++}.</td>
                     <td className="w-[15rem]">
-                      {item.sending_email_log_email}
-                      {/* <input
-                        type="email"
-                        defaultValue={item.sending_email_log_email}
-                      /> */}
+                      {!itemEdit && (
+                        <div className="flex items-center gap-2">
+                          <span>{item.sending_email_log_email}</span>
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Edit"
+                            onClick={() => handleEdit(item)}
+                          >
+                            <FaEdit className="fill-gray-600" />
+                          </button>
+                        </div>
+                      )}
+                      {itemEdit &&
+                        itemEdit.sending_email_log_email ===
+                          item.sending_email_log_email && (
+                          <input
+                            type="email"
+                            defaultValue={itemEdit.sending_email_log_email}
+                            autoFocus
+                            onBlur={() => setItemEdit(null)}
+                          />
+                        )}
                     </td>
                     <td className="w-[10rem]">
                       {formatDate(item.sending_email_log_created)}
