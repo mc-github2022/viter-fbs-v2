@@ -20,19 +20,21 @@ import {
   getDateNow,
 } from "../../../../helpers/functions-general";
 import { setIsSearch } from "../../../../store/StoreAction";
-import MailerLogStatus from "./MailerLogStatus";
 import MailerLogResendModal from "./MailerLogResendModal";
+import MailerLogStatus from "./MailerLogStatus";
 
 const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isFilter, setIsFilter] = React.useState(false);
   const [filterData, setfilterData] = React.useState("all");
   const [isResend, setIsResend] = React.useState(false);
-
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
   const search = React.useRef({ value: "" });
   const { ref, inView } = useInView();
+  const [isCheck, setIsCheck] = React.useState(false);
+  const [isCheckAll, setIsCheckAll] = React.useState(false);
+  const [selectedEmail, setSelectedEmail] = React.useState([]);
 
   const {
     data: result,
@@ -43,7 +45,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["mailer-log", onSearch, store.isSearch, isFilter, setfilterData],
+    queryKey: ["mailer-log", onSearch, store.isSearch, isFilter, filterData],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `${apiVersion}/mailer-log/search`, // search endpoint
@@ -54,8 +56,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           searchValue: search.current.value,
           id: "",
           isFilter,
-          sending_email_log_is_success:
-            setfilterData === "all" ? "" : setfilterData,
+          filterValue: setfilterData === "all" ? "" : filterData,
         }, // search value
         "post"
       ),
@@ -69,24 +70,6 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   });
 
   let counter = 1;
-
-  const handleChangeFilter = (e) => {
-    setfilterData(e.target.value);
-    setIsFilter(false);
-    dispatch(setIsSearch(false));
-    search.current.value = "";
-    if (e.target.value !== "all") {
-      setIsFilter(true);
-    }
-    setPage(1);
-  };
-
-  React.useEffect(() => {
-    if (inView) {
-      setPage((prev) => prev + 1);
-      fetchNextPage();
-    }
-  }, [inView]);
 
   // Join subscribeData with audienceData to get audience_name
   const enrichedSubscribers = subscribeData?.data?.map((subscriber) => {
@@ -113,9 +96,53 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     ).values(),
   ];
 
+  const handleChangeFilter = (e) => {
+    setfilterData(e.target.value);
+    setIsFilter(false);
+    dispatch(setIsSearch(false));
+    search.current.value = "";
+    if (e.target.value !== "all") {
+      setIsFilter(true);
+    }
+    setPage(1);
+  };
+
   const handleResend = () => {
-    setIsResend(true)
-  } 
+    setIsResend(true);
+  };
+
+  const handleCheckAll = (e) => {
+    console.log(e.target.value);
+    setIsCheckAll(true);
+  };
+
+  const removeCheck = () => {};
+
+  const handleCheck = (e, item, key) => {
+    let val = e.target.value;
+    console.log(typeof val);
+    setIsCheck(!isCheck);
+
+    setSelectedEmail((currentData) => [...currentData, item]);
+
+    // if (val === "false") {
+    //   setSelectedEmail((currentData) => [...currentData, item]);
+    // } else {
+    //   const newMember = selectedEmail?.filter((_, index) => index !== key);
+    //   setSelectedEmail(newMember);
+    // }
+  };
+
+  console.log(selectedEmail);
+  console.log(isCheck || isCheckAll);
+
+  React.useEffect(() => {
+    if (inView) {
+      setPage((prev) => prev + 1);
+      fetchNextPage();
+    }
+  }, [inView]);
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -131,12 +158,12 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
             >
               <option value="all">All</option>
               <optgroup label="Status">
-                <option value="1">Sent</option>
-                <option value="0">Failed</option>
+                <option value="sent">Sent</option>
+                <option value="failed">Failed</option>
               </optgroup>
               <optgroup label="Audience">
                 {subscriberCategories.map((item, key) => (
-                  <option key={key} value={item.sending_email_log_audience_id}>
+                  <option key={key} value={item.subscriber_audience_id}>
                     {item.audience_name}
                   </option>
                 ))}
@@ -170,7 +197,9 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                 <input
                   type="checkbox"
                   name="subscriber_is_agree"
-                  className="w-[14px] h-4"
+                  className="w-3 h-3"
+                  defaultChecked={isCheckAll}
+                  onChange={(e) => handleCheckAll(e)}
                 />
                 <span>All</span>
               </th>
@@ -194,24 +223,32 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
               </tr>
             )}
 
-            {/* {result?.pages.map((page, key) => (
+            {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
-                {page?.data.map((item, key) => ( */}
-                  <tr className="text-[14px]">
+                {page?.data.map((item, key) => (
+                  <tr key={key} className="text-[14px]">
                     <td className="pl-2 ">{counter++}.</td>
                     <td className="w-[15rem]">
-                      lourenisobel@gmail.com
+                      {item.sending_email_log_email}
                     </td>
-                    <td className="w-[10rem]">{formatDate(getDateNow())}</td>
+                    <td className="w-[10rem]">
+                      {formatDate(item.sending_email_log_created)}
+                    </td>
                     <td className="">
-                      {/* {item.sending_email_log_is_success === 1 ? (
+                      {item.sending_email_log_is_success === 1 ? (
                         <MailerLogStatus text="Sent" />
                       ) : (
                         <MailerLogStatus text="Failed" />
-                      )} */}
+                      )}
                     </td>
                     <td>
-                      <input type="checkbox" className="w-[14px]" />
+                      <input
+                        type="checkbox"
+                        className="w-3 h-3"
+                        defaultValue={isCheck || isCheckAll}
+                        onChange={(e) => handleCheck(e, item, key)}
+                        defaultChecked={isCheck || isCheckAll}
+                      />
                     </td>
                     <td className="flex items-center gap-3 mt-2 lg:mt-0">
                       <>
@@ -225,9 +262,9 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                       </>
                     </td>
                   </tr>
-                {/* ))}
+                ))}
               </React.Fragment>
-            ))} */}
+            ))}
           </tbody>
         </table>
         <div className="place-self-center">
@@ -243,7 +280,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
         </div>
       </div>
 
-      {isResend && <MailerLogResendModal setIsResend={setIsResend}/>}
+      {isResend && <MailerLogResendModal setIsResend={setIsResend} />}
     </>
   );
 };

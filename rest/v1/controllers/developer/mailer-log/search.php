@@ -25,19 +25,26 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
 
     if ($isFilter) {
-        $isFilterByStatus = $data["isFilterByStatus"];
+        $filterValue = $data["filterValue"];
 
-        $mailerLog->sending_email_log_is_success = $data["sending_email_log_is_success"];
-        $mailerLog->sending_email_log_audience_id = $data["sending_email_log_audience_id"];
+        // if filter by status send
+        if ($filterValue == "sent") {
+            $mailerLog->sending_email_log_is_success = 1;
+            $query = checkFilterByStatus($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
 
-        // if filter by status
-        if ($isFilterByStatus) {
+        // if filter by status failed
+        if ($filterValue == "failed") {
+            $mailerLog->sending_email_log_is_success = 0;
             $query = checkFilterByStatus($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
 
         // if filter by audience id
+        $mailerLog->sending_email_log_audience_id = $filterValue;
         $query = checkFilterByAudience($mailerLog);
         http_response_code(200);
         getQueriedData($query);
