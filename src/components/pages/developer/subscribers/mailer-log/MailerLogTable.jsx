@@ -134,7 +134,6 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   };
 
   console.log(selectedEmail);
-  console.log(isCheck || isCheckAll);
 
   React.useEffect(() => {
     if (inView) {
@@ -230,6 +229,10 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                     <td className="pl-2 ">{counter++}.</td>
                     <td className="w-[15rem]">
                       {item.sending_email_log_email}
+                      {/* <input
+                        type="email"
+                        defaultValue={item.sending_email_log_email}
+                      /> */}
                     </td>
                     <td className="w-[10rem]">
                       {formatDate(item.sending_email_log_created)}

@@ -249,7 +249,7 @@ class Subscribe
 
     // validator
     // email
-    public function checkName()
+    public function checkEmail()
     {
         try {
             $sql = "select subscriber_email from {$this->tblSubscriber} ";
@@ -259,7 +259,7 @@ class Subscribe
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "subscriber_email" => "{$this->subscriber_email}",
-                "subscriber_audience_id" => "{$this->subscriber_audience_id}",
+                "subscriber_audience_id" => $this->subscriber_audience_id,
             ]);
         } catch (PDOException $ex) {
             $query = false;

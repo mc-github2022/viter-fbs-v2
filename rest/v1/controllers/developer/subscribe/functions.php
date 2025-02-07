@@ -39,3 +39,11 @@ function checkReadAudience($object)
     checkQuery($query, "Empty records. (read audience)");
     return $query;
 }
+
+// compare two values
+function compareTwoValuesForEmail($object, $email_old, $email, $id_old, $id)
+{
+    if (strtolower($email_old) !=  strtolower($email) || strtolower($id_old) !=  strtolower($id)) {
+        isEmailExist($object, $email);
+    }
+}

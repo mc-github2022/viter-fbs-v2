@@ -1,5 +1,4 @@
 <?php
-
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
@@ -24,8 +23,10 @@ if (array_key_exists("subscribeid", $_GET)) {
   //checks current data to avoid same entries from being updated
   $subscriber_email_old = strtolower($data["subscriber_email_old"]);
   $subscriber_audience_id_old = $data["subscriber_audience_id_old"];
+
+  // validate if existing email with the same audience
   // email and audience cannot be the same
-  compareTwoValues(
+  compareTwoValuesForEmail(
     $subscribe,
     $subscriber_email_old,
     $subscribe->subscriber_email,
