@@ -4,9 +4,11 @@ import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
 
 const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
   let sucessCount = queryCount;
+  console.log("emailCount", queryCount);
   let totalCount = recipientList.length;
+  console.log("total", recipientList.length);
   let percentageValue = (sucessCount / totalCount) * 100;
- /*  const percentage = sendingPercentage ?? 0; */
+  /*  const percentage = sendingPercentage ?? 0; */
 
   return (
     <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
@@ -16,9 +18,9 @@ const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
             <h3 className="text-sm">Sending, please wait...</h3>
             <ButtonSpinner color="text-black" />
           </div>
-          <span className="text-sm">
+          {/* <span className="text-sm">
             {sucessCount} of {totalCount}
-          </span>
+          </span> */}
           <div className="w-full bg-gray-200 rounded-sm dark:bg-gray-400 h-5 relative">
             <div
               className="bg-green-700 text-xs text-gray-200 font-medium h-full rounded-sm duration-500 ease-linear flex items-center justify-center absolute left-0"

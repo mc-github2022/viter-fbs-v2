@@ -17,32 +17,88 @@ const ModalReset = ({
   queryKey,
   setIsReset,
   dataItem,
+  setConfirmSend,
+  setIsSendingLoading,
+  setQueryStatus,
+  setIsSuccessSendingEmail,
+  recipientList,
+  setQueryCount,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
+
   const queryClient = useQueryClient();
-
-  const mutation = useMutation({
-    mutationFn: (values) => queryData(mysqlApiReset, "put", values),
-    onSuccess: (data) => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: [queryKey] });
-      setIsReset(false);
-
-      if (!data.success) {
-        dispatch(setError(true));
-        dispatch(setMessage(data.error));
-      } else {
-        dispatch(setSuccess(true));
-        dispatch(setMessage(successMsg));
-      }
-    },
-  });
 
   const handleYes = async () => {
     // mutate data
-    mutation.mutate({
+
+    // // close the confirmation modal
+    // setIsSend(false);
+
+    // show the status of sending email
+    setConfirmSend(true);
+
+    // add loading state
+    // disabled all input field and button
+    setIsSendingLoading(true);
+
+    const queryResetPassword = await queryData(mysqlApiReset, "post", {
       email: dataItem.user_other_email,
     });
+
+    console.log("Query: ", queryResetPassword);
+
+    if (queryResetPassword?.success) {
+      // loop through the list of recipient email
+
+      // query key
+      queryClient.invalidateQueries({ queryKey: [queryKey] });
+
+      for (let i = 0; i <= recipientList.length; i++) {
+        try {
+          if (queryResetPassword?.success) {
+            setQueryStatus(queryResetPassword);
+            setQueryCount(i++); // Update the counter *after* a successful query.
+          } else {
+            // Handle failure immediately
+            setConfirmSend(false);
+            setIsSendingLoading(false);
+            setIsSuccessSendingEmail(true);
+            setQueryStatus(queryResetPassword); // Important to set the status even on failure
+            return; // Exit the loop on the first failure.  No point in continuing.
+          }
+
+          /* console.log(query); */ // Keep the logging for debugging.
+
+          // Check for completion *inside* the loop *after* the query:
+          if (i === recipientList.length) {
+            setTimeout(() => {
+              setConfirmSend(false);
+              setIsSendingLoading(false);
+              setIsSuccessSendingEmail(true);
+            }, 1000);
+          }
+        } catch (error) {
+          // Handle errors from queryData (e.g., network errors, JSON parsing issues)
+          console.error("Error sending newsletter:", error);
+          setConfirmSend(false);
+          setIsSendingLoading(false);
+          setIsSuccessSendingEmail(true); // Consider a different state for a true error.
+          setQueryStatus({
+            success: false,
+            message: "An error occurred during sending.",
+          }); // Set an appropriate error message.
+          return; // Exit the loop.
+        }
+      }
+    } else {
+      dispatch(setError(true));
+      dispatch(setMessage(queryResetPassword?.error));
+      setConfirmSend(false);
+      setIsSendingLoading(false);
+      setIsSuccessSendingEmail(true);
+
+      return;
+    }
   };
 
   const handleClose = () => {
@@ -64,7 +120,7 @@ const ModalReset = ({
               className="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
               data-modal-hide="popup-modal"
               onClick={handleClose}
-              disabled={mutation.isPending}
+              // disabled={mutation.isPending}
             >
               <svg
                 className="w-3 h-3"
@@ -92,15 +148,16 @@ const ModalReset = ({
                   type="submit"
                   className=" btn-modal-submit"
                   onClick={handleYes}
-                  disabled={mutation.isPending}
+                  // disabled={mutation.isPending}
                 >
-                  {mutation.isPending && <ButtonSpinner />} Yes
+                  {/* {mutation.isPending && <ButtonSpinner />} Yes */}
+                  Yes
                 </button>
                 <button
                   type="reset"
                   className=" btn-modal-cancel"
                   onClick={handleClose}
-                  disabled={mutation.isPending}
+                  // disabled={mutation.isPending}
                 >
                   No
                 </button>

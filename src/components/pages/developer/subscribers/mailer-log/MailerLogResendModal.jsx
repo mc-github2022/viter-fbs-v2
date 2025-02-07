@@ -7,8 +7,7 @@ import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 import { GrFormClose } from "react-icons/gr";
 
-
-const MailerLogResendModal = ({setIsResend}) => {
+const MailerLogResendModal = ({ setIsResend }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [onRecipient, setOnRecipient] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -22,11 +21,10 @@ const MailerLogResendModal = ({setIsResend}) => {
   const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
     React.useState(false);
   const [queryStatus, setQueryStatus] = React.useState(null);
-  
- 
-const handleClose = () => {
-  setIsResend(false)
-}
+
+  const handleClose = () => {
+    setIsResend(false);
+  };
 
   const initVal = {
     newsletter: "",
@@ -48,17 +46,16 @@ const handleClose = () => {
 
   return (
     <>
-    <ModalAddWrapper
-      handleClose={handleClose}>
-      <section>
-          <div className="mx-5 pt-2">
+      <ModalAddWrapper handleClose={handleClose}>
+        <section>
+          <div className="">
             <div className=" modal-title pb-3">
               <div className="text-sm text-[black] font-semibold">
                 <h2>Resend Email</h2>
               </div>
               <button onClick={handleClose}>
-                        <GrFormClose className="text-[25px]" />
-                      </button>
+                <GrFormClose className="text-[25px]" />
+              </button>
             </div>
             <div className="pb-4">
               <Formik
@@ -72,7 +69,6 @@ const handleClose = () => {
                   <Form>
                     <div className="grid grid-cols-[_1.5fr_2fr] gap-5 ">
                       <div className="">
-
                         <div className="input-wrapper">
                           <InputText
                             label="Subject"
@@ -111,10 +107,10 @@ const handleClose = () => {
                       </div>
                       <div className="Preview md:min-h-[calc(75vh-35px)] lg:max-h-[calc(100vh-150px)] w-full border-[2px] border-gray-200 flex justify-center items-center rounded-lg">
                         {values.newsletter ? (
-                          <div className="w-full">
+                          <div className="w-full h-full">
                             <iframe
                               srcDoc={values.newsletter}
-                              className="md:min-h-[calc(78vh-35px)] lg:max-h-[calc(90vh-150px)] border-none w-full"
+                              className="h-[560px] border-none w-full"
                             />
                           </div>
                         ) : (
@@ -124,17 +120,13 @@ const handleClose = () => {
                         )}
                       </div>
                     </div>
-                   
                   </Form>
                 )}
               </Formik>
             </div>
           </div>
-       
-      </section>
-    </ModalAddWrapper>
-
-      
+        </section>
+      </ModalAddWrapper>
     </>
   );
 };

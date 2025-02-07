@@ -1,35 +1,30 @@
-import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import React from "react";
+import { GrFormClose } from "react-icons/gr";
+import * as Yup from "yup";
+import { InputSelect, InputText } from "../../../../helpers/FormInputs";
+import { apiVersion } from "../../../../helpers/functions-general";
+import { queryData } from "../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
-import * as Yup from "yup";
-import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import { InputSelect, InputText } from "../../../../helpers/FormInputs";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
-import { queryData } from "../../../../helpers/queryData";
-import { apiVersion } from "../../../../helpers/functions-general";
-import ModalSend from "./modal/ModalSend";
-import ModalSendingEmailStatus from "./modal/ModalSendingEmailStatus";
+import { StoreContext } from "../../../../store/StoreContext";
 
-const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
+const ModalAddOtherUser = ({
+  setIsAdd,
+  itemEdit,
+  roleData,
+  setRecipientList,
+  setPayloadData,
+  setEmailCount,
+  setIsSend,
+}) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [isSend, setIsSend] = React.useState(false);
-  const [isSendingLoading, setIsSendingLoading] = React.useState(false);
-  const [queryCount, setQueryCount] = React.useState(0);
-  const [emailCount, setEmailCount] = React.useState(0);
-  const [confirmSend, setConfirmSend] = React.useState(false);
-  const [recipientList, setRecipientList] = React.useState([]);
-  const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
-    React.useState(false);
-  const [queryStatus, setQueryStatus] = React.useState(null);
-  const [payloadData, setPayloadData] = React.useState(null); // Store form values
-  const [sendingPercentage, setSendingPercentage] = React.useState(0);
 
   const handleClose = () => {
     setTimeout(() => {
@@ -41,10 +36,8 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        itemEdit
-          ? `${apiVersion}/user-other/${itemEdit.user_other_aid}` // update
-          : `${apiVersion}/user-other`, // create
-        itemEdit ? "put" : "post",
+        `${apiVersion}/user-other/${itemEdit.user_other_aid}`, // update
+        "put",
         values
       ),
     onSuccess: (data) => {
@@ -67,19 +60,21 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
     if (itemEdit) {
       mutation.mutate(values);
     } else {
-      setPayloadData(values);
+      setPayloadData(values); // Pass data to the next modal
 
-      // Ensure `user_other_email` is an array or single email
       const recipientEmails = Array.isArray(values.user_other_email)
         ? values.user_other_email
         : values.user_other_email
         ? [values.user_other_email]
         : [];
 
-      setEmailCount(recipientEmails.length); // Store total number of emails
-      setIsSend(true);
-      setRecipientList(recipientEmails)
-      console.log("Recipient: ",recipientEmails.length);
+      setEmailCount(recipientEmails.length);
+      setIsSend(true); // Open second modal
+      setRecipientList(recipientEmails);
+
+      console.log("Recipient: ", recipientEmails.length);
+
+      dispatch(setIsAdd(false));
     }
   };
 
@@ -121,7 +116,7 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
           //   handleSubmit(values);
 
           // }}
-          onSubmit={handleSubmit} // Use the modified handleSubmit
+          onSubmit={handleSubmit}
         >
           {(props, values) => {
             return (
@@ -190,46 +185,6 @@ const ModalAddOtherUser = ({ setIsAdd, itemEdit, roleData }) => {
                     </button>
                   </div>
                 </div>
-
-                {!itemEdit && isSend && (
-                  <ModalSend
-                  recipientList={recipientList}
-                    payloadData={payloadData}
-                    itemEdit={itemEdit}
-                    item={values}
-                    emailCount={emailCount} // <-- Pass the email count
-                    defaultRoleAid={defaultRoleAid}
-                    setIsSend={setIsSend}
-                    setConfirmSend={setConfirmSend}
-                    setQueryCount={setQueryCount}
-                    setIsSendingLoading={setIsSendingLoading}
-                    isSendingLoading={isSendingLoading}
-                    setIsSuccessSendingEmail={setIsSuccessSendingEmail}
-                    setQueryStatus={setQueryStatus}
-                    setSendingPercentage={setSendingPercentage}
-                  />
-                )}
-
-                {confirmSend && (
-                  <ModalSendingEmailStatus
-                  recipientList={recipientList}
-                    queryCount={queryCount}
-                    emailCount={emailCount} // <-- Pass total emails
-                    payloadData={payloadData}
-                    sendingPercentage={sendingPercentage}
-                  />
-                )}
-
-                {/* {isSuccessSendingEmail && (
-                  <ModalSentEmailSummary
-                    queryCount={queryCount}
-                    recipientList={recipientList}
-                    setIsSuccessSendingEmail={setIsSuccessSendingEmail}
-                    setQueryCount={setQueryCount}
-                    queryStatus={queryStatus}
-                    payloadData={payloadData}
-                  />
-                )} */}
               </Form>
             );
           }}

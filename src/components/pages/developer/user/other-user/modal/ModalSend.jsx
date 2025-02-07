@@ -2,12 +2,16 @@ import React from "react";
 import { IoIosSend } from "react-icons/io";
 import { apiVersion } from "../../../../../helpers/functions-general";
 import { queryData } from "../../../../../helpers/queryData";
-import { setError, setMessage } from "../../../../../store/StoreAction";
+import {
+  setError,
+  setIsAdd,
+  setMessage,
+} from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
 import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
+import { useQueryClient } from "@tanstack/react-query";
 
 const ModalSend = ({
-  item,
   recipientList,
   setIsSend,
   setConfirmSend,
@@ -16,99 +20,86 @@ const ModalSend = ({
   isSendingLoading,
   setIsSuccessSendingEmail,
   setQueryStatus,
-  defaultRoleAid,
-  itemEdit,
   payloadData,
-  setSendingPercentage,
+  msg,
+  mysqlEndpoint,
+  queryKey,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
+  const queryClient = useQueryClient();
 
   const handleYes = async () => {
-      // // close the confirmation modal
-      setIsSend(false);
-  
-      // show the status of sending email
-      setConfirmSend(true);
-  
-      // add loading state
-      // disabled all input field and button
-      setIsSendingLoading(true);
-  
-      const queryCreateMailerLog = await queryData(
-        `${apiVersion}/user-other`,
-        "post",
-        payloadData,
-      );
-      console.log("Query: ", queryCreateMailerLog)
-      if (queryCreateMailerLog?.success) {
-        // loop through the list of recipient email
-        
-        for (let i = 0; i <= recipientList.length; i++) {
-          /* const recipientData = recipientList?.data[i];
-          
-          const user_other_fname = itemEdit ? itemEdit.user_other_fname : "";
-          const user_other_lname = itemEdit ? itemEdit.user_other_lname : "";
-          const user_other_email = itemEdit ? itemEdit.user_other_email : "";
-          const user_other_role_id = itemEdit ? itemEdit.user_other_role_id : defaultRoleAid;
-          const user_other_email_old = itemEdit ? itemEdit.user_other_email : "";
-      
-          // Construct the payload for the API call
-          const payload = {
-            user_other_fname: user_other_fname,
-            user_other_lname: user_other_lname,
-            user_other_email: user_other_email,
-            user_other_role_id: user_other_role_id,
-            user_other_email_old: user_other_email_old
-          }; */
-      
-          try {
-            /* const query = await queryData(`${apiVersion}/user-other`, "post", payload); */
-            if (queryCreateMailerLog?.success) {
-              setQueryStatus(queryCreateMailerLog);
-              setQueryCount(i); // Update the counter *after* a successful query.
-            } else {
-              // Handle failure immediately
+    // close the confirmation modal
+    setIsSend(false);
+
+    // show the status of sending email
+    setConfirmSend(true);
+
+    // add loading state
+    // disabled all input field and button
+    setIsSendingLoading(true);
+
+    const queryCreateOtherUser = await queryData(
+      mysqlEndpoint,
+      "post",
+      payloadData
+    );
+
+    console.log("Query: ", queryCreateOtherUser);
+
+    if (queryCreateOtherUser?.success) {
+      // loop through the list of recipient email
+
+      // query key
+      queryClient.invalidateQueries({ queryKey: [queryKey] });
+
+      for (let i = 0; i <= recipientList.length; i++) {
+        try {
+          if (queryCreateOtherUser?.success) {
+            setQueryStatus(queryCreateOtherUser);
+            setQueryCount(i); // Update the counter *after* a successful query.
+          } else {
+            // Handle failure immediately
+            setConfirmSend(false);
+            setIsSendingLoading(false);
+            setIsSuccessSendingEmail(true);
+            setQueryStatus(queryCreateOtherUser); // Important to set the status even on failure
+            return; // Exit the loop on the first failure.  No point in continuing.
+          }
+
+          /* console.log(query); */ // Keep the logging for debugging.
+
+          // Check for completion *inside* the loop *after* the query:
+          if (i === recipientList.length) {
+            setTimeout(() => {
               setConfirmSend(false);
               setIsSendingLoading(false);
               setIsSuccessSendingEmail(true);
-              setQueryStatus(queryCreateMailerLog); // Important to set the status even on failure
-              return; // Exit the loop on the first failure.  No point in continuing.
-            }
-      
-            /* console.log(query); */ // Keep the logging for debugging.
-      
-            // Check for completion *inside* the loop *after* the query:
-            if (i === recipientList.length) {
-              setTimeout(() => {
-                setConfirmSend(false);
-                setIsSendingLoading(false);
-                setIsSuccessSendingEmail(true);
-                /* resetForm(); */
-                /* setSubscriberValue(""); */
-              }, 1000);
-            }
-      
-          } catch (error) {
-            // Handle errors from queryData (e.g., network errors, JSON parsing issues)
-            console.error("Error sending newsletter:", error);
-            setConfirmSend(false);
-            setIsSendingLoading(false);
-            setIsSuccessSendingEmail(true); // Consider a different state for a true error.
-            setQueryStatus({ success: false, message: "An error occurred during sending." }); // Set an appropriate error message.
-            return; // Exit the loop.
+            }, 1000);
           }
+        } catch (error) {
+          // Handle errors from queryData (e.g., network errors, JSON parsing issues)
+          console.error("Error sending newsletter:", error);
+          setConfirmSend(false);
+          setIsSendingLoading(false);
+          setIsSuccessSendingEmail(true); // Consider a different state for a true error.
+          setQueryStatus({
+            success: false,
+            message: "An error occurred during sending.",
+          }); // Set an appropriate error message.
+          return; // Exit the loop.
         }
-      } else {
-        dispatch(setError(true));
-        dispatch(setMessage(queryCreateMailerLog?.error));
-        setConfirmSend(false);
-        setIsSendingLoading(false);
-        setIsSuccessSendingEmail(true);
-        /* resetForm(); */
-        /* setSubscriberValue(""); */
-        return;
       }
-    };
+    } else {
+      dispatch(setError(true));
+      dispatch(setMessage(queryCreateOtherUser?.error));
+      setConfirmSend(false);
+      setIsSendingLoading(false);
+      setIsSuccessSendingEmail(true);
+
+      return;
+    }
+  };
 
   const handleClose = () => {
     setIsSend(false);
@@ -145,9 +136,7 @@ const ModalSend = ({
             <div className="p-4 md:p-5 text-center">
               <IoIosSend className="mx-auto mb-8 text-warning w-12 h-12" />
 
-              <h3 className="mb-8 text-sm font-normal text-dark">
-                Are you sure you want to send validation email?
-              </h3>
+              <h3 className="mb-8 text-sm font-normal text-dark">{msg}</h3>
               <div className="flex gap-2">
                 <button
                   className="text-sm btn-modal-submit"
