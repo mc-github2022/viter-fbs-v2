@@ -23,6 +23,8 @@ import { StoreContext } from "../../../../store/StoreContext";
 import ModalReset from "./modal/ModalReset";
 import ModalSuspend from "./modal/ModalSuspend";
 import ModalRestore from "./modal/ModalRestore";
+import ModalSendingEmailStatus from "./modal/ModalSendingEmailStatus";
+import ModalSentEmailSummary from "./modal/ModalSentEmailSummary";
 
 const OtherUserTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -30,6 +32,15 @@ const OtherUserTable = ({ setItemEdit }) => {
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
   const [isReset, setIsReset] = React.useState(false);
+
+  const [isSendingLoading, setIsSendingLoading] = React.useState(false);
+  const [queryCount, setQueryCount] = React.useState(0);
+  const [emailCount, setEmailCount] = React.useState(0);
+  const [confirmSend, setConfirmSend] = React.useState(false);
+  const [recipientList, setRecipientList] = React.useState([]);
+  const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
+    React.useState(false);
+  const [queryStatus, setQueryStatus] = React.useState(null);
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -100,6 +111,8 @@ const OtherUserTable = ({ setItemEdit }) => {
     setIsReset(true);
     setIsId(item.user_other_aid);
     setIsData(item);
+    setRecipientList(item.user_other_email);
+    console.log("recipient ", recipientList);
   };
   React.useEffect(() => {
     if (inView) {
@@ -269,8 +282,34 @@ const OtherUserTable = ({ setItemEdit }) => {
             "Reset succesfully. Please check your email to continue resetting password."
           }
           queryKey={"user-other"}
-          setIsReset={setIsReset}
           dataItem={isData}
+          setIsReset={setIsReset}
+          recipientList={recipientList}
+          setConfirmSend={setConfirmSend}
+          setQueryCount={setQueryCount}
+          setIsSendingLoading={setIsSendingLoading}
+          setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryStatus={setQueryStatus}
+        />
+      )}
+
+      {confirmSend && (
+        <ModalSendingEmailStatus
+          recipientList={recipientList}
+          queryCount={queryCount}
+        />
+      )}
+
+      {isSuccessSendingEmail && (
+        <ModalSentEmailSummary
+          queryCount={queryCount}
+          recipientList={recipientList}
+          setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryCount={setQueryCount}
+          queryStatus={queryStatus}
+          message={
+            "The email has been sent successfully. Please check your inbox for your password reset instructions."
+          }
         />
       )}
     </>

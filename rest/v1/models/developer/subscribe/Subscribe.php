@@ -249,7 +249,7 @@ class Subscribe
 
     // validator
     // email
-    public function checkEmail()
+    public function checkName()
     {
         try {
             $sql = "select subscriber_email from {$this->tblSubscriber} ";

@@ -10,10 +10,23 @@ import ModalError from "../../../../partials/modals/ModalError";
 import Navigation from "../../../../partials/dashboard/Navigation";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import { apiVersion } from "../../../../helpers/functions-general";
+import ModalSend from "./modal/ModalSend";
+import ModalSendingEmailStatus from "./modal/ModalSendingEmailStatus";
+import ModalSentEmailSummary from "./modal/ModalSentEmailSummary";
 
 const OtherUser = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
+  const [isSend, setIsSend] = React.useState(false);
+  const [isSendingLoading, setIsSendingLoading] = React.useState(false);
+  const [queryCount, setQueryCount] = React.useState(0);
+  const [emailCount, setEmailCount] = React.useState(0);
+  const [confirmSend, setConfirmSend] = React.useState(false);
+  const [recipientList, setRecipientList] = React.useState([]);
+  const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
+    React.useState(false);
+  const [queryStatus, setQueryStatus] = React.useState(null);
+  const [payloadData, setPayloadData] = React.useState(null); // Store form values
 
   const handleAdd = () => {
     dispatch(setIsAdd(true));
@@ -57,8 +70,49 @@ const OtherUser = () => {
           setIsAdd={setIsAdd}
           itemEdit={itemEdit}
           roleData={roleData}
+          setRecipientList={setRecipientList}
+          setPayloadData={setPayloadData}
+          setEmailCount={setEmailCount}
+          setIsSend={setIsSend}
         />
       )}
+
+      {!itemEdit && isSend && (
+        <ModalSend
+          recipientList={recipientList}
+          payloadData={payloadData}
+          setIsSend={setIsSend}
+          setConfirmSend={setConfirmSend}
+          setQueryCount={setQueryCount}
+          setIsSendingLoading={setIsSendingLoading}
+          isSendingLoading={isSendingLoading}
+          setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryStatus={setQueryStatus}
+          msg={`Are you sure you want to add this user and send a validation
+                email?`}
+          mysqlEndpoint={`${apiVersion}/user-other`}
+          queryKey={`user-other`}
+        />
+      )}
+
+      {confirmSend && (
+        <ModalSendingEmailStatus
+          recipientList={recipientList}
+          queryCount={queryCount}
+        />
+      )}
+
+      {isSuccessSendingEmail && (
+        <ModalSentEmailSummary
+          queryCount={queryCount}
+          recipientList={recipientList}
+          setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryCount={setQueryCount}
+          queryStatus={queryStatus}
+          message={"Email successfully sent!"}
+        />
+      )}
+
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}
     </>

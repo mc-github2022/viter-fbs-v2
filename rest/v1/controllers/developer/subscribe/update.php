@@ -23,7 +23,7 @@ if (array_key_exists("subscribeid", $_GET)) {
 
   //checks current data to avoid same entries from being updated
   $subscriber_email_old = strtolower($data["subscriber_email_old"]);
-  $subscriber_audience_id_old = strtolower($data["subscriber_audience_id_old"]);
+  $subscriber_audience_id_old = $data["subscriber_audience_id_old"];
   // email and audience cannot be the same
   compareTwoValues(
     $subscribe,
