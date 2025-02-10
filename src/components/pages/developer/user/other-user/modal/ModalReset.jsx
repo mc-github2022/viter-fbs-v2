@@ -29,10 +29,6 @@ const ModalReset = ({
   const queryClient = useQueryClient();
 
   const handleYes = async () => {
-    // mutate data
-
-    // // close the confirmation modal
-    // setIsSend(false);
 
     // show the status of sending email
     setConfirmSend(true);
@@ -57,7 +53,7 @@ const ModalReset = ({
         try {
           if (queryResetPassword?.success) {
             setQueryStatus(queryResetPassword);
-            setQueryCount(i++); // Update the counter *after* a successful query.
+            setQueryCount(i); // Update the counter *after* a successful query.
           } else {
             // Handle failure immediately
             setConfirmSend(false);

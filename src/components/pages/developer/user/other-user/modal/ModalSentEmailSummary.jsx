@@ -8,7 +8,7 @@ const ModalSentEmailSummary = ({
   setIsSuccessSendingEmail,
   setQueryCount,
   queryStatus,
-  message
+  message,
 }) => {
   let sucessCount = queryCount;
   let totalCount = recipientList.length;
@@ -33,7 +33,7 @@ const ModalSentEmailSummary = ({
             )}
           </div>
 
-          <h3 className="text-sm">{message}</h3>
+          <h3 className="text-[12px] text-center">{message}</h3>
 
           {/* <span className="text-sm">
             {sucessCount} of {totalCount}
