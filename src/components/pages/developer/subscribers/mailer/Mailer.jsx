@@ -386,7 +386,7 @@ const Mailer = () => {
         </Dashboard>
       </section>
 
-      {confirmSend && (
+      {!confirmSend && (
         <ModalSendingEmailStatus
           queryCount={queryCount}
           recipientList={recipientList}
