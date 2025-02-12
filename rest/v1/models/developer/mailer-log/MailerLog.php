@@ -6,6 +6,8 @@ class MailerLog
     public $sending_email_log_is_active;
     public $sending_email_log_audience_id;
     public $sending_email_log_email;
+    public $sending_email_log_subject;
+    public $sending_email_log_content;
     public $sending_email_log_is_success;
     public $sending_email_log_created;
     public $sending_email_log_datetime;
@@ -116,6 +118,26 @@ class MailerLog
             $query->execute([
                 "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
 
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+
+    public function updateMailerLog()
+    {
+        try {
+            $sql = "update {$this->tblSendingEmailLog} set ";
+            $sql .= "sending_email_log_email = :sending_email_log_email, ";
+            $sql .= "sending_email_log_datetime = :sending_email_log_datetime ";
+            $sql .= "where sending_email_log_aid = :sending_email_log_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_email" => $this->sending_email_log_email,
+                "sending_email_log_datetime" => $this->sending_email_log_datetime,
+                "sending_email_log_aid" => $this->sending_email_log_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;
