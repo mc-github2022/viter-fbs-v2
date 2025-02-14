@@ -12,16 +12,21 @@ import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import { StoreContext } from "../../../../store/StoreContext";
 
+import { IoTrash } from "react-icons/io5";
 import { apiVersion, formatDate } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import ModalSendingEmailStatus from "../../../../partials/modals/ModalSendingEmailStatus";
+import ModalSentEmailSummary from "../../../../partials/modals/ModalSentEmailSummary";
 import {
   setError,
+  setIsDelete,
   setIsSearch,
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
-import MailerLogResendModal from "./MailerLogResendModal";
 import MailerLogStatus from "./MailerLogStatus";
+import ModalResendEmail from "./ModalResendEmail";
 
 const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -34,10 +39,24 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { ref, inView } = useInView();
   const [isCheck, setIsCheck] = React.useState(false);
   const [isCheckAll, setIsCheckAll] = React.useState(false);
-  const [selectedEmail, setSelectedEmail] = React.useState([]);
+  // const [recipientList, setRecipientList] = React.useState([]);
   const [itemEdit, setItemEdit] = React.useState(null);
   const [selectedKey, setSelectedKey] = React.useState(null);
   const [isUpdate, setIsUpdate] = React.useState(false);
+  const [isData, setIsData] = React.useState("");
+  const [id, setId] = React.useState(0);
+
+  const [isSend, setIsSend] = React.useState(false);
+  const [recipientList, setRecipientList] = React.useState([]);
+  const [selectedCount, setSelectedCount] = React.useState([]);
+  const [queryCount, setQueryCount] = React.useState(0);
+  const [confirmSend, setConfirmSend] = React.useState(false);
+  const [isSendingLoading, setIsSendingLoading] = React.useState(false);
+  const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
+    React.useState(false);
+  const [queryStatus, setQueryStatus] = React.useState(null);
+
+  let allMailListArray = [];
 
   const {
     data: result,
@@ -117,33 +136,48 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     setPage(1);
   };
 
-  const handleResend = () => {
-    setIsResend(true);
+  const handleResend = (item) => {
+    setRecipientList((currentData) => [...currentData, item]);
+    setIsSend(true);
+  };
+
+  const handleMultipleResend = () => {
+    setIsSend(true);
   };
 
   const handleCheckAll = (e) => {
-    setIsCheckAll(true);
-
-    // setSelectedEmail((currentData) => [...currentData, item]);
-  };
-
-  const removeCheck = () => {
-    const newSelectedEmail = selectedEmail?.filter((_, index) => index !== key);
-    setSelectedEmail(newSelectedEmail);
+    let val = e.target.value;
+    if (val === "false") {
+      setIsCheckAll(true);
+      setIsCheck(true);
+      setRecipientList(allMailListArray);
+      setSelectedCount(allMailListArray);
+    }
+    if (val === "true") {
+      setIsCheckAll(false);
+      setIsCheck(false);
+      setRecipientList([]);
+    }
   };
 
   const handleCheck = (e, item, key) => {
     let val = e.target.value;
 
-    // console.log(val);
-
     if (val === "false") {
       setIsCheck(true);
+      setRecipientList((currentData) => [...currentData, item]);
+      setSelectedCount((currentData) => [...currentData, item]);
     } else {
       setIsCheck(false);
+      const newRecipientList = recipientList?.filter(
+        (_, index) => index !== key
+      );
+      const newSelectedCount = selectedCount?.filter(
+        (_, index) => index !== key
+      );
+      setRecipientList(newRecipientList);
+      setSelectedCount(newSelectedCount);
     }
-
-    setSelectedEmail((currentData) => [...currentData, item]);
   };
 
   const handleSave = async (e, item) => {
@@ -182,13 +216,26 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     setItemEdit(item);
   };
 
-  const handleRemove = (item) => {
-    let res = [];
-    selectedEmail?.filter((emailItem) => {});
+  const handleDelete = (item) => {
+    dispatch(setIsDelete(true));
+    setIsData(item.sending_email_log_email);
+    setId(item.sending_email_log_aid);
   };
 
-  // console.log(isCheck);
-  console.log(selectedEmail);
+  const handleGetCheckValue = (item) => {
+    let val = false;
+    recipientList?.length > 0 &&
+      recipientList?.map((emailItem) => {
+        if (item.sending_email_log_aid === emailItem.sending_email_log_aid) {
+          val = true;
+        }
+      });
+
+    return val;
+  };
+
+  // console.log(isData);
+  // console.log(recipientList);
   // console.log(selectedKey);
 
   React.useEffect(() => {
@@ -197,6 +244,12 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
       fetchNextPage();
     }
   }, [inView]);
+
+  React.useEffect(() => {
+    if (isSuccessSendingEmail) {
+      setRecipientList([]);
+    }
+  }, [isSuccessSendingEmail]);
 
   return (
     <>
@@ -253,7 +306,8 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                   type="checkbox"
                   name="subscriber_is_agree"
                   className="w-3 h-3"
-                  defaultChecked={isCheckAll}
+                  value={isCheckAll}
+                  checked={isCheckAll}
                   onChange={(e) => handleCheckAll(e)}
                 />
                 <span>All</span>
@@ -281,6 +335,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => {
+                  allMailListArray.push(item);
                   return (
                     <tr key={key} className="text-[14px]">
                       <td className="pl-2 ">{counter++}.</td>
@@ -321,21 +376,29 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                         <input
                           type="checkbox"
                           className="w-3 h-3"
-                          defaultValue={isCheck || isCheckAll}
-                          onClick={(e) => handleCheck(e, item, key)}
-                          // defaultChecked={isCheck || isCheckAll}
+                          checked={handleGetCheckValue(item) || isCheckAll}
+                          value={handleGetCheckValue(item)}
+                          onChange={(e) => handleCheck(e, item, key)}
                         />
                       </td>
                       <td className="flex items-center gap-3 mt-2 lg:mt-0">
-                        {selectedEmail?.length === 0 && (
+                        {recipientList?.length === 0 && (
                           <button
                             className="tooltip-action-table !p-0"
                             data-tooltip="Resend"
-                            onClick={handleResend}
+                            onClick={() => handleResend(item)}
                           >
                             <IoIosSend className=" text-gray-600 w-4 h-4" />
                           </button>
                         )}
+
+                        <button
+                          className="tooltip-action-table !p-0"
+                          data-tooltip="Delete"
+                          onClick={() => handleDelete(item)}
+                        >
+                          <IoTrash className=" text-gray-600 w-4 h-4" />
+                        </button>
                       </td>
                     </tr>
                   );
@@ -345,8 +408,11 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           </tbody>
         </table>
 
-        {selectedEmail?.length > 0 && (
-          <button className="btn-modal-submit w-fit ml-auto mt-5 mr-5">
+        {recipientList?.length > 0 && (
+          <button
+            onClick={() => handleMultipleResend()}
+            className="btn-modal-submit w-fit ml-auto mt-5 mr-5"
+          >
             Resend
           </button>
         )}
@@ -364,7 +430,47 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
         </div>
       </div>
 
-      {isResend && <MailerLogResendModal setIsResend={setIsResend} />}
+      {isSend && (
+        <ModalResendEmail
+          recipientList={recipientList}
+          setIsSend={setIsSend}
+          setConfirmSend={setConfirmSend}
+          setQueryCount={setQueryCount}
+          setIsSendingLoading={setIsSendingLoading}
+          isSendingLoading={isSendingLoading}
+          setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryStatus={setQueryStatus}
+          setIsCheck={setIsCheck}
+          setIsCheckAll={setIsCheckAll}
+          setRecipientList={setRecipientList}
+        />
+      )}
+
+      {confirmSend && (
+        <ModalSendingEmailStatus
+          queryCount={queryCount}
+          recipientList={{ ...recipientList, count: selectedCount?.length }}
+        />
+      )}
+
+      {isSuccessSendingEmail && (
+        <ModalSentEmailSummary
+          queryCount={queryCount}
+          recipientList={{ ...recipientList, count: selectedCount?.length }}
+          setIsSuccessSendingEmail={setIsSuccessSendingEmail}
+          setQueryCount={setQueryCount}
+          queryStatus={queryStatus}
+        />
+      )}
+
+      {store.isDelete && (
+        <ModalDelete
+          setIsDelete={setIsDelete}
+          queryKey={"mailer-log"}
+          mysqlEndpoint={`${apiVersion}/mailer-log/delete-mailer/${id}`}
+          item={isData}
+        />
+      )}
     </>
   );
 };

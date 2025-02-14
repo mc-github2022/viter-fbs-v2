@@ -15,3 +15,11 @@ function checkUpdateMailerLog($object)
     checkQuery($query, "There's a problem processing your request. (update mailer log)");
     return $query;
 }
+
+// delete mailer log 
+function checkDeleteMailerLog($object)
+{
+    $query = $object->deleteMailerLog();
+    checkQuery($query, "There's a problem processing your request. (delete mailer log)");
+    return $query;
+}

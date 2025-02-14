@@ -3,11 +3,9 @@ import { IoIosSend } from "react-icons/io";
 import { apiVersion } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
-import { setError, setMessage } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 
-const ModalSend = ({
-  item,
+const ModalResendEmail = ({
   recipientList,
   setIsSend,
   setConfirmSend,
@@ -15,13 +13,16 @@ const ModalSend = ({
   setIsSendingLoading,
   isSendingLoading,
   setIsSuccessSendingEmail,
-  resetForm,
-  setSubscriberValue,
   setQueryStatus,
+  setIsCheck,
+  setIsCheckAll,
+  setRecipientList,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
   let query;
   let count = 0;
+
+  console.log(recipientList);
 
   const handleYes = async () => {
     // // close the confirmation modal
@@ -34,80 +35,65 @@ const ModalSend = ({
     // disabled all input field and button
     setIsSendingLoading(true);
 
-    const queryCreateMailerLog = await queryData(
-      `${apiVersion}/sending-newsletter/create`,
-      "post",
-      {
-        recipientList: recipientList,
-        newsletter: item.newsletter,
-        newsletter_subject: item.newsletter_subject,
+    // console.log(123);
+
+    // loop through the list of recipient email
+    for (let i = 0; i < recipientList?.length; i++) {
+      let recipientEmail = recipientList[i]["sending_email_log_email"];
+      let newsletter = recipientList[i]["sending_email_log_content"];
+      let newsletter_subject = recipientList[i]["sending_email_log_subject"];
+      let key = recipientList[i]["sending_email_log_key"];
+
+      query = await queryData(
+        `${apiVersion}/mailer-log/resend-mailer`,
+        "post",
+        {
+          newsletter,
+          newsletter_subject,
+          recipientEmail,
+          key,
+        }
+      );
+
+      // increment count whenever there's a successful query
+      if (query.success) {
+        count++;
+        setQueryStatus(query);
       }
-    );
 
-    if (queryCreateMailerLog?.success) {
-      // loop through the list of recipient email
-      for (let i = 0; i < recipientList?.count; i++) {
-        let recipientEmail = recipientList?.data[i]["subscriber_email"];
-        let recipientKey = recipientList?.data[i]["subscriber_key"];
-        let recipientAudienceId =
-          recipientList?.data[i]["subscriber_audience_id"];
-
-        query = await queryData(`${apiVersion}/sending-newsletter`, "post", {
-          newsletter: item.newsletter,
-          newsletter_subject: item.newsletter_subject,
-          subscriber_email: recipientEmail,
-          subscriber_key: recipientKey,
-          subscriber_audience_id: recipientAudienceId,
-          recipientList: recipientList,
-        });
-
-        // increment count whenever there's a successful query
-        if (query.success) {
-          count++;
+      if (!query.success) {
+        setTimeout(() => {
+          setConfirmSend(false);
+          setIsSendingLoading(false);
+          setIsSuccessSendingEmail(true);
           setQueryStatus(query);
-        }
-
-        if (!query.success) {
-          setTimeout(() => {
-            setConfirmSend(false);
-            setIsSendingLoading(false);
-            setIsSuccessSendingEmail(true);
-            resetForm();
-            setSubscriberValue("");
-            setQueryStatus(query);
-            return;
-          }, 1000);
-        }
-
-        console.log(query);
-
-        // update the counter state to be passed on Modal Sending Email Status
-        setQueryCount(count);
-
-        // if all query are successfull
-        // close the Modal Sending Email Status after 1 second,
-        // so that user could see the status for 1 second after the successfull query
-        // set the loading state to false
-        // show the sending email summary
-        if (count === recipientList?.count) {
-          setTimeout(() => {
-            setConfirmSend(false);
-            setIsSendingLoading(false);
-            setIsSuccessSendingEmail(true);
-            resetForm();
-            setSubscriberValue("");
-          }, 1000);
-        }
+          setIsCheck(false);
+          setIsCheckAll(false);
+          setRecipientList([]);
+          return;
+        }, 1000);
       }
-    } else {
-      dispatch(setError(true));
-      dispatch(setMessage(queryCreateMailerLog?.error));
-      setConfirmSend(false);
-      setIsSendingLoading(false);
-      setIsSuccessSendingEmail(true);
-      resetForm();
-      setSubscriberValue("");
-      return;
+
+      console.log(query);
+
+      // update the counter state to be passed on Modal Sending Email Status
+      setQueryCount(count);
+
+      // if all query are successfull
+      // close the Modal Sending Email Status after 1 second,
+      // so that user could see the status for 1 second after the successfull query
+      // set the loading state to false
+      // show the sending email summary
+      if (count === recipientList?.length) {
+        setTimeout(() => {
+          setConfirmSend(false);
+          setIsSendingLoading(false);
+          setIsSuccessSendingEmail(true);
+          setIsCheck(false);
+          setIsCheckAll(false);
+          setRecipientList([]);
+        }, 1000);
+      }
     }
   };
 
@@ -148,7 +134,7 @@ const ModalSend = ({
               <IoIosSend className="mx-auto mb-8 text-warning w-12 h-12" />
 
               <h3 className="mb-8 text-sm font-normal text-dark">
-                Are you sure you want send this newsletter?
+                Are you sure you want re-send this newsletter?
               </h3>
               <div className="flex gap-2">
                 <button
@@ -174,4 +160,4 @@ const ModalSend = ({
   );
 };
 
-export default ModalSend;
+export default ModalResendEmail;
