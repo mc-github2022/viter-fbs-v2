@@ -29,6 +29,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     for ($i = 0; $i < $recipientList["count"]; $i++) {
         $sendingNewsletter->sending_email_log_audience_id = $recipientList["data"][$i]["subscriber_audience_id"];
         $sendingNewsletter->sending_email_log_email = $recipientList["data"][$i]["subscriber_email"];
+        $sendingNewsletter->sending_email_log_subject = $data["sending_email_log_subject"];
+        $sendingNewsletter->sending_email_log_content = $data["sending_email_log_content"];
         $sendingNewsletter->sending_email_log_created = date("Y-m-d H:i:s");
         $sendingNewsletter->sending_email_log_datetime = date("Y-m-d H:i:s");
 

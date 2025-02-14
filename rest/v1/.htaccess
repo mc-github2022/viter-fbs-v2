@@ -137,3 +137,4 @@ RewriteRule ^audience/search$ controllers/developer/audience/search.php [L]
 # MAILER LOG
 RewriteRule ^mailer-log/page/([0-9]+)$ controllers/developer/mailer-log/page.php?start=$1 [L]
 RewriteRule ^mailer-log/search$ controllers/developer/mailer-log/search.php [L] 
+RewriteRule ^mailer-log/update-mailer$ controllers/developer/mailer-log/update-mailer.php [L] 

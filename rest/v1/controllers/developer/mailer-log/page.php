@@ -22,7 +22,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
         checkLimitId($MailerLog->sending_email_log_start, $MailerLog->sending_email_log_total);
 
-        $query = checkReadLimit($MailerLog);
+        $query = checkReadAll($MailerLog);
         $total_result = checkReadAll($MailerLog);
         http_response_code(200);
 

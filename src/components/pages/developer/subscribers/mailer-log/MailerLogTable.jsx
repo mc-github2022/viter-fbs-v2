@@ -1,9 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEdit, FaEnvelope } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 import { useInView } from "react-intersection-observer";
-import { InputCheckbox } from "../../../../helpers/FormInputs";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
 import LoadMore from "../../../../partials/LoadMore";
 import SearchBar from "../../../../partials/SearchBar";
@@ -12,14 +11,15 @@ import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import { StoreContext } from "../../../../store/StoreContext";
-import EmailLogStatus from "./MailerLogStatus";
 
+import { apiVersion, formatDate } from "../../../../helpers/functions-general";
+import { queryData } from "../../../../helpers/queryData";
 import {
-  apiVersion,
-  formatDate,
-  getDateNow,
-} from "../../../../helpers/functions-general";
-import { setIsSearch } from "../../../../store/StoreAction";
+  setError,
+  setIsSearch,
+  setMessage,
+  setSuccess,
+} from "../../../../store/StoreAction";
 import MailerLogResendModal from "./MailerLogResendModal";
 import MailerLogStatus from "./MailerLogStatus";
 
@@ -36,6 +36,8 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   const [isCheckAll, setIsCheckAll] = React.useState(false);
   const [selectedEmail, setSelectedEmail] = React.useState([]);
   const [itemEdit, setItemEdit] = React.useState(null);
+  const [selectedKey, setSelectedKey] = React.useState(null);
+  const [isUpdate, setIsUpdate] = React.useState(false);
 
   const {
     data: result,
@@ -46,7 +48,14 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["mailer-log", onSearch, store.isSearch, isFilter, filterData],
+    queryKey: [
+      "mailer-log",
+      onSearch,
+      store.isSearch,
+      isFilter,
+      filterData,
+      isUpdate,
+    ],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `${apiVersion}/mailer-log/search`, // search endpoint
@@ -113,32 +122,74 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   };
 
   const handleCheckAll = (e) => {
-    console.log(e.target.value);
     setIsCheckAll(true);
+
+    // setSelectedEmail((currentData) => [...currentData, item]);
   };
 
-  const removeCheck = () => {};
+  const removeCheck = () => {
+    const newSelectedEmail = selectedEmail?.filter((_, index) => index !== key);
+    setSelectedEmail(newSelectedEmail);
+  };
 
   const handleCheck = (e, item, key) => {
     let val = e.target.value;
-    console.log(typeof val);
-    setIsCheck(!isCheck);
+
+    // console.log(val);
+
+    if (val === "false") {
+      setIsCheck(true);
+    } else {
+      setIsCheck(false);
+    }
 
     setSelectedEmail((currentData) => [...currentData, item]);
-
-    // if (val === "false") {
-    //   setSelectedEmail((currentData) => [...currentData, item]);
-    // } else {
-    //   const newMember = selectedEmail?.filter((_, index) => index !== key);
-    //   setSelectedEmail(newMember);
-    // }
   };
 
-  const handleEdit = (item) => {
+  const handleSave = async (e, item) => {
+    setIsUpdate(true);
+
+    const responseData = await queryData(
+      `${apiVersion}/mailer-log/update-mailer`,
+      "post",
+      {
+        sending_email_log_aid: item.sending_email_log_aid,
+        sending_email_log_email: e.target.value,
+      }
+    );
+
+    if (responseData?.success) {
+      dispatch(setSuccess(true));
+      dispatch(setMessage("Successfully updated."));
+      setIsUpdate(false);
+    }
+
+    if (!responseData?.success) {
+      dispatch(setError(true));
+      dispatch(setMessage(responseData?.error));
+      setIsUpdate(false);
+      return;
+    }
+
+    setIsUpdate(false);
+    setItemEdit(null);
+    setSelectedKey(null);
+  };
+
+  const handleEdit = (item, key) => {
+    setSelectedKey(key);
+
     setItemEdit(item);
   };
 
+  const handleRemove = (item) => {
+    let res = [];
+    selectedEmail?.filter((emailItem) => {});
+  };
+
+  // console.log(isCheck);
   console.log(selectedEmail);
+  // console.log(selectedKey);
 
   React.useEffect(() => {
     if (inView) {
@@ -194,7 +245,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
-              <th>Email</th>
+              <th className="w-[20rem]">Email</th>
               <th>Date</th>
               <th>Status</th>
               <th className="flex items-center gap-2">
@@ -229,69 +280,77 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
 
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
-                {page?.data.map((item, key) => (
-                  <tr key={key} className="text-[14px]">
-                    <td className="pl-2 ">{counter++}.</td>
-                    <td className="w-[15rem]">
-                      {!itemEdit && (
-                        <div className="flex items-center gap-2">
-                          <span>{item.sending_email_log_email}</span>
-                          <button
-                            className="tooltip-action-table"
-                            data-tooltip="Edit"
-                            onClick={() => handleEdit(item)}
-                          >
-                            <FaEdit className="fill-gray-600" />
-                          </button>
-                        </div>
-                      )}
-                      {itemEdit &&
-                        itemEdit.sending_email_log_email ===
-                          item.sending_email_log_email && (
+                {page?.data.map((item, key) => {
+                  return (
+                    <tr key={key} className="text-[14px]">
+                      <td className="pl-2 ">{counter++}.</td>
+                      <td>
+                        {selectedKey !== key && (
+                          <div className="flex items-center gap-2">
+                            <span>{item.sending_email_log_email}</span>
+                            <button
+                              className="tooltip-action-table"
+                              data-tooltip="Edit"
+                              onClick={() => handleEdit(item, key)}
+                            >
+                              <FaEdit className="fill-gray-600" />
+                            </button>
+                          </div>
+                        )}
+                        {itemEdit && selectedKey === key && (
                           <input
                             type="email"
                             defaultValue={itemEdit.sending_email_log_email}
                             autoFocus
-                            onBlur={() => setItemEdit(null)}
+                            onBlur={(e) => handleSave(e, item)}
+                            className="!h-fit !p-0 !border-0 !border-b bg-transparent rounded-none"
                           />
                         )}
-                    </td>
-                    <td className="w-[10rem]">
-                      {formatDate(item.sending_email_log_created)}
-                    </td>
-                    <td className="">
-                      {item.sending_email_log_is_success === 1 ? (
-                        <MailerLogStatus text="Sent" />
-                      ) : (
-                        <MailerLogStatus text="Failed" />
-                      )}
-                    </td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        className="w-3 h-3"
-                        defaultValue={isCheck || isCheckAll}
-                        onChange={(e) => handleCheck(e, item, key)}
-                        defaultChecked={isCheck || isCheckAll}
-                      />
-                    </td>
-                    <td className="flex items-center gap-3 mt-2 lg:mt-0">
-                      <>
-                        <button
-                          className="tooltip-action-table"
-                          data-tooltip="Resend"
-                          onClick={handleResend}
-                        >
-                          <IoIosSend className=" text-gray-600 w-5 h-5" />
-                        </button>
-                      </>
-                    </td>
-                  </tr>
-                ))}
+                      </td>
+                      <td className="w-[10rem]">
+                        {formatDate(item.sending_email_log_created)}
+                      </td>
+                      <td className="">
+                        {item.sending_email_log_is_success === 1 ? (
+                          <MailerLogStatus text="Sent" />
+                        ) : (
+                          <MailerLogStatus text="Failed" />
+                        )}
+                      </td>
+                      <td>
+                        <input
+                          type="checkbox"
+                          className="w-3 h-3"
+                          defaultValue={isCheck || isCheckAll}
+                          onClick={(e) => handleCheck(e, item, key)}
+                          // defaultChecked={isCheck || isCheckAll}
+                        />
+                      </td>
+                      <td className="flex items-center gap-3 mt-2 lg:mt-0">
+                        {selectedEmail?.length === 0 && (
+                          <button
+                            className="tooltip-action-table !p-0"
+                            data-tooltip="Resend"
+                            onClick={handleResend}
+                          >
+                            <IoIosSend className=" text-gray-600 w-4 h-4" />
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </React.Fragment>
             ))}
           </tbody>
         </table>
+
+        {selectedEmail?.length > 0 && (
+          <button className="btn-modal-submit w-fit ml-auto mt-5 mr-5">
+            Resend
+          </button>
+        )}
+
         <div className="place-self-center">
           <LoadMore
             fetchNextPage={fetchNextPage}

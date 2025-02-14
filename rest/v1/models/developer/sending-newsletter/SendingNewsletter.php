@@ -14,6 +14,8 @@ class SendingNewsletter
     public $sending_email_log_is_active;
     public $sending_email_log_audience_id;
     public $sending_email_log_email;
+    public $sending_email_log_subject;
+    public $sending_email_log_content;
     public $sending_email_log_is_success;
     public $sending_email_log_created;
     public $sending_email_log_datetime;
@@ -135,11 +137,15 @@ class SendingNewsletter
             $sql = "insert into {$this->tblSendingEmailLog} ";
             $sql .= "(sending_email_log_audience_id, ";
             $sql .= "sending_email_log_email, ";
+            $sql .= "sending_email_log_subject, ";
+            $sql .= "sending_email_log_content, ";
             $sql .= "sending_email_log_is_active, ";
             $sql .= "sending_email_log_created, ";
             $sql .= "sending_email_log_datetime ) values ( ";
             $sql .= ":sending_email_log_audience_id, ";
             $sql .= ":sending_email_log_email, ";
+            $sql .= ":sending_email_log_subject, ";
+            $sql .= ":sending_email_log_content, ";
             $sql .= "1, ";
             $sql .= ":sending_email_log_created, ";
             $sql .= ":sending_email_log_datetime ) ";
@@ -147,6 +153,8 @@ class SendingNewsletter
             $query->execute([
                 "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
                 "sending_email_log_email" => $this->sending_email_log_email,
+                "sending_email_log_subject" => $this->sending_email_log_subject,
+                "sending_email_log_content" => $this->sending_email_log_content,
                 "sending_email_log_created" => $this->sending_email_log_created,
                 "sending_email_log_datetime" => $this->sending_email_log_datetime,
             ]);
