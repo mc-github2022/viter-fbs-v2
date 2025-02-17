@@ -183,10 +183,17 @@ const BusinessRegPricing = ({ pageName }) => {
                               {price.title}
                             </h3>
                             <p
-                              className={`${price.customCss} text-2xl text-dark font-bold`}
+                              className={`${price.customCss} text-2xl text-dark font-bold flex flex-col gap-1 items-center justify-center`}
                             >
-                              {price.rate}
+                              <div className="flex gap-4">
+                                <p className="text-[16px]">Local:</p>
+                                {price.localrate}
+                              </div>
+                              <div className="flex gap-4 ">
+                                {price.foreignrate}
+                              </div>
                             </p>
+
                             <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
                               <button
                                 onClick={() => handleForm(price.title)}
