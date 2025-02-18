@@ -144,4 +144,19 @@ class MailerLog
         }
         return $query;
     }
+
+    public function deleteMailerLog()
+    {
+        try {
+            $sql = "delete from {$this->tblSendingEmailLog} ";
+            $sql .= "where sending_email_log_aid = :sending_email_log_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_aid" => $this->sending_email_log_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 }
