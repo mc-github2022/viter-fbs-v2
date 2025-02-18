@@ -42,6 +42,11 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
   const [eventsImage, setEventsImage] = React.useState(false);
   const [isDraft, setIsDraft] = React.useState(false);
 
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const handleIsSubmitted = () => {
+    setIsSubmitted(!isSubmitted);
+  };
+
   // const [isCheck, setIsCheck] = React.useState(false);
 
   // const handleCheckBox = (e) => {
@@ -330,7 +335,11 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             )}
                           </button>
                           <button
-                            className="btn-modal-submit"
+                            className={`${
+                              isSubmitted
+                                ? "pointer-events-none bg-gray-600"
+                                : ""
+                            } "btn-modal-submit"`}
                             type="submit"
                             disabled={
                               mutation.isPending ||
@@ -344,6 +353,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                                   initVal.events_activities_img_list ===
                                     photoArrayList?.name))
                             }
+                            onClick={handleIsSubmitted}
                             // disabled={
                             //   ((mutation.isPending || !props.dirty) &&
                             //     photoSingle === null) ||
