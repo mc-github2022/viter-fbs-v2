@@ -7,7 +7,13 @@ import { setError, setMessage, setSuccess } from "../../store/StoreAction";
 import { StoreContext } from "../../store/StoreContext";
 import ButtonSpinner from "../spinners/ButtonSpinner";
 
-const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
+const ModalDelete = ({
+  setIsDelete,
+  mysqlEndpoint,
+  queryKey,
+  item,
+  filesToDelete = null,
+}) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
   const handleClose = () => {
@@ -38,6 +44,7 @@ const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
   const handleYes = () => {
     mutation.mutate({
       item: item,
+      filesToDelete,
     });
   };
 

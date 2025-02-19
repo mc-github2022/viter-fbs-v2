@@ -2,7 +2,11 @@ import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete, MdOutlineFileUpload } from "react-icons/md";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { apiVersion, formatDate } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  formatDate,
+  getConvertStringToJSONparseData,
+} from "../../../../helpers/functions-general";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../partials/spinners/NoData";
@@ -103,82 +107,88 @@ const InsightsTable = ({ setItemEdit }) => {
               </tr>
             )}
 
-            {insightData?.data.map((item, key) => (
-              <tr key={key} className="place-content-start text-[14px]">
-                <td className="pl-2 place-content-start">{counter++}</td>
-                <td className="place-content-start">
-                  {item.home_insights_is_active === 1 ? (
-                    <DraftStatusEventsAndActivities text="Active" />
-                  ) : (
-                    <DraftStatusEventsAndActivities text="Draft" />
-                  )}
-                </td>
-                <td className="place-content-start">
-                  {item.home_insights_category}
-                </td>
-                <td className="place-content-start">
-                  {item.home_insights_title}
-                </td>
-                <td className="place-content-start">
-                  {item.home_insights_slug}
-                </td>
-                <td className="place-content-start">
-                  {formatDate(item.home_insights_date)}
-                </td>
-                <td>
-                  <p className="line-clamp-5">
-                    {item.home_insights_paragraph_a}
-                  </p>
-                </td>
-                <td className="place-content-start">
-                  {item.home_insights_img}
-                </td>
-                <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                  {item.home_insights_is_active ? (
-                    <>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Edit"
-                        onClick={() => handleEdit(item)}
-                      >
-                        <FaEdit className="text-gray-600 text-[16px]" />
-                      </button>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Draft"
-                        onClick={() => handleArchive(item)}
-                      >
-                        <RiDraftFill className=" text-gray-600 text-[16px]" />
-                      </button>
-                    </>
-                  ) : (
-                    <>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Edit"
-                        onClick={() => handleEdit(item)}
-                      >
-                        <FaEdit className="text-gray-600 text-[16px]" />
-                      </button>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Publish"
-                        onClick={() => handleRestore(item)}
-                      >
-                        <MdOutlineFileUpload className="text-gray-600 text-[18px]" />
-                      </button>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Delete"
-                        onClick={() => handleDelete(item)}
-                      >
-                        <MdDelete className="text-gray-600 text-[18px]" />
-                      </button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
+            {insightData?.data.map((item, key) => {
+              const insightsImages =
+                getConvertStringToJSONparseData(item.home_insights_img) || [];
+              return (
+                <tr key={key} className="place-content-start text-[14px]">
+                  <td className="pl-2 place-content-start">{counter++}</td>
+                  <td className="place-content-start">
+                    {item.home_insights_is_active === 1 ? (
+                      <DraftStatusEventsAndActivities text="Active" />
+                    ) : (
+                      <DraftStatusEventsAndActivities text="Draft" />
+                    )}
+                  </td>
+                  <td className="place-content-start">
+                    {item.home_insights_category}
+                  </td>
+                  <td className="place-content-start">
+                    {item.home_insights_title}
+                  </td>
+                  <td className="place-content-start">
+                    {item.home_insights_slug}
+                  </td>
+                  <td className="place-content-start">
+                    {formatDate(item.home_insights_date)}
+                  </td>
+                  <td>
+                    <p className="line-clamp-5">
+                      {item.home_insights_paragraph_a}
+                    </p>
+                  </td>
+                  <td className="place-content-start">
+                    {insightsImages.map((img, index) => (
+                      <p key={index}>{img.name}</p>
+                    ))}
+                  </td>
+                  <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                    {item.home_insights_is_active ? (
+                      <>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Edit"
+                          onClick={() => handleEdit(item)}
+                        >
+                          <FaEdit className="text-gray-600 text-[16px]" />
+                        </button>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Draft"
+                          onClick={() => handleArchive(item)}
+                        >
+                          <RiDraftFill className=" text-gray-600 text-[16px]" />
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Edit"
+                          onClick={() => handleEdit(item)}
+                        >
+                          <FaEdit className="text-gray-600 text-[16px]" />
+                        </button>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Publish"
+                          onClick={() => handleRestore(item)}
+                        >
+                          <MdOutlineFileUpload className="text-gray-600 text-[18px]" />
+                        </button>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Delete"
+                          onClick={() => handleDelete(item)}
+                        >
+                          <MdDelete className="text-gray-600 text-[18px]" />
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

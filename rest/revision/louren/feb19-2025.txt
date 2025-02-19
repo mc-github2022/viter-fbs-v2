@@ -1,0 +1,63 @@
+Upload JSX
+
+DEVELOPER  
+
+        * IMAGES
+            -> Banner (home-bg-new.webp, home-bg-webapp.webp, home-bg-website.webp, home-bg-va.webp, home-bg-lcs.webp)
+            -> Home Testimonials (tm_logo_white.png, world-focus-home.png, tm_logo_white.png, sent-ones.png, testimonial-robert-han-2-img.png, testi-duane-masters-2.png, testimonial-hiro-isogawa-2.png, testimonial-jared-roberts.png)
+            -> Insights (january2025-newsletter-cover.jpg, virtual-assistant.jpg, web-developer-2.jpg, learning.jpg )
+            -> Video Testimonials (lc.png, lspu.png, dlsl_official_logo.png, mfmc.png, spc.png, slis.png, plsp.png)
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/home/banner/banner.php
+            -> rest/v1/controllers/developer/home/banner/create.php
+            -> rest/v1/controllers/developer/home/banner/delete.php
+            -> rest/v1/controllers/developer/home/banner/update.php
+            -> rest/v1/controllers/developer/home/insights/create.php
+            -> rest/v1/controllers/developer/home/insights/delete.php
+            -> rest/v1/controllers/developer/home/insights/insights.php
+            -> rest/v1/controllers/developer/home/insights/update.php
+            -> rest/v1/controllers/developer/vid-testimonial/create.php
+            -> rest/v1/controllers/developer/vid-testimonial/delete.php
+            -> rest/v1/controllers/developer/vid-testimonial/update.php
+            -> rest/v1/controllers/developer/vid-testimonial/vidTestimonial.php
+        
+
+
+        * MODELS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_home_banner.sql
+            note: column updated
+              `home_banner_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_home_insights.sql
+            note: column updated
+              `home_insights_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_vid_testimonial.sql
+            note: column updated
+              `vid_testimonial_logo_img` text NOT NULL,
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+

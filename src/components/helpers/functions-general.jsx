@@ -2,10 +2,10 @@ import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
 // // local url
-// export const urlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
+export const urlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2";
+export const imgUrlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
 // export const urlPathFBSMarketingWebsite =
@@ -14,9 +14,9 @@ import { StoreContext } from "../store/StoreContext";
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
-export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
-export const imgUrlPathFBSMarketingWebsite =
-  "http://frontlinebusiness.com.ph/img";
+// export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
@@ -31,11 +31,24 @@ export const UrlDeveloper = "developer";
 export const devKey =
   "$2a$12$47wDvbLInZif/PVS8B6P3.7WxyJvUpBzZAWCsnWJUKq3nrn4qgmeO";
 
+// google api
+export const googleThumbnailLink = "https://drive.google.com/thumbnail?id=";
+export const googleHDViewLink = "https://lh3.googleusercontent.com/d/";
+export const googleViewLink = "https://drive.google.com/file/d/";
+
 // reCAPTCHA site key TEST
 // export const siteKey = "";
 
 // reCAPTCHA site key PRODUCTION
 export const siteKey = "";
+
+// get focus on a button
+export const GetFocus = (id) => {
+  React.useEffect(() => {
+    const obj = document.getElementById(id);
+    obj.focus();
+  }, []);
+};
 
 // formatting date and time
 export const setTimeZone = "Asia/Taipei";
@@ -124,23 +137,49 @@ export const options = (format) => {
   return options;
 };
 
+// // fetch for uploading photo or file
+// export const fetchFormData = async (url, fd = {}) => {
+//   try {
+//     const response = await fetch(url, {
+//       method: "POST",
+//       body: fd,
+//     });
+
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+
+//     return response; // Return response for further processing
+//   } catch (error) {
+//     console.error("API endpoint error:", error);
+//     return null; // Return null to indicate failure
+//   }
+// };
+
 // fetch for uploading photo or file
-export const fetchFormData = async (url, fd = {}) => {
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      body: fd,
+export const fetchFormData = (url, fd = {}) => {
+  const data = fetch(url, {
+    method: "post",
+    body: fd,
+  })
+    .then((res) => res.json())
+    .catch((error) => {
+      console.error(error + " api endpoint error");
     });
+  return data;
+};
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+//convert string to JSON
+export const getConvertStringToJSONparseData = (jsonString) => {
+  let resultArray = [];
 
-    return response; // Return response for further processing
-  } catch (error) {
-    console.error("API endpoint error:", error);
-    return null; // Return null to indicate failure
+  try {
+    resultArray = JSON.parse(jsonString);
+  } catch (e) {
+    // console.log(e);
   }
+
+  return resultArray;
 };
 
 // get the url id parameter

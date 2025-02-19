@@ -109,21 +109,13 @@ export const InputSelect = ({ label, onChange = null, ...props }) => {
   );
 };
 
-export const InputFileUpload = ({ label, onChange = null, ...props }) => {
+export const InputFileUpload = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>
-      <input
-        {...field}
-        {...props}
-        onChange={(e) => {
-          onChange !== null && onChange(e);
-          field.onChange(e);
-        }}
-      />
-
+      <input {...field} {...props} />
       {meta.touched && meta.error ? (
-        <span className="error-show">{meta.error}</span>
+        <span className="error--msg">{meta.error}</span>
       ) : null}
     </>
   );
