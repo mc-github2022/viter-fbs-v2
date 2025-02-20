@@ -14,7 +14,12 @@ import ModalError from "../../../partials/modals/ModalError";
 import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import { StoreContext } from "../../../store/StoreContext";
 import ModalJobApplication from "./ModalJobApplication";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../helpers/functions-general";
+import LoadImages from "../../../partials/LoadImages";
 
 const icons = {
   ...FaIcons,
@@ -102,6 +107,10 @@ const CareerPage = () => {
               const SelectedIcon = item.careers_icon
                 ? icons[item.careers_icon]
                 : null;
+
+              const careersImages =
+                getConvertStringToJSONparseData(item.careers_img) || [];
+
               return (
                 <Fragment key={key}>
                   <div
@@ -216,11 +225,13 @@ const CareerPage = () => {
                     </div>
                     <div className="jobDesc px-6 md:px-0 md:mx-[103px] mt-10">
                       <div>
-                        <img
-                          className="jobImage w-[380px] mb-6 mx-auto  lg:float-left lg:mb-0 lg:mr-6"
-                          src={`${devBaseImgUrl}/${item.careers_img}`}
-                          alt={`${item.careers_job_title} Image `}
-                        />
+                        {careersImages.map((image, index) => (
+                          <LoadImages
+                            className="jobImage w-[380px] mb-6 mx-auto  lg:float-left lg:mb-0 lg:mr-6"
+                            url={`${googleHDViewLink}${image?.id}`}
+                            alt={`${item.careers_job_title} Image `}
+                          />
+                        ))}
                         <div
                           className="jobOverview"
                           dangerouslySetInnerHTML={{

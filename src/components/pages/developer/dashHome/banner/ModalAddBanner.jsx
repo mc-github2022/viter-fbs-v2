@@ -336,7 +336,7 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper ">
                         <InputTextArea
                           label="Description"
                           type="text"

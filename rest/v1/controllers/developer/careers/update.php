@@ -22,12 +22,24 @@ if (array_key_exists("careersid", $_GET)) {
   $careers->careers_img = $data["careers_img"];
   $careers->careers_job_overview = $data["careers_job_overview"];
   $careers->careers_datetime = date("Y-m-d H:i:s");
+
+  $careers_img_old = $data["careers_img_old"];
+
   checkId($careers->careers_aid);
 
+  $pendingDeleteFile = $data['pendingDeleteFile'];
 
-  // //checks current data to avoid same entries from being updated
-  // $user_other_careers_fname_old = checkIndex($data, 'user_other_careers_fname_old');
-  // compareName($careers, $user_other_careers_fname_old, $careers->user_other_careers_fname);
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $careers->careers_img = checkToUploadGoogleDrive(
+    $careers->careers_img, // FILES
+    $careers_img_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $careers->careers_img = checkDeleteGoogleDriveApiFiles(
+    $careers->careers_img, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
+
 
   // update
   $query = checkUpdate($careers);

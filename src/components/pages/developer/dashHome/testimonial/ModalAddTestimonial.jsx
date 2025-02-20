@@ -12,6 +12,7 @@ import {
 import {
   apiVersion,
   devBaseImgUrl,
+  getConvertStringToJSONparseData,
   googleHDViewLink,
   googleViewLink,
 } from "../../../../helpers/functions-general";
@@ -36,8 +37,8 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   const [fileData, setFileData] = React.useState(null);
   const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
   // // Separate states to hold the client and logo image files
-  const [clientImage, setClientImage] = React.useState(null);
-  const [logoImage, setLogoImage] = React.useState(null);
+  const [clientImages, setClientImages] = React.useState([]);
+  const [logoImages, setLogoImages] = React.useState([]);
 
   // multiple files
   const {
@@ -47,36 +48,79 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     photoArrayList,
   } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
-  // handle for file upload for client image
+  // // handle for file upload for client image
+  // const handleChangeFileUpload = (
+  //   e,
+  //   props,
+  //   setPhotoArrayList,
+  //   fieldValue = ""
+  // ) => {
+  //   handleChangeMultiplePhoto(e, 1);
+  //   const files = e.target.files;
+  //   if (files.length > 3) return e;
+  //   let myFiles = Array.from(files);
+  //   props.setFieldValue(fieldValue, myFiles);
+  //   const oldFiles = photoArrayList?.length > 0 ? photoArrayList : [];
+  //   setPhotoArrayList([...oldFiles, ...myFiles]);
+  // };
+
+  // Handle file upload for Client Image
   const handleChangeFileUpload = (
     e,
     props,
-    setPhotoArrayList,
+    setClientImages,
     fieldValue = ""
   ) => {
     handleChangeMultiplePhoto(e, 1);
-    const files = e.target.files;
-    if (files.length > 3) return e;
-    let myFiles = Array.from(files);
-    props.setFieldValue(fieldValue, myFiles);
-    const oldFiles = photoArrayList?.length > 0 ? photoArrayList : [];
-    setPhotoArrayList([...oldFiles, ...myFiles]);
+
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
+    if (files.length > 3) return; // Limit uploads to 3
+
+    props.setFieldValue(fieldValue, files);
+
+    // ✅ Ensure previous images are kept
+    setClientImages((prev) => [...prev, ...files]);
+
+    console.log("Updated Client Images:", [...files]); // Debugging
   };
 
-  // handle for file upload for logo
+  // const handleChangeFileUpload = (
+  //   e,
+  //   props,
+  //   setPhotoArrayList,
+  //   fieldValue = ""
+  // ) => {
+  //   const files = Array.from(e.target.files);
+  //   if (files.length === 0) return;
+  //   if (files.length > 3) return; // Limit uploads to 3
+
+  //   props.setFieldValue(fieldValue, files);
+
+  //   setPhotoArrayList((prev) => [...prev, ...files]); // ✅ Safe way to update state
+  // };
+
+  // console.log("Client Images:", clientImages);
+  // console.log("Logo Images:", logoImages);
+
+  // Handle file upload for Logo
   const handleChangeFileUploadLogo = (
     e,
     props,
-    setPhotoArrayList,
+    setLogoImages,
     fieldValue = ""
   ) => {
     handleChangeMultiplePhoto(e, 1);
-    const files = e.target.files;
-    if (files.length > 3) return e;
-    let myFiles = Array.from(files);
-    props.setFieldValue(fieldValue, myFiles);
-    const oldFiles = photoArrayList?.length > 0 ? photoArrayList : [];
-    setPhotoArrayList([...oldFiles, ...myFiles]);
+
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
+    if (files.length > 3) return;
+
+    props.setFieldValue(fieldValue, files);
+
+    setLogoImages((prev) => [...prev, ...files]);
+
+    console.log("Updated Logo Images:", [...files]); // Debugging
   };
 
   const handleClickViewSlideshow = (photos, key) => {
@@ -88,11 +132,16 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     window.open(link, "_blank");
   };
 
-  // delete the file in the server (public)
-  const handleRemovePhoto = (photos, key, props) => {
+  // // delete the file in the server (public)
+  // const handleRemovePhoto = (photos, key, props) => {
+  //   if (mutation.isPending || loading) return;
+  //   setFileData({ images: photos, itemKey: key, props });
+  //   setIsRemovedPhoto(true);
+  // };
+
+  const handleRemovePhoto = (photos, key, props, setImages) => {
     if (mutation.isPending || loading) return;
-    setFileData({ images: photos, itemKey: key, props });
-    setIsRemovedPhoto(true);
+    setImages((prevFiles) => prevFiles.filter((_, index) => index !== key));
   };
 
   const handleClose = () => {
@@ -100,21 +149,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
       dispatch(setIsAdd(false));
     }, 200);
   };
-
-  // // Handlers for client and logo images
-  // const handleClientImageUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setClientImage(file); // Store client image file
-  //   }
-  // };
-
-  // const handleLogoImageUpload = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setLogoImage(file); // Store logo image file
-  //   }
-  // };
 
   const queryClient = useQueryClient();
 
@@ -141,6 +175,16 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
       }
     },
   });
+
+  React.useEffect(() => {
+    if (itemEdit) {
+      const photos = getConvertStringToJSONparseData(
+        itemEdit.home_testimonial_client_img &&
+          itemEdit.home_testimonial_logo_img
+      );
+      setPhotoArrayList(photos);
+    }
+  }, []);
 
   const initVal = {
     home_testimonial_aid: itemEdit ? itemEdit.home_testimonial_aid : "",
@@ -184,44 +228,43 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values) => {
-              // const data = {
-              //   ...values,
-              //   home_testimonial_client_img:
-              //     clientImage?.name || itemEdit.home_testimonial_client_img,
-              //   home_testimonial_logo_img:
-              //     logoImage?.name || itemEdit.home_testimonial_logo_img,
-              // };
-
-              // // Upload photos if they exist
-              // if (clientImage) await uploadPhoto(clientImage);
-              // if (logoImage) await uploadPhoto(logoImage);
-
-              // mutation.mutate(data); // Mutate form data
+              console.log("Before Upload - Client Images:", clientImages);
+              console.log("Before Upload - Logo Images:", logoImages);
 
               setLoading(true);
+
               const data = {
                 ...values,
-                home_testimonial_client_img: Array.from(photoArrayList).map(
-                  (item) =>
-                    JSON.stringify({
-                      name: item.name,
-                      id: item?.id || "",
-                    })
+                home_testimonial_client_img: clientImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
                 ),
-                home_testimonial_logo_img: Array.from(photoArrayList).map(
-                  (item) =>
-                    JSON.stringify({
-                      name: item.name,
-                      id: item?.id || "",
-                    })
+                home_testimonial_logo_img: logoImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
                 ),
               };
-              const photoUpload = await uploadMultiplePhoto();
-              if (photoUpload?.success || !photoUpload?.success) {
+
+              console.log("Final Form Data Before Upload:", data);
+
+              // ✅ Upload separately
+              const clientPhotoUpload = await uploadMultiplePhoto(clientImages);
+              console.log("Client Photo Upload Response:", clientPhotoUpload);
+
+              const logoPhotoUpload = await uploadMultiplePhoto(logoImages);
+              console.log("Logo Photo Upload Response:", logoPhotoUpload);
+
+              if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
                 setLoading(false);
               }
+
               if (!loading) console.log(data);
               mutation.mutate(data);
+              console.log("Form Data:", data);
             }}
           >
             {(props) => {
@@ -230,9 +273,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                   <div className="form-input">
                     <div className="flex gap-4 justify-between h-[480px]">
                       <div className="w-[50%] relative">
-                        <div className="flex gap-8">
+                        <div className="flex gap-8 mt-1">
                           <div className="">
-                            <label className=" top-[32px] text-dark text-xs">
+                            <label className=" top-[35px] text-dark text-xs">
                               Client Image
                             </label>
                             <div
@@ -257,11 +300,12 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                 id="myFile"
                                 accept="*"
                                 title="Upload Image"
+                                multiple
                                 onChange={(e) =>
                                   handleChangeFileUpload(
                                     e,
                                     props,
-                                    setPhotoArrayList,
+                                    setClientImages,
                                     "home_testimonial_client_img"
                                   )
                                 }
@@ -269,7 +313,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                   handleChangeFileUpload(
                                     e,
                                     props,
-                                    setPhotoArrayList,
+                                    setClientImages,
                                     "home_testimonial_client_img"
                                   )
                                 }
@@ -280,7 +324,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
                             <div className="relative mb-6 w-[230px] ">
                               <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                                {photoArrayList?.length > 0 &&
+                                {/* {photoArrayList?.length > 0 &&
                                   Array.from(photoArrayList).map(
                                     (item, key) => {
                                       const fileLink =
@@ -346,12 +390,54 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                         </React.Fragment>
                                       );
                                     }
-                                  )}
+                                  )} */}
+
+                                {clientImages.length > 0 &&
+                                  clientImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
+
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              clientImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          <button
+                                            type="button"
+                                            className="text-red-600 p-2 mr-2"
+                                            onClick={() =>
+                                              handleRemovePhoto(
+                                                clientImages,
+                                                key,
+                                                props,
+                                                setClientImages
+                                              )
+                                            }
+                                          >
+                                            <FaTrash />
+                                          </button>
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
                               </ol>
                             </div>
                           </div>
                           <div className="">
-                            <label className=" top-[32px] ml-[265px] text-dark text-xs">
+                            <label className=" top-[35px] ml-[265px] text-dark text-xs">
                               Logo
                             </label>
                             <div
@@ -376,11 +462,12 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                 id="myFile"
                                 accept="*"
                                 title="Upload File"
+                                multiple
                                 onChange={(e) =>
                                   handleChangeFileUploadLogo(
                                     e,
                                     props,
-                                    setPhotoArrayList,
+                                    setLogoImages,
                                     "home_testimonial_logo_img"
                                   )
                                 }
@@ -388,7 +475,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                   handleChangeFileUploadLogo(
                                     e,
                                     props,
-                                    setPhotoArrayList,
+                                    setLogoImages,
                                     "home_testimonial_logo_img"
                                   )
                                 }
@@ -399,7 +486,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
                             <div className="relative mb-6 w-[230px] ">
                               <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                                {photoArrayList?.length > 0 &&
+                                {/* {photoArrayList?.length > 0 &&
                                   Array.from(photoArrayList).map(
                                     (item, key) => {
                                       const fileLink =
@@ -465,7 +552,49 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                         </React.Fragment>
                                       );
                                     }
-                                  )}
+                                  )} */}
+
+                                {logoImages.length > 0 &&
+                                  logoImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
+
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              logoImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          <button
+                                            type="button"
+                                            className="text-red-600 p-2 mr-2"
+                                            onClick={() =>
+                                              handleRemovePhoto(
+                                                logos,
+                                                key,
+                                                props,
+                                                setLogos
+                                              )
+                                            }
+                                          >
+                                            <FaTrash />
+                                          </button>
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
                               </ol>
                             </div>
                           </div>
@@ -513,7 +642,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper ">
                         <InputTextArea
                           label="Message"
                           type="text"

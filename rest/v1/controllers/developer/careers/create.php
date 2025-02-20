@@ -20,8 +20,13 @@ $careers->careers_job_overview = $data["careers_job_overview"];
 $careers->careers_created = date("Y-m-d H:i:s");
 $careers->careers_datetime = date("Y-m-d H:i:s");
 
-// //checks newly added data if it already exists
-// isNameExist($careers, $careers->careers_name);
+$careers_img_old = $data["careers_img_old"];
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$careers->careers_img = checkToUploadGoogleDrive(
+    $careers->careers_img, // FILES
+    $careers_img_old, // OLD FILES
+);
 
 $query = checkCreate($careers);
 

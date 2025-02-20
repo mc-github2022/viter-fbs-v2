@@ -3,7 +3,12 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import Slider from "react-slick";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -184,6 +189,10 @@ const ImmersionVidTestimonials = () => {
                 if (
                   item.vid_testimonial_category === "High School Work Immersion"
                 ) {
+                  const vidTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.vid_testimonial_logo_img
+                    ) || [];
                   return (
                     <div
                       className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative"
@@ -208,12 +217,15 @@ const ImmersionVidTestimonials = () => {
                         </p>
                       </div>
                       <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
-                        <img
-                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                          src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
-                          className="w-[60px]  mr-4"
-                          alt="Trainees Work Experience"
-                        />
+                        {vidTestimonialsImages.map((image, index) => (
+                          <LoadImages
+                            // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                            url={`${googleHDViewLink}${image?.id}`}
+                            className="w-[60px]  mr-4"
+                            alt="Trainees Work Experience"
+                            key={index}
+                          />
+                        ))}
                         <div className="italic">
                           <p className="font-semibold">
                             {item.vid_testimonial_name}
@@ -242,6 +254,10 @@ const ImmersionVidTestimonials = () => {
                 if (
                   item.vid_testimonial_category === "High School Work Immersion"
                 ) {
+                  const vidTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.vid_testimonial_logo_img
+                    ) || [];
                   return (
                     <div
                       className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative"
@@ -262,12 +278,15 @@ const ImmersionVidTestimonials = () => {
                         </p>
                       </div>
                       <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
-                        <img
-                          // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
-                          src={`${devBaseImgUrl}/${item.vid_testimonial_logo_img}`}
-                          className="w-[60px]  mr-4"
-                          alt="Trainees Work Experience"
-                        />
+                        {vidTestimonialsImages.map((image, index) => (
+                          <LoadImages
+                            // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
+                            url={`${googleHDViewLink}${image?.id}`}
+                            className="w-[60px]  mr-4"
+                            alt="Trainees Work Experience"
+                            key={index}
+                          />
+                        ))}
                         <div className="italic">
                           <p className="font-semibold">
                             {item.vid_testimonial_name}
