@@ -19,8 +19,7 @@ $home_testimonial->home_testimonial_datetime = date("Y-m-d H:i:s");
 
 $home_testimonial_client_img_old = $data["home_testimonial_client_img_old"];
 $home_testimonial_logo_img_old = $data["home_testimonial_logo_img_old"];
-// //checks newly added data if it already exists
-// isNameExist($home_testimonial, $home_testimonial->home_testimonial_name);
+
 
 // UPLOAD FILE TO GOOGLE DRIVE  
 $home_testimonial->home_testimonial_client_img = checkToUploadGoogleDrive(

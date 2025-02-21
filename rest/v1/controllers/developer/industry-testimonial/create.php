@@ -19,8 +19,20 @@ $industry_testimonial->industry_testimonial_category = checkIndex($data, "indust
 $industry_testimonial->industry_testimonial_created = date("Y-m-d H:i:s");
 $industry_testimonial->industry_testimonial_datetime = date("Y-m-d H:i:s");
 
-// //checks newly added data if it already exists
-// isNameExist($industry_testimonial, $industry_testimonial->industry_testimonial_name);
+$industry_testimonial_img_old = $data["industry_testimonial_img_old"];
+$industry_testimonial_logo_old = $data["industry_testimonial_logo_old"];
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$industry_testimonial->industry_testimonial_img = checkToUploadGoogleDrive(
+    $industry_testimonial->industry_testimonial_img, // FILES
+    $industry_testimonial_img_old, // OLD FILES
+);
+
+$industry_testimonial->industry_testimonial_logo = checkToUploadGoogleDrive(
+    $industry_testimonial->industry_testimonial_logo, // FILES
+    $industry_testimonial_logo_old, // OLD FILES
+);
+
 
 $query = checkCreate($industry_testimonial);
 

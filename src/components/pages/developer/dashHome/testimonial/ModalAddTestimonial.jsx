@@ -34,94 +34,27 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [fileData, setFileData] = React.useState(null);
+  const [fileData, setFileData] = React.useState({
+    images: [],
+    itemKey: null,
+    props: null,
+    type: "", // 'client' or 'logo'
+  });
   const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
-  // // Separate states to hold the client and logo image files
-  const [clientImages, setClientImages] = React.useState([]);
-  const [logoImages, setLogoImages] = React.useState([]);
 
-  // multiple files
   const {
-    uploadMultiplePhoto,
-    handleChangeMultiplePhoto,
-    setPhotoArrayList,
-    photoArrayList,
+    uploadMultiplePhoto: uploadClientImages,
+    handleChangeMultiplePhoto: handleChangeClientImages,
+    setPhotoArrayList: setClientImages,
+    photoArrayList: clientImages,
   } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
-  // // handle for file upload for client image
-  // const handleChangeFileUpload = (
-  //   e,
-  //   props,
-  //   setPhotoArrayList,
-  //   fieldValue = ""
-  // ) => {
-  //   handleChangeMultiplePhoto(e, 1);
-  //   const files = e.target.files;
-  //   if (files.length > 3) return e;
-  //   let myFiles = Array.from(files);
-  //   props.setFieldValue(fieldValue, myFiles);
-  //   const oldFiles = photoArrayList?.length > 0 ? photoArrayList : [];
-  //   setPhotoArrayList([...oldFiles, ...myFiles]);
-  // };
-
-  // Handle file upload for Client Image
-  const handleChangeFileUpload = (
-    e,
-    props,
-    setClientImages,
-    fieldValue = ""
-  ) => {
-    handleChangeMultiplePhoto(e, 1);
-
-    const files = Array.from(e.target.files);
-    if (files.length === 0) return;
-    if (files.length > 3) return; // Limit uploads to 3
-
-    props.setFieldValue(fieldValue, files);
-
-    // ✅ Ensure previous images are kept
-    setClientImages((prev) => [...prev, ...files]);
-
-    console.log("Updated Client Images:", [...files]); // Debugging
-  };
-
-  // const handleChangeFileUpload = (
-  //   e,
-  //   props,
-  //   setPhotoArrayList,
-  //   fieldValue = ""
-  // ) => {
-  //   const files = Array.from(e.target.files);
-  //   if (files.length === 0) return;
-  //   if (files.length > 3) return; // Limit uploads to 3
-
-  //   props.setFieldValue(fieldValue, files);
-
-  //   setPhotoArrayList((prev) => [...prev, ...files]); // ✅ Safe way to update state
-  // };
-
-  // console.log("Client Images:", clientImages);
-  // console.log("Logo Images:", logoImages);
-
-  // Handle file upload for Logo
-  const handleChangeFileUploadLogo = (
-    e,
-    props,
-    setLogoImages,
-    fieldValue = ""
-  ) => {
-    handleChangeMultiplePhoto(e, 1);
-
-    const files = Array.from(e.target.files);
-    if (files.length === 0) return;
-    if (files.length > 3) return;
-
-    props.setFieldValue(fieldValue, files);
-
-    setLogoImages((prev) => [...prev, ...files]);
-
-    console.log("Updated Logo Images:", [...files]); // Debugging
-  };
+  const {
+    uploadMultiplePhoto: uploadLogoImages,
+    handleChangeMultiplePhoto: handleChangeLogoImages,
+    setPhotoArrayList: setLogoImages,
+    photoArrayList: logoImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
   const handleClickViewSlideshow = (photos, key) => {
     if (mutation.isPending || loading) return;
@@ -132,16 +65,11 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     window.open(link, "_blank");
   };
 
-  // // delete the file in the server (public)
-  // const handleRemovePhoto = (photos, key, props) => {
-  //   if (mutation.isPending || loading) return;
-  //   setFileData({ images: photos, itemKey: key, props });
-  //   setIsRemovedPhoto(true);
-  // };
-
-  const handleRemovePhoto = (photos, key, props, setImages) => {
+  // delete the file in the server (public)
+  const handleRemovePhoto = (photos, key, props, type) => {
     if (mutation.isPending || loading) return;
-    setImages((prevFiles) => prevFiles.filter((_, index) => index !== key));
+    setFileData({ images: photos, itemKey: key, props, type });
+    setIsRemovedPhoto(true);
   };
 
   const handleClose = () => {
@@ -178,11 +106,16 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
   React.useEffect(() => {
     if (itemEdit) {
-      const photos = getConvertStringToJSONparseData(
-        itemEdit.home_testimonial_client_img &&
-          itemEdit.home_testimonial_logo_img
+      const clientPhotos = getConvertStringToJSONparseData(
+        itemEdit.home_testimonial_client_img
       );
-      setPhotoArrayList(photos);
+      setClientImages(clientPhotos);
+    }
+    if (itemEdit) {
+      const logoPhotos = getConvertStringToJSONparseData(
+        itemEdit.home_testimonial_logo_img
+      );
+      setLogoImages(logoPhotos);
     }
   }, []);
 
@@ -228,9 +161,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values) => {
-              console.log("Before Upload - Client Images:", clientImages);
-              console.log("Before Upload - Logo Images:", logoImages);
-
               setLoading(true);
 
               const data = {
@@ -249,14 +179,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                 ),
               };
 
-              console.log("Final Form Data Before Upload:", data);
-
-              // ✅ Upload separately
-              const clientPhotoUpload = await uploadMultiplePhoto(clientImages);
-              console.log("Client Photo Upload Response:", clientPhotoUpload);
-
-              const logoPhotoUpload = await uploadMultiplePhoto(logoImages);
-              console.log("Logo Photo Upload Response:", logoPhotoUpload);
+              // Upload separately
+              const clientPhotoUpload = await uploadClientImages(clientImages);
+              const logoPhotoUpload = await uploadLogoImages(logoImages);
 
               if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
                 setLoading(false);
@@ -264,7 +189,6 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
 
               if (!loading) console.log(data);
               mutation.mutate(data);
-              console.log("Form Data:", data);
             }}
           >
             {(props) => {
@@ -294,104 +218,21 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                               </span>
 
                               <InputFileUpload
-                                label="Upload Banner Image"
+                                label="Upload Image"
                                 name="File"
                                 type="file"
                                 id="myFile"
                                 accept="*"
                                 title="Upload Image"
-                                multiple
-                                onChange={(e) =>
-                                  handleChangeFileUpload(
-                                    e,
-                                    props,
-                                    setClientImages,
-                                    "home_testimonial_client_img"
-                                  )
-                                }
-                                onDrop={(e) =>
-                                  handleChangeFileUpload(
-                                    e,
-                                    props,
-                                    setClientImages,
-                                    "home_testimonial_client_img"
-                                  )
-                                }
+                                onChange={handleChangeClientImages}
+                                onDrop={(e) => handleChangeClientImages(e)}
                                 disabled={mutation.isPending || loading}
                                 className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
                               />
                             </div>
 
-                            <div className="relative mb-6 w-[230px] ">
+                            <div className="relative w-[230px] ">
                               <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                                {/* {photoArrayList?.length > 0 &&
-                                  Array.from(photoArrayList).map(
-                                    (item, key) => {
-                                      const fileLink =
-                                        item instanceof File ||
-                                        item instanceof Blob
-                                          ? URL.createObjectURL(item)
-                                          : `${googleHDViewLink}${item?.id}`;
-
-                                      return (
-                                        <React.Fragment key={key}>
-                                          <li
-                                            className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
-                                              (mutation.isPending || loading) &&
-                                              `!cursor-not-allowed`
-                                            }`}
-                                            onClick={() => {
-                                              handleClickViewSlideshow(
-                                                photoArrayList,
-                                                key
-                                              );
-                                            }}
-                                          >
-                                            <LoadImages
-                                              url={fileLink}
-                                              className={`relative z-20 w-full h-full object-cover object-center`}
-                                            />
-                                            {(!mutation.isPending ||
-                                              !loading) && (
-                                              <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
-                                                <span>
-                                                  Click to View <br />
-                                                  {key + 1}. {item.name}
-                                                </span>
-
-                                                <div
-                                                  className="absolute bottom-0 right-0 flex items-center gap-2"
-                                                  onClick={(e) => {
-                                                    e.stopPropagation();
-                                                  }}
-                                                >
-                                                  <button
-                                                    type="button"
-                                                    className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
-                                                    data-tooltip={`Delete`}
-                                                    disabled={
-                                                      mutation.isPending ||
-                                                      loading
-                                                    }
-                                                    onClick={() =>
-                                                      handleRemovePhoto(
-                                                        photoArrayList,
-                                                        key,
-                                                        props
-                                                      )
-                                                    }
-                                                  >
-                                                    <FaTrash />
-                                                  </button>
-                                                </div>
-                                              </div>
-                                            )}
-                                          </li>
-                                        </React.Fragment>
-                                      );
-                                    }
-                                  )} */}
-
                                 {clientImages.length > 0 &&
                                   clientImages.map((item, key) => {
                                     const fileLink =
@@ -403,32 +244,57 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                     return (
                                       <React.Fragment key={key}>
                                         <li
-                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
-                                          onClick={() =>
+                                          className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
+                                            (mutation.isPending || loading) &&
+                                            `!cursor-not-allowed`
+                                          }`}
+                                          onClick={() => {
                                             handleClickViewSlideshow(
-                                              clientImages,
+                                              photoArrayList,
                                               key
-                                            )
-                                          }
+                                            );
+                                          }}
                                         >
                                           <LoadImages
                                             url={fileLink}
                                             className="relative z-20 w-full h-full object-cover object-center"
                                           />
-                                          <button
-                                            type="button"
-                                            className="text-red-600 p-2 mr-2"
-                                            onClick={() =>
-                                              handleRemovePhoto(
-                                                clientImages,
-                                                key,
-                                                props,
-                                                setClientImages
-                                              )
-                                            }
-                                          >
-                                            <FaTrash />
-                                          </button>
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
+
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
+                                              >
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      clientImages,
+                                                      key,
+                                                      props,
+                                                      "client"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
                                         </li>
                                       </React.Fragment>
                                     );
@@ -456,104 +322,21 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                               </span>
 
                               <InputFileUpload
-                                label="Upload Banner Image"
+                                label="Upload Image"
                                 name="File"
                                 type="file"
                                 id="myFile"
                                 accept="*"
                                 title="Upload File"
-                                multiple
-                                onChange={(e) =>
-                                  handleChangeFileUploadLogo(
-                                    e,
-                                    props,
-                                    setLogoImages,
-                                    "home_testimonial_logo_img"
-                                  )
-                                }
-                                onDrop={(e) =>
-                                  handleChangeFileUploadLogo(
-                                    e,
-                                    props,
-                                    setLogoImages,
-                                    "home_testimonial_logo_img"
-                                  )
-                                }
+                                onChange={handleChangeLogoImages}
+                                onDrop={(e) => handleChangeLogoImages(e)}
                                 disabled={mutation.isPending || loading}
                                 className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
                               />
                             </div>
 
-                            <div className="relative mb-6 w-[230px] ">
+                            <div className="relative w-[230px] ">
                               <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                                {/* {photoArrayList?.length > 0 &&
-                                  Array.from(photoArrayList).map(
-                                    (item, key) => {
-                                      const fileLink =
-                                        item instanceof File ||
-                                        item instanceof Blob
-                                          ? URL.createObjectURL(item)
-                                          : `${googleHDViewLink}${item?.id}`;
-
-                                      return (
-                                        <React.Fragment key={key}>
-                                          <li
-                                            className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
-                                              (mutation.isPending || loading) &&
-                                              `!cursor-not-allowed`
-                                            }`}
-                                            onClick={() => {
-                                              handleClickViewSlideshow(
-                                                photoArrayList,
-                                                key
-                                              );
-                                            }}
-                                          >
-                                            <LoadImages
-                                              url={fileLink}
-                                              className={`relative z-20 w-full h-full object-cover object-center`}
-                                            />
-                                            {(!mutation.isPending ||
-                                              !loading) && (
-                                              <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
-                                                <span>
-                                                  Click to View <br />
-                                                  {key + 1}. {item.name}
-                                                </span>
-
-                                                <div
-                                                  className="absolute bottom-0 right-0 flex items-center gap-2"
-                                                  onClick={(e) => {
-                                                    e.stopPropagation();
-                                                  }}
-                                                >
-                                                  <button
-                                                    type="button"
-                                                    className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
-                                                    data-tooltip={`Delete`}
-                                                    disabled={
-                                                      mutation.isPending ||
-                                                      loading
-                                                    }
-                                                    onClick={() =>
-                                                      handleRemovePhoto(
-                                                        photoArrayList,
-                                                        key,
-                                                        props
-                                                      )
-                                                    }
-                                                  >
-                                                    <FaTrash />
-                                                  </button>
-                                                </div>
-                                              </div>
-                                            )}
-                                          </li>
-                                        </React.Fragment>
-                                      );
-                                    }
-                                  )} */}
-
                                 {logoImages.length > 0 &&
                                   logoImages.map((item, key) => {
                                     const fileLink =
@@ -577,20 +360,42 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                             url={fileLink}
                                             className="relative z-20 w-full h-full object-cover object-center"
                                           />
-                                          <button
-                                            type="button"
-                                            className="text-red-600 p-2 mr-2"
-                                            onClick={() =>
-                                              handleRemovePhoto(
-                                                logos,
-                                                key,
-                                                props,
-                                                setLogos
-                                              )
-                                            }
-                                          >
-                                            <FaTrash />
-                                          </button>
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
+
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
+                                              >
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      logoImages,
+                                                      key,
+                                                      props,
+                                                      "logo"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
                                         </li>
                                       </React.Fragment>
                                     );
@@ -622,7 +427,10 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                 className="btn-modal-submit"
                                 type="submit"
                                 disabled={
-                                  mutation.isPending || !props.dirty || loading
+                                  mutation.isPending ||
+                                  !props.dirty ||
+                                  loading ||
+                                  (!clientImages?.length && !logoImages?.length)
                                 }
                               >
                                 {mutation.isPending ? (
@@ -631,6 +439,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                   "Save"
                                 )}
                               </button>
+
                               <button
                                 className="btn-modal-cancel"
                                 type="button"
@@ -667,7 +476,9 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
           itemProps={fileData.props}
           msg="Are you sure you want to remove this file?"
           setIsModalShow={setIsRemovedPhoto}
-          setNewFile={setPhotoArrayList}
+          setNewFile={
+            fileData.type === "client" ? setClientImages : setLogoImages
+          }
         />
       )}
     </>

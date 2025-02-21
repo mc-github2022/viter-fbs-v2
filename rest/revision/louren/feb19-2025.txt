@@ -8,6 +8,7 @@ DEVELOPER
             -> Insights (january2025-newsletter-cover.jpg, virtual-assistant.jpg, web-developer-2.jpg, learning.jpg )
             -> Video Testimonials ()
             -> Careers (fbs-ads-ea.png, social_media_manager.png, accounting-associate-300x198.png, fbs-career-sales-assistant.png, hiring-wordpress-300x198.png, hiring-mobile-dev-300x198.png, fbs-ads-IT-Supp-300x189.png, Senior-Service-Desk-Engineer-300x189.png, data-entry-operator-300x189.png, fbsAdsCSR-300x189.png, fbs-ads-TSE-1-300x189.jpg, hiring-virtual-assistant-555x350.png, fbs-ads-lead-gen.png, fbs-ads-Accounting-instructor.png, fbs-ads-web.png, fbs-ads-bookkeeper_trans.png, fbs-careers-qa.png, fbs-ads-Donation_trans.png, caree-accounts-payable-image.png   )
+            -> Industry Testimonials ()
 
         * CONTROLLERS
             -> rest/v1/controllers/developer/home/banner/banner.php
