@@ -17,8 +17,20 @@ $home_testimonial->home_testimonial_logo_img = $data["home_testimonial_logo_img"
 $home_testimonial->home_testimonial_created = date("Y-m-d H:i:s");
 $home_testimonial->home_testimonial_datetime = date("Y-m-d H:i:s");
 
-// //checks newly added data if it already exists
-// isNameExist($home_testimonial, $home_testimonial->home_testimonial_name);
+$home_testimonial_client_img_old = $data["home_testimonial_client_img_old"];
+$home_testimonial_logo_img_old = $data["home_testimonial_logo_img_old"];
+
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$home_testimonial->home_testimonial_client_img = checkToUploadGoogleDrive(
+    $home_testimonial->home_testimonial_client_img, // FILES
+    $home_testimonial_client_img_old, // OLD FILES
+);
+
+$home_testimonial->home_testimonial_logo_img = checkToUploadGoogleDrive(
+    $home_testimonial->home_testimonial_logo_img, // FILES
+    $home_testimonial_logo_img_old, // OLD FILES
+);
 
 $query = checkCreate($home_testimonial);
 

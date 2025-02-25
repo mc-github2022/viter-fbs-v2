@@ -123,7 +123,6 @@ const VaTechSupportPartnersSay = () => {
                       <div className="theMessage  relative">
                         <div className="absolute top-[-30px] left-[-40px]">
                           <img
-                            // src={`${devBaseImgUrl}/quote-white.png`}
                             src={`../../public/img//quote-white.png`}
                             className="w-[80px]"
                             alt=""
@@ -134,7 +133,6 @@ const VaTechSupportPartnersSay = () => {
                         </p>
                         <div className="logoAndName flex items-center gap-3">
                           <img
-                            // src={`${devBaseImgUrl}/sti.png`}
                             className="w-[80px]"
                             src={`../../public/img/${testimonial.clientLogo}`}
                             alt=""
@@ -147,7 +145,6 @@ const VaTechSupportPartnersSay = () => {
                       </div>
                       <div className="hidden lg:block">
                         <img
-                          // src={`${devBaseImgUrl}/Client_IMG_1.png`}
                           src={`../../public/img/${testimonial.clientProfilePic}`}
                           className="absolute bottom-0 w-[300px] right-8"
                           alt=""

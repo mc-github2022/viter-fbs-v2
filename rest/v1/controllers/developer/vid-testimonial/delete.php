@@ -10,9 +10,20 @@ $returnData = [];
 if (array_key_exists("vid_testimonialid", $_GET)) {
   // get data
   $vid_testimonial->vid_testimonial_aid = $_GET['vid_testimonialid'];
+  $filesToDelete = $data['filesToDelete'];
   checkId($vid_testimonial->vid_testimonial_aid);
 
   $query = checkDelete($vid_testimonial);
+
+  // TO DELETE ALL FILES IN GOOGLE DRIVE API
+  // returnError($jsonStringToArray);
+  if ($filesToDelete != '') {
+    $jsonStringToArray = (array)json_decode($filesToDelete);
+    $pendingDeleteFile = array_map(function ($item) {
+      return json_encode($item, true);
+    }, $jsonStringToArray);
+    checkDeleteGoogleDriveApiFiles($filesToDelete, $pendingDeleteFile);
+  }
 
   returnSuccess($vid_testimonial, "vidTestimonial", $query);
 }

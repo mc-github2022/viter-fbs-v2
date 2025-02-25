@@ -10,6 +10,10 @@ import ModalDelete from "../../../../partials/modals/ModalDelete";
 import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import useQueryData from "../../../../custom-hooks/useQueryData";
+import {
+  apiVersion,
+  getConvertStringToJSONparseData,
+} from "../../../../helpers/functions-general";
 
 const BannerTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -22,7 +26,7 @@ const BannerTable = ({ setItemEdit }) => {
     isLoading,
     data: bannerData,
   } = useQueryData(
-    "/v1/banner", // endpoint
+    `${apiVersion}/banner`, // endpoint
     "get", // method
     "banner" // key
   );
@@ -39,6 +43,7 @@ const BannerTable = ({ setItemEdit }) => {
     setIsData(item.home_banner_title);
     setIsId(item.home_banner_aid);
   };
+
 
   return (
     <>
@@ -73,40 +78,51 @@ const BannerTable = ({ setItemEdit }) => {
               </tr>
             )}
 
-            {bannerData?.data.map((item, key) => (
-              <tr key={key} className="place-content-start text-[14px]">
-                <td className="pl-2 place-content-start">{counter++}</td>
-                <td className="place-content-start">
-                  {item.home_banner_sub_title}
-                </td>
-                <td className="place-content-start">
-                  {item.home_banner_title}
-                </td>
-                <td className="place-content-start">
-                  <p className="line-clamp-5">{item.home_banner_description}</p>
-                </td>
-                <td className="place-content-start">
-                  {item.home_banner_button_text}
-                </td>
-                <td className="place-content-start">{item.home_banner_img}</td>
-                <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                  <button
-                    className="tooltip-action-table"
-                    data-tooltip="Edit"
-                    onClick={() => handleEdit(item)}
-                  >
-                    <FaEdit className="text-gray-600 text-[16px]" />
-                  </button>
-                  <button
-                    className="tooltip-action-table"
-                    data-tooltip="Delete"
-                    onClick={() => handleDelete(item)}
-                  >
-                    <MdDelete className="text-gray-600 text-[18px]" />
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {bannerData?.data.map((item, key) => {
+              // Convert home_banner_img for this specific item
+              const bannerImages =
+                getConvertStringToJSONparseData(item.home_banner_img) || [];
+              return (
+                <tr key={key} className="place-content-start text-[14px]">
+                  <td className="pl-2 place-content-start">{counter++}</td>
+                  <td className="place-content-start">
+                    {item.home_banner_sub_title}
+                  </td>
+                  <td className="place-content-start">
+                    {item.home_banner_title}
+                  </td>
+                  <td className="place-content-start">
+                    <p className="line-clamp-5">
+                      {item.home_banner_description}
+                    </p>
+                  </td>
+                  <td className="place-content-start">
+                    {item.home_banner_button_text}
+                  </td>
+                  <td className="place-content-start">
+                    {bannerImages.map((img, index) => (
+                      <p key={index}>{img.name}</p>
+                    ))}
+                  </td>
+                  <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                    <button
+                      className="tooltip-action-table"
+                      data-tooltip="Edit"
+                      onClick={() => handleEdit(item)}
+                    >
+                      <FaEdit className="text-gray-600 text-[16px]" />
+                    </button>
+                    <button
+                      className="tooltip-action-table"
+                      data-tooltip="Delete"
+                      onClick={() => handleDelete(item)}
+                    >
+                      <MdDelete className="text-gray-600 text-[18px]" />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -117,6 +133,7 @@ const BannerTable = ({ setItemEdit }) => {
           queryKey={"banner"}
           mysqlEndpoint={`/v1/banner/${id}`}
           item={isData}
+          filesToDelete={isData.knowledge_based_announcement_files}
         />
       )}
     </>

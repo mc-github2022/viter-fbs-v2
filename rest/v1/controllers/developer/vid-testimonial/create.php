@@ -19,6 +19,14 @@ $vid_testimonial->vid_testimonial_message = $data["vid_testimonial_message"];
 $vid_testimonial->vid_testimonial_created = date("Y-m-d H:i:s");
 $vid_testimonial->vid_testimonial_datetime = date("Y-m-d H:i:s");
 
+$vid_testimonial_logo_img_old = $data["vid_testimonial_logo_img_old"];
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$vid_testimonial->vid_testimonial_logo_img = checkToUploadGoogleDrive(
+    $vid_testimonial->vid_testimonial_logo_img, // FILES
+    $vid_testimonial_logo_img_old, // OLD FILES
+);
+
 // //checks newly added data if it already exists
 // isNameExist($vid_testimonial, $vid_testimonial->vid_testimonial_name);
 

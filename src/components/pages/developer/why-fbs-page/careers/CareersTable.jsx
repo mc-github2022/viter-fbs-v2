@@ -9,6 +9,8 @@ import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
+import CareersStatus from "./CareersStatus";
+import { getConvertStringToJSONparseData } from "../../../../helpers/functions-general";
 
 const CareersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -75,46 +77,62 @@ const CareersTable = ({ setItemEdit }) => {
               </tr>
             )}
 
-            {careersData?.data.map((item, key) => (
-              <tr key={key} className="place-content-start text-[14px]">
-                <td className="pl-2 place-content-start">{counter++}</td>
-                <td className="place-content-start">{item.careers_icon}</td>
-                <td className="place-content-start">
-                  {item.careers_job_title}
-                </td>
-                <td className="place-content-start">
-                  {item.careers_job_classification}
-                </td>
-                <td className="place-content-start">{item.careers_job_mode}</td>
-                <td className="place-content-start">
-                  {item.careers_job_status}
-                </td>
-                <td>
-                  <p className="line-clamp-5">{item.careers_job_overview}</p>
-                </td>
-                <td>
-                  <p className="line-clamp-5">{item.careers_job_description}</p>
-                </td>
-                <td className="place-content-start">{item.careers_img}</td>
+            {careersData?.data.map((item, key) => {
+              const careersImages =
+                getConvertStringToJSONparseData(item.careers_img) || [];
+              return (
+                <tr key={key} className="place-content-start text-[14px]">
+                  <td className="pl-2 place-content-start">{counter++}</td>
+                  <td className="place-content-start">{item.careers_icon}</td>
+                  <td className="place-content-start">
+                    {item.careers_job_title}
+                  </td>
+                  <td className="place-content-start">
+                    {item.careers_job_classification}
+                  </td>
+                  <td className="place-content-start">
+                    {item.careers_job_mode}
+                  </td>
+                  <td className="place-content-start">
+                    {item.careers_job_status === "Ongoing" ? (
+                      <CareersStatus text="Ongoing" />
+                    ) : (
+                      <CareersStatus text="Closed" />
+                    )}
+                  </td>
+                  <td>
+                    <p className="line-clamp-5">{item.careers_job_overview}</p>
+                  </td>
+                  <td>
+                    <p className="line-clamp-5">
+                      {item.careers_job_description}
+                    </p>
+                  </td>
+                  <td className="place-content-start">
+                    {careersImages.map((img, index) => (
+                      <p key={index}>{img.name}</p>
+                    ))}
+                  </td>
 
-                <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                  <button
-                    className="tooltip-action-table"
-                    data-tooltip="Edit"
-                    onClick={() => handleEdit(item)}
-                  >
-                    <FaEdit className="text-gray-600 text-[16px]" />
-                  </button>
-                  <button
-                    className="tooltip-action-table"
-                    data-tooltip="Delete"
-                    onClick={() => handleDelete(item)}
-                  >
-                    <MdDelete className="text-gray-600 text-[18px]" />
-                  </button>
-                </td>
-              </tr>
-            ))}
+                  <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                    <button
+                      className="tooltip-action-table"
+                      data-tooltip="Edit"
+                      onClick={() => handleEdit(item)}
+                    >
+                      <FaEdit className="text-gray-600 text-[16px]" />
+                    </button>
+                    <button
+                      className="tooltip-action-table"
+                      data-tooltip="Delete"
+                      onClick={() => handleDelete(item)}
+                    >
+                      <MdDelete className="text-gray-600 text-[18px]" />
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
