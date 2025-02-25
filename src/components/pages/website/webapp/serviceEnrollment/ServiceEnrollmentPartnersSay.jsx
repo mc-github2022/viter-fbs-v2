@@ -4,7 +4,12 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
 
 const sliderCount = document.querySelectorAll(".slick-slide").length;
 
@@ -137,6 +142,14 @@ const ServiceEnrollmentPartnersSay = () => {
             ).length > 1 ? (
               <Slider ref={sliderRef} {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
+                  const industryTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_img
+                    ) || [];
+                  const industryTestimonialsLogo =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_logo
+                    ) || [];
                   if (
                     item.industry_testimonial_category ===
                     "School Enrollment System"
@@ -159,11 +172,14 @@ const ServiceEnrollmentPartnersSay = () => {
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt={`${item.industry_testimonial_name}`}
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -178,11 +194,14 @@ const ServiceEnrollmentPartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt={`${item.industry_testimonial_name}`}
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -193,6 +212,14 @@ const ServiceEnrollmentPartnersSay = () => {
             ) : (
               <div>
                 {IndtestimonialData?.data.map((item, key) => {
+                  const industryTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_img
+                    ) || [];
+                  const industryTestimonialsLogo =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_logo
+                    ) || [];
                   if (
                     item.industry_testimonial_category ===
                     "School Enrollment System"
@@ -215,11 +242,14 @@ const ServiceEnrollmentPartnersSay = () => {
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt={`${item.industry_testimonial_name}`}
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -234,11 +264,14 @@ const ServiceEnrollmentPartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt={`${item.industry_testimonial_name}`}
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>
