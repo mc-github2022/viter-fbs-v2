@@ -21,6 +21,14 @@ $home_insights->home_insights_paragraph_c = $data["home_insights_paragraph_c"];
 $home_insights->home_insights_created = date("Y-m-d H:i:s");
 $home_insights->home_insights_datetime = date("Y-m-d H:i:s");
 
+$home_insights_img_old = $data["home_insights_img_old"];
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$home_insights->home_insights_img = checkToUploadGoogleDrive(
+    $home_insights->home_insights_img, // FILES
+    $home_insights_img_old, // OLD FILES
+);
+
 // //checks newly added data if it already exists
 // isNameExist($home_insights, $home_insights->home_insights_name);
 

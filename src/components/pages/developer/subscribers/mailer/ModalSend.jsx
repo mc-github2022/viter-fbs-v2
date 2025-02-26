@@ -39,6 +39,8 @@ const ModalSend = ({
       "post",
       {
         recipientList: recipientList,
+        newsletter: item.newsletter,
+        newsletter_subject: item.newsletter_subject,
       }
     );
 

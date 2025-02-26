@@ -7,6 +7,7 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import * as Yup from "yup";
 import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 import {
+  InputFileUpload,
   InputPhotoUpload,
   InputText,
   InputTextArea,
@@ -14,6 +15,9 @@ import {
 import {
   apiVersion,
   devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+  googleViewLink,
 } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
@@ -25,12 +29,58 @@ import {
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import PreviewPage from "./PreviewPage";
+import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
+import ModalRemovedPhoto from "../../../../partials/modals/ModalRemovedPhoto";
+import { FaTrash } from "react-icons/fa";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
-    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
   const [isDraft, setIsDraft] = React.useState(false);
+  const [withFile, setWithFile] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [fileData, setFileData] = React.useState(null);
+  const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
+
+  // multiple files
+  const {
+    uploadMultiplePhoto,
+    handleChangeMultiplePhoto,
+    setPhotoArrayList,
+    photoArrayList,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  // handle for file upload
+  const handleChangeFileUpload = (
+    e,
+    props,
+    setPhotoArrayList,
+    fieldValue = ""
+  ) => {
+    handleChangeMultiplePhoto(e, 1);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = photoArrayList?.length > 0 ? photoArrayList : [];
+    setPhotoArrayList([...oldFiles, ...myFiles]);
+  };
+
+  const handleClickViewSlideshow = (photos, key) => {
+    if (mutation.isPending || loading) return;
+    const link =
+      photos[key] instanceof Blob || photos[key] instanceof File
+        ? URL.createObjectURL(photos[key])
+        : `${googleViewLink}${photos[key]?.id}`;
+    window.open(link, "_blank");
+  };
+
+  // delete the file in the server (public)
+  const handleRemovePhoto = (photos, key, props) => {
+    if (mutation.isPending || loading) return;
+    setFileData({ images: photos, itemKey: key, props });
+    setIsRemovedPhoto(true);
+  };
 
   const handleClose = () => {
     setTimeout(() => {
@@ -69,6 +119,15 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     },
   });
 
+  React.useEffect(() => {
+    if (itemEdit) {
+      const photos = getConvertStringToJSONparseData(
+        itemEdit.home_insights_img
+      );
+      setPhotoArrayList(photos);
+    }
+  }, []);
+
   const initVal = {
     home_insights_aid: itemEdit ? itemEdit.home_insights_aid : "",
     home_insights_category: itemEdit ? itemEdit.home_insights_category : "",
@@ -86,6 +145,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
       : "",
     home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
     home_insights_is_active: itemEdit ? itemEdit.home_insights_is_active : "",
+
+    home_insights_img_old: itemEdit ? itemEdit.home_insights_img : "",
+    pendingDeleteFile: [],
   };
 
   const yupSchema = Yup.object({
@@ -95,7 +157,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
+        className={`transition-all ease-linear transform duration-200 max-h-[620px] max-w-[1000px]`}
         handleClose={handleClose}
       >
         <div className="modal-title">
@@ -109,16 +171,23 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values) => {
+              setLoading(true);
+
               const data = {
                 ...values,
                 home_insights_is_active: isDraft ? 0 : 1,
-                home_insights_img: photoSingle
-                  ? photoSingle.name
-                  : itemEdit.home_insights_img,
+                home_insights_img: Array.from(photoArrayList).map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
               };
-              if (photoSingle) {
-                await singleUploadPhoto(); // to save the photo when submit
+              const photoUpload = await uploadMultiplePhoto();
+              if (photoUpload?.success || !photoUpload?.success) {
+                setLoading(false);
               }
+              if (!loading) console.log(data);
               mutation.mutate(data);
             }}
           >
@@ -126,68 +195,120 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
               return (
                 <Form className="modal-form">
                   <div className="form-input">
-                    <div className="flex gap-4 justify-between">
+                    <div className="flex gap-4 justify-between h-[550px]">
                       <div className="w-[50%] relative">
                         <div className="mt-5">
                           <span className="top-20 px-2 text-dark text-xs">
                             Image
                           </span>
-                          <div className="relative w-fit group">
-                            {(itemEdit === null && photoSingle === null) ||
-                            (photoSingle === "" && itemEdit === null) ? (
-                              <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
-                                <div className="">
-                                  <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
-                                  <h1 className="mb-0 leading-tight text-[gray] text-sm text-center">
-                                    Upload Image
-                                  </h1>
-                                </div>
-                              </div>
-                            ) : (itemEdit &&
-                                !itemEdit.home_insights_img &&
-                                !photoSingle) ||
-                              (!itemEdit && !photoSingle) ? (
-                              <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
-                                <div>
-                                  <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
-                                  <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
-                                    Upload Image
-                                  </h1>
-                                </div>
-                              </div>
-                            ) : (
-                              <img
-                                src={
-                                  photoSingle
-                                    ? URL.createObjectURL(photoSingle) // preview
-                                    : devBaseImgUrl +
-                                      "/" +
-                                      itemEdit.home_insights_img // check db
-                                }
-                                alt="Logo"
-                                className="group-hover:opacity-20 duration-200 relative h-[100px] object-contain object-[50%,50%] m-auto"
-                              />
-                            )}
+                          <div
+                            className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[300px] text-xs ${
+                              withFile && "border-primary border-dashed"
+                            }`}
+                            onDragOver={() => setWithFile(true)}
+                            onDragLeave={() => setWithFile(false)}
+                          >
+                            <span className="min-h-16 flex items-center justify-center">
+                              <span className="text-dark mr-1">
+                                Drag & Drop
+                              </span>{" "}
+                              Photo here or{" "}
+                              <span className="text-dark ml-1">Browse</span>
+                            </span>
 
-                            <div className="btnImgUpload">
-                              <button>
-                                <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
-                                <InputPhotoUpload
-                                  name="photo"
-                                  type="file"
-                                  id="myFile"
-                                  accept="image/*"
-                                  title="Upload Image"
-                                  onChange={(e) =>
-                                    handleChangePhoto(
-                                      e,
-                                      initVal.home_insights_img
-                                    )
-                                  }
-                                  className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
-                                />
-                              </button>
-                            </div>
+                            <InputFileUpload
+                              label="Upload Banner Image"
+                              name="File"
+                              type="file"
+                              id="myFile"
+                              accept="*"
+                              title="Upload File"
+                              onChange={(e) =>
+                                handleChangeFileUpload(
+                                  e,
+                                  props,
+                                  setPhotoArrayList,
+                                  "home_insights_img"
+                                )
+                              }
+                              onDrop={(e) =>
+                                handleChangeFileUpload(
+                                  e,
+                                  props,
+                                  setPhotoArrayList,
+                                  "home_insights_img"
+                                )
+                              }
+                              disabled={mutation.isPending || loading}
+                              className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                            />
+                          </div>
+
+                          <div className="relative mb-6 w-[300px] ">
+                            <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                              {photoArrayList?.length > 0 &&
+                                Array.from(photoArrayList).map((item, key) => {
+                                  const fileLink =
+                                    item instanceof File || item instanceof Blob
+                                      ? URL.createObjectURL(item)
+                                      : `${googleHDViewLink}${item?.id}`;
+
+                                  return (
+                                    <React.Fragment key={key}>
+                                      <li
+                                        className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
+                                          (mutation.isPending || loading) &&
+                                          `!cursor-not-allowed`
+                                        }`}
+                                        onClick={() => {
+                                          handleClickViewSlideshow(
+                                            photoArrayList,
+                                            key
+                                          );
+                                        }}
+                                      >
+                                        <LoadImages
+                                          url={fileLink}
+                                          className={`relative z-20 w-full h-full object-cover object-center`}
+                                        />
+                                        {(!mutation.isPending || !loading) && (
+                                          <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                            <span>
+                                              Click to View <br />
+                                              {key + 1}. {item.name}
+                                            </span>
+
+                                            <div
+                                              className="absolute bottom-0 right-0 flex items-center gap-2"
+                                              onClick={(e) => {
+                                                e.stopPropagation();
+                                              }}
+                                            >
+                                              <button
+                                                type="button"
+                                                className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                data-tooltip={`Delete`}
+                                                disabled={
+                                                  mutation.isPending || loading
+                                                }
+                                                onClick={() =>
+                                                  handleRemovePhoto(
+                                                    photoArrayList,
+                                                    key,
+                                                    props
+                                                  )
+                                                }
+                                              >
+                                                <FaTrash />
+                                              </button>
+                                            </div>
+                                          </div>
+                                        )}
+                                      </li>
+                                    </React.Fragment>
+                                  );
+                                })}
+                            </ol>
                           </div>
                         </div>
                         <div>
@@ -230,10 +351,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               className="btn-modal-submit bg-white text-primary"
                               type="submit"
                               disabled={
-                                ((mutation.isPending || !props.dirty) &&
-                                  photoSingle === null) ||
-                                photoSingle === "" ||
-                                initVal.home_insights_img === photoSingle?.name
+                                mutation.isPending || !props.dirty || loading
                               }
                               onClick={() => setIsDraft(true)}
                             >
@@ -247,10 +365,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               className="btn-modal-submit"
                               type="submit"
                               disabled={
-                                ((mutation.isPending || !props.dirty) &&
-                                  photoSingle === null) ||
-                                photoSingle === "" ||
-                                initVal.home_insights_img === photoSingle?.name
+                                mutation.isPending || !props.dirty || loading
                               }
                             >
                               {mutation.isPending ? (
@@ -279,7 +394,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             label="Description"
                             type="text"
                             name="home_insights_paragraph_a"
-                            className="h-[457px] w-[478px]"
+                            className="h-[506px] w-[478px]"
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -292,6 +407,17 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           </Formik>
         </div>
       </ModalAddWrapper>
+
+      {isRemovedPhoto && (
+        <ModalRemovedPhoto
+          fileData={fileData.images}
+          itemKey={fileData.itemKey}
+          itemProps={fileData.props}
+          msg="Are you sure you want to remove this file?"
+          setIsModalShow={setIsRemovedPhoto}
+          setNewFile={setPhotoArrayList}
+        />
+      )}
     </>
   );
 };

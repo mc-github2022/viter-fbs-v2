@@ -1,0 +1,86 @@
+Upload JSX
+
+DEVELOPER  
+
+        * IMAGES
+            -> Banner (home-bg-new.webp, home-bg-webapp.webp, home-bg-website.webp, home-bg-va.webp, home-bg-lcs.webp)
+            -> Home Testimonials (tm_logo_white.png, world-focus-home.png, tm_logo_white.png, sent-ones.png, testimonial-robert-han-2-img.png, testi-duane-masters-2.png, testimonial-hiro-isogawa-2.png, testimonial-jared-roberts.png)
+            -> Insights (january2025-newsletter-cover.jpg, virtual-assistant.jpg, web-developer-2.jpg, learning.jpg )
+            -> Video Testimonials ()
+            -> Careers (fbs-ads-ea.png, social_media_manager.png, accounting-associate-300x198.png, fbs-career-sales-assistant.png, hiring-wordpress-300x198.png, hiring-mobile-dev-300x198.png, fbs-ads-IT-Supp-300x189.png, Senior-Service-Desk-Engineer-300x189.png, data-entry-operator-300x189.png, fbsAdsCSR-300x189.png, fbs-ads-TSE-1-300x189.jpg, hiring-virtual-assistant-555x350.png, fbs-ads-lead-gen.png, fbs-ads-Accounting-instructor.png, fbs-ads-web.png, fbs-ads-bookkeeper_trans.png, fbs-careers-qa.png, fbs-ads-Donation_trans.png, caree-accounts-payable-image.png   )
+            -> Industry Testimonials (kurt-balanial.webp, plsp.png, andrey-ilagan.webp, zymon-ramos.webp, lc.png, rhodalynn-dayo.png, logo-fca.png, jeffrey-seitz.png, logo-phixgenomics.png, james-sunderland.png, logo-ottm.png, duane-masters.png, logo-world-focus.png, james-sunderland.png, logo-ottm.png, josh-howard.png, logo-ignite.png, jim-davison.png, logo-avant.png, teresa-heyne.png, jcceos-logo.png, dennis-siano2.png, dtod-bpo.png, kimbell-reyes.png, aka-global.png, joesua-manzanero.png, lspu.png, jake-gamaro.webp, chelsea-lim.png, kevinroy-nativo.png, aclc.png, emilio-macaso.png, dlsl_official_logo.png, ariel-ferrer.png, angelou-almare-medina.png, olivia-almarez.png, lara-yedra.png, bethany-acoba.png, logo-pfm.png, judea-delos-santos.png, sti.png, ftc-logo.png, alexander-ubeda.png, fca-logo-horizontal.png, kimbell-reyes.png, aka-global.png)
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/home/banner/banner.php
+            -> rest/v1/controllers/developer/home/banner/create.php
+            -> rest/v1/controllers/developer/home/banner/delete.php
+            -> rest/v1/controllers/developer/home/banner/update.php
+            -> rest/v1/controllers/developer/home/insights/create.php
+            -> rest/v1/controllers/developer/home/insights/delete.php
+            -> rest/v1/controllers/developer/home/insights/insights.php
+            -> rest/v1/controllers/developer/home/insights/update.php
+            -> rest/v1/controllers/developer/vid-testimonial/create.php
+            -> rest/v1/controllers/developer/vid-testimonial/delete.php
+            -> rest/v1/controllers/developer/vid-testimonial/update.php
+            -> rest/v1/controllers/developer/vid-testimonial/vidTestimonial.php
+            -> rest/v1/controllers/developer/home/testimonials/create.php
+            -> rest/v1/controllers/developer/home/testimonials/delete.php
+            -> rest/v1/controllers/developer/home/testimonials/testimonials.php
+            -> rest/v1/controllers/developer/home/testimonials/update.php
+            -> rest/v1/controllers/developer/careers/careers.php
+            -> rest/v1/controllers/developer/careers/create.php
+            -> rest/v1/controllers/developer/careers/delete.php
+            -> rest/v1/controllers/developer/careers/update.php
+            -> rest/v1/controllers/developer/industry-testimonial/create.php
+            -> rest/v1/controllers/developer/industry-testimonial/delete.php
+            -> rest/v1/controllers/developer/industry-testimonial/industryTestimonial.php
+            -> rest/v1/controllers/developer/industry-testimonial/update.php
+        
+
+
+        * MODELS
+            -> 
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_home_banner.sql
+            note: column updated
+              `home_banner_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_home_insights.sql
+            note: column updated
+              `home_insights_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_vid_testimonial.sql
+            note: column updated
+              `vid_testimonial_logo_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_careers.sql
+             note: column updated
+              `careers_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_home_testimonial.sql
+             note: column updated
+              `home_testimonial_client_img` text NOT NULL,
+              `home_testimonial_logo_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_industry_testimonial.sql
+             note: column updated
+             `industry_testimonial_img` text NOT NULL,
+             `industry_testimonial_logo` text NOT NULL,
+            ->
+            ->
+            ->
+            ->
+
+

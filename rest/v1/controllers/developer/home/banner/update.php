@@ -19,12 +19,23 @@ if (array_key_exists("home_bannerid", $_GET)) {
   $home_banner->home_banner_button_text = $data["home_banner_button_text"];
   $home_banner->home_banner_img = $data["home_banner_img"];
   $home_banner->home_banner_datetime = date("Y-m-d H:i:s");
+
+  $home_banner_img_old = $data["home_banner_img_old"];
+
   checkId($home_banner->home_banner_aid);
 
+  $pendingDeleteFile = $data['pendingDeleteFile'];
 
-  // //checks current data to avoid same entries from being updated
-  // $user_other_home_banner_fname_old = checkIndex($data, 'user_other_home_banner_fname_old');
-  // compareName($home_banner, $user_other_home_banner_fname_old, $home_banner->user_other_home_banner_fname);
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $home_banner->home_banner_img = checkToUploadGoogleDrive(
+    $home_banner->home_banner_img, // FILES
+    $home_banner_img_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $home_banner->home_banner_img = checkDeleteGoogleDriveApiFiles(
+    $home_banner->home_banner_img, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
 
   // update
   $query = checkUpdate($home_banner);

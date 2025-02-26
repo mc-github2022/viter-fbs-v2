@@ -4,27 +4,17 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      // style={{
-      //   position: "absolute",
-      //   color: "white",
-      //   top: "50%",
-      //   transform: "translateY(-50%)",
-      //   right: "8%",
-      //   fontSize: "3rem",
-      //   cursor: "pointer",
-      //   background: "#ac1f72",
-      //   borderRadius: "50%",
-      //   width: "48px",
-      //   height: "48px",
-      //   display: "grid",
-      //   placeItems: "center",
-      // }}
       onClick={onClick}
       className="absolute text-[white] top-[20%] md:top-[50%] -translate-y-[50%] md:right-[8%] text-[3rem] bg-primary -right-[8%] cursor-pointer rounded-[50%] w-[48px] h-[48px] grid place-items-center"
     >
@@ -37,22 +27,6 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      // style={{
-      //   position: "absolute",
-      //   color: "white",
-      //   top: "50%",
-      //   transform: "translateY(-50%)",
-      //   left: "8%",
-      //   fontSize: "3rem",
-      //   zIndex: "1",
-      //   cursor: "pointer",
-      //   background: "#ac1f72",
-      //   borderRadius: "50%",
-      //   width: "48px",
-      //   height: "48px",
-      //   display: "grid",
-      //   placeItems: "center",
-      // }}
       onClick={onClick}
       className="absolute text-[white] top-[20%] md:top-[50%] -translate-y-[50%] md:left-[8%] text-[3rem] bg-primary -left-[8%] cursor-pointer rounded-[50%] w-[48px] h-[48px] grid place-items-center z-[1]"
     >
@@ -163,6 +137,15 @@ const ServiceHrPartnersSay = () => {
             ).length > 1 ? (
               <Slider ref={sliderRef} {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
+                  const industryTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_img
+                    ) || [];
+                  const industryTestimonialsLogo =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_logo
+                    ) || [];
+
                   if (
                     item.industry_testimonial_category ===
                     "HR Information System"
@@ -185,11 +168,14 @@ const ServiceHrPartnersSay = () => {
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt={`${item.industry_testimonial_name}`}
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -204,11 +190,14 @@ const ServiceHrPartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt={`${item.industry_testimonial_name}`}
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -219,6 +208,15 @@ const ServiceHrPartnersSay = () => {
             ) : (
               <div>
                 {IndtestimonialData?.data.map((item, key) => {
+                  const industryTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_img
+                    ) || [];
+                  const industryTestimonialsLogo =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_logo
+                    ) || [];
+
                   if (
                     item.industry_testimonial_category ===
                     "HR Information System"
@@ -241,12 +239,14 @@ const ServiceHrPartnersSay = () => {
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                // src={`${devBaseImgUrl}/sti.png`}
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt={`${item.industry_testimonial_name}`}
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -261,12 +261,14 @@ const ServiceHrPartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              // src={`${devBaseImgUrl}/Client_IMG_1.png`}
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt={`${item.industry_testimonial_name}`}
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>

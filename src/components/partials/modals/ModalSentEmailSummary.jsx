@@ -20,6 +20,8 @@ const ModalSentEmailSummary = ({
     setIsSuccessSendingEmail(false);
   };
 
+  console.log(recipientList);
+
   return (
     <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
       <div className="">

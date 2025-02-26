@@ -4,7 +4,12 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -132,6 +137,14 @@ const WebDesignPartnersSay = () => {
               <Slider ref={sliderRef} {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
                   if (item.industry_testimonial_category === "Web Design") {
+                    const industryTestimonialsImages =
+                      getConvertStringToJSONparseData(
+                        item.industry_testimonial_img
+                      ) || [];
+                    const industryTestimonialsLogo =
+                      getConvertStringToJSONparseData(
+                        item.industry_testimonial_logo
+                      ) || [];
                     return (
                       <div key={key} className="md:min-h-fit min-h-[70vh]">
                         <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative ">
@@ -150,11 +163,14 @@ const WebDesignPartnersSay = () => {
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt={`${item.industry_testimonial_name}`}
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -169,11 +185,14 @@ const WebDesignPartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt={`${item.industry_testimonial_name}`}
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -185,6 +204,15 @@ const WebDesignPartnersSay = () => {
               <div>
                 {IndtestimonialData?.data.map((item, key) => {
                   if (item.industry_testimonial_category === "Web Design") {
+                    const industryTestimonialsImages =
+                      getConvertStringToJSONparseData(
+                        item.industry_testimonial_img
+                      ) || [];
+                    const industryTestimonialsLogo =
+                      getConvertStringToJSONparseData(
+                        item.industry_testimonial_logo
+                      ) || [];
+
                     return (
                       <div className="md:min-h-fit min-h-[70vh]">
                         <div
@@ -206,11 +234,14 @@ const WebDesignPartnersSay = () => {
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt={`${item.industry_testimonial_name}`}
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -225,11 +256,14 @@ const WebDesignPartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
-                              alt={`${item.industry_testimonial_name}`}
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>

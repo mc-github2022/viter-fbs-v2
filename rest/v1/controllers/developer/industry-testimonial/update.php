@@ -21,13 +21,36 @@ if (array_key_exists("industry_testimonialid", $_GET)) {
   $industry_testimonial->industry_testimonial_company = $data["industry_testimonial_company"];
   $industry_testimonial->industry_testimonial_category = checkIndex($data, "industry_testimonial_category");
 
+  $industry_testimonial_img_old = $data["industry_testimonial_img_old"];
+  $industry_testimonial_logo_old = $data["industry_testimonial_logo_old"];
+
   $industry_testimonial->industry_testimonial_datetime = date("Y-m-d H:i:s");
   checkId($industry_testimonial->industry_testimonial_aid);
 
+  $pendingDeleteFile = $data['pendingDeleteFile'];
 
-  // //checks current data to avoid same entries from being updated
-  // $user_other_industry_testimonial_fname_old = checkIndex($data, 'user_other_industry_testimonial_fname_old');
-  // compareName($industry_testimonial, $user_other_industry_testimonial_fname_old, $industry_testimonial->user_other_industry_testimonial_fname);
+
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $industry_testimonial->industry_testimonial_img = checkToUploadGoogleDrive(
+    $industry_testimonial->industry_testimonial_img, // FILES
+    $industry_testimonial_img_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $industry_testimonial->industry_testimonial_img = checkDeleteGoogleDriveApiFiles(
+    $industry_testimonial->industry_testimonial_img, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
+
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $industry_testimonial->industry_testimonial_logo = checkToUploadGoogleDrive(
+    $industry_testimonial->industry_testimonial_logo, // FILES
+    $industry_testimonial_logo_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $industry_testimonial->industry_testimonial_logo = checkDeleteGoogleDriveApiFiles(
+    $industry_testimonial->industry_testimonial_logo, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
 
   // update
   $query = checkUpdate($industry_testimonial);

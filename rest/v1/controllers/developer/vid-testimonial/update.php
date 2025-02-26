@@ -21,8 +21,23 @@ if (array_key_exists("vid_testimonialid", $_GET)) {
   $vid_testimonial->vid_testimonial_school = $data["vid_testimonial_school"];
   $vid_testimonial->vid_testimonial_message = $data["vid_testimonial_message"];
   $vid_testimonial->vid_testimonial_datetime = date("Y-m-d H:i:s");
+
+  $vid_testimonial_logo_img_old = $data["vid_testimonial_logo_img_old"];
+
   checkId($vid_testimonial->vid_testimonial_aid);
 
+  $pendingDeleteFile = $data['pendingDeleteFile'];
+
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $vid_testimonial->vid_testimonial_logo_img = checkToUploadGoogleDrive(
+    $vid_testimonial->vid_testimonial_logo_img, // FILES
+    $vid_testimonial_logo_img_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $vid_testimonial->vid_testimonial_logo_img = checkDeleteGoogleDriveApiFiles(
+    $vid_testimonial->vid_testimonial_logo_img, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
 
   // //checks current data to avoid same entries from being updated
   // $user_other_vid_testimonial_fname_old = checkIndex($data, 'user_other_vid_testimonial_fname_old');

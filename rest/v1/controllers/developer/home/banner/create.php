@@ -17,8 +17,14 @@ $home_banner->home_banner_img = $data["home_banner_img"];
 $home_banner->home_banner_created = date("Y-m-d H:i:s");
 $home_banner->home_banner_datetime = date("Y-m-d H:i:s");
 
-// //checks newly added data if it already exists
-// isNameExist($home_banner, $home_banner->home_banner_name);
+
+$home_banner_img_old = $data["home_banner_img_old"];
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$home_banner->home_banner_img = checkToUploadGoogleDrive(
+    $home_banner->home_banner_img, // FILES
+    $home_banner_img_old, // OLD FILES
+);
 
 $query = checkCreate($home_banner);
 

@@ -1,13 +1,19 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import { MdDelete } from "react-icons/md";
 import { GrFormClose } from "react-icons/gr";
+import { MdDelete } from "react-icons/md";
 import { queryData } from "../../helpers/queryData";
+import { setError, setMessage, setSuccess } from "../../store/StoreAction";
 import { StoreContext } from "../../store/StoreContext";
 import ButtonSpinner from "../spinners/ButtonSpinner";
-import { setError, setMessage, setSuccess } from "../../store/StoreAction";
 
-const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
+const ModalDelete = ({
+  setIsDelete,
+  mysqlEndpoint,
+  queryKey,
+  item,
+  filesToDelete = null,
+}) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
   const handleClose = () => {
@@ -27,10 +33,8 @@ const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
         dispatch(setSuccess(false));
-        console.log("May error!");
       } else {
         setIsDelete(false);
-        console.log("Naysuu! HAHAHAHAHAHA");
         dispatch(setSuccess(true));
         dispatch(setMessage("Successfully Deleted!"));
       }
@@ -40,6 +44,7 @@ const ModalDelete = ({ setIsDelete, mysqlEndpoint, queryKey, item }) => {
   const handleYes = () => {
     mutation.mutate({
       item: item,
+      filesToDelete,
     });
   };
 

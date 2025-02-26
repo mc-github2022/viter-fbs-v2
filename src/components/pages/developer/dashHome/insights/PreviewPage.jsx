@@ -11,9 +11,12 @@ import {
   devBaseImgUrl,
   devNavUrl,
   formatDate,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import { StoreContext } from "../../../../store/StoreContext";
 import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const PreviewPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -79,6 +82,9 @@ const PreviewPage = () => {
     return "";
   }
 
+  const insightsImages =
+    getConvertStringToJSONparseData(post.home_insights_img) || [];
+
   return (
     <>
       <Header />
@@ -102,11 +108,14 @@ const PreviewPage = () => {
             </ul>
             <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] gap-8 mt-12">
               <div className="postContent">
-                <img
-                  src={`${devBaseImgUrl}/${post.home_insights_img}`}
-                  alt={`${post.home_insights_title}`}
-                  className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
-                />
+                {insightsImages.map((image, index) => (
+                  <LoadImages
+                    url={`${googleHDViewLink}${image?.id}`}
+                    alt={`${post.home_insights_title}`}
+                    className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
+                    key={index}
+                  />
+                ))}
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
               </div>
               <div className="order-1 mt-6 md:mt-0">
@@ -120,10 +129,15 @@ const PreviewPage = () => {
                         .filter(
                           (popPost) =>
                             popPost.home_insights_slug !==
-                            post.home_insights_slug
+                              post.home_insights_slug &&
+                            popPost.home_insights_is_active === 1
                         )
                         .slice(0, 5)
                         .map((popPost, key) => {
+                          const insightsImages =
+                            getConvertStringToJSONparseData(
+                              popPost.home_insights_img
+                            ) || [];
                           return (
                             <div key={key}>
                               <li className="my-5">
@@ -132,11 +146,14 @@ const PreviewPage = () => {
                                 >
                                   <div className="flex items-center gap-4">
                                     <div className="min-w-[100px] max-w-[100px] h-[80px]">
-                                      <img
-                                        src={`${devBaseImgUrl}/${popPost.home_insights_img}`}
-                                        alt={`${popPost.home_insights_title}`}
-                                        className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
-                                      />
+                                      {insightsImages.map((image, index) => (
+                                        <LoadImages
+                                          url={`${googleHDViewLink}${image?.id}`}
+                                          alt={`${popPost.home_insights_title}`}
+                                          className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
+                                          key={index}
+                                        />
+                                      ))}
                                     </div>
                                     <div>
                                       <p className="line-clamp-3">

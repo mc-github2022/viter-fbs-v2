@@ -13,6 +13,7 @@ import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
 import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import { getConvertStringToJSONparseData } from "../../../helpers/functions-general";
 
 const IndustryTestimonialTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -120,50 +121,67 @@ const IndustryTestimonialTable = ({ setItemEdit }) => {
 
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
-                {page?.data.map((item, key) => (
-                  <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}</td>
-                    <td className="place-content-start">
-                      {item.industry_testimonial_name}
-                    </td>
-                    <td className="place-content-start">
-                      {item.industry_testimonial_position}
-                    </td>
-                    <td className="place-content-start">
-                      {item.industry_testimonial_company}
-                    </td>
-                    <td className="place-content-start">
-                      {item.industry_testimonial_category}
-                    </td>
-                    <td className="place-content-start">
-                      <p className="line-clamp-5">
-                        {item.industry_testimonial_message}
-                      </p>
-                    </td>
-                    <td>
-                      <p>{item.industry_testimonial_img}</p>
-                    </td>
-                    <td className="place-content-start">
-                      {item.industry_testimonial_logo}
-                    </td>
-                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Edit"
-                        onClick={() => handleEdit(item)}
-                      >
-                        <FaEdit className="text-gray-600 text-[16px]" />
-                      </button>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Delete"
-                        onClick={() => handleDelete(item)}
-                      >
-                        <MdDelete className="text-gray-600 text-[18px]" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {page?.data.map((item, key) => {
+                  const industryTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_img
+                    ) || [];
+                  const industryTestimonialsLogo =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_logo
+                    ) || [];
+
+                  return (
+                    <tr key={key} className="place-content-start text-[14px]">
+                      <td className="pl-2 place-content-start">{counter++}</td>
+                      <td className="place-content-start">
+                        {item.industry_testimonial_name}
+                      </td>
+                      <td className="place-content-start">
+                        {item.industry_testimonial_position}
+                      </td>
+                      <td className="place-content-start">
+                        {item.industry_testimonial_company}
+                      </td>
+                      <td className="place-content-start">
+                        {item.industry_testimonial_category}
+                      </td>
+                      <td className="place-content-start">
+                        <p className="line-clamp-5">
+                          {item.industry_testimonial_message}
+                        </p>
+                      </td>
+                      <td className="place-content-start">
+                        <p>
+                          {industryTestimonialsImages.map((img, index) => (
+                            <p key={index}>{img.name}</p>
+                          ))}
+                        </p>
+                      </td>
+                      <td className="place-content-start">
+                        {industryTestimonialsLogo.map((img, index) => (
+                          <p key={index}>{img.name}</p>
+                        ))}
+                      </td>
+                      <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Edit"
+                          onClick={() => handleEdit(item)}
+                        >
+                          <FaEdit className="text-gray-600 text-[16px]" />
+                        </button>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Delete"
+                          onClick={() => handleDelete(item)}
+                        >
+                          <MdDelete className="text-gray-600 text-[18px]" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </React.Fragment>
             ))}
           </tbody>

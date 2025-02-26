@@ -26,10 +26,19 @@ if (array_key_exists("home_insightsid", $_GET)) {
   $home_insights->home_insights_datetime = date("Y-m-d H:i:s");
   checkId($home_insights->home_insights_aid);
 
+  $home_insights_img_old = $data["home_insights_img_old"];
+  $pendingDeleteFile = $data['pendingDeleteFile'];
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $home_insights->home_insights_img = checkToUploadGoogleDrive(
+    $home_insights->home_insights_img, // FILES
+    $home_insights_img_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $home_insights->home_insights_img = checkDeleteGoogleDriveApiFiles(
+    $home_insights->home_insights_img, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
 
-  // //checks current data to avoid same entries from being updated
-  // $user_other_home_insights_fname_old = checkIndex($data, 'user_other_home_insights_fname_old');
-  // compareName($home_insights, $user_other_home_insights_fname_old, $home_insights->user_other_home_insights_fname);
 
   // update
   $query = checkUpdate($home_insights);

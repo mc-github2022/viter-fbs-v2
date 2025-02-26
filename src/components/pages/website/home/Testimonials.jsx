@@ -1,6 +1,11 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../helpers/functions-general";
 import useQueryData from "../../../custom-hooks/useQueryData";
+import LoadImages from "../../../partials/LoadImages";
 
 const Testimonials = () => {
   const [testimonialItem, setTestimonialItem] = React.useState();
@@ -63,42 +68,51 @@ const Testimonials = () => {
             </div>
             <div className="flex justify-end">
               <div className="w-full lg:w-[455px] relative z-[14] text-light text-right">
-                {testimonialData?.data.map((item, key) => (
-                  <div
-                    key={key}
-                    className={`${
-                      displayTestimonial &&
-                      testimonialItem ==
-                        `slider-index-${item.home_testimonial_aid}`
-                        ? "addEntrance block"
-                        : "hidden"
-                    }`}
-                  >
-                    <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[455px] ml-auto text-sm ">
-                      {item.home_testimonial_message}
-                    </p>
-                    <div>
-                      {/* <h3 className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
+                {testimonialData?.data.map((item, key) => {
+                  const logoImage =
+                    getConvertStringToJSONparseData(
+                      item.home_testimonial_logo_img
+                    ) || [];
+                  return (
+                    <div
+                      key={key}
+                      className={`${
+                        displayTestimonial &&
+                        testimonialItem ==
+                          `slider-index-${item.home_testimonial_aid}`
+                          ? "addEntrance block"
+                          : "hidden"
+                      }`}
+                    >
+                      <p className=" lg:mt-[130px] mb-3 relative italic lg:max-w-[339px] xl:max-w-[455px] ml-auto text-sm ">
+                        {item.home_testimonial_message}
+                      </p>
+                      <div>
+                        {/* <h3 className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
                         {item.home_testimonial_name},{" "}
                         {item.home_testimonial_position}
                       </h3> */}
-                      <ul className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
-                        <li>{item.home_testimonial_name}</li>
-                        <li className="text-sm">
-                          {item.home_testimonial_position}
-                        </li>
-                      </ul>
+                        <ul className="text-[clamp(16px,4vw,24px)] font-semibold mb-2">
+                          <li>{item.home_testimonial_name}</li>
+                          <li className="text-sm">
+                            {item.home_testimonial_position}
+                          </li>
+                        </ul>
+                      </div>
+                      <div className="justify-end flex lg:hidden">
+                        {logoImage.map((image, index) => (
+                          <LoadImages
+                            url={`${googleHDViewLink}${image?.id}`}
+                            loading="lazy"
+                            className="w-[100px] "
+                            alt={`${item.home_testimonial_logo_img}`}
+                            key={index}
+                          />
+                        ))}
+                      </div>
                     </div>
-                    <div className="justify-end flex lg:hidden">
-                      <img
-                        src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
-                        loading="lazy"
-                        className="w-[100px] "
-                        alt={`${item.home_testimonial_logo_img}`}
-                      />
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
 
                 <div className="sliderNavTestimonials bottom-[-70px] flex gap-2 absolute left-[50%] translate-x-[-50%] lg:left-[unset] lg:right-[-40px] py-3 lg:bottom-[20%] lg:py-0">
                   {testimonialData?.data.map((item, key) => (
@@ -125,29 +139,12 @@ const Testimonials = () => {
         </div>
 
         <div className="testimonialPhoto hidden lg:block absolute z-[1] left-[50%] translate-x-[-40%] top-[250px] lg:top-[130px] w-[250px] lg:w-[358px]">
-          {testimonialData?.data.map((item, key) => (
-            <div
-              key={key}
-              className={`${
-                displayTestimonial &&
-                testimonialItem == `slider-index-${item.home_testimonial_aid}`
-                  ? "addEntrance block"
-                  : "hidden"
-              }`}
-            >
-              <img
-                src={`${devBaseImgUrl}/${item.home_testimonial_client_img}`}
-                loading="lazy"
-                alt={`${item.home_testimonial_name}`}
-                className="max-w-[430px] object-cover"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="hidden lg:block">
-          <div className="smPill w-[72%] h-[100px] 2xl:top-[55%] bg-primary lg:top-[60%] z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg]">
-            {testimonialData?.data.map((item, key) => (
+          {testimonialData?.data.map((item, key) => {
+            const clientImage =
+              getConvertStringToJSONparseData(
+                item.home_testimonial_client_img
+              ) || [];
+            return (
               <div
                 key={key}
                 className={`${
@@ -157,16 +154,52 @@ const Testimonials = () => {
                     : "hidden"
                 }`}
               >
-                <div className="w-[200px] max-h-[87px] py-[25px] ml-[15%]">
-                  <img
-                    src={`${devBaseImgUrl}/${item.home_testimonial_logo_img}`}
+                {clientImage.map((image, index) => (
+                  <LoadImages
+                    url={`${googleHDViewLink}${image?.id}`}
                     loading="lazy"
-                    className="object-contain max-h-[87px] "
-                    alt={`${item.home_testimonial_logo_img}`}
+                    alt={`${item.home_testimonial_name}`}
+                    className="max-w-[430px] object-cover"
+                    key={index}
                   />
-                </div>
+                ))}
               </div>
-            ))}
+            );
+          })}
+        </div>
+
+        <div className="hidden lg:block">
+          <div className="smPill w-[72%] h-[100px] 2xl:top-[55%] bg-primary lg:top-[60%] z-[5] rounded-tl-full rounded-bl-full absolute -right-[5%] -rotate-[15deg]">
+            {testimonialData?.data.map((item, key) => {
+              const logoImage =
+                getConvertStringToJSONparseData(
+                  item.home_testimonial_logo_img
+                ) || [];
+              return (
+                <div
+                  key={key}
+                  className={`${
+                    displayTestimonial &&
+                    testimonialItem ==
+                      `slider-index-${item.home_testimonial_aid}`
+                      ? "addEntrance block"
+                      : "hidden"
+                  }`}
+                >
+                  <div className="w-[200px] max-h-[87px] py-[25px] ml-[15%]">
+                    {logoImage.map((image, index) => (
+                      <LoadImages
+                        url={`${googleHDViewLink}${image?.id}`}
+                        loading="lazy"
+                        className="object-contain max-h-[87px] "
+                        alt={`${item.home_testimonial_logo_img}`}
+                        key={index}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
