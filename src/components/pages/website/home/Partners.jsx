@@ -73,6 +73,22 @@ const Partners = () => {
                     className="w-[170px] h-[170px] object-contain"
                   />
                 </li>
+                <li>
+                  <img
+                    src={`${devBaseImgUrl}/gc_foundation.png`}
+                    loading="lazy"
+                    alt="World Focus"
+                    className="w-[170px] h-[170px] object-contain"
+                  />
+                </li>
+                <li>
+                  <img
+                    src={`${devBaseImgUrl}/gc_friends.png`}
+                    loading="lazy"
+                    alt="World Focus"
+                    className="w-[170px] h-[170px] object-contain"
+                  />
+                </li>
               </ul>
             </div>
             <div className="text-right flex items-center justify-end order-1 lg:order-2">
