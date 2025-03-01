@@ -35,6 +35,10 @@ DEVELOPER
             -> rest/v1/controllers/developer/industry-testimonial/delete.php
             -> rest/v1/controllers/developer/industry-testimonial/industryTestimonial.php
             -> rest/v1/controllers/developer/industry-testimonial/update.php
+            -> rest/v1/controllers/developer/lcss-batches/create.php
+            -> rest/v1/controllers/developer/lcss-batches/delete.php
+            -> rest/v1/controllers/developer/lcss-batches/lcssBatches.php
+            -> rest/v1/controllers/developer/lcss-batches/update.php
         
 
 
@@ -52,7 +56,7 @@ DEVELOPER
             -> 
 
         * OTHER FILES
-            ->
+            -> rest/v1/google-api
             -> 
             -> 
             -> 
@@ -78,7 +82,9 @@ DEVELOPER
              note: column updated
              `industry_testimonial_img` text NOT NULL,
              `industry_testimonial_logo` text NOT NULL,
-            ->
+            -> rest/db-backup/fbsv2_lcss_batch.sql
+            note: column updated
+             `lcss_batch_img` text NOT NULL,
             ->
             ->
             ->

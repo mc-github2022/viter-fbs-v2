@@ -13,6 +13,7 @@ import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
 import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import { getConvertStringToJSONparseData } from "../../../helpers/functions-general";
 
 const LcssBatchesTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -119,42 +120,50 @@ const LcssBatchesTable = ({ setItemEdit }) => {
 
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
-                {page?.data.map((item, key) => (
-                  <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}</td>
-                    <td className="place-content-start">
-                      {item.lcss_batch_name}
-                    </td>
-                    <td className="place-content-start">
-                      {item.lcss_batch_category}
-                    </td>
-                    <td className="place-content-start">
-                      {item.lcss_batch_school}
-                    </td>
-                    <td className="place-content-start">
-                      {item.lcss_batch_course}
-                    </td>
-                    <td className="place-content-start">
-                      <p className="line-clamp-5">{item.lcss_batch_img}</p>
-                    </td>
-                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Edit"
-                        onClick={() => handleEdit(item)}
-                      >
-                        <FaEdit className="text-gray-600 text-[16px]" />
-                      </button>
-                      <button
-                        className="tooltip-action-table"
-                        data-tooltip="Delete"
-                        onClick={() => handleDelete(item)}
-                      >
-                        <MdDelete className="text-gray-600 text-[18px]" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {page?.data.map((item, key) => {
+                  const batchImages =
+                    getConvertStringToJSONparseData(item.lcss_batch_img) || [];
+                  return (
+                    <tr key={key} className="place-content-start text-[14px]">
+                      <td className="pl-2 place-content-start">{counter++}</td>
+                      <td className="place-content-start">
+                        {item.lcss_batch_name}
+                      </td>
+                      <td className="place-content-start">
+                        {item.lcss_batch_category}
+                      </td>
+                      <td className="place-content-start">
+                        {item.lcss_batch_school}
+                      </td>
+                      <td className="place-content-start">
+                        {item.lcss_batch_course}
+                      </td>
+                      <td className="place-content-start">
+                        {batchImages.map((img, index) => (
+                          <p className="line-clamp-5" key={index}>
+                            {img.name}
+                          </p>
+                        ))}
+                      </td>
+                      <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Edit"
+                          onClick={() => handleEdit(item)}
+                        >
+                          <FaEdit className="text-gray-600 text-[16px]" />
+                        </button>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Delete"
+                          onClick={() => handleDelete(item)}
+                        >
+                          <MdDelete className="text-gray-600 text-[18px]" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </React.Fragment>
             ))}
           </tbody>
