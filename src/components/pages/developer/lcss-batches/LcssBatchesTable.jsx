@@ -139,11 +139,11 @@ const LcssBatchesTable = ({ setItemEdit }) => {
                         {item.lcss_batch_course}
                       </td>
                       <td className="place-content-start">
-                        {batchImages.map((img, index) => (
-                          <p className="line-clamp-5" key={index}>
-                            {img.name}
-                          </p>
-                        ))}
+                        <p className="line-clamp-5">
+                          {batchImages.map((img, index) => (
+                            <p key={index}>{img.name}</p>
+                          ))}
+                        </p>
                       </td>
                       <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                         <button
