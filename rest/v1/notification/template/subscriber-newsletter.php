@@ -16,17 +16,19 @@ function getHtmlSendMessage(
       <title></title>
     </head>
     <body>
-      <div>' . $newsletter . '</div>
+      <div style="
+        padding-bottom: 16px;>' . $newsletter . '</div>
    
       <div
         class="footer"
         style="
-        padding-bottom: 16px;
+        padding: 16px 0px;
      margin-bottom: 0;
         text-align: center;
         background-color: #fff;">
         <div style="text-align: center; line-height: 1; width: 420px; margin: 0 auto;">
-            <div> <small>
+            <div ><p style="font-size: 16px;  style="
+        padding-top: 16px;> Want to change how you receive these emails? <br></p> <small >
             <a style="font-size: 14px;  text-decoration: underline; font-family: Arial, Helvetica, sans-serif" href="' . $ROOT_DOMAIN . '' . $unsubscribe_link . '?key=' . $newKey . '">Unsubscribe</a></small>
           </div>
           <p style="font-size: 14px; padding: 0 10px">
