@@ -2,21 +2,21 @@ import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
 // // local url
-export const urlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2";
-export const imgUrlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2/public/img";
+// export const urlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
-// Online Demo url
+// // Online Demo url
 // export const urlPathFBSMarketingWebsite =
 //   "https://frontlinebusiness.com.ph/newsite";
 // export const imgUrlPathFBSMarketingWebsite =
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
-// export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://frontlinebusiness.com.ph/img";
+export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
+export const imgUrlPathFBSMarketingWebsite =
+  "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;

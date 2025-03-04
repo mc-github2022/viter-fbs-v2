@@ -178,6 +178,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                         <span className="top-20 px-2 text-dark text-xs">
                           Image
                         </span>
+                      
                         <div className="relative w-fit group">
                           {(itemEdit === null && photoSingle === null) ||
                           (photoSingle === "" && itemEdit === null) ? (
