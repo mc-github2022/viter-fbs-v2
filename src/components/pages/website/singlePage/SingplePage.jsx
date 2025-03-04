@@ -36,6 +36,10 @@ const SingplePage = () => {
 
   const [subscribe, setSubscribe] = React.useState(false);
 
+  const [lcssForm, setLcssForm] = React.useState(false);
+  const [modalJob, setModalJob] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
     if (window.sessionStorage.getItem("subscribed")) {
@@ -126,7 +130,7 @@ const SingplePage = () => {
                 ))}
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
                 {post.home_insights_cta_is_active ? (
-                  <button class="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
+                  <button className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
                     {post.home_insights_cta_text}
                   </button>
                 ) : (
