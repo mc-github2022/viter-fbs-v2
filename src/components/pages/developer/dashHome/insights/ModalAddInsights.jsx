@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GrFormClose } from "react-icons/gr";
 import { IoImageOutline } from "react-icons/io5";
 import { MdOutlineFileUpload } from "react-icons/md";
@@ -33,6 +33,7 @@ import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePh
 import ModalRemovedPhoto from "../../../../partials/modals/ModalRemovedPhoto";
 import { FaTrash } from "react-icons/fa";
 import LoadImages from "../../../../partials/LoadImages";
+import { purposeValue } from "./cta-form";
 
 const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -41,6 +42,22 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const [loading, setLoading] = React.useState(false);
   const [fileData, setFileData] = React.useState(null);
   const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
+  const [isCheck, setIsCheck] = React.useState(false);
+  const [text, setText] = useState("");
+
+  const handleCheckBox = (e) => {
+    setIsCheck(e.target.checked);
+    handleTextChange(e);
+    console.log(handleTextChange(e));
+  };
+
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
+
+  useEffect(() => {
+    setIsCheck(itemEdit ? itemEdit.home_insights_cta_is_active : false);
+  }, []);
 
   // multiple files
   const {
@@ -143,6 +160,13 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     home_insights_paragraph_c: itemEdit
       ? itemEdit.home_insights_paragraph_c
       : "",
+    home_insights_cta_is_active: itemEdit
+      ? itemEdit.home_insights_cta_is_active
+      : "",
+    home_insights_cta_text: itemEdit ? itemEdit.home_insights_cta_text : "",
+    home_insights_form_selected: itemEdit
+      ? itemEdit.home_insights_form_selected
+      : "",
     home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
     home_insights_is_active: itemEdit ? itemEdit.home_insights_is_active : "",
 
@@ -157,7 +181,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 max-h-[620px] max-w-[1000px]`}
+        className={`transition-all ease-linear transform duration-200 max-h-[715px] max-w-[1000px]`}
         handleClose={handleClose}
       >
         <div className="modal-title">
@@ -175,6 +199,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
 
               const data = {
                 ...values,
+                home_insights_cta_is_active: isCheck,
                 home_insights_is_active: isDraft ? 0 : 1,
                 home_insights_img: Array.from(photoArrayList).map((item) =>
                   JSON.stringify({
@@ -183,6 +208,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                   })
                 ),
               };
+
               const photoUpload = await uploadMultiplePhoto();
               if (photoUpload?.success || !photoUpload?.success) {
                 setLoading(false);
@@ -195,7 +221,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
               return (
                 <Form className="modal-form">
                   <div className="form-input">
-                    <div className="flex gap-4 justify-between h-[550px]">
+                    <div className="flex gap-4 justify-between h-[650px]">
                       <div className="w-[50%] relative">
                         <div className="mt-5">
                           <span className="top-20 px-2 text-dark text-xs">
@@ -336,13 +362,56 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               disabled={mutation.isPending}
                             />
                           </div>
-                          <div className="input-wrapper">
+                          <div className="input-wrapper mb-4">
                             <InputText
                               label="Date"
                               type="date"
                               name="home_insights_date"
                               disabled={mutation.isPending}
                             />
+                          </div>
+                          <div className=" flex items-center gap-1">
+                            <input
+                              name="home_insights_cta_is_active "
+                              type="checkbox"
+                              className="w-3 h-3 cursor-pointer"
+                              checked={isCheck}
+                              // value={isCheck}
+                              onChange={handleCheckBox}
+                            />
+                            <p className="text-xs">Enable CTA</p>
+                          </div>
+                          <div className="input-wrapper grid grid-cols-[_2fr_1fr] gap-2">
+                            <div>
+                              <label htmlFor="notification_purpose">
+                                Select Form
+                              </label>
+                              <select
+                                id="notification_purpose"
+                                name="home_insights_form_selected"
+                                disabled={mutation.isPending || !isCheck}
+                                value={props.values.notification_purpose}
+                                onChange={props.handleChange}
+                                className="input-select"
+                              >
+                                <optgroup label="Select Form">
+                                  {purposeValue()?.map((item, key) => (
+                                    <option key={key} value={item.code}>
+                                      {item.name}
+                                    </option>
+                                  ))}
+                                </optgroup>
+                              </select>
+                            </div>
+                            <div className="input-wrapper m-0">
+                              <InputText
+                                label="Button Caption"
+                                className="!h-[36px]"
+                                type="text"
+                                name="home_insights_cta_text"
+                                disabled={mutation.isPending || !isCheck}
+                              />
+                            </div>
                           </div>
                         </div>
                         <div className="form-action absolute w-full bottom-0 mb-2">
@@ -394,7 +463,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             label="Description"
                             type="text"
                             name="home_insights_paragraph_a"
-                            className="h-[506px] w-[478px]"
+                            className="h-[606px] w-[478px]"
                             disabled={mutation.isPending}
                           />
                         </div>

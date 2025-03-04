@@ -86,6 +86,9 @@ const InsightsTable = ({ setItemEdit }) => {
               <th className="w-[10rem]">Slug</th>
               <th className="w-[8rem]">Date</th>
               <th>Content</th>
+              <th>CTA Enable</th>
+              <th>CTA Text</th>
+              <th>Form Selected</th>
               <th className="w-[8rem]">Image</th>
               <th className="text-right">Actions</th>
             </tr>
@@ -137,6 +140,11 @@ const InsightsTable = ({ setItemEdit }) => {
                       {item.home_insights_paragraph_a}
                     </p>
                   </td>
+                  <td>
+                    {item.home_insights_cta_is_active === 1 ? "Yes" : "No"}
+                  </td>
+                  <td>{item.home_insights_cta_text}</td>
+                  <td>{item.home_insights_form_selected}</td>
                   <td className="place-content-start">
                     {insightsImages.map((img, index) => (
                       <p key={index}>{img.name}</p>

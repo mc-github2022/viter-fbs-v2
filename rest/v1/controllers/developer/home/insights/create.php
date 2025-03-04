@@ -18,6 +18,9 @@ $home_insights->home_insights_date = $data["home_insights_date"];
 $home_insights->home_insights_paragraph_a = $data["home_insights_paragraph_a"];
 $home_insights->home_insights_paragraph_b = $data["home_insights_paragraph_b"];
 $home_insights->home_insights_paragraph_c = $data["home_insights_paragraph_c"];
+$home_insights->home_insights_cta_is_active = $data["home_insights_cta_is_active"];
+$home_insights->home_insights_cta_text = $data["home_insights_cta_text"];
+$home_insights->home_insights_form_selected = $data["home_insights_form_selected"];
 $home_insights->home_insights_created = date("Y-m-d H:i:s");
 $home_insights->home_insights_datetime = date("Y-m-d H:i:s");
 

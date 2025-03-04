@@ -125,6 +125,13 @@ const SingplePage = () => {
                   />
                 ))}
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
+                {post.home_insights_cta_is_active ? (
+                  <button class="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
+                    {post.home_insights_cta_text}
+                  </button>
+                ) : (
+                  <p></p>
+                )}
               </div>
               <div className="order-1 mt-6 md:mt-0">
                 <div className="mb-12">
