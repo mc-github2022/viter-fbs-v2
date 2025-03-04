@@ -75,6 +75,7 @@ const Partners = () => {
                 </li>
                 <li>
                   <img
+<<<<<<< HEAD
                     src={`${devBaseImgUrl}/gc-foundation.png`}
                     loading="lazy"
                     alt="Two Miles"
@@ -84,6 +85,17 @@ const Partners = () => {
                 <li>
                   <img
                     src={`${devBaseImgUrl}/gc-friends.png`}
+=======
+                    src={`${devBaseImgUrl}/gc_foundation.png`}
+                    loading="lazy"
+                    alt="World Focus"
+                    className="w-[170px] h-[170px] object-contain"
+                  />
+                </li>
+                <li>
+                  <img
+                    src={`${devBaseImgUrl}/gc_friends.png`}
+>>>>>>> 524e4b977bf0922dc6ae5fbc8a7380148f99e747
                     loading="lazy"
                     alt="World Focus"
                     className="w-[170px] h-[170px] object-contain"

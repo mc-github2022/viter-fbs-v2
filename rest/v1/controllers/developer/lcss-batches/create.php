@@ -17,8 +17,16 @@ $lcss_batch->lcss_batch_img = $data["lcss_batch_img"];
 $lcss_batch->lcss_batch_created = date("Y-m-d H:i:s");
 $lcss_batch->lcss_batch_datetime = date("Y-m-d H:i:s");
 
+$lcss_batch_img_old = $data["lcss_batch_img_old"];
+
 //checks newly added data if it already exists
 isNameExist($lcss_batch, $lcss_batch->lcss_batch_name);
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$lcss_batch->lcss_batch_img = checkToUploadGoogleDrive(
+    $lcss_batch->lcss_batch_img, // FILES
+    $lcss_batch_img_old, // OLD FILES
+);
 
 $query = checkCreate($lcss_batch);
 

@@ -2,8 +2,12 @@ import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
 import ModalWrapper from "../../../../partials/ModalWrapper";
+import LoadImages from "../../../../partials/LoadImages";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -151,11 +155,10 @@ const ConStudBatchSliderPage = ({
   const selectedItem = lcssBatchesData?.data.find(
     (item) => item.lcss_batch_aid === selectedBatchId
   );
-  const images =
-    selectedItem?.lcss_batch_img
-      .split(",")
-      .map((img) => img.trim())
-      .filter(Boolean) || [];
+
+  const images = selectedItem?.lcss_batch_img
+    ? JSON.parse(selectedItem.lcss_batch_img)
+    : [];
 
   return (
     <ModalWrapper
@@ -165,32 +168,33 @@ const ConStudBatchSliderPage = ({
       <div className="bg-transparent h-fit place-items-center place-content-center">
         {images.length > 1 ? (
           <Slider ref={sliderRef} {...settings}>
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className="justify-items-center"
-                // className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
-              >
-                <div className="z-[1] max-w-[700px] h-[60vh] place-self-center mx-1">
-                  <img
-                    src={`${devBaseImgUrl}/${image}`}
-                    alt={`Batch image ${image} - ${index + 1}`}
-                    className="object-contain w-[700px] h-[60vh]"
-                  />
+            {images.map((item, index) => {
+              return (
+                <div key={index} className="justify-items-center">
+                  <div className="z-[1] max-w-[700px] h-[60vh] place-self-center relative mx-1">
+                    <LoadImages
+                      url={`${googleHDViewLink}${item?.id}`}
+                      alt={`Batch image ${item} - ${index + 1}`}
+                      className="object-contain w-[700px] h-[60vh]"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </Slider>
         ) : images.length === 1 ? (
           <div
           // className="my-[10vh] lg:my-[20vh] md:mt-[20vh] md:mb-[10vh]"
           >
             <div className="z-[1] max-w-[700px] h-[60vh] place-self-center">
-              <img
-                src={`${devBaseImgUrl}/${images[0]}`}
-                alt="Batch image"
-                className="object-contain w-[700px] h-[60vh]"
-              />
+              {images.map((item, index) => (
+                <LoadImages
+                  key={index}
+                  url={`${googleHDViewLink}${item?.id}`}
+                  alt="Successful, Industry-Ready Batches."
+                  className="object-contain w-[700px] h-[60vh]"
+                />
+              ))}
             </div>
           </div>
         ) : null}

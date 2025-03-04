@@ -4,7 +4,11 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { conStudBatch } from "./data";
 import ConStudBatchSliderPage from "./ConStudBatchSliderPage";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -163,7 +167,11 @@ const ConStudBatches = () => {
             >
               {lcssBatchesData?.data.map((item, key) => {
                 if (item.lcss_batch_category === "Continuing Studies") {
-                  const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
+                  // Split the image string into an array and take the first image
+                  const batchImages =
+                    getConvertStringToJSONparseData(item.lcss_batch_img) || [];
+                  const firstImage =
+                    batchImages.length > 0 ? batchImages[0] : null;
 
                   return (
                     <div
@@ -173,30 +181,32 @@ const ConStudBatches = () => {
                       <div className="grid place-content-center">
                         <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
-                            <div
-                              className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] sm:w-[320px] flex items-end relative rounded-xl 
-                            grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                              style={{
-                                backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
-                              }}
-                            >
-                              <div>
-                                <div className="blogExcerpt p-10 relative z-[1]">
-                                  <p className="text-light font-bold text-lg">
-                                    {item.lcss_batch_school}
-                                  </p>
-                                  <p className="text-light">
-                                    {item.lcss_batch_course}
-                                  </p>
+                            {firstImage && (
+                              <div
+                                className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] sm:w-[320px] flex items-end relative rounded-xl 
+                                              grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                                style={{
+                                  backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
+                                }}
+                              >
+                                <div>
+                                  <div className="blogExcerpt p-10 relative z-[1]">
+                                    <p className="text-light font-bold text-lg">
+                                      {item.lcss_batch_school}
+                                    </p>
+                                    <p className="text-light">
+                                      {item.lcss_batch_course}
+                                    </p>
+                                  </div>
+                                  <div className="blogTitle relative z-[1] pb-10">
+                                    <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[180px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                      {item.lcss_batch_name}
+                                    </h4>
+                                  </div>
                                 </div>
-                                <div className="blogTitle relative z-[1] pb-10">
-                                  <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[180px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                    {item.lcss_batch_name}
-                                  </h4>
-                                </div>
+                                <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                               </div>
-                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[100%] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                            </div>
+                            )}
                           </a>
                         </div>
                       </div>
@@ -210,7 +220,11 @@ const ConStudBatches = () => {
             <div className="flex flex-row gap-2">
               {lcssBatchesData?.data.map((item, key) => {
                 if (item.lcss_batch_category === "Continuing Studies") {
-                  const firstImage = item.lcss_batch_img.split(",")[0]?.trim();
+                  // Split the image string into an array and take the first image
+                  const batchImages =
+                    getConvertStringToJSONparseData(item.lcss_batch_img) || [];
+                  const firstImage =
+                    batchImages.length > 0 ? batchImages[0] : null;
 
                   return (
                     <div
@@ -220,31 +234,33 @@ const ConStudBatches = () => {
                       <div className="grid place-content-center">
                         <div className="mb-[3rem]">
                           <a onClick={() => handleModalBatch(item)}>
-                            <div
-                              className="blogItem addShadow bg-center bg-cover h-[400px] 
-                                   min-w-[280px] max-w-[280px] md:min-w-[350px] md:max-w-[350px] flex items-end relative rounded-xl 
-                                  grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                              style={{
-                                backgroundImage: `url(${devBaseImgUrl}/${firstImage})`,
-                              }}
-                            >
-                              <div>
-                                <div className="blogExcerpt p-10 relative z-[1]">
-                                  <p className="text-light font-bold text-lg">
-                                    {item.lcss_batch_school}
-                                  </p>
-                                  <p className="text-light">
-                                    {item.lcss_batch_course}
-                                  </p>
+                            {firstImage && (
+                              <div
+                                className="blogItem addShadow bg-center bg-cover h-[400px] 
+                                                          min-w-[280px] max-w-[280px] md:min-w-[350px] md:max-w-[350px] flex items-end relative rounded-xl 
+                                                          grayscale hover:grayscale-0 transition-all group cursor-pointer "
+                                style={{
+                                  backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
+                                }}
+                              >
+                                <div>
+                                  <div className="blogExcerpt p-10 relative z-[1]">
+                                    <p className="text-light font-bold text-lg">
+                                      {item.lcss_batch_school}
+                                    </p>
+                                    <p className="text-light">
+                                      {item.lcss_batch_course}
+                                    </p>
+                                  </div>
+                                  <div className="blogTitle relative z-[1] pb-10">
+                                    <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[180px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                      {item.lcss_batch_name}
+                                    </h4>
+                                  </div>
                                 </div>
-                                <div className="blogTitle relative z-[1] pb-10">
-                                  <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[180px] md:w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                    {item.lcss_batch_name}
-                                  </h4>
-                                </div>
+                                <div className="bottomGradient bg-gradient-to-t from-dark !to-[transparent] h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                               </div>
-                              <div className="bottomGradient bg-gradient-to-t from-dark !to-[transparent] h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                            </div>
+                            )}
                           </a>
                         </div>
                       </div>
