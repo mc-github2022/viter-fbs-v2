@@ -19,6 +19,10 @@ import { StoreContext } from "../../../store/StoreContext";
 import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import ModalError from "../../../partials/modals/ModalError";
 import LoadImages from "../../../partials/LoadImages";
+import ModalContact from "../../../partials/ModalContact";
+import ModalLcssForm from "../../../partials/ModalLcssForm";
+import ModalJobApplication from "../career/ModalJobApplication";
+
 
 const SingplePage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -33,12 +37,30 @@ const SingplePage = () => {
     "get", // method
     "insights" // key
   );
-
+ const [pageName, setPageName] = React.useState("home");
   const [subscribe, setSubscribe] = React.useState(false);
+  const [jobTitle, setJobTitle] = React.useState("insight");
 
   const [lcssForm, setLcssForm] = React.useState(false);
   const [modalJob, setModalJob] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
+
+    const [modalContact, setModalContact] = React.useState(false);
+    const handleModalContact = () => {
+      setModalContact(!modalContact);
+    };
+
+  const handleLcssForm = () => {
+    setLcssForm(true);
+  }
+
+  const handleModalJob = () => {
+    setModalJob(true);
+  }
+
+  const handleContactForm = () => {
+    setContactForm(true);
+  }
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -130,9 +152,24 @@ const SingplePage = () => {
                 ))}
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
                 {post.home_insights_cta_is_active ? (
-                  <button className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
-                    {post.home_insights_cta_text}
+                  post.home_insights_form_selected === "default-receiver" ?
+                  <button onClick={handleContactForm} className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
+                    {post.home_insights_cta_text ? post.home_insights_cta_text : "CONTACT US" }
                   </button>
+                  // <p>default</p>
+                  : "" ||
+                  post.home_insights_form_selected === "apply-now-lcs" ?
+                  <button onClick={handleLcssForm} className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
+                  {post.home_insights_cta_text ? post.home_insights_cta_text : "CONTACT US" }
+                  </button>
+                  // <p>lcss</p>
+                   : "" ||
+                   post.home_insights_form_selected === "apply-now-careers" ?
+                   <button onClick={handleModalJob} className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
+                  {post.home_insights_cta_text ? post.home_insights_cta_text : "CONTACT US" }
+                   </button> 
+                  // <p>careers</p>
+                   : ""
                 ) : (
                   <p></p>
                 )}
@@ -227,6 +264,24 @@ const SingplePage = () => {
           notification_purpose={"subscribers"}
         />
       )}
+     {contactForm && (
+        <ModalContact
+          thePageName={pageName}
+          setContactForm={setContactForm}
+          setModalContact={setModalContact}
+        />
+      )}
+      {lcssForm && (
+        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
+      )}
+       {modalJob && (
+        <ModalJobApplication
+          setModalJob={setModalJob}
+          jobTitle={jobTitle}
+          modalJob={modalJob}
+        />
+      )}
+
     </>
   );
 };

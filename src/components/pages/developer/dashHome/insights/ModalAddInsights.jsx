@@ -43,17 +43,20 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const [fileData, setFileData] = React.useState(null);
   const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
   const [isCheck, setIsCheck] = React.useState(false);
-  const [text, setText] = useState("");
+  const [isCheckClick, setIsCheckClick] = useState(false);
+
+
+  const handleIsCheckClick = () =>{
+    setIsCheckClick(!isCheckClick)
+    console.log(isCheckClick)
+  }
 
   const handleCheckBox = (e) => {
     setIsCheck(e.target.checked);
-    handleTextChange(e);
-    console.log(handleTextChange(e));
+    handleIsCheckClick();
   };
 
-  const handleTextChange = (e) => {
-    setText(e.target.value);
-  };
+
 
   useEffect(() => {
     setIsCheck(itemEdit ? itemEdit.home_insights_cta_is_active : false);
@@ -390,7 +393,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                 id="notification_purpose"
                                 name="home_insights_form_selected"
                                 disabled={mutation.isPending || !isCheck}
-                                value={props.values.notification_purpose}
+                                value={props.values.home_insights_form_selected}
                                 onChange={props.handleChange}
                                 className="input-select"
                               >
@@ -420,7 +423,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               className="btn-modal-submit bg-white text-primary"
                               type="submit"
                               disabled={
-                                mutation.isPending || !props.dirty || loading
+                                (mutation.isPending && !props.dirty && loading) || (!isCheckClick && !props.dirty)
                               }
                               onClick={() => setIsDraft(true)}
                             >
@@ -434,7 +437,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               className="btn-modal-submit"
                               type="submit"
                               disabled={
-                                mutation.isPending || !props.dirty || loading
+                                (mutation.isPending && !props.dirty && loading) || (!isCheckClick && !props.dirty)
                               }
                             >
                               {mutation.isPending ? (

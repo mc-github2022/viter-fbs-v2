@@ -1,0 +1,42 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            ->rest/v1/controllers/developer/home/insights/create.php
+            ->rest/v1/controllers/developer/home/insights/update.php
+            -> 
+            -> 
+            -> 
+        
+
+
+        * MODELS
+            -> rest/v1/models/developer/home/insights/Insights.php
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> fbsv2_home_insights
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
