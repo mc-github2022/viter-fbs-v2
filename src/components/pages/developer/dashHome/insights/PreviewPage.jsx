@@ -17,6 +17,7 @@ import {
 import { StoreContext } from "../../../../store/StoreContext";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalJobApplication from "../../../website/career/ModalJobApplication";
 
 const PreviewPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -35,6 +36,22 @@ const PreviewPage = () => {
   const { slug } = useParams();
 
   const [html, setHtml] = React.useState("");
+  const [lcssForm, setLcssForm] = React.useState(false);
+  const [modalJob, setModalJob] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const [jobTitle, setJobTitle] = React.useState("insight");
+
+  const handleLcssForm = () => {
+    setLcssForm(true);
+  };
+
+  const handleModalJob = () => {
+    setModalJob(true);
+  };
+
+  const handleContactForm = () => {
+    setContactForm(true);
+  };
 
   useEffect(() => {
     if (insightData?.data.length > 0) {
@@ -117,6 +134,44 @@ const PreviewPage = () => {
                   />
                 ))}
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
+                {post.home_insights_cta_is_active ? (
+                  post.home_insights_form_selected === "default-receiver" ? (
+                    <button
+                      onClick={handleContactForm}
+                      className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
+                    >
+                      {post.home_insights_cta_text
+                        ? post.home_insights_cta_text
+                        : "CONTACT US"}
+                    </button>
+                  ) : // <p>default</p>
+                  "" || post.home_insights_form_selected === "apply-now-lcs" ? (
+                    <button
+                      onClick={handleLcssForm}
+                      className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
+                    >
+                      {post.home_insights_cta_text
+                        ? post.home_insights_cta_text
+                        : "CONTACT US"}
+                    </button>
+                  ) : // <p>lcss</p>
+                  "" ||
+                    post.home_insights_form_selected === "apply-now-careers" ? (
+                    <button
+                      onClick={handleModalJob}
+                      className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
+                    >
+                      {post.home_insights_cta_text
+                        ? post.home_insights_cta_text
+                        : "CONTACT US"}
+                    </button>
+                  ) : (
+                    // <p>careers</p>
+                    ""
+                  )
+                ) : (
+                  <p></p>
+                )}
               </div>
               <div className="order-1 mt-6 md:mt-0">
                 <div className="mb-12">
@@ -202,6 +257,23 @@ const PreviewPage = () => {
         </div>
       </section>
       <Footer />
+      {contactForm && (
+        <ModalContact
+          thePageName={pageName}
+          setContactForm={setContactForm}
+          setModalContact={setModalContact}
+        />
+      )}
+      {lcssForm && (
+        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
+      )}
+      {modalJob && (
+        <ModalJobApplication
+          setModalJob={setModalJob}
+          jobTitle={jobTitle}
+          modalJob={modalJob}
+        />
+      )}
     </>
   );
 };

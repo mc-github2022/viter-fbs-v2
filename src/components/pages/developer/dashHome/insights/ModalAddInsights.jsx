@@ -45,18 +45,15 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const [isCheck, setIsCheck] = React.useState(false);
   const [isCheckClick, setIsCheckClick] = useState(false);
 
-
-  const handleIsCheckClick = () =>{
-    setIsCheckClick(!isCheckClick)
-    console.log(isCheckClick)
-  }
+  const handleIsCheckClick = () => {
+    setIsCheckClick(!isCheckClick);
+    console.log(isCheckClick);
+  };
 
   const handleCheckBox = (e) => {
     setIsCheck(e.target.checked);
     handleIsCheckClick();
   };
-
-
 
   useEffect(() => {
     setIsCheck(itemEdit ? itemEdit.home_insights_cta_is_active : false);
@@ -423,7 +420,10 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               className="btn-modal-submit bg-white text-primary"
                               type="submit"
                               disabled={
-                                (mutation.isPending && !props.dirty && loading) || (!isCheckClick && !props.dirty)
+                                (mutation.isPending &&
+                                  !props.dirty &&
+                                  loading) ||
+                                (!isCheckClick && !props.dirty)
                               }
                               onClick={() => setIsDraft(true)}
                             >
@@ -437,7 +437,10 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               className="btn-modal-submit"
                               type="submit"
                               disabled={
-                                (mutation.isPending && !props.dirty && loading) || (!isCheckClick && !props.dirty)
+                                (mutation.isPending &&
+                                  !props.dirty &&
+                                  loading) ||
+                                (!isCheckClick && !props.dirty)
                               }
                             >
                               {mutation.isPending ? (
@@ -449,26 +452,33 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col items-end">
-                        {itemEdit ? (
-                          <a
-                            className="text-xs hover:text-primary underline"
-                            onClick={handlePreview}
-                          >
-                            Preview
-                          </a>
-                        ) : (
-                          ""
-                        )}
+                      <div>
+                        <div className="h-[30px]  relative w-full">
+                          <div className="absolute">
+                            {itemEdit ? (
+                              <a
+                                className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
+                                onClick={handlePreview}
+                                role="button"
+                              >
+                                Preview
+                              </a>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        </div>
 
-                        <div className="input-wrapper textAreaWrapper ">
-                          <InputTextArea
-                            label="Description"
-                            type="text"
-                            name="home_insights_paragraph_a"
-                            className="h-[606px] w-[478px]"
-                            disabled={mutation.isPending}
-                          />
+                        <div className="flex flex-col items-end">
+                          <div className="input-wrapper textAreaWrapper ">
+                            <InputTextArea
+                              label="Description"
+                              type="text"
+                              name="home_insights_paragraph_a"
+                              className="h-[592px] w-[478px]"
+                              disabled={mutation.isPending}
+                            />
+                          </div>
                         </div>
                       </div>
                     </div>

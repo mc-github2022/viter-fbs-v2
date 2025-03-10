@@ -22,7 +22,7 @@ import LoadImages from "../../../partials/LoadImages";
 import ModalContact from "../../../partials/ModalContact";
 import ModalLcssForm from "../../../partials/ModalLcssForm";
 import ModalJobApplication from "../career/ModalJobApplication";
-
+import { Helmet } from "react-helmet";
 
 const SingplePage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -37,7 +37,7 @@ const SingplePage = () => {
     "get", // method
     "insights" // key
   );
- const [pageName, setPageName] = React.useState("home");
+  const [pageName, setPageName] = React.useState("home");
   const [subscribe, setSubscribe] = React.useState(false);
   const [jobTitle, setJobTitle] = React.useState("insight");
 
@@ -45,22 +45,22 @@ const SingplePage = () => {
   const [modalJob, setModalJob] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
 
-    const [modalContact, setModalContact] = React.useState(false);
-    const handleModalContact = () => {
-      setModalContact(!modalContact);
-    };
+  const [modalContact, setModalContact] = React.useState(false);
+  const handleModalContact = () => {
+    setModalContact(!modalContact);
+  };
 
   const handleLcssForm = () => {
     setLcssForm(true);
-  }
+  };
 
   const handleModalJob = () => {
     setModalJob(true);
-  }
+  };
 
   const handleContactForm = () => {
     setContactForm(true);
-  }
+  };
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -119,9 +119,22 @@ const SingplePage = () => {
   const insightsImages =
     getConvertStringToJSONparseData(post.home_insights_img) || [];
 
+  const insightImgId = insightsImages.map((img) => img.id);
+
   return (
     <>
       <Header />
+      <div>
+        <Helmet>
+          <title>{post.home_insights_title}</title>
+          <meta property="og:title" content={post.home_insights_title} />
+          <meta
+            property="og:image"
+            content={`${googleHDViewLink}${insightImgId}`}
+          />
+          <meta property="og:type" content="article" />
+        </Helmet>
+      </div>
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           <div>
@@ -152,24 +165,40 @@ const SingplePage = () => {
                 ))}
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
                 {post.home_insights_cta_is_active ? (
-                  post.home_insights_form_selected === "default-receiver" ?
-                  <button onClick={handleContactForm} className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
-                    {post.home_insights_cta_text ? post.home_insights_cta_text : "CONTACT US" }
-                  </button>
-                  // <p>default</p>
-                  : "" ||
-                  post.home_insights_form_selected === "apply-now-lcs" ?
-                  <button onClick={handleLcssForm} className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
-                  {post.home_insights_cta_text ? post.home_insights_cta_text : "CONTACT US" }
-                  </button>
-                  // <p>lcss</p>
-                   : "" ||
-                   post.home_insights_form_selected === "apply-now-careers" ?
-                   <button onClick={handleModalJob} className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary">
-                  {post.home_insights_cta_text ? post.home_insights_cta_text : "CONTACT US" }
-                   </button> 
-                  // <p>careers</p>
-                   : ""
+                  post.home_insights_form_selected === "default-receiver" ? (
+                    <button
+                      onClick={handleContactForm}
+                      className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
+                    >
+                      {post.home_insights_cta_text
+                        ? post.home_insights_cta_text
+                        : "CONTACT US"}
+                    </button>
+                  ) : // <p>default</p>
+                  "" || post.home_insights_form_selected === "apply-now-lcs" ? (
+                    <button
+                      onClick={handleLcssForm}
+                      className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
+                    >
+                      {post.home_insights_cta_text
+                        ? post.home_insights_cta_text
+                        : "CONTACT US"}
+                    </button>
+                  ) : // <p>lcss</p>
+                  "" ||
+                    post.home_insights_form_selected === "apply-now-careers" ? (
+                    <button
+                      onClick={handleModalJob}
+                      className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
+                    >
+                      {post.home_insights_cta_text
+                        ? post.home_insights_cta_text
+                        : "CONTACT US"}
+                    </button>
+                  ) : (
+                    // <p>careers</p>
+                    ""
+                  )
                 ) : (
                   <p></p>
                 )}
@@ -264,7 +293,7 @@ const SingplePage = () => {
           notification_purpose={"subscribers"}
         />
       )}
-     {contactForm && (
+      {contactForm && (
         <ModalContact
           thePageName={pageName}
           setContactForm={setContactForm}
@@ -274,14 +303,13 @@ const SingplePage = () => {
       {lcssForm && (
         <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
       )}
-       {modalJob && (
+      {modalJob && (
         <ModalJobApplication
           setModalJob={setModalJob}
           jobTitle={jobTitle}
           modalJob={modalJob}
         />
       )}
-
     </>
   );
 };
