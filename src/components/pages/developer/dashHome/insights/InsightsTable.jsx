@@ -87,7 +87,7 @@ const InsightsTable = ({ setItemEdit }) => {
               <th className="w-[8rem]">Date</th>
               <th>Content</th>
               <th>CTA Enable</th>
-              <th>CTA Text</th>
+              <th>Buttton Caption</th>
               <th>Form Selected</th>
               <th className="w-[8rem]">Image</th>
               <th className="text-right">Actions</th>

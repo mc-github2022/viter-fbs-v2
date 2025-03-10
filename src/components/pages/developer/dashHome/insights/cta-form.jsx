@@ -3,7 +3,7 @@ export const purposeValue = () => {
     { code: "default-receiver", name: "Default" },
     // { code: "get-started-lcs", name: "Get started LCS page" },
     // { code: "get-started-careers", name: "Get started Careers page" },
-    { code: "apply-now-lcs", name: "LCSS" },
+    { code: "apply-now-lcs", name: "LCS" },
     { code: "apply-now-careers", name: "Human Resource" },
     // { code: "partner-with-us-lcs", name: "Partner with us LCS page" },
     // { code: "subscribers", name: "Subscribers" },

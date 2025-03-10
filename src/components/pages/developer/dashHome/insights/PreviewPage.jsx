@@ -18,6 +18,8 @@ import { StoreContext } from "../../../../store/StoreContext";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
 import ModalJobApplication from "../../../website/career/ModalJobApplication";
+import ModalLcssForm from "../../../../partials/ModalLcssForm";
+import ModalContact from "../../../../partials/ModalContact";
 
 const PreviewPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -35,11 +37,13 @@ const PreviewPage = () => {
 
   const { slug } = useParams();
 
+  const [modalContact, setModalContact] = React.useState(false);
   const [html, setHtml] = React.useState("");
   const [lcssForm, setLcssForm] = React.useState(false);
   const [modalJob, setModalJob] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
   const [jobTitle, setJobTitle] = React.useState("insight");
+  const [pageName, setPageName] = React.useState("home");
 
   const handleLcssForm = () => {
     setLcssForm(true);
