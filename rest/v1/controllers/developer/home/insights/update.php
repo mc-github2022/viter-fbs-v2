@@ -24,8 +24,8 @@ if (array_key_exists("home_insightsid", $_GET)) {
   $home_insights->home_insights_paragraph_c = $data["home_insights_paragraph_c"];
   $home_insights->home_insights_cta_is_active = $data["home_insights_cta_is_active"];
   $home_insights->home_insights_cta_text = $data["home_insights_cta_text"];
-  if($data["home_insights_cta_text"]===""){
-    $home_insights->home_insights_cta_text = "dafault-receiver";
+  if($data["home_insights_form_selected"]===""){
+    $home_insights->home_insights_form_selected = "dafault-receiver";
   }else{
     $home_insights->home_insights_form_selected = $data["home_insights_form_selected"];
   }
