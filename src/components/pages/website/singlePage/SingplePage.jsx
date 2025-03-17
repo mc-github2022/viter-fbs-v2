@@ -164,7 +164,7 @@ const SingplePage = () => {
                   />
                 ))}
                 <div dangerouslySetInnerHTML={{ __html: html }}></div>
-                {post.home_insights_cta_is_active === "1" ? (
+                {post.home_insights_cta_is_active ? (
                   post.home_insights_form_selected === "default-receiver" ? (
                     <button
                       onClick={handleContactForm}
