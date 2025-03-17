@@ -96,7 +96,7 @@ const PostByCategory = () => {
           <div className="wrapper grid lg:grid-cols-[_2.5fr_1fr] gap-20">
             <div>
               {posts.map((post, index) => (
-                <div key={index}>
+                <div key={index} className="mb-8">
                   <div className="theTitle">
                     <h2 className="text-dark text-[clamp(30px,5vw,32px)] lg:w-[70%] leading-[1.3] mb-4 font-semibold">
                       {post.home_insights_title}
