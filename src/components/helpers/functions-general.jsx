@@ -2,10 +2,10 @@ import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
 // local url
-// export const urlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://localhost/react-vite/viter-fbs-v2/public/img";
+export const urlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2";
+export const imgUrlPathFBSMarketingWebsite =
+  "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // // Online Demo url
 // export const urlPathFBSMarketingWebsite =
@@ -14,9 +14,9 @@ import { StoreContext } from "../store/StoreContext";
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // Online Demo url
-export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
-export const imgUrlPathFBSMarketingWebsite =
-  "http://frontlinebusiness.com.ph/img";
+// export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
@@ -37,10 +37,10 @@ export const googleHDViewLink = "https://lh3.googleusercontent.com/d/";
 export const googleViewLink = "https://drive.google.com/file/d/";
 
 // reCAPTCHA site key TEST
-export const siteKey = "";
+// export const siteKey = "";
 
 // reCAPTCHA site key PRODUCTION
-// export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
+export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
 
 // get focus on a button
 export const GetFocus = (id) => {
