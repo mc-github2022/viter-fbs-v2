@@ -159,13 +159,19 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="input-wrapper reCaptcha">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={siteKey}
-                      onChange={(e) => handleChange(e)}
-                    />
-                  </div>
+                  {siteKey ? (
+                    <div className="input-wrapper reCaptcha">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={siteKey}
+                        onChange={(e) => handleChange(e)}
+                      />
+                    </div>
+                  ) : (
+                    <p className="py-4 text-[red] text-xs">
+                      There's a problem in loading reCAPTCHA.
+                    </p>
+                  )}
                   <div className="modal__action flex justify-center mt-6 gap-2">
                     {!check || mutation.isPending || !props.dirty ? (
                       <button

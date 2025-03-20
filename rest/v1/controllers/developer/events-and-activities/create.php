@@ -20,6 +20,19 @@ $events_activities->events_activities_description = $data["events_activities_des
 $events_activities->events_activities_created = date("Y-m-d H:i:s");
 $events_activities->events_activities_datetime = date("Y-m-d H:i:s");
 
+$events_activities_img_old = $data["events_activities_img_old"];
+$events_activities_img_list_old = $data["events_activities_img_list_old"];
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$events_activities->events_activities_img = checkToUploadGoogleDrive(
+    $events_activities->events_activities_img, // FILES
+    $events_activities_img_old, // OLD FILES
+);
+
+$events_activities->events_activities_img_list = checkToUploadGoogleDrive(
+    $events_activities->events_activities_img_list, // FILES
+    $events_activities_img_list_old, // OLD FILES
+);
 
 // //checks newly added data if it already exists
 // isNameExist($events_activities, $events_activities->events_activities_name);

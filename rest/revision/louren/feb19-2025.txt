@@ -39,6 +39,10 @@ DEVELOPER
             -> rest/v1/controllers/developer/lcss-batches/delete.php
             -> rest/v1/controllers/developer/lcss-batches/lcssBatches.php
             -> rest/v1/controllers/developer/lcss-batches/update.php
+            -> rest/v1/controllers/developer/events-and-activities/create.php
+            -> rest/v1/controllers/developer/events-and-activities/delete.php
+            -> rest/v1/controllers/developer/events-and-activities/eventsAndActivities.php
+            -> rest/v1/controllers/developer/events-and-activities/update.php
         
 
 

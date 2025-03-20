@@ -7,6 +7,7 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import * as Yup from "yup";
 import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 import {
+  InputFileUpload,
   InputPhotoUpload,
   InputText,
   InputTextArea,
@@ -15,6 +16,9 @@ import {
   apiVersion,
   devBaseImgUrl,
   devNavUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+  googleViewLink,
 } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
@@ -26,17 +30,21 @@ import {
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
+import { FaTrash } from "react-icons/fa";
+import LoadImages from "../../../../partials/LoadImages";
+import ModalRemovedPhoto from "../../../../partials/modals/ModalRemovedPhoto";
 
 const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
-    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
-  const {
-    uploadMultiplePhoto,
-    handleChangeMultiplePhoto,
-    setPhotoArrayList,
-    photoArrayList,
-  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+  const [withFile, setWithFile] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [fileData, setFileData] = React.useState({
+    images: [],
+    itemKey: null,
+    props: null,
+    type: "", // 'client' or 'logo'
+  });
+  const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
 
   const [activeTab, setActiveTab] = React.useState("text");
   const [eventsImage, setEventsImage] = React.useState(false);
@@ -45,6 +53,36 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const handleIsSubmitted = () => {
     setIsSubmitted(!isSubmitted);
+  };
+
+  const {
+    uploadMultiplePhoto: uploadClientImages,
+    handleChangeMultiplePhoto: handleChangeClientImages,
+    setPhotoArrayList: setClientImages,
+    photoArrayList: clientImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const {
+    uploadMultiplePhoto: uploadLogoImages,
+    handleChangeMultiplePhoto: handleChangeLogoImages,
+    setPhotoArrayList: setLogoImages,
+    photoArrayList: logoImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const handleClickViewSlideshow = (photos, key) => {
+    if (mutation.isPending || loading) return;
+    const link =
+      photos[key] instanceof Blob || photos[key] instanceof File
+        ? URL.createObjectURL(photos[key])
+        : `${googleViewLink}${photos[key]?.id}`;
+    window.open(link, "_blank");
+  };
+
+  // delete the file in the server (public)
+  const handleRemovePhoto = (photos, key, props, type) => {
+    if (mutation.isPending || loading) return;
+    setFileData({ images: photos, itemKey: key, props, type });
+    setIsRemovedPhoto(true);
   };
 
   // const [isCheck, setIsCheck] = React.useState(false);
@@ -101,6 +139,21 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     },
   });
 
+  React.useEffect(() => {
+    if (itemEdit) {
+      const clientPhotos = getConvertStringToJSONparseData(
+        itemEdit.events_activities_img
+      );
+      setClientImages(clientPhotos);
+    }
+    if (itemEdit) {
+      const logoPhotos = getConvertStringToJSONparseData(
+        itemEdit.events_activities_img_list
+      );
+      setLogoImages(logoPhotos);
+    }
+  }, []);
+
   const initVal = {
     events_activities_aid: itemEdit ? itemEdit.events_activities_aid : "",
     events_activities_category: itemEdit
@@ -119,6 +172,13 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     events_activities_is_active: itemEdit
       ? itemEdit.events_activities_is_active
       : "",
+
+    events_activities_img_old: itemEdit ? itemEdit.events_activities_img : "",
+    events_activities_img_list_old: itemEdit
+      ? itemEdit.events_activities_img_list
+      : "",
+
+    pendingDeleteFile: [],
   };
 
   const yupSchema = Yup.object({
@@ -131,364 +191,417 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
       : [];
 
   return (
-    <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
-      handleClose={handleClose}
-    >
-      <div className="modal-title">
-        <h2 className="text-sm">
-          {itemEdit ? "Edit" : "Add"} Events & Activities
-        </h2>
-        <button onClick={handleClose}>
-          <GrFormClose className="text-[25px]" />
-        </button>
-      </div>
-      <div className="modal-content">
-        <Formik
-          initialValues={initVal}
-          validationSchema={yupSchema}
-          onSubmit={async (values) => {
-            const data = {
-              ...values,
-              events_activities_is_active: isDraft ? 0 : 1,
-              events_activities_img: photoSingle
-                ? photoSingle.name
-                : itemEdit.events_activities_img,
-              events_activities_img_list:
-                photoArrayList.length > 0
-                  ? photoArrayList.map((file) => file.name).join(", ")
-                  : itemEdit.events_activities_img_list || "",
-            };
-            if (photoSingle) {
-              await singleUploadPhoto();
-            }
-            if (photoArrayList.length > 0) {
-              await uploadMultiplePhoto();
-            }
-            mutation.mutate(data);
-          }}
-        >
-          {(props) => {
-            return (
-              <Form className="modal-form">
-                <div className="form-input">
-                  <div className="grid grid-cols-2 gap-4 relative overflow-hidden">
-                    <div className=" relative">
-                      <div className="mt-5">
-                        <span className="top-20 px-2 text-dark text-xs">
-                          Image
-                        </span>
+    <>
+      <ModalAddWrapper
+        className={`transition-all ease-linear transform duration-200 max-h-[590px] max-w-[1000px]`}
+        handleClose={handleClose}
+      >
+        <div className="modal-title">
+          <h2 className="text-sm">
+            {itemEdit ? "Edit" : "Add"} Events & Activities
+          </h2>
+          <button onClick={handleClose}>
+            <GrFormClose className="text-[25px]" />
+          </button>
+        </div>
+        <div className="modal-content">
+          <Formik
+            initialValues={initVal}
+            validationSchema={yupSchema}
+            onSubmit={async (values) => {
+              const data = {
+                ...values,
+                events_activities_is_active: isDraft ? 0 : 1,
+                events_activities_img: clientImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+                events_activities_img_list: logoImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+              };
+              // Upload separately
+              const clientPhotoUpload = await uploadClientImages(clientImages);
+              const logoPhotoUpload = await uploadLogoImages(logoImages);
 
-                        <div className="relative w-fit group">
-                          {(itemEdit === null && photoSingle === null) ||
-                          (photoSingle === "" && itemEdit === null) ? (
-                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[200px] h-[100px] p-2 grid place-items-center duration-200">
-                              <div className="">
-                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
-                                <h1 className="mb-0 leading-tight text-[gray] text-sm text-center">
-                                  Upload Image
-                                </h1>
-                              </div>
-                            </div>
-                          ) : (itemEdit &&
-                              !itemEdit.events_activities_img &&
-                              !photoSingle) ||
-                            (!itemEdit && !photoSingle) ? (
-                            <div className="group-hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
-                              <div>
-                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
-                                <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
-                                  Upload Image
-                                </h1>
-                              </div>
-                            </div>
-                          ) : (
-                            <img
-                              src={
-                                photoSingle
-                                  ? URL.createObjectURL(photoSingle) // preview
-                                  : devBaseImgUrl +
-                                    "/" +
-                                    itemEdit.events_activities_img // check db
-                              }
-                              alt="Logo"
-                              className="group-hover:opacity-30 duration-200 relative h-[100px]  object-contain object-[50%,50%] m-auto"
+              if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
+                setLoading(false);
+              }
+
+              if (!loading) console.log(data);
+              mutation.mutate(data);
+            }}
+          >
+            {(props) => {
+              return (
+                <Form className="modal-form">
+                  <div className="form-input">
+                    <div className="grid grid-cols-2 gap-4 relative overflow-hidden">
+                      <div className=" relative">
+                        <div className="">
+                          <label className=" top-[35px] text-dark text-xs">
+                            Image
+                          </label>
+                          <div
+                            className={`relative mt-9 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[230px] text-xs ${
+                              withFile && "border-primary border-dashed"
+                            }`}
+                            onDragOver={() => setWithFile(true)}
+                            onDragLeave={() => setWithFile(false)}
+                          >
+                            <span className="min-h-16 flex items-center justify-center">
+                              <span className="text-dark mr-1">
+                                Drag & Drop
+                              </span>{" "}
+                              Photo here or{" "}
+                              <span className="text-dark ml-1">Browse</span>
+                            </span>
+
+                            <InputFileUpload
+                              label="Upload Image"
+                              name="File"
+                              type="file"
+                              id="myFile"
+                              accept="*"
+                              title="Upload Image"
+                              onChange={handleChangeClientImages}
+                              onDrop={(e) => handleChangeClientImages(e)}
+                              disabled={mutation.isPending || loading}
+                              className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
                             />
-                          )}
+                          </div>
 
-                          <div className="btnImgUpload">
-                            <button>
-                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
-                              <InputPhotoUpload
-                                name="photo"
-                                type="file"
-                                id="myFile"
-                                accept="image/*"
-                                title="Upload Image"
-                                onChange={(e) =>
-                                  handleChangePhoto(
-                                    e,
-                                    initVal.events_activities_img
-                                  )
-                                }
-                                className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
-                              />
+                          <div className="relative w-[230px] ">
+                            <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                              {clientImages.length > 0 &&
+                                clientImages.map((item, key) => {
+                                  const fileLink =
+                                    item instanceof File || item instanceof Blob
+                                      ? URL.createObjectURL(item)
+                                      : `${googleHDViewLink}${item?.id}`;
+
+                                  return (
+                                    <React.Fragment key={key}>
+                                      <li
+                                        className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
+                                          (mutation.isPending || loading) &&
+                                          `!cursor-not-allowed`
+                                        }`}
+                                        onClick={() => {
+                                          handleClickViewSlideshow(
+                                            photoArrayList,
+                                            key
+                                          );
+                                        }}
+                                      >
+                                        <LoadImages
+                                          url={fileLink}
+                                          className="relative z-20 w-full h-full object-cover object-center"
+                                        />
+                                        {(!mutation.isPending || !loading) && (
+                                          <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                            <span>
+                                              Click to View <br />
+                                              {key + 1}. {item.name}
+                                            </span>
+
+                                            <div
+                                              className="absolute bottom-0 right-0 flex items-center gap-2"
+                                              onClick={(e) => {
+                                                e.stopPropagation();
+                                              }}
+                                            >
+                                              <button
+                                                type="button"
+                                                className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                data-tooltip={`Delete`}
+                                                disabled={
+                                                  mutation.isPending || loading
+                                                }
+                                                onClick={() =>
+                                                  handleRemovePhoto(
+                                                    clientImages,
+                                                    key,
+                                                    props,
+                                                    "client"
+                                                  )
+                                                }
+                                              >
+                                                <FaTrash />
+                                              </button>
+                                            </div>
+                                          </div>
+                                        )}
+                                      </li>
+                                    </React.Fragment>
+                                  );
+                                })}
+                            </ol>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="input-wrapper">
+                            <InputText
+                              label="Category"
+                              type="text"
+                              name="events_activities_category"
+                              disabled={mutation.isPending}
+                            />
+                          </div>
+                          <div className="input-wrapper">
+                            <InputText
+                              label="Title"
+                              type="text"
+                              name="events_activities_title"
+                              disabled={mutation.isPending}
+                            />
+                          </div>
+                          <div className="input-wrapper">
+                            <InputText
+                              label="*Slug"
+                              type="text"
+                              name="events_activities_slug"
+                              disabled={mutation.isPending}
+                            />
+                          </div>
+
+                          <div className="input-wrapper">
+                            <InputText
+                              label="Date"
+                              type="date"
+                              name="events_activities_date"
+                              disabled={mutation.isPending}
+                            />
+                          </div>
+                        </div>
+                        <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
+                          <div className="form-btn">
+                            <button
+                              className="btn-modal-submit bg-white text-primary"
+                              type="submit"
+                              disabled={
+                                mutation.isPending ||
+                                !props.dirty ||
+                                loading ||
+                                (!clientImages?.length && !logoImages?.length)
+                              }
+                              onClick={() => setIsDraft(true)}
+                            >
+                              {mutation.isPending ? (
+                                <ButtonSpinner />
+                              ) : (
+                                "Save as Draft"
+                              )}
+                            </button>
+                            <button
+                              className={`${
+                                isSubmitted
+                                  ? "pointer-events-none bg-gray-600"
+                                  : ""
+                              } btn-modal-submit`}
+                              type="submit"
+                              disabled={
+                                mutation.isPending ||
+                                !props.dirty ||
+                                loading ||
+                                (!clientImages?.length && !logoImages?.length)
+                              }
+                              onClick={handleIsSubmitted}
+                              // disabled={
+                              //   ((mutation.isPending || !props.dirty) &&
+                              //     photoSingle === null) ||
+                              //   photoSingle === "" ||
+                              //   initVal.events_activities_img ===
+                              //     photoSingle?.name
+                              // }
+                            >
+                              {mutation.isPending ? (
+                                <ButtonSpinner />
+                              ) : (
+                                "Publish"
+                              )}
                             </button>
                           </div>
                         </div>
                       </div>
-                      <div>
-                        <div className="input-wrapper">
-                          <InputText
-                            label="Category"
-                            type="text"
-                            name="events_activities_category"
-                            disabled={mutation.isPending}
-                          />
-                        </div>
-                        <div className="input-wrapper">
-                          <InputText
-                            label="Title"
-                            type="text"
-                            name="events_activities_title"
-                            disabled={mutation.isPending}
-                          />
-                        </div>
-                        <div className="input-wrapper">
-                          <InputText
-                            label="*Slug"
-                            type="text"
-                            name="events_activities_slug"
-                            disabled={mutation.isPending}
-                          />
-                        </div>
-
-                        <div className="input-wrapper">
-                          <InputText
-                            label="Date"
-                            type="date"
-                            name="events_activities_date"
-                            disabled={mutation.isPending}
-                          />
-                        </div>
-                        {/* <div className="input-wrapper !m-0">
-                          <div className="flex items-start gap-2 w-full sm:w-[300px]">
-                            <div className="flex">
-                              <input
-                                type="checkbox"
-                                name="subscriber_is_agree"
-                                id="agree"
-                                onChange={handleCheckBox}
-                                checked={isCheck}
-                              />
-                            </div>
-                            <p className="text-xs mt-2.5">
-                              Schedule Date and Time of posting
-                            </p>
-                          </div>
-                        </div>
-                        {!isCheck ? (
-                          ""
-                        ) : (
-                          <div className="flex gap-5">
-                            <div className="input-wrapper">
-                              <InputText
-                                label="Date"
-                                type="date"
-                                name="events_activities_schedule_date"
-                                disabled={mutation.isPending}
-                              />
-                            </div>
-                            <div className="input-wrapper">
-                              <InputText
-                                label="Time"
-                                type="time"
-                                name="events_activities_schedule_time"
-                                disabled={mutation.isPending}
-                              />
-                            </div>
-                          </div>
-                        )} */}
-                      </div>
-                      <div className="form-action place-content-end absolute bottom-0 w-full mb-2">
-                        <div className="form-btn">
-                          <button
-                            className="btn-modal-submit bg-white text-primary"
-                            type="submit"
-                            disabled={
-                              mutation.isPending ||
-                              (!props.dirty &&
-                                !photoSingle &&
-                                (!photoArrayList ||
-                                  photoArrayList.length === 0)) ||
-                              (initVal.events_activities_img ===
-                                photoSingle?.name &&
-                                (!initVal.events_activities_img_list ||
-                                  initVal.events_activities_img_list ===
-                                    photoArrayList?.name))
-                            }
-                            onClick={() => setIsDraft(true)}
-                          >
-                            {mutation.isPending ? (
-                              <ButtonSpinner />
-                            ) : (
-                              "Save as Draft"
-                            )}
-                          </button>
-                          <button
-                            className={`${
-                              isSubmitted
-                                ? "pointer-events-none bg-gray-600"
-                                : ""
-                            } btn-modal-submit`}
-                            type="submit"
-                            disabled={
-                              mutation.isPending ||
-                              (!props.dirty &&
-                                !photoSingle &&
-                                (!photoArrayList ||
-                                  photoArrayList.length === 0)) ||
-                              (initVal.events_activities_img ===
-                                photoSingle?.name &&
-                                (!initVal.events_activities_img_list ||
-                                  initVal.events_activities_img_list ===
-                                    photoArrayList?.name))
-                            }
-                            onClick={handleIsSubmitted}
-                            // disabled={
-                            //   ((mutation.isPending || !props.dirty) &&
-                            //     photoSingle === null) ||
-                            //   photoSingle === "" ||
-                            //   initVal.events_activities_img ===
-                            //     photoSingle?.name
-                            // }
-                          >
-                            {mutation.isPending ? <ButtonSpinner /> : "Publish"}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="px-1 rounded-lg">
-                      <div className="absolute">
-                        {itemEdit ? (
-                          <a
-                            className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
-                            onClick={handlePreview}
-                            role="button"
-                          >
-                            Preview
-                          </a>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                      <ul className="text-sm flex [&>li]:px-2 [&>li]:cursor-pointer justify-end">
-                        <li
-                          className={`${
-                            activeTab === "text"
-                              ? "border-b border-primary"
-                              : "text-gray-400"
-                          }`}
-                          onClick={() => eventsImageClose("text")}
-                        >
-                          Add Text
-                        </li>
-                        <li
-                          className={`${
-                            activeTab === "image"
-                              ? "border-b border-primary"
-                              : "text-gray-400"
-                          }`}
-                          onClick={() => handleEventsImage("image")}
-                        >
-                          Add Image
-                        </li>
-                      </ul>
-                      <div className="input-wrapper textAreaWrapper mt-8">
-                        <InputTextArea
-                          label="Description"
-                          type="text"
-                          name="events_activities_description"
-                          className="h-[420px] py-3"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div
-                        className={`h-[445px] overflow-auto absolute ${
-                          eventsImage ? "top-7" : "bottom-[100%]"
-                        }  bg-white z-20 w-[464px]`}
-                      >
-                        <span className="top-20 px-2 text-dark text-[12px]">
-                          Upload Images
-                        </span>
-                        <div className="relative w-fit m-auto group mt-3">
-                          {!itemEdit && !photoArrayList.length ? (
-                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[350px] h-[180px] p-2 place-content-center">
-                              <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                              <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
-                                Upload Image
-                              </h1>
-                            </div>
-                          ) : photoArrayList.length > 0 ? (
-                            <div className="grid grid-cols-4 gap-2">
-                              {photoArrayList.map((file, index) => (
-                                <img
-                                  key={index}
-                                  src={URL.createObjectURL(file)}
-                                  alt="Uploaded Preview"
-                                  className="w-[350px] h-[180px] object-cover"
-                                />
-                              ))}
-                            </div>
-                          ) : itemEdit &&
-                            itemEdit.events_activities_img_list ? (
-                            <div className="grid grid-cols-4 gap-2">
-                              {imageList.map((img, index) => (
-                                <img
-                                  key={index}
-                                  src={`${devBaseImgUrl}/${img.trim()}`}
-                                  alt={`Existing Image ${index + 1}`}
-                                  className="w-[350px] h-[180px] object-cover"
-                                />
-                              ))}
-                            </div>
+                      <div className="px-1 rounded-lg">
+                        <div className="absolute">
+                          {itemEdit ? (
+                            <a
+                              className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
+                              onClick={handlePreview}
+                              role="button"
+                            >
+                              Preview
+                            </a>
                           ) : (
-                            <div className="group-hover:opacity-20 mb-4 items-center gap-2 w-[350px] h-[180px] p-2 place-content-center">
-                              <IoImageOutline className="text-[30px] text-[gray] mx-auto" />
-                              <h1 className="mb-0 leading-tight text-[gray] text-[15px] text-center">
-                                No Images Available
-                              </h1>
-                            </div>
+                            ""
                           )}
+                        </div>
+                        <ul className="text-sm flex [&>li]:px-2 [&>li]:cursor-pointer justify-end">
+                          <li
+                            className={`${
+                              activeTab === "text"
+                                ? "border-b border-primary"
+                                : "text-gray-400"
+                            }`}
+                            onClick={() => eventsImageClose("text")}
+                          >
+                            Add Text
+                          </li>
+                          <li
+                            className={`${
+                              activeTab === "image"
+                                ? "border-b border-primary"
+                                : "text-gray-400"
+                            }`}
+                            onClick={() => handleEventsImage("image")}
+                          >
+                            Add Image
+                          </li>
+                        </ul>
+                        <div className="input-wrapper textAreaWrapper mt-8">
+                          <InputTextArea
+                            label="Description"
+                            type="text"
+                            name="events_activities_description"
+                            className="h-[460px] py-3"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div
+                          className={`h-[500px] overflow-auto absolute place-self-center ${
+                            eventsImage ? "top-7" : "bottom-[100%]"
+                          }  bg-white z-20 w-[464px]`}
+                        >
+                          <div className="">
+                            <div
+                              className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[230px] text-xs ${
+                                withFile && "border-primary border-dashed"
+                              }`}
+                              onDragOver={() => setWithFile(true)}
+                              onDragLeave={() => setWithFile(false)}
+                            >
+                              <span className="min-h-16 flex items-center justify-center">
+                                <span className="text-dark mr-1">
+                                  Drag & Drop
+                                </span>{" "}
+                                Photo here or{" "}
+                                <span className="text-dark ml-1">Browse</span>
+                              </span>
 
-                          <div className="btnImgUpload">
-                            <button>
-                              <MdOutlineFileUpload className="text-gray-900 text-[30px]" />
-                              <InputPhotoUpload
-                                name="photo"
+                              <InputFileUpload
+                                label="Upload Image"
+                                name="File"
                                 type="file"
                                 id="myFile"
-                                accept="image/*"
-                                title="Upload Images"
+                                accept="*"
+                                title="Upload File"
                                 multiple
-                                onChange={(e) =>
-                                  handleChangeMultiplePhoto(e, 50, true)
-                                }
-                                className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999]"
+                                onChange={handleChangeLogoImages}
+                                onDrop={(e) => handleChangeLogoImages(e)}
+                                disabled={mutation.isPending || loading}
+                                className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
                               />
-                            </button>
+                            </div>
+
+                            <div className="relative  mb-6 ">
+                              <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                                {logoImages.length > 0 &&
+                                  logoImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
+
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              logoImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
+
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
+                                              >
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      logoImages,
+                                                      key,
+                                                      props,
+                                                      "logo"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                              </ol>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Form>
-            );
-          }}
-        </Formik>
-      </div>
-    </ModalAddWrapper>
+                </Form>
+              );
+            }}
+          </Formik>
+        </div>
+      </ModalAddWrapper>
+
+      {isRemovedPhoto && (
+        <ModalRemovedPhoto
+          fileData={fileData.images}
+          itemKey={fileData.itemKey}
+          itemProps={fileData.props}
+          msg="Are you sure you want to remove this file?"
+          setIsModalShow={setIsRemovedPhoto}
+          setNewFile={
+            fileData.type === "client" ? setClientImages : setLogoImages
+          }
+        />
+      )}
+    </>
   );
 };
 
