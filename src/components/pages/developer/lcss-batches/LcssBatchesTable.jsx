@@ -121,8 +121,9 @@ const LcssBatchesTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => {
-                  const batchImages =
-                    getConvertStringToJSONparseData(item.lcss_batch_img) || [];
+                  const batchImages = getConvertStringToJSONparseData(
+                    item.lcss_batch_img
+                  );
                   return (
                     <tr key={key} className="place-content-start text-[14px]">
                       <td className="pl-2 place-content-start">{counter++}</td>
