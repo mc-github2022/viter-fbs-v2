@@ -127,7 +127,7 @@ const PartnersTable = ({ setItemEdit }) => {
                         {item.partners_page}
                       </td>
                       <td className="place-content-start">
-                        {item.partners_company_name}
+                        {item.partners_name}
                       </td>
                       <td className="place-content-start">
                         <div className="line-clamp-5">

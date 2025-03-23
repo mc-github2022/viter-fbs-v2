@@ -112,11 +112,10 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   }, []);
 
   const initVal = {
-    partners_company_name: itemEdit ? itemEdit.partners_company_name : "",
+    partners_name: itemEdit ? itemEdit.partners_name : "",
     partners_page: itemEdit ? itemEdit.partners_page : "",
     partners_img: itemEdit ? itemEdit.partners_img : "",
 
-    partners_company_name_old: itemEdit ? itemEdit.partners_company_name : "",
     partners_img_old: itemEdit ? itemEdit.partners_img : "",
     pendingDeleteFile: [],
   };
@@ -278,14 +277,6 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                     </div>
                     <div className=" ">
                       <div className="input-wrapper">
-                        <InputText
-                          label="Company Name"
-                          type="text"
-                          name="partners_company_name"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div className="input-wrapper">
                         <InputSelect
                           label="*Page Name"
                           type="text"
@@ -341,6 +332,14 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                           </option>
                           <option value="Web Design">Web Design</option>
                         </InputSelect>
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Company Name"
+                          type="text"
+                          name="partners_name"
+                          disabled={mutation.isPending}
+                        />
                       </div>
                     </div>
                   </div>
