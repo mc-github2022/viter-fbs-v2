@@ -9,11 +9,14 @@ import {
   devBaseImgUrl,
   devNavUrl,
   formatDate,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import Footer from "../../../../partials/Footer";
 
 import Header from "../../../../partials/Header";
 import EventsSliderPage from "../../../website/events/EventsSliderPage";
+import LoadImages from "../../../../partials/LoadImages";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -96,7 +99,7 @@ const PreviewPageEventsAndActivities = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     dotsClass: "slickNav slick-dots",
     nextArrow: <SampleNextArrow />,
@@ -128,7 +131,7 @@ const PreviewPageEventsAndActivities = () => {
       {
         breakpoint: 1300,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
           arrows: true,
         },
@@ -173,15 +176,15 @@ const PreviewPageEventsAndActivities = () => {
     if (matchingInsight) {
       setHtml(matchingInsight.events_activities_description);
 
-      // Extract and split the images list into an array
-      const imgList = matchingInsight.events_activities_img_list
-        ?.split(",")
-        .map((img) => img.trim())
-        .filter(Boolean); // Remove empty strings
-      setImages(imgList || []);
-    } else {
-      setHtml("");
-      setImages([]);
+      //   // Extract and split the images list into an array
+      //   const imgList = matchingInsight.events_activities_img_list
+      //     ?.split(",")
+      //     .map((img) => img.trim())
+      //     .filter(Boolean); // Remove empty strings
+      //   setImages(imgList || []);
+      // } else {
+      //   setHtml("");
+      //   setImages([]);
     }
   }, [slug, eventsAndActivitiesData]);
 
@@ -206,6 +209,14 @@ const PreviewPageEventsAndActivities = () => {
     return <div>Loading...</div>;
   }
 
+  const eventImageList = post?.events_activities_img_list
+    ? getConvertStringToJSONparseData(post.events_activities_img_list)
+    : [];
+
+  const eventImage = post?.events_activities_img
+    ? getConvertStringToJSONparseData(post.events_activities_img)
+    : [];
+
   return (
     <>
       <Header />
@@ -227,40 +238,43 @@ const PreviewPageEventsAndActivities = () => {
             </li>
           </ul>
           <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12 gap-8">
-            <div className="postContent lg:min-w-[700px] lg:max-w-[890px] xl:max-w-[940px]">
-              <img
-                src={`${devBaseImgUrl}/${post.events_activities_img}`}
-                alt=""
-                className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
-              />
+            <div className="postContent lg:min-w-[700px] lg:max-w-[890px] xl:max-w-[940px] relative">
+              {eventImage.map((image, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${image?.id}`}
+                  alt=""
+                  key={index}
+                  className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
+                />
+              ))}
               <div dangerouslySetInnerHTML={{ __html: html }}></div>
               <div className="mx-auto my-4 max-w-[90%]">
-                {images.length > 1 ? (
+                {eventImageList.length > 1 ? (
                   <Slider {...SinglePageSettings}>
-                    {images.map((image, index) => (
+                    {eventImageList.map((image, index) => (
                       <div key={index}>
                         <a onClick={() => handleEventImg(post, index)}>
                           <div
                             style={{
-                              backgroundImage: `url(${devBaseImgUrl}/${image})`,
+                              backgroundImage: `url(${googleHDViewLink}${image?.id})`,
                             }}
-                            className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
-                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                            className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[500px] sm:w-[320px] flex items-end relative rounded-xl 
+               hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                           >
-                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
+                            {/* <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div> */}
                           </div>
                         </a>
                       </div>
                     ))}
                   </Slider>
-                ) : images.length === 1 ? (
+                ) : eventImageList.length === 1 ? (
                   <a onClick={() => handleEventImg(post, 0)}>
                     <div
                       className=" h-[330px] w-[450px]
-                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+              grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center relative rounded-xl"
                     >
-                      <img
-                        src={`${devBaseImgUrl}/${images[0]}`}
+                      <LoadImages
+                        url={`${googleHDViewLink}${eventImageList[0].id}`}
                         alt="Successful, Industry-Ready Batches."
                       />
                     </div>
@@ -284,28 +298,37 @@ const PreviewPageEventsAndActivities = () => {
                           post.events_activities_slug
                       )
                       .slice(0, 5)
-                      .map((popPost, key) => (
-                        <div key={key}>
-                          <li className="my-5">
-                            <Link
-                              to={`${devNavUrl}/events-and-activities/${popPost.events_activities_slug}`}
-                            >
-                              <div className="flex items-center gap-4">
-                                <div className="min-w-[100px] max-w-[100px] h-[80px]">
-                                  <img
-                                    src={`${devBaseImgUrl}/${popPost.events_activities_img}`}
-                                    alt=""
-                                    className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
-                                  />
+                      .map((popPost, key) => {
+                        const eventImageRecent =
+                          getConvertStringToJSONparseData(
+                            popPost.events_activities_img
+                          ) || [];
+                        return (
+                          <div key={key}>
+                            <li className="my-5">
+                              <Link
+                                to={`${devNavUrl}/events-and-activities/${popPost.events_activities_slug}`}
+                              >
+                                <div className="flex items-center gap-4">
+                                  <div className="min-w-[100px] max-w-[100px] h-[80px]">
+                                    {eventImageRecent.map((image, index) => (
+                                      <img
+                                        src={`${googleHDViewLink}${image?.id}`}
+                                        key={index}
+                                        alt=""
+                                        className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
+                                      />
+                                    ))}
+                                  </div>
+                                  <div>
+                                    <p>{popPost.events_activities_title}</p>
+                                  </div>
                                 </div>
-                                <div>
-                                  <p>{popPost.events_activities_title}</p>
-                                </div>
-                              </div>
-                            </Link>
-                          </li>
-                        </div>
-                      ))}
+                              </Link>
+                            </li>
+                          </div>
+                        );
+                      })}
                   </ul>
                 </div>
               </div>

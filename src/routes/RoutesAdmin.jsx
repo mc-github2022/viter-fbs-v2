@@ -22,6 +22,7 @@ import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTes
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
+import Partners from "../components/pages/developer/partners/Partners";
 
 export const routesAdmin = [
   {
@@ -53,6 +54,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <Services />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/partners`,
+    element: (
+      <ProtectedRouteOther>
+        <Partners />
       </ProtectedRouteOther>
     ),
   },

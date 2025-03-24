@@ -40,7 +40,7 @@ export const googleViewLink = "https://drive.google.com/file/d/";
 export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
 
 // reCAPTCHA site key PRODUCTION
-// export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
+// export const siteKey = "";
 
 // get focus on a button
 export const GetFocus = (id) => {
@@ -135,6 +135,20 @@ export const options = (format) => {
         };
 
   return options;
+};
+
+// Get Date and Time
+export const formatDateTime = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true, // AM/PM format
+  });
 };
 
 // // fetch for uploading photo or file

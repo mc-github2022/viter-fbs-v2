@@ -6,7 +6,12 @@ import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import { eventsAndAct } from "./data";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import { devBaseImgUrl, devNavUrl } from "../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  devNavUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../helpers/functions-general";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -148,35 +153,45 @@ const EventsAndAct = () => {
               {eventsAndActivitiesData?.data
                 .filter((post) => post.events_activities_is_active === 1)
                 .slice(0, 3)
-                .map((post, key) => (
-                  <div key={key} className="postItem">
-                    <Link
-                      to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
-                    >
-                      <div
-                        style={{
-                          // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
-                          backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
-                        }}
-                        className={`blogItem bg-center bg-cover md:h-full flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer h-[267px]`}
+                .map((post, key) => {
+                  const eventImage =
+                    getConvertStringToJSONparseData(
+                      post.events_activities_img
+                    ) || [];
+                  const firstImage =
+                    eventImage.length > 0 ? eventImage[0] : null;
+                  return (
+                    <div key={key} className="postItem">
+                      <Link
+                        to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
                       >
-                        <div>
-                          <div className="blogExcerpt p-10 pb-6 relative z-[1]">
-                            <p className="text-light font-bold text-lg">
-                              {post.events_activities_title}
-                            </p>
+                        {firstImage && (
+                          <div
+                            style={{
+                              // backgroundImage: `url(${devBaseImgUrl}/home-bg-new.jpg)`,
+                              backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
+                            }}
+                            className={`blogItem bg-center bg-cover md:h-full flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer h-[267px]`}
+                          >
+                            <div>
+                              <div className="blogExcerpt p-10 pb-6 relative z-[1]">
+                                <p className="text-light font-bold text-lg">
+                                  {post.events_activities_title}
+                                </p>
+                              </div>
+                              <div className="blogTitle pb-10 relative z-[1]">
+                                <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                  {post.events_activities_category}
+                                </h4>
+                              </div>
+                            </div>
+                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                           </div>
-                          <div className="blogTitle pb-10 relative z-[1]">
-                            <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                              {post.events_activities_category}
-                            </h4>
-                          </div>
-                        </div>
-                        <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[200px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+                        )}
+                      </Link>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -194,32 +209,40 @@ const EventsAndAct = () => {
             <Slider {...EventsSliderSettings}>
               {eventsAndActivitiesData?.data.map((post, key) => {
                 if (key <= 2) return null;
+
+                const eventImage =
+                  getConvertStringToJSONparseData(post.events_activities_img) ||
+                  [];
+                const firstImage = eventImage.length > 0 ? eventImage[0] : null;
+
                 return (
                   <div key={key} className="">
                     <Link
                       to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
                     >
-                      <div
-                        style={{
-                          backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
-                        }}
-                        className="blogItem addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
+                      {firstImage && (
+                        <div
+                          style={{
+                            backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
+                          }}
+                          className="blogItem addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[330px] sm:w-[320px] flex items-end relative rounded-xl 
                             grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
-                      >
-                        <div>
-                          <div className="blogExcerpt p-10 pb-6 relative z-[1]">
-                            <p className="text-light font-bold text-lg">
-                              {post.events_activities_title}
-                            </p>
+                        >
+                          <div>
+                            <div className="blogExcerpt p-10 pb-6 relative z-[1]">
+                              <p className="text-light font-bold text-lg">
+                                {post.events_activities_title}
+                              </p>
+                            </div>
+                            <div className="blogTitle  pb-10 relative z-[1]">
+                              <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                {post.events_activities_category}
+                              </h4>
+                            </div>
                           </div>
-                          <div className="blogTitle  pb-10 relative z-[1]">
-                            <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                              {post.events_activities_category}
-                            </h4>
-                          </div>
+                          <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                         </div>
-                        <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                      </div>
+                      )}
                     </Link>
                   </div>
                 );
@@ -230,34 +253,44 @@ const EventsAndAct = () => {
               {eventsAndActivitiesData?.data
                 .filter((post) => post.events_activities_is_active === 1)
                 .slice(3)
-                .map((post, key) => (
-                  <div key={key} className=" h-[267px] md:h-[350px]">
-                    <Link
-                      to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
-                    >
-                      <div
-                        style={{
-                          backgroundImage: `url(${devBaseImgUrl}/${post.events_activities_img})`,
-                        }}
-                        className="blogItem bg-center bg-cover h-[267px] md:max-w-[418px] md:min-w-[418px] md:h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                .map((post, key) => {
+                  const eventImage =
+                    getConvertStringToJSONparseData(
+                      post.events_activities_img
+                    ) || [];
+                  const firstImage =
+                    eventImage.length > 0 ? eventImage[0] : null;
+                  return (
+                    <div key={key} className=" h-[267px] md:h-[350px]">
+                      <Link
+                        to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
                       >
-                        <div>
-                          <div className="blogExcerpt p-10 pb-6 relative z-[1]">
-                            <p className="text-light font-bold text-lg">
-                              {post.events_activities_title}
-                            </p>
+                        {firstImage && (
+                          <div
+                            style={{
+                              backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
+                            }}
+                            className="blogItem bg-center bg-cover h-[267px] md:max-w-[418px] md:min-w-[418px] md:h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                          >
+                            <div>
+                              <div className="blogExcerpt p-10 pb-6 relative z-[1]">
+                                <p className="text-light font-bold text-lg">
+                                  {post.events_activities_title}
+                                </p>
+                              </div>
+                              <div className="blogTitle  pb-10 relative z-[1]">
+                                <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                  {post.events_activities_category}
+                                </h4>
+                              </div>
+                            </div>
+                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                           </div>
-                          <div className="blogTitle  pb-10 relative z-[1]">
-                            <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                              {post.events_activities_category}
-                            </h4>
-                          </div>
-                        </div>
-                        <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
+                        )}
+                      </Link>
+                    </div>
+                  );
+                })}
             </div>
           )}
         </div>

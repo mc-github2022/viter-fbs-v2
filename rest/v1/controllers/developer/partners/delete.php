@@ -3,18 +3,18 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$events_activities = new EventsAndActivities($conn);
+$partners = new Partners($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
-if (array_key_exists("events_activitiesid", $_GET)) {
+if (array_key_exists("partnersid", $_GET)) {
   // get data
-  $events_activities->events_activities_aid = $_GET['events_activitiesid'];
+  $partners->partners_aid = $_GET['partnersid'];
   $filesToDelete = $data['filesToDelete'];
-  checkId($events_activities->events_activities_aid);
 
-  $query = checkDelete($events_activities);
+  checkId($partners->partners_aid);
 
+  $query = checkDelete($partners);
 
   // TO DELETE ALL FILES IN GOOGLE DRIVE API
   // returnError($jsonStringToArray);
@@ -26,7 +26,7 @@ if (array_key_exists("events_activitiesid", $_GET)) {
     checkDeleteGoogleDriveApiFiles($filesToDelete, $pendingDeleteFile);
   }
 
-  returnSuccess($events_activities, "eventsAndAct", $query);
+  returnSuccess($partners, "lcssBatch", $query);
 }
 
 // return 404 error if endpoint not available

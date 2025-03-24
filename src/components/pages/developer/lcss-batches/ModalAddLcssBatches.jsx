@@ -51,7 +51,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
     setPhotoArrayList,
     fieldValue = ""
   ) => {
-    handleChangeMultiplePhoto(e, 20);
+    handleChangeMultiplePhoto(e, 40);
     const files = e.target.files;
     if (files.length > 3) return e;
     let myFiles = Array.from(files);

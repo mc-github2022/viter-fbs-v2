@@ -40,7 +40,7 @@ RewriteRule ^eventsAndAct/search$ controllers/developer/events-and-activities/se
 RewriteRule ^careers$ controllers/developer/careers/careers.php [L]
 RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careersid=$1 [L]
 
-# Why FBS - LCSS BATCHES
+# LCSS BATCHES
 RewriteRule ^lcssBatches$ controllers/developer/lcss-batches/lcssBatches.php [L]
 RewriteRule ^lcssBatches/([0-9]+)$ controllers/developer/lcss-batches/lcssBatches.php?lcss_batchid=$1 [L]
 RewriteRule ^lcssBatches/page/([0-9]+)$ controllers/developer/lcss-batches/page.php?start=$1 [L]
@@ -73,6 +73,12 @@ RewriteRule ^notificationlog$ controllers/developer/notification-log/notificatio
 RewriteRule ^notificationlog/([0-9]+)$ controllers/developer/notification-log/notificationLog.php?notificationLogId=$1 [L]
 RewriteRule ^notificationlog/page/([0-9]+)$ controllers/developer/notification-log/page.php?start=$1 [L]
 RewriteRule ^notificationlog/search$ controllers/developer/notification-log/search.php [L] 
+
+# PARTNERS
+RewriteRule ^partners$ controllers/developer/partners/partners.php [L]
+RewriteRule ^partners/([0-9]+)$ controllers/developer/partners/partners.php?partnersid=$1 [L]
+RewriteRule ^partners/page/([0-9]+)$ controllers/developer/partners/page.php?start=$1 [L]
+RewriteRule ^partners/search$ controllers/developer/partners/search.php [L]
 
 # USER - ROLE
 RewriteRule ^role$ controllers/developer/user/role/role.php [L]

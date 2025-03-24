@@ -102,6 +102,22 @@ const Navigation = ({ menu, submenu }) => {
                   <li
                     className={` flex justify-between items-center p-1
                   ${
+                    menu === "partners"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                  >
+                    <Link to={`${devNavUrl}${link}/partners`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">Partners</span>
+                      </div>
+                    </Link>
+                  </li>
+
+                  <li
+                    className={` flex justify-between items-center p-1
+                  ${
                     menu === "lcss-batches"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "

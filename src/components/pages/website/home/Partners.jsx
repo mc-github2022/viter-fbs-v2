@@ -1,102 +1,53 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../helpers/functions-general";
+import LoadImages from "../../../partials/LoadImages";
+import useQueryData from "../../../custom-hooks/useQueryData";
 
 const Partners = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: partnersData,
+  } = useQueryData(
+    "/v1/partners", // endpoint
+    "get", // method
+    "partners" // key
+  );
   return (
     <>
       <section className="partners py-24 lg:pb-24 lg:pt-0">
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1fr_1fr]">
             <div className="order-2 lg:order-1">
-              <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-10 items-center">
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/logo-avant-white.png`}
-                    loading="lazy"
-                    alt="Avant"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/ftc-e1716532807623.png`}
-                    loading="lazy"
-                    alt="Face the Children"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/logo-go-mission-trip.png`}
-                    loading="lazy"
-                    alt="Go Mission trip"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/jcceos-logo.png`}
-                    loading="lazy"
-                    alt="Jesus Christ's CEOs"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/lightuptoy.png`}
-                    loading="lazy"
-                    alt="Light Up"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/rebekah.png`}
-                    loading="lazy"
-                    alt="Rebekah Nicole"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/tm_logo_dark.png`}
-                    loading="lazy"
-                    alt="Two Miles"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/logo-world-focus.png`}
-                    loading="lazy"
-                    alt="World Focus"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/gc-foundation.png`}
-                    loading="lazy"
-                    alt="Two Miles"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/gc-friends.png`}
-                    loading="lazy"
-                    alt="World Focus"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
-                <li>
-                  <img
-                    src={`${devBaseImgUrl}/gc_friends.png`}
-                    loading="lazy"
-                    alt="World Focus"
-                    className="w-[170px] h-[170px] object-contain"
-                  />
-                </li>
+              <ul className="grid grid-cols-2 [&>li>img]:mx-auto gap-8 items-center">
+                {partnersData?.data
+                  ?.filter((item) => item.partners_page === "Home Page")
+                  ?.map((item) => {
+                    const partnersImages =
+                      getConvertStringToJSONparseData(item.partners_img) || [];
+
+                    return (
+                      <li
+                        key={item.id || item.partners_name}
+                        className="relative"
+                      >
+                        {partnersImages.map((img, index) => (
+                          <LoadImages
+                            className="w-[170px] h-[170px] object-contain"
+                            url={`${googleHDViewLink}${img?.id}`}
+                            alt={item.partners_name}
+                            key={index}
+                          />
+                        ))}
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
             <div className="text-right flex items-center justify-end order-1 lg:order-2">

@@ -1,21 +1,21 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { StoreContext } from "../../../store/StoreContext";
 import { useInView } from "react-intersection-observer";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
-import LoadMore from "../../../partials/LoadMore";
+import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
 import ModalDelete from "../../../partials/modals/ModalDelete";
-import SearchBar from "../../../partials/SearchBar";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
-import NoData from "../../../partials/spinners/NoData";
+import LoadMore from "../../../partials/LoadMore";
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
+import { getConvertStringToJSONparseData } from "../../../helpers/functions-general";
 import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
-import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
-import { StoreContext } from "../../../store/StoreContext";
-import { getConvertStringToJSONparseData } from "../../../helpers/functions-general";
+import NoData from "../../../partials/spinners/NoData";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import SearchBar from "../../../partials/SearchBar";
 
-const LcssBatchesTable = ({ setItemEdit }) => {
+const PartnersTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -34,11 +34,11 @@ const LcssBatchesTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["lcssBatches", onSearch, store.isSearch],
+    queryKey: ["partners", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/lcssBatches/search`, // search endpoint
-        `/v1/lcssBatches/page/${pageParam}`, // list endpoint
+        `/v1/partners/search`, // search endpoint
+        `/v1/partners/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -60,8 +60,8 @@ const LcssBatchesTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.lcss_batch_name);
-    setIsId(item.lcss_batch_aid);
+    setIsData(item.partners_name);
+    setIsId(item.partners_aid);
   };
 
   React.useEffect(() => {
@@ -70,7 +70,6 @@ const LcssBatchesTable = ({ setItemEdit }) => {
       fetchNextPage();
     }
   }, [inView]);
-
   return (
     <>
       <div className="place-self-end">
@@ -93,10 +92,8 @@ const LcssBatchesTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
-              <th>Batch</th>
-              <th>Category</th>
-              <th>School</th>
-              <th>Course</th>
+              <th>Page</th>
+              <th>Company Name</th>
               <th>Image</th>
               <th className="text-right">Actions</th>
             </tr>
@@ -121,27 +118,20 @@ const LcssBatchesTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => {
-                  const batchImages = getConvertStringToJSONparseData(
-                    item.lcss_batch_img
-                  );
+                  const partnersImages =
+                    getConvertStringToJSONparseData(item.partners_img) || [];
                   return (
                     <tr key={key} className="place-content-start text-[14px]">
                       <td className="pl-2 place-content-start">{counter++}</td>
                       <td className="place-content-start">
-                        {item.lcss_batch_name}
+                        {item.partners_page}
                       </td>
                       <td className="place-content-start">
-                        {item.lcss_batch_category}
-                      </td>
-                      <td className="place-content-start">
-                        {item.lcss_batch_school}
-                      </td>
-                      <td className="place-content-start">
-                        {item.lcss_batch_course}
+                        {item.partners_name}
                       </td>
                       <td className="place-content-start">
                         <div className="line-clamp-5">
-                          {batchImages.map((img, index) => (
+                          {partnersImages.map((img, index) => (
                             <p key={index}>{img.name}</p>
                           ))}
                         </div>
@@ -185,8 +175,8 @@ const LcssBatchesTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"lcssBatches"}
-          mysqlEndpoint={`/v1/lcssBatches/${id}`}
+          queryKey={"partners"}
+          mysqlEndpoint={`/v1/partners/${id}`}
           item={isData}
         />
       )}
@@ -194,4 +184,4 @@ const LcssBatchesTable = ({ setItemEdit }) => {
   );
 };
 
-export default LcssBatchesTable;
+export default PartnersTable;

@@ -4,7 +4,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  googleHDViewLink,
+} from "../../../helpers/functions-general";
 import ModalWrapper from "../../../partials/ModalWrapper";
 
 function SampleNextArrow(props) {
@@ -136,12 +139,8 @@ const EventsSliderPage = ({ setIsEventsImg, selectedImage }) => {
   );
 
   const images = selectedItem?.events_activities_img_list
-    ? selectedItem.events_activities_img_list
-        .split(",")
-        .map((img) => img.trim())
+    ? JSON.parse(selectedItem.events_activities_img_list)
     : [];
-
-  const specificImage = selectedImage ? images[selectedImage.index] : null;
 
   return (
     <ModalWrapper
@@ -151,21 +150,30 @@ const EventsSliderPage = ({ setIsEventsImg, selectedImage }) => {
       <div className="bg-transparent h-fit place-items-center place-content-center">
         <div className="justify-items-center">
           <div className="z-[1] w-[320px] md:w-[740px] h-[60vh] place-self-center relative mx-1">
-            <Slider {...SinglePageSettings} initialSlide={selectedImage.index}>
-              {images.map((image, index) => (
-                <div key={index}>
-                  {specificImage ? (
+            {images.length > 1 ? (
+              <Slider
+                {...SinglePageSettings}
+                initialSlide={selectedImage.index}
+              >
+                {images.map((image, index) => (
+                  <div key={index}>
                     <img
-                      src={`${devBaseImgUrl}/${image}`}
+                      src={`${googleHDViewLink}${image?.id}`}
                       alt={`Selected Event Image`}
                       className="object-contain w-full h-[60vh] rounded-lg"
                     />
-                  ) : (
-                    <p>No image available</p>
-                  )}
-                </div>
-              ))}
-            </Slider>
+                  </div>
+                ))}
+              </Slider>
+            ) : images.length === 1 ? ( // Display a single image normally
+              <img
+                src={`${googleHDViewLink}${images[0]?.id}`}
+                alt={`Event Image`}
+                className="object-contain w-full h-[60vh] rounded-lg"
+              />
+            ) : (
+              <p>No image available</p>
+            )}
           </div>
         </div>
       </div>

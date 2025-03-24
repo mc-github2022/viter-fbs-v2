@@ -23,12 +23,35 @@ if (array_key_exists("events_activitiesid", $_GET)) {
   $events_activities->events_activities_description = $data["events_activities_description"];
 
   $events_activities->events_activities_datetime = date("Y-m-d H:i:s");
+
+  $events_activities_img_old = $data["events_activities_img_old"];
+  $events_activities_img_list_old = $data["events_activities_img_list_old"];
+
   checkId($events_activities->events_activities_aid);
 
+  $pendingDeleteFile = $data['pendingDeleteFile'];
 
-  // //checks current data to avoid same entries from being updated
-  // $user_other_events_activities_fname_old = checkIndex($data, 'user_other_events_activities_fname_old');
-  // compareName($events_activities, $user_other_events_activities_fname_old, $events_activities->user_other_events_activities_fname);
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $events_activities->events_activities_img = checkToUploadGoogleDrive(
+    $events_activities->events_activities_img, // FILES
+    $events_activities_img_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $events_activities->events_activities_img = checkDeleteGoogleDriveApiFiles(
+    $events_activities->events_activities_img, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
+
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $events_activities->events_activities_img_list = checkToUploadGoogleDrive(
+    $events_activities->events_activities_img_list, // FILES
+    $events_activities_img_list_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $events_activities->events_activities_img_list = checkDeleteGoogleDriveApiFiles(
+    $events_activities->events_activities_img_list, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
 
   // update
   $query = checkUpdate($events_activities);

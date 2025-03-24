@@ -4,7 +4,11 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete, MdOutlineFileUpload } from "react-icons/md";
 import { RiDraftFill } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
-import { apiVersion, formatDate } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  formatDate,
+  getConvertStringToJSONparseData,
+} from "../../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
 import LoadMore from "../../../../partials/LoadMore";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
@@ -148,87 +152,103 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
 
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
-                {page?.data.map((item, key) => (
-                  <tr key={key} className="place-content-start text-[14px]">
-                    <td className="pl-2 place-content-start">{counter++}</td>
-                    <td className="place-content-start">
-                      {item.events_activities_is_active === 1 ? (
-                        <DraftStatusEventsAndActivities text="Active" />
-                      ) : (
-                        <DraftStatusEventsAndActivities text="Draft" />
-                      )}
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_category}
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_title}
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_slug}
-                    </td>
-                    <td className="place-content-start">
-                      {formatDate(item.events_activities_date)}
-                    </td>
-                    <td>
-                      <p className="line-clamp-5">
-                        {item.events_activities_description}
-                      </p>
-                    </td>
-                    <td className="place-content-start">
-                      {item.events_activities_img}
-                    </td>
-                    <td className="place-content-start">
-                      <p className="line-clamp-5">
-                        {item.events_activities_img_list}
-                      </p>
-                    </td>
-                    <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
-                      {item.events_activities_is_active ? (
-                        <>
-                          <button
-                            className="tooltip-action-table"
-                            data-tooltip="Edit"
-                            onClick={() => handleEdit(item)}
-                          >
-                            <FaEdit className="text-gray-600 text-[16px]" />
-                          </button>
-                          <button
-                            className="tooltip-action-table"
-                            data-tooltip="Draft"
-                            onClick={() => handleArchive(item)}
-                          >
-                            <RiDraftFill className=" text-gray-600 text-[16px]" />
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            className="tooltip-action-table"
-                            data-tooltip="Edit"
-                            onClick={() => handleEdit(item)}
-                          >
-                            <FaEdit className="text-gray-600 text-[16px]" />
-                          </button>
-                          <button
-                            className="tooltip-action-table"
-                            data-tooltip="Publish"
-                            onClick={() => handleRestore(item)}
-                          >
-                            <MdOutlineFileUpload className="text-gray-600 text-[18px]" />
-                          </button>
-                          <button
-                            className="tooltip-action-table"
-                            data-tooltip="Delete"
-                            onClick={() => handleDelete(item)}
-                          >
-                            <MdDelete className="text-gray-600 text-[18px]" />
-                          </button>
-                        </>
-                      )}
-                    </td>
-                  </tr>
-                ))}
+                {page?.data.map((item, key) => {
+                  const eventImage =
+                    getConvertStringToJSONparseData(
+                      item.events_activities_img
+                    ) || [];
+                  const eventImageList =
+                    getConvertStringToJSONparseData(
+                      item.events_activities_img_list
+                    ) || [];
+                  return (
+                    <tr key={key} className="place-content-start text-[14px]">
+                      <td className="pl-2 place-content-start">{counter++}</td>
+                      <td className="place-content-start">
+                        {item.events_activities_is_active === 1 ? (
+                          <DraftStatusEventsAndActivities text="Active" />
+                        ) : (
+                          <DraftStatusEventsAndActivities text="Draft" />
+                        )}
+                      </td>
+                      <td className="place-content-start">
+                        {item.events_activities_category}
+                      </td>
+                      <td className="place-content-start">
+                        {item.events_activities_title}
+                      </td>
+                      <td className="place-content-start">
+                        {item.events_activities_slug}
+                      </td>
+                      <td className="place-content-start">
+                        {formatDate(item.events_activities_date)}
+                      </td>
+                      <td>
+                        <p className="line-clamp-5">
+                          {item.events_activities_description}
+                        </p>
+                      </td>
+                      <td className="place-content-start">
+                        <div className="line-clamp-5">
+                          {eventImage.map((img, index) => (
+                            <p key={index}>{img.name}</p>
+                          ))}
+                        </div>
+                      </td>
+                      <td className="place-content-start">
+                        <div className="line-clamp-5">
+                          {eventImageList.map((img, index) => (
+                            <p key={index}>{img.name}</p>
+                          ))}
+                        </div>
+                      </td>
+                      <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
+                        {item.events_activities_is_active ? (
+                          <>
+                            <button
+                              className="tooltip-action-table"
+                              data-tooltip="Edit"
+                              onClick={() => handleEdit(item)}
+                            >
+                              <FaEdit className="text-gray-600 text-[16px]" />
+                            </button>
+                            <button
+                              className="tooltip-action-table"
+                              data-tooltip="Draft"
+                              onClick={() => handleArchive(item)}
+                            >
+                              <RiDraftFill className=" text-gray-600 text-[16px]" />
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              className="tooltip-action-table"
+                              data-tooltip="Edit"
+                              onClick={() => handleEdit(item)}
+                            >
+                              <FaEdit className="text-gray-600 text-[16px]" />
+                            </button>
+                            <button
+                              className="tooltip-action-table"
+                              data-tooltip="Publish"
+                              onClick={() => handleRestore(item)}
+                            >
+                              <MdOutlineFileUpload className="text-gray-600 text-[18px]" />
+                            </button>
+                            <button
+                              className="tooltip-action-table"
+                              data-tooltip="Delete"
+                              onClick={() => handleDelete(item)}
+                            >
+                              <MdDelete className="text-gray-600 text-[18px]" />
+                            </button>
+                          </>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </React.Fragment>
             ))}
           </tbody>

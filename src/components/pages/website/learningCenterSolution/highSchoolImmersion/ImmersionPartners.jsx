@@ -1,7 +1,24 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ImmersionPartners = () => {
+  const {
+    isFetching,
+    error,
+    isLoading,
+    status,
+    data: partnersData,
+  } = useQueryData(
+    "/v1/partners", // endpoint
+    "get", // method
+    "partners" // key
+  );
   return (
     <>
       <section className="ImmersionPartners py-20">
@@ -11,54 +28,27 @@ const ImmersionPartners = () => {
             Educational Institutions
           </h2>
           <ul className="flex flex-wrap justify-center gap-14 items-center">
-            <li>
-              <img
-                className="w-[120px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/aclc.png`}
-                src={`${devBaseImgUrl}/aclc.png`}
-                alt="ACLC"
-              />
-            </li>
-            <li>
-              <img
-                className="w-[120px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/dlsl_official_logo.png`}
-                src={`${devBaseImgUrl}/gva.png`}
-                alt="GVA"
-              />
-            </li>
-            <li>
-              <img
-                className="w-[120px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/csu.png`}
-                src={`${devBaseImgUrl}/mfmc.png`}
-                alt="MFMC"
-              />
-            </li>
-            <li>
-              <img
-                className="w-[120px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/bsu.png`}
-                src={`${devBaseImgUrl}/slis.png`}
-                alt="SLIS"
-              />
-            </li>
-            <li>
-              <img
-                className="w-[120px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/letran.png`}
-                src={`${devBaseImgUrl}/spc.png`}
-                alt="SPC"
-              />
-            </li>
-            <li>
-              <img
-                className="w-[120px] h-[120px] object-contain"
-                // src={`${devBaseImgUrl}/lpu.png`}
-                src={`${devBaseImgUrl}/stms.png`}
-                alt="STMS"
-              />
-            </li>
+            {partnersData?.data
+              ?.filter(
+                (item) => item.partners_page === "High School Work Immersion"
+              )
+              ?.map((item) => {
+                const partnersImages =
+                  getConvertStringToJSONparseData(item.partners_img) || [];
+
+                return (
+                  <li key={item.id || item.partners_name} className="relative">
+                    {partnersImages.map((img, index) => (
+                      <LoadImages
+                        className="w-[120px] h-[120px] object-contain"
+                        url={`${googleHDViewLink}${img?.id}`}
+                        alt={item.partners_name}
+                        key={index}
+                      />
+                    ))}
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </section>
