@@ -287,6 +287,9 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                             Select Category
                           </option>
                           <option value="Home Page">Home Page</option>
+                          <option value="Why Work With Us">
+                            Why Work With Us
+                          </option>
                           <option value="HR Information System">
                             HR Information System
                           </option>

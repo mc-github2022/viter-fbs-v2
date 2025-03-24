@@ -29,7 +29,7 @@ class Partners
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblPartners} ";
-            $sql .= "order by partners_aid desc ";
+            $sql .= "order by partners_name asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -43,7 +43,7 @@ class Partners
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblPartners} ";
-            $sql .= "order by partners_aid desc ";
+            $sql .= "order by partners_name asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -67,7 +67,7 @@ class Partners
             $sql .= "and (partners_name like :partners_name ";
             $sql .= "or partners_page like :partners_page ";
             $sql .= "or partners_img like :partners_img) ";
-            $sql .= "order by partners_aid desc ";
+            $sql .= "order by partners_name asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "partners_name" => "%{$this->partners_search}%",

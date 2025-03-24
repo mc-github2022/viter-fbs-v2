@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2025 at 02:37 AM
+-- Generation Time: Mar 24, 2025 at 02:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -105,7 +105,12 @@ INSERT INTO `fbsv2_partners` (`partners_aid`, `partners_page`, `partners_name`, 
 (63, 'Web Design', 'Resound', '[{\"name\":\"logo-resound.png\",\"id\":\"1Uel0IjEUZ0b13UMPp5_ZIei2h3tqbYO0\",\"datetime\":\"2025-03-24 09:22:55\"}]', '2025-03-24 09:22:53', '2025-03-24 09:22:53'),
 (64, 'Web Design', 'Taza Mia', '[{\"name\":\"logo-tazaMia.png\",\"id\":\"1B6ycDTyfXf17KFu4wZcOlVgIOmav5Fae\",\"datetime\":\"2025-03-24 09:23:10\"}]', '2025-03-24 09:23:08', '2025-03-24 09:23:08'),
 (65, 'Web Design', 'Frontline Threadworks', '[{\"name\":\"logo-threadworks.png\",\"id\":\"1Nj20v7rlgS83OT9i2yI-CCtcjb2_XXcE\",\"datetime\":\"2025-03-24 09:23:33\"}]', '2025-03-24 09:23:29', '2025-03-24 09:23:29'),
-(66, 'Web Design', 'World Focus', '[{\"name\":\"logo-world-focus.png\",\"id\":\"1cBF6tgvMMyT2oU4oSVoeIPVVGMyNfxws\",\"datetime\":\"2025-03-24 09:23:52\"}]', '2025-03-24 09:23:49', '2025-03-24 09:23:49');
+(66, 'Web Design', 'World Focus', '[{\"name\":\"logo-world-focus.png\",\"id\":\"1cBF6tgvMMyT2oU4oSVoeIPVVGMyNfxws\",\"datetime\":\"2025-03-24 09:23:52\"}]', '2025-03-24 09:23:49', '2025-03-24 09:23:49'),
+(67, 'Why Work With Us', 'Face the Children', '[{\"name\":\"ftc-logo.png\",\"id\":\"1W-zuZGHb5F8WX6Md-i9md0kTsVqi1ao2\",\"datetime\":\"2025-03-24 20:54:18\"}]', '2025-03-24 20:54:13', '2025-03-24 20:54:13'),
+(68, 'Why Work With Us', 'Frontline Christian Academy', '[{\"name\":\"logo-fca.png\",\"id\":\"1NMLNXMw5g7jMngWUHH4Dbdp9DGBqmbkY\",\"datetime\":\"2025-03-24 20:55:05\"}]', '2025-03-24 20:55:01', '2025-03-24 20:55:01'),
+(69, 'Why Work With Us', 'Frontline Worship Center', '[{\"name\":\"logo-fwc-2.png\",\"id\":\"1wWouv-gYwunjVLM-ITJabTnv-QHRQs71\",\"datetime\":\"2025-03-24 20:55:42\"}]', '2025-03-24 20:55:39', '2025-03-24 20:55:39'),
+(70, 'Why Work With Us', 'PFM', '[{\"name\":\"logo-pfm.png\",\"id\":\"1MzDQBXsPhZ2juOOgUEwkZqYFD1COz2tH\",\"datetime\":\"2025-03-24 20:56:07\"}]', '2025-03-24 20:56:04', '2025-03-24 20:56:04'),
+(71, 'Why Work With Us', 'Frontline Threadworks', '[{\"name\":\"logo-threadworks.png\",\"id\":\"1GWYv4MmoAPHTNdeySbb9qkKdRu-xNxRK\",\"datetime\":\"2025-03-24 20:56:31\"}]', '2025-03-24 20:56:28', '2025-03-24 20:56:28');
 
 --
 -- Indexes for dumped tables
@@ -125,7 +130,7 @@ ALTER TABLE `fbsv2_partners`
 -- AUTO_INCREMENT for table `fbsv2_partners`
 --
 ALTER TABLE `fbsv2_partners`
-  MODIFY `partners_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `partners_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
