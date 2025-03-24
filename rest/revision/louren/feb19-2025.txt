@@ -43,11 +43,12 @@ DEVELOPER
             -> rest/v1/controllers/developer/events-and-activities/delete.php
             -> rest/v1/controllers/developer/events-and-activities/eventsAndActivities.php
             -> rest/v1/controllers/developer/events-and-activities/update.php
+            -> rest/v1/controllers/developer/partners
         
 
 
         * MODELS
-            -> 
+            -> rest/v1/models/developer/partners
             -> 
             -> 
             -> 
@@ -89,7 +90,7 @@ DEVELOPER
             -> rest/db-backup/fbsv2_lcss_batch.sql
             note: column updated
              `lcss_batch_img` text NOT NULL,
-            ->
+            -> rest/db-backup/fbsv2_partners.sql
             ->
             ->
 

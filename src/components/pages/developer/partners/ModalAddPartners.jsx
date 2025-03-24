@@ -286,6 +286,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                           <option value="" disabled>
                             Select Category
                           </option>
+                          <option value="Home Page">Home Page</option>
                           <option value="HR Information System">
                             HR Information System
                           </option>
