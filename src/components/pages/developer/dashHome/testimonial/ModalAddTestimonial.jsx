@@ -56,6 +56,38 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
     photoArrayList: logoImages,
   } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
+  // handle for file upload Client
+  const handleChangeFileUploadClient = (
+    e,
+    props,
+    setClientImages,
+    fieldValue = ""
+  ) => {
+    handleChangeClientImages(e, 1);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = clientImages?.length > 0 ? clientImages : [];
+    setClientImages([...oldFiles, ...myFiles]);
+  };
+
+  // handle for file upload Client
+  const handleChangeFileUploadLogo = (
+    e,
+    props,
+    setLogoImages,
+    fieldValue = ""
+  ) => {
+    handleChangeLogoImages(e, 20);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = logoImages?.length > 0 ? logoImages : [];
+    setLogoImages([...oldFiles, ...myFiles]);
+  };
+
   const handleClickViewSlideshow = (photos, key) => {
     if (mutation.isPending || loading) return;
     const link =
@@ -224,8 +256,22 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                 id="myFile"
                                 accept="*"
                                 title="Upload Image"
-                                onChange={handleChangeClientImages}
-                                onDrop={(e) => handleChangeClientImages(e)}
+                                onChange={(e) =>
+                                  handleChangeFileUploadClient(
+                                    e,
+                                    props,
+                                    setClientImages,
+                                    "home_testimonial_client_img"
+                                  )
+                                }
+                                onDrop={(e) =>
+                                  handleChangeFileUploadClient(
+                                    e,
+                                    props,
+                                    setClientImages,
+                                    "home_testimonial_client_img"
+                                  )
+                                }
                                 disabled={mutation.isPending || loading}
                                 className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
                               />
@@ -328,8 +374,22 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                 id="myFile"
                                 accept="*"
                                 title="Upload File"
-                                onChange={handleChangeLogoImages}
-                                onDrop={(e) => handleChangeLogoImages(e)}
+                                onChange={(e) =>
+                                  handleChangeFileUploadLogo(
+                                    e,
+                                    props,
+                                    setLogoImages,
+                                    "home_testimonial_logo_img"
+                                  )
+                                }
+                                onDrop={(e) =>
+                                  handleChangeFileUploadLogo(
+                                    e,
+                                    props,
+                                    setLogoImages,
+                                    "home_testimonial_logo_img"
+                                  )
+                                }
                                 disabled={mutation.isPending || loading}
                                 className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
                               />
