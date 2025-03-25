@@ -21,6 +21,7 @@ const GalleryTable = ({ setItemEdit }) => {
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [copyLink, setCopyLink] = React.useState("");
+  const [copiedLink, setCopiedLink] = React.useState(null);
 
   const {
     isFetching,
@@ -45,8 +46,22 @@ const GalleryTable = ({ setItemEdit }) => {
     getConvertStringToJSONparseData(galleryData?.data.gallery_img) || [];
 
   const handleCopyLink = (item) => {
-    const link = `${googleHDViewLink}${item?.id}`;
-    setCopyLink(link);
+    if (item?.gallery_img) {
+      const galleryImage = getConvertStringToJSONparseData(item.gallery_img);
+      if (galleryImage.length > 0) {
+        const imageUrl = `${googleHDViewLink}${galleryImage[0]?.id}`;
+
+        navigator.clipboard
+          .writeText(imageUrl)
+          .then(() => {
+            setCopiedLink(imageUrl); // Set the copied link
+            setTimeout(() => setCopiedLink(null), 2000); // Reset after 2 seconds
+          })
+          .catch((err) => {
+            console.error("Failed to copy link:", err);
+          });
+      }
+    }
   };
 
   console.log(copyLink);
@@ -111,7 +126,15 @@ const GalleryTable = ({ setItemEdit }) => {
                     <div className="flex items-center">
                       <button
                         className="tooltip-action-table"
-                        data-tooltip="Copy Link"
+                        data-tooltip={
+                          copiedLink ===
+                          `${googleHDViewLink}${
+                            getConvertStringToJSONparseData(item.gallery_img)[0]
+                              ?.id
+                          }`
+                            ? "Copied!"
+                            : "Copy Link"
+                        }
                         onClick={() => handleCopyLink(item)}
                       >
                         <FaCopy className="text-gray-600 text-[14px]" />

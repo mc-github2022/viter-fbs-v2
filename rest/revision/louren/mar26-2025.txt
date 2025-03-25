@@ -139,6 +139,7 @@ DEVELOPER
             -> rest/v1/controllers/developer/events-and-activities/eventsAndActivities.php
             -> rest/v1/controllers/developer/events-and-activities/update.php
             -> rest/v1/controllers/developer/partners
+            -> rest/v1/controllers/developer/gallery
         
 
 
@@ -151,7 +152,7 @@ DEVELOPER
 
         * MODELS
             -> rest/v1/models/developer/partners
-            -> 
+            -> rest/v1/models/developer/gallery
             -> 
             -> 
 
@@ -176,5 +177,8 @@ DEVELOPER
             -> rest/db-backup/fbsv2_careers.sql
             -> rest/db-backup/fbsv2_industry_testimonial.sql
             -> rest/db-backup/fbsv2_lcss_batch.sql
+            -> rest/db-backup/fbsv2_partners.sql
+            -> rest/db-backup/fbsv2_events_activities.sql
+            -> rest/db-backup/fbsv2_gallery.sql
 
 
