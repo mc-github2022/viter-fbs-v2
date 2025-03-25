@@ -3,12 +3,107 @@ Upload JSX
 DEVELOPER  
 
         * IMAGES
-            -> Banner (home-bg-new.webp, home-bg-webapp.webp, home-bg-website.webp, home-bg-va.webp, home-bg-lcs.webp)
-            -> Home Testimonials (tm_logo_white.png, world-focus-home.png, tm_logo_white.png, sent-ones.png, testimonial-robert-han-2-img.png, testi-duane-masters-2.png, testimonial-hiro-isogawa-2.png, testimonial-jared-roberts.png)
-            -> Insights (january2025-newsletter-cover.jpg, virtual-assistant.jpg, web-developer-2.jpg, learning.jpg )
-            -> Video Testimonials ()
-            -> Careers (fbs-ads-ea.png, social_media_manager.png, accounting-associate-300x198.png, fbs-career-sales-assistant.png, hiring-wordpress-300x198.png, hiring-mobile-dev-300x198.png, fbs-ads-IT-Supp-300x189.png, Senior-Service-Desk-Engineer-300x189.png, data-entry-operator-300x189.png, fbsAdsCSR-300x189.png, fbs-ads-TSE-1-300x189.jpg, hiring-virtual-assistant-555x350.png, fbs-ads-lead-gen.png, fbs-ads-Accounting-instructor.png, fbs-ads-web.png, fbs-ads-bookkeeper_trans.png, fbs-careers-qa.png, fbs-ads-Donation_trans.png, caree-accounts-payable-image.png   )
-            -> Industry Testimonials (kurt-balanial.webp, plsp.png, andrey-ilagan.webp, zymon-ramos.webp, lc.png, rhodalynn-dayo.png, logo-fca.png, jeffrey-seitz.png, logo-phixgenomics.png, james-sunderland.png, logo-ottm.png, duane-masters.png, logo-world-focus.png, james-sunderland.png, logo-ottm.png, josh-howard.png, logo-ignite.png, jim-davison.png, logo-avant.png, teresa-heyne.png, jcceos-logo.png, dennis-siano2.png, dtod-bpo.png, kimbell-reyes.png, aka-global.png, joesua-manzanero.png, lspu.png, jake-gamaro.webp, chelsea-lim.png, kevinroy-nativo.png, aclc.png, emilio-macaso.png, dlsl_official_logo.png, ariel-ferrer.png, angelou-almare-medina.png, olivia-almarez.png, lara-yedra.png, bethany-acoba.png, logo-pfm.png, judea-delos-santos.png, sti.png, ftc-logo.png, alexander-ubeda.png, fca-logo-horizontal.png, kimbell-reyes.png, aka-global.png)
+            -> Note: Please do not delete this images:
+                - partnerWithUs.jpg
+                - hrisbackground.webp
+                - hrisscreenshot.png
+                - hris-dashboard.png
+                - hris-employee-list.png
+                - hris-leave.png
+                - hris-overtime.png
+                - hris-task-management.png
+                - hris-client.png
+                - hris-announcement.png
+                - servicesbanner.webp
+                - payroll-ss.png
+                - payroll-biometrics.png
+                - payroll-employee-record.png
+                - payroll-earnings.png
+                - payroll-deductions.png
+                - payroll-holiday.png
+                - payroll-user-access.png
+                - payroll-report.png
+                - schoolenrollment.jpg
+                - enrollment-ss.webp
+                - school-registration.png
+                - school-student.png
+                - school-parent.png
+                - school-notification.png
+                - school-tuition.png
+                - school-user.png
+                - school-setting.png
+                - onlinepayment.webp
+                - online-payment-ss.png
+                - online-payment-cc.png
+                - online-payment-gcash.png
+                - onlinedonation.webp
+                - ftc-ss.png
+                - donation-admin-console.png
+                - donation-donor-console.png
+                - donation-designation.png
+                - donation-donors-record.png
+                - donation-payment-method.png
+                - donation-record.png
+                - donation-frequency.png
+                - donation-setting.png
+                - InventorySystem.webp
+                - asset-inventory-ss.webp
+                - asset-inventory.png
+                - asset-assignment.png
+                - asset-settings.png
+                - wordpress-bg.webp
+                - web-team.jpg
+                - quick-deployment.png
+                - seo.png
+                - wordpress-dashboard.webp
+                - security.png
+                - ssl.png
+                - portfolio-gomission.png
+                - portfolio-tazamia.png
+                - portfolio-ottm.png
+                - portfolio-ftc.png
+                - portfolio-phixgenomics.png
+                - portfolio-fca.png
+                - portfolio-worldfocus.png
+                - portfolio-fwc.png
+                - single-page-bg.webp
+                - quick-deployment.png
+                - webdesign-bg.webp
+                - web-team.jpg
+                - mobile-compatability.webp
+                - user-friendly-interface.png
+                - page-insights.png
+                - custom-design.webp
+                - high-quality-visuals.webp
+                - college-ojt-bg.webp
+                - lcssBannerImg.jpg
+                - ojt-accepted.webp
+                - jhonny.png
+                - thea.png
+                - roy.png
+                - ms.-herlyn.png
+                - sir-mon-1.png
+                - emman.png
+                - workimmersion-bg.webp
+                - workimmersion-sige-img.jpg
+                - ojt-accepted.webp
+                - continuing-studies-bg.webp
+                - continuing-studies-img.jpg
+                - business-reg-bg.webp
+                - business-reg-img.jpg
+                - bookkeeping-bg.webp
+                - bookkeeping-img.jpg
+                - vabg.webp
+                - vaoverviewimage.jpg
+                - research-services-bg.webp
+                - varesearch.jpg
+                - social-media-management.webp
+                - vamarketing.jpg
+                - lets-talk.jpg
+                - quote.png
+                - our-process.png
+                - logo.png
+                - logo-fbs.png
 
         * CONTROLLERS
             -> rest/v1/controllers/developer/home/banner/banner.php
@@ -47,6 +142,13 @@ DEVELOPER
         
 
 
+        * CORE
+            -> rest/v1/core/google-api.php
+            -> 
+            -> 
+            -> 
+
+
         * MODELS
             -> rest/v1/models/developer/partners
             -> 
@@ -68,30 +170,11 @@ DEVELOPER
 
         * DB BACKUP
             -> rest/db-backup/fbsv2_home_banner.sql
-            note: column updated
-              `home_banner_img` text NOT NULL,
             -> rest/db-backup/fbsv2_home_insights.sql
-            note: column updated
-              `home_insights_img` text NOT NULL,
             -> rest/db-backup/fbsv2_vid_testimonial.sql
-            note: column updated
-              `vid_testimonial_logo_img` text NOT NULL,
-            -> rest/db-backup/fbsv2_careers.sql
-             note: column updated
-              `careers_img` text NOT NULL,
             -> rest/db-backup/fbsv2_home_testimonial.sql
-             note: column updated
-              `home_testimonial_client_img` text NOT NULL,
-              `home_testimonial_logo_img` text NOT NULL,
+            -> rest/db-backup/fbsv2_careers.sql
             -> rest/db-backup/fbsv2_industry_testimonial.sql
-             note: column updated
-             `industry_testimonial_img` text NOT NULL,
-             `industry_testimonial_logo` text NOT NULL,
             -> rest/db-backup/fbsv2_lcss_batch.sql
-            note: column updated
-             `lcss_batch_img` text NOT NULL,
-            -> rest/db-backup/fbsv2_partners.sql
-            ->
-            ->
 
 

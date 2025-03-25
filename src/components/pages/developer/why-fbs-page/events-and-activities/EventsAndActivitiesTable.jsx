@@ -128,8 +128,8 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
               <th className="w-[10rem]">Slug</th>
               <th className="w-[8rem]">Date</th>
               <th>Content</th>
-              <th className="w-[8rem]">Image</th>
-              <th className="w-[8rem]">Gallery</th>
+              <th>Image</th>
+              <th>Gallery</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -175,10 +175,14 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                         {item.events_activities_category}
                       </td>
                       <td className="place-content-start">
-                        {item.events_activities_title}
+                        <p className="line-clamp-5">
+                          {item.events_activities_title}
+                        </p>
                       </td>
                       <td className="place-content-start">
-                        {item.events_activities_slug}
+                        <p className="line-clamp-5">
+                          {item.events_activities_slug}
+                        </p>
                       </td>
                       <td className="place-content-start">
                         {formatDate(item.events_activities_date)}

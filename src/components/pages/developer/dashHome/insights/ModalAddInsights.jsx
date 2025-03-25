@@ -470,7 +470,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                         </div>
 
                         <div className="flex flex-col items-end">
-                          <div className="input-wrapper textAreaWrapper ">
+                          <div className="input-wrapper ">
                             <InputTextArea
                               label="Description"
                               type="text"

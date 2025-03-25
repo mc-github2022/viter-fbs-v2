@@ -96,36 +96,6 @@ const LcssTeam = () => {
             </div>
             <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
               <img
-                // src={`${devBaseImgUrl}/mc.png`}
-                src={`${devBaseImgUrl}/mc.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Mr. Mark Christopher Bumagat"
-              />
-              <div>
-                <p className="font-semibold text-xl">
-                  Mr. Mark Christopher Bumagat
-                </p>
-                <p>WordPress Development Trainer</p>
-                <p className="text-sm">mark.bumagat@frontinebusiness.com.ph</p>
-              </div>
-            </div>
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
-                // src={`${devBaseImgUrl}/ansbert.png`}
-                src={`${devBaseImgUrl}/ansbert.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Mr. Ansbert Gregana"
-              />
-              <div>
-                <p className="font-semibold text-xl">Mr. Ansbert Gregana</p>
-                <p>Frontend Development Trainer</p>
-                <p className="text-sm">
-                  ansbert.gregana@frontlinebusines.com.ph
-                </p>
-              </div>
-            </div>
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
                 // src={`${devBaseImgUrl}/emman.png`}
                 src={`${devBaseImgUrl}/emman.png`}
                 className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
