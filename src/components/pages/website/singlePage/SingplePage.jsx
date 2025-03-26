@@ -121,6 +121,8 @@ const SingplePage = () => {
 
   const insightImgId = insightsImages.map((img) => img.id);
 
+  console.log(`${googleHDViewLink}${insightImgId}`);
+
   return (
     <>
       <Header />
@@ -132,6 +134,10 @@ const SingplePage = () => {
             property="og:image"
             content={`${googleHDViewLink}${insightImgId}`}
           />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="100" />
+          <meta property="og:image:height" content="100" />
+          <meta property="og:url" content="https://frontlinebusiness.com.ph/" />
           <meta property="og:type" content="article" />
         </Helmet>
       </div>

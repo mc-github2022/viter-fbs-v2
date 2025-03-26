@@ -38,7 +38,7 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                 </li>
                 <li>
                   <a
-                    href={`${devBaseImgUrl}/FBS-Work-Immersion-Program-Proposal-2024.pdf`}
+                    href={`${devBaseImgUrl}/FBS-Work-Immersion-Program-Proposal-2025.pdf`}
                     download
                     className="flex items-center gap-2 font-bold text-primary"
                   >
