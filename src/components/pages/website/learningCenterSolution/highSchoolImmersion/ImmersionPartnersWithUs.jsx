@@ -41,6 +41,7 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                     href={`${devBaseImgUrl}/FBS-Work-Immersion-Program-Proposal-2025.pdf`}
                     download
                     className="flex items-center gap-2 font-bold text-primary"
+                    target="_blank"
                   >
                     Download Proposal <FaFileDownload />
                   </a>
