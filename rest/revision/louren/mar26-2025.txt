@@ -1,0 +1,184 @@
+Upload JSX
+
+DEVELOPER  
+
+        * IMAGES
+            -> Note: Please do not delete this images:
+                - partnerWithUs.jpg
+                - hrisbackground.webp
+                - hrisscreenshot.png
+                - hris-dashboard.png
+                - hris-employee-list.png
+                - hris-leave.png
+                - hris-overtime.png
+                - hris-task-management.png
+                - hris-client.png
+                - hris-announcement.png
+                - servicesbanner.webp
+                - payroll-ss.png
+                - payroll-biometrics.png
+                - payroll-employee-record.png
+                - payroll-earnings.png
+                - payroll-deductions.png
+                - payroll-holiday.png
+                - payroll-user-access.png
+                - payroll-report.png
+                - schoolenrollment.jpg
+                - enrollment-ss.webp
+                - school-registration.png
+                - school-student.png
+                - school-parent.png
+                - school-notification.png
+                - school-tuition.png
+                - school-user.png
+                - school-setting.png
+                - onlinepayment.webp
+                - online-payment-ss.png
+                - online-payment-cc.png
+                - online-payment-gcash.png
+                - onlinedonation.webp
+                - ftc-ss.png
+                - donation-admin-console.png
+                - donation-donor-console.png
+                - donation-designation.png
+                - donation-donors-record.png
+                - donation-payment-method.png
+                - donation-record.png
+                - donation-frequency.png
+                - donation-setting.png
+                - InventorySystem.webp
+                - asset-inventory-ss.webp
+                - asset-inventory.png
+                - asset-assignment.png
+                - asset-settings.png
+                - wordpress-bg.webp
+                - web-team.jpg
+                - quick-deployment.png
+                - seo.png
+                - wordpress-dashboard.webp
+                - security.png
+                - ssl.png
+                - portfolio-gomission.png
+                - portfolio-tazamia.png
+                - portfolio-ottm.png
+                - portfolio-ftc.png
+                - portfolio-phixgenomics.png
+                - portfolio-fca.png
+                - portfolio-worldfocus.png
+                - portfolio-fwc.png
+                - single-page-bg.webp
+                - quick-deployment.png
+                - webdesign-bg.webp
+                - web-team.jpg
+                - mobile-compatability.webp
+                - user-friendly-interface.png
+                - page-insights.png
+                - custom-design.webp
+                - high-quality-visuals.webp
+                - college-ojt-bg.webp
+                - lcssBannerImg.jpg
+                - ojt-accepted.webp
+                - jhonny.png
+                - thea.png
+                - roy.png
+                - ms.-herlyn.png
+                - sir-mon-1.png
+                - emman.png
+                - workimmersion-bg.webp
+                - workimmersion-sige-img.jpg
+                - ojt-accepted.webp
+                - continuing-studies-bg.webp
+                - continuing-studies-img.jpg
+                - business-reg-bg.webp
+                - business-reg-img.jpg
+                - bookkeeping-bg.webp
+                - bookkeeping-img.jpg
+                - vabg.webp
+                - vaoverviewimage.jpg
+                - research-services-bg.webp
+                - varesearch.jpg
+                - social-media-management.webp
+                - vamarketing.jpg
+                - lets-talk.jpg
+                - quote.png
+                - our-process.png
+                - logo.png
+                - logo-fbs.png
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/home/banner/banner.php
+            -> rest/v1/controllers/developer/home/banner/create.php
+            -> rest/v1/controllers/developer/home/banner/delete.php
+            -> rest/v1/controllers/developer/home/banner/update.php
+            -> rest/v1/controllers/developer/home/insights/create.php
+            -> rest/v1/controllers/developer/home/insights/delete.php
+            -> rest/v1/controllers/developer/home/insights/insights.php
+            -> rest/v1/controllers/developer/home/insights/update.php
+            -> rest/v1/controllers/developer/vid-testimonial/create.php
+            -> rest/v1/controllers/developer/vid-testimonial/delete.php
+            -> rest/v1/controllers/developer/vid-testimonial/update.php
+            -> rest/v1/controllers/developer/vid-testimonial/vidTestimonial.php
+            -> rest/v1/controllers/developer/home/testimonials/create.php
+            -> rest/v1/controllers/developer/home/testimonials/delete.php
+            -> rest/v1/controllers/developer/home/testimonials/testimonials.php
+            -> rest/v1/controllers/developer/home/testimonials/update.php
+            -> rest/v1/controllers/developer/careers/careers.php
+            -> rest/v1/controllers/developer/careers/create.php
+            -> rest/v1/controllers/developer/careers/delete.php
+            -> rest/v1/controllers/developer/careers/update.php
+            -> rest/v1/controllers/developer/industry-testimonial/create.php
+            -> rest/v1/controllers/developer/industry-testimonial/delete.php
+            -> rest/v1/controllers/developer/industry-testimonial/industryTestimonial.php
+            -> rest/v1/controllers/developer/industry-testimonial/update.php
+            -> rest/v1/controllers/developer/lcss-batches/create.php
+            -> rest/v1/controllers/developer/lcss-batches/delete.php
+            -> rest/v1/controllers/developer/lcss-batches/lcssBatches.php
+            -> rest/v1/controllers/developer/lcss-batches/update.php
+            -> rest/v1/controllers/developer/events-and-activities/create.php
+            -> rest/v1/controllers/developer/events-and-activities/delete.php
+            -> rest/v1/controllers/developer/events-and-activities/eventsAndActivities.php
+            -> rest/v1/controllers/developer/events-and-activities/update.php
+            -> rest/v1/controllers/developer/partners
+            -> rest/v1/controllers/developer/gallery
+        
+
+
+        * CORE
+            -> rest/v1/core/google-api.php
+            -> 
+            -> 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/partners
+            -> rest/v1/models/developer/gallery
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            -> rest/v1/google-api
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_home_banner.sql
+            -> rest/db-backup/fbsv2_home_insights.sql
+            -> rest/db-backup/fbsv2_vid_testimonial.sql
+            -> rest/db-backup/fbsv2_home_testimonial.sql
+            -> rest/db-backup/fbsv2_careers.sql
+            -> rest/db-backup/fbsv2_industry_testimonial.sql
+            -> rest/db-backup/fbsv2_lcss_batch.sql
+            -> rest/db-backup/fbsv2_partners.sql
+            -> rest/db-backup/fbsv2_events_activities.sql
+            -> rest/db-backup/fbsv2_gallery.sql
+
+

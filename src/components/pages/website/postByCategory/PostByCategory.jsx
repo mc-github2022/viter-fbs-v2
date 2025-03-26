@@ -11,7 +11,10 @@ import {
   devBaseImgUrl,
   devNavUrl,
   formatDate,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
 } from "../../../helpers/functions-general";
+import LoadImages from "../../../partials/LoadImages";
 
 const PostByCategory = () => {
   const {
@@ -121,32 +124,47 @@ const PostByCategory = () => {
                 </h3>
                 <div className="popularPostLinks">
                   <ul className="[&>li]:my-8">
-                    {insightData?.data.map((popPost, key) => {
-                      return (
-                        <div key={key}>
-                          <li className="my-5">
-                            <Link
-                              to={`${devNavUrl}/insight/${popPost.home_insights_slug}`}
-                            >
-                              <div className="flex items-center gap-4">
-                                <div className="min-w-[100px] max-w-[100px] h-[80px]">
-                                  <img
-                                    src={`${devBaseImgUrl}/${popPost.home_insights_img}`}
-                                    alt={`${popPost.home_insights_title}`}
-                                    className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
-                                  />
+                    {insightData?.data
+                      .filter(
+                        (popPost) =>
+                          popPost.home_insights_slug !==
+                            posts.home_insights_slug &&
+                          popPost.home_insights_is_active === 1
+                      )
+                      .slice(0, 5)
+                      .map((popPost, key) => {
+                        const insightsImages =
+                          getConvertStringToJSONparseData(
+                            popPost.home_insights_img
+                          ) || [];
+                        return (
+                          <div key={key}>
+                            <li className="my-5">
+                              <Link
+                                to={`${devNavUrl}/insight/${popPost.home_insights_slug}`}
+                              >
+                                <div className="flex items-center gap-4">
+                                  <div className="min-w-[100px] max-w-[100px] h-[80px]">
+                                    {insightsImages.map((image, index) => (
+                                      <LoadImages
+                                        url={`${googleHDViewLink}${image?.id}`}
+                                        alt={`${popPost.home_insights_title}`}
+                                        className="min-w-[100px] max-w-[100px] h-[80px] rounded-lg object-cover"
+                                        key={index}
+                                      />
+                                    ))}
+                                  </div>
+                                  <div>
+                                    <p className="line-clamp-3">
+                                      {popPost.home_insights_title}
+                                    </p>
+                                  </div>
                                 </div>
-                                <div>
-                                  <p className="line-clamp-3">
-                                    {popPost.home_insights_title}
-                                  </p>
-                                </div>
-                              </div>
-                            </Link>
-                          </li>
-                        </div>
-                      );
-                    })}
+                              </Link>
+                            </li>
+                          </div>
+                        );
+                      })}
                   </ul>
                   <hr />
                 </div>

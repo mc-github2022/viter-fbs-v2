@@ -80,6 +80,10 @@ RewriteRule ^partners/([0-9]+)$ controllers/developer/partners/partners.php?part
 RewriteRule ^partners/page/([0-9]+)$ controllers/developer/partners/page.php?start=$1 [L]
 RewriteRule ^partners/search$ controllers/developer/partners/search.php [L]
 
+# GALLERY
+RewriteRule ^gallery$ controllers/developer/gallery/gallery.php [L]
+RewriteRule ^gallery/([0-9]+)$ controllers/developer/gallery/gallery.php?galleryid=$1 [L]
+
 # USER - ROLE
 RewriteRule ^role$ controllers/developer/user/role/role.php [L]
 RewriteRule ^role/([0-9]+)$ controllers/developer/user/role/role.php?roleId=$1 [L]

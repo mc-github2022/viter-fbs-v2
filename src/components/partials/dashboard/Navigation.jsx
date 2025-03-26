@@ -169,6 +169,22 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                   </li>
 
+                  <li
+                    className={` flex justify-between items-center p-1
+                  ${
+                    menu === "gallery"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                  >
+                    <Link to={`${devNavUrl}${link}/gallery`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">Gallery</span>
+                      </div>
+                    </Link>
+                  </li>
+
                   {/* HOME */}
                   <li
                     className={` flex justify-between items-center p-1 cursor-pointer

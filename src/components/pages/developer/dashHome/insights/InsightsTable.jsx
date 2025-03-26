@@ -83,9 +83,9 @@ const InsightsTable = ({ setItemEdit }) => {
               <th>Status</th>
               <th>Category</th>
               <th>Title</th>
-              <th>Slug</th>
+              <th className="w-[8rem]">Slug</th>
               <th className="w-[8rem]">Date</th>
-              <th className="w-[10rem]">Content</th>
+              <th>Content</th>
               <th>CTA Enable</th>
               <th>Buttton Caption </th>
               <th>Form Selected</th>
@@ -127,15 +127,15 @@ const InsightsTable = ({ setItemEdit }) => {
                     {item.home_insights_category}
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_title}
+                    <p className="line-clamp-5">{item.home_insights_title}</p>
                   </td>
                   <td className="place-content-start">
-                    {item.home_insights_slug}
+                    <p className="line-clamp-5">{item.home_insights_slug}</p>
                   </td>
                   <td className="place-content-start">
                     {formatDate(item.home_insights_date)}
                   </td>
-                  <td>
+                  <td className="place-content-start">
                     <p className="line-clamp-5">
                       {item.home_insights_paragraph_a}
                     </p>
