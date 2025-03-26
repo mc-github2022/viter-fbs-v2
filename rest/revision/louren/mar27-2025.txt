@@ -1,0 +1,47 @@
+
+Upload JSX
+
+        * PUBLIC/ IMG
+            -> upload: public/img/FBS-Work-Immersion-Program-Proposal-2025.pdf
+
+        * CONTROLLERS
+            ->
+            -> 
+            -> 
+            -> 
+            -> 
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            ->
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+
