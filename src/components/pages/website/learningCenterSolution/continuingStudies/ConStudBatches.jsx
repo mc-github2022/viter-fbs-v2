@@ -183,7 +183,7 @@ const ConStudBatches = () => {
                           <a onClick={() => handleModalBatch(item)}>
                             {firstImage && (
                               <div
-                                className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] sm:w-[320px] flex items-end relative rounded-xl 
+                                className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px]  w-[270px] md:w-[340px] lg:w-[390px]  flex items-end relative rounded-xl 
                                               grayscale hover:grayscale-0 transition-all group cursor-pointer"
                                 style={{
                                   backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
