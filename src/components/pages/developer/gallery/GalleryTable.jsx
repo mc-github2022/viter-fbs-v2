@@ -1,20 +1,19 @@
 import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import { setIsDelete } from "../../../store/StoreAction";
-import ModalDelete from "../../../partials/modals/ModalDelete";
-import { MdDelete } from "react-icons/md";
-import ServerError from "../../../partials/spinners/ServerError";
-import NoData from "../../../partials/spinners/NoData";
-import TableLoading from "../../../partials/spinners/TableLoading";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
 import { FaCopy } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import useQueryData from "../../../custom-hooks/useQueryData";
 import {
   getConvertStringToJSONparseData,
   googleHDViewLink,
-  googleViewLink,
 } from "../../../helpers/functions-general";
 import LoadImages from "../../../partials/LoadImages";
+import ModalDelete from "../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../partials/spinners/NoData";
+import ServerError from "../../../partials/spinners/ServerError";
+import TableLoading from "../../../partials/spinners/TableLoading";
+import { setIsDelete } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
 
 const GalleryTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -110,14 +109,14 @@ const GalleryTable = ({ setItemEdit }) => {
                       <LoadImages
                         url={`${googleHDViewLink}${image?.id}`}
                         alt=""
-                        className="h-[150px] w-[200px] object-cover"
+                        className="h-[150px] w-[200px] object-contain"
                         key={index}
                       />
                     ))}
                   </div>
-                  <div className="flex items-center gap-5">
+                  <div className="flex items-center gap-5 justify-between">
                     <span className="line-clamp-1 text-xs">
-                      <div className="line-clamp-5">
+                      <div className="line-clamp-1">
                         {galleryImage.map((img, index) => (
                           <p key={index}>{img.name}</p>
                         ))}

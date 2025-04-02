@@ -127,36 +127,25 @@ const SingplePage = () => {
     <>
       <Header />
       <div>
-        {/* <Helmet>
-          <title>{post.home_insights_title}</title>
-          <meta property="og:title" content={post.home_insights_title} />
-          <meta
-            property="og:image"
-            content={`${googleHDViewLink}${insightImgId}`}
-          />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="og:image:width" content="100" />
-          <meta property="og:image:height" content="100" />
-          <meta property="og:url" content="https://frontlinebusiness.com.ph/" />
-          <meta property="og:type" content="article" />
-        </Helmet> */}
-        <Helmet>
-          <title>{post.home_insights_title}</title>
-          <meta property="og:title" content={post.home_insights_title} />
-          <meta property="og:description" content={post.meta_description} />
-          <meta
-            property="og:image"
-            content={`${googleHDViewLink}${insightImgId}`}
-          />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
-          <meta
-            property="og:url"
-            content={`https://frontlinebusiness.com.ph/insight/${post.slug}`}
-          />
-          <meta property="og:type" content="article" />
-        </Helmet>
+        {post && (
+          <Helmet>
+            <title>{post.home_insights_title}</title>
+            <meta property="og:title" content={post.home_insights_title} />
+            <meta property="og:description" content={post.meta_description} />
+            <meta
+              property="og:image"
+              content={`${googleHDViewLink}${insightImgId}`}
+            />
+            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta
+              property="og:url"
+              content={`https://frontlinebusiness.com.ph/insight/${post.slug}`}
+            />
+            <meta property="og:type" content="article" />
+          </Helmet>
+        )}
       </div>
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
