@@ -119,9 +119,10 @@ const SingplePage = () => {
   const insightsImages =
     getConvertStringToJSONparseData(post.home_insights_img) || [];
 
-  const insightImgId = insightsImages.map((img) => img.id);
+  const insightImgId = insightsImages.map((img) => img.id)[0];
 
-  console.log(`${googleHDViewLink}${insightImgId}`);
+  const ogImage = `${googleHDViewLink}${insightImgId}`;
+  console.log(ogImage);
 
   return (
     <>
@@ -132,12 +133,10 @@ const SingplePage = () => {
             <title>{post.home_insights_title}</title>
             <meta property="og:title" content={post.home_insights_title} />
             <meta property="og:description" content={post.meta_description} />
-            <meta
-              property="og:image"
-              content={`${googleHDViewLink}${insightImgId}`}
-            />
+            <meta property="og:image" content={ogImage} />
+            <meta property="og:image:secure_url" content={ogImage} />
             <meta property="og:image:type" content="image/jpeg" />
-            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:width" content="1080" />
             <meta property="og:image:height" content="630" />
             <meta
               property="og:url"
