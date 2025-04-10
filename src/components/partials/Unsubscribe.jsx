@@ -3,6 +3,7 @@ import Header from "./Header";
 import { Form, Formik } from "formik";
 import {
   apiVersion,
+  devBaseImgUrl,
   devNavUrl,
   getUrlParam,
 } from "../helpers/functions-general";
@@ -113,7 +114,7 @@ const Unsubscribe = () => {
                   <div className="sadMailImage pt-[20px] md:pt-[30px] mb-4">
                     <img
                       className="m-auto w-[180px] xs:w-[400px] lg:w-[200px]"
-                      src="https://lh3.googleusercontent.com/pw/AP1GczNODh0erMDN3ufWLI5vUtQZD-U8tE5vnwLwKUMem38E591ciKK0AZDGTOCGnCGXL9gafpUSlblVKsdlpn1A-Ir2IuUko-OXfg71KKh7adklFYZzqjQcfgvT6W-w5otfEHJ6TwgxeeEE968OtkrSMOc3=w698-h406-s-no-gm?authuser=0"
+                      src={`${devBaseImgUrl}/unsubscribe.png`}
                       alt=""
                     />
                   </div>

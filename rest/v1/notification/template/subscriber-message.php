@@ -44,7 +44,7 @@ function getHtmlSendMessage(
       <div>
         <img
           style="width: 100%; margin-bottom: 50px"
-          src="https://lh3.googleusercontent.com/pw/AP1GczMEqJnAhgSj4nt7iWGYtFeQoCVNgGQ1mcEYYsJ22wnia-btS_o1i9yhW9tM3lMnxDJ9ebLVIPkv8XLzg5aueEAc7yKm6RFzmhI7VNJTb3pHOdBwKdqUTpJLde8vEcNuC3GRgCcjkvDHoYhga8yHK5je=w512-h207-s-no-gm?authuser=0"
+          src="https://frontlinebusiness.com.ph/img/subscribe.png"
           alt=""
         />
         <p style="margin-bottom: 20px;  font-family: Poppins;">Hey there,</p>

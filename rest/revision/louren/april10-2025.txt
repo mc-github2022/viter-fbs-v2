@@ -1,0 +1,48 @@
+
+Upload JSX
+
+        * PUBLIC/ IMG
+            -> upload: public/img/subscribe.png
+            -> upload: public/img/unsubscribe.png
+
+        * CONTROLLERS
+            ->
+            -> 
+            -> 
+            -> 
+            -> 
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            ->
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            -> rest/v1/notification/template/subscriber-message.php
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+
