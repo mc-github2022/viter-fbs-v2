@@ -201,9 +201,9 @@ const EventsSingplePage = () => {
   const post = getEventsAndAct();
 
   if (!post) {
-    return <div>Loading...</div>;
+    return "";
   }
-  
+
   const eventImageList = post?.events_activities_img_list
     ? getConvertStringToJSONparseData(post.events_activities_img_list)
     : [];
@@ -263,7 +263,7 @@ const EventsSingplePage = () => {
                     ))}
                   </Slider>
                 ) : eventImageList.length === 1 ? (
-                  <a onClick={() => handleEventImg(post, 0)}> 
+                  <a onClick={() => handleEventImg(post, 0)}>
                     <div
                       className=" h-[330px] w-[450px]
                 grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center relative rounded-xl"

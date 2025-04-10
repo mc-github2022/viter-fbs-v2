@@ -62,7 +62,7 @@ const ImmersionServices = () => {
             </div>
             <div className="css w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
               <div className="mb-10">
-                <p>CSS students can learn</p>
+                <p>ICT students can learn</p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
                   Computer System & Network Maintenance
                 </h3>
@@ -86,6 +86,64 @@ const ImmersionServices = () => {
                     <Laptop className="text-2xl text-dark" />
                   </div>
                   Maintaining and Repairing Computer Sustems and Networks
+                </li>
+              </ul>
+            </div>
+            <div className="css w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
+              <div className="mb-10">
+                <p>ICT students can learn</p>
+                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
+                  Visual Graphic Designing
+                </h3>
+                <p>SHS Work Immersion</p>
+              </div>
+              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
+                <li>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
+                  UX/UI Designing
+                </li>
+                <li>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
+                  Digital Designing for Print Media
+                </li>
+                <li>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
+                  Mockup Designing for Products and Websites
+                </li>
+              </ul>
+            </div>
+            <div className="css w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
+              <div className="mb-10">
+                <p>ICT students can learn</p>
+                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
+                  Database Management
+                </h3>
+                <p>SHS Work Immersion</p>
+              </div>
+              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
+                <li>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
+                  Application of Structured Query Language (SQL)
+                </li>
+                <li>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
+                  Writing queries for Database Management
+                </li>
+                <li>
+                  <div>
+                    <Laptop className="text-2xl text-dark" />
+                  </div>
+                  Designing Databases
                 </li>
               </ul>
             </div>
