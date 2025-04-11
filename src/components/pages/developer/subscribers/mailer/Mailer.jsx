@@ -16,6 +16,7 @@ import ServerError from "../../../../partials/spinners/ServerError";
 import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 import ModalSend from "./ModalSend";
+import { setIsSubsOpen } from "../../../../store/StoreAction";
 
 const Mailer = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -166,6 +167,10 @@ const Mailer = () => {
   React.useEffect(() => {
     document.addEventListener("click", clickOutsideRefSubscriber);
     return () => document.addEventListener("click", clickOutsideRefSubscriber);
+  }, []);
+
+  React.useEffect(() => {
+    dispatch(setIsSubsOpen(false));
   }, []);
 
   const initVal = {

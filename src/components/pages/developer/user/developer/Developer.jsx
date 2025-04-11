@@ -1,6 +1,6 @@
 import React from "react";
 import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd } from "../../../../store/StoreAction";
+import { setIsAdd, setIsUserOpen } from "../../../../store/StoreAction";
 import Navigation from "../../../../partials/dashboard/Navigation";
 import Dashboard from "../../../../partials/dashboard/Dashboard";
 import { FaPlus } from "react-icons/fa";
@@ -30,6 +30,10 @@ const Developer = () => {
     "role" // key
   );
 
+  React.useEffect(() => {
+    dispatch(setIsUserOpen(false));
+  }, []);
+  
   return (
     <>
       <section id="user" className="bg-[#f5f5f3]">

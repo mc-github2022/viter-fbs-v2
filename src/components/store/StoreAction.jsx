@@ -172,6 +172,13 @@ export const setIsNavOpen = (val) => {
   };
 };
 
+export const setIsServicesOpen = (val) => {
+  return {
+    type: "IS_SERVICES_OPEN",
+    payload: val,
+  };
+};
+
 export const setIswhyUsOpen = (val) => {
   return {
     type: "IS_WHYUS_OPEN",
@@ -196,6 +203,20 @@ export const setIsNotifOpen = (val) => {
 export const setIsSubsOpen = (val) => {
   return {
     type: "IS_SUBSCRIBERS_OPEN",
+    payload: val,
+  };
+};
+
+export const setIsWebAppOpen = (val) => {
+  return {
+    type: "IS_WEBAPP_OPEN",
+    payload: val,
+  };
+};
+
+export const setIsUpdateHome = (val) => {
+  return {
+    type: "IS_UPDATE_HOME",
     payload: val,
   };
 };

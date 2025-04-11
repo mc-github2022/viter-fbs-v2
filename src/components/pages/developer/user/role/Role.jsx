@@ -1,6 +1,6 @@
 import React from "react";
 import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd } from "../../../../store/StoreAction";
+import { setIsAdd, setIsUserOpen } from "../../../../store/StoreAction";
 import { FaPlus } from "react-icons/fa";
 import RoleTable from "./RoleTable";
 import ModalAddRole from "./ModalAddRole";
@@ -17,6 +17,10 @@ const Role = () => {
     dispatch(setIsAdd(true));
     setItemEdit(null);
   };
+
+  React.useEffect(() => {
+    dispatch(setIsUserOpen(false));
+  }, []);
 
   return (
     <>

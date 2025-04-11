@@ -1,13 +1,16 @@
 import React from "react";
-import { setIsAdd, setIsWhyFBS } from "../../../../store/StoreAction";
-import { StoreContext } from "../../../../store/StoreContext";
-import Navigation from "../../../../partials/dashboard/Navigation";
 import { FaPlus } from "react-icons/fa6";
+import Dashboard from "../../../../partials/dashboard/Dashboard";
+import Navigation from "../../../../partials/dashboard/Navigation";
+import ModalError from "../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import {
+  setIsAdd,
+  setIswhyUsOpen
+} from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
 import EventsAndActivitiesTable from "./EventsAndActivitiesTable";
 import ModalAddEventsAndActivities from "./ModalAddEventsAndActivities";
-import ModalSuccess from "../../../../partials/modals/ModalSuccess";
-import ModalError from "../../../../partials/modals/ModalError";
-import Dashboard from "../../../../partials/dashboard/Dashboard";
 
 const EventsAndActivities = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -17,7 +20,9 @@ const EventsAndActivities = () => {
     dispatch(setIsAdd(true));
     setItemEdit(null);
   };
-
+  React.useEffect(() => {
+    dispatch(setIswhyUsOpen(false));
+  }, []);
 
   return (
     <>

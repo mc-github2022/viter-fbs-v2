@@ -13,16 +13,13 @@ import {
   setIsUserOpen,
   setIswhyUsOpen,
   setIsSubsOpen,
+  setIsServicesOpen,
+  setIsWebAppOpen,
 } from "../../store/StoreAction";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const link = getUserType();
-
-  const [navName, setNavName] = React.useState("");
-  // const [navHomeOpen, setNavOpen] = React.useState(false);
-  // const [whyUsOpen, setwhyUsOpen] = React.useState(false);
-  // const [userOpen, setUserOpen] = React.useState(false);
 
   const handleNavOpen = () => {
     dispatch(setIsNavOpen(!store.isNavOpen));
@@ -42,6 +39,14 @@ const Navigation = ({ menu, submenu }) => {
 
   const handleSubsOpen = () => {
     dispatch(setIsSubsOpen(!store.isSubsOpen));
+  };
+
+  const handleServicesOpen = () => {
+    dispatch(setIsServicesOpen(!store.isServicesOpen));
+  };
+
+  const handleWebAppOpen = () => {
+    dispatch(setIsWebAppOpen(!store.isWebAppOpen));
   };
 
   return (
@@ -82,7 +87,7 @@ const Navigation = ({ menu, submenu }) => {
               ) : (
                 <>
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center px-1 py-0.5
                   ${
                     menu === "special-offers"
                       ? "text-primary underline underline-offset-4 "
@@ -100,7 +105,7 @@ const Navigation = ({ menu, submenu }) => {
                   </li>
 
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center px-1 py-0.5
                   ${
                     menu === "partners"
                       ? "text-primary underline underline-offset-4 "
@@ -116,7 +121,7 @@ const Navigation = ({ menu, submenu }) => {
                   </li>
 
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center px-1 py-0.5
                   ${
                     menu === "lcss-batches"
                       ? "text-primary underline underline-offset-4 "
@@ -134,7 +139,7 @@ const Navigation = ({ menu, submenu }) => {
                   </li>
 
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center px-1 py-0.5
                   ${
                     menu === "industry-testimonial"
                       ? "text-primary underline underline-offset-4 "
@@ -152,7 +157,7 @@ const Navigation = ({ menu, submenu }) => {
                   </li>
 
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center px-1 py-0.5
                   ${
                     menu === "vid-testimonial"
                       ? "text-primary underline underline-offset-4 "
@@ -170,7 +175,7 @@ const Navigation = ({ menu, submenu }) => {
                   </li>
 
                   <li
-                    className={` flex justify-between items-center p-1
+                    className={` flex justify-between items-center px-1 py-0.5
                   ${
                     menu === "gallery"
                       ? "text-primary underline underline-offset-4 "
@@ -186,39 +191,41 @@ const Navigation = ({ menu, submenu }) => {
                   </li>
 
                   {/* HOME */}
-                  <li
-                    className={` flex justify-between items-center p-1 cursor-pointer
+                  <Link to={`${devNavUrl}${link}/home`}>
+                    <li
+                      className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
                   ${
                     menu === "home"
                       ? "text-primary underline underline-offset-4 "
                       : "text-dark "
                   }
                 `}
-                    onClick={() => handleNavOpen()}
-                  >
-                    <div className="nav flex items-center justify-between w-full">
-                      <span className=" text-[14px] uppercase">Home</span>
-                      <IoChevronDownSharp
-                        className={`${
-                          store.isNavOpen ? "" : "rotate-180"
-                        } transition-all`}
-                      />
-                    </div>
-                  </li>
+                      onClick={() => handleNavOpen()}
+                    >
+                      <div className="nav flex items-center justify-between w-full">
+                        <span className=" text-[14px] uppercase">Home</span>
+                        <IoChevronDownSharp
+                          className={`${
+                            store.isNavOpen ? "" : "rotate-180"
+                          } transition-all text-base`}
+                        />
+                      </div>
+                    </li>
+                  </Link>
 
                   <ul
                     className={`${
-                      store.isNavOpen ? "h-0 overflow-hidden bg-[red]" : "my-2"
-                    } submenu ml-5  text-[14px]`}
+                      store.isNavOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5  text-[14px] `}
                   >
                     <Link
                       className="!p-0"
                       to={`${devNavUrl}${link}/home-banner`}
                     >
                       <li
-                        className={`text-xs border-transparent ${
+                        className={`text-xs border-transparent hover:underline ${
                           submenu === "home-banner"
-                            ? "text-primary font-bold"
+                            ? "text-primary font-bold "
                             : "border-none text-dark"
                         }`}
                       >
@@ -231,7 +238,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/home-testimonial`}
                     >
                       <li
-                        className={`text-xs my-2 border-transparent ${
+                        className={`text-xs my-1 border-transparent hover:underline ${
                           submenu === "home-testimonial"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -246,7 +253,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/home-insights`}
                     >
                       <li
-                        className={`text-xs  border-transparent ${
+                        className={`text-xs  border-transparent hover:underline ${
                           submenu === "home-insights"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -257,9 +264,84 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                   </ul>
 
+                  {/* Services */}
+                  <li
+                    className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
+                  ${
+                    menu === "services"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                    onClick={() => handleServicesOpen()}
+                  >
+                    <div className="nav flex items-center justify-between w-full">
+                      <span className=" text-[14px] uppercase">Services</span>
+                      <IoChevronDownSharp
+                        className={`${
+                          store.isServicesOpen ? "" : "rotate-180"
+                        } transition-all text-base`}
+                      />
+                    </div>
+                  </li>
+
+                  <ul
+                    className={`${
+                      store.isServicesOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5  text-[14px] `}
+                  >
+                    <li
+                      className={`text-xs text-gray-700 border-transparent ${
+                        menu === "web-application"
+                          ? "text-primary font-bold "
+                          : "border-none text-dark"
+                      }`}
+                      onClick={() => handleWebAppOpen()}
+                    >
+                      <div className="nav flex items-center justify-between w-full">
+                        <span className="">Web Applications</span>
+                        <IoChevronDownSharp
+                          className={`${
+                            store.isWebAppOpen ? "" : "rotate-180"
+                          } transition-all text-base`}
+                        />
+                      </div>
+                    </li>
+
+                    {/* <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/home-testimonial`}
+                    >
+                      <li
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "home-testimonial"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Testimonials
+                      </li>
+                    </Link>
+
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/home-insights`}
+                    >
+                      <li
+                        className={`text-xs  border-transparent hover:underline ${
+                          submenu === "home-insights"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Insights
+                      </li>
+                    </Link> */}
+                  </ul>
+
                   {/* WHY FBS */}
                   <li
-                    className={` flex justify-between items-center p-1 cursor-pointer
+                    className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
                   ${
                     menu === "whyFBS"
                       ? "text-primary underline underline-offset-4 "
@@ -288,7 +370,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/events-activities`}
                     >
                       <li
-                        className={`text-xs  border-transparent ${
+                        className={`text-xs  border-transparent hover:underline ${
                           submenu === "events-activities"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -302,7 +384,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/whyFBS-careers`}
                     >
                       <li
-                        className={`text-xs my-2 border-transparent ${
+                        className={`text-xs my-1 border-transparent hover:underline ${
                           submenu === "whyFBS-careers"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -314,7 +396,7 @@ const Navigation = ({ menu, submenu }) => {
                   </ul>
 
                   <li
-                    className={` flex justify-between items-center p-1 cursor-pointer
+                    className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
                   ${
                     menu === "notification"
                       ? "text-primary underline underline-offset-4 "
@@ -345,7 +427,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/notification-receiver`}
                     >
                       <li
-                        className={`text-xs my-2 border-transparent ${
+                        className={`text-xs my-1 border-transparent hover:underline ${
                           submenu === "notification-receiver"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -359,7 +441,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/notification-log`}
                     >
                       <li
-                        className={`text-xs my-2  border-transparent ${
+                        className={`text-xs my-1  border-transparent hover:underline ${
                           submenu === "notification-log"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -371,7 +453,7 @@ const Navigation = ({ menu, submenu }) => {
                   </ul>
 
                   <li
-                    className={` flex justify-between items-center p-1 cursor-pointer
+                    className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
                   ${
                     menu === "subscribers"
                       ? "text-primary underline underline-offset-4 "
@@ -399,7 +481,7 @@ const Navigation = ({ menu, submenu }) => {
                   >
                     <Link className="!p-0" to={`${devNavUrl}${link}/audience`}>
                       <li
-                        className={`text-xs my-2 border-transparent ${
+                        className={`text-xs my-1 border-transparent hover:underline ${
                           submenu === "audience"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -413,7 +495,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/subscribers`}
                     >
                       <li
-                        className={`text-xs my-2 border-transparent ${
+                        className={`text-xs my-1 border-transparent hover:underline ${
                           submenu === "subscribers"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -424,7 +506,7 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                     <Link className="!p-0" to={`${devNavUrl}${link}/mailer`}>
                       <li
-                        className={`text-xs my-2  border-transparent ${
+                        className={`text-xs my-1  border-transparent hover:underline ${
                           submenu === "mailer"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -438,7 +520,7 @@ const Navigation = ({ menu, submenu }) => {
                       to={`${devNavUrl}${link}/mailer-log`}
                     >
                       <li
-                        className={`text-xs my-2  border-transparent ${
+                        className={`text-xs my-1  border-transparent hover:underline ${
                           submenu === "mailer-log"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
@@ -452,7 +534,7 @@ const Navigation = ({ menu, submenu }) => {
                   {store.credentials.data.role_code === "role_is_developer" ? (
                     <>
                       <li
-                        className={` flex justify-between items-center p-1 cursor-pointer
+                        className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
                   ${
                     menu === "user"
                       ? "text-primary underline underline-offset-4 "
@@ -481,7 +563,7 @@ const Navigation = ({ menu, submenu }) => {
                           to={`${devNavUrl}${link}/other-user`}
                         >
                           <li
-                            className={`text-xs  border-transparent ${
+                            className={`text-xs  border-transparent hover:underline ${
                               submenu === "other-user"
                                 ? "text-primary font-bold"
                                 : "border-none text-dark"
@@ -495,7 +577,7 @@ const Navigation = ({ menu, submenu }) => {
                           to={`${devNavUrl}${link}/user-developer`}
                         >
                           <li
-                            className={`text-xs my-2 border-transparent ${
+                            className={`text-xs my-1 border-transparent hover:underline ${
                               submenu === "user-developer"
                                 ? "text-primary font-bold"
                                 : "border-none text-dark"
@@ -509,7 +591,7 @@ const Navigation = ({ menu, submenu }) => {
                           to={`${devNavUrl}${link}/user-role`}
                         >
                           <li
-                            className={`text-xs my-2 border-transparent ${
+                            className={`text-xs my-1 border-transparent hover:underline ${
                               submenu === "user-role"
                                 ? "text-primary font-bold"
                                 : "border-none text-dark"

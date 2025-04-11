@@ -1,17 +1,13 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa6";
+import Dashboard from "../../../partials/dashboard/Dashboard";
+import Navigation from "../../../partials/dashboard/Navigation";
+import ModalError from "../../../partials/modals/ModalError";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import { setIsAdd, setIsNotifOpen } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
 import ModalAddNotification from "./ModalAddNotification";
 import NotificationTable from "./NotificationTable";
-import { StoreContext } from "../../../store/StoreContext";
-import {
-  setIsAdd,
-  setIsNotifOpen,
-  setIsWhyFBS,
-} from "../../../store/StoreAction";
-import Navigation from "../../../partials/dashboard/Navigation";
-import Dashboard from "../../../partials/dashboard/Dashboard";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import ModalError from "../../../partials/modals/ModalError";
 
 const Notification = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -22,9 +18,9 @@ const Notification = () => {
     setItemEdit(null);
   };
 
-  // React.useEffect(() => {
-  //   dispatch(setIsNotifOpen(true));
-  // }, []);
+  React.useEffect(() => {
+    dispatch(setIsNotifOpen(false));
+  }, []);
 
   return (
     <>

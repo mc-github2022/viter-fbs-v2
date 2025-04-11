@@ -1,13 +1,16 @@
 import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd, setIsWhyFBS } from "../../../../store/StoreAction";
-import Navigation from "../../../../partials/dashboard/Navigation";
-import Dashboard from "../../../../partials/dashboard/Dashboard";
 import { FaPlus } from "react-icons/fa6";
+import Dashboard from "../../../../partials/dashboard/Dashboard";
+import Navigation from "../../../../partials/dashboard/Navigation";
+import ModalError from "../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import {
+  setIsAdd,
+  setIswhyUsOpen
+} from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
 import CareersTable from "./CareersTable";
 import ModalAddCareers from "./ModalAddCareers";
-import ModalSuccess from "../../../../partials/modals/ModalSuccess";
-import ModalError from "../../../../partials/modals/ModalError";
 
 const Careers = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -19,7 +22,7 @@ const Careers = () => {
   };
 
   React.useEffect(() => {
-    dispatch(setIsWhyFBS(true));
+    dispatch(setIswhyUsOpen(false));
   }, []);
 
   return (

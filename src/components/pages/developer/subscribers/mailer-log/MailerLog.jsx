@@ -4,8 +4,12 @@ import { apiVersion } from "../../../../helpers/functions-general";
 import Dashboard from "../../../../partials/dashboard/Dashboard";
 import Navigation from "../../../../partials/dashboard/Navigation";
 import MailerLogTable from "./MailerLogTable";
+import { setIsSubsOpen } from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const MailerLog = () => {
+  const { dispatch } = React.useContext(StoreContext);
+  
   const {
     isLoading: isLoading,
     isFetching: isFetching,
@@ -28,6 +32,10 @@ const MailerLog = () => {
     "subscribe" // key
   );
 
+  React.useEffect(() => {
+    dispatch(setIsSubsOpen(false));
+  }, []);
+
   return (
     <>
       <section id="mailer-log" className="bg-[#f5f5f3]">
@@ -40,7 +48,10 @@ const MailerLog = () => {
               </div>
             </div>
             <div className="pb-4">
-              <MailerLogTable audienceData={audienceData} subscribeData={subscribeData} />
+              <MailerLogTable
+                audienceData={audienceData}
+                subscribeData={subscribeData}
+              />
             </div>
           </div>
         </Dashboard>

@@ -6,7 +6,7 @@ import Dashboard from "../../../partials/dashboard/Dashboard";
 import Navigation from "../../../partials/dashboard/Navigation";
 import ModalError from "../../../partials/modals/ModalError";
 import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import { setIsAdd } from "../../../store/StoreAction";
+import { setIsAdd, setIsSubsOpen } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import ModalAddSubscribers from "./ModalAddSubscribers";
 import SubscribersTable from "./SubscribersTable";
@@ -20,6 +20,10 @@ const Subscribers = () => {
     dispatch(setIsAdd(true));
     setItemEdit(null);
   };
+
+  React.useEffect(() => {
+    dispatch(setIsSubsOpen(false));
+  }, []);
 
   const {
     isLoading: isLoading,

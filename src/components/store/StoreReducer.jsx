@@ -157,6 +157,12 @@ export const StoreReducer = (state, action) => {
         isNavOpen: action.payload,
       };
 
+    case "IS_SERVICES_OPEN":
+      return {
+        ...state,
+        isServicesOpen: action.payload,
+      };
+
     case "IS_WHYUS_OPEN":
       return {
         ...state,
@@ -179,6 +185,18 @@ export const StoreReducer = (state, action) => {
       return {
         ...state,
         isSubsOpen: action.payload,
+      };
+
+    case "IS_WEBAPP_OPEN":
+      return {
+        ...state,
+        isWebAppOpen: action.payload,
+      };
+
+    case "IS_UPDATE_HOME":
+      return {
+        ...state,
+        isUpdateHome: action.payload,
       };
 
     default:

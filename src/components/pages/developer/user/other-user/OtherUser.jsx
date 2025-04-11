@@ -1,6 +1,6 @@
 import React from "react";
 import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd } from "../../../../store/StoreAction";
+import { setIsAdd, setIsUserOpen } from "../../../../store/StoreAction";
 import { FaPlus } from "react-icons/fa";
 import OtherUserTable from "./OtherUserTable";
 import Dashboard from "../../../../partials/dashboard/Dashboard";
@@ -39,6 +39,10 @@ const OtherUser = () => {
     "user-other-role", // key
     { role_code: "role_is_developer" }
   );
+
+  React.useEffect(() => {
+    dispatch(setIsUserOpen(false));
+  }, []);
 
   return (
     <>

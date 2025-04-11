@@ -1,6 +1,6 @@
 import React from "react";
 import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd } from "../../../../store/StoreAction";
+import { setIsAdd, setIsSubsOpen } from "../../../../store/StoreAction";
 import Navigation from "../../../../partials/dashboard/Navigation";
 import Dashboard from "../../../../partials/dashboard/Dashboard";
 import { FaPlus } from "react-icons/fa";
@@ -16,6 +16,10 @@ const Audience = () => {
     dispatch(setIsAdd(true));
     setItemEdit(null);
   };
+
+    React.useEffect(() => {
+      dispatch(setIsSubsOpen(false));
+    }, []);
 
   return (
     <>

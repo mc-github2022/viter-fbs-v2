@@ -8,8 +8,8 @@ const Dashboard = ({ children }) => {
         <div className="main ml-[220px] w-[calc(100%_-_230px)] z-10">
           <DashboardNav menu="dashboard" />
           <div className=" w-[calc(100%_-_10px)] pt-[65px] relative">
-            <div className="headerCover fixed top-0 left-[200px] w-full h-[67px]  bg-[#f5f5f3] z-[9]"></div>
-            <div className="addShadowDash bg-[#f5f5f3] h-[90dvh]">
+            <div className="headerCover fixed top-0 left-[200px] w-full h-[67px]  bg-[#f5f5f3] z-[99]"></div>
+            <div className="addShadowDash bg-[#f5f5f3] min-h-[90dvh]">
               {children}
             </div>
           </div>

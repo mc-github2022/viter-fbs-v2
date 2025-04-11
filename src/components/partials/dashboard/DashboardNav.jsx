@@ -53,7 +53,7 @@ const DashboardNav = ({ menu }) => {
 
   return (
     <>
-      <div className="profileHeader px-4 addShadow border-none bg-dashSecondary h-[45px] rounded-tl-lg rounded-tr-lg fixed top-[20px] w-[calc(100%_-_240px)] grid items-center z-[10]">
+      <div className="profileHeader px-4 addShadow border-none bg-dashSecondary h-[45px] rounded-tl-lg rounded-tr-lg fixed top-[20px] w-[calc(100%_-_240px)] grid items-center z-[999]">
         <div className="flex justify-between  items-center ">
           <p className="font-semibold text-sm text-[black]">FBS Website</p>
           <div className="flex items-center gap-4">

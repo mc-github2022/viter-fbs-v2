@@ -27,10 +27,13 @@ const initVal = {
   isLogout: false,
   isUploadFile: false,
   isNavOpen: true,
-  isWhyUsOpen: false,
-  isUserOpen: false,
-  isNotifOpen: false,
-  isSubsOpen: false,
+  isServicesOpen: true,
+  isWhyUsOpen: true,
+  isUserOpen: true,
+  isNotifOpen: true,
+  isSubsOpen: true,
+  isWebAppOpen: true,
+  isUpdateHome: { modal: false, code: "" },
   credentials: {},
 };
 

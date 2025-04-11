@@ -29,8 +29,17 @@ import EventsAndActivities from "../components/pages/developer/why-fbs-page/even
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import Partners from "../components/pages/developer/partners/Partners";
 import Gallery from "../components/pages/developer/gallery/Gallery";
+import Home from "../components/pages/developer/dashHome/Home";
 
 export const routesDeveloper = [
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/home`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Home />
+      </ProtectedRouteDeveloper>
+    ),
+  },
   {
     path: `${devNavUrl}/${UrlDeveloper}/home-insights`,
     element: (
