@@ -37,7 +37,7 @@ export const googleHDViewLink = "https://lh3.googleusercontent.com/d/";
 export const googleViewLink = "https://drive.google.com/file/d/";
 
 // reCAPTCHA site key TEST
-export const siteKey = "6LeUuBgqAAAAAKDIsrmFwuV8ocqZusI7fB_69Gva";
+export const siteKey = "";
 
 // reCAPTCHA site key PRODUCTION
 // export const siteKey = "";

@@ -26,7 +26,7 @@ const initVal = {
   isLogin: false,
   isLogout: false,
   isUploadFile: false,
-  isNavOpen: false,
+  isNavOpen: true,
   isWhyUsOpen: false,
   isUserOpen: false,
   isNotifOpen: false,

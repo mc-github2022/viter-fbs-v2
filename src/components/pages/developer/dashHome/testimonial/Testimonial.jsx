@@ -1,13 +1,13 @@
 import React from "react";
-import Navigation from "../../../../partials/dashboard/Navigation";
 import { FaPlus } from "react-icons/fa";
-import TestimonialTable from "./TestimonialTable";
 import Dashboard from "../../../../partials/dashboard/Dashboard";
-import ModalAddTestimonial from "./ModalAddTestimonial";
-import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import Navigation from "../../../../partials/dashboard/Navigation";
 import ModalError from "../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import { setIsAdd, setIsNavOpen } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd, setIsHome } from "../../../../store/StoreAction";
+import ModalAddTestimonial from "./ModalAddTestimonial";
+import TestimonialTable from "./TestimonialTable";
 
 const Testimonial = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -19,7 +19,7 @@ const Testimonial = () => {
   };
 
   React.useEffect(() => {
-    dispatch(setIsHome(true));
+    dispatch(setIsNavOpen(false));
   }, []);
 
   return (

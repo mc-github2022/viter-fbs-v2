@@ -1,13 +1,13 @@
 import React from "react";
-import Navigation from "../../../../partials/dashboard/Navigation";
-import Dashboard from "../../../../partials/dashboard/Dashboard";
 import { FaPlus } from "react-icons/fa";
+import Dashboard from "../../../../partials/dashboard/Dashboard";
+import Navigation from "../../../../partials/dashboard/Navigation";
+import ModalError from "../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import { setIsAdd, setIsNavOpen } from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
 import BannerTable from "./BannerTable";
 import ModalAddBanner from "./ModalAddBanner";
-import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd, setIsHome } from "../../../../store/StoreAction";
-import ModalSuccess from "../../../../partials/modals/ModalSuccess";
-import ModalError from "../../../../partials/modals/ModalError";
 
 const Banner = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -18,8 +18,9 @@ const Banner = () => {
     setItemEdit(null);
   };
 
+
   React.useEffect(() => {
-    dispatch(setIsHome(true));
+    dispatch(setIsNavOpen(false));
   }, []);
 
   return (

@@ -1,13 +1,13 @@
 import React from "react";
+import { FaPlus } from "react-icons/fa";
 import Dashboard from "../../../../partials/dashboard/Dashboard";
 import Navigation from "../../../../partials/dashboard/Navigation";
-import InsightsTable from "./InsightsTable";
-import { FaPlus } from "react-icons/fa";
-import { StoreContext } from "../../../../store/StoreContext";
-import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import { setIsAdd, setIsNavOpen } from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
+import InsightsTable from "./InsightsTable";
 import ModalAddInsights from "./ModalAddInsights";
-import { setIsAdd, setIsHome } from "../../../../store/StoreAction";
 
 const Insights = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -19,7 +19,7 @@ const Insights = () => {
   };
 
   React.useEffect(() => {
-    dispatch(setIsHome(true));
+    dispatch(setIsNavOpen(false));
   }, []);
 
   return (
