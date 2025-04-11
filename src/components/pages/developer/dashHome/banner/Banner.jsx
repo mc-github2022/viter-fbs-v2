@@ -20,7 +20,7 @@ const Banner = () => {
 
 
   React.useEffect(() => {
-    dispatch(setIsNavOpen(false));
+    dispatch(setIsNavOpen(false)); 
   }, []);
 
   return (
