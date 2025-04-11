@@ -119,18 +119,18 @@ const WordPressPortfolio = () => {
             </div>
             <div className="imageItem row-span-2 sm:h-auto h-[240px] relative overflow-hidden addShadow rounded-2xl group">
               <a
-                href="https://phixgenomics.com/"
+                href="https://hiroisogawa.com/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img
-                  src={`${devBaseImgUrl}/portfolio-phixgenomics.png`}
+                  src={`${devBaseImgUrl}/portfolio-hiroisogawa.webp`}
                   className="w-full h-full object-cover rounded-2xl group-hover:brightness-50"
-                  alt="Phixgenomics"
+                  alt="Hiro Isogawa"
                 />
                 <div className="theLink flex items-center gap-2 group-hover:text-light absolute bottom-4 left-4 group-hover:bg-primary rounded-full px-2 opacity-0 group-hover:opacity-[100] transition-all">
                   <RiExternalLinkLine />
-                  <p>phixgenomics.com</p>
+                  <p>hiroisogawa.com</p>
                 </div>
               </a>
             </div>

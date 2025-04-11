@@ -10,6 +10,8 @@ import { setIsAdd } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import ModalAddSubscribers from "./ModalAddSubscribers";
 import SubscribersTable from "./SubscribersTable";
+import { FaFileExport } from "react-icons/fa";
+import { handleExportSubscribers } from "./function-subscribers";
 
 const Subscribers = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -30,6 +32,12 @@ const Subscribers = () => {
     "audience" // key
   );
 
+  const { data: subscribeData } = useQueryData(
+    `${apiVersion}/subscribe`, // endpoint
+    "get", // method
+    "subscribe" // key
+  );
+
   return (
     <>
       <section id="subscribers" className="bg-[#f5f5f3]">
@@ -40,13 +48,23 @@ const Subscribers = () => {
               <div className="text-sm text-[black] font-semibold">
                 <h2>Subscribers</h2>
               </div>
-              <button
-                className="flex items-center gap-1 text-[white] hover:underline bg-primary py-1 px-2 rounded-lg text-sm"
-                onClick={handleAdd}
-              >
-                <FaPlus />
-                Add
-              </button>
+              <div className="flex items-center gap-6 print:invisible">
+                <button
+                  type="button"
+                  className="flex items-center text-primary gap-2 text-sm"
+                  onClick={() => handleExportSubscribers(subscribeData?.data)}
+                >
+                  <FaFileExport />
+                  <span className="hover:underline ">Export</span>
+                </button>
+                <button
+                  className="flex items-center gap-1 text-[white] hover:underline bg-primary py-1 px-2 rounded-lg text-sm"
+                  onClick={handleAdd}
+                >
+                  <FaPlus />
+                  Add
+                </button>
+              </div>
             </div>
             <div className="pb-4">
               <SubscribersTable setItemEdit={setItemEdit} />

@@ -4,6 +4,7 @@ Upload JSX
         * PUBLIC/ IMG
             -> upload: public/img/subscribe.png
             -> upload: public/img/unsubscribe.png
+            -> upload: public/img/portfolio-hiroisogawa.webp
 
         * CONTROLLERS
             ->
