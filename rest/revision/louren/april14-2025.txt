@@ -1,0 +1,44 @@
+
+Upload JSX
+
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/home/process
+            -> 
+            -> 
+            -> 
+            -> 
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/home/process
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> # HOME - PROCESS is added
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_home_process.sql
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+

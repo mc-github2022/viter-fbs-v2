@@ -24,6 +24,11 @@ RewriteRule ^insights$ controllers/developer/home/insights/insights.php [L]
 RewriteRule ^insights/([0-9]+)$ controllers/developer/home/insights/insights.php?home_insightsid=$1 [L]
 RewriteRule ^insights/active/([0-9]+)$ controllers/developer/home/insights/active.php?home_insightsid=$1 [L]
 
+# HOME - PROCESS
+RewriteRule ^process$ controllers/developer/home/process/homeProcess.php [L]
+RewriteRule ^process/([0-9]+)$ controllers/developer/home/process/homeProcess.php?home_processid=$1 [L]
+
+
 
 # SPECIAL OFFERS
 RewriteRule ^specialOffers$ controllers/developer/special-offers/specialOffers.php [L]

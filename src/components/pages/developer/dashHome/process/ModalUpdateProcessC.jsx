@@ -1,22 +1,22 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React from "react";
-import * as Yup from "yup";
-import { queryData } from "../../../../helpers/queryData";
 import {
   setError,
   setIsUpdateHome,
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { queryData } from "../../../../helpers/queryData";
+import * as Yup from "yup";
+import { StoreContext } from "../../../../store/StoreContext";
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
 import { GrFormClose } from "react-icons/gr";
 import { Form, Formik } from "formik";
 import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
-import { StoreContext } from "../../../../store/StoreContext";
 import { apiVersion } from "../../../../helpers/functions-general";
 
-const ModalUpdateProcessTitle = ({ itemEdit, processData }) => {
+const ModalUpdateProcessC = ({ itemEdit, processData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
 
   const handleClose = () => {
@@ -53,8 +53,9 @@ const ModalUpdateProcessTitle = ({ itemEdit, processData }) => {
 
   const initVal = {
     isUpdateHomeProcess: itemEdit,
-    process_subtitle: processData?.data?.[0]?.process_subtitle ?? "",
-    process_title: processData?.data?.[0]?.process_title ?? "",
+
+    process_title_c: processData?.data?.[0]?.process_title_c ?? "",
+    process_description_c: processData?.data?.[0]?.process_description_c ?? "",
   };
 
   const yupSchema = Yup.object({});
@@ -86,17 +87,17 @@ const ModalUpdateProcessTitle = ({ itemEdit, processData }) => {
                 <div className="form-input">
                   <div className="input-wrapper">
                     <InputText
-                      label="Sub-title"
+                      label="Title"
                       type="text"
-                      name="process_subtitle"
+                      name="process_title_c"
                       disabled={mutation.isPending}
                     />
                   </div>
                   <div className="input-wrapper">
-                    <InputText
-                      label="Title"
+                    <InputTextArea
+                      label="Description"
                       type="text"
-                      name="process_title"
+                      name="process_description_c"
                       disabled={mutation.isPending}
                     />
                   </div>
@@ -134,4 +135,4 @@ const ModalUpdateProcessTitle = ({ itemEdit, processData }) => {
   );
 };
 
-export default ModalUpdateProcessTitle;
+export default ModalUpdateProcessC;
