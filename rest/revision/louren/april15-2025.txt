@@ -4,8 +4,8 @@ Upload JSX
 
         * CONTROLLERS
             -> rest/v1/controllers/developer/home/process
-            -> 
-            -> 
+            -> rest/v1/controllers/developer/home/services
+            -> rest/v1/controllers/developer/home/partner-with-us
             -> 
             -> 
         
@@ -15,16 +15,17 @@ Upload JSX
 
         * MODELS
             -> rest/v1/models/developer/home/process
-            -> 
-            -> 
+            -> rest/v1/models/developer/home/services
+            -> rest/v1/models/developer/home/partner-with-us
             -> 
 
 
         * HTACESS
             -> # HOME - PROCESS is added
+            -> # HOME - SERVICES is added
+            -> # HOME - PARTNER WITH US is added
             -> 
-            -> 
-            -> 
+
 
         * OTHER FILES
             -> 
@@ -34,8 +35,8 @@ Upload JSX
 
         * DB BACKUP
             -> rest/db-backup/fbsv2_home_process.sql
-            ->
-            ->
+            -> rest/db-backup/fbsv2_home_services.sql
+            -> rest/db-backup/fbsv2_home_partner_with_us.sql
             ->
             ->
             ->

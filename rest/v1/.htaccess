@@ -28,6 +28,14 @@ RewriteRule ^insights/active/([0-9]+)$ controllers/developer/home/insights/activ
 RewriteRule ^process$ controllers/developer/home/process/homeProcess.php [L]
 RewriteRule ^process/([0-9]+)$ controllers/developer/home/process/homeProcess.php?home_processid=$1 [L]
 
+# HOME - SERVICES
+RewriteRule ^services$ controllers/developer/home/services/homeServices.php [L]
+RewriteRule ^services/([0-9]+)$ controllers/developer/home/services/homeServices.php?home_servicesid=$1 [L]
+
+# HOME - PARTNER WITH US 
+RewriteRule ^partnerWithUs$ controllers/developer/home/partner-with-us/homePartnerWithUs.php [L]
+RewriteRule ^partnerWithUs/([0-9]+)$ controllers/developer/home/partner-with-us/homePartnerWithUs.php?home_partner_with_usid=$1 [L]
+
 
 
 # SPECIAL OFFERS
