@@ -120,7 +120,7 @@ const ModalUpdateContactFormDefault = ({
     mutationFn: (values) =>
       queryData(
         contactFormDefaultData?.data?.length
-          ? `${apiVersion}/contactDefault/${contactFormDefaultData.data[0].partner_with_us_aid}` // update
+          ? `${apiVersion}/contactDefault/${contactFormDefaultData.data[0].form_default_aid}` // update
           : `${apiVersion}/contactDefault`, // create
         contactFormDefaultData?.data?.length ? "put" : "post",
         values
@@ -142,34 +142,51 @@ const ModalUpdateContactFormDefault = ({
 
   React.useEffect(() => {
     if (contactFormDefaultData) {
-      const logoPhotos = getConvertStringToJSONparseData(
-        contactFormDefaultData?.data?.[0]?.partner_with_us_img
+      const clientPhotos = getConvertStringToJSONparseData(
+        contactFormDefaultData?.data?.[0]?.form_default_file
       );
       setClientImages(clientPhotos);
     }
     if (contactFormDefaultData) {
       const logoPhotos = getConvertStringToJSONparseData(
-        contactFormDefaultData?.data?.[0]?.partner_with_us_img
+        contactFormDefaultData?.data?.[0]?.form_default_img
       );
-      setClientImages(logoPhotos);
+      setLogoImages(logoPhotos);
     }
   }, []);
 
   const initVal = {
-    isUpdateHomePartnerWithUs: itemEdit,
-    partner_with_us_subtitle:
-      contactFormDefaultData?.data?.[0]?.partner_with_us_subtitle ?? "",
-    partner_with_us_title:
-      contactFormDefaultData?.data?.[0]?.partner_with_us_title ?? "",
-    partner_with_us_description:
-      contactFormDefaultData?.data?.[0]?.partner_with_us_description ?? "",
-    partner_with_us_button_text:
-      contactFormDefaultData?.data?.[0]?.partner_with_us_button_text ?? "",
-    partner_with_us_img:
-      contactFormDefaultData?.data?.[0]?.partner_with_us_img ?? "",
+    isUpdateContactFormDefault: itemEdit,
+    form_default_file:
+      contactFormDefaultData?.data?.[0]?.form_default_file ?? "",
+    form_default_img: contactFormDefaultData?.data?.[0]?.form_default_img ?? "",
+    form_default_subtitle:
+      contactFormDefaultData?.data?.[0]?.form_default_subtitle ?? "",
+    form_default_title:
+      contactFormDefaultData?.data?.[0]?.form_default_title ?? "",
+    form_default_address:
+      contactFormDefaultData?.data?.[0]?.form_default_address ?? "",
+    form_default_telephone:
+      contactFormDefaultData?.data?.[0]?.form_default_telephone ?? "",
+    form_default_phone:
+      contactFormDefaultData?.data?.[0]?.form_default_phone ?? "",
+    form_default_email:
+      contactFormDefaultData?.data?.[0]?.form_default_email ?? "",
+    form_default_facebook_link:
+      contactFormDefaultData?.data?.[0]?.form_default_facebook_link ?? "",
+    form_default_linkedin_link:
+      contactFormDefaultData?.data?.[0]?.form_default_linkedin_link ?? "",
+    form_default_youtube_link:
+      contactFormDefaultData?.data?.[0]?.form_default_youtube_link ?? "",
+    form_default_instagram_link:
+      contactFormDefaultData?.data?.[0]?.form_default_instagram_link ?? "",
+    form_default_tiktok_link:
+      contactFormDefaultData?.data?.[0]?.form_default_tiktok_link ?? "",
 
-    partner_with_us_img_old:
-      contactFormDefaultData?.data?.[0]?.partner_with_us_img ?? "",
+    form_default_file_old:
+      contactFormDefaultData?.data?.[0]?.form_default_file ?? "",
+    form_default_img_old:
+      contactFormDefaultData?.data?.[0]?.form_default_img ?? "",
     pendingDeleteFile: [],
   };
 
@@ -183,7 +200,7 @@ const ModalUpdateContactFormDefault = ({
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Contact Form Default
+            {itemEdit ? "Edit" : "Add"} Contact Form (Default)
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
@@ -198,13 +215,13 @@ const ModalUpdateContactFormDefault = ({
 
               const data = {
                 ...values,
-                industry_testimonial_img: clientImages.map((item) =>
+                form_default_file: clientImages.map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
                   })
                 ),
-                industry_testimonial_logo: logoImages.map((item) =>
+                form_default_img: logoImages.map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -251,18 +268,18 @@ const ModalUpdateContactFormDefault = ({
                               </span>
 
                               <InputFileUpload
-                                label="Upload Image"
+                                label="Upload file"
                                 name="File"
                                 type="file"
                                 id="myFile"
                                 accept="*"
-                                title="Upload Image"
+                                title="Upload file"
                                 onChange={(e) =>
                                   handleChangeFileUploadClient(
                                     e,
                                     props,
                                     setClientImages,
-                                    "industry_testimonial_img"
+                                    "form_default_file"
                                   )
                                 }
                                 onDrop={(e) =>
@@ -270,7 +287,7 @@ const ModalUpdateContactFormDefault = ({
                                     e,
                                     props,
                                     setClientImages,
-                                    "industry_testimonial_img"
+                                    "form_default_file"
                                   )
                                 }
                                 disabled={mutation.isPending || loading}
@@ -373,14 +390,14 @@ const ModalUpdateContactFormDefault = ({
                                 name="File"
                                 type="file"
                                 id="myFile"
-                                accept="image/*"
-                                title="Upload File"
+                                accept="*"
+                                title="Upload Image"
                                 onChange={(e) =>
                                   handleChangeFileUploadLogo(
                                     e,
                                     props,
                                     setLogoImages,
-                                    "industry_testimonial_logo"
+                                    "form_default_img"
                                   )
                                 }
                                 onDrop={(e) =>
@@ -388,7 +405,7 @@ const ModalUpdateContactFormDefault = ({
                                     e,
                                     props,
                                     setLogoImages,
-                                    "industry_testimonial_logo"
+                                    "form_default_img"
                                   )
                                 }
                                 disabled={mutation.isPending || loading}
@@ -470,7 +487,7 @@ const ModalUpdateContactFormDefault = ({
                             <InputText
                               label="Subtitle"
                               type="text"
-                              name="industry_testimonial_name"
+                              name="form_default_subtitle"
                               disabled={mutation.isPending}
                             />
                           </div>
@@ -478,7 +495,7 @@ const ModalUpdateContactFormDefault = ({
                             <InputText
                               label="Title"
                               type="text"
-                              name="industry_testimonial_position"
+                              name="form_default_title"
                               disabled={mutation.isPending}
                             />
                           </div>
@@ -486,7 +503,7 @@ const ModalUpdateContactFormDefault = ({
                             <InputTextArea
                               label="Address"
                               type="text"
-                              name="industry_testimonial_company"
+                              name="form_default_address"
                               disabled={mutation.isPending}
                             />
                           </div>
@@ -494,7 +511,7 @@ const ModalUpdateContactFormDefault = ({
                             <InputText
                               label="Telephone No."
                               type="text"
-                              name="industry_testimonial_position"
+                              name="form_default_telephone"
                               disabled={mutation.isPending}
                             />
                           </div>
@@ -502,7 +519,8 @@ const ModalUpdateContactFormDefault = ({
                             <InputText
                               label="Phone No."
                               type="text"
-                              name="industry_testimonial_position"
+                              name="form_default_phone"
+                              className="mb-16"
                               disabled={mutation.isPending}
                             />
                           </div>
@@ -541,7 +559,7 @@ const ModalUpdateContactFormDefault = ({
                           <InputText
                             label="Email"
                             type="text"
-                            name="industry_testimonial_position"
+                            name="form_default_email"
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -549,7 +567,7 @@ const ModalUpdateContactFormDefault = ({
                           <InputText
                             label="Facebook Link"
                             type="text"
-                            name="industry_testimonial_position"
+                            name="form_default_facebook_link"
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -557,7 +575,7 @@ const ModalUpdateContactFormDefault = ({
                           <InputText
                             label="LinkedIn Link"
                             type="text"
-                            name="industry_testimonial_position"
+                            name="form_default_linkedin_link"
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -565,7 +583,7 @@ const ModalUpdateContactFormDefault = ({
                           <InputText
                             label="Youtube Link"
                             type="text"
-                            name="industry_testimonial_position"
+                            name="form_default_youtube_link"
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -573,7 +591,7 @@ const ModalUpdateContactFormDefault = ({
                           <InputText
                             label="Instagram Link"
                             type="text"
-                            name="industry_testimonial_position"
+                            name="form_default_instagram_link"
                             disabled={mutation.isPending}
                           />
                         </div>
@@ -581,7 +599,7 @@ const ModalUpdateContactFormDefault = ({
                           <InputText
                             label="Tiktok Link"
                             type="text"
-                            name="industry_testimonial_position"
+                            name="form_default_tiktok_link"
                             disabled={mutation.isPending}
                           />
                         </div>

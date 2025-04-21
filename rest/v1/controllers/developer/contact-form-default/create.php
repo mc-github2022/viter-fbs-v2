@@ -49,4 +49,4 @@ if ($isUpdateContactFormDefault == "contactFormDefaultUpdate") {
     $query = checkCreate($form_default);
 }
 
-returnSuccess($form_default, "contact form default", $query);
+returnSuccess($form_default, "contact form default create", $query);

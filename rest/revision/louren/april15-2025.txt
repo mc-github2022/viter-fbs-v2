@@ -6,7 +6,7 @@ Upload JSX
             -> rest/v1/controllers/developer/home/process
             -> rest/v1/controllers/developer/home/services
             -> rest/v1/controllers/developer/home/partner-with-us
-            -> 
+            -> rest/v1/controllers/developer/contact-form-default
             -> 
         
         * CORE 
@@ -17,6 +17,7 @@ Upload JSX
             -> rest/v1/models/developer/home/process
             -> rest/v1/models/developer/home/services
             -> rest/v1/models/developer/home/partner-with-us
+            -> rest/v1/models/developer/contact-form-default
             -> 
 
 
@@ -24,6 +25,7 @@ Upload JSX
             -> # HOME - PROCESS is added
             -> # HOME - SERVICES is added
             -> # HOME - PARTNER WITH US is added
+            -> # CONTACT FORM DEFAULT is added
             -> 
 
 
@@ -37,7 +39,7 @@ Upload JSX
             -> rest/db-backup/fbsv2_home_process.sql
             -> rest/db-backup/fbsv2_home_services.sql
             -> rest/db-backup/fbsv2_home_partner_with_us.sql
-            ->
+            -> rest/db-backup/fbsv2_contact_form_default.sql
             ->
             ->
             ->

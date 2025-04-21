@@ -3,21 +3,21 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$partner_with_us = new HomePartnerWithUs($conn);
+$form_default = new ContactFormDefault($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
 
-if (array_key_exists("home_partner_with_usid", $_GET)) {
-  $partner_with_us->partner_with_us_aid = $_GET['home_partner_with_usid'];
-  checkId($partner_with_us->partner_with_us_aid);
-  $query = checkReadAll($partner_with_us);
+if (array_key_exists("contact_form_default_id", $_GET)) {
+  $form_default->form_default_aid = $_GET['contact_form_default_id'];
+  checkId($form_default->form_default_aid);
+  $query = checkReadAll($form_default);
   http_response_code(200);
   getQueriedData($query);
 }
 
 if (empty($_GET)) {
-  $query = checkReadAll($partner_with_us);
+  $query = checkReadAll($form_default);
   http_response_code(200);
   getQueriedData($query);
 }

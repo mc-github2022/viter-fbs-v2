@@ -22,12 +22,12 @@ class ContactFormDefault
     public $connection;
     public $lastInsertedId;
 
-    public $tblHomePartnerWithUs;
+    public $tblContactFormDefault;
 
     public function __construct($db)
     {
         $this->connection = $db;
-        $this->tblHomePartnerWithUs = "fbsv2_home_partner_with_us";
+        $this->tblContactFormDefault = "fbsv2_contact_form_default";
     }
 
     public function readAll()
@@ -35,7 +35,7 @@ class ContactFormDefault
         try {
             $sql = "select * ";
             $sql .= "from ";
-            $sql .= "{$this->tblHomePartnerWithUs} ";
+            $sql .= "{$this->tblContactFormDefault} ";
             $sql .= "order by form_default_aid asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
@@ -47,7 +47,7 @@ class ContactFormDefault
     public function create()
     {
         try {
-            $sql = "insert into {$this->tblHomePartnerWithUs}";
+            $sql = "insert into {$this->tblContactFormDefault}";
             $sql .= "(form_default_subtitle, ";
             $sql .= "form_default_title, ";
             $sql .= "form_default_address, ";
@@ -106,7 +106,7 @@ class ContactFormDefault
     public function update()
     {
         try {
-            $sql = "update {$this->tblHomePartnerWithUs} set ";
+            $sql = "update {$this->tblContactFormDefault} set ";
             $sql .= "form_default_subtitle = :form_default_subtitle, ";
             $sql .= "form_default_title = :form_default_title, ";
             $sql .= "form_default_address = :form_default_address, ";

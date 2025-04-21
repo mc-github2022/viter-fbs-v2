@@ -3,19 +3,19 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$partner_with_us = new HomePartnerWithUs($conn);
+$form_default = new ContactFormDefault($conn);
 // get $_GET data
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
-if (array_key_exists("home_partner_with_usid", $_GET)) {
+if (array_key_exists("contact_form_default_id", $_GET)) {
   // get data
   checkPayload($data);
 
-  $partner_with_us->partner_with_us_aid = $_GET['home_partner_with_usid'];
+  $form_default->form_default_aid = $_GET['contact_form_default_id'];
   $filesToDelete = $data['filesToDelete'];
 
-  checkId($partner_with_us->partner_with_us_aid);
-  $query = checkDelete($partner_with_us);
+  checkId($form_default->form_default_aid);
+  $query = checkDelete($form_default);
 
   // TO DELETE ALL FILES IN GOOGLE DRIVE API
   // returnError($jsonStringToArray);
@@ -27,7 +27,7 @@ if (array_key_exists("home_partner_with_usid", $_GET)) {
     checkDeleteGoogleDriveApiFiles($filesToDelete, $pendingDeleteFile);
   }
 
-  returnSuccess($partner_with_us, "partner with us", $query);
+  returnSuccess($form_default, "contact form default delete", $query);
 }
 
 // return 404 error if endpoint not available

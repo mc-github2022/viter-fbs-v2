@@ -36,7 +36,9 @@ RewriteRule ^services/([0-9]+)$ controllers/developer/home/services/homeServices
 RewriteRule ^partnerWithUs$ controllers/developer/home/partner-with-us/homePartnerWithUs.php [L]
 RewriteRule ^partnerWithUs/([0-9]+)$ controllers/developer/home/partner-with-us/homePartnerWithUs.php?home_partner_with_usid=$1 [L]
 
-
+# CONTACT FORM DEFAULT
+RewriteRule ^contactDefault$ controllers/developer/contact-form-default/contactFormDefault.php [L]
+RewriteRule ^contactDefault/([0-9]+)$ controllers/developer/contact-form-default/contactFormDefault.php?contact_form_default_id=$1 [L]
 
 # SPECIAL OFFERS
 RewriteRule ^specialOffers$ controllers/developer/special-offers/specialOffers.php [L]
