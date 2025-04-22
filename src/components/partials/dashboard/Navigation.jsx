@@ -290,23 +290,20 @@ const Navigation = ({ menu, submenu }) => {
                       store.isServicesOpen ? "h-0 overflow-hidden" : "my-2"
                     } submenu ml-5  text-[14px] `}
                   >
-                    <li
-                      className={`text-xs text-gray-700 border-transparent ${
-                        menu === "web-application"
-                          ? "text-primary font-bold "
-                          : "border-none text-dark"
-                      }`}
-                      onClick={() => handleWebAppOpen()}
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/services/web-application`}
                     >
-                      <div className="nav flex items-center justify-between w-full">
-                        <span className="">Web Applications</span>
-                        <IoChevronDownSharp
-                          className={`${
-                            store.isWebAppOpen ? "" : "rotate-180"
-                          } transition-all text-base`}
-                        />
-                      </div>
-                    </li>
+                      <li
+                        className={`text-xs  border-transparent hover:underline ${
+                          submenu === "web-application"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Web Applications
+                      </li>
+                    </Link>
 
                     {/* <Link
                       className="!p-0"

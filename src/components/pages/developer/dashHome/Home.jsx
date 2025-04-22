@@ -4,10 +4,8 @@ import Dashboard from "../../../partials/dashboard/Dashboard";
 import Header from "./Header";
 import Banner from "./Banner";
 import Process from "./process/Process";
-import Testimonial from "./Testimonial";
-import Partners from "./Partners";
-import Insights from "./Insights";
-import Footer from "./Footer";
+import Insights from "./home-titles/Insights";
+import Footer from "../footer/Footer";
 import { StoreContext } from "../../../store/StoreContext";
 import { setIsUpdateHome } from "../../../store/StoreAction";
 import ModalUpdateProcessTitle from "./process/ModalUpdateProcessTitle";
@@ -28,6 +26,13 @@ import ModalUpdateServicesD from "./services/ModalUpdateServicesD";
 import PartnerWithUs from "./partner-with-us/PartnerWithUs";
 import ModalUpdatePartnerWithUs from "./partner-with-us/ModalUpdatePartnerWithUs";
 import ModalUpdateContactFormDefault from "../contact-form-default/ModalUpdateContactFormDefault";
+import Testimonial from "./home-titles/Testimonial";
+import ModalUpdateTestimonialTitle from "./home-titles/modals/ModalUpdateTestimonialTitle";
+import Partners from "./home-titles/Partners";
+import ModalUpdatePartnersTitle from "./home-titles/modals/ModalUpdatePartnersTitle";
+import ModalUpdateInsightsTitle from "./home-titles/modals/ModalUpdateInsightsTitle";
+import ModalUpdateQuickLinks from "../footer/ModalUpdateQuickLinks";
+import ModalUpdateCopyright from "../footer/ModalUpdateCopyright";
 
 const Home = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -55,6 +60,18 @@ const Home = () => {
     `${apiVersion}/contactDefault`, // endpoint
     "get", // method
     "contactDefault" // key
+  );
+
+  const { data: homeTitlesData } = useQueryData(
+    `${apiVersion}/homeTitles`, // endpoint
+    "get", // method
+    "homeTitles" // key
+  );
+
+  const { data: footerData } = useQueryData(
+    `${apiVersion}/footer`, // endpoint
+    "get", // method
+    "footer" // key
   );
 
   const handleUpdateProcessTitle = () => {
@@ -119,6 +136,31 @@ const Home = () => {
     setItemEdit("contactFormDefaultUpdate");
   };
 
+  const handleUpdateTestimonialTitle = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "testimonial-title" }));
+    setItemEdit("testimonialTitleUpdate");
+  };
+
+  const handleUpdatePartnersTitle = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "partners-title" }));
+    setItemEdit("partnersTitleUpdate");
+  };
+
+  const handleUpdateInsightsTitle = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "insights-title" }));
+    setItemEdit("insightsTitleUpdate");
+  };
+
+  const handleUpdateFooterQuicklinks = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-quicklinks" }));
+    setItemEdit("footerQuicklinksUpdate");
+  };
+
+  const handleUpdateFooterCopyright = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-copyright" }));
+    setItemEdit("footerCopyrightUpdate");
+  };
+
   return (
     <>
       <section id="" className="bg-light">
@@ -155,10 +197,24 @@ const Home = () => {
                 handleUpdatePartnerWithUs={handleUpdatePartnerWithUs}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
-              <Testimonial />
-              <Partners />
-              <Insights />
-              <Footer />
+              <Testimonial
+                handleUpdateTestimonialTitle={handleUpdateTestimonialTitle}
+                homeTitlesData={homeTitlesData}
+              />
+              <Partners
+                handleUpdatePartnersTitle={handleUpdatePartnersTitle}
+                homeTitlesData={homeTitlesData}
+              />
+              <Insights
+                handleUpdateInsightsTitle={handleUpdateInsightsTitle}
+                homeTitlesData={homeTitlesData}
+              />
+              <Footer
+                handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
+                handleUpdateFooterCopyright={handleUpdateFooterCopyright}
+                footerData={footerData}
+                contactFormDefaultData={contactFormDefaultData}
+              />
             </div>
           </div>
         </Dashboard>
@@ -242,6 +298,40 @@ const Home = () => {
             itemEdit={itemEdit}
             contactFormDefaultData={contactFormDefaultData}
           />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "testimonial-title" && (
+          <ModalUpdateTestimonialTitle
+            itemEdit={itemEdit}
+            homeTitlesData={homeTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "partners-title" && (
+          <ModalUpdatePartnersTitle
+            itemEdit={itemEdit}
+            homeTitlesData={homeTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "insights-title" && (
+          <ModalUpdateInsightsTitle
+            itemEdit={itemEdit}
+            homeTitlesData={homeTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "footer-quicklinks" && (
+          <ModalUpdateQuickLinks itemEdit={itemEdit} footerData={footerData} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "footer-copyright" && (
+          <ModalUpdateCopyright itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.success && <ModalSuccess />}

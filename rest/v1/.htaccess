@@ -40,6 +40,14 @@ RewriteRule ^partnerWithUs/([0-9]+)$ controllers/developer/home/partner-with-us/
 RewriteRule ^contactDefault$ controllers/developer/contact-form-default/contactFormDefault.php [L]
 RewriteRule ^contactDefault/([0-9]+)$ controllers/developer/contact-form-default/contactFormDefault.php?contact_form_default_id=$1 [L]
 
+# HOME -TITLES
+RewriteRule ^homeTitles$ controllers/developer/home/home-titles/homeTitles.php [L]
+RewriteRule ^homeTitles/([0-9]+)$ controllers/developer/home/home-titles/homeTitles.php?home_titlesid=$1 [L]
+
+# FOOTER
+RewriteRule ^footer$ controllers/developer/footer/footer.php [L]
+RewriteRule ^footer/([0-9]+)$ controllers/developer/footer/footer.php?footerid=$1 [L]
+
 # SPECIAL OFFERS
 RewriteRule ^specialOffers$ controllers/developer/special-offers/specialOffers.php [L]
 RewriteRule ^specialOffers/([0-9]+)$ controllers/developer/special-offers/specialOffers.php?special_offersid=$1 [L]

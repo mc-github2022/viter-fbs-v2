@@ -4,6 +4,7 @@ import {
   devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
+  googleViewLink,
   siteKey,
 } from "../../../helpers/functions-general";
 import { IoMdPin } from "react-icons/io";
@@ -109,7 +110,7 @@ const ContactFormDefault = ({
                 <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
                   <li className="!items-start">
                     <IoMdPin />
-                    <p>
+                    <p className="md:w-[50%]">
                       {contactFormDefaultData?.data?.length > 0 &&
                       contactFormDefaultData.data[0]?.form_default_address
                         ? contactFormDefaultData?.data[0].form_default_address
@@ -213,8 +214,9 @@ const ContactFormDefault = ({
               <p className="text-sm">Learn more about our program</p>
               {contactUsDefaultFile.map((file, index) => (
                 <a
-                  href={`${googleHDViewLink}${file?.id}`}
+                  href={`${googleViewLink}${file?.id}`}
                   className="flex gap-2 items-center font-bold text-primary pointer"
+                  target="_blank"
                   key={index}
                 >
                   Download Company Profile <FaFileDownload />

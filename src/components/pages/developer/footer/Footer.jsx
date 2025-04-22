@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  copyrightYear,
+  devBaseImgUrl,
+  devNavUrl,
+} from "../../../helpers/functions-general";
 import { AiFillTikTok } from "react-icons/ai";
 import {
   FaFacebookSquare,
@@ -6,34 +11,14 @@ import {
   FaLinkedin,
   FaYoutubeSquare,
 } from "react-icons/fa";
-import {
-  apiVersion,
-  copyrightYear,
-  devBaseImgUrl,
-  devNavUrl,
-} from "../helpers/functions-general";
-import Subscribe from "./Subscribe";
-import useQueryData from "../custom-hooks/useQueryData";
+import { HiPencil } from "react-icons/hi";
 
-const Footer = () => {
-  const [subscribe, setSubscribe] = React.useState(false);
-
-  const handleSubscribe = () => {
-    setSubscribe(true);
-  };
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
-  const { data: footerData } = useQueryData(
-    `${apiVersion}/footer`, // endpoint
-    "get", // method
-    "footer" // key
-  );
-
+const Footer = ({
+  handleUpdateFooterQuicklinks,
+  handleUpdateFooterCopyright,
+  footerData,
+  contactFormDefaultData,
+}) => {
   return (
     <>
       <footer className="footer bg-[#000000] pt-14 text-light relative overflow-hidden">
@@ -41,6 +26,13 @@ const Footer = () => {
           <div className="footerGradientBlack top-[-20%] left-0 absolute h-[700px] w-full sm:top-[-70%] sm:left-[-30rem]"></div>
           <div className="wrapper md:grid md:grid-cols-2 relative z-[1]">
             <div className="text-center sm:text-left">
+              {/* <a
+                className="absolute cursor-pointer tooltip-btn left-[270px] -top-1 "
+                data-tooltip="Edit contents"
+                // onClick={handleAdd}
+              >
+                <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              </a> */}
               <div className="theLogo">
                 <img
                   src={`${devBaseImgUrl}/logo-fbs.png`}
@@ -117,7 +109,14 @@ const Footer = () => {
               </div>
             </div>
             <div className="sm:grid sm:grid-cols-2">
-              <div className="mb-12 sm:mb-0 text-center sm:text-left">
+              <div className="mb-12 sm:mb-0 text-center sm:text-left relative">
+                {/* <a
+                  className="absolute cursor-pointer tooltip-btn left-[190px] -top-1 "
+                  data-tooltip="Edit contents"
+                  // onClick={handleAdd}
+                >
+                  <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+                </a> */}
                 <div className="contactDetails">
                   <p className="font-semibold">CONTACT US</p>
                 </div>
@@ -146,15 +145,19 @@ const Footer = () => {
                   </p>
                 </div>
                 <div className="text-xs mt-6">
-                  <a
-                    onClick={handleSubscribe}
-                    className="font-semibold mb-1 cursor-pointer"
-                  >
+                  <a className="font-semibold mb-1 cursor-pointer">
                     Subscribe to our newsletter
                   </a>
                 </div>
               </div>
-              <div className="text-center sm:text-left">
+              <div className="text-center sm:text-left relative">
+                <a
+                  className="absolute cursor-pointer tooltip-btn left-[190px] -top-1 "
+                  data-tooltip="Edit contents"
+                  onClick={handleUpdateFooterQuicklinks}
+                >
+                  <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+                </a>
                 <p className="font-semibold">QUICKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   {footerData?.data.map((item, key) => (
@@ -193,6 +196,13 @@ const Footer = () => {
           <hr className="mt-10 relative z-[1]" />
           <div className="py-10 relative z-[1]">
             <div className="wrapper text-center lg:text-left lg:flex lg:justify-between items-center">
+              <a
+                className="absolute cursor-pointer tooltip-btn right-0 top-1 "
+                data-tooltip="Edit contents"
+                onClick={handleUpdateFooterCopyright}
+              >
+                <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              </a>
               {footerData?.data.map((item, key) => (
                 <>
                   <p className="text-xs mb-4 lg:mb-0" key={key}>
@@ -217,12 +227,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      {subscribe && (
-        <Subscribe
-          setSubscribe={setSubscribe}
-          notification_purpose={"subscribers"}
-        />
-      )}
     </>
   );
 };

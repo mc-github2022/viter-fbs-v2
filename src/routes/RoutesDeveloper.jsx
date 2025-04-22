@@ -30,6 +30,8 @@ import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/Bu
 import Partners from "../components/pages/developer/partners/Partners";
 import Gallery from "../components/pages/developer/gallery/Gallery";
 import Home from "../components/pages/developer/dashHome/Home";
+import WebApplication from "../components/pages/developer/services/web-application/WebApplication";
+import HrInformationSystem from "../components/pages/developer/services/web-application/hr-information-system/HrInformationSystem";
 
 export const routesDeveloper = [
   {
@@ -221,6 +223,22 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <MailerLog />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-application`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <WebApplication />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-application/hris`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <HrInformationSystem />
       </ProtectedRouteDeveloper>
     ),
   },

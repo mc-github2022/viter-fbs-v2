@@ -24,6 +24,12 @@ const Testimonials = () => {
     "testimonials" // key
   );
 
+  const { data: homeTitlesData } = useQueryData(
+    "/v1/homeTitles", // endpoint
+    "get", // method
+    "homeTitles" // key
+  );
+
   const handleTestimonial = (item) => {
     setDisplayTestimonial(true);
     setTestimonialItem(item);
@@ -48,11 +54,23 @@ const Testimonials = () => {
             <div className="grid place-items-center relative">
               <div className="z-50 text-light mb-10 lg:mb-0">
                 <h3 className="text-[clamp(30px,6vw,45px)] font-semibold  leading-[1.1] mb-8">
-                  Our Clients' <span className="text-primary">Experience</span>
+                  {homeTitlesData?.data?.length > 0 &&
+                  homeTitlesData.data[0]?.title_testimonial_a
+                    ? homeTitlesData?.data[0].title_testimonial_a
+                    : "Title A"}
+                  <br></br>
+                  <span className="text-primary">
+                    {homeTitlesData?.data?.length > 0 &&
+                    homeTitlesData.data[0]?.title_testimonial_b
+                      ? homeTitlesData?.data[0].title_testimonial_b
+                      : "Title B"}
+                  </span>
                 </h3>
                 <p>
-                  See what our clients say about our services and how we've
-                  helped them achieve their goals.
+                  {homeTitlesData?.data?.length > 0 &&
+                  homeTitlesData.data[0]?.title_description
+                    ? homeTitlesData?.data[0].title_description
+                    : "Description"}
                 </p>
               </div>
               <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[140px] lg:h-[140px] z-[1]">

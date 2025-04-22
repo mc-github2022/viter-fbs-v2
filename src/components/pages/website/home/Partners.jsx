@@ -19,6 +19,12 @@ const Partners = () => {
     "get", // method
     "partners" // key
   );
+
+  const { data: homeTitlesData } = useQueryData(
+    "/v1/homeTitles", // endpoint
+    "get", // method
+    "homeTitles" // key
+  );
   return (
     <>
       <section className="partners py-24 lg:pb-24 lg:pt-0">
@@ -53,13 +59,24 @@ const Partners = () => {
             <div className="text-right flex items-center justify-end order-1 lg:order-2">
               <div className="mb-20">
                 <h3 className="text-[clamp(30px,6vw,45px)] font-semibold  leading-[1.1] mb-8  text-dark">
-                  They Love <br />
-                  <span className="text-primary">Working With Us.</span>
+                  {homeTitlesData?.data?.length > 0 &&
+                  homeTitlesData.data[0]?.title_partners_a
+                    ? homeTitlesData?.data[0].title_partners_a
+                    : "Title A"}
+                  <br />
+                  <span className="text-primary">
+                    {homeTitlesData?.data?.length > 0 &&
+                    homeTitlesData.data[0]?.title_partners_b
+                      ? homeTitlesData?.data[0].title_partners_b
+                      : "Title B"}
+                  </span>
                 </h3>
                 <div className="flex justify-end">
                   <p className="lg:w-[400px]">
-                    Explore the diverse range of clients and partners who trust
-                    us to deliver exceptional solution and services.
+                    {homeTitlesData?.data?.length > 0 &&
+                    homeTitlesData.data[0]?.title_partners_description
+                      ? homeTitlesData?.data[0].title_partners_description
+                      : "Description"}
                   </p>
                 </div>
               </div>

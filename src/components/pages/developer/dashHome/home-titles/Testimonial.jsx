@@ -1,14 +1,14 @@
 import React from "react";
-import useQueryData from "../../../custom-hooks/useQueryData";
+import { HiPencil } from "react-icons/hi";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
-} from "../../../helpers/functions-general";
-import LoadImages from "../../../partials/LoadImages";
-import { HiPencil } from "react-icons/hi";
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
 
-const Testimonial = () => {
+const Testimonial = ({ handleUpdateTestimonialTitle, homeTitlesData }) => {
   const [testimonialItem, setTestimonialItem] = React.useState();
 
   const [displayTestimonial, setDisplayTestimonial] = React.useState(false);
@@ -49,17 +49,28 @@ const Testimonial = () => {
               <div className="z-50 text-light mb-10 lg:mb-0 relative">
                 <h3 className="text-[clamp(30px,6vw,45px)] font-semibold  leading-[1.1] mb-8">
                   <a
-                    className="absolute cursor-pointer tooltip-btn right-0 -top-2"
+                    className="absolute cursor-pointer tooltip-btn -right-7 -top-7"
                     data-tooltip="Edit contents"
-                    // onClick={handleAdd}
+                    onClick={handleUpdateTestimonialTitle}
                   >
                     <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
                   </a>
-                  Our Clients' <span className="text-primary">Experience</span>
+                  {homeTitlesData?.data?.length > 0 &&
+                  homeTitlesData.data[0]?.title_testimonial_a
+                    ? homeTitlesData?.data[0].title_testimonial_a
+                    : "Title A"}<br></br>
+                  <span className="text-primary">
+                    {homeTitlesData?.data?.length > 0 &&
+                    homeTitlesData.data[0]?.title_testimonial_b
+                      ? homeTitlesData?.data[0].title_testimonial_b
+                      : "Title B"}
+                  </span>
                 </h3>
                 <p>
-                  See what our clients say about our services and how we've
-                  helped them achieve their goals.
+                  {homeTitlesData?.data?.length > 0 &&
+                  homeTitlesData.data[0]?.title_description
+                    ? homeTitlesData?.data[0].title_description
+                    : "Description"}
                 </p>
               </div>
               <div className="testimonialQoute absolute left-0 top-[-150px] w-[100px] lg:top-0 lg:w-[140px] lg:h-[140px] z-[1]">

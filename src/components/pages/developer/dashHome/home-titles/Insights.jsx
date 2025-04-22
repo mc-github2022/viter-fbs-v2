@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import useQueryData from "../../../custom-hooks/useQueryData";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 import { Link } from "react-router-dom";
 import {
   devNavUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
-} from "../../../helpers/functions-general";
+} from "../../../../helpers/functions-general";
 import Slider from "react-slick";
 import { HiPencil } from "react-icons/hi";
 
@@ -61,7 +61,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const Insights = () => {
+const Insights = ({ handleUpdateInsightsTitle, homeTitlesData }) => {
   const {
     isFetching,
     error,
@@ -152,15 +152,28 @@ const Insights = () => {
       <section className="insights py-16 md:py-24 bg-customGray">
         <div className="customContainer max-w-[90%]">
           <div className="w-[300px] mb-16 md:w-full md:mb-20 relative">
-            <p>When share valuable tips and expect advice in our</p>
+            <p>
+              {homeTitlesData?.data?.length > 0 &&
+              homeTitlesData.data[0]?.title_subtitle_insights_a
+                ? homeTitlesData?.data[0].title_subtitle_insights_a
+                : "Subtitle A"}
+            </p>
             <h2 className="font-semibold text-primary leading-[1.1] text-[clamp(20px,6vw,45px)]">
-              Industry Insights
+              {homeTitlesData?.data?.length > 0 &&
+              homeTitlesData.data[0]?.title_insights
+                ? homeTitlesData?.data[0].title_insights
+                : "Title"}
             </h2>
-            <p>section to help you grow your business and stay ahead.</p>
+            <p>
+              {homeTitlesData?.data?.length > 0 &&
+              homeTitlesData.data[0]?.title_subtitle_insights_b
+                ? homeTitlesData?.data[0].title_subtitle_insights_b
+                : "Subtitle B"}
+            </p>
             <a
               className="absolute cursor-pointer tooltip-btn left-[450px] top-1 "
               data-tooltip="Edit contents"
-              // onClick={handleAdd}
+              onClick={handleUpdateInsightsTitle}
             >
               <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
             </a>

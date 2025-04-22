@@ -74,6 +74,12 @@ const Insights = () => {
     "insights" // key
   );
 
+  const { data: homeTitlesData } = useQueryData(
+    "/v1/homeTitles", // endpoint
+    "get", // method
+    "homeTitles" // key
+  );
+
   const sliderRef = useRef(null);
 
   var settings = {
@@ -153,11 +159,24 @@ const Insights = () => {
       <section className="insights py-16 md:py-24 bg-customGray">
         <div className="customContainer max-w-[90%]">
           <div className="w-[300px] mb-16 md:w-full md:mb-20">
-            <p>When share valuable tips and expect advice in our</p>
+            <p>
+              {homeTitlesData?.data?.length > 0 &&
+              homeTitlesData.data[0]?.title_subtitle_insights_a
+                ? homeTitlesData?.data[0].title_subtitle_insights_a
+                : "Subtitle A"}
+            </p>
             <h2 className="font-semibold text-primary leading-[1.1] text-[clamp(20px,6vw,45px)]">
-              Industry Insights
+              {homeTitlesData?.data?.length > 0 &&
+              homeTitlesData.data[0]?.title_insights
+                ? homeTitlesData?.data[0].title_insights
+                : "Title"}
             </h2>
-            <p>section to help you grow your business and stay ahead.</p>
+            <p>
+              {homeTitlesData?.data?.length > 0 &&
+              homeTitlesData.data[0]?.title_subtitle_insights_b
+                ? homeTitlesData?.data[0].title_subtitle_insights_b
+                : "Subtitle B"}
+            </p>
           </div>
           <div className="wrapper">
             <div className=" order-2 mb-12 lg:mb-0 ">

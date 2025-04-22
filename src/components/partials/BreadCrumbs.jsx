@@ -22,30 +22,29 @@ const BreadCrumbs = ({ param = "" }) => {
   };
 
   const crumbs = location.pathname
-    .replace(`${devNavUrl}/${link}`, "")
+    .replace(`${devNavUrl}`, "")
     .split("/")
     .filter((crumb) => crumb !== "")
     .map((crumb, key) => {
       currentLink += `/${crumb}`;
       return (
-        <li
-          className={`text-primary after:mr-2 flex-col items-center after:content-['>'] last:after:hidden last:text-dark last:pointer-events-none hidden lg:block ${
-            crumb === "settings" && "pointer-events-none"
-          } `}
-          key={key}
-          onClick={handleClick}
-        >
-          <Link
-            to={
-              crumb === "settings"
-                ? ""
-                : `${devNavUrl}${link}${currentLink}${param}`
-            }
-            className="mr-2 font-medium capitalize text-[10px]"
-          >
-            {crumb.replaceAll("-", " ")}
-          </Link>
-        </li>
+        // <li
+        //   className={`text-primary after:mr-2 flex-col items-center after:content-['>'] last:after:hidden last:text-dark last:pointer-events-none hidden lg:block ${
+        //     crumb === "settings" && "pointer-events-none"
+        //   } `}
+        //   key={key}
+        //   onClick={handleClick}
+        // >
+        //   <Link
+        //     to={
+        //       crumb === "settings" ? "" : `${devNavUrl}${currentLink}${param}`
+        //     }
+        //     className="mr-2 font-medium capitalize text-[10px]"
+        //   >
+        //     {crumb.replaceAll("-", " ")}
+        //   </Link>
+        // </li>
+        ""
       );
     });
 
