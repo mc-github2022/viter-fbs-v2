@@ -3,9 +3,17 @@ import { scope } from "../../../../../website/webapp/serviceHr/data";
 import { IoChevronDown } from "react-icons/io5";
 import { devBaseImgUrl } from "../../../../../../helpers/functions-general";
 import { HiPencil } from "react-icons/hi";
-import { FaRegImages } from "react-icons/fa";
+import { FaEdit, FaRegImages } from "react-icons/fa";
+import { StoreContext } from "../../../../../../store/StoreContext";
+import { setIsAdd, setIsDelete } from "../../../../../../store/StoreAction";
+import { MdDelete } from "react-icons/md";
+import ModalDelete from "../../../../../../partials/modals/ModalDelete";
 
 const HrisScope = () => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  const [isData, setIsData] = React.useState("");
+  const [id, setIsId] = React.useState("");
+
   const [accordionItem, setAccordionItem] = React.useState("");
 
   React.useEffect(() => {
@@ -18,6 +26,17 @@ const HrisScope = () => {
     setAccordion(true);
     setAccordionItem(item);
     console.log(accordionItem);
+  };
+
+  const handleEdit = (item) => {
+    dispatch(setIsAdd(true));
+    setItemEdit(item);
+  };
+
+  const handleDelete = (item) => {
+    dispatch(setIsDelete(true));
+    setIsData(item.home_banner_title);
+    setIsId(item.home_banner_aid);
   };
 
   return (
@@ -89,6 +108,22 @@ const HrisScope = () => {
                       } accordionContent `}
                     >
                       <p>{scopeList.scopeDesc}</p>
+                      <div className="flex items-center place-self-end">
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Edit"
+                          onClick={() => handleEdit(item)}
+                        >
+                          <FaEdit className="text-gray-600 text-[16px]" />
+                        </button>
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Delete"
+                          onClick={() => handleDelete(item)}
+                        >
+                          <MdDelete className="text-gray-600 text-[18px]" />
+                        </button>
+                      </div>
                       {/* <a href="#" className="btn bg-primary text-light">
                            Schedule a Demo
                          </a> */}
@@ -137,6 +172,16 @@ const HrisScope = () => {
           </div>
         </div>
       </section>
+
+      {store.isDelete && (
+        <ModalDelete
+          setIsDelete={setIsDelete}
+          queryKey={"banner"}
+          mysqlEndpoint={`/v1/banner/${id}`}
+          item={isData}
+          filesToDelete={isData.knowledge_based_announcement_files}
+        />
+      )}
     </>
   );
 };

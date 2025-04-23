@@ -8,6 +8,8 @@ Upload JSX
             -> rest/v1/controllers/developer/home/partner-with-us
             -> rest/v1/controllers/developer/contact-form-default
             -> rest/v1/controllers/developer/home/home-titles
+            -> rest/v1/controllers/developer/footer
+            -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-banner
         
         * CORE 
             -> 
@@ -20,6 +22,7 @@ Upload JSX
             -> rest/v1/models/developer/contact-form-default
             -> rest/v1/models/developer/home/home-titles
             -> rest/v1/models/developer/footer
+            -> rest/v1/models/developer/services/web-application/hr-information-system/HrisBanner.php
 
 
         * HTACESS
@@ -28,6 +31,8 @@ Upload JSX
             -> # HOME - PARTNER WITH US is added
             -> # CONTACT FORM DEFAULT is added
             -> # HOME - TITLES is added
+            -> # FOOTER is added
+            -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM is added
 
 
         * OTHER FILES
@@ -42,7 +47,8 @@ Upload JSX
             -> rest/db-backup/fbsv2_home_partner_with_us.sql
             -> rest/db-backup/fbsv2_contact_form_default.sql
             -> rest/db-backup/fbsv2_home_titles.sql
-            ->
+            -> rest/db-backup/fbsv2_footer.sql
+            -> rest/db-backup/fbsv2_services_hris_banner.sql
             ->
             ->
 
