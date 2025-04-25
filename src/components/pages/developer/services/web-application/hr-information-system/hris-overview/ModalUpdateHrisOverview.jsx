@@ -29,9 +29,8 @@ import LoadImages from "../../../../../../partials/LoadImages";
 import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
 import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
 
-const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
+const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [fileData, setFileData] = React.useState(null);
@@ -78,7 +77,6 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
   };
 
   const handleClose = () => {
-    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsUpdateHome(false));
     }, 200);
@@ -89,10 +87,10 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        hrisData?.data?.length
-          ? `${apiVersion}/hris/${hrisData.data[0].hris_banner_aid}` // update
+        hrisOverviewData?.data?.length
+          ? `${apiVersion}/hris/${hrisOverviewData.data[0].hris_overview_aid}` // update
           : `${apiVersion}/hris`, // create
-        hrisData?.data?.length ? "put" : "post",
+        hrisOverviewData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
@@ -112,10 +110,9 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
   });
 
   React.useEffect(() => {
-    setAnimate("");
-    if (hrisData) {
+    if (hrisOverviewData) {
       const photos = getConvertStringToJSONparseData(
-        hrisData?.data?.[0]?.hris_banner_img
+        hrisOverviewData?.data?.[0]?.hris_overview_img
       );
       setPhotoArrayList(photos);
     }
@@ -123,14 +120,18 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
 
   const initVal = {
     isUpdateHris: itemEdit,
-    hris_banner_title: hrisData?.data?.[0]?.hris_banner_title ?? "",
-    hris_banner_title_bold: hrisData?.data?.[0]?.hris_banner_title_bold ?? "",
-    hris_banner_description: hrisData?.data?.[0]?.hris_banner_description ?? "",
-    hris_banner_button_text: hrisData?.data?.[0]?.hris_banner_button_text ?? "",
-    hris_banner_button_link: hrisData?.data?.[0]?.hris_banner_button_link ?? "",
-    hris_banner_img: hrisData?.data?.[0]?.hris_banner_img ?? "",
+    hris_overview_subtitle:
+      hrisOverviewData?.data?.[0]?.hris_overview_subtitle ?? "",
+    hris_overview_title: hrisOverviewData?.data?.[0]?.hris_overview_title ?? "",
+    hris_banner_description:
+      hrisOverviewData?.data?.[0]?.hris_banner_description ?? "",
+    hris_banner_button_text:
+      hrisOverviewData?.data?.[0]?.hris_banner_button_text ?? "",
+    hris_banner_button_link:
+      hrisOverviewData?.data?.[0]?.hris_banner_button_link ?? "",
+    hris_overview_img: hrisOverviewData?.data?.[0]?.hris_overview_img ?? "",
 
-    hris_banner_img_old: hrisData?.data?.[0]?.hris_banner_img ?? "",
+    hris_overview_img_old: hrisOverviewData?.data?.[0]?.hris_overview_img ?? "",
     pendingDeleteFile: [],
   };
 
@@ -139,11 +140,11 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 ${animate}`}
+        className={`transition-all ease-linear transform duration-200 max-h-[500px] max-w-[500px]`}
         handleClose={handleClose}
       >
         <div className="modal-title">
-          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} HRIS Banner</h2>
+          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} HRIS Overview</h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
           </button>
@@ -156,7 +157,7 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
               setLoading(true);
               const data = {
                 ...values,
-                hris_banner_img: Array.from(photoArrayList).map((item) =>
+                hris_overview_img: Array.from(photoArrayList).map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -174,7 +175,7 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
             {(props) => {
               return (
                 <Form className="modal-form">
-                  <div className="pr-2 ">
+                  <div className="form-input ">
                     <div className="mt-3">
                       <span className="top-20 px-2 text-dark text-xs">
                         Image
@@ -204,7 +205,7 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "hris_banner_img"
+                              "hris_overview_img"
                             )
                           }
                           onDrop={(e) =>
@@ -212,7 +213,7 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "hris_banner_img"
+                              "hris_overview_img"
                             )
                           }
                           disabled={mutation.isPending || loading}
@@ -289,52 +290,23 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
                     </div>
 
                     <div className="input-wrapper">
-                      <InputTextArea
+                      <InputText
+                        label="Subtitle"
+                        type="text"
+                        name="hris_overview_subtitle"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
                         label="Title"
                         type="text"
-                        name="hris_banner_title"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-                    <div className="input-wrapper">
-                      <InputText
-                        label="Title Bold"
-                        type="text"
-                        name="hris_banner_title_bold"
+                        name="hris_overview_title"
                         disabled={mutation.isPending}
                       />
                     </div>
 
-                    <div className="input-wrapper">
-                      <InputText
-                        label="Button"
-                        type="text"
-                        name="hris_banner_button_text"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-                    <div className="input-wrapper">
-                      <InputText
-                        label="Link"
-                        type="text"
-                        name="hris_banner_button_link"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-
-                    <div className="input-wrapper ">
-                      <InputTextArea
-                        label="Description"
-                        type="text"
-                        name="hris_banner_description"
-                        className="h-[400px]"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-                    <div
-                      className="modal__action w-full
-                     gap-2 bg-white "
-                    >
+                    <div className="form-action mb-1 ">
                       <div className="form-btn">
                         <button
                           className="btn-modal-submit"
@@ -376,4 +348,4 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
   );
 };
 
-export default ModalUpdateHrisBanner;
+export default ModalUpdateHrisOverview;

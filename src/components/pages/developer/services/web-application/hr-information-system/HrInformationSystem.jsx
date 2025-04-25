@@ -19,6 +19,7 @@ import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../../partials/modals/ModalError";
 import ModalUpdateHrisBanner from "./hris-banner/ModalUpdateHrisBanner";
+import ModalUpdateHrisOverview from "./hris-overview/ModalUpdateHrisOverview";
 
 const HrInformationSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -28,6 +29,12 @@ const HrInformationSystem = () => {
     `${apiVersion}/hris`, // endpoint
     "get", // method
     "hris" // key
+  );
+
+  const { data: hrisOverviewData } = useQueryData(
+    `${apiVersion}/hrisOverview`, // endpoint
+    "get", // method
+    "hrisOverview" // key
   );
 
   const { data: contactFormDefaultData } = useQueryData(
@@ -47,6 +54,11 @@ const HrInformationSystem = () => {
     setItemEdit("hrisBannerUpdate");
   };
 
+  const handleUpdateHrisOverview = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-overview" }));
+    setItemEdit("hrisOverviewUpdate");
+  };
+
   const handleUpdateFooterQuicklinks = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-quicklinks" }));
     setItemEdit("footerQuicklinksUpdate");
@@ -63,7 +75,7 @@ const HrInformationSystem = () => {
         <Navigation menu="services" submenu="web-application" />
         <Dashboard>
           <div className="mx-5 pt-2">
-            <div className="py-5 flex justify-between ">
+            <div className="py-5 flex  ">
               <BreadCrumbs param={location.search} />
               <div className="text-sm text-[black] font-semibold">
                 <h2>HR Information System</h2>
@@ -75,7 +87,10 @@ const HrInformationSystem = () => {
                 hrisData={hrisData}
                 handleUpdateHrisBanner={handleUpdateHrisBanner}
               />
-              <HrisOverview />
+              <HrisOverview
+                handleUpdateHrisOverview={handleUpdateHrisOverview}
+                hrisOverviewData={hrisOverviewData}
+              />
               <HrisScope />
               <HrisPricing />
               <ServiceHrPartners />
@@ -94,6 +109,14 @@ const HrInformationSystem = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "hris-banner" && (
           <ModalUpdateHrisBanner itemEdit={itemEdit} hrisData={hrisData} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "hris-overview" && (
+          <ModalUpdateHrisOverview
+            itemEdit={itemEdit}
+            hrisOverviewData={hrisOverviewData}
+          />
         )}
 
       {store.isUpdateHome?.modal &&

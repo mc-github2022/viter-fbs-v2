@@ -19,10 +19,10 @@ const WebApplication = () => {
             </div>
             <div className=" pb-4 ">
               <div className="list-content mx-0">
-                <div className="list-button border-b border-dark/40">
+                <div className="list-button border-dark/40 hover:border-l-4 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
                     to={`${devNavUrl}/${UrlDeveloper}/services/web-application/hris`}
-                    className="flex items-center gap-2 py-3 hover:bg-primary/10"
+                    className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2 ml-2.5 text-xs font-bold">
                       HR Information System
@@ -30,10 +30,10 @@ const WebApplication = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
-                <div className="list-button border-b border-dark/40">
+                <div className="list-button border-dark/40 hover:border-l-4 hover:border-primary hover:transition-all hover:ease-in-out ">
                   <Link
                     to={`${devNavUrl}/services/web-application/online-payroll-system`}
-                    className="flex items-center gap-2 py-3 hover:bg-primary/10"
+                    className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2 ml-2.5 text-xs font-bold">
                       Online Payroll System
@@ -41,10 +41,10 @@ const WebApplication = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
-                <div className="list-button border-b border-dark/40">
+                <div className="list-button border-dark/40 hover:border-l-4 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
                     to={`${devNavUrl}/services/web-application/school-enrollment-system`}
-                    className="flex items-center gap-2 py-3 hover:bg-primary/10"
+                    className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2 ml-2.5 text-xs font-bold">
                       School Enrollment System
@@ -52,10 +52,10 @@ const WebApplication = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
-                <div className="list-button border-b border-dark/40">
+                <div className="list-button border-dark/40 hover:border-l-4 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
                     to={`${devNavUrl}/services/web-application/online-payment-integration`}
-                    className="flex items-center gap-2 py-3 hover:bg-primary/10"
+                    className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2 ml-2.5 text-xs font-bold">
                       Online Payment Integration
@@ -63,10 +63,10 @@ const WebApplication = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
-                <div className="list-button border-b border-dark/40">
+                <div className="list-button border-dark/40 hover:border-l-4 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
                     to={`${devNavUrl}/services/web-application/online-donation-system`}
-                    className="flex items-center gap-2 py-3 hover:bg-primary/10"
+                    className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2 ml-2.5 text-xs font-bold">
                       Online Donation System
@@ -74,10 +74,10 @@ const WebApplication = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
-                <div className="list-button border-b border-dark/40">
+                <div className="list-button border-dark/40 hover:border-l-4 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
                     to={`${devNavUrl}/services/web-application/asset-inventory-system`}
-                    className="flex items-center gap-2 py-3 hover:bg-primary/10"
+                    className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2 ml-2.5 text-xs font-bold">
                       Asset Inventory System

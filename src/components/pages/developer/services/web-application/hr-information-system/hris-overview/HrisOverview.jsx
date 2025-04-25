@@ -5,7 +5,7 @@ import { FaRegImages } from "react-icons/fa";
 import { HiPencil } from "react-icons/hi";
 import { webAppOverview } from "../../../../../website/webapp/serviceHr/data";
 
-const HrisOverview = () => {
+const HrisOverview = ({ handleUpdateHrisOverview, hrisOverviewData }) => {
   return (
     <>
       <section className="ServiceHrOverview py-20 bg-customGray">
@@ -13,7 +13,7 @@ const HrisOverview = () => {
           <a
             className="absolute cursor-pointer tooltip-btn left-[35rem] top-0"
             data-tooltip="Edit contents"
-            // onClick={handleUpdatePartnerWithUs}
+            onClick={handleUpdateHrisOverview}
           >
             <FaRegImages className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
           </a>
