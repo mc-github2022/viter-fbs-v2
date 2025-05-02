@@ -37,7 +37,7 @@ class MailerLog
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblSendingEmailLog} ";
-            $sql .= "order by sending_email_log_created ";
+            $sql .= "order by sending_email_log_created desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -51,7 +51,7 @@ class MailerLog
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblSendingEmailLog} ";
-            $sql .= "order by sending_email_log_created ";
+            $sql .= "order by sending_email_log_created desc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -73,7 +73,7 @@ class MailerLog
             $sql .= "from {$this->tblSendingEmailLog} ";
             $sql .= "where ";
             $sql .= "sending_email_log_email like :sending_email_log_email ";
-            $sql .= "order by sending_email_log_created ";
+            $sql .= "order by sending_email_log_created desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "sending_email_log_email" => "%{$this->sending_email_log_search}%",
@@ -93,7 +93,7 @@ class MailerLog
             $sql .= "from {$this->tblSendingEmailLog} ";
             $sql .= "where ";
             $sql .= "sending_email_log_is_success = :sending_email_log_is_success ";
-            $sql .= "order by sending_email_log_created ";
+            $sql .= "order by sending_email_log_created desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "sending_email_log_is_success" => $this->sending_email_log_is_success,
@@ -113,7 +113,7 @@ class MailerLog
             $sql .= "from {$this->tblSendingEmailLog} ";
             $sql .= "where ";
             $sql .= "sending_email_log_audience_id = :sending_email_log_audience_id ";
-            $sql .= "order by sending_email_log_created ";
+            $sql .= "order by sending_email_log_created desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "sending_email_log_audience_id" => $this->sending_email_log_audience_id,

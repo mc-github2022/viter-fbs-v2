@@ -449,14 +449,20 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
       {confirmSend && (
         <ModalSendingEmailStatus
           queryCount={queryCount}
-          recipientList={{ ...recipientList, count: selectedCount?.length }}
+          recipientList={{
+            ...recipientList,
+            count: selectedCount?.length === 0 ? 1 : selectedCount?.length,
+          }}
         />
       )}
 
       {isSuccessSendingEmail && (
         <ModalSentEmailSummary
           queryCount={queryCount}
-          recipientList={{ ...recipientList, count: selectedCount?.length }}
+          recipientList={{
+            ...recipientList,
+            count: selectedCount?.length === 0 ? 1 : selectedCount?.length,
+          }}
           setIsSuccessSendingEmail={setIsSuccessSendingEmail}
           setQueryCount={setQueryCount}
           queryStatus={queryStatus}

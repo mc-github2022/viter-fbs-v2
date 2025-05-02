@@ -23,7 +23,11 @@ const ModalSentEmailSummary = ({
   console.log(recipientList);
 
   return (
-    <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
+    <ModalAddWrapper
+      className={"max-w-[20rem] h-fit p-5 !justify-center"}
+      center={`justify-center`}
+      placeItemsCenter={`place-items-center`}
+    >
       <div className="">
         <div className="flex flex-col items-center gap-7 my-6">
           <div className="inline-flex items-center justify-center flex-shrink-0">

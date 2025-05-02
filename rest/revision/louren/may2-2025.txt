@@ -10,6 +10,7 @@ Upload JSX
             -> rest/v1/controllers/developer/home/home-titles
             -> rest/v1/controllers/developer/footer
             -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-banner
+            -> rest/v1/controllers/developer/mailer-log
         
         * CORE 
             -> 
@@ -23,6 +24,7 @@ Upload JSX
             -> rest/v1/models/developer/home/home-titles
             -> rest/v1/models/developer/footer
             -> rest/v1/models/developer/services/web-application/hr-information-system/HrisBanner.php
+            -> rest/v1/models/developer/mailer-log/MailerLog.php
 
 
         * HTACESS
@@ -33,6 +35,7 @@ Upload JSX
             -> # HOME - TITLES is added
             -> # FOOTER is added
             -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM is added
+            -> in # MAILER LOG this is added RewriteRule ^mailer-log/resend-mailer$ controllers/developer/mailer-log/resending-newsletter.php [L]
 
 
         * OTHER FILES
