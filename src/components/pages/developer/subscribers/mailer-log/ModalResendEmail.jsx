@@ -35,8 +35,8 @@ const ModalResendEmail = ({
     // disabled all input field and button
     setIsSendingLoading(true);
 
-    // console.log(123);
-
+    console.log(recipientList);
+    return;
     // loop through the list of recipient email
     for (let i = 0; i < recipientList?.length; i++) {
       let recipientEmail = recipientList[i]["sending_email_log_email"];

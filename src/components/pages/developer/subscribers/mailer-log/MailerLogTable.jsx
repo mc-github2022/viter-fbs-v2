@@ -137,6 +137,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   };
 
   const handleResend = (item) => {
+    console.log(item);
     setRecipientList((currentData) => [...currentData, item]);
     setIsSend(true);
   };
