@@ -13,13 +13,17 @@ import TableLoading from "../../../../partials/spinners/TableLoading";
 import { StoreContext } from "../../../../store/StoreContext";
 
 import { IoTrash } from "react-icons/io5";
-import { apiVersion, formatDate } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  formatDateTime,
+} from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
 import ModalSendingEmailStatus from "../../../../partials/modals/ModalSendingEmailStatus";
 import ModalSentEmailSummary from "../../../../partials/modals/ModalSentEmailSummary";
 import {
   setError,
+  setIsAdd,
   setIsDelete,
   setIsSearch,
   setMessage,
@@ -27,6 +31,7 @@ import {
 } from "../../../../store/StoreAction";
 import MailerLogStatus from "./MailerLogStatus";
 import ModalResendEmail from "./ModalResendEmail";
+import ModalAddMailerLog from "./ModalAddMailerLog";
 
 const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -235,6 +240,11 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     return val;
   };
 
+  const handleAdd = (item) => {
+    dispatch(setIsAdd(true));
+    setItemEdit(item);
+  };
+
   // console.log(isData);
   // console.log(recipientList);
   // console.log(selectedKey);
@@ -300,6 +310,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
               <th className="w-[20rem]">Email</th>
+              <th className="w-[13rem]">Subject</th>
               <th>Date</th>
               <th>Status</th>
               <th className="flex items-center gap-2">
@@ -364,7 +375,10 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                         )}
                       </td>
                       <td className="w-[10rem]">
-                        {formatDate(item.sending_email_log_created)}
+                        {item.sending_email_log_subject}
+                      </td>
+                      <td className="w-[10rem]">
+                        {formatDateTime(item.sending_email_log_created)}
                       </td>
                       <td className="">
                         {item.sending_email_log_is_success === 1 ? (
@@ -383,6 +397,13 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                         />
                       </td>
                       <td className="flex items-center gap-3 mt-2 lg:mt-0">
+                        <button
+                          className="tooltip-action-table"
+                          data-tooltip="Edit"
+                          onClick={() => handleAdd(item)}
+                        >
+                          <FaEdit className="text-gray-600 w-4 h-4" />
+                        </button>
                         {recipientList?.length === 0 && (
                           <button
                             className="tooltip-action-table !p-0"
@@ -454,6 +475,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
             ...recipientList,
             count: selectedCount?.length === 0 ? 1 : selectedCount?.length,
           }}
+          // recipientList={{ ...recipientList, count: selectedCount?.length }}
         />
       )}
 
@@ -464,6 +486,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
             ...recipientList,
             count: selectedCount?.length === 0 ? 1 : selectedCount?.length,
           }}
+          // recipientList={{ ...recipientList, count: selectedCount?.length }}
           setIsSuccessSendingEmail={setIsSuccessSendingEmail}
           setQueryCount={setQueryCount}
           queryStatus={queryStatus}
@@ -478,6 +501,8 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           item={isData}
         />
       )}
+
+      {store.isAdd && <ModalAddMailerLog itemEdit={itemEdit} />}
     </>
   );
 };

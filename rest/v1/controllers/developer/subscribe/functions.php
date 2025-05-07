@@ -47,3 +47,19 @@ function compareTwoValuesForEmail($object, $email_old, $email, $id_old, $id)
         isEmailExist($object, $email);
     }
 }
+
+// filter by audience  
+function checkFilterByAudience($object)
+{
+    $query = $object->filterByAudience();
+    checkQuery($query, "Empty records. (filter by audience )");
+    return $query;
+}
+
+// filter by audience and search  
+function checkFilterByAudienceAndSearch($object)
+{
+    $query = $object->filterByAudienceAndSearch();
+    checkQuery($query, "Empty records. (filter by audience and search)");
+    return $query;
+}

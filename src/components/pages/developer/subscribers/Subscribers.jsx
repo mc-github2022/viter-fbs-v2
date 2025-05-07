@@ -71,7 +71,7 @@ const Subscribers = () => {
               </div>
             </div>
             <div className="pb-4">
-              <SubscribersTable setItemEdit={setItemEdit} />
+              <SubscribersTable setItemEdit={setItemEdit} subscribeData={subscribeData} audienceData={audienceData}/>
             </div>
           </div>
         </Dashboard>

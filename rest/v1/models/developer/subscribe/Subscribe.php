@@ -43,7 +43,7 @@ class Subscribe
             $sql .= "{$this->tblSubscriber} as subscriber, ";
             $sql .= "{$this->tblAudience} as audience ";
             $sql .= "where subscriber.subscriber_audience_id = audience.audience_aid ";
-            $sql .= "order by subscriber.subscriber_is_active desc, ";
+            $sql .= "order by subscriber.subscriber_created desc, ";
             $sql .= "subscriber.subscriber_email asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
@@ -80,7 +80,7 @@ class Subscribe
             $sql .= "{$this->tblSubscriber} as subscriber, ";
             $sql .= "{$this->tblAudience} as audience ";
             $sql .= "where subscriber.subscriber_audience_id = audience.audience_aid ";
-            $sql .= "order by subscriber.subscriber_is_active desc, ";
+            $sql .= "order by subscriber.subscriber_created desc, ";
             $sql .= "subscriber.subscriber_email asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
@@ -218,7 +218,7 @@ class Subscribe
             $sql .= "subscriber.subscriber_audience_id = audience.audience_aid ";
             $sql .= "and (subscriber.subscriber_email like :subscriber_email ";
             $sql .= "or audience.audience_name like :audience_name) ";
-            $sql .= "order by subscriber_is_active desc, ";
+            $sql .= "order by subscriber_created desc, ";
             $sql .= "subscriber_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -359,6 +359,51 @@ class Subscribe
                 "subscriber_datetime" => $this->subscriber_datetime,
                 "subscriber_email" => $this->subscriber_email,
                 "subscriber_aid" => $this->subscriber_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // filter by audience
+    public function filterByAudience()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblSubscriber} ";
+            $sql .= "where ";
+            $sql .= "subscriber_audience_id = :subscriber_audience_id ";
+            $sql .= "order by subscriber_created desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_audience_id" => $this->subscriber_audience_id,
+
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // filter by audience and search 
+    public function filterByAudienceAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblSubscriber} ";
+            $sql .= "where ";
+            $sql .= "subscriber_audience_id = :subscriber_audience_id ";
+            $sql .= "and subscriber_email like :subscriber_email ";
+            $sql .= "order by subscriber_created desc, ";
+            $sql .= "subscriber_email desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "subscriber_audience_id" => $this->subscriber_audience_id,
+                "subscriber_email" => "%{$this->subscriber_search}%",
+
             ]);
         } catch (PDOException $ex) {
             $query = false;
