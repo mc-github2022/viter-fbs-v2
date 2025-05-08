@@ -22,6 +22,7 @@ import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
 const ModalAddGallery = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [fileData, setFileData] = React.useState(null);
@@ -69,6 +70,7 @@ const ModalAddGallery = ({ setIsAdd, itemEdit }) => {
   };
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -101,6 +103,7 @@ const ModalAddGallery = ({ setIsAdd, itemEdit }) => {
   });
 
   React.useEffect(() => {
+    setAnimate("");
     if (itemEdit) {
       const photos = getConvertStringToJSONparseData(itemEdit.gallery_img);
       setPhotoArrayList(photos);
@@ -118,7 +121,7 @@ const ModalAddGallery = ({ setIsAdd, itemEdit }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 max-h-[600px] max-w-[500px]`}
+        className={`transition-all ease-linear transform duration-200 ${animate}`}
         handleClose={handleClose}
       >
         <div className="modal-title">
@@ -155,7 +158,7 @@ const ModalAddGallery = ({ setIsAdd, itemEdit }) => {
               return (
                 <Form className="modal-form">
                   <div className="form-input">
-                    <div className="input-wrapper place-self-center">
+                    <div className="input-wrapper">
                       <span className="top-20 px-2 text-dark text-[12px]">
                         Upload Image
                       </span>
@@ -200,7 +203,7 @@ const ModalAddGallery = ({ setIsAdd, itemEdit }) => {
                         />
                       </div>
 
-                      <div className="relative mb-6 w-[400px] ">
+                      <div className="relative mb-6  ">
                         <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
                           {photoArrayList?.length > 0 &&
                             Array.from(photoArrayList).map((item, key) => {
@@ -212,7 +215,7 @@ const ModalAddGallery = ({ setIsAdd, itemEdit }) => {
                               return (
                                 <React.Fragment key={key}>
                                   <li
-                                    className={`relative z-10 h-[300px] w-[400px] group cursor-pointer overflow-hidden ${
+                                    className={`relative z-10 h-[300px]  group cursor-pointer overflow-hidden ${
                                       (mutation.isPending || loading) &&
                                       `!cursor-not-allowed`
                                     }`}

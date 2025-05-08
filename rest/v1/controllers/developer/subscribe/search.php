@@ -21,6 +21,24 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     // get data
     $subscribe->subscriber_search = $data["searchValue"];    // get data 
+    $isFilter = $data["isFilter"];
+
+    if ($isFilter) {
+        $filterValue = $data["filterValue"];
+
+        // filter by audience and search
+        if ($subscribe->subscriber_search != "" && $subscribe->subscriber_audience_id = $filterValue) {
+            $query = checkFilterByAudienceAndSearch($subscribe);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+
+        // if filter by audience id
+        $subscribe->subscriber_audience_id = $filterValue;
+        $query = checkFilterByAudience($subscribe);
+        http_response_code(200);
+        getQueriedData($query);
+    }
     // if search only
     checkKeyword($subscribe->subscriber_search);
     $query = checkSearch($subscribe);

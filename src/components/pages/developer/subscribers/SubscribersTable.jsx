@@ -24,15 +24,18 @@ import {
   setIsArchive,
   setIsDelete,
   setIsRestore,
+  setIsSearch,
 } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import ModalRestore from "./ModalRestore";
 
-const SubscribersTable = ({ setItemEdit }) => {
+const SubscribersTable = ({ setItemEdit, audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
+  const [isFilter, setIsFilter] = React.useState(false);
+  const [filterData, setfilterData] = React.useState("all");
 
   const [onSearch, setOnSearch] = React.useState(false);
   const [page, setPage] = React.useState(1);
@@ -48,13 +51,19 @@ const SubscribersTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["subscribe", onSearch, store.isSearch],
+    queryKey: ["subscribe", onSearch, store.isSearch, isFilter, filterData],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `${apiVersion}/subscribe/search`, // search endpoint
         `${apiVersion}/subscribe/page/${pageParam}`, // list endpoint
-        store.isSearch, // search boolean
-        { searchValue: search.current.value, id: "" } // search value
+        store.isSearch || isFilter, // search boolean
+        {
+          searchValue: search.current.value,
+          id: "",
+          isFilter,
+          filterValue: setfilterData === "all" ? "" : filterData,
+        }, // search value
+        "post"
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -66,6 +75,42 @@ const SubscribersTable = ({ setItemEdit }) => {
   });
 
   let counter = 1;
+
+  // Join subscribeData with audienceData to get audience_name
+  const enrichedSubscribers = subscribeData?.data?.map((subscriber) => {
+    const matchingAudience = audienceData?.data?.find(
+      (audience) => audience.audience_aid === subscriber.subscriber_audience_id
+    );
+    return {
+      ...subscriber,
+      audience_name: matchingAudience
+        ? matchingAudience.audience_name
+        : "Unknown",
+    };
+  });
+
+  const subscriberCategories = [
+    ...new Map(
+      enrichedSubscribers?.map((sub) => [
+        sub.subscriber_audience_id,
+        {
+          subscriber_audience_id: sub.subscriber_audience_id,
+          audience_name: sub.audience_name,
+        },
+      ])
+    ).values(),
+  ];
+
+  const handleChangeFilter = (e) => {
+    setfilterData(e.target.value);
+    setIsFilter(false);
+    dispatch(setIsSearch(false));
+    search.current.value = "";
+    if (e.target.value !== "all") {
+      setIsFilter(true);
+    }
+    setPage(1);
+  };
 
   const handleEdit = (item) => {
     dispatch(setIsAdd(true));
@@ -103,22 +148,43 @@ const SubscribersTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <div className="flex items-center gap-5 place-self-end">
-        <div className="flex items-center gap-2">
-          <span>
-            <FaUserGroup className="text-gray-500" />
-          </span>
-          {store.isSearch ? result?.pages[0].count : result?.pages[0].total}
+      <div className="flex items-center gap-5 justify-between">
+        <div className="relative flex flex-col gap-2 w-[250px]">
+          <label className="z-10">Filter</label>
+
+          <select
+            name="filter"
+            value={filterData}
+            onChange={(e) => handleChangeFilter(e)}
+            disabled={isFetching || status === "pending"}
+          >
+            <option value="all">All</option>
+            <optgroup label="Audience">
+              {subscriberCategories.map((item, key) => (
+                <option key={key} value={item.subscriber_audience_id}>
+                  {item.audience_name}  
+                </option>
+              ))}
+            </optgroup>
+          </select>
         </div>
-        <SearchBar
-          search={search}
-          dispatch={dispatch}
-          store={store}
-          result={result?.pages}
-          isFetching={isFetching}
-          setOnSearch={setOnSearch}
-          onSearch={onSearch}
-        />
+        <div className="flex gap-6 items-center">
+          <div className="flex items-center gap-2">
+            <span>
+              <FaUserGroup className="text-gray-500" />
+            </span>
+            {store.isSearch ? result?.pages[0].count : result?.pages[0].total}
+          </div>
+          <SearchBar
+            search={search}
+            dispatch={dispatch}
+            store={store}
+            result={result?.pages}
+            isFetching={isFetching}
+            setOnSearch={setOnSearch}
+            onSearch={onSearch}
+          />
+        </div>
       </div>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-150px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (

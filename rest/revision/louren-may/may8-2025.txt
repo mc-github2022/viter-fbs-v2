@@ -1,0 +1,47 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/mailer-log/functions.php
+            -> rest/v1/controllers/developer/mailer-log/search.php
+            -> rest/v1/controllers/developer/mailer-log/update-mailer-subject-content.php
+            -> rest/v1/controllers/developer/subscribe/functions.php
+            -> rest/v1/controllers/developer/subscribe/search.php
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/mailer-log/MailerLog.php
+            -> rest/v1/models/developer/subscribe/Subscribe.php
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> In # MAILER LOG this is added 
+            RewriteRule ^mailer-log/update-mailer-subject-content/([0-9]+)$ controllers/developer/mailer-log/update-mailer-subject-content.php?mailerId=$1 [L]
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+

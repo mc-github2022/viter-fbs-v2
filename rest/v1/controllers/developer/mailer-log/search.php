@@ -27,6 +27,26 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     if ($isFilter) {
         $filterValue = $data["filterValue"];
 
+        // filter by status sent and search 
+        if ($mailerLog->sending_email_log_search != "" && $filterValue == "sent") {
+            $mailerLog->sending_email_log_is_success = 1;
+            $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+        // filter by status failed and search 
+        if ($mailerLog->sending_email_log_search != "" && $filterValue == "failed") {
+            $mailerLog->sending_email_log_is_success = 0;
+            $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+        // filter by audience and search
+        if ($mailerLog->sending_email_log_search != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
+            $query = checkFilterByAudienceAndSearch($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
         // if filter by status send
         if ($filterValue == "sent") {
             $mailerLog->sending_email_log_is_success = 1;
@@ -34,7 +54,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             http_response_code(200);
             getQueriedData($query);
         }
-
         // if filter by status failed
         if ($filterValue == "failed") {
             $mailerLog->sending_email_log_is_success = 0;
@@ -42,7 +61,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             http_response_code(200);
             getQueriedData($query);
         }
-
         // if filter by audience id
         $mailerLog->sending_email_log_audience_id = $filterValue;
         $query = checkFilterByAudience($mailerLog);

@@ -31,6 +31,7 @@ import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
 
 const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [fileData, setFileData] = React.useState(null);
@@ -78,6 +79,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
   };
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -110,6 +112,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
   });
 
   React.useEffect(() => {
+    setAnimate("");
     if (itemEdit) {
       const photos = getConvertStringToJSONparseData(itemEdit.lcss_batch_img);
       setPhotoArrayList(photos);
@@ -136,7 +139,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 max-h-[550px] max-w-[1000px]`}
+        className={`transition-all ease-linear transform duration-200  max-w-[1000px] ${animate}`}
         handleClose={handleClose}
       >
         <div className="modal-title">
@@ -242,7 +245,7 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="w-[50%] h-[475px] overflow-auto">
+                      <div className="w-[50%] h-[93vh] overflow-auto">
                         <span className="top-20 px-2 text-dark text-[12px]">
                           Upload Images
                         </span>

@@ -26,6 +26,7 @@ import * as Yup from "yup";
 
 const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [fileData, setFileData] = React.useState(null);
@@ -73,6 +74,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   };
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -105,6 +107,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   });
 
   React.useEffect(() => {
+    setAnimate("");
     if (itemEdit) {
       const photos = getConvertStringToJSONparseData(itemEdit.partners_img);
       setPhotoArrayList(photos);
@@ -126,7 +129,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 max-h-[600px] max-w-[500px]`}
+        className={`transition-all ease-linear transform duration-200 ${animate}`}
         handleClose={handleClose}
       >
         <div className="modal-title">

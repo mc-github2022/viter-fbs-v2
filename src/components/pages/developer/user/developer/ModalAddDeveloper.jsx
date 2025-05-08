@@ -17,8 +17,10 @@ import { apiVersion } from "../../../../helpers/functions-general";
 
 const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -54,6 +56,10 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
     (role) => role.role_code === "role_is_developer"
   )[0]["role_aid"];
 
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
   const initVal = {
     user_developer_fname: itemEdit ? itemEdit.user_developer_fname : "",
     user_developer_lname: itemEdit ? itemEdit.user_developer_lname : "",
@@ -72,7 +78,7 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[18rem]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -94,30 +100,32 @@ const ModalAddDeveloper = ({ setIsAdd, itemEdit, roleData }) => {
         >
           {(props) => {
             return (
-              <Form>
-                <div className="input-wrapper">
-                  <InputText
-                    label="First Name"
-                    type="text"
-                    name="user_developer_fname"
-                    disabled={mutation.isPending}
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <InputText
-                    label="Last Name"
-                    type="text"
-                    name="user_developer_lname"
-                    disabled={mutation.isPending}
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <InputText
-                    label="Email"
-                    type="text"
-                    name="user_developer_email"
-                    disabled={mutation.isPending}
-                  />
+              <Form className="modal-form">
+                <div className="form-input">
+                  <div className="input-wrapper">
+                    <InputText
+                      label="First Name"
+                      type="text"
+                      name="user_developer_fname"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <InputText
+                      label="Last Name"
+                      type="text"
+                      name="user_developer_lname"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <InputText
+                      label="Email"
+                      type="text"
+                      name="user_developer_email"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
                 </div>
 
                 <div className="form-action">

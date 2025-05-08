@@ -18,8 +18,10 @@ import { StoreContext } from "../../../../store/StoreContext";
 
 const ModalAddAudience = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -51,6 +53,10 @@ const ModalAddAudience = ({ itemEdit }) => {
     },
   });
 
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
   const initVal = {
     audience_aid: itemEdit ? itemEdit.audience_aid : "",
     audience_name: itemEdit ? itemEdit.audience_name : "",
@@ -66,7 +72,7 @@ const ModalAddAudience = ({ itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[19.5rem]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -94,22 +100,24 @@ const ModalAddAudience = ({ itemEdit }) => {
         >
           {(props) => {
             return (
-              <Form>
-                <div className="input-wrapper">
-                  <InputText
-                    label="Audience Name"
-                    type="text"
-                    name="audience_name"
-                    disabled={mutation.isPending}
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <InputTextArea
-                    label="Audience Description"
-                    type="text"
-                    name="audience_description"
-                    disabled={mutation.isPending}
-                  />
+              <Form className="modal-form">
+                <div className="form-input">
+                  <div className="input-wrapper">
+                    <InputText
+                      label="Audience Name"
+                      type="text"
+                      name="audience_name"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <InputTextArea
+                      label="Audience Description"
+                      type="text"
+                      name="audience_description"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
                 </div>
 
                 <div className="form-action">
