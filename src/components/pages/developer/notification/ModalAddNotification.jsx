@@ -14,11 +14,13 @@ import { purposeValue } from "./functions-notification";
 
 const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
   const [selectedValue, setSelectedValue] = React.useState(
     itemEdit ? itemEdit.notification_purpose : ""
   );
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -53,6 +55,10 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
     },
   });
 
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
   const initVal = {
     notification_aid: itemEdit ? itemEdit.notification_aid : "",
     notification_name: itemEdit ? itemEdit.notification_name : "",
@@ -72,7 +78,7 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[28rem]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">

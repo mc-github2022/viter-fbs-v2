@@ -27,6 +27,8 @@ const icons = {
 
 const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
+
   const [searchTerm, setSearchTerm] = React.useState(
     itemEdit ? itemEdit.special_offers_icons : ""
   );
@@ -68,6 +70,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
   const limitedIcons = filteredIcons.slice(0, itemsLimit);
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -101,6 +104,10 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
     },
   });
 
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
   const initVal = {
     special_offers_aid: itemEdit ? itemEdit.special_offers_aid : "",
     special_offers_icons: itemEdit ? itemEdit.special_offers_icons : "",
@@ -113,7 +120,7 @@ const ModalAddSpecialOffers = ({ setIsAdd, itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[450px] max-w-[500px]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">

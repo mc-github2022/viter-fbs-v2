@@ -26,7 +26,7 @@ import { RiDraftFill } from "react-icons/ri";
 import ModalDraft from "../../why-fbs-page/events-and-activities/modals/ModalDraft";
 import ModalUpload from "../../why-fbs-page/events-and-activities/modals/ModalUpload";
 
-const InsightsTable = ({ setItemEdit }) => {
+const InsightsTable = ({ setItemEdit}) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");

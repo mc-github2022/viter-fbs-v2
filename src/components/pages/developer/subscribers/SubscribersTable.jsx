@@ -162,7 +162,7 @@ const SubscribersTable = ({ setItemEdit, audienceData, subscribeData }) => {
             <optgroup label="Audience">
               {subscriberCategories.map((item, key) => (
                 <option key={key} value={item.subscriber_audience_id}>
-                  {item.audience_name}
+                  {item.audience_name}  
                 </option>
               ))}
             </optgroup>

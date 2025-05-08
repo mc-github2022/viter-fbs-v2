@@ -94,7 +94,7 @@ const ModalAddMailerLog = ({ itemEdit }) => {
           {({ props, values, dirty }) => {
             return (
               <Form>
-                <div className="flex gap-10 items-center">
+                <div className="flex gap-10 ">
                   <div className="w-[40%]">
                     <div className="input-wrapper">
                       <InputText
@@ -110,7 +110,7 @@ const ModalAddMailerLog = ({ itemEdit }) => {
                         type="text"
                         name="sending_email_log_content"
                         value={values.sending_email_log_content}
-                        className="h-[550px]"
+                        className="min-h-[calc(80vh-55px)]"
                         disabled={mutation.isPending}
                       />
                     </div>

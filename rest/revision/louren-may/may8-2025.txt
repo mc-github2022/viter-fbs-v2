@@ -7,8 +7,8 @@ DEVELOPER
             -> rest/v1/controllers/developer/mailer-log/functions.php
             -> rest/v1/controllers/developer/mailer-log/search.php
             -> rest/v1/controllers/developer/mailer-log/update-mailer-subject-content.php
-            -> 
-            -> 
+            -> rest/v1/controllers/developer/subscribe/functions.php
+            -> rest/v1/controllers/developer/subscribe/search.php
         
         * CORE 
             -> 

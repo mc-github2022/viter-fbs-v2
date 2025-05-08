@@ -18,8 +18,10 @@ import { StoreContext } from "../../../store/StoreContext";
 
 const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -55,7 +57,9 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
     (item) => item.audience_code === "audience_is_client"
   )[0]["audience_aid"];
 
-  console.log(defaultAudienceAid);
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
 
   const initVal = {
     subscriber_aid: itemEdit ? itemEdit.subscriber_aid : "",
@@ -75,7 +79,7 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[19.5rem]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -115,11 +119,13 @@ const ModalAddSubscribers = ({ itemEdit, audienceData }) => {
                       {audienceData?.count === 0 ? (
                         <option>No Data</option>
                       ) : (
-                        audienceData?.data.map((item, key) => (
-                          <option value={item.audience_aid} key={key}>
-                            {item.audience_name}
-                          </option>
-                        ))
+                        audienceData?.data
+                          .filter((item) => item.audience_is_active === 1)
+                          .map((item, key) => (
+                            <option value={item.audience_aid} key={key}>
+                              {item.audience_name}
+                            </option>
+                          ))
                       )}
                     </optgroup>
                   </InputSelect>

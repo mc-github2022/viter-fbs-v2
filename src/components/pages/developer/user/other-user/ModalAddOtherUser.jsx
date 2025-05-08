@@ -25,8 +25,10 @@ const ModalAddOtherUser = ({
   setIsSend,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -69,7 +71,7 @@ const ModalAddOtherUser = ({
         : [];
 
       setEmailCount(recipientEmails.length);
-      setIsSend(true); 
+      setIsSend(true);
       setRecipientList(recipientEmails);
 
       console.log("Recipient: ", recipientEmails.length);
@@ -81,6 +83,10 @@ const ModalAddOtherUser = ({
   const defaultRoleAid = roleData?.data.filter(
     (role) => role.role_code === "role_is_admin"
   )[0]["role_aid"];
+
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
 
   const initVal = {
     user_other_fname: itemEdit ? itemEdit.user_other_fname : "",
@@ -99,7 +105,7 @@ const ModalAddOtherUser = ({
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[21.5rem]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -120,52 +126,54 @@ const ModalAddOtherUser = ({
         >
           {(props, values) => {
             return (
-              <Form>
-                <div className="input-wrapper">
-                  <InputText
-                    label="First Name"
-                    type="text"
-                    name="user_other_fname"
-                    disabled={mutation.isPending}
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <InputText
-                    label="Last Name"
-                    type="text"
-                    name="user_other_lname"
-                    disabled={mutation.isPending}
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <InputText
-                    label="Email"
-                    type="text"
-                    name="user_other_email"
-                    disabled={mutation.isPending}
-                  />
-                </div>
+              <Form className="modal-form">
+                <div className="form-input">
+                  <div className="input-wrapper">
+                    <InputText
+                      label="First Name"
+                      type="text"
+                      name="user_other_fname"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <InputText
+                      label="Last Name"
+                      type="text"
+                      name="user_other_lname"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <InputText
+                      label="Email"
+                      type="text"
+                      name="user_other_email"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
 
-                <div className="input-wrapper">
-                  <InputSelect
-                    label="Role"
-                    type="text"
-                    name="user_other_role_id"
-                    disabled={mutation.isPending}
-                  >
-                    <option hidden>--</option>
-                    <optgroup label="Select Role">
-                      {roleData?.count === 0 ? (
-                        <option>No Data</option>
-                      ) : (
-                        roleData?.data.map((item, key) => (
-                          <option value={item.role_aid} key={key}>
-                            {item.role_name}
-                          </option>
-                        ))
-                      )}
-                    </optgroup>
-                  </InputSelect>
+                  <div className="input-wrapper">
+                    <InputSelect
+                      label="Role"
+                      type="text"
+                      name="user_other_role_id"
+                      disabled={mutation.isPending}
+                    >
+                      <option hidden>--</option>
+                      <optgroup label="Select Role">
+                        {roleData?.count === 0 ? (
+                          <option>No Data</option>
+                        ) : (
+                          roleData?.data.map((item, key) => (
+                            <option value={item.role_aid} key={key}>
+                              {item.role_name}
+                            </option>
+                          ))
+                        )}
+                      </optgroup>
+                    </InputSelect>
+                  </div>
                 </div>
                 <div className="form-action">
                   <div className="form-btn">

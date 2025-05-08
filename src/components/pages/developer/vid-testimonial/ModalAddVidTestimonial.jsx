@@ -1,37 +1,33 @@
-import React from "react";
-import useSingleUploadPhoto from "../../../custom-hooks/useSingleUploadPhoto";
-import { StoreContext } from "../../../store/StoreContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../helpers/queryData";
-import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
+import { Form, Formik } from "formik";
+import React from "react";
+import { FaTrash } from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import useUploadMultiplePhoto from "../../../custom-hooks/useUploadMultiplePhoto";
 import {
   InputFileUpload,
-  InputPhotoUpload,
   InputSelect,
   InputText,
   InputTextArea,
 } from "../../../helpers/FormInputs";
-import { MdOutlineFileUpload } from "react-icons/md";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   googleViewLink,
 } from "../../../helpers/functions-general";
-import { IoImageOutline } from "react-icons/io5";
+import { queryData } from "../../../helpers/queryData";
 import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import useUploadMultiplePhoto from "../../../custom-hooks/useUploadMultiplePhoto";
-import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
-import { FaTrash } from "react-icons/fa";
 import LoadImages from "../../../partials/LoadImages";
+import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
 
 const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [fileData, setFileData] = React.useState(null);
@@ -78,6 +74,7 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
   };
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -110,6 +107,7 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
   });
 
   React.useEffect(() => {
+    setAnimate("");
     if (itemEdit) {
       const photos = getConvertStringToJSONparseData(
         itemEdit.vid_testimonial_logo_img
@@ -141,7 +139,7 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 max-h-[670px] max-w-[1000px]`}
+        className={`transition-all ease-linear transform duration-200 ${animate}`}
         handleClose={handleClose}
       >
         <div className="modal-title">
@@ -180,212 +178,202 @@ const ModalAddVidTestimonial = ({ setIsAdd, itemEdit }) => {
               return (
                 <Form className="modal-form">
                   <div className="form-input">
-                    <div className="flex gap-4 justify-between">
-                      <div className="w-[50%] relative">
-                        <div className="mt-3">
-                          <span className="top-20 px-2 text-dark text-xs">
-                            Logo Image
+                    <div className=" relative">
+                      <div className="mt-3">
+                        <span className="top-20 px-2 text-dark text-xs">
+                          Logo Image
+                        </span>
+                        <div
+                          className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[300px] text-xs ${
+                            withFile && "border-primary border-dashed"
+                          }`}
+                          onDragOver={() => setWithFile(true)}
+                          onDragLeave={() => setWithFile(false)}
+                        >
+                          <span className="min-h-16 flex items-center justify-center">
+                            <span className="text-dark mr-1">Drag & Drop</span>{" "}
+                            Photo here or{" "}
+                            <span className="text-dark ml-1">Browse</span>
                           </span>
-                          <div
-                            className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[300px] text-xs ${
-                              withFile && "border-primary border-dashed"
-                            }`}
-                            onDragOver={() => setWithFile(true)}
-                            onDragLeave={() => setWithFile(false)}
-                          >
-                            <span className="min-h-16 flex items-center justify-center">
-                              <span className="text-dark mr-1">
-                                Drag & Drop
-                              </span>{" "}
-                              Photo here or{" "}
-                              <span className="text-dark ml-1">Browse</span>
-                            </span>
 
-                            <InputFileUpload
-                              label="Upload Banner Image"
-                              name="File"
-                              type="file"
-                              id="myFile"
-                              accept="*"
-                              title="Upload File"
-                              onChange={(e) =>
-                                handleChangeFileUpload(
-                                  e,
-                                  props,
-                                  setPhotoArrayList,
-                                  "vid_testimonial_logo_img"
-                                )
-                              }
-                              onDrop={(e) =>
-                                handleChangeFileUpload(
-                                  e,
-                                  props,
-                                  setPhotoArrayList,
-                                  "vid_testimonial_logo_img"
-                                )
-                              }
-                              disabled={mutation.isPending || loading}
-                              className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
-                            />
-                          </div>
+                          <InputFileUpload
+                            label="Upload Banner Image"
+                            name="File"
+                            type="file"
+                            id="myFile"
+                            accept="*"
+                            title="Upload File"
+                            onChange={(e) =>
+                              handleChangeFileUpload(
+                                e,
+                                props,
+                                setPhotoArrayList,
+                                "vid_testimonial_logo_img"
+                              )
+                            }
+                            onDrop={(e) =>
+                              handleChangeFileUpload(
+                                e,
+                                props,
+                                setPhotoArrayList,
+                                "vid_testimonial_logo_img"
+                              )
+                            }
+                            disabled={mutation.isPending || loading}
+                            className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                          />
+                        </div>
 
-                          <div className="relative mb-6 w-[300px] ">
-                            <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                              {photoArrayList?.length > 0 &&
-                                Array.from(photoArrayList).map((item, key) => {
-                                  const fileLink =
-                                    item instanceof File || item instanceof Blob
-                                      ? URL.createObjectURL(item)
-                                      : `${googleHDViewLink}${item?.id}`;
+                        <div className="relative mb-6 w-[300px] ">
+                          <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                            {photoArrayList?.length > 0 &&
+                              Array.from(photoArrayList).map((item, key) => {
+                                const fileLink =
+                                  item instanceof File || item instanceof Blob
+                                    ? URL.createObjectURL(item)
+                                    : `${googleHDViewLink}${item?.id}`;
 
-                                  return (
-                                    <React.Fragment key={key}>
-                                      <li
-                                        className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
-                                          (mutation.isPending || loading) &&
-                                          `!cursor-not-allowed`
-                                        }`}
-                                        onClick={() => {
-                                          handleClickViewSlideshow(
-                                            photoArrayList,
-                                            key
-                                          );
-                                        }}
-                                      >
-                                        <LoadImages
-                                          url={fileLink}
-                                          className={`relative z-20 w-full h-full object-cover object-center`}
-                                        />
-                                        {(!mutation.isPending || !loading) && (
-                                          <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
-                                            <span>
-                                              Click to View <br />
-                                              {key + 1}. {item.name}
-                                            </span>
+                                return (
+                                  <React.Fragment key={key}>
+                                    <li
+                                      className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
+                                        (mutation.isPending || loading) &&
+                                        `!cursor-not-allowed`
+                                      }`}
+                                      onClick={() => {
+                                        handleClickViewSlideshow(
+                                          photoArrayList,
+                                          key
+                                        );
+                                      }}
+                                    >
+                                      <LoadImages
+                                        url={fileLink}
+                                        className={`relative z-20 w-full h-full object-cover object-center`}
+                                      />
+                                      {(!mutation.isPending || !loading) && (
+                                        <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                          <span>
+                                            Click to View <br />
+                                            {key + 1}. {item.name}
+                                          </span>
 
-                                            <div
-                                              className="absolute bottom-0 right-0 flex items-center gap-2"
-                                              onClick={(e) => {
-                                                e.stopPropagation();
-                                              }}
+                                          <div
+                                            className="absolute bottom-0 right-0 flex items-center gap-2"
+                                            onClick={(e) => {
+                                              e.stopPropagation();
+                                            }}
+                                          >
+                                            <button
+                                              type="button"
+                                              className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                              data-tooltip={`Delete`}
+                                              disabled={
+                                                mutation.isPending || loading
+                                              }
+                                              onClick={() =>
+                                                handleRemovePhoto(
+                                                  photoArrayList,
+                                                  key,
+                                                  props
+                                                )
+                                              }
                                             >
-                                              <button
-                                                type="button"
-                                                className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
-                                                data-tooltip={`Delete`}
-                                                disabled={
-                                                  mutation.isPending || loading
-                                                }
-                                                onClick={() =>
-                                                  handleRemovePhoto(
-                                                    photoArrayList,
-                                                    key,
-                                                    props
-                                                  )
-                                                }
-                                              >
-                                                <FaTrash />
-                                              </button>
-                                            </div>
+                                              <FaTrash />
+                                            </button>
                                           </div>
-                                        )}
-                                      </li>
-                                    </React.Fragment>
-                                  );
-                                })}
-                            </ol>
-                          </div>
+                                        </div>
+                                      )}
+                                    </li>
+                                  </React.Fragment>
+                                );
+                              })}
+                          </ol>
                         </div>
-                        <div>
-                          <div className="input-wrapper">
-                            <InputText
-                              label="Name"
-                              type="text"
-                              name="vid_testimonial_name"
-                              disabled={mutation.isPending}
-                            />
-                          </div>
-                          <div className="input-wrapper">
-                            <InputText
-                              label="Course"
-                              type="text"
-                              name="vid_testimonial_course"
-                              disabled={mutation.isPending}
-                            />
-                          </div>
+                      </div>
+                      <div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Name"
+                            type="text"
+                            name="vid_testimonial_name"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Course"
+                            type="text"
+                            name="vid_testimonial_course"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
 
-                          <div className="input-wrapper">
-                            <InputText
-                              label="School"
-                              type="text"
-                              name="vid_testimonial_school"
-                              disabled={mutation.isPending}
-                            />
-                          </div>
-                          <div className="input-wrapper">
-                            <InputText
-                              label="Video Link"
-                              type="text"
-                              name="vid_testimonial_vid_link"
-                              disabled={mutation.isPending}
-                            />
-                          </div>
-                          <div className="input-wrapper">
-                            <InputSelect
-                              label="*Category"
-                              type="text"
-                              name="vid_testimonial_category"
-                              disabled={mutation.isPending}
-                            >
-                              <option value="" disabled>
-                                Select Category
-                              </option>
-                              <option value="College On-the-job Training">
-                                College On-the-job Training
-                              </option>
-                              <option value="High School Work Immersion">
-                                High School Work Immersion
-                              </option>
-                              <option value="Continuing Studies">
-                                Continuing Studies
-                              </option>
-                            </InputSelect>
-                          </div>
-                          <div className="form-action absolute bottom-0 w-full mb-2">
-                            <div className="form-btn">
-                              <button
-                                className="btn-modal-submit"
-                                type="submit"
-                                disabled={
-                                  mutation.isPending || !props.dirty || loading
-                                }
-                              >
-                                {mutation.isPending ? (
-                                  <ButtonSpinner />
-                                ) : (
-                                  "Save"
-                                )}
-                              </button>
-                              <button
-                                className="btn-modal-cancel"
-                                type="button"
-                                onClick={handleClose}
-                              >
-                                Cancel
-                              </button>
-                            </div>
-                          </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="School"
+                            type="text"
+                            name="vid_testimonial_school"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Video Link"
+                            type="text"
+                            name="vid_testimonial_vid_link"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputSelect
+                            label="*Category"
+                            type="text"
+                            name="vid_testimonial_category"
+                            disabled={mutation.isPending}
+                          >
+                            <option value="" disabled>
+                              Select Category
+                            </option>
+                            <option value="College On-the-job Training">
+                              College On-the-job Training
+                            </option>
+                            <option value="High School Work Immersion">
+                              High School Work Immersion
+                            </option>
+                            <option value="Continuing Studies">
+                              Continuing Studies
+                            </option>
+                          </InputSelect>
+                        </div>
+                        <div className="input-wrapper">
+                          <InputTextArea
+                            label="Message"
+                            type="text"
+                            name="vid_testimonial_message"
+                            className="h-[300px]"
+                            disabled={mutation.isPending}
+                          />
                         </div>
                       </div>
-                      <div className="input-wrapper">
-                        <InputTextArea
-                          label="Message"
-                          type="text"
-                          name="vid_testimonial_message"
-                          className="h-[570px] w-[478px]"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
+                    </div>
+                  </div>
+                  <div className="form-action mb-1">
+                    <div className="form-btn">  
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || loading}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 </Form>

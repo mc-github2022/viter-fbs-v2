@@ -17,8 +17,10 @@ import { apiVersion } from "@/components/helpers/functions-general";
 
 const ModalAddRole = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsAdd(false));
     }, 200);
@@ -63,9 +65,13 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
     role_name: Yup.string().required("Required"),
   });
 
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[30rem] max-h-[19.5rem]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -93,22 +99,24 @@ const ModalAddRole = ({ setIsAdd, itemEdit }) => {
         >
           {(props) => {
             return (
-              <Form>
-                <div className="input-wrapper">
-                  <InputText
-                    label="Role Name"
-                    type="text"
-                    name="role_name"
-                    disabled={mutation.isPending}
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <InputTextArea
-                    label="Role Description"
-                    type="text"
-                    name="role_description"
-                    disabled={mutation.isPending}
-                  />
+              <Form className="modal-form">
+                <div className="form-input">
+                  <div className="input-wrapper">
+                    <InputText
+                      label="Role Name"
+                      type="text"
+                      name="role_name"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <InputTextArea
+                      label="Role Description"
+                      type="text"
+                      name="role_description"
+                      disabled={mutation.isPending}
+                    />
+                  </div>
                 </div>
 
                 <div className="form-action">
