@@ -6,10 +6,12 @@ import Navigation from "../../../../partials/dashboard/Navigation";
 import MailerLogTable from "./MailerLogTable";
 import { setIsSubsOpen } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
+import ModalError from "../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 
 const MailerLog = () => {
-  const { dispatch } = React.useContext(StoreContext);
-  
+  const { store, dispatch } = React.useContext(StoreContext);
+
   const {
     isLoading: isLoading,
     isFetching: isFetching,
@@ -56,6 +58,9 @@ const MailerLog = () => {
           </div>
         </Dashboard>
       </section>
+
+      {store.success && <ModalSuccess />}
+      {store.error && <ModalError />}
     </>
   );
 };

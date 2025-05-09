@@ -1,0 +1,41 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/mailer-log/page.php
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> 
+            -> 
+            -> 
+
+
+        * HTACESS
+            -> 
+            -> 
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+
+
