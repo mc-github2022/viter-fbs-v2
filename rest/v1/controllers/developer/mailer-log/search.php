@@ -29,233 +29,244 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $mailerLog->dateTo = $data["dateTo"];
         $mailerLog->dateFrom = $data["dateFrom"];
 
+        // filterValue can be: "sent", "failed", or an audience ID
 
-        // filter for search, status sent and all date (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" &&  $mailerLog->sending_email_log_search != "" && $filterValue == "sent") {
-            $mailerLog->sending_email_log_is_success = 1;
-            $query = checkFilterBySearchStatusAndAllDate($mailerLog);
+        // Handle combined filters first (dateFrom + dateTo + search + filterValue)
+        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" && $mailerLog->sending_email_log_search != "") {
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterBySearchStatusAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterBySearchStatusAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if ($filterValue === "all") {
+                $query = checkFilterBySearchAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterBySearchAudienceAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+        }
+
+        // Handle partial filters
+        if ($mailerLog->sending_email_log_search != "" && $mailerLog->dateFrom != "") {
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterByStatusDateFromSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterByStatusDateFromSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceDateFromSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+        }
+
+        if ($mailerLog->sending_email_log_search != "" && $mailerLog->dateTo != "") {
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterByStatusDateToSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterByStatusDateToSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceDateToSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+        }
+
+        // If all dates are set but no search
+        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "") {
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterByStatusAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterByStatusAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if ($filterValue === "all") {
+                $query = checkFilterByAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+
+            // If no filterValue, still return based on date range only
+            if ($filterValue == "") {
+                $query = checkFilterByAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+        }
+
+        // Only filter by search + dateFrom or dateTo
+        if ($mailerLog->sending_email_log_search != "" && $mailerLog->dateFrom != "") {
+            $query = checkFilterSearchAndDateFrom($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
 
-        // filter for search, status failed and all date (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" &&  $mailerLog->sending_email_log_search != "" && $filterValue == "failed") {
-            $mailerLog->sending_email_log_is_success = 0;
-            $query = checkFilterBySearchStatusAndAllDate($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter for search, audience and all date (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" &&  $mailerLog->sending_email_log_search != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
-            $query = checkFilterBySearchAudienceAndAllDate($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter status sent, date from, and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $filterValue == "sent" && $mailerLog->dateFrom != "") {
-            $mailerLog->sending_email_log_is_success = 1;
-            $query = checkFilterByStatusDateFromSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter status failed, date from, and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $filterValue == "failed" && $mailerLog->dateFrom != "") {
-            $mailerLog->sending_email_log_is_success = 0;
-            $query = checkFilterByStatusDateFromSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter audience, date from, and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $mailerLog->dateFrom != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
-            $query = checkFilterByAudienceDateFromSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter status sent, date to, and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $filterValue == "sent" && $mailerLog->dateTo != "") {
-            $mailerLog->sending_email_log_is_success = 1;
-            $query = checkFilterByStatusDateToSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter status failed, date to, and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $filterValue == "failed" && $mailerLog->dateTo != "") {
-            $mailerLog->sending_email_log_is_success = 0;
-            $query = checkFilterByStatusDateToSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter audience, date to, and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $mailerLog->dateTo != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
-            $query = checkFilterByAudienceDateToSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-
-        // filter for status sent and all date (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" && $filterValue == "sent") {
-            $mailerLog->sending_email_log_is_success = 1;
-            $query = checkFilterByStatusAndAllDate($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter for status failed and all date (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" && $filterValue == "failed") {
-            $mailerLog->sending_email_log_is_success = 0;
-            $query = checkFilterByStatusAndAllDate($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter for audience and all date (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
-            $query = checkFilterByAudienceAndAllDate($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter for date if any of them has entry (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" || $mailerLog->dateTo != "") {
-            $query = checkFilterBySingleDate($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-
-
-        // filter search and date to
         if ($mailerLog->sending_email_log_search != "" && $mailerLog->dateTo != "") {
             $query = checkFilterSearchAndDateTo($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
 
-        // filter search and both date
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" && $mailerLog->sending_email_log_search != "") {
+        // Filter by search + all date
+        if ($mailerLog->sending_email_log_search != "" && $mailerLog->dateFrom != "" && $mailerLog->dateTo != "") {
             $query = checkFilterBySearchAndAllDate($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
 
+        // Search only + filterValue
+        if ($mailerLog->sending_email_log_search != "") {
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
 
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
 
-
-
-
-        // filter status sent and date from (OKAY NA TO)
-        if ($filterValue == "sent" && $mailerLog->dateFrom != "") {
-            $mailerLog->sending_email_log_is_success = 1;
-            $query = checkFilterByStatusAndDateFrom($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceAndSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
         }
 
-        // filter status failed and date from (OKAY NA TO)
-        if ($filterValue == "failed" && $mailerLog->dateFrom != "") {
-            $mailerLog->sending_email_log_is_success = 0;
-            $query = checkFilterByStatusAndDateFrom($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
+        // Only filter by dateFrom and status
+        if ($mailerLog->dateFrom != "") {
+            if ($filterValue === "all") {
+                $query = checkFilterBySingleDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterByStatusAndDateFrom($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterByStatusAndDateFrom($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceAndDateFrom($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
         }
-
-        // filter audience and date from (OKAY NA TO)
-        if ($mailerLog->dateFrom != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
-            $query = checkFilterByAudienceAndDateFrom($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-
-        // filter status sent and date to (OKAY NA TO)
-        if ($filterValue == "sent" && $mailerLog->dateTo != "") {
-            $mailerLog->sending_email_log_is_success = 1;
-            $query = checkFilterByStatusAndDateTo($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter status failed and date to (OKAY NA TO)
-        if ($filterValue == "failed" && $mailerLog->dateTo != "") {
-            $mailerLog->sending_email_log_is_success = 0;
-            $query = checkFilterByStatusAndDateTo($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter audience and date to (OKAY NA TO)
-        if ($mailerLog->dateTo != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
-            $query = checkFilterByAudienceAndDateTo($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-
-
-        // filter by status sent and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $filterValue == "sent") {
-            $mailerLog->sending_email_log_is_success = 1;
-            $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-        // filter by status failed and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $filterValue == "failed") {
-            $mailerLog->sending_email_log_is_success = 0;
-            $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-        // filter by audience and search (OKAY NA TO)
-        if ($mailerLog->sending_email_log_search != "" && $mailerLog->sending_email_log_audience_id = $filterValue) {
-            $query = checkFilterByAudienceAndSearch($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
+        // Only filter by dateTo and status 
+        if ($mailerLog->dateTo != "") {
+            if ($filterValue === "all") {
+                $query = checkFilterBySingleDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterByStatusAndDateTo($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterByStatusAndDateTo($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceAndDateTo($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
         }
 
 
-        // filter for date if both has entry
-        if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "") {
-            $query = checkFilterByAllDate($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // filter search and date from
-        if ($mailerLog->dateFrom != "" && $mailerLog->sending_email_log_search != "") {
-            $query = checkFilterSearchAndDateFrom($mailerLog);
-            http_response_code(200);
-            getQueriedData($query);
-        }
-
-        // if filter by status send
-        if ($filterValue == "sent") {
+        // Only filter by status
+        if ($filterValue === "sent") {
             $mailerLog->sending_email_log_is_success = 1;
             $query = checkFilterByStatus($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
-        // if filter by status failed
-        if ($filterValue == "failed") {
+
+        if ($filterValue === "failed") {
             $mailerLog->sending_email_log_is_success = 0;
             $query = checkFilterByStatus($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
-        // if filter by audience id
-        $mailerLog->sending_email_log_audience_id = $filterValue;
-        $query = checkFilterByAudience($mailerLog);
-        http_response_code(200);
-        getQueriedData($query);
+
+        // Only filter by audience
+        if (is_numeric($filterValue)) {
+            $mailerLog->sending_email_log_audience_id = $filterValue;
+            $query = checkFilterByAudience($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
     }
+
 
     checkKeyword($mailerLog->sending_email_log_search);
     $query = checkSearch($mailerLog);

@@ -474,8 +474,7 @@ class MailerLog
             $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
             $sql .= "and DATE(sending_email_log_created) = DATE(:date_from) ";
             $sql .= "order by sending_email_log_created desc, ";
-            $sql .= "sending_email_log_email asc, ";
-            $sql .= "sending_email_log_created asc ";
+            $sql .= "sending_email_log_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "date_from" => $this->dateFrom,
@@ -520,8 +519,7 @@ class MailerLog
             $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
             $sql .= "and DATE(sending_email_log_created) = DATE(:date_to) ";
             $sql .= "order by sending_email_log_created desc, ";
-            $sql .= "sending_email_log_email asc, ";
-            $sql .= "sending_email_log_created asc ";
+            $sql .= "sending_email_log_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "date_to" => $this->dateTo,
@@ -543,8 +541,7 @@ class MailerLog
             $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
             $sql .= "and DATE(sending_email_log_created) = DATE(:date_to) ";
             $sql .= "order by sending_email_log_created desc, ";
-            $sql .= "sending_email_log_email asc, ";
-            $sql .= "sending_email_log_created asc ";
+            $sql .= "sending_email_log_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "date_to" => $this->dateTo,
@@ -565,8 +562,7 @@ class MailerLog
             $sql .= "{$this->tblSendingEmailLog} ";
             $sql .= "where DATE(sending_email_log_created) between DATE(:date_from) and DATE(:date_to) ";
             $sql .= "order by sending_email_log_created desc, ";
-            $sql .= "sending_email_log_email asc, ";
-            $sql .= "sending_email_log_created asc ";
+            $sql .= "sending_email_log_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "date_from" => $this->dateFrom,
