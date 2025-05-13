@@ -5,13 +5,15 @@ DEVELOPER
 
         * CONTROLLERS
             -> rest/v1/controllers/developer/mailer-log/page.php
+            -> rest/v1/controllers/developer/mailer-log/search.php
+            -> rest/v1/controllers/developer/mailer-log/functions.php
         
         * CORE 
             -> 
 
 
         * MODELS
-            -> 
+            -> rest/v1/models/developer/mailer-log/MailerLog.php
             -> 
             -> 
 
