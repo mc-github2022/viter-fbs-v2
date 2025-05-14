@@ -193,6 +193,12 @@ export const StoreReducer = (state, action) => {
         isWebAppOpen: action.payload,
       };
 
+    case "IS_PACKAGES_OPEN":
+      return {
+        ...state,
+        isPackagesOpen: action.payload,
+      };
+
     case "IS_UPDATE_HOME":
       return {
         ...state,

@@ -15,6 +15,7 @@ import {
   setIsSubsOpen,
   setIsServicesOpen,
   setIsWebAppOpen,
+  setIsPackagesOpen,
 } from "../../store/StoreAction";
 
 const Navigation = ({ menu, submenu }) => {
@@ -47,6 +48,10 @@ const Navigation = ({ menu, submenu }) => {
 
   const handleWebAppOpen = () => {
     dispatch(setIsWebAppOpen(!store.isWebAppOpen));
+  };
+
+  const handlePackagesOpen = () => {
+    dispatch(setIsPackagesOpen(!store.isPackagesOpen));
   };
 
   return (
@@ -388,6 +393,76 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                       >
                         Careers
+                      </li>
+                    </Link>
+                  </ul>
+
+                  {/* Packages */}
+                  <li
+                    className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
+                  ${
+                    menu === "packages"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                    onClick={() => handlePackagesOpen()}
+                  >
+                    <div className="nav flex items-center justify-between w-full">
+                      <span className=" text-[14px] uppercase">Packages</span>
+                      <IoChevronDownSharp
+                        className={`${
+                          store.isPackagesOpen ? "" : "rotate-180"
+                        } transition-all`}
+                      />
+                    </div>
+                  </li>
+
+                  <ul
+                    className={`${
+                      store.isPackagesOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5`}
+                  >
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/packages-category`}
+                    >
+                      <li
+                        className={`text-xs  border-transparent hover:underline ${
+                          submenu === "category"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Category
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/packages-list`}
+                    >
+                      <li
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "list"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        List
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/packages-details`}
+                    >
+                      <li
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "details"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Details
                       </li>
                     </Link>
                   </ul>

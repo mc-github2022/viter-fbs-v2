@@ -8,6 +8,8 @@ import { setIsSubsOpen } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import ModalError from "../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
+import { FaFileExport } from "react-icons/fa";
+import { handleExportMailerLog } from "./function-mailerlog";
 
 const MailerLog = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -23,15 +25,16 @@ const MailerLog = () => {
     "audience" // key
   );
 
-  const {
-    isLoading: subscriberIsLoading,
-    isFetching: subscriberIsFetching,
-    error: subscriberError,
-    data: subscribeData,
-  } = useQueryData(
+  const { data: subscribeData } = useQueryData(
     `${apiVersion}/subscribe`, // endpoint
     "get", // method
     "subscribe" // key
+  );
+
+  const { data: mailerLogData } = useQueryData(
+    `${apiVersion}/mailer-log`, // endpoint
+    "get", // method
+    "mailer-log" // key
   );
 
   React.useEffect(() => {
@@ -47,6 +50,16 @@ const MailerLog = () => {
             <div className="py-5 flex justify-between ">
               <div className="text-sm text-[black] font-semibold">
                 <h2>Email Log</h2>
+              </div>
+              <div className="flex items-center gap-6 print:invisible">
+                <button
+                  type="button"
+                  className="flex items-center text-primary gap-2 text-sm"
+                  onClick={() => handleExportMailerLog(mailerLogData?.data)}
+                >
+                  <FaFileExport />
+                  <span className="hover:underline ">Export</span>
+                </button>
               </div>
             </div>
             <div className="pb-4">

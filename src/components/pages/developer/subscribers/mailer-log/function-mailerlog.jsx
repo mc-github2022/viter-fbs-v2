@@ -1,7 +1,7 @@
-import { formatDate, getDateNow } from "../../../helpers/functions-general";
+import { formatDate, getDateNow } from "../../../../helpers/functions-general";
 
-// Export the Subscribers List
-export const handleExportSubscribers = (dataExport) => {
+// Export the Mailer Log List
+export const handleExportMailerLog = (dataExport) => {
   const saveData = (data, fileName) => {
     let a = document.createElement("a");
     const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
@@ -13,26 +13,26 @@ export const handleExportSubscribers = (dataExport) => {
     window.URL.revokeObjectURL(url);
   };
 
-  let str = "Email, Audience, Subscribe Date";
+  let str = "Email, Subject, Sent Date";
   // EARNINGS
   dataExport?.map((item) => {
     str +=
       "\n" +
-      `${item.subscriber_email}`
+      `${item.sending_email_log_email}`
         .replaceAll(/,/g, " ")
         .replaceAll(/(\r\n|\n|\r)/g, " ") +
       "," +
-      `${item.audience_name}`
+      `${item.sending_email_log_subject}`
         .replaceAll(/,/g, " ")
         .replaceAll(/(\r\n|\n|\r)/g, " ") +
       "," +
-      `${formatDate(item.subscriber_created)}`
+      `${formatDate(item.sending_email_log_created)}`
         .replaceAll(/,/g, " ")
         .replaceAll(/(\r\n|\n|\r)/g, " ");
   });
 
   const data = str;
-  const fileName = `Export Subscribers List - (${formatDate(getDateNow())})`;
+  const fileName = `Export Mailer Log List - (${formatDate(getDateNow())})`;
 
   return saveData(data, fileName);
 };

@@ -364,7 +364,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             disabled={mutation.isPending}
                           />
                         </div>
-                        <div className=" flex gap-2 py-2">
+                        <div className=" flex items-center gap-2 py-2">
                           <input
                             name="home_insights_cta_is_active "
                             type="checkbox"

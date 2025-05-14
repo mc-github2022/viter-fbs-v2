@@ -1,6 +1,7 @@
 import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete, MdOutlineFileUpload } from "react-icons/md";
+import { RiDraftFill } from "react-icons/ri";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
@@ -12,7 +13,6 @@ import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
-import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import {
   setIsAdd,
   setIsArchive,
@@ -20,9 +20,7 @@ import {
   setIsRestore,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import DraftStatusInsights from "./DraftStatusInsights";
 import DraftStatusEventsAndActivities from "../../why-fbs-page/events-and-activities/DraftStatusEventsAndActivities";
-import { RiDraftFill } from "react-icons/ri";
 import ModalDraft from "../../why-fbs-page/events-and-activities/modals/ModalDraft";
 import ModalUpload from "../../why-fbs-page/events-and-activities/modals/ModalUpload";
 

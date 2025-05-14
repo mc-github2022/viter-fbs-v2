@@ -214,6 +214,13 @@ export const setIsWebAppOpen = (val) => {
   };
 };
 
+export const setIsPackagesOpen = (val) => {
+  return {
+    type: "IS_PACKAGES_OPEN",
+    payload: val,
+  };
+};
+
 export const setIsUpdateHome = (val) => {
   return {
     type: "IS_UPDATE_HOME",

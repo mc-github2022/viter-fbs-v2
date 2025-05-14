@@ -7,6 +7,8 @@ DEVELOPER
             -> rest/v1/controllers/developer/mailer-log/page.php
             -> rest/v1/controllers/developer/mailer-log/search.php
             -> rest/v1/controllers/developer/mailer-log/functions.php
+            -> rest/v1/controllers/developer/mailer-log/mailerLog.php
+            -> rest/v1/controllers/developer/packages
         
         * CORE 
             -> 
@@ -14,13 +16,13 @@ DEVELOPER
 
         * MODELS
             -> rest/v1/models/developer/mailer-log/MailerLog.php
-            -> 
+            -> rest/v1/models/developer/packages
             -> 
 
 
         * HTACESS
-            -> 
-            -> 
+            -> # PACKAGES - CATEGORY is added
+            -> # PACKAGES - LIST is added
             -> 
             -> 
 
@@ -31,8 +33,8 @@ DEVELOPER
             -> 
 
         * DB BACKUP
-            -> 
-            ->
+            -> rest/db-backup/fbsv2_packages_category.sql
+            -> rest/db-backup/fbsv2_packages_list.sql
             ->
             ->
             ->

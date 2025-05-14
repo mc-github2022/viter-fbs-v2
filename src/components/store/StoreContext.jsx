@@ -33,6 +33,7 @@ const initVal = {
   isNotifOpen: true,
   isSubsOpen: true,
   isWebAppOpen: true,
+  isPackagesOpen: true,
   isUpdateHome: { modal: false, code: "" },
   credentials: {},
 };

@@ -32,6 +32,8 @@ import Gallery from "../components/pages/developer/gallery/Gallery";
 import Home from "../components/pages/developer/dashHome/Home";
 import WebApplication from "../components/pages/developer/services/web-application/WebApplication";
 import HrInformationSystem from "../components/pages/developer/services/web-application/hr-information-system/HrInformationSystem";
+import Category from "../components/pages/developer/packages/category/Category";
+import List from "../components/pages/developer/packages/list/List";
 
 export const routesDeveloper = [
   {
@@ -239,6 +241,22 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <HrInformationSystem />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/packages-category`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Category />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/packages-list`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <List />
       </ProtectedRouteDeveloper>
     ),
   },

@@ -29,7 +29,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $mailerLog->dateTo = $data["dateTo"];
         $mailerLog->dateFrom = $data["dateFrom"];
 
-        // filterValue can be: "sent", "failed", or an audience ID
+        // filterValue can be: "sent", "failed", "all", or an audience ID
 
         // Handle combined filters first (dateFrom + dateTo + search + filterValue)
         if ($mailerLog->dateFrom != "" && $mailerLog->dateTo != "" && $mailerLog->sending_email_log_search != "") {

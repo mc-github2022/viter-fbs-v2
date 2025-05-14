@@ -86,8 +86,8 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `/v1/partners/${itemEdit.partners_aid}` // update
-          : `/v1/partners`, // create
+          ? `${apiVersion}/partners/${itemEdit.partners_aid}` // update
+          : `${apiVersion}/partners`, // create
         itemEdit ? "put" : "post",
         values
       ),
