@@ -42,28 +42,14 @@ class PackagesList
             $sql .= "{$this->tblPackagesList} as list, ";
             $sql .= "{$this->tblPackagesCategory} as category ";
             $sql .= "where list.packages_list_category_name_id = category.packages_category_aid ";
-            $sql .= "order by packages_list_is_active desc, ";
-            $sql .= "packages_list_title asc ";
+            $sql .= "order by list.packages_list_is_active desc, ";
+            $sql .= "list.packages_list_aid asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
         }
         return $query;
     }
-
-    // // read all
-    // public function readAll()
-    // {
-    //     try {
-    //         $sql = "select * from {$this->tblPackagesList} ";
-    //         $sql .= "order by packages_list_is_active desc, ";
-    //         $sql .= "packages_list_aid desc ";
-    //         $query = $this->connection->query($sql);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
 
     public function readLimit()
     {
@@ -74,7 +60,7 @@ class PackagesList
             $sql .= "{$this->tblPackagesCategory} as category ";
             $sql .= "where list.packages_list_category_name_id = category.packages_category_aid ";
             $sql .= "order by list.packages_list_is_active desc, ";
-            $sql .= "list.packages_list_title asc ";
+            $sql .= "list.packages_list_aid asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -94,15 +80,15 @@ class PackagesList
             $sql = "select ";
             $sql .= "* ";
             $sql .= "from {$this->tblPackagesList} as list, ";
-            $sql .= "from {$this->tblPackagesCategory} as category";
+            $sql .= "{$this->tblPackagesCategory} as category ";
             $sql .= "where ";
             $sql .= "list.packages_list_category_name_id = category.packages_category_aid ";
             $sql .= "and (category.packages_category_name like :packages_category_name ";
             $sql .= "or list.packages_list_title like :packages_list_title ";
             $sql .= "or list.packages_list_price like :packages_list_price ";
             $sql .= "or list.packages_list_foreign_price like :packages_list_foreign_price) ";
-            $sql .= "order by packages_list_is_active desc, ";
-            $sql .= "packages_list_title asc ";
+            $sql .= "order by list.packages_list_is_active desc, ";
+            $sql .= "list.packages_list_aid asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "packages_category_name" => "%{$this->packages_list_search}%",
@@ -247,9 +233,11 @@ class PackagesList
             $sql .= "from ";
             $sql .= "{$this->tblPackagesList} ";
             $sql .= "where packages_list_title = :packages_list_title ";
+            $sql .= "and packages_list_category_name_id = :packages_list_category_name_id ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "packages_list_title" => $this->packages_list_title,
+                "packages_list_category_name_id" => $this->packages_list_category_name_id,
             ]);
         } catch (PDOException $ex) {
             $query = false;

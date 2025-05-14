@@ -24,7 +24,7 @@ $packages_list->packages_list_created = date("Y-m-d H:i:s");
 $packages_list->packages_list_datetime = date("Y-m-d H:i:s");
 
 //checks newly added data if it already exists
-isNameExist($packages_list, $packages_list->packages_list_title);
+isNameExist($packages_list, $packages_list->packages_list_title, $packages_list->packages_list_category_name_id);
 
 $query = checkCreate($packages_list);
 

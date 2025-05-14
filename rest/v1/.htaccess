@@ -193,4 +193,4 @@ RewriteRule ^packages-list/([0-9]+)$ controllers/developer/packages/list/package
 RewriteRule ^packages-list/active/([0-9]+)$ controllers/developer/packages/list/active.php?packages_listId=$1 [L]
 RewriteRule ^packages-list/page/([0-9]+)$ controllers/developer/packages/list/page.php?start=$1 [L]
 RewriteRule ^packages-list/search$ controllers/developer/packages/list/search.php [L] 
-RewriteRule ^packages-list/category-search$ controllers/developer/packages/list/search.php [L] 
+RewriteRule ^packages-list/category-search$ controllers/developer/packages/list/search-category.php [L] 

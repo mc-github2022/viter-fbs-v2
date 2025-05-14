@@ -20,8 +20,9 @@ import {
   setSuccess,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
+import { IoMdCloseCircle } from "react-icons/io";
 
-const ModalAddList = ({ itemEdit }) => {
+const ModalAddDetails = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [loading, setLoading] = React.useState(false);
@@ -30,12 +31,16 @@ const ModalAddList = ({ itemEdit }) => {
 
   const [onFocusPackagesList, setOnFocusPackagesList] = React.useState(false);
   const [propertyPackageListValue, setPropertyPackageListValue] =
-    React.useState(itemEdit ? `${itemEdit.packages_category_name}` : ""); // to get the data from table when update
+    React.useState(
+      itemEdit
+        ? `${itemEdit.packages_category_name}, ${itemEdit.packages_list_title}`
+        : ""
+    ); // to get the data from table when update
   const [packageList, setPackageList] = React.useState(
     itemEdit ? itemEdit.packages_category_name : ""
   );
   const [packageListId, setPackageListId] = React.useState(
-    itemEdit ? itemEdit.packages_list_category_name_id : ""
+    itemEdit ? itemEdit.packages_details_list_id : ""
   );
 
   const handleClose = () => {
@@ -60,9 +65,9 @@ const ModalAddList = ({ itemEdit }) => {
     error: packageListDataError,
     data: packageListData,
   } = useQueryData(
-    `${apiVersion}/packages-list/category-search`, // endpoint
+    `${apiVersion}/packages-details/list-search`, // endpoint
     "post", // method
-    "packages-list/category-search", // key
+    "packages-details/list-search", // key
     {
       searchValue: packageList, // payload
     },
@@ -127,13 +132,13 @@ const ModalAddList = ({ itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `${apiVersion}/packages-list/${itemEdit.packages_list_aid}` // update
-          : `${apiVersion}/packages-list`, // create
+          ? `${apiVersion}/packages-details/${itemEdit.packages_details_aid}` // update
+          : `${apiVersion}/packages-details`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["packages-list"] });
+      queryClient.invalidateQueries({ queryKey: ["packages-details"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -152,43 +157,20 @@ const ModalAddList = ({ itemEdit }) => {
   }, []);
 
   React.useEffect(() => {
-    setIsCheck(itemEdit ? itemEdit.packages_list_is_highlighted : false);
+    setIsCheck(itemEdit ? itemEdit.packages_details_is_highlighted : false);
   }, []);
 
   const initVal = {
-    packages_list_category_name_id: itemEdit
-      ? itemEdit.packages_list_category_name_id
-      : "",
-    packages_list_title: itemEdit ? itemEdit.packages_list_title : "",
-    packages_list_title_desc: itemEdit ? itemEdit.packages_list_title_desc : "",
-    packages_list_price: itemEdit ? itemEdit.packages_list_price : "",
-    packages_list_price_desc: itemEdit ? itemEdit.packages_list_price_desc : "",
-    packages_list_foreign_price: itemEdit
-      ? itemEdit.packages_list_foreign_price
-      : "",
-    packages_list_foreign_price_desc: itemEdit
-      ? itemEdit.packages_list_foreign_price_desc
-      : "",
-    packages_list_other_details: itemEdit
-      ? itemEdit.packages_list_other_details
-      : "",
-    packages_list_button_text: itemEdit
-      ? itemEdit.packages_list_button_text
-      : "",
-    packages_list_is_highlighted: itemEdit
-      ? itemEdit.packages_list_is_highlighted
-      : "",
-
-    packages_list_title_old: itemEdit ? itemEdit.packages_list_title : "",
-    packages_list_category_name_id_old: itemEdit
-      ? itemEdit.packages_list_category_name_id
+    packages_details_list_id: itemEdit ? itemEdit.packages_details_list_id : "",
+    packages_details_title: itemEdit ? itemEdit.packages_details_title : "",
+    packages_details_list: itemEdit ? itemEdit.packages_details_list : "",
+    packages_details_is_highlighted: itemEdit
+      ? itemEdit.packages_details_is_highlighted
       : "",
   };
 
   const yupSchema = Yup.object({
-    packages_list_title: Yup.string().required("Required"),
-    packages_list_price: Yup.string().required("Required"),
-    packages_list_button_text: Yup.string().required("Required"),
+    // packages_details_title: Yup.string().required("Required"),
   });
 
   return (
@@ -198,7 +180,7 @@ const ModalAddList = ({ itemEdit }) => {
         handleClose={handleClose}
       >
         <div className="modal-title">
-          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} List</h2>
+          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Details</h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
           </button>
@@ -210,13 +192,13 @@ const ModalAddList = ({ itemEdit }) => {
             onSubmit={async (values) => {
               if (packageListId === "" || !packageListId) {
                 dispatch(setError(true));
-                dispatch(setMessage("Category is Required."));
+                dispatch(setMessage("Package is Required."));
                 return;
               }
               const data = {
                 ...values,
-                packages_list_category_name_id: packageListId,
-                packages_list_is_highlighted: isCheck,
+                packages_details_list_id: packageListId,
+                packages_details_is_highlighted: isCheck,
               };
 
               mutation.mutate(data);
@@ -229,10 +211,10 @@ const ModalAddList = ({ itemEdit }) => {
                     <div className=" ">
                       <div className=" input-wrapper">
                         <InputText
-                          label="*Category"
+                          label="*Package"
                           type="text"
                           value={propertyPackageListValue}
-                          name="packages_list_category_name_id"
+                          name="packages_details_list_id"
                           disabled={mutation.isPending}
                           onFocus={() => setOnFocusPackagesList(true)}
                           onChange={handleOnChangePackageList}
@@ -250,11 +232,12 @@ const ModalAddList = ({ itemEdit }) => {
                               packageListData?.data.map((item, key) => (
                                 <div
                                   className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-sm text-dark"
-                                  value={item.packages_category_aid}
+                                  value={item.packages_list_aid}
                                   key={key}
                                   onClick={() => handleClickPackageList(item)}
                                 >
-                                  {item.packages_category_name}
+                                  {item.packages_category_name},
+                                  {item.packages_list_title}
                                 </div>
                               ))
                             ) : (
@@ -270,69 +253,22 @@ const ModalAddList = ({ itemEdit }) => {
                         <InputText
                           label="*Title"
                           type="text"
-                          name="packages_list_title"
+                          name="packages_details_title"
                           disabled={mutation.isPending}
                         />
                       </div>
                       <div className="input-wrapper">
                         <InputTextArea
-                          label="Title Description"
+                          label="Details"
                           type="text"
-                          name="packages_list_title_desc"
+                          name="packages_details_list"
                           disabled={mutation.isPending}
                         />
                       </div>
-                      <div className="input-wrapper">
-                        <InputText
-                          label="*Price"
-                          type="text"
-                          name="packages_list_price"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div className="input-wrapper">
-                        <InputTextArea
-                          label="Price Description"
-                          type="text"
-                          name="packages_list_price_desc"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div className="input-wrapper">
-                        <InputText
-                          label="Foreign Price"
-                          type="text"
-                          name="packages_list_foreign_price"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div className="input-wrapper">
-                        <InputTextArea
-                          label="Foreign Price Description"
-                          type="text"
-                          name="packages_list_foreign_price_desc"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div className="input-wrapper">
-                        <InputTextArea
-                          label="Other Details"
-                          type="text"
-                          name="packages_list_other_details"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                      <div className="input-wrapper">
-                        <InputText
-                          label="*Button"
-                          type="text"
-                          name="packages_list_button_text"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
+
                       <div className=" flex items-center gap-2 py-2">
                         <input
-                          name="packages_list_is_highlighted "
+                          name="packages_details_is_highlighted "
                           type="checkbox"
                           className="w-3 h-3 cursor-pointer"
                           checked={isCheck}
@@ -346,7 +282,7 @@ const ModalAddList = ({ itemEdit }) => {
                           </p>
                         ) : (
                           <p className="text-xs flex gap-2 items-center text-gray-500">
-                            Highlighted <FaCheckCircle />
+                            Highlighted <IoMdCloseCircle />
                           </p>
                         )}
                       </div>
@@ -380,4 +316,4 @@ const ModalAddList = ({ itemEdit }) => {
   );
 };
 
-export default ModalAddList;
+export default ModalAddDetails;

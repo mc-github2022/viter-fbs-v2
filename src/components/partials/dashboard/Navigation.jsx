@@ -425,7 +425,7 @@ const Navigation = ({ menu, submenu }) => {
                   >
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/packages-category`}
+                      to={`${devNavUrl}${link}/packages/category`}
                     >
                       <li
                         className={`text-xs  border-transparent hover:underline ${
@@ -439,7 +439,7 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/packages-list`}
+                      to={`${devNavUrl}${link}/packages/list`}
                     >
                       <li
                         className={`text-xs my-1 border-transparent hover:underline ${
@@ -453,7 +453,7 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/packages-details`}
+                      to={`${devNavUrl}${link}/packages/details`}
                     >
                       <li
                         className={`text-xs my-1 border-transparent hover:underline ${

@@ -18,13 +18,13 @@ class PackagesCategory
     public $packages_category_search;
 
     public $tblPackagesCategory;
-    public $tblSubscriber;
+    public $tblPackagesList;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblPackagesCategory = "fbsv2_packages_category";
-        $this->tblSubscriber = "fbsv2_subscriber_list";
+        $this->tblPackagesList = "fbsv2_packages_list";
     }
 
     public function readAll()
@@ -34,7 +34,7 @@ class PackagesCategory
             $sql .= "from ";
             $sql .= "{$this->tblPackagesCategory} ";
             $sql .= "order by packages_category_is_active desc, ";
-            $sql .= "packages_category_name asc ";
+            $sql .= "packages_category_aid asc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -49,7 +49,7 @@ class PackagesCategory
             $sql .= "from ";
             $sql .= "{$this->tblPackagesCategory} ";
             $sql .= "order by packages_category_is_active desc, ";
-            $sql .= "packages_category_name asc ";
+            $sql .= "packages_category_aid asc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -72,7 +72,7 @@ class PackagesCategory
             $sql .= "where ";
             $sql .= "packages_category_name like :packages_category_name ";
             $sql .= "order by packages_category_is_active desc, ";
-            $sql .= "packages_category_name asc ";
+            $sql .= "packages_category_aid asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "packages_category_name" => "%{$this->packages_category_search}%",
@@ -191,14 +191,14 @@ class PackagesCategory
         return $query;
     }
 
-    public function checkAssociationSubscriberAudienceName()
+    public function checkAssociationListCategory()
     {
         try {
-            $sql = "select subscriber_audience_id from {$this->tblSubscriber} ";
-            $sql .= "where subscriber_audience_id = :subscriber_audience_id ";
+            $sql = "select packages_list_category_name_id from {$this->tblPackagesList} ";
+            $sql .= "where packages_list_category_name_id = :packages_category_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "subscriber_audience_id" => $this->packages_category_aid,
+                "packages_category_aid" => $this->packages_category_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;

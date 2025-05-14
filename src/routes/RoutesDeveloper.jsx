@@ -34,6 +34,7 @@ import WebApplication from "../components/pages/developer/services/web-applicati
 import HrInformationSystem from "../components/pages/developer/services/web-application/hr-information-system/HrInformationSystem";
 import Category from "../components/pages/developer/packages/category/Category";
 import List from "../components/pages/developer/packages/list/List";
+import Details from "../components/pages/developer/packages/details/Details";
 
 export const routesDeveloper = [
   {
@@ -245,7 +246,7 @@ export const routesDeveloper = [
     ),
   },
   {
-    path: `${devNavUrl}/${UrlDeveloper}/packages-category`,
+    path: `${devNavUrl}/${UrlDeveloper}/packages/category`,
     element: (
       <ProtectedRouteDeveloper>
         <Category />
@@ -253,10 +254,18 @@ export const routesDeveloper = [
     ),
   },
   {
-    path: `${devNavUrl}/${UrlDeveloper}/packages-list`,
+    path: `${devNavUrl}/${UrlDeveloper}/packages/list`,
     element: (
       <ProtectedRouteDeveloper>
         <List />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/packages/details`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Details />
       </ProtectedRouteDeveloper>
     ),
   },

@@ -11,7 +11,7 @@ if (array_key_exists("packages_categoryId", $_GET)) {
   // get data
   $packages_category->packages_category_aid = $_GET['packages_categoryId'];
   checkId($packages_category->packages_category_aid);
-  // isAssociatedSubscriberpackages_categoryName($packages_category);
+  isAssociatedListCategory($packages_category);
 
   $query = checkDelete($packages_category);
 
