@@ -190,7 +190,11 @@ const ListTable = ({ setItemEdit }) => {
                         {item.packages_list_button_text}
                       </td>
                       <td>
-                        {item.packages_list_is_highlighted === 1 ? "Yes" : "No"}
+                        {item.packages_list_is_highlighted === 1 ? (
+                          <span className="h-0.5 w-1 py-.5 px-2 bg-primary rounded-full"></span>
+                        ) : (
+                          <span className="h-0.5 w-1 py-.5 px-2 bg-light rounded-full border border-gray-500"></span>
+                        )}
                       </td>
                       <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                         {item.packages_list_is_active ? (

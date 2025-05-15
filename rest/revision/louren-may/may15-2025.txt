@@ -23,7 +23,7 @@ DEVELOPER
         * HTACESS
             -> # PACKAGES - CATEGORY is added
             -> # PACKAGES - LIST is added
-            -> 
+            -> # PACKAGES - DETAILS is added
             -> 
 
         * OTHER FILES

@@ -1,12 +1,12 @@
 <?php
 
-// association with list category
-// function isAssociatedListCategory($object)
-// {
-//     $query = $object->checkAssociationListCategory();
-//     $count = $query->rowCount();
-//     checkExistence($count, "You cannot delete this item because it is already associated with other module.");
-// }
+// association with package details
+function isAssociatedPackageDetails($object)
+{
+    $query = $object->checkAssociationPackageDetails();
+    $count = $query->rowCount();
+    checkExistence($count, "You cannot delete this item because it is already associated with other module.");
+}
 
 // filter by search category
 function checkSearchPackagesCategory($object)

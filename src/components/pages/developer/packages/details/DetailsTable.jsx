@@ -122,7 +122,7 @@ const DetailsTable = ({ setItemEdit }) => {
               <th className=" w-[5rem]">Status</th>
               <th>Package</th>
               <th>Title</th>
-              <th>Details</th>
+              <th >Details</th>
               <th>Highlighted</th>
               <th className="text-right">Actions</th>
             </tr>
@@ -158,7 +158,8 @@ const DetailsTable = ({ setItemEdit }) => {
                         )}
                       </td>
                       <td className="place-content-start">
-                        {item.packages_category_name}, {packages_list_title}
+                        {item.packages_list_title} (
+                        {item.packages_list_category_name})
                       </td>
                       <td className="place-content-start">
                         {item.packages_details_title}
@@ -168,9 +169,9 @@ const DetailsTable = ({ setItemEdit }) => {
                       </td>
                       <td>
                         {item.packages_details_is_highlighted === 1 ? (
-                          <FaCheckCircle className="text-primary text-xs" />
+                          <FaCheckCircle className="text-primary text-base" />
                         ) : (
-                          <IoMdCloseCircle className="text-gray-500 text-xs" />
+                          <IoMdCloseCircle className="text-gray-500 text-lg" />
                         )}
                       </td>
                       <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">

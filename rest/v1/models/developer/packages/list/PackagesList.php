@@ -14,6 +14,7 @@ class PackagesList
     public $packages_list_button_text;
     public $packages_list_is_highlighted;
     public $packages_list_category_name_id;
+    public $packages_list_category_name;
     public $packages_list_created;
     public $packages_list_datetime;
 
@@ -26,12 +27,14 @@ class PackagesList
 
     public $tblPackagesList;
     public $tblPackagesCategory;
+    public $tblPackagesDetails;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblPackagesList = "fbsv2_packages_list";
         $this->tblPackagesCategory = "fbsv2_packages_category";
+        $this->tblPackagesDetails = "fbsv2_packages_details";
     }
 
     public function readAll()
@@ -108,6 +111,7 @@ class PackagesList
             $sql = "insert into {$this->tblPackagesList}";
             $sql .= "(packages_list_is_active, ";
             $sql .= "packages_list_category_name_id, ";
+            $sql .= "packages_list_category_name, ";
             $sql .= "packages_list_title, ";
             $sql .= "packages_list_title_desc, ";
             $sql .= "packages_list_price, ";
@@ -121,6 +125,7 @@ class PackagesList
             $sql .= "packages_list_datetime ) values ( ";
             $sql .= ":packages_list_is_active, ";
             $sql .= ":packages_list_category_name_id, ";
+            $sql .= ":packages_list_category_name, ";
             $sql .= ":packages_list_title, ";
             $sql .= ":packages_list_title_desc, ";
             $sql .= ":packages_list_price, ";
@@ -136,6 +141,7 @@ class PackagesList
             $query->execute([
                 "packages_list_is_active" => $this->packages_list_is_active,
                 "packages_list_category_name_id" => $this->packages_list_category_name_id,
+                "packages_list_category_name" => $this->packages_list_category_name,
                 "packages_list_title" => $this->packages_list_title,
                 "packages_list_title_desc" => $this->packages_list_title_desc,
                 "packages_list_price" => $this->packages_list_price,
@@ -160,6 +166,7 @@ class PackagesList
         try {
             $sql = "update {$this->tblPackagesList} set ";
             $sql .= "packages_list_category_name_id = :packages_list_category_name_id, ";
+            $sql .= "packages_list_category_name = :packages_list_category_name, ";
             $sql .= "packages_list_title_desc = :packages_list_title_desc, ";
             $sql .= "packages_list_title = :packages_list_title, ";
             $sql .= "packages_list_price = :packages_list_price, ";
@@ -174,6 +181,7 @@ class PackagesList
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "packages_list_category_name_id" => $this->packages_list_category_name_id,
+                "packages_list_category_name" => $this->packages_list_category_name,
                 "packages_list_title_desc" => $this->packages_list_title_desc,
                 "packages_list_title" => $this->packages_list_title,
                 "packages_list_price" => $this->packages_list_price,
@@ -265,18 +273,18 @@ class PackagesList
         return $query;
     }
 
-    // public function checkAssociationSubscriberAudienceName()
-    // {
-    //     try {
-    //         $sql = "select subscriber_audience_id from {$this->tblSubscriber} ";
-    //         $sql .= "where subscriber_audience_id = :subscriber_audience_id ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "subscriber_audience_id" => $this->packages_list_aid,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+    public function checkAssociationPackageDetails()
+    {
+        try {
+            $sql = "select packages_details_list_id from {$this->tblPackagesDetails} ";
+            $sql .= "where packages_details_list_id = :packages_list_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_list_aid" => $this->packages_list_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 }

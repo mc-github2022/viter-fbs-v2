@@ -1,10 +1,13 @@
 import { TbWorldOff } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { devNavUrl } from "../helpers/functions-general";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const PageNotFound = () => {
   return (
     <>
+      {/* <Header /> */}
       <div className="flex items-center justify-center flex-col gap-2 h-[70dvh] p-5">
         <span className="text-8xl">
           <TbWorldOff />
@@ -19,6 +22,7 @@ const PageNotFound = () => {
           Home
         </Link>
       </div>
+      {/* <Footer /> */}
     </>
   );
 };

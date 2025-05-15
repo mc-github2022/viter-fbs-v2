@@ -159,6 +159,10 @@ const ModalAddList = ({ itemEdit }) => {
     packages_list_category_name_id: itemEdit
       ? itemEdit.packages_list_category_name_id
       : "",
+    packages_list_category_name: itemEdit
+      ? itemEdit.packages_list_category_name
+      : "",
+
     packages_list_title: itemEdit ? itemEdit.packages_list_title : "",
     packages_list_title_desc: itemEdit ? itemEdit.packages_list_title_desc : "",
     packages_list_price: itemEdit ? itemEdit.packages_list_price : "",
@@ -216,6 +220,7 @@ const ModalAddList = ({ itemEdit }) => {
               const data = {
                 ...values,
                 packages_list_category_name_id: packageListId,
+                packages_list_category_name: packageList,
                 packages_list_is_highlighted: isCheck,
               };
 
@@ -249,7 +254,7 @@ const ModalAddList = ({ itemEdit }) => {
                             ) : packageListData?.count > 0 ? (
                               packageListData?.data.map((item, key) => (
                                 <div
-                                  className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-sm text-dark"
+                                  className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-xs text-dark"
                                   value={item.packages_category_aid}
                                   key={key}
                                   onClick={() => handleClickPackageList(item)}

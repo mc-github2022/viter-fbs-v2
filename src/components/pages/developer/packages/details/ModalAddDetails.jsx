@@ -26,18 +26,18 @@ const ModalAddDetails = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [loading, setLoading] = React.useState(false);
-  const [isCheck, setIsCheck] = React.useState(false);
-  const [isCheckClick, setIsCheckClick] = React.useState(false);
+  const [isCheck, setIsCheck] = React.useState(true);
+  const [isCheckClick, setIsCheckClick] = React.useState(true);
 
   const [onFocusPackagesList, setOnFocusPackagesList] = React.useState(false);
   const [propertyPackageListValue, setPropertyPackageListValue] =
     React.useState(
       itemEdit
-        ? `${itemEdit.packages_category_name}, ${itemEdit.packages_list_title}`
+        ? `${itemEdit.packages_list_title} (${itemEdit.packages_list_category_name})`
         : ""
     ); // to get the data from table when update
   const [packageList, setPackageList] = React.useState(
-    itemEdit ? itemEdit.packages_category_name : ""
+    itemEdit ? itemEdit.packages_list_title : ""
   );
   const [packageListId, setPackageListId] = React.useState(
     itemEdit ? itemEdit.packages_details_list_id : ""
@@ -51,7 +51,7 @@ const ModalAddDetails = ({ itemEdit }) => {
   };
 
   const handleIsCheckClick = () => {
-    setIsCheckClick(!isCheckClick);
+    setIsCheckClick(isCheckClick);
     console.log(isCheckClick);
   };
 
@@ -80,9 +80,11 @@ const ModalAddDetails = ({ itemEdit }) => {
   // console.log(packageList);
 
   const handleClickPackageList = (item) => {
-    setPackageList(item.packages_category_name);
-    setPropertyPackageListValue(`${item.packages_category_name}`);
-    setPackageListId(item.packages_category_aid);
+    setPackageList(item.packages_list_title);
+    setPropertyPackageListValue(
+      `${item.packages_list_title} (${item.packages_list_category_name})`
+    );
+    setPackageListId(item.packages_list_aid);
     setOnFocusPackagesList(false);
   };
 
@@ -157,7 +159,7 @@ const ModalAddDetails = ({ itemEdit }) => {
   }, []);
 
   React.useEffect(() => {
-    setIsCheck(itemEdit ? itemEdit.packages_details_is_highlighted : false);
+    setIsCheck(itemEdit ? itemEdit.packages_details_is_highlighted : true);
   }, []);
 
   const initVal = {
@@ -170,7 +172,7 @@ const ModalAddDetails = ({ itemEdit }) => {
   };
 
   const yupSchema = Yup.object({
-    // packages_details_title: Yup.string().required("Required"),
+    packages_details_title: Yup.string().required("Required"),
   });
 
   return (
@@ -231,13 +233,13 @@ const ModalAddDetails = ({ itemEdit }) => {
                             ) : packageListData?.count > 0 ? (
                               packageListData?.data.map((item, key) => (
                                 <div
-                                  className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-sm text-dark"
+                                  className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-xs text-dark"
                                   value={item.packages_list_aid}
                                   key={key}
                                   onClick={() => handleClickPackageList(item)}
                                 >
-                                  {item.packages_category_name},
-                                  {item.packages_list_title}
+                                  {item.packages_list_title} (
+                                  {item.packages_list_category_name})
                                 </div>
                               ))
                             ) : (
@@ -262,6 +264,7 @@ const ModalAddDetails = ({ itemEdit }) => {
                           label="Details"
                           type="text"
                           name="packages_details_list"
+                          className="h-56"
                           disabled={mutation.isPending}
                         />
                       </div>

@@ -158,8 +158,8 @@ const Footer = () => {
                 <p className="font-semibold">QUICKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   {footerData?.data.map((item, key) => (
-                    <>
-                      <li key={key}>
+                    <div key={key}>
+                      <li>
                         <a href={`${devNavUrl}${item.footer_quicklink_link_a}`}>
                           {item.footer_quicklink_a}
                         </a>
@@ -184,7 +184,7 @@ const Footer = () => {
                           {item.footer_quicklink_e}
                         </a>
                       </li>
-                    </>
+                    </div>
                   ))}
                 </ul>
               </div>
@@ -194,8 +194,8 @@ const Footer = () => {
           <div className="py-10 relative z-[1]">
             <div className="wrapper text-center lg:text-left lg:flex lg:justify-between items-center">
               {footerData?.data.map((item, key) => (
-                <>
-                  <p className="text-xs mb-4 lg:mb-0" key={key}>
+                <div key={key}>
+                  <p className="text-xs mb-4 lg:mb-0">
                     Copyright {copyrightYear()} | {item.footer_copyright}
                   </p>
                   <p className="text-xs">
@@ -211,7 +211,7 @@ const Footer = () => {
                       {item.footer_eula_text}
                     </a>
                   </p>
-                </>
+                </div>
               ))}
             </div>
           </div>

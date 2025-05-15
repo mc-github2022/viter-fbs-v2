@@ -23,6 +23,7 @@ if (array_key_exists("packages_listId", $_GET)) {
   $packages_list->packages_list_button_text = $data["packages_list_button_text"];
   $packages_list->packages_list_is_highlighted = $data["packages_list_is_highlighted"];
   $packages_list->packages_list_category_name_id = $data["packages_list_category_name_id"];
+  $packages_list->packages_list_category_name = $data["packages_list_category_name"];
   $packages_list->packages_list_datetime = date("Y-m-d H:i:s");
   checkId($packages_list->packages_list_aid);
 
@@ -37,7 +38,7 @@ if (array_key_exists("packages_listId", $_GET)) {
     $packages_list,
     $packages_list_title_old,
     $packages_list->packages_list_title,
-    $subscriber_audience_id_old,
+    $packages_list_category_name_id_old,
     $packages_list->packages_list_category_name_id,
 
   );

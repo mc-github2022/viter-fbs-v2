@@ -20,6 +20,7 @@ $packages_list->packages_list_other_details = $data["packages_list_other_details
 $packages_list->packages_list_button_text = $data["packages_list_button_text"];
 $packages_list->packages_list_is_highlighted = $data["packages_list_is_highlighted"];
 $packages_list->packages_list_category_name_id = $data["packages_list_category_name_id"];
+$packages_list->packages_list_category_name = $data["packages_list_category_name"];
 $packages_list->packages_list_created = date("Y-m-d H:i:s");
 $packages_list->packages_list_datetime = date("Y-m-d H:i:s");
 

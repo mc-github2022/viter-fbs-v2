@@ -11,7 +11,7 @@ if (array_key_exists("packages_listId", $_GET)) {
   // get data
   $packages_list->packages_list_aid = $_GET['packages_listId'];
   checkId($packages_list->packages_list_aid);
-  // isAssociatedSubscriberpackages_listName($packages_list);
+  isAssociatedPackageDetails($packages_list);
 
   $query = checkDelete($packages_list);
 
