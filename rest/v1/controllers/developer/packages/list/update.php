@@ -29,19 +29,19 @@ if (array_key_exists("packages_listId", $_GET)) {
 
 
   //checks current data to avoid same entries from being updated
-  $packages_list_title_old = checkIndex($data, 'packages_list_title_old');
-  $packages_list_category_name_id_old = checkIndex($data, 'packages_list_category_name_id_old');
+  // $packages_list_title_old = checkIndex($data, 'packages_list_title_old');
+  // $packages_list_category_name_id_old = checkIndex($data, 'packages_list_category_name_id_old');
 
   // validate if existing category with the same title
   // category and title cannot be the same
-  compareTwoValuesForTitleAndCategory(
-    $packages_list,
-    $packages_list_title_old,
-    $packages_list->packages_list_title,
-    $packages_list_category_name_id_old,
-    $packages_list->packages_list_category_name_id,
+  // compareTwoValuesForTitleAndCategory(
+  //   $packages_list,
+  //   $packages_list_title_old,
+  //   $packages_list->packages_list_title,
+  //   $packages_list_category_name_id_old,
+  //   $packages_list->packages_list_category_name_id,
 
-  );
+  // );
 
   // update
   $query = checkUpdate($packages_list);

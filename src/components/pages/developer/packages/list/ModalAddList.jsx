@@ -183,10 +183,10 @@ const ModalAddList = ({ itemEdit }) => {
       ? itemEdit.packages_list_is_highlighted
       : "",
 
-    packages_list_title_old: itemEdit ? itemEdit.packages_list_title : "",
-    packages_list_category_name_id_old: itemEdit
-      ? itemEdit.packages_list_category_name_id
-      : "",
+    // packages_list_title_old: itemEdit ? itemEdit.packages_list_title : "",
+    // packages_list_category_name_id_old: itemEdit
+    //   ? itemEdit.packages_list_category_name_id
+    //   : "",
   };
 
   const yupSchema = Yup.object({

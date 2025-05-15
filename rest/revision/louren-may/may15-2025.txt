@@ -35,7 +35,7 @@ DEVELOPER
         * DB BACKUP
             -> rest/db-backup/fbsv2_packages_category.sql
             -> rest/db-backup/fbsv2_packages_list.sql
-            ->
+            -> rest/db-backup/fbsv2_packages_details.sql
             ->
             ->
             ->

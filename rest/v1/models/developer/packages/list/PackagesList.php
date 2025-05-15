@@ -234,24 +234,24 @@ class PackagesList
         return $query;
     }
 
-    public function checkName()
-    {
-        try {
-            $sql = "select * ";
-            $sql .= "from ";
-            $sql .= "{$this->tblPackagesList} ";
-            $sql .= "where packages_list_title = :packages_list_title ";
-            $sql .= "and packages_list_category_name_id = :packages_list_category_name_id ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "packages_list_title" => $this->packages_list_title,
-                "packages_list_category_name_id" => $this->packages_list_category_name_id,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
+    // public function checkEmail()
+    // {
+    //     try {
+    //         $sql = "select * ";
+    //         $sql .= "from ";
+    //         $sql .= "{$this->tblPackagesList} ";
+    //         $sql .= "where packages_list_title = :packages_list_title ";
+    //         $sql .= "and packages_list_category_name_id = :packages_list_category_name_id ";
+    //         $query = $this->connection->prepare($sql);
+    //         $query->execute([
+    //             "packages_list_title" => $this->packages_list_title,
+    //             "packages_list_category_name_id" => $this->packages_list_category_name_id,
+    //         ]);
+    //     } catch (PDOException $ex) {
+    //         $query = false;
+    //     }
+    //     return $query;
+    // }
 
     //  search for packages category
     public function searchPackagesCategory()

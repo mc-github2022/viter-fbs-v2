@@ -16,10 +16,10 @@ function checkSearchPackagesCategory($object)
     return $query;
 }
 
-// compare two values
-function compareTwoValuesForTitleAndCategory($object, $title_old, $title, $id_old, $id)
-{
-    if (strtolower($title_old) !=  strtolower($title) || strtolower($id_old) !=  strtolower($id)) {
-        isEmailExist($object, $title);
-    }
-}
+// // compare two values
+// function compareTwoValuesForTitleAndCategory($object, $title_old, $title, $id_old, $id)
+// {
+//     if (strtolower($title_old) !=  strtolower($title) || strtolower($id_old) !=  strtolower($id)) {
+//         isEmailExist($object, $title);
+//     }
+// }
