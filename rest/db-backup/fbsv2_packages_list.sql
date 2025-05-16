@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 04:12 PM
+-- Generation Time: May 16, 2025 at 08:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -75,7 +75,13 @@ INSERT INTO `fbsv2_packages_list` (`packages_list_aid`, `packages_list_title`, `
 (42, 'Corporations', 'Small Business', '₱20,000 / Month', '', '', '', '', 'Choose Plan', 0, '12', 'Bookkeeping / Compliance', 1, '2025-05-15 21:51:14', '2025-05-15 21:51:14'),
 (43, 'Corporations', 'Medium Business', '₱35,000 / Month', '', '', '', '', 'Choose Plan', 0, '12', 'Bookkeeping / Compliance', 1, '2025-05-15 21:55:01', '2025-05-15 22:07:02'),
 (44, 'Corporations', 'Plus', '₱60,000 / Month', '', '', '', '', 'Choose Plan', 0, '12', 'Bookkeeping / Compliance', 1, '2025-05-15 21:59:09', '2025-05-15 22:07:13'),
-(45, 'Corporations', 'Premium', '₱85,000 / Month', '', '', '', '', 'Choose Plan', 0, '12', 'Bookkeeping / Compliance', 1, '2025-05-15 22:08:33', '2025-05-15 22:08:33');
+(45, 'Corporations', 'Premium', '₱85,000 / Month', '', '', '', '', 'Choose Plan', 0, '12', 'Bookkeeping / Compliance', 1, '2025-05-15 22:08:33', '2025-05-15 22:08:33'),
+(46, 'Part-Time', '', '$10 / Hour', '(20 hours per week)', '', '', 'Get dedicated virtual assistant support for half the week, perfect for business needing flexible help with task and projects without the commitment of full-time hours.', 'Choose Plan', 0, '13', 'Administrative', 1, '2025-05-16 09:45:06', '2025-05-16 09:45:06'),
+(47, 'Full-Time', '', '$8 / Hour', '(40 hours per week)', '', '', 'Enjoy full-time virtual assistance, providing your business with consistent, reliable support to manage tasks, streamline operations, and increase productivity throughout the week at a more cost-effective rate.', 'Choose Plan', 1, '13', 'Administrative', 1, '2025-05-16 09:45:39', '2025-05-16 09:45:39'),
+(48, 'Part-Time', '', '$10 / Hour', '(20 hours per week)', '', '', 'Get dedicated virtual assistant support for half the week, perfect for business needing flexible help with task and projects without the commitment of full-time hours.', 'Choose Plan', 0, '14', 'Business Support', 1, '2025-05-16 09:52:47', '2025-05-16 09:52:47'),
+(49, 'Full-Time', '', '$8 / Hour', '(40 hours per week)', '', '', 'Enjoy full-time virtual assistance, providing your business with consistent, reliable support to manage tasks, streamline operations, and increase productivity throughout the week at a more cost-effective rate.', 'Choose Plan', 1, '14', 'Business Support', 1, '2025-05-16 09:53:23', '2025-05-16 09:53:23'),
+(50, 'Part-Time', '', '$10 / Hour', '(20 hours per week)', '', '', 'Get dedicated virtual assistant support for half the week, perfect for business needing flexible help with task and projects without the commitment of full-time hours.', 'Choose Plan', 0, '15', 'Marketing', 1, '2025-05-16 10:01:47', '2025-05-16 10:01:47'),
+(51, 'Full-Time', '', '$8 / Hour', '(40 hours per week)', '', '', 'Enjoy full-time virtual assistance, providing your business with consistent, reliable support to manage tasks, streamline operations, and increase productivity throughout the week at a more cost-effective rate.', 'Choose Plan', 1, '15', 'Marketing', 1, '2025-05-16 10:02:27', '2025-05-16 10:02:27');
 
 --
 -- Indexes for dumped tables
@@ -95,7 +101,7 @@ ALTER TABLE `fbsv2_packages_list`
 -- AUTO_INCREMENT for table `fbsv2_packages_list`
 --
 ALTER TABLE `fbsv2_packages_list`
-  MODIFY `packages_list_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `packages_list_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

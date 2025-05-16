@@ -4,14 +4,22 @@ import OtherUserForgetPassword from "@/components/pages/access/user-other/OtherU
 import OtherUserLogin from "@/components/pages/access/user-other/OtherUserLogin";
 import { devNavUrl } from "../components/helpers/functions-general";
 import Banner from "../components/pages/developer/dashHome/banner/Banner";
+import Home from "../components/pages/developer/dashHome/Home";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
+import Gallery from "../components/pages/developer/gallery/Gallery";
 import IndustryTestimonial from "../components/pages/developer/industry-testimonial/IndustryTestimonial";
 import LcssBatches from "../components/pages/developer/lcss-batches/LcssBatches";
 import Notification from "../components/pages/developer/notification/Notification";
 import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
+import Category from "../components/pages/developer/packages/category/Category";
+import Details from "../components/pages/developer/packages/details/Details";
+import List from "../components/pages/developer/packages/list/List";
+import Partners from "../components/pages/developer/partners/Partners";
 import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
 import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
+import HrInformationSystem from "../components/pages/developer/services/web-application/hr-information-system/HrInformationSystem";
+import WebApplicationAdmin from "../components/pages/developer/services/web-application/WebApplicationAdmin";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
 import Audience from "../components/pages/developer/subscribers/audience/Audience";
 import MailerLog from "../components/pages/developer/subscribers/mailer-log/MailerLog";
@@ -22,10 +30,16 @@ import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTes
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
-import Partners from "../components/pages/developer/partners/Partners";
-import Gallery from "../components/pages/developer/gallery/Gallery";
 
 export const routesAdmin = [
+  {
+    path: `${devNavUrl}/home`,
+    element: (
+      <ProtectedRouteOther>
+        <Home />
+      </ProtectedRouteOther>
+    ),
+  },
   {
     path: `${devNavUrl}/home-insights`,
     element: (
@@ -191,6 +205,46 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <MailerLog />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application`,
+    element: (
+      <ProtectedRouteOther>
+        <WebApplicationAdmin />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application/hris`,
+    element: (
+      <ProtectedRouteOther>
+        <HrInformationSystem />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/packages/category`,
+    element: (
+      <ProtectedRouteOther>
+        <Category />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/packages/list`,
+    element: (
+      <ProtectedRouteOther>
+        <List />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/packages/details`,
+    element: (
+      <ProtectedRouteOther>
+        <Details />
       </ProtectedRouteOther>
     ),
   },

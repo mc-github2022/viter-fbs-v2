@@ -17,6 +17,10 @@ import * as IoIcons from "react-icons/io";
 import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
+import FetchingSpinner from "./spinners/FetchingSpinner";
+import NoData from "./spinners/NoData";
+import TableLoading from "./spinners/TableLoading";
+import LoaderHeader from "./LoaderHeader";
 
 const icons = {
   ...FaIcons,
@@ -43,6 +47,18 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
     "specialOffers" // key
   );
 
+  const {
+    isFetching: isFetchingPackagesCategory,
+    error: errorPackagesCategory,
+    isLoading: isLoadingPackagesCategory,
+    status: statusPackagesCategory,
+    data: packagesCategoryData,
+  } = useQueryData(
+    "/v1/packages-category", // endpoint
+    "get", // method
+    "packages-category" // key
+  );
+
   const handleClose = () => {
     setToggleMenu(false);
     console.log("clicked");
@@ -65,14 +81,17 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
     <>
       <div
         onClick={handleClose}
-        className="lg:bg-dark lg:bg-opacity-25 fixed left-0 w-full lg:h-screen z-[99] lg:backdrop-blur-lg">
+        className="lg:bg-dark lg:bg-opacity-25 fixed left-0 w-full lg:h-screen z-[99] lg:backdrop-blur-lg"
+      >
         <div className={`${toggleMenu ? "active" : ""} megaMenu`}>
-          <div className="holder w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl overflow-y-auto">
+          <div className="holder w-full 2xl:w-[1286px] mx-auto  bg-light rounded-br-xl rounded-bl-xl shadow-2xl overflow-y-auto relative">
+            {isLoadingPackagesCategory && <LoaderHeader />}
             <div
               onClick={(e) => {
                 e.stopPropagation();
               }}
-              className="pt-8 px-8 pb-8 rounded-br-xl rounded-bl-xl ">
+              className="pt-8 px-8 pb-8 rounded-br-xl rounded-bl-xl "
+            >
               <div className="backArrow absolute top-2 right-9 md:hidden">
                 <button>
                   <TiArrowBackOutline
@@ -85,7 +104,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                 <div className="menuItem mb-3 order-1">
                   <h2
                     className="font-semibold mb-2 cursor-pointer lg:cursor-default md:pointer-events-none flex text-primary"
-                    onClick={() => handleServiceDropdown("webapp")}>
+                    onClick={() => handleServiceDropdown("webapp")}
+                  >
                     <Globe className="text-primary" />
                     <span className="mx-2">WEB APPLICATIONS</span>
                   </h2>
@@ -95,7 +115,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                         ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                         : "h-0"
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                  >
                     <li>
                       <Link
                         to={`${devNavUrl}/webapp-hris`}
@@ -103,7 +124,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "hris"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         HR Information System
                       </Link>
                     </li>
@@ -114,7 +136,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "payroll"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Online Payroll System
                       </Link>
                     </li>
@@ -125,7 +148,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "enrollment"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         School Enrollment System
                       </Link>
                     </li>
@@ -136,7 +160,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "online-payment"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Online Payment Integration
                       </Link>
                     </li>
@@ -147,7 +172,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "donation"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Online Donation System
                       </Link>
                     </li>
@@ -158,7 +184,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "inventory"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Asset Inventory System
                       </Link>
                     </li>
@@ -167,7 +194,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                 <div className="menuItem mb-3 order-2 xl:order-5">
                   <h2
                     className="font-semibold  mb-2 cursor-pointer lg:cursor-default md:pointer-events-none flex text-primary"
-                    onClick={() => handleServiceDropdown("webDev")}>
+                    onClick={() => handleServiceDropdown("webDev")}
+                  >
                     <Globe className="text-primary" />{" "}
                     <span className="mx-2">WEB DESIGN AND DEVELOPMENT </span>
                   </h2>
@@ -177,7 +205,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                         ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                         : "h-0 md:h-auto"
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                  [&>li]:lg:!mb-2`}>
+                  [&>li]:lg:!mb-2`}
+                  >
                     <li>
                       <Link
                         to={`${devNavUrl}/web-wordpress`}
@@ -185,7 +214,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "cms"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         WordPress CMS Website
                       </Link>
                     </li>
@@ -196,7 +226,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "singlePage Website"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Single Page Website
                       </Link>
                     </li>
@@ -207,7 +238,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "web-design"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Web Design
                       </Link>
                     </li>
@@ -216,7 +248,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                 <div className="menuItem mb-3 order-3  ">
                   <h2
                     className="font-semibold  mb-2 cursor-pointer lg:cursor-default md:pointer-events-none flex text-primary"
-                    onClick={() => handleServiceDropdown("accounting")}>
+                    onClick={() => handleServiceDropdown("accounting")}
+                  >
                     <Calculator className="text-primary" />{" "}
                     <span className="mx-2">ACCOUNTING SOLUTIONS </span>
                   </h2>
@@ -226,7 +259,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                         ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                         : "h-0"
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                  >
                     <li>
                       <Link
                         to={`${devNavUrl}/accounting-business-registration`}
@@ -234,7 +268,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "business-reg"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Business Registration
                       </Link>
                     </li>
@@ -246,7 +281,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "bookkeeping"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Bookkeeping / Compliance
                       </Link>
                     </li>
@@ -255,7 +291,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                 <div className="menuItem mb-3 order-4 ">
                   <h2
                     className="font-semibold  mb-2 cursor-pointer lg:cursor-default md:pointer-events-none flex text-primary"
-                    onClick={() => handleServiceDropdown("va")}>
+                    onClick={() => handleServiceDropdown("va")}
+                  >
                     <Headset />{" "}
                     <span className="mx-2">VIRTUAL ASSISTANT SOLUTIONS </span>
                   </h2>
@@ -265,7 +302,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                         ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                         : "h-0"
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                  >
                     <li>
                       <Link
                         to={`${devNavUrl}/va-administrative`}
@@ -273,7 +311,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "va-administrative"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Administrative
                       </Link>
                     </li>
@@ -284,7 +323,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "va-business-support"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Business Support
                       </Link>
                     </li>
@@ -295,7 +335,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "va-marketing"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Marketing
                       </Link>
                     </li>
@@ -314,7 +355,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                 <div className="menuItem mb-3 order-5 lg:order-2">
                   <h2
                     className="font-semibold  mb-2 cursor-pointer lg:cursor-default md:pointer-events-none flex text-primary"
-                    onClick={() => handleServiceDropdown("lcss")}>
+                    onClick={() => handleServiceDropdown("lcss")}
+                  >
                     <GraduationCap />{" "}
                     <span className="mx-2">LEARNING CENTER SOLUTIONS</span>
                   </h2>
@@ -324,7 +366,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                         ? "h-auto bg-customGray ml-0 p-4 text-[#615d5d]"
                         : "h-0"
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
-                    [&>li]:lg:!mb-2`}>
+                    [&>li]:lg:!mb-2`}
+                  >
                     <li>
                       <Link
                         to={`${devNavUrl}/college-ojt`}
@@ -332,7 +375,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "College OJT"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         College On-The-Job Training
                       </Link>
                     </li>
@@ -343,7 +387,8 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "Work Immersion"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         High School Work Immersion
                       </Link>
                     </li>
@@ -354,71 +399,84 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                           pageName === "Continuing Study"
                             ? "text-primary !cursor-default"
                             : ""
-                        }`}>
+                        }`}
+                      >
                         Continuing Studies
                       </Link>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div
-                className="bg-customGray py-2 grid place-items-center items-center cursor-pointer lg:hidden"
-                onClick={handleSpecialOffer}>
-                <h3 className="text-xl font-bold flex items-center gap-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]">
-                  Special Offer <TiGift className="text-xl text-secondary" />
-                </h3>
-              </div>
-              <div
-                className={`${
-                  specialOffer ? "!right-0" : ""
-                } absolute top-0 transition-all right-[-100%] lg:static specialOffer bg-customGray p-3 rounded-2xl w-full`}>
-                <div className="backArrow absolute top-2 right-9 md:hidden">
-                  <button>
-                    <TiArrowBackOutline
-                      className="text-2xl text-[gray] "
-                      onClick={handleSpecialOffer}
-                    />
-                  </button>
-                </div>
-                <h3 className="text-xl font-semibold mb-4 text-center md:text-left">
-                  Special Offer
-                </h3>
-                <div className="wrapper grid grid-cols-1 lg:grid-cols-5 gap-3">
-                  {specialOffersData?.data.map((item, key) => {
-                    const SelectedIcon = item.special_offers_icons
-                      ? icons[item.special_offers_icons]
-                      : null;
 
-                    return (
-                      <Link
-                        key={key}
-                        to={`${devNavUrl}${item.special_offers_link}`}>
-                        <div className="offerItem bg-light p-2 rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
-                          <div>
-                            <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
-                              <li>
-                                <span className="text-[32px] text-primary group-hover:text-light">
-                                  {SelectedIcon ? (
-                                    <SelectedIcon />
-                                  ) : (
-                                    "No icon selected"
-                                  )}
-                                </span>
-                              </li>
-                              <li className="text-xs w-[120px]">
-                                {item.special_offers_services}
-                              </li>
-                            </ul>
-                            <p className="font-bold text-dark group-hover:text-light">
-                              {item.special_offers_price}
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
+              {isLoading || isFetching ? (
+                <TableLoading cols={3} count={15} />
+              ) : (
+                <>
+                  <div
+                    className="bg-customGray py-2 grid place-items-center items-center cursor-pointer lg:hidden"
+                    onClick={handleSpecialOffer}
+                  >
+                    <h3 className="text-xl font-bold flex items-center gap-3 bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]">
+                      Special Offer{" "}
+                      <TiGift className="text-xl text-secondary" />
+                    </h3>
+                  </div>
+                  <div
+                    className={`${
+                      specialOffer ? "!right-0" : ""
+                    } absolute top-0 transition-all right-[-100%] lg:static specialOffer bg-customGray p-3 rounded-2xl w-full `}
+                  >
+                    <div className="backArrow absolute top-2 right-9 md:hidden">
+                      <button>
+                        <TiArrowBackOutline
+                          className="text-2xl text-[gray] "
+                          onClick={handleSpecialOffer}
+                        />
+                      </button>
+                    </div>
+
+                    <h3 className="text-xl font-semibold mb-4 text-center md:text-left">
+                      Special Offer
+                    </h3>
+                    <div className="wrapper grid grid-cols-1 lg:grid-cols-5 gap-3 relative">
+                      {specialOffersData?.data.map((item, key) => {
+                        const SelectedIcon = item.special_offers_icons
+                          ? icons[item.special_offers_icons]
+                          : null;
+
+                        return (
+                          <Link
+                            key={key}
+                            to={`${devNavUrl}${item.special_offers_link}`}
+                          >
+                            <div className="offerItem bg-light p-2 rounded-xl grid place-items-center hover:bg-primary group-hover:text-light group">
+                              <div>
+                                <ul className="logoAndTitle flex gap-2 items-center text-dark mb-3 group-hover:text-light">
+                                  <li>
+                                    <span className="text-[32px] text-primary group-hover:text-light">
+                                      {SelectedIcon ? (
+                                        <SelectedIcon />
+                                      ) : (
+                                        "No icon selected"
+                                      )}
+                                    </span>
+                                  </li>
+                                  <li className="text-xs w-[120px]">
+                                    {item.special_offers_services}
+                                  </li>
+                                </ul>
+                                <p className="font-bold text-dark group-hover:text-light">
+                                  {item.special_offers_price}
+                                </p>
+                              </div>
+                            </div>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 04:12 PM
+-- Generation Time: May 16, 2025 at 08:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -164,7 +164,37 @@ INSERT INTO `fbsv2_packages_details` (`packages_details_aid`, `packages_details_
 (126, 1, '45', 'More than 300 Invoices or Official Receipts (ORs) Issued (Income/Expenses)', '', 1, '2025-05-15 22:09:06', '2025-05-15 22:09:06'),
 (127, 1, '45', 'Annual Revenue of up to P3,000,000', '', 1, '2025-05-15 22:09:16', '2025-05-15 22:09:16'),
 (128, 1, '45', 'Filing of Tax Returns', '', 1, '2025-05-15 22:09:27', '2025-05-15 22:09:27'),
-(129, 1, '45', 'Monthly Financial Reports', '', 1, '2025-05-15 22:09:35', '2025-05-15 22:09:35');
+(129, 1, '45', 'Monthly Financial Reports', '', 1, '2025-05-15 22:09:35', '2025-05-15 22:09:35'),
+(130, 1, '46', 'Employee Records', '', 1, '2025-05-16 09:45:54', '2025-05-16 09:45:54'),
+(131, 1, '46', 'Task Timer', '', 1, '2025-05-16 09:46:03', '2025-05-16 09:46:03'),
+(132, 1, '46', 'Announcement', '', 1, '2025-05-16 09:46:12', '2025-05-16 09:46:12'),
+(133, 1, '47', 'Employee Records', '', 1, '2025-05-16 09:46:22', '2025-05-16 09:46:22'),
+(134, 1, '47', 'Task Timer', '', 1, '2025-05-16 09:46:31', '2025-05-16 09:46:31'),
+(135, 1, '47', 'Announcement', '', 1, '2025-05-16 09:46:41', '2025-05-16 09:46:41'),
+(136, 1, '48', 'Lead Management', '', 1, '2025-05-16 09:53:38', '2025-05-16 09:53:38'),
+(137, 1, '48', 'Administrative & Financial Management', '', 1, '2025-05-16 09:53:48', '2025-05-16 09:53:48'),
+(138, 1, '48', 'Operations & Project Management', '', 1, '2025-05-16 09:53:59', '2025-05-16 09:53:59'),
+(139, 1, '48', 'Customer Engagement & Relationship Building', '', 1, '2025-05-16 09:54:10', '2025-05-16 09:54:10'),
+(140, 1, '48', 'Customer Support & Communication', '', 1, '2025-05-16 09:54:19', '2025-05-16 09:54:19'),
+(141, 1, '48', 'Data & Reporting', '', 1, '2025-05-16 09:54:27', '2025-05-16 09:54:27'),
+(142, 1, '48', 'Document & Communication Management', '', 1, '2025-05-16 09:54:36', '2025-05-16 09:54:36'),
+(143, 1, '49', 'Lead Management', '', 1, '2025-05-16 09:55:22', '2025-05-16 09:55:22'),
+(144, 1, '49', 'Administrative & Financial Management', '', 1, '2025-05-16 09:55:32', '2025-05-16 09:55:32'),
+(145, 1, '49', 'Operations & Project Management', '', 1, '2025-05-16 09:55:44', '2025-05-16 09:55:44'),
+(146, 1, '49', 'Customer Engagement & Relationship Building', '', 1, '2025-05-16 09:55:53', '2025-05-16 09:55:53'),
+(147, 1, '49', 'Customer Support & Communication', '', 1, '2025-05-16 09:56:02', '2025-05-16 09:56:02'),
+(148, 1, '49', 'Data & Reporting', '', 1, '2025-05-16 09:56:16', '2025-05-16 09:56:16'),
+(149, 1, '49', 'Document & Communication Management', '', 1, '2025-05-16 09:56:25', '2025-05-16 09:56:25'),
+(150, 1, '50', 'Digital Marketing & Strategy', '', 1, '2025-05-16 10:02:43', '2025-05-16 10:02:43'),
+(151, 1, '50', 'Design & Visual Content', '', 1, '2025-05-16 10:02:52', '2025-05-16 10:02:52'),
+(152, 1, '50', 'Writing, Editing, & Proofing', '', 1, '2025-05-16 10:03:03', '2025-05-16 10:03:03'),
+(153, 1, '50', 'Content Creation & Management', '', 1, '2025-05-16 10:03:12', '2025-05-16 10:03:12'),
+(154, 1, '50', 'Media Production', '', 1, '2025-05-16 10:03:22', '2025-05-16 10:03:22'),
+(155, 1, '51', 'Digital Marketing & Strategy', '', 1, '2025-05-16 10:03:34', '2025-05-16 10:03:34'),
+(156, 1, '51', 'Design & Visual Content', '', 1, '2025-05-16 10:03:43', '2025-05-16 10:03:43'),
+(157, 1, '51', 'Writing, Editing, & Proofing', '', 1, '2025-05-16 10:03:51', '2025-05-16 10:03:51'),
+(158, 1, '51', 'Content Creation & Management', '', 1, '2025-05-16 10:04:01', '2025-05-16 10:04:01'),
+(159, 1, '51', 'Media Production', '', 1, '2025-05-16 10:04:10', '2025-05-16 10:04:10');
 
 --
 -- Indexes for dumped tables
@@ -184,7 +214,7 @@ ALTER TABLE `fbsv2_packages_details`
 -- AUTO_INCREMENT for table `fbsv2_packages_details`
 --
 ALTER TABLE `fbsv2_packages_details`
-  MODIFY `packages_details_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `packages_details_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

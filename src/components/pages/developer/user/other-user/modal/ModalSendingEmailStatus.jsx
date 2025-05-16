@@ -8,7 +8,11 @@ const ModalSendingEmailStatus = ({ queryCount, recipientList }) => {
   let percentageValue = (sucessCount / totalCount) * 100;
 
   return (
-    <ModalAddWrapper className={"max-w-[20rem] h-fit p-5"}>
+    <ModalAddWrapper
+      className={"max-w-[20rem] h-fit p-5"}
+      center={`justify-center`}
+      placeItemsCenter={`place-items-center`}
+    >
       <div className="">
         <div className="flex flex-col items-center gap-7 my-6">
           <div className="flex items-center gap-5">
