@@ -409,7 +409,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
               </div>
 
               {isLoading || isFetching ? (
-                <TableLoading cols={3} count={15} />
+                <TableLoading cols={3} count={18} />
               ) : (
                 <>
                   <div
