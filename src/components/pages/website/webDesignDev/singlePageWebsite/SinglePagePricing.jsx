@@ -68,12 +68,12 @@ const SinglePagePricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "Single Page Website"
-    )?.packages_category_name || "Single Page Website";
+      (item) => item.packages_category_url === "web-singlepage"
+    )?.packages_category_url || "web-singlepage";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {

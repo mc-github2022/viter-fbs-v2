@@ -68,12 +68,12 @@ const WebDesignPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "Web Design"
-    )?.packages_category_name || "Web Design";
+      (item) => item.packages_category_url === "web-design"
+    )?.packages_category_url || "web-design";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {

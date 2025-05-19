@@ -67,12 +67,12 @@ const VaMarketingPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "Marketing"
-    )?.packages_category_name || "Marketing";
+      (item) => item.packages_category_url === "va-marketing"
+    )?.packages_category_url || "va-marketing";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {

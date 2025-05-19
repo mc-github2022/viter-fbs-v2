@@ -99,12 +99,12 @@ const BookkeepingPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "Bookkeeping / Compliance"
-    )?.packages_category_name || "Bookkeeping / Compliance";
+      (item) => item.packages_category_url === "accounting-bookkeeping"
+    )?.packages_category_url || "accounting-bookkeeping";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var bookkeepingSliderSettings = {

@@ -68,12 +68,12 @@ const ServiceInventoryPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "Asset Inventory System"
-    )?.packages_category_name || "Asset Inventory System";
+      (item) => item.packages_category_url === "webapp-asset-inventory"
+    )?.packages_category_url || "webapp-asset-inventory";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {

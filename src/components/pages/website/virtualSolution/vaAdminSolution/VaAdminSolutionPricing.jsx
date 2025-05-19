@@ -67,12 +67,12 @@ const VaAdminSolutionPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "Administrative"
-    )?.packages_category_name || "Administrative";
+      (item) => item.packages_category_url === "va-administrative"
+    )?.packages_category_url || "va-administrative";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {

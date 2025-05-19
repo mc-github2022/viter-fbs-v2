@@ -68,12 +68,12 @@ const ServiceOnlinePayPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "Online Payment Integration"
-    )?.packages_category_name || "Online Payment Integration";
+      (item) => item.packages_category_url === "webapp-onlinepayment"
+    )?.packages_category_url || "webapp-onlinepayment";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {
@@ -166,7 +166,7 @@ const ServiceOnlinePayPricing = ({ pageName }) => {
               Affordable Pricing Plan
             </h3>
           </div>
-            <div className="wrapper ">
+          <div className="wrapper ">
             {filteredItems.length > 3 ? (
               <Slider ref={sliderRef} {...eventsSliderSettings}>
                 {filteredItems.map((price, key) => (

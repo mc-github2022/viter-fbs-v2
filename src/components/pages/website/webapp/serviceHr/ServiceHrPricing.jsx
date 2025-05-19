@@ -66,12 +66,12 @@ const ServiceHrPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "HR Information System"
-    )?.packages_category_name || "HR Information System";
+      (item) => item.packages_category_url === "webapp-hris"
+    )?.packages_category_url || "webapp-hris";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {

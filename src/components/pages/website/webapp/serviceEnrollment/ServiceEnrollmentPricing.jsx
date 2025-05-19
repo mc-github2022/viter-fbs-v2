@@ -68,12 +68,12 @@ const ServiceEnrollmentPricing = ({ pageName }) => {
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_name === "School Enrollment System"
-    )?.packages_category_name || "School Enrollment System";
+      (item) => item.packages_category_url === "webapp-enrollment"
+    )?.packages_category_url || "webapp-enrollment";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_list_category_name === selectedCategory
+      (item) => item.packages_category_url === selectedCategory
     ) || [];
 
   var eventsSliderSettings = {
