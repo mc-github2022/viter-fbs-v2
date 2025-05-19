@@ -4,9 +4,6 @@ Upload JSX
 DEVELOPER  
 
         * CONTROLLERS
-            -> rest/v1/controllers/developer/mailer-log/page.php
-            -> rest/v1/controllers/developer/mailer-log/search.php
-            -> rest/v1/controllers/developer/mailer-log/functions.php
             -> rest/v1/controllers/developer/mailer-log/mailerLog.php
             -> rest/v1/controllers/developer/packages
         
