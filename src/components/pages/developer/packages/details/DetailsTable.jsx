@@ -120,9 +120,9 @@ const DetailsTable = ({ setItemEdit }) => {
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
               <th className=" w-[5rem]">Status</th>
-              <th>Package</th>
-              <th>Title</th>
-              <th >Details</th>
+              <th className="min-w-[15rem]">Package</th>
+              <th className="min-w-[15rem]">Title</th>
+              <th className="min-w-[20rem]">Details</th>
               <th>Highlighted</th>
               <th className="text-right">Actions</th>
             </tr>
@@ -165,7 +165,9 @@ const DetailsTable = ({ setItemEdit }) => {
                         {item.packages_details_title}
                       </td>
                       <td className="place-content-start">
-                        {item.packages_details_list}
+                        <p className="line-clamp-2">
+                          {item.packages_details_list}
+                        </p>
                       </td>
                       <td>
                         {item.packages_details_is_highlighted === 1 ? (

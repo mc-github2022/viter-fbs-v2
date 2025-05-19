@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2025 at 08:31 AM
+-- Generation Time: May 19, 2025 at 08:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,7 +42,7 @@ CREATE TABLE `fbsv2_packages_category` (
 --
 
 INSERT INTO `fbsv2_packages_category` (`packages_category_aid`, `packages_category_list_name`, `packages_category_name`, `packages_category_url`, `packages_category_is_active`, `packages_category_created`, `packages_category_datetime`) VALUES
-(2, 'WEB APPLICATIONS', 'HR Information System', 'webapp-hris', 1, '2025-05-14 10:28:38', '2025-05-15 15:01:59'),
+(2, 'WEB APPLICATIONS', 'HR Information System', 'webapp-hris', 1, '2025-05-14 10:28:38', '2025-05-19 12:25:20'),
 (3, 'WEB APPLICATIONS', 'Online Payroll System', 'webapp-payroll', 1, '2025-05-14 10:28:53', '2025-05-14 10:28:53'),
 (4, 'WEB APPLICATIONS', 'School Enrollment System', 'webapp-enrollment', 1, '2025-05-14 10:29:37', '2025-05-14 10:31:02'),
 (5, 'WEB APPLICATIONS', 'Online Payment Integration', 'webapp-onlinepayment', 1, '2025-05-14 10:31:28', '2025-05-14 10:31:28'),

@@ -1,22 +1,22 @@
 import React from "react";
+import { IoChevronDownSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import {
   devBaseImgUrl,
   devNavUrl,
-  getUserType,
+  getUserType
 } from "../../helpers/functions-general";
-import { StoreContext } from "../../store/StoreContext";
-import { IoChevronDownSharp } from "react-icons/io5";
 import {
   setIsNavOpen,
   setIsNotifOpen,
-  setIsUserOpen,
-  setIswhyUsOpen,
-  setIsSubsOpen,
-  setIsServicesOpen,
-  setIsWebAppOpen,
   setIsPackagesOpen,
+  setIsServicesOpen,
+  setIsSubsOpen,
+  setIsUserOpen,
+  setIsWebAppOpen,
+  setIswhyUsOpen,
 } from "../../store/StoreAction";
+import { StoreContext } from "../../store/StoreContext";
 
 const Navigation = ({ menu, submenu }) => {
   const { store, dispatch } = React.useContext(StoreContext);

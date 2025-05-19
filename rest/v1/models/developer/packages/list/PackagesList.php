@@ -77,6 +77,25 @@ class PackagesList
         return $query;
     }
 
+    // public function readById()
+    // {
+    //     try {
+    //         $sql = "select * ";
+    //         $sql .= "from ";
+    //         $sql .= "{$this->tblPackagesList} as list, ";
+    //         $sql .= "{$this->tblPackagesCategory} as category ";
+    //         $sql .= "where list.packages_list_category_name_id = category.packages_category_aid ";
+    //         $sql .= "and list.packages_list_aid = :packages_list_aid ";
+    //         $query = $this->connection->prepare($sql);
+    //         $query->execute([
+    //             "packages_list_aid" => $this->packages_list_aid,
+    //         ]);
+    //     } catch (PDOException $ex) {
+    //         $query = false;
+    //     }
+    //     return $query;
+    // }
+
     public function search()
     {
         try {

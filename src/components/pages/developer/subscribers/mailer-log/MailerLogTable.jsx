@@ -32,6 +32,7 @@ import {
 import MailerLogStatus from "./MailerLogStatus";
 import ModalResendEmail from "./ModalResendEmail";
 import ModalAddMailerLog from "./ModalAddMailerLog";
+import { FaUserGroup } from "react-icons/fa6";
 
 const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -370,15 +371,25 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           </div>
         </div>
 
-        <SearchBar
-          search={search}
-          dispatch={dispatch}
-          store={store}
-          result={result?.pages}
-          isFetching={isFetching}
-          setOnSearch={setOnSearch}
-          onSearch={onSearch}
-        />
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
+            <span>
+              <FaUserGroup className="text-gray-500" />
+            </span>
+            {store.isSearch || isFilter
+              ? result?.pages[0].count
+              : result?.pages[0].total}
+          </div>
+          <SearchBar
+            search={search}
+            dispatch={dispatch}
+            store={store}
+            result={result?.pages}
+            isFetching={isFetching}
+            setOnSearch={setOnSearch}
+            onSearch={onSearch}
+          />
+        </div>
       </div>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-150px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (

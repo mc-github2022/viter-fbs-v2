@@ -119,16 +119,16 @@ const ListTable = ({ setItemEdit }) => {
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
               <th className=" w-[5rem]">Status</th>
-              <th>Category</th>
-              <th>Title</th>
-              <th>Title Description</th>
-              <th>Price</th>
-              <th>Price Description</th>
-              <th>Foreign Price</th>
-              <th>Foreign Price Description</th>
-              <th>Other Details</th>
-              <th>Button</th>
-              <th>Highlighted</th>
+              <th className="min-w-[10rem]">Category</th>
+              <th className="min-w-[15rem]">Title</th>
+              <th className="min-w-[10rem]">Title Description</th>
+              <th className="min-w-[10rem]">Price</th>
+              <th className="min-w-[10rem]">Price Description</th>
+              <th className="min-w-[10rem]">Foreign Price</th>
+              <th className="min-w-[10rem]">Foreign Price Description</th>
+              <th className="min-w-[15rem]">Other Details</th>
+              <th className="min-w-[8rem]">Button</th>
+              <th className="min-w-[8rem]">Highlighted</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -183,8 +183,10 @@ const ListTable = ({ setItemEdit }) => {
                       <td className="place-content-start">
                         {item.packages_list_foreign_price_desc}
                       </td>
-                      <td className="place-content-start">
-                        {item.packages_list_other_details}
+                      <td className="place-content-start ">
+                        <p className="line-clamp-2">
+                          {item.packages_list_other_details}
+                        </p>
                       </td>
                       <td className="place-content-start">
                         {item.packages_list_button_text}

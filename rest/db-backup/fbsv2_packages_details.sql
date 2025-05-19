@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2025 at 08:32 AM
+-- Generation Time: May 19, 2025 at 08:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -117,7 +117,7 @@ INSERT INTO `fbsv2_packages_details` (`packages_details_aid`, `packages_details_
 (78, 1, '32', 'One (1) Year Hosting Space', '', 1, '2025-05-15 16:21:24', '2025-05-15 16:21:24'),
 (79, 1, '32', 'One (1) Year Domain Name Registration', '', 1, '2025-05-15 16:21:34', '2025-05-15 16:21:34'),
 (80, 1, '32', 'Two (2) Hours / Month Technical Support', '', 1, '2025-05-15 16:21:54', '2025-05-15 16:21:54'),
-(81, 1, '33', 'Responsive Web Design', '', 1, '2025-05-15 16:29:34', '2025-05-15 16:29:34'),
+(81, 1, '33', 'Responsive Web Design', '', 1, '2025-05-15 16:29:34', '2025-05-19 14:40:31'),
 (83, 1, '33', 'Optimized Content', '', 1, '2025-05-15 16:31:43', '2025-05-15 16:31:43'),
 (84, 1, '33', 'SEO Ready Design', '', 1, '2025-05-15 16:31:59', '2025-05-15 16:31:59'),
 (85, 1, '33', 'Custom Design for your Branding', '', 1, '2025-05-15 16:32:06', '2025-05-15 16:32:06'),

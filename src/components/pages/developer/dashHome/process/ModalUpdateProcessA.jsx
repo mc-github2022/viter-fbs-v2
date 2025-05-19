@@ -18,8 +18,10 @@ import { apiVersion } from "../../../../helpers/functions-general";
 
 const ModalUpdateProcessA = ({ itemEdit, processData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsUpdateHome(false));
     }, 200);
@@ -51,6 +53,10 @@ const ModalUpdateProcessA = ({ itemEdit, processData }) => {
     },
   });
 
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
   const initVal = {
     isUpdateHomeProcess: itemEdit,
 
@@ -61,7 +67,7 @@ const ModalUpdateProcessA = ({ itemEdit, processData }) => {
   const yupSchema = Yup.object({});
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[450px] max-w-[500px]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">

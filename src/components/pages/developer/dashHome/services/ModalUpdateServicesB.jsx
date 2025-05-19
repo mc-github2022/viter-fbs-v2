@@ -18,8 +18,10 @@ import { apiVersion } from "../../../../helpers/functions-general";
 
 const ModalUpdateServicesB = ({ itemEdit, servicesData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsUpdateHome(false));
     }, 200);
@@ -51,6 +53,10 @@ const ModalUpdateServicesB = ({ itemEdit, servicesData }) => {
     },
   });
 
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
   const initVal = {
     isUpdateHomeServices: itemEdit,
     services_title_b: servicesData?.data?.[0]?.services_title_b ?? "",
@@ -65,7 +71,7 @@ const ModalUpdateServicesB = ({ itemEdit, servicesData }) => {
   const yupSchema = Yup.object({});
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-h-[450px] max-w-[500px]`}
+      className={`transition-all ease-linear transform duration-200 ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">

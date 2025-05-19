@@ -162,7 +162,7 @@ const SubscribersTable = ({ setItemEdit, audienceData, subscribeData }) => {
             <optgroup label="Audience">
               {subscriberCategories.map((item, key) => (
                 <option key={key} value={item.subscriber_audience_id}>
-                  {item.audience_name}  
+                  {item.audience_name}
                 </option>
               ))}
             </optgroup>
@@ -173,7 +173,9 @@ const SubscribersTable = ({ setItemEdit, audienceData, subscribeData }) => {
             <span>
               <FaUserGroup className="text-gray-500" />
             </span>
-            {store.isSearch ? result?.pages[0].count : result?.pages[0].total}
+            {store.isSearch || isFilter
+              ? result?.pages[0].count
+              : result?.pages[0].total}
           </div>
           <SearchBar
             search={search}

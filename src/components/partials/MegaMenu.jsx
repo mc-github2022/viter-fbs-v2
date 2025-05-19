@@ -1,26 +1,17 @@
 import { Calculator, Globe, GraduationCap, Headset } from "lucide-react";
 import React from "react";
-import {
-  FaAddressCard,
-  FaBriefcase,
-  FaGlobe,
-  FaMoneyBill,
-  FaSmile,
-} from "react-icons/fa";
-import { TiArrowBackOutline, TiGift } from "react-icons/ti";
-import { Link } from "react-router-dom";
-import useQueryData from "../custom-hooks/useQueryData";
-import { devNavUrl } from "../helpers/functions-general";
-import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
-import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
-import FetchingSpinner from "./spinners/FetchingSpinner";
-import NoData from "./spinners/NoData";
-import TableLoading from "./spinners/TableLoading";
+import * as TiIcons from "react-icons/ti";
+import { TiArrowBackOutline, TiGift } from "react-icons/ti";
+import { Link, useNavigate } from "react-router-dom";
+import useQueryData from "../custom-hooks/useQueryData";
+import { apiVersion, devNavUrl } from "../helpers/functions-general";
 import LoaderHeader from "./LoaderHeader";
+import TableLoading from "./spinners/TableLoading";
 
 const icons = {
   ...FaIcons,
@@ -34,6 +25,23 @@ const icons = {
 const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
   const [serviceDropdown, serServiceDropdown] = React.useState(false);
   const [menuIdentifier, setMenuIdentifier] = React.useState("");
+  const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
+
+  console.log(currentPath);
+
+  const navigate = useNavigate();
+
+  const handleGoToPage = (item) => {
+    navigate(
+      `${devNavUrl}/${item.packages_category_url}?id=${item.packages_category_aid}`
+    );
+  };
+
+  const { data: packagesCatgeoryData } = useQueryData(
+    `${apiVersion}/packages-category`, // endpoint
+    "get", // method
+    "packages-category" // key
+  );
 
   const {
     isFetching,
@@ -42,7 +50,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
     status,
     data: specialOffersData,
   } = useQueryData(
-    "/v1/specialOffers", // endpoint
+    `${apiVersion}/specialOffers`, // endpoint
     "get", // method
     "specialOffers" // key
   );
@@ -54,9 +62,9 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
     status: statusPackagesCategory,
     data: packagesCategoryData,
   } = useQueryData(
-    "/v1/packages-category", // endpoint
+    "/v1/packages-list", // endpoint
     "get", // method
-    "packages-category" // key
+    "packages-list" // key
   );
 
   const handleClose = () => {
@@ -117,19 +125,36 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                     [&>li]:lg:!mb-2`}
                   >
-                    <li>
-                      <Link
-                        to={`${devNavUrl}/webapp-hris`}
-                        className={`${
-                          pageName === "hris"
-                            ? "text-primary !cursor-default"
-                            : ""
-                        }`}
-                      >
-                        HR Information System
-                      </Link>
-                    </li>
-                    <li>
+                    {isLoadingPackagesCategory || isFetchingPackagesCategory ? (
+                      <TableLoading cols={1} count={6} />
+                    ) : (
+                      <>
+                        {packagesCatgeoryData?.data.map((item, key) => {
+                          if (
+                            item.packages_category_list_name ===
+                            "WEB APPLICATIONS"
+                          ) {
+                            return (
+                              <li key={key}>
+                                <a
+                                  to={`${devNavUrl}/${item.packages_category_url}`}
+                                  className={`${
+                                    currentPath === item.packages_category_url
+                                      ? "text-primary !cursor-default"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleGoToPage(item)}
+                                >
+                                  {item.packages_category_name}
+                                </a>
+                              </li>
+                            );
+                          }
+                        })}
+                      </>
+                    )}
+
+                    {/* <li>
                       <Link
                         to={`${devNavUrl}/webapp-payroll`}
                         className={`${
@@ -188,7 +213,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       >
                         Asset Inventory System
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
                 <div className="menuItem mb-3 order-2 xl:order-5">
@@ -207,7 +232,35 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                   [&>li]:lg:!mb-2`}
                   >
-                    <li>
+                    {isLoadingPackagesCategory || isFetchingPackagesCategory ? (
+                      <TableLoading cols={1} count={3} />
+                    ) : (
+                      <>
+                        {packagesCatgeoryData?.data.map((item, key) => {
+                          if (
+                            item.packages_category_list_name ===
+                            "WEB DESIGN AND DEVELOPMENT"
+                          ) {
+                            return (
+                              <li key={key}>
+                                <a
+                                  to={`${devNavUrl}/${item.packages_category_url}`}
+                                  className={`${
+                                    currentPath === item.packages_category_url
+                                      ? "text-primary !cursor-default"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleGoToPage(item)}
+                                >
+                                  {item.packages_category_name}
+                                </a>
+                              </li>
+                            );
+                          }
+                        })}
+                      </>
+                    )}
+                    {/* <li>
                       <Link
                         to={`${devNavUrl}/web-wordpress`}
                         className={`${
@@ -242,7 +295,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       >
                         Web Design
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
                 <div className="menuItem mb-3 order-3  ">
@@ -250,7 +303,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     className="font-semibold  mb-2 cursor-pointer lg:cursor-default md:pointer-events-none flex text-primary"
                     onClick={() => handleServiceDropdown("accounting")}
                   >
-                    <Calculator className="text-primary" />{" "}
+                    <Calculator className="text-primary" />
                     <span className="mx-2">ACCOUNTING SOLUTIONS </span>
                   </h2>
                   <ul
@@ -261,7 +314,35 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                     [&>li]:lg:!mb-2`}
                   >
-                    <li>
+                    {isLoadingPackagesCategory || isFetchingPackagesCategory ? (
+                      <TableLoading cols={1} count={2} />
+                    ) : (
+                      <>
+                        {packagesCatgeoryData?.data.map((item, key) => {
+                          if (
+                            item.packages_category_list_name ===
+                            "ACCOUNTING SOLUTIONS"
+                          ) {
+                            return (
+                              <li key={key}>
+                                <a
+                                  to={`${devNavUrl}/${item.packages_category_url}`}
+                                  className={`${
+                                    currentPath === item.packages_category_url
+                                      ? "text-primary !cursor-default"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleGoToPage(item)}
+                                >
+                                  {item.packages_category_name}
+                                </a>
+                              </li>
+                            );
+                          }
+                        })}
+                      </>
+                    )}
+                    {/* <li>
                       <Link
                         to={`${devNavUrl}/accounting-business-registration`}
                         className={`${
@@ -285,7 +366,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       >
                         Bookkeeping / Compliance
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
                 <div className="menuItem mb-3 order-4 ">
@@ -304,7 +385,36 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                     [&>li]:lg:!mb-2`}
                   >
-                    <li>
+                    {isLoadingPackagesCategory || isFetchingPackagesCategory ? (
+                      <TableLoading cols={1} count={3} />
+                    ) : (
+                      <>
+                        {packagesCatgeoryData?.data.map((item, key) => {
+                          if (
+                            item.packages_category_list_name ===
+                            "VIRTUAL ASSISTANT SOLUTIONS"
+                          ) {
+                            return (
+                              <li key={key}>
+                                <a
+                                  to={`${devNavUrl}/${item.packages_category_url}`}
+                                  className={`${
+                                    currentPath === item.packages_category_url
+                                      ? "text-primary !cursor-default"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleGoToPage(item)}
+                                >
+                                  {item.packages_category_name}
+                                </a>
+                              </li>
+                            );
+                          }
+                        })}
+                      </>
+                    )}
+
+                    {/* <li>
                       <Link
                         to={`${devNavUrl}/va-administrative`}
                         className={`${
@@ -339,7 +449,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       >
                         Marketing
                       </Link>
-                    </li>
+                    </li> */}
                     {/* <li>
                       <Link to="/va-techsupport">Technical Support</Link>
                     </li> */}
@@ -368,7 +478,35 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     } ml-0  md:ml-3 text-sm md:h-auto [&>li]:!mb-3 
                     [&>li]:lg:!mb-2`}
                   >
-                    <li>
+                    {isLoadingPackagesCategory || isFetchingPackagesCategory ? (
+                      <TableLoading cols={1} count={3} />
+                    ) : (
+                      <>
+                        {packagesCatgeoryData?.data.map((item, key) => {
+                          if (
+                            item.packages_category_list_name ===
+                            "LEARNING CENTER SOLUTIONS"
+                          ) {
+                            return (
+                              <li key={key}>
+                                <a
+                                  to={`${devNavUrl}/${item.packages_category_url}`}
+                                  className={`${
+                                    currentPath === item.packages_category_url
+                                      ? "text-primary !cursor-default"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleGoToPage(item)}
+                                >
+                                  {item.packages_category_name}
+                                </a>
+                              </li>
+                            );
+                          }
+                        })}
+                      </>
+                    )}
+                    {/* <li>
                       <Link
                         to={`${devNavUrl}/college-ojt`}
                         className={`${
@@ -403,7 +541,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       >
                         Continuing Studies
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>
