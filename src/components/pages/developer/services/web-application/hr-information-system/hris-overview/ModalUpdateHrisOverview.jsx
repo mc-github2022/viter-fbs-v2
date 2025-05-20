@@ -31,6 +31,7 @@ import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPho
 
 const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [fileData, setFileData] = React.useState(null);
@@ -77,6 +78,7 @@ const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
   };
 
   const handleClose = () => {
+    setAnimate("translate-x-full");
     setTimeout(() => {
       dispatch(setIsUpdateHome(false));
     }, 200);
@@ -88,13 +90,13 @@ const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
     mutationFn: (values) =>
       queryData(
         hrisOverviewData?.data?.length
-          ? `${apiVersion}/hris/${hrisOverviewData.data[0].hris_overview_aid}` // update
-          : `${apiVersion}/hris`, // create
+          ? `${apiVersion}/hris-overview/${hrisOverviewData.data[0].hris_overview_aid}` // update
+          : `${apiVersion}/hris-overview`, // create
         hrisOverviewData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["hris"] });
+      queryClient.invalidateQueries({ queryKey: ["hris-overview"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -110,6 +112,7 @@ const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
   });
 
   React.useEffect(() => {
+    setAnimate("");
     if (hrisOverviewData) {
       const photos = getConvertStringToJSONparseData(
         hrisOverviewData?.data?.[0]?.hris_overview_img
@@ -119,16 +122,10 @@ const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
   }, []);
 
   const initVal = {
-    isUpdateHris: itemEdit,
+    hrisOverviewUpdate: itemEdit,
     hris_overview_subtitle:
       hrisOverviewData?.data?.[0]?.hris_overview_subtitle ?? "",
     hris_overview_title: hrisOverviewData?.data?.[0]?.hris_overview_title ?? "",
-    hris_banner_description:
-      hrisOverviewData?.data?.[0]?.hris_banner_description ?? "",
-    hris_banner_button_text:
-      hrisOverviewData?.data?.[0]?.hris_banner_button_text ?? "",
-    hris_banner_button_link:
-      hrisOverviewData?.data?.[0]?.hris_banner_button_link ?? "",
     hris_overview_img: hrisOverviewData?.data?.[0]?.hris_overview_img ?? "",
 
     hris_overview_img_old: hrisOverviewData?.data?.[0]?.hris_overview_img ?? "",
@@ -140,7 +137,7 @@ const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
   return (
     <>
       <ModalAddWrapper
-        className={`transition-all ease-linear transform duration-200 max-h-[500px] max-w-[500px]`}
+        className={`transition-all ease-linear transform duration-200 ${animate}`}
         handleClose={handleClose}
       >
         <div className="modal-title">
@@ -305,26 +302,23 @@ const ModalUpdateHrisOverview = ({ itemEdit, hrisOverviewData }) => {
                         disabled={mutation.isPending}
                       />
                     </div>
-
-                    <div className="form-action mb-1 ">
-                      <div className="form-btn">
-                        <button
-                          className="btn-modal-submit"
-                          type="submit"
-                          disabled={
-                            mutation.isPending || !props.dirty || loading
-                          }
-                        >
-                          {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                        </button>
-                        <button
-                          className="btn-modal-cancel"
-                          type="button"
-                          onClick={handleClose}
-                        >
-                          Cancel
-                        </button>
-                      </div>
+                  </div>
+                  <div className="form-action mb-2 ">
+                    <div className="form-btn">
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || loading}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 </Form>

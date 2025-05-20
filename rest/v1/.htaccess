@@ -176,9 +176,13 @@ RewriteRule ^mailer-log/delete-mailer/([0-9]+)$ controllers/developer/mailer-log
 RewriteRule ^mailer-log/resend-mailer$ controllers/developer/mailer-log/resending-newsletter.php [L]
 RewriteRule ^mailer-log/update-mailer-subject-content/([0-9]+)$ controllers/developer/mailer-log/update-mailer-subject-content.php?mailerId=$1 [L]
 
-# SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM
+# SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - BANNER
 RewriteRule ^hris$ controllers/developer/services/web-application/hr-information-system/hris-banner/hrisBanner.php [L]
 RewriteRule ^hris/([0-9]+)$ controllers/developer/services/web-application/hr-information-system/hris-banner/hrisBanner.php?hris_bannerid=$1 [L]
+
+# SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - OVERVIEW
+RewriteRule ^hris-overview$ controllers/developer/services/web-application/hr-information-system/hris-overview/hrisOverview.php [L]
+RewriteRule ^hris-overview/([0-9]+)$ controllers/developer/services/web-application/hr-information-system/hris-overview/hrisOverview.php?hris_overviewid=$1 [L]
 
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]

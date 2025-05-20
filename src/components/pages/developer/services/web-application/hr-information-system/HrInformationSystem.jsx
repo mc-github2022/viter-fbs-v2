@@ -20,6 +20,7 @@ import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import ModalError from "../../../../../partials/modals/ModalError";
 import ModalUpdateHrisBanner from "./hris-banner/ModalUpdateHrisBanner";
 import ModalUpdateHrisOverview from "./hris-overview/ModalUpdateHrisOverview";
+import ModalUpdateHrisOverviewList from "./hris-overview/ModalUpdateHrisOverviewList";
 
 const HrInformationSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -32,9 +33,9 @@ const HrInformationSystem = () => {
   );
 
   const { data: hrisOverviewData } = useQueryData(
-    `${apiVersion}/hrisOverview`, // endpoint
+    `${apiVersion}/hris-overview`, // endpoint
     "get", // method
-    "hrisOverview" // key
+    "hris-overview" // key
   );
 
   const { data: contactFormDefaultData } = useQueryData(
@@ -56,7 +57,12 @@ const HrInformationSystem = () => {
 
   const handleUpdateHrisOverview = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-overview" }));
-    setItemEdit("hrisOverviewUpdate");
+    setItemEdit("hrisOverviewUpdateImg");
+  };
+
+  const handleUpdateHrisOverviewList = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-overview-list" }));
+    setItemEdit("hrisOverviewListUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -89,7 +95,9 @@ const HrInformationSystem = () => {
               />
               <HrisOverview
                 handleUpdateHrisOverview={handleUpdateHrisOverview}
+                handleUpdateHrisOverviewList={handleUpdateHrisOverviewList}
                 hrisOverviewData={hrisOverviewData}
+                hrisData={hrisData}
               />
               <HrisScope />
               <HrisPricing />
@@ -114,6 +122,14 @@ const HrInformationSystem = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "hris-overview" && (
           <ModalUpdateHrisOverview
+            itemEdit={itemEdit}
+            hrisOverviewData={hrisOverviewData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "hris-overview-list" && (
+          <ModalUpdateHrisOverviewList
             itemEdit={itemEdit}
             hrisOverviewData={hrisOverviewData}
           />

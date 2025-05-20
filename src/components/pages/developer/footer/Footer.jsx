@@ -161,8 +161,8 @@ const Footer = ({
                 <p className="font-semibold">QUICKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   {footerData?.data.map((item, key) => (
-                    <>
-                      <li key={key}>
+                    <div key={key}>
+                      <li>
                         <a href={`${devNavUrl}${item.footer_quicklink_link_a}`}>
                           {item.footer_quicklink_a}
                         </a>
@@ -187,7 +187,7 @@ const Footer = ({
                           {item.footer_quicklink_e}
                         </a>
                       </li>
-                    </>
+                    </div>
                   ))}
                 </ul>
               </div>
@@ -204,8 +204,11 @@ const Footer = ({
                 <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
               </a>
               {footerData?.data.map((item, key) => (
-                <>
-                  <p className="text-xs mb-4 lg:mb-0" key={key}>
+                <div
+                  key={key}
+                  className="flex flex-col md:flex-row justify-between w-full"
+                >
+                  <p className="text-xs mb-4 lg:mb-0">
                     Copyright {copyrightYear()} | {item.footer_copyright}
                   </p>
                   <p className="text-xs">
@@ -221,7 +224,7 @@ const Footer = ({
                       {item.footer_eula_text}
                     </a>
                   </p>
-                </>
+                </div>
               ))}
             </div>
           </div>

@@ -1,0 +1,36 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-overview
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/services/web-application/hr-information-system/HrisOverview.php
+            -> 
+
+
+        * HTACESS
+            -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - OVERVIEW is added
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+            ->
+            ->
+            ->
+            ->
+            ->
+
+

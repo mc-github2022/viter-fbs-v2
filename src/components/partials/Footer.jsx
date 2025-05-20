@@ -194,7 +194,10 @@ const Footer = () => {
           <div className="py-10 relative z-[1]">
             <div className="wrapper text-center lg:text-left lg:flex lg:justify-between items-center">
               {footerData?.data.map((item, key) => (
-                <div key={key}>
+                <div
+                  key={key}
+                  className="flex flex-col md:flex-row justify-between w-full"
+                >
                   <p className="text-xs mb-4 lg:mb-0">
                     Copyright {copyrightYear()} | {item.footer_copyright}
                   </p>
