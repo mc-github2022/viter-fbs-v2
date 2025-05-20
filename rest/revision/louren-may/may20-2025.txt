@@ -4,7 +4,6 @@ Upload JSX
 DEVELOPER  
 
         * CONTROLLERS
-            -> rest/v1/controllers/developer/mailer-log/mailerLog.php
             -> rest/v1/controllers/developer/packages
         
         * CORE 
@@ -12,7 +11,6 @@ DEVELOPER
 
 
         * MODELS
-            -> rest/v1/models/developer/mailer-log/MailerLog.php
             -> rest/v1/models/developer/packages
             -> 
 

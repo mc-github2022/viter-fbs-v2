@@ -299,7 +299,7 @@ const BookkeepingPricing = ({ pageName }) => {
                   {filteredItems.map((price, key) => (
                     <div
                       key={key}
-                      className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg  max-w-[400px] min-h-[500px] ${
+                      className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg  max-w-[400px] min-h-[500px] lg:h-[650px]  ${
                         price.packages_list_is_highlighted === 1
                           ? "bg-primary"
                           : "bg-customGray !text-dark"
@@ -385,6 +385,17 @@ const BookkeepingPricing = ({ pageName }) => {
                             </div>
                           </div>
 
+                          <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
+                          <button
+                            onClick={() =>
+                              handleForm(price.packages_list_title)
+                            }
+                            className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary uppercase"
+                          >
+                            {price.packages_list_button_text}
+                          </button>
+                        </div>
+
                           <table className="prices my-5 min-h-[200px]">
                             <tbody className="">
                               {packagesDetailsData?.data.map((info, key) => {
@@ -468,14 +479,7 @@ const BookkeepingPricing = ({ pageName }) => {
                           </table>
                         </div>
 
-                        <button
-                          onClick={() => handleForm(price.packages_list_title)}
-                          className="btn bg-primary text-light border-light
-                          border-2 mt-10 font-bold w-[190px] mx-auto
-                          hover:bg-light hover:text-primary hover:border-primary uppercase"
-                        >
-                          {price.packages_list_button_text}
-                        </button>
+                        
                       </div>
                     </div>
                   ))}

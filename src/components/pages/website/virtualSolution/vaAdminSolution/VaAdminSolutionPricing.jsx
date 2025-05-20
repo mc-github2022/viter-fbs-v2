@@ -169,7 +169,7 @@ const VaAdminSolutionPricing = ({ pageName }) => {
                 {filteredItems.map((price, key) => (
                   <div
                     key={key}
-                    className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg  max-w-[400px] min-h-[500px] ${
+                    className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg  max-w-[400px] min-h-[500px] lg:h-[700px] ${
                       price.packages_list_is_highlighted === 1
                         ? "bg-primary"
                         : "bg-customGray !text-dark"
@@ -356,7 +356,7 @@ const VaAdminSolutionPricing = ({ pageName }) => {
                     {filteredItems.map((price, key) => (
                       <div
                         key={key}
-                        className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px] ${
+                        className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px] lg:h-[700px] ${
                           price.packages_list_is_highlighted === 1
                             ? "bg-primary"
                             : "bg-customGray !text-dark"

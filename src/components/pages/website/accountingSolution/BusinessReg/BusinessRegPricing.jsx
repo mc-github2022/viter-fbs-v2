@@ -203,15 +203,16 @@ const BusinessRegPricing = ({ pageName }) => {
                   {filteredItems.map((price, key) => (
                     <div
                       key={key}
-                      className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg  max-w-[400px] min-h-[500px] ${
+                      className={`priceItem mb-5 relative z-[1] text-center p-10 md:h-[750px]
+                      rounded-lg h-[700px] max-w-[400px] md:w-[400px] ${
                         price.packages_list_is_highlighted === 1
                           ? "bg-primary"
                           : "bg-customGray !text-dark"
                       } grid place-items-center `}
                     >
                       <div className="flex flex-col justify-between">
-                        <div>
-                          <div className="title mb-4 min-h-[182px]">
+                        <div className="">
+                          <div className="title mb-4 min-h-[182px] ">
                             <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />
                             <div className="mb-6">
                               <h3
@@ -289,7 +290,18 @@ const BusinessRegPricing = ({ pageName }) => {
                             </div>
                           </div>
 
-                          <table className="prices my-5 min-h-[200px]">
+                          <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
+                            <button
+                              onClick={() =>
+                                handleForm(price.packages_list_title)
+                              }
+                              className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary uppercase"
+                            >
+                              {price.packages_list_button_text}
+                            </button>
+                          </div>
+
+                          <table className="prices my-5 min-h-[300px]">
                             <tbody className="">
                               {packagesDetailsData?.data.map((info, key) => {
                                 if (
@@ -371,15 +383,6 @@ const BusinessRegPricing = ({ pageName }) => {
                             </tbody>
                           </table>
                         </div>
-
-                        <button
-                          onClick={() => handleForm(price.packages_list_title)}
-                          className="btn bg-primary text-light border-light
-                          border-2 mt-10 font-bold w-[190px] mx-auto
-                          hover:bg-light hover:text-primary hover:border-primary uppercase"
-                        >
-                          {price.packages_list_button_text}
-                        </button>
                       </div>
                     </div>
                   ))}
@@ -391,7 +394,7 @@ const BusinessRegPricing = ({ pageName }) => {
                       {filteredItems.map((price, key) => (
                         <div
                           key={key}
-                          className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px] ${
+                          className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px]  ${
                             price.packages_list_is_highlighted === 1
                               ? "bg-primary"
                               : "bg-customGray !text-dark"
