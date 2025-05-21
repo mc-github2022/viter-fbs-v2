@@ -23,6 +23,7 @@ import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceH
 import ServiceInventoryPage from "../components/pages/website/webapp/serviceInventory/ServiceInventoryPage";
 import ServiceOnlinePayPage from "../components/pages/website/webapp/serviceOnlinePay/ServiceOnlinePayPage";
 import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
+import GraphicDesignPage from "../components/pages/website/webDesignDev/graphic-design/GraphicDesignPage";
 import SinglePageWebsite from "../components/pages/website/webDesignDev/singlePageWebsite/SinglePageWebsite";
 import WebDesignPage from "../components/pages/website/webDesignDev/webDesign/WebDesignPage";
 import WordPressPage from "../components/pages/website/webDesignDev/wordPress/WordPressPage";
@@ -108,6 +109,10 @@ export const RoutesWebsite = [
   {
     path: `${devNavUrl}/web-design`,
     element: <WebDesignPage />,
+  },
+  {
+    path: `${devNavUrl}/graphic-design`,
+    element: <GraphicDesignPage />,
   },
   {
     path: `${devNavUrl}/career`,

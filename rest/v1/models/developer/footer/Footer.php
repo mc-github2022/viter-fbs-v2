@@ -20,6 +20,12 @@ class Footer
     public $footer_terms_link;
     public $footer_eula_text;
     public $footer_eula_link;
+    public $footer_logo_img;
+    public $footer_phone_a;
+    public $footer_phone_b;
+    public $footer_phone_c;
+    public $footer_email;
+    public $footer_subscriber_text;
     public $footer_created;
     public $footer_datetime;
 
@@ -88,6 +94,64 @@ class Footer
                 "footer_quicklink_link_d" => $this->footer_quicklink_link_d,
                 "footer_quicklink_e" => $this->footer_quicklink_e,
                 "footer_quicklink_link_e" => $this->footer_quicklink_link_e,
+                "footer_created" => $this->footer_created,
+                "footer_datetime" => $this->footer_datetime,
+            ]);
+            $this->lastInsertedId = $this->connection->lastInsertId();
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function createLogoImg()
+    {
+        try {
+            $sql = "insert into {$this->tblFooter}";
+            $sql .= "(footer_logo_img, ";
+            $sql .= "footer_created, ";
+            $sql .= "footer_datetime ) values ( ";
+            $sql .= ":footer_logo_img, ";
+            $sql .= ":footer_created, ";
+            $sql .= ":footer_datetime )";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "footer_logo_img" => $this->footer_logo_img,
+                "footer_created" => $this->footer_created,
+                "footer_datetime" => $this->footer_datetime,
+            ]);
+            $this->lastInsertedId = $this->connection->lastInsertId();
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function createContactUs()
+    {
+        try {
+            $sql = "insert into {$this->tblFooter}";
+            $sql .= "(footer_phone_a, ";
+            $sql .= "footer_phone_b, ";
+            $sql .= "footer_phone_c, ";
+            $sql .= "footer_email, ";
+            $sql .= "footer_subscriber_text, ";
+            $sql .= "footer_created, ";
+            $sql .= "footer_datetime ) values ( ";
+            $sql .= ":footer_phone_a, ";
+            $sql .= ":footer_phone_b, ";
+            $sql .= ":footer_phone_c, ";
+            $sql .= ":footer_email, ";
+            $sql .= ":footer_subscriber_text, ";
+            $sql .= ":footer_created, ";
+            $sql .= ":footer_datetime )";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "footer_phone_a" => $this->footer_phone_a,
+                "footer_phone_b" => $this->footer_phone_b,
+                "footer_phone_c" => $this->footer_phone_c,
+                "footer_email" => $this->footer_email,
+                "footer_subscriber_text" => $this->footer_subscriber_text,
                 "footer_created" => $this->footer_created,
                 "footer_datetime" => $this->footer_datetime,
             ]);
@@ -168,6 +232,52 @@ class Footer
                 "footer_quicklink_link_d" => $this->footer_quicklink_link_d,
                 "footer_quicklink_e" => $this->footer_quicklink_e,
                 "footer_quicklink_link_e" => $this->footer_quicklink_link_e,
+                "footer_datetime" => $this->footer_datetime,
+                "footer_aid" => $this->footer_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function updateLogoImg()
+    {
+        try {
+            $sql = "update {$this->tblFooter} set ";
+            $sql .= "footer_logo_img = :footer_logo_img, ";
+            $sql .= "footer_datetime = :footer_datetime ";
+            $sql .= "where footer_aid = :footer_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "footer_logo_img" => $this->footer_logo_img,
+                "footer_datetime" => $this->footer_datetime,
+                "footer_aid" => $this->footer_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function updateContactUs()
+    {
+        try {
+            $sql = "update {$this->tblFooter} set ";
+            $sql .= "footer_phone_a = :footer_phone_a, ";
+            $sql .= "footer_phone_b = :footer_phone_b, ";
+            $sql .= "footer_phone_c = :footer_phone_c, ";
+            $sql .= "footer_email = :footer_email, ";
+            $sql .= "footer_subscriber_text = :footer_subscriber_text, ";
+            $sql .= "footer_datetime = :footer_datetime ";
+            $sql .= "where footer_aid = :footer_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "footer_phone_a" => $this->footer_phone_a,
+                "footer_phone_b" => $this->footer_phone_b,
+                "footer_phone_c" => $this->footer_phone_c,
+                "footer_email" => $this->footer_email,
+                "footer_subscriber_text" => $this->footer_subscriber_text,
                 "footer_datetime" => $this->footer_datetime,
                 "footer_aid" => $this->footer_aid,
             ]);

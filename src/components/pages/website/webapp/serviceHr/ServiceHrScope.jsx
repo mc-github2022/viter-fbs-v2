@@ -6,11 +6,18 @@ import { IoChevronDown } from "react-icons/io5";
 import { LuCalendarClock, LuClock } from "react-icons/lu";
 import { MdOutlineCalendarToday, MdOutlineDashboard } from "react-icons/md";
 import { scope } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import { apiVersion, devBaseImgUrl } from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 
 const ServiceHrScope = () => {
   const [accordionItem, setAccordionItem] = React.useState("");
+
+    const { data: hrisTitlesData } = useQueryData(
+    `${apiVersion}/hris-titles`, // endpoint
+    "get", // method
+    "hris-titles" // key
+  );
 
   useEffect(() => {
     setAccordion(true);
@@ -29,9 +36,15 @@ const ServiceHrScope = () => {
       <section className="ServiceHrScope py-20">
         <div className="customContainer">
           <div>
-            <p>What Makes This Web App</p>
+            <p>{hrisTitlesData?.data?.length > 0 &&
+              hrisTitlesData.data[0]?.hris_titles_overview_subtitle
+                ? hrisTitlesData?.data[0].hris_titles_overview_subtitle
+                : ""}</p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              a Lifesaver?
+              {hrisTitlesData?.data?.length > 0 &&
+              hrisTitlesData.data[0]?.hris_titles_overview_title
+                ? hrisTitlesData?.data[0].hris_titles_overview_title
+                : ""}
             </h2>
           </div>
           <div className="warpper md:grid md:grid-cols-2 gap-5">

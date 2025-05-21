@@ -1,19 +1,36 @@
 import React from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { devNavUrl } from "../helpers/functions-general";
+import {
+  apiVersion,
+  devNavUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../helpers/functions-general";
 import ModalSuccess from "./modals/ModalSuccess";
 import ModalError from "./modals/ModalError";
 import { StoreContext } from "../store/StoreContext";
 import ModalContact from "./ModalContact";
 import logo from "/img/logo.png";
 import MegaMenu from "./MegaMenu";
+import useQueryData from "../custom-hooks/useQueryData";
+import LoadImages from "./LoadImages";
 
 const Header = ({ pageName }) => {
   const [contactForm, setContactForm] = React.useState(false);
   const [subjectNotif, setSubjectNotif] = React.useState("get-started-home");
   const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
+
+  const { isLoading, data: headerData } = useQueryData(
+    `${apiVersion}/header`, // endpoint
+    "get", // method
+    "header" // key
+  );
+
+  const headerLogoImg = getConvertStringToJSONparseData(
+    headerData?.data?.[0]?.header_logo_img
+  );
 
   const handdleToggle = () => {
     setToggleNav(!toggleNav);
@@ -71,14 +88,17 @@ const Header = ({ pageName }) => {
           className={`${toggleNav ? "overflow-y-hidden" : ""} customContainer`}
         >
           <div className="wrapper flex justify-between items-center">
-            <div className="theLogo">
-              <Link to={`${devNavUrl}/`}>
-                <img
-                  src={logo}
-                  alt="Frontline Business Solutions Logo"
-                  className="w-[80%] md:w-[90%]"
-                />
-              </Link>
+            <div className="theLogo relative">
+              {headerLogoImg.map((img, index) => (
+                <Link to={`${devNavUrl}/`}>
+                  <LoadImages
+                    url={`${googleHDViewLink}${img?.id}`}
+                    alt="Frontline Business Solutions Logo"
+                    className="w-[80%] md:w-[90%]"
+                    key={index}
+                  />
+                </Link>
+              ))}
             </div>
             <div
               className={`${
@@ -96,7 +116,10 @@ const Header = ({ pageName }) => {
                           : ""
                       }`}
                     >
-                      Home
+                      {headerData?.data?.length > 0 &&
+                      headerData.data[0]?.header_nav_a
+                        ? headerData?.data[0].header_nav_a
+                        : ""}
                     </Link>
                   </button>
                 </li>
@@ -108,7 +131,10 @@ const Header = ({ pageName }) => {
                       toggleMenu ? "text-primary" : ""
                     } flex items-center gap-2`}
                   >
-                    Services
+                    {headerData?.data?.length > 0 &&
+                    headerData.data[0]?.header_nav_b
+                      ? headerData?.data[0].header_nav_b
+                      : ""}
                     <BiSolidDownArrow
                       className={`${
                         toggleMenu ? "!rotate-180 transition-all" : ""
@@ -125,7 +151,10 @@ const Header = ({ pageName }) => {
                     onClick={handdleWhyUs}
                     ref={ref}
                   >
-                    Why FBS?
+                    {headerData?.data?.length > 0 &&
+                    headerData.data[0]?.header_nav_c
+                      ? headerData?.data[0].header_nav_c
+                      : ""}
                     <BiSolidDownArrow
                       className={`${
                         toggleWhyUs ? "!rotate-180 transition-all" : ""
@@ -180,18 +209,23 @@ const Header = ({ pageName }) => {
                 </li>
                 <li>
                   <button className="text-left">
-                    <a href="https://frontlinebusiness.com.ph/payment/">
-                      Payment
-                    </a>
+                    {headerData?.data.map((item, key) => (
+                      <a href={item.header_payment_link || "#"} key={key}>
+                        {item.header_nav_d || "Navigation 4"}
+                      </a>
+                    ))}
                   </button>
                 </li>
                 <div className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
                   <a
                     href="#"
                     onClick={handleModalContact}
-                    className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full  from-secondary to-secondary hover:to-primary "
+                    className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full  from-secondary to-secondary hover:to-primary uppercase"
                   >
-                    GET STARTED
+                    {headerData?.data?.length > 0 &&
+                    headerData.data[0]?.header_button_text
+                      ? headerData?.data[0].header_button_text
+                      : ""}
                   </a>
                 </div>
               </ul>
@@ -199,9 +233,12 @@ const Header = ({ pageName }) => {
             <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
               <button
                 onClick={handleModalContact}
-                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary"
+                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary uppercase"
               >
-                GET STARTED
+                {headerData?.data?.length > 0 &&
+                headerData.data[0]?.header_button_text
+                  ? headerData?.data[0].header_button_text
+                  : ""}
               </button>
             </div>
 

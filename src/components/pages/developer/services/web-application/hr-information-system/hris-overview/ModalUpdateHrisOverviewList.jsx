@@ -1,33 +1,25 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import React from "react";
-import { FaTrash } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
-import { StoreContext } from "../../../../../../store/StoreContext";
-import useUploadMultiplePhoto from "../../../../../../custom-hooks/useUploadMultiplePhoto";
 import {
-  apiVersion,
-  getConvertStringToJSONparseData,
-  googleHDViewLink,
-  googleViewLink,
+  InputText,
+  InputTextArea
+} from "../../../../../../helpers/FormInputs";
+import {
+  apiVersion
 } from "../../../../../../helpers/functions-general";
+import { queryData } from "../../../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../../../partials/dashboard/ModalAddWrapper";
+import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setIsUpdateHome,
   setMessage,
   setSuccess,
 } from "../../../../../../store/StoreAction";
-import { queryData } from "../../../../../../helpers/queryData";
-import ModalAddWrapper from "../../../../../../partials/dashboard/ModalAddWrapper";
-import {
-  InputFileUpload,
-  InputText,
-  InputTextArea,
-} from "../../../../../../helpers/FormInputs";
-import LoadImages from "../../../../../../partials/LoadImages";
-import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
-import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
+import { StoreContext } from "../../../../../../store/StoreContext";
 
 const ModalUpdateHrisOverviewList = ({ itemEdit, hrisOverviewData }) => {
   const { store, dispatch } = React.useContext(StoreContext);

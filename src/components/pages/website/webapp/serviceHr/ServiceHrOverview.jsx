@@ -2,36 +2,72 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ServiceHrOverview = () => {
+  const { data: hrisOverviewData } = useQueryData(
+    `${apiVersion}/hris-overview`, // endpoint
+    "get", // method
+    "hris-overview" // key
+  );
+
+  const { data: hrisData } = useQueryData(
+    `${apiVersion}/hris`, // endpoint
+    "get", // method
+    "hris" // key
+  );
+
+  const hrisOverviewImage = getConvertStringToJSONparseData(
+    hrisOverviewData?.data?.[0]?.hris_overview_img
+  );
+
   return (
     <>
       <section className="ServiceHrOverview py-20 bg-customGray">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {hrisOverviewData?.data?.length > 0 &&
+            hrisOverviewData.data[0]?.hris_overview_subtitle
+              ? hrisOverviewData?.data[0].hris_overview_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {hrisOverviewData?.data?.length > 0 &&
+              hrisOverviewData.data[0]?.hris_overview_title
+                ? hrisOverviewData?.data[0].hris_overview_title
+                : ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 w-fit mx-auto"
-                alt="Our Web Application"
-              />
+              {hrisOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt={`Our Web Application ${index + 1}`}
+                  key={index}
+                />
+              ))}
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
-                  <a
-                    href="https://calendly.com/carlodm-fbs/demo-discovery-call"
-                    target="_blank"
-                    className="btn bg-primary text-light font-semibold"
-                  >
-                    {webAppOverview[0].btnText}
-                  </a>
+                  {hrisData?.data.map((item, key) => (
+                    <a
+                      href={`${item.hris_banner_button_link}`}
+                      target="_blank"
+                      className="btn bg-primary text-light font-semibold uppercase"
+                      key={key}
+                    >
+                      {item.hris_banner_button_text}
+                    </a>
+                  ))}
                 </li>
                 {/* <li>
                   <a
@@ -52,10 +88,18 @@ const ServiceHrOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {hrisOverviewData?.data?.length > 0 &&
+                        hrisOverviewData.data[0]?.hris_overview_list_title_a
+                          ? hrisOverviewData?.data[0].hris_overview_list_title_a
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {hrisOverviewData?.data?.length > 0 &&
+                        hrisOverviewData.data[0]
+                          ?.hris_overview_list_description_a
+                          ? hrisOverviewData?.data[0]
+                              .hris_overview_list_description_a
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -67,9 +111,19 @@ const ServiceHrOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {hrisOverviewData?.data?.length > 0 &&
+                        hrisOverviewData.data[0]?.hris_overview_list_title_b
+                          ? hrisOverviewData?.data[0].hris_overview_list_title_b
+                          : ""}
                       </h3>
-                      <p>{webAppOverview[0].overviewBtext}</p>
+                      <p>
+                        {hrisOverviewData?.data?.length > 0 &&
+                        hrisOverviewData.data[0]
+                          ?.hris_overview_list_description_b
+                          ? hrisOverviewData?.data[0]
+                              .hris_overview_list_description_b
+                          : ""}
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -80,10 +134,18 @@ const ServiceHrOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        {hrisOverviewData?.data?.length > 0 &&
+                        hrisOverviewData.data[0]?.hris_overview_list_title_c
+                          ? hrisOverviewData?.data[0].hris_overview_list_title_c
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewCtext}
+                        {hrisOverviewData?.data?.length > 0 &&
+                        hrisOverviewData.data[0]
+                          ?.hris_overview_list_description_c
+                          ? hrisOverviewData?.data[0]
+                              .hris_overview_list_description_c
+                          : ""}
                       </p>
                     </div>
                   </div>

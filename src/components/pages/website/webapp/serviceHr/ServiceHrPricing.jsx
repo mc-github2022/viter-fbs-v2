@@ -64,6 +64,12 @@ const ServiceHrPricing = ({ pageName }) => {
     "packages-list" // key
   );
 
+  const { data: hrisTitlesData } = useQueryData(
+    `${apiVersion}/hris-titles`, // endpoint
+    "get", // method
+    "hris-titles" // key
+  );
+
   const selectedCategory =
     packagesListData?.data?.find(
       (item) => item.packages_category_url === "webapp-hris"
@@ -157,10 +163,16 @@ const ServiceHrPricing = ({ pageName }) => {
         <div className="customContainer z-[1]">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              Web application for your payroll processing needs
+              {hrisTitlesData?.data?.length > 0 &&
+              hrisTitlesData.data[0]?.hris_titles_packages_subtitle
+                ? hrisTitlesData?.data[0].hris_titles_packages_subtitle
+                : ""}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Affordable Pricing Plan
+              {hrisTitlesData?.data?.length > 0 &&
+              hrisTitlesData.data[0]?.hris_titles_packages_title
+                ? hrisTitlesData?.data[0].hris_titles_packages_title
+                : ""}
             </h3>
           </div>
           <div className="wrapper ">
@@ -543,6 +555,7 @@ const ServiceHrPricing = ({ pageName }) => {
             )}
           </div>
         </div>
+        <div className="absolute bg-light h-[180px] w-full bottom-[-2px] "></div>
       </section>
       {contactForm && (
         <ModalContact

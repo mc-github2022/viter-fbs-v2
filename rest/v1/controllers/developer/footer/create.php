@@ -31,6 +31,28 @@ if ($isUpdateFooter == "footerQuicklinksUpdate") {
 
     $query = checkCreate($footer);
 }
+if ($isUpdateFooter == "footerLogoImgUpdate") {
+    $footer->footer_logo_img = $data["footer_logo_img"];
+
+    $footer_logo_img_old = $data["footer_logo_img_old"];
+
+    // UPLOAD FILE TO GOOGLE DRIVE  
+    $footer->footer_logo_img = checkToUploadGoogleDrive(
+        $footer->footer_logo_img, // FILES
+        $footer_logo_img_old, // OLD FILES
+    );
+
+    $query = checkCreateLogoImg($footer);
+}
+if ($isUpdateFooter == "footerContactUsUpdate") {
+    $footer->footer_phone_a = $data["footer_phone_a"];
+    $footer->footer_phone_b = $data["footer_phone_b"];
+    $footer->footer_phone_c = $data["footer_phone_c"];
+    $footer->footer_email = $data["footer_email"];
+    $footer->footer_subscriber_text = $data["footer_subscriber_text"];
+
+    $query = checkCreateContactUs($footer);
+}
 if ($isUpdateFooter == "footerCopyrightUpdate") {
     $footer->footer_copyright = $data["footer_copyright"];
     $footer->footer_privacy_text = $data["footer_privacy_text"];

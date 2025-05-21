@@ -27,7 +27,6 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
   const [menuIdentifier, setMenuIdentifier] = React.useState("");
   const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
 
-  console.log(currentPath);
 
   const navigate = useNavigate();
 

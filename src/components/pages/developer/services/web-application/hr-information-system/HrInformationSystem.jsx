@@ -1,26 +1,35 @@
 import React from "react";
+import useQueryData from "../../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../../helpers/functions-general";
 import BreadCrumbs from "../../../../../partials/BreadCrumbs";
 import Dashboard from "../../../../../partials/dashboard/Dashboard";
 import Navigation from "../../../../../partials/dashboard/Navigation";
-import Header from "../../../dashHome/Header";
-import HrisBanner from "./hris-banner/HrisBanner";
-import HrisOverview from "./hris-overview/HrisOverview";
-import HrisPricing from "./hris-pricing/HrisPricing";
-import HrisScope from "./hris-scope/HrisScope";
+import ModalError from "../../../../../partials/modals/ModalError";
+import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
+import { setIsUpdateHome } from "../../../../../store/StoreAction";
+import { StoreContext } from "../../../../../store/StoreContext";
 import ServiceHrPartners from "../../../../website/webapp/serviceHr/ServiceHrPartners";
 import ServiceHrPartnersSay from "../../../../website/webapp/serviceHr/ServiceHrPartnersSay";
-import { StoreContext } from "../../../../../store/StoreContext";
-import useQueryData from "../../../../../custom-hooks/useQueryData";
-import { apiVersion } from "../../../../../helpers/functions-general";
-import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import Footer from "../../../footer/Footer";
-import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
-import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
-import ModalError from "../../../../../partials/modals/ModalError";
+import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
+import HrisBanner from "./hris-banner/HrisBanner";
 import ModalUpdateHrisBanner from "./hris-banner/ModalUpdateHrisBanner";
+import HrisOverview from "./hris-overview/HrisOverview";
 import ModalUpdateHrisOverview from "./hris-overview/ModalUpdateHrisOverview";
 import ModalUpdateHrisOverviewList from "./hris-overview/ModalUpdateHrisOverviewList";
+import HrisPricing from "./hris-pricing/HrisPricing";
+import HrisScope from "./hris-scope/HrisScope";
+import ModalUpdateHrisScopeTitle from "./hris-titles/ModalUpdateHrisScopeTitle";
+import ModalUpdateHrisPackagesTitle from "./hris-titles/ModalUpdateHrisPackagesTitle";
+import ModalUpdateContactUs from "../../../footer/ModalUpdateContactUs";
+import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
+import HrisPartners from "./hris-partners/HrisPartners";
+import ModalUpdateHrisPartnersTitle from "./hris-titles/ModalUpdateHrisPartnersTitle";
+import HrisPartnerSays from "./hris-partnersays/HrisPartnerSays";
+import ModalUpdateHrisPartnerSaysTitle from "./hris-titles/ModalUpdateHrisPartnerSaysTitle";
+import Header from "../../../header/Header";
+import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
 
 const HrInformationSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -38,10 +47,22 @@ const HrInformationSystem = () => {
     "hris-overview" // key
   );
 
+  const { data: hrisTitlesData } = useQueryData(
+    `${apiVersion}/hris-titles`, // endpoint
+    "get", // method
+    "hris-titles" // key
+  );
+
   const { data: contactFormDefaultData } = useQueryData(
     `${apiVersion}/contactDefault`, // endpoint
     "get", // method
     "contactDefault" // key
+  );
+
+  const { isLoading, data: headerData } = useQueryData(
+    `${apiVersion}/header`, // endpoint
+    "get", // method
+    "header" // key
   );
 
   const { data: footerData } = useQueryData(
@@ -63,6 +84,47 @@ const HrInformationSystem = () => {
   const handleUpdateHrisOverviewList = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-overview-list" }));
     setItemEdit("hrisOverviewListUpdate");
+  };
+
+  const handleUpdateHrisScopeTitles = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-scope-title" }));
+    setItemEdit("scopeTitleUpdate");
+  };
+
+  const handleUpdateHrisPackagesTitles = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "hris-packages-title" })
+    );
+    setItemEdit("packagesTitleUpdate");
+  };
+
+  const handleUpdateHrisPartnersTitles = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "hris-partners-title" })
+    );
+    setItemEdit("partnersTitleUpdate");
+  };
+
+  const handleUpdateHrisTestimonialTitles = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "hris-testimonial-title" })
+    );
+    setItemEdit("testimonialTitleUpdate");
+  };
+
+  const handleUpdateHeader = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "header" }));
+    setItemEdit("headerUpdate");
+  };
+
+  const handleUpdateFooterLogoImg = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
+    setItemEdit("footerLogoImgUpdate");
+  };
+
+  const handleUpdateFooterContactUs = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
+    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -88,7 +150,11 @@ const HrInformationSystem = () => {
               </div>
             </div>
             <div className=" pb-4 bg-light shadow-xl">
-              <Header />
+              <Header
+                headerData={headerData}
+                handleUpdateHeader={handleUpdateHeader}
+                isLoading={isLoading}
+              />
               <HrisBanner
                 hrisData={hrisData}
                 handleUpdateHrisBanner={handleUpdateHrisBanner}
@@ -99,13 +165,29 @@ const HrInformationSystem = () => {
                 hrisOverviewData={hrisOverviewData}
                 hrisData={hrisData}
               />
-              <HrisScope />
-              <HrisPricing />
-              <ServiceHrPartners />
-              <ServiceHrPartnersSay />
+              <HrisScope
+                handleUpdateHrisScopeTitles={handleUpdateHrisScopeTitles}
+                hrisTitlesData={hrisTitlesData}
+              />
+              <HrisPricing
+                handleUpdateHrisPackagesTitles={handleUpdateHrisPackagesTitles}
+                hrisTitlesData={hrisTitlesData}
+              />
+              <HrisPartners
+                handleUpdateHrisPartnersTitles={handleUpdateHrisPartnersTitles}
+                hrisTitlesData={hrisTitlesData}
+              />
+              <HrisPartnerSays
+                handleUpdateHrisTestimonialTitles={
+                  handleUpdateHrisTestimonialTitles
+                }
+                hrisTitlesData={hrisTitlesData}
+              />
               <Footer
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
+                handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
+                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
                 contactFormDefaultData={contactFormDefaultData}
               />
@@ -133,6 +215,53 @@ const HrInformationSystem = () => {
             itemEdit={itemEdit}
             hrisOverviewData={hrisOverviewData}
           />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "hris-scope-title" && (
+          <ModalUpdateHrisScopeTitle
+            itemEdit={itemEdit}
+            hrisTitlesData={hrisTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "hris-packages-title" && (
+          <ModalUpdateHrisPackagesTitle
+            itemEdit={itemEdit}
+            hrisTitlesData={hrisTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "hris-partners-title" && (
+          <ModalUpdateHrisPartnersTitle
+            itemEdit={itemEdit}
+            hrisTitlesData={hrisTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "hris-testimonial-title" && (
+          <ModalUpdateHrisPartnerSaysTitle
+            itemEdit={itemEdit}
+            hrisTitlesData={hrisTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "header" && (
+          <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "footer-logoimg" && (
+          <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "footer-contactus" && (
+          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&

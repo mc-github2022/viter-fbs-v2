@@ -5,6 +5,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
+  apiVersion,
   devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
@@ -43,9 +44,15 @@ const ServiceHrPartnersSay = () => {
     status,
     data: IndtestimonialData,
   } = useQueryData(
-    "/v1/indTestimonial", // endpoint
+    `${apiVersion}/indTestimonial`, // endpoint
     "get", // method
     "indTestimonial" // key
+  );
+
+  const { data: hrisTitlesData } = useQueryData(
+    `${apiVersion}/hris-titles`, // endpoint
+    "get", // method
+    "hris-titles" // key
   );
 
   const sliderRef = useRef(null);
@@ -124,9 +131,17 @@ const ServiceHrPartnersSay = () => {
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 0 && (
             <div className="">
-              <p>What Our</p>
+              <p>
+                {hrisTitlesData?.data?.length > 0 &&
+                hrisTitlesData.data[0]?.hris_titles_testimonial_subtitle
+                  ? hrisTitlesData?.data[0].hris_titles_testimonial_subtitle
+                  : ""}
+              </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                Clients Say
+                {hrisTitlesData?.data?.length > 0 &&
+                hrisTitlesData.data[0]?.hris_titles_testimonial_title
+                  ? hrisTitlesData?.data[0].hris_titles_testimonial_title
+                  : ""}
               </h2>
             </div>
           )}

@@ -48,6 +48,10 @@ RewriteRule ^homeTitles/([0-9]+)$ controllers/developer/home/home-titles/homeTit
 RewriteRule ^footer$ controllers/developer/footer/footer.php [L]
 RewriteRule ^footer/([0-9]+)$ controllers/developer/footer/footer.php?footerid=$1 [L]
 
+# HEADER
+RewriteRule ^header$ controllers/developer/header/header.php [L]
+RewriteRule ^header/([0-9]+)$ controllers/developer/header/header.php?headerid=$1 [L]
+
 # SPECIAL OFFERS
 RewriteRule ^specialOffers$ controllers/developer/special-offers/specialOffers.php [L]
 RewriteRule ^specialOffers/([0-9]+)$ controllers/developer/special-offers/specialOffers.php?special_offersid=$1 [L]
@@ -183,6 +187,10 @@ RewriteRule ^hris/([0-9]+)$ controllers/developer/services/web-application/hr-in
 # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - OVERVIEW
 RewriteRule ^hris-overview$ controllers/developer/services/web-application/hr-information-system/hris-overview/hrisOverview.php [L]
 RewriteRule ^hris-overview/([0-9]+)$ controllers/developer/services/web-application/hr-information-system/hris-overview/hrisOverview.php?hris_overviewid=$1 [L]
+
+# SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - TITLES
+RewriteRule ^hris-titles$ controllers/developer/services/web-application/hr-information-system/hris-titles/hrisTitles.php [L]
+RewriteRule ^hris-titles/([0-9]+)$ controllers/developer/services/web-application/hr-information-system/hris-titles/hrisTitles.php?hris_titlesid=$1 [L]
 
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]

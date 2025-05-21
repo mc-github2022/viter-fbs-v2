@@ -9,7 +9,7 @@ import { setIsAdd, setIsDelete } from "../../../../../../store/StoreAction";
 import { MdDelete } from "react-icons/md";
 import ModalDelete from "../../../../../../partials/modals/ModalDelete";
 
-const HrisScope = () => {
+const HrisScope = ({ handleUpdateHrisScopeTitles, hrisTitlesData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
   const [id, setIsId] = React.useState("");
@@ -47,13 +47,21 @@ const HrisScope = () => {
             <a
               className="absolute cursor-pointer tooltip-btn left-[16rem] -top-2 "
               data-tooltip="Edit contents"
-              // onClick={handleUpdateInsightsTitle}
+              onClick={handleUpdateHrisScopeTitles}
             >
               <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
             </a>
-            <p>What Makes This Web App</p>
+            <p>
+              {hrisTitlesData?.data?.length > 0 &&
+              hrisTitlesData.data[0]?.hris_titles_overview_subtitle
+                ? hrisTitlesData?.data[0].hris_titles_overview_subtitle
+                : "Subtitle"}
+            </p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              a Lifesaver?
+              {hrisTitlesData?.data?.length > 0 &&
+              hrisTitlesData.data[0]?.hris_titles_overview_title
+                ? hrisTitlesData?.data[0].hris_titles_overview_title
+                : "Title"}
             </h2>
           </div>
           <a

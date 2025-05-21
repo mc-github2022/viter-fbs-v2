@@ -1,0 +1,116 @@
+import React from "react";
+import { FaFileDownload } from "react-icons/fa";
+import { FaRegCircleCheck } from "react-icons/fa6";
+import { webAppOverview } from "./data";
+import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import ModalContact from "../../../../partials/ModalContact";
+
+const GraphicDesignOverview = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
+  return (
+    <>
+      <section className="GraphicDesignOverview py-20 bg-customGray">
+        <div className="customContainer">
+          <p>{webAppOverview[0].subtitle}</p>
+          <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
+            <span className="font-semibold text-primary">
+              {webAppOverview[0].mainTitle}
+            </span>
+          </h2>
+          <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
+            <div>
+              <img
+                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
+                className="mb-12 w-full mx-auto"
+                alt="Web Development Team"
+              />
+              <ul className="flex flex-col mb-10 md:flex md:flex-row items-center gap-12">
+                <li>
+                  <button
+                    onClick={handleForm}
+                    className="btn bg-primary text-light font-semibold"
+                  >
+                    {webAppOverview[0].btnText}
+                  </button>
+                </li>
+                <li>
+                  {/* <a
+                    href="#"
+                    className="flex items-center gap-2 font-bold text-primary"
+                  >
+                    {webAppOverview[0].btnDownloadText} <FaFileDownload />
+                  </a> */}
+                </li>
+              </ul>
+            </div>
+            <div className="lg:mt-0">
+              <ul>
+                <li className="flex items-start gap-4 text-dark mb-6">
+                  <div className="flex gap-4 items-start">
+                    <div>
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                    </div>
+                    <div>
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
+                        {webAppOverview[0].overviewAtitle}
+                      </h3>
+                      <p className="text-justify">
+                        {webAppOverview[0].overviewAtext}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 text-dark mb-6">
+                  <div className="flex gap-4 items-start">
+                    <div>
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                    </div>
+                    <div>
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
+                        {webAppOverview[0].overviewBtitle}
+                      </h3>
+                      <p>{webAppOverview[0].overviewBtext}</p>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 text-dark">
+                  <div className="flex gap-4 items-start">
+                    <div>
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                    </div>
+                    <div>
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
+                        {webAppOverview[0].overviewCtitle}
+                      </h3>
+                      <p>{webAppOverview[0].overviewCtext}</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${webAppOverview[0]?.btnText} / Graphic Design - `}
+        />
+      )}
+    </>
+  );
+};
+
+export default GraphicDesignOverview;

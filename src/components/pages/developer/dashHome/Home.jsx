@@ -1,7 +1,6 @@
 import React from "react";
 import Navigation from "../../../partials/dashboard/Navigation";
 import Dashboard from "../../../partials/dashboard/Dashboard";
-import Header from "./Header";
 import Banner from "./Banner";
 import Process from "./process/Process";
 import Insights from "./home-titles/Insights";
@@ -33,6 +32,10 @@ import ModalUpdatePartnersTitle from "./home-titles/modals/ModalUpdatePartnersTi
 import ModalUpdateInsightsTitle from "./home-titles/modals/ModalUpdateInsightsTitle";
 import ModalUpdateQuickLinks from "../footer/ModalUpdateQuickLinks";
 import ModalUpdateCopyright from "../footer/ModalUpdateCopyright";
+import ModalUpdateLogoImg from "../footer/ModalUpdateLogoImg";
+import ModalUpdateContactUs from "../footer/ModalUpdateContactUs";
+import Header from "../header/Header";
+import ModalUpdateHeader from "../header/ModalUpdateHeader";
 
 const Home = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -66,6 +69,12 @@ const Home = () => {
     `${apiVersion}/homeTitles`, // endpoint
     "get", // method
     "homeTitles" // key
+  );
+
+  const { isLoading, data: headerData } = useQueryData(
+    `${apiVersion}/header`, // endpoint
+    "get", // method
+    "header" // key
   );
 
   const { data: footerData } = useQueryData(
@@ -151,6 +160,21 @@ const Home = () => {
     setItemEdit("insightsTitleUpdate");
   };
 
+  const handleUpdateHeader = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "header" }));
+    setItemEdit("headerUpdate");
+  };
+
+  const handleUpdateFooterLogoImg = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
+    setItemEdit("footerLogoImgUpdate");
+  };
+
+  const handleUpdateFooterContactUs = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
+    setItemEdit("footerContactUsUpdate");
+  };
+
   const handleUpdateFooterQuicklinks = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-quicklinks" }));
     setItemEdit("footerQuicklinksUpdate");
@@ -173,7 +197,11 @@ const Home = () => {
               </div>
             </div>
             <div className=" pb-4 bg-light shadow-xl">
-              <Header />
+              <Header
+                headerData={headerData}
+                handleUpdateHeader={handleUpdateHeader}
+                isLoading={isLoading}
+              />
               <Banner />
               <Process
                 handleUpdateProcessTitle={handleUpdateProcessTitle}
@@ -212,6 +240,8 @@ const Home = () => {
               <Footer
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
+                handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
+                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
                 contactFormDefaultData={contactFormDefaultData}
               />
@@ -322,6 +352,21 @@ const Home = () => {
             itemEdit={itemEdit}
             homeTitlesData={homeTitlesData}
           />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "header" && (
+          <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "footer-logoimg" && (
+          <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "footer-contactus" && (
+          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&

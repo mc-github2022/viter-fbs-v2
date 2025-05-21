@@ -1,0 +1,53 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-overview
+            -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-titles
+            -> rest/v1/controllers/developer/footer/functions.php
+            -> rest/v1/controllers/developer/footer/create.php
+            -> rest/v1/controllers/developer/footer/delete.php
+            -> rest/v1/controllers/developer/footer/update.php
+            -> rest/v1/controllers/developer/footer/footer.php
+            -> rest/v1/controllers/developer/header
+
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/services/web-application/hr-information-system/HrisOverview.php
+            -> rest/v1/models/developer/services/web-application/hr-information-system/HrisTitles.php
+            -> rest/v1/models/developer/footer/Footer.php
+            -> rest/v1/models/developer/header
+
+
+        * HTACESS
+            -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - OVERVIEW is added
+            -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - TITLES is added
+            -> # HEADER is added
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_services_hris_overview.sql
+            -> rest/db-backup/fbsv2_footer.sql 
+                note: column is added
+                    `footer_logo_img` text NOT NULL,
+                    `footer_phone_a` varchar(50) NOT NULL,
+                    `footer_phone_b` varchar(50) NOT NULL,
+                    `footer_phone_c` varchar(50) NOT NULL,
+                    `footer_email` varchar(100) NOT NULL,
+                    `footer_subscriber_text` varchar(50) NOT NULL,
+            -> rest/db-backup/fbsv2_header.sql
+            -> rest/db-backup/fbsv2_services_hris_titles.sql
+            ->
+            ->
+
+

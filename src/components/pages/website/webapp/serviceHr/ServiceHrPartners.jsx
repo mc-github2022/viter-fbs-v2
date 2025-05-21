@@ -1,11 +1,10 @@
-import React from "react";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
+  apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
-import { sectionPartnersTitle } from "./data";
 
 const ServiceHrPartners = () => {
   const {
@@ -15,17 +14,31 @@ const ServiceHrPartners = () => {
     status,
     data: partnersData,
   } = useQueryData(
-    "/v1/partners", // endpoint
+    `${apiVersion}/partners`, // endpoint
     "get", // method
     "partners" // key
+  );
+
+  const { data: hrisTitlesData } = useQueryData(
+    `${apiVersion}/hris-titles`, // endpoint
+    "get", // method
+    "hris-titles" // key
   );
   return (
     <>
       <section className="ServiceHrPartners pb-16 md:py-20 -translate-y-1 bg-light">
         <div className="customContainer">
-          <p>{sectionPartnersTitle[0].subTitle}</p>
+          <p>
+            {hrisTitlesData?.data?.length > 0 &&
+            hrisTitlesData.data[0]?.hris_titles_partners_subtitle
+              ? hrisTitlesData?.data[0].hris_titles_partners_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-            {sectionPartnersTitle[0].mainTitle}
+            {hrisTitlesData?.data?.length > 0 &&
+            hrisTitlesData.data[0]?.hris_titles_partners_title
+              ? hrisTitlesData?.data[0].hris_titles_partners_title
+              : ""}
           </h2>
 
           <ul className="flex flex-wrap justify-center gap-10 items-center">
