@@ -32,7 +32,7 @@ const WebApplication = () => {
                 </div>
                 <div className="list-button border-l-4 border-transparent hover:border-l-4 pl-1 hover:border-primary hover:transition-all hover:ease-in-out ">
                   <Link
-                    to={`${devNavUrl}/services/web-application/online-payroll-system`}
+                    to={`${devNavUrl}/${UrlDeveloper}/services/web-application/online-payroll-system`}
                     className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2  text-xs font-bold">
@@ -43,7 +43,7 @@ const WebApplication = () => {
                 </div>
                 <div className="list-button border-l-4 border-transparent hover:border-l-4 pl-1 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
-                    to={`${devNavUrl}/services/web-application/school-enrollment-system`}
+                    to={`${devNavUrl}/${UrlDeveloper}/services/web-application/school-enrollment-system`}
                     className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2  text-xs font-bold">
@@ -54,7 +54,7 @@ const WebApplication = () => {
                 </div>
                 <div className="list-button border-l-4 border-transparent hover:border-l-4 pl-1 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
-                    to={`${devNavUrl}/services/web-application/online-payment-integration`}
+                    to={`${devNavUrl}/${UrlDeveloper}/services/web-application/online-payment-integration`}
                     className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2  text-xs font-bold">
@@ -65,7 +65,7 @@ const WebApplication = () => {
                 </div>
                 <div className="list-button border-l-4 border-transparent hover:border-l-4 pl-1 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
-                    to={`${devNavUrl}/services/web-application/online-donation-system`}
+                    to={`${devNavUrl}/${UrlDeveloper}/services/web-application/online-donation-system`}
                     className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2  text-xs font-bold">
@@ -76,7 +76,7 @@ const WebApplication = () => {
                 </div>
                 <div className="list-button border-l-4 border-transparent hover:border-l-4 pl-1 hover:border-primary hover:transition-all hover:ease-in-out">
                   <Link
-                    to={`${devNavUrl}/services/web-application/asset-inventory-system`}
+                    to={`${devNavUrl}/${UrlDeveloper}/services/web-application/asset-inventory-system`}
                     className="flex items-center gap-2 py-3 "
                   >
                     <span className="flex items-center gap-2  text-xs font-bold">

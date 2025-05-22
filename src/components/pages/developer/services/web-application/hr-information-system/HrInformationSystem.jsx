@@ -30,10 +30,11 @@ import HrisPartnerSays from "./hris-partnersays/HrisPartnerSays";
 import ModalUpdateHrisPartnerSaysTitle from "./hris-titles/ModalUpdateHrisPartnerSaysTitle";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
+import ModalUpdateHrisScope from "./hris-scope/ModalUpdateHrisScope";
 
 const HrInformationSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [itemEdit, setItemEdit] = React.useState("");
+  const [itemEdit, setItemEdit] = React.useState(null);
 
   const { data: hrisData } = useQueryData(
     `${apiVersion}/hris`, // endpoint
@@ -45,6 +46,16 @@ const HrInformationSystem = () => {
     `${apiVersion}/hris-overview`, // endpoint
     "get", // method
     "hris-overview" // key
+  );
+
+  const {
+    isLoading: isLoadingScope,
+    isFetching: isFetchingScope,
+    data: hrisScopeData,
+  } = useQueryData(
+    `${apiVersion}/hris-scope`, // endpoint
+    "get", // method
+    "hris-scope" // key
   );
 
   const { data: hrisTitlesData } = useQueryData(
@@ -84,6 +95,11 @@ const HrInformationSystem = () => {
   const handleUpdateHrisOverviewList = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-overview-list" }));
     setItemEdit("hrisOverviewListUpdate");
+  };
+
+  const handleUpdateHrisScope = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-scope" }));
+    setItemEdit(null);
   };
 
   const handleUpdateHrisScopeTitles = () => {
@@ -167,7 +183,13 @@ const HrInformationSystem = () => {
               />
               <HrisScope
                 handleUpdateHrisScopeTitles={handleUpdateHrisScopeTitles}
+                handleUpdateHrisScope={handleUpdateHrisScope}
+                setItemEdit={setItemEdit}
+                isLoadingScope={isLoadingScope}
+                isFetchingScope={isFetchingScope}
                 hrisTitlesData={hrisTitlesData}
+                hrisScopeData={hrisScopeData}
+                hrisData={hrisData}
               />
               <HrisPricing
                 handleUpdateHrisPackagesTitles={handleUpdateHrisPackagesTitles}
@@ -215,6 +237,11 @@ const HrInformationSystem = () => {
             itemEdit={itemEdit}
             hrisOverviewData={hrisOverviewData}
           />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "hris-scope" && (
+          <ModalUpdateHrisScope itemEdit={itemEdit} />
         )}
 
       {store.isUpdateHome?.modal &&

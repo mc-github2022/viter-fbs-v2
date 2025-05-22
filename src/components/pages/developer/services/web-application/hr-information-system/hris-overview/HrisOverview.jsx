@@ -1,13 +1,10 @@
-import React from "react";
-import {
-  devBaseImgUrl,
-  getConvertStringToJSONparseData,
-  googleHDViewLink,
-} from "../../../../../../helpers/functions-general";
-import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegImages } from "react-icons/fa";
+import { FaRegCircleCheck } from "react-icons/fa6";
 import { HiPencil } from "react-icons/hi";
-import { webAppOverview } from "../../../../../website/webapp/serviceHr/data";
+import {
+  getConvertStringToJSONparseData,
+  googleHDViewLink
+} from "../../../../../../helpers/functions-general";
 import LoadImages from "../../../../../../partials/LoadImages";
 
 const HrisOverview = ({

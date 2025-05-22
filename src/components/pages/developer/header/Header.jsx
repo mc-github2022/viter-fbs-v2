@@ -33,15 +33,16 @@ const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
               {headerData?.data?.length > 0 && headerLogoImg?.length > 0 ? (
                 <>
                   {headerLogoImg.map((img, index) => (
-                    <Link>
-                      <LoadImages
-                        url={`${googleHDViewLink}${img?.id}`}
-                        alt="Frontline Business Solutions Logo"
-                        className="w-[80%] md:w-[90%] z-10"
-                        key={index}
-                        // isTableSpinner={true}
-                      />
-                    </Link>
+                    <div key={index}>
+                      <Link>
+                        <LoadImages
+                          url={`${googleHDViewLink}${img?.id}`}
+                          alt="Frontline Business Solutions Logo"
+                          className="w-[80%] md:w-[90%] z-10"
+                          // isTableSpinner={true}
+                        />
+                      </Link>
+                    </div>
                   ))}
                 </>
               ) : (

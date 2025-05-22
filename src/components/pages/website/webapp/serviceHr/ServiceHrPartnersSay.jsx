@@ -1,8 +1,6 @@
 import React, { useRef } from "react";
-import { RiDoubleQuotesL } from "react-icons/ri";
-import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { clientSays, clientSaysTitle } from "./data";
+import Slider from "react-slick";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
@@ -36,7 +34,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceHrPartnersSay = () => {
+const ServiceHrPartnersSay = ({hrisTitlesData}) => {
   const {
     isFetching,
     error,
@@ -49,11 +47,7 @@ const ServiceHrPartnersSay = () => {
     "indTestimonial" // key
   );
 
-  const { data: hrisTitlesData } = useQueryData(
-    `${apiVersion}/hris-titles`, // endpoint
-    "get", // method
-    "hris-titles" // key
-  );
+
 
   const sliderRef = useRef(null);
 

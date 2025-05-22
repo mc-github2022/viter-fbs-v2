@@ -90,14 +90,15 @@ const Header = ({ pageName }) => {
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo relative">
               {headerLogoImg.map((img, index) => (
-                <Link to={`${devNavUrl}/`}>
-                  <LoadImages
-                    url={`${googleHDViewLink}${img?.id}`}
-                    alt="Frontline Business Solutions Logo"
-                    className="w-[80%] md:w-[90%]"
-                    key={index}
-                  />
-                </Link>
+                <div key={index}>
+                  <Link to={`${devNavUrl}/`}>
+                    <LoadImages
+                      url={`${googleHDViewLink}${img?.id}`}
+                      alt="Frontline Business Solutions Logo"
+                      className="w-[80%] md:w-[90%]"
+                    />
+                  </Link>
+                </div>
               ))}
             </div>
             <div

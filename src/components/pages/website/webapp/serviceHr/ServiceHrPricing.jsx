@@ -37,7 +37,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceHrPricing = ({ pageName }) => {
+const ServiceHrPricing = ({ pageName, hrisTitlesData }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
@@ -64,11 +64,7 @@ const ServiceHrPricing = ({ pageName }) => {
     "packages-list" // key
   );
 
-  const { data: hrisTitlesData } = useQueryData(
-    `${apiVersion}/hris-titles`, // endpoint
-    "get", // method
-    "hris-titles" // key
-  );
+
 
   const selectedCategory =
     packagesListData?.data?.find(

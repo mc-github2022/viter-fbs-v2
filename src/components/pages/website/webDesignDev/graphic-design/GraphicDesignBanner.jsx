@@ -27,12 +27,8 @@ const GraphicDesignBanner = ({ pageName }) => {
           <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center transition-all w-full py-10">
             <div className="text-center py-10 lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
-                {banner[0].bannerTitle}
-
-                <span className="text-light font-semibold">
-                  {" "}
-                  {banner[0].bannerTitleBoldText}
-                </span>
+                This is for {""}
+                <span className="text-light font-semibold">Graphic Design</span>
               </h2>
               <p className="text-light mb-10">{banner[0].bannerTextDesc}</p>
               <button

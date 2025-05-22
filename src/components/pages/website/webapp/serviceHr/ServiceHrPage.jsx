@@ -26,6 +26,18 @@ const ServiceHrPage = () => {
     "packages-category" // key
   );
 
+  const { data: hrisData } = useQueryData(
+    `${apiVersion}/hris`, // endpoint
+    "get", // method
+    "hris" // key
+  );
+
+  const { data: hrisTitlesData } = useQueryData(
+    `${apiVersion}/hris-titles`, // endpoint
+    "get", // method
+    "hris-titles" // key
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -49,12 +61,12 @@ const ServiceHrPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <ServiceHrBanner />
-      <ServiceHrOverview />
-      <ServiceHrScope />
-      <ServiceHrPricing pageName={pageName} />
-      <ServiceHrPartners />
-      <ServiceHrPartnersSay />
+      <ServiceHrBanner hrisData={hrisData} />
+      <ServiceHrOverview hrisData={hrisData} />
+      <ServiceHrScope hrisData={hrisData} hrisTitlesData={hrisTitlesData} />
+      <ServiceHrPricing pageName={pageName} hrisTitlesData={hrisTitlesData} />
+      <ServiceHrPartners hrisTitlesData={hrisTitlesData} />
+      <ServiceHrPartnersSay hrisTitlesData={hrisTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

@@ -35,6 +35,7 @@ import HrInformationSystem from "../components/pages/developer/services/web-appl
 import Category from "../components/pages/developer/packages/category/Category";
 import List from "../components/pages/developer/packages/list/List";
 import Details from "../components/pages/developer/packages/details/Details";
+import OnlinePayrollSystem from "../components/pages/developer/services/web-application/online-payroll-system/OnlinePayrollSystem";
 
 export const routesDeveloper = [
   {
@@ -242,6 +243,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <HrInformationSystem />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-application/online-payroll-system`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <OnlinePayrollSystem />
       </ProtectedRouteDeveloper>
     ),
   },

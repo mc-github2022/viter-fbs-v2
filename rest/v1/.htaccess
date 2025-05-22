@@ -192,6 +192,26 @@ RewriteRule ^hris-overview/([0-9]+)$ controllers/developer/services/web-applicat
 RewriteRule ^hris-titles$ controllers/developer/services/web-application/hr-information-system/hris-titles/hrisTitles.php [L]
 RewriteRule ^hris-titles/([0-9]+)$ controllers/developer/services/web-application/hr-information-system/hris-titles/hrisTitles.php?hris_titlesid=$1 [L]
 
+# SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - SCOPE 
+RewriteRule ^hris-scope$ controllers/developer/services/web-application/hr-information-system/hris-scope/hrisScope.php [L]
+RewriteRule ^hris-scope/([0-9]+)$ controllers/developer/services/web-application/hr-information-system/hris-scope/hrisScope.php?hris_scopeid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - BANNER
+RewriteRule ^payroll$ controllers/developer/services/web-application/online-payroll-system/payroll-banner/payrollBanner.php [L]
+RewriteRule ^payroll/([0-9]+)$ controllers/developer/services/web-application/online-payroll-system/payroll-banner/payrollBanner.php?payroll_bannerid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - OVERVIEW
+RewriteRule ^payroll-overview$ controllers/developer/services/web-application/online-payroll-system/payroll-overview/payrollOverview.php [L]
+RewriteRule ^payroll-overview/([0-9]+)$ controllers/developer/services/web-application/online-payroll-system/payroll-overview/payrollOverview.php?payroll_overviewid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - SCOPE 
+RewriteRule ^payroll-scope$ controllers/developer/services/web-application/online-payroll-system/payroll-scope/payrollScope.php [L]
+RewriteRule ^payroll-scope/([0-9]+)$ controllers/developer/services/web-application/online-payroll-system/payroll-scope/payrollScope.php?payroll_scopeid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - TITLES
+RewriteRule ^payroll-titles$ controllers/developer/services/web-application/online-payroll-system/payroll-titles/payrollTitles.php [L]
+RewriteRule ^payroll-titles/([0-9]+)$ controllers/developer/services/web-application/online-payroll-system/payroll-titles/payrollTitles.php?payroll_titlesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

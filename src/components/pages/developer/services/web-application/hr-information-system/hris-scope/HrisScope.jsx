@@ -1,42 +1,66 @@
 import React from "react";
-import { scope } from "../../../../../website/webapp/serviceHr/data";
-import { IoChevronDown } from "react-icons/io5";
-import { devBaseImgUrl } from "../../../../../../helpers/functions-general";
+import { FaEdit } from "react-icons/fa";
 import { HiPencil } from "react-icons/hi";
-import { FaEdit, FaRegImages } from "react-icons/fa";
-import { StoreContext } from "../../../../../../store/StoreContext";
-import { setIsAdd, setIsDelete } from "../../../../../../store/StoreAction";
-import { MdDelete } from "react-icons/md";
+import { IoChevronDown } from "react-icons/io5";
+import { MdDelete, MdOutlineDashboard } from "react-icons/md";
+import {
+  getConvertStringToJSONparseData,
+  googleHDViewLink
+} from "../../../../../../helpers/functions-general";
+import LoadImages from "../../../../../../partials/LoadImages";
 import ModalDelete from "../../../../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../../../partials/spinners/NoData";
+import TableLoading from "../../../../../../partials/spinners/TableLoading";
+import {
+  setIsDelete,
+  setIsUpdateHome
+} from "../../../../../../store/StoreAction";
+import { StoreContext } from "../../../../../../store/StoreContext";
 
-const HrisScope = ({ handleUpdateHrisScopeTitles, hrisTitlesData }) => {
+const HrisScope = ({
+  handleUpdateHrisScopeTitles,
+  handleUpdateHrisScope,
+  isLoadingScope,
+  isFetchingScope,
+  setItemEdit,
+  hrisTitlesData,
+  hrisScopeData,
+  hrisData,
+}) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
   const [id, setIsId] = React.useState("");
 
   const [accordionItem, setAccordionItem] = React.useState("");
 
+  const currentScope = hrisScopeData?.data?.find(
+    (item) => item.hris_scope_aid === accordionItem
+  );
+
+  const hrisScopeImage = getConvertStringToJSONparseData(
+    currentScope?.hris_scope_img
+  );
+
   React.useEffect(() => {
-    setAccordion(true);
-    setAccordionItem("starter");
-  }, []);
+    if (hrisScopeData?.data?.length > 0) {
+      setAccordionItem(hrisScopeData.data[0].hris_scope_aid);
+    }
+  }, [hrisScopeData]);
 
-  const [accordion, setAccordion] = React.useState(false);
   const handleAccordion = (item) => {
-    setAccordion(true);
     setAccordionItem(item);
-    console.log(accordionItem);
   };
 
-  const handleEdit = (item) => {
-    dispatch(setIsAdd(true));
-    setItemEdit(item);
+  const handleEdit = (scopeList) => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "hris-scope" }));
+    setItemEdit(scopeList);
   };
 
-  const handleDelete = (item) => {
+  const handleDelete = (scopeList) => {
     dispatch(setIsDelete(true));
-    setIsData(item.home_banner_title);
-    setIsId(item.home_banner_aid);
+    setIsData(scopeList.hris_scope_title);
+    setIsId(scopeList.hris_scope_aid);
   };
 
   return (
@@ -66,113 +90,140 @@ const HrisScope = ({ handleUpdateHrisScopeTitles, hrisTitlesData }) => {
           </div>
           <a
             className="absolute cursor-pointer right-[6rem] top-2"
-            // onClick={handleUpdatePartnerWithUs}
+            onClick={handleUpdateHrisScope}
           >
             <span className=" bg-[#C7AC27] rounded-lg  w-[25px] h-[20px] px-[8px] border-[1px] text-black hover:underline text-base">
               Add
             </span>
           </a>
+          {isFetchingScope && !isLoadingScope && <FetchingSpinner />}
+          {(isLoadingScope || hrisScopeData?.data?.length === 0) && (
+            <div className="text-center">
+              <div className="p-36">
+                <NoData />
+              </div>
+            </div>
+          )}
           <div className="warpper md:grid md:grid-cols-2 gap-5">
             <ul>
-              {scope.map((scopeList, key) => {
-                return (
-                  <li
-                    key={key}
-                    className="overflow-hidden border-b border-[#e9e9e9]"
-                  >
-                    <div
-                      className={`${
-                        accordion && accordionItem === scopeList.scopeId
-                          ? "bg-customGray"
-                          : ""
-                      } grid grid-cols-[_3.5fr,_.5fr] justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
-                      onClick={() => handleAccordion(scopeList.scopeId)}
+              {isLoadingScope || isFetchingScope ? (
+                <TableLoading cols={1} count={15} />
+              ) : (
+                hrisScopeData?.data.map((scopeList, key) => {
+                  return (
+                    <li
+                      key={key}
+                      className="overflow-hidden border-b border-[#e9e9e9]"
                     >
-                      <div className="grid grid-cols-[_2rem,_1fr] items-center gap-4">
-                        <div>{scopeList.scopeIcon}</div>
-                        <p
-                          className={`${
-                            accordion && accordionItem === scopeList.scopeId
-                              ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
-                              : "text-dark"
-                          } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}
-                        >
-                          {scopeList.scopeTitle}
-                        </p>
-                      </div>
-                      <IoChevronDown
+                      <div
                         className={`${
-                          accordion && accordionItem === scopeList.scopeId
-                            ? "rotate-180"
+                          accordionItem === scopeList.hris_scope_aid
+                            ? "bg-customGray"
                             : ""
-                        }`}
-                      />
-                    </div>
-                    <div
-                      className={`${
-                        accordion && accordionItem === scopeList.scopeId
-                          ? "px-4 pt-4 pb-4"
-                          : "h-0 py-0"
-                      } accordionContent `}
-                    >
-                      <p>{scopeList.scopeDesc}</p>
-                      <div className="flex items-center place-self-end">
-                        <button
-                          className="tooltip-action-table"
-                          data-tooltip="Edit"
-                          onClick={() => handleEdit(item)}
-                        >
-                          <FaEdit className="text-gray-600 text-[16px]" />
-                        </button>
-                        <button
-                          className="tooltip-action-table"
-                          data-tooltip="Delete"
-                          onClick={() => handleDelete(item)}
-                        >
-                          <MdDelete className="text-gray-600 text-[18px]" />
-                        </button>
+                        } grid grid-cols-[_3.5fr,_.5fr] justify-between items-center px-2 group hover:bg-[#f1f1f1] cursor-pointer py-2`}
+                        onClick={() =>
+                          handleAccordion(scopeList.hris_scope_aid)
+                        }
+                      >
+                        <div className="grid grid-cols-[_2rem,_1fr] items-center gap-4">
+                          <div>
+                            <MdOutlineDashboard className="text-3xl text-primary" />
+                          </div>
+                          <p
+                            className={`${
+                              accordionItem === scopeList.hris_scope_aid
+                                ? "bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]"
+                                : "text-dark"
+                            } text-[clamp(18px,4vw,20px)] font-semibold cursor-pointer `}
+                          >
+                            {scopeList.hris_scope_title}
+                          </p>
+                        </div>
+                        <IoChevronDown
+                          className={`${
+                            accordionItem === scopeList.hris_scope_aid
+                              ? "rotate-180"
+                              : ""
+                          }`}
+                        />
                       </div>
-                      {/* <a href="#" className="btn bg-primary text-light">
+                      <div
+                        className={`${
+                          accordionItem === scopeList.hris_scope_aid
+                            ? "px-4 pt-4 pb-4"
+                            : "h-0 py-0"
+                        } accordionContent `}
+                      >
+                        <p>{scopeList.hris_scope_desc}</p>
+                        <div className="flex items-center place-self-end">
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Edit"
+                            onClick={() => handleEdit(scopeList)}
+                          >
+                            <FaEdit className="text-gray-600 text-[16px]" />
+                          </button>
+                          <button
+                            className="tooltip-action-table"
+                            data-tooltip="Delete"
+                            onClick={() => handleDelete(scopeList)}
+                          >
+                            <MdDelete className="text-gray-600 text-[18px]" />
+                          </button>
+                        </div>
+                        {/* <a href="#" className="btn bg-primary text-light">
                            Schedule a Demo
                          </a> */}
-                      <p className="md:hidden py-6">
-                        <a
-                          href="https://calendly.com/carlodm-fbs/demo-discovery-call"
-                          target="_blank"
-                          className="btn bg-primary text-light font-semibold"
-                        >
-                          SCHEDULE A DEMO
-                        </a>
-                      </p>
-                    </div>
-                  </li>
-                );
-              })}
+                        <p className="md:hidden py-6">
+                          {hrisData?.data.map((item, key) => (
+                            <a
+                              href={`${item.hris_banner_button_link}`}
+                              target="_blank"
+                              className="btn bg-primary text-light font-semibold uppercase"
+                              key={key}
+                            >
+                              {item.hris_banner_button_text}
+                            </a>
+                          ))}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })
+              )}
             </ul>
 
-            {scope.map((scopedata, key) => {
+            {hrisScopeData?.data.map((scopedata, key) => {
               return (
                 <div
                   key={key}
                   className={`${
-                    accordionItem === scopedata.scopeId ? "block" : "hidden"
-                  }`}
+                    accordionItem === scopedata.hris_scope_aid
+                      ? "block"
+                      : "hidden"
+                  } relative`}
                 >
-                  <img
-                    className="hidden md:w-full md:object-contain md:block"
-                    // src={`${devBaseImgUrl}/hrScopdeSS_overview.jpg`}
-                    src={`${devBaseImgUrl}/${scopedata.scopeImage}`}
-                    alt="What Makes This Web App"
-                  />
+                  {hrisScopeImage.map((img, index) => (
+                    <LoadImages
+                      className="hidden md:w-full md:object-contain md:block z-10"
+                      url={`${googleHDViewLink}${img?.id}`}
+                      alt="What Makes This Web App"
+                      key={index}
+                      isTableSpinner={true}
+                    />
+                  ))}
 
                   <p className="hidden md:block mb-4 text-center pt-8 pb-8">
-                    <a
-                      href="https://calendly.com/carlodm-fbs/demo-discovery-call"
-                      target="_blank"
-                      className="btn bg-primary text-light font-semibold"
-                    >
-                      SCHEDULE A DEMO
-                    </a>
+                    {hrisData?.data.map((item, key) => (
+                      <a
+                        href={`${item.hris_banner_button_link}`}
+                        target="_blank"
+                        className="btn bg-primary text-light font-semibold uppercase"
+                        key={key}
+                      >
+                        {item.hris_banner_button_text}
+                      </a>
+                    ))}
                   </p>
                 </div>
               );
@@ -184,10 +235,9 @@ const HrisScope = ({ handleUpdateHrisScopeTitles, hrisTitlesData }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"banner"}
-          mysqlEndpoint={`/v1/banner/${id}`}
+          queryKey={"hris-scope"}
+          mysqlEndpoint={`/v1/hris-scope/${id}`}
           item={isData}
-          filesToDelete={isData.knowledge_based_announcement_files}
         />
       )}
     </>

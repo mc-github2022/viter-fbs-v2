@@ -1,27 +1,17 @@
-import React from "react";
-import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { webAppOverview } from "./data";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
-  googleHDViewLink,
+  googleHDViewLink
 } from "../../../../helpers/functions-general";
-import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
 
-const ServiceHrOverview = () => {
+const ServiceHrOverview = ({ hrisData }) => {
   const { data: hrisOverviewData } = useQueryData(
     `${apiVersion}/hris-overview`, // endpoint
     "get", // method
     "hris-overview" // key
-  );
-
-  const { data: hrisData } = useQueryData(
-    `${apiVersion}/hris`, // endpoint
-    "get", // method
-    "hris" // key
   );
 
   const hrisOverviewImage = getConvertStringToJSONparseData(

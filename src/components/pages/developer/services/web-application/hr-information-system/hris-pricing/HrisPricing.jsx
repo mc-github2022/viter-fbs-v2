@@ -549,6 +549,7 @@ const HrisPricing = ({ handleUpdateHrisPackagesTitles, hrisTitlesData }) => {
             )}
           </div>
         </div>
+        <div className="absolute bg-light h-[180px] w-full bottom-[-2px] "></div>
       </section>
     </>
   );

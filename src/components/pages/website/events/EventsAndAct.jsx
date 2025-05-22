@@ -207,51 +207,55 @@ const EventsAndAct = () => {
             (post) => post.events_activities_is_active === 1
           ).length > 6 ? (
             <Slider {...EventsSliderSettings}>
-              {eventsAndActivitiesData?.data.map((post, key) => {
-                if (key <= 2) return null;
+              {eventsAndActivitiesData?.data
+                .filter((post) => post.events_activities_is_active === 1)
+                .map((post, key) => {
+                  if (key <= 2) return null;
 
-                const eventImage =
-                  getConvertStringToJSONparseData(post.events_activities_img) ||
-                  [];
-                const firstImage = eventImage.length > 0 ? eventImage[0] : null;
+                  const eventImage =
+                    getConvertStringToJSONparseData(
+                      post.events_activities_img
+                    ) || [];
+                  const firstImage =
+                    eventImage.length > 0 ? eventImage[0] : null;
 
-                return (
-                  <div
-                    key={key}
-                    className="flex flex-wrap gap-2 place-content-center"
-                  >
-                    <div className="grid place-content-center">
-                      <Link
-                        to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
-                      >
-                        {firstImage && (
-                          <div
-                            style={{
-                              backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
-                            }}
-                            className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[340px] lg:w-[390px] flex items-end relative rounded-xl 
+                  return (
+                    <div
+                      key={key}
+                      className="flex flex-wrap gap-2 place-content-center"
+                    >
+                      <div className="grid place-content-center">
+                        <Link
+                          to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}`}
+                        >
+                          {firstImage && (
+                            <div
+                              style={{
+                                backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
+                              }}
+                              className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[340px] lg:w-[390px] flex items-end relative rounded-xl 
                     grayscale hover:grayscale-0 transition-all group cursor-pointer"
-                          >
-                            <div>
-                              <div className="blogExcerpt p-10 pb-6 relative z-[1]">
-                                <p className="text-light font-bold text-lg">
-                                  {post.events_activities_title}
-                                </p>
+                            >
+                              <div>
+                                <div className="blogExcerpt p-10 pb-6 relative z-[1]">
+                                  <p className="text-light font-bold text-lg">
+                                    {post.events_activities_title}
+                                  </p>
+                                </div>
+                                <div className="blogTitle  pb-10 relative z-[1]">
+                                  <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
+                                    {post.events_activities_category}
+                                  </h4>
+                                </div>
                               </div>
-                              <div className="blogTitle  pb-10 relative z-[1]">
-                                <h4 className="bg-[#cccccc] group-hover:bg-primary group-hover:text-light p-2 px-10 w-[250px] rounded-tr-full rounded-br-full text-dark grayscale-0 transition-all">
-                                  {post.events_activities_category}
-                                </h4>
-                              </div>
+                              <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
                             </div>
-                            <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div>
-                          </div>
-                        )}
-                      </Link>
+                          )}
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </Slider>
           ) : (
             <div className="gap-4 flex flex-col place-self-center md:flex md:flex-wrap lg:flex md:flex-row lg:gap-4 md:place-content-center">

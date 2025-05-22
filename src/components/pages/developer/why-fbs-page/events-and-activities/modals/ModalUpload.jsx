@@ -52,7 +52,7 @@ const ModalUpload = ({ mysqlApiRestore, msg, successMsg, queryKey }) => {
   return (
     <>
       <div
-        className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[99] flex justify-center items-center w-full md:inset-0 max-h-full"
+        className="bg-dark/50 overflow-y-auto overflow-x-hidden fixed top-0 right-0 bottom-0 left-0 z-[999] flex justify-center items-center w-full md:inset-0 max-h-full"
         onClick={handleClose}
       >
         <div className="relative p-4 w-full max-w-md max-h-full">

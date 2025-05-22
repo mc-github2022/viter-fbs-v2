@@ -6,7 +6,7 @@ import {
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
 
-const ServiceHrPartners = () => {
+const ServiceHrPartners = ({ hrisTitlesData }) => {
   const {
     isFetching,
     error,
@@ -19,11 +19,6 @@ const ServiceHrPartners = () => {
     "partners" // key
   );
 
-  const { data: hrisTitlesData } = useQueryData(
-    `${apiVersion}/hris-titles`, // endpoint
-    "get", // method
-    "hris-titles" // key
-  );
   return (
     <>
       <section className="ServiceHrPartners pb-16 md:py-20 -translate-y-1 bg-light">

@@ -1,17 +1,11 @@
-import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
-  apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
 
-const ServiceHrBanner = () => {
-  const { data: hrisData } = useQueryData(
-    `${apiVersion}/hris`, // endpoint
-    "get", // method
-    "hris" // key
-  );
+const ServiceHrBanner = ({hrisData}) => {
+  
 
   const hrisBannerImage = getConvertStringToJSONparseData(
     hrisData?.data?.[0]?.hris_banner_img

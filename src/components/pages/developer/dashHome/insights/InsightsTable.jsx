@@ -24,7 +24,7 @@ import DraftStatusEventsAndActivities from "../../why-fbs-page/events-and-activi
 import ModalDraft from "../../why-fbs-page/events-and-activities/modals/ModalDraft";
 import ModalUpload from "../../why-fbs-page/events-and-activities/modals/ModalUpload";
 
-const InsightsTable = ({ setItemEdit}) => {
+const InsightsTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -116,7 +116,7 @@ const InsightsTable = ({ setItemEdit}) => {
                   <td className="pl-2 place-content-start">{counter++}</td>
                   <td className="place-content-start">
                     {item.home_insights_is_active === 1 ? (
-                      <DraftStatusEventsAndActivities text="Active" />
+                      <DraftStatusEventsAndActivities text="Publish" />
                     ) : (
                       <DraftStatusEventsAndActivities text="Draft" />
                     )}

@@ -163,7 +163,6 @@ const ModalAddBanner = ({ setIsAdd, itemEdit }) => {
               if (photoUpload?.success || !photoUpload?.success) {
                 setLoading(false);
               }
-              if (!loading) console.log(data);
               mutation.mutate(data);
             }}
           >

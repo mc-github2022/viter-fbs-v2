@@ -166,7 +166,7 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                       <td className="pl-2 place-content-start">{counter++}</td>
                       <td className="place-content-start">
                         {item.events_activities_is_active === 1 ? (
-                          <DraftStatusEventsAndActivities text="Active" />
+                          <DraftStatusEventsAndActivities text="Publish" />
                         ) : (
                           <DraftStatusEventsAndActivities text="Draft" />
                         )}

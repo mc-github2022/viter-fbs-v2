@@ -6,6 +6,11 @@ DEVELOPER
         * CONTROLLERS
             -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-overview
             -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-titles
+            -> rest/v1/controllers/developer/services/web-application/hr-information-system/hris-scope
+            -> rest/v1/controllers/developer/services/web-application/online-payroll-system/payroll-banner
+            -> rest/v1/controllers/developer/services/web-application/online-payroll-system/payroll-overview
+            -> rest/v1/controllers/developer/services/web-application/online-payroll-system/payroll-scope
+            -> rest/v1/controllers/developer/services/web-application/online-payroll-system/payroll-titles
             -> rest/v1/controllers/developer/footer/functions.php
             -> rest/v1/controllers/developer/footer/create.php
             -> rest/v1/controllers/developer/footer/delete.php
@@ -20,6 +25,11 @@ DEVELOPER
         * MODELS
             -> rest/v1/models/developer/services/web-application/hr-information-system/HrisOverview.php
             -> rest/v1/models/developer/services/web-application/hr-information-system/HrisTitles.php
+            -> rest/v1/models/developer/services/web-application/hr-information-system/HrisScope.php
+            -> rest/v1/models/developer/services/web-application/online-payroll-system/PayrollBanner.php
+            -> rest/v1/models/developer/services/web-application/online-payroll-system/PayrollOverview.php
+            -> rest/v1/models/developer/services/web-application/online-payroll-system/PayrollScope.php
+            -> rest/v1/models/developer/services/web-application/online-payroll-system/PayrollTitles.php
             -> rest/v1/models/developer/footer/Footer.php
             -> rest/v1/models/developer/header
 
@@ -27,6 +37,11 @@ DEVELOPER
         * HTACESS
             -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - OVERVIEW is added
             -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - TITLES is added
+            -> # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - SCOPE is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - BANNER is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - OVERVIEW is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - SCOPE is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - TITLES is added
             -> # HEADER is added
 
         * OTHER FILES
@@ -37,6 +52,13 @@ DEVELOPER
 
         * DB BACKUP
             -> rest/db-backup/fbsv2_services_hris_overview.sql
+            -> rest/db-backup/fbsv2_services_hris_titles.sql
+            -> rest/db-backup/fbsv2_services_hris_scope.sql
+            -> rest/db-backup/fbsv2_services_payroll_banner.sql
+            -> rest/db-backup/fbsv2_services_payroll_overview.sql
+            -> rest/db-backup/fbsv2_services_payroll_scope.sql
+            -> rest/db-backup/fbsv2_services_payroll_titles.sql
+            -> rest/db-backup/fbsv2_header.sql
             -> rest/db-backup/fbsv2_footer.sql 
                 note: column is added
                     `footer_logo_img` text NOT NULL,
@@ -45,8 +67,6 @@ DEVELOPER
                     `footer_phone_c` varchar(50) NOT NULL,
                     `footer_email` varchar(100) NOT NULL,
                     `footer_subscriber_text` varchar(50) NOT NULL,
-            -> rest/db-backup/fbsv2_header.sql
-            -> rest/db-backup/fbsv2_services_hris_titles.sql
             ->
             ->
 
