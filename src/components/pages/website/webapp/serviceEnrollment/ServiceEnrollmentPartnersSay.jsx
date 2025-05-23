@@ -37,7 +37,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceEnrollmentPartnersSay = () => {
+const ServiceEnrollmentPartnersSay = ({enrollmentTitlesData}) => {
   const {
     isFetching,
     error,
@@ -47,7 +47,10 @@ const ServiceEnrollmentPartnersSay = () => {
   } = useQueryData(
     "/v1/indTestimonial", // endpoint
     "get", // method
-    "indTestimonial" // key
+    "indTestimonial", // key
+    {},
+    null,
+    true
   );
 
   const sliderRef = useRef(null);
@@ -128,9 +131,19 @@ const ServiceEnrollmentPartnersSay = () => {
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 1 && (
             <div className="">
-              <p>What Our</p>
+              <p>{enrollmentTitlesData?.data?.length > 0 &&
+                enrollmentTitlesData.data[0]
+                  ?.enrollment_titles_testimonial_subtitle
+                  ? enrollmentTitlesData?.data[0]
+                      .enrollment_titles_testimonial_subtitle
+                  : ""}</p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                Clients Say
+                {enrollmentTitlesData?.data?.length > 0 &&
+                enrollmentTitlesData.data[0]
+                  ?.enrollment_titles_testimonial_title
+                  ? enrollmentTitlesData?.data[0]
+                      .enrollment_titles_testimonial_title
+                  : ""}
               </h2>
             </div>
           )}

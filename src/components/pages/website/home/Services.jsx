@@ -11,7 +11,10 @@ const Services = () => {
   const { data: servicesData } = useQueryData(
     `${apiVersion}/services`, // endpoint
     "get", // method
-    "services" // key
+    "services", // key
+    {},
+    null,
+    true
   );
   return (
     <section className="services py-10 relative">

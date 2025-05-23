@@ -205,11 +205,10 @@ const PayrollScope = ({
                 >
                   {PayrollScopeImage.map((img, index) => (
                     <LoadImages
-                      className="hidden md:w-full md:object-contain md:block z-10"
+                      className="hidden h-[364px] md:w-full md:object-contain md:block z-10"
                       url={`${googleHDViewLink}${img?.id}`}
                       alt="What Makes This Web App"
                       key={index}
-                      isTableSpinner={true}
                     />
                   ))}
 

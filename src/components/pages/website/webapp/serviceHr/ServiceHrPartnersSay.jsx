@@ -44,7 +44,10 @@ const ServiceHrPartnersSay = ({hrisTitlesData}) => {
   } = useQueryData(
     `${apiVersion}/indTestimonial`, // endpoint
     "get", // method
-    "indTestimonial" // key
+    "indTestimonial", // key
+    {},
+    null,
+    true
   );
 
 

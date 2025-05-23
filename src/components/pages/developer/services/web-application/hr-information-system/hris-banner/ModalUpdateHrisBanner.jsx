@@ -304,7 +304,15 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
                         disabled={mutation.isPending}
                       />
                     </div>
-
+                    <div className="input-wrapper ">
+                      <InputTextArea
+                        label="Description"
+                        type="text"
+                        name="hris_banner_description"
+                        className="h-[400px]"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
                     <div className="input-wrapper">
                       <InputText
                         label="Button"
@@ -318,16 +326,6 @@ const ModalUpdateHrisBanner = ({ itemEdit, hrisData }) => {
                         label="Link"
                         type="text"
                         name="hris_banner_button_link"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-
-                    <div className="input-wrapper ">
-                      <InputTextArea
-                        label="Description"
-                        type="text"
-                        name="hris_banner_description"
-                        className="h-[400px]"
                         disabled={mutation.isPending}
                       />
                     </div>

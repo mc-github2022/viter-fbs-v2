@@ -1,6 +1,6 @@
 import React from "react";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { getUrlParam } from "../../../../helpers/functions-general";
+import { apiVersion, getUrlParam } from "../../../../helpers/functions-general";
 import Footer from "../../../../partials/Footer";
 import Header from "../../../../partials/Header";
 import ModalError from "../../../../partials/modals/ModalError";
@@ -21,9 +21,21 @@ const ServicePayrollPage = () => {
   const id = getUrlParam().get("id");
 
   const { isLoading, data: packagesCategoryData } = useQueryData(
-    `/v1/packages-category`, // endpoint
+    `${apiVersion}/packages-category`, // endpoint
     "get", // method
     "packages-category" // key
+  );
+
+  const { data: payrollData } = useQueryData(
+    `${apiVersion}/payroll`, // endpoint
+    "get", // method
+    "payroll" // key
+  );
+
+  const { data: payrollTitlesData } = useQueryData(
+    `${apiVersion}/payroll-titles`, // endpoint
+    "get", // method
+    "payroll-titles" // key
   );
 
   const categoryUrl = "webapp-payroll";
@@ -49,12 +61,12 @@ const ServicePayrollPage = () => {
   return (
     <>
       <Header pageName={pageName} />
-      <ServicePayrollBanner />
-      <ServicePayrollOverview />
-      <ServicePayrollScope />
-      <ServicePayrollPricing pageName={pageName} />
-      <ServicePayrollPartners />
-      <ServicePayrollPartnersSay />
+      <ServicePayrollBanner payrollData={payrollData}/>
+      <ServicePayrollOverview payrollData={payrollData}/>
+      <ServicePayrollScope payrollTitlesData={payrollTitlesData} payrollData={payrollData}/>
+      <ServicePayrollPricing payrollTitlesData={payrollTitlesData} pageName={pageName} />
+      <ServicePayrollPartners payrollTitlesData={payrollTitlesData}/>
+      <ServicePayrollPartnersSay payrollTitlesData={payrollTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

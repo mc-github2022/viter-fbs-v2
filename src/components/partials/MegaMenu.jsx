@@ -39,7 +39,10 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
   const { data: packagesCatgeoryData } = useQueryData(
     `${apiVersion}/packages-category`, // endpoint
     "get", // method
-    "packages-category" // key
+    "packages-category", // key
+    {},
+    null,
+    true
   );
 
   const {
@@ -51,7 +54,10 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
   } = useQueryData(
     `${apiVersion}/specialOffers`, // endpoint
     "get", // method
-    "specialOffers" // key
+    "specialOffers", // key
+    {},
+    null,
+    true
   );
 
   const {
@@ -63,7 +69,10 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
   } = useQueryData(
     "/v1/packages-list", // endpoint
     "get", // method
-    "packages-list" // key
+    "packages-list", // key
+    {},
+    null,
+    true
   );
 
   const handleClose = () => {

@@ -92,7 +92,10 @@ const EventsSingplePage = () => {
   } = useQueryData(
     "/v1/eventsAndAct", // endpoint
     "get", // method
-    "eventsAndAct" // key
+    "eventsAndAct", // key
+    {},
+    null,
+    true
   );
 
   var SinglePageSettings = {

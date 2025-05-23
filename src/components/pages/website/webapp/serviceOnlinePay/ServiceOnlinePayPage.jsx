@@ -23,8 +23,15 @@ const ServiceOnlinePayPage = () => {
   const { isLoading, data: packagesCategoryData } = useQueryData(
     `${apiVersion}/packages-category`, // endpoint
     "get", // method
-    "packages-category" // key
+    "packages-category", // key
+    {},
+    null,
+    true
   );
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const categoryUrl = "webapp-onlinepayment";
 
@@ -41,10 +48,6 @@ const ServiceOnlinePayPage = () => {
   if (!matchingItem) {
     return <PageNotFound />;
   }
-
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  });
 
   return (
     <>

@@ -39,7 +39,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceEnrollmentPricing = ({ pageName }) => {
+const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
@@ -57,13 +57,19 @@ const ServiceEnrollmentPricing = ({ pageName }) => {
   } = useQueryData(
     `${apiVersion}/packages-details`, // endpoint
     "get", // method
-    "packages-details" // key
+    "packages-details", // key
+    {},
+    null,
+    true
   );
 
   const { data: packagesListData } = useQueryData(
     `${apiVersion}/packages-list`, // endpoint
     "get", // method
-    "packages-list" // key
+    "packages-list", // key
+    {},
+    null,
+    true
   );
 
   const selectedCategory =
@@ -160,10 +166,17 @@ const ServiceEnrollmentPricing = ({ pageName }) => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              Web application for your online school enrollment needs
+              {enrollmentTitlesData?.data?.length > 0 &&
+              enrollmentTitlesData.data[0]?.enrollment_titles_packages_subtitle
+                ? enrollmentTitlesData?.data[0]
+                    .enrollment_titles_packages_subtitle
+                : ""}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Affordable Pricing Plan
+              {enrollmentTitlesData?.data?.length > 0 &&
+              enrollmentTitlesData.data[0]?.enrollment_titles_packages_title
+                ? enrollmentTitlesData?.data[0].enrollment_titles_packages_title
+                : ""}
             </h3>
           </div>
           <div className="wrapper ">

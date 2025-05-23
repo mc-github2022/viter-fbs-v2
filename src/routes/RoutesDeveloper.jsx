@@ -36,6 +36,7 @@ import Category from "../components/pages/developer/packages/category/Category";
 import List from "../components/pages/developer/packages/list/List";
 import Details from "../components/pages/developer/packages/details/Details";
 import OnlinePayrollSystem from "../components/pages/developer/services/web-application/online-payroll-system/OnlinePayrollSystem";
+import SchoolEnrollmentSystem from "../components/pages/developer/services/web-application/school-enrollment-system/SchoolEnrollmentSystem";
 
 export const routesDeveloper = [
   {
@@ -251,6 +252,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <OnlinePayrollSystem />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-application/school-enrollment-system`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <SchoolEnrollmentSystem />
       </ProtectedRouteDeveloper>
     ),
   },

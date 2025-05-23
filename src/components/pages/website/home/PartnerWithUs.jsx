@@ -25,7 +25,10 @@ const PartnerWithUs = ({ pageName }) => {
   const { data: partnerWithUsData } = useQueryData(
     `${apiVersion}/partnerWithUs`, // endpoint
     "get", // method
-    "partnerWithUs" // key
+    "partnerWithUs", // key
+    {},
+    null,
+    true
   );
 
   const partnerWithUsImage = getConvertStringToJSONparseData(

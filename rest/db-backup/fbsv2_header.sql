@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 21, 2025 at 08:38 AM
+-- Generation Time: May 23, 2025 at 03:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,10 +30,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `fbsv2_header` (
   `header_aid` int(11) NOT NULL,
   `header_logo_img` text NOT NULL,
-  `header_nav_a` varchar(20) NOT NULL,
-  `header_nav_b` varchar(20) NOT NULL,
-  `header_nav_c` varchar(20) NOT NULL,
-  `header_nav_d` varchar(20) NOT NULL,
+  `header_home` varchar(20) NOT NULL,
+  `header_services` varchar(20) NOT NULL,
+  `header_whyfbs` varchar(20) NOT NULL,
+  `header_payment` varchar(20) NOT NULL,
   `header_payment_link` varchar(100) NOT NULL,
   `header_button_text` varchar(20) NOT NULL,
   `header_created` datetime NOT NULL,
@@ -44,8 +44,8 @@ CREATE TABLE `fbsv2_header` (
 -- Dumping data for table `fbsv2_header`
 --
 
-INSERT INTO `fbsv2_header` (`header_aid`, `header_logo_img`, `header_nav_a`, `header_nav_b`, `header_nav_c`, `header_nav_d`, `header_payment_link`, `header_button_text`, `header_created`, `header_datetime`) VALUES
-(1, '[{\"name\":\"logo-black.png\",\"id\":\"1RWFZKAWAA8bCQlsTsiD2Q1zDY-TYFQT9\",\"datetime\":\"2025-05-21 13:55:25\"}]', 'Home', 'Services', 'Why FBS?', 'Payment', 'https://frontlinebusiness.com.ph/payment/', 'Get started', '2025-05-21 13:55:20', '2025-05-21 14:04:40');
+INSERT INTO `fbsv2_header` (`header_aid`, `header_logo_img`, `header_home`, `header_services`, `header_whyfbs`, `header_payment`, `header_payment_link`, `header_button_text`, `header_created`, `header_datetime`) VALUES
+(1, '[{\"name\":\"logo-black.png\",\"id\":\"1RWFZKAWAA8bCQlsTsiD2Q1zDY-TYFQT9\",\"datetime\":\"2025-05-21 13:55:25\"}]', 'Home', 'Services', 'Why FBS?', 'Payment', 'https://frontlinebusiness.com.ph/payment/', 'Get started', '2025-05-21 13:55:20', '2025-05-21 14:54:09');
 
 --
 -- Indexes for dumped tables

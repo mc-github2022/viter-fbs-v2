@@ -119,10 +119,10 @@ const ModalUpdateHeader = ({ itemEdit, headerData }) => {
 
   const initVal = {
     isUpdateHeader: itemEdit,
-    header_nav_a: headerData?.data?.[0]?.header_nav_a ?? "",
-    header_nav_b: headerData?.data?.[0]?.header_nav_b ?? "",
-    header_nav_c: headerData?.data?.[0]?.header_nav_c ?? "",
-    header_nav_d: headerData?.data?.[0]?.header_nav_d ?? "",
+    header_home: headerData?.data?.[0]?.header_home ?? "",
+    header_services: headerData?.data?.[0]?.header_services ?? "",
+    header_whyfbs: headerData?.data?.[0]?.header_whyfbs ?? "",
+    header_payment: headerData?.data?.[0]?.header_payment ?? "",
     header_payment_link: headerData?.data?.[0]?.header_payment_link ?? "",
     header_button_text: headerData?.data?.[0]?.header_button_text ?? "",
     header_logo_img: headerData?.data?.[0]?.header_logo_img ?? "",
@@ -288,7 +288,7 @@ const ModalUpdateHeader = ({ itemEdit, headerData }) => {
                       <InputText
                         label="Navigation A"
                         type="text"
-                        name="header_nav_a"
+                        name="header_home"
                         disabled={mutation.isPending || loading}
                       />
                     </div>
@@ -296,7 +296,7 @@ const ModalUpdateHeader = ({ itemEdit, headerData }) => {
                       <InputText
                         label="Navigation B"
                         type="text"
-                        name="header_nav_b"
+                        name="header_services"
                         disabled={mutation.isPending || loading}
                       />
                     </div>
@@ -304,7 +304,7 @@ const ModalUpdateHeader = ({ itemEdit, headerData }) => {
                       <InputText
                         label="Navigation C"
                         type="text"
-                        name="header_nav_c"
+                        name="header_whyfbs"
                         disabled={mutation.isPending || loading}
                       />
                     </div>
@@ -312,7 +312,7 @@ const ModalUpdateHeader = ({ itemEdit, headerData }) => {
                       <InputText
                         label="Navigation D"
                         type="text"
-                        name="header_nav_d"
+                        name="header_payment"
                         disabled={mutation.isPending || loading}
                       />
                     </div>

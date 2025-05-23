@@ -35,7 +35,10 @@ const SingplePage = () => {
   } = useQueryData(
     "/v1/insights", // endpoint
     "get", // method
-    "insights" // key
+    "insights", // key
+    {},
+    null,
+    true
   );
   const [pageName, setPageName] = React.useState("home");
   const [subscribe, setSubscribe] = React.useState(false);

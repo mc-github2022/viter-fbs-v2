@@ -17,7 +17,10 @@ const ImmersionPartners = () => {
   } = useQueryData(
     "/v1/partners", // endpoint
     "get", // method
-    "partners" // key
+    "partners", // key
+    {},
+    null,
+    true
   );
   return (
     <>

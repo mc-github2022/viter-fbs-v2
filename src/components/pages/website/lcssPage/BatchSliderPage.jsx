@@ -73,7 +73,10 @@ const BatchSliderPage = ({ setModalBatch, modalBatch, selectedBatchId }) => {
   } = useQueryData(
     "/v1/lcssBatches", // endpoint
     "get", // method
-    "lcssBatches" // key
+    "lcssBatches", // key
+    {},
+    null,
+    true
   );
 
   const sliderRef = useRef(null);

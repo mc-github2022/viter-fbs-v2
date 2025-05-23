@@ -3,7 +3,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { HiPencil } from "react-icons/hi";
 import {
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../../../helpers/functions-general";
 import LoadImages from "../../../../../../partials/LoadImages";
 
@@ -44,7 +44,7 @@ const HrisOverview = ({
           </h2>
 
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
-            <div className="">
+            <div className="relative">
               {hrisOverviewData?.data?.length > 0 &&
               hrisOverviewImage?.length > 0 ? (
                 <>

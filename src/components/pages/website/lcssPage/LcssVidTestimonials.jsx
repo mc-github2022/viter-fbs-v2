@@ -71,7 +71,10 @@ const LcssVidTestimonials = () => {
   } = useQueryData(
     "/v1/vid-testimonial", // endpoint
     "get", // method
-    "vid-testimonial" // key
+    "vid-testimonial", // key
+    {},
+    null,
+    true
   );
 
   var settings = {

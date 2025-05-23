@@ -4,10 +4,10 @@ class Header
 {
     public $header_aid;
     public $header_logo_img;
-    public $header_nav_a;
-    public $header_nav_b;
-    public $header_nav_c;
-    public $header_nav_d;
+    public $header_home;
+    public $header_services;
+    public $header_whyfbs;
+    public $header_payment;
     public $header_payment_link;
     public $header_button_text;
     public $header_created;
@@ -43,19 +43,19 @@ class Header
         try {
             $sql = "insert into {$this->tblHeader}";
             $sql .= "(header_logo_img, ";
-            $sql .= "header_nav_a, ";
-            $sql .= "header_nav_b, ";
-            $sql .= "header_nav_c, ";
-            $sql .= "header_nav_d, ";
+            $sql .= "header_home, ";
+            $sql .= "header_services, ";
+            $sql .= "header_whyfbs, ";
+            $sql .= "header_payment, ";
             $sql .= "header_payment_link, ";
             $sql .= "header_button_text, ";
             $sql .= "header_created, ";
             $sql .= "header_datetime ) values ( ";
             $sql .= ":header_logo_img, ";
-            $sql .= ":header_nav_a, ";
-            $sql .= ":header_nav_b, ";
-            $sql .= ":header_nav_c, ";
-            $sql .= ":header_nav_d, ";
+            $sql .= ":header_home, ";
+            $sql .= ":header_services, ";
+            $sql .= ":header_whyfbs, ";
+            $sql .= ":header_payment, ";
             $sql .= ":header_payment_link, ";
             $sql .= ":header_button_text, ";
             $sql .= ":header_created, ";
@@ -63,10 +63,10 @@ class Header
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "header_logo_img" => $this->header_logo_img,
-                "header_nav_a" => $this->header_nav_a,
-                "header_nav_b" => $this->header_nav_b,
-                "header_nav_c" => $this->header_nav_c,
-                "header_nav_d" => $this->header_nav_d,
+                "header_home" => $this->header_home,
+                "header_services" => $this->header_services,
+                "header_whyfbs" => $this->header_whyfbs,
+                "header_payment" => $this->header_payment,
                 "header_payment_link" => $this->header_payment_link,
                 "header_button_text" => $this->header_button_text,
                 "header_created" => $this->header_created,
@@ -84,10 +84,10 @@ class Header
         try {
             $sql = "update {$this->tblHeader} set ";
             $sql .= "header_logo_img = :header_logo_img, ";
-            $sql .= "header_nav_a = :header_nav_a, ";
-            $sql .= "header_nav_b = :header_nav_b, ";
-            $sql .= "header_nav_c = :header_nav_c, ";
-            $sql .= "header_nav_d = :header_nav_d, ";
+            $sql .= "header_home = :header_home, ";
+            $sql .= "header_services = :header_services, ";
+            $sql .= "header_whyfbs = :header_whyfbs, ";
+            $sql .= "header_payment = :header_payment, ";
             $sql .= "header_payment_link = :header_payment_link, ";
             $sql .= "header_button_text = :header_button_text, ";
             $sql .= "header_datetime = :header_datetime ";
@@ -95,10 +95,10 @@ class Header
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "header_logo_img" => $this->header_logo_img,
-                "header_nav_a" => $this->header_nav_a,
-                "header_nav_b" => $this->header_nav_b,
-                "header_nav_c" => $this->header_nav_c,
-                "header_nav_d" => $this->header_nav_d,
+                "header_home" => $this->header_home,
+                "header_services" => $this->header_services,
+                "header_whyfbs" => $this->header_whyfbs,
+                "header_payment" => $this->header_payment,
                 "header_payment_link" => $this->header_payment_link,
                 "header_button_text" => $this->header_button_text,
                 "header_datetime" => $this->header_datetime,

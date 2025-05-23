@@ -11,6 +11,10 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/web-application/online-payroll-system/payroll-overview
             -> rest/v1/controllers/developer/services/web-application/online-payroll-system/payroll-scope
             -> rest/v1/controllers/developer/services/web-application/online-payroll-system/payroll-titles
+            -> rest/v1/controllers/developer/services/web-application/school-enrollment-system/enrollment-banner
+            -> rest/v1/controllers/developer/services/web-application/school-enrollment-system/enrollment-overview
+            -> rest/v1/controllers/developer/services/web-application/school-enrollment-system/enrollment-scope
+            -> rest/v1/controllers/developer/services/web-application/school-enrollment-system/enrollment-titles
             -> rest/v1/controllers/developer/footer/functions.php
             -> rest/v1/controllers/developer/footer/create.php
             -> rest/v1/controllers/developer/footer/delete.php
@@ -30,6 +34,10 @@ DEVELOPER
             -> rest/v1/models/developer/services/web-application/online-payroll-system/PayrollOverview.php
             -> rest/v1/models/developer/services/web-application/online-payroll-system/PayrollScope.php
             -> rest/v1/models/developer/services/web-application/online-payroll-system/PayrollTitles.php
+            -> rest/v1/models/developer/services/web-application/school-enrollment-system/EnrollmentBanner.php
+            -> rest/v1/models/developer/services/web-application/school-enrollment-system/EnrollmentOverview.php
+            -> rest/v1/models/developer/services/web-application/school-enrollment-system/EnrollmentScope.php
+            -> rest/v1/models/developer/services/web-application/school-enrollment-system/EnrollmentTitles.php
             -> rest/v1/models/developer/footer/Footer.php
             -> rest/v1/models/developer/header
 
@@ -42,6 +50,9 @@ DEVELOPER
             -> # SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - OVERVIEW is added
             -> # SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - SCOPE is added
             -> # SERVICES - WEB APPLICATION - ONLINE PAYROLL SYSTEM - TITLES is added
+            -> # SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - BANNER is added
+            -> # SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - SCOPE is added
+            -> # SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - TITLES is added
             -> # HEADER is added
 
         * OTHER FILES
@@ -58,6 +69,10 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_payroll_overview.sql
             -> rest/db-backup/fbsv2_services_payroll_scope.sql
             -> rest/db-backup/fbsv2_services_payroll_titles.sql
+            -> rest/db-backup/fbsv2_services_enrollment_banner.sql
+            -> rest/db-backup/fbsv2_services_enrollment_overview.sql
+            -> rest/db-backup/fbsv2_services_enrollment_scope.sql
+            -> rest/db-backup/fbsv2_services_enrollment_titles.sql
             -> rest/db-backup/fbsv2_header.sql
             -> rest/db-backup/fbsv2_footer.sql 
                 note: column is added

@@ -71,13 +71,19 @@ const Insights = () => {
   } = useQueryData(
     "/v1/insights", // endpoint
     "get", // method
-    "insights" // key
+    "insights", // key
+    {},
+    null,
+    true
   );
 
   const { data: homeTitlesData } = useQueryData(
     "/v1/homeTitles", // endpoint
     "get", // method
-    "homeTitles" // key
+    "homeTitles", // key
+    {},
+    null,
+    true
   );
 
   const sliderRef = useRef(null);

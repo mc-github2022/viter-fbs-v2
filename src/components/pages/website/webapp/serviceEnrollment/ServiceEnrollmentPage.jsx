@@ -27,7 +27,19 @@ const ServiceEnrollmentPage = () => {
   const { isLoading, data: packagesCategoryData } = useQueryData(
     `${apiVersion}/packages-category`, // endpoint
     "get", // method
-    "packages-category" // key
+    "packages-category", // key
+    {},
+    null,
+    true
+  );
+
+  const { data: enrollmentTitlesData } = useQueryData(
+    `${apiVersion}/enrollment-titles`, // endpoint
+    "get", // method
+    "enrollment-titles", // key
+    {},
+    null,
+    true
   );
 
   const categoryUrl = "webapp-enrollment";
@@ -51,10 +63,16 @@ const ServiceEnrollmentPage = () => {
       <Header pageName={pageName} />
       <ServiceEnrollmentBanner pageName={pageName} />
       <ServiceEnrollmentOverview pageName={pageName} />
-      <ServiceEnrollmentScope pageName={pageName} />
-      <ServiceEnrollmentPricing pageName={pageName} />
+      <ServiceEnrollmentScope
+        pageName={pageName}
+        enrollmentTitlesData={enrollmentTitlesData}
+      />
+      <ServiceEnrollmentPricing
+        pageName={pageName}
+        enrollmentTitlesData={enrollmentTitlesData}
+      />
       {/* <ServiceEnrollmentPartners /> */}
-      <ServiceEnrollmentPartnersSay />
+      <ServiceEnrollmentPartnersSay  enrollmentTitlesData={enrollmentTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

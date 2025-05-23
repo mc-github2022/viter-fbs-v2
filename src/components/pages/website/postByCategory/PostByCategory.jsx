@@ -26,7 +26,10 @@ const PostByCategory = () => {
   } = useQueryData(
     "/v1/insights", // endpoint
     "get", // method
-    "insights" // key
+    "insights", // key
+    {},
+    null,
+    true
   );
   console.log(insightData);
   React.useEffect(() => {

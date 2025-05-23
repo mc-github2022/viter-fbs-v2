@@ -1,36 +1,62 @@
-import React from "react";
-import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import {
+  apiVersion,
+  getConvertStringToJSONparseData,
+  googleHDViewLink
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
 
-const ServicePayrollOverview = () => {
+const ServicePayrollOverview = ({ payrollData }) => {
+  const { data: payrollOverviewData } = useQueryData(
+    `${apiVersion}/payroll-overview`, // endpoint
+    "get", // method
+    "payroll-overview" // key
+  );
+
+  const payrollOverviewImage = getConvertStringToJSONparseData(
+    payrollOverviewData?.data?.[0]?.payroll_overview_img
+  );
   return (
     <>
       <section className="ServicePayrollOverview py-20 bg-customGray">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {payrollOverviewData?.data?.length > 0 &&
+            payrollOverviewData.data[0]?.payroll_overview_subtitle
+              ? payrollOverviewData?.data[0].payroll_overview_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {payrollOverviewData?.data?.length > 0 &&
+              payrollOverviewData.data[0]?.payroll_overview_title
+                ? payrollOverviewData?.data[0].payroll_overview_title
+                : ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
-            <div>
-              <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 w-full mx-auto"
-                alt="Online Payroll System"
-              />
+            <div className="relative">
+              {payrollOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-full mx-auto"
+                  alt="Online Payroll System"
+                  key={index}
+                />
+              ))}
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
-                  <a
-                    href="https://calendly.com/carlodm-fbs/demo-discovery-call"
-                    target="_blank"
-                    className="btn bg-primary text-light font-semibold">
-                    {webAppOverview[0].btnText}
-                  </a>
+                  {payrollData?.data.map((item, key) => (
+                    <a
+                      href={`${item.payroll_banner_button_link}`}
+                      target="_blank"
+                      className="btn bg-primary text-light font-semibold uppercase"
+                      key={key}
+                    >
+                      {item.payroll_banner_button_text}
+                    </a>
+                  ))}
                 </li>
                 {/* <li>
                   <a
@@ -51,10 +77,20 @@ const ServicePayrollOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {payrollOverviewData?.data?.length > 0 &&
+                        payrollOverviewData.data[0]
+                          ?.payroll_overview_list_title_a
+                          ? payrollOverviewData?.data[0]
+                              .payroll_overview_list_title_a
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {payrollOverviewData?.data?.length > 0 &&
+                        payrollOverviewData.data[0]
+                          ?.payroll_overview_list_description_a
+                          ? payrollOverviewData?.data[0]
+                              .payroll_overview_list_description_a
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -66,10 +102,20 @@ const ServicePayrollOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {payrollOverviewData?.data?.length > 0 &&
+                        payrollOverviewData.data[0]
+                          ?.payroll_overview_list_title_b
+                          ? payrollOverviewData?.data[0]
+                              .payroll_overview_list_title_b
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewBtext}
+                        {payrollOverviewData?.data?.length > 0 &&
+                        payrollOverviewData.data[0]
+                          ?.payroll_overview_list_description_b
+                          ? payrollOverviewData?.data[0]
+                              .payroll_overview_list_description_b
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -81,10 +127,20 @@ const ServicePayrollOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        {payrollOverviewData?.data?.length > 0 &&
+                        payrollOverviewData.data[0]
+                          ?.payroll_overview_list_title_c
+                          ? payrollOverviewData?.data[0]
+                              .payroll_overview_list_title_c
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewCtext}
+                        {payrollOverviewData?.data?.length > 0 &&
+                        payrollOverviewData.data[0]
+                          ?.payroll_overview_list_description_c
+                          ? payrollOverviewData?.data[0]
+                              .payroll_overview_list_description_c
+                          : ""}
                       </p>
                     </div>
                   </div>

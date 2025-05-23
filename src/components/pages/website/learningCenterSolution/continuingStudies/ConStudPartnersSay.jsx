@@ -43,7 +43,10 @@ const ConStudPartnersSay = () => {
   } = useQueryData(
     "/v1/indTestimonial", // endpoint
     "get", // method
-    "indTestimonial" // key
+    "indTestimonial", // key
+    {},
+    null,
+    true
   );
 
   var partnerSaysSettings = {

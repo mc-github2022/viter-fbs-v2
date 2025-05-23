@@ -3,7 +3,7 @@ import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
 
@@ -11,7 +11,10 @@ const ServiceHrOverview = ({ hrisData }) => {
   const { data: hrisOverviewData } = useQueryData(
     `${apiVersion}/hris-overview`, // endpoint
     "get", // method
-    "hris-overview" // key
+    "hris-overview", // key
+    {},
+    null,
+    true
   );
 
   const hrisOverviewImage = getConvertStringToJSONparseData(
@@ -37,7 +40,7 @@ const ServiceHrOverview = ({ hrisData }) => {
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
-            <div>
+            <div className="relative">
               {hrisOverviewImage.map((img, index) => (
                 <LoadImages
                   url={`${googleHDViewLink}${img?.id}`}

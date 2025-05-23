@@ -5,7 +5,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { MdDelete, MdOutlineDashboard } from "react-icons/md";
 import {
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../../../helpers/functions-general";
 import LoadImages from "../../../../../../partials/LoadImages";
 import ModalDelete from "../../../../../../partials/modals/ModalDelete";
@@ -14,7 +14,7 @@ import NoData from "../../../../../../partials/spinners/NoData";
 import TableLoading from "../../../../../../partials/spinners/TableLoading";
 import {
   setIsDelete,
-  setIsUpdateHome
+  setIsUpdateHome,
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
 
@@ -205,11 +205,10 @@ const HrisScope = ({
                 >
                   {hrisScopeImage.map((img, index) => (
                     <LoadImages
-                      className="hidden md:w-full md:object-contain md:block z-10"
+                      className="hidden h-[364px] md:w-full md:object-contain md:block "
                       url={`${googleHDViewLink}${img?.id}`}
                       alt="What Makes This Web App"
                       key={index}
-                      isTableSpinner={true}
                     />
                   ))}
 

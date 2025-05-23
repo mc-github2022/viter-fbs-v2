@@ -5,7 +5,7 @@ import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
 import TableLoading from "../../../../partials/spinners/TableLoading";
@@ -20,7 +20,10 @@ const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
   } = useQueryData(
     `${apiVersion}/hris-scope`, // endpoint
     "get", // method
-    "hris-scope" // key
+    "hris-scope", // key
+    {},
+    null,
+    true
   );
 
   const currentScope = hrisScopeData?.data?.find(
@@ -142,11 +145,10 @@ const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
                 >
                   {hrisScopeImage.map((img, index) => (
                     <LoadImages
-                      className="hidden md:w-full md:object-contain md:block z-10"
+                      className="hidden h-[364px] md:w-full md:object-contain md:block z-10"
                       url={`${googleHDViewLink}${img?.id}`}
                       alt="What Makes This Web App"
                       key={index}
-                      isTableSpinner={true}
                     />
                   ))}
 

@@ -35,7 +35,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServicePayrollPartnersSay = () => {
+const ServicePayrollPartnersSay = ({payrollTitlesData}) => {
   const {
     isFetching,
     error,
@@ -124,9 +124,16 @@ const ServicePayrollPartnersSay = () => {
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 1 && (
             <div className="">
-              <p>What Our</p>
+              <p>{payrollTitlesData?.data?.length > 0 &&
+                payrollTitlesData.data[0]?.payroll_titles_testimonial_subtitle
+                  ? payrollTitlesData?.data[0]
+                      .payroll_titles_testimonial_subtitle
+                  : ""}</p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                Clients Say
+                {payrollTitlesData?.data?.length > 0 &&
+                payrollTitlesData.data[0]?.payroll_titles_testimonial_title
+                  ? payrollTitlesData?.data[0].payroll_titles_testimonial_title
+                  : ""}
               </h2>
             </div>
           )}

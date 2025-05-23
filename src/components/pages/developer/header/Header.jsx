@@ -59,8 +59,8 @@ const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
                   <button className="text-left">
                     <Link>
                       {headerData?.data?.length > 0 &&
-                      headerData.data[0]?.header_nav_a
-                        ? headerData?.data[0].header_nav_a
+                      headerData.data[0]?.header_home
+                        ? headerData?.data[0].header_home
                         : "Navigation 1"}
                     </Link>
                   </button>
@@ -68,8 +68,8 @@ const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
                 <li>
                   <button href="#" className={` flex items-center gap-2`}>
                     {headerData?.data?.length > 0 &&
-                    headerData.data[0]?.header_nav_b
-                      ? headerData?.data[0].header_nav_b
+                    headerData.data[0]?.header_services
+                      ? headerData?.data[0].header_services
                       : "Navigation 2"}
                     <BiSolidDownArrow
                       className={` transition-all -rotate-90 md:rotate-0 md:block`}
@@ -79,8 +79,8 @@ const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
                 <li className="relative ">
                   <button href="#" className={` flex items-center gap-2`}>
                     {headerData?.data?.length > 0 &&
-                    headerData.data[0]?.header_nav_c
-                      ? headerData?.data[0].header_nav_c
+                    headerData.data[0]?.header_whyfbs
+                      ? headerData?.data[0].header_whyfbs
                       : "Navigation 3"}
                     <BiSolidDownArrow
                       className={` transition-all -rotate-90 md:rotate-0 md:block`}
@@ -135,7 +135,7 @@ const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
                 <li>
                   {headerData?.data.map((item, key) => (
                     <a href={item.header_payment_link || "#"} key={key}>
-                      {item.header_nav_d || "Navigation 4"}
+                      {item.header_payment || "Navigation 4"}
                     </a>
                   ))}
                 </li>

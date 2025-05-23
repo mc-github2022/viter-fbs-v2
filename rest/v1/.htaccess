@@ -212,6 +212,22 @@ RewriteRule ^payroll-scope/([0-9]+)$ controllers/developer/services/web-applicat
 RewriteRule ^payroll-titles$ controllers/developer/services/web-application/online-payroll-system/payroll-titles/payrollTitles.php [L]
 RewriteRule ^payroll-titles/([0-9]+)$ controllers/developer/services/web-application/online-payroll-system/payroll-titles/payrollTitles.php?payroll_titlesid=$1 [L]
 
+# SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - BANNER
+RewriteRule ^enrollment$ controllers/developer/services/web-application/school-enrollment-system/enrollment-banner/enrollmentBanner.php [L]
+RewriteRule ^enrollment/([0-9]+)$ controllers/developer/services/web-application/school-enrollment-system/enrollment-banner/enrollmentBanner.php?enrollment_bannerid=$1 [L]
+
+# SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - OVERVIEW
+RewriteRule ^enrollment-overview$ controllers/developer/services/web-application/school-enrollment-system/enrollment-overview/enrollmentOverview.php [L]
+RewriteRule ^enrollment-overview/([0-9]+)$ controllers/developer/services/web-application/school-enrollment-system/enrollment-overview/enrollmentOverview.php?enrollment_overviewid=$1 [L]
+
+# SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - SCOPE 
+RewriteRule ^enrollment-scope$ controllers/developer/services/web-application/school-enrollment-system/enrollment-scope/enrollmentScope.php [L]
+RewriteRule ^enrollment-scope/([0-9]+)$ controllers/developer/services/web-application/school-enrollment-system/enrollment-scope/enrollmentScope.php?enrollment_scopeid=$1 [L]
+
+# SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - TITLES
+RewriteRule ^enrollment-titles$ controllers/developer/services/web-application/school-enrollment-system/enrollment-titles/enrollmentTitles.php [L]
+RewriteRule ^enrollment-titles/([0-9]+)$ controllers/developer/services/web-application/school-enrollment-system/enrollment-titles/enrollmentTitles.php?enrollment_titlesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

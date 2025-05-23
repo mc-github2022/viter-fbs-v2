@@ -26,7 +26,10 @@ const ImmersionPage = () => {
   const { isLoading, data: packagesCategoryData } = useQueryData(
     `${apiVersion}/packages-category`, // endpoint
     "get", // method
-    "packages-category" // key
+    "packages-category", // key
+    {},
+    null,
+    true
   );
 
   React.useEffect(() => {

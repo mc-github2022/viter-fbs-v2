@@ -77,7 +77,10 @@ const LcssBatches = () => {
   } = useQueryData(
     "/v1/lcssBatches", // endpoint
     "get", // method
-    "lcssBatches" // key
+    "lcssBatches", // key
+    {},
+    null,
+    true
   );
 
   var settings = {

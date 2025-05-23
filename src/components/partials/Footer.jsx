@@ -28,13 +28,19 @@ const Footer = () => {
   const { data: contactFormDefaultData } = useQueryData(
     `${apiVersion}/contactDefault`, // endpoint
     "get", // method
-    "contactDefault" // key
+    "contactDefault", // key
+    {},
+    null,
+    true
   );
 
   const { data: footerData } = useQueryData(
     `${apiVersion}/footer`, // endpoint
     "get", // method
-    "footer" // key
+    "footer", // key
+    {},
+    null,
+    true
   );
 
   const footerLogoImg = getConvertStringToJSONparseData(
@@ -48,7 +54,7 @@ const Footer = () => {
           <div className="footerGradientBlack top-[-20%] left-0 absolute h-[700px] w-full sm:top-[-70%] sm:left-[-30rem]"></div>
           <div className="wrapper md:grid md:grid-cols-2 relative z-[1]">
             <div className="text-center sm:text-left">
-              <div className="theLogo">
+              <div className="theLogo relative">
                 {footerLogoImg.map((img, index) => (
                   <LoadImages
                     url={`${googleHDViewLink}${img?.id}`}

@@ -44,7 +44,7 @@ const PayrollOverview = ({
           </h2>
 
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
-            <div className="">
+            <div className="relative">
               {payrollOverviewData?.data?.length > 0 &&
               payrollOverviewImage?.length > 0 ? (
                 <>
@@ -163,7 +163,7 @@ const PayrollOverview = ({
                           ?.payroll_overview_list_description_c
                           ? payrollOverviewData?.data[0]
                               .payroll_overview_list_description_c
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}{" "}
+                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>

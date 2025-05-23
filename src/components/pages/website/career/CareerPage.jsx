@@ -46,7 +46,10 @@ const CareerPage = () => {
   } = useQueryData(
     "/v1/careers", // endpoint
     "get", // method
-    "careers" // key
+    "careers", // key
+    {},
+    null,
+    true
   );
 
   const [html, setHtml] = React.useState("");

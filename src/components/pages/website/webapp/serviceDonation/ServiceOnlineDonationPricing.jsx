@@ -57,13 +57,19 @@ const ServiceOnlineDonationPricing = ({ pageName }) => {
   } = useQueryData(
     `${apiVersion}/packages-details`, // endpoint
     "get", // method
-    "packages-details" // key
+    "packages-details", // key
+    {},
+    null,
+    true
   );
 
   const { data: packagesListData } = useQueryData(
     `${apiVersion}/packages-list`, // endpoint
     "get", // method
-    "packages-list" // key
+    "packages-list", // key
+    {},
+    null,
+    true
   );
 
   const selectedCategory =

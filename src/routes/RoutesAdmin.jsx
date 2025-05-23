@@ -30,6 +30,8 @@ import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTes
 import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
+import OnlinePayrollSystem from "../components/pages/developer/services/web-application/online-payroll-system/OnlinePayrollSystem";
+import SchoolEnrollmentSystem from "../components/pages/developer/services/web-application/school-enrollment-system/SchoolEnrollmentSystem";
 
 export const routesAdmin = [
   {
@@ -221,6 +223,22 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <HrInformationSystem />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application/online-payroll-system`,
+    element: (
+      <ProtectedRouteOther>
+        <OnlinePayrollSystem />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application/school-enrollment-system`,
+    element: (
+      <ProtectedRouteOther>
+        <SchoolEnrollmentSystem />
       </ProtectedRouteOther>
     ),
   },

@@ -19,10 +19,10 @@ $header->header_datetime = date("Y-m-d H:i:s");
 
 if ($isUpdateHeader == "headerUpdate") {
     $header->header_logo_img = $data["header_logo_img"];
-    $header->header_nav_a = $data["header_nav_a"];
-    $header->header_nav_b = $data["header_nav_b"];
-    $header->header_nav_c = $data["header_nav_c"];
-    $header->header_nav_d = $data["header_nav_d"];
+    $header->header_home = $data["header_home"];
+    $header->header_services = $data["header_services"];
+    $header->header_whyfbs = $data["header_whyfbs"];
+    $header->header_payment = $data["header_payment"];
     $header->header_payment_link = $data["header_payment_link"];
     $header->header_button_text = $data["header_button_text"];
 

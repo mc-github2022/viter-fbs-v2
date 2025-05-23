@@ -2,8 +2,15 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ServiceEnrollmentOverview = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
@@ -11,31 +18,61 @@ const ServiceEnrollmentOverview = ({ pageName }) => {
   const handleForm = () => {
     setContactForm(!contactForm);
   };
+
+  const { data: enrollmentOverviewData } = useQueryData(
+    `${apiVersion}/enrollment-overview`, // endpoint
+    "get", // method
+    "enrollment-overview", // key
+    {},
+    null,
+    true
+  );
+
+  const enrollmentOverviewImage = getConvertStringToJSONparseData(
+    enrollmentOverviewData?.data?.[0]?.enrollment_overview_img
+  );
+
   return (
     <>
       <section className="ServiceCrmOverview py-20 bg-customGray">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {enrollmentOverviewData?.data?.length > 0 &&
+            enrollmentOverviewData.data[0]?.enrollment_overview_subtitle
+              ? enrollmentOverviewData?.data[0].enrollment_overview_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {enrollmentOverviewData?.data?.length > 0 &&
+              enrollmentOverviewData.data[0]?.enrollment_overview_title
+                ? enrollmentOverviewData?.data[0].enrollment_overview_title
+                : ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
-            <div>
-              <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 w-full mx-auto"
-                alt="School Enrollment System"
-              />
+            <div className="relative">
+              {enrollmentOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt={`School Enrollment System ${index + 1}`}
+                  key={index}
+                />
+              ))}
+
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
-                    {webAppOverview[0].btnText}
+                    {enrollmentOverviewData?.data?.length > 0 &&
+                    enrollmentOverviewData.data[0]
+                      ?.enrollment_overview_button_text
+                      ? enrollmentOverviewData?.data[0]
+                          .enrollment_overview_button_text
+                      : ""}
                   </button>
                 </li>
                 {/* <li>
@@ -57,10 +94,20 @@ const ServiceEnrollmentOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {enrollmentOverviewData?.data?.length > 0 &&
+                        enrollmentOverviewData.data[0]
+                          ?.enrollment_overview_list_title_a
+                          ? enrollmentOverviewData?.data[0]
+                              .enrollment_overview_list_title_a
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {enrollmentOverviewData?.data?.length > 0 &&
+                        enrollmentOverviewData.data[0]
+                          ?.enrollment_overview_list_description_a
+                          ? enrollmentOverviewData?.data[0]
+                              .enrollment_overview_list_description_a
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -72,10 +119,20 @@ const ServiceEnrollmentOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {enrollmentOverviewData?.data?.length > 0 &&
+                        enrollmentOverviewData.data[0]
+                          ?.enrollment_overview_list_title_b
+                          ? enrollmentOverviewData?.data[0]
+                              .enrollment_overview_list_title_b
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewBtext}
+                        {enrollmentOverviewData?.data?.length > 0 &&
+                        enrollmentOverviewData.data[0]
+                          ?.enrollment_overview_list_description_b
+                          ? enrollmentOverviewData?.data[0]
+                              .enrollment_overview_list_description_b
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -87,10 +144,20 @@ const ServiceEnrollmentOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        {enrollmentOverviewData?.data?.length > 0 &&
+                        enrollmentOverviewData.data[0]
+                          ?.enrollment_overview_list_title_c
+                          ? enrollmentOverviewData?.data[0]
+                              .enrollment_overview_list_title_c
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewCtext}
+                        {enrollmentOverviewData?.data?.length > 0 &&
+                        enrollmentOverviewData.data[0]
+                          ?.enrollment_overview_list_description_c
+                          ? enrollmentOverviewData?.data[0]
+                              .enrollment_overview_list_description_c
+                          : ""}
                       </p>
                     </div>
                   </div>

@@ -17,13 +17,19 @@ const Partners = () => {
   } = useQueryData(
     "/v1/partners", // endpoint
     "get", // method
-    "partners" // key
+    "partners", // key
+    {},
+    null,
+    true
   );
 
   const { data: homeTitlesData } = useQueryData(
     "/v1/homeTitles", // endpoint
     "get", // method
-    "homeTitles" // key
+    "homeTitles", // key
+    {},
+    null,
+    true
   );
   return (
     <>

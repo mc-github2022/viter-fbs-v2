@@ -1,6 +1,10 @@
 import React from "react";
 import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
-import { devBaseImgUrl, getConvertStringToJSONparseData, googleHDViewLink } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
 
@@ -14,7 +18,10 @@ const WordPressPartners = () => {
   } = useQueryData(
     "/v1/partners", // endpoint
     "get", // method
-    "partners" // key
+    "partners", // key
+    {},
+    null,
+    true
   );
   return (
     <>

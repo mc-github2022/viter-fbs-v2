@@ -86,7 +86,10 @@ const BannerSlider = ({ pageName }) => {
   } = useQueryData(
     "/v1/banner", // endpoint
     "get", // method
-    "banner" // key
+    "banner", // key
+    {},
+    null,
+    true
   );
 
   var settings = {
