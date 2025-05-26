@@ -97,7 +97,7 @@ const EnrollmentOverview = ({
             </div>
             <div className="mt-14 lg:mt-0">
               <a
-                className="absolute cursor-pointer tooltip-btn right-[25rem] top-16 "
+                className="absolute cursor-pointer tooltip-btn right-6 top-16 "
                 data-tooltip="Edit contents"
                 onClick={handleUpdateEnrollmentOverviewList}
               >

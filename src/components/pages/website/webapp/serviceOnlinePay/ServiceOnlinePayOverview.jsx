@@ -2,8 +2,15 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ServiceOnlinePayOverview = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
@@ -11,31 +18,59 @@ const ServiceOnlinePayOverview = ({ pageName }) => {
   const handleForm = () => {
     setContactForm(!contactForm);
   };
+
+  const { data: paymentOverviewData } = useQueryData(
+    `${apiVersion}/payment-overview`, // endpoint
+    "get", // method
+    "payment-overview", // key
+    {},
+    null,
+    true
+  );
+
+  const PaymentOverviewImage = getConvertStringToJSONparseData(
+    paymentOverviewData?.data?.[0]?.payment_overview_img
+  );
+
   return (
     <>
       <section className="ServiceOnlinePayOverview py-20 bg-customGray">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {paymentOverviewData?.data?.length > 0 &&
+            paymentOverviewData.data[0]?.payment_overview_subtitle
+              ? paymentOverviewData?.data[0].payment_overview_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {paymentOverviewData?.data?.length > 0 &&
+              paymentOverviewData.data[0]?.payment_overview_title
+                ? paymentOverviewData?.data[0].payment_overview_title
+                : ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 w-full mx-auto"
-                alt="Online Payment Integration"
-              />
+              {PaymentOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt={`Our Web Application ${index + 1}`}
+                  key={index}
+                />
+              ))}
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
                     className="btn bg-primary text-light font-semibold"
                   >
-                    {webAppOverview[0].btnText}
+                    {paymentOverviewData?.data?.length > 0 &&
+                    paymentOverviewData.data[0]?.payment_overview_button_text
+                      ? paymentOverviewData?.data[0]
+                          .payment_overview_button_text
+                      : ""}
                   </button>
                 </li>
                 {/* <li>
@@ -57,10 +92,20 @@ const ServiceOnlinePayOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {paymentOverviewData?.data?.length > 0 &&
+                        paymentOverviewData.data[0]
+                          ?.payment_overview_list_title_a
+                          ? paymentOverviewData?.data[0]
+                              .payment_overview_list_title_a
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {paymentOverviewData?.data?.length > 0 &&
+                        paymentOverviewData.data[0]
+                          ?.payment_overview_list_description_a
+                          ? paymentOverviewData?.data[0]
+                              .payment_overview_list_description_a
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -72,14 +117,52 @@ const ServiceOnlinePayOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {paymentOverviewData?.data?.length > 0 &&
+                        paymentOverviewData.data[0]
+                          ?.payment_overview_list_title_b
+                          ? paymentOverviewData?.data[0]
+                              .payment_overview_list_title_b
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewBtext}
+                        {paymentOverviewData?.data?.length > 0 &&
+                        paymentOverviewData.data[0]
+                          ?.payment_overview_list_description_b
+                          ? paymentOverviewData?.data[0]
+                              .payment_overview_list_description_b
+                          : ""}
                       </p>
                     </div>
                   </div>
                 </li>
+                {paymentOverviewData?.data[0]
+                  ?.payment_overview_list_title_c && (
+                  <li className="flex items-start gap-4 text-dark">
+                    <div className="flex gap-4 items-start">
+                      <div>
+                        <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                      </div>
+                      <div>
+                        <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
+                          {paymentOverviewData?.data?.length > 0 &&
+                          paymentOverviewData.data[0]
+                            ?.payment_overview_list_title_c
+                            ? paymentOverviewData?.data[0]
+                                .payment_overview_list_title_c
+                            : ""}
+                        </h3>
+                        <p className="text-justify">
+                          {paymentOverviewData?.data?.length > 0 &&
+                          paymentOverviewData.data[0]
+                            ?.payment_overview_list_description_c
+                            ? paymentOverviewData?.data[0]
+                                .payment_overview_list_description_c
+                            : ""}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                )}
               </ul>
             </div>
           </div>

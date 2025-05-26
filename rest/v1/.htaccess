@@ -228,6 +228,34 @@ RewriteRule ^enrollment-scope/([0-9]+)$ controllers/developer/services/web-appli
 RewriteRule ^enrollment-titles$ controllers/developer/services/web-application/school-enrollment-system/enrollment-titles/enrollmentTitles.php [L]
 RewriteRule ^enrollment-titles/([0-9]+)$ controllers/developer/services/web-application/school-enrollment-system/enrollment-titles/enrollmentTitles.php?enrollment_titlesid=$1 [L]
 
+# SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - BANNER
+RewriteRule ^payment$ controllers/developer/services/web-application/online-payment-integration/payment-banner/paymentBanner.php [L]
+RewriteRule ^payment/([0-9]+)$ controllers/developer/services/web-application/online-payment-integration/payment-banner/paymentBanner.php?payment_bannerid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - OVERVIEW
+RewriteRule ^payment-overview$ controllers/developer/services/web-application/online-payment-integration/payment-overview/paymentOverview.php [L]
+RewriteRule ^payment-overview/([0-9]+)$ controllers/developer/services/web-application/online-payment-integration/payment-overview/paymentOverview.php?payment_overviewid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - SCOPE 
+RewriteRule ^payment-scope$ controllers/developer/services/web-application/online-payment-integration/payment-scope/paymentScope.php [L]
+RewriteRule ^payment-scope/([0-9]+)$ controllers/developer/services/web-application/online-payment-integration/payment-scope/paymentScope.php?payment_scopeid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - TITLES
+RewriteRule ^payment-titles$ controllers/developer/services/web-application/online-payment-integration/payment-titles/paymentTitles.php [L]
+RewriteRule ^payment-titles/([0-9]+)$ controllers/developer/services/web-application/online-payment-integration/payment-titles/paymentTitles.php?payment_titlesid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - BANNER
+RewriteRule ^donation$ controllers/developer/services/web-application/online-donation-system/donation-banner/donationBanner.php [L]
+RewriteRule ^donation/([0-9]+)$ controllers/developer/services/web-application/online-donation-system/donation-banner/donationBanner.php?donation_bannerid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - OVERVIEW
+RewriteRule ^donation-overview$ controllers/developer/services/web-application/online-donation-system/donation-overview/donationOverview.php [L]
+RewriteRule ^donation-overview/([0-9]+)$ controllers/developer/services/web-application/online-donation-system/donation-overview/donationOverview.php?donation_overviewid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - SCOPE 
+RewriteRule ^donation-scope$ controllers/developer/services/web-application/online-donation-system/donation-scope/donationScope.php [L]
+RewriteRule ^donation-scope/([0-9]+)$ controllers/developer/services/web-application/online-donation-system/donation-scope/donationScope.php?donation_scopeid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

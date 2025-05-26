@@ -32,6 +32,8 @@ import EventsAndActivities from "../components/pages/developer/why-fbs-page/even
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import OnlinePayrollSystem from "../components/pages/developer/services/web-application/online-payroll-system/OnlinePayrollSystem";
 import SchoolEnrollmentSystem from "../components/pages/developer/services/web-application/school-enrollment-system/SchoolEnrollmentSystem";
+import OnlinePaymentIntegration from "../components/pages/developer/services/web-application/online-payment-integration/OnlinePaymentIntegration";
+import OnlineDonationSystem from "../components/pages/developer/services/web-application/online-donation-system/OnlineDonationSystem";
 
 export const routesAdmin = [
   {
@@ -239,6 +241,22 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <SchoolEnrollmentSystem />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application/online-payment-integration`,
+    element: (
+      <ProtectedRouteOther>
+        <OnlinePaymentIntegration />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application/online-donation-system`,
+    element: (
+      <ProtectedRouteOther>
+        <OnlineDonationSystem />
       </ProtectedRouteOther>
     ),
   },

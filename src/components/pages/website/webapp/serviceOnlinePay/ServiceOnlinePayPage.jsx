@@ -29,6 +29,15 @@ const ServiceOnlinePayPage = () => {
     true
   );
 
+  const { data: paymentTitlesData } = useQueryData(
+    `${apiVersion}/payment-titles`, // endpoint
+    "get", // method
+    "payment-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -54,8 +63,14 @@ const ServiceOnlinePayPage = () => {
       <Header pageName={pageName} />
       <ServiceOnlinePayBanner pageName={pageName} />
       <ServiceOnlinePayOverview pageName={pageName} />
-      <ServiceOnlinePayScope pageName={pageName} />
-      <ServiceOnlinePayPricing pageName={pageName} />
+      <ServiceOnlinePayScope
+        pageName={pageName}
+        paymentTitlesData={paymentTitlesData}
+      />
+      <ServiceOnlinePayPricing
+        pageName={pageName}
+        paymentTitlesData={paymentTitlesData}
+      />
       {/* <ServiceOnlinePayPartners /> */}
       {/* <ServiceOnlinePayPartnersSay /> */}
       <Footer />

@@ -15,6 +15,13 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/web-application/school-enrollment-system/enrollment-overview
             -> rest/v1/controllers/developer/services/web-application/school-enrollment-system/enrollment-scope
             -> rest/v1/controllers/developer/services/web-application/school-enrollment-system/enrollment-titles
+            -> rest/v1/controllers/developer/services/web-application/online-payment-integration/payment-banner
+            -> rest/v1/controllers/developer/services/web-application/online-payment-integration/payment-overview
+            -> rest/v1/controllers/developer/services/web-application/online-payment-integration/payment-scope
+            -> rest/v1/controllers/developer/services/web-application/online-payment-integration/payment-titles
+            -> rest/v1/controllers/developer/services/web-application/online-donation-system/donation-banner
+            -> rest/v1/controllers/developer/services/web-application/online-donation-system/donation-overview
+            -> rest/v1/controllers/developer/services/web-application/online-donation-system/donation-scope
             -> rest/v1/controllers/developer/footer/functions.php
             -> rest/v1/controllers/developer/footer/create.php
             -> rest/v1/controllers/developer/footer/delete.php
@@ -38,6 +45,13 @@ DEVELOPER
             -> rest/v1/models/developer/services/web-application/school-enrollment-system/EnrollmentOverview.php
             -> rest/v1/models/developer/services/web-application/school-enrollment-system/EnrollmentScope.php
             -> rest/v1/models/developer/services/web-application/school-enrollment-system/EnrollmentTitles.php
+            -> rest/v1/models/developer/services/web-application/online-payment-integration/PaymentBanner.php
+            -> rest/v1/models/developer/services/web-application/online-payment-integration/PaymentOverview.php
+            -> rest/v1/models/developer/services/web-application/online-payment-integration/PaymentScope.php
+            -> rest/v1/models/developer/services/web-application/online-payment-integration/PaymentTitles.php
+            -> rest/v1/models/developer/services/web-application/online-donation-system/DonationBanner.php
+            -> rest/v1/models/developer/services/web-application/online-donation-system/DonationOverview.php
+            -> rest/v1/models/developer/services/web-application/online-donation-system/DonationScope.php
             -> rest/v1/models/developer/footer/Footer.php
             -> rest/v1/models/developer/header
 
@@ -53,6 +67,13 @@ DEVELOPER
             -> # SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - BANNER is added
             -> # SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - SCOPE is added
             -> # SERVICES - WEB APPLICATION - SCHOOL ENROLLMENT SYSTEM - TITLES is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - BANNER is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - OVERVIEW is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - SCOPE is added
+            -> # SERVICES - WEB APPLICATION - ONLINE PAYMENT INTEGRATION - TITLES is added
+            -> # SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - BANNER is added
+            -> # SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - OVERVIEW is added
+            -> # SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - SCOPE is added
             -> # HEADER is added
 
         * OTHER FILES

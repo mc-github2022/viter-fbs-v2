@@ -143,7 +143,7 @@ const ModalUpdateEnrollmentScope = ({ itemEdit }) => {
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} enrollment Scope
+            {itemEdit ? "Edit" : "Add"} Enrollment Scope
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />

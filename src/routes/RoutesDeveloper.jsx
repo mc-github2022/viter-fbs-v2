@@ -37,6 +37,8 @@ import List from "../components/pages/developer/packages/list/List";
 import Details from "../components/pages/developer/packages/details/Details";
 import OnlinePayrollSystem from "../components/pages/developer/services/web-application/online-payroll-system/OnlinePayrollSystem";
 import SchoolEnrollmentSystem from "../components/pages/developer/services/web-application/school-enrollment-system/SchoolEnrollmentSystem";
+import OnlinePaymentIntegration from "../components/pages/developer/services/web-application/online-payment-integration/OnlinePaymentIntegration";
+import OnlineDonationSystem from "../components/pages/developer/services/web-application/online-donation-system/OnlineDonationSystem";
 
 export const routesDeveloper = [
   {
@@ -260,6 +262,22 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <SchoolEnrollmentSystem />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-application/online-payment-integration`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <OnlinePaymentIntegration />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-application/online-donation-system`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <OnlineDonationSystem />
       </ProtectedRouteDeveloper>
     ),
   },
