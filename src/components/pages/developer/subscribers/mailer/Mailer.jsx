@@ -18,7 +18,7 @@ import { StoreContext } from "../../../../store/StoreContext";
 import ModalSend from "./ModalSend";
 import { setIsSubsOpen } from "../../../../store/StoreAction";
 
-const Mailer = () => {
+const Mailer = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [onRecipient, setOnRecipient] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -32,6 +32,19 @@ const Mailer = () => {
   const [isSuccessSendingEmail, setIsSuccessSendingEmail] =
     React.useState(false);
   const [queryStatus, setQueryStatus] = React.useState(null);
+
+  const [mailType, setMailType] = React.useState("Draft");
+
+  const [onFocusPackagesList, setOnFocusPackagesList] = React.useState(false);
+  const [propertyPackageListValue, setPropertyPackageListValue] =
+    React.useState(itemEdit ? `${itemEdit.packages_category_name}` : ""); // to get the data from table when update
+  const [packageList, setPackageList] = React.useState(
+    itemEdit ? itemEdit.packages_category_name : ""
+  );
+  const [packageListId, setPackageListId] = React.useState(
+    itemEdit ? itemEdit.packages_list_category_name_id : ""
+  );
+
   // let queryCount = 0;
   const {
     isFetching: subscriberDataIsFetching,
@@ -59,6 +72,23 @@ const Mailer = () => {
     `${apiVersion}/audience`, // endpoint
     "get", // method
     "audience" // key
+  );
+
+  const {
+    isFetching: packageListDataIsFetching,
+    error: packageListDataError,
+    data: packageListData,
+  } = useQueryData(
+    `${apiVersion}/packages-list/category-search`, // endpoint
+    "post", // method
+    "packages-list/category-search", // key
+    {
+      searchValue: packageList, // payload
+    },
+    {
+      searchValue: packageList, // id
+    },
+    true // refetchOnWindowFocus
   );
 
   // Join subscriberData with audienceData to get audience_name
@@ -173,6 +203,53 @@ const Mailer = () => {
     dispatch(setIsSubsOpen(false));
   }, []);
 
+  const handleClickNewsletterList = (item) => {
+    setPackageList(item.packages_category_name);
+    setPropertyPackageListValue(`${item.packages_category_name}`);
+    setPackageListId(item.packages_category_aid);
+    setOnFocusPackagesList(false);
+  };
+
+  const handleOnChangeNewsletterList = (e) => {
+    setPropertyPackageListValue(e.target.value);
+    setLoading(true);
+    setPackageListId("");
+    if (e.target.value === "") {
+      setLoading(false);
+    }
+
+    let timeOut;
+
+    timeOut = setTimeout(() => {
+      clearTimeout(timeOut);
+      let val = e.target.value;
+      if (val === "") {
+        setPackageList(val);
+        return;
+      }
+      setPackageList(val);
+      setLoading(false);
+    }, 500); // debounce seconds to fetch
+  };
+
+  // to close the modal when clicking outside for Property type
+  const refPackageList = React.useRef();
+
+  const clickOutsideRefPackageList = (e) => {
+    if (
+      refPackageList.current !== undefined &&
+      refPackageList.current !== null &&
+      !refPackageList.current?.contains(e.target)
+    ) {
+      setOnFocusPackagesList(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefPackageList);
+    return () => document.addEventListener("click", clickOutsideRefPackageList);
+  }, []);
+
   const initVal = {
     newsletter: "",
     newsletter_subject: "",
@@ -197,11 +274,20 @@ const Mailer = () => {
         <Navigation menu="subscribers" submenu="mailer" />
         <Dashboard>
           <div className="mx-5 pt-2">
-            <div className="py-5 flex justify-between ">
+            <div className="py-5 flex flex-col gap-3">
               <div className="text-sm text-[black] font-semibold">
                 <h2>Newsletter Mailer</h2>
               </div>
+              <select
+                value={mailType}
+                onChange={(e) => setMailType(e.target.value)}
+                className="w-[200px]"
+              >
+                <option value="Draft">Draft</option>
+                <option value="Newsletter List">Newsletter List</option>
+              </select>
             </div>
+
             <div className="pb-4">
               <Formik
                 initialValues={initVal}
@@ -317,30 +403,76 @@ const Mailer = () => {
                           )}
                         </div>
 
-                        <div className="input-wrapper">
-                          <InputText
-                            label="Subject"
-                            type="text"
-                            name="newsletter_subject"
-                            className="w-full"
-                            disabled={isSendingLoading}
-                          />
-                        </div>
-                        <div className="input-wrapper">
-                          <span className="text-xs bg-[#f5f5f3]">
-                            Paste Your HTML Code Here
-                          </span>
-                          <InputTextArea
-                            type="text"
-                            name="newsletter"
-                            className="newsletter bg-[#2b2b2b] text-white h-[445px]"
-                            value={values.newsletter}
-                            onChange={(e) =>
-                              setFieldValue("newsletter", e.target.value)
-                            }
-                            disabled={isSendingLoading}
-                          />
-                        </div>
+                        {mailType === "Draft" ? (
+                          <div className="input-wrapper">
+                            <InputText
+                              label="Subject"
+                              type="text"
+                              name="newsletter_subject"
+                              className="w-full"
+                              disabled={isSendingLoading}
+                            />
+                          </div>
+                        ) : (
+                          <div className=" input-wrapper">
+                            <InputText
+                              label="Subject"
+                              type="text"
+                              value={propertyPackageListValue}
+                              name="packages_list_category_name_id"
+                              disabled={isSendingLoading}
+                              onFocus={() => setOnFocusPackagesList(true)}
+                              onChange={handleOnChangeNewsletterList}
+                              refVal={refPackageList}
+                            />
+                            {onFocusPackagesList && (
+                              <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[33px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                                {loading || packageListDataIsFetching ? (
+                                  <TableSpinner />
+                                ) : packageListDataError ? (
+                                  <div className="my-7">
+                                    <ServerError />
+                                  </div>
+                                ) : packageListData?.count > 0 ? (
+                                  packageListData?.data.map((item, key) => (
+                                    <div
+                                      className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-xs text-dark"
+                                      value={item.packages_category_aid}
+                                      key={key}
+                                      onClick={() =>
+                                        handleClickNewsletterList(item)
+                                      }
+                                    >
+                                      {item.packages_category_name}
+                                    </div>
+                                  ))
+                                ) : (
+                                  <div className="my-7">
+                                    <NoData />
+                                  </div>
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        {mailType === "Draft" && (
+                          <div className="input-wrapper">
+                            <span className="text-xs bg-[#f5f5f3]">
+                              Paste Your HTML Code Here
+                            </span>
+                            <InputTextArea
+                              type="text"
+                              name="newsletter"
+                              className="newsletter bg-[#2b2b2b] text-white h-[445px]"
+                              value={values.newsletter}
+                              onChange={(e) =>
+                                setFieldValue("newsletter", e.target.value)
+                              }
+                              disabled={isSendingLoading}
+                            />
+                          </div>
+                        )}
                         <div className="form-action  bottom-0 w-full">
                           <div className="form-btn place-content-end">
                             <button
