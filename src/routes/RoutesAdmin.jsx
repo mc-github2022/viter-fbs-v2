@@ -35,6 +35,7 @@ import SchoolEnrollmentSystem from "../components/pages/developer/services/web-a
 import OnlinePaymentIntegration from "../components/pages/developer/services/web-application/online-payment-integration/OnlinePaymentIntegration";
 import OnlineDonationSystem from "../components/pages/developer/services/web-application/online-donation-system/OnlineDonationSystem";
 import AssetInventorySystem from "../components/pages/developer/services/web-application/asset-inventory-system/AssetInventorySystem";
+import Newsletter from "../components/pages/developer/subscribers/newsletter/Newsletter";
 
 export const routesAdmin = [
   {
@@ -210,6 +211,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <MailerLog />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/newsletter`,
+    element: (
+      <ProtectedRouteOther>
+        <Newsletter/>
       </ProtectedRouteOther>
     ),
   },

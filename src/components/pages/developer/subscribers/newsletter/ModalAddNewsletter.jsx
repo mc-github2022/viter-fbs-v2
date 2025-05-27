@@ -16,7 +16,7 @@ import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
 import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 
-const ModalAddMailerLog = ({ itemEdit }) => {
+const ModalAddNewsletter = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
 
@@ -33,13 +33,13 @@ const ModalAddMailerLog = ({ itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `${apiVersion}/mailer-log/update-mailer-subject-content/${itemEdit.sending_email_log_aid}` // update
-          : `${apiVersion}/sending-newsletter/create`, // create
+          ? `${apiVersion}/newsletter/${itemEdit.newsletter_aid}` // update
+          : `${apiVersion}/newsletter`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["mailer-log"] });
+      queryClient.invalidateQueries({ queryKey: ["newsletter"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -58,18 +58,14 @@ const ModalAddMailerLog = ({ itemEdit }) => {
   }, []);
 
   const initVal = {
-    sending_email_log_aid: itemEdit ? itemEdit.sending_email_log_aid : "",
-    sending_email_log_subject: itemEdit
-      ? itemEdit.sending_email_log_subject
-      : "",
-    sending_email_log_content: itemEdit
-      ? itemEdit.sending_email_log_content
-      : "",
+    newsletter_aid: itemEdit ? itemEdit.newsletter_aid : "",
+    newsletter_subject: itemEdit ? itemEdit.newsletter_subject : "",
+    newsletter_content: itemEdit ? itemEdit.newsletter_content : "",
   };
 
   const yupSchema = Yup.object({
-    sending_email_log_subject: Yup.string().required("Required"),
-    sending_email_log_content: Yup.string().required("Required"),
+    newsletter_subject: Yup.string().required("Required"),
+    newsletter_content: Yup.string().required("Required"),
   });
 
   return (
@@ -78,7 +74,7 @@ const ModalAddMailerLog = ({ itemEdit }) => {
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Email Message</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Newsletter</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -101,16 +97,16 @@ const ModalAddMailerLog = ({ itemEdit }) => {
                         <InputText
                           label="Subject"
                           type="text"
-                          name="sending_email_log_subject"
+                          name="newsletter_subject"
                           disabled={mutation.isPending}
                         />
                       </div>
                       <div className="input-wrapper">
                         <InputTextArea
-                          label="Message"
+                          label="Content"
                           type="text"
-                          name="sending_email_log_content"
-                          value={values.sending_email_log_content}
+                          name="newsletter_content"
+                          value={values.newsletter_content}
                           className="min-h-[calc(80vh-55px)]"
                           disabled={mutation.isPending}
                         />
@@ -138,10 +134,10 @@ const ModalAddMailerLog = ({ itemEdit }) => {
                   </div>
                   <div className="w-[75%]">
                     <div className="Preview md:min-h-[calc(96vh-55px)] lg:max-h-[calc(100vh-150px)] w-full border-[2px] border-gray-200 flex justify-center items-center rounded-lg mt-3 overflow-hidden">
-                      {values.sending_email_log_content ? (
+                      {values.newsletter_content ? (
                         <div className="w-full">
                           <iframe
-                            srcDoc={values.sending_email_log_content}
+                            srcDoc={values.newsletter_content}
                             className="md:min-h-[calc(93vh-35px)] lg:max-h-[calc(90vh-150px)] border-none w-full"
                           />
                         </div>
@@ -162,4 +158,4 @@ const ModalAddMailerLog = ({ itemEdit }) => {
   );
 };
 
-export default ModalAddMailerLog;
+export default ModalAddNewsletter;

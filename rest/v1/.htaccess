@@ -180,6 +180,13 @@ RewriteRule ^mailer-log/delete-mailer/([0-9]+)$ controllers/developer/mailer-log
 RewriteRule ^mailer-log/resend-mailer$ controllers/developer/mailer-log/resending-newsletter.php [L]
 RewriteRule ^mailer-log/update-mailer-subject-content/([0-9]+)$ controllers/developer/mailer-log/update-mailer-subject-content.php?mailerId=$1 [L]
 
+# NEWSLETTER
+RewriteRule ^newsletter$ controllers/developer/newsletter/newsletter.php [L]
+RewriteRule ^newsletter/([0-9]+)$ controllers/developer/newsletter/newsletter.php?newsletterId=$1 [L]
+RewriteRule ^newsletter/active/([0-9]+)$ controllers/developer/newsletter/active.php?newsletterId=$1 [L]
+RewriteRule ^newsletter/page/([0-9]+)$ controllers/developer/newsletter/page.php?start=$1 [L]
+RewriteRule ^newsletter/search$ controllers/developer/newsletter/search.php [L] 
+
 # SERVICES - WEB APPLICATION - HR INFORMATION SYSTEM - BANNER
 RewriteRule ^hris$ controllers/developer/services/web-application/hr-information-system/hris-banner/hrisBanner.php [L]
 RewriteRule ^hris/([0-9]+)$ controllers/developer/services/web-application/hr-information-system/hris-banner/hrisBanner.php?hris_bannerid=$1 [L]

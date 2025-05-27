@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {
   devBaseImgUrl,
   devNavUrl,
-  getUserType
+  getUserType,
 } from "../../helpers/functions-general";
 import {
   setIsNavOpen,
@@ -574,6 +574,20 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                       >
                         Subscriber List
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/newsletter`}
+                    >
+                      <li
+                        className={`text-xs my-1  border-transparent hover:underline ${
+                          submenu === "newsletter"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Newsletter
                       </li>
                     </Link>
                     <Link className="!p-0" to={`${devNavUrl}${link}/mailer`}>
