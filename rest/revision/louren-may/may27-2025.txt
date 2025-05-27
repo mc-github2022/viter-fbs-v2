@@ -22,6 +22,11 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/web-application/online-donation-system/donation-banner
             -> rest/v1/controllers/developer/services/web-application/online-donation-system/donation-overview
             -> rest/v1/controllers/developer/services/web-application/online-donation-system/donation-scope
+            -> rest/v1/controllers/developer/services/web-application/online-donation-system/donation-titles
+            -> rest/v1/controllers/developer/services/web-application/asset-inventory-system/asset-banner
+            -> rest/v1/controllers/developer/services/web-application/asset-inventory-system/asset-overview
+            -> rest/v1/controllers/developer/services/web-application/asset-inventory-system/asset-scope
+            -> rest/v1/controllers/developer/services/web-application/asset-inventory-system/asset-titles
             -> rest/v1/controllers/developer/footer/functions.php
             -> rest/v1/controllers/developer/footer/create.php
             -> rest/v1/controllers/developer/footer/delete.php
@@ -52,6 +57,11 @@ DEVELOPER
             -> rest/v1/models/developer/services/web-application/online-donation-system/DonationBanner.php
             -> rest/v1/models/developer/services/web-application/online-donation-system/DonationOverview.php
             -> rest/v1/models/developer/services/web-application/online-donation-system/DonationScope.php
+            -> rest/v1/models/developer/services/web-application/online-donation-system/DonationTitles.php
+            -> rest/v1/models/developer/services/web-application/asset-inventory-system/AssetBanner.php
+            -> rest/v1/models/developer/services/web-application/asset-inventory-system/AssetOverview.php
+            -> rest/v1/models/developer/services/web-application/asset-inventory-system/AssetScope.php
+            -> rest/v1/models/developer/services/web-application/asset-inventory-system/AssetTitles.php
             -> rest/v1/models/developer/footer/Footer.php
             -> rest/v1/models/developer/header
 
@@ -74,6 +84,11 @@ DEVELOPER
             -> # SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - BANNER is added
             -> # SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - OVERVIEW is added
             -> # SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - SCOPE is added
+            -> # SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - TITLES is added
+            -> # SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - BANNER is added
+            -> # SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - OVERVIEW is added
+            -> # SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - SCOPE is added
+            -> # SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - TITLES is added
             -> # HEADER is added
 
         * OTHER FILES
@@ -94,15 +109,22 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_enrollment_overview.sql
             -> rest/db-backup/fbsv2_services_enrollment_scope.sql
             -> rest/db-backup/fbsv2_services_enrollment_titles.sql
+            -> rest/db-backup/fbsv2_services_payment_banner.sql
+            -> rest/db-backup/fbsv2_services_payment_overview.sql
+            -> rest/db-backup/fbsv2_services_payment_scope.sql
+            -> rest/db-backup/fbsv2_services_payment_titles.sql
+            -> rest/db-backup/fbsv2_services_donation_banner.sql
+            -> rest/db-backup/fbsv2_services_donation_overview.sql
+            -> rest/db-backup/fbsv2_services_donation_scope.sql
+            -> rest/db-backup/fbsv2_services_donation_titles.sql
+            -> rest/db-backup/fbsv2_services_asset_banner.sql
+            -> rest/db-backup/fbsv2_services_asset_overview.sql
+            -> rest/db-backup/fbsv2_services_asset_scope.sql
+            -> rest/db-backup/fbsv2_services_asset_titles.sql
             -> rest/db-backup/fbsv2_header.sql
             -> rest/db-backup/fbsv2_footer.sql 
                 note: column is added
                     `footer_logo_img` text NOT NULL,
-                    `footer_phone_a` varchar(50) NOT NULL,
-                    `footer_phone_b` varchar(50) NOT NULL,
-                    `footer_phone_c` varchar(50) NOT NULL,
-                    `footer_email` varchar(100) NOT NULL,
-                    `footer_subscriber_text` varchar(50) NOT NULL,
             ->
             ->
 

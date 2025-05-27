@@ -8,26 +8,25 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
+import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
-import ModalUpdateContactUs from "../../../footer/ModalUpdateContactUs";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import EnrollmentBanner from "./enrollment-banner/EnrollmentBanner";
 import ModalUpdateEnrollmentBanner from "./enrollment-banner/ModalUpdateEnrollmentBanner";
 import EnrollmentOverview from "./enrollment-overview/EnrollmentOverview";
 import ModalUpdateEnrollmentOverview from "./enrollment-overview/ModalUpdateEnrollmentOverview";
 import ModalUpdateEnrollmentOverviewList from "./enrollment-overview/ModalUpdateEnrollmentOverviewList";
+import EnrollmentPartnerSays from "./enrollment-partnersays/EnrollmentPartnerSays";
+import EnrollmentPricing from "./enrollment-pricing/EnrollmentPricing";
 import EnrollmentScope from "./enrollment-scope/EnrollmentScope";
 import ModalUpdateEnrollmentScope from "./enrollment-scope/ModalUpdateEnrollmentScope";
-import EnrollmentPricing from "./enrollment-pricing/EnrollmentPricing";
-import EnrollmentPartnerSays from "./enrollment-partnersays/EnrollmentPartnerSays";
-import ModalUpdateEnrollmentScopeTitle from "./enrollment-titles/ModalUpdateEnrollmentScopeTitle";
 import ModalUpdateEnrollmentPackagesTitle from "./enrollment-titles/ModalUpdateEnrollmentPackagesTitle";
 import ModalUpdateEnrollmentPartnerSaysTitle from "./enrollment-titles/ModalUpdateEnrollmentPartnerSaysTitle";
+import ModalUpdateEnrollmentScopeTitle from "./enrollment-titles/ModalUpdateEnrollmentScopeTitle";
 
 const SchoolEnrollmentSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -320,11 +319,6 @@ const SchoolEnrollmentSystem = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
           <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "footer-contactus" && (
-          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&

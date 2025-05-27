@@ -1,41 +1,40 @@
 import React from "react";
-import Navigation from "../../../partials/dashboard/Navigation";
-import Dashboard from "../../../partials/dashboard/Dashboard";
-import Banner from "./Banner";
-import Process from "./process/Process";
-import Insights from "./home-titles/Insights";
-import Footer from "../footer/Footer";
-import { StoreContext } from "../../../store/StoreContext";
-import { setIsUpdateHome } from "../../../store/StoreAction";
-import ModalUpdateProcessTitle from "./process/ModalUpdateProcessTitle";
-import { apiVersion } from "../../../helpers/functions-general";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import { apiVersion } from "../../../helpers/functions-general";
+import Dashboard from "../../../partials/dashboard/Dashboard";
+import Navigation from "../../../partials/dashboard/Navigation";
 import ModalError from "../../../partials/modals/ModalError";
+import ModalSuccess from "../../../partials/modals/ModalSuccess";
+import { setIsUpdateHome } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
+import ModalUpdateContactFormDefault from "../contact-form-default/ModalUpdateContactFormDefault";
+import Footer from "../footer/Footer";
+import ModalUpdateCopyright from "../footer/ModalUpdateCopyright";
+import ModalUpdateLogoImg from "../footer/ModalUpdateLogoImg";
+import ModalUpdateQuickLinks from "../footer/ModalUpdateQuickLinks";
+import Header from "../header/Header";
+import ModalUpdateHeader from "../header/ModalUpdateHeader";
+import Banner from "./Banner";
+import Insights from "./home-titles/Insights";
+import Partners from "./home-titles/Partners";
+import Testimonial from "./home-titles/Testimonial";
+import ModalUpdateInsightsTitle from "./home-titles/modals/ModalUpdateInsightsTitle";
+import ModalUpdatePartnersTitle from "./home-titles/modals/ModalUpdatePartnersTitle";
+import ModalUpdateTestimonialTitle from "./home-titles/modals/ModalUpdateTestimonialTitle";
+import ModalUpdatePartnerWithUs from "./partner-with-us/ModalUpdatePartnerWithUs";
+import PartnerWithUs from "./partner-with-us/PartnerWithUs";
 import ModalUpdateProcessA from "./process/ModalUpdateProcessA";
 import ModalUpdateProcessB from "./process/ModalUpdateProcessB";
 import ModalUpdateProcessC from "./process/ModalUpdateProcessC";
 import ModalUpdateProcessD from "./process/ModalUpdateProcessD";
-import Services from "./services/Services";
-import ModalUpdateServicesTitle from "./services/ModalUpdateServicesTitle";
+import ModalUpdateProcessTitle from "./process/ModalUpdateProcessTitle";
+import Process from "./process/Process";
 import ModalUpdateServicesA from "./services/ModalUpdateServicesA";
 import ModalUpdateServicesB from "./services/ModalUpdateServicesB";
 import ModalUpdateServicesC from "./services/ModalUpdateServicesC";
 import ModalUpdateServicesD from "./services/ModalUpdateServicesD";
-import PartnerWithUs from "./partner-with-us/PartnerWithUs";
-import ModalUpdatePartnerWithUs from "./partner-with-us/ModalUpdatePartnerWithUs";
-import ModalUpdateContactFormDefault from "../contact-form-default/ModalUpdateContactFormDefault";
-import Testimonial from "./home-titles/Testimonial";
-import ModalUpdateTestimonialTitle from "./home-titles/modals/ModalUpdateTestimonialTitle";
-import Partners from "./home-titles/Partners";
-import ModalUpdatePartnersTitle from "./home-titles/modals/ModalUpdatePartnersTitle";
-import ModalUpdateInsightsTitle from "./home-titles/modals/ModalUpdateInsightsTitle";
-import ModalUpdateQuickLinks from "../footer/ModalUpdateQuickLinks";
-import ModalUpdateCopyright from "../footer/ModalUpdateCopyright";
-import ModalUpdateLogoImg from "../footer/ModalUpdateLogoImg";
-import ModalUpdateContactUs from "../footer/ModalUpdateContactUs";
-import Header from "../header/Header";
-import ModalUpdateHeader from "../header/ModalUpdateHeader";
+import ModalUpdateServicesTitle from "./services/ModalUpdateServicesTitle";
+import Services from "./services/Services";
 
 const Home = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -362,11 +361,6 @@ const Home = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
           <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "footer-contactus" && (
-          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&

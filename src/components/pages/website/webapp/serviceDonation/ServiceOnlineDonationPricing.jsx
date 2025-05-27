@@ -39,7 +39,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceOnlineDonationPricing = ({ pageName }) => {
+const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
@@ -166,10 +166,16 @@ const ServiceOnlineDonationPricing = ({ pageName }) => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              Web application for your online donation needs
+              {donationTitlesData?.data?.length > 0 &&
+              donationTitlesData.data[0]?.donation_titles_packages_subtitle
+                ? donationTitlesData?.data[0].donation_titles_packages_subtitle
+                : ""}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Affordable Pricing Plan
+              {donationTitlesData?.data?.length > 0 &&
+              donationTitlesData.data[0]?.donation_titles_packages_title
+                ? donationTitlesData?.data[0].donation_titles_packages_title
+                : ""}
             </h3>
           </div>
           <div className="wrapper ">

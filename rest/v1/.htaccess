@@ -256,6 +256,26 @@ RewriteRule ^donation-overview/([0-9]+)$ controllers/developer/services/web-appl
 RewriteRule ^donation-scope$ controllers/developer/services/web-application/online-donation-system/donation-scope/donationScope.php [L]
 RewriteRule ^donation-scope/([0-9]+)$ controllers/developer/services/web-application/online-donation-system/donation-scope/donationScope.php?donation_scopeid=$1 [L]
 
+# SERVICES - WEB APPLICATION - ONLINE DONATION SYSTEM - TITLES
+RewriteRule ^donation-titles$ controllers/developer/services/web-application/online-donation-system/donation-titles/donationTitles.php [L]
+RewriteRule ^donation-titles/([0-9]+)$ controllers/developer/services/web-application/online-donation-system/donation-titles/donationTitles.php?donation_titlesid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - BANNER
+RewriteRule ^asset$ controllers/developer/services/web-application/asset-inventory-system/asset-banner/assetBanner.php [L]
+RewriteRule ^asset/([0-9]+)$ controllers/developer/services/web-application/asset-inventory-system/asset-banner/assetBanner.php?asset_bannerid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - OVERVIEW
+RewriteRule ^asset-overview$ controllers/developer/services/web-application/asset-inventory-system/asset-overview/assetOverview.php [L]
+RewriteRule ^asset-overview/([0-9]+)$ controllers/developer/services/web-application/asset-inventory-system/asset-overview/assetOverview.php?asset_overviewid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - SCOPE 
+RewriteRule ^asset-scope$ controllers/developer/services/web-application/asset-inventory-system/asset-scope/assetScope.php [L]
+RewriteRule ^asset-scope/([0-9]+)$ controllers/developer/services/web-application/asset-inventory-system/asset-scope/assetScope.php?asset_scopeid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ASSET INVENTORY SYSTEM - TITLES
+RewriteRule ^asset-titles$ controllers/developer/services/web-application/asset-inventory-system/asset-titles/assetTitles.php [L]
+RewriteRule ^asset-titles/([0-9]+)$ controllers/developer/services/web-application/asset-inventory-system/asset-titles/assetTitles.php?asset_titlesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

@@ -34,6 +34,7 @@ import OnlinePayrollSystem from "../components/pages/developer/services/web-appl
 import SchoolEnrollmentSystem from "../components/pages/developer/services/web-application/school-enrollment-system/SchoolEnrollmentSystem";
 import OnlinePaymentIntegration from "../components/pages/developer/services/web-application/online-payment-integration/OnlinePaymentIntegration";
 import OnlineDonationSystem from "../components/pages/developer/services/web-application/online-donation-system/OnlineDonationSystem";
+import AssetInventorySystem from "../components/pages/developer/services/web-application/asset-inventory-system/AssetInventorySystem";
 
 export const routesAdmin = [
   {
@@ -257,6 +258,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <OnlineDonationSystem />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application/asset-inventory-system`,
+    element: (
+      <ProtectedRouteOther>
+        <AssetInventorySystem />
       </ProtectedRouteOther>
     ),
   },

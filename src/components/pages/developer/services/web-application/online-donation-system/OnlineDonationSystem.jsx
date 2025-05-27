@@ -10,7 +10,6 @@ import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
 import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
-import ModalUpdateContactUs from "../../../footer/ModalUpdateContactUs";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
@@ -21,13 +20,13 @@ import ModalUpdateDonationBanner from "./donation-banner/ModalUpdateDonationBann
 import DonationOverview from "./donation-overview/DonationOverview";
 import ModalUpdateDonationOverview from "./donation-overview/ModalUpdateDonationOverview";
 import ModalUpdateDonationOverviewList from "./donation-overview/ModalUpdateDonationOverviewList";
+import DonationPartnerSays from "./donation-partnersays/DonationPartnerSays";
+import DonationPricing from "./donation-pricing/DonationPricing";
 import DonationScope from "./donation-scope/DonationScope";
 import ModalUpdateDonationScope from "./donation-scope/ModalUpdateDonationScope";
-import DonationPricing from "./donation-pricing/DonationPricing";
-import DonationPartnerSays from "./donation-partnersays/DonationPartnerSays";
-import ModalUpdateDonationScopeTitle from "./donation-titles/ModalUpdateDonationScopeTitle";
 import ModalUpdateDonationPackagesTitle from "./donation-titles/ModalUpdateDonationPackagesTitle";
 import ModalUpdateDonationPartnerSaysTitle from "./donation-titles/ModalUpdateDonationPartnerSaysTitle";
+import ModalUpdateDonationScopeTitle from "./donation-titles/ModalUpdateDonationScopeTitle";
 
 const OnlineDonationSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -318,11 +317,6 @@ const OnlineDonationSystem = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
           <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "footer-contactus" && (
-          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&

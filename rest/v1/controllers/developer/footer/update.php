@@ -58,19 +58,6 @@ if (array_key_exists("footerid", $_GET)) {
     checkId($footer->footer_aid);
     $query = checkUpdateLogoImg($footer);
   }
-  if ($isUpdateFooter == "footerContactUsUpdate") {
-    $footer->footer_aid = $_GET['footerid'];
-    $footer->footer_phone_a = $data["footer_phone_a"];
-    $footer->footer_phone_b = $data["footer_phone_b"];
-    $footer->footer_phone_c = $data["footer_phone_c"];
-    $footer->footer_email = $data["footer_email"];
-    $footer->footer_subscriber_text = $data["footer_subscriber_text"];
-    $footer->footer_datetime = date("Y-m-d H:i:s");
-
-    checkId($footer->footer_aid);
-
-    $query = checkUpdateContactUs($footer);
-  }
   if ($isUpdateFooter == "footerCopyrightUpdate") {
     $footer->footer_aid = $_GET['footerid'];
     $footer->footer_copyright = $data["footer_copyright"];

@@ -39,7 +39,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ServiceInventoryPricing = ({ pageName }) => {
+const ServiceInventoryPricing = ({ pageName, assetTitlesData }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
@@ -166,10 +166,16 @@ const ServiceInventoryPricing = ({ pageName }) => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              Web application for your asset inventory needs
+              {assetTitlesData?.data?.length > 0 &&
+              assetTitlesData.data[0]?.asset_titles_packages_subtitle
+                ? assetTitlesData?.data[0].asset_titles_packages_subtitle
+                : ""}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Affordable Pricing Plan
+              {assetTitlesData?.data?.length > 0 &&
+              assetTitlesData.data[0]?.asset_titles_packages_title
+                ? assetTitlesData?.data[0].asset_titles_packages_title
+                : ""}
             </h3>
           </div>
           <div className="wrapper ">

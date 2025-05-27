@@ -44,15 +44,6 @@ if ($isUpdateFooter == "footerLogoImgUpdate") {
 
     $query = checkCreateLogoImg($footer);
 }
-if ($isUpdateFooter == "footerContactUsUpdate") {
-    $footer->footer_phone_a = $data["footer_phone_a"];
-    $footer->footer_phone_b = $data["footer_phone_b"];
-    $footer->footer_phone_c = $data["footer_phone_c"];
-    $footer->footer_email = $data["footer_email"];
-    $footer->footer_subscriber_text = $data["footer_subscriber_text"];
-
-    $query = checkCreateContactUs($footer);
-}
 if ($isUpdateFooter == "footerCopyrightUpdate") {
     $footer->footer_copyright = $data["footer_copyright"];
     $footer->footer_privacy_text = $data["footer_privacy_text"];

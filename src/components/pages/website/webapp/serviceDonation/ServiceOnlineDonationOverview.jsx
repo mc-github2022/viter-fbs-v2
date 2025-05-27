@@ -2,8 +2,15 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ServiceOnlineDonationOverview = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
@@ -12,31 +19,58 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
     setContactForm(!contactForm);
   };
 
+  const { data: donationOverviewData } = useQueryData(
+    `${apiVersion}/donation-overview`, // endpoint
+    "get", // method
+    "donation-overview", // key
+    {},
+    null,
+    true
+  );
+
+  const DonationOverviewImage = getConvertStringToJSONparseData(
+    donationOverviewData?.data?.[0]?.donation_overview_img
+  );
+
   return (
     <>
       <section className="ServiceOnlineDonationOverview py-20 bg-customGray">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {donationOverviewData?.data?.length > 0 &&
+            donationOverviewData.data[0]?.donation_overview_subtitle
+              ? donationOverviewData?.data[0].donation_overview_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {donationOverviewData?.data?.length > 0 &&
+              donationOverviewData.data[0]?.donation_overview_title
+                ? donationOverviewData?.data[0].donation_overview_title
+                : ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                // src={`${devBaseImgUrl}/HRISscreenShot.png`}
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 w-full mx-auto"
-                alt="Online Donation System"
-              />
+              {DonationOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt="Online Donation System"
+                  key={index}
+                />
+              ))}
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
                     className="btn bg-primary text-light font-semibold"
                   >
-                    {webAppOverview[0].btnText}
+                    {donationOverviewData?.data?.length > 0 &&
+                    donationOverviewData.data[0]?.donation_overview_button_text
+                      ? donationOverviewData?.data[0]
+                          .donation_overview_button_text
+                      : ""}
                   </button>
                 </li>
                 {/* <li>
@@ -58,10 +92,20 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {donationOverviewData?.data?.length > 0 &&
+                        donationOverviewData.data[0]
+                          ?.donation_overview_list_title_a
+                          ? donationOverviewData?.data[0]
+                              .donation_overview_list_title_a
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {donationOverviewData?.data?.length > 0 &&
+                        donationOverviewData.data[0]
+                          ?.donation_overview_list_description_a
+                          ? donationOverviewData?.data[0]
+                              .donation_overview_list_description_a
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -73,10 +117,20 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {donationOverviewData?.data?.length > 0 &&
+                        donationOverviewData.data[0]
+                          ?.donation_overview_list_title_b
+                          ? donationOverviewData?.data[0]
+                              .donation_overview_list_title_b
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewBtext}
+                        {donationOverviewData?.data?.length > 0 &&
+                        donationOverviewData.data[0]
+                          ?.donation_overview_list_description_b
+                          ? donationOverviewData?.data[0]
+                              .donation_overview_list_description_b
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -88,10 +142,20 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        {donationOverviewData?.data?.length > 0 &&
+                        donationOverviewData.data[0]
+                          ?.donation_overview_list_title_c
+                          ? donationOverviewData?.data[0]
+                              .donation_overview_list_title_c
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewCtext}
+                        {donationOverviewData?.data?.length > 0 &&
+                        donationOverviewData.data[0]
+                          ?.donation_overview_list_description_c
+                          ? donationOverviewData?.data[0]
+                              .donation_overview_list_description_c
+                          : ""}
                       </p>
                     </div>
                   </div>

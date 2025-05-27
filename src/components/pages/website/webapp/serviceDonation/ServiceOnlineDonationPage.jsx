@@ -29,6 +29,16 @@ const ServiceOnlineDonationPage = () => {
     true
   );
 
+  const { data: donationTitlesData } = useQueryData(
+    `${apiVersion}/donation-titles`, // endpoint
+    "get", // method
+    "donation-titles", // key
+    {},
+    null,
+    true
+  );
+
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -54,10 +64,10 @@ const ServiceOnlineDonationPage = () => {
       <Header pageName={pageName} />
       <ServiceOnlineDonationBanner pageName={pageName} />
       <ServiceOnlineDonationOverview pageName={pageName} />
-      <ServiceOnlineDonationScope pageName={pageName} />
-      <ServiceOnlineDonationPricing pageName={pageName} />
+      <ServiceOnlineDonationScope pageName={pageName} donationTitlesData={donationTitlesData}/>
+      <ServiceOnlineDonationPricing pageName={pageName} donationTitlesData={donationTitlesData}/>
       {/* <ServiceOnlineDonationPartners /> */}
-      <ServiceOnlineDonationPartnersSay />
+      <ServiceOnlineDonationPartnersSay donationTitlesData={donationTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

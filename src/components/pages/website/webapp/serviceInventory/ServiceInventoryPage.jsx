@@ -29,6 +29,15 @@ const ServiceInventoryPage = () => {
     true
   );
 
+  const { data: assetTitlesData } = useQueryData(
+    `${apiVersion}/asset-titles`, // endpoint
+    "get", // method
+    "asset-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -55,8 +64,8 @@ const ServiceInventoryPage = () => {
       <ServiceInventoryBanner pageName={pageName} />
       {/* <ServiceInventoryPartners /> */}
       <ServiceInventoryOverview pageName={pageName} />
-      <ServiceInventoryScope pageName={pageName} />
-      <ServiceInventoryPricing pageName={pageName} />
+      <ServiceInventoryScope pageName={pageName} assetTitlesData={assetTitlesData}/>
+      <ServiceInventoryPricing pageName={pageName} assetTitlesData={assetTitlesData}/>
       {/* <ServiceInventoryPartnersSay /> */}
       <Footer />
       {store.success && <ModalSuccess />}

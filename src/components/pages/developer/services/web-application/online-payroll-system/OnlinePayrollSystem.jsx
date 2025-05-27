@@ -9,7 +9,6 @@ import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
 import Footer from "../../../footer/Footer";
-import ModalUpdateContactUs from "../../../footer/ModalUpdateContactUs";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
@@ -20,11 +19,11 @@ import PayrollBanner from "./payroll-banner/PayrollBanner";
 import ModalUpdatePayrollOverview from "./payroll-overview/ModalUpdatePayrollOverview";
 import ModalUpdatePayrollOverviewList from "./payroll-overview/ModalUpdatePayrollOverviewList";
 import PayrollOverview from "./payroll-overview/PayrollOverview";
-import PayrollScope from "./payroll-scope/PayrollScope";
-import ModalUpdatePayrollScope from "./payroll-scope/ModalUpdatePayrollScope";
-import PayrollPricing from "./payroll-pricing/PayrollPricing";
 import PayrollPartners from "./payroll-partners/PayrollPartners";
 import PayrollPartnerSays from "./payroll-partnersays/PayrollPartnerSays";
+import PayrollPricing from "./payroll-pricing/PayrollPricing";
+import ModalUpdatePayrollScope from "./payroll-scope/ModalUpdatePayrollScope";
+import PayrollScope from "./payroll-scope/PayrollScope";
 import ModalUpdatePayrollPackagesTitle from "./payroll-titles/ModalUpdatePayrollPackagesTitle";
 import ModalUpdatePayrollPartnerSaysTitle from "./payroll-titles/ModalUpdatePayrollPartnerSaysTitle";
 import ModalUpdatePayrollPartnersTitle from "./payroll-titles/ModalUpdatePayrollPartnersTitle";
@@ -295,11 +294,6 @@ const OnlinePayrollSystem = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
           <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "footer-contactus" && (
-          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&

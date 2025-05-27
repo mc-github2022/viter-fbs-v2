@@ -8,29 +8,26 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ServiceHrPartners from "../../../../website/webapp/serviceHr/ServiceHrPartners";
-import ServiceHrPartnersSay from "../../../../website/webapp/serviceHr/ServiceHrPartnersSay";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
+import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
+import Header from "../../../header/Header";
+import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
 import HrisBanner from "./hris-banner/HrisBanner";
 import ModalUpdateHrisBanner from "./hris-banner/ModalUpdateHrisBanner";
 import HrisOverview from "./hris-overview/HrisOverview";
 import ModalUpdateHrisOverview from "./hris-overview/ModalUpdateHrisOverview";
 import ModalUpdateHrisOverviewList from "./hris-overview/ModalUpdateHrisOverviewList";
+import HrisPartners from "./hris-partners/HrisPartners";
+import HrisPartnerSays from "./hris-partnersays/HrisPartnerSays";
 import HrisPricing from "./hris-pricing/HrisPricing";
 import HrisScope from "./hris-scope/HrisScope";
-import ModalUpdateHrisScopeTitle from "./hris-titles/ModalUpdateHrisScopeTitle";
-import ModalUpdateHrisPackagesTitle from "./hris-titles/ModalUpdateHrisPackagesTitle";
-import ModalUpdateContactUs from "../../../footer/ModalUpdateContactUs";
-import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
-import HrisPartners from "./hris-partners/HrisPartners";
-import ModalUpdateHrisPartnersTitle from "./hris-titles/ModalUpdateHrisPartnersTitle";
-import HrisPartnerSays from "./hris-partnersays/HrisPartnerSays";
-import ModalUpdateHrisPartnerSaysTitle from "./hris-titles/ModalUpdateHrisPartnerSaysTitle";
-import Header from "../../../header/Header";
-import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
 import ModalUpdateHrisScope from "./hris-scope/ModalUpdateHrisScope";
+import ModalUpdateHrisPackagesTitle from "./hris-titles/ModalUpdateHrisPackagesTitle";
+import ModalUpdateHrisPartnerSaysTitle from "./hris-titles/ModalUpdateHrisPartnerSaysTitle";
+import ModalUpdateHrisPartnersTitle from "./hris-titles/ModalUpdateHrisPartnersTitle";
+import ModalUpdateHrisScopeTitle from "./hris-titles/ModalUpdateHrisScopeTitle";
 
 const HrInformationSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -284,11 +281,6 @@ const HrInformationSystem = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
           <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "footer-contactus" && (
-          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&

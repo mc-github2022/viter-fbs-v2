@@ -9,13 +9,6 @@ function checkCreateLogoImg($object)
     return $query;
 }
 
-// Create ContactUs
-function checkCreateContactUs($object)
-{
-    $query = $object->createContactUs();
-    checkQuery($query, "There's a problem processing your request. (create ContactUs)");
-    return $query;
-}
 
 // Create Copyright
 function checkCreateCopyright($object)
@@ -41,10 +34,3 @@ function checkUpdateLogoImg($object)
     return $query;
 }
 
-// Update ContactUs
-function checkUpdateContactUs($object)
-{
-    $query = $object->updateContactUs();
-    checkQuery($query, "There's a problem processing your request. (update ContactUs)");
-    return $query;
-}

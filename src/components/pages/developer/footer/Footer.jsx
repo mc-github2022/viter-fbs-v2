@@ -131,52 +131,29 @@ const Footer = ({
             </div>
             <div className="sm:grid sm:grid-cols-2">
               <div className="mb-12 sm:mb-0 text-center sm:text-left relative">
-                <a
+                {/* <a
                   className="absolute cursor-pointer tooltip-btn left-[190px] -top-1 "
                   data-tooltip="Edit contents"
                   onClick={handleUpdateFooterContactUs}
                 >
                   <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
-                </a>
+                </a> */}
                 <div className="contactDetails">
                   <p className="font-semibold">CONTACT US</p>
                 </div>
                 <ul className="text-xs my-6">
                   <li className="font-semibold mb-1">Phone</li>
-                  <li>
-                    {footerData?.data?.length > 0 &&
-                    footerData.data[0]?.footer_phone_a
-                      ? footerData?.data[0].footer_phone_a
-                      : "Telephone No."}
-                  </li>
-                  <li>
-                    {footerData?.data?.length > 0 &&
-                    footerData.data[0]?.footer_phone_b
-                      ? footerData?.data[0].footer_phone_b
-                      : "Phone No. A"}
-                  </li>
-                  <li>
-                    {footerData?.data?.length > 0 &&
-                    footerData.data[0]?.footer_phone_c
-                      ? footerData?.data[0].footer_phone_c
-                      : "Phone No. B"}
-                  </li>
+                  <li>Main & Accounting Office - (049) 501 3592</li>
+                  <li>Company Phone No. - (+63) 927 168 6810</li>
+                  <li>Web & LCS Office - (049) 530-2112</li>
                 </ul>
                 <div className="text-xs">
                   <p className="font-semibold mb-1">Email</p>
-                  <p>
-                    {footerData?.data?.length > 0 &&
-                    footerData.data[0]?.footer_email
-                      ? footerData?.data[0].footer_email
-                      : "Email"}
-                  </p>
+                  <p>marketing@frontlinebusiness.com.ph</p>
                 </div>
                 <div className="text-xs mt-6">
                   <a className="font-semibold mb-1 cursor-pointer">
-                    {footerData?.data?.length > 0 &&
-                    footerData.data[0]?.footer_subscriber_text
-                      ? footerData?.data[0].footer_subscriber_text
-                      : "Subscriber text"}
+                    Subscribe to our newsletter
                   </a>
                 </div>
               </div>

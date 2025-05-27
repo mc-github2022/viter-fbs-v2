@@ -10,22 +10,21 @@ import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
 import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
-import ModalUpdateContactUs from "../../../footer/ModalUpdateContactUs";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
-import PaymentBanner from "./payment-banner/PaymentBanner";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import PaymentOverview from "./payment-overview/PaymentOverview";
+import ModalUpdatePaymentBanner from "./payment-banner/ModalUpdatePaymentBanner";
+import PaymentBanner from "./payment-banner/PaymentBanner";
 import ModalUpdatePaymentOverview from "./payment-overview/ModalUpdatePaymentOverview";
 import ModalUpdatePaymentOverviewList from "./payment-overview/ModalUpdatePaymentOverviewList";
-import PaymentScope from "./payment-scope/PaymentScope";
-import ModalUpdatePaymentScope from "./payment-scope/ModalUpdatePaymentScope";
+import PaymentOverview from "./payment-overview/PaymentOverview";
 import PaymentPricing from "./payment-pricing/PaymentPricing";
-import ModalUpdatePaymentBanner from "./payment-banner/ModalUpdatePaymentBanner";
-import ModalUpdatePaymentScopeTitle from "./payment-titles/ModalUpdatePaymentScopeTitle";
+import ModalUpdatePaymentScope from "./payment-scope/ModalUpdatePaymentScope";
+import PaymentScope from "./payment-scope/PaymentScope";
 import ModalUpdatePaymentPackagesTitle from "./payment-titles/ModalUpdatePaymentPackagesTitle";
+import ModalUpdatePaymentScopeTitle from "./payment-titles/ModalUpdatePaymentScopeTitle";
 
 const OnlinePaymentIntegration = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -314,11 +313,6 @@ const OnlinePaymentIntegration = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
           <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "footer-contactus" && (
-          <ModalUpdateContactUs itemEdit={itemEdit} footerData={footerData} />
         )}
 
       {store.isUpdateHome?.modal &&
