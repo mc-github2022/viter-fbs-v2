@@ -237,8 +237,8 @@ class MailerLog
         return $query;
     }
 
-    // filter by audience and both date
-    public function filterByAudienceAndAllDate()
+    // filter by audience and date
+    public function filterByAudienceAndDate()
     {
         try {
             $sql = "select * ";
@@ -267,8 +267,8 @@ class MailerLog
         return $query;
     }
 
-    // filter by search, status, and both date
-    public function filterBySearchStatusAndAllDate()
+    // filter by search, status, and date
+    public function filterBySearchStatusAndDate()
     {
         try {
             $sql = "select * ";
@@ -303,8 +303,8 @@ class MailerLog
         return $query;
     }
 
-    // filter by search, audience, and both date
-    public function filterBySearchAudienceAndAllDate()
+    // filter by search, audience, and date
+    public function filterBySearchAudienceAndDate()
     {
         try {
             $sql = "select * ";
@@ -339,8 +339,8 @@ class MailerLog
         return $query;
     }
 
-    // filter by status and date to
-    public function filterByStatusAndDateTo()
+    // filter by status and date
+    public function filterByStatusAndDate()
     {
         try {
             $sql = "select * ";
@@ -397,8 +397,8 @@ class MailerLog
         return $query;
     }
 
-    // filter one entry of date
-    public function filterBySingleDate()
+    // filter date
+    public function filterByDate()
     {
         try {
             $sql = "select * ";
@@ -423,8 +423,8 @@ class MailerLog
         return $query;
     }
 
-    // filter search and both date 
-    public function searchAndAllDate()
+    // filter search and date 
+    public function searchAndDate()
     {
         try {
             $sql = "select * ";
@@ -490,5 +490,4 @@ class MailerLog
         }
         return $query;
     }
-
 }

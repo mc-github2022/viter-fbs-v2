@@ -32,35 +32,35 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         if ($monthYear != "" && $mailerLog->sending_email_log_search != "") {
             if ($filterValue === "sent") {
                 $mailerLog->sending_email_log_is_success = 1;
-                $query = checkFilterBySearchStatusAndAllDate($mailerLog);
+                $query = checkFilterBySearchStatusAndDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
 
             if ($filterValue === "failed") {
                 $mailerLog->sending_email_log_is_success = 0;
-                $query = checkFilterBySearchStatusAndAllDate($mailerLog);
+                $query = checkFilterBySearchStatusAndDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
 
             if (is_numeric($filterValue)) {
                 $mailerLog->sending_email_log_audience_id = $filterValue;
-                $query = checkFilterBySearchAudienceAndAllDate($mailerLog);
+                $query = checkFilterBySearchAudienceAndDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
 
             if (is_numeric($filterValue)) {
                 $mailerLog->sending_email_log_audience_id = $filterValue;
-                $query = checkFilterByAudienceAndAllDate($mailerLog);
+                $query = checkFilterByAudienceAndDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
         }
 
         if ($mailerLog->sending_email_log_search != "" && $monthYear != "") {
-            $query = checkFilterBySearchAndAllDate($mailerLog);
+            $query = checkFilterBySearchAndDate($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
@@ -99,21 +99,21 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             $mailerLog->sending_email_log_created = $monthYear . '-01';
 
             if ($filterValue === "all") {
-                $query = checkFilterBySingleDate($mailerLog);
+                $query = checkFilterByDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
 
             if ($filterValue === "sent") {
                 $mailerLog->sending_email_log_is_success = 1;
-                $query = checkFilterByStatusAndDateTo($mailerLog);
+                $query = checkFilterByStatusAndDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
 
             if ($filterValue === "failed") {
                 $mailerLog->sending_email_log_is_success = 0;
-                $query = checkFilterByStatusAndDateTo($mailerLog);
+                $query = checkFilterByStatusAndDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
@@ -126,7 +126,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             }
 
             // fallback for date-only filter
-            $query = checkFilterBySingleDate($mailerLog);
+            $query = checkFilterByDate($mailerLog);
             http_response_code(200);
             getQueriedData($query);
         }
