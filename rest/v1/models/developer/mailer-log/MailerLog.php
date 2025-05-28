@@ -202,7 +202,6 @@ class MailerLog
                 "sending_email_log_email" => "%{$this->sending_email_log_search}%",
                 "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
                 "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -238,278 +237,107 @@ class MailerLog
         return $query;
     }
 
-    // // filter by status and both date
-    // public function filterByStatusAndAllDate()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
-    //         $sql .= "and DATE(sending_email_log_created) between DATE(:date_from) and DATE(:date_to) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "date_from" => $this->dateFrom,
-    //             "date_to" => $this->dateTo,
-    //             "sending_email_log_is_success" => $this->sending_email_log_is_success,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+    // filter by audience and both date
+    public function filterByAudienceAndAllDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSendingEmailLog} ";
+            $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
+            $sql .= "and MONTH(sending_email_log_created) = :month ";
+            $sql .= "and YEAR(sending_email_log_created) = :year ";
+            $sql .= "order by sending_email_log_created desc, ";
+            $sql .= "sending_email_log_email asc, ";
+            $sql .= "sending_email_log_created asc ";
 
-    // // filter by audience and both date
-    // public function filterByAudienceAndAllDate()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
-    //         $sql .= "and DATE(sending_email_log_created) between DATE(:date_from) and DATE(:date_to) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "date_from" => $this->dateFrom,
-    //             "date_to" => $this->dateTo,
-    //             "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
 
-    // // filter by search, status, and both date
-    // public function filterBySearchStatusAndAllDate()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
-    //         $sql .= "and DATE(sending_email_log_created) between DATE(:date_from) and DATE(:date_to) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_from" => $this->dateFrom,
-    //             "date_to" => $this->dateTo,
-    //             "sending_email_log_is_success" => $this->sending_email_log_is_success,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "year" => $year,
+                "month" => $month,
+                "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 
-    // // filter by search, audience, and both date
-    // public function filterBySearchAudienceAndAllDate()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
-    //         $sql .= "and DATE(sending_email_log_created) between DATE(:date_from) and DATE(:date_to) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_from" => $this->dateFrom,
-    //             "date_to" => $this->dateTo,
-    //             "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+    // filter by search, status, and both date
+    public function filterBySearchStatusAndAllDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSendingEmailLog} ";
+            $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
+            $sql .= "and MONTH(sending_email_log_created) = :month ";
+            $sql .= "and YEAR(sending_email_log_created) = :year ";
+            $sql .= "and (sending_email_log_email like :sending_email_log_email ";
+            $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
+            $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
+            $sql .= "order by sending_email_log_created desc, ";
+            $sql .= "sending_email_log_email asc, ";
+            $sql .= "sending_email_log_created asc ";
 
-    // // filter status, date from, and search
-    // public function filterByStatusDateFromSearch()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
-    //         $sql .= "and DATE(sending_email_log_created) = DATE(:date_from) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_from" => $this->dateFrom,
-    //             "sending_email_log_is_success" => $this->sending_email_log_is_success,
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
 
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_email" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_created" => "%{$this->sending_email_log_search}%",
+                "year" => $year,
+                "month" => $month,
+                "sending_email_log_is_success" => $this->sending_email_log_is_success,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 
-    // // filter audience, date from, and search
-    // public function filterByAudienceDateFromSearch()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
-    //         $sql .= "and DATE(sending_email_log_created) = DATE(:date_from) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_from" => $this->dateFrom,
-    //             "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
+    // filter by search, audience, and both date
+    public function filterBySearchAudienceAndAllDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSendingEmailLog} ";
+            $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
+            $sql .= "and MONTH(sending_email_log_created) = :month ";
+            $sql .= "and YEAR(sending_email_log_created) = :year ";
+            $sql .= "and (sending_email_log_email like :sending_email_log_email ";
+            $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
+            $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
+            $sql .= "order by sending_email_log_created desc, ";
+            $sql .= "sending_email_log_email asc, ";
+            $sql .= "sending_email_log_created asc ";
 
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
 
-    // // filter status, date to, and search
-    // public function filterByStatusDateToSearch()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
-    //         $sql .= "and DATE(sending_email_log_created) = DATE(:date_to) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_to" => $this->dateTo,
-    //             "sending_email_log_is_success" => $this->sending_email_log_is_success,
-
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
-
-    // // filter audience, date to, and search
-    // public function filterByAudienceDateToSearch()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
-    //         $sql .= "and DATE(sending_email_log_created) = DATE(:date_to) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_to" => $this->dateTo,
-    //             "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
-
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
-
-    // // filter by status and date from
-    // public function filterByStatusAndDateFrom()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
-    //         $sql .= "and DATE(sending_email_log_created) = DATE(:date_from) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "date_from" => $this->dateFrom,
-    //             "sending_email_log_is_success" => $this->sending_email_log_is_success,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
-
-    // // filter by audience and date from
-    // public function filterByAudienceAndDateFrom()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
-    //         $sql .= "and DATE(sending_email_log_created) = DATE(:date_from) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_created asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "date_from" => $this->dateFrom,
-    //             "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_email" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_created" => "%{$this->sending_email_log_search}%",
+                "year" => $year,
+                "month" => $month,
+                "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 
     // filter by status and date to
     public function filterByStatusAndDateTo()
@@ -519,14 +347,19 @@ class MailerLog
             $sql .= "from ";
             $sql .= "{$this->tblSendingEmailLog} ";
             $sql .= "where sending_email_log_is_success = :sending_email_log_is_success ";
-            $sql .= "and YEAR(sending_email_log_created) = YEAR(:year) ";
-            $sql .= "and MONTH(sending_email_log_created) = MONTH(:month) ";
+            $sql .= "and (MONTH(sending_email_log_created) = :month ";
+            $sql .= "and YEAR(sending_email_log_created) = :year) ";
             $sql .= "order by sending_email_log_created desc, ";
             $sql .= "sending_email_log_email asc ";
+
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
+
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "year" => $this->sending_email_log_created,
-                "month" => $this->sending_email_log_created,
+                "year" => $year,
+                "month" => $month,
                 "sending_email_log_is_success" => $this->sending_email_log_is_success,
             ]);
         } catch (PDOException $ex) {
@@ -543,14 +376,19 @@ class MailerLog
             $sql .= "from ";
             $sql .= "{$this->tblSendingEmailLog} ";
             $sql .= "where sending_email_log_audience_id = :sending_email_log_audience_id ";
-            $sql .= "and YEAR(sending_email_log_created) = YEAR(:year) ";
-            $sql .= "and MONTH(sending_email_log_created) = MONTH(:month) ";
+            $sql .= "and (MONTH(sending_email_log_created) = :month ";
+            $sql .= "and YEAR(sending_email_log_created) = :year) ";
             $sql .= "order by sending_email_log_created desc, ";
             $sql .= "sending_email_log_email asc ";
+
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
+
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "year" => $this->sending_email_log_created,
-                "month" => $this->sending_email_log_created,
+                "year" => $year,
+                "month" => $month,
                 "sending_email_log_audience_id" => $this->sending_email_log_audience_id,
             ]);
         } catch (PDOException $ex) {
@@ -559,43 +397,25 @@ class MailerLog
         return $query;
     }
 
-    // // filter both date
-    // public function filterByAllDate()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where DATE(sending_email_log_created) between DATE(:date_from) and DATE(:date_to) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "date_from" => $this->dateFrom,
-    //             "date_to" => $this->dateTo,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
-
     // filter one entry of date
     public function filterBySingleDate()
     {
         try {
             $sql = "select * ";
-            $sql .= "from ";
-            $sql .= "{$this->tblSendingEmailLog} ";
-            $sql .= "where ( MONTH(sending_email_log_created) = MONTH(:month) ";
-            $sql .= "and YEAR(sending_email_log_created) = YEAR(:year) ) ";
+            $sql .= "from {$this->tblSendingEmailLog} ";
+            $sql .= "where (MONTH(sending_email_log_created) = :month ";
+            $sql .= "and YEAR(sending_email_log_created) = :year) ";
             $sql .= "order by sending_email_log_created desc, ";
-            $sql .= "sending_email_log_email asc, ";
-            $sql .= "sending_email_log_created asc ";
+            $sql .= "sending_email_log_email asc ";
+
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
+
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "month" => $this->sending_email_log_created,
-                "year" => $this->sending_email_log_created,
+                "year" => $year,
+                "month" => $month,
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -603,85 +423,72 @@ class MailerLog
         return $query;
     }
 
-    // // filter search and both date 
-    // public function searchAndAllDate()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where DATE(sending_email_log_created) between DATE(:date_from) and DATE(:date_to) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_is_active asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_from" => $this->dateFrom,
-    //             "date_to" => $this->dateTo,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+    // filter search and both date 
+    public function searchAndAllDate()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSendingEmailLog} ";
+            $sql .= "where MONTH(sending_email_log_created) = :month ";
+            $sql .= "and YEAR(sending_email_log_created) = :year ";
+            $sql .= "and (sending_email_log_email like :sending_email_log_email ";
+            $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
+            $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
+            $sql .= "order by sending_email_log_created desc, ";
+            $sql .= "sending_email_log_email asc, ";
+            $sql .= "sending_email_log_is_active asc ";
 
-    // // filter search and date from 
-    // public function searchAndDateFrom()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where DATE(sending_email_log_created) = DATE(:date_from) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_is_active asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_from" => $this->dateFrom,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
 
-    // // filter search and date to 
-    // public function searchAndDateTo()
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from ";
-    //         $sql .= "{$this->tblSendingEmailLog} ";
-    //         $sql .= "where DATE(sending_email_log_created) = DATE(:date_to) ";
-    //         $sql .= "and (sending_email_log_email like :sending_email_log_email ";
-    //         $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
-    //         $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
-    //         $sql .= "order by sending_email_log_created desc, ";
-    //         $sql .= "sending_email_log_email asc, ";
-    //         $sql .= "sending_email_log_is_active asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "sending_email_log_email" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
-    //             "sending_email_log_created" => "%{$this->sending_email_log_search}%",
-    //             "date_to" => $this->dateTo,
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_email" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_created" => "%{$this->sending_email_log_search}%",
+                "year" => $year,
+                "month" => $month,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    // filter search and date from 
+    public function searchAndDateFrom()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblSendingEmailLog} ";
+            $sql .= "where MONTH(sending_email_log_created) = :month ";
+            $sql .= "and (YEAR(sending_email_log_created) = :year ";
+            $sql .= "or sending_email_log_email like :sending_email_log_email ";
+            $sql .= "or sending_email_log_subject like :sending_email_log_subject ";
+            $sql .= "or DATE_FORMAT(sending_email_log_created, '%M %e, %Y') LIKE :sending_email_log_created) ";
+            $sql .= "order by sending_email_log_created desc, ";
+            $sql .= "sending_email_log_email asc, ";
+            $sql .= "sending_email_log_is_active asc ";
+
+            // Extract year and month from "YYYY-MM"
+            $year = substr($this->sending_email_log_created, 0, 4);  // e.g., "2025"
+            $month = substr($this->sending_email_log_created, 5, 2); // e.g., "05"
+
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_email" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_subject" => "%{$this->sending_email_log_search}%",
+                "sending_email_log_created" => "%{$this->sending_email_log_search}%",
+                "year" => $year,
+                "month" => $month,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
 }

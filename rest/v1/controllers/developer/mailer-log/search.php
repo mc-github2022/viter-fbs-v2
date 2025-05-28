@@ -23,227 +23,115 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $mailerLog->sending_email_log_search = $data["searchValue"];
     $isFilter = $data["isFilter"];
 
-
     if ($isFilter) {
         $filterValue = $data["filterValue"];
         $mailerLog->sending_email_log_created = date($data['monthYear'] . '-01');
-        $mailerLog->sending_email_log_created = date($data['monthYear']);
-
-        // filterValue can be: "sent", "failed", "all", or an audience ID
+        $monthYear = $data["monthYear"] ?? null; // Check if monthYear exists
 
         // Handle combined filters first (dateFrom + dateTo + search + filterValue)
-        // if ($mailerLog->month != "" && $mailerLog->month != "" && $mailerLog->sending_email_log_search != "") {
-        //     if ($filterValue === "sent") {
-        //         $mailerLog->sending_email_log_is_success = 1;
-        //         $query = checkFilterBySearchStatusAndAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
+        if ($monthYear != "" && $mailerLog->sending_email_log_search != "") {
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterBySearchStatusAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
 
-        //     if ($filterValue === "failed") {
-        //         $mailerLog->sending_email_log_is_success = 0;
-        //         $query = checkFilterBySearchStatusAndAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterBySearchStatusAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
 
-        //     if ($filterValue === "all") {
-        //         $query = checkFilterBySearchAndAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterBySearchAudienceAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
 
-        //     if (is_numeric($filterValue)) {
-        //         $mailerLog->sending_email_log_audience_id = $filterValue;
-        //         $query = checkFilterBySearchAudienceAndAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        // }
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceAndAllDate($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+        }
 
-        // // Handle partial filters
-        // if ($mailerLog->sending_email_log_search != "" && $mailerLog->month != "") {
-        //     if ($filterValue === "sent") {
-        //         $mailerLog->sending_email_log_is_success = 1;
-        //         $query = checkFilterByStatusDateFromSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
+        if ($mailerLog->sending_email_log_search != "" && $monthYear != "") {
+            $query = checkFilterBySearchAndAllDate($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
 
-        //     if ($filterValue === "failed") {
-        //         $mailerLog->sending_email_log_is_success = 0;
-        //         $query = checkFilterByStatusDateFromSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
+        // Search only + filterValue
+        if ($mailerLog->sending_email_log_search != "") {
+            if ($filterValue === "sent") {
+                $mailerLog->sending_email_log_is_success = 1;
+                $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
 
-        //     if (is_numeric($filterValue)) {
-        //         $mailerLog->sending_email_log_audience_id = $filterValue;
-        //         $query = checkFilterByAudienceDateFromSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        // }
+            if ($filterValue === "failed") {
+                $mailerLog->sending_email_log_is_success = 0;
+                $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
 
-        // if ($mailerLog->sending_email_log_search != "" && $mailerLog->month != "") {
-        //     if ($filterValue === "sent") {
-        //         $mailerLog->sending_email_log_is_success = 1;
-        //         $query = checkFilterByStatusDateToSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
+            if (is_numeric($filterValue)) {
+                $mailerLog->sending_email_log_audience_id = $filterValue;
+                $query = checkFilterByAudienceAndSearch($mailerLog);
+                http_response_code(200);
+                getQueriedData($query);
+            }
+        }
 
-        //     if ($filterValue === "failed") {
-        //         $mailerLog->sending_email_log_is_success = 0;
-        //         $query = checkFilterByStatusDateToSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
+        if ($monthYear != "" && $mailerLog->sending_email_log_search != "") {
+            $query = checkFilterSearchAndDateFrom($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
+        }
 
-        //     if (is_numeric($filterValue)) {
-        //         $mailerLog->sending_email_log_audience_id = $filterValue;
-        //         $query = checkFilterByAudienceDateToSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        // }
+        if ($monthYear) {
+            $mailerLog->sending_email_log_created = $monthYear . '-01';
 
-        // // If all dates are set but no search
-        // if ($mailerLog->month != "" && $mailerLog->month != "") {
-        //     if ($filterValue === "sent") {
-        //         $mailerLog->sending_email_log_is_success = 1;
-        //         $query = checkFilterByStatusAndAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-
-        //     if ($filterValue === "failed") {
-        //         $mailerLog->sending_email_log_is_success = 0;
-        //         $query = checkFilterByStatusAndAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-
-        //     if ($filterValue === "all") {
-        //         $query = checkFilterByAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-
-        //     if (is_numeric($filterValue)) {
-        //         $mailerLog->sending_email_log_audience_id = $filterValue;
-        //         $query = checkFilterByAudienceAndAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-
-        //     // If no filterValue, still return based on date range only
-        //     if ($filterValue == "") {
-        //         $query = checkFilterByAllDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        // }
-
-        // // Only filter by search + dateFrom or dateTo
-        // if ($mailerLog->sending_email_log_search != "" && $mailerLog->month != "") {
-        //     $query = checkFilterSearchAndDateFrom($mailerLog);
-        //     http_response_code(200);
-        //     getQueriedData($query);
-        // }
-
-        // if ($mailerLog->sending_email_log_search != "" && $mailerLog->month != "") {
-        //     $query = checkFilterSearchAndDateTo($mailerLog);
-        //     http_response_code(200);
-        //     getQueriedData($query);
-        // }
-
-        // // Filter by search + all date
-        // if ($mailerLog->sending_email_log_search != "" && $mailerLog->month != "" && $mailerLog->month != "") {
-        //     $query = checkFilterBySearchAndAllDate($mailerLog);
-        //     http_response_code(200);
-        //     getQueriedData($query);
-        // }
-
-        // // Search only + filterValue
-        // if ($mailerLog->sending_email_log_search != "") {
-        //     if ($filterValue === "sent") {
-        //         $mailerLog->sending_email_log_is_success = 1;
-        //         $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-
-        //     if ($filterValue === "failed") {
-        //         $mailerLog->sending_email_log_is_success = 0;
-        //         $query = checkFilterByStatusSentOrFailedAndSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-
-        //     if (is_numeric($filterValue)) {
-        //         $mailerLog->sending_email_log_audience_id = $filterValue;
-        //         $query = checkFilterByAudienceAndSearch($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        // }
-
-        // Only filter by dateFrom and status
-        // if ($mailerLog->sending_email_log_created != "") {
-        //     if ($filterValue === "all") {
-        //         $query = checkFilterBySingleDate($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        //     if ($filterValue === "sent") {
-        //         $mailerLog->sending_email_log_is_success = 1;
-        //         $query = checkFilterByStatusAndDateFrom($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        //     if ($filterValue === "failed") {
-        //         $mailerLog->sending_email_log_is_success = 0;
-        //         $query = checkFilterByStatusAndDateFrom($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        //     if (is_numeric($filterValue)) {
-        //         $mailerLog->sending_email_log_audience_id = $filterValue;
-        //         $query = checkFilterByAudienceAndDateFrom($mailerLog);
-        //         http_response_code(200);
-        //         getQueriedData($query);
-        //     }
-        // }
-        // Only filter by dateTo and status 
-        if ($mailerLog->sending_email_log_created != "") {
             if ($filterValue === "all") {
                 $query = checkFilterBySingleDate($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
+
             if ($filterValue === "sent") {
                 $mailerLog->sending_email_log_is_success = 1;
                 $query = checkFilterByStatusAndDateTo($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
+
             if ($filterValue === "failed") {
                 $mailerLog->sending_email_log_is_success = 0;
                 $query = checkFilterByStatusAndDateTo($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
+
             if (is_numeric($filterValue)) {
                 $mailerLog->sending_email_log_audience_id = $filterValue;
                 $query = checkFilterByAudienceAndDateTo($mailerLog);
                 http_response_code(200);
                 getQueriedData($query);
             }
+
+            // fallback for date-only filter
+            $query = checkFilterBySingleDate($mailerLog);
+            http_response_code(200);
+            getQueriedData($query);
         }
 
-
-        // Only filter by status
+        // No monthYear provided — filter by status or audience only
         if ($filterValue === "sent") {
             $mailerLog->sending_email_log_is_success = 1;
             $query = checkFilterByStatus($mailerLog);
@@ -258,7 +146,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             getQueriedData($query);
         }
 
-        // Only filter by audience
         if (is_numeric($filterValue)) {
             $mailerLog->sending_email_log_audience_id = $filterValue;
             $query = checkFilterByAudience($mailerLog);
@@ -266,7 +153,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             getQueriedData($query);
         }
     }
-
 
     checkKeyword($mailerLog->sending_email_log_search);
     $query = checkSearch($mailerLog);

@@ -2,25 +2,23 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaEdit, FaListUl } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
+import { IoTrash } from "react-icons/io5";
 import { useInView } from "react-intersection-observer";
+import {
+  apiVersion,
+  formatDateTime
+} from "../../../../helpers/functions-general";
+import { queryData } from "../../../../helpers/queryData";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
 import LoadMore from "../../../../partials/LoadMore";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import ModalSendingEmailStatus from "../../../../partials/modals/ModalSendingEmailStatus";
+import ModalSentEmailSummary from "../../../../partials/modals/ModalSentEmailSummary";
 import SearchBar from "../../../../partials/SearchBar";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
-import { StoreContext } from "../../../../store/StoreContext";
-import { IoTrash } from "react-icons/io5";
-import {
-  apiVersion,
-  formatDateTime,
-  getMonthAnYearNow,
-} from "../../../../helpers/functions-general";
-import { queryData } from "../../../../helpers/queryData";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import ModalSendingEmailStatus from "../../../../partials/modals/ModalSendingEmailStatus";
-import ModalSentEmailSummary from "../../../../partials/modals/ModalSentEmailSummary";
 import {
   setError,
   setIsAdd,
@@ -29,10 +27,10 @@ import {
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
+import { StoreContext } from "../../../../store/StoreContext";
 import MailerLogStatus from "./MailerLogStatus";
-import ModalResendEmail from "./ModalResendEmail";
 import ModalAddMailerLog from "./ModalAddMailerLog";
-import { FaUserGroup } from "react-icons/fa6";
+import ModalResendEmail from "./ModalResendEmail";
 
 const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -94,7 +92,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           searchValue: search.current.value,
           id: "",
           isFilter,
-          filterValue: setfilterData === "all" ? "" : filterData,
+          filterValue: filterData === "all" ? "" : filterData,
           monthYear: isFilter ? monthYear : null,
         }, // search value
         "post"
@@ -146,6 +144,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     }
     setPage(1);
   };
+
 
   const handleResend = (item) => {
     console.log(item);
@@ -301,32 +300,6 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           <div className="flex flex-col md:flex md:flex-row gap-2">
             <div className="relative flex gap-2 items-end">
               <label className="z-10">Date</label>
-              {/* <input
-                type="date"
-                value={date}
-                onChange={(e) => {
-                  const fromDate = e.target.value;
-                  setMonthYear(fromDate);
-                  if (
-                    fromDate &&
-                    dateTo &&
-                    new Date(fromDate) <= new Date(dateTo)
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                  if (
-                    fromDate ||
-                    (dateTo && new Date(fromDate) <= new Date(dateTo))
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                }}
-                disabled={isFetching || status === "pending"}
-              /> */}
               <input
                 type="month"
                 value={monthYear}
@@ -354,35 +327,6 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                 </button>
               )}
             </div>
-            {/* <div className="relative flex flex-col gap-2 w-[200px]">
-              <label className="z-10">Date To</label>
-              <input
-                type="date"
-                value={dateTo}
-                onChange={(e) => {
-                  const toDate = e.target.value;
-                  setMonthYearTo(toDate);
-                  if (
-                    toDate &&
-                    date &&
-                    new Date(toDate) <= new Date(date)
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                  if (
-                    toDate ||
-                    (date && new Date(toDate) <= new Date(date))
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                }}
-                disabled={isFetching || status === "pending"}
-              />
-            </div> */}
           </div>
         </div>
 
