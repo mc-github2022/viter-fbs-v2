@@ -17,6 +17,7 @@ const ModalSend = ({
   setIsSuccessSendingEmail,
   resetForm,
   setSubscriberValue,
+  setPropertyNewsletterValue,
   setQueryStatus,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
@@ -24,7 +25,7 @@ const ModalSend = ({
   let count = 0;
 
   console.log(recipientList);
-  
+
   const handleYes = async () => {
     // // close the confirmation modal
     setIsSend(false);
@@ -76,6 +77,7 @@ const ModalSend = ({
             setIsSuccessSendingEmail(true);
             resetForm();
             setSubscriberValue("");
+            setPropertyNewsletterValue("");
             setQueryStatus(query);
             return;
           }, 1000);
@@ -98,6 +100,7 @@ const ModalSend = ({
             setIsSuccessSendingEmail(true);
             resetForm();
             setSubscriberValue("");
+            setPropertyNewsletterValue("");
           }, 1000);
         }
       }
@@ -109,6 +112,7 @@ const ModalSend = ({
       setIsSuccessSendingEmail(true);
       resetForm();
       setSubscriberValue("");
+      setPropertyNewsletterValue("");
       return;
     }
   };

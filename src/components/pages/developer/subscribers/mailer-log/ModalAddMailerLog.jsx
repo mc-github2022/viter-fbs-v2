@@ -74,7 +74,7 @@ const ModalAddMailerLog = ({ itemEdit }) => {
 
   return (
     <ModalAddWrapper
-      className={`transition-all ease-linear transform duration-200 max-w-[1200px] ${animate}`}
+      className={`transition-all ease-linear transform duration-200 max-w-[1300px] ${animate}`}
       handleClose={handleClose}
     >
       <div className="modal-title">
@@ -95,7 +95,7 @@ const ModalAddMailerLog = ({ itemEdit }) => {
             return (
               <Form>
                 <div className="flex gap-10 ">
-                  <div className="w-[40%] flex flex-col justify-between">
+                  <div className="w-[50%] flex flex-col justify-between">
                     <div>
                       <div className="input-wrapper">
                         <InputText

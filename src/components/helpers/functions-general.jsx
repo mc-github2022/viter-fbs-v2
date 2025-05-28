@@ -251,3 +251,14 @@ export const convertTimeToDecimal = (hrs, mins, secs = 0) => {
   const total = h + m + s;
   return total.toFixed(4);
 };
+
+export const getMonthAnYearNow = () => {
+  return new Date(new Date().toString().split("GMT")[0] + " UTC")
+    .toISOString()
+    .split("T")[0]
+    .split("-")
+    .slice(0, -1)
+    .join("-");
+};
+
+

@@ -1,32 +1,30 @@
-import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import React from "react";
+import { FaArchive, FaEdit, FaListUl } from "react-icons/fa";
+import { MdDelete, MdRestore } from "react-icons/md";
+import { useInView } from "react-intersection-observer";
+import {
+  apiVersion,
+  formatDateTime,
+} from "../../../../helpers/functions-general";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
+import LoadMore from "../../../../partials/LoadMore";
+import ModalArchive from "../../../../partials/modals/ModalArchive";
+import ModalDelete from "../../../../partials/modals/ModalDelete";
+import ModalRestore from "../../../../partials/modals/ModalRestore";
+import SearchBar from "../../../../partials/SearchBar";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+import Status from "../../../../partials/Status";
 import {
   setIsAdd,
   setIsArchive,
   setIsDelete,
   setIsRestore,
 } from "../../../../store/StoreAction";
-import { FaUserGroup } from "react-icons/fa6";
-import SearchBar from "../../../../partials/SearchBar";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import ServerError from "../../../../partials/spinners/ServerError";
-import Status from "../../../../partials/Status";
-import { FaArchive, FaEdit } from "react-icons/fa";
-import { MdDelete, MdRestore } from "react-icons/md";
-import LoadMore from "../../../../partials/LoadMore";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import ModalArchive from "../../../../partials/modals/ModalArchive";
-import {
-  apiVersion,
-  formatDateTime,
-} from "../../../../helpers/functions-general";
-import ModalRestore from "../../../../partials/modals/ModalRestore";
-import { FiPaperclip } from "react-icons/fi";
+import { StoreContext } from "../../../../store/StoreContext";
 
 const NewsletterTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -105,7 +103,7 @@ const NewsletterTable = ({ setItemEdit }) => {
       <div className="flex items-center gap-5 place-self-end">
         <div className="flex items-center gap-2">
           <span>
-            <FiPaperclip className="text-gray-500" />
+            <FaListUl className="text-gray-500" />
           </span>
           {store.isSearch ? result?.pages[0].count : result?.pages[0].total}
         </div>

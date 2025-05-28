@@ -49,7 +49,7 @@ const MailerLog = () => {
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
               <div className="text-sm text-[black] font-semibold">
-                <h2>Email Log</h2>
+                <h2>Mailer Log</h2>
               </div>
               <div className="flex items-center gap-6 print:invisible">
                 <button

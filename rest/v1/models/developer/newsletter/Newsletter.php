@@ -30,7 +30,8 @@ class Newsletter
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblNewsletter} ";
-            $sql .= "order by newsletter_created desc ";
+            $sql .= "order by newsletter_is_active desc, ";
+            $sql .= "newsletter_created desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -44,7 +45,8 @@ class Newsletter
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblNewsletter} ";
-            $sql .= "order by newsletter_created desc ";
+            $sql .= "order by newsletter_is_active desc, ";
+            $sql .= "newsletter_created desc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);

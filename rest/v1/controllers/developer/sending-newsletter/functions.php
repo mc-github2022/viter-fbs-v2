@@ -8,6 +8,14 @@ function checkSearchSubcribers($object)
     return $query;
 }
 
+// filter by search newsletter
+function checkSearchNewsletter($object)
+{
+    $query = $object->searchNewsletter();
+    checkQuery($query, "Empty records. (filter by search newsletter)");
+    return $query;
+}
+
 // select specific recipient
 function checkReadEmailNewsletter($object)
 {

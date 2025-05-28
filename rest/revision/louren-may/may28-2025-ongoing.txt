@@ -1,0 +1,45 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/newsletter
+            -> rest/v1/controllers/developer/sending-newsletter/functions.php
+            -> rest/v1/controllers/developer/sending-newsletter/search-newsletter.php
+            -> rest/v1/controllers/developer/mailer-log/search.php
+            -> rest/v1/controllers/developer/mailer-log/functions.php
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/newsletter
+            -> rest/v1/models/developer/sending-newsletter/SendingNewsletter.php
+            -> rest/v1/models/developer/mailer-log/MailerLog.php
+
+
+        * HTACESS
+            -> # NEWSLETTER is added
+            -> this is added in # SENDING NEWSLETTER
+                RewriteRule ^newsletter-search$ controllers/developer/sending-newsletter/search-newsletter.php [L]
+            -> 
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_newsletter.sql
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+            ->
+

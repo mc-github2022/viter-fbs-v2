@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaListUl } from "react-icons/fa";
 import { IoIosSend } from "react-icons/io";
 import { useInView } from "react-intersection-observer";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
@@ -11,11 +11,11 @@ import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import { StoreContext } from "../../../../store/StoreContext";
-
 import { IoTrash } from "react-icons/io5";
 import {
   apiVersion,
   formatDateTime,
+  getMonthAnYearNow,
 } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
@@ -38,8 +38,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isFilter, setIsFilter] = React.useState(false);
   const [filterData, setfilterData] = React.useState("all");
-  const [dateFrom, setDateFrom] = React.useState("");
-  const [dateTo, setDateTo] = React.useState("");
+  const [monthYear, setMonthYear] = React.useState("");
 
   const [isResend, setIsResend] = React.useState(false);
   const [onSearch, setOnSearch] = React.useState(false);
@@ -83,8 +82,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
       isFilter,
       filterData,
       isUpdate,
-      dateFrom,
-      dateTo,
+      monthYear,
     ],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
@@ -97,8 +95,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           id: "",
           isFilter,
           filterValue: setfilterData === "all" ? "" : filterData,
-          dateFrom: isFilter ? dateFrom : null,
-          dateTo: isFilter ? dateTo : null,
+          monthYear: isFilter ? monthYear : null,
         }, // search value
         "post"
       ),
@@ -141,8 +138,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   const handleChangeFilter = (e) => {
     setfilterData(e.target.value);
     setIsFilter(false);
-    setDateFrom("");
-    setDateTo("");
+    setMonthYear("");
     dispatch(setIsSearch(false));
     search.current.value = "";
     if (e.target.value !== "all") {
@@ -255,18 +251,11 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     setItemEdit(item);
   };
 
-  // console.log(isData);
-  // console.log(recipientList);
-  // console.log(selectedKey);
-
-  React.useEffect(() => {
-    if (dateFrom && dateTo && new Date(dateFrom) > new Date(dateTo)) {
-      console.error(
-        "Invalid date range: dateFrom should not be later than dateTo."
-      );
-      setDateTo("");
-    }
-  }, [dateFrom, dateTo]);
+  const handleClear = () => {
+    setIsFilter(false);
+    setfilterData("all");
+    setMonthYear("");
+  };
 
   React.useEffect(() => {
     if (inView) {
@@ -284,7 +273,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
   return (
     <>
       <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between">
-        <div className="flex flex-col lg:flex-row gap-5">
+        <div className="flex gap-5">
           <div className="relative flex flex-col gap-2 w-[250px]">
             <label className="z-10">Filter</label>
 
@@ -310,14 +299,14 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           </div>
 
           <div className="flex flex-col md:flex md:flex-row gap-2">
-            <div className="relative flex flex-col gap-2 w-[200px]">
-              <label className="z-10">Date From</label>
-              <input
+            <div className="relative flex gap-2 items-end">
+              <label className="z-10">Date</label>
+              {/* <input
                 type="date"
-                value={dateFrom}
+                value={date}
                 onChange={(e) => {
                   const fromDate = e.target.value;
-                  setDateFrom(fromDate);
+                  setMonthYear(fromDate);
                   if (
                     fromDate &&
                     dateTo &&
@@ -337,28 +326,17 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                   }
                 }}
                 disabled={isFetching || status === "pending"}
-              />
-            </div>
-            <div className="relative flex flex-col gap-2 w-[200px]">
-              <label className="z-10">Date To</label>
+              /> */}
               <input
-                type="date"
-                value={dateTo}
+                type="month"
+                value={monthYear}
                 onChange={(e) => {
-                  const toDate = e.target.value;
-                  setDateTo(toDate);
+                  const monthYear = e.target.value;
+                  setMonthYear(monthYear);
                   if (
-                    toDate &&
-                    dateFrom &&
-                    new Date(toDate) <= new Date(dateFrom)
-                  ) {
-                    setIsFilter(true);
-                  } else {
-                    setIsFilter(false);
-                  }
-                  if (
-                    toDate ||
-                    (dateFrom && new Date(toDate) <= new Date(dateFrom))
+                    monthYear &&
+                    monthYear &&
+                    new Date(monthYear) <= new Date(monthYear)
                   ) {
                     setIsFilter(true);
                   } else {
@@ -367,14 +345,51 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                 }}
                 disabled={isFetching || status === "pending"}
               />
+              {filterData !== "all" && monthYear && (
+                <button
+                  className="text-[10px] underline text-[red]"
+                  onClick={handleClear}
+                >
+                  Clear
+                </button>
+              )}
             </div>
+            {/* <div className="relative flex flex-col gap-2 w-[200px]">
+              <label className="z-10">Date To</label>
+              <input
+                type="date"
+                value={dateTo}
+                onChange={(e) => {
+                  const toDate = e.target.value;
+                  setMonthYearTo(toDate);
+                  if (
+                    toDate &&
+                    date &&
+                    new Date(toDate) <= new Date(date)
+                  ) {
+                    setIsFilter(true);
+                  } else {
+                    setIsFilter(false);
+                  }
+                  if (
+                    toDate ||
+                    (date && new Date(toDate) <= new Date(date))
+                  ) {
+                    setIsFilter(true);
+                  } else {
+                    setIsFilter(false);
+                  }
+                }}
+                disabled={isFetching || status === "pending"}
+              />
+            </div> */}
           </div>
         </div>
 
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-2">
             <span>
-              <FaUserGroup className="text-gray-500" />
+              <FaListUl className="text-gray-500" />
             </span>
             {store.isSearch || isFilter
               ? result?.pages[0].count

@@ -28,6 +28,7 @@ class SendingNewsletter
     public $tblSubscriber;
     public $tblAudience;
     public $tblSendingEmailLog;
+    public $tblNewsletter;
 
 
     public function __construct($db)
@@ -36,6 +37,7 @@ class SendingNewsletter
         $this->tblSubscriber = "fbsv2_subscriber_list";
         $this->tblAudience = "fbsv2_audience";
         $this->tblSendingEmailLog = "fbsv2_sending_email_log";
+        $this->tblNewsletter = "fbsv2_newsletter";
     }
 
     // read email to send newsletter
@@ -100,24 +102,25 @@ class SendingNewsletter
         return $query;
     }
 
-    // public function searchSubcribers() // for Subscribers debounce
-    // {
-    //     try {
-    //         $sql = "select * ";
-    //         $sql .= "from {$this->tblSubscriber} ";
-    //         $sql .= "where subscriber_email like :subscriber_email ";
-    //         $sql .= "and subscriber_is_active = 1 ";
-    //         $sql .= "order by ";
-    //         $sql .= "subscriber_email asc ";
-    //         $query = $this->connection->prepare($sql);
-    //         $query->execute([
-    //             "subscriber_email" => "%{$this->subscriber_search}%",
-    //         ]);
-    //     } catch (PDOException $ex) {
-    //         $query = false;
-    //     }
-    //     return $query;
-    // }
+    public function searchNewsletter() // for subject debounce
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from {$this->tblNewsletter} ";
+            $sql .= "where ";
+            $sql .= "newsletter_subject like :newsletter_subject ";
+            $sql .= "and newsletter_is_active = 1 ";
+            $sql .= "order by ";
+            $sql .= "newsletter_subject asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "newsletter_subject" => "%{$this->subscriber_search}%",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 
     public function readEmailLog()
     {
