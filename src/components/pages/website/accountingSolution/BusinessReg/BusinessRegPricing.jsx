@@ -17,21 +17,6 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      // style={{
-      //   position: "absolute",
-      //   color: "white",
-      //   top: "50%",
-      //   transform: "translateY(-50%)",
-      //   right: "5px",
-      //   fontSize: "3rem",
-      //   cursor: "pointer",
-      //   background: "#ac1f72",
-      //   borderRadius: "50%",
-      //   width: "48px",
-      //   height: "48px",
-      //   display: "grid",
-      //   placeItems: "center",
-      // }}
       onClick={onClick}
       className="absolute text-light top-[20%] -translate-y-[50%] right-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center
       md:top-[50%]"
@@ -45,22 +30,6 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      // style={{
-      //   position: "absolute",
-      //   color: "white",
-      //   top: "50%",
-      //   transform: "translateY(-50%)",
-      //   left: "5px",
-      //   fontSize: "3rem",
-      //   zIndex: "1",
-      //   cursor: "pointer",
-      //   background: "#ac1f72",
-      //   borderRadius: "50%",
-      //   width: "48px",
-      //   height: "48px",
-      //   display: "grid",
-      //   placeItems: "center",
-      // }}
       onClick={onClick}
       className="absolute text-light top-[20%] -translate-y-[50%] left-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center z-10
       md:top-[50%]"

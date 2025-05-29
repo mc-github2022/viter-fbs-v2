@@ -310,35 +310,65 @@ const Navigation = ({ menu, submenu }) => {
                       </li>
                     </Link>
 
-                    {/* <Link
+                    <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/home-testimonial`}
+                      to={`${devNavUrl}${link}/services/learning-center-solutions`}
                     >
                       <li
                         className={`text-xs my-1 border-transparent hover:underline ${
-                          submenu === "home-testimonial"
+                          submenu === "learning-center-solutions"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
                         }`}
                       >
-                        Testimonials
+                        Learning Center Solutions
                       </li>
                     </Link>
 
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/home-insights`}
+                      to={`${devNavUrl}${link}/services/accounting-solutions`}
                     >
                       <li
-                        className={`text-xs  border-transparent hover:underline ${
-                          submenu === "home-insights"
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "accounting-solutions"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
                         }`}
                       >
-                        Insights
+                        Accounting Solutions
                       </li>
-                    </Link> */}
+                    </Link>
+
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/services/virtual-assistant-solutions`}
+                    >
+                      <li
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "virtual-assistant-solutions"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Virtual Assistant Solutions
+                      </li>
+                    </Link>
+
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/services/web-design-and-development`}
+                    >
+                      <li
+                        className={`text-xs  border-transparent hover:underline ${
+                          submenu === "web-design-and-development"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Web Design & Dev
+                      </li>
+                    </Link>
                   </ul>
 
                   {/* WHY FBS */}
@@ -578,16 +608,16 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/newsletter`}
+                      to={`${devNavUrl}${link}/email-list`}
                     >
                       <li
                         className={`text-xs my-1  border-transparent hover:underline ${
-                          submenu === "newsletter"
+                          submenu === "email-list"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
                         }`}
                       >
-                        Newsletter
+                        Email List
                       </li>
                     </Link>
                     <Link className="!p-0" to={`${devNavUrl}${link}/mailer`}>

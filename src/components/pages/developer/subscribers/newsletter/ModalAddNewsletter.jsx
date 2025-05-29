@@ -13,7 +13,11 @@ import {
 import { apiVersion } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
+import {
+  InputSelect,
+  InputText,
+  InputTextArea,
+} from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 
 const ModalAddNewsletter = ({ itemEdit }) => {
@@ -61,11 +65,13 @@ const ModalAddNewsletter = ({ itemEdit }) => {
     newsletter_aid: itemEdit ? itemEdit.newsletter_aid : "",
     newsletter_subject: itemEdit ? itemEdit.newsletter_subject : "",
     newsletter_content: itemEdit ? itemEdit.newsletter_content : "",
+    newsletter_email_type: itemEdit ? itemEdit.newsletter_email_type : "",
   };
 
   const yupSchema = Yup.object({
     newsletter_subject: Yup.string().required("Required"),
     newsletter_content: Yup.string().required("Required"),
+    newsletter_email_type: Yup.string().required("Required"),
   });
 
   return (
@@ -74,7 +80,7 @@ const ModalAddNewsletter = ({ itemEdit }) => {
       handleClose={handleClose}
     >
       <div className="modal-title">
-        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Newsletter</h2>
+        <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Email List</h2>
         <button onClick={handleClose}>
           <GrFormClose className="text-[25px]" />
         </button>
@@ -94,8 +100,23 @@ const ModalAddNewsletter = ({ itemEdit }) => {
                   <div className="w-[50%] flex flex-col justify-between">
                     <div>
                       <div className="input-wrapper">
+                        <InputSelect
+                          label="*Email Type"
+                          type="text"
+                          name="newsletter_email_type"
+                          disabled={mutation.isPending}
+                        >
+                          <option value="" disabled>
+                            Select Email Type
+                          </option>
+                          <option value="Newsletter">Newsletter</option>
+                          <option value="Promotional">Promotional</option>
+                          <option value="Invitation">Invitation</option>
+                        </InputSelect>
+                      </div>
+                      <div className="input-wrapper">
                         <InputText
-                          label="Subject"
+                          label="*Subject"
                           type="text"
                           name="newsletter_subject"
                           disabled={mutation.isPending}
@@ -103,7 +124,7 @@ const ModalAddNewsletter = ({ itemEdit }) => {
                       </div>
                       <div className="input-wrapper">
                         <InputTextArea
-                          label="Content"
+                          label="*Content"
                           type="text"
                           name="newsletter_content"
                           value={values.newsletter_content}

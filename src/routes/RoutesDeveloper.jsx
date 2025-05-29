@@ -41,6 +41,8 @@ import OnlinePaymentIntegration from "../components/pages/developer/services/web
 import OnlineDonationSystem from "../components/pages/developer/services/web-application/online-donation-system/OnlineDonationSystem";
 import AssetInventorySystem from "../components/pages/developer/services/web-application/asset-inventory-system/AssetInventorySystem";
 import Newsletter from "../components/pages/developer/subscribers/newsletter/Newsletter";
+import AccountingSolutions from "../components/pages/developer/services/accounting-solutions/AccountingSolutions";
+import BusinessRegistration from "../components/pages/developer/services/accounting-solutions/business-registration/BusinessRegistration";
 
 export const routesDeveloper = [
   {
@@ -236,7 +238,7 @@ export const routesDeveloper = [
     ),
   },
   {
-    path: `${devNavUrl}/${UrlDeveloper}/newsletter`,
+    path: `${devNavUrl}/${UrlDeveloper}/email-list`,
     element: (
       <ProtectedRouteDeveloper>
         <Newsletter />
@@ -296,6 +298,22 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <AssetInventorySystem />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/accounting-solutions`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <AccountingSolutions />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/accounting-solutions/business-registration`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <BusinessRegistration />
       </ProtectedRouteDeveloper>
     ),
   },

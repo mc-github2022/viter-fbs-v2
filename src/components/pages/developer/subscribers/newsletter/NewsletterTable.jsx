@@ -127,8 +127,12 @@ const NewsletterTable = ({ setItemEdit }) => {
               <th className="pl-2 w-[1rem]">#</th>
               <th className=" w-[5rem]">Status</th>
               <th className="min-w-[8rem]">Subject</th>
+              <th className="min-w-[8rem]">Email Type</th>
               <th>Content</th>
-              <th className="min-w-[15rem]">Date</th>
+              <th className="min-w-[15rem]">Created Date</th>
+              <th className="min-w-[15rem]">Updated Date</th>
+              <th className="min-w-[15rem]">Created By</th>
+              <th className="min-w-[15rem]">Updated By</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -165,10 +169,22 @@ const NewsletterTable = ({ setItemEdit }) => {
                       {item.newsletter_subject}
                     </td>
                     <td className="place-content-start max-w-[25rem]">
+                      <p>{item.newsletter_email_type}</p>
+                    </td>
+                    <td className="place-content-start max-w-[25rem]">
                       <p className="line-clamp-4">{item.newsletter_content}</p>
                     </td>
                     <td className="place-content-start">
                       {formatDateTime(item.newsletter_created)}
+                    </td>
+                    <td className="place-content-start">
+                      {formatDateTime(item.newsletter_datetime)}
+                    </td>
+                    <td className="place-content-start max-w-[25rem]">
+                      <p>{item.newsletter_created_by}</p>
+                    </td>
+                    <td className="place-content-start max-w-[25rem]">
+                      <p>{item.newsletter_updated_by}</p>
                     </td>
 
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">

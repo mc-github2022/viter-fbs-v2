@@ -29,7 +29,7 @@ const Newsletter = () => {
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
               <div className="text-sm text-[black] font-semibold">
-                <h2>Newsletter</h2>
+                <h2>Email List</h2>
               </div>
               <button
                 className="flex items-center gap-1 text-[white] hover:underline bg-primary py-1 px-2 rounded-lg text-sm"

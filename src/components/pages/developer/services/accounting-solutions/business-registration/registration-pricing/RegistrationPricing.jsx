@@ -37,9 +37,9 @@ function SamplePrevArrow(props) {
   );
 }
 
-const EnrollmentPricing = ({
-  handleUpdateEnrollmentPackagesTitles,
-  enrollmentTitlesData,
+const RegistrationPricing = ({
+  handleUpdateRegistrationPackagesTitle,
+  registrationPackagesTitleData,
 }) => {
   const {
     isFetching,
@@ -61,8 +61,9 @@ const EnrollmentPricing = ({
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_url === "webapp-enrollment"
-    )?.packages_category_url || "webapp-enrollment";
+      (item) =>
+        item.packages_category_url === "accounting-business-registration"
+    )?.packages_category_url || "accounting-business-registration";
 
   const filteredItems =
     packagesListData?.data?.filter(
@@ -149,26 +150,30 @@ const EnrollmentPricing = ({
     <>
       <section className="ServiceHrPricing py-20 bg-[#000000] relative sm:overflow-hidden">
         <div className="footerGradientBlack hidden sm:block absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
+        <div className="absolute bg-light h-[180px] w-full bottom-0 z-[0]"></div>
         <div className="customContainer z-[1]">
           <div className="mb-20 text-center relative z-[3]">
             <a
               className="absolute cursor-pointer tooltip-btn right-[350px] -top-6 "
               data-tooltip="Edit contents"
-              onClick={handleUpdateEnrollmentPackagesTitles}
+              onClick={handleUpdateRegistrationPackagesTitle}
             >
               <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
             </a>
             <p className="text-light">
-              {enrollmentTitlesData?.data?.length > 0 &&
-              enrollmentTitlesData.data[0]?.enrollment_titles_packages_subtitle
-                ? enrollmentTitlesData?.data[0]
-                    .enrollment_titles_packages_subtitle
+              {registrationPackagesTitleData?.data?.length > 0 &&
+              registrationPackagesTitleData.data[0]
+                ?.registration_titles_packages_subtitle
+                ? registrationPackagesTitleData?.data[0]
+                    .registration_titles_packages_subtitle
                 : "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              {enrollmentTitlesData?.data?.length > 0 &&
-              enrollmentTitlesData.data[0]?.enrollment_titles_packages_title
-                ? enrollmentTitlesData?.data[0].enrollment_titles_packages_title
+              {registrationPackagesTitleData?.data?.length > 0 &&
+              registrationPackagesTitleData.data[0]
+                ?.registration_titles_packages_title
+                ? registrationPackagesTitleData?.data[0]
+                    .registration_titles_packages_title
                 : "Title"}
             </h3>
           </div>
@@ -178,15 +183,16 @@ const EnrollmentPricing = ({
                 {filteredItems.map((price, key) => (
                   <div
                     key={key}
-                    className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg  max-w-[400px] min-h-[500px] ${
-                      price.packages_list_is_highlighted === 1
-                        ? "bg-primary"
-                        : "bg-customGray !text-dark"
-                    } grid place-items-center `}
+                    className={`priceItem mb-5 relative z-[1] text-center p-10 md:h-[750px]
+                      rounded-lg h-[700px] max-w-[400px] md:w-[400px] ${
+                        price.packages_list_is_highlighted === 1
+                          ? "bg-primary"
+                          : "bg-customGray !text-dark"
+                      } grid place-items-center `}
                   >
                     <div className="flex flex-col justify-between">
-                      <div>
-                        <div className="title mb-4 min-h-[182px]">
+                      <div className="">
+                        <div className="title mb-4 min-h-[182px] ">
                           <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />
                           <div className="mb-6">
                             <h3
@@ -264,7 +270,18 @@ const EnrollmentPricing = ({
                           </div>
                         </div>
 
-                        <table className="prices my-5 min-h-[200px]">
+                        <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
+                          <button
+                            onClick={() =>
+                              handleForm(price.packages_list_title)
+                            }
+                            className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary uppercase"
+                          >
+                            {price.packages_list_button_text}
+                          </button>
+                        </div>
+
+                        <table className="prices my-5 min-h-[300px]">
                           <tbody className="">
                             {packagesDetailsData?.data.map((info, key) => {
                               if (
@@ -345,15 +362,6 @@ const EnrollmentPricing = ({
                           </tbody>
                         </table>
                       </div>
-
-                      <button
-                        onClick={() => handleForm(price.packages_list_title)}
-                        className="btn bg-primary text-light border-light
-                          border-2 mt-10 font-bold w-[190px] mx-auto
-                          hover:bg-light hover:text-primary hover:border-primary uppercase"
-                      >
-                        {price.packages_list_button_text}
-                      </button>
                     </div>
                   </div>
                 ))}
@@ -365,7 +373,7 @@ const EnrollmentPricing = ({
                     {filteredItems.map((price, key) => (
                       <div
                         key={key}
-                        className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px] ${
+                        className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px]  ${
                           price.packages_list_is_highlighted === 1
                             ? "bg-primary"
                             : "bg-customGray !text-dark"
@@ -552,10 +560,9 @@ const EnrollmentPricing = ({
             )}
           </div>
         </div>
-        <div className="absolute bg-light h-[180px] w-full bottom-[-2px] "></div>
       </section>
     </>
   );
 };
 
-export default EnrollmentPricing;
+export default RegistrationPricing;
