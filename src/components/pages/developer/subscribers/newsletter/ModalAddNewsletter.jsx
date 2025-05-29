@@ -31,6 +31,9 @@ const ModalAddNewsletter = ({ itemEdit }) => {
     }, 200);
   };
 
+  const firstnameProfile = store.credentials.data.first_name;
+  const role = store.credentials.data.role_name;
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -66,6 +69,14 @@ const ModalAddNewsletter = ({ itemEdit }) => {
     newsletter_subject: itemEdit ? itemEdit.newsletter_subject : "",
     newsletter_content: itemEdit ? itemEdit.newsletter_content : "",
     newsletter_email_type: itemEdit ? itemEdit.newsletter_email_type : "",
+    newsletter_firstname_updated: itemEdit
+      ? itemEdit.newsletter_firstname_updated
+      : firstnameProfile,
+    newsletter_firstname: itemEdit
+      ? itemEdit.newsletter_firstname
+      : firstnameProfile,
+    newsletter_role: itemEdit ? itemEdit.newsletter_role : role,
+    newsletter_role_updated: itemEdit ? itemEdit.newsletter_role_updated : role,
   };
 
   const yupSchema = Yup.object({
@@ -90,7 +101,14 @@ const ModalAddNewsletter = ({ itemEdit }) => {
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
-            mutation.mutate(values);
+            const data = {
+              ...values,
+              newsletter_firstname: values.newsletter_firstname,
+              newsletter_firstname_updated: firstnameProfile,
+              newsletter_role: values.newsletter_role,
+              newsletter_role_updated: role,
+            };
+            mutation.mutate(data);
           }}
         >
           {({ props, values, dirty }) => {
@@ -128,7 +146,7 @@ const ModalAddNewsletter = ({ itemEdit }) => {
                           type="text"
                           name="newsletter_content"
                           value={values.newsletter_content}
-                          className="min-h-[calc(80vh-55px)]"
+                          className="min-h-[calc(72vh-55px)]"
                           disabled={mutation.isPending}
                         />
                       </div>

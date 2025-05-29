@@ -127,6 +127,24 @@ class MailerLog
         return $query;
     }
 
+    public function updateResendDate()
+    {
+        try {
+            $sql = "update {$this->tblSendingEmailLog} set ";
+            $sql .= "sending_email_log_datetime = :sending_email_log_datetime ";
+            $sql .= "where sending_email_log_aid = :sending_email_log_aid ";
+            $sql .= "and sending_email_log_is_success = 0 ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "sending_email_log_datetime" => $this->sending_email_log_datetime,
+                "sending_email_log_aid" => $this->sending_email_log_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
     public function deleteMailerLog()
     {
         try {

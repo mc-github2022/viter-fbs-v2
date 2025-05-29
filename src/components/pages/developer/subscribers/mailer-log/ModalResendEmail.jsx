@@ -44,6 +44,24 @@ const ModalResendEmail = ({
       let newsletter_subject = recipientList[i]["sending_email_log_subject"];
       let key = recipientList[i]["sending_email_log_key"];
 
+      // Create and assign current datetime
+      const now = new Date();
+      const resendDate =
+        now.getFullYear() +
+        "-" +
+        String(now.getMonth() + 1).padStart(2, "0") +
+        "-" +
+        String(now.getDate()).padStart(2, "0") +
+        " " +
+        String(now.getHours()).padStart(2, "0") +
+        ":" +
+        String(now.getMinutes()).padStart(2, "0") +
+        ":" +
+        String(now.getSeconds()).padStart(2, "0");
+
+      // Save the datetime to the object
+      recipientList[i]["sending_email_log_datetime"] = resendDate;
+
       query = await queryData(
         `${apiVersion}/mailer-log/resend-mailer`,
         "post",
@@ -52,6 +70,7 @@ const ModalResendEmail = ({
           newsletter_subject,
           recipientEmail,
           key,
+          resendDate,
         }
       );
 

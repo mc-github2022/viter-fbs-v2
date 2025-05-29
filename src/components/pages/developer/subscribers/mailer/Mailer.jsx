@@ -92,6 +92,9 @@ const Mailer = ({ itemEdit }) => {
     true // refetchOnWindowFocus
   );
 
+  const firstnameProfile = store.credentials.data.first_name;
+  const role = store.credentials.data.role_name;
+
   // Join subscriberData with audienceData to get audience_name
   const enrichedSubscribers = subscriberData?.data?.map((subscriber) => {
     const matchingAudience = audienceData?.data?.find(
@@ -259,6 +262,8 @@ const Mailer = ({ itemEdit }) => {
     newsletter: "",
     newsletter_subject: "",
     subscriber_email: "",
+    firstname: firstnameProfile,
+    role: role,
   };
 
   const yupSchema = Yup.object({
@@ -537,7 +542,9 @@ const Mailer = ({ itemEdit }) => {
                           setIsSuccessSendingEmail={setIsSuccessSendingEmail}
                           resetForm={resetForm}
                           setSubscriberValue={setSubscriberValue}
-                          setPropertyNewsletterValue={setPropertyNewsletterValue}
+                          setPropertyNewsletterValue={
+                            setPropertyNewsletterValue
+                          }
                           setQueryStatus={setQueryStatus}
                         />
                       )}

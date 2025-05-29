@@ -32,6 +32,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $sendingNewsletter->sending_email_log_key = $recipientList["data"][$i]["subscriber_key"];
         $sendingNewsletter->sending_email_log_subject = $data["newsletter_subject"];
         $sendingNewsletter->sending_email_log_content = $data["newsletter"];
+        $sendingNewsletter->sending_email_log_firstname = $data["firstname"];
+        $sendingNewsletter->sending_email_log_role = $data["role"];
         $sendingNewsletter->sending_email_log_created = date("Y-m-d H:i:s");
         $sendingNewsletter->sending_email_log_datetime = date("Y-m-d H:i:s");
 

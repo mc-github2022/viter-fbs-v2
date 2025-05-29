@@ -44,6 +44,8 @@ const ModalSend = ({
         recipientList: recipientList,
         newsletter: item.newsletter,
         newsletter_subject: item.newsletter_subject,
+        firstname: item.firstname,
+        role: item.role,
       }
     );
 

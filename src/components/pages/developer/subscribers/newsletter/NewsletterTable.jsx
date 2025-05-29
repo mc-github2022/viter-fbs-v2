@@ -126,13 +126,13 @@ const NewsletterTable = ({ setItemEdit }) => {
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
               <th className=" w-[5rem]">Status</th>
-              <th className="min-w-[8rem]">Subject</th>
-              <th className="min-w-[8rem]">Email Type</th>
+              <th className="min-w-[12rem]">Subject</th>
+              <th className="min-w-[5rem]">Email Type</th>
               <th>Content</th>
-              <th className="min-w-[15rem]">Created Date</th>
-              <th className="min-w-[15rem]">Updated Date</th>
-              <th className="min-w-[15rem]">Created By</th>
-              <th className="min-w-[15rem]">Updated By</th>
+              <th className="min-w-[7rem]">Created By</th>
+              <th className="min-w-[11rem]">Created Date</th>
+              <th className="min-w-[7rem]">Updated By</th>
+              <th className="min-w-[11rem]">Updated Date</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -171,20 +171,24 @@ const NewsletterTable = ({ setItemEdit }) => {
                     <td className="place-content-start max-w-[25rem]">
                       <p>{item.newsletter_email_type}</p>
                     </td>
-                    <td className="place-content-start max-w-[25rem]">
-                      <p className="line-clamp-4">{item.newsletter_content}</p>
+                    <td className="place-content-start max-w-[20rem]">
+                      <p className="truncate">{item.newsletter_content}</p>
+                    </td>
+                    <td className="place-content-start ">
+                      <p>{item.newsletter_firstname || "-------------"}</p>
                     </td>
                     <td className="place-content-start">
                       {formatDateTime(item.newsletter_created)}
                     </td>
+                    <td className="place-content-start ">
+                      <p>
+                        {item.newsletter_firstname_updated || "-------------"}
+                      </p>
+                    </td>
                     <td className="place-content-start">
-                      {formatDateTime(item.newsletter_datetime)}
-                    </td>
-                    <td className="place-content-start max-w-[25rem]">
-                      <p>{item.newsletter_created_by}</p>
-                    </td>
-                    <td className="place-content-start max-w-[25rem]">
-                      <p>{item.newsletter_updated_by}</p>
+                      {item.newsletter_datetime === "0000-00-00 00:00:00"
+                        ? "-------------"
+                        : formatDateTime(item.newsletter_datetime)}
                     </td>
 
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">

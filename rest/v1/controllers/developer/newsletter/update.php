@@ -15,6 +15,9 @@ if (array_key_exists("newsletterId", $_GET)) {
   $newsletter->newsletter_aid = $_GET['newsletterId'];
   $newsletter->newsletter_subject = checkIndex($data, "newsletter_subject");
   $newsletter->newsletter_content = $data["newsletter_content"];
+  $newsletter->newsletter_email_type = $data["newsletter_email_type"];
+  $newsletter->newsletter_firstname_updated = $data["newsletter_firstname_updated"];
+  $newsletter->newsletter_role_updated = $data["newsletter_role_updated"];
   $newsletter->newsletter_datetime = date("Y-m-d H:i:s");
   checkId($newsletter->newsletter_aid);
 

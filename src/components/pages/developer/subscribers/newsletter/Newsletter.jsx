@@ -24,7 +24,7 @@ const Newsletter = () => {
   return (
     <>
       <section id="subscribers" className="bg-[#f5f5f3]">
-        <Navigation menu="subscribers" submenu="newsletter" />
+        <Navigation menu="subscribers" submenu="email-list" />
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">

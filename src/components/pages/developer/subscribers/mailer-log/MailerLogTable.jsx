@@ -6,7 +6,7 @@ import { IoTrash } from "react-icons/io5";
 import { useInView } from "react-intersection-observer";
 import {
   apiVersion,
-  formatDateTime
+  formatDateTime,
 } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import { queryDataInfinite } from "../../../../helpers/queryDataInfinite";
@@ -144,7 +144,6 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
     }
     setPage(1);
   };
-
 
   const handleResend = (item) => {
     console.log(item);
@@ -358,10 +357,14 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
+              <th className="w-[2rem]">Status</th>
               <th className="w-[20rem]">Email</th>
               <th className="w-[13rem]">Subject</th>
-              <th>Date</th>
-              <th>Status</th>
+              <th>Sent By</th>
+              <th>Sent Date</th>
+              <th>Resend By</th>
+              <th>Resend Date</th>
+
               <th className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -400,6 +403,13 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                   return (
                     <tr key={key} className="text-[14px]">
                       <td className="pl-2 ">{counter++}.</td>
+                      <td className="">
+                        {item.sending_email_log_is_success === 1 ? (
+                          <MailerLogStatus text="Sent" />
+                        ) : (
+                          <MailerLogStatus text="Failed" />
+                        )}
+                      </td>
                       <td>
                         {selectedKey !== key && (
                           <div className="flex items-center gap-2">
@@ -426,16 +436,23 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                       <td className="w-[10rem]">
                         {item.sending_email_log_subject}
                       </td>
+                      <td className="">{item.sending_email_log_firstname}</td>
                       <td className="w-[10rem]">
                         {formatDateTime(item.sending_email_log_created)}
                       </td>
-                      <td className="">
-                        {item.sending_email_log_is_success === 1 ? (
-                          <MailerLogStatus text="Sent" />
-                        ) : (
-                          <MailerLogStatus text="Failed" />
-                        )}
+                      <td className="w-[10rem]">
+                        {item.sending_email_log_firstname_resend ===
+                        "0000-00-00 00:00:00"
+                          ? "-------------"
+                          : item.sending_email_log_firstname_resend}
                       </td>
+                      <td className="w-[10rem]">
+                        {item.sending_email_log_datetime ===
+                        "0000-00-00 00:00:00"
+                          ? "-------------"
+                          : formatDateTime(item.sending_email_log_datetime)}
+                      </td>
+
                       <td>
                         <input
                           type="checkbox"

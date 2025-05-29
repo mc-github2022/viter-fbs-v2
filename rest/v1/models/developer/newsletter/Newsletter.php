@@ -6,6 +6,11 @@ class Newsletter
     public $newsletter_is_active;
     public $newsletter_subject;
     public $newsletter_content;
+    public $newsletter_email_type;
+    public $newsletter_firstname;
+    public $newsletter_firstname_updated;
+    public $newsletter_role;
+    public $newsletter_role_updated;
     public $newsletter_created;
     public $newsletter_datetime;
 
@@ -87,20 +92,26 @@ class Newsletter
             $sql .= "(newsletter_is_active, ";
             $sql .= "newsletter_subject, ";
             $sql .= "newsletter_content, ";
-            $sql .= "newsletter_created, ";
-            $sql .= "newsletter_datetime ) values ( ";
+            $sql .= "newsletter_email_type, ";
+            $sql .= "newsletter_firstname, ";
+            $sql .= "newsletter_role, ";
+            $sql .= "newsletter_created ) values ( ";
             $sql .= ":newsletter_is_active, ";
             $sql .= ":newsletter_subject, ";
             $sql .= ":newsletter_content, ";
-            $sql .= ":newsletter_created, ";
-            $sql .= ":newsletter_datetime )";
+            $sql .= ":newsletter_email_type, ";
+            $sql .= ":newsletter_firstname, ";
+            $sql .= ":newsletter_role, ";
+            $sql .= ":newsletter_created )";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "newsletter_is_active" => $this->newsletter_is_active,
                 "newsletter_subject" => $this->newsletter_subject,
                 "newsletter_content" => $this->newsletter_content,
+                "newsletter_email_type" => $this->newsletter_email_type,
+                "newsletter_firstname" => $this->newsletter_firstname,
+                "newsletter_role" => $this->newsletter_role,
                 "newsletter_created" => $this->newsletter_created,
-                "newsletter_datetime" => $this->newsletter_datetime,
             ]);
             $this->lastInsertedId = $this->connection->lastInsertId();
         } catch (PDOException $ex) {
@@ -115,12 +126,18 @@ class Newsletter
             $sql = "update {$this->tblNewsletter} set ";
             $sql .= "newsletter_subject = :newsletter_subject, ";
             $sql .= "newsletter_content = :newsletter_content, ";
+            $sql .= "newsletter_email_type = :newsletter_email_type, ";
+            $sql .= "newsletter_firstname_updated = :newsletter_firstname_updated, ";
+            $sql .= "newsletter_role_updated = :newsletter_role_updated, ";
             $sql .= "newsletter_datetime = :newsletter_datetime ";
             $sql .= "where newsletter_aid = :newsletter_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "newsletter_subject" => $this->newsletter_subject,
                 "newsletter_content" => $this->newsletter_content,
+                "newsletter_email_type" => $this->newsletter_email_type,
+                "newsletter_firstname_updated" => $this->newsletter_firstname_updated,
+                "newsletter_role_updated" => $this->newsletter_role_updated,
                 "newsletter_datetime" => $this->newsletter_datetime,
                 "newsletter_aid" => $this->newsletter_aid,
             ]);
