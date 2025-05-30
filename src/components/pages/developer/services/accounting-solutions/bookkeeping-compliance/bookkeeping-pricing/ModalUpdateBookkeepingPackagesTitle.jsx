@@ -16,9 +16,9 @@ import {
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
 
-const ModalUpdateRegistrationPackagesTitle = ({
+const ModalUpdateBookkeepingPackagesTitle = ({
   itemEdit,
-  registrationPackagesTitleData,
+  bookkeepingPackagesTitleData,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
@@ -35,15 +35,15 @@ const ModalUpdateRegistrationPackagesTitle = ({
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        registrationPackagesTitleData?.data?.length
-          ? `${apiVersion}/registration-packages-title/${registrationPackagesTitleData.data[0].registration_title_aid}` // update
-          : `${apiVersion}/registration-packages-title`, // create
-        registrationPackagesTitleData?.data?.length ? "put" : "post",
+        bookkeepingPackagesTitleData?.data?.length
+          ? `${apiVersion}/bookkeeping-packages-title/${bookkeepingPackagesTitleData.data[0].bookkeeping_title_aid}` // update
+          : `${apiVersion}/bookkeeping-packages-title`, // create
+        bookkeepingPackagesTitleData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["registration-packages-title"],
+        queryKey: ["bookkeeping-packages-title"],
       });
       if (!data.success) {
         console.log("Error");
@@ -64,13 +64,13 @@ const ModalUpdateRegistrationPackagesTitle = ({
   }, []);
 
   const initVal = {
-    isUpdateRegistrationTitle: itemEdit,
-    registration_title_packages_subtitle:
-      registrationPackagesTitleData?.data?.[0]
-        ?.registration_title_packages_subtitle ?? "",
-    registration_title_packages_title:
-      registrationPackagesTitleData?.data?.[0]
-        ?.registration_title_packages_title ?? "",
+    isUpdateBookkeepingTitle: itemEdit,
+    bookkeeping_title_packages_subtitle:
+      bookkeepingPackagesTitleData?.data?.[0]
+        ?.bookkeeping_title_packages_subtitle ?? "",
+    bookkeeping_title_packages_title:
+      bookkeepingPackagesTitleData?.data?.[0]
+        ?.bookkeeping_title_packages_title ?? "",
   };
 
   const yupSchema = Yup.object({});
@@ -83,7 +83,7 @@ const ModalUpdateRegistrationPackagesTitle = ({
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Registration Packages Title
+            {itemEdit ? "Edit" : "Add"} Bookkeeping Packages Title
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
@@ -108,7 +108,7 @@ const ModalUpdateRegistrationPackagesTitle = ({
                       <InputText
                         label="Subtitle"
                         type="text"
-                        name="registration_title_packages_subtitle"
+                        name="bookkeeping_title_packages_subtitle"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -116,7 +116,7 @@ const ModalUpdateRegistrationPackagesTitle = ({
                       <InputText
                         label="Title"
                         type="text"
-                        name="registration_title_packages_title"
+                        name="bookkeeping_title_packages_title"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -149,4 +149,4 @@ const ModalUpdateRegistrationPackagesTitle = ({
   );
 };
 
-export default ModalUpdateRegistrationPackagesTitle;
+export default ModalUpdateBookkeepingPackagesTitle;

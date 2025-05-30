@@ -15,34 +15,35 @@ import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import RegistrationBanner from "./registration-banner/RegistrationBanner";
-import ModalUpdateRegistrationBanner from "./registration-banner/ModalUpdateRegistrationBanner";
-import RegistrationOverview from "./registration-overview/RegistrationOverview";
-import ModalUpdateRegistrationOverview from "./registration-overview/ModalUpdateRegistrationOverview";
-import ModalUpdateRegistrationOverviewList from "./registration-overview/ModalUpdateRegistrationOverviewList";
-import RegistrationPricing from "./registration-pricing/RegistrationPricing";
-import ModalUpdateRegistrationPackagesTitle from "./registration-pricing/ModalUpdateRegistrationPackagesTitle";
+import BookkeepingBanner from "./bookkeeping-banner/BookkeepingBanner";
+import ModalUpdateBookkeepingBanner from "./bookkeeping-banner/ModalUpdateBookkeepingBanner";
+import BookkeepingOverview from "./bookkeeping-overview/BookkeepingOverview";
+import ModalUpdateBookkeepingOverview from "./bookkeeping-overview/ModalUpdateBookkeepingOverview";
+import ModalUpdateBookkeepingOverviewList from "./bookkeeping-overview/ModalUpdateBookkeepingOverviewList";
+import BookkeepingPricing from "./bookkeeping-pricing/BookkeepingPricing";
+import ModalUpdateBookkeepingPackagesTitle from "./bookkeeping-pricing/ModalUpdateBookkeepingPackagesTitle";
+import ModalUpdateBookkeepingPackagesList from "./bookkeeping-pricing/ModalUpdateBookkeepingPackagesList";
 
-const BusinessRegistration = () => {
+const BookkeepingAndCompliance = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
 
-  const { data: registrationData } = useQueryData(
-    `${apiVersion}/registration`, // endpoint
+  const { data: bookkeepingData } = useQueryData(
+    `${apiVersion}/bookkeeping`, // endpoint
     "get", // method
-    "registration" // key
+    "bookkeeping" // key
   );
 
-  const { data: registrationOverviewData } = useQueryData(
-    `${apiVersion}/registration-overview`, // endpoint
+  const { data: bookkeepingOverviewData } = useQueryData(
+    `${apiVersion}/bookkeeping-overview`, // endpoint
     "get", // method
-    "registration-overview" // key
+    "bookkeeping-overview" // key
   );
 
-  const { data: registrationPackagesTitleData } = useQueryData(
-    `${apiVersion}/registration-packages-title`, // endpoint
+  const { data: bookkeepingPackagesTitleData } = useQueryData(
+    `${apiVersion}/bookkeeping-packages-title`, // endpoint
     "get", // method
-    "registration-packages-title" // key
+    "bookkeeping-packages-title" // key
   );
 
   const { data: contactFormDefaultData } = useQueryData(
@@ -63,32 +64,37 @@ const BusinessRegistration = () => {
     "footer" // key
   );
 
-  const handleUpdateRegistrationBanner = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "registration-banner" })
-    );
-    setItemEdit("registrationBannerUpdate");
+  const handleUpdateBookkeepingBanner = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "bookkeeping-banner" }));
+    setItemEdit("bookkeepingBannerUpdate");
   };
 
-  const handleUpdateRegistrationOverview = () => {
+  const handleUpdateBookkeepingOverview = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "registration-overview" })
+      setIsUpdateHome({ modal: true, modalCode: "bookkeeping-overview" })
     );
-    setItemEdit("registrationOverviewUpdateImg");
+    setItemEdit("bookkeepingOverviewUpdateImg");
   };
 
-  const handleUpdateRegistrationOverviewList = () => {
+  const handleUpdateBookkeepingOverviewList = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "registration-overview-list" })
+      setIsUpdateHome({ modal: true, modalCode: "bookkeeping-overview-list" })
     );
-    setItemEdit("registrationOverviewListUpdate");
+    setItemEdit("bookkeepingOverviewListUpdate");
   };
 
-  const handleUpdateRegistrationPackagesTitle = () => {
+  const handleUpdateBookkeepingPackagesTitle = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "registration-packages-title" })
+      setIsUpdateHome({ modal: true, modalCode: "bookkeeping-packages-title" })
     );
     setItemEdit("packagesTitleUpdate");
+  };
+
+  const handleUpdateBookkeepingPackagesList = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "bookkeeping-packages-list" })
+    );
+    setItemEdit("packagesListUpdate");
   };
 
   const handleUpdateHeader = () => {
@@ -132,7 +138,7 @@ const BusinessRegistration = () => {
             <div className="py-5 flex  ">
               <BreadCrumbs param={location.search} />
               <div className="text-sm text-[black] font-semibold">
-                <h2>Business Registration</h2>
+                <h2>Bookkeeping / Compliance</h2>
               </div>
             </div>
             <div className=" pb-4 bg-light shadow-xl">
@@ -141,27 +147,32 @@ const BusinessRegistration = () => {
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
               />
-              <RegistrationBanner
-                registrationData={registrationData}
-                handleUpdateRegistrationBanner={handleUpdateRegistrationBanner}
+              <BookkeepingBanner
+                bookkeepingData={bookkeepingData}
+                handleUpdateBookkeepingBanner={handleUpdateBookkeepingBanner}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 contactFormDefaultData={contactFormDefaultData}
               />
-              <RegistrationOverview
-                handleUpdateRegistrationOverview={
-                  handleUpdateRegistrationOverview
+              <BookkeepingOverview
+                handleUpdateBookkeepingOverview={
+                  handleUpdateBookkeepingOverview
                 }
-                handleUpdateRegistrationOverviewList={
-                  handleUpdateRegistrationOverviewList
+                handleUpdateBookkeepingOverviewList={
+                  handleUpdateBookkeepingOverviewList
                 }
-                registrationOverviewData={registrationOverviewData}
+                bookkeepingOverviewData={bookkeepingOverviewData}
               />
-              <RegistrationPricing
-                handleUpdateRegistrationPackagesTitle={
-                  handleUpdateRegistrationPackagesTitle
+
+              <BookkeepingPricing
+                handleUpdateBookkeepingPackagesTitle={
+                  handleUpdateBookkeepingPackagesTitle
                 }
-                registrationPackagesTitleData={registrationPackagesTitleData}
+                handleUpdateBookkeepingPackagesList={
+                  handleUpdateBookkeepingPackagesList
+                }
+                bookkeepingPackagesTitleData={bookkeepingPackagesTitleData}
               />
+
               <Footer
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
@@ -176,34 +187,42 @@ const BusinessRegistration = () => {
       </section>
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "registration-banner" && (
-          <ModalUpdateRegistrationBanner
+        store.isUpdateHome?.modalCode === "bookkeeping-banner" && (
+          <ModalUpdateBookkeepingBanner
             itemEdit={itemEdit}
-            registrationData={registrationData}
+            bookkeepingData={bookkeepingData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "registration-overview" && (
-          <ModalUpdateRegistrationOverview
+        store.isUpdateHome?.modalCode === "bookkeeping-overview" && (
+          <ModalUpdateBookkeepingOverview
             itemEdit={itemEdit}
-            registrationOverviewData={registrationOverviewData}
+            bookkeepingOverviewData={bookkeepingOverviewData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "registration-overview-list" && (
-          <ModalUpdateRegistrationOverviewList
+        store.isUpdateHome?.modalCode === "bookkeeping-overview-list" && (
+          <ModalUpdateBookkeepingOverviewList
             itemEdit={itemEdit}
-            registrationOverviewData={registrationOverviewData}
+            bookkeepingOverviewData={bookkeepingOverviewData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "registration-packages-title" && (
-          <ModalUpdateRegistrationPackagesTitle
+        store.isUpdateHome?.modalCode === "bookkeeping-packages-title" && (
+          <ModalUpdateBookkeepingPackagesTitle
             itemEdit={itemEdit}
-            registrationPackagesTitleData={registrationPackagesTitleData}
+            bookkeepingPackagesTitleData={bookkeepingPackagesTitleData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "bookkeeping-packages-list" && (
+          <ModalUpdateBookkeepingPackagesList
+            itemEdit={itemEdit}
+            bookkeepingPackagesTitleData={bookkeepingPackagesTitleData}
           />
         )}
 
@@ -241,4 +260,4 @@ const BusinessRegistration = () => {
   );
 };
 
-export default BusinessRegistration;
+export default BookkeepingAndCompliance;

@@ -16,9 +16,9 @@ import {
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
 
-const ModalUpdateRegistrationPackagesTitle = ({
+const ModalUpdateBookkeepingOverviewList = ({
   itemEdit,
-  registrationPackagesTitleData,
+  bookkeepingOverviewData,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
@@ -35,16 +35,14 @@ const ModalUpdateRegistrationPackagesTitle = ({
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        registrationPackagesTitleData?.data?.length
-          ? `${apiVersion}/registration-packages-title/${registrationPackagesTitleData.data[0].registration_title_aid}` // update
-          : `${apiVersion}/registration-packages-title`, // create
-        registrationPackagesTitleData?.data?.length ? "put" : "post",
+        bookkeepingOverviewData?.data?.length
+          ? `${apiVersion}/bookkeeping-overview/${bookkeepingOverviewData.data[0].bookkeeping_overview_aid}` // update
+          : `${apiVersion}/bookkeeping-overview`, // create
+        bookkeepingOverviewData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({
-        queryKey: ["registration-packages-title"],
-      });
+      queryClient.invalidateQueries({ queryKey: ["bookkeeping-overview"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -64,13 +62,25 @@ const ModalUpdateRegistrationPackagesTitle = ({
   }, []);
 
   const initVal = {
-    isUpdateRegistrationTitle: itemEdit,
-    registration_title_packages_subtitle:
-      registrationPackagesTitleData?.data?.[0]
-        ?.registration_title_packages_subtitle ?? "",
-    registration_title_packages_title:
-      registrationPackagesTitleData?.data?.[0]
-        ?.registration_title_packages_title ?? "",
+    bookkeepingOverviewUpdate: itemEdit,
+    bookkeeping_overview_list_title_a:
+      bookkeepingOverviewData?.data?.[0]?.bookkeeping_overview_list_title_a ??
+      "",
+    bookkeeping_overview_list_description_a:
+      bookkeepingOverviewData?.data?.[0]
+        ?.bookkeeping_overview_list_description_a ?? "",
+    bookkeeping_overview_list_title_b:
+      bookkeepingOverviewData?.data?.[0]?.bookkeeping_overview_list_title_b ??
+      "",
+    bookkeeping_overview_list_description_b:
+      bookkeepingOverviewData?.data?.[0]
+        ?.bookkeeping_overview_list_description_b ?? "",
+    bookkeeping_overview_list_title_c:
+      bookkeepingOverviewData?.data?.[0]?.bookkeeping_overview_list_title_c ??
+      "",
+    bookkeeping_overview_list_description_c:
+      bookkeepingOverviewData?.data?.[0]
+        ?.bookkeeping_overview_list_description_c ?? "",
   };
 
   const yupSchema = Yup.object({});
@@ -83,7 +93,7 @@ const ModalUpdateRegistrationPackagesTitle = ({
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Registration Packages Title
+            {itemEdit ? "Edit" : "Add"} Bookkeeping Overview
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
@@ -106,17 +116,49 @@ const ModalUpdateRegistrationPackagesTitle = ({
                   <div className="form-input ">
                     <div className="input-wrapper">
                       <InputText
-                        label="Subtitle"
+                        label="Title A"
                         type="text"
-                        name="registration_title_packages_subtitle"
+                        name="bookkeeping_overview_list_title_a"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Description A"
+                        type="text"
+                        name="bookkeeping_overview_list_description_a"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Title"
+                        label="Title B"
                         type="text"
-                        name="registration_title_packages_title"
+                        name="bookkeeping_overview_list_title_b"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Description B"
+                        type="text"
+                        name="bookkeeping_overview_list_description_b"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Title C"
+                        type="text"
+                        name="bookkeeping_overview_list_title_c"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Description C"
+                        type="text"
+                        name="bookkeeping_overview_list_description_c"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -149,4 +191,4 @@ const ModalUpdateRegistrationPackagesTitle = ({
   );
 };
 
-export default ModalUpdateRegistrationPackagesTitle;
+export default ModalUpdateBookkeepingOverviewList;

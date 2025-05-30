@@ -37,9 +37,10 @@ function SamplePrevArrow(props) {
   );
 }
 
-const RegistrationPricing = ({
-  handleUpdateRegistrationPackagesTitle,
-  registrationPackagesTitleData,
+const BookkeepingPricing = ({
+  handleUpdateBookkeepingPackagesTitle,
+  bookkeepingPackagesTitleData,
+  handleUpdateBookkeepingPackagesList,
 }) => {
   const {
     isFetching,
@@ -61,9 +62,8 @@ const RegistrationPricing = ({
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) =>
-        item.packages_category_url === "accounting-business-registration"
-    )?.packages_category_url || "accounting-business-registration";
+      (item) => item.packages_category_url === "accounting-bookkeeping"
+    )?.packages_category_url || "accounting-bookkeeping";
 
   const filteredItems =
     packagesListData?.data?.filter(
@@ -156,26 +156,117 @@ const RegistrationPricing = ({
             <a
               className="absolute cursor-pointer tooltip-btn right-[350px] -top-6 "
               data-tooltip="Edit contents"
-              onClick={handleUpdateRegistrationPackagesTitle}
+              onClick={handleUpdateBookkeepingPackagesTitle}
             >
               <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
             </a>
             <p className="text-light">
-              {registrationPackagesTitleData?.data?.length > 0 &&
-              registrationPackagesTitleData.data[0]
-                ?.registration_title_packages_subtitle
-                ? registrationPackagesTitleData?.data[0]
-                    .registration_title_packages_subtitle
+              {bookkeepingPackagesTitleData?.data?.length > 0 &&
+              bookkeepingPackagesTitleData.data[0]
+                ?.bookkeeping_title_packages_subtitle
+                ? bookkeepingPackagesTitleData?.data[0]
+                    .bookkeeping_title_packages_subtitle
                 : "Subtitle"}
             </p>
-            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              {registrationPackagesTitleData?.data?.length > 0 &&
-              registrationPackagesTitleData.data[0]
-                ?.registration_title_packages_title
-                ? registrationPackagesTitleData?.data[0]
-                    .registration_title_packages_title
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light mb-8">
+              {bookkeepingPackagesTitleData?.data?.length > 0 &&
+              bookkeepingPackagesTitleData.data[0]
+                ?.bookkeeping_title_packages_title
+                ? bookkeepingPackagesTitleData?.data[0]
+                    .bookkeeping_title_packages_title
                 : "Title"}
             </h3>
+            <div className="grid place-items-center text-light">
+              <a
+                className="absolute cursor-pointer tooltip-btn right-[350px] top-[90px] "
+                data-tooltip="Edit contents"
+                onClick={handleUpdateBookkeepingPackagesList}
+              >
+                <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              </a>
+              <h2 className="mb-8 text-primary font-semibold uppercase">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]?.bookkeeping_scope_title
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_scope_title
+                  : "Scope Title"}
+              </h2>
+              <p className="uppercase">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]
+                  ?.bookkeeping_services_title_a
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_services_title_a
+                  : "Services Title A"}
+              </p>
+              <table className="prices mt-5 md:max-w-sm md:mx-auto">
+                <tbody>
+                  <tr className="flex flex-col items-start gap-3">
+                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_a
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <td key={index} className="text-sm flex gap-4 ">
+                          <span>
+                            <FaCheckCircle className="text-light" />
+                          </span>
+                          {list}
+                        </td>
+                      ))}
+                  </tr>
+                </tbody>
+              </table>
+              <p className="uppercase mt-10">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]
+                  ?.bookkeeping_services_title_b
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_services_title_b
+                  : "Services Title B"}
+              </p>
+              <table className="prices mt-5  md:max-w-sm md:mx-auto">
+                <tbody>
+                  <tr className="flex flex-col items-start gap-3">
+                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_b
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <td key={index} className="text-sm flex gap-4 ">
+                          <span>
+                            <FaCheckCircle className="text-light" />
+                          </span>
+                          {list}
+                        </td>
+                      ))}
+                  </tr>
+                </tbody>
+              </table>
+              <p className="uppercase  mt-10">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]
+                  ?.bookkeeping_services_title_c
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_services_title_c
+                  : "Services Title C"}
+              </p>
+              <table className="prices mt-5  md:max-w-sm md:mx-auto">
+                <tbody>
+                  <tr className="flex flex-col items-start gap-3">
+                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_c
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <td key={index} className="text-sm flex gap-4 ">
+                          <span>
+                            <FaCheckCircle className="text-light" />
+                          </span>
+                          {list}
+                        </td>
+                      ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div className="wrapper ">
             {filteredItems.length > 3 ? (
@@ -183,16 +274,15 @@ const RegistrationPricing = ({
                 {filteredItems.map((price, key) => (
                   <div
                     key={key}
-                    className={`priceItem mb-5 relative z-[1] text-center p-10 md:h-[750px]
-                      rounded-lg h-[700px] max-w-[400px] md:w-[400px] ${
-                        price.packages_list_is_highlighted === 1
-                          ? "bg-primary"
-                          : "bg-customGray !text-dark"
-                      } grid place-items-center `}
+                    className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg  max-w-[400px] min-h-[500px] lg:h-[650px]  ${
+                      price.packages_list_is_highlighted === 1
+                        ? "bg-primary"
+                        : "bg-customGray !text-dark"
+                    } grid place-items-center `}
                   >
                     <div className="flex flex-col justify-between">
-                      <div className="">
-                        <div className="title mb-4 min-h-[182px] ">
+                      <div>
+                        <div className="title mb-4 min-h-[182px]">
                           <FaRegThumbsUp className="text-[50px] mx-auto mb-4" />
                           <div className="mb-6">
                             <h3
@@ -281,7 +371,7 @@ const RegistrationPricing = ({
                           </button>
                         </div>
 
-                        <table className="prices my-5 min-h-[300px]">
+                        <table className="prices my-5 min-h-[200px]">
                           <tbody className="">
                             {packagesDetailsData?.data.map((info, key) => {
                               if (
@@ -373,7 +463,7 @@ const RegistrationPricing = ({
                     {filteredItems.map((price, key) => (
                       <div
                         key={key}
-                        className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px]  ${
+                        className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px] ${
                           price.packages_list_is_highlighted === 1
                             ? "bg-primary"
                             : "bg-customGray !text-dark"
@@ -565,4 +655,4 @@ const RegistrationPricing = ({
   );
 };
 
-export default RegistrationPricing;
+export default BookkeepingPricing;

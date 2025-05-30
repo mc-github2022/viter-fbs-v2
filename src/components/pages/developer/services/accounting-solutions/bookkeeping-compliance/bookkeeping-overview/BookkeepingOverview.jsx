@@ -1,59 +1,76 @@
-import React from "react";
+import { FaRegImages } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { webAppOverview } from "./data";
+import { HiPencil } from "react-icons/hi";
 import {
-  apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
-} from "../../../../helpers/functions-general";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import LoadImages from "../../../../partials/LoadImages";
+} from "../../../../../../helpers/functions-general";
+import LoadImages from "../../../../../../partials/LoadImages";
 
-const BookkeepingOverview = () => {
-  const { data: bookkeepingOverviewData } = useQueryData(
-    `${apiVersion}/bookkeeping-overview`, // endpoint
-    "get", // method
-    "bookkeeping-overview", // key
-    {},
-    null,
-    true
-  );
-
+const BookkeepingOverview = ({
+  handleUpdateBookkeepingOverview,
+  handleUpdateBookkeepingOverviewList,
+  bookkeepingOverviewData,
+}) => {
   const bookkeepingOverviewImage = getConvertStringToJSONparseData(
     bookkeepingOverviewData?.data?.[0]?.bookkeeping_overview_img
   );
 
   return (
     <>
-      <section className="BookkeepingOverview py-20 ">
-        <div className="customContainer">
+      <section className="ServiceHrOverview py-20 bg-customGray">
+        <div className="customContainer relative">
+          <a
+            className="absolute cursor-pointer tooltip-btn left-[35rem] top-0"
+            data-tooltip="Edit contents"
+            onClick={handleUpdateBookkeepingOverview}
+          >
+            <FaRegImages className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+          </a>
+
           <p>
             {bookkeepingOverviewData?.data?.length > 0 &&
             bookkeepingOverviewData.data[0]?.bookkeeping_overview_subtitle
               ? bookkeepingOverviewData?.data[0].bookkeeping_overview_subtitle
-              : ""}
+              : "Subtitle"}
           </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
               {bookkeepingOverviewData?.data?.length > 0 &&
               bookkeepingOverviewData.data[0]?.bookkeeping_overview_title
                 ? bookkeepingOverviewData?.data[0].bookkeeping_overview_title
-                : ""}
+                : "Title"}
             </span>
           </h2>
+
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
-            <div>
-              {bookkeepingOverviewImage.map((img, index) => (
-                <LoadImages
-                  url={`${googleHDViewLink}${img?.id}`}
-                  className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
-                  alt="Right Choice for Your Bookkeeping & Business Compliance needs."
-                  key={index}
-                />
-              ))}
+            <div className="relative">
+              {bookkeepingOverviewData?.data?.length > 0 &&
+              bookkeepingOverviewImage?.length > 0 ? (
+                <>
+                  {bookkeepingOverviewImage.map((img, index) => (
+                    <LoadImages
+                      url={`${googleHDViewLink}${img?.id}`}
+                      className="mb-12 w-fit lg:h-[497px] mx-auto"
+                      alt={`Our Web Application ${index + 1}`}
+                      key={index}
+                    />
+                  ))}
+                </>
+              ) : (
+                <div className=" w-[619px] lg:h-[497px] object-cover object-top place-content-center place-items-center bg-gray-300 ">
+                  <FaRegImages className="text-[200px] text-gray-400" />
+                </div>
+              )}
             </div>
-            <div>
+            <div className="mt-14 lg:mt-0">
+              <a
+                className="absolute cursor-pointer tooltip-btn right-6 top-16 "
+                data-tooltip="Edit contents"
+                onClick={handleUpdateBookkeepingOverviewList}
+              >
+                <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              </a>
               <ul>
                 <li className="flex items-start gap-4 text-dark mb-6">
                   <div className="flex gap-4 items-start">
@@ -67,7 +84,7 @@ const BookkeepingOverview = () => {
                           ?.bookkeeping_overview_list_title_a
                           ? bookkeepingOverviewData?.data[0]
                               .bookkeeping_overview_list_title_a
-                          : ""}
+                          : "Title A"}
                       </h3>
                       <p className="text-justify">
                         {bookkeepingOverviewData?.data?.length > 0 &&
@@ -75,7 +92,7 @@ const BookkeepingOverview = () => {
                           ?.bookkeeping_overview_list_description_a
                           ? bookkeepingOverviewData?.data[0]
                               .bookkeeping_overview_list_description_a
-                          : ""}
+                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -92,7 +109,7 @@ const BookkeepingOverview = () => {
                           ?.bookkeeping_overview_list_title_b
                           ? bookkeepingOverviewData?.data[0]
                               .bookkeeping_overview_list_title_b
-                          : ""}
+                          : "Title B"}
                       </h3>
                       <p className="text-justify">
                         {bookkeepingOverviewData?.data?.length > 0 &&
@@ -100,7 +117,7 @@ const BookkeepingOverview = () => {
                           ?.bookkeeping_overview_list_description_b
                           ? bookkeepingOverviewData?.data[0]
                               .bookkeeping_overview_list_description_b
-                          : ""}
+                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -117,7 +134,7 @@ const BookkeepingOverview = () => {
                           ?.bookkeeping_overview_list_title_c
                           ? bookkeepingOverviewData?.data[0]
                               .bookkeeping_overview_list_title_c
-                          : ""}
+                          : "Title C"}
                       </h3>
                       <p className="text-justify">
                         {bookkeepingOverviewData?.data?.length > 0 &&
@@ -125,7 +142,7 @@ const BookkeepingOverview = () => {
                           ?.bookkeeping_overview_list_description_c
                           ? bookkeepingOverviewData?.data[0]
                               .bookkeeping_overview_list_description_c
-                          : ""}
+                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>

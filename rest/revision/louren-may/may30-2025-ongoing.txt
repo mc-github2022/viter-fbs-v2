@@ -1,0 +1,65 @@
+Upload JSX
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/newsletter/create.php
+            -> rest/v1/controllers/developer/newsletter/update.php
+            -> rest/v1/controllers/developer/mailer-log/read.php
+            -> rest/v1/controllers/developer/mailer-log/functions.php
+            -> rest/v1/controllers/developer/sending-newsletter/create.php
+            -> rest/v1/controllers/developer/services/accounting-solutions/business-registration/registration-banner
+            -> rest/v1/controllers/developer/services/accounting-solutions/business-registration/registration-overview
+            -> rest/v1/controllers/developer/services/accounting-solutions/business-registration/registration-pricing
+            -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-banner
+            -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-overview
+            -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-pricing
+        
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/newsletter/Newsletter.php
+            -> rest/v1/models/developer/sending-newsletter/SendingNewsletter.php
+            -> rest/v1/models/developer/services/accounting-solutions/business-registration/RegistrationBanner.php
+            -> rest/v1/models/developer/services/accounting-solutions/business-registration/RegistrationOverview.php
+            -> rest/v1/models/developer/services/accounting-solutions/business-registration/RegistrationPackageTitle.php
+            -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingBanner.php
+            -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingOverview.php
+            -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingPackageTitle.php
+
+        * HTACESS
+            -> # SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - BANNER is added
+            -> # SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - OVERVIEW is added
+            -> # SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - PACKAGES is added
+            -> # SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - BANNER is added
+            -> # SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - OVERVIEW is added
+            -> # SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - PACKAGES is added
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_newsletter.sql
+                note: column is added
+                    `newsletter_email_type` varchar(50) NOT NULL,
+                    `newsletter_firstname` varchar(20) NOT NULL,
+                    `newsletter_firstname_updated` varchar(20) NOT NULL,
+                    `newsletter_role` varchar(20) NOT NULL,
+                    `newsletter_role_updated` varchar(20) NOT NULL,
+            -> rest/db-backup/fbsv2_sending_email_log.sql
+                note: column is added
+                    `sending_email_log_firstname` varchar(20) NOT NULL,
+                    `sending_email_log_role` varchar(20) NOT NULL,
+            -> rest/db-backup/fbsv2_services_registration_banner.sql
+            -> rest/db-backup/fbsv2_services_registration_overview.sql
+            -> rest/db-backup/fbsv2_services_registration_pricing_title.sql
+            -> rest/db-backup/fbsv2_services_bookkeeping_banner.sql
+            -> rest/db-backup/fbsv2_services_bookkeeping_overview.sql
+            -> rest/db-backup/fbsv2_services_bookkeeping_pricing_title.sql
+

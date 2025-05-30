@@ -1,27 +1,57 @@
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const BusinessRegOverview = () => {
+  const { data: registrationOverviewData } = useQueryData(
+    `${apiVersion}/registration-overview`, // endpoint
+    "get", // method
+    "registration-overview", // key
+    {},
+    null,
+    true
+  );
+
+  const registrationOverviewImage = getConvertStringToJSONparseData(
+    registrationOverviewData?.data?.[0]?.registration_overview_img
+  );
+
   return (
     <>
       <section className="BusinessRegOverview py-20 ">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {registrationOverviewData?.data?.length > 0 &&
+            registrationOverviewData.data[0]?.registration_overview_subtitle
+              ? registrationOverviewData?.data[0].registration_overview_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {registrationOverviewData?.data?.length > 0 &&
+              registrationOverviewData.data[0]?.registration_overview_title
+                ? registrationOverviewData?.data[0].registration_overview_title
+                : ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
-                alt="Right Choice for Your Business Registration Needs."
-              />
+              {registrationOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
+                  alt="Right Choice for Your Business Registration Needs."
+                  key={index}
+                />
+              ))}
             </div>
             <div>
               <ul>
@@ -32,10 +62,20 @@ const BusinessRegOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {registrationOverviewData?.data?.length > 0 &&
+                        registrationOverviewData.data[0]
+                          ?.registration_overview_list_title_a
+                          ? registrationOverviewData?.data[0]
+                              .registration_overview_list_title_a
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {registrationOverviewData?.data?.length > 0 &&
+                        registrationOverviewData.data[0]
+                          ?.registration_overview_list_description_a
+                          ? registrationOverviewData?.data[0]
+                              .registration_overview_list_description_a
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -47,10 +87,20 @@ const BusinessRegOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {registrationOverviewData?.data?.length > 0 &&
+                        registrationOverviewData.data[0]
+                          ?.registration_overview_list_title_b
+                          ? registrationOverviewData?.data[0]
+                              .registration_overview_list_title_b
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewBtext}
+                        {registrationOverviewData?.data?.length > 0 &&
+                        registrationOverviewData.data[0]
+                          ?.registration_overview_list_description_b
+                          ? registrationOverviewData?.data[0]
+                              .registration_overview_list_description_b
+                          : ""}
                       </p>
                     </div>
                   </div>
@@ -62,10 +112,20 @@ const BusinessRegOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        {registrationOverviewData?.data?.length > 0 &&
+                        registrationOverviewData.data[0]
+                          ?.registration_overview_list_title_c
+                          ? registrationOverviewData?.data[0]
+                              .registration_overview_list_title_c
+                          : ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewCtext}
+                        {registrationOverviewData?.data?.length > 0 &&
+                        registrationOverviewData.data[0]
+                          ?.registration_overview_list_description_c
+                          ? registrationOverviewData?.data[0]
+                              .registration_overview_list_description_c
+                          : ""}
                       </p>
                     </div>
                   </div>

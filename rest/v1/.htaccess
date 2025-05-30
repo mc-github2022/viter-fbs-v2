@@ -284,6 +284,30 @@ RewriteRule ^asset-scope/([0-9]+)$ controllers/developer/services/web-applicatio
 RewriteRule ^asset-titles$ controllers/developer/services/web-application/asset-inventory-system/asset-titles/assetTitles.php [L]
 RewriteRule ^asset-titles/([0-9]+)$ controllers/developer/services/web-application/asset-inventory-system/asset-titles/assetTitles.php?asset_titlesid=$1 [L]
 
+# SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - BANNER
+RewriteRule ^registration$ controllers/developer/services/accounting-solutions/business-registration/registration-banner/registrationBanner.php [L]
+RewriteRule ^registration/([0-9]+)$ controllers/developer/services/accounting-solutions/business-registration/registration-banner/registrationBanner.php?registration_bannerid=$1 [L]
+
+# SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - OVERVIEW
+RewriteRule ^registration-overview$ controllers/developer/services/accounting-solutions/business-registration/registration-overview/registrationOverview.php [L]
+RewriteRule ^registration-overview/([0-9]+)$ controllers/developer/services/accounting-solutions/business-registration/registration-overview/registrationOverview.php?registration_overviewid=$1 [L]
+
+# SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - PACKAGES
+RewriteRule ^registration-packages-title$ controllers/developer/services/accounting-solutions/business-registration/registration-pricing/registrationPricing.php [L]
+RewriteRule ^registration-packages-title/([0-9]+)$ controllers/developer/services/accounting-solutions/business-registration/registration-pricing/registrationPricing.php?registration_titlesid=$1 [L]
+
+# SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - BANNER
+RewriteRule ^bookkeeping$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-banner/bookkeepingBanner.php [L]
+RewriteRule ^bookkeeping/([0-9]+)$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-banner/bookkeepingBanner.php?bookkeeping_bannerid=$1 [L]
+
+# SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - OVERVIEW
+RewriteRule ^bookkeeping-overview$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-overview/bookkeepingOverview.php [L]
+RewriteRule ^bookkeeping-overview/([0-9]+)$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-overview/bookkeepingOverview.php?bookkeeping_overviewid=$1 [L]
+
+# SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - PACKAGES
+RewriteRule ^bookkeeping-packages-title$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-pricing/bookkeepingPricing.php [L]
+RewriteRule ^bookkeeping-packages-title/([0-9]+)$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-pricing/bookkeepingPricing.php?bookkeeping_titlesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

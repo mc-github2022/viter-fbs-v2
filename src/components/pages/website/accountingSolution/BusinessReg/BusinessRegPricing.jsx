@@ -72,6 +72,15 @@ const BusinessRegPricing = ({ pageName }) => {
     true
   );
 
+  const { data: registrationPackagesTitleData } = useQueryData(
+    `${apiVersion}/registration-packages-title`, // endpoint
+    "get", // method
+    "registration-packages-title", // key
+    {},
+    null,
+    true
+  );
+
   const selectedCategory =
     packagesListData?.data?.find(
       (item) =>
@@ -166,9 +175,21 @@ const BusinessRegPricing = ({ pageName }) => {
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[0]"></div>
         <div className="customContainer">
           <div className="mb-10 lg:mb-20 text-center relative z-[3]">
-            <p className="text-light">Choose what's best for your needs</p>
+            <p className="text-light">
+              {registrationPackagesTitleData?.data?.length > 0 &&
+              registrationPackagesTitleData.data[0]
+                ?.registration_title_packages_subtitle
+                ? registrationPackagesTitleData?.data[0]
+                    .registration_title_packages_subtitle
+                : ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Suitable Pricing Plans
+              {registrationPackagesTitleData?.data?.length > 0 &&
+              registrationPackagesTitleData.data[0]
+                ?.registration_title_packages_title
+                ? registrationPackagesTitleData?.data[0]
+                    .registration_title_packages_title
+                : ""}
             </h3>
           </div>
           <div className="">

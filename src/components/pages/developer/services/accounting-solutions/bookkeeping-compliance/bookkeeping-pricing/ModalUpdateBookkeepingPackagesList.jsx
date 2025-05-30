@@ -16,9 +16,9 @@ import {
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
 
-const ModalUpdateRegistrationPackagesTitle = ({
+const ModalUpdateBookkeepingPackagesList = ({
   itemEdit,
-  registrationPackagesTitleData,
+  bookkeepingPackagesTitleData,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
@@ -35,15 +35,15 @@ const ModalUpdateRegistrationPackagesTitle = ({
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        registrationPackagesTitleData?.data?.length
-          ? `${apiVersion}/registration-packages-title/${registrationPackagesTitleData.data[0].registration_title_aid}` // update
-          : `${apiVersion}/registration-packages-title`, // create
-        registrationPackagesTitleData?.data?.length ? "put" : "post",
+        bookkeepingPackagesTitleData?.data?.length
+          ? `${apiVersion}/bookkeeping-packages-title/${bookkeepingPackagesTitleData.data[0].bookkeeping_title_aid}` // update
+          : `${apiVersion}/bookkeeping-packages-title`, // create
+        bookkeepingPackagesTitleData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["registration-packages-title"],
+        queryKey: ["bookkeeping-packages-title"],
       });
       if (!data.success) {
         console.log("Error");
@@ -64,13 +64,27 @@ const ModalUpdateRegistrationPackagesTitle = ({
   }, []);
 
   const initVal = {
-    isUpdateRegistrationTitle: itemEdit,
-    registration_title_packages_subtitle:
-      registrationPackagesTitleData?.data?.[0]
-        ?.registration_title_packages_subtitle ?? "",
-    registration_title_packages_title:
-      registrationPackagesTitleData?.data?.[0]
-        ?.registration_title_packages_title ?? "",
+    isUpdateBookkeepingTitle: itemEdit,
+    bookkeeping_scope_title:
+      bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_scope_title ?? "",
+    bookkeeping_services_title_a:
+      bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_title_a ??
+      "",
+    bookkeeping_services_list_a:
+      bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_list_a ??
+      "",
+    bookkeeping_services_title_b:
+      bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_title_b ??
+      "",
+    bookkeeping_services_list_b:
+      bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_list_b ??
+      "",
+    bookkeeping_services_title_c:
+      bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_title_c ??
+      "",
+    bookkeeping_services_list_c:
+      bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_list_c ??
+      "",
   };
 
   const yupSchema = Yup.object({});
@@ -83,7 +97,7 @@ const ModalUpdateRegistrationPackagesTitle = ({
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Registration Packages Title
+            {itemEdit ? "Edit" : "Add"} Bookkeeping Packages List
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
@@ -106,17 +120,57 @@ const ModalUpdateRegistrationPackagesTitle = ({
                   <div className="form-input ">
                     <div className="input-wrapper">
                       <InputText
-                        label="Subtitle"
+                        label="Scope of Services"
                         type="text"
-                        name="registration_title_packages_subtitle"
+                        name="bookkeeping_scope_title"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Title"
+                        label="Services Title A"
                         type="text"
-                        name="registration_title_packages_title"
+                        name="bookkeeping_services_title_a"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Services List A"
+                        type="text"
+                        name="bookkeeping_services_list_a"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Services Title B"
+                        type="text"
+                        name="bookkeeping_services_title_b"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Services List B"
+                        type="text"
+                        name="bookkeeping_services_list_b"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Services Title C"
+                        type="text"
+                        name="bookkeeping_services_title_c"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Services List C"
+                        type="text"
+                        name="bookkeeping_services_list_c"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -149,4 +203,4 @@ const ModalUpdateRegistrationPackagesTitle = ({
   );
 };
 
-export default ModalUpdateRegistrationPackagesTitle;
+export default ModalUpdateBookkeepingPackagesList;

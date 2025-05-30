@@ -43,6 +43,7 @@ import AssetInventorySystem from "../components/pages/developer/services/web-app
 import Newsletter from "../components/pages/developer/subscribers/newsletter/Newsletter";
 import AccountingSolutions from "../components/pages/developer/services/accounting-solutions/AccountingSolutions";
 import BusinessRegistration from "../components/pages/developer/services/accounting-solutions/business-registration/BusinessRegistration";
+import BookkeepingAndCompliance from "../components/pages/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingAndCompliance";
 
 export const routesDeveloper = [
   {
@@ -314,6 +315,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <BusinessRegistration />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/accounting-solutions/bookkeeping-compliance`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <BookkeepingAndCompliance />
       </ProtectedRouteDeveloper>
     ),
   },

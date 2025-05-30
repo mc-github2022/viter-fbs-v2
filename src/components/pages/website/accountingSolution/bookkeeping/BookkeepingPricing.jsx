@@ -17,21 +17,6 @@ function SampleNextArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      // style={{
-      //   position: "absolute",
-      //   color: "white",
-      //   top: "50%",
-      //   transform: "translateY(-50%)",
-      //   right: "-20px",
-      //   fontSize: "3rem",
-      //   cursor: "pointer",
-      //   background: "#ac1f72",
-      //   borderRadius: "50%",
-      //   width: "48px",
-      //   height: "48px",
-      //   display: "grid",
-      //   placeItems: "center",
-      // }}
       onClick={onClick}
       className="absolute text-light top-[20%] -translate-y-[50%] right-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center
       md:top-[50%]"
@@ -45,22 +30,6 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      // style={{
-      //   position: "absolute",
-      //   color: "white",
-      //   top: "50%",
-      //   transform: "translateY(-50%)",
-      //   left: "-20px",
-      //   fontSize: "3rem",
-      //   zIndex: "1",
-      //   cursor: "pointer",
-      //   background: "#ac1f72",
-      //   borderRadius: "50%",
-      //   width: "48px",
-      //   height: "48px",
-      //   display: "grid",
-      //   placeItems: "center",
-      // }}
       onClick={onClick}
       className="absolute text-light top-[20%] -translate-y-[50%] left-[-20px] text-[3rem] cursor-pointer bg-primary rounded-full w-[48px] h-[48px] grid place-items-center z-10
       md:top-[50%]"
@@ -98,6 +67,15 @@ const BookkeepingPricing = ({ pageName }) => {
     `${apiVersion}/packages-list`, // endpoint
     "get", // method
     "packages-list", // key
+    {},
+    null,
+    true
+  );
+
+  const { data: bookkeepingPackagesTitleData } = useQueryData(
+    `${apiVersion}/bookkeeping-packages-title`, // endpoint
+    "get", // method
+    "bookkeeping-packages-title", // key
     {},
     null,
     true
@@ -194,108 +172,105 @@ const BookkeepingPricing = ({ pageName }) => {
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[0]"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
-            <p className="text-light">Choose what's best for your needs</p>
+            <p className="text-light">
+              {bookkeepingPackagesTitleData?.data?.length > 0 &&
+              bookkeepingPackagesTitleData.data[0]
+                ?.bookkeeping_title_packages_subtitle
+                ? bookkeepingPackagesTitleData?.data[0]
+                    .bookkeeping_title_packages_subtitle
+                : ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light mb-8">
-              Suitable Pricing Plans
+              {bookkeepingPackagesTitleData?.data?.length > 0 &&
+              bookkeepingPackagesTitleData.data[0]
+                ?.bookkeeping_title_packages_title
+                ? bookkeepingPackagesTitleData?.data[0]
+                    .bookkeeping_title_packages_title
+                : ""}
             </h3>
             <div className="grid place-items-center text-light">
-              <h2 className="mb-8 text-primary font-semibold">
-                SCOPE OF SERVICES
+              <h2 className="mb-8 text-primary font-semibold uppercase">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]?.bookkeeping_scope_title
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_scope_title
+                  : "Scope Title"}
               </h2>
-              <p className="">MONTHLY SERVICE:</p>
-              <table className="prices mt-5  md:max-w-sm md:mx-auto">
+              <p className="uppercase">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]
+                  ?.bookkeeping_services_title_a
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_services_title_a
+                  : ""}
+              </p>
+              <table className="prices mt-5 md:max-w-sm md:mx-auto">
                 <tbody>
-                  <tr className="flex items-start gap-3">
-                    <td className="translate-y-1">
-                      <FaCheckCircle className="text-light" />
-                    </td>
-                    <td>
-                      <p>Bookkeeping</p>
-                    </td>
-                  </tr>
-                  <tr className="flex items-start gap-3">
-                    <td className="translate-y-1">
-                      <FaCheckCircle className="text-light" />
-                    </td>
-                    <td>
-                      <p>Mandatory Government Deductions & Contributions</p>
-                    </td>
-                  </tr>
-                  <tr className="flex items-start gap-3">
-                    <td className="translate-y-1">
-                      <FaCheckCircle className="text-light" />
-                    </td>
-                    <td>
-                      <p>Financial Reports</p>
-                    </td>
-                  </tr>
-                  <tr className="flex items-start gap-3">
-                    <td className="translate-y-1">
-                      <FaCheckCircle className="text-light" />
-                    </td>
-                    <td>
-                      <p>Filing of BIR Tax Returns</p>
-                    </td>
+                  <tr className="flex flex-col items-start gap-3">
+                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_a
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <td key={index} className="text-sm flex gap-4 ">
+                          <span>
+                            <FaCheckCircle className="text-light" />
+                          </span>
+                          {list}
+                        </td>
+                      ))}
                   </tr>
                 </tbody>
               </table>
-              <p className="mt-10">QUARTERLY SERVICE:</p>
+              <p className="uppercase mt-10">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]
+                  ?.bookkeeping_services_title_b
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_services_title_b
+                  : ""}
+              </p>
               <table className="prices mt-5  md:max-w-sm md:mx-auto">
                 <tbody>
-                  <tr className="flex items-start gap-3">
-                    <td className="translate-y-1">
-                      <FaCheckCircle className="text-light" />
-                    </td>
-                    <td>
-                      <p>BIR Compliance</p>
-                    </td>
+                  <tr className="flex flex-col items-start gap-3">
+                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_b
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <td key={index} className="text-sm flex gap-4 ">
+                          <span>
+                            <FaCheckCircle className="text-light" />
+                          </span>
+                          {list}
+                        </td>
+                      ))}
                   </tr>
                 </tbody>
               </table>
-              <p className="mt-10">ANNUAL SERVICE:</p>
+              <p className="uppercase  mt-10">
+                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+                bookkeepingPackagesTitleData.data[0]
+                  ?.bookkeeping_services_title_c
+                  ? bookkeepingPackagesTitleData?.data[0]
+                      .bookkeeping_services_title_c
+                  : ""}
+              </p>
               <table className="prices mt-5  md:max-w-sm md:mx-auto">
                 <tbody>
-                  <tr className="flex items-start gap-3">
-                    <td className="translate-y-1">
-                      <FaCheckCircle className="text-light" />
-                    </td>
-                    <td>
-                      <p>Renewals (Business Permit, BIR)</p>
-                    </td>
+                  <tr className="flex flex-col items-start gap-3">
+                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_c
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <td key={index} className="text-sm flex gap-4 ">
+                          <span>
+                            <FaCheckCircle className="text-light" />
+                          </span>
+                          {list}
+                        </td>
+                      ))}
                   </tr>
                 </tbody>
               </table>
-              {/* <ul className="text-left [&>li]:gap-2 my-4">
-                <li className="flex items-center">
-                  <FaCheckCircle className="text-light" />
-                  <p>Bookkeeping</p>
-                </li>
-                <li className="flex items-center">
-                  <FaCheckCircle className="text-light" /> Mandatory Government
-                  Deductions & Contributions
-                </li>
-                <li className="flex items-center">
-                  <FaCheckCircle className="text-light" /> Financial Reports
-                </li>
-                <li className="flex items-center">
-                  <FaCheckCircle className="text-light" /> Filing of BIR Tax
-                  Returns
-                </li>
-                <p className="text-center mt-7">QUARTERLY SERVICE:</p>
-                <ul className="text-left [&>li]:gap-2 my-4">
-                  <li className="flex items-center">
-                    <FaCheckCircle className="text-light" />
-                    <p>BIR Compliance</p>
-                  </li>
-                </ul>
-                <p className="text-center mt-7">ANNUAL SERVICE:</p>
-                <ul className="text-left [&>li]:gap-2 my-4">
-                  <li className="flex items-center">
-                    <FaCheckCircle className="text-light" />
-                    <p>Renewals (Business Permit, BIR)</p>
-                  </li>
-                </ul>
-              </ul> */}
             </div>
           </div>
           <div className="">
@@ -392,15 +367,15 @@ const BookkeepingPricing = ({ pageName }) => {
                           </div>
 
                           <div className="md:absolute md:left-0 md:right-0 md:bottom-0 md:my-12">
-                          <button
-                            onClick={() =>
-                              handleForm(price.packages_list_title)
-                            }
-                            className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary uppercase"
-                          >
-                            {price.packages_list_button_text}
-                          </button>
-                        </div>
+                            <button
+                              onClick={() =>
+                                handleForm(price.packages_list_title)
+                              }
+                              className="btn mt-5 px-5 bg-primary text-light font-bold border-light border-2 hover:bg-light hover:text-primary hover:border-primary uppercase"
+                            >
+                              {price.packages_list_button_text}
+                            </button>
+                          </div>
 
                           <table className="prices my-5 min-h-[200px]">
                             <tbody className="">
@@ -484,8 +459,6 @@ const BookkeepingPricing = ({ pageName }) => {
                             </tbody>
                           </table>
                         </div>
-
-                        
                       </div>
                     </div>
                   ))}
