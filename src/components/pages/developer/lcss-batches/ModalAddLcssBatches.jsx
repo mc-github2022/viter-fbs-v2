@@ -164,11 +164,12 @@ const ModalAddLcssBatches = ({ setIsAdd, itemEdit }) => {
                 ),
               };
               const photoUpload = await uploadMultiplePhoto();
-              setLoading(false);
+
               if (photoUpload?.success || !photoUpload?.success) {
                 setLoading(false);
               }
               if (!loading) console.log(data);
+              setLoading(false);
               mutation.mutate(data);
             }}
           >
