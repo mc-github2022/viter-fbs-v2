@@ -64,7 +64,7 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
                     {donationOverviewData?.data?.length > 0 &&
                     donationOverviewData.data[0]?.donation_overview_button_text

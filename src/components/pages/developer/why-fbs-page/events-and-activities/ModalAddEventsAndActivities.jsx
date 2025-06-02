@@ -244,6 +244,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values) => {
+              setLoading(true);
               const data = {
                 ...values,
                 events_activities_is_active: isDraft ? 0 : 1,

@@ -44,6 +44,8 @@ import Newsletter from "../components/pages/developer/subscribers/newsletter/New
 import AccountingSolutions from "../components/pages/developer/services/accounting-solutions/AccountingSolutions";
 import BusinessRegistration from "../components/pages/developer/services/accounting-solutions/business-registration/BusinessRegistration";
 import BookkeepingAndCompliance from "../components/pages/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingAndCompliance";
+import LearningCenterSolutions from "../components/pages/developer/services/learning-center-solutions/LearningCenterSolutions";
+import CollegeOnTheJobTraining from "../components/pages/developer/services/learning-center-solutions/college-on-the-job-training/CollegeOnTheJobTraining";
 
 export const routesDeveloper = [
   {
@@ -323,6 +325,22 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <BookkeepingAndCompliance />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/lcss`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <LearningCenterSolutions />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/lcss/college-on-the-job-training`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <CollegeOnTheJobTraining />
       </ProtectedRouteDeveloper>
     ),
   },

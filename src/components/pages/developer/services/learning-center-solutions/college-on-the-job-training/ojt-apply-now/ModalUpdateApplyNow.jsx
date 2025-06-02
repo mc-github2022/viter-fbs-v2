@@ -1,30 +1,36 @@
 import React from "react";
-import { StoreContext } from "../../../store/StoreContext";
-import useUploadMultiplePhoto from "../../../custom-hooks/useUploadMultiplePhoto";
+
+import * as Yup from "yup";
+import { GrFormClose } from "react-icons/gr";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   googleViewLink,
-} from "../../../helpers/functions-general";
+} from "../../../../../../helpers/functions-general";
+import useUploadMultiplePhoto from "../../../../../../custom-hooks/useUploadMultiplePhoto";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryData } from "../../../helpers/queryData";
-import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
-import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
-import { FaTrash } from "react-icons/fa";
-import LoadImages from "../../../partials/LoadImages";
+import {
+  setError,
+  setIsUpdateHome,
+  setMessage,
+  setSuccess,
+} from "../../../../../../store/StoreAction";
+import { queryData } from "../../../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../../../partials/dashboard/ModalAddWrapper";
+import { Form, Formik } from "formik";
 import {
   InputFileUpload,
-  InputSelect,
   InputText,
-} from "../../../helpers/FormInputs";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import { Form, Formik } from "formik";
-import { GrFormClose } from "react-icons/gr";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import * as Yup from "yup";
+  InputTextArea,
+} from "../../../../../../helpers/FormInputs";
+import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
+import LoadImages from "../../../../../../partials/LoadImages";
+import { FaTrash } from "react-icons/fa";
+import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
+import { StoreContext } from "../../../../../../store/StoreContext";
 
-const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
+const ModalUpdateApplyNow = ({ itemEdit, ojtApplyNowData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
@@ -47,7 +53,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
     setPhotoArrayList,
     fieldValue = ""
   ) => {
-    handleChangeMultiplePhoto(e, 40);
+    handleChangeMultiplePhoto(e, 1);
     const files = e.target.files;
     if (files.length > 3) return e;
     let myFiles = Array.from(files);
@@ -76,7 +82,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   const handleClose = () => {
     setAnimate("translate-x-full");
     setTimeout(() => {
-      dispatch(setIsAdd(false));
+      dispatch(setIsUpdateHome(false));
     }, 200);
   };
 
@@ -85,21 +91,21 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        itemEdit
-          ? `${apiVersion}/partners/${itemEdit.partners_aid}` // update
-          : `${apiVersion}/partners`, // create
-        itemEdit ? "put" : "post",
+        ojtApplyNowData?.data?.length
+          ? `${apiVersion}/partnerWithUs/${ojtApplyNowData.data[0].ojt_apply_aid}` // update
+          : `${apiVersion}/partnerWithUs`, // create
+        ojtApplyNowData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["partners"] });
+      queryClient.invalidateQueries({ queryKey: ["partnerWithUs"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
         dispatch(setSuccess(false));
       } else {
         console.log("Success");
-        dispatch(setIsAdd(false));
+        dispatch(setIsUpdateHome(false));
         dispatch(setSuccess(true));
         dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
       }
@@ -108,24 +114,30 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
 
   React.useEffect(() => {
     setAnimate("");
-    if (itemEdit) {
-      const photos = getConvertStringToJSONparseData(itemEdit.partners_img);
+    if (ojtApplyNowData) {
+      const photos = getConvertStringToJSONparseData(
+        ojtApplyNowData?.data?.[0]?.ojt_apply_img
+      );
       setPhotoArrayList(photos);
     }
   }, []);
 
   const initVal = {
-    partners_name: itemEdit ? itemEdit.partners_name : "",
-    partners_page: itemEdit ? itemEdit.partners_page : "",
-    partners_img: itemEdit ? itemEdit.partners_img : "",
+    isUpdateApplyNow: itemEdit,
+    ojt_apply_subtitle: ojtApplyNowData?.data?.[0]?.ojt_apply_subtitle ?? "",
+    ojt_apply_title: ojtApplyNowData?.data?.[0]?.ojt_apply_title ?? "",
+    ojt_apply_requirement_list:
+      ojtApplyNowData?.data?.[0]?.ojt_apply_requirement_list ?? "",
+    ojt_apply_button_text:
+      ojtApplyNowData?.data?.[0]?.ojt_apply_button_text ?? "",
+    ojt_apply_img: ojtApplyNowData?.data?.[0]?.ojt_apply_img ?? "",
 
-    partners_img_old: itemEdit ? itemEdit.partners_img : "",
+    ojt_apply_img_old: ojtApplyNowData?.data?.[0]?.ojt_apply_img ?? "",
     pendingDeleteFile: [],
   };
 
-  const yupSchema = Yup.object({
-    partners_page: Yup.string().required("Required"),
-  });
+  const yupSchema = Yup.object({});
+
   return (
     <>
       <ModalAddWrapper
@@ -133,7 +145,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
         handleClose={handleClose}
       >
         <div className="modal-title">
-          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Partner</h2>
+          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} OJT Apply Now</h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
           </button>
@@ -146,7 +158,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
               setLoading(true);
               const data = {
                 ...values,
-                partners_img: Array.from(photoArrayList).map((item) =>
+                ojt_apply_img: Array.from(photoArrayList).map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -154,12 +166,11 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                 ),
               };
               const photoUpload = await uploadMultiplePhoto();
-
+              setLoading(false);
               if (photoUpload?.success || !photoUpload?.success) {
                 setLoading(false);
               }
               if (!loading) console.log(data);
-              setLoading(false);
               mutation.mutate(data);
             }}
           >
@@ -167,7 +178,42 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
               return (
                 <Form className="modal-form">
                   <div className="form-input">
-                    <div className="input-wrapper">
+                    <div className=" relative">
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Subtitle"
+                          type="text"
+                          name="ojt_apply_subtitle"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Title"
+                          type="text"
+                          name="ojt_apply_title"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+
+                      <div className="input-wrapper">
+                        <InputTextArea
+                          label="Description"
+                          type="text"
+                          name="ojt_apply_requirement_list"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Button Text"
+                          type="text"
+                          name="ojt_apply_button_text"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                    </div>
+                    <div className="input-wrapper h-[475px] overflow-auto">
                       <span className="top-20 px-2 text-dark text-[12px]">
                         Upload Image
                       </span>
@@ -185,18 +231,19 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                         </span>
 
                         <InputFileUpload
-                          label="Upload Banner Image"
+                          label="Upload Image"
                           name="File"
                           type="file"
                           id="myFile"
                           accept="*"
                           title="Upload File"
+                          multiple
                           onChange={(e) =>
                             handleChangeFileUpload(
                               e,
                               props,
                               setPhotoArrayList,
-                              "partners_img"
+                              "ojt_apply_img"
                             )
                           }
                           onDrop={(e) =>
@@ -204,7 +251,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "partners_img"
+                              "ojt_apply_img"
                             )
                           }
                           disabled={mutation.isPending || loading}
@@ -212,7 +259,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                         />
                       </div>
 
-                      <div className="relative mb-6 w-[300px] ">
+                      <div className="relative mb-6  ">
                         <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
                           {photoArrayList?.length > 0 &&
                             Array.from(photoArrayList).map((item, key) => {
@@ -224,7 +271,7 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                               return (
                                 <React.Fragment key={key}>
                                   <li
-                                    className={`relative z-10  w-48 group cursor-pointer overflow-hidden ${
+                                    className={`relative z-10 h-[300px] w-[300px] group cursor-pointer overflow-hidden ${
                                       (mutation.isPending || loading) &&
                                       `!cursor-not-allowed`
                                     }`}
@@ -279,80 +326,8 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
                         </ol>
                       </div>
                     </div>
-                    <div className=" ">
-                      <div className="input-wrapper">
-                        <InputSelect
-                          label="*Page Name"
-                          type="text"
-                          name="partners_page"
-                          disabled={mutation.isPending}
-                        >
-                          <option value="" disabled>
-                            Select Category
-                          </option>
-                          <option value="Home Page">Home Page</option>
-                          <option value="Why Work With Us">
-                            Why Work With Us
-                          </option>
-                          <option value="HR Information System">
-                            HR Information System
-                          </option>
-                          <option value="Online Payroll System">
-                            Online Payroll System
-                          </option>
-                          <option value="School Enrollment System">
-                            School Enrollment System
-                          </option>
-                          <option value="Online Payment Integration">
-                            Online Payment Integration
-                          </option>
-                          <option value="Online Donation System">
-                            Online Donation System
-                          </option>
-                          <option value="Asset Inventory System">
-                            Asset Inventory System
-                          </option>
-                          <option value="Business Registration">
-                            Business Registration
-                          </option>
-                          <option value="Bookkeeping / Compliance">
-                            Bookkeeping / Compliance
-                          </option>
-                          <option value="Administrative">Administrative</option>
-                          <option value="Business Support">
-                            Business Support
-                          </option>
-                          <option value="Marketing">Marketing</option>
-                          <option value="College On-the-job- Training">
-                            College On-the-job- Training
-                          </option>
-                          <option value="High School Work Immersion">
-                            High School Work Immersion
-                          </option>
-                          <option value="Continuing Studies">
-                            Continuing Studies
-                          </option>
-                          <option value="WordPress CMS Website">
-                            WordPress CMS Website
-                          </option>
-                          <option value="Single Page Website">
-                            Single Page Website
-                          </option>
-                          <option value="Web Design">Web Design</option>
-                          <option value="Graphic Design">Graphic Design</option>
-                        </InputSelect>
-                      </div>
-                      <div className="input-wrapper">
-                        <InputText
-                          label="Company Name"
-                          type="text"
-                          name="partners_name"
-                          disabled={mutation.isPending}
-                        />
-                      </div>
-                    </div>
                   </div>
-                  <div className="form-action bottom-0  w-full">
+                  <div className="form-action ">
                     <div className="form-btn">
                       <button
                         className="btn-modal-submit"
@@ -391,4 +366,4 @@ const ModalAddPartners = ({ setIsAdd, itemEdit }) => {
   );
 };
 
-export default ModalAddPartners;
+export default ModalUpdateApplyNow;

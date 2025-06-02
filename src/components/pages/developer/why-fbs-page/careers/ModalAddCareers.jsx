@@ -1,43 +1,38 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
 import React from "react";
-import * as Yup from "yup";
-import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import * as FaIcons from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
 import * as IoIcons from "react-icons/io";
-import * as TiIcons from "react-icons/ti";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import * as TiIcons from "react-icons/ti";
+import * as Yup from "yup";
+import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
+import {
+  InputFileUpload,
+  InputSelect,
+  InputText,
+  InputTextArea
+} from "../../../../helpers/FormInputs";
+import {
+  apiVersion,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+  googleViewLink
+} from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import LoadImages from "../../../../partials/LoadImages";
+import ModalRemovedPhoto from "../../../../partials/modals/ModalRemovedPhoto";
+import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setMessage,
   setSuccess,
 } from "../../../../store/StoreAction";
-import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
-import { GrFormClose } from "react-icons/gr";
-import { Form, Formik } from "formik";
-import {
-  InputFileUpload,
-  InputPhotoUpload,
-  InputSelect,
-  InputText,
-  InputTextArea,
-} from "../../../../helpers/FormInputs";
-import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
-import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
-import {
-  apiVersion,
-  devBaseImgUrl,
-  getConvertStringToJSONparseData,
-  googleHDViewLink,
-  googleViewLink,
-} from "../../../../helpers/functions-general";
-import { MdOutlineFileUpload } from "react-icons/md";
-import { IoImageOutline } from "react-icons/io5";
-import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
-import LoadImages from "../../../../partials/LoadImages";
-import ModalRemovedPhoto from "../../../../partials/modals/ModalRemovedPhoto";
 
 const icons = {
   ...FaIcons,

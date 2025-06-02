@@ -312,11 +312,11 @@ const Navigation = ({ menu, submenu }) => {
 
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/services/learning-center-solutions`}
+                      to={`${devNavUrl}${link}/services/lcss`}
                     >
                       <li
                         className={`text-xs my-1 border-transparent hover:underline ${
-                          submenu === "learning-center-solutions"
+                          submenu === "lcss"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
                         }`}

@@ -66,7 +66,7 @@ const ServiceInventoryOverview = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
                     {assetOverviewData?.data?.length > 0 &&
                     assetOverviewData.data[0]?.asset_overview_button_text
