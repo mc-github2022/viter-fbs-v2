@@ -180,6 +180,7 @@ RewriteRule ^mailer-log/update-mailer$ controllers/developer/mailer-log/update-m
 RewriteRule ^mailer-log/delete-mailer/([0-9]+)$ controllers/developer/mailer-log/delete-mailer.php?mailerId=$1 [L]
 RewriteRule ^mailer-log/resend-mailer$ controllers/developer/mailer-log/resending-newsletter.php [L]
 RewriteRule ^mailer-log/update-mailer-subject-content/([0-9]+)$ controllers/developer/mailer-log/update-mailer-subject-content.php?mailerId=$1 [L]
+RewriteRule ^mailer-log/update-resend-mailer/([0-9]+)$ controllers/developer/mailer-log/update-resend-mailer.php?mailerId=$1 [L]
 
 # NEWSLETTER
 RewriteRule ^newsletter$ controllers/developer/newsletter/newsletter.php [L]

@@ -9,6 +9,8 @@ class MailerLog
     public $sending_email_log_subject;
     public $sending_email_log_content;
     public $sending_email_log_is_success;
+    public $sending_email_log_firstname_resend;
+    public $sending_email_log_role_resend;
     public $sending_email_log_created;
     public $sending_email_log_datetime;
 
@@ -111,14 +113,12 @@ class MailerLog
         try {
             $sql = "update {$this->tblSendingEmailLog} set ";
             $sql .= "sending_email_log_subject = :sending_email_log_subject, ";
-            $sql .= "sending_email_log_content = :sending_email_log_content, ";
-            $sql .= "sending_email_log_datetime = :sending_email_log_datetime ";
+            $sql .= "sending_email_log_content = :sending_email_log_content ";
             $sql .= "where sending_email_log_aid = :sending_email_log_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "sending_email_log_subject" => $this->sending_email_log_subject,
                 "sending_email_log_content" => $this->sending_email_log_content,
-                "sending_email_log_datetime" => $this->sending_email_log_datetime,
                 "sending_email_log_aid" => $this->sending_email_log_aid,
             ]);
         } catch (PDOException $ex) {
@@ -127,16 +127,20 @@ class MailerLog
         return $query;
     }
 
+    //update resend date and resend by
     public function updateResendDate()
     {
         try {
             $sql = "update {$this->tblSendingEmailLog} set ";
-            $sql .= "sending_email_log_datetime = :sending_email_log_datetime ";
+            $sql .= "sending_email_log_datetime = :sending_email_log_datetime, ";
+            $sql .= "sending_email_log_firstname_resend = :sending_email_log_firstname_resend, ";
+            $sql .= "sending_email_log_role_resend = :sending_email_log_role_resend ";
             $sql .= "where sending_email_log_aid = :sending_email_log_aid ";
-            $sql .= "and sending_email_log_is_success = 0 ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "sending_email_log_datetime" => $this->sending_email_log_datetime,
+                "sending_email_log_firstname_resend" => $this->sending_email_log_firstname_resend,
+                "sending_email_log_role_resend" => $this->sending_email_log_role_resend,
                 "sending_email_log_aid" => $this->sending_email_log_aid,
             ]);
         } catch (PDOException $ex) {

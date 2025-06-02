@@ -24,18 +24,18 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     if (array_key_exists("mailerId", $_GET)) {
 
         checkPayload($data);
-
         // update mailer log
         $mailerLog->sending_email_log_aid = $_GET['mailerId'];
-        $mailerLog->sending_email_log_subject = $data["sending_email_log_subject"];
-        $mailerLog->sending_email_log_content = $data["sending_email_log_content"];
+        $mailerLog->sending_email_log_firstname_resend = checkIndex($data, "firstnameProfile");
+        $mailerLog->sending_email_log_role_resend = checkIndex($data, "role");
+        $mailerLog->sending_email_log_datetime = date("Y-m-d H:i:s");
 
-        $query = checkUpdateMailerSubjectAndContent($mailerLog);
+        $query = checkUpdateResendDate($mailerLog);
 
-
-        returnSuccess($mailerLog, "sending news letter", $query);
-        // return 404 error if endpoint not available
+        http_response_code(200);
+        returnSuccess($mailerLog, "resend email", $query);
     }
+    // return 404 error if endpoint not available
     checkEndpoint();
 }
 

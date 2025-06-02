@@ -441,10 +441,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
                         {formatDateTime(item.sending_email_log_created)}
                       </td>
                       <td className="w-[10rem]">
-                        {item.sending_email_log_firstname_resend ===
-                        "0000-00-00 00:00:00"
-                          ? "-------------"
-                          : item.sending_email_log_firstname_resend}
+                        {item.sending_email_log_firstname_resend || "-------------"}
                       </td>
                       <td className="w-[10rem]">
                         {item.sending_email_log_datetime ===
@@ -531,6 +528,7 @@ const MailerLogTable = ({ audienceData, subscribeData }) => {
           setIsCheck={setIsCheck}
           setIsCheckAll={setIsCheckAll}
           setRecipientList={setRecipientList}
+          queryKey={`mailer-log`}
         />
       )}
 

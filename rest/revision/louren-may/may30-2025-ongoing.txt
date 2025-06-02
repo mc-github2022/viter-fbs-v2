@@ -9,13 +9,15 @@ DEVELOPER
             -> rest/v1/controllers/developer/mailer-log/read.php
             -> rest/v1/controllers/developer/mailer-log/functions.php
             -> rest/v1/controllers/developer/sending-newsletter/create.php
+            -> rest/v1/controllers/developer/mailer-log/update-resend-mailer.php
+            -> rest/v1/controllers/developer/mailer-log/update-mailer-subject-content.php
             -> rest/v1/controllers/developer/services/accounting-solutions/business-registration/registration-banner
             -> rest/v1/controllers/developer/services/accounting-solutions/business-registration/registration-overview
             -> rest/v1/controllers/developer/services/accounting-solutions/business-registration/registration-pricing
             -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-banner
             -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-overview
             -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-pricing
-        
+
         * CORE 
             -> 
 
@@ -23,14 +25,18 @@ DEVELOPER
         * MODELS
             -> rest/v1/models/developer/newsletter/Newsletter.php
             -> rest/v1/models/developer/sending-newsletter/SendingNewsletter.php
+            -> rest/v1/models/developer/mailer-log/MailerLog.php
             -> rest/v1/models/developer/services/accounting-solutions/business-registration/RegistrationBanner.php
             -> rest/v1/models/developer/services/accounting-solutions/business-registration/RegistrationOverview.php
             -> rest/v1/models/developer/services/accounting-solutions/business-registration/RegistrationPackageTitle.php
             -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingBanner.php
             -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingOverview.php
             -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingPackageTitle.php
+            -> 
 
         * HTACESS
+            -> In # MAILER LOG this is added
+                RewriteRule ^mailer-log/update-resend-mailer/([0-9]+)$ controllers/developer/mailer-log/update-resend-mailer.php?mailerId=$1 [L]
             -> # SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - BANNER is added
             -> # SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - OVERVIEW is added
             -> # SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - PACKAGES is added
@@ -56,6 +62,8 @@ DEVELOPER
                 note: column is added
                     `sending_email_log_firstname` varchar(20) NOT NULL,
                     `sending_email_log_role` varchar(20) NOT NULL,
+                    `sending_email_log_firstname_resend` varchar(20) NOT NULL,
+                    `sending_email_log_role_resend` varchar(20) NOT NULL,
             -> rest/db-backup/fbsv2_services_registration_banner.sql
             -> rest/db-backup/fbsv2_services_registration_overview.sql
             -> rest/db-backup/fbsv2_services_registration_pricing_title.sql

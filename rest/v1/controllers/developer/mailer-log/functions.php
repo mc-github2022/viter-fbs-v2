@@ -40,13 +40,13 @@ function checkUpdateMailerSubjectAndContent($object)
     return $query;
 }
 
-// // update resend newsletter
-// function checkUpdateResendDate($object)
-// {
-//     $query = $object->updateResendDate();
-//     checkQuery($query, "There's a problem processing your request. (update resend newsletter)");
-//     return $query;
-// }
+// update resend newsletter
+function checkUpdateResendDate($object)
+{
+    $query = $object->updateResendDate();
+    checkQuery($query, "There's a problem processing your request. (update resend newsletter)");
+    return $query;
+}
 
 // delete mailer log 
 function checkDeleteMailerLog($object)

@@ -4,6 +4,7 @@ import { apiVersion } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
+import { useQueryClient } from "@tanstack/react-query";
 
 const ModalResendEmail = ({
   recipientList,
@@ -17,10 +18,17 @@ const ModalResendEmail = ({
   setIsCheck,
   setIsCheckAll,
   setRecipientList,
+  queryKey,
 }) => {
-  const { dispatch } = React.useContext(StoreContext);
+  const { store, dispatch } = React.useContext(StoreContext);
   let query;
+  let queryUpdate;
   let count = 0;
+
+  const queryClient = useQueryClient();
+
+  const firstnameProfile = store.credentials.data.first_name;
+  const role = store.credentials.data.role_name;
 
   console.log(recipientList);
 
@@ -44,24 +52,6 @@ const ModalResendEmail = ({
       let newsletter_subject = recipientList[i]["sending_email_log_subject"];
       let key = recipientList[i]["sending_email_log_key"];
 
-      // Create and assign current datetime
-      const now = new Date();
-      const resendDate =
-        now.getFullYear() +
-        "-" +
-        String(now.getMonth() + 1).padStart(2, "0") +
-        "-" +
-        String(now.getDate()).padStart(2, "0") +
-        " " +
-        String(now.getHours()).padStart(2, "0") +
-        ":" +
-        String(now.getMinutes()).padStart(2, "0") +
-        ":" +
-        String(now.getSeconds()).padStart(2, "0");
-
-      // Save the datetime to the object
-      recipientList[i]["sending_email_log_datetime"] = resendDate;
-
       query = await queryData(
         `${apiVersion}/mailer-log/resend-mailer`,
         "post",
@@ -70,17 +60,24 @@ const ModalResendEmail = ({
           newsletter_subject,
           recipientEmail,
           key,
-          resendDate,
         }
+      );
+
+      // update resend
+      queryUpdate = await queryData(
+        `${apiVersion}/mailer-log/update-resend-mailer/${recipientList[i].sending_email_log_aid}`,
+        "put",
+        { firstnameProfile, role }
       );
 
       // increment count whenever there's a successful query
       if (query.success) {
+        queryClient.invalidateQueries({ queryKey: [queryKey] });
         count++;
         setQueryStatus(query);
       }
 
-      if (!query.success) {
+      if (!query.success || !queryUpdate.success) {
         setTimeout(() => {
           setConfirmSend(false);
           setIsSendingLoading(false);
@@ -89,6 +86,7 @@ const ModalResendEmail = ({
           setIsCheck(false);
           setIsCheckAll(false);
           setRecipientList([]);
+
           return;
         }, 1000);
       }
