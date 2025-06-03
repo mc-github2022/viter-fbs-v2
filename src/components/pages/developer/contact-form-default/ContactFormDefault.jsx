@@ -23,11 +23,15 @@ import { Form, Formik } from "formik";
 import ReCAPTCHA from "react-google-recaptcha";
 import { InputText, InputTextArea } from "../../../helpers/FormInputs";
 import LoadImages from "../../../partials/LoadImages";
+import { HiPencil } from "react-icons/hi";
 
 const ContactFormDefault = ({
+  thePageName,
   setIsContactDefaultOpen,
   handleUpdateContactFormDefault,
   contactFormDefaultData,
+  contactFormLcssData,
+  handleUpdateContactFormLcss,
 }) => {
   const handleClose = () => {
     setIsContactDefaultOpen(false);
@@ -39,6 +43,10 @@ const ContactFormDefault = ({
 
   const contactUsDefaultFile = getConvertStringToJSONparseData(
     contactFormDefaultData?.data?.[0]?.form_default_file
+  );
+
+  const contactUsLcssFile = getConvertStringToJSONparseData(
+    contactFormLcssData?.data?.[0]?.form_lcss_file
   );
 
   return (
@@ -59,19 +67,28 @@ const ContactFormDefault = ({
               onClick={handleClose}
             />
           </button>
-          <a
-            className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
-            data-tooltip="Edit contents"
-            onClick={handleUpdateContactFormDefault}
-          >
-            <FaRegImages className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
-          </a>
+
+          {thePageName !== "College OJT" &&
+          thePageName !== "Work Immersion" &&
+          thePageName !== "Continuing Study" ? (
+            <a
+              className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
+              data-tooltip="Edit contents"
+              onClick={handleUpdateContactFormDefault}
+            >
+              <FaRegImages className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+            </a>
+          ) : (
+            <a
+              className="absolute cursor-pointer tooltip-btn left-[320px] top-8 "
+              data-tooltip="Edit contents"
+              onClick={handleUpdateContactFormLcss}
+            >
+              <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+            </a>
+          )}
+
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            {/* <img
-              src={`${devBaseImgUrl}/lets-talk.jpg`}
-              className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-              alt="Frontline Business Solutions Contact Form"
-            /> */}
             {contactFormDefaultData?.data?.length > 0 &&
             contactUsDefaultImage?.length > 0 ? (
               <>
@@ -106,46 +123,176 @@ const ContactFormDefault = ({
                     : "Title"}
                 </h3>
               </div>
-              <>
-                <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
+
+              {thePageName === "College OJT" ||
+              thePageName === "Work Immersion" ||
+              thePageName === "Continuing Study" ? (
+                <>
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
+                    <li className="!items-start">
+                      <IoMdPin />
+                      <p className="md:w-[50%]">
+                        {contactFormDefaultData?.data?.length > 0 &&
+                        contactFormDefaultData.data[0]?.form_default_address
+                          ? contactFormDefaultData?.data[0].form_default_address
+                          : "Address"}
+                      </p>
+                    </li>
+                    <li>
+                      <FaPhone />
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_telephone
+                          ? contactFormLcssData?.data[0].form_lcss_telephone
+                          : "Telephone No."}
+                      </p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_phone
+                          ? contactFormLcssData?.data[0].form_lcss_phone
+                          : "Phone No."}
+                      </p>
+                    </li>
+                  </ul>
+
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                    <li>
+                      <div className="text-xs md:text-sm">
+                        <div className="mb-4">
+                          <h3 className="font-semibold">
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_computer_title
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_computer_title
+                              : "Computer Title"}
+                          </h3>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]?.form_lcss_computer_name
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_computer_name
+                              : "Name"}
+                          </p>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_computer_email
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_computer_email
+                              : "Email"}
+                          </p>
+                        </div>
+                        <div className="mb-8">
+                          <h3 className="font-semibold">
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_accounting_title
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_accounting_title
+                              : "Accounting Title"}
+                          </h3>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_accounting_name
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_accounting_name
+                              : "Name"}
+                          </p>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_accounting_email
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_accounting_email
+                              : "Email"}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </>
+              ) : thePageName === "career" ? (
+                <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                   <li className="!items-start">
                     <IoMdPin />
-                    <p className="md:w-[50%]">
-                      {contactFormDefaultData?.data?.length > 0 &&
-                      contactFormDefaultData.data[0]?.form_default_address
-                        ? contactFormDefaultData?.data[0].form_default_address
-                        : "Address"}
+                    <p>
+                      Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
+                      Laguna, 4000
                     </p>
                   </li>
                   <li>
                     <FaPhone />
-                    <p>
-                      {contactFormDefaultData?.data?.length > 0 &&
-                      contactFormDefaultData.data[0]?.form_default_telephone
-                        ? contactFormDefaultData?.data[0].form_default_telephone
-                        : "Telephone No."}
-                    </p>
+                    <p>(049) 501 3592</p>
                   </li>
                   <li>
                     <MdOutlinePhoneIphone />
-                    <p>
-                      {contactFormDefaultData?.data?.length > 0 &&
-                      contactFormDefaultData.data[0]?.form_default_phone
-                        ? contactFormDefaultData?.data[0].form_default_phone
-                        : "Phone No."}
-                    </p>
+                    <p>(+63) 927 168 6810</p>
                   </li>
                   <li>
-                    <IoMailSharp />
-                    <p>
-                      {contactFormDefaultData?.data?.length > 0 &&
-                      contactFormDefaultData.data[0]?.form_default_email
-                        ? contactFormDefaultData?.data[0].form_default_email
-                        : "Email"}
-                    </p>
+                    <div className="text-xs md:text-sm">
+                      <div className="mb-4">
+                        <h3 className="font-semibold">
+                          Human Resource Manager
+                        </h3>
+                        <p>Mrs. Rhoda Beloso</p>
+                        <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                      </div>
+                      <div className="mb-8">
+                        <h3 className="font-semibold">Human Resource Staff</h3>
+                        <p>Mrs. Kennie Deriquito</p>
+                        <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                      </div>
+                    </div>
                   </li>
                 </ul>
-              </>
+              ) : (
+                <>
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
+                    <li className="!items-start">
+                      <IoMdPin />
+                      <p className="md:w-[50%]">
+                        {contactFormDefaultData?.data?.length > 0 &&
+                        contactFormDefaultData.data[0]?.form_default_address
+                          ? contactFormDefaultData?.data[0].form_default_address
+                          : "Address"}
+                      </p>
+                    </li>
+                    <li>
+                      <FaPhone />
+                      <p>
+                        {contactFormDefaultData?.data?.length > 0 &&
+                        contactFormDefaultData.data[0]?.form_default_telephone
+                          ? contactFormDefaultData?.data[0]
+                              .form_default_telephone
+                          : "Telephone No."}
+                      </p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>
+                        {contactFormDefaultData?.data?.length > 0 &&
+                        contactFormDefaultData.data[0]?.form_default_phone
+                          ? contactFormDefaultData?.data[0].form_default_phone
+                          : "Phone No."}
+                      </p>
+                    </li>
+                    <li>
+                      <IoMailSharp />
+                      <p>
+                        {contactFormDefaultData?.data?.length > 0 &&
+                        contactFormDefaultData.data[0]?.form_default_email
+                          ? contactFormDefaultData?.data[0].form_default_email
+                          : "Email"}
+                      </p>
+                    </li>
+                  </ul>
+                </>
+              )}
 
               <div className="mb-4">
                 <p>Follow Us:</p>
@@ -211,17 +358,59 @@ const ContactFormDefault = ({
               </div>
             </div>
             <div className="downloadProposal justify-end py-5 md:py-0">
-              <p className="text-sm">Learn more about our program</p>
-              {contactUsDefaultFile.map((file, index) => (
-                <a
-                  href={`${googleViewLink}${file?.id}`}
-                  className="flex gap-2 items-center font-bold text-primary pointer"
-                  target="_blank"
-                  key={index}
-                >
-                  Download Company Profile <FaFileDownload />
-                </a>
-              ))}
+              {thePageName === "College OJT" ? (
+                <>
+                  <p className="text-sm">Learn more about our OJT program</p>
+                  {contactUsLcssFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex gap-2 items-center font-bold text-primary pointer"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Proposal <FaFileDownload />
+                    </a>
+                  ))}
+                </>
+              ) : thePageName === "Work Immersion" ? (
+                <>
+                  <p className="text-sm">
+                    Learn more about our immersion program
+                  </p>
+                  <a
+                    href="https://drive.google.com/uc?export=download&amp;id=1o0xSoctvBb00q81fE_njVJANzVSiEPt_"
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
+                    Download Proposal <FaFileDownload />
+                  </a>
+                </>
+              ) : thePageName === "Continuing Study" ? (
+                <></>
+              ) : thePageName === "cms" ? (
+                <>
+                  <p className="text-sm">Learn more about our CMS program</p>
+                  <a
+                    href="https://drive.google.com/uc?export=download&amp;id=1KCT6R_LE1PCl_RrCaCQRZYLLNixF73cU"
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                  >
+                    Download Portfolio <FaFileDownload />
+                  </a>
+                </>
+              ) : (
+                <>
+                  <p className="text-sm">Learn more about our program</p>
+                  {contactUsDefaultFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex gap-2 items-center font-bold text-primary pointer"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Company Profile <FaFileDownload />
+                    </a>
+                  ))}
+                </>
+              )}
             </div>
           </div>
 

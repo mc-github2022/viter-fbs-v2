@@ -1,14 +1,24 @@
 import React from "react";
+import { FaCheckCircle, FaRegImages } from "react-icons/fa";
 import {
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../../../../helpers/functions-general";
 import LoadImages from "../../../../../../partials/LoadImages";
-import { FaCheckCircle, FaRegImages } from "react-icons/fa";
-import ModalLcssForm from "../../../../../../partials/ModalLcssForm";
+import ContactFormLcss from "../../../../contact-form-lcss/ContactFormLcss";
 
-const OjtApplyNow = ({ ojtApplyNowData, handleUpdateOjtApplyNow }) => {
+const OjtApplyNow = ({
+  ojtApplyNowData,
+  handleUpdateOjtApplyNow,
+  handleUpdateContactFormLcss,
+  contactFormDefaultData,
+  pageName,
+}) => {
   const [lcssForm, setLcssForm] = React.useState(false);
+
+  const handleFormLcss = () => {
+    setLcssForm(true);
+  };
 
   const partnerWithUsImage = getConvertStringToJSONparseData(
     ojtApplyNowData?.data?.[0]?.ojt_apply_img
@@ -57,7 +67,7 @@ const OjtApplyNow = ({ ojtApplyNowData, handleUpdateOjtApplyNow }) => {
                 </li>
               </ul>
               <button
-                // onClick={handleLcssForm}
+                onClick={handleFormLcss}
                 className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold"
               >
                 APPLY NOW
@@ -94,7 +104,12 @@ const OjtApplyNow = ({ ojtApplyNowData, handleUpdateOjtApplyNow }) => {
         </div>
       </section>
       {lcssForm && (
-        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
+        <ContactFormLcss
+          thePageName={pageName}
+          setLcssForm={setLcssForm}
+          contactFormDefaultData={contactFormDefaultData}
+          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
+        />
       )}
     </>
   );

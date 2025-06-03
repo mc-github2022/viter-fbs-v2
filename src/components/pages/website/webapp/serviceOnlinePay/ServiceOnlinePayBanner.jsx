@@ -72,7 +72,7 @@ const ServiceOnlinePayBanner = ({ pageName }) => {
               </p>
               <button
                 onClick={handleForm}
-                className="btn bg-transparent text-light border-2"
+                className="btn bg-transparent text-light border-2 uppercase"
               >
                 {paymentData?.data?.length > 0 &&
                 paymentData.data[0]?.payment_banner_button_text

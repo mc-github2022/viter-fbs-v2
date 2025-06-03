@@ -1,0 +1,157 @@
+import React from "react";
+import {
+  apiVersion,
+  devBaseImgUrl,
+} from "../../../../../helpers/functions-general";
+import { HiPencil } from "react-icons/hi";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import useQueryData from "../../../../../custom-hooks/useQueryData";
+
+const LcssTeams = ({ lcssTeamsData, handleUpdateLcssTeams }) => {
+  return (
+    <>
+      <div className="theTeam md:py-40">
+        <div className="customContainer relative">
+          <div
+            className="mb-12
+             "
+          >
+            <p>Here are the</p>
+            <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
+              Industry Professional
+            </h3>
+            <p>who will provide you with real-world experience and insights.</p>
+          </div>
+          <a
+            className="absolute cursor-pointer tooltip-btn left-[32rem] -top-5 "
+            data-tooltip="Edit contents"
+            //   onClick={handleUpdateOjtOverviewList}
+          >
+            <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+          </a>
+          <a
+            className="absolute cursor-pointer right-[6rem] -top-5"
+            onClick={handleUpdateLcssTeams}
+          >
+            <span className=" bg-[#C7AC27] rounded-lg  w-[25px] h-[20px] px-[8px] border-[1px] text-black hover:underline text-base">
+              Add
+            </span>
+          </a>
+          <div className="wrapper flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-10">
+            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4 relative">
+              <div className="absolute right-16 top-0">
+                <button
+                  className="tooltip-action-table"
+                  data-tooltip="Edit"
+                  // onClick={() => handleEdit(scopeList)}
+                >
+                  <FaEdit className="text-gray-600 text-[16px]" />
+                </button>
+                <button
+                  className="tooltip-action-table"
+                  data-tooltip="Delete"
+                  // onClick={() => handleDelete(scopeList)}
+                >
+                  <MdDelete className="text-gray-600 text-[18px]" />
+                </button>
+              </div>
+              <img
+                // src={`${devBaseImgUrl}/jhonny.png`}
+                src={`${devBaseImgUrl}/jhonny.png`}
+                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
+                alt="Mr. Jhonny Dichoso, MIT"
+              />
+              <div>
+                <p className="font-semibold text-xl">Mr. Jhonny Dichoso, MIT</p>
+                <p>Head, Learning Center Solutions</p>
+                <p>Supervisor, Web Development</p>
+                <p className="text-sm">
+                  jhonny.dichoso@frontlinebusiness.com.ph
+                </p>
+              </div>
+            </div>
+            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
+              <img
+                // src={`${devBaseImgUrl}/Thea.png`}
+                src={`${devBaseImgUrl}/thea.png`}
+                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
+                alt="Ms. Thea Lyzette Consignado"
+              />
+              <div>
+                <p className="font-semibold text-xl">
+                  Ms. Thea Lyzette Consignado
+                </p>
+                <p>Accounting Trainer</p>
+                <p>Accounting Associate</p>
+                <p className="text-sm">
+                  thea.consignado@frontlinebusiness.com.ph
+                </p>
+              </div>
+            </div>
+            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
+              <img
+                // src={`${devBaseImgUrl}/roy.png`}
+                src={`${devBaseImgUrl}/roy.png`}
+                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
+                alt="Mr. Roy Balaaldia"
+              />
+              <div>
+                <p className="font-semibold text-xl">Mr. Roy Balaaldia</p>
+                <p>Graphics and Web Designing Trainer</p>
+                <p className="text-sm">
+                  roy.balaaldia@frontlinebusiness.com.ph
+                </p>
+              </div>
+            </div>
+            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
+              <img
+                // src={`${devBaseImgUrl}/ms.-herlyn.png`}
+                src={`${devBaseImgUrl}/ms.-herlyn.png`}
+                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
+                alt="Ms. Herlyn Mae Torres"
+              />
+              <div>
+                <p className="font-semibold text-xl">Ms. Herlyn Mae Torres</p>
+                <p>Frontend Development Trainer</p>
+                <p className="text-sm">
+                  herlyn.torres@frontlinebusiness.com.ph
+                </p>
+              </div>
+            </div>
+            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
+              <img
+                // src={`${devBaseImgUrl}/sir-mon-1.png`}
+                src={`${devBaseImgUrl}/sir-mon-1.png`}
+                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
+                alt="Mr. Ramon Plaza"
+              />
+              <div>
+                <p className="font-semibold text-xl">Mr. Ramon Plaza</p>
+                <p>Backend/WordPress Development Trainer</p>
+                <p className="text-sm">ramon.plaza@frontlinebusiness.com.ph</p>
+              </div>
+            </div>
+            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
+              <img
+                // src={`${devBaseImgUrl}/emman.png`}
+                src={`${devBaseImgUrl}/emman.png`}
+                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
+                alt="Mr. Emmanuel Manalo"
+              />
+              <div>
+                <p className="font-semibold text-xl">Mr. Emmanuel Manalo</p>
+                <p>Frontend & Backend Development Trainer</p>
+                <p className="text-sm">
+                  emmanuel.manalo@frontlinebusiness.com.ph
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default LcssTeams;

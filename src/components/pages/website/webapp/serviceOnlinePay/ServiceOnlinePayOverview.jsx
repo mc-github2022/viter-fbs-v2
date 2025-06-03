@@ -64,7 +64,7 @@ const ServiceOnlinePayOverview = ({ pageName }) => {
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
                     {paymentOverviewData?.data?.length > 0 &&
                     paymentOverviewData.data[0]?.payment_overview_button_text

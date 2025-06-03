@@ -4,32 +4,28 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
-import { StoreContext } from "../../../../../../store/StoreContext";
-import useUploadMultiplePhoto from "../../../../../../custom-hooks/useUploadMultiplePhoto";
+import { StoreContext } from "../../../../../store/StoreContext";
+import useUploadMultiplePhoto from "../../../../../custom-hooks/useUploadMultiplePhoto";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   googleViewLink,
-} from "../../../../../../helpers/functions-general";
+} from "../../../../../helpers/functions-general";
+import { queryData } from "../../../../../helpers/queryData";
 import {
   setError,
   setIsUpdateHome,
   setMessage,
   setSuccess,
-} from "../../../../../../store/StoreAction";
-import { queryData } from "../../../../../../helpers/queryData";
-import ModalAddWrapper from "../../../../../../partials/dashboard/ModalAddWrapper";
-import {
-  InputFileUpload,
-  InputText,
-  InputTextArea,
-} from "../../../../../../helpers/FormInputs";
-import LoadImages from "../../../../../../partials/LoadImages";
-import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
-import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
+} from "../../../../../store/StoreAction";
+import ModalAddWrapper from "../../../../../partials/dashboard/ModalAddWrapper";
+import { InputFileUpload, InputText } from "../../../../../helpers/FormInputs";
+import LoadImages from "../../../../../partials/LoadImages";
+import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
+import ModalRemovedPhoto from "../../../../../partials/modals/ModalRemovedPhoto";
 
-const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
+const ModalUpdateLcssTeams = ({ itemEdit, lcssTeamsData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
@@ -89,14 +85,14 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        ojtData?.data?.length
-          ? `${apiVersion}/ojt/${ojtData.data[0].ojt_banner_aid}` // update
-          : `${apiVersion}/ojt`, // create
-        ojtData?.data?.length ? "put" : "post",
+        lcssTeamsData?.data?.length
+          ? `${apiVersion}/lcss-teams/${lcssTeamsData.data[0].lcss_teams_aid}` // update
+          : `${apiVersion}/lcss-teams`, // create
+        lcssTeamsData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["ojt"] });
+      queryClient.invalidateQueries({ queryKey: ["lcss-teams"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -113,24 +109,23 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
 
   React.useEffect(() => {
     setAnimate("");
-    if (ojtData) {
+    if (lcssTeamsData) {
       const photos = getConvertStringToJSONparseData(
-        ojtData?.data?.[0]?.ojt_banner_img
+        lcssTeamsData?.data?.[0]?.lcss_teams_img
       );
       setPhotoArrayList(photos);
     }
   }, []);
 
   const initVal = {
-    isUpdateOjt: itemEdit,
-    ojt_banner_title: ojtData?.data?.[0]?.ojt_banner_title ?? "",
-    ojt_banner_title_bold: ojtData?.data?.[0]?.ojt_banner_title_bold ?? "",
-    ojt_banner_description: ojtData?.data?.[0]?.ojt_banner_description ?? "",
-    ojt_banner_button_text: ojtData?.data?.[0]?.ojt_banner_button_text ?? "",
-    ojt_banner_button_link: ojtData?.data?.[0]?.ojt_banner_button_link ?? "",
-    ojt_banner_img: ojtData?.data?.[0]?.ojt_banner_img ?? "",
+    isUpdateLcssTeams: itemEdit,
+    lcss_teams_name: lcssTeamsData?.data?.[0]?.lcss_teams_name ?? "",
+    lcss_teams_role: lcssTeamsData?.data?.[0]?.lcss_teams_role ?? "",
+    lcss_teams_position: lcssTeamsData?.data?.[0]?.lcss_teams_position ?? "",
+    lcss_teams_email: lcssTeamsData?.data?.[0]?.lcss_teams_email ?? "",
+    lcss_teams_img: lcssTeamsData?.data?.[0]?.lcss_teams_img ?? "",
 
-    ojt_banner_img_old: ojtData?.data?.[0]?.ojt_banner_img ?? "",
+    lcss_teams_img_old: lcssTeamsData?.data?.[0]?.lcss_teams_img ?? "",
     pendingDeleteFile: [],
   };
 
@@ -143,7 +138,7 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
         handleClose={handleClose}
       >
         <div className="modal-title">
-          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} OJT Banner</h2>
+          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} LCSS Teams</h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
           </button>
@@ -156,7 +151,7 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
               setLoading(true);
               const data = {
                 ...values,
-                ojt_banner_img: Array.from(photoArrayList).map((item) =>
+                lcss_teams_img: Array.from(photoArrayList).map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -204,7 +199,7 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "ojt_banner_img"
+                              "lcss_teams_img"
                             )
                           }
                           onDrop={(e) =>
@@ -212,7 +207,7 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "ojt_banner_img"
+                              "lcss_teams_img"
                             )
                           }
                           disabled={mutation.isPending || loading}
@@ -290,68 +285,57 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
 
                     <div className="input-wrapper">
                       <InputText
-                        label="Title Bold"
+                        label="Name"
                         type="text"
-                        name="ojt_banner_title_bold"
+                        name="lcss_teams_name"
                         disabled={mutation.isPending}
                       />
                     </div>
-                    <div className="input-wrapper">
-                      <InputTextArea
-                        label="Title"
-                        type="text"
-                        name="ojt_banner_title"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-
                     <div className="input-wrapper ">
-                      <InputTextArea
-                        label="Description"
+                      <InputText
+                        label="Role"
                         type="text"
-                        name="ojt_banner_description"
+                        name="lcss_teams_role"
                         className="h-[400px]"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Button"
+                        label="Position"
                         type="text"
-                        name="ojt_banner_button_text"
+                        name="lcss_teams_position"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Link"
+                        label="Email"
                         type="text"
-                        name="ojt_banner_button_link"
+                        name="lcss_teams_email"
                         disabled={mutation.isPending}
                       />
                     </div>
-                    <div
-                      className="modal__action w-full
+                  </div>
+                  <div
+                    className="modal__action w-full
                      gap-2 bg-white "
-                    >
-                      <div className="form-btn">
-                        <button
-                          className="btn-modal-submit"
-                          type="submit"
-                          disabled={
-                            mutation.isPending || !props.dirty || loading
-                          }
-                        >
-                          {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                        </button>
-                        <button
-                          className="btn-modal-cancel"
-                          type="button"
-                          onClick={handleClose}
-                        >
-                          Cancel
-                        </button>
-                      </div>
+                  >
+                    <div className="form-btn">
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || loading}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 </Form>
@@ -375,4 +359,4 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
   );
 };
 
-export default ModalUpdateOjtBanner;
+export default ModalUpdateLcssTeams;

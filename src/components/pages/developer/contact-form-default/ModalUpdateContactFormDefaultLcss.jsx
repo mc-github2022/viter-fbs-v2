@@ -1,35 +1,39 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Form, Formik } from "formik";
 import React from "react";
-import { FaTrash } from "react-icons/fa";
-import { GrFormClose } from "react-icons/gr";
+
 import * as Yup from "yup";
-import { StoreContext } from "../../../../../../store/StoreContext";
-import useUploadMultiplePhoto from "../../../../../../custom-hooks/useUploadMultiplePhoto";
+import { GrFormClose } from "react-icons/gr";
+import { FaTrash } from "react-icons/fa";
+import useUploadMultiplePhoto from "../../../custom-hooks/useUploadMultiplePhoto";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   googleViewLink,
-} from "../../../../../../helpers/functions-general";
+} from "../../../helpers/functions-general";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { queryData } from "../../../helpers/queryData";
 import {
   setError,
   setIsUpdateHome,
   setMessage,
   setSuccess,
-} from "../../../../../../store/StoreAction";
-import { queryData } from "../../../../../../helpers/queryData";
-import ModalAddWrapper from "../../../../../../partials/dashboard/ModalAddWrapper";
+} from "../../../store/StoreAction";
+import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
+import { Form, Formik } from "formik";
 import {
   InputFileUpload,
   InputText,
   InputTextArea,
-} from "../../../../../../helpers/FormInputs";
-import LoadImages from "../../../../../../partials/LoadImages";
-import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
-import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
+} from "../../../helpers/FormInputs";
+import LoadImages from "../../../partials/LoadImages";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
+import { StoreContext } from "../../../store/StoreContext";
 
-const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
+const ModalUpdateContactFormDefaultLcss = ({
+  itemEdit,
+  contactFormLcssData,
+}) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
@@ -89,16 +93,15 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        ojtData?.data?.length
-          ? `${apiVersion}/ojt/${ojtData.data[0].ojt_banner_aid}` // update
-          : `${apiVersion}/ojt`, // create
-        ojtData?.data?.length ? "put" : "post",
+        contactFormLcssData?.data?.length
+          ? `${apiVersion}/contactLcss/${contactFormLcssData.data[0].form_lcss_aid}` // update
+          : `${apiVersion}/contactLcss`, // create
+        contactFormLcssData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["ojt"] });
+      queryClient.invalidateQueries({ queryKey: ["contactLcss"] });
       if (!data.success) {
-        console.log("Error");
         dispatch(setError(true));
         dispatch(setMessage(data.error));
         dispatch(setSuccess(false));
@@ -113,24 +116,37 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
 
   React.useEffect(() => {
     setAnimate("");
-    if (ojtData) {
+    if (contactFormLcssData) {
       const photos = getConvertStringToJSONparseData(
-        ojtData?.data?.[0]?.ojt_banner_img
+        contactFormLcssData?.data?.[0]?.form_lcss_file
       );
       setPhotoArrayList(photos);
     }
   }, []);
 
   const initVal = {
-    isUpdateOjt: itemEdit,
-    ojt_banner_title: ojtData?.data?.[0]?.ojt_banner_title ?? "",
-    ojt_banner_title_bold: ojtData?.data?.[0]?.ojt_banner_title_bold ?? "",
-    ojt_banner_description: ojtData?.data?.[0]?.ojt_banner_description ?? "",
-    ojt_banner_button_text: ojtData?.data?.[0]?.ojt_banner_button_text ?? "",
-    ojt_banner_button_link: ojtData?.data?.[0]?.ojt_banner_button_link ?? "",
-    ojt_banner_img: ojtData?.data?.[0]?.ojt_banner_img ?? "",
+    isUpdateContactFormLcss: itemEdit,
+    form_lcss_file: contactFormLcssData?.data?.[0]?.form_lcss_file ?? "",
+    form_lcss_subtitle:
+      contactFormLcssData?.data?.[0]?.form_lcss_subtitle ?? "",
+    form_lcss_title: contactFormLcssData?.data?.[0]?.form_lcss_title ?? "",
+    form_lcss_telephone:
+      contactFormLcssData?.data?.[0]?.form_lcss_telephone ?? "",
+    form_lcss_phone: contactFormLcssData?.data?.[0]?.form_lcss_phone ?? "",
+    form_lcss_computer_title:
+      contactFormLcssData?.data?.[0]?.form_lcss_computer_title ?? "",
+    form_lcss_computer_name:
+      contactFormLcssData?.data?.[0]?.form_lcss_computer_name ?? "",
+    form_lcss_computer_email:
+      contactFormLcssData?.data?.[0]?.form_lcss_computer_email ?? "",
+    form_lcss_accounting_title:
+      contactFormLcssData?.data?.[0]?.form_lcss_accounting_title ?? "",
+    form_lcss_accounting_name:
+      contactFormLcssData?.data?.[0]?.form_lcss_accounting_name ?? "",
+    form_lcss_accounting_email:
+      contactFormLcssData?.data?.[0]?.form_lcss_accounting_email ?? "",
 
-    ojt_banner_img_old: ojtData?.data?.[0]?.ojt_banner_img ?? "",
+    form_lcss_file_old: contactFormLcssData?.data?.[0]?.form_lcss_file ?? "",
     pendingDeleteFile: [],
   };
 
@@ -143,7 +159,9 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
         handleClose={handleClose}
       >
         <div className="modal-title">
-          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} OJT Banner</h2>
+          <h2 className="text-sm">
+            {itemEdit ? "Edit" : "Add"} Contact Form (LCSS)
+          </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
           </button>
@@ -154,15 +172,17 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
             validationSchema={yupSchema}
             onSubmit={async (values) => {
               setLoading(true);
+
               const data = {
                 ...values,
-                ojt_banner_img: Array.from(photoArrayList).map((item) =>
+                form_lcss_file: Array.from(photoArrayList).map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
                   })
                 ),
               };
+
               const photoUpload = await uploadMultiplePhoto();
               if (photoUpload?.success || !photoUpload?.success) {
                 setLoading(false);
@@ -174,13 +194,13 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
             {(props) => {
               return (
                 <Form className="modal-form">
-                  <div className="pr-2 ">
-                    <div className="mt-3">
-                      <span className="top-20 px-2 text-dark text-xs">
-                        Image
-                      </span>
+                  <div className="form-input">
+                    <div className="relative">
+                      <label className="  text-dark text-xs">
+                        Upload File
+                      </label>
                       <div
-                        className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[300px] text-xs ${
+                        className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[230px] text-xs ${
                           withFile && "border-primary border-dashed"
                         }`}
                         onDragOver={() => setWithFile(true)}
@@ -188,23 +208,23 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
                       >
                         <span className="min-h-16 flex items-center justify-center">
                           <span className="text-dark mr-1">Drag & Drop</span>{" "}
-                          Photo here or{" "}
+                          File here or{" "}
                           <span className="text-dark ml-1">Browse</span>
                         </span>
 
                         <InputFileUpload
-                          label="Upload Banner Image"
+                          label="Upload file"
                           name="File"
                           type="file"
                           id="myFile"
                           accept="*"
-                          title="Upload File"
+                          title="Upload file"
                           onChange={(e) =>
                             handleChangeFileUpload(
                               e,
                               props,
                               setPhotoArrayList,
-                              "ojt_banner_img"
+                              "form_lcss_file"
                             )
                           }
                           onDrop={(e) =>
@@ -212,7 +232,7 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "ojt_banner_img"
+                              "form_lcss_file"
                             )
                           }
                           disabled={mutation.isPending || loading}
@@ -220,7 +240,7 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
                         />
                       </div>
 
-                      <div className="relative mb-6 w-[300px] ">
+                      <div className="relative w-[230px] ">
                         <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
                           {photoArrayList?.length > 0 &&
                             Array.from(photoArrayList).map((item, key) => {
@@ -245,7 +265,7 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
                                   >
                                     <LoadImages
                                       url={fileLink}
-                                      className={`relative z-20 w-full h-full object-cover object-center`}
+                                      className="relative z-20 w-full h-full object-cover object-center"
                                     />
                                     {(!mutation.isPending || !loading) && (
                                       <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
@@ -290,68 +310,102 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
 
                     <div className="input-wrapper">
                       <InputText
-                        label="Title Bold"
+                        label="Subtitle"
                         type="text"
-                        name="ojt_banner_title_bold"
+                        name="form_lcss_subtitle"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
-                      <InputTextArea
+                      <InputText
                         label="Title"
                         type="text"
-                        name="ojt_banner_title"
+                        name="form_lcss_title"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Telephone No."
+                        type="text"
+                        name="form_lcss_telephone"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Phone No."
+                        type="text"
+                        name="form_lcss_phone"
                         disabled={mutation.isPending}
                       />
                     </div>
 
-                    <div className="input-wrapper ">
-                      <InputTextArea
-                        label="Description"
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Computer Title"
                         type="text"
-                        name="ojt_banner_description"
-                        className="h-[400px]"
+                        name="form_lcss_computer_title"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Button"
+                        label="Name"
                         type="text"
-                        name="ojt_banner_button_text"
+                        name="form_lcss_computer_name"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Link"
+                        label="Email"
                         type="text"
-                        name="ojt_banner_button_link"
+                        name="form_lcss_computer_email"
                         disabled={mutation.isPending}
                       />
                     </div>
-                    <div
-                      className="modal__action w-full
-                     gap-2 bg-white "
-                    >
-                      <div className="form-btn">
-                        <button
-                          className="btn-modal-submit"
-                          type="submit"
-                          disabled={
-                            mutation.isPending || !props.dirty || loading
-                          }
-                        >
-                          {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                        </button>
-                        <button
-                          className="btn-modal-cancel"
-                          type="button"
-                          onClick={handleClose}
-                        >
-                          Cancel
-                        </button>
-                      </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Accounting Title"
+                        type="text"
+                        name="form_lcss_accounting_title"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Name"
+                        type="text"
+                        name="form_lcss_accounting_name"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Email"
+                        type="text"
+                        name="form_lcss_accounting_email"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-action  w-full mb-2">
+                    <div className="form-btn">
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || loading}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 </Form>
@@ -375,4 +429,4 @@ const ModalUpdateOjtBanner = ({ itemEdit, ojtData }) => {
   );
 };
 
-export default ModalUpdateOjtBanner;
+export default ModalUpdateContactFormDefaultLcss;

@@ -309,6 +309,18 @@ RewriteRule ^bookkeeping-overview/([0-9]+)$ controllers/developer/services/accou
 RewriteRule ^bookkeeping-packages-title$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-pricing/bookkeepingPricing.php [L]
 RewriteRule ^bookkeeping-packages-title/([0-9]+)$ controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-pricing/bookkeepingPricing.php?bookkeeping_titlesid=$1 [L]
 
+# SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - BANNER
+RewriteRule ^ojt$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-banner/ojtBanner.php [L]
+RewriteRule ^ojt/([0-9]+)$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-banner/ojtBanner.php?ojt_bannerid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - OVERVIEW
+RewriteRule ^ojt-overview$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-overview/ojtOverview.php [L]
+RewriteRule ^ojt-overview/([0-9]+)$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-overview/ojtOverview.php?ojt_overviewid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - SERVICES
+RewriteRule ^ojt-services$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-services/ojtServices.php [L]
+RewriteRule ^ojt-services/([0-9]+)$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-services/ojtServices.php?ojt_servicesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

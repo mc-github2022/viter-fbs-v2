@@ -10,6 +10,7 @@ import LoadImages from "../../../../../../partials/LoadImages";
 import ContactFormDefault from "../../../../contact-form-default/ContactFormDefault";
 
 const EnrollmentOverview = ({
+  pageName,
   handleUpdateEnrollmentOverview,
   handleUpdateEnrollmentOverviewList,
   enrollmentOverviewData,
@@ -187,6 +188,7 @@ const EnrollmentOverview = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
           handleUpdateContactFormDefault={handleUpdateContactFormDefault}
           contactFormDefaultData={contactFormDefaultData}

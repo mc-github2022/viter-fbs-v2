@@ -26,10 +26,14 @@ import OjtServices from "./ojt-services/OjtServices";
 import ModalUpdateOjtServices from "./ojt-services/ModalUpdateOjtServices";
 import OjtApplyNow from "./ojt-apply-now/OjtApplyNow";
 import ModalUpdateApplyNow from "./ojt-apply-now/ModalUpdateApplyNow";
+import ModalUpdateContactFormDefaultLcss from "../../../contact-form-default/ModalUpdateContactFormDefaultLcss";
+import LcssTeams from "../lcss-team/LcssTeams";
+import ModalUpdateLcssTeams from "../lcss-team/ModalUpdateLcssTeams";
 
 const CollegeOnTheJobTraining = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
+  const [pageName, setPageName] = React.useState("College OJT");
 
   const { data: ojtData } = useQueryData(
     `${apiVersion}/ojt`, // endpoint
@@ -49,7 +53,12 @@ const CollegeOnTheJobTraining = () => {
     "ojt-title" // key
   );
 
-  const { data: ojtServicesData } = useQueryData(
+  const {
+    isFetching: isFetchingServices,
+    isLoading: isLoadingServices,
+    error,
+    data: ojtServicesData,
+  } = useQueryData(
     `${apiVersion}/ojt-services`, // endpoint
     "get", // method
     "ojt-services" // key
@@ -61,10 +70,22 @@ const CollegeOnTheJobTraining = () => {
     "ojt-apply-now" // key
   );
 
+  const { data: lcssTeamsData } = useQueryData(
+    `${apiVersion}/lcss-teams`, // endpoint
+    "get", // method
+    "lcss-teams" // key
+  );
+
   const { data: contactFormDefaultData } = useQueryData(
     `${apiVersion}/contactDefault`, // endpoint
     "get", // method
     "contactDefault" // key
+  );
+
+  const { data: contactFormLcssData } = useQueryData(
+    `${apiVersion}/contactLcss`, // endpoint
+    "get", // method
+    "contactLcss" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -101,12 +122,17 @@ const CollegeOnTheJobTraining = () => {
 
   const handleUpdateOjtServices = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-services" }));
-    setItemEdit("ojtServicesUpdate");
+    setItemEdit(null);
   };
 
   const handleUpdateOjtApplyNow = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-apply-now" }));
     setItemEdit("ojtApplyNowUpdate");
+  };
+
+  const handleUpdateLcssTeams = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "lcss-teams" }));
+    setItemEdit("lcssTeamsUpdate");
   };
 
   const handleUpdateOjtPackagesTitle = () => {
@@ -129,6 +155,11 @@ const CollegeOnTheJobTraining = () => {
       setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
     );
     setItemEdit("contactFormDefaultUpdate");
+  };
+
+  const handleUpdateContactFormLcss = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "contact-form-lcss" }));
+    setItemEdit("contactFormLcssUpdate");
   };
 
   const handleUpdateFooterLogoImg = () => {
@@ -182,16 +213,32 @@ const CollegeOnTheJobTraining = () => {
                 handleUpdateOjtOverview={handleUpdateOjtOverview}
                 handleUpdateOjtOverviewList={handleUpdateOjtOverviewList}
                 ojtOverviewData={ojtOverviewData}
+                contactFormDefaultData={contactFormDefaultData}
+                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
+                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
+                pageName={pageName}
               />
 
               <OjtServices
                 ojtServicesData={ojtServicesData}
                 handleUpdateOjtServices={handleUpdateOjtServices}
+                isFetchingServices={isFetchingServices}
+                isLoadingServices={isLoadingServices}
+                error={error}
+                setItemEdit={setItemEdit}
               />
 
               <OjtApplyNow
                 ojtApplyNowData={ojtApplyNowData}
                 handleUpdateOjtApplyNow={handleUpdateOjtApplyNow}
+                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
+                contactFormDefaultData={contactFormDefaultData}
+                pageName={pageName}
+              />
+
+              <LcssTeams
+                lcssTeamsData={lcssTeamsData}
+                handleUpdateLcssTeams={handleUpdateLcssTeams}
               />
 
               {/* <BookkeepingPricing
@@ -248,10 +295,7 @@ const CollegeOnTheJobTraining = () => {
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "ojt-services" && (
-          <ModalUpdateOjtServices
-            itemEdit={itemEdit}
-            ojtServicesData={ojtServicesData}
-          />
+          <ModalUpdateOjtServices itemEdit={itemEdit} />
         )}
 
       {store.isUpdateHome?.modal &&
@@ -259,6 +303,14 @@ const CollegeOnTheJobTraining = () => {
           <ModalUpdateApplyNow
             itemEdit={itemEdit}
             ojtApplyNowData={ojtApplyNowData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "lcss-teams" && (
+          <ModalUpdateLcssTeams
+            itemEdit={itemEdit}
+            lcssTeamsData={lcssTeamsData}
           />
         )}
 
@@ -272,6 +324,14 @@ const CollegeOnTheJobTraining = () => {
           <ModalUpdateContactFormDefault
             itemEdit={itemEdit}
             contactFormDefaultData={contactFormDefaultData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "contact-form-lcss" && (
+          <ModalUpdateContactFormDefaultLcss
+            itemEdit={itemEdit}
+            contactFormLcssData={contactFormLcssData}
           />
         )}
 

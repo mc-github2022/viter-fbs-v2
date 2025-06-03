@@ -31,6 +31,7 @@ import ModalUpdateEnrollmentScopeTitle from "./enrollment-titles/ModalUpdateEnro
 const SchoolEnrollmentSystem = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
+  const [pageName, setPageName] = React.useState("enrollment");
 
   const { data: enrollmentData } = useQueryData(
     `${apiVersion}/enrollment`, // endpoint
@@ -197,6 +198,7 @@ const SchoolEnrollmentSystem = () => {
                 enrollmentOverviewData={enrollmentOverviewData}
                 contactFormDefaultData={contactFormDefaultData}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
+                pageName={pageName}
               />
               <EnrollmentScope
                 handleUpdateEnrollmentScopeTitles={

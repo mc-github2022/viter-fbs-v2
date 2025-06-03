@@ -11,11 +11,13 @@ import LoadImages from "../../../../../../partials/LoadImages";
 import ContactFormDefault from "../../../../contact-form-default/ContactFormDefault";
 
 const OjtOverview = ({
+  pageName,
   handleUpdateOjtOverview,
   handleUpdateOjtOverviewList,
   ojtOverviewData,
   contactFormDefaultData,
   handleUpdateContactFormDefault,
+  handleUpdateContactFormLcss,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -183,9 +185,11 @@ const OjtOverview = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
           handleUpdateContactFormDefault={handleUpdateContactFormDefault}
           contactFormDefaultData={contactFormDefaultData}
+          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
         />
       )}
     </>

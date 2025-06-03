@@ -17,6 +17,9 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-banner
             -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-overview
             -> rest/v1/controllers/developer/services/accounting-solutions/bookkeeping-compliance/bookkeeping-pricing
+            -> rest/v1/controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-banner
+            -> rest/v1/controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-overview
+            -> rest/v1/controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-services
 
         * CORE 
             -> 
@@ -32,7 +35,9 @@ DEVELOPER
             -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingBanner.php
             -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingOverview.php
             -> rest/v1/models/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingPackageTitle.php
-            -> 
+            -> rest/v1/models/developer/services/learning-center-solutions/college-on-the-job-training/OjtBanner.php
+            -> rest/v1/models/developer/services/learning-center-solutions/college-on-the-job-training/OjtOverview.php
+            -> rest/v1/models/developer/services/learning-center-solutions/college-on-the-job-training/OjtServices.php
 
         * HTACESS
             -> In # MAILER LOG this is added
@@ -43,6 +48,9 @@ DEVELOPER
             -> # SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - BANNER is added
             -> # SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - OVERVIEW is added
             -> # SERVICES - ACCOUNTING SOLUTIONS - BOOKKEEPING / COMPLIANCE - PACKAGES is added
+            -> # SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - BANNER is added
+            -> # SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - OVERVIEW is added
+            -> # SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - SERVICES is added
 
         * OTHER FILES
             ->
@@ -70,4 +78,7 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_bookkeeping_banner.sql
             -> rest/db-backup/fbsv2_services_bookkeeping_overview.sql
             -> rest/db-backup/fbsv2_services_bookkeeping_pricing_title.sql
+            -> rest/db-backup/fbsv2_services_ojt_banner.sql
+            -> rest/db-backup/fbsv2_services_ojt_overview.sql
+            -> rest/db-backup/fbsv2_services_ojt_services.sql
 

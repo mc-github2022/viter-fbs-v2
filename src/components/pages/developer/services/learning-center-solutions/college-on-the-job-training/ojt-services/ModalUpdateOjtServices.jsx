@@ -15,10 +15,71 @@ import {
   setSuccess,
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
+import * as TiIcons from "react-icons/ti";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
+import * as BsIcons from "react-icons/bs";
 
-const ModalUpdateOjtServices = ({ itemEdit, ojtServicesData }) => {
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+  ...BsIcons,
+};
+
+const ModalUpdateOjtServices = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
+
+  const [searchTerm, setSearchTerm] = React.useState(
+    itemEdit ? itemEdit.ojt_services_icon : ""
+  );
+  const [onFocusSearch, setOnFocusSearch] = React.useState(false);
+  const [selectedIcon, setSelectedIcon] = React.useState(
+    itemEdit ? itemEdit.ojt_services_icon : ""
+  );
+  const [itemsLimit, setItemsLimit] = React.useState(20);
+
+  // sets the limit of icons being show
+  const handleShowMore = () => {
+    setItemsLimit(itemsLimit + 20);
+  };
+
+  const refSearch = React.useRef();
+
+  const clickOutsideRefSearch = (e) => {
+    if (refSearch.current && !refSearch.current.contains(e.target)) {
+      setOnFocusSearch(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefSearch);
+    return () => document.removeEventListener("click", clickOutsideRefSearch);
+  }, []);
+
+  const handleIconSelect = (iconKey) => {
+    setSelectedIcon(iconKey);
+    setSearchTerm(iconKey);
+    setOnFocusSearch(false);
+  };
+
+  // const filteredIcons = Object.keys(icons).filter((iconKey) =>
+  //   iconKey.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
+  const filteredIcons = Object.keys(icons || {}).filter((iconKey) =>
+    iconKey.toLowerCase().includes((searchTerm || "").toLowerCase())
+  );
+
+  // Limit the number of icons displayed
+  const limitedIcons = filteredIcons.slice(0, itemsLimit);
 
   const handleClose = () => {
     setAnimate("translate-x-full");
@@ -27,15 +88,17 @@ const ModalUpdateOjtServices = ({ itemEdit, ojtServicesData }) => {
     }, 200);
   };
 
+  const SelectedIcon = selectedIcon ? icons[selectedIcon] : null;
+
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        ojtServicesData?.data?.length
-          ? `${apiVersion}/ojt-services/${ojtServicesData.data[0].ojt_services_aid}` // update
+        itemEdit
+          ? `${apiVersion}/ojt-services/${itemEdit.ojt_services_aid}` // update
           : `${apiVersion}/ojt-services`, // create
-        ojtServicesData?.data?.length ? "put" : "post",
+        itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
@@ -59,13 +122,11 @@ const ModalUpdateOjtServices = ({ itemEdit, ojtServicesData }) => {
   }, []);
 
   const initVal = {
-    isUpdateOjtServices: itemEdit,
-    ojt_services_subtitle_a:
-      ojtServicesData?.data?.[0]?.ojt_services_subtitle_a ?? "",
-    ojt_services_subtitle_b:
-      ojtServicesData?.data?.[0]?.ojt_services_subtitle_b ?? "",
-    ojt_services_title: ojtServicesData?.data?.[0]?.ojt_services_title ?? "",
-    ojt_services_list: ojtServicesData?.data?.[0]?.ojt_services_list ?? "",
+    ojt_services_subtitle_a: itemEdit ? itemEdit.ojt_services_subtitle_a : "",
+    ojt_services_subtitle_b: itemEdit ? itemEdit.ojt_services_subtitle_b : "",
+    ojt_services_title: itemEdit ? itemEdit.ojt_services_title : "",
+    ojt_services_list: itemEdit ? itemEdit.ojt_services_list : "",
+    ojt_services_icon: itemEdit ? itemEdit.ojt_services_icon : "",
   };
 
   const yupSchema = Yup.object({});
@@ -89,6 +150,7 @@ const ModalUpdateOjtServices = ({ itemEdit, ojtServicesData }) => {
             onSubmit={async (values) => {
               const data = {
                 ...values,
+                ojt_services_icon: selectedIcon,
               };
               mutation.mutate(data);
             }}
@@ -97,6 +159,65 @@ const ModalUpdateOjtServices = ({ itemEdit, ojtServicesData }) => {
               return (
                 <Form className="modal-form">
                   <div className="form-input ">
+                    <div className="input-wrapper" ref={refSearch}>
+                      <InputText
+                        label="Search Icon"
+                        type="text"
+                        name="ojt_services_icon"
+                        placeholder="Type to search icons..."
+                        value={searchTerm}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setSearchTerm(value);
+                          props.setFieldValue("ojt_services_icon", value);
+                        }}
+                        onFocus={() => setOnFocusSearch(true)}
+                        className="border p-2 w-full"
+                      />
+                      {onFocusSearch && (
+                        <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                          {limitedIcons.map((iconKey) => {
+                            const IconComponent = icons[iconKey];
+                            return (
+                              <div
+                                key={iconKey}
+                                className="icon-item cursor-pointer flex items-center gap-2 px-2 py-1 hover:bg-gray-100"
+                                onClick={() => {
+                                  handleIconSelect(iconKey);
+                                  props.setFieldValue(
+                                    "ojt_services_icon",
+                                    iconKey
+                                  );
+                                  setOnFocusSearch(false);
+                                }}
+                              >
+                                <IconComponent />
+                                <span>{iconKey}</span>
+                              </div>
+                            );
+                          })}
+                          {filteredIcons.length > itemsLimit && (
+                            <div className="load-more">
+                              <button
+                                type="button"
+                                onClick={handleShowMore}
+                                className="text-primary p-1 ml-1.5 rounded"
+                              >
+                                Show More Icons ...
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      {selectedIcon ? (
+                        <div className="flex items-center gap-4 ml-3 text-xs">
+                          Selected icon: <SelectedIcon />
+                        </div>
+                      ) : (
+                        <div className="text-xs ml-3">No icon selected</div>
+                      )}
+                    </div>
+
                     <div className="input-wrapper">
                       <InputText
                         label="Subtitle A"
@@ -126,7 +247,7 @@ const ModalUpdateOjtServices = ({ itemEdit, ojtServicesData }) => {
                         label="Services List"
                         type="text"
                         name="ojt_services_list"
-                        className="h-[400px]"
+                        className="h-[300px]"
                         disabled={mutation.isPending}
                       />
                     </div>
