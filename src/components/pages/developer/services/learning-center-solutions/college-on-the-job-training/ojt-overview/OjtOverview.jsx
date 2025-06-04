@@ -18,6 +18,7 @@ const OjtOverview = ({
   contactFormDefaultData,
   handleUpdateContactFormDefault,
   handleUpdateContactFormLcss,
+  contactFormLcssData
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -190,6 +191,7 @@ const OjtOverview = ({
           handleUpdateContactFormDefault={handleUpdateContactFormDefault}
           contactFormDefaultData={contactFormDefaultData}
           handleUpdateContactFormLcss={handleUpdateContactFormLcss}
+          contactFormLcssData={contactFormLcssData}
         />
       )}
     </>

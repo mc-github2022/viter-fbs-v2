@@ -58,7 +58,19 @@ const ModalContact = ({
   const { data: contactFormDefaultData } = useQueryData(
     `${apiVersion}/contactDefault`, // endpoint
     "get", // method
-    "contactDefault" // key
+    "contactDefault", // key
+    {},
+    null,
+    true
+  );
+
+  const { data: contactFormLcssData } = useQueryData(
+    `${apiVersion}/contactLcss`, // endpoint
+    "get", // method
+    "contactLcss", // key
+    {},
+    null,
+    true
   );
 
   const contactUsDefaultImage = getConvertStringToJSONparseData(
@@ -67,6 +79,10 @@ const ModalContact = ({
 
   const contactUsDefaultFile = getConvertStringToJSONparseData(
     contactFormDefaultData?.data?.[0]?.form_default_file
+  );
+
+  const contactUsLcssFile = getConvertStringToJSONparseData(
+    contactFormLcssData?.data?.[0]?.form_lcss_file
   );
 
   const queryClient = useQueryClient();
@@ -163,13 +179,13 @@ const ModalContact = ({
                   {contactFormDefaultData?.data?.length > 0 &&
                   contactFormDefaultData.data[0]?.form_default_subtitle
                     ? contactFormDefaultData?.data[0].form_default_subtitle
-                    : "Subtitle"}
+                    : ""}
                 </p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
                   {contactFormDefaultData?.data?.length > 0 &&
                   contactFormDefaultData.data[0]?.form_default_title
                     ? contactFormDefaultData?.data[0].form_default_title
-                    : "Title"}
+                    : ""}
                 </h3>
               </div>
 
@@ -180,34 +196,83 @@ const ModalContact = ({
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
-                      <p>
-                        Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
-                        Laguna, 4000
+                      <p className="md:w-[50%]">
+                        {contactFormDefaultData?.data?.length > 0 &&
+                        contactFormDefaultData.data[0]?.form_default_address
+                          ? contactFormDefaultData?.data[0].form_default_address
+                          : ""}
                       </p>
                     </li>
                     <li>
                       <FaPhone />
-                      <p>(049) 501 3592</p>
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_telephone
+                          ? contactFormLcssData?.data[0].form_lcss_telephone
+                          : ""}
+                      </p>
                     </li>
                     <li>
                       <MdOutlinePhoneIphone />
-                      <p>(+63) 927 168 6810</p>
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_phone
+                          ? contactFormLcssData?.data[0].form_lcss_phone
+                          : ""}
+                      </p>
                     </li>
                     <li>
                       <div className="text-xs md:text-sm">
                         <div className="mb-4">
                           <h3 className="font-semibold">
-                            Computer-Related Course
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_computer_title
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_computer_title
+                              : ""}
                           </h3>
-                          <p>Ms. Herlyn Mae Torres</p>
-                          <p>herlyn.torres@frontlinebusiness.com.ph</p>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]?.form_lcss_computer_name
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_computer_name
+                              : ""}
+                          </p>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_computer_email
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_computer_email
+                              : ""}
+                          </p>
                         </div>
                         <div className="mb-8">
                           <h3 className="font-semibold">
-                            Accounting-Related Courses
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_accounting_title
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_accounting_title
+                              : ""}
                           </h3>
-                          <p>Ms. Thea Lyzette Consignado</p>
-                          <p>thea.consignado@frontlinebusiness.com.ph</p>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_accounting_name
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_accounting_name
+                              : ""}
+                          </p>
+                          <p>
+                            {contactFormLcssData?.data?.length > 0 &&
+                            contactFormLcssData.data[0]
+                              ?.form_lcss_accounting_email
+                              ? contactFormLcssData?.data[0]
+                                  .form_lcss_accounting_email
+                              : ""}
+                          </p>
                         </div>
                       </div>
                     </li>
@@ -217,9 +282,11 @@ const ModalContact = ({
                 <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                   <li className="!items-start">
                     <IoMdPin />
-                    <p>
-                      Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
-                      Laguna, 4000
+                    <p className="md:w-[50%]">
+                      {contactFormDefaultData?.data?.length > 0 &&
+                      contactFormDefaultData.data[0]?.form_default_address
+                        ? contactFormDefaultData?.data[0].form_default_address
+                        : ""}
                     </p>
                   </li>
                   <li>
@@ -256,7 +323,7 @@ const ModalContact = ({
                         {contactFormDefaultData?.data?.length > 0 &&
                         contactFormDefaultData.data[0]?.form_default_address
                           ? contactFormDefaultData?.data[0].form_default_address
-                          : "Address"}
+                          : ""}
                       </p>
                     </li>
                     <li>
@@ -266,7 +333,7 @@ const ModalContact = ({
                         contactFormDefaultData.data[0]?.form_default_telephone
                           ? contactFormDefaultData?.data[0]
                               .form_default_telephone
-                          : "Telephone No."}
+                          : ""}
                       </p>
                     </li>
                     <li>
@@ -275,7 +342,7 @@ const ModalContact = ({
                         {contactFormDefaultData?.data?.length > 0 &&
                         contactFormDefaultData.data[0]?.form_default_phone
                           ? contactFormDefaultData?.data[0].form_default_phone
-                          : "Phone No."}
+                          : ""}
                       </p>
                     </li>
                     <li>
@@ -284,7 +351,7 @@ const ModalContact = ({
                         {contactFormDefaultData?.data?.length > 0 &&
                         contactFormDefaultData.data[0]?.form_default_email
                           ? contactFormDefaultData?.data[0].form_default_email
-                          : "Email"}
+                          : ""}
                       </p>
                     </li>
                   </ul>
@@ -358,12 +425,16 @@ const ModalContact = ({
               {thePageName === "College OJT" ? (
                 <>
                   <p className="text-sm">Learn more about our OJT program</p>
-                  <a
-                    href="https://drive.google.com/uc?export=download&amp;id=1kSl-0-BtMdzMtsTdPw-N2SqI6jlDUJOE"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
-                    Download Proposal <FaFileDownload />
-                  </a>
+                  {contactUsLcssFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex gap-2 items-center font-bold text-primary pointer"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Proposal <FaFileDownload />
+                    </a>
+                  ))}
                 </>
               ) : thePageName === "Work Immersion" ? (
                 <>

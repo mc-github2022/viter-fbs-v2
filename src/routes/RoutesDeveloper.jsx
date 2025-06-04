@@ -46,6 +46,7 @@ import BusinessRegistration from "../components/pages/developer/services/account
 import BookkeepingAndCompliance from "../components/pages/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingAndCompliance";
 import LearningCenterSolutions from "../components/pages/developer/services/learning-center-solutions/LearningCenterSolutions";
 import CollegeOnTheJobTraining from "../components/pages/developer/services/learning-center-solutions/college-on-the-job-training/CollegeOnTheJobTraining";
+import HighSchoolWorkImmersion from "../components/pages/developer/services/learning-center-solutions/high-school-work-immersion/HighSchoolWorkImmersion";
 
 export const routesDeveloper = [
   {
@@ -341,6 +342,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <CollegeOnTheJobTraining />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/lcss/high-school-work-immersion`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <HighSchoolWorkImmersion />
       </ProtectedRouteDeveloper>
     ),
   },

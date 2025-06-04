@@ -41,6 +41,7 @@ import BusinessRegistration from "../components/pages/developer/services/account
 import BookkeepingAndCompliance from "../components/pages/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingAndCompliance";
 import LearningCenterSolutionsAdmin from "../components/pages/developer/services/learning-center-solutions/LearningCenterSolutionsAdmin";
 import CollegeOnTheJobTraining from "../components/pages/developer/services/learning-center-solutions/college-on-the-job-training/CollegeOnTheJobTraining";
+import HighSchoolWorkImmersion from "../components/pages/developer/services/learning-center-solutions/high-school-work-immersion/HighSchoolWorkImmersion";
 
 export const routesAdmin = [
   {
@@ -320,6 +321,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <CollegeOnTheJobTraining />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/lcss/high-school-work-immersion`,
+    element: (
+      <ProtectedRouteOther>
+        <HighSchoolWorkImmersion />
       </ProtectedRouteOther>
     ),
   },

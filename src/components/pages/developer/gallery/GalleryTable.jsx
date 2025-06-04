@@ -41,8 +41,6 @@ const GalleryTable = ({ setItemEdit }) => {
     setIsId(item.gallery_aid);
   };
 
-  const images =
-    getConvertStringToJSONparseData(galleryData?.data.gallery_img) || [];
 
   const handleCopyLink = (item) => {
     if (item?.gallery_img) {

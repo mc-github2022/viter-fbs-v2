@@ -7,7 +7,7 @@ import {
 import useQueryData from "../../../custom-hooks/useQueryData";
 import LoadImages from "../../../partials/LoadImages";
 
-const LcssPartners = () => {
+const LcssPartners = ({ ojtTitlesData }) => {
   const {
     isFetching,
     error,
@@ -26,9 +26,17 @@ const LcssPartners = () => {
     <>
       <section className="partners py-20">
         <div className="customContainer">
-          <p>Our Partner</p>
+          <p>
+            {ojtTitlesData?.data?.length > 0 &&
+            ojtTitlesData.data[0]?.ojt_titles_partners_subtitle
+              ? ojtTitlesData?.data[0].ojt_titles_partners_subtitle
+              : ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-            Schools and Universities.
+            {ojtTitlesData?.data?.length > 0 &&
+            ojtTitlesData.data[0]?.ojt_titles_partners_title
+              ? ojtTitlesData?.data[0].ojt_titles_partners_title
+              : ""}
           </h2>
           <ul className="flex flex-wrap justify-center gap-14 items-center">
             {partnersData?.data

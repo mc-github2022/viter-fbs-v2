@@ -61,7 +61,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const LcssBatches = () => {
+const LcssBatches = ({ ojtTitlesData }) => {
   const [modalBatch, setModalBatch] = React.useState(false);
   const [itemEdit, setItemEdit] = React.useState(null);
   const [selectedBatchId, setSelectedBatchId] = React.useState(null);
@@ -157,9 +157,17 @@ const LcssBatches = () => {
             className="mb-12
           "
           >
-            <p>Professional Journey of Our</p>
+            <p>
+              {ojtTitlesData?.data?.length > 0 &&
+              ojtTitlesData.data[0]?.ojt_titles_batches_subtitle
+                ? ojtTitlesData?.data[0].ojt_titles_batches_subtitle
+                : ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              Successful, Industry-Ready Batches.
+              {ojtTitlesData?.data?.length > 0 &&
+              ojtTitlesData.data[0]?.ojt_titles_batches_title
+                ? ojtTitlesData?.data[0].ojt_titles_batches_title
+                : ""}
             </h3>
           </div>
           {lcssBatchesData?.data.filter(

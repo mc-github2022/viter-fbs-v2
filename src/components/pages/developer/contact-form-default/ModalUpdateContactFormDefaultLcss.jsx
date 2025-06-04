@@ -196,9 +196,7 @@ const ModalUpdateContactFormDefaultLcss = ({
                 <Form className="modal-form">
                   <div className="form-input">
                     <div className="relative">
-                      <label className="  text-dark text-xs">
-                        Upload File
-                      </label>
+                      <label className="  text-dark text-xs">Upload File</label>
                       <div
                         className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[230px] text-xs ${
                           withFile && "border-primary border-dashed"

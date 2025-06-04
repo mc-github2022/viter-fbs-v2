@@ -34,6 +34,15 @@ const LcssPage = () => {
     true
   );
 
+  const { data: ojtTitlesData } = useQueryData(
+    `${apiVersion}/ojt-titles`, // endpoint
+    "get", // method
+    "ojt-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -58,14 +67,14 @@ const LcssPage = () => {
     <>
       <Header pageName={pageName} contactSubject={contactSubject} />
       <LcssBanner pageName={pageName} contactSubject={contactSubject} />
-      <LcssPartners />
+      <LcssPartners ojtTitlesData={ojtTitlesData} />
       <LcssPartnersWithUs pageName={pageName} contactSubject={contactSubject} />
       <LcssServices />
       <LcssApplyNow pageName={pageName} contactSubject={contactSubject} />
       <LcssTeam />
-      <LcssBatches />
-      <LcssVidTestimonials />
-      <LcssPartnersSay />
+      <LcssBatches ojtTitlesData={ojtTitlesData} />
+      <LcssVidTestimonials ojtTitlesData={ojtTitlesData} />
+      <LcssPartnersSay ojtTitlesData={ojtTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

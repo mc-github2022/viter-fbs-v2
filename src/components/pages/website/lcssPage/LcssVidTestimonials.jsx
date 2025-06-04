@@ -61,7 +61,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const LcssVidTestimonials = () => {
+const LcssVidTestimonials = ({ ojtTitlesData }) => {
   const {
     isFetching,
     error,
@@ -178,9 +178,17 @@ const LcssVidTestimonials = () => {
         <div className="absolute bg-light h-[180px] w-full bottom-0"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
-            <p className="text-light">Here are our</p>
+            <p className="text-light">
+              {ojtTitlesData?.data?.length > 0 &&
+              ojtTitlesData.data[0]?.ojt_titles_vid_testimonial_subtitle
+                ? ojtTitlesData?.data[0].ojt_titles_vid_testimonial_subtitle
+                : ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Trainees Work Experience
+              {ojtTitlesData?.data?.length > 0 &&
+              ojtTitlesData.data[0]?.ojt_titles_vid_testimonial_title
+                ? ojtTitlesData?.data[0].ojt_titles_vid_testimonial_title
+                : ""}
             </h3>
           </div>
           {vidTestimonialData?.data.filter(

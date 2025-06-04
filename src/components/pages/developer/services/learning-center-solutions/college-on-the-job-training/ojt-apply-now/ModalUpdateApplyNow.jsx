@@ -92,13 +92,13 @@ const ModalUpdateApplyNow = ({ itemEdit, ojtApplyNowData }) => {
     mutationFn: (values) =>
       queryData(
         ojtApplyNowData?.data?.length
-          ? `${apiVersion}/partnerWithUs/${ojtApplyNowData.data[0].ojt_apply_aid}` // update
-          : `${apiVersion}/partnerWithUs`, // create
+          ? `${apiVersion}/ojt-apply-now/${ojtApplyNowData.data[0].ojt_apply_aid}` // update
+          : `${apiVersion}/ojt-apply-now`, // create
         ojtApplyNowData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["partnerWithUs"] });
+      queryClient.invalidateQueries({ queryKey: ["ojt-apply-now"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
@@ -198,7 +198,7 @@ const ModalUpdateApplyNow = ({ itemEdit, ojtApplyNowData }) => {
 
                       <div className="input-wrapper">
                         <InputTextArea
-                          label="Description"
+                          label="Requirements"
                           type="text"
                           name="ojt_apply_requirement_list"
                           disabled={mutation.isPending}

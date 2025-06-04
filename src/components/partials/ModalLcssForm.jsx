@@ -25,16 +25,42 @@ import {
 import {
   apiVersion,
   devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
   siteKey,
 } from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
 import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
 import ButtonSpinner from "./spinners/ButtonSpinner";
+import useQueryData from "../custom-hooks/useQueryData";
+import LoadImages from "./LoadImages";
 
 const ModalLcssForm = ({ thePageName, setLcssForm }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const recaptchaRef = React.useRef();
+
+  const { data: contactFormDefaultData } = useQueryData(
+    `${apiVersion}/contactDefault`, // endpoint
+    "get", // method
+    "contactDefault", // key
+    {},
+    null,
+    true
+  );
+
+  const { data: contactFormLcssData } = useQueryData(
+    `${apiVersion}/contactLcss`, // endpoint
+    "get", // method
+    "contactLcss", // key
+    {},
+    null,
+    true
+  );
+
+  const contactUsDefaultImage = getConvertStringToJSONparseData(
+    contactFormDefaultData?.data?.[0]?.form_default_img
+  );
 
   const handleClose = () => {
     setLcssForm(false);
@@ -113,35 +139,58 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
             />
           </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            <img
-              src={`${devBaseImgUrl}/lets-talk.jpg`}
-              className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-              alt=""
-            />
+            {contactUsDefaultImage.map((img, index) => (
+              <LoadImages
+                url={`${googleHDViewLink}${img?.id}`}
+                alt={`Contact Form Default ${index + 1}`}
+                className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
+                key={index}
+              />
+            ))}
           </div>
           <div className="flex flex-col justify-between">
             <div>
               <div className="mb-12">
-                <p>Discover your potential with us.</p>
+                <p>
+                  {contactFormLcssData?.data?.length > 0 &&
+                  contactFormLcssData.data[0]?.form_lcss_subtitle
+                    ? contactFormLcssData?.data[0].form_lcss_subtitle
+                    : ""}
+                </p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  Join our Team!
+                  {contactFormLcssData?.data?.length > 0 &&
+                  contactFormLcssData.data[0]?.form_lcss_title
+                    ? contactFormLcssData?.data[0].form_lcss_title
+                    : ""}
                 </h3>
               </div>
               <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
                 <li className="!items-start">
                   <IoMdPin />
-                  <p>
-                    Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
-                    Laguna, 4000
+                  <p className="md:w-[50%]">
+                    {contactFormDefaultData?.data?.length > 0 &&
+                    contactFormDefaultData.data[0]?.form_default_address
+                      ? contactFormDefaultData?.data[0].form_default_address
+                      : ""}
                   </p>
                 </li>
                 <li>
                   <FaPhone />
-                  <p>(049) 501 3592</p>
+                  <p>
+                    {contactFormLcssData?.data?.length > 0 &&
+                    contactFormLcssData.data[0]?.form_lcss_telephone
+                      ? contactFormLcssData?.data[0].form_lcss_telephone
+                      : ""}
+                  </p>
                 </li>
                 <li>
                   <MdOutlinePhoneIphone />
-                  <p>(+63) 927 168 6810</p>
+                  <p>
+                    {contactFormLcssData?.data?.length > 0 &&
+                    contactFormLcssData.data[0]?.form_lcss_phone
+                      ? contactFormLcssData?.data[0].form_lcss_phone
+                      : ""}
+                  </p>
                 </li>
               </ul>
 
@@ -149,16 +198,49 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                 <li>
                   <div className="text-xs md:text-sm">
                     <div className="mb-4">
-                      <h3 className="font-semibold">Computer-Related Course</h3>
-                      <p>Ms. Herlyn Mae Torres</p>
-                      <p>herlyn.torres@frontlinebusiness.com.ph</p>
+                      <h3 className="font-semibold">
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_computer_title
+                          ? contactFormLcssData?.data[0]
+                              .form_lcss_computer_title
+                          : ""}
+                      </h3>
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_computer_name
+                          ? contactFormLcssData?.data[0].form_lcss_computer_name
+                          : ""}
+                      </p>
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_computer_email
+                          ? contactFormLcssData?.data[0]
+                              .form_lcss_computer_email
+                          : ""}
+                      </p>
                     </div>
                     <div className="mb-8">
                       <h3 className="font-semibold">
-                        Accounting-Related Courses
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_accounting_title
+                          ? contactFormLcssData?.data[0]
+                              .form_lcss_accounting_title
+                          : ""}
                       </h3>
-                      <p>Ms. Thea Lyzette Consignado</p>
-                      <p>thea.consignado@frontlinebusiness.com.ph</p>
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_accounting_name
+                          ? contactFormLcssData?.data[0]
+                              .form_lcss_accounting_name
+                          : ""}
+                      </p>
+                      <p>
+                        {contactFormLcssData?.data?.length > 0 &&
+                        contactFormLcssData.data[0]?.form_lcss_accounting_email
+                          ? contactFormLcssData?.data[0]
+                              .form_lcss_accounting_email
+                          : ""}
+                      </p>
                     </div>
                   </div>
                 </li>
@@ -166,48 +248,65 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
 
               <div className="mb-4">
                 <p>Follow Us:</p>
-                <ul className="flex gap-2 text-2xl">
-                  <li>
-                    <a
-                      href="https://www.facebook.com/frontline.business"
-                      target="_blank"
-                    >
-                      <FaFacebookSquare />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/company/frontline-business-solutions-inc"
-                      target="_blank"
-                    >
-                      <FaLinkedin />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.youtube.com/@frontlinebusinesssolutions6578"
-                      target="_blank"
-                    >
-                      <FaYoutubeSquare />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.instagram.com/frontline.business"
-                      target="_blank"
-                    >
-                      <FaInstagramSquare />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.tiktok.com/@frontlinebusinessinc"
-                      target="_blank"
-                    >
-                      <AiFillTikTok />
-                    </a>
-                  </li>
-                </ul>
+                {contactFormDefaultData?.data?.length > 0 &&
+                  (() => {
+                    const item = contactFormDefaultData.data[0];
+
+                    return (
+                      <ul className="flex gap-2 text-2xl">
+                        {item.form_default_facebook_link && (
+                          <li>
+                            <a
+                              href={item.form_default_facebook_link || "#"}
+                              target="_blank"
+                            >
+                              <FaFacebookSquare />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_linkedin_link && (
+                          <li>
+                            <a
+                              href={item.form_default_linkedin_link || "#"}
+                              target="_blank"
+                            >
+                              <FaLinkedin />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_youtube_link && (
+                          <li>
+                            <a
+                              href={item.form_default_youtube_link || "#"}
+                              target="_blank"
+                            >
+                              <FaYoutubeSquare />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_instagram_link && (
+                          <li>
+                            <a
+                              href={item.form_default_instagram_link || "#"}
+                              target="_blank"
+                            >
+                              <FaInstagramSquare />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_tiktok_link && (
+                          <li>
+                            <a
+                              href={item.form_default_tiktok_link || "#"}
+                              target="_blank"
+                            >
+                              <AiFillTikTok />
+                            </a>
+                          </li>
+                        )}
+                      </ul>
+                    );
+                  })()}
               </div>
             </div>
           </div>

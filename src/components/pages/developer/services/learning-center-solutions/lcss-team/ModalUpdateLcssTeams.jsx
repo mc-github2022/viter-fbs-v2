@@ -25,7 +25,7 @@ import LoadImages from "../../../../../partials/LoadImages";
 import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
 import ModalRemovedPhoto from "../../../../../partials/modals/ModalRemovedPhoto";
 
-const ModalUpdateLcssTeams = ({ itemEdit, lcssTeamsData }) => {
+const ModalUpdateLcssTeams = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
@@ -85,10 +85,10 @@ const ModalUpdateLcssTeams = ({ itemEdit, lcssTeamsData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        lcssTeamsData?.data?.length
-          ? `${apiVersion}/lcss-teams/${lcssTeamsData.data[0].lcss_teams_aid}` // update
+        itemEdit
+          ? `${apiVersion}/lcss-teams/${itemEdit.lcss_teams_aid}` // update
           : `${apiVersion}/lcss-teams`, // create
-        lcssTeamsData?.data?.length ? "put" : "post",
+        itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
@@ -109,23 +109,20 @@ const ModalUpdateLcssTeams = ({ itemEdit, lcssTeamsData }) => {
 
   React.useEffect(() => {
     setAnimate("");
-    if (lcssTeamsData) {
-      const photos = getConvertStringToJSONparseData(
-        lcssTeamsData?.data?.[0]?.lcss_teams_img
-      );
+    if (itemEdit) {
+      const photos = getConvertStringToJSONparseData(itemEdit.lcss_teams_img);
       setPhotoArrayList(photos);
     }
   }, []);
 
   const initVal = {
-    isUpdateLcssTeams: itemEdit,
-    lcss_teams_name: lcssTeamsData?.data?.[0]?.lcss_teams_name ?? "",
-    lcss_teams_role: lcssTeamsData?.data?.[0]?.lcss_teams_role ?? "",
-    lcss_teams_position: lcssTeamsData?.data?.[0]?.lcss_teams_position ?? "",
-    lcss_teams_email: lcssTeamsData?.data?.[0]?.lcss_teams_email ?? "",
-    lcss_teams_img: lcssTeamsData?.data?.[0]?.lcss_teams_img ?? "",
+    lcss_teams_name: itemEdit ? itemEdit.lcss_teams_name : "",
+    lcss_teams_role: itemEdit ? itemEdit.lcss_teams_role : "",
+    lcss_teams_position: itemEdit ? itemEdit.lcss_teams_position : "",
+    lcss_teams_email: itemEdit ? itemEdit.lcss_teams_email : "",
+    lcss_teams_img: itemEdit ? itemEdit.lcss_teams_img : "",
 
-    lcss_teams_img_old: lcssTeamsData?.data?.[0]?.lcss_teams_img ?? "",
+    lcss_teams_img_old: itemEdit ? itemEdit.lcss_teams_img : "",
     pendingDeleteFile: [],
   };
 

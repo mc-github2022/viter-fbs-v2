@@ -1,0 +1,289 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import React from "react";
+import { GrFormClose } from "react-icons/gr";
+import * as Yup from "yup";
+import { InputText, InputTextArea } from "../../../../../../helpers/FormInputs";
+import { apiVersion } from "../../../../../../helpers/functions-general";
+import { queryData } from "../../../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../../../partials/dashboard/ModalAddWrapper";
+import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
+import {
+  setError,
+  setIsUpdateHome,
+  setMessage,
+  setSuccess,
+} from "../../../../../../store/StoreAction";
+import { StoreContext } from "../../../../../../store/StoreContext";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as IoIcons from "react-icons/io";
+import * as TiIcons from "react-icons/ti";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
+import * as BsIcons from "react-icons/bs";
+
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+  ...BsIcons,
+};
+
+const ModalUpdateImmersionServices = ({ itemEdit }) => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
+
+  const [searchTerm, setSearchTerm] = React.useState(
+    itemEdit ? itemEdit.immersion_services_icon : ""
+  );
+  const [onFocusSearch, setOnFocusSearch] = React.useState(false);
+  const [selectedIcon, setSelectedIcon] = React.useState(
+    itemEdit ? itemEdit.immersion_services_icon : ""
+  );
+  const [itemsLimit, setItemsLimit] = React.useState(20);
+
+  // sets the limit of icons being show
+  const handleShowMore = () => {
+    setItemsLimit(itemsLimit + 20);
+  };
+
+  const refSearch = React.useRef();
+
+  const clickOutsideRefSearch = (e) => {
+    if (refSearch.current && !refSearch.current.contains(e.target)) {
+      setOnFocusSearch(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefSearch);
+    return () => document.removeEventListener("click", clickOutsideRefSearch);
+  }, []);
+
+  const handleIconSelect = (iconKey) => {
+    setSelectedIcon(iconKey);
+    setSearchTerm(iconKey);
+    setOnFocusSearch(false);
+  };
+
+  // const filteredIcons = Object.keys(icons).filter((iconKey) =>
+  //   iconKey.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
+  const filteredIcons = Object.keys(icons || {}).filter((iconKey) =>
+    iconKey.toLowerCase().includes((searchTerm || "").toLowerCase())
+  );
+
+  // Limit the number of icons displayed
+  const limitedIcons = filteredIcons.slice(0, itemsLimit);
+
+  const handleClose = () => {
+    setAnimate("translate-x-full");
+    setTimeout(() => {
+      dispatch(setIsUpdateHome(false));
+    }, 200);
+  };
+
+  const SelectedIcon = selectedIcon ? icons[selectedIcon] : null;
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (values) =>
+      queryData(
+        itemEdit
+          ? `${apiVersion}/immersion-services/${itemEdit.immersion_services_aid}` // update
+          : `${apiVersion}/immersion-services`, // create
+        itemEdit ? "put" : "post",
+        values
+      ),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["immersion-services"] });
+      if (!data.success) {
+        console.log("Error");
+        dispatch(setError(true));
+        dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
+      } else {
+        console.log("Success");
+        dispatch(setIsUpdateHome(false));
+        dispatch(setSuccess(true));
+        dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
+      }
+    },
+  });
+
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
+
+  const initVal = {
+    immersion_services_subtitle_a: itemEdit
+      ? itemEdit.immersion_services_subtitle_a
+      : "",
+    immersion_services_subtitle_b: itemEdit
+      ? itemEdit.immersion_services_subtitle_b
+      : "",
+    immersion_services_title: itemEdit ? itemEdit.immersion_services_title : "",
+    immersion_services_list: itemEdit ? itemEdit.immersion_services_list : "",
+    immersion_services_icon: itemEdit ? itemEdit.immersion_services_icon : "",
+  };
+
+  const yupSchema = Yup.object({});
+
+  return (
+    <>
+      <ModalAddWrapper
+        className={`transition-all ease-linear transform duration-200 ${animate}`}
+        handleClose={handleClose}
+      >
+        <div className="modal-title">
+          <h2 className="text-sm">
+            {itemEdit ? "Edit" : "Add"} Immersion Services
+          </h2>
+          <button onClick={handleClose}>
+            <GrFormClose className="text-[25px]" />
+          </button>
+        </div>
+        <div className="modal-content">
+          <Formik
+            initialValues={initVal}
+            validationSchema={yupSchema}
+            onSubmit={async (values) => {
+              const data = {
+                ...values,
+                immersion_services_icon: selectedIcon,
+              };
+              mutation.mutate(data);
+            }}
+          >
+            {(props) => {
+              return (
+                <Form className="modal-form">
+                  <div className="form-input ">
+                    <div className="input-wrapper" ref={refSearch}>
+                      <InputText
+                        label="Search Icon"
+                        type="text"
+                        name="immersion_services_icon"
+                        placeholder="Type to search icons..."
+                        value={searchTerm}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setSearchTerm(value);
+                          props.setFieldValue("immersion_services_icon", value);
+                        }}
+                        onFocus={() => setOnFocusSearch(true)}
+                        className="border p-2 w-full"
+                      />
+                      {onFocusSearch && (
+                        <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[34px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                          {limitedIcons.map((iconKey) => {
+                            const IconComponent = icons[iconKey];
+                            return (
+                              <div
+                                key={iconKey}
+                                className="icon-item cursor-pointer flex items-center gap-2 px-2 py-1 hover:bg-gray-100"
+                                onClick={() => {
+                                  handleIconSelect(iconKey);
+                                  props.setFieldValue(
+                                    "immersion_services_icon",
+                                    iconKey
+                                  );
+                                  setOnFocusSearch(false);
+                                }}
+                              >
+                                <IconComponent />
+                                <span>{iconKey}</span>
+                              </div>
+                            );
+                          })}
+                          {filteredIcons.length > itemsLimit && (
+                            <div className="load-more">
+                              <button
+                                type="button"
+                                onClick={handleShowMore}
+                                className="text-primary p-1 ml-1.5 rounded"
+                              >
+                                Show More Icons ...
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      {selectedIcon ? (
+                        <div className="flex items-center gap-4 ml-3 text-xs">
+                          Selected icon: <SelectedIcon />
+                        </div>
+                      ) : (
+                        <div className="text-xs ml-3">No icon selected</div>
+                      )}
+                    </div>
+
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Subtitle A"
+                        type="text"
+                        name="immersion_services_subtitle_a"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Title"
+                        type="text"
+                        name="immersion_services_title"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Subtitle B"
+                        type="text"
+                        name="immersion_services_subtitle_b"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Services List"
+                        type="text"
+                        name="immersion_services_list"
+                        className="h-[300px]"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-action mb-2 ">
+                    <div className="form-btn">
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </Form>
+              );
+            }}
+          </Formik>
+        </div>
+      </ModalAddWrapper>
+    </>
+  );
+};
+
+export default ModalUpdateImmersionServices;

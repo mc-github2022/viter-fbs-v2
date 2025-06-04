@@ -12,6 +12,7 @@ const OjtApplyNow = ({
   handleUpdateOjtApplyNow,
   handleUpdateContactFormLcss,
   contactFormDefaultData,
+  contactFormLcssData,
   pageName,
 }) => {
   const [lcssForm, setLcssForm] = React.useState(false);
@@ -23,54 +24,54 @@ const OjtApplyNow = ({
   const partnerWithUsImage = getConvertStringToJSONparseData(
     ojtApplyNowData?.data?.[0]?.ojt_apply_img
   );
+
   return (
     <>
       <section className="lcssApplyNow pt-[40%] pb-40 md:pt-20 md:pb-20 relative overflow-hidden">
         <div className="customContainer">
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
             <div className="bg-customGray md:bg-opacity-70 py-8 lg:py-20 px-10 z-10 rounded-lg addShadow">
-              <p>Join and experience the fun and learning with our team!</p>
+              <p>
+                {ojtApplyNowData?.data?.length > 0 &&
+                ojtApplyNowData.data[0]?.ojt_apply_subtitle
+                  ? ojtApplyNowData?.data[0].ojt_apply_subtitle
+                  : "Subtitle"}
+              </p>
               <h2 className="text-[clamp(20px,4vw,45px)] font-semibold text-primary leading-[1.1] mb-8">
-                Join our team now!
+                {ojtApplyNowData?.data?.length > 0 &&
+                ojtApplyNowData.data[0]?.ojt_apply_title
+                  ? ojtApplyNowData?.data[0].ojt_apply_title
+                  : "Title"}
               </h2>
               <p className="mb-4">Requirements:</p>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2">
-                <li>
-                  <div>
-                    <FaCheckCircle className="text-primary" />
-                  </div>
-                  Resume
-                </li>
-                <li>
-                  <div>
-                    <FaCheckCircle className="text-primary" />
-                  </div>
-                  School Memorandum of Agreement
-                </li>
-                <li>
-                  <div>
-                    <FaCheckCircle className="text-primary" />
-                  </div>{" "}
-                  Endorsement Letter
-                </li>
-                <li>
-                  <div>
-                    <FaCheckCircle className="text-primary" />
-                  </div>{" "}
-                  Training Waiver
-                </li>
-                <li>
-                  <div>
-                    <FaCheckCircle className="text-primary" />
-                  </div>
-                  School Evaluation Form
-                </li>
+              <ul className="[&>li]:flex [&>li]:flex-col [&>li]:gap-1">
+                {ojtApplyNowData?.data.map((item, index) => (
+                  <li key={index}>
+                    {item.ojt_apply_requirement_list
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <div
+                          key={index}
+                          className="text-base flex items-center gap-2 "
+                        >
+                          <div>
+                            <FaCheckCircle className="text-primary" />
+                          </div>
+                          {list}
+                        </div>
+                      ))}
+                  </li>
+                ))}
               </ul>
               <button
                 onClick={handleFormLcss}
-                className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold"
+                className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold uppercase"
               >
-                APPLY NOW
+                {ojtApplyNowData?.data?.length > 0 &&
+                ojtApplyNowData.data[0]?.ojt_apply_button_text
+                  ? ojtApplyNowData?.data[0].ojt_apply_button_text
+                  : "Button"}
               </button>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">
@@ -85,13 +86,12 @@ const OjtApplyNow = ({
               partnerWithUsImage?.length > 0 ? (
                 <>
                   {partnerWithUsImage.map((img, index) => (
-                    <div key={index} className="">
-                      <LoadImages
-                        url={`${googleHDViewLink}${img?.id}`}
-                        alt={`Partner With Us ${index + 1}`}
-                        className="w-full h-full object-cover object-top z-10"
-                      />
-                    </div>
+                    <LoadImages
+                      url={`${googleHDViewLink}${img?.id}`}
+                      alt={`Partner With Us ${index + 1}`}
+                      className="w-full h-full object-cover object-top z-10"
+                      key={index}
+                    />
                   ))}
                 </>
               ) : (
@@ -109,6 +109,7 @@ const OjtApplyNow = ({
           setLcssForm={setLcssForm}
           contactFormDefaultData={contactFormDefaultData}
           handleUpdateContactFormLcss={handleUpdateContactFormLcss}
+          contactFormLcssData={contactFormLcssData}
         />
       )}
     </>

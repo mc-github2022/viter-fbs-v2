@@ -40,6 +40,10 @@ RewriteRule ^partnerWithUs/([0-9]+)$ controllers/developer/home/partner-with-us/
 RewriteRule ^contactDefault$ controllers/developer/contact-form-default/contactFormDefault.php [L]
 RewriteRule ^contactDefault/([0-9]+)$ controllers/developer/contact-form-default/contactFormDefault.php?contact_form_default_id=$1 [L]
 
+# CONTACT FORM LCSS
+RewriteRule ^contactLcss$ controllers/developer/contact-form-lcss/contactFormLcss.php [L]
+RewriteRule ^contactLcss/([0-9]+)$ controllers/developer/contact-form-lcss/contactFormLcss.php?contact_form_lcss_id=$1 [L]
+
 # HOME -TITLES
 RewriteRule ^homeTitles$ controllers/developer/home/home-titles/homeTitles.php [L]
 RewriteRule ^homeTitles/([0-9]+)$ controllers/developer/home/home-titles/homeTitles.php?home_titlesid=$1 [L]
@@ -320,6 +324,22 @@ RewriteRule ^ojt-overview/([0-9]+)$ controllers/developer/services/learning-cent
 # SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - SERVICES
 RewriteRule ^ojt-services$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-services/ojtServices.php [L]
 RewriteRule ^ojt-services/([0-9]+)$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-services/ojtServices.php?ojt_servicesid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - APPLY NOW
+RewriteRule ^ojt-apply-now$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-apply-now/ojtApplyNow.php [L]
+RewriteRule ^ojt-apply-now/([0-9]+)$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-apply-now/ojtApplyNow.php?ojt_applyid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - TEAM
+RewriteRule ^lcss-teams$ controllers/developer/services/learning-center-solutions/lcss-team/team/lcssTeams.php [L]
+RewriteRule ^lcss-teams/([0-9]+)$ controllers/developer/services/learning-center-solutions/lcss-team/team/lcssTeams.php?lcss_teamsid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - TEAM TITLE
+RewriteRule ^lcss-teams-title$ controllers/developer/services/learning-center-solutions/lcss-team/title/lcssTeamsTitle.php [L]
+RewriteRule ^lcss-teams-title/([0-9]+)$ controllers/developer/services/learning-center-solutions/lcss-team/title/lcssTeamsTitle.php?teams_titlesid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - OJT TITLES
+RewriteRule ^ojt-titles$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-titles/ojtTitles.php [L]
+RewriteRule ^ojt-titles/([0-9]+)$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-titles/ojtTitles.php?ojt_titlesid=$1 [L]
 
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]

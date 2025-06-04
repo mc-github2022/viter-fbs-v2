@@ -18,7 +18,6 @@ import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
 import OjtBanner from "./ojt-banner/OjtBanner";
 import ModalUpdateOjtBanner from "./ojt-banner/ModalUpdateOjtBanner";
 import OjtPartners from "./ojt-partners/OjtPartners";
-import ModalUpdateOjtPartnersTitle from "./ojt-partners/ModalUpdateOjtPartnersTitle";
 import OjtOverview from "./ojt-overview/OjtOverview";
 import ModalUpdateOjtOverview from "./ojt-overview/ModalUpdateOjtOverview";
 import ModalUpdateOjtOverviewList from "./ojt-overview/ModalUpdateOjtOverviewList";
@@ -29,6 +28,14 @@ import ModalUpdateApplyNow from "./ojt-apply-now/ModalUpdateApplyNow";
 import ModalUpdateContactFormDefaultLcss from "../../../contact-form-default/ModalUpdateContactFormDefaultLcss";
 import LcssTeams from "../lcss-team/LcssTeams";
 import ModalUpdateLcssTeams from "../lcss-team/ModalUpdateLcssTeams";
+import OjtBatches from "./ojt-batches/OjtBatches";
+import OjtVidTestimonial from "./ojt-vid-testimonial/OjtVidTestimonial";
+import OjtPartnerSays from "./ojt-partnersays/OjtPartnerSays";
+import ModalUpdateLcssTeamsTitle from "../lcss-team/ModalUpdateLcssTeamsTitle";
+import ModalUpdateOjtPartnersTitle from "./ojt-titles/ModalUpdateOjtPartnersTitle";
+import ModalUpdateOjtBatchesTitle from "./ojt-titles/ModalUpdateOjtBatchesTitle";
+import ModalUpdateOjtVidTestimonialTitle from "./ojt-titles/ModalUpdateOjtVidTestimonialTitle";
+import ModalUpdateOjtPartnerSaysTitle from "./ojt-titles/ModalUpdateOjtPartnerSaysTitle";
 
 const CollegeOnTheJobTraining = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -48,9 +55,9 @@ const CollegeOnTheJobTraining = () => {
   );
 
   const { data: ojtTitlesData } = useQueryData(
-    `${apiVersion}/ojt-title`, // endpoint
+    `${apiVersion}/ojt-titles`, // endpoint
     "get", // method
-    "ojt-title" // key
+    "ojt-titles" // key
   );
 
   const {
@@ -70,10 +77,21 @@ const CollegeOnTheJobTraining = () => {
     "ojt-apply-now" // key
   );
 
-  const { data: lcssTeamsData } = useQueryData(
+  const {
+    isFetching: isFetchingLcssTeams,
+    isLoading: isLoadingLcssTeams,
+    error: errorLcssTeams,
+    data: lcssTeamsData,
+  } = useQueryData(
     `${apiVersion}/lcss-teams`, // endpoint
     "get", // method
     "lcss-teams" // key
+  );
+
+  const { data: lcssTeamTitleData } = useQueryData(
+    `${apiVersion}/lcss-teams-title`, // endpoint
+    "get", // method
+    "lcss-teams-title" // key
   );
 
   const { data: contactFormDefaultData } = useQueryData(
@@ -105,11 +123,6 @@ const CollegeOnTheJobTraining = () => {
     setItemEdit("ojtBannerUpdate");
   };
 
-  const handleUpdateOjtPartnersTitle = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-partners-title" }));
-    setItemEdit("partnersTitleUpdate");
-  };
-
   const handleUpdateOjtOverview = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-overview" }));
     setItemEdit("ojtOverviewUpdateImg");
@@ -132,17 +145,36 @@ const CollegeOnTheJobTraining = () => {
 
   const handleUpdateLcssTeams = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "lcss-teams" }));
-    setItemEdit("lcssTeamsUpdate");
+    setItemEdit(null);
   };
 
-  const handleUpdateOjtPackagesTitle = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-packages-title" }));
-    setItemEdit("packagesTitleUpdate");
+  const handleUpdateLcssTeamsTitle = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "lcss-teams-title" }));
+    setItemEdit("lcssTeamsTitleUpdate");
   };
 
-  const handleUpdateOjtPackagesList = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-packages-list" }));
-    setItemEdit("packagesListUpdate");
+  const handleUpdateOjtPartnersTitle = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-partners-title" }));
+    setItemEdit("partnersTitleUpdate");
+  };
+
+  const handleUpdateOjtBatchesTitle = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-batches-title" }));
+    setItemEdit("batchesTitleUpdate");
+  };
+
+  const handleUpdateOjtVidTestimonialTitle = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "ojt-vidtestimonial-title" })
+    );
+    setItemEdit("vidTestimonialTitleUpdate");
+  };
+
+  const handleUpdateOjtPartnerSaysTitle = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "ojt-partnerSays-title" })
+    );
+    setItemEdit("partnerSaysTitleUpdate");
   };
 
   const handleUpdateHeader = () => {
@@ -214,6 +246,7 @@ const CollegeOnTheJobTraining = () => {
                 handleUpdateOjtOverviewList={handleUpdateOjtOverviewList}
                 ojtOverviewData={ojtOverviewData}
                 contactFormDefaultData={contactFormDefaultData}
+                contactFormLcssData={contactFormLcssData}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 handleUpdateContactFormLcss={handleUpdateContactFormLcss}
                 pageName={pageName}
@@ -233,23 +266,37 @@ const CollegeOnTheJobTraining = () => {
                 handleUpdateOjtApplyNow={handleUpdateOjtApplyNow}
                 handleUpdateContactFormLcss={handleUpdateContactFormLcss}
                 contactFormDefaultData={contactFormDefaultData}
+                contactFormLcssData={contactFormLcssData}
                 pageName={pageName}
               />
 
               <LcssTeams
                 lcssTeamsData={lcssTeamsData}
                 handleUpdateLcssTeams={handleUpdateLcssTeams}
+                isFetchingLcssTeams={isFetchingLcssTeams}
+                isLoadingLcssTeams={isLoadingLcssTeams}
+                errorLcssTeams={errorLcssTeams}
+                setItemEdit={setItemEdit}
+                lcssTeamTitleData={lcssTeamTitleData}
+                handleUpdateLcssTeamsTitle={handleUpdateLcssTeamsTitle}
               />
 
-              {/* <BookkeepingPricing
-                handleUpdateOjtPackagesTitle={
-                  handleUpdateOjtPackagesTitle
+              <OjtBatches
+                ojtTitlesData={ojtTitlesData}
+                handleUpdateOjtBatchesTitle={handleUpdateOjtBatchesTitle}
+              />
+              <OjtVidTestimonial
+                ojtTitlesData={ojtTitlesData}
+                handleUpdateOjtVidTestimonialTitle={
+                  handleUpdateOjtVidTestimonialTitle
                 }
-                handleUpdateOjtPackagesList={
-                  handleUpdateOjtPackagesList
+              />
+              <OjtPartnerSays
+                ojtTitlesData={ojtTitlesData}
+                handleUpdateOjtPartnerSaysTitle={
+                  handleUpdateOjtPartnerSaysTitle
                 }
-                bookkeepingPackagesTitleData={bookkeepingPackagesTitleData}
-              /> */}
+              />
 
               <Footer
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
@@ -267,14 +314,6 @@ const CollegeOnTheJobTraining = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "ojt-banner" && (
           <ModalUpdateOjtBanner itemEdit={itemEdit} ojtData={ojtData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-partners-title" && (
-          <ModalUpdateOjtPartnersTitle
-            itemEdit={itemEdit}
-            ojtTitlesData={ojtTitlesData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&
@@ -308,9 +347,44 @@ const CollegeOnTheJobTraining = () => {
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "lcss-teams" && (
-          <ModalUpdateLcssTeams
+          <ModalUpdateLcssTeams itemEdit={itemEdit} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "lcss-teams-title" && (
+          <ModalUpdateLcssTeamsTitle
             itemEdit={itemEdit}
-            lcssTeamsData={lcssTeamsData}
+            lcssTeamTitleData={lcssTeamTitleData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "ojt-partners-title" && (
+          <ModalUpdateOjtPartnersTitle
+            itemEdit={itemEdit}
+            ojtTitlesData={ojtTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "ojt-batches-title" && (
+          <ModalUpdateOjtBatchesTitle
+            itemEdit={itemEdit}
+            ojtTitlesData={ojtTitlesData}
+          />
+        )}
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "ojt-vidtestimonial-title" && (
+          <ModalUpdateOjtVidTestimonialTitle
+            itemEdit={itemEdit}
+            ojtTitlesData={ojtTitlesData}
+          />
+        )}
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "ojt-partnerSays-title" && (
+          <ModalUpdateOjtPartnerSaysTitle
+            itemEdit={itemEdit}
+            ojtTitlesData={ojtTitlesData}
           />
         )}
 

@@ -1,7 +1,36 @@
-import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import {
+  apiVersion,
+  getConvertStringToJSONparseData,
+  googleHDViewLink
+} from "../../../helpers/functions-general";
+import LoadImages from "../../../partials/LoadImages";
+import TableLoading from "../../../partials/spinners/TableLoading";
 
 const LcssTeam = () => {
+  const {
+    isFetching: isFetchingLcssTeams,
+    isLoading: isLoadingLcssTeams,
+    error: errorLcssTeams,
+    data: lcssTeamsData,
+  } = useQueryData(
+    `${apiVersion}/lcss-teams`, // endpoint
+    "get", // method
+    "lcss-teams", // key
+    {},
+    null,
+    true
+  );
+
+  const { data: lcssTeamTitleData } = useQueryData(
+    `${apiVersion}/lcss-teams-title`, // endpoint
+    "get", // method
+    "lcss-teams-title", // key
+    {},
+    null,
+    true
+  );
+
   return (
     <>
       <div className="theTeam md:py-40">
@@ -10,105 +39,59 @@ const LcssTeam = () => {
             className="mb-12
           "
           >
-            <p>Here are the</p>
+            <p>
+              {lcssTeamTitleData?.data?.length > 0 &&
+              lcssTeamTitleData.data[0]?.teams_title_substitle_a
+                ? lcssTeamTitleData?.data[0].teams_title_substitle_a
+                : ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              Industry Professional
+              {lcssTeamTitleData?.data?.length > 0 &&
+              lcssTeamTitleData.data[0]?.teams_title_title
+                ? lcssTeamTitleData?.data[0].teams_title_title
+                : ""}
             </h3>
-            <p>who will provide you with real-world experience and insights.</p>
+            <p>
+              {lcssTeamTitleData?.data?.length > 0 &&
+              lcssTeamTitleData.data[0]?.teams_title_substitle_b
+                ? lcssTeamTitleData?.data[0].teams_title_substitle_b
+                : ""}
+            </p>
           </div>
           <div className="wrapper flex flex-col gap-10 md:grid md:grid-cols-2 md:gap-10">
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
-                // src={`${devBaseImgUrl}/jhonny.png`}
-                src={`${devBaseImgUrl}/jhonny.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Mr. Jhonny Dichoso, MIT"
-              />
-              <div>
-                <p className="font-semibold text-xl">Mr. Jhonny Dichoso, MIT</p>
-                <p>Head, Learning Center Solutions</p>
-                <p>Supervisor, Web Development</p>
-                <p className="text-sm">
-                  jhonny.dichoso@frontlinebusiness.com.ph
-                </p>
-              </div>
-            </div>
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
-                // src={`${devBaseImgUrl}/Thea.png`}
-                src={`${devBaseImgUrl}/thea.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Ms. Thea Lyzette Consignado"
-              />
-              <div>
-                <p className="font-semibold text-xl">
-                  Ms. Thea Lyzette Consignado
-                </p>
-                <p>Accounting Trainer</p>
-                <p>Accounting Associate</p>
-                <p className="text-sm">
-                  thea.consignado@frontlinebusiness.com.ph
-                </p>
-              </div>
-            </div>
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
-                // src={`${devBaseImgUrl}/roy.png`}
-                src={`${devBaseImgUrl}/roy.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Mr. Roy Balaaldia"
-              />
-              <div>
-                <p className="font-semibold text-xl">Mr. Roy Balaaldia</p>
-                <p>Graphics and Web Designing Trainer</p>
-                <p className="text-sm">
-                  roy.balaaldia@frontlinebusiness.com.ph
-                </p>
-              </div>
-            </div>
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
-                // src={`${devBaseImgUrl}/ms.-herlyn.png`}
-                src={`${devBaseImgUrl}/ms.-herlyn.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Ms. Herlyn Mae Torres"
-              />
-              <div>
-                <p className="font-semibold text-xl">Ms. Herlyn Mae Torres</p>
-                <p>Frontend Development Trainer</p>
-                <p className="text-sm">
-                  herlyn.torres@frontlinebusiness.com.ph
-                </p>
-              </div>
-            </div>
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
-                // src={`${devBaseImgUrl}/sir-mon-1.png`}
-                src={`${devBaseImgUrl}/sir-mon-1.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Mr. Ramon Plaza"
-              />
-              <div>
-                <p className="font-semibold text-xl">Mr. Ramon Plaza</p>
-                <p>Backend/WordPress Development Trainer</p>
-                <p className="text-sm">ramon.plaza@frontlinebusiness.com.ph</p>
-              </div>
-            </div>
-            <div className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4">
-              <img
-                // src={`${devBaseImgUrl}/emman.png`}
-                src={`${devBaseImgUrl}/emman.png`}
-                className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
-                alt="Mr. Emmanuel Manalo"
-              />
-              <div>
-                <p className="font-semibold text-xl">Mr. Emmanuel Manalo</p>
-                <p>Frontend & Backend Development Trainer</p>
-                <p className="text-sm">
-                  emmanuel.manalo@frontlinebusiness.com.ph
-                </p>
-              </div>
-            </div>
+            {isLoadingLcssTeams || isFetchingLcssTeams ? (
+              <TableLoading cols={1} count={15} />
+            ) : (
+              lcssTeamsData?.data.map((item, key) => {
+                const teamImage = getConvertStringToJSONparseData(
+                  item.lcss_teams_img
+                );
+                return (
+                  <div
+                    className="teamItem flex flex-col text-center lg:flex lg:flex-row lg:text-left items-center gap-4 relative"
+                    key={key}
+                  >
+                    {teamImage.map((img, index) => (
+                      <LoadImages
+                        className="w-[100px] h-[100px] md:w-[150px] md:h-[150px]"
+                        url={`${googleHDViewLink}${img?.id}`}
+                        alt={item.lcss_teams_name}
+                        key={index}
+                      />
+                    ))}
+
+                    <div>
+                      <p className="font-semibold text-xl">
+                        {item.lcss_teams_name}
+                      </p>
+                      <p>{item.lcss_teams_role}</p>
+                      <p>{item.lcss_teams_position}</p>
+                      <p className="text-sm">{item.lcss_teams_email}</p>
+                    </div>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </div>
