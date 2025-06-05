@@ -1,22 +1,20 @@
 import React from "react";
-import Header from "../../../partials/Header";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { apiVersion, getUrlParam } from "../../../helpers/functions-general";
 import Footer from "../../../partials/Footer";
-import LcssPartners from "./LcssPartners";
-import LcssPartnersWithUs from "./LcssPartnersWithUs";
-import LcssServices from "./LcssServices";
+import Header from "../../../partials/Header";
+import PageNotFound from "../../../partials/PageNotFound";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import { StoreContext } from "../../../store/StoreContext";
 import LcssApplyNow from "./LcssApplyNow";
-import LcssTeam from "./LcssTeam";
-import LcssVidTestimonials from "./LcssVidTestimonials";
-import LcssPartnersSay from "./LcssPartnersSay";
 import LcssBanner from "./LcssBanner";
 import LcssBatches from "./LcssBatches";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import ModalError from "../../../partials/modals/ModalError";
-import { StoreContext } from "../../../store/StoreContext";
-import { apiVersion, getUrlParam } from "../../../helpers/functions-general";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
-import PageNotFound from "../../../partials/PageNotFound";
+import LcssPartners from "./LcssPartners";
+import LcssPartnersSay from "./LcssPartnersSay";
+import LcssPartnersWithUs from "./LcssPartnersWithUs";
+import LcssServices from "./LcssServices";
+import LcssTeam from "./LcssTeam";
+import LcssVidTestimonials from "./LcssVidTestimonials";
 
 const LcssPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -76,8 +74,6 @@ const LcssPage = () => {
       <LcssVidTestimonials ojtTitlesData={ojtTitlesData} />
       <LcssPartnersSay ojtTitlesData={ojtTitlesData} />
       <Footer />
-      {store.success && <ModalSuccess />}
-      {store.error && <ModalError />}
     </>
   );
 };

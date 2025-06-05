@@ -8,18 +8,15 @@ import { LuChevronsDown } from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
 import * as TiIcons from "react-icons/ti";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import Footer from "../../../partials/Footer";
-import Header from "../../../partials/Header";
-import ModalError from "../../../partials/modals/ModalError";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import { StoreContext } from "../../../store/StoreContext";
-import ModalJobApplication from "./ModalJobApplication";
 import {
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
+import Footer from "../../../partials/Footer";
+import Header from "../../../partials/Header";
 import LoadImages from "../../../partials/LoadImages";
+import { StoreContext } from "../../../store/StoreContext";
+import ModalJobApplication from "./ModalJobApplication";
 
 const icons = {
   ...FaIcons,
@@ -273,9 +270,6 @@ const CareerPage = () => {
           modalJob={modalJob}
         />
       )}
-
-      {store.success && <ModalSuccess />}
-      {store.error && <ModalError />}
     </>
   );
 };
