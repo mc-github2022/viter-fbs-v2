@@ -205,6 +205,12 @@ export const StoreReducer = (state, action) => {
         isUpdateHome: action.payload,
       };
 
+    case "IS_DELETE_LCSS":
+      return {
+        ...state,
+        isDeleteLcss: action.payload,
+      };
+
     default:
       return state;
   }

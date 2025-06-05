@@ -110,155 +110,172 @@ const Header = ({ pageName }) => {
               ))}
             </div>
 
-            {isLoading || isFetching ? (
-              <div className="w-full md:h-[96px] place-content-center">
-                <TableLoading cols={1} count={2} />
-              </div>
-            ) : (
-              <>
-                <div
-                  className={`${
-                    toggleNav ? "active" : ""
-                  } theNav flex justify-end md:justify-between items-center `}
-                >
-                  <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
-                    <li>
-                      <button className="text-left">
-                        <Link
-                          to={`${devNavUrl}/`}
-                          className={`${
-                            pageName === "home"
-                              ? "text-primary !cursor-default"
-                              : ""
-                          }`}
-                        >
-                          {headerData?.data?.length > 0 &&
-                          headerData.data[0]?.header_home
-                            ? headerData?.data[0].header_home
-                            : ""}
-                        </Link>
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        href="#"
-                        onClick={handleToggleMenu}
+            <div
+              className={`${
+                toggleNav ? "active" : ""
+              } theNav flex justify-end md:justify-between items-center `}
+            >
+              <ul className="md:flex  [&>li]:flex [&>li]:items-center md:ml-auto lg:m-0 h-screen md:h-[96px]">
+                <li>
+                  <button className="text-left">
+                    {isLoading || isFetching ? (
+                      <div className="w-[80px]">
+                        <TableLoading cols={1} count={1} />
+                      </div>
+                    ) : (
+                      <Link
+                        to={`${devNavUrl}/`}
                         className={`${
-                          toggleMenu ? "text-primary" : ""
-                        } flex items-center gap-2`}
+                          pageName === "home"
+                            ? "text-primary !cursor-default"
+                            : ""
+                        }`}
                       >
-                        {headerData?.data?.length > 0 &&
-                        headerData.data[0]?.header_services
-                          ? headerData?.data[0].header_services
-                          : ""}
+                        {headerData?.data?.[0]?.header_home || ""}
+                      </Link>
+                    )}
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleToggleMenu}
+                    className={`${
+                      toggleMenu ? "text-primary" : ""
+                    } flex items-center gap-2`}
+                  >
+                    {isLoading || isFetching ? (
+                      <div className="w-[100px]">
+                        <TableLoading cols={1} count={1} />
+                      </div>
+                    ) : (
+                      <>
+                        {headerData?.data?.[0]?.header_services || ""}
                         <BiSolidDownArrow
                           className={`${
                             toggleMenu ? "!rotate-180 transition-all" : ""
                           } transition-all -rotate-90 md:rotate-0 md:block`}
                         />
-                      </button>
-                    </li>
-                    <li className="relative ">
-                      <button
-                        href="#"
-                        className={`${
-                          toggleWhyUs ? "text-primary" : ""
-                        } flex items-center gap-2`}
-                        onClick={handdleWhyUs}
-                        ref={ref}
-                      >
-                        {headerData?.data?.length > 0 &&
-                        headerData.data[0]?.header_whyfbs
-                          ? headerData?.data[0].header_whyfbs
-                          : ""}
+                      </>
+                    )}
+                  </button>
+                </li>
+                <li className="relative ">
+                  <button
+                    onClick={handdleWhyUs}
+                    className={`${
+                      toggleWhyUs ? "text-primary" : ""
+                    } flex items-center gap-2`}
+                    ref={ref}
+                  >
+                    {isLoading || isFetching ? (
+                      <div className="w-[100px]">
+                        <TableLoading cols={1} count={1} />
+                      </div>
+                    ) : (
+                      <>
+                        {headerData?.data?.[0]?.header_whyfbs || ""}
                         <BiSolidDownArrow
                           className={`${
                             toggleWhyUs ? "!rotate-180 transition-all" : ""
                           } transition-all -rotate-90 md:rotate-0 md:block`}
                         />
-                      </button>
-                      <ul
+                      </>
+                    )}
+                  </button>
+                  <ul
+                    className={`${
+                      toggleWhyUs
+                        ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:my-2 lg:[&>li]:my-2 py-0 md:p-[20px]  !top-12 pl-[2.75rem] md:pl-[20px] transition-all md:!bg-light"
+                        : "hidden"
+                    } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
+                  >
+                    <li>
+                      <Link
+                        // className="!p-0 hover:text-primary"
+                        to={`${devNavUrl}/why-work-with-us`}
                         className={`${
-                          toggleWhyUs
-                            ? "md:!absolute md:!top-[96px] md:!w-[180px] md:addShadow !bg-customGray [&>li]:my-2 lg:[&>li]:my-2 py-0 md:p-[20px]  !top-12 pl-[2.75rem] md:pl-[20px] transition-all md:!bg-light"
-                            : "hidden"
-                        } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
+                          pageName === "whyWorkWithUs"
+                            ? "!p-0 text-primary !cursor-default"
+                            : "!p-0 hover:text-primary"
+                        }`}
                       >
-                        <li>
-                          <Link
-                            // className="!p-0 hover:text-primary"
-                            to={`${devNavUrl}/why-work-with-us`}
-                            className={`${
-                              pageName === "whyWorkWithUs"
-                                ? "!p-0 text-primary !cursor-default"
-                                : "!p-0 hover:text-primary"
-                            }`}
-                          >
-                            Why Work With Us
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to={`${devNavUrl}/events-and-activities`}
-                            className={`${
-                              pageName === "events&Activities"
-                                ? "!p-0 text-primary !cursor-default"
-                                : "!p-0 hover:text-primary"
-                            }`}
-                          >
-                            Events & Activities
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to={`${devNavUrl}/career`}
-                            className={`${
-                              pageName === "career"
-                                ? "!p-0 text-primary !cursor-default"
-                                : "!p-0 hover:text-primary"
-                            }`}
-                          >
-                            Career
-                          </Link>
-                        </li>
-                      </ul>
+                        Why Work With Us
+                      </Link>
                     </li>
                     <li>
-                      <button className="text-left">
-                        {headerData?.data.map((item, key) => (
-                          <a href={item.header_payment_link || "#"} key={key}>
-                            {item.header_payment}
-                          </a>
-                        ))}
-                      </button>
-                    </li>
-                    <div className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
-                      <a
-                        href="#"
-                        onClick={handleModalContact}
-                        className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full  from-secondary to-secondary hover:to-primary uppercase"
+                      <Link
+                        to={`${devNavUrl}/events-and-activities`}
+                        className={`${
+                          pageName === "events&Activities"
+                            ? "!p-0 text-primary !cursor-default"
+                            : "!p-0 hover:text-primary"
+                        }`}
                       >
-                        {headerData?.data?.length > 0 &&
-                        headerData.data[0]?.header_button_text
-                          ? headerData?.data[0].header_button_text
-                          : ""}
-                      </a>
-                    </div>
+                        Events & Activities
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to={`${devNavUrl}/career`}
+                        className={`${
+                          pageName === "career"
+                            ? "!p-0 text-primary !cursor-default"
+                            : "!p-0 hover:text-primary"
+                        }`}
+                      >
+                        Career
+                      </Link>
+                    </li>
                   </ul>
-                </div>
-                <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
-                  <button
-                    onClick={handleModalContact}
-                    className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary uppercase"
-                  >
-                    {headerData?.data?.length > 0 &&
-                    headerData.data[0]?.header_button_text
-                      ? headerData?.data[0].header_button_text
-                      : ""}
+                </li>
+                <li>
+                  <button className="text-left">
+                    {isLoading || isFetching ? (
+                      <div className="w-[100px]">
+                        <TableLoading cols={1} count={1} />
+                      </div>
+                    ) : (
+                      headerData?.data.map((item, key) => (
+                        <a href={item.header_payment_link || "#"} key={key}>
+                          {item.header_payment}
+                        </a>
+                      ))
+                    )}
                   </button>
+                </li>
+                <div className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
+                  {isLoading || isFetching ? (
+                    <div className="w-[100px]">
+                      <TableLoading cols={1} count={1} />
+                    </div>
+                  ) : (
+                    <a
+                      href="#"
+                      onClick={handleModalContact}
+                      className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full from-secondary to-secondary hover:to-primary uppercase"
+                    >
+                      {headerData?.data?.[0]?.header_button_text || ""}
+                    </a>
+                  )}
                 </div>
-              </>
-            )}
+              </ul>
+            </div>
+            <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
+              <button
+                onClick={handleModalContact}
+                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5 lg:block rounded-full from-secondary to-secondary hover:to-primary uppercase"
+              >
+                {isLoading || isFetching ? (
+                  <div className="flex justify-center items-center w-full">
+                    <div className="w-[100px]">
+                      <TableLoading cols={1} count={1} />
+                    </div>
+                  </div>
+                ) : (
+                  headerData?.data?.[0]?.header_button_text || ""
+                )}
+              </button>
+            </div>
 
             <button
               onClick={handdleToggle}

@@ -44,10 +44,7 @@ const OjtBanner = ({ ojtData, handleUpdateOjtBanner }) => {
             <div className="text-center py-10 lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                 <span className="font-semibold">
-                  {ojtData?.data?.length > 0 &&
-                  ojtData.data[0]?.ojt_banner_title_bold
-                    ? ojtData?.data[0].ojt_banner_title_bold
-                    : "Title"}
+                  {ojtData?.data?.[0]?.ojt_banner_title_bold || "Title"}
                 </span>
                 <span className="text-light ">
                   {ojtData?.data[0].ojt_banner_title
@@ -63,10 +60,7 @@ const OjtBanner = ({ ojtData, handleUpdateOjtBanner }) => {
               </h2>
 
               <p className="text-light mb-10">
-                {ojtData?.data?.length > 0 &&
-                ojtData.data[0]?.ojt_banner_description
-                  ? ojtData?.data[0].ojt_banner_description
-                  : "Description"}
+                {ojtData?.data?.[0]?.ojt_banner_description || "Description"}
               </p>
               {ojtData?.data.map((item, key) => (
                 <a

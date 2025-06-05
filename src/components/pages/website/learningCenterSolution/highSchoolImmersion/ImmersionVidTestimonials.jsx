@@ -61,7 +61,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ImmersionVidTestimonials = () => {
+const ImmersionVidTestimonials = ({ immersionTitlesData }) => {
   const {
     isFetching,
     error,
@@ -178,9 +178,13 @@ const ImmersionVidTestimonials = () => {
         <div className="absolute bg-light h-[180px] w-full bottom-0"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
-            <p className="text-light">Here are our</p>
+            <p className="text-light">
+              {immersionTitlesData?.data?.[0]
+                ?.immersion_titles_vid_testimonial_subtitle || "Subtitle"}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Trainees Work Experience
+              {immersionTitlesData?.data?.[0]
+                ?.immersion_titles_vid_testimonial_title || "Title"}
             </h3>
           </div>
           {vidTestimonialData?.data.filter(

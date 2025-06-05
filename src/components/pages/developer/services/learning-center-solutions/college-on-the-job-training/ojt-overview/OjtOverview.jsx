@@ -18,7 +18,7 @@ const OjtOverview = ({
   contactFormDefaultData,
   handleUpdateContactFormDefault,
   handleUpdateContactFormLcss,
-  contactFormLcssData
+  contactFormLcssData,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -47,17 +47,11 @@ const OjtOverview = ({
           </a>
 
           <p>
-            {ojtOverviewData?.data?.length > 0 &&
-            ojtOverviewData.data[0]?.ojt_overview_subtitle
-              ? ojtOverviewData?.data[0].ojt_overview_subtitle
-              : "Subtitle"}
+            {ojtOverviewData?.data?.[0]?.ojt_overview_subtitle || "Subtitle"}
           </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {ojtOverviewData?.data?.length > 0 &&
-              ojtOverviewData.data[0]?.ojt_overview_title
-                ? ojtOverviewData?.data[0].ojt_overview_title
-                : "Title"}
+              {ojtOverviewData?.data?.[0]?.ojt_overview_title || "Title"}
             </span>
           </h2>
 
@@ -85,10 +79,8 @@ const OjtOverview = ({
                   onClick={handleOpen}
                   className="btn bg-primary text-light font-semibold uppercase"
                 >
-                  {ojtOverviewData?.data?.length > 0 &&
-                  ojtOverviewData.data[0]?.ojt_overview_button_text
-                    ? ojtOverviewData?.data[0].ojt_overview_button_text
-                    : "Button"}
+                  {ojtOverviewData?.data?.[0]?.ojt_overview_button_text ||
+                    "Button"}
                 </button>
 
                 {contactUsDefaultOJTFile.map((file, index) => (
@@ -119,17 +111,13 @@ const OjtOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {ojtOverviewData?.data?.length > 0 &&
-                        ojtOverviewData.data[0]?.ojt_overview_list_title_a
-                          ? ojtOverviewData?.data[0].ojt_overview_list_title_a
-                          : "Title A"}
+                        {ojtOverviewData?.data?.[0]
+                          ?.ojt_overview_list_title_a || "Title A"}
                       </h3>
                       <p className="text-justify">
-                        {ojtOverviewData?.data?.length > 0 &&
-                        ojtOverviewData.data[0]?.ojt_overview_list_description_a
-                          ? ojtOverviewData?.data[0]
-                              .ojt_overview_list_description_a
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {ojtOverviewData?.data?.[0]
+                          ?.ojt_overview_list_description_a ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -141,17 +129,13 @@ const OjtOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {ojtOverviewData?.data?.length > 0 &&
-                        ojtOverviewData.data[0]?.ojt_overview_list_title_b
-                          ? ojtOverviewData?.data[0].ojt_overview_list_title_b
-                          : "Title B"}
+                        {ojtOverviewData?.data?.[0]
+                          ?.ojt_overview_list_title_b || "Title B"}
                       </h3>
                       <p className="text-justify">
-                        {ojtOverviewData?.data?.length > 0 &&
-                        ojtOverviewData.data[0]?.ojt_overview_list_description_b
-                          ? ojtOverviewData?.data[0]
-                              .ojt_overview_list_description_b
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {ojtOverviewData?.data?.[0]
+                          ?.ojt_overview_list_description_b ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -163,17 +147,13 @@ const OjtOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {ojtOverviewData?.data?.length > 0 &&
-                        ojtOverviewData.data[0]?.ojt_overview_list_title_c
-                          ? ojtOverviewData?.data[0].ojt_overview_list_title_c
-                          : "Title C"}
+                        {ojtOverviewData?.data?.[0]
+                          ?.ojt_overview_list_title_c || "Title C"}
                       </h3>
                       <p className="text-justify">
-                        {ojtOverviewData?.data?.length > 0 &&
-                        ojtOverviewData.data[0]?.ojt_overview_list_description_c
-                          ? ojtOverviewData?.data[0]
-                              .ojt_overview_list_description_c
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {ojtOverviewData?.data?.[0]
+                          ?.ojt_overview_list_description_c ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>

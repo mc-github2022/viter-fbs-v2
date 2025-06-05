@@ -130,19 +130,12 @@ const ImmersionPartnerSays = ({
           {IndtestimonialData?.data.length > 0 && (
             <div className="relative">
               <p>
-                {immersionTitlesData?.data?.length > 0 &&
-                immersionTitlesData.data[0]
-                  ?.immersion_titles_partnersays_subtitle
-                  ? immersionTitlesData?.data[0]
-                      .immersion_titles_partnersays_subtitle
-                  : "Subtitle"}
+                {immersionTitlesData?.data?.[0]
+                  ?.immersion_titles_partnersays_subtitle || "Subtitle"}
               </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                {immersionTitlesData?.data?.length > 0 &&
-                immersionTitlesData.data[0]?.immersion_titles_partnersays_title
-                  ? immersionTitlesData?.data[0]
-                      .immersion_titles_partnersays_title
-                  : "Title"}
+                {immersionTitlesData?.data?.[0]
+                  ?.immersion_titles_partnersays_title || "Title"}
               </h2>
               <a
                 className="absolute cursor-pointer tooltip-btn -top-4 left-[20rem] "

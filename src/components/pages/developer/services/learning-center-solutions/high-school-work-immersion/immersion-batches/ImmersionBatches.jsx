@@ -140,16 +140,12 @@ const ImmersionBatches = ({
         <div className="customContainer max-w-[90%]">
           <div className="mb-12 relative ">
             <p>
-              {immersionTitlesData?.data?.length > 0 &&
-              immersionTitlesData.data[0]?.immersion_titles_batches_subtitle
-                ? immersionTitlesData?.data[0].immersion_titles_batches_subtitle
-                : "Subtitle"}
+              {immersionTitlesData?.data?.[0]
+                ?.immersion_titles_batches_subtitle || "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              {immersionTitlesData?.data?.length > 0 &&
-              immersionTitlesData.data[0]?.immersion_titles_batches_title
-                ? immersionTitlesData?.data[0].immersion_titles_batches_title
-                : "Title"}
+              {immersionTitlesData?.data?.[0]
+                ?.immersion_titles_batches_title || "Title"}
             </h3>
             <a
               className="absolute cursor-pointer tooltip-btn -top-4 left-[40rem] "
@@ -164,9 +160,7 @@ const ImmersionBatches = ({
           ).length > 3 ? (
             <Slider {...settings}>
               {lcssBatchesData?.data.map((item, key) => {
-                if (
-                  item.lcss_batch_category === "High School Work Immersion"
-                ) {
+                if (item.lcss_batch_category === "High School Work Immersion") {
                   // Split the image string into an array and take the first image
                   const batchImages =
                     getConvertStringToJSONparseData(item.lcss_batch_img) || [];
@@ -219,9 +213,7 @@ const ImmersionBatches = ({
           ) : (
             <div className="flex flex-wrap gap-2 place-content-center">
               {lcssBatchesData?.data.map((item, key) => {
-                if (
-                  item.lcss_batch_category === "High School Work Immersion"
-                ) {
+                if (item.lcss_batch_category === "High School Work Immersion") {
                   // Split the image string into an array and take the first image
                   const batchImages =
                     getConvertStringToJSONparseData(item.lcss_batch_img) || [];

@@ -3,21 +3,21 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$ojt_apply = new OjtApplyNow($conn);
+$title = new ImmersionTitles($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
 
-if (array_key_exists("ojt_applyid", $_GET)) {
-  $ojt_apply->ojt_apply_aid = $_GET['ojt_applyid'];
-  checkId($ojt_apply->ojt_apply_aid);
-  $query = checkReadAll($ojt_apply);
+if (array_key_exists("immersion_titlesid", $_GET)) {
+  $title->immersion_titles_aid = $_GET['immersion_titlesid'];
+  checkId($title->immersion_titles_aid);
+  $query = checkReadAll($title);
   http_response_code(200);
   getQueriedData($query);
 }
 
 if (empty($_GET)) {
-  $query = checkReadAll($ojt_apply);
+  $query = checkReadAll($title);
   http_response_code(200);
   getQueriedData($query);
 }

@@ -236,3 +236,10 @@ export const setCredentials = (data) => {
     },
   };
 };
+
+export const setIsDeleteLcss = (val) => {
+  return {
+    type: "IS_DELETE_LCSS",
+    payload: val,
+  };
+};

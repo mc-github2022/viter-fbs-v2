@@ -32,16 +32,10 @@ const OjtApplyNow = ({
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
             <div className="bg-customGray md:bg-opacity-70 py-8 lg:py-20 px-10 z-10 rounded-lg addShadow">
               <p>
-                {ojtApplyNowData?.data?.length > 0 &&
-                ojtApplyNowData.data[0]?.ojt_apply_subtitle
-                  ? ojtApplyNowData?.data[0].ojt_apply_subtitle
-                  : "Subtitle"}
+                {ojtApplyNowData?.data?.[0]?.ojt_apply_subtitle || "Subtitle"}
               </p>
               <h2 className="text-[clamp(20px,4vw,45px)] font-semibold text-primary leading-[1.1] mb-8">
-                {ojtApplyNowData?.data?.length > 0 &&
-                ojtApplyNowData.data[0]?.ojt_apply_title
-                  ? ojtApplyNowData?.data[0].ojt_apply_title
-                  : "Title"}
+                {ojtApplyNowData?.data?.[0]?.ojt_apply_title || "Title"}
               </h2>
               <p className="mb-4">Requirements:</p>
               <ul className="[&>li]:flex [&>li]:flex-col [&>li]:gap-1">
@@ -68,10 +62,7 @@ const OjtApplyNow = ({
                 onClick={handleFormLcss}
                 className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold uppercase"
               >
-                {ojtApplyNowData?.data?.length > 0 &&
-                ojtApplyNowData.data[0]?.ojt_apply_button_text
-                  ? ojtApplyNowData?.data[0].ojt_apply_button_text
-                  : "Button"}
+                {ojtApplyNowData?.data?.[0]?.ojt_apply_button_text || "Button"}
               </button>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">

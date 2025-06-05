@@ -137,16 +137,11 @@ const OjtBatches = ({ ojtTitlesData, handleUpdateOjtBatchesTitle }) => {
         <div className="customContainer max-w-[90%]">
           <div className="mb-12 relative ">
             <p>
-              {ojtTitlesData?.data?.length > 0 &&
-              ojtTitlesData.data[0]?.ojt_titles_batches_subtitle
-                ? ojtTitlesData?.data[0].ojt_titles_batches_subtitle
-                : "Subtitle"}
+              {ojtTitlesData?.data?.[0]?.ojt_titles_batches_subtitle ||
+                "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              {ojtTitlesData?.data?.length > 0 &&
-              ojtTitlesData.data[0]?.ojt_titles_batches_title
-                ? ojtTitlesData?.data[0].ojt_titles_batches_title
-                : "Title"}
+              {ojtTitlesData?.data?.[0]?.ojt_titles_batches_title || "Title"}
             </h3>
             <a
               className="absolute cursor-pointer tooltip-btn -top-4 left-[40rem] "

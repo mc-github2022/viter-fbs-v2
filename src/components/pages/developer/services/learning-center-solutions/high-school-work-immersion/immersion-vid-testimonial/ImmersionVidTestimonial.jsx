@@ -182,20 +182,12 @@ const ImmersionVidTestimonial = ({
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              {immersionTitlesData?.data?.length > 0 &&
-              immersionTitlesData.data[0]
-                ?.immersion_titles_vid_testimonial_subtitle
-                ? immersionTitlesData?.data[0]
-                    .immersion_titles_vid_testimonial_subtitle
-                : "Subtitle"}
+              {immersionTitlesData?.data?.[0]
+                ?.immersion_titles_vid_testimonial_subtitle || "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              {immersionTitlesData?.data?.length > 0 &&
-              immersionTitlesData.data[0]
-                ?.immersion_titles_vid_testimonial_title
-                ? immersionTitlesData?.data[0]
-                    .immersion_titles_vid_testimonial_title
-                : "Title"}
+              {immersionTitlesData?.data?.[0]
+                ?.immersion_titles_vid_testimonial_title || "Title"}
             </h3>
             <a
               className="absolute cursor-pointer tooltip-btn -top-4 left-[55rem] "

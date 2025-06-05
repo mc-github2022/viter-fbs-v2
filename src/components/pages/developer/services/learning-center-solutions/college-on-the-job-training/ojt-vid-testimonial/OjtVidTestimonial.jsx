@@ -182,16 +182,12 @@ const OjtVidTestimonial = ({
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              {ojtTitlesData?.data?.length > 0 &&
-              ojtTitlesData.data[0]?.ojt_titles_vid_testimonial_subtitle
-                ? ojtTitlesData?.data[0].ojt_titles_vid_testimonial_subtitle
-                : "Subtitle"}
+              {ojtTitlesData?.data?.[0]?.ojt_titles_vid_testimonial_subtitle ||
+                "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              {ojtTitlesData?.data?.length > 0 &&
-              ojtTitlesData.data[0]?.ojt_titles_vid_testimonial_title
-                ? ojtTitlesData?.data[0].ojt_titles_vid_testimonial_title
-                : "Title"}
+              {ojtTitlesData?.data?.[0]?.ojt_titles_vid_testimonial_title ||
+                "Title"}
             </h3>
             <a
               className="absolute cursor-pointer tooltip-btn -top-4 left-[55rem] "

@@ -7,7 +7,7 @@ import {
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
 
-const ImmersionPartners = () => {
+const ImmersionPartners = ({ immersionTitlesData }) => {
   const {
     isFetching,
     error,
@@ -26,9 +26,13 @@ const ImmersionPartners = () => {
     <>
       <section className="ImmersionPartners py-20">
         <div className="customContainer">
-          <p>Our Partner</p>
+          <p>
+            {immersionTitlesData?.data?.[0]
+              ?.immersion_titles_partners_subtitle || ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-            Educational Institutions
+            {immersionTitlesData?.data?.[0]?.immersion_titles_partners_title ||
+              ""}
           </h2>
           <ul className="flex flex-wrap justify-center gap-14 items-center">
             {partnersData?.data

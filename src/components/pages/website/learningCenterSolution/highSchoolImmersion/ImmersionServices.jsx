@@ -1,270 +1,86 @@
 import React from "react";
 import { Laptop, Calculator, NotebookPen } from "lucide-react";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../helpers/functions-general";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
+import * as FaIcons from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
+import * as TiIcons from "react-icons/ti";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+  ...BsIcons,
+};
 
 const ImmersionServices = () => {
+  const {
+    isFetching: isFetchingServices,
+    isLoading: isLoadingServices,
+    error,
+    data: immersionServicesData,
+  } = useQueryData(
+    `${apiVersion}/immersion-services`, // endpoint
+    "get", // method
+    "immersion-services", // key
+    {},
+    null,
+    true
+  );
+
   return (
     <>
       <section className="ImmersionServices py-20">
         <div className="customContainer">
           <div className="wrapper flex flex-wrap place-content-center md:grid md:grid-cols-2 lg:grid lg:grid-cols-3 xl:grid-cols-2 lg:gap-8">
-            <div className="webDEv w-[387px] md:w-auto py-5 md:px-3 lg:px-0">
-              <div className="mb-10">
-                <p>STEM and ICT students can learn</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
-                  Web Design & Development
-                </h3>
-                <p>SHS Work Immersion</p>
-              </div>
-              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
+            {isLoadingServices || isFetchingServices ? (
+              <TableLoading cols={1} count={15} />
+            ) : (
+              immersionServicesData?.data.map((item, key) => {
+                const SelectedIcon = item.immersion_services_icon
+                  ? icons[item.immersion_services_icon]
+                  : null;
+
+                return (
+                  <div className="webDEv w-full py-5 md:px-3 lg:px-0" key={key}>
+                    <div className="mb-10">
+                      <p>{item.immersion_services_subtitle_a}</p>
+                      <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] md:w-full">
+                        {item.immersion_services_title}
+                      </h3>
+                      <p>{item.immersion_services_subtitle_b}</p>
+                    </div>
+                    <ul className="servicesList [&>li]:flex [&>li]:flex-col [&>li]:gap-2 [&>li]:mb-2 ">
+                      <li>
+                        {item.immersion_services_list
+                          .split("\n") // Split by new lines
+                          .filter((list) => list.trim() !== "") // Remove empty lines
+                          .map((list, index) => (
+                            <div key={index} className="text-base flex gap-2 ">
+                              <div className="text-2xl text-dark">
+                                {SelectedIcon ? (
+                                  <SelectedIcon />
+                                ) : (
+                                  "No icon selected"
+                                )}
+                              </div>
+                              {list}
+                            </div>
+                          ))}
+                      </li>
+                    </ul>
                   </div>
-                  Web Designing using Figma
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>{" "}
-                  Website Mockup Designing
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>{" "}
-                  Frontend Development
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>{" "}
-                  Mobile Responsive Designing
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  HTML5 & CSS3 Programming
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Basic Scripting Languages
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Business Work Ethics
-                </li>
-              </ul>
-            </div>
-            <div className="css w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
-              <div className="mb-10">
-                <p>ICT students can learn</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
-                  Computer System & Network Maintenance
-                </h3>
-                <p>SHS Work Immersion</p>
-              </div>
-              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Installing and Configuring Computer System
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Setting up and Configuring Networks and Servers
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Maintaining and Repairing Computer Sustems and Networks
-                </li>
-              </ul>
-            </div>
-            <div className="css w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
-              <div className="mb-10">
-                <p>ICT students can learn</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
-                  Visual Graphic Designing
-                </h3>
-                <p>SHS Work Immersion</p>
-              </div>
-              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  UX/UI Designing
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Digital Designing for Print Media
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Mockup Designing for Products and Websites
-                </li>
-              </ul>
-            </div>
-            <div className="css w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
-              <div className="mb-10">
-                <p>ICT students can learn</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
-                  Database Management
-                </h3>
-                <p>SHS Work Immersion</p>
-              </div>
-              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Application of Structured Query Language (SQL)
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Writing queries for Database Management
-                </li>
-                <li>
-                  <div>
-                    <Laptop className="text-2xl text-dark" />
-                  </div>
-                  Designing Databases
-                </li>
-              </ul>
-            </div>
-            <div className="accountingServices w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
-              <div className="mb-10 ">
-                <p>ABM students can learn</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
-                  Accounting Processes
-                </h3>
-                <p>SHS Work Immersion</p>
-              </div>
-              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>{" "}
-                  Journal Entry
-                </li>
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>{" "}
-                  Ledger Posting
-                </li>
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>{" "}
-                  Trial Balance Reporting
-                </li>
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>{" "}
-                  Adjusting Entry
-                </li>
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>
-                  Financial Statements & Reports
-                </li>
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>
-                  Excel Advanced Functions & Formulas
-                </li>
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>
-                  Payroll Report
-                </li>
-                <li>
-                  <div>
-                    <Calculator className="text-2xl text-dark" />
-                  </div>
-                  QuickBooks Online
-                </li>
-              </ul>
-            </div>
-            <div className="adminTasks w-[387px]  md:w-auto py-5 md:px-3 lg:px-0">
-              <div className="mb-10 ">
-                <p>HUMSS and GAS students can learn</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary leading-[1.1]">
-                  Administrative Tasks
-                </h3>
-                <p>SHS Work Immersion</p>
-              </div>
-              <ul className="servicesList [&>li]:flex [&>li]:items-start [&>li]:gap-2 [&>li]:mb-2 ">
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Leadership Principles
-                </li>
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Business Correspondence
-                </li>
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Standard Operating Procedures
-                </li>
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Job Interview Simulation
-                </li>
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Basic Accounting Application
-                </li>
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Excel Advanced Functions and Formulas
-                </li>
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Payroll Setup
-                </li>
-                <li>
-                  <div>
-                    <NotebookPen className="text-2xl text-dark" />
-                  </div>
-                  Business Work Ethics
-                </li>
-              </ul>
-            </div>
+                );
+              })
+            )}
           </div>
         </div>
       </section>

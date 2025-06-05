@@ -1,24 +1,23 @@
 import React from "react";
-import { BsCalculator } from "react-icons/bs";
-import { FaEdit, FaLaptop } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import { StoreContext } from "../../../../../../store/StoreContext";
-import {
-  setIsDelete,
-  setIsUpdateHome,
-} from "../../../../../../store/StoreAction";
-import FetchingSpinner from "../../../../../../partials/spinners/FetchingSpinner";
-import NoData from "../../../../../../partials/spinners/NoData";
-import TableLoading from "../../../../../../partials/spinners/TableLoading";
-import ServerError from "../../../../../../partials/spinners/ServerError";
 import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
 import * as LuIcons from "react-icons/lu";
+import { MdDelete } from "react-icons/md";
 import * as PiIcons from "react-icons/pi";
 import * as TiIcons from "react-icons/ti";
-import * as BsIcons from "react-icons/bs";
 import ModalDelete from "../../../../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../../../partials/spinners/NoData";
+import ServerError from "../../../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../../../partials/spinners/TableLoading";
+import {
+  setIsDeleteLcss,
+  setIsUpdateHome
+} from "../../../../../../store/StoreAction";
+import { StoreContext } from "../../../../../../store/StoreContext";
 
 const icons = {
   ...FaIcons,
@@ -48,7 +47,7 @@ const OjtServices = ({
   };
 
   const handleDelete = (item) => {
-    dispatch(setIsDelete(true));
+    dispatch(setIsDeleteLcss({ modal: true, modalCode: "ojt-services" }));
     setIsData(item.ojt_services_title);
     setIsId(item.ojt_services_aid);
   };
@@ -144,14 +143,15 @@ const OjtServices = ({
         </div>
       </section>
 
-      {store.isDelete && (
-        <ModalDelete
-          setIsDelete={setIsDelete}
-          queryKey={"ojt-services"}
-          mysqlEndpoint={`/v1/ojt-services/${id}`}
-          item={isData}
-        />
-      )}
+      {store.isDeleteLcss?.modal &&
+        store.isDeleteLcss.modalCode === "ojt-services" && (
+          <ModalDelete
+            setIsDelete={setIsDeleteLcss}
+            queryKey={"ojt-services"}
+            mysqlEndpoint={`/v1/ojt-services/${id}`}
+            item={isData}
+          />
+        )}
     </>
   );
 };

@@ -127,16 +127,12 @@ const OjtPartnerSays = ({ ojtTitlesData, handleUpdateOjtPartnerSaysTitle }) => {
           {IndtestimonialData?.data.length > 0 && (
             <div className="relative">
               <p>
-                {ojtTitlesData?.data?.length > 0 &&
-                ojtTitlesData.data[0]?.ojt_titles_partnersays_subtitle
-                  ? ojtTitlesData?.data[0].ojt_titles_partnersays_subtitle
-                  : "Subtitle"}
+                {ojtTitlesData?.data?.[0]?.ojt_titles_partnersays_subtitle ||
+                  "Subtitle"}
               </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                {ojtTitlesData?.data?.length > 0 &&
-                ojtTitlesData.data[0]?.ojt_titles_partnersays_title
-                  ? ojtTitlesData?.data[0].ojt_titles_partnersays_title
-                  : "Title"}
+                {ojtTitlesData?.data?.[0]?.ojt_titles_partnersays_title ||
+                  "Title"}
               </h2>
               <a
                 className="absolute cursor-pointer tooltip-btn -top-4 left-[20rem] "

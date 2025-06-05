@@ -1,22 +1,22 @@
 import React from "react";
+import { FaEdit } from "react-icons/fa";
+import { HiPencil } from "react-icons/hi";
+import { MdDelete } from "react-icons/md";
 import {
-  apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../../../helpers/functions-general";
-import { HiPencil } from "react-icons/hi";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
-import useQueryData from "../../../../../custom-hooks/useQueryData";
-import { StoreContext } from "../../../../../store/StoreContext";
-import { setIsDelete, setIsUpdateHome } from "../../../../../store/StoreAction";
+import LoadImages from "../../../../../partials/LoadImages";
 import ModalDelete from "../../../../../partials/modals/ModalDelete";
 import FetchingSpinner from "../../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../../partials/spinners/NoData";
 import ServerError from "../../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../../partials/spinners/TableLoading";
-import LoadImages from "../../../../../partials/LoadImages";
+import {
+  setIsDeleteLcss,
+  setIsUpdateHome,
+} from "../../../../../store/StoreAction";
+import { StoreContext } from "../../../../../store/StoreContext";
 
 const LcssTeams = ({
   lcssTeamsData,
@@ -38,7 +38,7 @@ const LcssTeams = ({
   };
 
   const handleDelete = (item) => {
-    dispatch(setIsDelete(true));
+    dispatch(setIsDeleteLcss({ modal: true, modalCode: "lcss-teams" }));
     setIsData(item.lcss_teams_name);
     setIsId(item.lcss_teams_aid);
   };
@@ -52,22 +52,15 @@ const LcssTeams = ({
              "
           >
             <p>
-              {lcssTeamTitleData?.data?.length > 0 &&
-              lcssTeamTitleData.data[0]?.teams_title_substitle_a
-                ? lcssTeamTitleData?.data[0].teams_title_substitle_a
-                : "Subtitle"}
+              {lcssTeamTitleData?.data?.[0]?.teams_title_substitle_a ||
+                "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              {lcssTeamTitleData?.data?.length > 0 &&
-              lcssTeamTitleData.data[0]?.teams_title_title
-                ? lcssTeamTitleData?.data[0].teams_title_title
-                : "Title"}
+              {lcssTeamTitleData?.data?.[0]?.teams_title_title || "Title"}
             </h3>
             <p>
-              {lcssTeamTitleData?.data?.length > 0 &&
-              lcssTeamTitleData.data[0]?.teams_title_substitle_b
-                ? lcssTeamTitleData?.data[0].teams_title_substitle_b
-                : "Subtitle"}
+              {lcssTeamTitleData?.data?.[0]?.teams_title_substitle_b ||
+                "Subtitle"}
             </p>
           </div>
           <a
@@ -154,14 +147,15 @@ const LcssTeams = ({
         </div>
       </div>
 
-      {store.isDelete && (
-        <ModalDelete
-          setIsDelete={setIsDelete}
-          queryKey={"lcss-teams"}
-          mysqlEndpoint={`/v1/lcss-teams/${id}`}
-          item={isData}
-        />
-      )}
+      {store.isDeleteLcss?.modal &&
+        store.isDeleteLcss.modalCode === "lcss-teams" && (
+          <ModalDelete
+            setIsDelete={setIsDeleteLcss}
+            queryKey={"lcss-teams"}
+            mysqlEndpoint={`/v1/lcss-teams/${id}`}
+            item={isData}
+          />
+        )}
     </>
   );
 };

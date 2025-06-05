@@ -2,12 +2,12 @@ import React from "react";
 import * as AiIcons from "react-icons/ai";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
-import { FaEdit } from "react-icons/fa";
 import * as IoIcons from "react-icons/io";
 import * as LuIcons from "react-icons/lu";
-import { MdDelete } from "react-icons/md";
 import * as PiIcons from "react-icons/pi";
 import * as TiIcons from "react-icons/ti";
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 import ModalDelete from "../../../../../../partials/modals/ModalDelete";
 import FetchingSpinner from "../../../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../../../partials/spinners/NoData";
@@ -15,6 +15,7 @@ import ServerError from "../../../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../../../partials/spinners/TableLoading";
 import {
   setIsDelete,
+  setIsDeleteLcss,
   setIsUpdateHome,
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
@@ -47,7 +48,7 @@ const ImmersionServices = ({
   };
 
   const handleDelete = (item) => {
-    dispatch(setIsDelete(true));
+    dispatch(setIsDeleteLcss({ modal: true, modalCode: "immersion-services" }));
     setIsData(item.immersion_services_title);
     setIsId(item.immersion_services_aid);
   };
@@ -79,7 +80,7 @@ const ImmersionServices = ({
               </div>
             </div>
           )}
-          <div className="wrapper flex flex-wrap place-content-center md:grid md:grid-cols-2">
+          <div className="wrapper flex flex-wrap place-content-center md:grid md:grid-cols-2 gap-6">
             {isLoadingServices || isFetchingServices ? (
               <TableLoading cols={1} count={15} />
             ) : (
@@ -90,7 +91,7 @@ const ImmersionServices = ({
 
                 return (
                   <div
-                    className="webDEv w-[387px] py-5 md:px-3 lg:px-0"
+                    className="webDEv w-full py-5 md:px-3 lg:px-0"
                     key={key}
                   >
                     <div className="flex items-center place-self-end">
@@ -111,7 +112,7 @@ const ImmersionServices = ({
                     </div>
                     <div className="mb-10">
                       <p>{item.immersion_services_subtitle_a}</p>
-                      <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] md:w-[357px]">
+                      <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] md:w-full">
                         {item.immersion_services_title}
                       </h3>
                       <p>{item.immersion_services_subtitle_b}</p>
@@ -143,14 +144,15 @@ const ImmersionServices = ({
         </div>
       </section>
 
-      {store.isDelete && (
-        <ModalDelete
-          setIsDelete={setIsDelete}
-          queryKey={"immersion-services"}
-          mysqlEndpoint={`/v1/immersion-services/${id}`}
-          item={isData}
-        />
-      )}
+      {store.isDeleteLcss?.modal &&
+        store.isDeleteLcss.modalCode === "immersion-services" && (
+          <ModalDelete
+            setIsDelete={setIsDeleteLcss}
+            queryKey={"immersion-services"}
+            mysqlEndpoint={`/v1/immersion-services/${id}`}
+            item={isData}
+          />
+        )}
     </>
   );
 };

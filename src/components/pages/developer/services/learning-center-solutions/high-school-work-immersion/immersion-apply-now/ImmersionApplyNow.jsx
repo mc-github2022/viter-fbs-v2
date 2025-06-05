@@ -32,16 +32,12 @@ const ImmersionApplyNow = ({
           <div className="wrapper grid grid-cols-1 lg:grid-cols-[_1.5fr_1fr] ">
             <div className="bg-customGray md:bg-opacity-70 py-8 lg:py-20 px-10 z-10 rounded-lg addShadow">
               <p>
-                {immersionApplyNowData?.data?.length > 0 &&
-                immersionApplyNowData.data[0]?.immersion_apply_subtitle
-                  ? immersionApplyNowData?.data[0].immersion_apply_subtitle
-                  : "Subtitle"}
+                {immersionApplyNowData?.data?.[0]?.immersion_apply_subtitle ||
+                  "Subtitle"}
               </p>
               <h2 className="text-[clamp(20px,4vw,45px)] font-semibold text-primary leading-[1.1] mb-8">
-                {immersionApplyNowData?.data?.length > 0 &&
-                immersionApplyNowData.data[0]?.immersion_apply_title
-                  ? immersionApplyNowData?.data[0].immersion_apply_title
-                  : "Title"}
+                {immersionApplyNowData?.data?.[0]?.immersion_apply_title ||
+                  "Title"}
               </h2>
               <p className="mb-4">Requirements:</p>
               <ul className="[&>li]:flex [&>li]:flex-col [&>li]:gap-1">
@@ -68,10 +64,8 @@ const ImmersionApplyNow = ({
                 onClick={handleFormLcss}
                 className="btn px-6 bg-primary text-light my-5  inline-block rounded-full font-bold uppercase"
               >
-                {immersionApplyNowData?.data?.length > 0 &&
-                immersionApplyNowData.data[0]?.immersion_apply_button_text
-                  ? immersionApplyNowData?.data[0].immersion_apply_button_text
-                  : "Button"}
+                {immersionApplyNowData?.data?.[0]
+                  ?.immersion_apply_button_text || "Button"}
               </button>
             </div>
             <div className="bgImage w-full absolute top-0 left-0 md:left-auto md:w-[68%] md:right-0 md:h-full">

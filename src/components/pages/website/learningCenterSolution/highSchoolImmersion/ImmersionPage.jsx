@@ -32,6 +32,15 @@ const ImmersionPage = () => {
     true
   );
 
+  const { data: immersionTitlesData } = useQueryData(
+    `${apiVersion}/immersion-titles`, // endpoint
+    "get", // method
+    "immersion-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -56,14 +65,14 @@ const ImmersionPage = () => {
     <>
       <Header pageName={pageName} />
       <ImmersionBanner pageName={pageName} />
-      <ImmersionPartners />
+      <ImmersionPartners immersionTitlesData={immersionTitlesData}/>
       <ImmersionPartnersWithUs pageName={pageName} />
       <ImmersionServices />
       <ImmersionApplyNow pageName={pageName} />
       <ImmersionTeam />
-      <ImmersionBatches />
-      <ImmersionVidTestimonials />
-      <ImmersionPartnersSay />
+      <ImmersionBatches immersionTitlesData={immersionTitlesData}/>
+      <ImmersionVidTestimonials immersionTitlesData={immersionTitlesData}/>
+      <ImmersionPartnersSay immersionTitlesData={immersionTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

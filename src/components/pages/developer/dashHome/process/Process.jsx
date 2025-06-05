@@ -15,17 +15,9 @@ const Process = ({
       <section className="process pt-20 pb-10">
         <div className="customContainer">
           <div className="theTitle leading-1 mb-12 relative">
-            <p>
-              {processData?.data?.length > 0 &&
-              processData.data[0]?.process_subtitle
-                ? processData?.data[0].process_subtitle
-                : "Subtitle"}
-            </p>
+            <p>{processData?.data?.[0]?.process_subtitle || "Subtitle"}</p>
             <h2 className="text-[clamp(30px,7vw,45px)] font-semibold text-primary leading-[1.1]">
-              {processData?.data?.length > 0 &&
-              processData.data[0]?.process_title
-                ? processData?.data[0].process_title
-                : "Title"}
+              {processData?.data?.[0]?.process_title || "Title"}
             </h2>
             <a
               className="absolute cursor-pointer tooltip-btn left-[550px] top-2"
@@ -54,16 +46,11 @@ const Process = ({
                   </div>
                   <div>
                     <p className="text-primary font-bold text-lg">
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_title_a
-                        ? processData?.data[0].process_title_a
-                        : "Title"}
+                      {processData?.data?.[0]?.process_title_a || "Title"}
                     </p>
                     <p>
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_description_a
-                        ? processData?.data[0].process_description_a
-                        : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
+                      {processData?.data?.[0]?.process_description_a ||
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
                     </p>
                     <a
                       className="absolute cursor-pointer tooltip-btn right-0 -top-2"
@@ -84,16 +71,11 @@ const Process = ({
                       <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
                     </a>
                     <p className="text-primary font-bold text-lg">
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_title_b
-                        ? processData?.data[0].process_title_b
-                        : "Title"}
+                      {processData?.data?.[0]?.process_title_b || "Title"}
                     </p>
                     <p>
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_description_b
-                        ? processData?.data[0].process_description_b
-                        : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
+                      {processData?.data?.[0]?.process_description_b ||
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
                     </p>
                   </div>
                 </div>
@@ -107,16 +89,11 @@ const Process = ({
                       <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
                     </a>
                     <p className="text-primary font-bold text-lg">
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_title_c
-                        ? processData?.data[0].process_title_c
-                        : "Title"}
+                      {processData?.data?.[0]?.process_title_c || "Title"}
                     </p>
                     <p>
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_description_c
-                        ? processData?.data[0].process_description_c
-                        : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
+                      {processData?.data?.[0]?.process_description_c ||
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
                     </p>
                   </div>
                 </div>
@@ -130,16 +107,11 @@ const Process = ({
                       <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
                     </a>
                     <p className="text-primary font-bold text-lg">
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_title_d
-                        ? processData?.data[0].process_title_d
-                        : "Title"}
+                      {processData?.data?.[0]?.process_title_d || "Title"}
                     </p>
                     <p>
-                      {processData?.data?.length > 0 &&
-                      processData.data[0]?.process_description_d
-                        ? processData?.data[0].process_description_d
-                        : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
+                      {processData?.data?.[0]?.process_description_d ||
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deleniti esse et maiores! Minus, praesentium!"}
                     </p>
                   </div>
                 </div>

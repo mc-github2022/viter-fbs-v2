@@ -28,16 +28,11 @@ const OjtPartners = ({ ojtTitlesData, handleUpdateOjtPartnersTitle }) => {
         <section className="partners py-20">
           <div className="customContainer relative">
             <p>
-              {ojtTitlesData?.data?.length > 0 &&
-              ojtTitlesData.data[0]?.ojt_titles_partners_subtitle
-                ? ojtTitlesData?.data[0].ojt_titles_partners_subtitle
-                : "Subtitle"}
+              {ojtTitlesData?.data?.[0]?.ojt_titles_partners_subtitle ||
+                "Subtitle"}
             </p>
             <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-              {ojtTitlesData?.data?.length > 0 &&
-              ojtTitlesData.data[0]?.ojt_titles_partners_title
-                ? ojtTitlesData?.data[0].ojt_titles_partners_title
-                : "Title"}
+              {ojtTitlesData?.data?.[0]?.ojt_titles_partners_title || "Title"}
             </h2>
             <a
               className="absolute cursor-pointer tooltip-btn top-0 left-[30rem] "

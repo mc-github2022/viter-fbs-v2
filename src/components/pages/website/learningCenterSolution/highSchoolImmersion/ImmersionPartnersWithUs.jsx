@@ -1,50 +1,86 @@
 import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+  googleViewLink,
+} from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ImmersionPartnersWithUs = ({ pageName }) => {
   const [contactForm, setContactForm] = React.useState(false);
+
+  const { data: immersionOverviewData } = useQueryData(
+    `${apiVersion}/immersion-overview`, // endpoint
+    "get", // method
+    "immersion-overview", // key
+    {},
+    null,
+    true
+  );
+
   const handleForm = () => {
     setContactForm(!contactForm);
   };
+
+  const immersionOverviewImage = getConvertStringToJSONparseData(
+    immersionOverviewData?.data?.[0]?.immersion_overview_img
+  );
+
+  const contactUsDefaultimmersionFile = getConvertStringToJSONparseData(
+    immersionOverviewData?.data?.[0]?.immersion_overview_file
+  );
+
   return (
     <>
       <section className="ImmersionPartnersWithUs py-20 bg-customGray">
         <div className="customContainer">
-          <p> We Offer Senior High School Work Immersion With</p>
+          <p>
+            {immersionOverviewData?.data?.[0]?.immersion_overview_subtitle ||
+              ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              Actual Work-Related Experience.
+              {immersionOverviewData?.data?.[0]?.immersion_overview_title || ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                // src={`${devBaseImgUrl}/lcssBannerImg.jpg`}
-                src={`${devBaseImgUrl}/workimmersion-sige-img.jpg`}
-                className="mb-12 w-full mxauto"
-                alt="Actual Work-Related Experience."
-              />
+              {immersionOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt="Actual Work-Related Experience."
+                  key={index}
+                />
+              ))}
+
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
-                    PARTNER WITH US
+                    {immersionOverviewData?.data?.[0]
+                      ?.immersion_overview_button_text || "Button"}
                   </button>
                 </li>
                 <li>
-                  <a
-                    href={`${devBaseImgUrl}/FBS-Work-Immersion-Program-Proposal-2025.pdf`}
-                    download
-                    className="flex items-center gap-2 font-bold text-primary"
-                    target="_blank"
-                  >
-                    Download Proposal <FaFileDownload />
-                  </a>
+                  {contactUsDefaultimmersionFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex items-center gap-2 font-bold text-primary"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Proposal <FaFileDownload />
+                    </a>
+                  ))}
                 </li>
               </ul>
             </div>
@@ -57,12 +93,12 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        Work-Related Experience
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_title_a || ""}
                       </h3>
                       <p className="text-justify">
-                        Students get hands-on, real-world experience, allowing
-                        them to apply knowledge in practical settings, preparing
-                        them for the demands of their future careers.
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_description_a || ""}
                       </p>
                     </div>
                   </div>
@@ -74,13 +110,12 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        Expert-Led Training
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_title_b || ""}
                       </h3>
                       <p className="text-justify">
-                        Receive guidance and mentorship from industry experts
-                        who provide valuable insights, technical skills, and
-                        personalized support to help you excel in your chosen
-                        field.
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_description_b || ""}
                       </p>
                     </div>
                   </div>
@@ -92,13 +127,12 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        Higher Employability
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_title_c || ""}
                       </h3>
                       <p className="text-justify">
-                        By gaining industry-aligned experience and expert
-                        training, students enhance their employability, making
-                        them more competitive in the job market and ready for
-                        career opportunities.
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_description_c || ""}
                       </p>
                     </div>
                   </div>

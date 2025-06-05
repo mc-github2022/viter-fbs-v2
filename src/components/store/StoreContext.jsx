@@ -36,6 +36,7 @@ const initVal = {
   isPackagesOpen: true,
   isUpdateHome: { modal: false, code: "" },
   credentials: {},
+  isDeleteLcss: { modal: false, code: "" },
 };
 
 const StoreContext = React.createContext();
