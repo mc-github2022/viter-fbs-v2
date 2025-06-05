@@ -78,7 +78,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
-    client_file: Yup.string().required("Required"),
+    // client_file: Yup.string().required("Required"),
   });
 
   const handleChange = (value) => {
@@ -208,11 +208,13 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
           </div>
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
-            {jobTitle === "insight" ? "" : 
-            <p className="mb-2 text-sm md:text-lg">
-              Job Application: <b>{jobTitle}</b>
-            </p> 
-            }
+            {jobTitle === "insight" ? (
+              ""
+            ) : (
+              <p className="mb-2 text-sm md:text-lg">
+                Job Application: <b>{jobTitle}</b>
+              </p>
+            )}
             <Formik
               initialValues={initVal}
               validationSchema={yupSchema}
@@ -284,7 +286,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                         <span htmlFor="" className="text-xs">
                           Upload Resume (PDF Only (8mb)){" "}
                         </span>
-                        <InputFileUpload
+                        <input
                           type="file"
                           name="client_file"
                           accept="application/pdf"
@@ -294,7 +296,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                         />
                       </div>
 
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper ">
                         <InputTextArea
                           label="Message"
                           type="text"
@@ -304,13 +306,19 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                         />
                       </div>
 
-                      <div className="input-wrapper reCaptcha">
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey={siteKey}
-                          onChange={(e) => handleChange(e)}
-                        />
-                      </div>
+                      {siteKey ? (
+                        <div className="input-wrapper reCaptcha">
+                          <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey={siteKey}
+                            onChange={(e) => handleChange(e)}
+                          />
+                        </div>
+                      ) : (
+                        <p className="py-4 text-[red] text-xs">
+                          There's a problem in loading reCAPTCHA.
+                        </p>
+                      )}
 
                       <div className="modal__action flex justify-end mt-6 gap-2">
                         <button

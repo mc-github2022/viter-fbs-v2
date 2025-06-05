@@ -16,6 +16,7 @@ import { Form, Formik } from "formik";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ReCAPTCHA from "react-google-recaptcha";
 import * as Yup from "yup";
+import useQueryData from "../custom-hooks/useQueryData";
 import useUploadFiles from "../custom-hooks/useUploadFiles";
 import {
   InputFileUpload,
@@ -24,7 +25,6 @@ import {
 } from "../helpers/FormInputs";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   siteKey,
@@ -32,9 +32,8 @@ import {
 import { queryData } from "../helpers/queryData";
 import { setError, setMessage, setSuccess } from "../store/StoreAction";
 import { StoreContext } from "../store/StoreContext";
-import ButtonSpinner from "./spinners/ButtonSpinner";
-import useQueryData from "../custom-hooks/useQueryData";
 import LoadImages from "./LoadImages";
+import ButtonSpinner from "./spinners/ButtonSpinner";
 
 const ModalLcssForm = ({ thePageName, setLcssForm }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -65,6 +64,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
   const handleClose = () => {
     setLcssForm(false);
   };
+
   const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
     `${apiVersion}/upload-files`,
     dispatch
@@ -107,7 +107,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
-    client_file: Yup.string().required("Required"),
+    // client_file: Yup.string().required("Required"),
   });
 
   const handleChange = (value) => {
@@ -385,7 +385,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                         <span htmlFor="" className="text-xs">
                           Upload Resume (PDF Only (8mb))
                         </span>
-                        <InputFileUpload
+                        <input
                           type="file"
                           name="client_file"
                           accept="application/pdf"
@@ -395,7 +395,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                         />
                       </div>
 
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper ">
                         <InputTextArea
                           label="Message"
                           type="text"

@@ -12,7 +12,7 @@ const useUploadFiles = (url, dispatch) => {
 
       const data = await fetchFormData(devApiUrl + url, fd, dispatch);
 
-      // console.log(data);
+      console.log(data);
     }
   };
 

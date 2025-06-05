@@ -32,6 +32,7 @@ const ContactFormDefault = ({
   contactFormDefaultData,
   contactFormLcssData,
   handleUpdateContactFormLcss,
+  contactUsDefaultimmersionFile,
 }) => {
   const handleClose = () => {
     setIsContactDefaultOpen(false);
@@ -377,12 +378,16 @@ const ContactFormDefault = ({
                   <p className="text-sm">
                     Learn more about our immersion program
                   </p>
-                  <a
-                    href="https://drive.google.com/uc?export=download&amp;id=1o0xSoctvBb00q81fE_njVJANzVSiEPt_"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
-                    Download Proposal <FaFileDownload />
-                  </a>
+                  {contactUsDefaultimmersionFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex gap-2 items-center font-bold text-primary pointer"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Proposal <FaFileDownload />
+                    </a>
+                  ))}
                 </>
               ) : thePageName === "Continuing Study" ? (
                 <></>

@@ -341,6 +341,18 @@ RewriteRule ^lcss-teams-title/([0-9]+)$ controllers/developer/services/learning-
 RewriteRule ^ojt-titles$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-titles/ojtTitles.php [L]
 RewriteRule ^ojt-titles/([0-9]+)$ controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-titles/ojtTitles.php?ojt_titlesid=$1 [L]
 
+# SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - BANNER
+RewriteRule ^immersion$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-banner/immersionBanner.php [L]
+RewriteRule ^immersion/([0-9]+)$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-banner/immersionBanner.php?immersion_bannerid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - OVERVIEW
+RewriteRule ^immersion-overview$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-overview/immersionOverview.php [L]
+RewriteRule ^immersion-overview/([0-9]+)$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-overview/immersionOverview.php?immersion_overviewid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - SERVICES
+RewriteRule ^immersion-services$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-services/immersionServices.php [L]
+RewriteRule ^immersion-services/([0-9]+)$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-services/immersionServices.php?immersion_servicesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

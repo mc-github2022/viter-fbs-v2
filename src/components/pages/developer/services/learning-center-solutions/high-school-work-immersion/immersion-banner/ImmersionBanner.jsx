@@ -37,28 +37,22 @@ const ImmersionBanner = ({ immersionData, handleUpdateImmersionBanner }) => {
         <div className="customContainer relative z-10 h-full">
           <div className="wrapper flex flex-col justify-center items-center h-full text-center lg:grid lg:grid-cols-2">
             <div className="text-center py-10 lg:text-left">
-              <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
-                <span className="font-semibold">
-                  {immersionData?.data?.length > 0 &&
-                  immersionData.data[0]?.immersion_banner_title_bold
-                    ? immersionData?.data[0].immersion_banner_title_bold
-                    : "Title"}
-                </span>
-                <span className="text-light ">
-                  {immersionData?.data[0].immersion_banner_title
-                    .split("\n") // Split by new lines
-                    .filter((content_a) => content_a.trim() !== "") // Remove empty lines
-                    .map((content_a, index) => (
-                      <p key={index}>{content_a}</p>
-                    ))}
-                </span>
-              </h2>
+              <div className="mb-8 text-[clamp(30px,3vw,45px)] leading-[1.1] text-light font-light">
+                <h2 className="font-semibold">
+                  {immersionData?.data?.[0]?.immersion_banner_title_bold ||
+                    "Title"}
+                </h2>
+                {(immersionData?.data?.[0]?.immersion_banner_title || "Title")
+                  .split("\n")
+                  .filter((line) => line.trim() !== "")
+                  .map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
+              </div>
 
               <p className="text-light mb-10">
-                {immersionData?.data?.length > 0 &&
-                immersionData.data[0]?.immersion_banner_description
-                  ? immersionData?.data[0].immersion_banner_description
-                  : "Description"}
+                {immersionData?.data?.[0]?.immersion_banner_description ||
+                  "Description"}
               </p>
               {immersionData?.data.map((item, key) => (
                 <a
@@ -71,7 +65,7 @@ const ImmersionBanner = ({ immersionData, handleUpdateImmersionBanner }) => {
                 </a>
               ))}
               <a
-                className="absolute cursor-pointer tooltip-btn left-[28rem] top-2"
+                className="absolute cursor-pointer tooltip-btn left-[38rem] top-2"
                 data-tooltip="Edit contents"
                 onClick={handleUpdateImmersionBanner}
               >

@@ -1,24 +1,23 @@
 import React from "react";
-import { BsCalculator } from "react-icons/bs";
-import { FaEdit, FaLaptop } from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
+import * as FaIcons from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
+import * as LuIcons from "react-icons/lu";
 import { MdDelete } from "react-icons/md";
-import { StoreContext } from "../../../../../../store/StoreContext";
+import * as PiIcons from "react-icons/pi";
+import * as TiIcons from "react-icons/ti";
+import ModalDelete from "../../../../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../../../partials/spinners/NoData";
+import ServerError from "../../../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../../../partials/spinners/TableLoading";
 import {
   setIsDelete,
   setIsUpdateHome,
 } from "../../../../../../store/StoreAction";
-import FetchingSpinner from "../../../../../../partials/spinners/FetchingSpinner";
-import NoData from "../../../../../../partials/spinners/NoData";
-import TableLoading from "../../../../../../partials/spinners/TableLoading";
-import ServerError from "../../../../../../partials/spinners/ServerError";
-import * as AiIcons from "react-icons/ai";
-import * as FaIcons from "react-icons/fa";
-import * as IoIcons from "react-icons/io";
-import * as LuIcons from "react-icons/lu";
-import * as PiIcons from "react-icons/pi";
-import * as TiIcons from "react-icons/ti";
-import * as BsIcons from "react-icons/bs";
-import ModalDelete from "../../../../../../partials/modals/ModalDelete";
+import { StoreContext } from "../../../../../../store/StoreContext";
 
 const icons = {
   ...FaIcons,

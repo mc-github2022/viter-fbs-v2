@@ -25,6 +25,9 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/learning-center-solutions/lcss-team
             -> rest/v1/controllers/developer/services/learning-center-solutions/lcss-team/title
             -> rest/v1/controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-titles
+            -> rest/v1/controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-banner
+            -> rest/v1/controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-overview
+            -> rest/v1/controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-services
 
         * CORE 
             -> 
@@ -48,6 +51,9 @@ DEVELOPER
             -> rest/v1/models/developer/services/learning-center-solutions/lcss-team/LcssTeam.php
             -> rest/v1/models/developer/services/learning-center-solutions/lcss-team/LcssTeamTitle.php
             -> rest/v1/models/developer/services/learning-center-solutions/college-on-the-job-training/OjtTitles.php
+            -> rest/v1/models/developer/services/learning-center-solutions/high-school-work-immersion/ImmersionBanner.php
+            -> rest/v1/models/developer/services/learning-center-solutions/high-school-work-immersion/ImmersionOverview.php
+            -> rest/v1/models/developer/services/learning-center-solutions/high-school-work-immersion/ImmersionServices.php
 
         * HTACESS
             -> In # MAILER LOG this is added
@@ -66,6 +72,9 @@ DEVELOPER
             -> # SERVICES - LEARNING CENTER SOLUTIONS - TEAM is added
             -> # SERVICES - LEARNING CENTER SOLUTIONS - TEAM TITLE is added
             -> # SERVICES - LEARNING CENTER SOLUTIONS - COLLEGE ON-THE-JOB TRAINING - OJT TITLES is added
+            -> # SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - BANNER is added
+            -> # SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - OVERVIEW is added
+            -> # SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - SERVICES is added
 
         * OTHER FILES
             ->
@@ -101,4 +110,7 @@ DEVELOPER
             -> rest/db-backup/fbsv2_lcss_team_title.sql
             -> rest/db-backup/fbsv2_lcss_team.sql
             -> rest/db-backup/fbsv2_contact_form_lcss.sql
+            -> rest/db-backup/fbsv2_services_immersion_banner.sql
+            -> rest/db-backup/fbsv2_services_immersion_overview.sql
+            -> rest/db-backup/fbsv2_services_immersion_services.sql
 

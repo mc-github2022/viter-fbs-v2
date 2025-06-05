@@ -558,7 +558,7 @@ const ModalContact = ({
                           disabled={mutation.isPending}
                         />
                       </div>
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper ">
                         <InputTextArea
                           label="Message"
                           type="text"

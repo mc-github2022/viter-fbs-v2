@@ -39,7 +39,7 @@ const ImmersionOverview = ({
       <section className="ServiceHrOverview py-20 bg-customGray">
         <div className="customContainer relative">
           <a
-            className="absolute cursor-pointer tooltip-btn left-[35rem] top-0"
+            className="absolute cursor-pointer tooltip-btn left-[35rem] -top-8"
             data-tooltip="Edit contents"
             onClick={handleUpdateImmersionOverview}
           >
@@ -47,17 +47,13 @@ const ImmersionOverview = ({
           </a>
 
           <p>
-            {immersionOverviewData?.data?.length > 0 &&
-            immersionOverviewData.data[0]?.immersion_overview_subtitle
-              ? immersionOverviewData?.data[0].immersion_overview_subtitle
-              : "Subtitle"}
+            {immersionOverviewData?.data?.[0]?.immersion_overview_subtitle ||
+              "Subtitle"}
           </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {immersionOverviewData?.data?.length > 0 &&
-              immersionOverviewData.data[0]?.immersion_overview_title
-                ? immersionOverviewData?.data[0].immersion_overview_title
-                : "Title"}
+              {immersionOverviewData?.data?.[0]?.immersion_overview_title ||
+                "Title"}
             </span>
           </h2>
 
@@ -85,11 +81,8 @@ const ImmersionOverview = ({
                   onClick={handleOpen}
                   className="btn bg-primary text-light font-semibold uppercase"
                 >
-                  {immersionOverviewData?.data?.length > 0 &&
-                  immersionOverviewData.data[0]?.immersion_overview_button_text
-                    ? immersionOverviewData?.data[0]
-                        .immersion_overview_button_text
-                    : "Button"}
+                  {immersionOverviewData?.data?.[0]
+                    ?.immersion_overview_button_text || "Button"}
                 </button>
 
                 {contactUsDefaultimmersionFile.map((file, index) => (
@@ -120,20 +113,13 @@ const ImmersionOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {immersionOverviewData?.data?.length > 0 &&
-                        immersionOverviewData.data[0]
-                          ?.immersion_overview_list_title_a
-                          ? immersionOverviewData?.data[0]
-                              .immersion_overview_list_title_a
-                          : "Title A"}
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_title_a || "Title A"}
                       </h3>
                       <p className="text-justify">
-                        {immersionOverviewData?.data?.length > 0 &&
-                        immersionOverviewData.data[0]
-                          ?.immersion_overview_list_description_a
-                          ? immersionOverviewData?.data[0]
-                              .immersion_overview_list_description_a
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_description_a ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -145,20 +131,13 @@ const ImmersionOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {immersionOverviewData?.data?.length > 0 &&
-                        immersionOverviewData.data[0]
-                          ?.immersion_overview_list_title_b
-                          ? immersionOverviewData?.data[0]
-                              .immersion_overview_list_title_b
-                          : "Title B"}
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_title_b || "Title B"}
                       </h3>
                       <p className="text-justify">
-                        {immersionOverviewData?.data?.length > 0 &&
-                        immersionOverviewData.data[0]
-                          ?.immersion_overview_list_description_b
-                          ? immersionOverviewData?.data[0]
-                              .immersion_overview_list_description_b
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_description_b ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -170,20 +149,13 @@ const ImmersionOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {immersionOverviewData?.data?.length > 0 &&
-                        immersionOverviewData.data[0]
-                          ?.immersion_overview_list_title_c
-                          ? immersionOverviewData?.data[0]
-                              .immersion_overview_list_title_c
-                          : "Title C"}
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_title_c || "Title C"}
                       </h3>
                       <p className="text-justify">
-                        {immersionOverviewData?.data?.length > 0 &&
-                        immersionOverviewData.data[0]
-                          ?.immersion_overview_list_description_c
-                          ? immersionOverviewData?.data[0]
-                              .immersion_overview_list_description_c
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {immersionOverviewData?.data?.[0]
+                          ?.immersion_overview_list_description_c ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -202,6 +174,7 @@ const ImmersionOverview = ({
           contactFormDefaultData={contactFormDefaultData}
           handleUpdateContactFormLcss={handleUpdateContactFormLcss}
           contactFormLcssData={contactFormLcssData}
+          contactUsDefaultimmersionFile={contactUsDefaultimmersionFile}
         />
       )}
     </>
