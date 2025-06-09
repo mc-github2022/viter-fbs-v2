@@ -29,6 +29,7 @@ function sendNewsletter(
 		// $mail->Host = 'smtp.gmail.com'; // if gmail use smtp.gmail.com
 		// $mail->Port = 587;
 		// $mail->SMTPSecure = "tls";
+		// $mail->addReplyTo(REPLY_TO_NL, FROM);
 		$mail->SMTPAuth = true;
 		$mail->Username = USERNAME; // if gmail use your gmail email
 		$mail->Password = PASSWORD; // if gmail use your email password

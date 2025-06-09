@@ -15,10 +15,22 @@ import { Form, Formik } from "formik";
 import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 
 const ModalAddAudience = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
+
+  const [onFocusReplyTo, setOnFocusReplyTo] = React.useState(false);
+  const [propertyReplyToValue, setPropertyReplyToValue] = React.useState(
+    itemEdit ? `${itemEdit.packages_category_name}` : ""
+  ); // to get the data from table when update
+  const [replyTo, setReplyTo] = React.useState(
+    itemEdit ? itemEdit.packages_category_name : ""
+  );
+  const [replyToId, setReplyToId] = React.useState(
+    itemEdit ? itemEdit.packages_list_category_name_id : ""
+  );
 
   const handleClose = () => {
     setAnimate("translate-x-full");
@@ -26,6 +38,23 @@ const ModalAddAudience = ({ itemEdit }) => {
       dispatch(setIsAdd(false));
     }, 200);
   };
+
+  const {
+    isFetching: replyToDataIsFetching,
+    error: replyToDataError,
+    data: replyToData,
+  } = useQueryData(
+    `${apiVersion}/packages-list/category-search`, // endpoint
+    "post", // method
+    "packages-list/category-search", // key
+    {
+      searchValue: replyTo, // payload
+    },
+    {
+      searchValue: replyTo, // id
+    },
+    true // refetchOnWindowFocus
+  );
 
   const queryClient = useQueryClient();
 
@@ -52,6 +81,53 @@ const ModalAddAudience = ({ itemEdit }) => {
       }
     },
   });
+
+  const handleClickreplyTo = (item) => {
+    setReplyTo(item.packages_category_name);
+    setPropertyReplyToValue(`${item.packages_category_name}`);
+    setReplyToId(item.packages_category_aid);
+    setOnFocusReplyTo(false);
+  };
+
+  const handleOnChangereplyTo = (e) => {
+    setPropertyReplyToValue(e.target.value);
+    setLoading(true);
+    setReplyToId("");
+    if (e.target.value === "") {
+      setLoading(false);
+    }
+
+    let timeOut;
+
+    timeOut = setTimeout(() => {
+      clearTimeout(timeOut);
+      let val = e.target.value;
+      if (val === "") {
+        setReplyTo(val);
+        return;
+      }
+      setReplyTo(val);
+      setLoading(false);
+    }, 500); // debounce seconds to fetch
+  };
+
+  // to close the modal when clicking outside for Property type
+  const refreplyTo = React.useRef();
+
+  const clickOutsideRefreplyTo = (e) => {
+    if (
+      refreplyTo.current !== undefined &&
+      refreplyTo.current !== null &&
+      !refreplyTo.current?.contains(e.target)
+    ) {
+      setOnFocusReplyTo(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefreplyTo);
+    return () => document.addEventListener("click", clickOutsideRefreplyTo);
+  }, []);
 
   React.useEffect(() => {
     setAnimate("");
@@ -86,6 +162,11 @@ const ModalAddAudience = ({ itemEdit }) => {
           initialValues={initVal}
           validationSchema={yupSchema}
           onSubmit={async (values) => {
+            if (replyToId === "" || !replyToId) {
+              dispatch(setError(true));
+              dispatch(setMessage("Reply to is Required."));
+              return;
+            }
             const { audience_name } = values;
             // lowercase the role name and replace the space to underscore.
             const formattedAudienceName = audience_name
@@ -117,6 +198,44 @@ const ModalAddAudience = ({ itemEdit }) => {
                       name="audience_description"
                       disabled={mutation.isPending}
                     />
+                  </div>
+                  <div className=" input-wrapper">
+                    <InputText
+                      label="Reply To"
+                      type="text"
+                      value={propertyReplyToValue}
+                      name="packages_list_category_name_id"
+                      disabled={mutation.isPending}
+                      onFocus={() => setOnFocusReplyTo(true)}
+                      onChange={handleOnChangereplyTo}
+                      refVal={refreplyTo}
+                    />
+                    {onFocusReplyTo && (
+                      <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[33px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                        {loading || replyToDataIsFetching ? (
+                          <TableSpinner />
+                        ) : replyToDataError ? (
+                          <div className="my-7">
+                            <ServerError />
+                          </div>
+                        ) : replyToData?.count > 0 ? (
+                          replyToData?.data.map((item, key) => (
+                            <div
+                              className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-xs text-dark"
+                              value={item.packages_category_aid}
+                              key={key}
+                              onClick={() => handleClickreplyTo(item)}
+                            >
+                              {item.packages_category_name}
+                            </div>
+                          ))
+                        ) : (
+                          <div className="my-7">
+                            <NoData />
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
 

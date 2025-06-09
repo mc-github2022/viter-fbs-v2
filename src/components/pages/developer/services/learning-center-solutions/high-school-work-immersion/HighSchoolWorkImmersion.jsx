@@ -228,7 +228,7 @@ const HighSchoolWorkImmersion = () => {
   return (
     <>
       <section id="" className="bg-light">
-        <Navigation menu="services" submenu="college-on-the-job-training" />
+        <Navigation menu="services" submenu="lcss" />
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex  ">

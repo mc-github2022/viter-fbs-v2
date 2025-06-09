@@ -9,72 +9,72 @@ import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
 import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
+import ModalUpdateContactFormDefaultLcss from "../../../contact-form-default/ModalUpdateContactFormDefaultLcss";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import OjtBanner from "./ojt-banner/OjtBanner";
-import ModalUpdateOjtBanner from "./ojt-banner/ModalUpdateOjtBanner";
-import OjtPartners from "./ojt-partners/OjtPartners";
-import OjtOverview from "./ojt-overview/OjtOverview";
-import ModalUpdateOjtOverview from "./ojt-overview/ModalUpdateOjtOverview";
-import ModalUpdateOjtOverviewList from "./ojt-overview/ModalUpdateOjtOverviewList";
-import OjtServices from "./ojt-services/OjtServices";
-import ModalUpdateOjtServices from "./ojt-services/ModalUpdateOjtServices";
-import OjtApplyNow from "./ojt-apply-now/OjtApplyNow";
-import ModalUpdateApplyNow from "./ojt-apply-now/ModalUpdateApplyNow";
-import ModalUpdateContactFormDefaultLcss from "../../../contact-form-default/ModalUpdateContactFormDefaultLcss";
 import LcssTeams from "../lcss-team/LcssTeams";
 import ModalUpdateLcssTeams from "../lcss-team/ModalUpdateLcssTeams";
-import OjtBatches from "./ojt-batches/OjtBatches";
-import OjtVidTestimonial from "./ojt-vid-testimonial/OjtVidTestimonial";
-import OjtPartnerSays from "./ojt-partnersays/OjtPartnerSays";
 import ModalUpdateLcssTeamsTitle from "../lcss-team/ModalUpdateLcssTeamsTitle";
-import ModalUpdateOjtPartnersTitle from "./ojt-titles/ModalUpdateOjtPartnersTitle";
-import ModalUpdateOjtBatchesTitle from "./ojt-titles/ModalUpdateOjtBatchesTitle";
-import ModalUpdateOjtVidTestimonialTitle from "./ojt-titles/ModalUpdateOjtVidTestimonialTitle";
-import ModalUpdateOjtPartnerSaysTitle from "./ojt-titles/ModalUpdateOjtPartnerSaysTitle";
+import ImmersionApplyNow from "./immersion-apply-now/ImmersionApplyNow";
+import ModalUpdateImmersionApplyNow from "./immersion-apply-now/ModalUpdateImmersionApplyNow";
+import ImmersionBanner from "./immersion-banner/ImmersionBanner";
+import ModalUpdateImmersionBanner from "./immersion-banner/ModalUpdateImmersionBanner";
+import ImmersionOverview from "./immersion-overview/ImmersionOverview";
+import ModalUpdateImmersionOverview from "./immersion-overview/ModalUpdateImmersionOverview";
+import ModalUpdateImmersionOverviewList from "./immersion-overview/ModalUpdateImmersionOverviewList";
+import ImmersionPartners from "./immersion-partners/ImmersionPartners";
+import ImmersionServices from "./immersion-services/ImmersionServices";
+import ModalUpdateImmersionServices from "./immersion-services/ModalUpdateImmersionServices";
+import ImmersionBatches from "./immersion-batches/ImmersionBatches";
+import ImmersionVidTestimonial from "./immersion-vid-testimonial/ImmersionVidTestimonial";
+import ImmersionPartnerSays from "./immersion-partnersays/ImmersionPartnerSays";
+import ModalUpdateImmersionPartnersTitle from "./immersion-titles/ModalUpdateImmersionPartnersTitle";
+import ModalUpdateImmersionBatchesTitle from "./immersion-titles/ModalUpdateImmersionBatchesTitle";
+import ModalUpdateImmersionVidTestimonialTitle from "./immersion-titles/ModalUpdateImmersionVidTestimonialTitle";
+import ModalUpdateImmersionPartnerSaysTitle from "./immersion-titles/ModalUpdateImmersionPartnerSaysTitle";
 
-const CollegeOnTheJobTraining = () => {
+const ContinuingStudies = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
-  const [pageName, setPageName] = React.useState("College OJT");
+  const [pageName, setPageName] = React.useState("Work Immersion");
 
-  const { data: ojtData } = useQueryData(
-    `${apiVersion}/ojt`, // endpoint
+  const { data: immersionData } = useQueryData(
+    `${apiVersion}/immersion`, // endpoint
     "get", // method
-    "ojt" // key
+    "immersion" // key
   );
 
-  const { data: ojtOverviewData } = useQueryData(
-    `${apiVersion}/ojt-overview`, // endpoint
+  const { data: immersionOverviewData } = useQueryData(
+    `${apiVersion}/immersion-overview`, // endpoint
     "get", // method
-    "ojt-overview" // key
+    "immersion-overview" // key
   );
 
-  const { data: ojtTitlesData } = useQueryData(
-    `${apiVersion}/ojt-titles`, // endpoint
+  const { data: immersionTitlesData } = useQueryData(
+    `${apiVersion}/immersion-titles`, // endpoint
     "get", // method
-    "ojt-titles" // key
+    "immersion-titles" // key
   );
 
   const {
     isFetching: isFetchingServices,
     isLoading: isLoadingServices,
     error,
-    data: ojtServicesData,
+    data: immersionServicesData,
   } = useQueryData(
-    `${apiVersion}/ojt-services`, // endpoint
+    `${apiVersion}/immersion-services`, // endpoint
     "get", // method
-    "ojt-services" // key
+    "immersion-services" // key
   );
 
-  const { data: ojtApplyNowData } = useQueryData(
-    `${apiVersion}/ojt-apply-now`, // endpoint
+  const { data: immersionApplyNowData } = useQueryData(
+    `${apiVersion}/immersion-apply-now`, // endpoint
     "get", // method
-    "ojt-apply-now" // key
+    "immersion-apply-now" // key
   );
 
   const {
@@ -118,29 +118,33 @@ const CollegeOnTheJobTraining = () => {
     "footer" // key
   );
 
-  const handleUpdateOjtBanner = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-banner" }));
-    setItemEdit("ojtBannerUpdate");
+  const handleUpdateImmersionBanner = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "immersion-banner" }));
+    setItemEdit("immersionBannerUpdate");
   };
 
-  const handleUpdateOjtOverview = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-overview" }));
-    setItemEdit("ojtOverviewUpdateImg");
+  const handleUpdateImmersionOverview = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "immersion-overview" }));
+    setItemEdit("immersionOverviewUpdateImg");
   };
 
-  const handleUpdateOjtOverviewList = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-overview-list" }));
-    setItemEdit("ojtOverviewListUpdate");
+  const handleUpdateImmersionOverviewList = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "immersion-overview-list" })
+    );
+    setItemEdit("immersionOverviewListUpdate");
   };
 
-  const handleUpdateOjtServices = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-services" }));
+  const handleUpdateImmersionServices = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "immersion-services" }));
     setItemEdit(null);
   };
 
-  const handleUpdateOjtApplyNow = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-apply-now" }));
-    setItemEdit("ojtApplyNowUpdate");
+  const handleUpdateImmersionApplyNow = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "immersion-apply-now" })
+    );
+    setItemEdit("immersionApplyNowUpdate");
   };
 
   const handleUpdateLcssTeams = () => {
@@ -153,26 +157,33 @@ const CollegeOnTheJobTraining = () => {
     setItemEdit("lcssTeamsTitleUpdate");
   };
 
-  const handleUpdateOjtPartnersTitle = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-partners-title" }));
+  const handleUpdateImmersionPartnersTitle = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "immersion-partners-title" })
+    );
     setItemEdit("partnersTitleUpdate");
   };
 
-  const handleUpdateOjtBatchesTitle = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "ojt-batches-title" }));
+  const handleUpdateImmersionBatchesTitle = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "immersion-batches-title" })
+    );
     setItemEdit("batchesTitleUpdate");
   };
 
-  const handleUpdateOjtVidTestimonialTitle = () => {
+  const handleUpdateImmersionVidTestimonialTitle = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "ojt-vidtestimonial-title" })
+      setIsUpdateHome({
+        modal: true,
+        modalCode: "immersion-vidtestimonial-title",
+      })
     );
     setItemEdit("vidTestimonialTitleUpdate");
   };
 
-  const handleUpdateOjtPartnerSaysTitle = () => {
+  const handleUpdateImmersionPartnerSaysTitle = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "ojt-partnerSays-title" })
+      setIsUpdateHome({ modal: true, modalCode: "immersion-partnerSays-title" })
     );
     setItemEdit("partnerSaysTitleUpdate");
   };
@@ -223,7 +234,7 @@ const CollegeOnTheJobTraining = () => {
             <div className="py-5 flex  ">
               <BreadCrumbs param={location.search} />
               <div className="text-sm text-[black] font-semibold">
-                <h2>College On-The-Job Training</h2>
+                <h2>High School Work Immersion</h2>
               </div>
             </div>
             <div className=" pb-4 bg-light shadow-xl">
@@ -232,19 +243,23 @@ const CollegeOnTheJobTraining = () => {
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
               />
-              <OjtBanner
-                ojtData={ojtData}
-                handleUpdateOjtBanner={handleUpdateOjtBanner}
+              <ImmersionBanner
+                immersionData={immersionData}
+                handleUpdateImmersionBanner={handleUpdateImmersionBanner}
               />
-              <OjtPartners
-                ojtTitlesData={ojtTitlesData}
-                handleUpdateOjtPartnersTitle={handleUpdateOjtPartnersTitle}
+              <ImmersionPartners
+                immersionTitlesData={immersionTitlesData}
+                handleUpdateImmersionPartnersTitle={
+                  handleUpdateImmersionPartnersTitle
+                }
               />
 
-              <OjtOverview
-                handleUpdateOjtOverview={handleUpdateOjtOverview}
-                handleUpdateOjtOverviewList={handleUpdateOjtOverviewList}
-                ojtOverviewData={ojtOverviewData}
+              <ImmersionOverview
+                handleUpdateImmersionOverview={handleUpdateImmersionOverview}
+                handleUpdateImmersionOverviewList={
+                  handleUpdateImmersionOverviewList
+                }
+                immersionOverviewData={immersionOverviewData}
                 contactFormDefaultData={contactFormDefaultData}
                 contactFormLcssData={contactFormLcssData}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
@@ -252,18 +267,18 @@ const CollegeOnTheJobTraining = () => {
                 pageName={pageName}
               />
 
-              <OjtServices
-                ojtServicesData={ojtServicesData}
-                handleUpdateOjtServices={handleUpdateOjtServices}
+              <ImmersionServices
+                immersionServicesData={immersionServicesData}
+                handleUpdateImmersionServices={handleUpdateImmersionServices}
                 isFetchingServices={isFetchingServices}
                 isLoadingServices={isLoadingServices}
                 error={error}
                 setItemEdit={setItemEdit}
               />
 
-              <OjtApplyNow
-                ojtApplyNowData={ojtApplyNowData}
-                handleUpdateOjtApplyNow={handleUpdateOjtApplyNow}
+              <ImmersionApplyNow
+                immersionApplyNowData={immersionApplyNowData}
+                handleUpdateImmersionApplyNow={handleUpdateImmersionApplyNow}
                 handleUpdateContactFormLcss={handleUpdateContactFormLcss}
                 contactFormDefaultData={contactFormDefaultData}
                 contactFormLcssData={contactFormLcssData}
@@ -281,20 +296,22 @@ const CollegeOnTheJobTraining = () => {
                 handleUpdateLcssTeamsTitle={handleUpdateLcssTeamsTitle}
               />
 
-              <OjtBatches
-                ojtTitlesData={ojtTitlesData}
-                handleUpdateOjtBatchesTitle={handleUpdateOjtBatchesTitle}
-              />
-              <OjtVidTestimonial
-                ojtTitlesData={ojtTitlesData}
-                handleUpdateOjtVidTestimonialTitle={
-                  handleUpdateOjtVidTestimonialTitle
+              <ImmersionBatches
+                immersionTitlesData={immersionTitlesData}
+                handleUpdateImmersionBatchesTitle={
+                  handleUpdateImmersionBatchesTitle
                 }
               />
-              <OjtPartnerSays
-                ojtTitlesData={ojtTitlesData}
-                handleUpdateOjtPartnerSaysTitle={
-                  handleUpdateOjtPartnerSaysTitle
+              <ImmersionVidTestimonial
+                immersionTitlesData={immersionTitlesData}
+                handleUpdateImmersionVidTestimonialTitle={
+                  handleUpdateImmersionVidTestimonialTitle
+                }
+              />
+              <ImmersionPartnerSays
+                immersionTitlesData={immersionTitlesData}
+                handleUpdateImmersionPartnerSaysTitle={
+                  handleUpdateImmersionPartnerSaysTitle
                 }
               />
 
@@ -312,36 +329,39 @@ const CollegeOnTheJobTraining = () => {
       </section>
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-banner" && (
-          <ModalUpdateOjtBanner itemEdit={itemEdit} ojtData={ojtData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-overview" && (
-          <ModalUpdateOjtOverview
+        store.isUpdateHome?.modalCode === "immersion-banner" && (
+          <ModalUpdateImmersionBanner
             itemEdit={itemEdit}
-            ojtOverviewData={ojtOverviewData}
+            immersionData={immersionData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-overview-list" && (
-          <ModalUpdateOjtOverviewList
+        store.isUpdateHome?.modalCode === "immersion-overview" && (
+          <ModalUpdateImmersionOverview
             itemEdit={itemEdit}
-            ojtOverviewData={ojtOverviewData}
+            immersionOverviewData={immersionOverviewData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-services" && (
-          <ModalUpdateOjtServices itemEdit={itemEdit} />
+        store.isUpdateHome?.modalCode === "immersion-overview-list" && (
+          <ModalUpdateImmersionOverviewList
+            itemEdit={itemEdit}
+            immersionOverviewData={immersionOverviewData}
+          />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-apply-now" && (
-          <ModalUpdateApplyNow
+        store.isUpdateHome?.modalCode === "immersion-services" && (
+          <ModalUpdateImmersionServices itemEdit={itemEdit} />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "immersion-apply-now" && (
+          <ModalUpdateImmersionApplyNow
             itemEdit={itemEdit}
-            ojtApplyNowData={ojtApplyNowData}
+            immersionApplyNowData={immersionApplyNowData}
           />
         )}
 
@@ -359,32 +379,32 @@ const CollegeOnTheJobTraining = () => {
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-partners-title" && (
-          <ModalUpdateOjtPartnersTitle
+        store.isUpdateHome?.modalCode === "immersion-partners-title" && (
+          <ModalUpdateImmersionPartnersTitle
             itemEdit={itemEdit}
-            ojtTitlesData={ojtTitlesData}
+            immersionTitlesData={immersionTitlesData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-batches-title" && (
-          <ModalUpdateOjtBatchesTitle
+        store.isUpdateHome?.modalCode === "immersion-batches-title" && (
+          <ModalUpdateImmersionBatchesTitle
             itemEdit={itemEdit}
-            ojtTitlesData={ojtTitlesData}
+            immersionTitlesData={immersionTitlesData}
           />
         )}
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-vidtestimonial-title" && (
-          <ModalUpdateOjtVidTestimonialTitle
+        store.isUpdateHome?.modalCode === "immersion-vidtestimonial-title" && (
+          <ModalUpdateImmersionVidTestimonialTitle
             itemEdit={itemEdit}
-            ojtTitlesData={ojtTitlesData}
+            immersionTitlesData={immersionTitlesData}
           />
         )}
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "ojt-partnerSays-title" && (
-          <ModalUpdateOjtPartnerSaysTitle
+        store.isUpdateHome?.modalCode === "immersion-partnerSays-title" && (
+          <ModalUpdateImmersionPartnerSaysTitle
             itemEdit={itemEdit}
-            ojtTitlesData={ojtTitlesData}
+            immersionTitlesData={immersionTitlesData}
           />
         )}
 
@@ -430,4 +450,4 @@ const CollegeOnTheJobTraining = () => {
   );
 };
 
-export default CollegeOnTheJobTraining;
+export default ContinuingStudies;
