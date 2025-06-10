@@ -15,6 +15,8 @@ if (array_key_exists("audienceId", $_GET)) {
   $audience->audience_aid = $_GET['audienceId'];
   $audience->audience_name = checkIndex($data, "audience_name");
   $audience->audience_description = $data["audience_description"];
+  $audience->audience_notification_email_id = $data["audience_notification_email_id"];
+  $audience->audience_notification_email = $data["audience_notification_email"];
   $audience->audience_datetime = date("Y-m-d H:i:s");
   checkId($audience->audience_aid);
 

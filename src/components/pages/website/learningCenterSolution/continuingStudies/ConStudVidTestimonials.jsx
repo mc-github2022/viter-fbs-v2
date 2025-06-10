@@ -211,7 +211,7 @@ const ConStudVidTestimonials = () => {
                       ></iframe>
 
                       <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
-                        <p className="italic mb-24 min-h-[120px]">
+                        <p className="italic mb-24 min-h-[200px] md:line-clamp-[8]">
                           <RiDoubleQuotesL className="inline-block text-2xl mr-3" />
                           {item.vid_testimonial_message}
                           <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
@@ -271,8 +271,8 @@ const ConStudVidTestimonials = () => {
                         loading="lazy"
                       ></iframe>
                       <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
-                        <p className="italic mb-24 min-h-[120px]">
-                          <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
+                        <p className="italic mb-24 min-h-[200px] md:line-clamp-[8]">
+                          <RiDoubleQuotesL className="inline-block text-2xl mr-3" />
                           {item.vid_testimonial_message}
                           <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                         </p>

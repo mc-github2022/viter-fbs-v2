@@ -1,5 +1,13 @@
 <?php
 
+// search receiver email
+function checkSearchReceiverEmail($object)
+{
+    $query = $object->searchReceiverEmail();
+    checkQuery($query, "Empty records. (filter by search receiver email)");
+    return $query;
+}
+
 // association with subscribers to audience name
 function isAssociatedSubscriberAudienceName($object)
 {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2025 at 08:26 AM
+-- Generation Time: Jun 10, 2025 at 07:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,8 @@ CREATE TABLE `fbsv2_audience` (
   `audience_is_active` tinyint(1) NOT NULL,
   `audience_name` varchar(100) NOT NULL,
   `audience_code` varchar(100) NOT NULL,
+  `audience_notification_email_id` varchar(10) NOT NULL,
+  `audience_notification_email` varchar(100) NOT NULL,
   `audience_description` text NOT NULL,
   `audience_created` datetime NOT NULL,
   `audience_datetime` datetime NOT NULL
@@ -41,10 +43,13 @@ CREATE TABLE `fbsv2_audience` (
 -- Dumping data for table `fbsv2_audience`
 --
 
-INSERT INTO `fbsv2_audience` (`audience_aid`, `audience_is_active`, `audience_name`, `audience_code`, `audience_description`, `audience_created`, `audience_datetime`) VALUES
-(5, 1, 'Client', 'audience_is_client', 'This is for client', '2025-02-03 15:02:05', '2025-02-03 15:21:07'),
-(6, 1, 'Web', 'audience_is_web', '', '2025-02-03 15:02:35', '2025-02-03 15:02:35'),
-(7, 1, 'Test', 'audience_is_test', '', '2025-02-03 15:02:49', '2025-02-03 15:02:49');
+INSERT INTO `fbsv2_audience` (`audience_aid`, `audience_is_active`, `audience_name`, `audience_code`, `audience_notification_email_id`, `audience_notification_email`, `audience_description`, `audience_created`, `audience_datetime`) VALUES
+(8, 1, 'Employee', 'audience_is_employees', '', '', '', '2025-02-04 08:19:11', '2025-02-04 08:19:21'),
+(9, 0, 'Client', 'audience_is_client', '', '', 'Client subscribers', '2025-02-04 08:21:53', '2025-02-05 13:52:44'),
+(10, 1, 'Web-LCS', 'audience_is_web-lcs', '', '', '', '2025-02-04 14:05:26', '2025-05-27 14:47:44'),
+(13, 1, 'Test', 'audience_is_test', '', '', '', '2025-05-28 09:49:35', '2025-05-28 09:49:35'),
+(16, 1, 'Marketing', 'audience_is_marketing', '8', 'lourenisobel18@gmail.com', '', '2025-06-10 12:58:10', '2025-06-10 13:31:41'),
+(17, 1, 'Client', 'audience_is_client', '8', 'lourenisobel18@gmail.com', '', '2025-06-10 13:27:05', '2025-06-10 13:27:05');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +69,7 @@ ALTER TABLE `fbsv2_audience`
 -- AUTO_INCREMENT for table `fbsv2_audience`
 --
 ALTER TABLE `fbsv2_audience`
-  MODIFY `audience_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `audience_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -126,6 +126,7 @@ const AudienceTable = ({ setItemEdit }) => {
               <th className=" w-[5rem]">Status</th>
               <th>Audience Category</th>
               <th>Description</th>
+              <th>Reply To</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -163,6 +164,9 @@ const AudienceTable = ({ setItemEdit }) => {
                     </td>
                     <td className="place-content-start">
                       {item.audience_description}
+                    </td>
+                    <td className="place-content-start">
+                      {item.audience_notification_email}
                     </td>
 
                     <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">

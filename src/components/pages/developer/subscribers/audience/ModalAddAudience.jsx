@@ -16,20 +16,24 @@ import { InputText, InputTextArea } from "../../../../helpers/FormInputs";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 import useQueryData from "../../../../custom-hooks/useQueryData";
+import NoData from "../../../../partials/spinners/NoData";
+import ServerError from "../../../../partials/spinners/ServerError";
+import TableSpinner from "../../../../partials/spinners/TableSpinner";
 
 const ModalAddAudience = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
+  const [loading, setLoading] = React.useState(false);
 
   const [onFocusReplyTo, setOnFocusReplyTo] = React.useState(false);
   const [propertyReplyToValue, setPropertyReplyToValue] = React.useState(
-    itemEdit ? `${itemEdit.packages_category_name}` : ""
+    itemEdit ? `${itemEdit.notification_email}` : ""
   ); // to get the data from table when update
   const [replyTo, setReplyTo] = React.useState(
-    itemEdit ? itemEdit.packages_category_name : ""
+    itemEdit ? itemEdit.notification_email : ""
   );
   const [replyToId, setReplyToId] = React.useState(
-    itemEdit ? itemEdit.packages_list_category_name_id : ""
+    itemEdit ? itemEdit.audience_notification_email_id : ""
   );
 
   const handleClose = () => {
@@ -44,9 +48,9 @@ const ModalAddAudience = ({ itemEdit }) => {
     error: replyToDataError,
     data: replyToData,
   } = useQueryData(
-    `${apiVersion}/packages-list/category-search`, // endpoint
+    `${apiVersion}/audience-search-reply-to/search`, // endpoint
     "post", // method
-    "packages-list/category-search", // key
+    "audience-search-reply-to/search", // key
     {
       searchValue: replyTo, // payload
     },
@@ -82,14 +86,14 @@ const ModalAddAudience = ({ itemEdit }) => {
     },
   });
 
-  const handleClickreplyTo = (item) => {
-    setReplyTo(item.packages_category_name);
-    setPropertyReplyToValue(`${item.packages_category_name}`);
-    setReplyToId(item.packages_category_aid);
+  const handleClickReplyTo = (item) => {
+    setReplyTo(item.notification_email);
+    setPropertyReplyToValue(`${item.notification_email}`);
+    setReplyToId(item.notification_aid);
     setOnFocusReplyTo(false);
   };
 
-  const handleOnChangereplyTo = (e) => {
+  const handleOnChangeReplyTo = (e) => {
     setPropertyReplyToValue(e.target.value);
     setLoading(true);
     setReplyToId("");
@@ -138,6 +142,12 @@ const ModalAddAudience = ({ itemEdit }) => {
     audience_name: itemEdit ? itemEdit.audience_name : "",
     audience_description: itemEdit ? itemEdit.audience_description : "",
     audience_code: itemEdit ? itemEdit.audience_code : "",
+    audience_notification_email_id: itemEdit
+      ? itemEdit.audience_notification_email_id
+      : "",
+    audience_notification_email: itemEdit
+      ? itemEdit.audience_notification_email
+      : "",
 
     audience_name_old: itemEdit ? itemEdit.audience_name : "",
   };
@@ -175,6 +185,8 @@ const ModalAddAudience = ({ itemEdit }) => {
             const data = {
               ...values,
               audience_code: `audience_is_${formattedAudienceName}`,
+              audience_notification_email_id: replyToId,
+              audience_notification_email: replyTo,
             };
             mutation.mutate(data);
           }}
@@ -204,10 +216,10 @@ const ModalAddAudience = ({ itemEdit }) => {
                       label="Reply To"
                       type="text"
                       value={propertyReplyToValue}
-                      name="packages_list_category_name_id"
+                      name="audience_notification_email_id"
                       disabled={mutation.isPending}
                       onFocus={() => setOnFocusReplyTo(true)}
-                      onChange={handleOnChangereplyTo}
+                      onChange={handleOnChangeReplyTo}
                       refVal={refreplyTo}
                     />
                     {onFocusReplyTo && (
@@ -222,11 +234,11 @@ const ModalAddAudience = ({ itemEdit }) => {
                           replyToData?.data.map((item, key) => (
                             <div
                               className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-xs text-dark"
-                              value={item.packages_category_aid}
+                              value={item.notification_aid}
                               key={key}
-                              onClick={() => handleClickreplyTo(item)}
+                              onClick={() => handleClickReplyTo(item)}
                             >
-                              {item.packages_category_name}
+                              {item.notification_email}
                             </div>
                           ))
                         ) : (

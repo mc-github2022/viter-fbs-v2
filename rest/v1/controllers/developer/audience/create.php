@@ -13,6 +13,8 @@ $audience->audience_is_active = 1;
 $audience->audience_name = checkIndex($data, "audience_name");
 $audience->audience_description = $data["audience_description"];
 $audience->audience_code = $data["audience_code"];
+$audience->audience_notification_email_id = $data["audience_notification_email_id"];
+$audience->audience_notification_email = $data["audience_notification_email"];
 $audience->audience_created = date("Y-m-d H:i:s");
 $audience->audience_datetime = date("Y-m-d H:i:s");
 

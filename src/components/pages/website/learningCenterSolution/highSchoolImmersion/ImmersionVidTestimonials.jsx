@@ -217,8 +217,8 @@ const ImmersionVidTestimonials = ({ immersionTitlesData }) => {
                       ></iframe>
 
                       <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
-                        <p className="italic mb-24 min-h-[120px]">
-                          <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
+                        <p className="italic mb-24 min-h-[200px] md:line-clamp-[8]">
+                          <RiDoubleQuotesL className="inline-block text-2xl mr-3" />
                           {item.vid_testimonial_message}
                           <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
                         </p>
@@ -226,7 +226,6 @@ const ImmersionVidTestimonials = ({ immersionTitlesData }) => {
                       <div className="absolute bottom-0 p-5 nameAndSchool flex items-center">
                         {vidTestimonialsImages.map((image, index) => (
                           <LoadImages
-                            // src={`${devBaseImgUrl}/DLSL_Official_logo.png`}
                             url={`${googleHDViewLink}${image?.id}`}
                             className="w-[60px]  mr-4"
                             alt="Trainees Work Experience"
@@ -278,7 +277,7 @@ const ImmersionVidTestimonials = ({ immersionTitlesData }) => {
                         loading="lazy"
                       ></iframe>
                       <div className="testimonialMessage p-5  rounded-bl-xl rounded-br-xl relative">
-                        <p className="italic mb-24 min-h-[250px] md:min-h-[120px]">
+                        <p className="italic mb-24 min-h-[200px] md:line-clamp-[8]">
                           <RiDoubleQuotesL className="inline-block text-2xl mr-3" />{" "}
                           {item.vid_testimonial_message}
                           <RiDoubleQuotesR className="inline-block text-2xl ml-3" />
