@@ -4,48 +4,25 @@ Upload JSX
 DEVELOPER  
 
         * CONTROLLERS
-            -> rest/v1/controllers/developer/services/learning-center-solutions/college-on-the-job-training/ojt-apply-now/read.php
-            -> rest/v1/controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-apply-now
-            -> rest/v1/controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-titles
-            -> rest/v1/controllers/developer/audience/search-reply-to.php
-            -> rest/v1/controllers/developer/sending-newsletter/create.php
             -> rest/v1/controllers/developer/sending-newsletter/sending-newsletter.php
             -> rest/v1/controllers/developer/mailer-log/resending-newsletter.php
-            -> rest/v1/controllers/developer/audience/functions.php
-            -> rest/v1/controllers/developer/audience/create.php
-            -> rest/v1/controllers/developer/audience/update.php
 
         * CORE 
             -> 
 
 
         * MODELS
-            -> rest/v1/models/developer/audience/Audience.php
-            -> rest/v1/models/developer/sending-newsletter/SendingNewsletter.php
-            -> rest/v1/models/developer/services/learning-center-solutions/high-school-work-immersion/ImmersionApplyNow.php
-            -> rest/v1/models/developer/services/learning-center-solutions/high-school-work-immersion/ImmersionTitles.php
+            -> 
 
         * HTACESS
-            -> in # AUDIENCE this is added
-                 RewriteRule ^audience-search-reply-to/search$ controllers/developer/audience/search-reply-to.php [L]
-            -> # SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - APPLY NOW is added
-            -> # SERVICES - LEARNING CENTER SOLUTIONS - HIGH SCHOOL WORK IMMERSION - TITLES is added
+            -> 
 
         * OTHER FILES
-            -> rest/v1/notification/subscriber-newsletter.php
+            -> rest/v1/notification/mail-config.php
             -> 
             -> 
             -> 
 
         * DB BACKUP
-            -> rest/db-backup/fbsv2_audience.sql
-                note: column in added
-                    `audience_notification_email_id` varchar(10) NOT NULL,
-                    `audience_notification_email` varchar(100) NOT NULL,
-            -> rest/db-backup/fbsv2_sending_email_log.sql
-                note: column in added
-                     `sending_email_log_reply_to_id` varchar(20) NOT NULL,
-                    `sending_email_log_reply_to` varchar(100) NOT NULL,
-            -> rest/db-backup/fbsv2_services_immersion_apply_now.sql
-            -> rest/db-backup/fbsv2_services_immersion_titles.sql
+            -> 
 
