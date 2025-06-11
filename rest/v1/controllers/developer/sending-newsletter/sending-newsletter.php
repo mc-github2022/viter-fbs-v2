@@ -25,6 +25,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $subscriberEmail = checkIndex($data, "subscriber_email");
     $subscriberKey = checkIndex($data, "subscriber_key");
     $audienceId = checkIndex($data, "subscriber_audience_id");
+    $subscriberReplyTo = checkIndex($data, "audience_notification_email");
 
     $unsubscribe_link = "/unsubscribe";
 
@@ -36,7 +37,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $newsletter,
         $newsletterSubject,
         $subscriberEmail,
-        $subscriberKey
+        $subscriberKey,
+        $subscriberReplyTo
     );
 
 

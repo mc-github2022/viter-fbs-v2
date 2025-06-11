@@ -51,6 +51,7 @@ const ModalResendEmail = ({
       let newsletter = recipientList[i]["sending_email_log_content"];
       let newsletter_subject = recipientList[i]["sending_email_log_subject"];
       let key = recipientList[i]["sending_email_log_key"];
+      let replyTo = recipientList[i]["sending_email_log_reply_to"];
 
       query = await queryData(
         `${apiVersion}/mailer-log/resend-mailer`,
@@ -60,6 +61,7 @@ const ModalResendEmail = ({
           newsletter_subject,
           recipientEmail,
           key,
+          replyTo,
         }
       );
 

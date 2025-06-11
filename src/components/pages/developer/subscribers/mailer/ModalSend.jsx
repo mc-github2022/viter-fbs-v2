@@ -56,6 +56,8 @@ const ModalSend = ({
         let recipientKey = recipientList?.data[i]["subscriber_key"];
         let recipientAudienceId =
           recipientList?.data[i]["subscriber_audience_id"];
+        let recipientReplyTo =
+          recipientList?.data[i]["audience_notification_email"];
 
         query = await queryData(`${apiVersion}/sending-newsletter`, "post", {
           newsletter: item.newsletter,
@@ -64,6 +66,7 @@ const ModalSend = ({
           subscriber_key: recipientKey,
           subscriber_audience_id: recipientAudienceId,
           recipientList: recipientList,
+          audience_notification_email: recipientReplyTo,
         });
 
         // increment count whenever there's a successful query

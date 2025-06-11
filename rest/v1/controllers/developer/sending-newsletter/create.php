@@ -30,6 +30,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $sendingNewsletter->sending_email_log_audience_id = $recipientList["data"][$i]["subscriber_audience_id"];
         $sendingNewsletter->sending_email_log_email = $recipientList["data"][$i]["subscriber_email"];
         $sendingNewsletter->sending_email_log_key = $recipientList["data"][$i]["subscriber_key"];
+        $sendingNewsletter->sending_email_log_reply_to_id = $recipientList["data"][$i]["audience_notification_email_id"];
+        $sendingNewsletter->sending_email_log_reply_to = $recipientList["data"][$i]["audience_notification_email"];
         $sendingNewsletter->sending_email_log_subject = $data["newsletter_subject"];
         $sendingNewsletter->sending_email_log_content = $data["newsletter"];
         $sendingNewsletter->sending_email_log_firstname = $data["firstname"];

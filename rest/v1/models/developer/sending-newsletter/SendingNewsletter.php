@@ -20,6 +20,8 @@ class SendingNewsletter
     public $sending_email_log_key;
     public $sending_email_log_firstname;
     public $sending_email_log_role;
+    public $sending_email_log_reply_to_id;
+    public $sending_email_log_reply_to;
     public $sending_email_log_created;
     public $sending_email_log_datetime;
 
@@ -149,6 +151,8 @@ class SendingNewsletter
             $sql .= "sending_email_log_is_active, ";
             $sql .= "sending_email_log_firstname, ";
             $sql .= "sending_email_log_role, ";
+            $sql .= "sending_email_log_reply_to_id, ";
+            $sql .= "sending_email_log_reply_to, ";
             $sql .= "sending_email_log_created, ";
             $sql .= "sending_email_log_datetime ) values ( ";
             $sql .= ":sending_email_log_audience_id, ";
@@ -159,6 +163,8 @@ class SendingNewsletter
             $sql .= "1, ";
             $sql .= ":sending_email_log_firstname, ";
             $sql .= ":sending_email_log_role, ";
+            $sql .= ":sending_email_log_reply_to_id, ";
+            $sql .= ":sending_email_log_reply_to, ";
             $sql .= ":sending_email_log_created, ";
             $sql .= ":sending_email_log_datetime ) ";
             $query = $this->connection->prepare($sql);
@@ -170,6 +176,8 @@ class SendingNewsletter
                 "sending_email_log_key" => $this->sending_email_log_key,
                 "sending_email_log_firstname" => $this->sending_email_log_firstname,
                 "sending_email_log_role" => $this->sending_email_log_role,
+                "sending_email_log_reply_to_id" => $this->sending_email_log_reply_to_id,
+                "sending_email_log_reply_to" => $this->sending_email_log_reply_to,
                 "sending_email_log_created" => $this->sending_email_log_created,
                 "sending_email_log_datetime" => $this->sending_email_log_datetime,
             ]);
