@@ -231,7 +231,14 @@ const ModalAddAudience = ({ itemEdit }) => {
                             <ServerError />
                           </div>
                         ) : replyToData?.count > 0 ? (
-                          replyToData?.data.map((item, key) => (
+                          [
+                            ...new Map( //removes duplicate email
+                              replyToData?.data.map((item) => [
+                                item.notification_email,
+                                item,
+                              ])
+                            ).values(),
+                          ].map((item, key) => (
                             <div
                               className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-xs text-dark"
                               value={item.notification_aid}

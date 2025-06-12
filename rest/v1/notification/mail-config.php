@@ -6,7 +6,6 @@ define("FROM", "Frontline Business Solutions, Inc.");
 define("VERIFY_ACCOUNT", "Account Verification");
 define("RESET_PASSWORD", "Reset Password");
 define("VERIFY_EMAIL", "Email Verification");
-define("REPLY_TO_DEFAULT", "jhonny.dichoso@frontlinebusiness.com.ph");
 
 // local
 // define("ROOT_DOMAIN", "http://127.0.0.1:5173/newsite");

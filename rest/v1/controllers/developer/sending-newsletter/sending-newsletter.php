@@ -38,7 +38,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         $newsletterSubject,
         $subscriberEmail,
         $subscriberKey,
-        $subscriberReplyTo = REPLY_TO_DEFAULT
+        $subscriberReplyTo 
     );
 
 

@@ -52,12 +52,19 @@ const ModalSend = ({
     if (queryCreateMailerLog?.success) {
       // loop through the list of recipient email
       for (let i = 0; i < recipientList?.count; i++) {
+        const DEFAULT_REPLY_TO = "jhonny.dichoso@frontlinebusiness.com.ph";
+
         let recipientEmail = recipientList?.data[i]["subscriber_email"];
         let recipientKey = recipientList?.data[i]["subscriber_key"];
         let recipientAudienceId =
           recipientList?.data[i]["subscriber_audience_id"];
+        let replyToRaw = recipientList?.data[i]["audience_notification_email"];
+
+        // get the default reply to
         let recipientReplyTo =
-          recipientList?.data[i]["audience_notification_email"];
+          replyToRaw && replyToRaw.trim() !== ""
+            ? replyToRaw.trim()
+            : DEFAULT_REPLY_TO;
 
         query = await queryData(`${apiVersion}/sending-newsletter`, "post", {
           newsletter: item.newsletter,
