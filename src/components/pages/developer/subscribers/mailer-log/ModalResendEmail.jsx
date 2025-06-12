@@ -47,19 +47,13 @@ const ModalResendEmail = ({
     // return;
     // loop through the list of recipient email
     for (let i = 0; i < recipientList?.length; i++) {
-      const DEFAULT_REPLY_TO = "jhonny.dichoso@frontlinebusiness.com.ph";
 
       let recipientEmail = recipientList[i]["sending_email_log_email"];
       let newsletter = recipientList[i]["sending_email_log_content"];
       let newsletter_subject = recipientList[i]["sending_email_log_subject"];
       let key = recipientList[i]["sending_email_log_key"];
-      let replyToRaw = recipientList[i]["sending_email_log_reply_to"];
+      let replyTo = recipientList[i]["sending_email_log_reply_to"];
 
-      // get the default reply to
-      let replyTo =
-        typeof replyToRaw === "string" && replyToRaw.trim() !== ""
-          ? replyToRaw.trim()
-          : DEFAULT_REPLY_TO;
 
       query = await queryData(
         `${apiVersion}/mailer-log/resend-mailer`,

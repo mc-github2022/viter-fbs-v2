@@ -19,8 +19,8 @@ DEVELOPER
             -> 
 
         * OTHER FILES
-            ->
-            -> 
+            -> rest/v1/notification/mail-config.php
+            -> rest/v1/notification/subscriber-newsletter.php
             -> 
             -> 
 

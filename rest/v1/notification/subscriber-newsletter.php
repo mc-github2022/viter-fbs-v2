@@ -19,6 +19,10 @@ function sendNewsletter(
 	$subscriberKey,
 	$subscriberReplyTo
 ) {
+	if ($subscriberReplyTo == "") {
+		$subscriberReplyTo = DEFAULT_REPLY_TO;
+	}
+
 	//trigger exception in a "try" block
 	try {
 		$mail = new PHPMailer(true);

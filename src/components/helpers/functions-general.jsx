@@ -16,7 +16,7 @@ import { StoreContext } from "../store/StoreContext";
 //Online url
 export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
 export const imgUrlPathFBSMarketingWebsite =
-  "http://frontlinebusiness.com.ph/img"; 
+  "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
