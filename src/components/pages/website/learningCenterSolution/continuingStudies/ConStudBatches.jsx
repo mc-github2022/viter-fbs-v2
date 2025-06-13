@@ -61,7 +61,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ConStudBatches = () => {
+const ConStudBatches = ({ continuingTitlesData }) => {
   const [modalBatch, setModalBatch] = React.useState(false);
   const [itemEdit, setItemEdit] = React.useState(null);
   const [selectedBatchId, setSelectedBatchId] = React.useState(null);
@@ -156,9 +156,13 @@ const ConStudBatches = () => {
             className="mb-12
           "
           >
-            <p>Professional Journey of Our</p>
+            <p>
+              {continuingTitlesData?.data?.[0]
+                ?.continuing_titles_batches_subtitle || ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1]">
-              Successful, Industry-ready Batches
+              {continuingTitlesData?.data?.[0]
+                ?.continuing_titles_batches_title || ""}
             </h3>
           </div>
           {lcssBatchesData?.data.filter(

@@ -19,62 +19,60 @@ import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
 import LcssTeams from "../lcss-team/LcssTeams";
 import ModalUpdateLcssTeams from "../lcss-team/ModalUpdateLcssTeams";
 import ModalUpdateLcssTeamsTitle from "../lcss-team/ModalUpdateLcssTeamsTitle";
-import ImmersionApplyNow from "./immersion-apply-now/ImmersionApplyNow";
-import ModalUpdateImmersionApplyNow from "./immersion-apply-now/ModalUpdateImmersionApplyNow";
-import ImmersionBanner from "./immersion-banner/ImmersionBanner";
-import ModalUpdateImmersionBanner from "./immersion-banner/ModalUpdateImmersionBanner";
-import ImmersionOverview from "./immersion-overview/ImmersionOverview";
-import ModalUpdateImmersionOverview from "./immersion-overview/ModalUpdateImmersionOverview";
-import ModalUpdateImmersionOverviewList from "./immersion-overview/ModalUpdateImmersionOverviewList";
-import ImmersionPartners from "./immersion-partners/ImmersionPartners";
-import ImmersionServices from "./immersion-services/ImmersionServices";
-import ModalUpdateImmersionServices from "./immersion-services/ModalUpdateImmersionServices";
-import ImmersionBatches from "./immersion-batches/ImmersionBatches";
-import ImmersionVidTestimonial from "./immersion-vid-testimonial/ImmersionVidTestimonial";
-import ImmersionPartnerSays from "./immersion-partnersays/ImmersionPartnerSays";
-import ModalUpdateImmersionPartnersTitle from "./immersion-titles/ModalUpdateImmersionPartnersTitle";
-import ModalUpdateImmersionBatchesTitle from "./immersion-titles/ModalUpdateImmersionBatchesTitle";
-import ModalUpdateImmersionVidTestimonialTitle from "./immersion-titles/ModalUpdateImmersionVidTestimonialTitle";
-import ModalUpdateImmersionPartnerSaysTitle from "./immersion-titles/ModalUpdateImmersionPartnerSaysTitle";
+import ContinuingBanner from "./continuing-banner/ContinuingBanner";
+import ModalUpdateContinuingBanner from "./continuing-banner/ModalUpdateContinuingBanner";
+import ContinuingOverview from "./continuing-overview/ContinuingOverview";
+import ModalUpdateContinuingOverview from "./continuing-overview/ModalUpdateContinuingOverview";
+import ModalUpdateContinuingOverviewList from "./continuing-overview/ModalUpdateContinuingOverviewList";
+import ContinuingServices from "./continuing-services/ContinuingServices";
+import ModalUpdateContinuingServices from "./continuing-services/ModalUpdateContinuingServices";
+import ContinuingApplyNow from "./continuing-apply-now/ContinuingApplyNow";
+import ModalUpdateContinuingApplyNow from "./continuing-apply-now/ModalUpdateContinuingApplyNow";
+import ContinuingBatches from "./continuing-batches/ContinuingBatches";
+import ContinuingVidTestimonial from "./continuing-vid-testimonial/ContinuingVidTestimonial";
+import ContinuingPartnerSays from "./continuing-partnersays/ContinuingPartnerSays";
+import ModalUpdateContinuingBatchesTitle from "./continuing-titles/ModalUpdateContinuingBatchesTitle";
+import ModalUpdateContinuingVidTestimonialTitle from "./continuing-titles/ModalUpdateContinuingVidTestimonialTitle";
+import ModalUpdateContinuingPartnerSaysTitle from "./continuing-titles/ModalUpdateContinuingPartnerSaysTitle";
 
 const ContinuingStudies = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
-  const [pageName, setPageName] = React.useState("Work Immersion");
+  const [pageName, setPageName] = React.useState("Continuing Study");
 
-  const { data: immersionData } = useQueryData(
-    `${apiVersion}/immersion`, // endpoint
+  const { data: continuingData } = useQueryData(
+    `${apiVersion}/continuing`, // endpoint
     "get", // method
-    "immersion" // key
+    "continuing" // key
   );
 
-  const { data: immersionOverviewData } = useQueryData(
-    `${apiVersion}/immersion-overview`, // endpoint
+  const { data: continuingOverviewData } = useQueryData(
+    `${apiVersion}/continuing-overview`, // endpoint
     "get", // method
-    "immersion-overview" // key
+    "continuing-overview" // key
   );
 
-  const { data: immersionTitlesData } = useQueryData(
-    `${apiVersion}/immersion-titles`, // endpoint
+  const { data: continuingTitlesData } = useQueryData(
+    `${apiVersion}/continuing-titles`, // endpoint
     "get", // method
-    "immersion-titles" // key
+    "continuing-titles" // key
   );
 
   const {
     isFetching: isFetchingServices,
     isLoading: isLoadingServices,
     error,
-    data: immersionServicesData,
+    data: continuingServicesData,
   } = useQueryData(
-    `${apiVersion}/immersion-services`, // endpoint
+    `${apiVersion}/continuing-services`, // endpoint
     "get", // method
-    "immersion-services" // key
+    "continuing-services" // key
   );
 
-  const { data: immersionApplyNowData } = useQueryData(
-    `${apiVersion}/immersion-apply-now`, // endpoint
+  const { data: continuingApplyNowData } = useQueryData(
+    `${apiVersion}/continuing-apply-now`, // endpoint
     "get", // method
-    "immersion-apply-now" // key
+    "continuing-apply-now" // key
   );
 
   const {
@@ -118,33 +116,37 @@ const ContinuingStudies = () => {
     "footer" // key
   );
 
-  const handleUpdateImmersionBanner = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "immersion-banner" }));
-    setItemEdit("immersionBannerUpdate");
+  const handleUpdateContinuingBanner = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "continuing-banner" }));
+    setItemEdit("continuingBannerUpdate");
   };
 
-  const handleUpdateImmersionOverview = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "immersion-overview" }));
-    setItemEdit("immersionOverviewUpdateImg");
-  };
-
-  const handleUpdateImmersionOverviewList = () => {
+  const handleUpdateContinuingOverview = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "immersion-overview-list" })
+      setIsUpdateHome({ modal: true, modalCode: "continuing-overview" })
     );
-    setItemEdit("immersionOverviewListUpdate");
+    setItemEdit("continuingOverviewUpdateImg");
   };
 
-  const handleUpdateImmersionServices = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "immersion-services" }));
+  const handleUpdateContinuingOverviewList = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "continuing-overview-list" })
+    );
+    setItemEdit("continuingOverviewListUpdate");
+  };
+
+  const handleUpdateContinuingServices = () => {
+    dispatch(
+      setIsUpdateHome({ modal: true, modalCode: "continuing-services" })
+    );
     setItemEdit(null);
   };
 
-  const handleUpdateImmersionApplyNow = () => {
+  const handleUpdateContinuingApplyNow = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "immersion-apply-now" })
+      setIsUpdateHome({ modal: true, modalCode: "continuing-apply-now" })
     );
-    setItemEdit("immersionApplyNowUpdate");
+    setItemEdit("continuingApplyNowUpdate");
   };
 
   const handleUpdateLcssTeams = () => {
@@ -157,33 +159,36 @@ const ContinuingStudies = () => {
     setItemEdit("lcssTeamsTitleUpdate");
   };
 
-  const handleUpdateImmersionPartnersTitle = () => {
+  const handleUpdateContinuingPartnersTitle = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "immersion-partners-title" })
+      setIsUpdateHome({ modal: true, modalCode: "continuing-partners-title" })
     );
     setItemEdit("partnersTitleUpdate");
   };
 
-  const handleUpdateImmersionBatchesTitle = () => {
+  const handleUpdateContinuingBatchesTitle = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "immersion-batches-title" })
+      setIsUpdateHome({ modal: true, modalCode: "continuing-batches-title" })
     );
     setItemEdit("batchesTitleUpdate");
   };
 
-  const handleUpdateImmersionVidTestimonialTitle = () => {
+  const handleUpdateContinuingVidTestimonialTitle = () => {
     dispatch(
       setIsUpdateHome({
         modal: true,
-        modalCode: "immersion-vidtestimonial-title",
+        modalCode: "continuing-vidtestimonial-title",
       })
     );
     setItemEdit("vidTestimonialTitleUpdate");
   };
 
-  const handleUpdateImmersionPartnerSaysTitle = () => {
+  const handleUpdateContinuingPartnerSaysTitle = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "immersion-partnerSays-title" })
+      setIsUpdateHome({
+        modal: true,
+        modalCode: "continuing-partnerSays-title",
+      })
     );
     setItemEdit("partnerSaysTitleUpdate");
   };
@@ -234,7 +239,7 @@ const ContinuingStudies = () => {
             <div className="py-5 flex  ">
               <BreadCrumbs param={location.search} />
               <div className="text-sm text-[black] font-semibold">
-                <h2>High School Work Immersion</h2>
+                <h2>Continuing Studies</h2>
               </div>
             </div>
             <div className=" pb-4 bg-light shadow-xl">
@@ -243,23 +248,17 @@ const ContinuingStudies = () => {
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
               />
-              <ImmersionBanner
-                immersionData={immersionData}
-                handleUpdateImmersionBanner={handleUpdateImmersionBanner}
-              />
-              <ImmersionPartners
-                immersionTitlesData={immersionTitlesData}
-                handleUpdateImmersionPartnersTitle={
-                  handleUpdateImmersionPartnersTitle
-                }
+              <ContinuingBanner
+                continuingData={continuingData}
+                handleUpdateContinuingBanner={handleUpdateContinuingBanner}
               />
 
-              <ImmersionOverview
-                handleUpdateImmersionOverview={handleUpdateImmersionOverview}
-                handleUpdateImmersionOverviewList={
-                  handleUpdateImmersionOverviewList
+              <ContinuingOverview
+                handleUpdateContinuingOverview={handleUpdateContinuingOverview}
+                handleUpdateContinuingOverviewList={
+                  handleUpdateContinuingOverviewList
                 }
-                immersionOverviewData={immersionOverviewData}
+                continuingOverviewData={continuingOverviewData}
                 contactFormDefaultData={contactFormDefaultData}
                 contactFormLcssData={contactFormLcssData}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
@@ -267,18 +266,18 @@ const ContinuingStudies = () => {
                 pageName={pageName}
               />
 
-              <ImmersionServices
-                immersionServicesData={immersionServicesData}
-                handleUpdateImmersionServices={handleUpdateImmersionServices}
+              <ContinuingServices
+                continuingServicesData={continuingServicesData}
+                handleUpdateContinuingServices={handleUpdateContinuingServices}
                 isFetchingServices={isFetchingServices}
                 isLoadingServices={isLoadingServices}
                 error={error}
                 setItemEdit={setItemEdit}
               />
 
-              <ImmersionApplyNow
-                immersionApplyNowData={immersionApplyNowData}
-                handleUpdateImmersionApplyNow={handleUpdateImmersionApplyNow}
+              <ContinuingApplyNow
+                continuingApplyNowData={continuingApplyNowData}
+                handleUpdateContinuingApplyNow={handleUpdateContinuingApplyNow}
                 handleUpdateContactFormLcss={handleUpdateContactFormLcss}
                 contactFormDefaultData={contactFormDefaultData}
                 contactFormLcssData={contactFormLcssData}
@@ -296,22 +295,22 @@ const ContinuingStudies = () => {
                 handleUpdateLcssTeamsTitle={handleUpdateLcssTeamsTitle}
               />
 
-              <ImmersionBatches
-                immersionTitlesData={immersionTitlesData}
-                handleUpdateImmersionBatchesTitle={
-                  handleUpdateImmersionBatchesTitle
+              <ContinuingBatches
+                continuingTitlesData={continuingTitlesData}
+                handleUpdateContinuingBatchesTitle={
+                  handleUpdateContinuingBatchesTitle
                 }
               />
-              <ImmersionVidTestimonial
-                immersionTitlesData={immersionTitlesData}
-                handleUpdateImmersionVidTestimonialTitle={
-                  handleUpdateImmersionVidTestimonialTitle
+              <ContinuingVidTestimonial
+                continuingTitlesData={continuingTitlesData}
+                handleUpdateContinuingVidTestimonialTitle={
+                  handleUpdateContinuingVidTestimonialTitle
                 }
               />
-              <ImmersionPartnerSays
-                immersionTitlesData={immersionTitlesData}
-                handleUpdateImmersionPartnerSaysTitle={
-                  handleUpdateImmersionPartnerSaysTitle
+              <ContinuingPartnerSays
+                continuingTitlesData={continuingTitlesData}
+                handleUpdateContinuingPartnerSaysTitle={
+                  handleUpdateContinuingPartnerSaysTitle
                 }
               />
 
@@ -329,39 +328,39 @@ const ContinuingStudies = () => {
       </section>
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-banner" && (
-          <ModalUpdateImmersionBanner
+        store.isUpdateHome?.modalCode === "continuing-banner" && (
+          <ModalUpdateContinuingBanner
             itemEdit={itemEdit}
-            immersionData={immersionData}
+            continuingData={continuingData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-overview" && (
-          <ModalUpdateImmersionOverview
+        store.isUpdateHome?.modalCode === "continuing-overview" && (
+          <ModalUpdateContinuingOverview
             itemEdit={itemEdit}
-            immersionOverviewData={immersionOverviewData}
+            continuingOverviewData={continuingOverviewData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-overview-list" && (
-          <ModalUpdateImmersionOverviewList
+        store.isUpdateHome?.modalCode === "continuing-overview-list" && (
+          <ModalUpdateContinuingOverviewList
             itemEdit={itemEdit}
-            immersionOverviewData={immersionOverviewData}
+            continuingOverviewData={continuingOverviewData}
           />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-services" && (
-          <ModalUpdateImmersionServices itemEdit={itemEdit} />
+        store.isUpdateHome?.modalCode === "continuing-services" && (
+          <ModalUpdateContinuingServices itemEdit={itemEdit} />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-apply-now" && (
-          <ModalUpdateImmersionApplyNow
+        store.isUpdateHome?.modalCode === "continuing-apply-now" && (
+          <ModalUpdateContinuingApplyNow
             itemEdit={itemEdit}
-            immersionApplyNowData={immersionApplyNowData}
+            continuingApplyNowData={continuingApplyNowData}
           />
         )}
 
@@ -379,32 +378,24 @@ const ContinuingStudies = () => {
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-partners-title" && (
-          <ModalUpdateImmersionPartnersTitle
+        store.isUpdateHome?.modalCode === "continuing-batches-title" && (
+          <ModalUpdateContinuingBatchesTitle
             itemEdit={itemEdit}
-            immersionTitlesData={immersionTitlesData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-batches-title" && (
-          <ModalUpdateImmersionBatchesTitle
-            itemEdit={itemEdit}
-            immersionTitlesData={immersionTitlesData}
+            continuingTitlesData={continuingTitlesData}
           />
         )}
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-vidtestimonial-title" && (
-          <ModalUpdateImmersionVidTestimonialTitle
+        store.isUpdateHome?.modalCode === "continuing-vidtestimonial-title" && (
+          <ModalUpdateContinuingVidTestimonialTitle
             itemEdit={itemEdit}
-            immersionTitlesData={immersionTitlesData}
+            continuingTitlesData={continuingTitlesData}
           />
         )}
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "immersion-partnerSays-title" && (
-          <ModalUpdateImmersionPartnerSaysTitle
+        store.isUpdateHome?.modalCode === "continuing-partnerSays-title" && (
+          <ModalUpdateContinuingPartnerSaysTitle
             itemEdit={itemEdit}
-            immersionTitlesData={immersionTitlesData}
+            continuingTitlesData={continuingTitlesData}
           />
         )}
 

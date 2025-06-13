@@ -1,41 +1,69 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ConStudBanner = () => {
+  const { data: continuingData } = useQueryData(
+    `${apiVersion}/continuing`, // endpoint
+    "get", // method
+    "continuing", // key
+    {},
+    null,
+    true
+  );
+
+  const continuingBannerImage = getConvertStringToJSONparseData(
+    continuingData?.data?.[0]?.continuing_banner_img
+  );
+
   return (
     <>
       <section
         id="ConStudBanner"
         className={`banner pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] relative flex items-center`}
       >
-        <img
-          src={`${devBaseImgUrl}/continuing-studies-bg.webp`}
-          alt="Unlock Your Potential with our Continuing Study Program"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
+        {continuingBannerImage.map((img, index) => (
+          <LoadImages
+            url={`${googleHDViewLink}${img?.id}`}
+            alt="Unlock Your Potential with our Continuing Study Program"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+            key={index}
+          />
+        ))}
         <div className="customContainer relative z-10 h-full">
           <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center transition-all w-full py-10">
             <div className="text-center  py-10 lg:text-left">
-              <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
-                Unlock Your Potential <br />
-                with our
-                <span className="text-light font-semibold">
-                  &nbsp;Continuing Study Program
-                </span>
-              </h2>
+              <div className="mb-8 text-[clamp(30px,3vw,45px)] leading-[1.1] text-light font-light">
+                {(continuingData?.data?.[0]?.continuing_banner_title || "")
+                  .split("\n")
+                  .filter((line) => line.trim() !== "")
+                  .map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
+                <h2 className="font-semibold">
+                  {continuingData?.data?.[0]?.continuing_banner_title_bold ||
+                    ""}
+                </h2>
+              </div>
               <p className="text-light mb-10">
-                Empowering young professionals, fresh graduates, and career
-                shifters with essential technical skills in frontend
-                development, backend development, and accounting through
-                hands-on training and real-world experience.
+                {continuingData?.data?.[0]?.continuing_banner_description || ""}
               </p>
-              <a
-                href="https://calendly.com/herlyn-torres-frontlinebusiness/30min"
-                target="_blank"
-                className="btn bg-transparent text-light border-2"
-              >
-                SCHEDULE A MEETING
-              </a>
+              {continuingData?.data.map((item, key) => (
+                <a
+                  href={`${item.continuing_banner_button_link}`}
+                  target="_blank"
+                  className="btn bg-transparent text-light border-2 uppercase "
+                  key={key}
+                >
+                  {item.continuing_banner_button_text}
+                </a>
+              ))}
             </div>
           </div>
         </div>

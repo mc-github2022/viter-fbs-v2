@@ -1,11 +1,32 @@
 import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const ConStudPartnersWithUs = ({ pageName }) => {
   const [contactForm, setContactForm] = React.useState(false);
+
+  const { data: continuingOverviewData } = useQueryData(
+    `${apiVersion}/continuing-overview`, // endpoint
+    "get", // method
+    "continuing-overview", // key
+    {},
+    null,
+    true
+  );
+
+  const continuingOverviewImage = getConvertStringToJSONparseData(
+    continuingOverviewData?.data?.[0]?.continuing_overview_img
+  );
+
   const handleForm = () => {
     setContactForm(!contactForm);
   };
@@ -14,26 +35,34 @@ const ConStudPartnersWithUs = ({ pageName }) => {
     <>
       <section className="ConStudPartnersWithUs py-20 bg-customGray">
         <div className="customContainer">
-          <p> We Offer Training for</p>
+          <p>
+            {continuingOverviewData?.data?.[0]?.continuing_overview_subtitle ||
+              ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              Effective Skills Acquisitions.
+              {continuingOverviewData?.data?.[0]?.continuing_overview_title ||
+                ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                src={`${devBaseImgUrl}/continuing-studies-img.jpg`}
-                className="mb-12 w-full mx-auto"
-                alt="Effective Skills Acquisitions."
-              />
+              {continuingOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt="Effective Skills Acquisitions."
+                  key={index}
+                />
+              ))}
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
-                    PARTNER WITH US
+                    {continuingOverviewData?.data?.[0]
+                      ?.continuing_overview_button_text || ""}
                   </button>
                 </li>
               </ul>
@@ -47,12 +76,12 @@ const ConStudPartnersWithUs = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        Work-Related Experience
+                        {continuingOverviewData?.data?.[0]
+                          ?.continuing_overview_list_title_a || ""}
                       </h3>
                       <p className="text-justify">
-                        Trainees get hands-on, real-world experience, allowing
-                        them to apply knowledge in practical settings, preparing
-                        them for the demands of their future careers.
+                        {continuingOverviewData?.data?.[0]
+                          ?.continuing_overview_list_description_a || ""}
                       </p>
                     </div>
                   </div>
@@ -64,13 +93,12 @@ const ConStudPartnersWithUs = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        Expert-Led Training
+                        {continuingOverviewData?.data?.[0]
+                          ?.continuing_overview_list_title_b || ""}
                       </h3>
                       <p className="text-justify">
-                        Receive guidance and mentorship from industry experts
-                        who provide valuable insights, technical skills, and
-                        personalized support to help you excel in your chosen
-                        field.
+                        {continuingOverviewData?.data?.[0]
+                          ?.continuing_overview_list_description_b || ""}
                       </p>
                     </div>
                   </div>
@@ -82,13 +110,12 @@ const ConStudPartnersWithUs = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        Higher Employability
+                        {continuingOverviewData?.data?.[0]
+                          ?.continuing_overview_list_title_c || ""}
                       </h3>
                       <p className="text-justify">
-                        By gaining industry-aligned experience and expert
-                        training, trainees enhance their employability, making
-                        them more competitive in the job market and ready for
-                        career opportunities.
+                        {continuingOverviewData?.data?.[0]
+                          ?.continuing_overview_list_description_c || ""}
                       </p>
                     </div>
                   </div>

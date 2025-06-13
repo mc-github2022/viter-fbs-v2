@@ -362,6 +362,27 @@ RewriteRule ^immersion-apply-now/([0-9]+)$ controllers/developer/services/learni
 RewriteRule ^immersion-titles$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-titles/immersionTitles.php [L]
 RewriteRule ^immersion-titles/([0-9]+)$ controllers/developer/services/learning-center-solutions/high-school-work-immersion/immersion-titles/immersionTitles.php?immersion_titlesid=$1 [L]
 
+# SERVICES - LEARNING CENTER SOLUTIONS - CONTINUING STUDIES - BANNER
+RewriteRule ^continuing$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-banner/continuingBanner.php [L]
+RewriteRule ^continuing/([0-9]+)$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-banner/continuingBanner.php?continuing_bannerid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - CONTINUING STUDIES - OVERVIEW
+RewriteRule ^continuing-overview$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-overview/continuingOverview.php [L]
+RewriteRule ^continuing-overview/([0-9]+)$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-overview/continuingOverview.php?continuing_overviewid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - CONTINUING STUDIES - SERVICES
+RewriteRule ^continuing-services$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-services/continuingServices.php [L]
+RewriteRule ^continuing-services/([0-9]+)$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-services/continuingServices.php?continuing_servicesid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - CONTINUING STUDIES - APPLY NOW
+RewriteRule ^continuing-apply-now$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-apply-now/continuingApplyNow.php [L]
+RewriteRule ^continuing-apply-now/([0-9]+)$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-apply-now/continuingApplyNow.php?continuing_applyid=$1 [L]
+
+# SERVICES - LEARNING CENTER SOLUTIONS - CONTINUING STUDIES - TITLES
+RewriteRule ^continuing-titles$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-titles/continuingTitles.php [L]
+RewriteRule ^continuing-titles/([0-9]+)$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-titles/continuingTitles.php?continuing_titlesid=$1 [L]
+
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

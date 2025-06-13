@@ -61,7 +61,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const ConStudVidTestimonials = () => {
+const ConStudVidTestimonials = ({ continuingTitlesData }) => {
   const {
     isFetching,
     error,
@@ -176,11 +176,15 @@ const ConStudVidTestimonials = () => {
       <section className="lcssVidTestimonials py-20 bg-[#000000] relative overflow-hidden">
         <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
         <div className="absolute bg-light h-[180px] w-full bottom-0"></div>
-        <div className="customContainer">
+        <div className="customContainer max-w-[90%]">
           <div className="mb-20 text-center relative z-[3]">
-            <p className="text-light">Here are our</p>
+            <p className="text-light">
+              {continuingTitlesData?.data?.[0]
+                ?.continuing_titles_vid_testimonial_subtitle || ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Trainees Work Experience
+              {continuingTitlesData?.data?.[0]
+                ?.continuing_titles_vid_testimonial_title || ""}
             </h3>
           </div>
           {vidTestimonialData?.data.filter(

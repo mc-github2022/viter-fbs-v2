@@ -42,6 +42,9 @@ import BookkeepingAndCompliance from "../components/pages/developer/services/acc
 import LearningCenterSolutionsAdmin from "../components/pages/developer/services/learning-center-solutions/LearningCenterSolutionsAdmin";
 import CollegeOnTheJobTraining from "../components/pages/developer/services/learning-center-solutions/college-on-the-job-training/CollegeOnTheJobTraining";
 import HighSchoolWorkImmersion from "../components/pages/developer/services/learning-center-solutions/high-school-work-immersion/HighSchoolWorkImmersion";
+import ContinuingStudies from "../components/pages/developer/services/learning-center-solutions/continuing-studies/ContinuingStudies";
+import VirtualAssistantSolutionsAdmin from "../components/pages/developer/services/va-solutions/VirtualAssistantSolutionsAdmin";
+import Administrative from "../components/pages/developer/services/va-solutions/administrative/Administrative";
 
 export const routesAdmin = [
   {
@@ -329,6 +332,30 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <HighSchoolWorkImmersion />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/lcss/continuing-studies`,
+    element: (
+      <ProtectedRouteOther>
+        <ContinuingStudies />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/virtual-assistant-solutions`,
+    element: (
+      <ProtectedRouteOther>
+        <VirtualAssistantSolutionsAdmin />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/virtual-assistant-solutions/administrative`,
+    element: (
+      <ProtectedRouteOther>
+        <Administrative />
       </ProtectedRouteOther>
     ),
   },

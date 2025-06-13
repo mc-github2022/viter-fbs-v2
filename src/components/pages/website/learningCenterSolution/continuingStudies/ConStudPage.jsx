@@ -32,6 +32,15 @@ const ConStudPage = () => {
     true
   );
 
+  const { data: continuingTitlesData } = useQueryData(
+    `${apiVersion}/continuing-titles`, // endpoint
+    "get", // method
+    "continuing-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -61,9 +70,9 @@ const ConStudPage = () => {
       <ConStudServices />
       <ConStudApplyNow pageName={pageName} />
       <ConStudTeam />
-      <ConStudBatches />
-      <ConStudVidTestimonials />
-      <ConStudPartnersSay />
+      <ConStudBatches continuingTitlesData={continuingTitlesData}/>
+      <ConStudVidTestimonials continuingTitlesData={continuingTitlesData}/>
+      <ConStudPartnersSay continuingTitlesData={continuingTitlesData}/>
       <Footer />
 
       {store.success && <ModalSuccess />}
