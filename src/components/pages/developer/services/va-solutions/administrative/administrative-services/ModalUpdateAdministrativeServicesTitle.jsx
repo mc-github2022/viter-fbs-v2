@@ -18,7 +18,7 @@ import { StoreContext } from "../../../../../../store/StoreContext";
 
 const ModalUpdateAdministrativeServicesTitle = ({
   itemEdit,
-  administrativeServicesData,
+  administrativeServicesTitleData,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
@@ -35,14 +35,16 @@ const ModalUpdateAdministrativeServicesTitle = ({
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        administrativeServicesData?.data?.length
-          ? `${apiVersion}/administrative-services/${administrativeServicesData.data[0].administrative_services_aid}` // update
-          : `${apiVersion}/administrative-services`, // create
-        administrativeServicesData?.data?.length ? "put" : "post",
+        administrativeServicesTitleData?.data?.length
+          ? `${apiVersion}/administrative-services-title/${administrativeServicesTitleData.data[0].administrative_services_title_aid}` // update
+          : `${apiVersion}/administrative-services-title`, // create
+        administrativeServicesTitleData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["administrative-services"] });
+      queryClient.invalidateQueries({
+        queryKey: ["administrative-services-title"],
+      });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -62,22 +64,22 @@ const ModalUpdateAdministrativeServicesTitle = ({
   }, []);
 
   const initVal = {
-    administrativeServicesUpdate: itemEdit,
+    administrativeServicesTitleUpdate: itemEdit,
     administrative_services_title_black_a:
-      administrativeServicesData?.data?.[0]
+      administrativeServicesTitleData?.data?.[0]
         ?.administrative_services_title_black_a ?? "",
     administrative_services_title_highlighted:
-      administrativeServicesData?.data?.[0]
+      administrativeServicesTitleData?.data?.[0]
         ?.administrative_services_title_highlighted ?? "",
     administrative_services_title_black_b:
-      administrativeServicesData?.data?.[0]
+      administrativeServicesTitleData?.data?.[0]
         ?.administrative_services_title_black_b ?? "",
-    administrative_services_description:
-      administrativeServicesData?.data?.[0]
-        ?.administrative_services_description ?? "",
-    administrative_services_button_text:
-      administrativeServicesData?.data?.[0]
-        ?.administrative_services_button_text ?? "",
+    administrative_services_title_description:
+      administrativeServicesTitleData?.data?.[0]
+        ?.administrative_services_title_description ?? "",
+    administrative_services_title_button_text:
+      administrativeServicesTitleData?.data?.[0]
+        ?.administrative_services_title_button_text ?? "",
   };
 
   const yupSchema = Yup.object({});
@@ -139,7 +141,7 @@ const ModalUpdateAdministrativeServicesTitle = ({
                       <InputTextArea
                         label="Description"
                         type="text"
-                        name="administrative_services_description"
+                        name="administrative_services_title_description"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -147,7 +149,7 @@ const ModalUpdateAdministrativeServicesTitle = ({
                       <InputText
                         label="Button"
                         type="text"
-                        name="administrative_services_button_text"
+                        name="administrative_services_title_button_text"
                         disabled={mutation.isPending}
                       />
                     </div>

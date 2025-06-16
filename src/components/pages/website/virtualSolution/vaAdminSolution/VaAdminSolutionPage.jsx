@@ -30,6 +30,15 @@ const VaAdminSolutionPage = () => {
     true
   );
 
+  const { data: administrativeTitlesData } = useQueryData(
+    `${apiVersion}/administrative-titles`, // endpoint
+    "get", // method
+    "administrative-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -57,9 +66,9 @@ const VaAdminSolutionPage = () => {
       <VaAdminSolutionOverview />
       <VaAdminServiceList />
       {/* <VaAdminSolutionPartnerWithUs /> */}
-      <VaAdminSolutionPricing pageName={pageName} />
-      <VaAdminSolutionPartners />
-      <VaAdminSolutionPartnersSay />
+      <VaAdminSolutionPricing pageName={pageName} administrativeTitlesData={administrativeTitlesData} />
+      <VaAdminSolutionPartners administrativeTitlesData={administrativeTitlesData}/>
+      <VaAdminSolutionPartnersSay administrativeTitlesData={administrativeTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

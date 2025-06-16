@@ -36,7 +36,7 @@ function SamplePrevArrow(props) {
 
 const AdministrativePartnerSays = ({
   administrativeTitlesData,
-  handleUpdateAdministrativePartnerSaysTitle,
+  handleUpdateAdministrativeTestimonialTitles,
 }) => {
   const {
     isFetching,
@@ -131,16 +131,16 @@ const AdministrativePartnerSays = ({
             <div className="relative">
               <p>
                 {administrativeTitlesData?.data?.[0]
-                  ?.administrative_titles_partnersays_subtitle || "Subtitle"}
+                  ?.administrative_titles_testimonial_subtitle || "Subtitle"}
               </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
                 {administrativeTitlesData?.data?.[0]
-                  ?.administrative_titles_partnersays_title || "Title"}
+                  ?.administrative_titles_testimonial_title || "Title"}
               </h2>
               <a
                 className="absolute cursor-pointer tooltip-btn -top-4 left-[20rem] "
                 data-tooltip="Edit contents"
-                onClick={handleUpdateAdministrativePartnerSaysTitle}
+                onClick={handleUpdateAdministrativeTestimonialTitles}
               >
                 <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
               </a>

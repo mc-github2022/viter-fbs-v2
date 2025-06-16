@@ -45,6 +45,7 @@ import HighSchoolWorkImmersion from "../components/pages/developer/services/lear
 import ContinuingStudies from "../components/pages/developer/services/learning-center-solutions/continuing-studies/ContinuingStudies";
 import VirtualAssistantSolutionsAdmin from "../components/pages/developer/services/va-solutions/VirtualAssistantSolutionsAdmin";
 import Administrative from "../components/pages/developer/services/va-solutions/administrative/Administrative";
+import BusinessSupport from "../components/pages/developer/services/va-solutions/business-support/BusinessSupport";
 
 export const routesAdmin = [
   {
@@ -356,6 +357,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <Administrative />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/virtual-assistant-solutions/business-support`,
+    element: (
+      <ProtectedRouteOther>
+        <BusinessSupport />
       </ProtectedRouteOther>
     ),
   },

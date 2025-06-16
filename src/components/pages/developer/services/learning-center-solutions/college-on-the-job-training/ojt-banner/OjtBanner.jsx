@@ -33,11 +33,6 @@ const OjtBanner = ({ ojtData, handleUpdateOjtBanner }) => {
             <FaRegImages className="text-[200px] text-gray-400" />
           </div>
         )}
-        {/* <img
-          src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt="Smarter, Faster, and More Efficient HR Information System"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        /> */}
 
         <div className="customContainer relative z-10 h-full">
           <div className="wrapper flex flex-col justify-center items-center h-full text-center lg:grid lg:grid-cols-2">
@@ -53,9 +48,6 @@ const OjtBanner = ({ ojtData, handleUpdateOjtBanner }) => {
                     .map((content_a, index) => (
                       <p key={index}>{content_a}</p>
                     ))}
-                  {/* <h1 class="text-4xl font-bold bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
-                    Gradient Text
-                  </h1> */}
                 </span>
               </h2>
 

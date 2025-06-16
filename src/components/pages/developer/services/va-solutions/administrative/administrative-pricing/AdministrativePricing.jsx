@@ -164,20 +164,12 @@ const AdministrativePricing = ({
               <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
             </a>
             <p className="text-light">
-              {administrativeTitlesData?.data?.length > 0 &&
-              administrativeTitlesData.data[0]
-                ?.administrative_titles_packages_subtitle
-                ? administrativeTitlesData?.data[0]
-                    .administrative_titles_packages_subtitle
-                : "Subtitle"}
+              {administrativeTitlesData?.data?.[0]
+                ?.administrative_titles_packages_subtitle || "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              {administrativeTitlesData?.data?.length > 0 &&
-              administrativeTitlesData.data[0]
-                ?.administrative_titles_packages_title
-                ? administrativeTitlesData?.data[0]
-                    .administrative_titles_packages_title
-                : "Title"}
+              {administrativeTitlesData?.data?.[0]
+                ?.administrative_titles_packages_title || "Title"}
             </h3>
           </div>
           <div className="wrapper ">

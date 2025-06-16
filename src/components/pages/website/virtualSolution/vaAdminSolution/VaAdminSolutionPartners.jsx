@@ -8,7 +8,7 @@ import {
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
 
-const VaAdminSolutionPartners = () => {
+const VaAdminSolutionPartners = ({ administrativeTitlesData }) => {
   const {
     isFetching,
     error,
@@ -27,9 +27,13 @@ const VaAdminSolutionPartners = () => {
     <>
       <section className="VaAdminSolutionPartners pb-16 -translate-y-1 bg-light md:py-20">
         <div className="customContainer">
-          <p>{sectionPartnersTitle[0].subTitle}</p>
+          <p>
+            {administrativeTitlesData?.data?.[0]
+              ?.administrative_titles_partners_subtitle || "Subtitle"}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-            {sectionPartnersTitle[0].mainTitle}
+            {administrativeTitlesData?.data?.[0]
+              ?.administrative_titles_partners_title || "Title"}
           </h2>
 
           <ul className="flex flex-wrap justify-center gap-7 md:gap-20 items-center">

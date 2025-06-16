@@ -34,20 +34,12 @@ const AdministrativePartners = ({
             <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
           </a>
           <p>
-            {administrativeTitlesData?.data?.length > 0 &&
-            administrativeTitlesData.data[0]
-              ?.administrative_titles_partners_subtitle
-              ? administrativeTitlesData?.data[0]
-                  .administrative_titles_partners_subtitle
-              : "Subtitle"}
+            {administrativeTitlesData?.data?.[0]
+              ?.administrative_titles_partners_subtitle || "Subtitle"}
           </p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-            {administrativeTitlesData?.data?.length > 0 &&
-            administrativeTitlesData.data[0]
-              ?.administrative_titles_partners_title
-              ? administrativeTitlesData?.data[0]
-                  .administrative_titles_partners_title
-              : "Title"}
+            {administrativeTitlesData?.data?.[0]
+              ?.administrative_titles_partners_title || "Title"}
           </h2>
 
           <ul className="flex flex-wrap justify-center gap-10 items-center">

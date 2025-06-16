@@ -38,11 +38,11 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
   const [animate, setAnimate] = React.useState("translate-x-full");
 
   const [searchTerm, setSearchTerm] = React.useState(
-    itemEdit ? itemEdit.administrative_services_icon : ""
+    itemEdit ? itemEdit.administrative_services_list_icon : ""
   );
   const [onFocusSearch, setOnFocusSearch] = React.useState(false);
   const [selectedIcon, setSelectedIcon] = React.useState(
-    itemEdit ? itemEdit.administrative_services_icon : ""
+    itemEdit ? itemEdit.administrative_services_list_icon : ""
   );
   const [itemsLimit, setItemsLimit] = React.useState(20);
 
@@ -96,13 +96,13 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
     mutationFn: (values) =>
       queryData(
         itemEdit
-          ? `${apiVersion}/administrative-services/${itemEdit.administrative_services_aid}` // update
-          : `${apiVersion}/administrative-services`, // create
+          ? `${apiVersion}/administrative-services-list/${itemEdit.administrative_services_list_aid}` // update
+          : `${apiVersion}/administrative-services-list`, // create
         itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["administrative-services"] });
+      queryClient.invalidateQueries({ queryKey: ["administrative-services-list"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -122,11 +122,11 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
   }, []);
 
   const initVal = {
-    administrative_services_title: itemEdit
-      ? itemEdit.administrative_services_title
+    administrative_services_list_title: itemEdit
+      ? itemEdit.administrative_services_list_title
       : "",
-    administrative_services_icon: itemEdit
-      ? itemEdit.administrative_services_icon
+    administrative_services_list_icon: itemEdit
+      ? itemEdit.administrative_services_list_icon
       : "",
   };
 
@@ -140,7 +140,7 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Administrative Services
+            {itemEdit ? "Edit" : "Add"} Administrative Services List
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
@@ -153,7 +153,7 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
             onSubmit={async (values) => {
               const data = {
                 ...values,
-                administrative_services_icon: selectedIcon,
+                administrative_services_list_icon: selectedIcon,
               };
               mutation.mutate(data);
             }}
@@ -166,14 +166,14 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
                       <InputText
                         label="Search Icon"
                         type="text"
-                        name="administrative_services_icon"
+                        name="administrative_services_list_icon"
                         placeholder="Type to search icons..."
                         value={searchTerm}
                         onChange={(e) => {
                           const value = e.target.value;
                           setSearchTerm(value);
                           props.setFieldValue(
-                            "administrative_services_icon",
+                            "administrative_services_list_icon",
                             value
                           );
                         }}
@@ -191,7 +191,7 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
                                 onClick={() => {
                                   handleIconSelect(iconKey);
                                   props.setFieldValue(
-                                    "administrative_services_icon",
+                                    "administrative_services_list_icon",
                                     iconKey
                                   );
                                   setOnFocusSearch(false);
@@ -228,7 +228,7 @@ const ModalUpdateAdministrativeServicesList = ({ itemEdit }) => {
                       <InputText
                         label="Title"
                         type="text"
-                        name="administrative_services_title"
+                        name="administrative_services_list_title"
                         disabled={mutation.isPending}
                       />
                     </div>

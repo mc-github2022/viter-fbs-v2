@@ -15,8 +15,8 @@ import NoData from "../../../../../../partials/spinners/NoData";
 import ServerError from "../../../../../../partials/spinners/ServerError";
 import TableLoading from "../../../../../../partials/spinners/TableLoading";
 import {
-    setIsDelete,
-    setIsUpdateHome,
+  setIsDelete,
+  setIsUpdateHome,
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
 import ContactFormDefault from "../../../../contact-form-default/ContactFormDefault";
@@ -42,8 +42,11 @@ const AdministrativeServices = ({
   error,
   setItemEdit,
   administrativeServicesData,
+  administrativeServicesTitleData,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [isData, setIsData] = React.useState("");
+  const [id, setIsId] = React.useState("");
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -51,14 +54,19 @@ const AdministrativeServices = ({
   };
 
   const handleEdit = (item) => {
-    dispatch(setIsUpdateHome(true));
+    dispatch(
+      setIsUpdateHome({
+        modal: true,
+        modalCode: "administrative-services-list",
+      })
+    );
     setItemEdit(item);
   };
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.administrative_services_title);
-    setIsId(item.administrative_services_aid);
+    setIsData(item.administrative_services_list_title);
+    setIsId(item.administrative_services_list_aid);
   };
 
   return (
@@ -67,25 +75,25 @@ const AdministrativeServices = ({
         <div className="customContainer relative">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,40px)] leading-[1.1] font-semibold mb-10">
-              {administrativeServicesData?.data?.[0]
+              {administrativeServicesTitleData?.data?.[0]
                 ?.administrative_services_title_black_a || "Title"}{" "}
               <span className="text-primary">
-                {administrativeServicesData?.data?.[0]
+                {administrativeServicesTitleData?.data?.[0]
                   ?.administrative_services_title_highlighted || "Title"}{" "}
               </span>{" "}
-              {administrativeServicesData?.data?.[0]
+              {administrativeServicesTitleData?.data?.[0]
                 ?.administrative_services_title_black_b || "Title"}
             </h2>
             <p className="subDesc mb-10">
-              {administrativeServicesData?.data?.[0]
-                ?.administrative_services_description || "Description"}
+              {administrativeServicesTitleData?.data?.[0]
+                ?.administrative_services_title_description || "Description"}
             </p>
             <button
               onClick={handleOpen}
-              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all uppercase"
             >
-              {administrativeServicesData?.data?.[0]
-                ?.administrative_services_button_text || "Button"}
+              {administrativeServicesTitleData?.data?.[0]
+                ?.administrative_services_title_button_text || "Button"}
             </button>
             <a
               className="absolute cursor-pointer tooltip-btn right-[10rem] -top-6 "
@@ -124,13 +132,13 @@ const AdministrativeServices = ({
               <TableLoading cols={1} count={15} />
             ) : (
               administrativeServicesData?.data.map((item, key) => {
-                const SelectedIcon = item.administrative_services_icon
-                  ? icons[item.administrative_services_icon]
+                const SelectedIcon = item.administrative_services_list_icon
+                  ? icons[item.administrative_services_list_icon]
                   : null;
 
                 return (
                   <li className="flex items-center gap-7" key={key}>
-                    {item.administrative_services_title
+                    {item.administrative_services_list_title
                       .split("\n") // Split by new lines
                       .filter((list) => list.trim() !== "") // Remove empty lines
                       .map((list, index) => (
@@ -171,57 +179,6 @@ const AdministrativeServices = ({
                 );
               })
             )}
-
-            {/* <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <BsDatabaseCheck className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Data Management and Organization
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <Headset size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Communication and Coordination
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <HandCoins size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Financial and Billing Tasks
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <FolderSearch size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Project and Research Support
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <IoFileTrayStackedOutline className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Specialized Document Handling
-              </p>
-            </li> */}
           </ul>
         </div>
       </section>
@@ -235,11 +192,11 @@ const AdministrativeServices = ({
         />
       )}
 
-      {store.isDelete?.modal && (
+      {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"administrative-services"}
-          mysqlEndpoint={`/v1/administrative-services/${id}`}
+          queryKey={"administrative-services-list"}
+          mysqlEndpoint={`/v1/administrative-services-list/${id}`}
           item={isData}
         />
       )}

@@ -382,6 +382,33 @@ RewriteRule ^continuing-apply-now/([0-9]+)$ controllers/developer/services/learn
 RewriteRule ^continuing-titles$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-titles/continuingTitles.php [L]
 RewriteRule ^continuing-titles/([0-9]+)$ controllers/developer/services/learning-center-solutions/continuing-studies/continuing-titles/continuingTitles.php?continuing_titlesid=$1 [L]
 
+# SERVICES - VA SOLUTIONS - ADMINISTRATIVE - BANNER
+RewriteRule ^administrative$ controllers/developer/services/va-solutions/administrative/administrative-banner/administrativeBanner.php [L]
+RewriteRule ^administrative/([0-9]+)$ controllers/developer/services/va-solutions/administrative/administrative-banner/administrativeBanner.php?administrative_bannerid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - ADMINISTRATIVE - OVERVIEW
+RewriteRule ^administrative-overview$ controllers/developer/services/va-solutions/administrative/administrative-overview/administrativeOverview.php [L]
+RewriteRule ^administrative-overview/([0-9]+)$ controllers/developer/services/va-solutions/administrative/administrative-overview/administrativeOverview.php?administrative_overviewid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - ADMINISTRATIVE - SERVICES TITLE
+RewriteRule ^administrative-services-title$ controllers/developer/services/va-solutions/administrative/administrative-services-title/administrativeServicesTitle.php [L]
+RewriteRule ^administrative-services-title/([0-9]+)$ controllers/developer/services/va-solutions/administrative/administrative-services-title/administrativeServicesTitle.php?administrative_services_titleid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - ADMINISTRATIVE - SERVICES LIST
+RewriteRule ^administrative-services-list$ controllers/developer/services/va-solutions/administrative/administrative-services-list/administrativeServicesList.php [L]
+RewriteRule ^administrative-services-list/([0-9]+)$ controllers/developer/services/va-solutions/administrative/administrative-services-list/administrativeServicesList.php?administrative_services_listid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - ADMINISTRATIVE - TITLES
+RewriteRule ^administrative-titles$ controllers/developer/services/va-solutions/administrative/administrative-titles/administrativeTitles.php [L]
+RewriteRule ^administrative-titles/([0-9]+)$ controllers/developer/services/va-solutions/administrative/administrative-titles/administrativeTitles.php?administrative_titlesid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - BANNER
+RewriteRule ^business$ controllers/developer/services/va-solutions/business-support/business-banner/businessBanner.php [L]
+RewriteRule ^business/([0-9]+)$ controllers/developer/services/va-solutions/business-support/business-banner/businessBanner.php?business_bannerid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - OVERVIEW
+RewriteRule ^business-overview$ controllers/developer/services/va-solutions/business-support/business-overview/businessOverview.php [L]
+RewriteRule ^business-overview/([0-9]+)$ controllers/developer/services/va-solutions/business-support/business-overview/businessOverview.php?business_overviewid=$1 [L]
 
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]

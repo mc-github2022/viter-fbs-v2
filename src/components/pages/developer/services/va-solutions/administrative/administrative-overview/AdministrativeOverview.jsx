@@ -28,17 +28,13 @@ const AdministrativeOverview = ({
           </a>
 
           <p>
-            {administrativeOverviewData?.data?.length > 0 &&
-            administrativeOverviewData.data[0]?.administrative_overview_subtitle
-              ? administrativeOverviewData?.data[0].administrative_overview_subtitle
-              : "Subtitle"}
+            {administrativeOverviewData?.data?.[0]
+              ?.administrative_overview_subtitle || "Subtitle"}
           </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {administrativeOverviewData?.data?.length > 0 &&
-              administrativeOverviewData.data[0]?.administrative_overview_title
-                ? administrativeOverviewData?.data[0].administrative_overview_title
-                : "Title"}
+              {administrativeOverviewData?.data?.[0]
+                ?.administrative_overview_title || "Title"}
             </span>
           </h2>
 
@@ -78,18 +74,13 @@ const AdministrativeOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {administrativeOverviewData?.data?.length > 0 &&
-                        administrativeOverviewData.data[0]?.administrative_overview_list_title_a
-                          ? administrativeOverviewData?.data[0].administrative_overview_list_title_a
-                          : "Title A"}
+                        {administrativeOverviewData?.data?.[0]
+                          ?.administrative_overview_list_title_a || "Title A"}
                       </h3>
                       <p className="text-justify">
-                        {administrativeOverviewData?.data?.length > 0 &&
-                        administrativeOverviewData.data[0]
-                          ?.administrative_overview_list_description_a
-                          ? administrativeOverviewData?.data[0]
-                              .administrative_overview_list_description_a
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {administrativeOverviewData?.data?.[0]
+                          ?.administrative_overview_list_description_a ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -101,18 +92,13 @@ const AdministrativeOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {administrativeOverviewData?.data?.length > 0 &&
-                        administrativeOverviewData.data[0]?.administrative_overview_list_title_b
-                          ? administrativeOverviewData?.data[0].administrative_overview_list_title_b
-                          : "Title B"}
+                        {administrativeOverviewData?.data?.[0]
+                          ?.administrative_overview_list_title_b || "Title B"}
                       </h3>
                       <p className="text-justify">
-                        {administrativeOverviewData?.data?.length > 0 &&
-                        administrativeOverviewData.data[0]
-                          ?.administrative_overview_list_description_b
-                          ? administrativeOverviewData?.data[0]
-                              .administrative_overview_list_description_b
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
+                        {administrativeOverviewData?.data?.[0]
+                          ?.administrative_overview_list_description_b ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>
@@ -124,18 +110,13 @@ const AdministrativeOverview = ({
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {administrativeOverviewData?.data?.length > 0 &&
-                        administrativeOverviewData.data[0]?.administrative_overview_list_title_c
-                          ? administrativeOverviewData?.data[0].administrative_overview_list_title_c
-                          : "Title C"}
+                        {administrativeOverviewData?.data?.[0]
+                          ?.administrative_overview_list_title_c || "Title C"}
                       </h3>
                       <p className="text-justify">
-                        {administrativeOverviewData?.data?.length > 0 &&
-                        administrativeOverviewData.data[0]
-                          ?.administrative_overview_list_description_c
-                          ? administrativeOverviewData?.data[0]
-                              .administrative_overview_list_description_c
-                          : "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}{" "}
+                        {administrativeOverviewData?.data?.[0]
+                          ?.administrative_overview_list_description_c ||
+                          "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis, numquam aut unde dolorum nulla praesentium sint eum mollitia nam alias."}
                       </p>
                     </div>
                   </div>

@@ -1,23 +1,49 @@
 import React from "react";
-import {
-  BriefcaseBusiness,
-  Headset,
-  FolderSearch,
-  HandCoins,
-} from "lucide-react";
 
-import {
-  MdInfoOutline,
-  MdOutlineRocketLaunch,
-  MdOutlineSupportAgent,
-  MdOutlineMarkEmailRead,
-} from "react-icons/md";
-import { BsDatabaseCheck, BsClipboard2Data } from "react-icons/bs";
-import { IoFileTrayStackedOutline } from "react-icons/io5";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
+import * as FaIcons from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
+import * as TiIcons from "react-icons/ti";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+  ...BsIcons,
+};
+
 const VaAdminServiceList = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
+
+  const {
+    isFetchingServices,
+    isLoadingServices,
+    error,
+    data: administrativeServicesData,
+  } = useQueryData(
+    `${apiVersion}/administrative-services-list`, // endpoint
+    "get", // method
+    "administrative-services-list" // key
+  );
+
+  const { data: administrativeServicesTitleData } = useQueryData(
+    `${apiVersion}/administrative-services-title`, // endpoint
+    "get", // method
+    "administrative-services-title" // key
+  );
+
   const handleForm = () => {
     setContactForm(!contactForm);
   };
@@ -27,84 +53,64 @@ const VaAdminServiceList = ({ pageName }) => {
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,40px)] leading-[1.1] font-semibold mb-10">
-              What <span className="text-primary">Administrative Tasks </span>{" "}
-              Can We Perform?
+              {administrativeServicesTitleData?.data?.[0]
+                ?.administrative_services_title_black_a || ""}{" "}
+              <span className="text-primary">
+                {administrativeServicesTitleData?.data?.[0]
+                  ?.administrative_services_title_highlighted || ""}{" "}
+              </span>{" "}
+              {administrativeServicesTitleData?.data?.[0]
+                ?.administrative_services_title_black_b || ""}
             </h2>
             <p className="subDesc mb-10">
-              Our VA for Administrative Assistance offers comprehensive support
-              to streamline your business operations.
+              {administrativeServicesTitleData?.data?.[0]
+                ?.administrative_services_title_description || ""}
             </p>
             <button
               onClick={handleForm}
               className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
             >
-              GET STARTED
+              {administrativeServicesTitleData?.data?.[0]
+                ?.administrative_services_title_button_text || ""}
             </button>
           </div>
+          {isFetchingServices && !isLoadingServices && <FetchingSpinner />}
           <ul className="serviceInclusion grid md:grid-cols-2 gap-6">
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <BriefcaseBusiness
-                    size={28}
-                    className="text-3xl text-primary"
-                  />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Administrative Support
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <BsDatabaseCheck className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Data Management and Organization
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <Headset size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Communication and Coordination
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <HandCoins size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Financial and Billing Tasks
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <FolderSearch size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Project and Research Support
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <IoFileTrayStackedOutline className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Specialized Document Handling
-              </p>
-            </li>
+            {isLoadingServices || isFetchingServices ? (
+              <TableLoading cols={1} count={15} />
+            ) : (
+              administrativeServicesData?.data.map((item, key) => {
+                const SelectedIcon = item.administrative_services_list_icon
+                  ? icons[item.administrative_services_list_icon]
+                  : null;
+
+                return (
+                  <li className="flex items-center gap-7" key={key}>
+                    {item.administrative_services_list_title
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <div key={index} className="flex items-center gap-7">
+                          <div className="bg-customGray rounded-lg addShadow">
+                            <div className="w-16 h-16 grid place-items-center">
+                              <div size={28} className="text-3xl text-primary">
+                                {SelectedIcon ? (
+                                  <SelectedIcon />
+                                ) : (
+                                  "No icon selected"
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                          <p className="font-semibold text-xl lg:text-2xl">
+                            {list}
+                          </p>
+                        </div>
+                      ))}
+                  </li>
+                );
+              })
+            )}
           </ul>
         </div>
       </section>

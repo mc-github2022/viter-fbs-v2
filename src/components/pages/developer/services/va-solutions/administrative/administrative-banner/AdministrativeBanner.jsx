@@ -45,18 +45,13 @@ const AdministrativeBanner = ({
             <FaRegImages className="text-[200px] text-gray-400" />
           </div>
         )}
-        {/* <img
-          src={`${devBaseImgUrl}/${banner[0].bannerImage}`}
-          alt="Smarter, Faster, and More Efficient HR Information System"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        /> */}
 
         <div className="customContainer relative z-10 h-full">
           <div className="wrapper flex flex-col justify-center items-center h-full text-center lg:grid lg:grid-cols-2">
             <div className="text-center py-10 lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                 <span className="">
-                  {administrativeData?.data[0].administrative_banner_title
+                  {administrativeData?.data[0]?.administrative_banner_title
                     .split("\n") // Split by new lines
                     .filter((content_a) => content_a.trim() !== "") // Remove empty lines
                     .map((content_a, index) => (
@@ -64,23 +59,14 @@ const AdministrativeBanner = ({
                     ))}
                 </span>
                 <span className="text-light font-semibold">
-                  {administrativeData?.data?.length > 0 &&
-                  administrativeData.data[0]?.administrative_banner_title_bold
-                    ? administrativeData?.data[0]
-                        .administrative_banner_title_bold
-                    : "Title"}
-                  {/* <h1 class="text-4xl font-bold bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
-                    Gradient Text
-                  </h1> */}
+                  {administrativeData?.data?.[0]
+                    ?.administrative_banner_title_bold || "Title"}
                 </span>
               </h2>
 
               <p className="text-light mb-10">
-                {administrativeData?.data?.length > 0 &&
-                administrativeData.data[0]?.administrative_banner_description
-                  ? administrativeData?.data[0]
-                      .administrative_banner_description
-                  : "Description"}
+                {administrativeData?.data?.[0]
+                  ?.administrative_banner_description || "Description"}
               </p>
               {administrativeData?.data.map((item, key) => (
                 <button

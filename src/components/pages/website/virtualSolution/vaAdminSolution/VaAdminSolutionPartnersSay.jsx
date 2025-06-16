@@ -34,7 +34,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const VaAdminSolutionPartnersSay = () => {
+const VaAdminSolutionPartnersSay = ({ administrativeTitlesData }) => {
   const {
     isFetching,
     error,
@@ -125,9 +125,13 @@ const VaAdminSolutionPartnersSay = () => {
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 0 && (
             <div className="">
-              <p>What Our</p>
+              <p>
+                {administrativeTitlesData?.data?.[0]
+                  ?.administrative_titles_testimonial_subtitle || "Subtitle"}
+              </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                Clients Say
+                {administrativeTitlesData?.data?.[0]
+                  ?.administrative_titles_testimonial_title || "Title"}
               </h2>
             </div>
           )}

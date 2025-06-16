@@ -53,9 +53,15 @@ const Administrative = () => {
     error,
     data: administrativeServicesData,
   } = useQueryData(
-    `${apiVersion}/administrative-services`, // endpoint
+    `${apiVersion}/administrative-services-list`, // endpoint
     "get", // method
-    "administrative-services" // key
+    "administrative-services-list" // key
+  );
+
+  const { data: administrativeServicesTitleData } = useQueryData(
+    `${apiVersion}/administrative-services-title`, // endpoint
+    "get", // method
+    "administrative-services-title" // key
   );
 
   const { data: administrativeTitlesData } = useQueryData(
@@ -123,7 +129,7 @@ const Administrative = () => {
         modalCode: "administrative-services-list",
       })
     );
-    setItemEdit("administrativeServicesUpdateList");
+    setItemEdit(null);
   };
 
   const handleUpdateAdministrativePackagesTitles = () => {
@@ -154,7 +160,6 @@ const Administrative = () => {
       })
     );
     setItemEdit("testimonialTitleUpdate");
-    console.log("click");
   };
 
   const handleUpdateHeader = () => {
@@ -238,9 +243,13 @@ const Administrative = () => {
                   handleUpdateAdministrativeServicesList
                 }
                 administrativeServicesData={administrativeServicesData}
+                administrativeServicesTitleData={
+                  administrativeServicesTitleData
+                }
                 isFetchingServices={isFetchingServices}
                 isLoadingServices={isLoadingServices}
                 error={error}
+                setItemEdit={setItemEdit}
               />
               <AdministrativePricing
                 handleUpdateAdministrativePackagesTitles={
@@ -301,7 +310,7 @@ const Administrative = () => {
         store.isUpdateHome?.modalCode === "administrative-services-title" && (
           <ModalUpdateAdministrativeServicesTitle
             itemEdit={itemEdit}
-            administrativeServicesData={administrativeServicesData}
+            administrativeServicesTitleData={administrativeServicesTitleData}
           />
         )}
 
