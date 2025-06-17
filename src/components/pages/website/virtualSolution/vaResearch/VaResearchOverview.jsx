@@ -1,27 +1,50 @@
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const VaResearchOverview = () => {
+  const { data: businessOverviewData } = useQueryData(
+    `${apiVersion}/business-overview`, // endpoint
+    "get", // method
+    "business-overview", // key
+    {},
+    null,
+    true
+  );
+
+  const businessOverviewImage = getConvertStringToJSONparseData(
+    businessOverviewData?.data?.[0]?.business_overview_img
+  );
   return (
     <>
       <section className="VaResearchOverview py-20 ">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {businessOverviewData?.data?.[0]?.business_overview_subtitle || ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {businessOverviewData?.data?.[0]?.business_overview_title || ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                // src={`${devBaseImgUrl}/vaOverviewImage.jpg`}
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
-                alt="Right Choice for Your VA Needs."
-              />
+              {businessOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 md:mb-12 lg:mb-0 h-full object-cover w-full mx-auto"
+                  alt="Right Choice for Your VA Needs."
+                  key={index}
+                />
+              ))}
             </div>
             <div>
               <ul>
@@ -32,10 +55,12 @@ const VaResearchOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {businessOverviewData?.data?.[0]
+                          ?.business_overview_list_title_a || ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {businessOverviewData?.data?.[0]
+                          ?.business_overview_list_description_a || ""}
                       </p>
                     </div>
                   </div>
@@ -47,10 +72,12 @@ const VaResearchOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {businessOverviewData?.data?.[0]
+                          ?.business_overview_list_title_b || ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewBtext}
+                        {businessOverviewData?.data?.[0]
+                          ?.business_overview_list_description_b || ""}
                       </p>
                     </div>
                   </div>
@@ -62,10 +89,12 @@ const VaResearchOverview = () => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        {businessOverviewData?.data?.[0]
+                          ?.business_overview_list_title_c || ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewCtext}
+                        {businessOverviewData?.data?.[0]
+                          ?.business_overview_list_description_c || ""}
                       </p>
                     </div>
                   </div>

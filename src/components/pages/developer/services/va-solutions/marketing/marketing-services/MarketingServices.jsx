@@ -1,0 +1,207 @@
+import React from "react";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
+import * as FaIcons from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { HiPencil } from "react-icons/hi";
+import * as IoIcons from "react-icons/io";
+import * as LuIcons from "react-icons/lu";
+import { MdDelete } from "react-icons/md";
+import * as PiIcons from "react-icons/pi";
+import * as TiIcons from "react-icons/ti";
+import ModalDelete from "../../../../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../../../../partials/spinners/NoData";
+import ServerError from "../../../../../../partials/spinners/ServerError";
+import TableLoading from "../../../../../../partials/spinners/TableLoading";
+import {
+  setIsDelete,
+  setIsUpdateHome,
+} from "../../../../../../store/StoreAction";
+import { StoreContext } from "../../../../../../store/StoreContext";
+import ContactFormDefault from "../../../../contact-form-default/ContactFormDefault";
+
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+  ...BsIcons,
+};
+
+const MarketingServices = ({
+  contactFormDefaultData,
+  handleUpdateContactFormDefault,
+  pageName,
+  handleUpdateMarketingServicesTitle,
+  handleUpdateMarketingServicesList,
+  isFetchingServices,
+  isLoadingServices,
+  error,
+  setItemEdit,
+  marketingServicesData,
+  marketingServicesTitleData,
+}) => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  const [isData, setIsData] = React.useState("");
+  const [id, setIsId] = React.useState("");
+  const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setIsContactDefaultOpen(true);
+  };
+
+  const handleEdit = (item) => {
+    dispatch(
+      setIsUpdateHome({
+        modal: true,
+        modalCode: "marketing-services-list",
+      })
+    );
+    setItemEdit(item);
+  };
+
+  const handleDelete = (item) => {
+    dispatch(setIsDelete(true));
+    setIsData(item.marketing_services_list_title);
+    setIsId(item.marketing_services_list_aid);
+  };
+
+  return (
+    <>
+      <section className="serviceList pt-0 pb-20 lg:pt-10">
+        <div className="customContainer relative">
+          <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
+            <h2 className="text-[clamp(20px,6vw,40px)] leading-[1.1] font-semibold mb-10">
+              {marketingServicesTitleData?.data?.[0]
+                ?.marketing_services_title_black_a || "Title"}{" "}
+              <span className="text-primary">
+                {marketingServicesTitleData?.data?.[0]
+                  ?.marketing_services_title_highlighted || "Title"}{" "}
+              </span>{" "}
+              <br />
+              {marketingServicesTitleData?.data?.[0]
+                ?.marketing_services_title_black_b || "Title"}
+            </h2>
+            <p className="subDesc mb-10">
+              {marketingServicesTitleData?.data?.[0]
+                ?.marketing_services_title_description || "Description"}
+            </p>
+            <button
+              onClick={handleOpen}
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all uppercase"
+            >
+              {marketingServicesTitleData?.data?.[0]
+                ?.marketing_services_title_button_text || "Button"}
+            </button>
+            <a
+              className="absolute cursor-pointer tooltip-btn right-[10rem] -top-6 "
+              data-tooltip="Edit contents"
+              onClick={handleUpdateMarketingServicesTitle}
+            >
+              <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+            </a>
+          </div>
+          <a
+            className="absolute cursor-pointer right-[6rem] top-[13rem]"
+            onClick={handleUpdateMarketingServicesList}
+          >
+            <span className=" bg-[#C7AC27] rounded-lg  w-[25px] h-[20px] px-[8px] border-[1px] text-black hover:underline text-base">
+              Add
+            </span>
+          </a>
+          {isFetchingServices && !isLoadingServices && <FetchingSpinner />}
+          {(isLoadingServices || marketingServicesData?.data?.length === 0) && (
+            <div className="text-center">
+              <div className="p-36">
+                <NoData />
+              </div>
+            </div>
+          )}
+          {error && (
+            <div className="text-center ">
+              <div colSpan="100%" className="p-10">
+                <ServerError />
+              </div>
+            </div>
+          )}
+          <ul className="serviceInclusion grid md:grid-cols-2 gap-6">
+            {isLoadingServices || isFetchingServices ? (
+              <TableLoading cols={1} count={15} />
+            ) : (
+              marketingServicesData?.data.map((item, key) => {
+                const SelectedIcon = item.marketing_services_list_icon
+                  ? icons[item.marketing_services_list_icon]
+                  : null;
+
+                return (
+                  <li className="flex items-center gap-7" key={key}>
+                    {item.marketing_services_list_title
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <div key={index} className="flex items-center gap-7">
+                          <div className="bg-customGray rounded-lg addShadow">
+                            <div className="w-16 h-16 grid place-items-center">
+                              <div size={28} className="text-3xl text-primary">
+                                {SelectedIcon ? (
+                                  <SelectedIcon />
+                                ) : (
+                                  "No icon selected"
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                          <p className="font-semibold text-xl lg:text-2xl">
+                            {list}
+                          </p>
+                        </div>
+                      ))}
+                    <div className="flex items-center place-self-start ">
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Edit"
+                        onClick={() => handleEdit(item)}
+                      >
+                        <FaEdit className="text-gray-600 text-[16px]" />
+                      </button>
+                      <button
+                        className="tooltip-action-table"
+                        data-tooltip="Delete"
+                        onClick={() => handleDelete(item)}
+                      >
+                        <MdDelete className="text-gray-600 text-[18px]" />
+                      </button>
+                    </div>
+                  </li>
+                );
+              })
+            )}
+          </ul>
+        </div>
+      </section>
+
+      {isContactDefaultOpen && (
+        <ContactFormDefault
+          thePageName={pageName}
+          setIsContactDefaultOpen={setIsContactDefaultOpen}
+          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
+          contactFormDefaultData={contactFormDefaultData}
+        />
+      )}
+
+      {store.isDelete && (
+        <ModalDelete
+          setIsDelete={setIsDelete}
+          queryKey={"marketing-services-list"}
+          mysqlEndpoint={`/v1/marketing-services-list/${id}`}
+          item={isData}
+        />
+      )}
+    </>
+  );
+};
+
+export default MarketingServices;

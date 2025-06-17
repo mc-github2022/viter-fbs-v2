@@ -38,7 +38,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const VaResearchPricing = ({ pageName }) => {
+const VaResearchPricing = ({ pageName, businessTitlesData }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
@@ -164,9 +164,13 @@ const VaResearchPricing = ({ pageName }) => {
         <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
-            <p className="text-light">Choose what's best for your needs</p>
+            <p className="text-light">
+              {businessTitlesData?.data?.[0]
+                ?.business_titles_packages_subtitle || ""}
+            </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Suitable Pricing Plans
+              {businessTitlesData?.data?.[0]?.business_titles_packages_title ||
+                ""}
             </h3>
           </div>
           <div className="wrapper ">

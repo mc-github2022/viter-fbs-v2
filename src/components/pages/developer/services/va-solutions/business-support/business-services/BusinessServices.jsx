@@ -81,6 +81,7 @@ const BusinessServices = ({
                 {businessServicesTitleData?.data?.[0]
                   ?.business_services_title_highlighted || "Title"}{" "}
               </span>{" "}
+              <br />
               {businessServicesTitleData?.data?.[0]
                 ?.business_services_title_black_b || "Title"}
             </h2>

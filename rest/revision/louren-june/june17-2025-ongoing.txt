@@ -16,6 +16,14 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/va-solutions/administrative/administrative-titles
             -> rest/v1/controllers/developer/services/va-solutions/business-support/business-banner
             -> rest/v1/controllers/developer/services/va-solutions/business-support/business-overview
+            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-services-title
+            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-services-list
+            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-titles
+            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-banner
+            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-overview
+            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-services-title
+            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-services-list
+            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-titles
 
 
         * CORE 
@@ -35,6 +43,14 @@ DEVELOPER
             -> rest/v1/models/developer/services/va-solutions/administrative/AdministrativeTitles.php
             -> rest/v1/models/developer/services/va-solutions/business-support/BusinessBanner.php
             -> rest/v1/models/developer/services/va-solutions/business-support/BusinessOverview.php
+            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessServicesTitle.php
+            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessServicesList.php
+            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessTitles.php
+            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingBanner.php
+            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingOverview.php
+            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingServicesTitle.php
+            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingServicesList.php
+            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingTitles.php
 
 
         * HTACESS
@@ -50,6 +66,14 @@ DEVELOPER
             -> # SERVICES - VA SOLUTIONS - ADMINISTRATIVE - TITLES is added
             -> # SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - BANNER is added
             -> # SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - OVERVIEW is added
+            -> # SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - TITLE is added
+            -> # SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - SERVICES LIST is added
+            -> # SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - TITLES is added
+            -> # SERVICES - VA SOLUTIONS - MARKETING - BANNER is added
+            -> # SERVICES - VA SOLUTIONS - MARKETING - OVERVIEW is added
+            -> # SERVICES - VA SOLUTIONS - MARKETING - SERVICES TITLE is added
+            -> # SERVICES - VA SOLUTIONS - MARKETING - SERVICES LIST is added
+            -> # SERVICES - VA SOLUTIONS - MARKETING - TITLES is added
 
         * OTHER FILES
             -> 
@@ -69,4 +93,12 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_administrative_titles.sql
             -> rest/db-backup/fbsv2_services_business_banner.sql
             -> rest/db-backup/fbsv2_services_business_overview.sql
+            -> rest/db-backup/fbsv2_services_business_services_title.sql
+            -> rest/db-backup/fbsv2_services_business_services_list.sql
+            -> rest/db-backup/fbsv2_services_business_titles.sql
+            -> rest/db-backup/fbsv2_services_marketing_banner.sql
+            -> rest/db-backup/fbsv2_services_marketing_overview.sql
+            -> rest/db-backup/fbsv2_services_marketing_services_title.sql
+            -> rest/db-backup/fbsv2_services_marketing_services_list.sql
+            -> rest/db-backup/fbsv2_services_marketing_titles.sql
 

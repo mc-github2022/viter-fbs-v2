@@ -410,6 +410,38 @@ RewriteRule ^business/([0-9]+)$ controllers/developer/services/va-solutions/busi
 RewriteRule ^business-overview$ controllers/developer/services/va-solutions/business-support/business-overview/businessOverview.php [L]
 RewriteRule ^business-overview/([0-9]+)$ controllers/developer/services/va-solutions/business-support/business-overview/businessOverview.php?business_overviewid=$1 [L]
 
+# SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - SERVICES TITLE
+RewriteRule ^business-services-title$ controllers/developer/services/va-solutions/business-support/business-services-title/businessServicesTitle.php [L]
+RewriteRule ^business-services-title/([0-9]+)$ controllers/developer/services/va-solutions/business-support/business-services-title/businessServicesTitle.php?business_services_titleid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - SERVICES LIST
+RewriteRule ^business-services-list$ controllers/developer/services/va-solutions/business-support/business-services-list/businessServicesList.php [L]
+RewriteRule ^business-services-list/([0-9]+)$ controllers/developer/services/va-solutions/business-support/business-services-list/businessServicesList.php?business_services_listid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - BUSINESS SUPPORT - TITLES
+RewriteRule ^business-titles$ controllers/developer/services/va-solutions/business-support/business-titles/businessTitles.php [L]
+RewriteRule ^business-titles/([0-9]+)$ controllers/developer/services/va-solutions/business-support/business-titles/businessTitles.php?business_titlesid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - MARKETING - BANNER
+RewriteRule ^marketing$ controllers/developer/services/va-solutions/marketing/marketing-banner/marketingBanner.php [L]
+RewriteRule ^marketing/([0-9]+)$ controllers/developer/services/va-solutions/marketing/marketing-banner/marketingBanner.php?marketing_bannerid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - MARKETING - OVERVIEW
+RewriteRule ^marketing-overview$ controllers/developer/services/va-solutions/marketing/marketing-overview/marketingOverview.php [L]
+RewriteRule ^marketing-overview/([0-9]+)$ controllers/developer/services/va-solutions/marketing/marketing-overview/marketingOverview.php?marketing_overviewid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - MARKETING - SERVICES TITLE
+RewriteRule ^marketing-services-title$ controllers/developer/services/va-solutions/marketing/marketing-services-title/marketingServicesTitle.php [L]
+RewriteRule ^marketing-services-title/([0-9]+)$ controllers/developer/services/va-solutions/marketing/marketing-services-title/marketingServicesTitle.php?marketing_services_titleid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - MARKETING - SERVICES LIST
+RewriteRule ^marketing-services-list$ controllers/developer/services/va-solutions/marketing/marketing-services-list/marketingServicesList.php [L]
+RewriteRule ^marketing-services-list/([0-9]+)$ controllers/developer/services/va-solutions/marketing/marketing-services-list/marketingServicesList.php?marketing_services_listid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - MARKETING - TITLES
+RewriteRule ^marketing-titles$ controllers/developer/services/va-solutions/marketing/marketing-titles/marketingTitles.php [L]
+RewriteRule ^marketing-titles/([0-9]+)$ controllers/developer/services/va-solutions/marketing/marketing-titles/marketingTitles.php?marketing_titlesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

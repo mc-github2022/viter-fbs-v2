@@ -30,6 +30,15 @@ const VaResearchPage = () => {
     true
   );
 
+  const { data: businessTitlesData } = useQueryData(
+    `${apiVersion}/business-titles`, // endpoint
+    "get", // method
+    "business-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -56,9 +65,9 @@ const VaResearchPage = () => {
       <VaResearchBanner pageName={pageName} />
       <VaResearchOverview />
       <VaResearchServiceList pageName={pageName} />
-      <VaResearchPricing pageName={pageName} />
-      <VaResearchPartners />
-      <VaResearchPartnersSay />
+      <VaResearchPricing pageName={pageName} businessTitlesData={businessTitlesData} />
+      <VaResearchPartners businessTitlesData={businessTitlesData}/>
+      <VaResearchPartnersSay businessTitlesData={businessTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

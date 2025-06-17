@@ -51,6 +51,7 @@ import ContinuingStudies from "../components/pages/developer/services/learning-c
 import VirtualAssistantSolutions from "../components/pages/developer/services/va-solutions/VirtualAssistantSolutions";
 import Administrative from "../components/pages/developer/services/va-solutions/administrative/Administrative";
 import BusinessSupport from "../components/pages/developer/services/va-solutions/business-support/BusinessSupport";
+import Marketing from "../components/pages/developer/services/va-solutions/marketing/Marketing";
 
 export const routesDeveloper = [
   {
@@ -386,6 +387,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <BusinessSupport />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/virtual-assistant-solutions/marketing`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Marketing />
       </ProtectedRouteDeveloper>
     ),
   },

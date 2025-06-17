@@ -1,18 +1,63 @@
-import React from "react";
 import {
   FileUser,
-  Headset,
-  TextSearch,
-  NotebookPen,
-  WalletCards,
-  Presentation,
   Handshake,
+  Headset,
+  NotebookPen,
+  Presentation,
+  TextSearch,
+  WalletCards,
 } from "lucide-react";
+import React from "react";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
+import * as FaIcons from "react-icons/fa";
+import * as IoIcons from "react-icons/io";
+import * as LuIcons from "react-icons/lu";
+import * as PiIcons from "react-icons/pi";
+import * as TiIcons from "react-icons/ti";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
+import TableLoading from "../../../../partials/spinners/TableLoading";
+
+const icons = {
+  ...FaIcons,
+  ...AiIcons,
+  ...IoIcons,
+  ...TiIcons,
+  ...LuIcons,
+  ...PiIcons,
+  ...BsIcons,
+};
 
 const VaResearchServiceList = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
+
+  const {
+    isFetchingServices,
+    isLoadingServices,
+    error,
+    data: businessServicesData,
+  } = useQueryData(
+    `${apiVersion}/business-services-list`, // endpoint
+    "get", // method
+    "business-services-list", // key
+    {},
+    null,
+    true
+  );
+
+  const { data: businessServicesTitleData } = useQueryData(
+    `${apiVersion}/business-services-title`, // endpoint
+    "get", // method
+    "business-services-title", // key
+    {},
+    null,
+    true
+  );
+
   const handleForm = () => {
     setContactForm(!contactForm);
   };
@@ -23,91 +68,65 @@ const VaResearchServiceList = ({ pageName }) => {
         <div className="customContainer">
           <div className="sectionDesc text-center md:w-[70%] mx-auto mb-14">
             <h2 className="text-[clamp(20px,6vw,40px)] leading-[1.1] font-semibold mb-10">
-              What <span className="text-primary">Business Support </span>
-              <br /> Can We Perform?
+              {businessServicesTitleData?.data?.[0]
+                ?.business_services_title_black_a || ""}{" "}
+              <span className="text-primary">
+                {businessServicesTitleData?.data?.[0]
+                  ?.business_services_title_highlighted || ""}{" "}
+              </span>
+              <br />{" "}
+              {businessServicesTitleData?.data?.[0]
+                ?.business_services_title_black_b || ""}
             </h2>
             <p className="subDesc mb-10">
-              Our VA for Business Support offers comprehensive support to
-              streamline your business operations.
+              {businessServicesTitleData?.data?.[0]
+                ?.business_services_title_description || ""}
             </p>
             <button
               onClick={handleForm}
-              className="btn bg-primary text-light font-light hover:bg-secondary transition-all"
+              className="btn bg-primary text-light font-light hover:bg-secondary transition-all uppercase"
             >
-              GET STARTED
+              {businessServicesTitleData?.data?.[0]
+                ?.business_services_title_button_text || ""}
             </button>
           </div>
+          {isFetchingServices && !isLoadingServices && <FetchingSpinner />}
           <ul className="serviceInclusion grid md:grid-cols-2 gap-6">
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <TextSearch size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Lead Management
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <Headset size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Customer Support & Communication
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <WalletCards size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Administrative & Financial Management
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <Presentation size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Data & Reporting
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <NotebookPen size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Operations & Project Management
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <FileUser size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Document & Communication Management
-              </p>
-            </li>
-            <li className="flex items-center gap-7">
-              <div className="bg-customGray rounded-lg addShadow">
-                <div className="w-16 h-16 grid place-items-center">
-                  <Handshake size={28} className="text-3xl text-primary" />
-                </div>
-              </div>
-              <p className="font-semibold text-xl lg:text-2xl">
-                Customer Engagement & Relationship Building
-              </p>
-            </li>
+            {isLoadingServices || isFetchingServices ? (
+              <TableLoading cols={1} count={15} />
+            ) : (
+              businessServicesData?.data.map((item, key) => {
+                const SelectedIcon = item.business_services_list_icon
+                  ? icons[item.business_services_list_icon]
+                  : null;
+
+                return (
+                  <li className="flex items-center gap-7" key={key}>
+                    {item.business_services_list_title
+                      .split("\n") // Split by new lines
+                      .filter((list) => list.trim() !== "") // Remove empty lines
+                      .map((list, index) => (
+                        <div key={index} className="flex items-center gap-7">
+                          <div className="bg-customGray rounded-lg addShadow">
+                            <div className="w-16 h-16 grid place-items-center">
+                              <div size={28} className="text-3xl text-primary">
+                                {SelectedIcon ? (
+                                  <SelectedIcon />
+                                ) : (
+                                  "No icon selected"
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                          <p className="font-semibold text-xl lg:text-2xl">
+                            {list}
+                          </p>
+                        </div>
+                      ))}
+                  </li>
+                );
+              })
+            )}
           </ul>
         </div>
       </section>
