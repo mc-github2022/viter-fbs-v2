@@ -47,6 +47,8 @@ import VirtualAssistantSolutionsAdmin from "../components/pages/developer/servic
 import Administrative from "../components/pages/developer/services/va-solutions/administrative/Administrative";
 import BusinessSupport from "../components/pages/developer/services/va-solutions/business-support/BusinessSupport";
 import Marketing from "../components/pages/developer/services/va-solutions/marketing/Marketing";
+import WebDesignAndDevAdmin from "../components/pages/developer/services/web-design/WebDesignAndDevAdmin";
+import WordPressCmsWebsite from "../components/pages/developer/services/web-design/wordpress-cms-website/WordPressCmsWebsite";
 
 export const routesAdmin = [
   {
@@ -374,6 +376,22 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <Marketing />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-design-and-development`,
+    element: (
+      <ProtectedRouteOther>
+        <WebDesignAndDevAdmin />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-design-and-development/wordpress`,
+    element: (
+      <ProtectedRouteOther>
+        <WordPressCmsWebsite />
       </ProtectedRouteOther>
     ),
   },

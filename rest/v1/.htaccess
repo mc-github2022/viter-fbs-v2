@@ -44,6 +44,10 @@ RewriteRule ^contactDefault/([0-9]+)$ controllers/developer/contact-form-default
 RewriteRule ^contactLcss$ controllers/developer/contact-form-lcss/contactFormLcss.php [L]
 RewriteRule ^contactLcss/([0-9]+)$ controllers/developer/contact-form-lcss/contactFormLcss.php?contact_form_lcss_id=$1 [L]
 
+# CONTACT FORM WORDPRESS
+RewriteRule ^contactWordpress$ controllers/developer/contact-form-wordpress/contactFormWordpress.php [L]
+RewriteRule ^contactWordpress/([0-9]+)$ controllers/developer/contact-form-wordpress/contactFormWordpress.php?contact_form_wordpress_id=$1 [L]
+
 # HOME -TITLES
 RewriteRule ^homeTitles$ controllers/developer/home/home-titles/homeTitles.php [L]
 RewriteRule ^homeTitles/([0-9]+)$ controllers/developer/home/home-titles/homeTitles.php?home_titlesid=$1 [L]
@@ -441,6 +445,18 @@ RewriteRule ^marketing-services-list/([0-9]+)$ controllers/developer/services/va
 # SERVICES - VA SOLUTIONS - MARKETING - TITLES
 RewriteRule ^marketing-titles$ controllers/developer/services/va-solutions/marketing/marketing-titles/marketingTitles.php [L]
 RewriteRule ^marketing-titles/([0-9]+)$ controllers/developer/services/va-solutions/marketing/marketing-titles/marketingTitles.php?marketing_titlesid=$1 [L]
+
+# SERVICES - WEB DESIGN - WORDPRESS - BANNER
+RewriteRule ^wordpress$ controllers/developer/services/web-design/wordpress/wordpress-banner/wordpressBanner.php [L]
+RewriteRule ^wordpress/([0-9]+)$ controllers/developer/services/web-design/wordpress/wordpress-banner/wordpressBanner.php?wordpress_bannerid=$1 [L]
+
+# SERVICES - WEB DESIGN - WORDPRESS - OVERVIEW
+RewriteRule ^wordpress-overview$ controllers/developer/services/web-design/wordpress/wordpress-overview/wordpressOverview.php [L]
+RewriteRule ^wordpress-overview/([0-9]+)$ controllers/developer/services/web-design/wordpress/wordpress-overview/wordpressOverview.php?wordpress_overviewid=$1 [L]
+
+# SERVICES - WEB DESIGN - WORDPRESS - SCOPE
+RewriteRule ^wordpress-scope$ controllers/developer/services/web-design/wordpress/wordpress-scope/wordpressScope.php [L]
+RewriteRule ^wordpress-scope/([0-9]+)$ controllers/developer/services/web-design/wordpress/wordpress-scope/wordpressScope.php?wordpress_scopeid=$1 [L]
 
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]

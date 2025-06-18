@@ -33,6 +33,8 @@ const ContactFormDefault = ({
   contactFormLcssData,
   handleUpdateContactFormLcss,
   contactUsDefaultimmersionFile,
+  contactFormWordpressData,
+  handleUpdateContactFormWordpress,
 }) => {
   const handleClose = () => {
     setIsContactDefaultOpen(false);
@@ -48,6 +50,10 @@ const ContactFormDefault = ({
 
   const contactUsLcssFile = getConvertStringToJSONparseData(
     contactFormLcssData?.data?.[0]?.form_lcss_file
+  );
+
+  const contactUsWordpressFile = getConvertStringToJSONparseData(
+    contactFormWordpressData?.data?.[0]?.form_wordpress_file
   );
 
   return (
@@ -69,23 +75,33 @@ const ContactFormDefault = ({
             />
           </button>
 
-          {thePageName !== "College OJT" &&
-          thePageName !== "Work Immersion" &&
-          thePageName !== "Continuing Study" ? (
+          {thePageName !== "cms" ? (
+            thePageName !== "College OJT" &&
+            thePageName !== "Work Immersion" &&
+            thePageName !== "Continuing Study" ? (
+              <a
+                className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
+                data-tooltip="Edit contents"
+                onClick={handleUpdateContactFormDefault}
+              >
+                <FaRegImages className="bg-[#C7AC27] rounded-full w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              </a>
+            ) : (
+              <a
+                className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
+                data-tooltip="Edit contents"
+                onClick={handleUpdateContactFormLcss}
+              >
+                <HiPencil className="bg-[#C7AC27] rounded-full w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              </a>
+            )
+          ) : (
             <a
               className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
               data-tooltip="Edit contents"
-              onClick={handleUpdateContactFormDefault}
+              onClick={handleUpdateContactFormWordpress}
             >
-              <FaRegImages className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
-            </a>
-          ) : (
-            <a
-              className="absolute cursor-pointer tooltip-btn left-[320px] top-8 "
-              data-tooltip="Edit contents"
-              onClick={handleUpdateContactFormLcss}
-            >
-              <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              <HiPencil className="bg-[#C7AC27] rounded-full w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
             </a>
           )}
 
@@ -394,12 +410,16 @@ const ContactFormDefault = ({
               ) : thePageName === "cms" ? (
                 <>
                   <p className="text-sm">Learn more about our CMS program</p>
-                  <a
-                    href="https://drive.google.com/uc?export=download&amp;id=1KCT6R_LE1PCl_RrCaCQRZYLLNixF73cU"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
-                    Download Portfolio <FaFileDownload />
-                  </a>
+                  {contactUsWordpressFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex gap-2 items-center font-bold text-primary pointer"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Portfolio <FaFileDownload />
+                    </a>
+                  ))}
                 </>
               ) : (
                 <>
