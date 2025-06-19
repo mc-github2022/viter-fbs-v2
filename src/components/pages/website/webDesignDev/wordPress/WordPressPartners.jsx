@@ -8,7 +8,7 @@ import {
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
 
-const WordPressPartners = () => {
+const WordPressPartners = ({ wordpressTitlesData }) => {
   const {
     isFetching,
     error,
@@ -27,9 +27,13 @@ const WordPressPartners = () => {
     <>
       <section className="WordPressPartners py-24 lg:pb-24 lg:pt-0">
         <div className="customContainer">
-          <p>{sectionPartnersTitle[0].subTitle}</p>
+          <p>
+            {wordpressTitlesData?.data?.[0]
+              ?.wordpress_titles_partners_subtitle || ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-10">
-            {sectionPartnersTitle[0].mainTitle}
+            {wordpressTitlesData?.data?.[0]?.wordpress_titles_partners_title ||
+              ""}
           </h2>
 
           <ul className="flex flex-wrap justify-center gap-y-8 gap-x-44 items-center">

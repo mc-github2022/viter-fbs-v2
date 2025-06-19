@@ -165,11 +165,11 @@ const WordpressPricing = ({
             </a>
             <p className="text-light">
               {wordpressTitlesData?.data?.[0]
-                ?.administrative_titles_packages_subtitle || "Subtitle"}
+                ?.wordpress_titles_packages_subtitle || "Subtitle"}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
               {wordpressTitlesData?.data?.[0]
-                ?.administrative_titles_packages_title || "Title"}
+                ?.wordpress_titles_packages_title || "Title"}
             </h3>
           </div>
           <div className="wrapper ">

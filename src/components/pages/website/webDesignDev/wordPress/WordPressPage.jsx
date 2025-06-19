@@ -30,6 +30,15 @@ const WordPressPage = () => {
     true
   );
 
+  const { data: wordpressTitlesData } = useQueryData(
+    `${apiVersion}/wordpress-titles`, // endpoint
+    "get", // method
+    "wordpress-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -55,11 +64,11 @@ const WordPressPage = () => {
       <Header pageName={pageName} />
       <WordPressBanner pageName={pageName} />
       <WordPressOverview pageName={pageName} />
-      <WordPressScope pageName={pageName} />
-      <WordPressPricing pageName={pageName} />
+      <WordPressScope pageName={pageName} wordpressTitlesData={wordpressTitlesData}/>
+      <WordPressPricing pageName={pageName} wordpressTitlesData={wordpressTitlesData} />
       <WordPressPortfolio />
-      <WordPressPartners />
-      <WordPressPartnersSay />
+      <WordPressPartners wordpressTitlesData={wordpressTitlesData} />
+      <WordPressPartnersSay wordpressTitlesData={wordpressTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

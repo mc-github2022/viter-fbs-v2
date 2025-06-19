@@ -28,7 +28,8 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-banner
             -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-overview
             -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-scope
-
+            -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-titles
+            -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-portfolio
 
         * CORE 
             -> 
@@ -59,6 +60,8 @@ DEVELOPER
             -> rest/v1/models/developer/services/web-design/wordpress/WordpressBanner.php
             -> rest/v1/models/developer/services/web-design/wordpress/WordpressOverview.php
             -> rest/v1/models/developer/services/web-design/wordpress/WordpressScope.php
+            -> rest/v1/models/developer/services/web-design/wordpress/WordpressTitles.php
+            -> rest/v1/models/developer/services/web-design/wordpress/WordpressPortfolio.php
 
 
         * HTACESS
@@ -86,6 +89,8 @@ DEVELOPER
             -> # SERVICES - WEB DESIGN - WORDPRESS - BANNER
             -> # SERVICES - WEB DESIGN - WORDPRESS - OVERVIEW
             -> # SERVICES - WEB DESIGN - WORDPRESS - SCOPE
+            -> # SERVICES - WEB DESIGN - WORDPRESS - TITLES
+            -> # SERVICES - WEB DESIGN - WORDPRESS - PORTFOLIO
 
         * OTHER FILES
             -> 
@@ -117,4 +122,6 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_wordpress_banner.sql
             -> rest/db-backup/fbsv2_services_wordpress_overview.sql
             -> rest/db-backup/fbsv2_services_wordpress_scope.sql
+            -> rest/db-backup/fbsv2_services_wordpress_titles.sql
+            -> rest/db-backup/fbsv2_services_wordpress_portfolio.sql
 

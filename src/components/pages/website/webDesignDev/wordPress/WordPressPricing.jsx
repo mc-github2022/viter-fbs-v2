@@ -39,7 +39,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const WordPressPricing = ({ pageName }) => {
+const WordPressPricing = ({ pageName, wordpressTitlesData }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
@@ -166,10 +166,12 @@ const WordPressPricing = ({ pageName }) => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              CMS Website development for your online branding
+              {wordpressTitlesData?.data?.[0]
+                ?.wordpress_titles_packages_subtitle || ""}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Affordable Pricing Plan
+              {wordpressTitlesData?.data?.[0]
+                ?.wordpress_titles_packages_title || ""}
             </h3>
           </div>
           <div className="wrapper ">

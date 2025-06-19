@@ -73,6 +73,15 @@ const ModalContact = ({
     true
   );
 
+  const { data: contactFormWordpressData } = useQueryData(
+    `${apiVersion}/contactWordpress`, // endpoint
+    "get", // method
+    "contactWordpress", // key
+    {},
+    null,
+    true
+  );
+
   const contactUsDefaultImage = getConvertStringToJSONparseData(
     contactFormDefaultData?.data?.[0]?.form_default_img
   );
@@ -83,6 +92,10 @@ const ModalContact = ({
 
   const contactUsLcssFile = getConvertStringToJSONparseData(
     contactFormLcssData?.data?.[0]?.form_lcss_file
+  );
+
+  const contactUsWordpressFile = getConvertStringToJSONparseData(
+    contactFormWordpressData?.data?.[0]?.form_wordpress_file
   );
 
   const queryClient = useQueryClient();
@@ -453,12 +466,16 @@ const ModalContact = ({
               ) : thePageName === "cms" ? (
                 <>
                   <p className="text-sm">Learn more about our CMS program</p>
-                  <a
-                    href="https://drive.google.com/uc?export=download&amp;id=1KCT6R_LE1PCl_RrCaCQRZYLLNixF73cU"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
-                    Download Portfolio <FaFileDownload />
-                  </a>
+                  {contactUsWordpressFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex gap-2 items-center font-bold text-primary pointer"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Portfolio <FaFileDownload />
+                    </a>
+                  ))}
                 </>
               ) : (
                 <>

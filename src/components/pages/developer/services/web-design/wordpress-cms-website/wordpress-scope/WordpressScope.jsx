@@ -81,7 +81,7 @@ const WordpressScope = ({
         <div className="customContainer relative">
           <div className="relative">
             <a
-              className="absolute cursor-pointer tooltip-btn left-[16rem] -top-2 "
+              className="absolute cursor-pointer tooltip-btn left-[20rem] -top-6 "
               data-tooltip="Edit contents"
               onClick={handleUpdateWordpressScopeTitles}
             >

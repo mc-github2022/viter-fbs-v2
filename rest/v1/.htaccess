@@ -458,6 +458,14 @@ RewriteRule ^wordpress-overview/([0-9]+)$ controllers/developer/services/web-des
 RewriteRule ^wordpress-scope$ controllers/developer/services/web-design/wordpress/wordpress-scope/wordpressScope.php [L]
 RewriteRule ^wordpress-scope/([0-9]+)$ controllers/developer/services/web-design/wordpress/wordpress-scope/wordpressScope.php?wordpress_scopeid=$1 [L]
 
+# SERVICES - WEB DESIGN - WORDPRESS - TITLES
+RewriteRule ^wordpress-titles$ controllers/developer/services/web-design/wordpress/wordpress-titles/wordpressTitles.php [L]
+RewriteRule ^wordpress-titles/([0-9]+)$ controllers/developer/services/web-design/wordpress/wordpress-titles/wordpressTitles.php?wordpress_titlesid=$1 [L]
+
+# SERVICES - WEB DESIGN - WORDPRESS - PORTFOLIO
+RewriteRule ^wordpress-portfolio$ controllers/developer/services/web-design/wordpress/wordpress-portfolio/wordpressPortfolio.php [L]
+RewriteRule ^wordpress-portfolio/([0-9]+)$ controllers/developer/services/web-design/wordpress/wordpress-portfolio/wordpressPortfolio.php?wordpress_portfolioid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]
