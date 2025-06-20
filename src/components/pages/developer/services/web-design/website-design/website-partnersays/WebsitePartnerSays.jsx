@@ -135,7 +135,7 @@ const WebsitePartnerSays = ({
               </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
                 {websiteTitlesData?.data?.[0]
-                  ?.website_titles_testimonial_title || "Title"}
+                  ?.website_titles_testimonial_title || "Title"} 
               </h2>
               <a
                 className="absolute cursor-pointer tooltip-btn -top-4 left-[20rem] "
