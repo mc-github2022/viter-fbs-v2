@@ -54,6 +54,8 @@ import BusinessSupport from "../components/pages/developer/services/va-solutions
 import Marketing from "../components/pages/developer/services/va-solutions/marketing/Marketing";
 import WebDesignAndDev from "../components/pages/developer/services/web-design/WebDesignAndDev";
 import WordPressCmsWebsite from "../components/pages/developer/services/web-design/wordpress-cms-website/WordPressCmsWebsite";
+import SinglePageWebsite from "../components/pages/developer/services/web-design/single-page/SinglePageWebsite";
+import WebsiteDesign from "../components/pages/developer/services/web-design/website-design/WebsiteDesign";
 
 export const routesDeveloper = [
   {
@@ -413,6 +415,22 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <WordPressCmsWebsite />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-design-and-development/single-page-website`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <SinglePageWebsite />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-design-and-development/web-design`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <WebsiteDesign />
       </ProtectedRouteDeveloper>
     ),
   },

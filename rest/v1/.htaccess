@@ -466,6 +466,38 @@ RewriteRule ^wordpress-titles/([0-9]+)$ controllers/developer/services/web-desig
 RewriteRule ^wordpress-portfolio$ controllers/developer/services/web-design/wordpress/wordpress-portfolio/wordpressPortfolio.php [L]
 RewriteRule ^wordpress-portfolio/([0-9]+)$ controllers/developer/services/web-design/wordpress/wordpress-portfolio/wordpressPortfolio.php?wordpress_portfolioid=$1 [L]
 
+# SERVICES - WEB DESIGN - SINGLE PAGE - BANNER
+RewriteRule ^singlepage$ controllers/developer/services/web-design/single-page/single-banner/singlepageBanner.php [L]
+RewriteRule ^singlepage/([0-9]+)$ controllers/developer/services/web-design/single-page/single-banner/singlepageBanner.php?singlepage_bannerid=$1 [L]
+
+# SERVICES - WEB DESIGN - SINGLE PAGE - OVERVIEW
+RewriteRule ^singlepage-overview$ controllers/developer/services/web-design/single-page/single-overview/singlepageOverview.php [L]
+RewriteRule ^singlepage-overview/([0-9]+)$ controllers/developer/services/web-design/single-page/single-overview/singlepageOverview.php?singlepage_overviewid=$1 [L]
+
+# SERVICES - WEB DESIGN - SINGLE PAGE - SCOPE
+RewriteRule ^singlepage-scope$ controllers/developer/services/web-design/single-page/single-scope/singlepageScope.php [L]
+RewriteRule ^singlepage-scope/([0-9]+)$ controllers/developer/services/web-design/single-page/single-scope/singlepageScope.php?singlepage_scopeid=$1 [L]
+
+# SERVICES - WEB DESIGN - SINGLE PAGE - TITLES
+RewriteRule ^singlepage-titles$ controllers/developer/services/web-design/single-page/single-titles/singlepageTitles.php [L]
+RewriteRule ^singlepage-titles/([0-9]+)$ controllers/developer/services/web-design/single-page/single-titles/singlepageTitles.php?singlepage_titlesid=$1 [L]
+
+# SERVICES - WEB DESIGN - WEBSITE - BANNER
+RewriteRule ^website$ controllers/developer/services/web-design/website/website-banner/websiteBanner.php [L]
+RewriteRule ^website/([0-9]+)$ controllers/developer/services/web-design/website/website-banner/websiteBanner.php?website_bannerid=$1 [L]
+
+# SERVICES - WEB DESIGN - WEBSITE - OVERVIEW
+RewriteRule ^website-overview$ controllers/developer/services/web-design/website/website-overview/websiteOverview.php [L]
+RewriteRule ^website-overview/([0-9]+)$ controllers/developer/services/web-design/website/website-overview/websiteOverview.php?website_overviewid=$1 [L]
+
+# SERVICES - WEB DESIGN - WEBSITE - SCOPE
+RewriteRule ^website-scope$ controllers/developer/services/web-design/website/website-scope/websiteScope.php [L]
+RewriteRule ^website-scope/([0-9]+)$ controllers/developer/services/web-design/website/website-scope/websiteScope.php?website_scopeid=$1 [L]
+
+# SERVICES - WEB DESIGN - WEBSITE - TITLES
+RewriteRule ^website-titles$ controllers/developer/services/web-design/website/website-titles/websiteTitles.php [L]
+RewriteRule ^website-titles/([0-9]+)$ controllers/developer/services/web-design/website/website-titles/websiteTitles.php?website_titlesid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

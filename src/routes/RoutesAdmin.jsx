@@ -49,6 +49,8 @@ import BusinessSupport from "../components/pages/developer/services/va-solutions
 import Marketing from "../components/pages/developer/services/va-solutions/marketing/Marketing";
 import WebDesignAndDevAdmin from "../components/pages/developer/services/web-design/WebDesignAndDevAdmin";
 import WordPressCmsWebsite from "../components/pages/developer/services/web-design/wordpress-cms-website/WordPressCmsWebsite";
+import SinglePageWebsite from "../components/pages/developer/services/web-design/single-page/SinglePageWebsite";
+import WebsiteDesign from "../components/pages/developer/services/web-design/website-design/WebsiteDesign";
 
 export const routesAdmin = [
   {
@@ -392,6 +394,22 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <WordPressCmsWebsite />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-design-and-development/single-page-website`,
+    element: (
+      <ProtectedRouteOther>
+        <SinglePageWebsite />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-design-and-development/web-design`,
+    element: (
+      <ProtectedRouteOther>
+        <WebsiteDesign />
       </ProtectedRouteOther>
     ),
   },

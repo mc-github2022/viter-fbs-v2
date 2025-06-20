@@ -28,6 +28,15 @@ const SinglePageWebsite = () => {
     true
   );
 
+  const { data: singlepageTitlesData } = useQueryData(
+    `${apiVersion}/singlepage-titles`, // endpoint
+    "get", // method
+    "singlepage-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -53,9 +62,9 @@ const SinglePageWebsite = () => {
       <Header pageName={pageName} />
       <SinglePageBanner pageName={pageName} />
       <SinglePageOverview pageName={pageName} />
-      <SinglePageScope pageName={pageName} />
-      <SinglePagePricing pageName={pageName} />
-      <SinglePagePartners />
+      <SinglePageScope pageName={pageName} singlepageTitlesData={singlepageTitlesData}/>
+      <SinglePagePricing pageName={pageName} singlepageTitlesData={singlepageTitlesData} />
+      <SinglePagePartners singlepageTitlesData={singlepageTitlesData}/>
       {/* <SinglePagePartnersSay /> */}
       <Footer />
       {store.success && <ModalSuccess />}

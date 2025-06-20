@@ -35,7 +35,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const WebDesignPartnersSay = () => {
+const WebDesignPartnersSay = ({ websiteTitlesData }) => {
   const {
     isFetching,
     error,
@@ -127,9 +127,13 @@ const WebDesignPartnersSay = () => {
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 0 && (
             <div className="">
-              <p>What Our</p>
+              <p>
+                {websiteTitlesData?.data?.[0]
+                  ?.website_titles_testimonial_subtitle || ""}
+              </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-                Clients Say
+                {websiteTitlesData?.data?.[0]
+                  ?.website_titles_testimonial_title || ""}
               </h2>
             </div>
           )}

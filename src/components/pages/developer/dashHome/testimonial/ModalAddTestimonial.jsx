@@ -297,7 +297,7 @@ const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
                                         }`}
                                         onClick={() => {
                                           handleClickViewSlideshow(
-                                            photoArrayList,
+                                            clientImages,
                                             key
                                           );
                                         }}

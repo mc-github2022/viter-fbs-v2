@@ -301,7 +301,7 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
                                       }`}
                                       onClick={() => {
                                         handleClickViewSlideshow(
-                                          photoArrayList,
+                                          clientImages,
                                           key
                                         );
                                       }}

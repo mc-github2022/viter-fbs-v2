@@ -30,6 +30,14 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-scope
             -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-titles
             -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-portfolio
+            -> rest/v1/controllers/developer/services/web-design/single-page/single-banner
+            -> rest/v1/controllers/developer/services/web-design/single-page/single-overview
+            -> rest/v1/controllers/developer/services/web-design/single-page/single-scope
+            -> rest/v1/controllers/developer/services/web-design/single-page/single-titles
+            -> rest/v1/controllers/developer/services/web-design/website/website-banner
+            -> rest/v1/controllers/developer/services/web-design/website/website-overview
+            -> rest/v1/controllers/developer/services/web-design/website/website-scope
+            -> rest/v1/controllers/developer/services/web-design/website/website-titles
 
         * CORE 
             -> 
@@ -62,6 +70,14 @@ DEVELOPER
             -> rest/v1/models/developer/services/web-design/wordpress/WordpressScope.php
             -> rest/v1/models/developer/services/web-design/wordpress/WordpressTitles.php
             -> rest/v1/models/developer/services/web-design/wordpress/WordpressPortfolio.php
+            -> rest/v1/models/developer/services/web-design/single-page/SinglepageBanner.php
+            -> rest/v1/models/developer/services/web-design/single-page/SinglepageOverview.php
+            -> rest/v1/models/developer/services/web-design/single-page/SinglepageScope.php
+            -> rest/v1/models/developer/services/web-design/single-page/SinglepageTitles.php
+            -> rest/v1/models/developer/services/web-design/website/WebsiteBanner.php
+            -> rest/v1/models/developer/services/web-design/website/WebsiteOverview.php
+            -> rest/v1/models/developer/services/web-design/website/WebsiteScope.php
+            -> rest/v1/models/developer/services/web-design/website/WebsiteTitles.php
 
 
         * HTACESS
@@ -91,6 +107,14 @@ DEVELOPER
             -> # SERVICES - WEB DESIGN - WORDPRESS - SCOPE
             -> # SERVICES - WEB DESIGN - WORDPRESS - TITLES
             -> # SERVICES - WEB DESIGN - WORDPRESS - PORTFOLIO
+            -> # SERVICES - WEB DESIGN - SINGLE PAGE - BANNER
+            -> # SERVICES - WEB DESIGN - SINGLE PAGE - OVERVIEW
+            -> # SERVICES - WEB DESIGN - SINGLE PAGE - SCOPE
+            -> # SERVICES - WEB DESIGN - SINGLE PAGE - TITLES
+            -> # SERVICES - WEB DESIGN - WEBSITE - BANNER
+            -> # SERVICES - WEB DESIGN - WEBSITE - OVERVIEW
+            -> # SERVICES - WEB DESIGN - WEBSITE - SCOPE
+            -> # SERVICES - WEB DESIGN - WEBSITE - TITLES
 
         * OTHER FILES
             -> 
@@ -120,8 +144,16 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_marketing_services_list.sql
             -> rest/db-backup/fbsv2_services_marketing_titles.sql
             -> rest/db-backup/fbsv2_services_wordpress_banner.sql
-            -> rest/db-backup/fbsv2_services_wordpress_overview.sql
+            -> rest/db-backup/fbsv2_services_wordpress_overview.sql     
             -> rest/db-backup/fbsv2_services_wordpress_scope.sql
             -> rest/db-backup/fbsv2_services_wordpress_titles.sql
             -> rest/db-backup/fbsv2_services_wordpress_portfolio.sql
+            -> rest/db-backup/fbsv2_services_singlepage_banner.sql
+            -> rest/db-backup/fbsv2_services_singlepage_overview.sql
+            -> rest/db-backup/fbsv2_services_singlepage_scope.sql
+            -> rest/db-backup/fbsv2_services_singlepage_titles.sql
+            -> rest/db-backup/fbsv2_services_website_banner.sql
+            -> rest/db-backup/fbsv2_services_website_overview.sql
+            -> rest/db-backup/fbsv2_services_website_scope.sql
+            -> rest/db-backup/fbsv2_services_website_titles.sql
 

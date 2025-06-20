@@ -342,7 +342,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                                         }`}
                                         onClick={() => {
                                           handleClickViewSlideshow(
-                                            photoArrayList,
+                                            clientImages,
                                             key
                                           );
                                         }}

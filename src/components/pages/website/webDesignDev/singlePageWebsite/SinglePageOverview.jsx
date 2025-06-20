@@ -2,50 +2,88 @@ import React from "react";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { webAppOverview } from "./data";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+  googleViewLink,
+} from "../../../../helpers/functions-general";
 import ModalContact from "../../../../partials/ModalContact";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../partials/LoadImages";
 
 const SinglePageOverview = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
+
+  const { data: singlepageOverviewData } = useQueryData(
+    `${apiVersion}/singlepage-overview`, // endpoint
+    "get", // method
+    "singlepage-overview", // key
+    {},
+    null,
+    true
+  );
+
   const handleForm = () => {
     setContactForm(!contactForm);
   };
+
+  const singlepageOverviewImage = getConvertStringToJSONparseData(
+    singlepageOverviewData?.data?.[0]?.singlepage_overview_img
+  );
+
+  const singlepageOverviewFile = getConvertStringToJSONparseData(
+    singlepageOverviewData?.data?.[0]?.singlepage_overview_file
+  );
 
   return (
     <>
       <section className="SinglePageOverview py-20 bg-customGray">
         <div className="customContainer">
-          <p>{webAppOverview[0].subtitle}</p>
+          <p>
+            {singlepageOverviewData?.data?.[0]?.singlepage_overview_subtitle ||
+              ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              {webAppOverview[0].mainTitle}
+              {singlepageOverviewData?.data?.[0]?.singlepage_overview_title ||
+                ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                src={`${devBaseImgUrl}/${webAppOverview[0].webAppImage}`}
-                className="mb-12 w-full mx-auto"
-                alt="Web Development Team"
-              />
+              {singlepageOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-full mx-auto"
+                  alt="Web Development Team"
+                  key={index}
+                />
+              ))}
+
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
-                    {webAppOverview[0].btnText}
+                    {singlepageOverviewData?.data?.[0]
+                      ?.singlepage_overview_button_text || ""}
                   </button>
                 </li>
                 <li>
-                  <a
-                    href={`${devBaseImgUrl}/website-design-and-development-portfolio-2022-v3.pdf`}
-                    download
-                    className="flex items-center gap-2 font-bold text-primary"
-                  >
-                    {webAppOverview[0].btnDownloadText} <FaFileDownload />
-                  </a>
+                  {singlepageOverviewFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex items-center gap-2 font-bold text-primary"
+                      target="_blank"
+                      key={index}
+                    >
+                      Download Portfolio <FaFileDownload />
+                    </a>
+                  ))}
                 </li>
               </ul>
             </div>
@@ -58,10 +96,12 @@ const SinglePageOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewAtitle}
+                        {singlepageOverviewData?.data?.[0]
+                          ?.singlepage_overview_list_title_a || ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewAtext}
+                        {singlepageOverviewData?.data?.[0]
+                          ?.singlepage_overview_list_description_a || ""}
                       </p>
                     </div>
                   </div>
@@ -73,10 +113,12 @@ const SinglePageOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewBtitle}
+                        {singlepageOverviewData?.data?.[0]
+                          ?.singlepage_overview_list_title_b || ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewBtext}
+                        {singlepageOverviewData?.data?.[0]
+                          ?.singlepage_overview_list_description_b || ""}
                       </p>
                     </div>
                   </div>
@@ -88,10 +130,12 @@ const SinglePageOverview = ({ pageName }) => {
                     </div>
                     <div>
                       <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
-                        {webAppOverview[0].overviewCtitle}
+                        {singlepageOverviewData?.data?.[0]
+                          ?.singlepage_overview_list_title_c || ""}
                       </h3>
                       <p className="text-justify">
-                        {webAppOverview[0].overviewCtext}
+                        {singlepageOverviewData?.data?.[0]
+                          ?.singlepage_overview_list_description_c || ""}
                       </p>
                     </div>
                   </div>

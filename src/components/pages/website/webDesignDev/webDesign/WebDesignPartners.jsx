@@ -8,7 +8,7 @@ import {
 import LoadImages from "../../../../partials/LoadImages";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 
-const WebDesignPartners = () => {
+const WebDesignPartners = ({ websiteTitlesData }) => {
   const {
     isFetching,
     error,
@@ -27,9 +27,12 @@ const WebDesignPartners = () => {
     <>
       <section className="WebDesignPartners -translate-y-1 bg-light pb-16 md:py-20">
         <div className="customContainer">
-          <p>{sectionPartnersTitle[0].subTitle}</p>
+          <p>
+            {websiteTitlesData?.data?.[0]?.website_titles_partners_subtitle ||
+              ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-            {sectionPartnersTitle[0].mainTitle}
+            {websiteTitlesData?.data?.[0]?.website_titles_partners_title || ""}
           </h2>
 
           <ul className="flex flex-wrap justify-center gap-y-10 gap-x-20 items-center">

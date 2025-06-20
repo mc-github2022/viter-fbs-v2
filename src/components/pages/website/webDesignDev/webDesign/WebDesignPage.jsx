@@ -29,6 +29,15 @@ const WebDesignPage = () => {
     true
   );
 
+  const { data: websiteTitlesData } = useQueryData(
+    `${apiVersion}/website-titles`, // endpoint
+    "get", // method
+    "website-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -54,10 +63,10 @@ const WebDesignPage = () => {
       <Header pageName={pageName} />
       <WebDesignBanner pageName={pageName} />
       <WebDesignOverview pageName={pageName} />
-      <WebDesignScope pageName={pageName} />
-      <WebDesignPricing pageName={pageName} />
-      <WebDesignPartners />
-      <WebDesignPartnersSay />
+      <WebDesignScope pageName={pageName} websiteTitlesData={websiteTitlesData}/>
+      <WebDesignPricing pageName={pageName} websiteTitlesData={websiteTitlesData}/>
+      <WebDesignPartners websiteTitlesData={websiteTitlesData}/>
+      <WebDesignPartnersSay websiteTitlesData={websiteTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

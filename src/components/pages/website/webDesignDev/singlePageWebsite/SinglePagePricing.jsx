@@ -39,7 +39,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const SinglePagePricing = ({ pageName }) => {
+const SinglePagePricing = ({ pageName, singlepageTitlesData }) => {
   const [contactSubject, setContactSubject] = React.useState("");
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
@@ -166,10 +166,12 @@ const SinglePagePricing = ({ pageName }) => {
         <div className="customContainer">
           <div className="mb-20 text-center relative z-[3]">
             <p className="text-light">
-              Single page website development for your online branding
+              {singlepageTitlesData?.data?.[0]
+                ?.singlepage_titles_packages_subtitle || ""}
             </p>
             <h3 className="text-[clamp(20px,7vw,35px)] font-semibold leading-[1.1] text-light">
-              Affordable Pricing Plan
+              {singlepageTitlesData?.data?.[0]
+                ?.singlepage_titles_packages_title || ""}
             </h3>
           </div>
           <div className="wrapper ">
