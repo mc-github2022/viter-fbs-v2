@@ -51,6 +51,7 @@ import WebDesignAndDevAdmin from "../components/pages/developer/services/web-des
 import WordPressCmsWebsite from "../components/pages/developer/services/web-design/wordpress-cms-website/WordPressCmsWebsite";
 import SinglePageWebsite from "../components/pages/developer/services/web-design/single-page/SinglePageWebsite";
 import WebsiteDesign from "../components/pages/developer/services/web-design/website-design/WebsiteDesign";
+import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
 
 export const routesAdmin = [
   {
@@ -410,6 +411,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <WebsiteDesign />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/why-work-with-us`,
+    element: (
+      <ProtectedRouteOther>
+        <WhyWorkWithUs />
       </ProtectedRouteOther>
     ),
   },

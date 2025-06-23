@@ -38,6 +38,8 @@ DEVELOPER
             -> rest/v1/controllers/developer/services/web-design/website/website-overview
             -> rest/v1/controllers/developer/services/web-design/website/website-scope
             -> rest/v1/controllers/developer/services/web-design/website/website-titles
+            -> rest/v1/controllers/developer/why-work-with-us/why-work-with-us-banner
+            -> rest/v1/controllers/developer/why-work-with-us/why-work-with-us-profile
 
         * CORE 
             -> 
@@ -78,6 +80,8 @@ DEVELOPER
             -> rest/v1/models/developer/services/web-design/website/WebsiteOverview.php
             -> rest/v1/models/developer/services/web-design/website/WebsiteScope.php
             -> rest/v1/models/developer/services/web-design/website/WebsiteTitles.php
+            -> rest/v1/models/developer/why-work-with-us
+
 
 
         * HTACESS
@@ -115,6 +119,8 @@ DEVELOPER
             -> # SERVICES - WEB DESIGN - WEBSITE - OVERVIEW
             -> # SERVICES - WEB DESIGN - WEBSITE - SCOPE
             -> # SERVICES - WEB DESIGN - WEBSITE - TITLES
+            -> # WHY WORK WITH US - BANNER
+            -> # WHY WORK WITH US - COMPANY PROFILE
 
         * OTHER FILES
             -> 
@@ -156,4 +162,5 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_website_overview.sql
             -> rest/db-backup/fbsv2_services_website_scope.sql
             -> rest/db-backup/fbsv2_services_website_titles.sql
+            -> rest/db-backup/fbsv2_work_banner.sql
 

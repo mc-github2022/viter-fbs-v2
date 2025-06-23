@@ -1,47 +1,74 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../helpers/functions-general";
 import ModalContact from "../../../partials/ModalContact";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import LoadImages from "../../../partials/LoadImages";
 
 const WhyUsBanner = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
+
+  const { data: workData } = useQueryData(
+    `${apiVersion}/work`, // endpoint
+    "get", // method
+    "work", // key
+    {},
+    null,
+    true
+  );
+
   const handleForm = () => {
     setContactForm(!contactForm);
   };
+
+  const workBannerImage = getConvertStringToJSONparseData(
+    workData?.data?.[0]?.work_banner_img
+  );
 
   return (
     <>
       <div>
         <section
           id="WhyUsBanner"
-          className={`banner bg-cover bg-center pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] place-content-center`}
-          style={{
-            backgroundImage: `url(${devBaseImgUrl}/whyfbsbanner.webp)`,
-          }}
+          className={`banner pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] relative flex items-center`}
         >
+          {workBannerImage.map((img, index) => (
+            <LoadImages
+              url={`${googleHDViewLink}${img?.id}`}
+              alt="Visually Stunning and User-Friendly Website Design"
+              className="absolute inset-0 w-full h-full object-cover z-0"
+              key={index}
+            />
+          ))}
           <div className="customContainer">
             <div className="wrapper flex flex-col justify-center lg:grid lg:grid-cols-2 place-items-center transition-all w-full">
               <div className="text-center py-10 lg:text-left">
                 <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
-                  We Are
-                  <span className="text-light font-semibold inline-block ml-3 mr-3">
-                    More Than
+                  <span className="">
+                    {workData?.data[0]?.work_banner_title
+                      .split("\n") // Split by new lines
+                      .filter((content_a) => content_a.trim() !== "") // Remove empty lines
+                      .map((content_a, index) => (
+                        <p key={index}>{content_a}</p>
+                      ))}
                   </span>
-                  Just A
-                  <span className="text-light font-semibold inline-block mr-3">
-                    Managed Services Provider
+                  <span className="text-light font-semibold">
+                    {workData?.data?.[0]?.work_banner_title_bold || ""}
                   </span>
                 </h2>
                 <p className="text-light mb-10">
-                  As a Christian company with faith-driven leadership and a
-                  commitment to purposeful service, we aim to be your trusted
-                  partner in driving growth, efficiency, and innovation.
+                  {workData?.data?.[0]?.work_banner_description || ""}
                 </p>
                 <button
                   onClick={handleForm}
                   className="btn bg-transparent text-light font-semibold border-2"
                 >
-                  GET STARTED
+                  {workData?.data?.[0]?.work_banner_button_text || ""}
                 </button>
               </div>
             </div>

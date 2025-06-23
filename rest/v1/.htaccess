@@ -498,6 +498,14 @@ RewriteRule ^website-scope/([0-9]+)$ controllers/developer/services/web-design/w
 RewriteRule ^website-titles$ controllers/developer/services/web-design/website/website-titles/websiteTitles.php [L]
 RewriteRule ^website-titles/([0-9]+)$ controllers/developer/services/web-design/website/website-titles/websiteTitles.php?website_titlesid=$1 [L]
 
+# WHY WORK WITH US - BANNER
+RewriteRule ^work$ controllers/developer/why-work-with-us/why-work-with-us-banner/whyWorkWithUsBanner.php [L]
+RewriteRule ^work/([0-9]+)$ controllers/developer/why-work-with-us/why-work-with-us-banner/whyWorkWithUsBanner.php?work_bannerid=$1 [L]
+
+# WHY WORK WITH US - COMPANY PROFILE
+RewriteRule ^work-company-profile$ controllers/developer/why-work-with-us/why-work-with-us-profile/whyWorkWithUsProfile.php [L]
+RewriteRule ^work-company-profile/([0-9]+)$ controllers/developer/why-work-with-us/why-work-with-us-profile/whyWorkWithUsProfile.php?work_profileid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

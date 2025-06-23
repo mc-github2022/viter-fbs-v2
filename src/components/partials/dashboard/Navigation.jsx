@@ -399,6 +399,48 @@ const Navigation = ({ menu, submenu }) => {
                   >
                     <Link
                       className="!p-0"
+                      to={`${devNavUrl}${link}/why-work-with-us`}
+                    >
+                      <li
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "why-work-with-us"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Why Work With Us
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/events-activities-page`}
+                    >
+                      <li
+                        className={`text-xs  border-transparent hover:underline ${
+                          submenu === "events-activities-page"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Events & Activities Page
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/whyFBS-careers-page`}
+                    >
+                      <li
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "whyFBS-careers-page"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Careers Page
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
                       to={`${devNavUrl}${link}/events-activities`}
                     >
                       <li
@@ -408,7 +450,7 @@ const Navigation = ({ menu, submenu }) => {
                             : "border-none text-dark"
                         }`}
                       >
-                        Events & Activities
+                        Events & Activities List
                       </li>
                     </Link>
                     <Link
@@ -422,7 +464,7 @@ const Navigation = ({ menu, submenu }) => {
                             : "border-none text-dark"
                         }`}
                       >
-                        Careers
+                        Careers List
                       </li>
                     </Link>
                   </ul>
