@@ -59,12 +59,18 @@ if (array_key_exists("work_profileid", $_GET)) {
   }
   if ($workProfileUpdate == "workProfileListUpdate") {
     $work_profile->work_profile_aid = $_GET['work_profileid'];
+    $work_profile->work_profile_list_title_bold_a = $data["work_profile_list_title_bold_a"];
     $work_profile->work_profile_list_title_a = $data["work_profile_list_title_a"];
     $work_profile->work_profile_list_description_a = $data["work_profile_list_description_a"];
+    $work_profile->work_profile_list_title_bold_b = $data["work_profile_list_title_bold_b"];
     $work_profile->work_profile_list_title_b = $data["work_profile_list_title_b"];
     $work_profile->work_profile_list_description_b = $data["work_profile_list_description_b"];
+    $work_profile->work_profile_list_title_bold_c = $data["work_profile_list_title_bold_c"];
     $work_profile->work_profile_list_title_c = $data["work_profile_list_title_c"];
     $work_profile->work_profile_list_description_c = $data["work_profile_list_description_c"];
+    $work_profile->work_profile_list_title_bold_d = $data["work_profile_list_title_bold_d"];
+    $work_profile->work_profile_list_title_d = $data["work_profile_list_title_d"];
+    $work_profile->work_profile_list_description_d = $data["work_profile_list_description_d"];
     $work_profile->work_profile_datetime = date("Y-m-d H:i:s");
 
     checkId($work_profile->work_profile_aid);

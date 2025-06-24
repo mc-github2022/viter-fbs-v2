@@ -1,60 +1,94 @@
 import React from "react";
-import { devBaseImgUrl } from "../../../helpers/functions-general";
+import {
+  apiVersion,
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+  googleViewLink,
+} from "../../../helpers/functions-general";
 import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import ModalContact from "../../../partials/ModalContact";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import LoadImages from "../../../partials/LoadImages";
 
 const WhyUsCompanyProfile = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const [contactForm, setContactForm] = React.useState(false);
+
+  const { data: workCompanyProfileData } = useQueryData(
+    `${apiVersion}/work-company-profile`, // endpoint
+    "get", // method
+    "work-company-profile", // key
+    {},
+    null,
+    true
+  );
+
   const handleForm = () => {
     setContactForm(!contactForm);
   };
+
+  const workCompanyProfileImage = getConvertStringToJSONparseData(
+    workCompanyProfileData?.data?.[0]?.work_profile_img
+  );
+
+  const workCompanyProfileFile = getConvertStringToJSONparseData(
+    workCompanyProfileData?.data?.[0]?.work_profile_file
+  );
 
   return (
     <>
       <div className="whyUsIntro py-16 md:pt-20 md:pb-0">
         <div className="customContainer">
           <h2 className="text-[clamp(16px,5vw,20px)] text-center">
-            By choosing Frontline Business Solutions, you align your business
-            with a purpose-driven organization that combines business excellence
-            with Christian values.
+            {workCompanyProfileData?.data?.[0]?.work_profile_desc || ""}
           </h2>
         </div>
       </div>
 
       <section className="partnersWithUs pb-20 md:py-20 ">
         <div className="customContainer">
-          <p> Here Are the</p>
+          <p>
+            {workCompanyProfileData?.data?.[0]?.work_profile_subtitle || ""}
+          </p>
           <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
             <span className="font-semibold text-primary">
-              Major Areas of Our Impact
+              {workCompanyProfileData?.data?.[0]?.work_profile_title || ""}
             </span>
           </h2>
           <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
             <div>
-              <img
-                src={`${devBaseImgUrl}/ftc-children.jpg`}
-                className="mb-12"
-                alt=""
-              />
+              {workCompanyProfileImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt={`Our Web Application ${index + 1}`}
+                  key={index}
+                />
+              ))}
+
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
                     onClick={handleForm}
-                    className="btn bg-primary text-light font-semibold"
+                    className="btn bg-primary text-light font-semibold uppercase"
                   >
-                    PARTNER WITH US
+                    {workCompanyProfileData?.data?.[0]
+                      ?.work_profile_button_text || ""}
                   </button>
                 </li>
                 <li>
-                  <a
-                    href={`${devBaseImgUrl}/FBS-Brochure-2024.pdf`}
-                    download
-                    className="flex items-center gap-2 font-bold text-primary text-xl"
-                  >
-                    Company Profile <FaFileDownload />
-                  </a>
+                  {workCompanyProfileFile.map((file, index) => (
+                    <a
+                      href={`${googleViewLink}${file?.id}`}
+                      className="flex items-center gap-2 font-bold text-primary"
+                      target="_blank"
+                      key={index}
+                    >
+                      Company Profile <FaFileDownload />
+                    </a>
+                  ))}
                 </li>
               </ul>
             </div>
@@ -64,13 +98,16 @@ const WhyUsCompanyProfile = ({ pageName }) => {
                   <div className="flex gap-4 items-start">
                     <div>
                       <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
-                        <span className="font-bold">CARING</span> for Abandoned
-                        Children
+                        <span className="font-bold">
+                          {workCompanyProfileData?.data?.[0]
+                            ?.work_profile_list_title_bold_a || ""}
+                        </span>{" "}
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_title_a || ""}
                       </h3>
                       <p>
-                        In partnership with Face the Children, we provide love,
-                        care, and hope for vulnerable children at the Frontline
-                        orphanage.
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_description_a || ""}
                       </p>
                     </div>
                   </div>
@@ -79,13 +116,16 @@ const WhyUsCompanyProfile = ({ pageName }) => {
                   <div className="flex gap-4 items-start">
                     <div>
                       <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
-                        <span className="font-bold">CREATING</span> Jobs and
-                        Supporting Local Families
+                        <span className="font-bold">
+                          {workCompanyProfileData?.data?.[0]
+                            ?.work_profile_list_title_bold_b || ""}
+                        </span>{" "}
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_title_b || ""}
                       </h3>
                       <p>
-                        We generate new employment opportunities yearly,
-                        empowering families and supporting thriving local
-                        communities.
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_description_b || ""}
                       </p>
                     </div>
                   </div>
@@ -94,13 +134,16 @@ const WhyUsCompanyProfile = ({ pageName }) => {
                   <div className="flex gap-4 items-start">
                     <div>
                       <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
-                        <span className="font-bold">PROVIDING</span> Christian
-                        Education
+                        <span className="font-bold">
+                          {workCompanyProfileData?.data?.[0]
+                            ?.work_profile_list_title_bold_c || ""}
+                        </span>{" "}
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_title_c || ""}
                       </h3>
                       <p>
-                        Through Frontline Christian Academy, we support the
-                        development of future leaders grounded in academic
-                        excellence and Christian values.
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_description_c || ""}
                       </p>
                     </div>
                   </div>
@@ -109,13 +152,16 @@ const WhyUsCompanyProfile = ({ pageName }) => {
                   <div className="flex gap-4 items-start">
                     <div>
                       <h3 className="textGradient text-[clamp(16px,5vw,24px)] mb-1">
-                        <span className="font-bold">SUPPORTING</span> Ministry
-                        Work
+                        <span className="font-bold">
+                          {workCompanyProfileData?.data?.[0]
+                            ?.work_profile_list_title_bold_d || ""}
+                        </span>{" "}
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_title_d || ""}
                       </h3>
                       <p>
-                        We partner with Frontline Worship Center to plant
-                        churches and spread faith, helping build strong
-                        spiritual communities
+                        {workCompanyProfileData?.data?.[0]
+                          ?.work_profile_list_description_d || ""}
                       </p>
                     </div>
                   </div>

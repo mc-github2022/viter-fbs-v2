@@ -31,7 +31,7 @@ const WorkPartners = ({ workTitlesData, handleUpdateWorkPartnersTitle }) => {
               {workTitlesData?.data?.[0]?.work_titles_partners_subtitle ||
                 "Subtitle"}
             </p>
-            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+            <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8 md:w-[350px]">
               {workTitlesData?.data?.[0]?.work_titles_partners_title || "Title"}
             </h2>
             <a

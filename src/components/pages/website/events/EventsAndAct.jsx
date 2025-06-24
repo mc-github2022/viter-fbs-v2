@@ -7,6 +7,7 @@ import Header from "../../../partials/Header";
 import { eventsAndAct } from "./data";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
+  apiVersion,
   devBaseImgUrl,
   devNavUrl,
   getConvertStringToJSONparseData,
@@ -85,6 +86,15 @@ const EventsAndAct = () => {
     true
   );
 
+  const { data: eventsTitleData } = useQueryData(
+    `${apiVersion}/events-title`, // endpoint
+    "get", // method
+    "events-title", // key
+    {},
+    null,
+    true
+  );
+
   var EventsSliderSettings = {
     dots: false,
     infinite: true,
@@ -142,14 +152,11 @@ const EventsAndAct = () => {
       <div className="EventsAndAct pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="theTitle mb-20">
-            <p>Through Our</p>
+            <p>{eventsTitleData?.data?.[0]?.events_title_subtitle_a || ""}</p>
             <h2 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary">
-              Events and Activities
+              {eventsTitleData?.data?.[0]?.events_title_title || ""}
             </h2>
-            <p>
-              We Engage, Inspire, and Empower Our Partners, Clients, and Team
-              Members.
-            </p>
+            <p>{eventsTitleData?.data?.[0]?.events_title_subtitle_b || ""}</p>
           </div>
           <div className="wrapper mb-24">
             <div className="grid grid-cols-1 md:grid-cols-[_2fr_1fr] md:grid-rows-2 gap-4 order-2  mb-12 lg:mb-0">

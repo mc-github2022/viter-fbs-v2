@@ -102,7 +102,7 @@ const WorkCompanyProfile = ({
                     target="_blank"
                     key={index}
                   >
-                    Download Portfolio <FaFileDownload />
+                    Company Profile <FaFileDownload />
                   </a>
                 ))}
               </div>

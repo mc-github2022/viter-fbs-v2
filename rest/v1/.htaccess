@@ -506,6 +506,22 @@ RewriteRule ^work/([0-9]+)$ controllers/developer/why-work-with-us/why-work-with
 RewriteRule ^work-company-profile$ controllers/developer/why-work-with-us/why-work-with-us-profile/whyWorkWithUsProfile.php [L]
 RewriteRule ^work-company-profile/([0-9]+)$ controllers/developer/why-work-with-us/why-work-with-us-profile/whyWorkWithUsProfile.php?work_profileid=$1 [L]
 
+# WHY WORK WITH US - VISION, MISSION, CORE VALUES
+RewriteRule ^work-vision-mission$ controllers/developer/why-work-with-us/why-work-with-us-vision-mission/whyWorkWithUsVisionMission.php [L]
+RewriteRule ^work-vision-mission/([0-9]+)$ controllers/developer/why-work-with-us/why-work-with-us-vision-mission/whyWorkWithUsVisionMission.php?work_visionid=$1 [L]
+
+# WHY WORK WITH US - TEAMS
+RewriteRule ^work-teams$ controllers/developer/why-work-with-us/why-work-with-us-teams/whyWorkWithUsTeams.php [L]
+RewriteRule ^work-teams/([0-9]+)$ controllers/developer/why-work-with-us/why-work-with-us-teams/whyWorkWithUsTeams.php?work_teamsid=$1 [L]
+
+# WHY WORK WITH US - TITLES
+RewriteRule ^work-titles$ controllers/developer/why-work-with-us/why-work-with-us-titles/whyWorkWithUsTitles.php [L]
+RewriteRule ^work-titles/([0-9]+)$ controllers/developer/why-work-with-us/why-work-with-us-titles/whyWorkWithUsTitles.php?work_titlesid=$1 [L]
+
+# EVENTS AND ACTIVITIES PAGE - TITLE
+RewriteRule ^events-title$ controllers/developer/events-and-activities-title/eventsAndActivitiesTitle.php [L]
+RewriteRule ^events-title/([0-9]+)$ controllers/developer/events-and-activities-title/eventsAndActivitiesTitle.php?events_titleid=$1 [L]
+
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]
 RewriteRule ^packages-category/([0-9]+)$ controllers/developer/packages/category/packages-category.php?packages_categoryId=$1 [L]

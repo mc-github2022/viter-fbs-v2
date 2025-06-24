@@ -86,7 +86,7 @@ const WorkTeams = ({
                         {ceoImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />
@@ -124,7 +124,7 @@ const WorkTeams = ({
                         {omImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />
@@ -162,7 +162,7 @@ const WorkTeams = ({
                         {hrImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />
@@ -201,7 +201,7 @@ const WorkTeams = ({
                         {financeImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />
@@ -240,7 +240,7 @@ const WorkTeams = ({
                         {lcsImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />
@@ -278,7 +278,7 @@ const WorkTeams = ({
                         {webImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />
@@ -317,7 +317,7 @@ const WorkTeams = ({
                         {marketingImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />
@@ -356,7 +356,7 @@ const WorkTeams = ({
                         {vaImage.map((img, index) => (
                           <LoadImages
                             url={`${googleHDViewLink}${img?.id}`}
-                            className="mb-12 w-fit mx-auto"
+                            className="grayscale"
                             alt="effrey Pessina"
                             key={index}
                           />

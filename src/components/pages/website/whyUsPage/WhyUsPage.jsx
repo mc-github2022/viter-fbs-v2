@@ -9,10 +9,22 @@ import WhyUsTheTeam from "./WhyUsTheTeam";
 import { StoreContext } from "../../../store/StoreContext";
 import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import ModalError from "../../../partials/modals/ModalError";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../helpers/functions-general";
 
 const WhyUsPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("whyWorkWithUs");
+
+  const { data: workTitlesData } = useQueryData(
+    `${apiVersion}/work-titles`, // endpoint
+    "get", // method
+    "work-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -22,8 +34,8 @@ const WhyUsPage = () => {
       <WhyUsBanner pageName={pageName} />
       <WhyUsCompanyProfile pageName={pageName} />
       <MissionVission />
-      <WhyUsTheTeam />
-      <WhyUsPartners />
+      <WhyUsTheTeam workTitlesData={workTitlesData}/>
+      <WhyUsPartners workTitlesData={workTitlesData}/>
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

@@ -31,6 +31,7 @@ const ContactFormDefault = ({
   handleUpdateContactFormDefault,
   contactFormDefaultData,
   contactFormLcssData,
+  contactFormCareersData,
   handleUpdateContactFormLcss,
   contactUsDefaultimmersionFile,
   contactFormWordpressData,
@@ -237,32 +238,80 @@ const ContactFormDefault = ({
                 <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                   <li className="!items-start">
                     <IoMdPin />
-                    <p>
-                      Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
-                      Laguna, 4000
+                    <p className="md:w-[50%]">
+                      {contactFormDefaultData?.data?.length > 0 &&
+                      contactFormDefaultData.data[0]?.form_default_address
+                        ? contactFormDefaultData?.data[0].form_default_address
+                        : "Address"}
                     </p>
                   </li>
                   <li>
                     <FaPhone />
-                    <p>(049) 501 3592</p>
+                    <p>
+                      {contactFormCareersData?.data?.length > 0 &&
+                      contactFormCareersData.data[0]?.form_careers_telephone
+                        ? contactFormCareersData?.data[0].form_careers_telephone
+                        : "Telephone No."}
+                    </p>
                   </li>
                   <li>
                     <MdOutlinePhoneIphone />
-                    <p>(+63) 927 168 6810</p>
+                    <p>
+                      {contactFormCareersData?.data?.length > 0 &&
+                      contactFormCareersData.data[0]?.form_careers_phone
+                        ? contactFormCareersData?.data[0].form_careers_phone
+                        : "Phone No."}
+                    </p>
                   </li>
                   <li>
                     <div className="text-xs md:text-sm">
                       <div className="mb-4">
                         <h3 className="font-semibold">
-                          Human Resource Manager
+                          {contactFormCareersData?.data?.length > 0 &&
+                          contactFormCareersData.data[0]
+                            ?.form_careers_position_a
+                            ? contactFormCareersData?.data[0]
+                                .form_careers_position_a
+                            : "Position"}
                         </h3>
-                        <p>Mrs. Rhoda Beloso</p>
-                        <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                        <p>
+                          {contactFormCareersData?.data?.length > 0 &&
+                          contactFormCareersData.data[0]?.form_careers_name_a
+                            ? contactFormCareersData?.data[0]
+                                .form_careers_name_a
+                            : "Name"}
+                        </p>
+                        <p>
+                          {contactFormCareersData?.data?.length > 0 &&
+                          contactFormCareersData.data[0]?.form_careers_email_a
+                            ? contactFormCareersData?.data[0]
+                                .form_careers_email_a
+                            : "Email"}
+                        </p>
                       </div>
                       <div className="mb-8">
-                        <h3 className="font-semibold">Human Resource Staff</h3>
-                        <p>Mrs. Kennie Deriquito</p>
-                        <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                        <h3 className="font-semibold">
+                          {contactFormCareersData?.data?.length > 0 &&
+                          contactFormCareersData.data[0]
+                            ?.form_careers_position_b
+                            ? contactFormCareersData?.data[0]
+                                .form_careers_position_b
+                            : "Position"}
+                        </h3>
+                        <p>
+                          {contactFormCareersData?.data?.length > 0 &&
+                          contactFormCareersData.data[0]?.form_careers_name_b
+                            ? contactFormCareersData?.data[0]
+                                .form_careers_name_b
+                            : "Name"}
+                        </p>
+                        <p>
+                          {contactFormCareersData?.data?.length > 0 &&
+                          contactFormCareersData.data[0]?.form_careers_email_b
+                            ? contactFormCareersData?.data[0]
+                                .form_careers_email_b
+                            : "Email"}
+                        </p>
                       </div>
                     </div>
                   </li>

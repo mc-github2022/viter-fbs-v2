@@ -4,30 +4,29 @@ import React from "react";
 import { FaTrash } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
-import { StoreContext } from "../../../../../store/StoreContext";
 import useUploadMultiplePhoto from "../../../../../custom-hooks/useUploadMultiplePhoto";
+import {
+  InputFileUpload,
+  InputText
+} from "../../../../../helpers/FormInputs";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   googleViewLink,
 } from "../../../../../helpers/functions-general";
+import { queryData } from "../../../../../helpers/queryData";
+import ModalAddWrapper from "../../../../../partials/dashboard/ModalAddWrapper";
+import LoadImages from "../../../../../partials/LoadImages";
+import ModalRemovedPhoto from "../../../../../partials/modals/ModalRemovedPhoto";
+import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setIsUpdateHome,
   setMessage,
   setSuccess,
 } from "../../../../../store/StoreAction";
-import ModalAddWrapper from "../../../../../partials/dashboard/ModalAddWrapper";
-import {
-  InputFileUpload,
-  InputText,
-  InputTextArea,
-} from "../../../../../helpers/FormInputs";
-import LoadImages from "../../../../../partials/LoadImages";
-import ButtonSpinner from "../../../../../partials/spinners/ButtonSpinner";
-import ModalRemovedPhoto from "../../../../../partials/modals/ModalRemovedPhoto";
-import { queryData } from "../../../../../helpers/queryData";
+import { StoreContext } from "../../../../../store/StoreContext";
 
 const ModalUpdateWorkTeamsCeo = ({ itemEdit, workTeamsData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -90,13 +89,13 @@ const ModalUpdateWorkTeamsCeo = ({ itemEdit, workTeamsData }) => {
     mutationFn: (values) =>
       queryData(
         workTeamsData?.data?.length
-          ? `${apiVersion}/work/${workTeamsData.data[0].work_teams_aid}` // update
-          : `${apiVersion}/work`, // create
+          ? `${apiVersion}/work-teams/${workTeamsData.data[0].work_teams_aid}` // update
+          : `${apiVersion}/work-teams`, // create
         workTeamsData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["work"] });
+      queryClient.invalidateQueries({ queryKey: ["work-teams"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -287,7 +286,7 @@ const ModalUpdateWorkTeamsCeo = ({ itemEdit, workTeamsData }) => {
                     </div>
 
                     <div className="input-wrapper">
-                      <InputTextArea
+                      <InputText
                         label="Name"
                         type="text"
                         name="work_teams_ceo_name"

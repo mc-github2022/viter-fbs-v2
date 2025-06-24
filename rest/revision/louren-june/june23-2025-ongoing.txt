@@ -5,41 +5,15 @@ DEVELOPER
 
         * CONTROLLERS
             -> rest/v1/controllers/developer/contact-form-wordpress
-            -> rest/v1/controllers/developer/services/learning-center-solutions/continuing-studies/continuing-banner
-            -> rest/v1/controllers/developer/services/learning-center-solutions/continuing-studies/continuing-overview
-            -> rest/v1/controllers/developer/services/learning-center-solutions/continuing-studies/continuing-services
-            -> rest/v1/controllers/developer/services/learning-center-solutions/continuing-studies/continuing-apply-now
-            -> rest/v1/controllers/developer/services/learning-center-solutions/continuing-studies/continuing-titles
-            -> rest/v1/controllers/developer/services/va-solutions/administrative/administrative-banner
-            -> rest/v1/controllers/developer/services/va-solutions/administrative/administrative-overview
-            -> rest/v1/controllers/developer/services/va-solutions/administrative/administrative-services_title
-            -> rest/v1/controllers/developer/services/va-solutions/administrative/administrative-services-list
-            -> rest/v1/controllers/developer/services/va-solutions/administrative/administrative-titles
-            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-banner
-            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-overview
-            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-services-title
-            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-services-list
-            -> rest/v1/controllers/developer/services/va-solutions/business-support/business-titles
-            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-banner
-            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-overview
-            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-services-title
-            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-services-list
-            -> rest/v1/controllers/developer/services/va-solutions/marketing/marketing-titles
-            -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-banner
-            -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-overview
-            -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-scope
-            -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-titles
-            -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-portfolio
-            -> rest/v1/controllers/developer/services/web-design/single-page/single-banner
-            -> rest/v1/controllers/developer/services/web-design/single-page/single-overview
-            -> rest/v1/controllers/developer/services/web-design/single-page/single-scope
-            -> rest/v1/controllers/developer/services/web-design/single-page/single-titles
-            -> rest/v1/controllers/developer/services/web-design/website/website-banner
-            -> rest/v1/controllers/developer/services/web-design/website/website-overview
-            -> rest/v1/controllers/developer/services/web-design/website/website-scope
-            -> rest/v1/controllers/developer/services/web-design/website/website-titles
-            -> rest/v1/controllers/developer/why-work-with-us/why-work-with-us-banner
-            -> rest/v1/controllers/developer/why-work-with-us/why-work-with-us-profile
+            -> rest/v1/controllers/developer/services/learning-center-solutions/continuing-studies
+            -> rest/v1/controllers/developer/services/va-solutions/administrative
+            -> rest/v1/controllers/developer/services/va-solutions/business-support
+            -> rest/v1/controllers/developer/services/va-solutions/marketing
+            -> rest/v1/controllers/developer/services/web-design/wordpress
+            -> rest/v1/controllers/developer/services/web-design/single-page
+            -> rrest/v1/controllers/developer/services/web-design/website
+            -> rest/v1/controllers/developer/why-work-with-us
+            -> rest/v1/controllers/developer/events-and-activities-title
 
         * CORE 
             -> 
@@ -47,40 +21,15 @@ DEVELOPER
 
         * MODELS
             -> rest/v1/models/developer/contact-form-wordpress/ContactFormWordpress.php
-            -> rest/v1/models/developer/services/learning-center-solutions/continuing-studies/ContinuingBanner.php
-            -> rest/v1/models/developer/services/learning-center-solutions/continuing-studies/ContinuingOverview.php
-            -> rest/v1/models/developer/services/learning-center-solutions/continuing-studies/ContinuingServices.php
-            -> rest/v1/models/developer/services/learning-center-solutions/continuing-studies/ContinuingApplyNow.php
-            -> rest/v1/models/developer/services/learning-center-solutions/continuing-studies/ContinuingTitles.php
-            -> rest/v1/models/developer/services/va-solutions/administrative/AdministrativeBanner.php
-            -> rest/v1/models/developer/services/va-solutions/administrative/AdministrativeOverview.php
-            -> rest/v1/models/developer/services/va-solutions/administrative/AdministrativeServicesTitle.php
-            -> rest/v1/models/developer/services/va-solutions/administrative/AdministrativeServicesList.php
-            -> rest/v1/models/developer/services/va-solutions/administrative/AdministrativeTitles.php
-            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessBanner.php
-            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessOverview.php
-            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessServicesTitle.php
-            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessServicesList.php
-            -> rest/v1/models/developer/services/va-solutions/business-support/BusinessTitles.php
-            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingBanner.php
-            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingOverview.php
-            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingServicesTitle.php
-            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingServicesList.php
-            -> rest/v1/models/developer/services/va-solutions/marketing/MarketingTitles.php
-            -> rest/v1/models/developer/services/web-design/wordpress/WordpressBanner.php
-            -> rest/v1/models/developer/services/web-design/wordpress/WordpressOverview.php
-            -> rest/v1/models/developer/services/web-design/wordpress/WordpressScope.php
-            -> rest/v1/models/developer/services/web-design/wordpress/WordpressTitles.php
-            -> rest/v1/models/developer/services/web-design/wordpress/WordpressPortfolio.php
-            -> rest/v1/models/developer/services/web-design/single-page/SinglepageBanner.php
-            -> rest/v1/models/developer/services/web-design/single-page/SinglepageOverview.php
-            -> rest/v1/models/developer/services/web-design/single-page/SinglepageScope.php
-            -> rest/v1/models/developer/services/web-design/single-page/SinglepageTitles.php
-            -> rest/v1/models/developer/services/web-design/website/WebsiteBanner.php
-            -> rest/v1/models/developer/services/web-design/website/WebsiteOverview.php
-            -> rest/v1/models/developer/services/web-design/website/WebsiteScope.php
-            -> rest/v1/models/developer/services/web-design/website/WebsiteTitles.php
+            -> rest/v1/models/developer/services/learning-center-solutions/continuing-studies
+            -> rest/v1/models/developer/services/va-solutions/administrative
+            -> rest/v1/models/developer/services/va-solutions/business-support
+            -> rest/v1/models/developer/services/va-solutions/marketing
+            -> rest/v1/models/developer/services/web-design/wordpress
+            -> rest/v1/models/developer/services/web-design/single-page
+            -> rest/v1/models/developer/services/web-design/website
             -> rest/v1/models/developer/why-work-with-us
+            -> rest/v1/models/developer/events-and-activities-title
 
 
 
@@ -121,6 +70,10 @@ DEVELOPER
             -> # SERVICES - WEB DESIGN - WEBSITE - TITLES
             -> # WHY WORK WITH US - BANNER
             -> # WHY WORK WITH US - COMPANY PROFILE
+            -> # WHY WORK WITH US - VISION, MISSION, CORE VALUES
+            -> # WHY WORK WITH US - TEAMS
+            -> # WHY WORK WITH US - TITLES
+            -> # EVENTS AND ACTIVITIES PAGE - TITLE
 
         * OTHER FILES
             -> 
@@ -163,4 +116,8 @@ DEVELOPER
             -> rest/db-backup/fbsv2_services_website_scope.sql
             -> rest/db-backup/fbsv2_services_website_titles.sql
             -> rest/db-backup/fbsv2_work_banner.sql
+            -> rest/db-backup/fbsv2_work_profile.sql
+            -> rest/db-backup/fbsv2_work_teams.sql
+            -> rest/db-backup/fbsv2_work_titles.sql
+            -> rest/db-backup/fbsv2_events_activities_title.sql
 

@@ -57,6 +57,8 @@ import WordPressCmsWebsite from "../components/pages/developer/services/web-desi
 import SinglePageWebsite from "../components/pages/developer/services/web-design/single-page/SinglePageWebsite";
 import WebsiteDesign from "../components/pages/developer/services/web-design/website-design/WebsiteDesign";
 import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
+import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/events-and-activities-page/EventsAndActivitiesPage";
+import CareersPage from "../components/pages/developer/why-fbs-page/careers-page/CareersPage";
 
 export const routesDeveloper = [
   {
@@ -440,6 +442,22 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <WhyWorkWithUs />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/events-activities-page`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <EventsAndActivitiesPage />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/whyFBS-careers-page`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <CareersPage />
       </ProtectedRouteDeveloper>
     ),
   },

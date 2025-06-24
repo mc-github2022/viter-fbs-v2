@@ -90,13 +90,13 @@ const ModalUpdateWorkTeamsVa = ({ itemEdit, workTeamsData }) => {
     mutationFn: (values) =>
       queryData(
         workTeamsData?.data?.length
-          ? `${apiVersion}/work/${workTeamsData.data[0].work_teams_aid}` // update
-          : `${apiVersion}/work`, // create
+          ? `${apiVersion}/work-teams/${workTeamsData.data[0].work_teams_aid}` // update
+          : `${apiVersion}/work-teams`, // create
         workTeamsData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["work"] });
+      queryClient.invalidateQueries({ queryKey: ["work-teams"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -287,7 +287,7 @@ const ModalUpdateWorkTeamsVa = ({ itemEdit, workTeamsData }) => {
                     </div>
 
                     <div className="input-wrapper">
-                      <InputTextArea
+                      <InputText
                         label="Name"
                         type="text"
                         name="work_teams_va_name"

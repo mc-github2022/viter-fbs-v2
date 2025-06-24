@@ -62,8 +62,8 @@ const ModalUpdateWorkCoreValues = ({ itemEdit, workVisionMissionData }) => {
     workVisionUpdate: itemEdit,
     work_vision_core_title:
       workVisionMissionData?.data?.[0]?.work_vision_core_title ?? "",
-    work_vision_core_desc:
-      workVisionMissionData?.data?.[0]?.work_vision_core_desc ?? "",
+    work_vision_core_list:
+      workVisionMissionData?.data?.[0]?.work_vision_core_list ?? "",
   };
 
   const yupSchema = Yup.object({});
@@ -107,7 +107,7 @@ const ModalUpdateWorkCoreValues = ({ itemEdit, workVisionMissionData }) => {
                       <InputTextArea
                         label="Description"
                         type="text"
-                        name="work_vision_core_desc"
+                        name="work_vision_core_list"
                         disabled={mutation.isPending}
                       />
                     </div>

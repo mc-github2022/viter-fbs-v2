@@ -7,7 +7,7 @@ import {
 import LoadImages from "../../../partials/LoadImages";
 import useQueryData from "../../../custom-hooks/useQueryData";
 
-const WhyUsPartners = () => {
+const WhyUsPartners = ({ workTitlesData }) => {
   const {
     isFetching,
     error,
@@ -23,10 +23,11 @@ const WhyUsPartners = () => {
     <>
       <section className="partners py-20">
         <div className="customContainer">
-          <p>Our Ministry Partners</p>
-          <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
-            Who Help Support <br />
-            in Our Mission.
+          <p>
+            {workTitlesData?.data?.[0]?.work_titles_partners_subtitle || ""}
+          </p>
+          <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8 md:w-[350px]">
+            {workTitlesData?.data?.[0]?.work_titles_partners_title || ""}
           </h2>
           <ul className="flex flex-wrap justify-center gap-14 items-center">
             {partnersData?.data
