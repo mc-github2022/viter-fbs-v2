@@ -1,0 +1,27 @@
+
+
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> 
+
+
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> 
+
+        * HTACESS
+            -> 
+
+        * OTHER FILES
+            -> rest/v1/notification/template/subscriber-newsletter.php
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> 
+
