@@ -21,6 +21,12 @@ class Footer
     public $footer_eula_text;
     public $footer_eula_link;
     public $footer_logo_img;
+    public $footer_logo_address;
+    public $footer_logo_facebook_link;
+    public $footer_logo_linkedin_link;
+    public $footer_logo_youtube_link;
+    public $footer_logo_instagram_link;
+    public $footer_logo_tiktok_link;
     public $footer_created;
     public $footer_datetime;
 
@@ -104,14 +110,32 @@ class Footer
         try {
             $sql = "insert into {$this->tblFooter}";
             $sql .= "(footer_logo_img, ";
+            $sql .= "footer_logo_address, ";
+            $sql .= "footer_logo_facebook_link, ";
+            $sql .= "footer_logo_linkedin_link, ";
+            $sql .= "footer_logo_youtube_link, ";
+            $sql .= "footer_logo_instagram_link, ";
+            $sql .= "footer_logo_tiktok_link, ";
             $sql .= "footer_created, ";
             $sql .= "footer_datetime ) values ( ";
             $sql .= ":footer_logo_img, ";
+            $sql .= ":footer_logo_address, ";
+            $sql .= ":footer_logo_facebook_link, ";
+            $sql .= ":footer_logo_linkedin_link, ";
+            $sql .= ":footer_logo_youtube_link, ";
+            $sql .= ":footer_logo_instagram_link, ";
+            $sql .= ":footer_logo_tiktok_link, ";
             $sql .= ":footer_created, ";
             $sql .= ":footer_datetime )";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "footer_logo_img" => $this->footer_logo_img,
+                "footer_logo_address" => $this->footer_logo_address,
+                "footer_logo_facebook_link" => $this->footer_logo_facebook_link,
+                "footer_logo_linkedin_link" => $this->footer_logo_linkedin_link,
+                "footer_logo_youtube_link" => $this->footer_logo_youtube_link,
+                "footer_logo_instagram_link" => $this->footer_logo_instagram_link,
+                "footer_logo_tiktok_link" => $this->footer_logo_tiktok_link,
                 "footer_created" => $this->footer_created,
                 "footer_datetime" => $this->footer_datetime,
             ]);
@@ -208,11 +232,23 @@ class Footer
         try {
             $sql = "update {$this->tblFooter} set ";
             $sql .= "footer_logo_img = :footer_logo_img, ";
+            $sql .= "footer_logo_address = :footer_logo_address, ";
+            $sql .= "footer_logo_facebook_link = :footer_logo_facebook_link, ";
+            $sql .= "footer_logo_linkedin_link = :footer_logo_linkedin_link, ";
+            $sql .= "footer_logo_youtube_link = :footer_logo_youtube_link, ";
+            $sql .= "footer_logo_instagram_link = :footer_logo_instagram_link, ";
+            $sql .= "footer_logo_tiktok_link = :footer_logo_tiktok_link, ";
             $sql .= "footer_datetime = :footer_datetime ";
             $sql .= "where footer_aid = :footer_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "footer_logo_img" => $this->footer_logo_img,
+                "footer_logo_address" => $this->footer_logo_address,
+                "footer_logo_facebook_link" => $this->footer_logo_facebook_link,
+                "footer_logo_linkedin_link" => $this->footer_logo_linkedin_link,
+                "footer_logo_youtube_link" => $this->footer_logo_youtube_link,
+                "footer_logo_instagram_link" => $this->footer_logo_instagram_link,
+                "footer_logo_tiktok_link" => $this->footer_logo_tiktok_link,
                 "footer_datetime" => $this->footer_datetime,
                 "footer_aid" => $this->footer_aid,
             ]);

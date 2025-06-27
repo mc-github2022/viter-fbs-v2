@@ -17,7 +17,8 @@ function sendNewsletter(
 	$newsletterSubject,
 	$subscriberEmail,
 	$subscriberKey,
-	$subscriberReplyTo
+	$subscriberReplyTo,
+	$sending_email_log_file
 ) {
 	if ($subscriberReplyTo == "") {
 		$subscriberReplyTo = DEFAULT_REPLY_TO;
@@ -48,6 +49,12 @@ function sendNewsletter(
 			$subscriberKey,
 			ROOT_DOMAIN
 		);
+
+		if ($sending_email_log_file != "") {
+			$path2 = dirname(__DIR__, 3) . "/public/files/{$sending_email_log_file}";
+			// $path2 = $_SERVER["DOCUMENT_ROOT"] . "/files/{$fileName}";
+			$mail->addAttachment($path2);
+		}
 
 		// if email is not empty
 		// send email

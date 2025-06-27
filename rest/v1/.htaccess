@@ -44,6 +44,10 @@ RewriteRule ^contactDefault/([0-9]+)$ controllers/developer/contact-form-default
 RewriteRule ^contactLcss$ controllers/developer/contact-form-lcss/contactFormLcss.php [L]
 RewriteRule ^contactLcss/([0-9]+)$ controllers/developer/contact-form-lcss/contactFormLcss.php?contact_form_lcss_id=$1 [L]
 
+# CONTACT FORM CAREERS
+RewriteRule ^contactCareers$ controllers/developer/contact-form-careers/contactFormCareers.php [L]
+RewriteRule ^contactCareers/([0-9]+)$ controllers/developer/contact-form-careers/contactFormCareers.php?contact_form_careers_id=$1 [L]
+
 # CONTACT FORM WORDPRESS
 RewriteRule ^contactWordpress$ controllers/developer/contact-form-wordpress/contactFormWordpress.php [L]
 RewriteRule ^contactWordpress/([0-9]+)$ controllers/developer/contact-form-wordpress/contactFormWordpress.php?contact_form_wordpress_id=$1 [L]
@@ -521,6 +525,10 @@ RewriteRule ^work-titles/([0-9]+)$ controllers/developer/why-work-with-us/why-wo
 # EVENTS AND ACTIVITIES PAGE - TITLE
 RewriteRule ^events-title$ controllers/developer/events-and-activities-title/eventsAndActivitiesTitle.php [L]
 RewriteRule ^events-title/([0-9]+)$ controllers/developer/events-and-activities-title/eventsAndActivitiesTitle.php?events_titleid=$1 [L]
+
+# CAREERS PAGE - TITLE
+RewriteRule ^careers-title$ controllers/developer/careers-title/careersTitle.php [L]
+RewriteRule ^careers-title/([0-9]+)$ controllers/developer/careers-title/careersTitle.php?careers_titleid=$1 [L]
 
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]

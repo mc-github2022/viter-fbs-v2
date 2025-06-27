@@ -14,6 +14,12 @@ DEVELOPER
             -> rrest/v1/controllers/developer/services/web-design/website
             -> rest/v1/controllers/developer/why-work-with-us
             -> rest/v1/controllers/developer/events-and-activities-title
+            -> rest/v1/controllers/developer/careers-title
+            -> rest/v1/controllers/developer/contact-form-careers
+            -> rest/v1/controllers/developer/footer/create.php
+            -> rest/v1/controllers/developer/footer/update.php
+            -> rest/v1/controllers/developer/sending-newsletter/create.php
+            -> rest/v1/controllers/developer/sending-newsletter/sending-newsletter.php
 
         * CORE 
             -> 
@@ -30,6 +36,10 @@ DEVELOPER
             -> rest/v1/models/developer/services/web-design/website
             -> rest/v1/models/developer/why-work-with-us
             -> rest/v1/models/developer/events-and-activities-title
+            -> rest/v1/models/developer/careers-title
+            -> rest/v1/models/developer/contact-form-careers
+            -> rest/v1/models/developer/footer/Footer.php
+            -> rest/v1/models/developer/sending-newsletter/SendingNewsletter.php
 
 
 
@@ -74,9 +84,11 @@ DEVELOPER
             -> # WHY WORK WITH US - TEAMS
             -> # WHY WORK WITH US - TITLES
             -> # EVENTS AND ACTIVITIES PAGE - TITLE
+            -> # CAREERS PAGE - TITLE
+            -> # CONTACT FORM CAREERS
 
         * OTHER FILES
-            -> 
+            -> rest/v1/notification/subscriber-newsletter.php
             -> 
             -> 
 
@@ -120,4 +132,16 @@ DEVELOPER
             -> rest/db-backup/fbsv2_work_teams.sql
             -> rest/db-backup/fbsv2_work_titles.sql
             -> rest/db-backup/fbsv2_events_activities_title.sql
+            -> rest/db-backup/fbsv2_careers_title.sql
+            -> rest/db-backup/fbsv2_footer.sql
+                note: column is added
+                `footer_logo_address` varchar(100) NOT NULL,
+                `footer_logo_facebook_link` varchar(100) NOT NULL,
+                `footer_logo_linkedin_link` varchar(100) NOT NULL,
+                `footer_logo_youtube_link` varchar(100) NOT NULL,
+                `footer_logo_instagram_link` varchar(100) NOT NULL,
+                `footer_logo_tiktok_link` varchar(100) NOT NULL,
+            -> rest/db-backup/fbsv2_sending_email_log.sql
+                note: column is added
+                `sending_email_log_file` varchar(100) NOT NULL,
 

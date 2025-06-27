@@ -29,6 +29,8 @@ import ModalUpdateHeader from "../../header/ModalUpdateHeader";
 import { HiPencil } from "react-icons/hi";
 import ContactFormDefault from "../../contact-form-default/ContactFormDefault";
 import ContactFormCareers from "../../contact-form-careers/ContactFormCareers";
+import ModalUpdateContactFormCareers from "../../contact-form-default/ModalUpdateContactFormCareers";
+import ModalUpdateCareersTitle from "./ModalUpdateCareersTitle";
 
 const icons = {
   ...FaIcons,
@@ -393,26 +395,26 @@ const CareersPage = () => {
         </Dashboard>
       </section>
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "events-title" && (
-          <ModalUpdateEventsTitle
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "careers-title" && (
+          <ModalUpdateCareersTitle
             itemEdit={itemEdit}
-            eventsTitleData={eventsTitleData}
+            careersTitleData={careersTitleData}
           />
-        )} */}
+        )}
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
         )}
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-lcss" && (
-          <ModalUpdateContactFormDefaultLcss
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "contact-form-careers" && (
+          <ModalUpdateContactFormCareers
             itemEdit={itemEdit}
-            contactFormLcssData={contactFormLcssData}
+            contactFormCareersData={contactFormCareersData}
           />
-        )} */}
+        )}
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (

@@ -208,7 +208,7 @@ const LcssVidTestimonials = ({ ojtTitlesData }) => {
 
                   return (
                     <div
-                      className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative"
+                      className="vidItem rounded-xl z-[2] max-w-[413px] bg-customGray relative"
                       key={key}
                     >
                       <iframe
@@ -273,7 +273,7 @@ const LcssVidTestimonials = ({ ojtTitlesData }) => {
                     ) || [];
                   return (
                     <div
-                      className="vidItem addShadow rounded-xl z-[2] max-w-[413px] bg-customGray relative"
+                      className="vidItem rounded-xl z-[2] max-w-[413px] bg-customGray relative"
                       key={key}
                     >
                       <iframe

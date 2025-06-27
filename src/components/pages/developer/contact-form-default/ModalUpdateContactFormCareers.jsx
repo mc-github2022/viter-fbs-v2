@@ -1,33 +1,20 @@
 import React from "react";
 
-import * as Yup from "yup";
-import { GrFormClose } from "react-icons/gr";
-import { FaTrash } from "react-icons/fa";
-import useUploadMultiplePhoto from "../../../custom-hooks/useUploadMultiplePhoto";
-import {
-  apiVersion,
-  getConvertStringToJSONparseData,
-  googleHDViewLink,
-  googleViewLink,
-} from "../../../helpers/functions-general";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import { GrFormClose } from "react-icons/gr";
+import * as Yup from "yup";
+import { InputText } from "../../../helpers/FormInputs";
+import { apiVersion } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
+import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import {
   setError,
   setIsUpdateHome,
   setMessage,
   setSuccess,
 } from "../../../store/StoreAction";
-import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import { Form, Formik } from "formik";
-import {
-  InputFileUpload,
-  InputText,
-  InputTextArea,
-} from "../../../helpers/FormInputs";
-import LoadImages from "../../../partials/LoadImages";
-import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
 import { StoreContext } from "../../../store/StoreContext";
 
 const ModalUpdateContactFormCareers = ({
@@ -69,6 +56,10 @@ const ModalUpdateContactFormCareers = ({
       }
     },
   });
+
+  React.useEffect(() => {
+    setAnimate("");
+  }, []);
 
   const initVal = {
     isUpdateContactFormCareers: itemEdit,
@@ -161,7 +152,7 @@ const ModalUpdateContactFormCareers = ({
 
                     <div className="input-wrapper">
                       <InputText
-                        label="Computer Title"
+                        label="Human Resource Title"
                         type="text"
                         name="form_careers_position_a"
                         disabled={mutation.isPending}
@@ -185,7 +176,7 @@ const ModalUpdateContactFormCareers = ({
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Accounting Title"
+                        label="Human Resource Staff Title"
                         type="text"
                         name="form_careers_position_b"
                         disabled={mutation.isPending}

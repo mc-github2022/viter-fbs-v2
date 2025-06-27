@@ -65,62 +65,62 @@ const Footer = () => {
                 ))}
               </div>
               <p className="text-xs my-6 md:w-[45%]">
-                {contactFormDefaultData?.data?.length > 0 &&
-                contactFormDefaultData.data[0]?.form_default_address
-                  ? contactFormDefaultData?.data[0].form_default_address
+                {footerData?.data?.length > 0 &&
+                footerData.data[0]?.footer_logo_address
+                  ? footerData?.data[0].footer_logo_address
                   : "Address"}
               </p>
               <div className="flex justify-center sm:flex-auto sm:justify-start">
-                {contactFormDefaultData?.data?.length > 0 &&
+                {footerData?.data?.length > 0 &&
                   (() => {
-                    const item = contactFormDefaultData.data[0];
+                    const item = footerData.data[0];
 
                     return (
                       <ul className="flex gap-2 text-3xl mb-12 md:mb-0">
-                        {item.form_default_facebook_link && (
+                        {item.footer_logo_facebook_link && (
                           <li>
                             <a
-                              href={item.form_default_facebook_link || "#"}
+                              href={item.footer_logo_facebook_link || "#"}
                               target="_blank"
                             >
                               <FaFacebookSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_linkedin_link && (
+                        {item.footer_logo_linkedin_link && (
                           <li>
                             <a
-                              href={item.form_default_linkedin_link || "#"}
+                              href={item.footer_logo_linkedin_link || "#"}
                               target="_blank"
                             >
                               <FaLinkedin />
                             </a>
                           </li>
                         )}
-                        {item.form_default_youtube_link && (
+                        {item.footer_logo_youtube_link && (
                           <li>
                             <a
-                              href={item.form_default_youtube_link || "#"}
+                              href={item.footer_logo_youtube_link || "#"}
                               target="_blank"
                             >
                               <FaYoutubeSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_instagram_link && (
+                        {item.footer_logo_instagram_link && (
                           <li>
                             <a
-                              href={item.form_default_instagram_link || "#"}
+                              href={item.footer_logo_instagram_link || "#"}
                               target="_blank"
                             >
                               <FaInstagramSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_tiktok_link && (
+                        {item.footer_logo_tiktok_link && (
                           <li>
                             <a
-                              href={item.form_default_tiktok_link || "#"}
+                              href={item.footer_logo_tiktok_link || "#"}
                               target="_blank"
                             >
                               <AiFillTikTok />

@@ -19,6 +19,8 @@ const ModalSend = ({
   setSubscriberValue,
   setPropertyNewsletterValue,
   setQueryStatus,
+  newfile,
+  uploadFiles,
 }) => {
   const { dispatch } = React.useContext(StoreContext);
   let query;
@@ -44,10 +46,15 @@ const ModalSend = ({
         recipientList: recipientList,
         newsletter: item.newsletter,
         newsletter_subject: item.newsletter_subject,
+        sending_email_log_file: newfile.name,
         firstname: item.firstname,
         role: item.role,
       }
     );
+
+    if (newfile) {
+      await uploadFiles(); // to save the file when submit
+    }
 
     if (queryCreateMailerLog?.success) {
       // loop through the list of recipient email
@@ -67,6 +74,7 @@ const ModalSend = ({
           subscriber_audience_id: recipientAudienceId,
           recipientList: recipientList,
           audience_notification_email: recipientReplyTo,
+          sending_email_log_file: newfile.name,
         });
 
         // increment count whenever there's a successful query

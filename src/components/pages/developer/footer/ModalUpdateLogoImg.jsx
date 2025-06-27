@@ -20,7 +20,11 @@ import {
 } from "../../../store/StoreAction";
 import { queryData } from "../../../helpers/queryData";
 import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
-import { InputFileUpload } from "../../../helpers/FormInputs";
+import {
+  InputFileUpload,
+  InputText,
+  InputTextArea,
+} from "../../../helpers/FormInputs";
 import LoadImages from "../../../partials/LoadImages";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
@@ -120,6 +124,17 @@ const ModalUpdateLogoImg = ({ itemEdit, footerData }) => {
   const initVal = {
     isUpdateFooter: itemEdit,
     footer_logo_img: footerData?.data?.[0]?.footer_logo_img ?? "",
+    footer_logo_address: footerData?.data?.[0]?.footer_logo_address ?? "",
+    footer_logo_facebook_link:
+      footerData?.data?.[0]?.footer_logo_facebook_link ?? "",
+    footer_logo_linkedin_link:
+      footerData?.data?.[0]?.footer_logo_linkedin_link ?? "",
+    footer_logo_youtube_link:
+      footerData?.data?.[0]?.footer_logo_youtube_link ?? "",
+    footer_logo_instagram_link:
+      footerData?.data?.[0]?.footer_logo_instagram_link ?? "",
+    footer_logo_tiktok_link:
+      footerData?.data?.[0]?.footer_logo_tiktok_link ?? "",
 
     footer_logo_img_old: footerData?.data?.[0]?.footer_logo_img ?? "",
     pendingDeleteFile: [],
@@ -277,6 +292,54 @@ const ModalUpdateLogoImg = ({ itemEdit, footerData }) => {
                             })}
                         </ol>
                       </div>
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Address"
+                        type="text"
+                        name="footer_logo_address"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Facebook Link"
+                        type="text"
+                        name="footer_logo_facebook_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="LinkedIn Link"
+                        type="text"
+                        name="footer_logo_linkedin_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Youtube Link"
+                        type="text"
+                        name="footer_logo_youtube_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Instagram Link"
+                        type="text"
+                        name="footer_logo_instagram_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Tiktok Link"
+                        type="text"
+                        name="footer_logo_tiktok_link"
+                        disabled={mutation.isPending}
+                      />
                     </div>
                   </div>
                   <div className="form-action mb-1">

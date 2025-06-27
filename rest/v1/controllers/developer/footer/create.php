@@ -33,6 +33,12 @@ if ($isUpdateFooter == "footerQuicklinksUpdate") {
 }
 if ($isUpdateFooter == "footerLogoImgUpdate") {
     $footer->footer_logo_img = $data["footer_logo_img"];
+    $footer->footer_logo_address = $data["footer_logo_address"];
+    $footer->footer_logo_facebook_link = $data["footer_logo_facebook_link"];
+    $footer->footer_logo_linkedin_link = $data["footer_logo_linkedin_link"];
+    $footer->footer_logo_youtube_link = $data["footer_logo_youtube_link"];
+    $footer->footer_logo_instagram_link = $data["footer_logo_instagram_link"];
+    $footer->footer_logo_tiktok_link = $data["footer_logo_tiktok_link"];
 
     $footer_logo_img_old = $data["footer_logo_img_old"];
 

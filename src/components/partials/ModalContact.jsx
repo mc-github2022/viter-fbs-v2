@@ -82,6 +82,15 @@ const ModalContact = ({
     true
   );
 
+  const { data: contactFormCareersData } = useQueryData(
+    `${apiVersion}/contactCareers`, // endpoint
+    "get", // method
+    "contactCareers", // key
+    {},
+    null,
+    true
+  );
+
   const contactUsDefaultImage = getConvertStringToJSONparseData(
     contactFormDefaultData?.data?.[0]?.form_default_img
   );
@@ -189,16 +198,11 @@ const ModalContact = ({
             <div>
               <div className="mb-12">
                 <p>
-                  {contactFormDefaultData?.data?.length > 0 &&
-                  contactFormDefaultData.data[0]?.form_default_subtitle
-                    ? contactFormDefaultData?.data[0].form_default_subtitle
-                    : ""}
+                  {contactFormDefaultData?.data?.[0]?.form_default_subtitle ||
+                    ""}
                 </p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contactFormDefaultData?.data?.length > 0 &&
-                  contactFormDefaultData.data[0]?.form_default_title
-                    ? contactFormDefaultData?.data[0].form_default_title
-                    : ""}
+                  {contactFormDefaultData?.data?.[0]?.form_default_title || ""}
                 </h3>
               </div>
 
@@ -210,81 +214,51 @@ const ModalContact = ({
                     <li className="!items-start">
                       <IoMdPin />
                       <p className="md:w-[50%]">
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_address
-                          ? contactFormDefaultData?.data[0].form_default_address
-                          : ""}
+                        {contactFormDefaultData?.data?.[0]
+                          ?.form_default_address || ""}
                       </p>
                     </li>
                     <li>
                       <FaPhone />
                       <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_telephone
-                          ? contactFormLcssData?.data[0].form_lcss_telephone
-                          : ""}
+                        {contactFormLcssData?.data?.[0]?.form_lcss_telephone ||
+                          ""}
                       </p>
                     </li>
                     <li>
                       <MdOutlinePhoneIphone />
                       <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_phone
-                          ? contactFormLcssData?.data[0].form_lcss_phone
-                          : ""}
+                        {contactFormLcssData?.data?.[0]?.form_lcss_phone || ""}
                       </p>
                     </li>
                     <li>
                       <div className="text-xs md:text-sm">
                         <div className="mb-4">
                           <h3 className="font-semibold">
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_computer_title
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_computer_title
-                              : ""}
+                            {contactFormLcssData?.data?.[0]
+                              ?.form_lcss_computer_title || ""}
                           </h3>
                           <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]?.form_lcss_computer_name
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_computer_name
-                              : ""}
+                            {contactFormLcssData?.data?.[0]
+                              ?.form_lcss_computer_name || ""}
                           </p>
                           <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_computer_email
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_computer_email
-                              : ""}
+                            {contactFormLcssData?.data?.[0]
+                              ?.form_lcss_computer_email || ""}
                           </p>
                         </div>
                         <div className="mb-8">
                           <h3 className="font-semibold">
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_accounting_title
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_accounting_title
-                              : ""}
+                            {contactFormLcssData?.data?.[0]
+                              ?.form_lcss_accounting_title || ""}
                           </h3>
                           <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_accounting_name
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_accounting_name
-                              : ""}
+                            {contactFormLcssData?.data?.[0]
+                              ?.form_lcss_accounting_name || ""}
                           </p>
                           <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_accounting_email
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_accounting_email
-                              : ""}
+                            {contactFormLcssData?.data?.[0]
+                              ?.form_lcss_accounting_email || ""}
                           </p>
                         </div>
                       </div>
@@ -296,33 +270,53 @@ const ModalContact = ({
                   <li className="!items-start">
                     <IoMdPin />
                     <p className="md:w-[50%]">
-                      {contactFormDefaultData?.data?.length > 0 &&
-                      contactFormDefaultData.data[0]?.form_default_address
-                        ? contactFormDefaultData?.data[0].form_default_address
-                        : ""}
+                      {contactFormDefaultData?.data?.[0]
+                        ?.form_default_address || ""}
                     </p>
                   </li>
                   <li>
                     <FaPhone />
-                    <p>(049) 501 3592</p>
+                    <p>
+                      {contactFormCareersData?.data?.[0]
+                        ?.form_careers_telephone || ""}
+                    </p>
                   </li>
                   <li>
                     <MdOutlinePhoneIphone />
-                    <p>(+63) 927 168 6810</p>
+                    <p>
+                      {contactFormCareersData?.data?.[0]?.form_careers_phone ||
+                        ""}
+                    </p>
                   </li>
                   <li>
                     <div className="text-xs md:text-sm">
                       <div className="mb-4">
                         <h3 className="font-semibold">
-                          Human Resource Manager
+                          {contactFormCareersData?.data?.[0]
+                            ?.form_careers_position_a || ""}
                         </h3>
-                        <p>Mrs. Rhoda Beloso</p>
-                        <p>rhoda.beloso@frontlinebusiness.com.ph</p>
+                        <p>
+                          {contactFormCareersData?.data?.[0]
+                            ?.form_careers_name_a || ""}
+                        </p>
+                        <p>
+                          {contactFormCareersData?.data?.[0]
+                            ?.form_careers_email_a || ""}
+                        </p>
                       </div>
                       <div className="mb-8">
-                        <h3 className="font-semibold">Human Resource Staff</h3>
-                        <p>Mrs. Kennie Deriquito</p>
-                        <p>kennie.deriquito@frontlinebusiness.com.ph</p>
+                        <h3 className="font-semibold">
+                          {contactFormCareersData?.data?.[0]
+                            ?.form_careers_position_b || ""}
+                        </h3>
+                        <p>
+                          {contactFormCareersData?.data?.[0]
+                            ?.form_careers_name_b || ""}
+                        </p>
+                        <p>
+                          {contactFormCareersData?.data?.[0]
+                            ?.form_careers_email_b || ""}
+                        </p>
                       </div>
                     </div>
                   </li>
@@ -333,38 +327,29 @@ const ModalContact = ({
                     <li className="!items-start">
                       <IoMdPin />
                       <p className="md:w-[50%]">
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_address
-                          ? contactFormDefaultData?.data[0].form_default_address
-                          : ""}
+                        {contactFormDefaultData?.data?.[0]
+                          ?.form_default_address || ""}
                       </p>
                     </li>
                     <li>
                       <FaPhone />
                       <p>
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_telephone
-                          ? contactFormDefaultData?.data[0]
-                              .form_default_telephone
-                          : ""}
+                        {contactFormDefaultData?.data?.[0]
+                          ?.form_default_telephone || ""}
                       </p>
                     </li>
                     <li>
                       <MdOutlinePhoneIphone />
                       <p>
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_phone
-                          ? contactFormDefaultData?.data[0].form_default_phone
-                          : ""}
+                        {contactFormDefaultData?.data?.[0]
+                          ?.form_default_phone || ""}
                       </p>
                     </li>
                     <li>
                       <IoMailSharp />
                       <p>
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_email
-                          ? contactFormDefaultData?.data[0].form_default_email
-                          : ""}
+                        {contactFormDefaultData?.data?.[0]
+                          ?.form_default_email || ""}
                       </p>
                     </li>
                   </ul>

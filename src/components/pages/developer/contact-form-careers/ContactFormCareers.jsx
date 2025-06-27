@@ -73,11 +73,6 @@ const ContactFormCareers = ({
             <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
           </a>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            {/* <img
-              src={`${devBaseImgUrl}/lets-talk.jpg`}
-              className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-              alt=""
-            /> */}
             {contactFormDefaultData?.data?.length > 0 &&
             contactUsDefaultImage?.length > 0 ? (
               <>
@@ -100,44 +95,34 @@ const ContactFormCareers = ({
             <div>
               <div className="mb-12">
                 <p>
-                  {contactFormCareersData?.data?.length > 0 &&
-                  contactFormCareersData.data[0]?.form_careers_subtitle
-                    ? contactFormCareersData?.data[0].form_careers_subtitle
-                    : "Subtitle"}
+                  {contactFormCareersData?.data?.[0]?.form_careers_subtitle ||
+                    "Subtitle"}
                 </p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contactFormCareersData?.data?.length > 0 &&
-                  contactFormCareersData.data[0]?.form_careers_title
-                    ? contactFormCareersData?.data[0].form_careers_title
-                    : "Title"}
+                  {contactFormCareersData?.data?.[0]?.form_careers_title ||
+                    "Title"}
                 </h3>
               </div>
               <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p className="md:w-[50%]">
-                    {contactFormDefaultData?.data?.length > 0 &&
-                    contactFormDefaultData.data[0]?.form_default_address
-                      ? contactFormDefaultData?.data[0].form_default_address
-                      : "Address"}
+                    {contactFormDefaultData?.data?.[0]?.form_default_address ||
+                      "Address"}
                   </p>
                 </li>
                 <li>
                   <FaPhone />
                   <p>
-                    {contactFormCareersData?.data?.length > 0 &&
-                    contactFormCareersData.data[0]?.form_careers_telephone
-                      ? contactFormCareersData?.data[0].form_careers_telephone
-                      : "Telephone No."}
+                    {contactFormCareersData?.data?.[0]
+                      ?.form_careers_telephone || "Telephone No."}
                   </p>
                 </li>
                 <li>
                   <MdOutlinePhoneIphone />
                   <p>
-                    {contactFormCareersData?.data?.length > 0 &&
-                    contactFormCareersData.data[0]?.form_careers_phone
-                      ? contactFormCareersData?.data[0].form_careers_phone
-                      : "Phone No."}
+                    {contactFormCareersData?.data?.[0]?.form_careers_phone ||
+                      "Phone No."}
                   </p>
                 </li>
               </ul>
@@ -147,44 +132,30 @@ const ContactFormCareers = ({
                   <div className="text-xs md:text-sm">
                     <div className="mb-4">
                       <h3 className="font-semibold">
-                        {contactFormCareersData?.data?.length > 0 &&
-                        contactFormCareersData.data[0]?.form_careers_position_a
-                          ? contactFormCareersData?.data[0]
-                              .form_careers_position_a
-                          : "Position"}
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_position_a || ""}
                       </h3>
                       <p>
-                        {contactFormCareersData?.data?.length > 0 &&
-                        contactFormCareersData.data[0]?.form_careers_name_a
-                          ? contactFormCareersData?.data[0].form_careers_name_a
-                          : "Name"}
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_name_a || ""}
                       </p>
-                      <p>
-                        {contactFormCareersData?.data?.length > 0 &&
-                        contactFormCareersData.data[0]?.form_careers_email_a
-                          ? contactFormCareersData?.data[0].form_careers_email_a
-                          : "Email"}
+                      <p className="">
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_email_a || ""}
                       </p>
                     </div>
                     <div className="mb-8">
                       <h3 className="font-semibold">
-                        {contactFormCareersData?.data?.length > 0 &&
-                        contactFormCareersData.data[0]?.form_careers_position_b
-                          ? contactFormCareersData?.data[0]
-                              .form_careers_position_b
-                          : "Position"}
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_position_b || ""}
                       </h3>
                       <p>
-                        {contactFormCareersData?.data?.length > 0 &&
-                        contactFormCareersData.data[0]?.form_careers_name_b
-                          ? contactFormCareersData?.data[0].form_careers_name_b
-                          : "Name"}
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_name_b || ""}
                       </p>
-                      <p>
-                        {contactFormCareersData?.data?.length > 0 &&
-                        contactFormCareersData.data[0]?.form_careers_email_b
-                          ? contactFormCareersData?.data[0].form_careers_email_b
-                          : "Email"}
+                      <p className="">
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_email_b || ""}
                       </p>
                     </div>
                   </div>

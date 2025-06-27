@@ -23,12 +23,16 @@ import {
 import {
   apiVersion,
   devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
   siteKey,
 } from "../../../helpers/functions-general";
 import { queryData } from "../../../helpers/queryData";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 import { setError, setMessage, setSuccess } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import LoadImages from "../../../partials/LoadImages";
 
 const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -41,6 +45,28 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
   const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
     `${apiVersion}/upload-files`,
     dispatch
+  );
+
+  const { data: contactFormDefaultData } = useQueryData(
+    `${apiVersion}/contactDefault`, // endpoint
+    "get", // method
+    "contactDefault", // key
+    {},
+    null,
+    true
+  );
+
+  const { data: contactFormCareersData } = useQueryData(
+    `${apiVersion}/contactCareers`, // endpoint
+    "get", // method
+    "contactCareers", // key
+    {},
+    null,
+    true
+  );
+
+  const contactUsDefaultImage = getConvertStringToJSONparseData(
+    contactFormDefaultData?.data?.[0]?.form_default_img
   );
 
   const mutation = useMutation({
@@ -110,50 +136,76 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
             />
           </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            <img
-              src={`${devBaseImgUrl}/lets-talk.jpg`}
-              className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-              alt=""
-            />
+            {contactUsDefaultImage.map((img, index) => (
+              <LoadImages
+                url={`${googleHDViewLink}${img?.id}`}
+                alt={`Contact Form Default ${index + 1}`}
+                className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
+                key={index}
+              />
+            ))}
           </div>
           <div className="flex flex-col justify-between">
             <div>
               <div className="mb-12">
-                <p>Discover your potential with us.</p>
+                <p>
+                  {contactFormCareersData?.data?.[0]?.form_careers_subtitle ||
+                    ""}
+                </p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  Join our Team!
+                  {contactFormCareersData?.data?.[0]?.form_careers_title || ""}
                 </h3>
               </div>
               <ul className=" text-sm [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
                 <li className="!items-start">
                   <IoMdPin />
-                  <p>
-                    Baloc road, Brgy. San Ignacio, <br /> San Pablo City,
-                    Laguna, 4000
+                  <p className="md:w-[50%]">
+                    {contactFormDefaultData?.data?.[0]?.form_default_address ||
+                      ""}
                   </p>
                 </li>
                 <li>
                   <FaPhone />
-                  <p>(049) 501 3592</p>
+                  <p>
+                    {contactFormCareersData?.data?.[0]
+                      ?.form_careers_telephone || ""}
+                  </p>
                 </li>
                 <li>
                   <MdOutlinePhoneIphone />
-                  <p>(+63) 927 168 6810</p>
+                  <p>
+                    {contactFormCareersData?.data?.[0]?.form_careers_phone ||
+                      ""}
+                  </p>
                 </li>
                 <li>
                   <div className="text-xs md:text-sm  ">
                     <div className="mb-4">
-                      <h3 className="font-semibold">Human Resource Manager</h3>
-                      <p>Mrs. Rhoda Beloso</p>
-                      <p className="truncate">
-                        rhoda.beloso@frontlinebusiness.com.ph
+                      <h3 className="font-semibold">
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_position_a || ""}
+                      </h3>
+                      <p>
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_name_a || ""}
+                      </p>
+                      <p className="">
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_email_a || ""}
                       </p>
                     </div>
                     <div className="mb-8">
-                      <h3 className="font-semibold">Human Resource Staff</h3>
-                      <p>Mrs. Kennie Deriquito</p>
-                      <p className="truncate">
-                        kennie.deriquito@frontlinebusiness.com.ph
+                      <h3 className="font-semibold">
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_position_b || ""}
+                      </h3>
+                      <p>
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_name_b || ""}
+                      </p>
+                      <p className="">
+                        {contactFormCareersData?.data?.[0]
+                          ?.form_careers_email_b || ""}
                       </p>
                     </div>
                   </div>
@@ -161,48 +213,65 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
               </ul>
               <div className="mb-4">
                 <p>Follow Us:</p>
-                <ul className="flex gap-2 text-2xl">
-                  <li>
-                    <a
-                      href="https://www.facebook.com/frontline.business"
-                      target="_blank"
-                    >
-                      <FaFacebookSquare />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/company/frontline-business-solutions-inc"
-                      target="_blank"
-                    >
-                      <FaLinkedin />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.youtube.com/@frontlinebusinesssolutions6578"
-                      target="_blank"
-                    >
-                      <FaYoutubeSquare />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.instagram.com/frontline.business"
-                      target="_blank"
-                    >
-                      <FaInstagramSquare />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.tiktok.com/@frontlinebusinessinc"
-                      target="_blank"
-                    >
-                      <AiFillTikTok />
-                    </a>
-                  </li>
-                </ul>
+                {contactFormDefaultData?.data?.length > 0 &&
+                  (() => {
+                    const item = contactFormDefaultData.data[0];
+
+                    return (
+                      <ul className="flex gap-2 text-2xl">
+                        {item.form_default_facebook_link && (
+                          <li>
+                            <a
+                              href={item.form_default_facebook_link || "#"}
+                              target="_blank"
+                            >
+                              <FaFacebookSquare />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_linkedin_link && (
+                          <li>
+                            <a
+                              href={item.form_default_linkedin_link || "#"}
+                              target="_blank"
+                            >
+                              <FaLinkedin />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_youtube_link && (
+                          <li>
+                            <a
+                              href={item.form_default_youtube_link || "#"}
+                              target="_blank"
+                            >
+                              <FaYoutubeSquare />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_instagram_link && (
+                          <li>
+                            <a
+                              href={item.form_default_instagram_link || "#"}
+                              target="_blank"
+                            >
+                              <FaInstagramSquare />
+                            </a>
+                          </li>
+                        )}
+                        {item.form_default_tiktok_link && (
+                          <li>
+                            <a
+                              href={item.form_default_tiktok_link || "#"}
+                              target="_blank"
+                            >
+                              <AiFillTikTok />
+                            </a>
+                          </li>
+                        )}
+                      </ul>
+                    );
+                  })()}
               </div>
             </div>
           </div>
@@ -301,7 +370,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                           label="Message"
                           type="text"
                           name="client_message"
-                          className="h-[200px]"
+                          className="h-[140px]"
                           disabled={mutation.isPending}
                         />
                       </div>

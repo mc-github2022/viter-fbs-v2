@@ -17,6 +17,7 @@ import TableSpinner from "../../../../partials/spinners/TableSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 import ModalSend from "./ModalSend";
 import { setIsSubsOpen } from "../../../../store/StoreAction";
+import useUploadFiles from "../../../../custom-hooks/useUploadFiles";
 
 const Mailer = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -44,6 +45,11 @@ const Mailer = ({ itemEdit }) => {
   );
   const [newsletterContent, setNewsletterContent] = React.useState(
     itemEdit ? itemEdit.newsletter : ""
+  );
+
+  const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
+    `${apiVersion}/upload-files`,
+    dispatch
   );
 
   // let queryCount = 0;
@@ -262,6 +268,7 @@ const Mailer = ({ itemEdit }) => {
     newsletter: "",
     newsletter_subject: "",
     subscriber_email: "",
+    sending_email_log_file: "",
     firstname: firstnameProfile,
     role: role,
   };
@@ -299,6 +306,7 @@ const Mailer = ({ itemEdit }) => {
                       setFieldValue("subscriber_email", "");
                       setFieldValue("newsletter_subject", "");
                       setFieldValue("newsletter", "");
+                      setFieldValue("sending_email_log_file", "");
 
                       // Clear external state
                       setSubscriberValue("");
@@ -327,7 +335,7 @@ const Mailer = ({ itemEdit }) => {
                           <div className="input-wrapper">
                             <InputText
                               label="Recipient"
-                              type="text"
+                              type="search"
                               value={subscriberValue}
                               name="subscriber_email"
                               onFocus={() => setOnRecipient(true)}
@@ -441,7 +449,7 @@ const Mailer = ({ itemEdit }) => {
                             <div className=" input-wrapper">
                               <InputText
                                 label="Subject"
-                                type="text"
+                                type="search"
                                 value={propertyNewsletterValue}
                                 name="newsletter_subject"
                                 disabled={isSendingLoading}
@@ -450,7 +458,7 @@ const Mailer = ({ itemEdit }) => {
                                 refVal={refNewsletter}
                               />
                               {onFocusNewsletter && (
-                                <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[33px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                                <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[36px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
                                   {loading || newsletterDataIsFetching ? (
                                     <TableSpinner />
                                   ) : newsletterDataError ? (
@@ -484,6 +492,19 @@ const Mailer = ({ itemEdit }) => {
                             </div>
                           )}
 
+                          <div className="input-wrapper">
+                            <span htmlFor="" className="text-xs">
+                              Upload File (PDF Only (8mb))
+                            </span>
+                            <input
+                              type="file"
+                              name="sending_email_log_file"
+                              accept="application/pdf"
+                              id="myFile"
+                              disabled={isSendingLoading}
+                              onChange={(e) => handleChangeFiles(e)}
+                            />
+                          </div>
                           {mailType === "Draft" && (
                             <div className="input-wrapper">
                               <span className="text-xs bg-[#f5f5f3]">
@@ -492,7 +513,8 @@ const Mailer = ({ itemEdit }) => {
                               <InputTextArea
                                 type="text"
                                 name="newsletter"
-                                className="newsletter bg-[#2b2b2b] text-white h-[445px]"
+                                className="newsletter bg-[#2b2b2b] text-white 
+                                !h-[300px]"
                                 value={values.newsletter}
                                 onChange={(e) =>
                                   setFieldValue("newsletter", e.target.value)
@@ -504,7 +526,7 @@ const Mailer = ({ itemEdit }) => {
                           <div className="form-action  bottom-0 w-full">
                             <div className="form-btn place-content-end">
                               <button
-                                className="btn-modal-submit w-[200px]"
+                                className="btn-modal-submit w-[200px] "
                                 type="submit"
                                 disabled={isSendingLoading || !dirty}
                               >
@@ -546,6 +568,8 @@ const Mailer = ({ itemEdit }) => {
                             setPropertyNewsletterValue
                           }
                           setQueryStatus={setQueryStatus}
+                          newfile={newfile}
+                          uploadFiles={uploadFiles}
                         />
                       )}
                     </Form>
