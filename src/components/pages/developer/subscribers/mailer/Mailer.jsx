@@ -514,7 +514,7 @@ const Mailer = ({ itemEdit }) => {
                                 type="text"
                                 name="newsletter"
                                 className="newsletter bg-[#2b2b2b] text-white 
-                                !h-[300px]"
+                                min-h-[300px]"
                                 value={values.newsletter}
                                 onChange={(e) =>
                                   setFieldValue("newsletter", e.target.value)
