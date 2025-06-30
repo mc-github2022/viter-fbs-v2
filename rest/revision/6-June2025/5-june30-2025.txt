@@ -147,3 +147,7 @@ DEVELOPER
                 note: column is added
                 `sending_email_log_file` varchar(100) NOT NULL,
 
+
+To Upload:
+    CONTROLLERS
+        -> rest/v1/controllers/developer/mailer-log/resending-newsletter.php
