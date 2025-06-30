@@ -50,7 +50,7 @@ const NotificationTable = ({ setItemEdit }) => {
       }
       return;
     },
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
   });
 
   let counter = 1;

@@ -1,4 +1,5 @@
 Upload JSX
+Upload Images
 
 
 DEVELOPER  
@@ -133,6 +134,7 @@ DEVELOPER
             -> rest/db-backup/fbsv2_work_titles.sql
             -> rest/db-backup/fbsv2_events_activities_title.sql
             -> rest/db-backup/fbsv2_careers_title.sql
+            -> rest/db-backup/fbsv2_contact_form_careers.sql
             -> rest/db-backup/fbsv2_footer.sql
                 note: column is added
                 `footer_logo_address` varchar(100) NOT NULL,

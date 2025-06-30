@@ -494,12 +494,12 @@ const Mailer = ({ itemEdit }) => {
 
                           <div className="input-wrapper">
                             <span htmlFor="" className="text-xs">
-                              Upload File (PDF Only (8mb))
+                              Add Attachment (File Only (8mb))
                             </span>
                             <input
                               type="file"
                               name="sending_email_log_file"
-                              accept="application/pdf"
+                              accept="*"
                               id="myFile"
                               disabled={isSendingLoading}
                               onChange={(e) => handleChangeFiles(e)}
