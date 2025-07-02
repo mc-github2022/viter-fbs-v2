@@ -1,0 +1,24 @@
+
+DEVELOPER  
+
+        * CONTROLLERS
+            -> 
+
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> 
+
+        * HTACESS
+            -> 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_work_vision_mission.sql
