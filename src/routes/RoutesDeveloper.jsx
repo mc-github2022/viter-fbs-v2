@@ -59,6 +59,7 @@ import WebsiteDesign from "../components/pages/developer/services/web-design/web
 import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
 import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/events-and-activities-page/EventsAndActivitiesPage";
 import CareersPage from "../components/pages/developer/why-fbs-page/careers-page/CareersPage";
+import GraphicDesign from "../components/pages/developer/services/web-design/graphic-design/GraphicDesign";
 
 export const routesDeveloper = [
   {
@@ -434,6 +435,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <WebsiteDesign />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-design-and-development/graphic-design`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <GraphicDesign />
       </ProtectedRouteDeveloper>
     ),
   },

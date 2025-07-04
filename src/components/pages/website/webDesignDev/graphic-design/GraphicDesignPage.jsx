@@ -57,7 +57,7 @@ const GraphicDesignPage = () => {
       <GraphicDesignOverview pageName={pageName} />
       <GraphicDesignScope pageName={pageName} />
       <GraphicDesignPricing pageName={pageName} />
-      <GraphicDesignPortfolio />
+      {/* <GraphicDesignPortfolio /> */}
       <GraphicDesignPartners />
       <GraphicDesignPartnersSay />
       <Footer />

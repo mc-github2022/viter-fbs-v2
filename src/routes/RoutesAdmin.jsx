@@ -54,6 +54,7 @@ import WebsiteDesign from "../components/pages/developer/services/web-design/web
 import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
 import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/events-and-activities-page/EventsAndActivitiesPage";
 import CareersPage from "../components/pages/developer/why-fbs-page/careers-page/CareersPage";
+import GraphicDesign from "../components/pages/developer/services/web-design/graphic-design/GraphicDesign";
 
 export const routesAdmin = [
   {
@@ -413,6 +414,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <WebsiteDesign />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-design-and-development/graphic-design`,
+    element: (
+      <ProtectedRouteOther>
+        <GraphicDesign />
       </ProtectedRouteOther>
     ),
   },
