@@ -1,15 +1,14 @@
 import React, { useRef } from "react";
-import { RiDoubleQuotesL } from "react-icons/ri";
-import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { clientSays, clientSaysTitle } from "./data";
-import useQueryData from "../../../../custom-hooks/useQueryData";
+import useQueryData from "../../../../../../custom-hooks/useQueryData";
+import LoadImages from "../../../../../../partials/LoadImages";
 import {
   devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
-} from "../../../../helpers/functions-general";
-import LoadImages from "../../../../partials/LoadImages";
+} from "../../../../../../helpers/functions-general";
+import Slider from "react-slick";
+import { HiPencil } from "react-icons/hi";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -35,7 +34,10 @@ function SamplePrevArrow(props) {
   );
 }
 
-const GraphicDesignPartnersSay = ({ graphicTitlesData }) => {
+const GraphicPartnerSays = ({
+  graphicTitlesData,
+  handleUpdateGraphicTestimonialTitles,
+}) => {
   const {
     isFetching,
     error,
@@ -65,7 +67,7 @@ const GraphicDesignPartnersSay = ({ graphicTitlesData }) => {
         style={{
           borderRadius: "10px",
           padding: "10px",
-          bottom: "-40px",
+          bottom: "10px",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -123,18 +125,25 @@ const GraphicDesignPartnersSay = ({ graphicTitlesData }) => {
 
   return (
     <>
-      <section className="GraphicDesignPartnersSay pb-10 md:py-20">
+      <section className="partnersSay py-10 pb-20 md:py-20 -translate-y-1 bg-light">
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 0 && (
-            <div className="">
+            <div className="relative">
               <p>
                 {graphicTitlesData?.data?.[0]
-                  ?.graphic_titles_testimonial_subtitle || ""}
+                  ?.graphic_titles_testimonial_subtitle || "Subtitle"}
               </p>
               <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
                 {graphicTitlesData?.data?.[0]
-                  ?.graphic_titles_testimonial_title || ""}
+                  ?.graphic_titles_testimonial_title || "Title"}
               </h2>
+              <a
+                className="absolute cursor-pointer tooltip-btn -top-4 left-[20rem] "
+                data-tooltip="Edit contents"
+                onClick={handleUpdateGraphicTestimonialTitles}
+              >
+                <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
+              </a>
             </div>
           )}
           <div className="wrapper ">
@@ -153,9 +162,9 @@ const GraphicDesignPartnersSay = ({ graphicTitlesData }) => {
                     ) || [];
                   if (item.industry_testimonial_category === "Graphic Design") {
                     return (
-                      <div key={key} className="md:min-h-fit min-h-[70vh]">
+                      <div key={key} className=" md:min-h-fit min-h-[70vh]">
                         <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative ">
-                          <div className="theMessage  relative ">
+                          <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
@@ -220,8 +229,11 @@ const GraphicDesignPartnersSay = ({ graphicTitlesData }) => {
                     ) || [];
                   if (item.industry_testimonial_category === "Graphic Design") {
                     return (
-                      <div className="md:min-h-fit min-h-[70vh]" key={key}>
-                        <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative">
+                      <div className="md:min-h-fit min-h-[70vh]">
+                        <div
+                          className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative "
+                          key={key}
+                        >
                           <div className="theMessage  relative">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
@@ -283,4 +295,4 @@ const GraphicDesignPartnersSay = ({ graphicTitlesData }) => {
   );
 };
 
-export default GraphicDesignPartnersSay;
+export default GraphicPartnerSays;

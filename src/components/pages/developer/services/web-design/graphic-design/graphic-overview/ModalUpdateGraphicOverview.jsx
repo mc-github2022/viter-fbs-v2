@@ -29,7 +29,7 @@ import LoadImages from "../../../../../../partials/LoadImages";
 import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
 import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
 
-const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
+const ModalUpdateGraphicOverview = ({ itemEdit, graphicOverviewData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
@@ -89,14 +89,14 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        graphicData?.data?.length
-          ? `${apiVersion}/graphic/${graphicData.data[0].graphic_banner_aid}` // update
-          : `${apiVersion}/graphic`, // create
-        graphicData?.data?.length ? "put" : "post",
+        graphicOverviewData?.data?.length
+          ? `${apiVersion}/graphic-overview/${graphicOverviewData.data[0].graphic_overview_aid}` // update
+          : `${apiVersion}/graphic-overview`, // create
+        graphicOverviewData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["graphic"] });
+      queryClient.invalidateQueries({ queryKey: ["graphic-overview"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -113,26 +113,29 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
 
   React.useEffect(() => {
     setAnimate("");
-    if (graphicData) {
+    if (graphicOverviewData) {
       const photos = getConvertStringToJSONparseData(
-        graphicData?.data?.[0]?.graphic_banner_img
+        graphicOverviewData?.data?.[0]?.graphic_overview_img
       );
       setPhotoArrayList(photos);
     }
   }, []);
 
   const initVal = {
-    isUpdateGraphic: itemEdit,
-    graphic_banner_title: graphicData?.data?.[0]?.graphic_banner_title ?? "",
-    graphic_banner_title_bold:
-      graphicData?.data?.[0]?.graphic_banner_title_bold ?? "",
-    graphic_banner_description:
-      graphicData?.data?.[0]?.graphic_banner_description ?? "",
-    graphic_banner_button_text:
-      graphicData?.data?.[0]?.graphic_banner_button_text ?? "",
-    graphic_banner_img: graphicData?.data?.[0]?.graphic_banner_img ?? "",
+    graphicOverviewUpdate: itemEdit,
+    graphic_overview_subtitle_a:
+      graphicOverviewData?.data?.[0]?.graphic_overview_subtitle_a ?? "",
+    graphic_overview_subtitle_b:
+      graphicOverviewData?.data?.[0]?.graphic_overview_subtitle_b ?? "",
+    graphic_overview_title:
+      graphicOverviewData?.data?.[0]?.graphic_overview_title ?? "",
+    graphic_overview_button_text:
+      graphicOverviewData?.data?.[0]?.graphic_overview_button_text ?? "",
+    graphic_overview_img:
+      graphicOverviewData?.data?.[0]?.graphic_overview_img ?? "",
 
-    graphic_banner_img_old: graphicData?.data?.[0]?.graphic_banner_img ?? "",
+    graphic_overview_img_old:
+      graphicOverviewData?.data?.[0]?.graphic_overview_img ?? "",
     pendingDeleteFile: [],
   };
 
@@ -146,7 +149,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Graphic Banner
+            {itemEdit ? "Edit" : "Add"} Graphic Overview
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
@@ -160,7 +163,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
               setLoading(true);
               const data = {
                 ...values,
-                graphic_banner_img: Array.from(photoArrayList).map((item) =>
+                graphic_overview_img: Array.from(photoArrayList).map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -178,7 +181,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
             {(props) => {
               return (
                 <Form className="modal-form">
-                  <div className="pr-2 ">
+                  <div className="form-input ">
                     <div className="mt-3">
                       <span className="top-20 px-2 text-dark text-xs">
                         Image
@@ -208,7 +211,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "graphic_banner_img"
+                              "graphic_overview_img"
                             )
                           }
                           onDrop={(e) =>
@@ -216,7 +219,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "graphic_banner_img"
+                              "graphic_overview_img"
                             )
                           }
                           disabled={mutation.isPending || loading}
@@ -293,27 +296,26 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                     </div>
 
                     <div className="input-wrapper">
-                      <InputTextArea
-                        label="Title"
+                      <InputText
+                        label="Subtitle A"
                         type="text"
-                        name="graphic_banner_title"
+                        name="graphic_overview_subtitle_a"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Title Bold"
+                        label="Title"
                         type="text"
-                        name="graphic_banner_title_bold"
+                        name="graphic_overview_title"
                         disabled={mutation.isPending}
                       />
                     </div>
-                    <div className="input-wrapper ">
-                      <InputTextArea
-                        label="Description"
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Subtitle B"
                         type="text"
-                        name="graphic_banner_description"
-                        className="h-[400px]"
+                        name="graphic_overview_subtitle_b"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -321,32 +323,27 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                       <InputText
                         label="Button"
                         type="text"
-                        name="graphic_banner_button_text"
+                        name="graphic_overview_button_text"
                         disabled={mutation.isPending}
                       />
                     </div>
-                    <div
-                      className="modal__action w-full
-                     gap-2 bg-white "
-                    >
-                      <div className="form-btn">
-                        <button
-                          className="btn-modal-submit"
-                          type="submit"
-                          disabled={
-                            mutation.isPending || !props.dirty || loading
-                          }
-                        >
-                          {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                        </button>
-                        <button
-                          className="btn-modal-cancel"
-                          type="button"
-                          onClick={handleClose}
-                        >
-                          Cancel
-                        </button>
-                      </div>
+                  </div>
+                  <div className="form-action mb-2 ">
+                    <div className="form-btn">
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || loading}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 </Form>
@@ -370,4 +367,4 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
   );
 };
 
-export default ModalUpdateGraphicBanner;
+export default ModalUpdateGraphicOverview;

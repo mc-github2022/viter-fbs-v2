@@ -30,6 +30,15 @@ const GraphicDesignPage = () => {
     true
   );
 
+  const { data: graphicTitlesData } = useQueryData(
+    `${apiVersion}/graphic-titles`, // endpoint
+    "get", // method
+    "graphic-titles", // key
+    {},
+    null,
+    true
+  );
+
   React.useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -55,11 +64,11 @@ const GraphicDesignPage = () => {
       <Header pageName={pageName} />
       <GraphicDesignBanner pageName={pageName} />
       <GraphicDesignOverview pageName={pageName} />
-      <GraphicDesignScope pageName={pageName} />
-      <GraphicDesignPricing pageName={pageName} />
+      <GraphicDesignScope pageName={pageName} graphicTitlesData={graphicTitlesData} />
+      {/* <GraphicDesignPricing pageName={pageName} /> */}
       {/* <GraphicDesignPortfolio /> */}
-      <GraphicDesignPartners />
-      <GraphicDesignPartnersSay />
+      {/* <GraphicDesignPartners /> */}
+      <GraphicDesignPartnersSay graphicTitlesData={graphicTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

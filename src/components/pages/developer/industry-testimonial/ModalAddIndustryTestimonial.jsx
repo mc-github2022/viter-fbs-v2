@@ -542,6 +542,7 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
                             Single Page Website
                           </option>
                           <option value="Web Design">Web Design</option>
+                          <option value="Graphic Design">Graphic Design</option>
                         </InputSelect>
                       </div>
                       <div className="input-wrapper">

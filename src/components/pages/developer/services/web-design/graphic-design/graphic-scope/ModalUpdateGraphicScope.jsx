@@ -29,7 +29,7 @@ import LoadImages from "../../../../../../partials/LoadImages";
 import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
 import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
 
-const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
+const ModalUpdateGraphicScope = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
@@ -89,14 +89,14 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        graphicData?.data?.length
-          ? `${apiVersion}/graphic/${graphicData.data[0].graphic_banner_aid}` // update
-          : `${apiVersion}/graphic`, // create
-        graphicData?.data?.length ? "put" : "post",
+        itemEdit
+          ? `${apiVersion}/graphic-scope/${itemEdit.graphic_scope_aid}` // update
+          : `${apiVersion}/graphic-scope`, // create
+        itemEdit ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["graphic"] });
+      queryClient.invalidateQueries({ queryKey: ["graphic-scope"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -113,26 +113,23 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
 
   React.useEffect(() => {
     setAnimate("");
-    if (graphicData) {
+    if (itemEdit) {
       const photos = getConvertStringToJSONparseData(
-        graphicData?.data?.[0]?.graphic_banner_img
+        itemEdit.graphic_scope_img
       );
       setPhotoArrayList(photos);
     }
   }, []);
 
   const initVal = {
-    isUpdateGraphic: itemEdit,
-    graphic_banner_title: graphicData?.data?.[0]?.graphic_banner_title ?? "",
-    graphic_banner_title_bold:
-      graphicData?.data?.[0]?.graphic_banner_title_bold ?? "",
-    graphic_banner_description:
-      graphicData?.data?.[0]?.graphic_banner_description ?? "",
-    graphic_banner_button_text:
-      graphicData?.data?.[0]?.graphic_banner_button_text ?? "",
-    graphic_banner_img: graphicData?.data?.[0]?.graphic_banner_img ?? "",
+    graphic_scope_title: itemEdit ? itemEdit.graphic_scope_title : "",
+    graphic_scope_desc: itemEdit ? itemEdit.graphic_scope_desc : "",
+    graphic_scope_button_text: itemEdit
+      ? itemEdit.graphic_scope_button_text
+      : "",
+    graphic_scope_img: itemEdit ? itemEdit.graphic_scope_img : "",
 
-    graphic_banner_img_old: graphicData?.data?.[0]?.graphic_banner_img ?? "",
+    graphic_scope_img_old: itemEdit ? itemEdit.graphic_scope_img : "",
     pendingDeleteFile: [],
   };
 
@@ -145,9 +142,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
         handleClose={handleClose}
       >
         <div className="modal-title">
-          <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Graphic Banner
-          </h2>
+          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Graphic Scope</h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
           </button>
@@ -160,7 +155,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
               setLoading(true);
               const data = {
                 ...values,
-                graphic_banner_img: Array.from(photoArrayList).map((item) =>
+                graphic_scope_img: Array.from(photoArrayList).map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -171,14 +166,13 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
               if (photoUpload?.success || !photoUpload?.success) {
                 setLoading(false);
               }
-              if (!loading) console.log(data);
               mutation.mutate(data);
             }}
           >
             {(props) => {
               return (
                 <Form className="modal-form">
-                  <div className="pr-2 ">
+                  <div className="form-input ">
                     <div className="mt-3">
                       <span className="top-20 px-2 text-dark text-xs">
                         Image
@@ -208,7 +202,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "graphic_banner_img"
+                              "graphic_scope_img"
                             )
                           }
                           onDrop={(e) =>
@@ -216,7 +210,7 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                               e,
                               props,
                               setPhotoArrayList,
-                              "graphic_banner_img"
+                              "graphic_scope_img"
                             )
                           }
                           disabled={mutation.isPending || loading}
@@ -293,26 +287,18 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                     </div>
 
                     <div className="input-wrapper">
-                      <InputTextArea
+                      <InputText
                         label="Title"
                         type="text"
-                        name="graphic_banner_title"
+                        name="graphic_scope_title"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
-                      <InputText
-                        label="Title Bold"
-                        type="text"
-                        name="graphic_banner_title_bold"
-                        disabled={mutation.isPending}
-                      />
-                    </div>
-                    <div className="input-wrapper ">
                       <InputTextArea
                         label="Description"
                         type="text"
-                        name="graphic_banner_description"
+                        name="graphic_scope_desc"
                         className="h-[400px]"
                         disabled={mutation.isPending}
                       />
@@ -321,32 +307,27 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
                       <InputText
                         label="Button"
                         type="text"
-                        name="graphic_banner_button_text"
+                        name="graphic_scope_button_text"
                         disabled={mutation.isPending}
                       />
                     </div>
-                    <div
-                      className="modal__action w-full
-                     gap-2 bg-white "
-                    >
-                      <div className="form-btn">
-                        <button
-                          className="btn-modal-submit"
-                          type="submit"
-                          disabled={
-                            mutation.isPending || !props.dirty || loading
-                          }
-                        >
-                          {mutation.isPending ? <ButtonSpinner /> : "Save"}
-                        </button>
-                        <button
-                          className="btn-modal-cancel"
-                          type="button"
-                          onClick={handleClose}
-                        >
-                          Cancel
-                        </button>
-                      </div>
+                  </div>
+                  <div className="form-action mb-2 ">
+                    <div className="form-btn">
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || loading}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 </Form>
@@ -370,4 +351,4 @@ const ModalUpdateGraphicBanner = ({ itemEdit, graphicData }) => {
   );
 };
 
-export default ModalUpdateGraphicBanner;
+export default ModalUpdateGraphicScope;

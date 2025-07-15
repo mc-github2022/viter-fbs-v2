@@ -9,7 +9,7 @@ import ContactFormDefault from "../../../../contact-form-default/ContactFormDefa
 
 const GraphicBanner = ({
   pageName,
-  wordpressData,
+  graphicData,
   handleUpdateGraphicBanner,
   handleUpdateContactFormDefault,
   contactFormDefaultData,
@@ -18,7 +18,7 @@ const GraphicBanner = ({
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const graphicBannerImage = getConvertStringToJSONparseData(
-    wordpressData?.data?.[0]?.wordpress_banner_img
+    graphicData?.data?.[0]?.graphic_banner_img
   );
 
   const handleOpen = () => {
@@ -31,7 +31,7 @@ const GraphicBanner = ({
         id="ServiceHrBanner"
         className="banner pt-[59px] md:pt-[95px] min-h-[100vh] md:min-h-[90vh] relative flex items-center"
       >
-        {wordpressData?.data?.length > 0 && graphicBannerImage?.length > 0 ? (
+        {graphicData?.data?.length > 0 && graphicBannerImage?.length > 0 ? (
           <>
             {graphicBannerImage.map((img, index) => (
               <LoadImages
@@ -53,7 +53,7 @@ const GraphicBanner = ({
             <div className="text-center py-10 lg:text-left">
               <h2 className="text-[clamp(30px,3vw,45px)] leading-[1.1] mb-8 text-light font-light">
                 <span className="">
-                  {wordpressData?.data[0]?.wordpress_banner_title
+                  {graphicData?.data[0]?.graphic_banner_title
                     .split("\n") // Split by new lines
                     .filter((content_a) => content_a.trim() !== "") // Remove empty lines
                     .map((content_a, index) => (
@@ -61,22 +61,21 @@ const GraphicBanner = ({
                     ))}
                 </span>
                 <span className="text-light font-semibold">
-                  {wordpressData?.data?.[0]?.wordpress_banner_title_bold ||
-                    "Title"}
+                  {graphicData?.data?.[0]?.graphic_banner_title_bold || "Title"}
                 </span>
               </h2>
 
               <p className="text-light mb-10">
-                {wordpressData?.data?.[0]?.wordpress_banner_description ||
+                {graphicData?.data?.[0]?.graphic_banner_description ||
                   "Description"}
               </p>
-              {wordpressData?.data.map((item, key) => (
+              {graphicData?.data.map((item, key) => (
                 <button
                   onClick={handleOpen}
                   className="btn bg-transparent text-light border-2 uppercase "
                   key={key}
                 >
-                  {item.wordpress_banner_button_text}
+                  {item.graphic_banner_button_text}
                 </button>
               ))}
               <a

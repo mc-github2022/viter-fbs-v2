@@ -1,0 +1,30 @@
+upload jsx
+DEVELOPER  
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/services/web-design/graphic
+
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/services/web-design/graphic
+
+        * HTACESS
+            -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - BANNER 
+            -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - OVERVIEW
+            -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - SCOPE
+            -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - TITLES
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_services_graphic_banner.sql
+            -> rest/db-backup/fbsv2_services_graphic_overview.sql
+            -> rest/db-backup/fbsv2_services_graphic_scope.sql
+            -> rest/db-backup/fbsv2_services_graphic_titles.sql

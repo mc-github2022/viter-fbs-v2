@@ -15,50 +15,61 @@ import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
+import GraphicBanner from "./graphic-banner/GraphicBanner";
+import ModalUpdateGraphicBanner from "./graphic-banner/ModalUpdateGraphicBanner";
+import GraphicOverview from "./graphic-overview/GraphicOverview";
+import ModalUpdateGraphicOverview from "./graphic-overview/ModalUpdateGraphicOverview";
+import ModalUpdateGraphicOverviewList from "./graphic-overview/ModalUpdateGraphicOverviewList";
+import GraphicScope from "./graphic-scope/GraphicScope";
+import ModalUpdateGraphicScope from "./graphic-scope/ModalUpdateGraphicScope";
+import GraphicPartnerSays from "./graphic-partnersays/GraphicPartnerSays";
+import ModalUpdateGraphicScopeTitle from "./graphic-titles/ModalUpdateGraphicScopeTitle";
+import ModalUpdateGraphicPartnerSaysTitle from "./graphic-titles/ModalUpdateGraphicPartnerSaysTitle";
+import ModalUpdateContactFormDefaultWordPress from "../../../contact-form-default/ModalUpdateContactFormDefaultWordPress";
 
 const GraphicDesign = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
   const [pageName, setPageName] = React.useState("cms");
 
-  const { data: wordpressData } = useQueryData(
-    `${apiVersion}/wordpress`, // endpoint
+  const { data: graphicData } = useQueryData(
+    `${apiVersion}/graphic`, // endpoint
     "get", // method
-    "wordpress" // key
+    "graphic" // key
   );
 
-  const { data: wordpressOverviewData } = useQueryData(
-    `${apiVersion}/wordpress-overview`, // endpoint
+  const { data: graphicOverviewData } = useQueryData(
+    `${apiVersion}/graphic-overview`, // endpoint
     "get", // method
-    "wordpress-overview" // key
+    "graphic-overview" // key
   );
 
   const {
     isLoading: isLoadingScope,
     isFetching: isFetchingScope,
     error: errorScope,
-    data: wordpressScopeData,
+    data: graphicScopeData,
   } = useQueryData(
-    `${apiVersion}/wordpress-scope`, // endpoint
+    `${apiVersion}/graphic-scope`, // endpoint
     "get", // method
-    "wordpress-scope" // key
+    "graphic-scope" // key
   );
 
   const {
     isLoading: isLoadingPortfolio,
     isFetching: isFetchingPortfolio,
     error: errorPortfolio,
-    data: wordpressPortfolioData,
+    data: graphicPortfolioData,
   } = useQueryData(
-    `${apiVersion}/wordpress-portfolio`, // endpoint
+    `${apiVersion}/graphic-portfolio`, // endpoint
     "get", // method
-    "wordpress-portfolio" // key
+    "graphic-portfolio" // key
   );
 
-  const { data: wordpressTitlesData } = useQueryData(
-    `${apiVersion}/wordpress-titles`, // endpoint
+  const { data: graphicTitlesData } = useQueryData(
+    `${apiVersion}/graphic-titles`, // endpoint
     "get", // method
-    "wordpress-titles" // key
+    "graphic-titles" // key
   );
 
   const { data: contactFormDefaultData } = useQueryData(
@@ -85,117 +96,54 @@ const GraphicDesign = () => {
     "footer" // key
   );
 
-  const handleUpdateWordpressBanner = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "wordpress-banner" }));
-    setItemEdit("wordpressBannerUpdate");
+  const handleUpdateGraphicBanner = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "graphic-banner" }));
+    setItemEdit("graphicBannerUpdate");
   };
 
-  const handleUpdateWordpressOverview = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "wordpress-overview" }));
-    setItemEdit("wordpressOverviewUpdateImg");
+  const handleUpdateGraphicOverview = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "graphic-overview" }));
+    setItemEdit("graphicOverviewUpdateImg");
   };
 
-  const handleUpdateWordpressOverviewList = () => {
+  const handleUpdateGraphicOverviewList = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-overview-list" })
+      setIsUpdateHome({ modal: true, modalCode: "graphic-overview-list" })
     );
-    setItemEdit("wordpressOverviewListUpdate");
+    setItemEdit("graphicOverviewListUpdate");
   };
 
-  const handleUpdateWordpressPortfolioTitle = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-title" })
-    );
-    setItemEdit("portfolioTitleUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListA = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-a" })
-    );
-    setItemEdit("portfolioListAUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListB = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-b" })
-    );
-    setItemEdit("portfolioListBUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListC = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-c" })
-    );
-    setItemEdit("portfolioListCUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListD = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-d" })
-    );
-    setItemEdit("portfolioListDUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListE = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-e" })
-    );
-    setItemEdit("portfolioListEUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListF = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-f" })
-    );
-    setItemEdit("portfolioListFUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListG = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-g" })
-    );
-    setItemEdit("portfolioListGUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListH = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-h" })
-    );
-    setItemEdit("portfolioListHUpdate");
-  };
-
-  const handleUpdateWordpressScope = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "wordpress-scope" }));
+  const handleUpdateGraphicScope = () => {
+    dispatch(setIsUpdateHome({ modal: true, modalCode: "graphic-scope" }));
     setItemEdit(null);
   };
 
-  const handleUpdateWordpressScopeTitles = () => {
+  const handleUpdateGraphicScopeTitles = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-scope-title" })
+      setIsUpdateHome({ modal: true, modalCode: "graphic-scope-title" })
     );
     setItemEdit("scopeTitleUpdate");
   };
 
-  const handleUpdateWordpressPackagesTitles = () => {
+  const handleUpdateGraphicPackagesTitles = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-packages-title" })
+      setIsUpdateHome({ modal: true, modalCode: "graphic-packages-title" })
     );
     setItemEdit("packagesTitleUpdate");
   };
 
-  const handleUpdateWordpressPartnersTitles = () => {
+  const handleUpdateGraphicPartnersTitles = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-partners-title" })
+      setIsUpdateHome({ modal: true, modalCode: "graphic-partners-title" })
     );
     setItemEdit("partnersTitleUpdate");
   };
 
-  const handleUpdateWordpressTestimonialTitles = () => {
+  const handleUpdateGraphicTestimonialTitles = () => {
     dispatch(
       setIsUpdateHome({
         modal: true,
-        modalCode: "wordpress-testimonial-title",
+        modalCode: "graphic-testimonial-title",
       })
     );
     setItemEdit("testimonialTitleUpdate");
@@ -258,9 +206,9 @@ const GraphicDesign = () => {
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
               />
-              {/* <WordpressBanner
-                wordpressData={wordpressData}
-                handleUpdateWordpressBanner={handleUpdateWordpressBanner}
+              <GraphicBanner
+                graphicData={graphicData}
+                handleUpdateGraphicBanner={handleUpdateGraphicBanner}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 contactFormDefaultData={contactFormDefaultData}
                 pageName={pageName}
@@ -268,13 +216,13 @@ const GraphicDesign = () => {
                 handleUpdateContactFormWordpress={
                   handleUpdateContactFormWordpress
                 }
-              /> */}
-              {/* <WordpressOverview
-                handleUpdateWordpressOverview={handleUpdateWordpressOverview}
-                handleUpdateWordpressOverviewList={
-                  handleUpdateWordpressOverviewList
+              />
+              <GraphicOverview
+                handleUpdateGraphicOverview={handleUpdateGraphicOverview}
+                handleUpdateGraphicOverviewList={
+                  handleUpdateGraphicOverviewList
                 }
-                wordpressOverviewData={wordpressOverviewData}
+                graphicOverviewData={graphicOverviewData}
                 contactFormDefaultData={contactFormDefaultData}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
@@ -282,18 +230,16 @@ const GraphicDesign = () => {
                 handleUpdateContactFormWordpress={
                   handleUpdateContactFormWordpress
                 }
-              /> */}
-              {/* <WordpressScope
-                handleUpdateWordpressScopeTitles={
-                  handleUpdateWordpressScopeTitles
-                }
-                handleUpdateWordpressScope={handleUpdateWordpressScope}
+              />
+              <GraphicScope
+                handleUpdateGraphicScopeTitles={handleUpdateGraphicScopeTitles}
+                handleUpdateGraphicScope={handleUpdateGraphicScope}
                 setItemEdit={setItemEdit}
                 isLoadingScope={isLoadingScope}
                 isFetchingScope={isFetchingScope}
                 errorScope={errorScope}
-                wordpressTitlesData={wordpressTitlesData}
-                wordpressScopeData={wordpressScopeData}
+                graphicTitlesData={graphicTitlesData}
+                graphicScopeData={graphicScopeData}
                 contactFormDefaultData={contactFormDefaultData}
                 handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
@@ -301,26 +247,26 @@ const GraphicDesign = () => {
                 handleUpdateContactFormWordpress={
                   handleUpdateContactFormWordpress
                 }
-              /> */}
+              />
               {/* <WordpressPricing
-                handleUpdateWordpressPackagesTitles={
-                  handleUpdateWordpressPackagesTitles
+                handleUpdateGraphicPackagesTitles={
+                  handleUpdateGraphicPackagesTitles
                 }
-                wordpressTitlesData={wordpressTitlesData}
+                graphicTitlesData={graphicTitlesData}
               /> */}
-              
+
               {/* <WordpressPartners
-                handleUpdateWordpressPartnersTitles={
-                  handleUpdateWordpressPartnersTitles
+                handleUpdateGraphicPartnersTitles={
+                  handleUpdateGraphicPartnersTitles
                 }
-                wordpressTitlesData={wordpressTitlesData}
+                graphicTitlesData={graphicTitlesData}
               /> */}
-              {/* <WordpressPartnerSays
-                handleUpdateWordpressTestimonialTitles={
-                  handleUpdateWordpressTestimonialTitles
+              <GraphicPartnerSays
+                handleUpdateGraphicTestimonialTitles={
+                  handleUpdateGraphicTestimonialTitles
                 }
-                wordpressTitlesData={wordpressTitlesData}
-              /> */}
+                graphicTitlesData={graphicTitlesData}
+              />
               <Footer
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
@@ -334,48 +280,48 @@ const GraphicDesign = () => {
         </Dashboard>
       </section>
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-banner" && (
-          <ModalUpdateWordpressBanner
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "graphic-banner" && (
+          <ModalUpdateGraphicBanner
             itemEdit={itemEdit}
-            wordpressData={wordpressData}
+            graphicData={graphicData}
           />
-        )} */}
+        )}
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-overview" && (
-          <ModalUpdateWordpressOverview
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "graphic-overview" && (
+          <ModalUpdateGraphicOverview
             itemEdit={itemEdit}
-            wordpressOverviewData={wordpressOverviewData}
+            graphicOverviewData={graphicOverviewData}
           />
-        )} */}
+        )}
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-overview-list" && (
-          <ModalUpdateWordpressOverviewList
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "graphic-overview-list" && (
+          <ModalUpdateGraphicOverviewList
             itemEdit={itemEdit}
-            wordpressOverviewData={wordpressOverviewData}
+            graphicOverviewData={graphicOverviewData}
           />
-        )} */}
+        )}
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-scope" && (
-          <ModalUpdateWordpressScope itemEdit={itemEdit} />
-        )} */}
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "graphic-scope" && (
+          <ModalUpdateGraphicScope itemEdit={itemEdit} />
+        )}
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-scope-title" && (
-          <ModalUpdateWordpressScopeTitle
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "graphic-scope-title" && (
+          <ModalUpdateGraphicScopeTitle
             itemEdit={itemEdit}
-            wordpressTitlesData={wordpressTitlesData}
+            graphicTitlesData={graphicTitlesData}
           />
-        )} */}
+        )}
 
       {/* {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "wordpress-packages-title" && (
           <ModalUpdateWordpressPackagesTitle
             itemEdit={itemEdit}
-            wordpressTitlesData={wordpressTitlesData}
+            graphicTitlesData={graphicTitlesData}
           />
         )} */}
 
@@ -383,17 +329,17 @@ const GraphicDesign = () => {
         store.isUpdateHome?.modalCode === "wordpress-partners-title" && (
           <ModalUpdateWordpressPartnersTitle
             itemEdit={itemEdit}
-            wordpressTitlesData={wordpressTitlesData}
+            graphicTitlesData={graphicTitlesData}
           />
         )} */}
 
-      {/* {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-testimonial-title" && (
-          <ModalUpdateWordpressPartnerSaysTitle
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "graphic-testimonial-title" && (
+          <ModalUpdateGraphicPartnerSaysTitle
             itemEdit={itemEdit}
-            wordpressTitlesData={wordpressTitlesData}
+            graphicTitlesData={graphicTitlesData}
           />
-        )} */}
+        )}
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
@@ -408,13 +354,13 @@ const GraphicDesign = () => {
           />
         )}
 
-      {/* {store.isUpdateHome?.modal &&
+      {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "contact-form-wordpress" && (
           <ModalUpdateContactFormDefaultWordPress
             itemEdit={itemEdit}
             contactFormWordpressData={contactFormWordpressData}
           />
-        )} */}
+        )}
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
