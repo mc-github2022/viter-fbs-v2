@@ -23,6 +23,8 @@ RewriteRule ^testimonials/([0-9]+)$ controllers/developer/home/testimonials/test
 RewriteRule ^insights$ controllers/developer/home/insights/insights.php [L]
 RewriteRule ^insights/([0-9]+)$ controllers/developer/home/insights/insights.php?home_insightsid=$1 [L]
 RewriteRule ^insights/active/([0-9]+)$ controllers/developer/home/insights/active.php?home_insightsid=$1 [L]
+RewriteRule ^insights/search$ controllers/developer/home/insights/search.php [L]
+RewriteRule ^insights/page/([0-9]+)$ controllers/developer/home/insights/page.php?start=$1 [L]
 
 # HOME - PROCESS
 RewriteRule ^process$ controllers/developer/home/process/homeProcess.php [L]

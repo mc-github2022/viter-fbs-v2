@@ -1,16 +1,16 @@
 <?php
 // set http header
-require '../../../core/header.php';
+require '../../../../core/header.php';
 // use needed functions
-require '../../../core/functions.php';
+require '../../../../core/functions.php';
 // require 'functions.php';
 // use needed classes
-require '../../../models/developer/events-and-activities/EventsAndActivities.php';
+require '../../../../models/developer/home/insights/Insights.php';
 // check database connection
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$events_activities = new EventsAndActivities($conn);
+$home_insights = new Insights($conn);
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
@@ -19,28 +19,28 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
     // get data
-    $events_activities->events_activities_search = $data["searchValue"];    // get data
+    $home_insights->column_search = $data["searchValue"];    // get data
     if ($data["isFilter"] == true) {
         // get data
         // if filter with search
-        if ($events_activities->events_activities_search != "") {
-            checkKeyword($events_activities->events_activities_search);
-            $events_activities->events_activities_is_active = checkIndex($data, "is_active");
-            $query = checkFilterByStatusAndSearch($events_activities);
+        if ($home_insights->column_search != "") {
+            checkKeyword($home_insights->column_search);
+            $home_insights->home_insights_is_active = checkIndex($data, "is_active");
+            $query = checkFilterByStatusAndSearch($home_insights);
             http_response_code(200);
             getQueriedData($query);
         }
 
         // if filter only
-        $events_activities->events_activities_is_active = checkIndex($data, "is_active");
-        $query = checkFilterByStatus($events_activities);
+        $home_insights->home_insights_is_active = checkIndex($data, "is_active");
+        $query = checkFilterByStatus($home_insights);
         http_response_code(200);
         getQueriedData($query);
     }
 
     // if search only
-    checkKeyword($events_activities->events_activities_search);
-    $query = checkSearch($events_activities);
+    checkKeyword($home_insights->column_search);
+    $query = checkSearch($home_insights);
     http_response_code(200);
     getQueriedData($query);
     // return 404 error if endpoint not available

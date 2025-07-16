@@ -279,7 +279,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                   <div className="form-input">
                     <div className="gap-4 relative overflow-hidden">
                       <div className=" relative">
-                        <div className="relative">
+                        <div className="relative mb-6">
                           <label className=" text-dark text-xs">Image</label>
                           <div
                             className={`relative mt-9 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[230px] text-xs ${
@@ -392,6 +392,21 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                             </ol>
                           </div>
                         </div>
+                        {itemEdit ? (
+                          <div className="h-[30px]  relative w-full">
+                            <div className="absolute">
+                              <a
+                                className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
+                                onClick={handlePreview}
+                                role="button"
+                              >
+                                Preview
+                              </a>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                         <div>
                           <div className="input-wrapper">
                             <InputText
@@ -554,21 +569,6 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <div className="h-[30px]  relative w-full">
-                        <div className="absolute">
-                          {itemEdit ? (
-                            <a
-                              className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
-                              onClick={handlePreview}
-                              role="button"
-                            >
-                              Preview
-                            </a>
-                          ) : (
-                            ""
-                          )}
                         </div>
                       </div>
                     </div>

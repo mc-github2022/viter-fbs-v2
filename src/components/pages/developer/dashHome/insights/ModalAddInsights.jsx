@@ -331,6 +331,23 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           </ol>
                         </div>
                       </div>
+
+                      {itemEdit ? (
+                        <div className="h-[30px]  relative w-full">
+                          <div className="absolute">
+                            <a
+                              className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
+                              onClick={handlePreview}
+                              role="button"
+                            >
+                              Preview
+                            </a>
+                          </div>
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                      
                       <div>
                         <div className="input-wrapper">
                           <InputText
@@ -416,23 +433,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               disabled={mutation.isPending}
                             />
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="h-[30px]  relative w-full">
-                        <div className="absolute">
-                          {itemEdit ? (
-                            <a
-                              className="text-xs hover:bg- border hover:bg-secondary border-gray-400 rounded-md py-1 px-3 bg-primary text-white block"
-                              onClick={handlePreview}
-                              role="button"
-                            >
-                              Preview
-                            </a>
-                          ) : (
-                            ""
-                          )}
                         </div>
                       </div>
                     </div>

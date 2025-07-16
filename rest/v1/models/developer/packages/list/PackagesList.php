@@ -292,6 +292,131 @@ class PackagesList
         return $query;
     }
 
+    public function filterByStatus()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesList} as list, ";
+            $sql .= "{$this->tblPackagesCategory} as category ";
+            $sql .= "where list.packages_list_category_name_id = category.packages_category_aid ";
+            $sql .= "and list.packages_list_is_active = :packages_list_is_active ";
+            $sql .= "order by list.packages_list_is_active desc, ";
+            $sql .= "list.packages_list_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_list_is_active" => $this->packages_list_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatusAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesList} as list, ";
+            $sql .= "{$this->tblPackagesCategory} as category ";
+            $sql .= "where ";
+            $sql .= "list.packages_list_category_name_id = category.packages_category_aid ";
+            $sql .= "and list.packages_list_is_active = :packages_list_is_active ";
+            $sql .= "and (category.packages_category_name like :packages_category_name ";
+            $sql .= "or list.packages_list_title like :packages_list_title ";
+            $sql .= "or list.packages_list_price like :packages_list_price ";
+            $sql .= "or list.packages_list_foreign_price like :packages_list_foreign_price) ";
+            $sql .= "order by list.packages_list_is_active desc, ";
+            $sql .= "list.packages_list_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_category_name" => "%{$this->packages_list_search}%",
+                "packages_list_title" => "%{$this->packages_list_search}%",
+                "packages_list_price" => "%{$this->packages_list_search}%",
+                "packages_list_foreign_price" => "%{$this->packages_list_search}%",
+                "packages_list_is_active" => $this->packages_list_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByCategory()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesList} as list, ";
+            $sql .= "{$this->tblPackagesCategory} as category ";
+            $sql .= "where list.packages_list_category_name_id = category.packages_category_aid ";
+            $sql .= "and list.packages_list_category_name_id = :packages_list_category_name_id ";
+            $sql .= "order by list.packages_list_is_active desc, ";
+            $sql .= "list.packages_list_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_list_category_name_id" => $this->packages_list_category_name_id,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByCategoryAndStatus()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesList} as list, ";
+            $sql .= "{$this->tblPackagesCategory} as category ";
+            $sql .= "where list.packages_list_category_name_id = category.packages_category_aid ";
+            $sql .= "and (list.packages_list_is_active = :packages_list_is_active ";
+            $sql .= "or list.packages_list_category_name_id = :packages_list_category_name_id) ";
+            $sql .= "order by list.packages_list_is_active desc, ";
+            $sql .= "list.packages_list_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_list_category_name_id" => $this->packages_list_category_name_id,
+                "packages_list_is_active" => $this->packages_list_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByCategoryAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesList} as list, ";
+            $sql .= "{$this->tblPackagesCategory} as category ";
+            $sql .= "where ";
+            $sql .= "list.packages_list_category_name_id = category.packages_category_aid ";
+            $sql .= "and list.packages_list_category_name_id = :packages_list_category_name_id ";
+            $sql .= "and (category.packages_category_name like :packages_category_name ";
+            $sql .= "or list.packages_list_title like :packages_list_title ";
+            $sql .= "or list.packages_list_price like :packages_list_price ";
+            $sql .= "or list.packages_list_foreign_price like :packages_list_foreign_price) ";
+            $sql .= "order by list.packages_list_is_active desc, ";
+            $sql .= "list.packages_list_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_category_name" => "%{$this->packages_list_search}%",
+                "packages_list_title" => "%{$this->packages_list_search}%",
+                "packages_list_price" => "%{$this->packages_list_search}%",
+                "packages_list_foreign_price" => "%{$this->packages_list_search}%",
+                "packages_list_category_name_id" => $this->packages_list_category_name_id,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
     public function checkAssociationPackageDetails()
     {
         try {

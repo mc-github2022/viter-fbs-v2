@@ -89,25 +89,17 @@ class EventsAndActivities
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblEventsAndActivities} ";
-            $sql .= "where events_activities_img = events_activities_img ";
-            $sql .= "and (events_activities_img like :events_activities_img ";
-            $sql .= "or events_activities_category like :events_activities_category ";
+            $sql .= "where events_activities_title = events_activities_title ";
+            $sql .= "and (events_activities_category like :events_activities_category ";
             $sql .= "or events_activities_title like :events_activities_title ";
-            $sql .= "or events_activities_slug like :events_activities_slug ";
-            $sql .= "or DATE_FORMAT(events_activities_date, '%M %e, %Y') like :events_activities_date ";
-            $sql .= "or events_activities_img_list like :events_activities_img_list ";
-            $sql .= "or events_activities_description like :events_activities_description) ";
+            $sql .= "or DATE_FORMAT(events_activities_date, '%M %e, %Y') like :events_activities_date) ";
             $sql .= "order by events_activities_is_active desc, ";
             $sql .= "events_activities_date desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "events_activities_img" => "%{$this->events_activities_search}%",
                 "events_activities_category" => "%{$this->events_activities_search}%",
                 "events_activities_title" => "%{$this->events_activities_search}%",
-                "events_activities_slug" => "%{$this->events_activities_search}%",
                 "events_activities_date" => "%{$this->events_activities_search}%",
-                "events_activities_img_list" => "%{$this->events_activities_search}%",
-                "events_activities_description" => "%{$this->events_activities_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
@@ -185,6 +177,52 @@ class EventsAndActivities
                 "events_activities_img_list" => $this->events_activities_img_list,
                 "events_activities_datetime" => $this->events_activities_datetime,
                 "events_activities_aid" => $this->events_activities_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatus()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblEventsAndActivities} ";
+            $sql .= "where events_activities_is_active = events_activities_is_active ";
+            $sql .= "and events_activities_is_active = :events_activities_is_active ";
+            $sql .= "order by events_activities_is_active desc, ";
+            $sql .= "events_activities_date desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "events_activities_is_active" => $this->events_activities_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatusAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblEventsAndActivities} ";
+            $sql .= "where events_activities_title = events_activities_title ";
+            $sql .= "and events_activities_is_active = :events_activities_is_active ";
+            $sql .= "and (events_activities_category like :events_activities_category ";
+            $sql .= "or events_activities_title like :events_activities_title ";
+            $sql .= "or DATE_FORMAT(events_activities_date, '%M %e, %Y') like :events_activities_date) ";
+            $sql .= "order by events_activities_is_active desc, ";
+            $sql .= "events_activities_date desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "events_activities_title" => "%{$this->events_activities_search}%",
+                "events_activities_category" => "%{$this->events_activities_search}%",
+                "events_activities_date" => "%{$this->events_activities_search}%",
+                "events_activities_is_active" => $this->events_activities_is_active,
             ]);
         } catch (PDOException $ex) {
             $query = false;

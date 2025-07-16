@@ -41,7 +41,6 @@ const GalleryTable = ({ setItemEdit }) => {
     setIsId(item.gallery_aid);
   };
 
-
   const handleCopyLink = (item) => {
     if (item?.gallery_img) {
       const galleryImage = getConvertStringToJSONparseData(item.gallery_img);
@@ -101,7 +100,7 @@ const GalleryTable = ({ setItemEdit }) => {
                   className="p-3 place-content-start flex flex-col gap-3"
                   colSpan="100%"
                 >
-                  {counter++}
+                  {counter++}.
                   <div className="relative h-[160px]">
                     {galleryImage.map((image, index) => (
                       <LoadImages
@@ -145,6 +144,7 @@ const GalleryTable = ({ setItemEdit }) => {
                       </button>
                     </div>
                   </div>
+                  <hr></hr>
                 </div>
               </div>
             );

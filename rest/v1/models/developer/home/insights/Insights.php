@@ -21,6 +21,10 @@ class Insights
     public $connection;
     public $lastInsertedId;
 
+    public $column_start;
+    public $column_total;
+    public $column_search;
+
     public $tblInsights;
 
     public function __construct($db)
@@ -38,6 +42,27 @@ class Insights
             $sql .= "order by home_insights_is_active desc, ";
             $sql .= "home_insights_date desc ";
             $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readLimit()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblInsights} ";
+            $sql .= "order by home_insights_is_active desc, ";
+            $sql .= "home_insights_date desc ";
+            $sql .= "limit :start, ";
+            $sql .= ":total ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "start" => $this->column_start - 1,
+                "total" => $this->column_total,
+            ]);
         } catch (PDOException $ex) {
             $query = false;
         }
@@ -153,6 +178,72 @@ class Insights
                 "home_insights_form_selected" => $this->home_insights_form_selected,
                 "home_insights_datetime" => $this->home_insights_datetime,
                 "home_insights_aid" => $this->home_insights_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function search()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblInsights} ";
+            $sql .= "where home_insights_title = home_insights_title ";
+            $sql .= "and (home_insights_title like :home_insights_title ";
+            $sql .= "or home_insights_category like :home_insights_category) ";
+            $sql .= "order by home_insights_is_active desc, ";
+            $sql .= "home_insights_date desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "home_insights_title" => "%{$this->column_search}%",
+                "home_insights_category" => "%{$this->column_search}%",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatus()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblInsights} ";
+            $sql .= "where home_insights_is_active = home_insights_is_active ";
+            $sql .= "and home_insights_is_active = :home_insights_is_active ";
+            $sql .= "order by home_insights_is_active desc, ";
+            $sql .= "home_insights_date desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "home_insights_is_active" => $this->home_insights_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatusAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblInsights} ";
+            $sql .= "where home_insights_title = home_insights_title ";
+            $sql .= "and home_insights_is_active = :home_insights_is_active ";
+            $sql .= "and (home_insights_title like :home_insights_title ";
+            $sql .= "or home_insights_category like :home_insights_category) ";
+            $sql .= "order by home_insights_is_active desc, ";
+            $sql .= "home_insights_date desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "home_insights_title" => "%{$this->column_search}%",
+                "home_insights_category" => "%{$this->column_search}%",
+                "home_insights_is_active" => $this->home_insights_is_active,
             ]);
         } catch (PDOException $ex) {
             $query = false;

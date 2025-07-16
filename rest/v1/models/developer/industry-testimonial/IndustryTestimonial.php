@@ -71,10 +71,7 @@ class IndustryTestimonial
             $sql .= "and (industry_testimonial_name like :industry_testimonial_name ";
             $sql .= "or industry_testimonial_position like :industry_testimonial_position ";
             $sql .= "or industry_testimonial_company like :industry_testimonial_company ";
-            $sql .= "or industry_testimonial_category like :industry_testimonial_category ";
-            $sql .= "or industry_testimonial_message like :industry_testimonial_message ";
-            $sql .= "or industry_testimonial_logo like :industry_testimonial_logo ";
-            $sql .= "or industry_testimonial_img like :industry_testimonial_img) ";
+            $sql .= "or industry_testimonial_category like :industry_testimonial_category) ";
             $sql .= "order by industry_testimonial_aid desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -82,9 +79,6 @@ class IndustryTestimonial
                 "industry_testimonial_position" => "%{$this->industry_testimonial_search}%",
                 "industry_testimonial_company" => "%{$this->industry_testimonial_search}%",
                 "industry_testimonial_category" => "%{$this->industry_testimonial_search}%",
-                "industry_testimonial_message" => "%{$this->industry_testimonial_search}%",
-                "industry_testimonial_logo" => "%{$this->industry_testimonial_search}%",
-                "industry_testimonial_img" => "%{$this->industry_testimonial_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;

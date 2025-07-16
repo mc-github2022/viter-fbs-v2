@@ -16,6 +16,30 @@ function checkSearchPackagesCategory($object)
     return $query;
 }
 
+// filter by category
+function checkFilterByCategory($object)
+{
+    $query = $object->filterByCategory();
+    checkQuery($query, "Empty records. (filter by packages category)");
+    return $query;
+}
+
+// filter by category and status
+function checkFilterByCategoryAndStatus($object)
+{
+    $query = $object->filterByCategoryAndStatus();
+    checkQuery($query, "Empty records. (filter by packages category and status)");
+    return $query;
+}
+
+// filter by category and search
+function checkFilterByCategoryAndSearch($object)
+{
+    $query = $object->filterByCategoryAndSearch();
+    checkQuery($query, "Empty records. (filter by packages category and search)");
+    return $query;
+}
+
 // // compare two values
 // function compareTwoValuesForTitleAndCategory($object, $title_old, $title, $id_old, $id)
 // {

@@ -13,7 +13,10 @@ import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
 import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
-import { getConvertStringToJSONparseData } from "../../../helpers/functions-general";
+import {
+  apiVersion,
+  getConvertStringToJSONparseData,
+} from "../../../helpers/functions-general";
 
 const LcssBatchesTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -37,8 +40,8 @@ const LcssBatchesTable = ({ setItemEdit }) => {
     queryKey: ["lcssBatches", onSearch, store.isSearch],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
-        `/v1/lcssBatches/search`, // search endpoint
-        `/v1/lcssBatches/page/${pageParam}`, // list endpoint
+        `${apiVersion}/lcssBatches/search`, // search endpoint
+        `${apiVersion}/lcssBatches/page/${pageParam}`, // list endpoint
         store.isSearch, // search boolean
         { searchValue: search.current.value, id: "" } // search value
       ),
@@ -186,7 +189,7 @@ const LcssBatchesTable = ({ setItemEdit }) => {
         <ModalDelete
           setIsDelete={setIsDelete}
           queryKey={"lcssBatches"}
-          mysqlEndpoint={`/v1/lcssBatches/${id}`}
+          mysqlEndpoint={`${apiVersion}/lcssBatches/${id}`}
           item={isData}
         />
       )}

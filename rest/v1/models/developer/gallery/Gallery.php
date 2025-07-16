@@ -26,7 +26,7 @@ class Gallery
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblGallery} ";
-            $sql .= "order by gallery_img asc ";
+            $sql .= "order by gallery_created desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -40,7 +40,7 @@ class Gallery
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblGallery} ";
-            $sql .= "order by gallery_img asc ";
+            $sql .= "order by gallery_created desc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);

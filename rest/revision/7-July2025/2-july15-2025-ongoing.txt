@@ -3,6 +3,11 @@ DEVELOPER
 
         * CONTROLLERS
             -> rest/v1/controllers/developer/services/web-design/graphic
+            -> rest/v1/controllers/developer/home/insights/search.php
+            -> rest/v1/controllers/developer/home/insights/page.php
+            -> rest/v1/controllers/developer/events-and-activities/search.php
+            -> rest/v1/controllers/developer/packages/list/search.php
+            -> rest/v1/controllers/developer/packages/list/functions.php
 
         * CORE 
             -> 
@@ -10,12 +15,20 @@ DEVELOPER
 
         * MODELS
             -> rest/v1/models/developer/services/web-design/graphic
+            -> rest/v1/models/developer/industry-testimonial/IndustryTestimonial.php
+            -> rest/v1/models/developer/home/insights/Insights.php
+            -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
+            -> rest/v1/models/developer/packages/list/PackagesList.php
 
         * HTACESS
             -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - BANNER 
             -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - OVERVIEW
             -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - SCOPE
             -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - TITLES
+            -> # HOME - INSIGHT
+                note: this is added
+                RewriteRule ^insights/search$ controllers/developer/home/insights/search.php [L]
+                RewriteRule ^insights/page/([0-9]+)$ controllers/developer/home/insights/page.php?start=$1 [L] 
 
         * OTHER FILES
             ->

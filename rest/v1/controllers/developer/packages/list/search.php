@@ -20,7 +20,55 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkPayload($data);
 
     // get data
-    $packages_list->packages_list_search = $data["searchValue"];    // get data 
+    $packages_list->packages_list_search = $data["searchValue"];    // get data
+
+    // get data
+    if ($data["isFilter"] == true) {
+        $category_id = $data["category_id"];
+        $packages_list->packages_list_is_active = $data["is_active"];
+
+        if (is_numeric($category_id)) {
+            // filter category
+            $packages_list->packages_list_category_name_id = $category_id;
+            $query = checkFilterByCategory($packages_list);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+
+        if (is_numeric($category_id) != "") {
+            // filter category
+            $packages_list->packages_list_is_active = checkIndex($data, "is_active");
+            $query = checkFilterByCategoryAndStatus($packages_list);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+
+        // if filter with search
+        if ($packages_list->packages_list_search != "") {
+            checkKeyword($packages_list->packages_list_search);
+            $packages_list->packages_list_is_active = checkIndex($data, "is_active");
+            $query = checkFilterByStatusAndSearch($packages_list);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+
+        // if filter category with search
+        if ($packages_list->packages_list_search != "") {
+            checkKeyword($packages_list->packages_list_search);
+            $packages_list->packages_list_category_name_id = checkIndex($data, "category_id");
+            $query = checkFilterByCategoryAndSearch($packages_list);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+
+        if ($packages_list->packages_list_is_active != "") {
+            // if filter only
+            $query = checkFilterByStatus($packages_list);
+            http_response_code(200);
+            getQueriedData($query);
+        }
+    }
+
     // if search only
     checkKeyword($packages_list->packages_list_search);
     $query = checkSearch($packages_list);

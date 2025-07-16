@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaList } from "react-icons/fa";
 import { MdDelete, MdOutlineFileUpload } from "react-icons/md";
 import { RiDraftFill } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
@@ -22,11 +22,13 @@ import {
   setIsArchive,
   setIsDelete,
   setIsRestore,
+  setIsSearch,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import DraftStatusEventsAndActivities from "./DraftStatusEventsAndActivities";
 import ModalDraft from "./modals/ModalDraft";
 import ModalUpload from "./modals/ModalUpload";
+import FilterPublishDraft from "../../../../partials/filter-search/FilterPublishDraft";
 
 const EventsAndActivitiesTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -34,10 +36,14 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
 
-  const [onSearch, setOnSearch] = React.useState(false);
+  // page
+  const [isFilter, setIsFilter] = React.useState(false);
+  const [filterData, setFilterData] = React.useState("all");
   const [page, setPage] = React.useState(1);
+  const [onSearch, setOnSearch] = React.useState(false);
   const search = React.useRef({ value: "" });
   const { ref, inView } = useInView();
+  let counter = 1;
 
   const {
     data: result,
@@ -48,13 +54,23 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["eventsAndAct", onSearch, store.isSearch],
+    queryKey: [
+      "eventsAndAct",
+      search.current.value,
+      store.isSearch,
+      filterData,
+    ],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `${apiVersion}/eventsAndAct/search`, // search endpoint
         `${apiVersion}/eventsAndAct/page/${pageParam}`, // list endpoint
-        store.isSearch, // search boolean
-        { searchValue: search.current.value, id: "" } // search value
+        store.isSearch || isFilter, // search boolean
+        {
+          isFilter,
+          is_active: filterData,
+          searchValue: search.current.value,
+          id: "",
+        } // search value
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -64,8 +80,6 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
     },
     refetchOnWindowFocus: false,
   });
-
-  let counter = 1;
 
   const handleEdit = (item) => {
     dispatch(setIsAdd(true));
@@ -94,6 +108,14 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
     setIsRestore(true);
   };
 
+  const handleClear = (e) => {
+    setFilterData("all");
+    setIsFilter(false);
+    dispatch(setIsSearch(false));
+    setPage(1);
+    search.current.value = "";
+  };
+
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
@@ -103,16 +125,47 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <div className="place-self-end">
-        <SearchBar
-          search={search}
-          dispatch={dispatch}
-          store={store}
-          result={result?.pages}
-          isFetching={isFetching}
-          setOnSearch={setOnSearch}
-          onSearch={onSearch}
-        />
+      <div className="flex flex-col md:flex-row justify-between gap-2">
+        <div className="flex gap-2">
+          <FilterPublishDraft
+            filterData={filterData}
+            setFilterData={setFilterData}
+            setIsFilter={setIsFilter}
+            setPage={setPage}
+          />
+          <div className="relative ml-2 flex items-center gap-1 text-sm text-gray-600">
+            <FaList />
+            <span>
+              {result?.loading === "error"
+                ? "0"
+                : isFetching || result?.loading === "pending"
+                ? "loading"
+                : store.isSearch || isFilter
+                ? result?.pages[0]?.count
+                : result?.pages[0]?.total}
+            </span>
+            {(store.isSearch || isFilter) && (
+              <span
+                className="ml-3 underline text-xs  cursor-pointer hover:text-primary"
+                onClick={(e) => handleClear(e)}
+              >
+                Clear
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <SearchBar
+            search={search}
+            dispatch={dispatch}
+            store={store}
+            result={result?.pages}
+            isFetching={isFetching}
+            setOnSearch={setOnSearch}
+            onSearch={onSearch}
+          />
+        </div>
       </div>
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-150px)] mb-10 lg:mb-0 lg:min-h-0 relative">
         {isFetching && !isFetchingNextPage && status !== "pending" && (
