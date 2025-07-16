@@ -40,6 +40,14 @@ function checkFilterByCategoryAndSearch($object)
     return $query;
 }
 
+// filter by category, status  and search
+function checkFilterByCategoryAndStatusAndSearch($object)
+{
+    $query = $object->filterByCategoryAndStatusAndSearch();
+    checkQuery($query, "Empty records. (filter by packages category, status and search)");
+    return $query;
+}
+
 // // compare two values
 // function compareTwoValuesForTitleAndCategory($object, $title_old, $title, $id_old, $id)
 // {
