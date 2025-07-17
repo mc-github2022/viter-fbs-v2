@@ -8,6 +8,8 @@ DEVELOPER
             -> rest/v1/controllers/developer/events-and-activities/search.php
             -> rest/v1/controllers/developer/packages/list/search.php
             -> rest/v1/controllers/developer/packages/list/functions.php
+            -> rest/v1/controllers/developer/packages/details/functions.php
+            -> rest/v1/controllers/developer/packages/details/search.php
 
         * CORE 
             -> 
@@ -19,6 +21,7 @@ DEVELOPER
             -> rest/v1/models/developer/home/insights/Insights.php
             -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
             -> rest/v1/models/developer/packages/list/PackagesList.php
+            -> rest/v1/models/developer/packages/details/PackagesDetails.php
 
         * HTACESS
             -> # SERVICES - WEB DESIGN - GRAPHIC DESIGN - BANNER 

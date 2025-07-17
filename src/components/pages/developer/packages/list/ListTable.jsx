@@ -25,7 +25,7 @@ import {
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 
-const ListTable = ({ setItemEdit, packagesCategoryData, packagesListData }) => {
+const ListTable = ({ setItemEdit, packagesCategoryData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -78,32 +78,6 @@ const ListTable = ({ setItemEdit, packagesCategoryData, packagesListData }) => {
     },
     refetchOnWindowFocus: false,
   });
-
-  // // Join packagesListData with packagesCategoryData to get packages_category_name
-  // const enrichedList = packagesListData?.data?.map((list) => {
-  //   const matchingCategory = packagesCategoryData?.data?.find(
-  //     (category) =>
-  //       category.packages_category_aid === list.packages_list_category_name_id
-  //   );
-  //   return {
-  //     ...list,
-  //     packages_category_name: matchingCategory
-  //       ? matchingCategory.packages_category_name
-  //       : "Unknown",
-  //   };
-  // });
-
-  // const listCategories = [
-  //   ...new Map(
-  //     enrichedList?.map((sub) => [
-  //       sub.packages_list_category_name_id,
-  //       {
-  //         packages_list_category_name_id: sub.packages_list_category_name_id,
-  //         packages_category_name: sub.packages_category_name,
-  //       },
-  //     ])
-  //   ).values(),
-  // ];
 
   const handleEdit = (item) => {
     dispatch(setIsAdd(true));

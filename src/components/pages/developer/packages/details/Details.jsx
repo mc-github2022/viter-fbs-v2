@@ -8,10 +8,18 @@ import { setIsAdd, setIsPackagesOpen } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import DetailsTable from "./DetailsTable";
 import ModalAddDetails from "./ModalAddDetails";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../helpers/functions-general";
 
 const Details = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
+
+  const { data: packagesListData } = useQueryData(
+    `${apiVersion}/packages-list`, // endpoint
+    "get", // method
+    "packages-list" // key
+  );
 
   const handleAdd = () => {
     dispatch(setIsAdd(true));
@@ -40,7 +48,7 @@ const Details = () => {
               </button>
             </div>
             <div className="pb-4">
-              <DetailsTable setItemEdit={setItemEdit} />
+              <DetailsTable setItemEdit={setItemEdit} packagesListData={packagesListData} />
             </div>
           </div>
         </Dashboard>

@@ -9,6 +9,7 @@ import {
   setIsArchive,
   setIsDelete,
   setIsRestore,
+  setIsSearch,
 } from "../../../../store/StoreAction";
 import SearchBar from "../../../../partials/SearchBar";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
@@ -16,24 +17,30 @@ import TableLoading from "../../../../partials/spinners/TableLoading";
 import NoData from "../../../../partials/spinners/NoData";
 import ServerError from "../../../../partials/spinners/ServerError";
 import Status from "../../../../partials/Status";
-import { FaArchive, FaCheckCircle, FaEdit } from "react-icons/fa";
+import { FaArchive, FaCheckCircle, FaEdit, FaList } from "react-icons/fa";
 import { MdDelete, MdRestore } from "react-icons/md";
 import LoadMore from "../../../../partials/LoadMore";
 import ModalDelete from "../../../../partials/modals/ModalDelete";
 import ModalArchive from "../../../../partials/modals/ModalArchive";
 import ModalRestore from "../../../../partials/modals/ModalRestore";
 import { IoMdCloseCircle } from "react-icons/io";
+import FilterStatus from "../../../../partials/filter-search/FilterStatus";
 
-const DetailsTable = ({ setItemEdit }) => {
+const DetailsTable = ({ setItemEdit, packagesListData }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
   const [isArchiving, setIsArchiving] = React.useState(false);
 
-  const [onSearch, setOnSearch] = React.useState(false);
+  // page
+  const [isFilter, setIsFilter] = React.useState(false);
+  const [filterData, setFilterData] = React.useState("all");
+  const [filterListData, setFilterListData] = React.useState("all");
   const [page, setPage] = React.useState(1);
+  const [onSearch, setOnSearch] = React.useState(false);
   const search = React.useRef({ value: "" });
   const { ref, inView } = useInView();
+  let counter = 1;
 
   const {
     data: result,
@@ -44,13 +51,25 @@ const DetailsTable = ({ setItemEdit }) => {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: ["packages-details", onSearch, store.isSearch],
+    queryKey: [
+      "packages-details",
+      search.current.value,
+      store.isSearch,
+      filterData,
+      filterListData,
+    ],
     queryFn: async ({ pageParam = 1 }) =>
       await queryDataInfinite(
         `${apiVersion}/packages-details/search`, // search endpoint
         `${apiVersion}/packages-details/page/${pageParam}`, // list endpoint
-        store.isSearch, // search boolean
-        { searchValue: search.current.value, id: "" } // search value
+        store.isSearch || isFilter, // search boolean
+        {
+          isFilter,
+          searchValue: search.current.value,
+          id: "",
+          is_active: filterData,
+          list_id: filterListData,
+        } // search value
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -60,8 +79,6 @@ const DetailsTable = ({ setItemEdit }) => {
     },
     refetchOnWindowFocus: false,
   });
-
-  let counter = 1;
 
   const handleEdit = (item) => {
     dispatch(setIsAdd(true));
@@ -90,6 +107,24 @@ const DetailsTable = ({ setItemEdit }) => {
     setIsRestore(true);
   };
 
+  const handleClear = (e) => {
+    setFilterData("all");
+    setFilterListData("all");
+    setIsFilter(false);
+    dispatch(setIsSearch(false));
+    setPage(1);
+    search.current.value = "";
+  };
+
+  const handleChangefilterListData = (e) => {
+    setFilterListData(e.target.value);
+    setIsFilter(false);
+    if (e.target.value !== "all") {
+      setIsFilter(true);
+    }
+    setPage(1);
+  };
+
   React.useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
@@ -99,16 +134,67 @@ const DetailsTable = ({ setItemEdit }) => {
 
   return (
     <>
-      <div className="place-self-end">
-        <SearchBar
-          search={search}
-          dispatch={dispatch}
-          store={store}
-          result={result?.pages}
-          isFetching={isFetching}
-          setOnSearch={setOnSearch}
-          onSearch={onSearch}
-        />
+      <div className="flex flex-col md:flex-row justify-between gap-2">
+        <div className="flex gap-2">
+          <FilterStatus
+            filterData={filterData}
+            setFilterData={setFilterData}
+            setIsFilter={setIsFilter}
+            setPage={setPage}
+          />
+          <div className="flex items-center gap-2">
+            <div className="relative w-40">
+              <label>Filter</label>
+              <select
+                name="packages"
+                value={filterListData}
+                onChange={(e) => handleChangefilterListData(e)}
+                className="text-xs py-[0px] "
+                disabled={isFetching || status === "pending"}
+              >
+                <option value="all">All</option>
+                {packagesListData?.data.map((item, key) => (
+                  <option key={key} value={item.packages_list_aid}>
+                    {item.packages_list_title} (
+                    {item.packages_list_category_name})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="relative ml-2 flex items-center gap-1 text-sm text-gray-600">
+            <FaList />
+            <span>
+              {result?.loading === "error"
+                ? "0"
+                : isFetching || result?.loading === "pending"
+                ? "loading"
+                : store.isSearch || isFilter
+                ? result?.pages[0]?.count
+                : result?.pages[0]?.total}
+            </span>
+            {(store.isSearch || isFilter) && (
+              <span
+                className="ml-3 underline text-xs  cursor-pointer hover:text-primary"
+                onClick={(e) => handleClear(e)}
+              >
+                Clear
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <SearchBar
+            search={search}
+            dispatch={dispatch}
+            store={store}
+            result={result?.pages}
+            isFetching={isFetching}
+            setOnSearch={setOnSearch}
+            onSearch={onSearch}
+          />
+        </div>
       </div>
 
       <div className=" shadow-md rounded-md overflow-y-auto min-h-full md:min-h-[calc(100vh-30px)] lg:max-h-[calc(90vh-150px)] mb-10 lg:mb-0 lg:min-h-0 relative">

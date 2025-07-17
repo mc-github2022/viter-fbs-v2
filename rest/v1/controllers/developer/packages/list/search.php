@@ -19,12 +19,12 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
     checkPayload($data);
 
-
+    $packages_list->packages_list_search = $data["searchValue"];
     // get data
     if ($data["isFilter"] == true) {
         $category_id = $data["category_id"];
         $packages_list->packages_list_is_active = $data["is_active"];
-        $packages_list->packages_list_search = $data["searchValue"];
+
 
 
         // Category + Status + Search 
@@ -83,7 +83,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // if search only
     checkKeyword($packages_list->packages_list_search);
     $query = checkSearch($packages_list);
-    // returnError("Search only");
     http_response_code(200);
     getQueriedData($query);
     // return 404 error if endpoint not available

@@ -188,6 +188,148 @@ class PackagesDetails
         return $query;
     }
 
+    public function filterByStatus()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesDetails} as details, ";
+            $sql .= "{$this->tblPackagesList} as list ";
+            $sql .= "where details.packages_details_list_id = list.packages_list_aid ";
+            $sql .= "and details.packages_details_is_active = :packages_details_is_active ";
+            $sql .= "order by details.packages_details_is_active desc, ";
+            $sql .= "details.packages_details_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_details_is_active" => $this->packages_details_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByList()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesDetails} as details, ";
+            $sql .= "{$this->tblPackagesList} as list ";
+            $sql .= "where details.packages_details_list_id = list.packages_list_aid ";
+            $sql .= "and details.packages_details_list_id = :packages_details_list_id ";
+            $sql .= "order by details.packages_details_is_active desc, ";
+            $sql .= "details.packages_details_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_details_list_id" => $this->packages_details_list_id,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatusAndList()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesDetails} as details, ";
+            $sql .= "{$this->tblPackagesList} as list ";
+            $sql .= "where details.packages_details_list_id = list.packages_list_aid ";
+            $sql .= "and details.packages_details_list_id = :packages_details_list_id ";
+            $sql .= "and details.packages_details_is_active = :packages_details_is_active ";
+            $sql .= "order by details.packages_details_is_active desc, ";
+            $sql .= "details.packages_details_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_details_list_id" => $this->packages_details_list_id,
+                "packages_details_is_active" => $this->packages_details_is_active,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatusAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesDetails} as details, ";
+            $sql .= "{$this->tblPackagesList} as list ";
+            $sql .= "where details.packages_details_list_id = list.packages_list_aid ";
+            $sql .= "and details.packages_details_is_active = :packages_details_is_active ";
+            $sql .= "and (list.packages_list_title like :packages_list_title ";
+            $sql .= "or details.packages_details_title like :packages_details_title) ";
+            $sql .= "order by details.packages_details_is_active desc, ";
+            $sql .= "details.packages_details_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_details_is_active" => $this->packages_details_is_active,
+                "packages_list_title" => "%{$this->packages_details_search}%",
+                "packages_details_title" => "%{$this->packages_details_search}%",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByListAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesDetails} as details, ";
+            $sql .= "{$this->tblPackagesList} as list ";
+            $sql .= "where details.packages_details_list_id = list.packages_list_aid ";
+            $sql .= "and details.packages_details_list_id = :packages_details_list_id ";
+            $sql .= "and (list.packages_list_title like :packages_list_title ";
+            $sql .= "or details.packages_details_title like :packages_details_title) ";
+            $sql .= "order by details.packages_details_is_active desc, ";
+            $sql .= "details.packages_details_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_list_title" => "%{$this->packages_details_search}%",
+                "packages_details_title" => "%{$this->packages_details_search}%",
+                "packages_details_list_id" => $this->packages_details_list_id,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function filterByStatusAndListAndSearch()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblPackagesDetails} as details, ";
+            $sql .= "{$this->tblPackagesList} as list ";
+            $sql .= "where details.packages_details_list_id = list.packages_list_aid ";
+            $sql .= "and details.packages_details_list_id = :packages_details_list_id ";
+            $sql .= "and details.packages_details_is_active = :packages_details_is_active ";
+            $sql .= "and (list.packages_list_title like :packages_list_title ";
+            $sql .= "or details.packages_details_title like :packages_details_title) ";
+            $sql .= "order by details.packages_details_is_active desc, ";
+            $sql .= "details.packages_details_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "packages_details_list_id" => $this->packages_details_list_id,
+                "packages_details_is_active" => $this->packages_details_is_active,
+                "packages_list_title" => "%{$this->packages_details_search}%",
+                "packages_details_title" => "%{$this->packages_details_search}%",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
 
     //  search for packages list
     public function searchPackagesList()

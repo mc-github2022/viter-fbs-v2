@@ -21,11 +21,7 @@ const List = () => {
     "packages-category" // key
   );
 
-  const { data: packagesListData } = useQueryData(
-    `${apiVersion}/packages-list`, // endpoint
-    "get", // method
-    "packages-list" // key
-  );
+  
 
   const handleAdd = () => {
     dispatch(setIsAdd(true));
@@ -57,7 +53,6 @@ const List = () => {
               <ListTable
                 setItemEdit={setItemEdit}
                 packagesCategoryData={packagesCategoryData}
-                packagesListData={packagesListData}
               />
             </div>
           </div>
