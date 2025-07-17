@@ -30,7 +30,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         if (is_numeric($list_id) && $packages_details->packages_details_is_active !== "" && $packages_details->packages_details_search !== "") {
             $packages_details->packages_details_list_id = $list_id;
             $query = checkFilterByStatusAndListAndSearch($packages_details);
-            // returnError("status + list + search");
             http_response_code(200);
             getQueriedData($query);
             return;
@@ -40,7 +39,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         if (is_numeric($list_id) && ($packages_details->packages_details_is_active !== "" && $packages_details->packages_details_is_active !== "all")) {
             $packages_details->packages_details_list_id = $list_id;
             $query = checkFilterByStatusAndList($packages_details);
-            // returnError("status + list");
             http_response_code(200);
             getQueriedData($query);
             return;
@@ -50,7 +48,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         if (is_numeric($list_id) && $packages_details->packages_details_search !== "") {
             $packages_details->packages_details_list_id = $list_id;
             $query = checkFilterByListAndSearch($packages_details);
-            // returnError("list + search");
             http_response_code(200);
             getQueriedData($query);
             return;
@@ -59,7 +56,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         // status + search
         if ($packages_details->packages_details_is_active !== "" && $packages_details->packages_details_search !== "") {
             $query = checkFilterByStatusAndSearch($packages_details);
-            // returnError("status + search");
             http_response_code(200);
             getQueriedData($query);
             return;
@@ -69,7 +65,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         if (is_numeric($list_id)) {
             $packages_details->packages_details_list_id = $list_id;
             $query = checkFilterByList($packages_details);
-            // returnError("list only");
             http_response_code(200);
             getQueriedData($query);
             return;
@@ -79,7 +74,6 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         if ($packages_details->packages_details_is_active !== "") {
             $query = checkFilterByStatus($packages_details);
             http_response_code(200);
-            // returnError("status only");
             getQueriedData($query);
             return;
         }
@@ -88,8 +82,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     // if search only
     checkKeyword($packages_details->packages_details_search);
     $query = checkSearch($packages_details);
-    // returnError("search only");
-    http_response_code(200);
+    http_response_code(200);    
     getQueriedData($query);
     // return 404 error if endpoint not available
     checkEndpoint();
