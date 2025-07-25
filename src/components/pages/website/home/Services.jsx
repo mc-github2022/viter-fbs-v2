@@ -17,7 +17,7 @@ const Services = () => {
     true
   );
   return (
-    <section className="services py-10 relative">
+    <section className="services py-10 relative" id="services">
       <div className="customContainer">
         <div className="theTitle leading-1 mb-12">
           <p>

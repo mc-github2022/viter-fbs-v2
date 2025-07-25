@@ -39,7 +39,7 @@ const WhyUsCompanyProfile = ({ pageName }) => {
 
   return (
     <>
-      <div className="whyUsIntro py-16 md:pt-20 md:pb-0" >
+      <div className="whyUsIntro py-16 md:pt-20 md:pb-0" id="whychooseus">
         <div className="customContainer">
           <h2 className="text-[clamp(16px,5vw,20px)] text-center">
             {workCompanyProfileData?.data?.[0]?.work_profile_desc || ""}
@@ -47,7 +47,7 @@ const WhyUsCompanyProfile = ({ pageName }) => {
         </div>
       </div>
 
-      <section className="partnersWithUs pb-20 md:py-20 " id="whyChooseUs">
+      <section className="partnersWithUs pb-20 md:py-20 ">
         <div className="customContainer">
           <p>
             {workCompanyProfileData?.data?.[0]?.work_profile_subtitle || ""}
