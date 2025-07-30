@@ -26,16 +26,20 @@ const WhyUsPage = () => {
   );
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+    // Only scroll to top if there's NO hash in URL
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   return (
     <>
       <Header pageName={pageName} />
       <WhyUsBanner pageName={pageName} />
       <WhyUsCompanyProfile pageName={pageName} />
       <MissionVission />
-      <WhyUsTheTeam workTitlesData={workTitlesData}/>
-      <WhyUsPartners workTitlesData={workTitlesData}/>
+      <WhyUsTheTeam workTitlesData={workTitlesData} />
+      <WhyUsPartners workTitlesData={workTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

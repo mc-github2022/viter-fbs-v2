@@ -37,6 +37,23 @@ const WhyUsCompanyProfile = ({ pageName }) => {
     workCompanyProfileData?.data?.[0]?.work_profile_file
   );
 
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const id = window.location.hash.substring(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
+  }, []);
+
   return (
     <>
       <div className="whyUsIntro py-16 md:pt-20 md:pb-0" id="whychooseus">
@@ -47,7 +64,7 @@ const WhyUsCompanyProfile = ({ pageName }) => {
         </div>
       </div>
 
-      <section className="partnersWithUs pb-20 md:py-20 ">
+      <section className="partnersWithUs pb-20 md:py-20 " id="whychooseus">
         <div className="customContainer">
           <p>
             {workCompanyProfileData?.data?.[0]?.work_profile_subtitle || ""}
