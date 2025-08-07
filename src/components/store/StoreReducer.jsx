@@ -199,6 +199,12 @@ export const StoreReducer = (state, action) => {
         isPackagesOpen: action.payload,
       };
 
+    case "IS_CONTACT_FORM_OPEN":
+      return {
+        ...state,
+        isContactFormOpen: action.payload,
+      };
+
     case "IS_UPDATE_HOME":
       return {
         ...state,

@@ -319,6 +319,8 @@ const Header = ({ pageName }) => {
               ? "/ High School Work Immersion"
               : "" || pageName === "career"
               ? "/ Career"
+              : "" || pageName === "wordpress"
+              ? "/ Wordpress"
               : ""
           } -  `}
         />

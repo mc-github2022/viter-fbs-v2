@@ -76,7 +76,7 @@ const ContactFormDefault = ({
             />
           </button>
 
-          {thePageName !== "cms" ? (
+          {thePageName !== "Wordpress" ? (
             thePageName !== "College OJT" &&
             thePageName !== "Work Immersion" &&
             thePageName !== "Continuing Study" ? (
@@ -456,7 +456,7 @@ const ContactFormDefault = ({
                 </>
               ) : thePageName === "Continuing Study" ? (
                 <></>
-              ) : thePageName === "cms" ? (
+              ) : thePageName === "Wordpress" ? (
                 <>
                   <p className="text-sm">Learn more about our CMS program</p>
                   {contactUsWordpressFile.map((file, index) => (

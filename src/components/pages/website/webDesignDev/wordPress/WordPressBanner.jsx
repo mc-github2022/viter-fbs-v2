@@ -11,10 +11,10 @@ import {
 import ModalContact from "../../../../partials/ModalContact";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalContactWebAndDev from "../../../../partials/ModalContactWebAndDev";
 
 const WordPressBanner = ({ pageName }) => {
-  const [modalContact, setModalContact] = React.useState(false);
-  const [contactForm, setContactForm] = React.useState(false);
+  const [webAndDev, setWebAndDev] = React.useState(false);
 
   const { data: wordpressData } = useQueryData(
     `${apiVersion}/wordpress`, // endpoint
@@ -26,7 +26,7 @@ const WordPressBanner = ({ pageName }) => {
   );
 
   const handleForm = () => {
-    setContactForm(!contactForm);
+    setWebAndDev(!webAndDev);
   };
 
   const wordpressBannerImage = getConvertStringToJSONparseData(
@@ -78,16 +78,10 @@ const WordPressBanner = ({ pageName }) => {
           </div>
         </div>
       </section>
-      {contactForm && (
-        <ModalContact
-          setModalContact={setModalContact}
+      {webAndDev && (
+        <ModalContactWebAndDev
           thePageName={pageName}
-          contactForm={contactForm}
-          setContactForm={setContactForm}
-          modalContact={modalContact}
-          contactSubject={""}
-          notification_purpose={"default-receiver"}
-          emailSubject={`${banner[0]?.bannerBtnText} / WordPress CMS Website - `}
+          setWebAndDev={setWebAndDev}
         />
       )}
     </>

@@ -2,6 +2,7 @@ import React from "react";
 import { AiFillTikTok } from "react-icons/ai";
 import {
   FaFacebookSquare,
+  FaFileDownload,
   FaInstagramSquare,
   FaLinkedin,
   FaPhone,
@@ -9,7 +10,6 @@ import {
 } from "react-icons/fa";
 import { IoMdPin } from "react-icons/io";
 import { IoCloseCircle } from "react-icons/io5";
-import { MdOutlinePhoneIphone } from "react-icons/md";
 
 import { Form, Formik } from "formik";
 
@@ -17,15 +17,12 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import ReCAPTCHA from "react-google-recaptcha";
 import * as Yup from "yup";
 import useQueryData from "../custom-hooks/useQueryData";
-import useUploadFiles from "../custom-hooks/useUploadFiles";
-import {
-  InputText,
-  InputTextArea
-} from "../helpers/FormInputs";
+import { InputText, InputTextArea } from "../helpers/FormInputs";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink,
+  googleViewLink,
   siteKey,
 } from "../helpers/functions-general";
 import { queryData } from "../helpers/queryData";
@@ -34,7 +31,7 @@ import { StoreContext } from "../store/StoreContext";
 import LoadImages from "./LoadImages";
 import ButtonSpinner from "./spinners/ButtonSpinner";
 
-const ModalLcssForm = ({ thePageName, setLcssForm }) => {
+const ModalContactWebAndDev = ({ thePageName, setWebAndDev }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const recaptchaRef = React.useRef();
 
@@ -47,10 +44,10 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     true
   );
 
-  const { data: contactFormLcssData } = useQueryData(
-    `${apiVersion}/contactLcss`, // endpoint
+  const { data: contactFormWordpressData } = useQueryData(
+    `${apiVersion}/contactWordpress`, // endpoint
     "get", // method
-    "contactLcss", // key
+    "contactWordpress", // key
     {},
     null,
     true
@@ -60,14 +57,13 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     contactFormDefaultData?.data?.[0]?.form_default_img
   );
 
-  const handleClose = () => {
-    setLcssForm(false);
-  };
-
-  const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
-    `${apiVersion}/upload-files`,
-    dispatch
+  const contactUsWordpressFile = getConvertStringToJSONparseData(
+    contactFormWordpressData?.data?.[0]?.form_wordpress_file
   );
+
+  const handleClose = () => {
+    setWebAndDev(false);
+  };
 
   const queryClient = useQueryClient();
   const mutation = useMutation({
@@ -77,7 +73,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
       queryClient.invalidateQueries({ queryKey: ["sending-email"] });
 
       if (data.success) {
-        setLcssForm(false);
+        setWebAndDev(false);
         dispatch(setSuccess(true));
         dispatch(setMessage(`Message Sent Successfully!`));
       }
@@ -96,17 +92,15 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
     client_message_subject: "",
     client_message: "",
     client_file: "",
-    notification_purpose: "apply-now-lcs",
-    email_subject: `APPLY NOW - ${thePageName} Application`,
+    notification_purpose: "learn-more-web-design-and-development",
+    email_subject: `LEARN MORE - ${thePageName} Page`,
   };
 
   const yupSchema = Yup.object({
     client_name: Yup.string().required("Required"),
     client_email: Yup.string().required("Required").email("Invalid email"),
     client_phone: Yup.string().required("Required"),
-    // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
-    // client_file: Yup.string().required("Required"),
   });
 
   const handleChange = (value) => {
@@ -133,7 +127,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
             <IoCloseCircle
               className="text-3xl text-light"
               onClick={() => {
-                setLcssForm(false);
+                setWebAndDev(false);
               }}
             />
           </button>
@@ -150,20 +144,12 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
           <div className="flex flex-col justify-between">
             <div>
               <div className="mb-12">
-                <p>
-                  {contactFormLcssData?.data?.length > 0 &&
-                  contactFormLcssData.data[0]?.form_lcss_subtitle
-                    ? contactFormLcssData?.data[0].form_lcss_subtitle
-                    : ""}
-                </p>
+                <p>How can we help you?</p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contactFormLcssData?.data?.length > 0 &&
-                  contactFormLcssData.data[0]?.form_lcss_title
-                    ? contactFormLcssData?.data[0].form_lcss_title
-                    : ""}
+                  Let's work together.
                 </h3>
               </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
+              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
                 <li className="!items-start">
                   <IoMdPin />
                   <p className="md:w-[50%]">
@@ -175,21 +161,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                 </li>
                 <li>
                   <FaPhone />
-                  <p>
-                    {contactFormLcssData?.data?.length > 0 &&
-                    contactFormLcssData.data[0]?.form_lcss_telephone
-                      ? contactFormLcssData?.data[0].form_lcss_telephone
-                      : ""}
-                  </p>
-                </li>
-                <li>
-                  <MdOutlinePhoneIphone />
-                  <p>
-                    {contactFormLcssData?.data?.length > 0 &&
-                    contactFormLcssData.data[0]?.form_lcss_phone
-                      ? contactFormLcssData?.data[0].form_lcss_phone
-                      : ""}
-                  </p>
+                  <p>Web Office - (049) 530-2112</p>
                 </li>
               </ul>
 
@@ -198,48 +170,10 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                   <div className="text-xs md:text-sm">
                     <div className="mb-4">
                       <h3 className="font-semibold">
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_computer_title
-                          ? contactFormLcssData?.data[0]
-                              .form_lcss_computer_title
-                          : ""}
+                        Web Solutions Specialist
                       </h3>
-                      <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_computer_name
-                          ? contactFormLcssData?.data[0].form_lcss_computer_name
-                          : ""}
-                      </p>
-                      <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_computer_email
-                          ? contactFormLcssData?.data[0]
-                              .form_lcss_computer_email
-                          : ""}
-                      </p>
-                    </div>
-                    <div className="mb-8">
-                      <h3 className="font-semibold">
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_accounting_title
-                          ? contactFormLcssData?.data[0]
-                              .form_lcss_accounting_title
-                          : ""}
-                      </h3>
-                      <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_accounting_name
-                          ? contactFormLcssData?.data[0]
-                              .form_lcss_accounting_name
-                          : ""}
-                      </p>
-                      <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_accounting_email
-                          ? contactFormLcssData?.data[0]
-                              .form_lcss_accounting_email
-                          : ""}
-                      </p>
+                      <p>Jinuel Zymon Ramos</p>
+                      <p>jinuel.ramos@frontlinebusiness.com.ph</p>
                     </div>
                   </div>
                 </li>
@@ -308,17 +242,35 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                   })()}
               </div>
             </div>
+            {thePageName === "Wordpress" ? (
+              <div className="my-5 md:my-0">
+                <p className="text-sm">
+                  Learn more about our WordPress CMS Website program
+                </p>
+                {contactUsWordpressFile.map((file, index) => (
+                  <a
+                    href={`${googleViewLink}${file?.id}`}
+                    className="flex gap-2 items-center font-bold text-primary pointer"
+                    target="_blank"
+                    key={index}
+                  >
+                    Download Portfolio <FaFileDownload />
+                  </a>
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px]">
-            <p className="mb-2 text-sm md:text-lg">
-              <b className="uppercase">{thePageName}</b> Application
-            </p>
             <Formik
               initialValues={initVal}
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 const captchaValue = recaptchaRef.current.getValue();
+
+                console.log(captchaValue);
                 if (captchaValue === "") {
                   dispatch(setError(true));
                   dispatch(
@@ -330,16 +282,12 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                 }
 
                 // mutate data
-                const data = {
-                  ...values,
-                  client_file: newfile.name,
-                };
-                if (newfile) {
-                  await uploadFiles(); // to save the photo when submit
-                }
-
-                mutation.mutate({ ...data, captchaValue });
+                mutation.mutate({ ...values, captchaValue });
                 recaptchaRef.current?.reset();
+
+                // mutate data
+                // console.log("values", { ...values, captchaValue });
+                // mutation.mutate(values);
               }}
             >
               {(props) => {
@@ -377,20 +325,6 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
                           number="number"
                           name="client_phone"
                           disabled={mutation.isPending}
-                        />
-                      </div>
-
-                      <div className="input-wrapper">
-                        <span htmlFor="" className="text-xs">
-                          Upload Resume (PDF Only (8mb))
-                        </span>
-                        <input
-                          type="file"
-                          name="client_file"
-                          accept="application/pdf"
-                          id="myFile"
-                          disabled={mutation.isPending}
-                          onChange={(e) => handleChangeFiles(e)}
                         />
                       </div>
 
@@ -445,4 +379,4 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
   );
 };
 
-export default ModalLcssForm;
+export default ModalContactWebAndDev;

@@ -221,6 +221,13 @@ export const setIsPackagesOpen = (val) => {
   };
 };
 
+export const setIsContactFormOpen = (val) => {
+  return {
+    type: "IS_CONTACT_FORM_OPEN",
+    payload: val,
+  };
+};
+
 export const setIsUpdateHome = (val) => {
   return {
     type: "IS_UPDATE_HOME",

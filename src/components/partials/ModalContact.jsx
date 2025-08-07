@@ -321,6 +321,37 @@ const ModalContact = ({
                     </div>
                   </li>
                 </ul>
+              ) : thePageName === "Wordpress" ? (
+                <>
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                    <li className="!items-start">
+                      <IoMdPin />
+                      <p className="md:w-[50%]">
+                        {contactFormDefaultData?.data?.length > 0 &&
+                        contactFormDefaultData.data[0]?.form_default_address
+                          ? contactFormDefaultData?.data[0].form_default_address
+                          : ""}
+                      </p>
+                    </li>
+                    <li>
+                      <FaPhone />
+                      <p>Web Office - (049) 530-2112</p>
+                    </li>
+                  </ul>
+                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                    <li>
+                      <div className="text-xs md:text-sm">
+                        <div className="mb-4">
+                          <h3 className="font-semibold">
+                            Web Solutions Specialist
+                          </h3>
+                          <p>Jinuel Zymon Ramos</p>
+                          <p>jinuel.ramos@frontlinebusiness.com.ph</p>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </>
               ) : (
                 <>
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
@@ -448,9 +479,11 @@ const ModalContact = ({
                 </>
               ) : thePageName === "Continuing Study" ? (
                 <></>
-              ) : thePageName === "cms" ? (
+              ) : thePageName === "Wordpress" ? (
                 <>
-                  <p className="text-sm">Learn more about our CMS program</p>
+                  <p className="text-sm">
+                    Learn more about our WordPress CMS Website program
+                  </p>
                   {contactUsWordpressFile.map((file, index) => (
                     <a
                       href={`${googleViewLink}${file?.id}`}

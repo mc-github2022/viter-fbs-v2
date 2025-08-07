@@ -7,6 +7,7 @@ import {
   getUserType,
 } from "../../helpers/functions-general";
 import {
+  setIsContactFormOpen,
   setIsNavOpen,
   setIsNotifOpen,
   setIsPackagesOpen,
@@ -52,6 +53,10 @@ const Navigation = ({ menu, submenu }) => {
 
   const handlePackagesOpen = () => {
     dispatch(setIsPackagesOpen(!store.isPackagesOpen));
+  };
+
+  const handleContactFormOpen = () => {
+    dispatch(setIsContactFormOpen(!store.isContactFormOpen));
   };
 
   return (
@@ -535,6 +540,64 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                       >
                         Details
+                      </li>
+                    </Link>
+                  </ul>
+
+                  {/* Contact Form */}
+                  <li
+                    className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
+                  ${
+                    menu === "contact-form"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                    onClick={() => handleContactFormOpen()}
+                  >
+                    <div className="nav flex items-center justify-between w-full">
+                      <span className=" text-[14px] uppercase">
+                        Contact Form
+                      </span>
+                      <IoChevronDownSharp
+                        className={`${
+                          store.isContactFormOpen ? "" : "rotate-180"
+                        } transition-all`}
+                      />
+                    </div>
+                  </li>
+
+                  <ul
+                    className={`${
+                      store.isContactFormOpen ? "h-0 overflow-hidden" : "my-2"
+                    } submenu ml-5`}
+                  >
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/contact-form/form`}
+                    >
+                      <li
+                        className={`text-xs  border-transparent hover:underline ${
+                          submenu === "form"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Form
+                      </li>
+                    </Link>
+                    <Link
+                      className="!p-0"
+                      to={`${devNavUrl}${link}/contact-form/content`}
+                    >
+                      <li
+                        className={`text-xs my-1 border-transparent hover:underline ${
+                          submenu === "content"
+                            ? "text-primary font-bold"
+                            : "border-none text-dark"
+                        }`}
+                      >
+                        Content
                       </li>
                     </Link>
                   </ul>

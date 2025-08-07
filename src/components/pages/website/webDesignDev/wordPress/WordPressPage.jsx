@@ -18,7 +18,7 @@ import PageNotFound from "../../../../partials/PageNotFound";
 
 const WordPressPage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
-  const [pageName, setPageName] = React.useState("cms");
+  const [pageName, setPageName] = React.useState("Wordpress");
   const id = getUrlParam().get("id");
 
   const { isLoading, data: packagesCategoryData } = useQueryData(
@@ -64,8 +64,14 @@ const WordPressPage = () => {
       <Header pageName={pageName} />
       <WordPressBanner pageName={pageName} />
       <WordPressOverview pageName={pageName} />
-      <WordPressScope pageName={pageName} wordpressTitlesData={wordpressTitlesData}/>
-      <WordPressPricing pageName={pageName} wordpressTitlesData={wordpressTitlesData} />
+      <WordPressScope
+        pageName={pageName}
+        wordpressTitlesData={wordpressTitlesData}
+      />
+      <WordPressPricing
+        pageName={pageName}
+        wordpressTitlesData={wordpressTitlesData}
+      />
       <WordPressPortfolio />
       <WordPressPartners wordpressTitlesData={wordpressTitlesData} />
       <WordPressPartnersSay wordpressTitlesData={wordpressTitlesData} />

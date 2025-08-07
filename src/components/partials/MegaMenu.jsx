@@ -272,7 +272,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                       <Link
                         to={`${devNavUrl}/web-wordpress`}
                         className={`${
-                          pageName === "cms"
+                          pageName === "wordpress"
                             ? "text-primary !cursor-default"
                             : ""
                         }`}

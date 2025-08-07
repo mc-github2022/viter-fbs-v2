@@ -1,0 +1,26 @@
+
+DEVELOPER
+
+upload jsx
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/contact-form
+
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/contact-form
+
+        * HTACESS
+            -> # CONTACT FORM - FORM 
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_contact_form.sql

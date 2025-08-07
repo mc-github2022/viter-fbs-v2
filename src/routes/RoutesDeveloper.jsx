@@ -60,6 +60,8 @@ import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-w
 import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/events-and-activities-page/EventsAndActivitiesPage";
 import CareersPage from "../components/pages/developer/why-fbs-page/careers-page/CareersPage";
 import GraphicDesign from "../components/pages/developer/services/web-design/graphic-design/GraphicDesign";
+import Form from "../components/pages/developer/contact-form-settings/form/Form";
+import Content from "../components/pages/developer/contact-form-settings/content/Content";
 
 export const routesDeveloper = [
   {
@@ -491,6 +493,24 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <Details />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/contact-form/form`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Form />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/contact-form/content`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <Content />
       </ProtectedRouteDeveloper>
     ),
   },

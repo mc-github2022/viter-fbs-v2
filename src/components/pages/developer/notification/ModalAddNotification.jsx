@@ -214,6 +214,23 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
                               </span>
                             );
                           }
+                          if (
+                            item.name ===
+                            "Learn more Web Design and Development page"
+                          ) {
+                            return (
+                              <span className="text-xs" key={key}>
+                                Note: This applies to the following pages.
+                                <ul className="ml-9">
+                                  <li>-WordPress CMS Website</li>
+                                  <li>-Single Page Website</li>
+                                  <li>-Accounting Solutions</li>
+                                  <li>-Web Design</li>
+                                  <li>-Graphic Design</li>
+                                </ul>
+                              </span>
+                            );
+                          }
                         }
                         return null;
                       })}

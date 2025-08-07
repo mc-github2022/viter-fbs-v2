@@ -44,7 +44,7 @@ import ModalUpdateContactFormDefaultWordPress from "../../../contact-form-defaul
 const WordPressCmsWebsite = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [itemEdit, setItemEdit] = React.useState(null);
-  const [pageName, setPageName] = React.useState("cms");
+  const [pageName, setPageName] = React.useState("wordpress");
 
   const { data: wordpressData } = useQueryData(
     `${apiVersion}/wordpress`, // endpoint

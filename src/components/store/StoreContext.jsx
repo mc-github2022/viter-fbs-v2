@@ -34,6 +34,7 @@ const initVal = {
   isSubsOpen: true,
   isWebAppOpen: true,
   isPackagesOpen: true,
+  isContactFormOpen: true,
   isUpdateHome: { modal: false, code: "" },
   credentials: {},
   isDeleteLcss: { modal: false, code: "" },

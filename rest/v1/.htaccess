@@ -11,6 +11,10 @@ RewriteRule ^upload-photo$ core/upload-photo.php [L]
 RewriteRule ^upload-multiple-photo$ core/upload-multiple-photo.php [L]
 RewriteRule ^upload-files$ core/upload-files.php [L]
 
+# CONTACT FORM - FORM
+RewriteRule ^contactForm$ controllers/developer/contact-form/form/form.php [L]
+RewriteRule ^contactForm/([0-9]+)$ controllers/developer/contact-form/form/form.php?formid=$1 [L]
+
 # HOME - BANNER
 RewriteRule ^banner$ controllers/developer/home/banner/banner.php [L]
 RewriteRule ^banner/([0-9]+)$ controllers/developer/home/banner/banner.php?home_bannerid=$1 [L]

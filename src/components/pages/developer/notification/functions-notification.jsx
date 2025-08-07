@@ -7,6 +7,10 @@ export const purposeValue = () => {
     { code: "apply-now-careers", name: "Apply now Careers page" },
     { code: "partner-with-us-lcs", name: "Partner with us LCS page" },
     { code: "subscribers", name: "Subscribers" },
+    {
+      code: "learn-more-web-design-and-development",
+      name: "Learn more Web Design and Development page",
+    },
     // { code: "default-receiver", name: "Get started default" },
     // { code: "default-receiver", name: "Partner with us default" },
     // { code: "default-receiver", name: "Apply now default" },
