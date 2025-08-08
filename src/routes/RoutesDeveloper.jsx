@@ -6,62 +6,61 @@ import {
 } from "../components/helpers/functions-general";
 import { default as CreateDeveloperPassword } from "../components/pages/access/developer/CreateDeveloperPassword";
 import { default as DeveloperLogin } from "../components/pages/access/developer/DeveloperLogin";
+import ContactFormSettings from "../components/pages/developer/contact-form-settings/ContactFormSettings";
 import Banner from "../components/pages/developer/dashHome/banner/Banner";
+import Home from "../components/pages/developer/dashHome/Home";
 import Insights from "../components/pages/developer/dashHome/insights/Insights";
 import Testimonial from "../components/pages/developer/dashHome/testimonial/Testimonial";
+import Gallery from "../components/pages/developer/gallery/Gallery";
 import IndustryTestimonial from "../components/pages/developer/industry-testimonial/IndustryTestimonial";
 import LcssBatches from "../components/pages/developer/lcss-batches/LcssBatches";
 import Notification from "../components/pages/developer/notification/Notification";
 import NotificationLog from "../components/pages/developer/notification/notification-log/NotificationLog";
+import Category from "../components/pages/developer/packages/category/Category";
+import Details from "../components/pages/developer/packages/details/Details";
+import List from "../components/pages/developer/packages/list/List";
+import Partners from "../components/pages/developer/partners/Partners";
 import Pricing from "../components/pages/developer/pricing/pricing-list/Pricing";
 import PricingMenu from "../components/pages/developer/pricing/PricingMenu";
+import AccountingSolutions from "../components/pages/developer/services/accounting-solutions/AccountingSolutions";
+import BookkeepingAndCompliance from "../components/pages/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingAndCompliance";
+import BusinessRegistration from "../components/pages/developer/services/accounting-solutions/business-registration/BusinessRegistration";
+import CollegeOnTheJobTraining from "../components/pages/developer/services/learning-center-solutions/college-on-the-job-training/CollegeOnTheJobTraining";
+import ContinuingStudies from "../components/pages/developer/services/learning-center-solutions/continuing-studies/ContinuingStudies";
+import HighSchoolWorkImmersion from "../components/pages/developer/services/learning-center-solutions/high-school-work-immersion/HighSchoolWorkImmersion";
+import LearningCenterSolutions from "../components/pages/developer/services/learning-center-solutions/LearningCenterSolutions";
+import Administrative from "../components/pages/developer/services/va-solutions/administrative/Administrative";
+import BusinessSupport from "../components/pages/developer/services/va-solutions/business-support/BusinessSupport";
+import Marketing from "../components/pages/developer/services/va-solutions/marketing/Marketing";
+import VirtualAssistantSolutions from "../components/pages/developer/services/va-solutions/VirtualAssistantSolutions";
+import AssetInventorySystem from "../components/pages/developer/services/web-application/asset-inventory-system/AssetInventorySystem";
+import HrInformationSystem from "../components/pages/developer/services/web-application/hr-information-system/HrInformationSystem";
+import OnlineDonationSystem from "../components/pages/developer/services/web-application/online-donation-system/OnlineDonationSystem";
+import OnlinePaymentIntegration from "../components/pages/developer/services/web-application/online-payment-integration/OnlinePaymentIntegration";
+import OnlinePayrollSystem from "../components/pages/developer/services/web-application/online-payroll-system/OnlinePayrollSystem";
+import SchoolEnrollmentSystem from "../components/pages/developer/services/web-application/school-enrollment-system/SchoolEnrollmentSystem";
+import WebApplication from "../components/pages/developer/services/web-application/WebApplication";
+import GraphicDesign from "../components/pages/developer/services/web-design/graphic-design/GraphicDesign";
+import SinglePageWebsite from "../components/pages/developer/services/web-design/single-page/SinglePageWebsite";
+import WebDesignAndDev from "../components/pages/developer/services/web-design/WebDesignAndDev";
+import WebsiteDesign from "../components/pages/developer/services/web-design/website-design/WebsiteDesign";
+import WordPressCmsWebsite from "../components/pages/developer/services/web-design/wordpress-cms-website/WordPressCmsWebsite";
 import Services from "../components/pages/developer/special-offers/SpecialOffers";
 import Audience from "../components/pages/developer/subscribers/audience/Audience";
 import MailerLog from "../components/pages/developer/subscribers/mailer-log/MailerLog";
 import Mailer from "../components/pages/developer/subscribers/mailer/Mailer";
+import Newsletter from "../components/pages/developer/subscribers/newsletter/Newsletter";
 import Subscribers from "../components/pages/developer/subscribers/Subscribers";
 import Developer from "../components/pages/developer/user/developer/Developer";
 import OtherUser from "../components/pages/developer/user/other-user/OtherUser";
 import Role from "../components/pages/developer/user/role/Role";
 import VidTestimonial from "../components/pages/developer/vid-testimonial/VidTestimonial";
-import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
-import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
-import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
-import Partners from "../components/pages/developer/partners/Partners";
-import Gallery from "../components/pages/developer/gallery/Gallery";
-import Home from "../components/pages/developer/dashHome/Home";
-import WebApplication from "../components/pages/developer/services/web-application/WebApplication";
-import HrInformationSystem from "../components/pages/developer/services/web-application/hr-information-system/HrInformationSystem";
-import Category from "../components/pages/developer/packages/category/Category";
-import List from "../components/pages/developer/packages/list/List";
-import Details from "../components/pages/developer/packages/details/Details";
-import OnlinePayrollSystem from "../components/pages/developer/services/web-application/online-payroll-system/OnlinePayrollSystem";
-import SchoolEnrollmentSystem from "../components/pages/developer/services/web-application/school-enrollment-system/SchoolEnrollmentSystem";
-import OnlinePaymentIntegration from "../components/pages/developer/services/web-application/online-payment-integration/OnlinePaymentIntegration";
-import OnlineDonationSystem from "../components/pages/developer/services/web-application/online-donation-system/OnlineDonationSystem";
-import AssetInventorySystem from "../components/pages/developer/services/web-application/asset-inventory-system/AssetInventorySystem";
-import Newsletter from "../components/pages/developer/subscribers/newsletter/Newsletter";
-import AccountingSolutions from "../components/pages/developer/services/accounting-solutions/AccountingSolutions";
-import BusinessRegistration from "../components/pages/developer/services/accounting-solutions/business-registration/BusinessRegistration";
-import BookkeepingAndCompliance from "../components/pages/developer/services/accounting-solutions/bookkeeping-compliance/BookkeepingAndCompliance";
-import LearningCenterSolutions from "../components/pages/developer/services/learning-center-solutions/LearningCenterSolutions";
-import CollegeOnTheJobTraining from "../components/pages/developer/services/learning-center-solutions/college-on-the-job-training/CollegeOnTheJobTraining";
-import HighSchoolWorkImmersion from "../components/pages/developer/services/learning-center-solutions/high-school-work-immersion/HighSchoolWorkImmersion";
-import ContinuingStudies from "../components/pages/developer/services/learning-center-solutions/continuing-studies/ContinuingStudies";
-import VirtualAssistantSolutions from "../components/pages/developer/services/va-solutions/VirtualAssistantSolutions";
-import Administrative from "../components/pages/developer/services/va-solutions/administrative/Administrative";
-import BusinessSupport from "../components/pages/developer/services/va-solutions/business-support/BusinessSupport";
-import Marketing from "../components/pages/developer/services/va-solutions/marketing/Marketing";
-import WebDesignAndDev from "../components/pages/developer/services/web-design/WebDesignAndDev";
-import WordPressCmsWebsite from "../components/pages/developer/services/web-design/wordpress-cms-website/WordPressCmsWebsite";
-import SinglePageWebsite from "../components/pages/developer/services/web-design/single-page/SinglePageWebsite";
-import WebsiteDesign from "../components/pages/developer/services/web-design/website-design/WebsiteDesign";
-import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
-import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/events-and-activities-page/EventsAndActivitiesPage";
 import CareersPage from "../components/pages/developer/why-fbs-page/careers-page/CareersPage";
-import GraphicDesign from "../components/pages/developer/services/web-design/graphic-design/GraphicDesign";
-import Form from "../components/pages/developer/contact-form-settings/form/Form";
-import Content from "../components/pages/developer/contact-form-settings/content/Content";
+import Careers from "../components/pages/developer/why-fbs-page/careers/Careers";
+import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/events-and-activities-page/EventsAndActivitiesPage";
+import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
+import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
+import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 
 export const routesDeveloper = [
   {
@@ -498,19 +497,10 @@ export const routesDeveloper = [
   },
 
   {
-    path: `${devNavUrl}/${UrlDeveloper}/contact-form/form`,
+    path: `${devNavUrl}/${UrlDeveloper}/contact-form`,
     element: (
       <ProtectedRouteDeveloper>
-        <Form />
-      </ProtectedRouteDeveloper>
-    ),
-  },
-
-  {
-    path: `${devNavUrl}/${UrlDeveloper}/contact-form/content`,
-    element: (
-      <ProtectedRouteDeveloper>
-        <Content />
+        <ContactFormSettings />
       </ProtectedRouteDeveloper>
     ),
   },

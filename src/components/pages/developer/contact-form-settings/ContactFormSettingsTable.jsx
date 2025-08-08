@@ -1,17 +1,17 @@
 import React from "react";
-import { StoreContext } from "../../../../store/StoreContext";
-import { setIsAdd, setIsDelete } from "../../../../store/StoreAction";
-import ModalDelete from "../../../../partials/modals/ModalDelete";
-import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import ServerError from "../../../../partials/spinners/ServerError";
-import TableLoading from "../../../../partials/spinners/TableLoading";
-import NoData from "../../../../partials/spinners/NoData";
-import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import { getConvertStringToJSONparseData } from "../../../../helpers/functions-general";
+import { MdDelete } from "react-icons/md";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import { getConvertStringToJSONparseData } from "../../../helpers/functions-general";
+import ModalDelete from "../../../partials/modals/ModalDelete";
+import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import NoData from "../../../partials/spinners/NoData";
+import ServerError from "../../../partials/spinners/ServerError";
+import TableLoading from "../../../partials/spinners/TableLoading";
+import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
 
-const ContentTable = ({ setItemEdit }) => {
+const ContactFormSettingsTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
@@ -20,11 +20,11 @@ const ContentTable = ({ setItemEdit }) => {
     isFetching,
     error,
     isLoading,
-    data: contentData,
+    data: contentFormData,
   } = useQueryData(
-    "/v1/contactContent", // endpoint
+    "/v1/contactForm", // endpoint
     "get", // method
-    "contactContent" // key
+    "contactForm" // key
   );
 
   let counter = 1;
@@ -48,19 +48,17 @@ const ContentTable = ({ setItemEdit }) => {
           <thead>
             <tr className="text-[black]">
               <th className="pl-2 w-[1rem]">#</th>
-              <th className="min-w-[6rem]">Page</th>
-              <th className="min-w-[6rem]">Purpose</th>
-              <th className="min-w-[6rem]">Title</th>
+              <th className="min-w-[6rem]">Form Name</th>
               <th className="min-w-[6rem]">Subtitle</th>
-              <th>Upload File Input</th>
-              <th>Subject Input</th>
-              <th className="min-w-[6rem]">Portfolio</th>
-              <th className="min-w-[10rem]">Details</th>
+              <th className="min-w-[6rem]">Title</th>
+              <th className="min-w-[6rem]">Address</th>
+              <th className="min-w-[6rem]">Services</th>
+              <th className="min-w-[6rem]">File</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
           <tbody className="relative">
-            {(isLoading || contentData?.data.length === 0) && (
+            {(isLoading || contentFormData?.data.length === 0) && (
               <tr className="text-center">
                 <td colSpan="100%" className="p-10">
                   {isLoading ? <TableLoading /> : <NoData />}
@@ -76,7 +74,7 @@ const ContentTable = ({ setItemEdit }) => {
               </tr>
             )}
 
-            {contentData?.data.map((item, key) => {
+            {contentFormData?.data.map((item, key) => {
               const portfolio =
                 getConvertStringToJSONparseData(item.form_content_portfolio) ||
                 [];
@@ -144,4 +142,4 @@ const ContentTable = ({ setItemEdit }) => {
   );
 };
 
-export default ContentTable;
+export default ContactFormSettingsTable;

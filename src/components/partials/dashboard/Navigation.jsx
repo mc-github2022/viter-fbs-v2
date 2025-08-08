@@ -200,6 +200,25 @@ const Navigation = ({ menu, submenu }) => {
                     </Link>
                   </li>
 
+                  {/* Contact Form */}
+                  <li
+                    className={` flex justify-between items-center px-1 py-0.5
+                  ${
+                    menu === "contact-form"
+                      ? "text-primary underline underline-offset-4 "
+                      : "text-dark "
+                  }
+                `}
+                  >
+                    <Link to={`${devNavUrl}${link}/contact-form`}>
+                      <div className="nav flex items-center">
+                        <span className=" text-[14px] uppercase">
+                          Contact Form
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+
                   {/* HOME */}
                   <Link to={`${devNavUrl}${link}/home`}>
                     <li
@@ -540,64 +559,6 @@ const Navigation = ({ menu, submenu }) => {
                         }`}
                       >
                         Details
-                      </li>
-                    </Link>
-                  </ul>
-
-                  {/* Contact Form */}
-                  <li
-                    className={` flex justify-between items-center px-1 py-0.5 cursor-pointer
-                  ${
-                    menu === "contact-form"
-                      ? "text-primary underline underline-offset-4 "
-                      : "text-dark "
-                  }
-                `}
-                    onClick={() => handleContactFormOpen()}
-                  >
-                    <div className="nav flex items-center justify-between w-full">
-                      <span className=" text-[14px] uppercase">
-                        Contact Form
-                      </span>
-                      <IoChevronDownSharp
-                        className={`${
-                          store.isContactFormOpen ? "" : "rotate-180"
-                        } transition-all`}
-                      />
-                    </div>
-                  </li>
-
-                  <ul
-                    className={`${
-                      store.isContactFormOpen ? "h-0 overflow-hidden" : "my-2"
-                    } submenu ml-5`}
-                  >
-                    <Link
-                      className="!p-0"
-                      to={`${devNavUrl}${link}/contact-form/form`}
-                    >
-                      <li
-                        className={`text-xs  border-transparent hover:underline ${
-                          submenu === "form"
-                            ? "text-primary font-bold"
-                            : "border-none text-dark"
-                        }`}
-                      >
-                        Form
-                      </li>
-                    </Link>
-                    <Link
-                      className="!p-0"
-                      to={`${devNavUrl}${link}/contact-form/content`}
-                    >
-                      <li
-                        className={`text-xs my-1 border-transparent hover:underline ${
-                          submenu === "content"
-                            ? "text-primary font-bold"
-                            : "border-none text-dark"
-                        }`}
-                      >
-                        Content
                       </li>
                     </Link>
                   </ul>

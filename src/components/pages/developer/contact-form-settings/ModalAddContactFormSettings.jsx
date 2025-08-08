@@ -1,0 +1,836 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { Form, Formik } from "formik";
+import React from "react";
+import { FaCheckCircle, FaTrash } from "react-icons/fa";
+import { GrFormClose } from "react-icons/gr";
+import * as Yup from "yup";
+import useUploadMultiplePhoto from "../../../custom-hooks/useUploadMultiplePhoto";
+import {
+  InputFileUpload,
+  InputSelect,
+  InputText,
+  InputTextArea,
+} from "../../../helpers/FormInputs";
+import {
+  apiVersion,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+  googleViewLink,
+} from "../../../helpers/functions-general";
+import { queryData } from "../../../helpers/queryData";
+import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
+import LoadImages from "../../../partials/LoadImages";
+import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import { setIsAdd } from "../../../store/StoreAction";
+import { StoreContext } from "../../../store/StoreContext";
+import { IoMdCloseCircle } from "react-icons/io";
+
+const ModalAddContactFormSettings = ({ itemEdit }) => {
+  const { store, dispatch } = React.useContext(StoreContext);
+  const [animate, setAnimate] = React.useState("translate-x-full");
+  const [withFile, setWithFile] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [fileData, setFileData] = React.useState({
+    images: [],
+    itemKey: null,
+    props: null,
+    type: "", // 'client' or 'logo'
+  });
+  const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
+  const [isCheck, setIsCheck] = React.useState(false);
+  const [isCheckPortfolio, setIsCheckPortfolio] = React.useState(false);
+  const [selectedService, setSelectedService] = React.useState(false);
+
+  const {
+    uploadMultiplePhoto: uploadClientImages,
+    handleChangeMultiplePhoto: handleChangeClientImages,
+    setPhotoArrayList: setClientImages,
+    photoArrayList: clientImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const {
+    uploadMultiplePhoto: uploadLogoImages,
+    handleChangeMultiplePhoto: handleChangeLogoImages,
+    setPhotoArrayList: setLogoImages,
+    photoArrayList: logoImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  // handle for file upload Client
+  const handleChangeFileUploadClient = (
+    e,
+    props,
+    setClientImages,
+    fieldValue = ""
+  ) => {
+    handleChangeClientImages(e, 1);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = clientImages?.length > 0 ? clientImages : [];
+    setClientImages([...oldFiles, ...myFiles]);
+  };
+
+  // handle for file upload Client
+  const handleChangeFileUploadLogo = (
+    e,
+    props,
+    setLogoImages,
+    fieldValue = ""
+  ) => {
+    handleChangeLogoImages(e, 20);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = logoImages?.length > 0 ? logoImages : [];
+    setLogoImages([...oldFiles, ...myFiles]);
+  };
+
+  const handleClickViewSlideshow = (photos, key) => {
+    if (mutation.isPending || loading) return;
+    const link =
+      photos[key] instanceof Blob || photos[key] instanceof File
+        ? URL.createObjectURL(photos[key])
+        : `${googleViewLink}${photos[key]?.id}`;
+    window.open(link, "_blank");
+  };
+
+  // delete the file in the server (public)
+  const handleRemovePhoto = (photos, key, props, type) => {
+    if (mutation.isPending || loading) return;
+    setFileData({ images: photos, itemKey: key, props, type });
+    setIsRemovedPhoto(true);
+  };
+
+  const handleClose = () => {
+    setAnimate("translate-x-full");
+    setTimeout(() => {
+      dispatch(setIsAdd(false));
+    }, 200);
+  };
+
+  const handleCheckBox = (e) => {
+    setIsCheck(e.target.checked);
+  };
+
+  const handleCheckBoxPortfolio = (e) => {
+    setIsCheckPortfolio(e.target.checked);
+  };
+
+  React.useEffect(() => {
+    setIsCheck(itemEdit ? itemEdit.form_is_upload_input : false);
+    setIsCheckPortfolio(itemEdit ? itemEdit.form_is_upload_file : false);
+  }, []);
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (values) =>
+      queryData(
+        itemEdit
+          ? `${apiVersion}/contactForm/${itemEdit.form_aid}` // update
+          : `${apiVersion}/contactForm`, // create
+        itemEdit ? "put" : "post",
+        values
+      ),
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["contactForm"] });
+      if (!data.success) {
+        dispatch(setError(true));
+        dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
+      } else {
+        console.log("Success");
+        dispatch(setIsUpdateHome(false));
+        dispatch(setSuccess(true));
+        dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
+      }
+    },
+  });
+
+  React.useEffect(() => {
+    setAnimate("");
+    if (itemEdit) {
+      const clientPhotos = getConvertStringToJSONparseData(itemEdit.form_img);
+      setClientImages(clientPhotos);
+    }
+    if (itemEdit) {
+      const logoPhotos = getConvertStringToJSONparseData(
+        itemEdit.form_portfolio
+      );
+      setLogoImages(logoPhotos);
+    }
+  }, []);
+
+  const initVal = {
+    form_portfolio: itemEdit ? itemEdit.form_portfolio : "",
+    form_img: itemEdit ? itemEdit.form_img : "",
+    form_name: itemEdit ? itemEdit.form_name : "",
+    form_title: itemEdit ? itemEdit.form_title : "",
+    form_subtitle: itemEdit ? itemEdit.form_subtitle : "",
+    form_address: itemEdit ? itemEdit.form_address : "",
+    form_accounting_no: itemEdit ? itemEdit.form_accounting_no : "",
+    form_company_no: itemEdit ? itemEdit.form_company_no : "",
+    form_web_no: itemEdit ? itemEdit.form_web_no : "",
+    form_services: itemEdit ? itemEdit.form_services : "",
+    form_facebook_link: itemEdit ? itemEdit.form_facebook_link : "",
+    form_linkedin_link: itemEdit ? itemEdit.form_linkedin_link : "",
+    form_youtube_link: itemEdit ? itemEdit.form_youtube_link : "",
+    form_instagram_link: itemEdit ? itemEdit.form_instagram_link : "",
+    form_tiktok_link: itemEdit ? itemEdit.form_tiktok_link : "",
+    form_is_upload_file: itemEdit ? itemEdit.form_is_upload_file : "",
+    form_is_upload_input: itemEdit ? itemEdit.form_is_upload_input : "",
+
+    form_default_email: itemEdit ? itemEdit.form_default_email : "",
+    form_web_role: itemEdit ? itemEdit.form_web_role : "",
+    form_web_name: itemEdit ? itemEdit.form_web_name : "",
+    form_web_email: itemEdit ? itemEdit.form_web_email : "",
+    form_computer_role: itemEdit ? itemEdit.form_computer_role : "",
+    form_computer_name: itemEdit ? itemEdit.form_computer_name : "",
+    form_computer_email: itemEdit ? itemEdit.form_computer_email : "",
+    form_accounting_role: itemEdit ? itemEdit.form_accounting_role : "",
+    form_accounting_name: itemEdit ? itemEdit.form_accounting_name : "",
+    form_accounting_email: itemEdit ? itemEdit.form_accounting_email : "",
+    form_hr_manager_role: itemEdit ? itemEdit.form_hr_manager_role : "",
+    form_hr_manager_name: itemEdit ? itemEdit.form_hr_manager_name : "",
+    form_hr_manager_email: itemEdit ? itemEdit.form_hr_manager_email : "",
+    form_hr_staff_role: itemEdit ? itemEdit.form_hr_staff_role : "",
+    form_hr_staff_name: itemEdit ? itemEdit.form_hr_staff_name : "",
+    form_hr_staff_email: itemEdit ? itemEdit.form_hr_staff_email : "",
+
+    form_portfolio_old: itemEdit ? itemEdit.form_portfolio : "",
+    form_img_old: itemEdit ? itemEdit.form_img : "",
+    pendingDeleteFile: [],
+  };
+
+  const yupSchema = Yup.object({
+    form_name: Yup.string().required("Required"),
+    form_services: Yup.string().required("Required"),
+  });
+
+  return (
+    <>
+      <ModalAddWrapper
+        className={`transition-all ease-linear transform duration-200 ${animate}`}
+        handleClose={handleClose}
+      >
+        <div className="modal-title">
+          <h2 className="text-sm">{itemEdit ? "Edit" : "Add"} Contact Form</h2>
+          <button onClick={handleClose}>
+            <GrFormClose className="text-[25px]" />
+          </button>
+        </div>
+        <div className="modal-content">
+          <Formik
+            initialValues={initVal}
+            validationSchema={yupSchema}
+            onSubmit={async (values) => {
+              setLoading(true);
+
+              const data = {
+                ...values,
+                form_is_upload_input: isCheck,
+                form_is_upload_file: isCheckPortfolio,
+                form_img: clientImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+                form_portfolio: logoImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+              };
+
+              // Upload separately
+              const clientPhotoUpload = await uploadClientImages(clientImages);
+              const logoPhotoUpload = await uploadLogoImages(logoImages);
+
+              if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
+                setLoading(false);
+              }
+
+              if (!loading) console.log(data);
+              mutation.mutate(data);
+            }}
+          >
+            {(props) => {
+              return (
+                <Form className="modal-form">
+                  <div className="form-input">
+                    <div className="relative">
+                      <label className=" top-[16px] text-dark text-xs">
+                        Upload Image
+                      </label>
+                      <div
+                        className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
+                          withFile && "border-primary border-dashed"
+                        }`}
+                        onDragOver={() => setWithFile(true)}
+                        onDragLeave={() => setWithFile(false)}
+                      >
+                        <span className="min-h-16 flex items-center justify-center">
+                          <span className="text-dark mr-1">Drag & Drop</span>{" "}
+                          Photo here or{" "}
+                          <span className="text-dark ml-1">Browse</span>
+                        </span>
+
+                        <InputFileUpload
+                          label="Upload Image"
+                          name="File"
+                          type="file"
+                          id="myFile"
+                          accept="*"
+                          title="Upload Image"
+                          onChange={(e) =>
+                            handleChangeFileUploadClient(
+                              e,
+                              props,
+                              setClientImages,
+                              "form_img"
+                            )
+                          }
+                          onDrop={(e) =>
+                            handleChangeFileUploadClient(
+                              e,
+                              props,
+                              setClientImages,
+                              "form_img"
+                            )
+                          }
+                          disabled={mutation.isPending || loading}
+                          className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                        />
+                      </div>
+
+                      <div className="relative ">
+                        <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                          {clientImages.length > 0 &&
+                            clientImages.map((item, key) => {
+                              const fileLink =
+                                item instanceof File || item instanceof Blob
+                                  ? URL.createObjectURL(item)
+                                  : `${googleHDViewLink}${item?.id}`;
+
+                              return (
+                                <React.Fragment key={key}>
+                                  <li
+                                    className={`relative z-10 h-32 w-48 group cursor-pointer overflow-hidden ${
+                                      (mutation.isPending || loading) &&
+                                      `!cursor-not-allowed`
+                                    }`}
+                                    onClick={() => {
+                                      handleClickViewSlideshow(
+                                        clientImages,
+                                        key
+                                      );
+                                    }}
+                                  >
+                                    <LoadImages
+                                      url={fileLink}
+                                      className="relative z-20 w-full h-full object-cover object-center"
+                                    />
+                                    {(!mutation.isPending || !loading) && (
+                                      <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                        <span>
+                                          Click to View <br />
+                                          {key + 1}. {item.name}
+                                        </span>
+
+                                        <div
+                                          className="absolute bottom-0 right-0 flex items-center gap-2"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                          }}
+                                        >
+                                          <button
+                                            type="button"
+                                            className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                            data-tooltip={`Delete`}
+                                            disabled={
+                                              mutation.isPending || loading
+                                            }
+                                            onClick={() =>
+                                              handleRemovePhoto(
+                                                clientImages,
+                                                key,
+                                                props,
+                                                "client"
+                                              )
+                                            }
+                                          >
+                                            <FaTrash />
+                                          </button>
+                                        </div>
+                                      </div>
+                                    )}
+                                  </li>
+                                </React.Fragment>
+                              );
+                            })}
+                        </ol>
+                      </div>
+                    </div>
+
+                    <div className="input-wrapper">
+                      <InputText
+                        label="*Form Name"
+                        type="text"
+                        name="form_name"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Title"
+                        type="text"
+                        name="form_title"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Subtitle"
+                        type="text"
+                        name="form_subtitle"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Address"
+                        type="text"
+                        name="form_address"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Main & Accounting No."
+                        type="text"
+                        name="form_accounting_no"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Company No."
+                        type="text"
+                        name="form_company_no"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Web Office No."
+                        type="text"
+                        name="form_web_no"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputSelect
+                        label="Services"
+                        type="text"
+                        name="form_services"
+                        disabled={mutation.isPending}
+                        onChange={(e) => setSelectedService(e.target.value)}
+                      >
+                        <option value="" disabled>
+                          Select Services
+                        </option>
+                        <option value="default">Default</option>
+                        <option value="web services">Web Services</option>
+                        <option value="lcss services">LCSS Services</option>
+                        <option value="career">Career</option>
+                      </InputSelect>
+                    </div>
+                    {selectedService === "default" ? (
+                      <div className="input-wrapper">
+                        <InputText
+                          label="Email"
+                          type="text"
+                          name="form_default_email"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                    ) : selectedService === "web services" ? (
+                      <>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Role"
+                            type="text"
+                            name="form_web_role"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Name"
+                            type="text"
+                            name="form_web_name"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Email"
+                            type="text"
+                            name="form_web_email"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      </>
+                    ) : selectedService === "lcss services" ? (
+                      <>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="IT Instructor Role"
+                            type="text"
+                            name="form_computer_role"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="IT Instructor Name"
+                            type="text"
+                            name="form_computer_name"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="IT Instructor Email"
+                            type="text"
+                            name="form_computer_email"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Accounting Instructor Role"
+                            type="text"
+                            name="form_accounting_role"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Accounting Instructor Name"
+                            type="text"
+                            name="form_accounting_name"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Accounting Instructor Email"
+                            type="text"
+                            name="form_accounting_email"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      </>
+                    ) : selectedService === "career" ? (
+                      <>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="HR Manager Role"
+                            type="text"
+                            name="form_hr_manager_role"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="HR Manager Name"
+                            type="text"
+                            name="form_hr_manager_name"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="HR Manager Email"
+                            type="text"
+                            name="form_hr_manager_email"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="HR Staff Role"
+                            type="text"
+                            name="form_hr_staff_role"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="HR Staff Name"
+                            type="text"
+                            name="form_hr_staff_name"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputText
+                            label="HR Staff Email"
+                            type="text"
+                            name="form_hr_staff_email"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      ""
+                    )}
+
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Facebook Link"
+                        type="text"
+                        name="form_facebook_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="LinkedIn Link"
+                        type="text"
+                        name="form_linkedin_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Youtube Link"
+                        type="text"
+                        name="form_youtube_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Instagram Link"
+                        type="text"
+                        name="form_instagram_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Tiktok Link"
+                        type="text"
+                        name="form_tiktok_link"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+
+                    <div className=" flex items-center gap-2 py-2">
+                      <input
+                        name="form_is_upload_input"
+                        type="checkbox"
+                        className="w-3 h-3 cursor-pointer"
+                        checked={isCheck}
+                        // value={isCheck}
+                        onChange={handleCheckBox}
+                      />
+                      {isCheck ? (
+                        <p className="text-xs flex gap-2 items-center">
+                          Has upload file input
+                          <FaCheckCircle className="text-primary" />
+                        </p>
+                      ) : (
+                        <p className="text-xs flex gap-2 items-center text-gray-500">
+                          Has upload file input <IoMdCloseCircle />
+                        </p>
+                      )}
+                    </div>
+
+                    <div className=" flex items-center gap-2 py-2">
+                      <input
+                        name="form_is_upload_input"
+                        type="checkbox"
+                        className="w-3 h-3 cursor-pointer"
+                        checked={isCheckPortfolio}
+                        // value={isCheckPortfolio}
+                        onChange={handleCheckBoxPortfolio}
+                      />
+                      {isCheckPortfolio ? (
+                        <p className="text-xs flex gap-2 items-center">
+                          Has file
+                          <FaCheckCircle className="text-primary" />
+                        </p>
+                      ) : (
+                        <p className="text-xs flex gap-2 items-center text-gray-500">
+                          Has file <IoMdCloseCircle />
+                        </p>
+                      )}
+                    </div>
+
+                    {isCheckPortfolio && (
+                      <div className="flex flex-col gap-2 mt-1">
+                        <div className="relative">
+                          <label className=" top-[32px]  text-dark text-xs">
+                            Upload File
+                          </label>
+                          <div
+                            className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
+                              withFile && "border-primary border-dashed"
+                            }`}
+                            onDragOver={() => setWithFile(true)}
+                            onDragLeave={() => setWithFile(false)}
+                          >
+                            <span className="min-h-16 flex items-center justify-center">
+                              <span className="text-dark mr-1">
+                                Drag & Drop
+                              </span>{" "}
+                              Photo here or{" "}
+                              <span className="text-dark ml-1">Browse</span>
+                            </span>
+
+                            <InputFileUpload
+                              label="Upload Image"
+                              name="File"
+                              type="file"
+                              id="myFile"
+                              accept="*"
+                              title="Upload File"
+                              onChange={(e) =>
+                                handleChangeFileUploadLogo(
+                                  e,
+                                  props,
+                                  setLogoImages,
+                                  "form_portfolio"
+                                )
+                              }
+                              onDrop={(e) =>
+                                handleChangeFileUploadLogo(
+                                  e,
+                                  props,
+                                  setLogoImages,
+                                  "form_portfolio"
+                                )
+                              }
+                              disabled={mutation.isPending || loading}
+                              className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                            />
+                          </div>
+
+                          <div className="relative ">
+                            <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                              {logoImages.length > 0 &&
+                                logoImages.map((item, key) => {
+                                  const fileLink =
+                                    item instanceof File || item instanceof Blob
+                                      ? URL.createObjectURL(item)
+                                      : `${googleHDViewLink}${item?.id}`;
+
+                                  return (
+                                    <React.Fragment key={key}>
+                                      <li
+                                        className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                        onClick={() =>
+                                          handleClickViewSlideshow(
+                                            logoImages,
+                                            key
+                                          )
+                                        }
+                                      >
+                                        <LoadImages
+                                          url={fileLink}
+                                          className="relative z-20 w-full h-full object-cover object-center"
+                                        />
+                                        {(!mutation.isPending || !loading) && (
+                                          <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                            <span>
+                                              Click to View <br />
+                                              {key + 1}. {item.name}
+                                            </span>
+
+                                            <div
+                                              className="absolute bottom-0 right-0 flex items-center gap-2"
+                                              onClick={(e) => {
+                                                e.stopPropagation();
+                                              }}
+                                            >
+                                              <button
+                                                type="button"
+                                                className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                data-tooltip={`Delete`}
+                                                disabled={
+                                                  mutation.isPending || loading
+                                                }
+                                                onClick={() =>
+                                                  handleRemovePhoto(
+                                                    logoImages,
+                                                    key,
+                                                    props,
+                                                    "logo"
+                                                  )
+                                                }
+                                              >
+                                                <FaTrash />
+                                              </button>
+                                            </div>
+                                          </div>
+                                        )}
+                                      </li>
+                                    </React.Fragment>
+                                  );
+                                })}
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="form-action mb-1">
+                    <div className="form-btn">
+                      <button
+                        className="btn-modal-submit"
+                        type="submit"
+                        disabled={mutation.isPending || !props.dirty || loading}
+                      >
+                        {mutation.isPending ? <ButtonSpinner /> : "Save"}
+                      </button>
+                      <button
+                        className="btn-modal-cancel"
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </Form>
+              );
+            }}
+          </Formik>
+        </div>
+      </ModalAddWrapper>
+
+      {isRemovedPhoto && (
+        <ModalRemovedPhoto
+          fileData={fileData.images}
+          itemKey={fileData.itemKey}
+          itemProps={fileData.props}
+          msg="Are you sure you want to remove this file?"
+          setIsModalShow={setIsRemovedPhoto}
+          setNewFile={
+            fileData.type === "client" ? setClientImages : setLogoImages
+          }
+        />
+      )}
+    </>
+  );
+};
+
+export default ModalAddContactFormSettings;

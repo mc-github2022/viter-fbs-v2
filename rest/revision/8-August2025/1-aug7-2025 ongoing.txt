@@ -4,17 +4,17 @@ DEVELOPER
 upload jsx
 
         * CONTROLLERS
-            -> rest/v1/controllers/developer/contact-form
+            -> rest/v1/controllers/developer/contact-form-settings
 
         * CORE 
             -> 
 
 
         * MODELS
-            -> rest/v1/models/developer/contact-form
+            -> rest/v1/models/developer/contact-form-settings
 
         * HTACESS
-            -> # CONTACT FORM - FORM 
+            -> 
 
         * OTHER FILES
             ->

@@ -6,7 +6,7 @@ require '../../../../core/functions.php';
 require '../../../../core/google-api.php';
 // require 'functions.php';
 // use needed classes
-require '../../../../models/developer/contact-form/form/Form.php';
+require '../../../../models/developer/contact-form/content/Content.php';
 // get payload
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);

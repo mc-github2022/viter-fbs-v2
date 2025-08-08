@@ -3,14 +3,14 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$val = new Form($conn);
+$val = new Content($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
 
-if (array_key_exists("formid", $_GET)) {
-  $val->form_aid = $_GET['formid'];
-  checkId($val->form_aid);
+if (array_key_exists("formcontentid", $_GET)) {
+  $val->form_content_aid = $_GET['formcontentid'];
+  checkId($val->form_content_aid);
   $query = checkReadAll($val);
   http_response_code(200);
   getQueriedData($query);
