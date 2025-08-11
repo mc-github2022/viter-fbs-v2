@@ -185,6 +185,7 @@ const ServiceOnlinePayScope = ({ pageName, paymentTitlesData }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"default"}
+          page={"Home"}
           notification_purpose={"default-receiver"}
           emailSubject={`LEARN MORE / Online Payment Integration (${accordionItem}) - `}
         />

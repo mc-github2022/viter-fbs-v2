@@ -91,6 +91,7 @@ const ServiceEnrollmentBanner = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"default"}
+          page={"Home"}
           notification_purpose={"default-receiver"}
           emailSubject={`${banner[0]?.bannerBtnText} / School Enrollment System  - `}
         />

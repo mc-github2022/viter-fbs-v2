@@ -31,7 +31,7 @@ import { StoreContext } from "../store/StoreContext";
 import LoadImages from "./LoadImages";
 import ButtonSpinner from "./spinners/ButtonSpinner";
 
-const ModalLcssForm = ({ thePageName, setLcssForm }) => {
+const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const recaptchaRef = React.useRef();
 
@@ -155,59 +155,69 @@ const ModalLcssForm = ({ thePageName, setLcssForm }) => {
           </div>
           <div className="flex flex-col justify-between">
             <div>
-              <div className="mb-12">
-                <p>{contentFormData?.data?.[1]?.form_subtitle}</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contentFormData?.data?.[1]?.form_title}
-                </h3>
-              </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
-                <li className="!items-start">
-                  <IoMdPin />
-                  <p className="md:w-[50%]">
-                    {contentFormData?.data?.[1]?.form_address || ""}
-                  </p>
-                </li>
-                <li>
-                  <FaPhone />
-                  <p>{contentFormData?.data?.[1]?.form_accounting_no || ""}</p>
-                </li>
-                <li>
-                  <MdOutlinePhoneIphone />
-                  <p>{contentFormData?.data?.[1]?.form_company_no || ""}</p>
-                </li>
-                <li>
-                  <MdOutlinePhoneIphone />
-                  <p>{contentFormData?.data?.[1]?.form_web_no || ""}</p>
-                </li>
-                <li>
-                  <div className="text-xs md:text-sm">
-                    <div className="mb-4">
-                      <h3 className="font-semibold">
-                        {contentFormData?.data?.[1]?.form_computer_role || ""}
-                      </h3>
-                      <p>
-                        {contentFormData?.data?.[1]?.form_computer_name || ""}
-                      </p>
-                      <p>
-                        {contentFormData?.data?.[1]?.form_computer_email || ""}
-                      </p>
-                    </div>
-                    <div className="mb-8">
-                      <h3 className="font-semibold">
-                        {contentFormData?.data?.[1]?.form_accounting_role || ""}
-                      </h3>
-                      <p>
-                        {contentFormData?.data?.[1]?.form_accounting_name || ""}
-                      </p>
-                      <p>
-                        {contentFormData?.data?.[1]?.form_accounting_email ||
-                          ""}
-                      </p>
-                    </div>
+              {contentFormData?.data
+                ?.filter(
+                  (item) =>
+                    item.form_services === services &&
+                    item.packages_category_name === page
+                )
+                ?.map((item, index) => (
+                  <div className="mb-12" key={index}>
+                    <p>{item.form_subtitle}</p>
+                    <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                      {item.form_title}
+                    </h3>
                   </div>
-                </li>
-              </ul>
+                ))}
+
+              {services === "lcss services" &&
+                contentFormData?.data
+                  ?.filter(
+                    (item) =>
+                      item.form_services === "lcss services" &&
+                      item.packages_category_name === page
+                  )
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <div className="text-xs md:text-sm">
+                          <div className="mb-4">
+                            <h3 className="font-semibold">
+                              {item.form_computer_role || ""}
+                            </h3>
+                            <p>{item.form_computer_name || ""}</p>
+                            <p>{item.form_computer_email || ""}</p>
+                          </div>
+                          <div className="mb-8">
+                            <h3 className="font-semibold">
+                              {item.form_accounting_role || ""}
+                            </h3>
+                            <p>{item.form_accounting_name || ""}</p>
+                            <p>{item.form_accounting_email || ""}</p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  ))}
 
               <div className="mb-4">
                 <p>Follow Us:</p>

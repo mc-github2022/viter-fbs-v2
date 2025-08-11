@@ -564,6 +564,7 @@ const WordPressPricing = ({ pageName, wordpressTitlesData }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           services={"web services"}
+          page={"WordPress CMS Website"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / WordPress CMS Website (${contactSubject}) - `}
         />

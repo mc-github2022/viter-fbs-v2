@@ -61,7 +61,7 @@ const VaMarketingPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <VaMarketingBanner pageName={pageName} />
       <VaMarketingOverview />
       <VaMarketingServiceList pageName={pageName} />

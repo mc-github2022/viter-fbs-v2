@@ -61,7 +61,7 @@ const VaResearchPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} />
+      <Header pageName={pageName} services={"default"} page={"Home"} />
       <VaResearchBanner pageName={pageName} />
       <VaResearchOverview />
       <VaResearchServiceList pageName={pageName} />

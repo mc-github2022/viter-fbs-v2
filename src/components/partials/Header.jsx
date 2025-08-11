@@ -17,7 +17,7 @@ import useQueryData from "../custom-hooks/useQueryData";
 import LoadImages from "./LoadImages";
 import TableLoading from "./spinners/TableLoading";
 
-const Header = ({ pageName, services }) => {
+const Header = ({ pageName, services, page }) => {
   const [contactForm, setContactForm] = React.useState(false);
   const [subjectNotif, setSubjectNotif] = React.useState("get-started-home");
   const { store, dispatch } = React.useContext(StoreContext);
@@ -310,6 +310,7 @@ const Header = ({ pageName, services }) => {
           contactForm={contactForm}
           contactSubject={""}
           services={services}
+          page={page}
           notification_purpose={subjectNotif}
           emailSubject={`GET STARTED ${
             pageName === "College OJT"

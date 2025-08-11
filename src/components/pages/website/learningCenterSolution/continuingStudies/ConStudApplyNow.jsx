@@ -93,20 +93,14 @@ const ConStudApplyNow = ({ pageName }) => {
           </div>
         </div>
       </section>
-      {/* {contactForm && (
-        <ModalContact
-          setModalContact={setModalContact}
-          thePageName={pageName}
-          contactForm={contactForm}
-          setContactForm={setContactForm}
-          modalContact={modalContact}
-          contactSubject={""}
-          notification_purpose={"apply-now-lcs"}
-          emailSubject={"Apply now - "}
-        />
-      )} */}
+
       {lcssForm && (
-        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
+        <ModalLcssForm
+          thePageName={pageName}
+          setLcssForm={setLcssForm}
+          services={"lcss services"}
+          page={"High School Work Immersion"}
+        />
       )}
     </>
   );

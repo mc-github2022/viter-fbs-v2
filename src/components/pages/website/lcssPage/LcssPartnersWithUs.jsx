@@ -173,6 +173,7 @@ const LcssPartnersWithUs = ({ pageName, services }) => {
           modalContact={contactForm}
           contactSubject={""}
           services={services}
+          page={"College On-The-Job Training"}
           notification_purpose={"partner-with-us-lcs"}
           emailSubject={"PARTNER WITH US / College On-The-Job Training - "}
         />

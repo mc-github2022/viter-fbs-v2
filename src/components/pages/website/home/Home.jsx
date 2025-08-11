@@ -21,7 +21,7 @@ const Home = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} />
+      <Header pageName={pageName} services={"default"} page={"Home"} />
       <Banner />
       <Process />
       <Services />

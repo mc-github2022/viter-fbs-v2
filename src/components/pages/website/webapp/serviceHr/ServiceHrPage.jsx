@@ -69,7 +69,7 @@ const ServiceHrPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <ServiceHrBanner hrisData={hrisData} />
       <ServiceHrOverview hrisData={hrisData} />
       <ServiceHrScope hrisData={hrisData} hrisTitlesData={hrisTitlesData} />

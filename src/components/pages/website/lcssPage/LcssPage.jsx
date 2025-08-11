@@ -67,6 +67,7 @@ const LcssPage = () => {
         pageName={pageName}
         contactSubject={contactSubject}
         services={"lcss services"}
+        page={"College On-The-Job Training"}
       />
       <LcssBanner pageName={pageName} contactSubject={contactSubject} />
       <LcssPartners ojtTitlesData={ojtTitlesData} />

@@ -60,7 +60,7 @@ const ServiceEnrollmentPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} />
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <ServiceEnrollmentBanner pageName={pageName} />
       <ServiceEnrollmentOverview pageName={pageName} />
       <ServiceEnrollmentScope

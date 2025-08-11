@@ -187,6 +187,7 @@ const SinglePageScope = ({ pageName, singlepageTitlesData }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"web services"}
+          page={"WordPress CMS Website"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Single Page Website (${accordionItem}) - `}
         />

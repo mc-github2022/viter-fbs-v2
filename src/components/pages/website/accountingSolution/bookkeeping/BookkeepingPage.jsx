@@ -51,7 +51,7 @@ const BookkeepingPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"}  />
       <BookkeepingBanner pageName={pageName} />
       <BookkeepingOverview />
       {/* <BookkeepingServiceList /> */}

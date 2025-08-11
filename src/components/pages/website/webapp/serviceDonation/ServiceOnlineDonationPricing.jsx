@@ -568,6 +568,7 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           services={"default"}
+          page={"Home"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Online Donation System (${contactSubject}) - `}
         />

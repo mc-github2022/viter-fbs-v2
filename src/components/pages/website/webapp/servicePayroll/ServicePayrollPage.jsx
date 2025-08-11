@@ -60,7 +60,7 @@ const ServicePayrollPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <ServicePayrollBanner payrollData={payrollData}/>
       <ServicePayrollOverview payrollData={payrollData}/>
       <ServicePayrollScope payrollTitlesData={payrollTitlesData} payrollData={payrollData}/>

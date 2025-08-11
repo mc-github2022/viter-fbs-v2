@@ -85,6 +85,7 @@ const GraphicDesignBanner = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"web services"}
+          page={"WordPress CMS Website"}
           notification_purpose={"default-receiver"}
           emailSubject={`${banner[0]?.bannerBtnText} / WordPress CMS Website - `}
         />

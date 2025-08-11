@@ -596,6 +596,7 @@ const BusinessRegPricing = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           services={"default"}
+          page={"Home"}
           notification_purpose={"default-receiver"}
           emailSubject={`CHOOSE PLAN / Business Registration (${contactSubject}) - `}
         />

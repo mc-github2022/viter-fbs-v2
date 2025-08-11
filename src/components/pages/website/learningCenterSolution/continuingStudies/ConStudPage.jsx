@@ -63,7 +63,7 @@ const ConStudPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"lcss services"}/>
+      <Header pageName={pageName} services={"lcss services"} page={"High School Work Immersion"}/>
       <ConStudBanner pageName={pageName} />
       {/* <ConStudPartners /> */}
       <ConStudPartnersWithUs pageName={pageName} />

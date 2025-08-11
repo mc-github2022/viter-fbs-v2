@@ -61,7 +61,7 @@ const VaAdminSolutionPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <VaAdminSolutionBanner pageName={pageName} />
       <VaAdminSolutionOverview />
       <VaAdminServiceList />

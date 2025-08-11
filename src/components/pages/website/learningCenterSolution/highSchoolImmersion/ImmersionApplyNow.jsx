@@ -88,7 +88,12 @@ const LcssApplyNow = ({ pageName }) => {
         </div>
       </section>
       {lcssForm && (
-        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
+        <ModalLcssForm
+          thePageName={pageName}
+          setLcssForm={setLcssForm}
+          services={"lcss services"}
+          page={"High School Work Immersion"}
+        />
       )}
     </>
   );

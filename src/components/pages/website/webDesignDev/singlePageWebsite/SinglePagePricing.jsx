@@ -564,6 +564,7 @@ const SinglePagePricing = ({ pageName, singlepageTitlesData }) => {
           modalContact={modalContact}
           contactSubject={contactSubject}
           services={"web services"}
+          page={"WordPress CMS Website"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Single Page Website (${contactSubject}) - `}
         />

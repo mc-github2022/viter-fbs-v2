@@ -186,6 +186,7 @@ const ServiceEnrollmentScope = ({ pageName, enrollmentTitlesData }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"default"}
+          page={"Home"}
           notification_purpose={"default-receiver"}
           emailSubject={`LEARN MORE / School Enrollment System (${accordionItem}) - `}
         />

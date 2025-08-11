@@ -42,6 +42,7 @@ const ModalContact = ({
   notification_purpose = "default-receiver",
   emailSubject = "",
   services = null,
+  page = null,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const recaptchaRef = React.useRef();
@@ -104,12 +105,8 @@ const ModalContact = ({
     true
   );
 
-  const image = getConvertStringToJSONparseData(
-    contentFormData?.data?.[0]?.form_img
-  );
-
-  const contactUsDefaultFile = getConvertStringToJSONparseData(
-    contactFormDefaultData?.data?.[0]?.form_default_file
+  const portfolio = getConvertStringToJSONparseData(
+    contentFormData?.data?.[0]?.form_portfolio
   );
 
   const contactUsLcssFile = getConvertStringToJSONparseData(
@@ -189,243 +186,239 @@ const ModalContact = ({
             />
           </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            {contactFormDefaultData?.data?.length > 0 && image?.length > 0 ? (
-              <>
-                {image.map((img, index) => (
-                  <LoadImages
-                    url={`${googleHDViewLink}${img?.id}`}
-                    alt={`Contact Form Default ${index + 1}`}
-                    className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-                    key={index}
-                  />
-                ))}
-              </>
-            ) : (
-              <div className="w-full h-full object-cover object-top place-content-center place-items-center bg-gray-300 ">
-                <FaRegImages className="text-[200px] text-gray-400" />
-              </div>
-            )}
+            {contentFormData?.data
+              ?.filter(
+                (item) =>
+                  item.form_services === services &&
+                  item.packages_category_name === page
+              )
+              ?.map((item, index) => {
+                const image = getConvertStringToJSONparseData(item?.form_img);
+
+                return (
+                  <React.Fragment key={index}>
+                    {contentFormData?.data?.length > 0 && image?.length > 0 ? (
+                      <>
+                        {image.map((img, imgIndex) => (
+                          <LoadImages
+                            url={`${googleHDViewLink}${img?.id}`}
+                            alt={`${item.form_name} ${imgIndex + 1}`}
+                            className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
+                            key={imgIndex}
+                          />
+                        ))}
+                      </>
+                    ) : (
+                      <div className="w-full h-full object-cover object-top place-content-center place-items-center bg-gray-300">
+                        <FaRegImages className="text-[200px] text-gray-400" />
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
           </div>
           <div className="flex flex-col justify-between">
             <div>
               {/* {console.log(contentFormData?.data?.form_services === services)} */}
 
-              {services === "default" ? (
-                <div className="mb-12">
-                  <p>{contentFormData?.data?.[0]?.form_subtitle}</p>
-                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                    {contentFormData?.data?.[0].form_title}
-                  </h3>
-                </div>
-              ) : services === "lcss services" ? (
-                <div className="mb-12">
-                  <p>{contentFormData?.data?.[1]?.form_subtitle}</p>
-                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                    {contentFormData?.data?.[1]?.form_title}
-                  </h3>
-                </div>
-              ) : services === "web services" ? (
-                <div className="mb-12">
-                  <p>{contentFormData?.data?.[3]?.form_subtitle}</p>
-                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                    {contentFormData?.data?.[3]?.form_title}
-                  </h3>
-                </div>
-              ) : services === "career" ? (
-                <div className="mb-12">
-                  <p>{contentFormData?.data?.[4]?.form_subtitle}</p>
-                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                    {contentFormData?.data?.[4]?.form_title}
-                  </h3>
-                </div>
-              ) : (
-                ""
-              )}
+              {contentFormData?.data
+                ?.filter(
+                  (item) =>
+                    item.form_services === services &&
+                    item.packages_category_name === page
+                )
+                ?.map((item, index) => (
+                  <div className="mb-12" key={index}>
+                    <p>{item.form_subtitle}</p>
+                    <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                      {item.form_title}
+                    </h3>
+                  </div>
+                ))}
 
-              {services === "lcss services" ? (
-                <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
-                    <li className="!items-start">
-                      <IoMdPin />
-                      <p className="md:w-[50%]">
-                        {contentFormData?.data?.[1]?.form_address || ""}
-                      </p>
-                    </li>
-                    <li>
-                      <FaPhone />
-                      <p>
-                        {contentFormData?.data?.[1]?.form_accounting_no || ""}
-                      </p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>{contentFormData?.data?.[1]?.form_company_no || ""}</p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>{contentFormData?.data?.[1]?.form_web_no || ""}</p>
-                    </li>
-                    <li>
-                      <div className="text-xs md:text-sm">
-                        <div className="mb-4">
-                          <h3 className="font-semibold">
-                            {contentFormData?.data?.[1]?.form_computer_role ||
-                              ""}
-                          </h3>
-                          <p>
-                            {contentFormData?.data?.[1]?.form_computer_name ||
-                              ""}
-                          </p>
-                          <p>
-                            {contentFormData?.data?.[1]?.form_computer_email ||
-                              ""}
-                          </p>
+              {/* LCSS SERVICES */}
+              {services === "lcss services" &&
+                contentFormData?.data
+                  ?.filter(
+                    (item) =>
+                      item.form_services === "lcss services" &&
+                      item.packages_category_name === page
+                  )
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <div className="text-xs md:text-sm">
+                          <div className="mb-4">
+                            <h3 className="font-semibold">
+                              {item.form_computer_role || ""}
+                            </h3>
+                            <p>{item.form_computer_name || ""}</p>
+                            <p>{item.form_computer_email || ""}</p>
+                          </div>
+                          <div className="mb-8">
+                            <h3 className="font-semibold">
+                              {item.form_accounting_role || ""}
+                            </h3>
+                            <p>{item.form_accounting_name || ""}</p>
+                            <p>{item.form_accounting_email || ""}</p>
+                          </div>
                         </div>
-                        <div className="mb-8">
-                          <h3 className="font-semibold">
-                            {contentFormData?.data?.[1]?.form_accounting_role ||
-                              ""}
-                          </h3>
-                          <p>
-                            {contentFormData?.data?.[1]?.form_accounting_name ||
-                              ""}
-                          </p>
-                          <p>
-                            {contentFormData?.data?.[1]
-                              ?.form_accounting_email || ""}
-                          </p>
+                      </li>
+                    </ul>
+                  ))}
+
+              {/* CAREER */}
+              {services === "career" &&
+                contentFormData?.data
+                  ?.filter(
+                    (item) =>
+                      item.form_services === "career" &&
+                      item.packages_category_name === page
+                  )
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <div className="text-xs md:text-sm">
+                          <div className="mb-4">
+                            <h3 className="font-semibold">
+                              {item.form_hr_manager_role || ""}
+                            </h3>
+                            <p>{item.form_hr_manager_name || ""}</p>
+                            <p>{item.form_hr_manager_email || ""}</p>
+                          </div>
+                          <div className="mb-8">
+                            <h3 className="font-semibold">
+                              {item.form_hr_staff_role || ""}
+                            </h3>
+                            <p>{item.form_hr_staff_name || ""}</p>
+                            <p>{item.form_hr_staff_email || ""}</p>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  </ul>
-                </>
-              ) : services === "career" ? (
-                <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
-                  <li className="!items-start">
-                    <IoMdPin />
-                    <p className="md:w-[50%]">
-                      {contentFormData?.data?.[4]?.form_address || ""}
-                    </p>
-                  </li>
-                  <li>
-                    <FaPhone />
-                    <p>
-                      {contentFormData?.data?.[4]?.form_accounting_no || ""}
-                    </p>
-                  </li>
-                  <li>
-                    <MdOutlinePhoneIphone />
-                    <p>{contentFormData?.data?.[4]?.form_company_no || ""}</p>
-                  </li>
-                  <li>
-                    <MdOutlinePhoneIphone />
-                    <p>{contentFormData?.data?.[4]?.form_web_no || ""}</p>
-                  </li>
-                  <li>
-                    <div className="text-xs md:text-sm">
-                      <div className="mb-4">
-                        <h3 className="font-semibold">
-                          {contentFormData?.data?.[4]?.form_hr_manager_role ||
-                            ""}
-                        </h3>
-                        <p>
-                          {contentFormData?.data?.[4]?.form_hr_manager_name ||
-                            ""}
-                        </p>
-                        <p>
-                          {contentFormData?.data?.[4]?.form_hr_manager_email ||
-                            ""}
-                        </p>
-                      </div>
-                      <div className="mb-8">
-                        <h3 className="font-semibold">
-                          {contentFormData?.data?.[4]?.form_hr_staff_role || ""}
-                        </h3>
-                        <p>
-                          {contentFormData?.data?.[4]?.form_hr_staff_name || ""}
-                        </p>
-                        <p>
-                          {contentFormData?.data?.[4]?.form_hr_staff_email ||
-                            ""}
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              ) : services === "web services" ? (
-                <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
-                    <li className="!items-start">
-                      <IoMdPin />
-                      <p className="md:w-[50%]">
-                        {contentFormData?.data?.[3]?.form_address || ""}
-                      </p>
-                    </li>
-                    <li>
-                      <FaPhone />
-                      <p>
-                        {contentFormData?.data?.[3]?.form_accounting_no || ""}
-                      </p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>{contentFormData?.data?.[3]?.form_company_no || ""}</p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>{contentFormData?.data?.[3]?.form_web_no || ""}</p>
-                    </li>
-                  </ul>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
-                    <li>
-                      <div className="text-xs md:text-sm">
-                        <div className="mb-4">
-                          <h3 className="font-semibold">
-                            {contentFormData?.data?.[3]?.form_web_role || ""}
-                          </h3>
-                          <p>
-                            {contentFormData?.data?.[3]?.form_web_name || ""}
+                      </li>
+                    </ul>
+                  ))}
+
+              {/* WEB SERVICES */}
+              {services === "web services" &&
+                contentFormData?.data
+                  ?.filter(
+                    (item) =>
+                      item.form_services === "web services" &&
+                      item.packages_category_name === page
+                  )
+                  ?.map((item, index) => (
+                    <React.Fragment key={index}>
+                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                        <li className="!items-start">
+                          <IoMdPin />
+                          <p className="md:w-[50%]">
+                            {item.form_address || ""}
                           </p>
-                          <p>
-                            {contentFormData?.data?.[3]?.form_web_email || ""}
-                          </p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </>
-              ) : (
-                <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
-                    <li className="!items-start">
-                      <IoMdPin />
-                      <p className="md:w-[50%]">
-                        {contentFormData?.data?.[0]?.form_address || ""}
-                      </p>
-                    </li>
-                    <li>
-                      <FaPhone />
-                      <p>
-                        {contentFormData?.data?.[0]?.form_accounting_no || ""}
-                      </p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>{contentFormData?.data?.[0]?.form_company_no || ""}</p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>{contentFormData?.data?.[0]?.form_web_no || ""}</p>
-                    </li>
-                    <li>
-                      <IoMailSharp />
-                      <p>
-                        {contentFormData?.data?.[0]?.form_default_email || ""}
-                      </p>
-                    </li>
-                  </ul>
-                </>
-              )}
+                        </li>
+                        <li>
+                          <FaPhone />
+                          <p>{item.form_accounting_no || ""}</p>
+                        </li>
+                        <li>
+                          <MdOutlinePhoneIphone />
+                          <p>{item.form_company_no || ""}</p>
+                        </li>
+                        <li>
+                          <MdOutlinePhoneIphone />
+                          <p>{item.form_web_no || ""}</p>
+                        </li>
+                      </ul>
+                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                        <li>
+                          <div className="text-xs md:text-sm">
+                            <div className="mb-4">
+                              <h3 className="font-semibold">
+                                {item.form_web_role || ""}
+                              </h3>
+                              <p>{item.form_web_name || ""}</p>
+                              <p>{item.form_web_email || ""}</p>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </React.Fragment>
+                  ))}
+
+              {/* DEFAULT */}
+              {services !== "lcss services" &&
+                services !== "career" &&
+                services !== "web services" &&
+                contentFormData?.data
+                  ?.filter(
+                    (item) =>
+                      item.form_services === "default" &&
+                      item.packages_category_name === page
+                  )
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <IoMailSharp />
+                        <p>{item.form_default_email || ""}</p>
+                      </li>
+                    </ul>
+                  ))}
 
               <div className="mb-4">
                 <p>Follow Us:</p>
@@ -490,66 +483,141 @@ const ModalContact = ({
                   })()}
               </div>
             </div>
+
             <div className="downloadProposal justify-end py-5 md:py-0">
-              {thePageName === "College OJT" ? (
-                <>
-                  <p className="text-sm">Learn more about our OJT program</p>
-                  {contactUsLcssFile.map((file, index) => (
-                    <a
-                      href={`${googleViewLink}${file?.id}`}
-                      className="flex gap-2 items-center font-bold text-primary pointer"
-                      target="_blank"
-                      key={index}
-                    >
-                      Download Proposal <FaFileDownload />
-                    </a>
-                  ))}
-                </>
-              ) : thePageName === "Work Immersion" ? (
-                <>
-                  <p className="text-sm">
-                    Learn more about our immersion program
-                  </p>
-                  <a
-                    href="https://drive.google.com/uc?export=download&amp;id=1o0xSoctvBb00q81fE_njVJANzVSiEPt_"
-                    className="flex gap-2 items-center font-bold text-primary pointer"
-                  >
-                    Download Proposal <FaFileDownload />
-                  </a>
-                </>
-              ) : thePageName === "Continuing Study" ? (
-                <></>
-              ) : thePageName === "Wordpress" ? (
-                <>
-                  <p className="text-sm">
-                    Learn more about our WordPress CMS Website program
-                  </p>
-                  {contactUsWordpressFile.map((file, index) => (
-                    <a
-                      href={`${googleViewLink}${file?.id}`}
-                      className="flex gap-2 items-center font-bold text-primary pointer"
-                      target="_blank"
-                      key={index}
-                    >
-                      Download Portfolio <FaFileDownload />
-                    </a>
-                  ))}
-                </>
-              ) : (
-                <>
-                  <p className="text-sm">Learn more about our program</p>
-                  {contactUsDefaultFile.map((file, index) => (
-                    <a
-                      href={`${googleViewLink}${file?.id}`}
-                      className="flex gap-2 items-center font-bold text-primary pointer"
-                      target="_blank"
-                      key={index}
-                    >
-                      Download Company Profile <FaFileDownload />
-                    </a>
-                  ))}
-                </>
-              )}
+              {/* COLLEGE OJT */}
+              {page === "College On-The-Job Training" &&
+                (() => {
+                  // Find the content item that matches the current page + service
+                  const contentItem = contentFormData?.data?.find(
+                    (item) =>
+                      item.packages_category_name === page &&
+                      item.form_services === services
+                  );
+
+                  // Parse portfolio from that matched item
+                  const portfolio = getConvertStringToJSONparseData(
+                    contentItem?.form_portfolio
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our OJT program
+                      </p>
+                      {portfolio?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Proposal <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* WORK IMMERSION */}
+              {page === "Work Immersion" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) =>
+                      item.packages_category_name === page &&
+                      item.form_services === services
+                  );
+
+                  const portfolio = getConvertStringToJSONparseData(
+                    contentItem?.form_portfolio
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our immersion program
+                      </p>
+                      {portfolio?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Proposal <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* CONTINUING STUDY */}
+              {page === "Continuing Study" && <></>}
+
+              {/* WORDPRESS */}
+              {page === "Wordpress" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) =>
+                      item.packages_category_name === page &&
+                      item.form_services === services
+                  );
+
+                  const portfolio = getConvertStringToJSONparseData(
+                    contentItem?.form_portfolio
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our WordPress CMS Website program
+                      </p>
+                      {portfolio?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Portfolio <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* DEFAULT */}
+              {page !== "College On-The-Job Training" &&
+                page !== "Work Immersion" &&
+                page !== "Continuing Study" &&
+                page !== "Wordpress" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) =>
+                      item.packages_category_name === page &&
+                      item.form_services === services
+                  );
+
+                  const portfolio = getConvertStringToJSONparseData(
+                    contentItem?.form_portfolio
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">Learn more about our program</p>
+                      {portfolio?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Company Profile <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
             </div>
           </div>
 

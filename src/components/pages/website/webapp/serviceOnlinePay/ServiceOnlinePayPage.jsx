@@ -60,7 +60,7 @@ const ServiceOnlinePayPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <ServiceOnlinePayBanner pageName={pageName} />
       <ServiceOnlinePayOverview pageName={pageName} />
       <ServiceOnlinePayScope

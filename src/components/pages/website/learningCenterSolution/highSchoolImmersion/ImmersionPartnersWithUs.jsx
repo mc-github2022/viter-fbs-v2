@@ -151,6 +151,7 @@ const ImmersionPartnersWithUs = ({ pageName }) => {
           modalContact={contactForm}
           contactSubject={""}
           services={"lcss services"}
+          page={"High School Work Immersion"}
           notification_purpose={"partner-with-us-lcs"}
           emailSubject={"PARTNER WITH US / High School Work Immersion - "}
         />

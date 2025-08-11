@@ -51,7 +51,7 @@ const BusinessRegPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <BusinessRegBanner pageName={pageName} />
       <BusinessRegOverview />
       {/* <BusinessRegServiceList /> */}

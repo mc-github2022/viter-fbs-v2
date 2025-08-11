@@ -60,7 +60,7 @@ const ServiceInventoryPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} />
+      <Header pageName={pageName} services={"default"} page={"Home"}/>
       <ServiceInventoryBanner pageName={pageName} />
       {/* <ServiceInventoryPartners /> */}
       <ServiceInventoryOverview pageName={pageName} />

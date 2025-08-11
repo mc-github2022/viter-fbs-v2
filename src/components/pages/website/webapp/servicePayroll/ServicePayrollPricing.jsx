@@ -563,6 +563,7 @@ const ServicePayrollPricing = ({ pageName, payrollTitlesData }) => {
           contactSubject={contactSubject}
           notification_purpose={"default-receiver"}
           services={"default"}
+          page={"Home"}
           emailSubject={`LEARN MORE / Online Payroll System (${contactSubject}) - `}
         />
       )}

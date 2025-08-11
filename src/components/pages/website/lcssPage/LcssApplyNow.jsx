@@ -93,7 +93,7 @@ const LcssApplyNow = ({ pageName }) => {
         </div>
       </section>
       {lcssForm && (
-        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} />
+        <ModalLcssForm thePageName={pageName} setLcssForm={setLcssForm} page={"College On-The-Job Training"} services={"lcss services"}/>
       )}
     </>
   );

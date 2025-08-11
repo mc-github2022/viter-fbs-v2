@@ -63,7 +63,11 @@ const ImmersionPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"lcss services"} />
+      <Header
+        pageName={pageName}
+        services={"lcss services"}
+        page={"High School Work Immersion"}
+      />
       <ImmersionBanner pageName={pageName} />
       <ImmersionPartners immersionTitlesData={immersionTitlesData} />
       <ImmersionPartnersWithUs pageName={pageName} />

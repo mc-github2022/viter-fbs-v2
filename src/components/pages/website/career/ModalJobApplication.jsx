@@ -34,7 +34,13 @@ import { StoreContext } from "../../../store/StoreContext";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import LoadImages from "../../../partials/LoadImages";
 
-const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
+const ModalJobApplication = ({
+  setModalJob,
+  jobTitle,
+  modalJob,
+  page = null,
+  services = null,
+}) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const queryClient = useQueryClient();
   const recaptchaRef = React.useRef();
@@ -51,24 +57,6 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     `${apiVersion}/contactForm`, // endpoint
     "get", // method
     "contactForm", // key
-    {},
-    null,
-    true
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault", // key
-    {},
-    null,
-    true
-  );
-
-  const { data: contactFormCareersData } = useQueryData(
-    `${apiVersion}/contactCareers`, // endpoint
-    "get", // method
-    "contactCareers", // key
     {},
     null,
     true
@@ -145,14 +133,36 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
             />
           </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            {contactUsDefaultImage.map((img, index) => (
-              <LoadImages
-                url={`${googleHDViewLink}${img?.id}`}
-                alt={`Contact Form Default ${index + 1}`}
-                className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-                key={index}
-              />
-            ))}
+            {contentFormData?.data
+              ?.filter(
+                (item) =>
+                  item.form_services === services &&
+                  item.packages_category_name === page
+              )
+              ?.map((item, index) => {
+                const image = getConvertStringToJSONparseData(item?.form_img);
+
+                return (
+                  <React.Fragment key={index}>
+                    {contentFormData?.data?.length > 0 && image?.length > 0 ? (
+                      <>
+                        {image.map((img, imgIndex) => (
+                          <LoadImages
+                            url={`${googleHDViewLink}${img?.id}`}
+                            alt={`${item.form_name} ${imgIndex + 1}`}
+                            className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
+                            key={imgIndex}
+                          />
+                        ))}
+                      </>
+                    ) : (
+                      <div className="w-full h-full object-cover object-top place-content-center place-items-center bg-gray-300">
+                        <FaRegImages className="text-[200px] text-gray-400" />
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
           </div>
           <div className="flex flex-col justify-between">
             <div>
@@ -162,53 +172,55 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
                   {contentFormData?.data?.[4]?.form_title}
                 </h3>
               </div>
-              <ul className=" text-sm [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
-                <li className="!items-start">
-                  <IoMdPin />
-                  <p className="md:w-[50%]">
-                    {contentFormData?.data?.[4]?.form_address || ""}
-                  </p>
-                </li>
-                <li>
-                  <FaPhone />
-                  <p>{contentFormData?.data?.[4]?.form_accounting_no || ""}</p>
-                </li>
-                <li>
-                  <MdOutlinePhoneIphone />
-                  <p>{contentFormData?.data?.[4]?.form_company_no || ""}</p>
-                </li>
-                <li>
-                  <MdOutlinePhoneIphone />
-                  <p>{contentFormData?.data?.[4]?.form_web_no || ""}</p>
-                </li>
-                <li>
-                  <div className="text-xs md:text-sm">
-                    <div className="mb-4">
-                      <h3 className="font-semibold">
-                        {contentFormData?.data?.[4]?.form_hr_manager_role || ""}
-                      </h3>
-                      <p>
-                        {contentFormData?.data?.[4]?.form_hr_manager_name || ""}
-                      </p>
-                      <p>
-                        {contentFormData?.data?.[4]?.form_hr_manager_email ||
-                          ""}
-                      </p>
-                    </div>
-                    <div className="mb-8">
-                      <h3 className="font-semibold">
-                        {contentFormData?.data?.[4]?.form_hr_staff_role || ""}
-                      </h3>
-                      <p>
-                        {contentFormData?.data?.[4]?.form_hr_staff_name || ""}
-                      </p>
-                      <p>
-                        {contentFormData?.data?.[4]?.form_hr_staff_email || ""}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+              {/* CAREER */}
+              {services === "career" &&
+                contentFormData?.data
+                  ?.filter(
+                    (item) =>
+                      item.form_services === "career" &&
+                      item.packages_category_name === page
+                  )
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <div className="text-xs md:text-sm">
+                          <div className="mb-4">
+                            <h3 className="font-semibold">
+                              {item.form_hr_manager_role || ""}
+                            </h3>
+                            <p>{item.form_hr_manager_name || ""}</p>
+                            <p>{item.form_hr_manager_email || ""}</p>
+                          </div>
+                          <div className="mb-8">
+                            <h3 className="font-semibold">
+                              {item.form_hr_staff_role || ""}
+                            </h3>
+                            <p>{item.form_hr_staff_name || ""}</p>
+                            <p>{item.form_hr_staff_email || ""}</p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  ))}
               <div className="mb-4">
                 <p>Follow Us:</p>
                 {contentFormData?.data?.length > 0 &&
