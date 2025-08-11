@@ -14,7 +14,8 @@ import LoadImages from "../../../../partials/LoadImages";
 import ModalContactWebAndDev from "../../../../partials/ModalContactWebAndDev";
 
 const WordPressOverview = ({ pageName }) => {
-  const [webAndDev, setWebAndDev] = React.useState(false);
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
 
   const { data: wordpressOverviewData } = useQueryData(
     `${apiVersion}/wordpress-overview`, // endpoint
@@ -26,7 +27,7 @@ const WordPressOverview = ({ pageName }) => {
   );
 
   const handleForm = () => {
-    setWebAndDev(!webAndDev);
+    setContactForm(!contactForm);
   };
 
   const wordpressOverviewImage = getConvertStringToJSONparseData(
@@ -137,10 +138,17 @@ const WordPressOverview = ({ pageName }) => {
         </div>
       </section>
 
-      {webAndDev && (
-        <ModalContactWebAndDev
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
           thePageName={pageName}
-          setWebAndDev={setWebAndDev}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${webAppOverview[0]?.bannerBtnText} / WordPress CMS Website - `}
         />
       )}
     </>

@@ -86,7 +86,7 @@ const CareerPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"career"}/>
       <section className="career pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="text-center">

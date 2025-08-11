@@ -186,6 +186,7 @@ const SinglePageScope = ({ pageName, singlepageTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"web services"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Single Page Website (${accordionItem}) - `}
         />

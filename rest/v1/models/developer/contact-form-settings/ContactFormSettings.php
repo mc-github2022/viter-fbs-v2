@@ -36,6 +36,7 @@ class ContactFormSettings
     public $form_hr_staff_role;
     public $form_hr_staff_name;
     public $form_hr_staff_email;
+    public $form_page_id;
     public $form_created;
     public $form_updated;
 
@@ -43,11 +44,13 @@ class ContactFormSettings
     public $lastInsertedId;
 
     public $tblContactFormSettings;
+    public $tblPackagesCategory;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblContactFormSettings = "fbsv2_contact_form";
+        $this->tblPackagesCategory = "fbsv2_packages_category";
     }
 
     public function readAll()
@@ -55,9 +58,45 @@ class ContactFormSettings
         try {
             $sql = "select * ";
             $sql .= "from ";
-            $sql .= "{$this->tblContactFormSettings}  ";
+            $sql .= "{$this->tblContactFormSettings} as contact, ";
+            $sql .= "{$this->tblPackagesCategory} as category ";
+            $sql .= "where contact.form_page_id = category.packages_category_aid ";
+            $sql .= "order by contact.form_aid asc ";
+            $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readAllContactForm()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblContactFormSettings} ";
             $sql .= "order by form_aid asc ";
             $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+
+    // read by id
+    public function readById()
+    {
+        try {
+            $sql = "select * from {$this->tblContactFormSettings} as contact, ";
+            $sql .= "{$this->tblPackagesCategory} as category ";
+            $sql .= "where contact.form_page_id = category.packages_category_aid ";
+            $sql .= "and contact.form_aid = :form_aid ";
+            $sql .= "order by contact.form_aid asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "form_aid" => $this->form_aid,
+            ]);
         } catch (PDOException $ex) {
             $query = false;
         }
@@ -101,6 +140,7 @@ class ContactFormSettings
             $sql .= "form_hr_staff_role, ";
             $sql .= "form_hr_staff_name, ";
             $sql .= "form_hr_staff_email, ";
+            $sql .= "form_page_id, ";
             $sql .= "form_created, ";
             $sql .= "form_updated ) values ( ";
             $sql .= ":form_name, ";
@@ -136,6 +176,7 @@ class ContactFormSettings
             $sql .= ":form_hr_staff_role, ";
             $sql .= ":form_hr_staff_name, ";
             $sql .= ":form_hr_staff_email, ";
+            $sql .= ":form_page_id, ";
             $sql .= ":form_created, ";
             $sql .= ":form_updated )";
             $query = $this->connection->prepare($sql);
@@ -173,6 +214,7 @@ class ContactFormSettings
                 "form_hr_staff_role" => $this->form_hr_staff_role,
                 "form_hr_staff_name" => $this->form_hr_staff_name,
                 "form_hr_staff_email" => $this->form_hr_staff_email,
+                "form_page_id" => $this->form_page_id,
                 "form_created" => $this->form_created,
                 "form_updated" => $this->form_updated,
             ]);
@@ -220,6 +262,7 @@ class ContactFormSettings
             $sql .= "form_hr_staff_role = :form_hr_staff_role, ";
             $sql .= "form_hr_staff_name = :form_hr_staff_name, ";
             $sql .= "form_hr_staff_email = :form_hr_staff_email, ";
+            $sql .= "form_page_id = :form_page_id, ";
             $sql .= "form_updated = :form_updated ";
             $sql .= "where form_aid = :form_aid ";
             $query = $this->connection->prepare($sql);
@@ -257,6 +300,7 @@ class ContactFormSettings
                 "form_hr_staff_role" => $this->form_hr_staff_role,
                 "form_hr_staff_name" => $this->form_hr_staff_name,
                 "form_hr_staff_email" => $this->form_hr_staff_email,
+                "form_page_id" => $this->form_page_id,
                 "form_updated" => $this->form_updated,
                 "form_aid" => $this->form_aid,
             ]);

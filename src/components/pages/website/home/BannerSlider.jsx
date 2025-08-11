@@ -55,12 +55,6 @@ function SamplePrevArrow(props) {
 }
 
 const BannerSlider = ({ pageName }) => {
-  // const [modalContact, setModalContact] = React.useState(false);
-  // const handleModalContact = () => {
-  //   setModalContact(!modalContact);
-  //   console.log("open");
-  // };
-
   const [modalContact, setModalContact] = React.useState(false);
   const handleModalContact = () => {
     setModalContact(!modalContact);
@@ -70,12 +64,6 @@ const BannerSlider = ({ pageName }) => {
   const handleForm = () => {
     setContactForm(!contactForm);
   };
-
-  // const [imageLoaded, setImageLoaded] = React.useState(false);
-
-  // const handleImageLoad = () => {
-  //   setImageLoaded(true);
-  // };
 
   const {
     isFetching,
@@ -158,8 +146,6 @@ const BannerSlider = ({ pageName }) => {
     };
   }, []);
 
- 
-
   return (
     <>
       {isLoading ? (
@@ -225,6 +211,7 @@ const BannerSlider = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={"GET STARTED / HOME - "}
         />

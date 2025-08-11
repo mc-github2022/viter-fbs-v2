@@ -22,9 +22,13 @@ import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
 import LoadImages from "../../../partials/LoadImages";
 import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import { setIsAdd } from "../../../store/StoreAction";
+import { setError, setIsAdd, setMessage } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
 import { IoMdCloseCircle } from "react-icons/io";
+import useQueryData from "../../../custom-hooks/useQueryData";
+import TableSpinner from "../../../partials/spinners/TableSpinner";
+import ServerError from "../../../partials/spinners/ServerError";
+import NoData from "../../../partials/spinners/NoData";
 
 const ModalAddContactFormSettings = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -41,6 +45,16 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
   const [isCheck, setIsCheck] = React.useState(false);
   const [isCheckPortfolio, setIsCheckPortfolio] = React.useState(false);
   const [selectedService, setSelectedService] = React.useState(false);
+
+  const [onFocusPackagesList, setOnFocusPackagesList] = React.useState(false);
+  const [propertyPackageListValue, setPropertyPackageListValue] =
+    React.useState(itemEdit ? `${itemEdit.packages_category_name}` : ""); // to get the data from table when update
+  const [packageList, setPackageList] = React.useState(
+    itemEdit ? itemEdit.packages_category_name : ""
+  );
+  const [packageListId, setPackageListId] = React.useState(
+    itemEdit ? itemEdit.form_page_id : ""
+  );
 
   const {
     uploadMultiplePhoto: uploadClientImages,
@@ -111,17 +125,75 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     }, 200);
   };
 
-  const handleCheckBox = (e) => {
-    setIsCheck(e.target.checked);
-  };
-
-  const handleCheckBoxPortfolio = (e) => {
-    setIsCheckPortfolio(e.target.checked);
-  };
-
   React.useEffect(() => {
     setIsCheck(itemEdit ? itemEdit.form_is_upload_input : false);
     setIsCheckPortfolio(itemEdit ? itemEdit.form_is_upload_file : false);
+  }, []);
+
+  const {
+    isFetching: packageListDataIsFetching,
+    error: packageListDataError,
+    data: packageListData,
+  } = useQueryData(
+    `${apiVersion}/packages-list/category-search`, // endpoint
+    "post", // method
+    "packages-list/category-search", // key
+    {
+      searchValue: packageList, // payload
+    },
+    {
+      searchValue: packageList, // id
+    },
+    true // refetchOnWindowFocus
+  );
+
+  // console.log(packageList);
+
+  const handleClickPackageList = (item) => {
+    setPackageList(item.packages_category_name);
+    setPropertyPackageListValue(`${item.packages_category_name}`);
+    setPackageListId(item.packages_category_aid);
+    setOnFocusPackagesList(false);
+  };
+
+  const handleOnChangePackageList = (e) => {
+    setPropertyPackageListValue(e.target.value);
+    setLoading(true);
+    setPackageListId("");
+    if (e.target.value === "") {
+      setLoading(false);
+    }
+
+    let timeOut;
+
+    timeOut = setTimeout(() => {
+      clearTimeout(timeOut);
+      let val = e.target.value;
+      if (val === "") {
+        setPackageList(val);
+        return;
+      }
+      setPackageList(val);
+      setLoading(false);
+    }, 500); // debounce seconds to fetch
+  };
+
+  // to close the modal when clicking outside for Property type
+  const refPackageList = React.useRef();
+
+  const clickOutsideRefPackageList = (e) => {
+    if (
+      refPackageList.current !== undefined &&
+      refPackageList.current !== null &&
+      !refPackageList.current?.contains(e.target)
+    ) {
+      setOnFocusPackagesList(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("click", clickOutsideRefPackageList);
+    return () => document.addEventListener("click", clickOutsideRefPackageList);
   }, []);
 
   const queryClient = useQueryClient();
@@ -143,7 +215,7 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
         dispatch(setSuccess(false));
       } else {
         console.log("Success");
-        dispatch(setIsUpdateHome(false));
+        dispatch(setIsAdd(false));
         dispatch(setSuccess(true));
         dispatch(setMessage(`Successfully ${itemEdit ? "Updated" : "Added"}.`));
       }
@@ -163,6 +235,14 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
       setLogoImages(logoPhotos);
     }
   }, []);
+
+  React.useEffect(() => {
+    if (itemEdit?.form_services) {
+      setSelectedService(itemEdit.form_services);
+    }
+  }, [itemEdit]);
+
+  console.log(packageListId);
 
   const initVal = {
     form_portfolio: itemEdit ? itemEdit.form_portfolio : "",
@@ -199,6 +279,7 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     form_hr_staff_role: itemEdit ? itemEdit.form_hr_staff_role : "",
     form_hr_staff_name: itemEdit ? itemEdit.form_hr_staff_name : "",
     form_hr_staff_email: itemEdit ? itemEdit.form_hr_staff_email : "",
+    form_page_id: itemEdit ? itemEdit.form_page_id : "",
 
     form_portfolio_old: itemEdit ? itemEdit.form_portfolio : "",
     form_img_old: itemEdit ? itemEdit.form_img : "",
@@ -228,9 +309,15 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
             validationSchema={yupSchema}
             onSubmit={async (values) => {
               setLoading(true);
+              if (packageListId === "" || !packageListId) {
+                dispatch(setError(true));
+                dispatch(setMessage("Page is Required."));
+                return;
+              }
 
               const data = {
                 ...values,
+                form_page_id: packageListId,
                 form_is_upload_input: isCheck,
                 form_is_upload_file: isCheckPortfolio,
                 form_img: clientImages.map((item) =>
@@ -260,6 +347,15 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
             }}
           >
             {(props) => {
+              const handleCheckBox = (e) => {
+                setIsCheck(e.target.checked);
+                props.setFieldValue("form_is_upload_input", e.target.checked);
+              };
+
+              const handleCheckBoxPortfolio = (e) => {
+                setIsCheckPortfolio(e.target.checked);
+                props.setFieldValue("form_is_upload_file", e.target.checked);
+              };
               return (
                 <Form className="modal-form">
                   <div className="form-input">
@@ -376,7 +472,44 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                         </ol>
                       </div>
                     </div>
-
+                    <div className=" input-wrapper">
+                      <InputText
+                        label="*Page"
+                        type="text"
+                        value={propertyPackageListValue}
+                        name="form_page_id"
+                        disabled={mutation.isPending}
+                        onFocus={() => setOnFocusPackagesList(true)}
+                        onChange={handleOnChangePackageList}
+                        refVal={refPackageList}
+                      />
+                      {onFocusPackagesList && (
+                        <div className="w-full h-40 max-h-40 overflow-y-auto absolute top-[33px] bg-white shadow-md z-50 rounded-sm border border-gray-200 pt-1">
+                          {loading || packageListDataIsFetching ? (
+                            <TableSpinner />
+                          ) : packageListDataError ? (
+                            <div className="my-7">
+                              <ServerError />
+                            </div>
+                          ) : packageListData?.count > 0 ? (
+                            packageListData?.data.map((item, key) => (
+                              <div
+                                className="cursor-pointer hover:bg-gray-100 h-7 p-1 text-xs text-dark"
+                                value={item.packages_category_aid}
+                                key={key}
+                                onClick={() => handleClickPackageList(item)}
+                              >
+                                {item.packages_category_name}
+                              </div>
+                            ))
+                          ) : (
+                            <div className="my-7">
+                              <NoData />
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
                     <div className="input-wrapper">
                       <InputText
                         label="*Form Name"
@@ -675,121 +808,128 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                       )}
                     </div>
 
-                    {isCheckPortfolio && (
-                      <div className="flex flex-col gap-2 mt-1">
-                        <div className="relative">
-                          <label className=" top-[32px]  text-dark text-xs">
-                            Upload File
-                          </label>
-                          <div
-                            className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
-                              withFile && "border-primary border-dashed"
-                            }`}
-                            onDragOver={() => setWithFile(true)}
-                            onDragLeave={() => setWithFile(false)}
-                          >
-                            <span className="min-h-16 flex items-center justify-center">
-                              <span className="text-dark mr-1">
-                                Drag & Drop
-                              </span>{" "}
-                              Photo here or{" "}
-                              <span className="text-dark ml-1">Browse</span>
-                            </span>
+                    {isCheckPortfolio ? (
+                      <>
+                        <div className="flex flex-col gap-2 mt-1">
+                          <div className="relative">
+                            <label className=" top-[32px]  text-dark text-xs">
+                              Upload File
+                            </label>
+                            <div
+                              className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
+                                withFile && "border-primary border-dashed"
+                              }`}
+                              onDragOver={() => setWithFile(true)}
+                              onDragLeave={() => setWithFile(false)}
+                            >
+                              <span className="min-h-16 flex items-center justify-center">
+                                <span className="text-dark mr-1">
+                                  Drag & Drop
+                                </span>{" "}
+                                Photo here or{" "}
+                                <span className="text-dark ml-1">Browse</span>
+                              </span>
 
-                            <InputFileUpload
-                              label="Upload Image"
-                              name="File"
-                              type="file"
-                              id="myFile"
-                              accept="*"
-                              title="Upload File"
-                              onChange={(e) =>
-                                handleChangeFileUploadLogo(
-                                  e,
-                                  props,
-                                  setLogoImages,
-                                  "form_portfolio"
-                                )
-                              }
-                              onDrop={(e) =>
-                                handleChangeFileUploadLogo(
-                                  e,
-                                  props,
-                                  setLogoImages,
-                                  "form_portfolio"
-                                )
-                              }
-                              disabled={mutation.isPending || loading}
-                              className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
-                            />
-                          </div>
+                              <InputFileUpload
+                                label="Upload Image"
+                                name="File"
+                                type="file"
+                                id="myFile"
+                                accept="*"
+                                title="Upload File"
+                                onChange={(e) =>
+                                  handleChangeFileUploadLogo(
+                                    e,
+                                    props,
+                                    setLogoImages,
+                                    "form_portfolio"
+                                  )
+                                }
+                                onDrop={(e) =>
+                                  handleChangeFileUploadLogo(
+                                    e,
+                                    props,
+                                    setLogoImages,
+                                    "form_portfolio"
+                                  )
+                                }
+                                disabled={mutation.isPending || loading}
+                                className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                              />
+                            </div>
 
-                          <div className="relative ">
-                            <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                              {logoImages.length > 0 &&
-                                logoImages.map((item, key) => {
-                                  const fileLink =
-                                    item instanceof File || item instanceof Blob
-                                      ? URL.createObjectURL(item)
-                                      : `${googleHDViewLink}${item?.id}`;
+                            <div className="relative ">
+                              <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                                {logoImages.length > 0 &&
+                                  logoImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
 
-                                  return (
-                                    <React.Fragment key={key}>
-                                      <li
-                                        className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
-                                        onClick={() =>
-                                          handleClickViewSlideshow(
-                                            logoImages,
-                                            key
-                                          )
-                                        }
-                                      >
-                                        <LoadImages
-                                          url={fileLink}
-                                          className="relative z-20 w-full h-full object-cover object-center"
-                                        />
-                                        {(!mutation.isPending || !loading) && (
-                                          <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
-                                            <span>
-                                              Click to View <br />
-                                              {key + 1}. {item.name}
-                                            </span>
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              logoImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
 
-                                            <div
-                                              className="absolute bottom-0 right-0 flex items-center gap-2"
-                                              onClick={(e) => {
-                                                e.stopPropagation();
-                                              }}
-                                            >
-                                              <button
-                                                type="button"
-                                                className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
-                                                data-tooltip={`Delete`}
-                                                disabled={
-                                                  mutation.isPending || loading
-                                                }
-                                                onClick={() =>
-                                                  handleRemovePhoto(
-                                                    logoImages,
-                                                    key,
-                                                    props,
-                                                    "logo"
-                                                  )
-                                                }
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
                                               >
-                                                <FaTrash />
-                                              </button>
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      logoImages,
+                                                      key,
+                                                      props,
+                                                      "logo"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
                                             </div>
-                                          </div>
-                                        )}
-                                      </li>
-                                    </React.Fragment>
-                                  );
-                                })}
-                            </ol>
+                                          )}
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                              </ol>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </>
+                    ) : (
+                      ""
                     )}
                   </div>
                   <div className="form-action mb-1">

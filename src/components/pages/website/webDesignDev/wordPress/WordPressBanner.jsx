@@ -14,7 +14,8 @@ import LoadImages from "../../../../partials/LoadImages";
 import ModalContactWebAndDev from "../../../../partials/ModalContactWebAndDev";
 
 const WordPressBanner = ({ pageName }) => {
-  const [webAndDev, setWebAndDev] = React.useState(false);
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
 
   const { data: wordpressData } = useQueryData(
     `${apiVersion}/wordpress`, // endpoint
@@ -26,7 +27,7 @@ const WordPressBanner = ({ pageName }) => {
   );
 
   const handleForm = () => {
-    setWebAndDev(!webAndDev);
+    setContactForm(!contactForm);
   };
 
   const wordpressBannerImage = getConvertStringToJSONparseData(
@@ -78,10 +79,17 @@ const WordPressBanner = ({ pageName }) => {
           </div>
         </div>
       </section>
-      {webAndDev && (
-        <ModalContactWebAndDev
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
           thePageName={pageName}
-          setWebAndDev={setWebAndDev}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${banner[0]?.bannerBtnText} / WordPress CMS Website - `}
         />
       )}
     </>

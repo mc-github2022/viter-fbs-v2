@@ -2,7 +2,12 @@ import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import useQueryData from "../../../custom-hooks/useQueryData";
-import { getConvertStringToJSONparseData } from "../../../helpers/functions-general";
+import {
+  apiVersion,
+  devNavUrl,
+  getConvertStringToJSONparseData,
+  UrlDeveloper,
+} from "../../../helpers/functions-general";
 import ModalDelete from "../../../partials/modals/ModalDelete";
 import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../partials/spinners/NoData";
@@ -10,11 +15,19 @@ import ServerError from "../../../partials/spinners/ServerError";
 import TableLoading from "../../../partials/spinners/TableLoading";
 import { setIsAdd, setIsDelete } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
+import { useNavigate } from "react-router-dom";
 
 const ContactFormSettingsTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [id, setIsId] = React.useState("");
   const [isData, setIsData] = React.useState("");
+  const navigate = useNavigate();
+
+  const handleGoToPage = (item) => {
+    navigate(
+      `${devNavUrl}/${UrlDeveloper}/contact-form/view?contactformid=${item.form_aid}`
+    );
+  };
 
   const {
     isFetching,
@@ -22,7 +35,7 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
     isLoading,
     data: contentFormData,
   } = useQueryData(
-    "/v1/contactForm", // endpoint
+    `${apiVersion}/contactForm`, // endpoint
     "get", // method
     "contactForm" // key
   );
@@ -36,9 +49,11 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
 
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsData(item.special_offers_services);
-    setIsId(item.form_content_aid);
+    setIsData(item.form_name);
+    setIsId(item.form_aid);
   };
+
+  console.log(contentFormData);
 
   return (
     <>
@@ -51,9 +66,10 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
               <th className="min-w-[6rem]">Form Name</th>
               <th className="min-w-[6rem]">Subtitle</th>
               <th className="min-w-[6rem]">Title</th>
-              <th className="min-w-[6rem]">Address</th>
+              <th className="min-w-[5rem]">Address</th>
               <th className="min-w-[6rem]">Services</th>
               <th className="min-w-[6rem]">File</th>
+              <th className="min-w-[6rem]">Image</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -76,36 +92,33 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
 
             {contentFormData?.data.map((item, key) => {
               const portfolio =
-                getConvertStringToJSONparseData(item.form_content_portfolio) ||
-                [];
+                getConvertStringToJSONparseData(item.form_portfolio) || [];
+              const image =
+                getConvertStringToJSONparseData(item.form_img) || [];
               return (
                 <tr key={key} className="place-content-start text-[14px]">
-                  <td className="pl-2 place-content-start">{counter++}</td>
-                  <td className="place-content-start">
-                    {item.packages_category_name}
+                  <td className="pl-2 place-content-start">{counter++}.</td>
+                  <td
+                    className="place-content-start hover:cursor-pointer hover:underline hover:text-primary"
+                    onClick={() => handleGoToPage(item)}
+                  >
+                    {item.form_name}
                   </td>
-                  <td className="place-content-start">
-                    {item.form_content_purpose}
-                  </td>
-                  <td className="place-content-start">
-                    {item.form_content_title}
-                  </td>
-                  <td className="place-content-start">
-                    {item.form_content_subtitle}
-                  </td>
-                  <td className="place-content-start">
-                    {item.form_content_is_upload_file === 1 ? "Yes" : "No"}
-                  </td>
-                  <td className="place-content-start">
-                    {item.form_content_is_subject_input === 1 ? "Yes" : "No"}
+                  <td className="place-content-start">{item.form_subtitle}</td>
+                  <td className="place-content-start">{item.form_title}</td>
+                  <td className="place-content-start">{item.form_address}</td>
+                  <td className="place-content-start capitalize">
+                    {item.form_services}
                   </td>
                   <td className="place-content-start">
                     {portfolio.map((img, index) => (
                       <p key={index}>{img.name}</p>
                     ))}
                   </td>
-                  <td className="place-content-start truncate">
-                    {item.form_content_details}
+                  <td className="place-content-start">
+                    {image.map((img, index) => (
+                      <p key={index}>{img.name}</p>
+                    ))}
                   </td>
                   <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                     <button
@@ -133,8 +146,8 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
       {store.isDelete && (
         <ModalDelete
           setIsDelete={setIsDelete}
-          queryKey={"contactContent"}
-          mysqlEndpoint={`/v1/contactContent/${id}`}
+          queryKey={"contactForm"}
+          mysqlEndpoint={`${apiVersion}/contactForm/${id}`}
           item={isData}
         />
       )}

@@ -568,6 +568,7 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / School Enrollment System (${contactSubject}) - `}
         />

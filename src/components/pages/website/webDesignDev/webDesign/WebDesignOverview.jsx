@@ -151,6 +151,7 @@ const WebDesignOverview = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"web services"}
           notification_purpose={"default-receiver"}
           emailSubject={`${webAppOverview[0]?.btnText} / Web Design - `}
         />

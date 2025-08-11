@@ -567,6 +567,7 @@ const ServiceOnlinePayPricing = ({ pageName, paymentTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Online Payment Integration (${contactSubject}) - `}
         />

@@ -3,15 +3,15 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$val = new Content($conn);
+$val = new ContactFormSettings($conn);
 // get $_GET data
 $error = [];
 $returnData = [];
 
-if (array_key_exists("formcontentid", $_GET)) {
-  $val->form_content_aid = $_GET['formcontentid'];
-  checkId($val->form_content_aid);
-  $query = checkReadAll($val);
+if (array_key_exists("contactformid", $_GET)) {
+  $val->form_aid = $_GET['contactformid'];
+  checkId($val->form_aid);
+  $query = checkReadById($val);
   http_response_code(200);
   getQueriedData($query);
 }

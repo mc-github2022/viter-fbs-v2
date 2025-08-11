@@ -60,12 +60,18 @@ const ServiceInventoryPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"default"} />
       <ServiceInventoryBanner pageName={pageName} />
       {/* <ServiceInventoryPartners /> */}
       <ServiceInventoryOverview pageName={pageName} />
-      <ServiceInventoryScope pageName={pageName} assetTitlesData={assetTitlesData}/>
-      <ServiceInventoryPricing pageName={pageName} assetTitlesData={assetTitlesData}/>
+      <ServiceInventoryScope
+        pageName={pageName}
+        assetTitlesData={assetTitlesData}
+      />
+      <ServiceInventoryPricing
+        pageName={pageName}
+        assetTitlesData={assetTitlesData}
+      />
       {/* <ServiceInventoryPartnersSay /> */}
       <Footer />
       {store.success && <ModalSuccess />}

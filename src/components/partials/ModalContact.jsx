@@ -41,10 +41,12 @@ const ModalContact = ({
   contactSubject = "",
   notification_purpose = "default-receiver",
   emailSubject = "",
+  services = null,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const recaptchaRef = React.useRef();
 
+  console.log("services title: ", services);
   const handleClose = () => {
     setModalContact(false);
     setContactForm(false);
@@ -54,6 +56,17 @@ const ModalContact = ({
     setModalContact(false);
     setContactForm(false);
   };
+
+  const { data: contentFormData } = useQueryData(
+    `${apiVersion}/contactForm`, // endpoint
+    "get", // method
+    "contactForm", // key
+    {},
+    null,
+    true
+  );
+
+  console.log(contentFormData);
 
   const { data: contactFormDefaultData } = useQueryData(
     `${apiVersion}/contactDefault`, // endpoint
@@ -91,8 +104,8 @@ const ModalContact = ({
     true
   );
 
-  const contactUsDefaultImage = getConvertStringToJSONparseData(
-    contactFormDefaultData?.data?.[0]?.form_default_img
+  const image = getConvertStringToJSONparseData(
+    contentFormData?.data?.[0]?.form_img
   );
 
   const contactUsDefaultFile = getConvertStringToJSONparseData(
@@ -176,10 +189,9 @@ const ModalContact = ({
             />
           </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            {contactFormDefaultData?.data?.length > 0 &&
-            contactUsDefaultImage?.length > 0 ? (
+            {contactFormDefaultData?.data?.length > 0 && image?.length > 0 ? (
               <>
-                {contactUsDefaultImage.map((img, index) => (
+                {image.map((img, index) => (
                   <LoadImages
                     url={`${googleHDViewLink}${img?.id}`}
                     alt={`Contact Form Default ${index + 1}`}
@@ -196,146 +208,172 @@ const ModalContact = ({
           </div>
           <div className="flex flex-col justify-between">
             <div>
-              <div className="mb-12">
-                <p>
-                  {contactFormDefaultData?.data?.[0]?.form_default_subtitle ||
-                    ""}
-                </p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contactFormDefaultData?.data?.[0]?.form_default_title || ""}
-                </h3>
-              </div>
+              {/* {console.log(contentFormData?.data?.form_services === services)} */}
 
-              {thePageName === "College OJT" ||
-              thePageName === "Work Immersion" ||
-              thePageName === "Continuing Study" ? (
+              {services === "default" ? (
+                <div className="mb-12">
+                  <p>{contentFormData?.data?.[0]?.form_subtitle}</p>
+                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                    {contentFormData?.data?.[0].form_title}
+                  </h3>
+                </div>
+              ) : services === "lcss services" ? (
+                <div className="mb-12">
+                  <p>{contentFormData?.data?.[1]?.form_subtitle}</p>
+                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                    {contentFormData?.data?.[1]?.form_title}
+                  </h3>
+                </div>
+              ) : services === "web services" ? (
+                <div className="mb-12">
+                  <p>{contentFormData?.data?.[3]?.form_subtitle}</p>
+                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                    {contentFormData?.data?.[3]?.form_title}
+                  </h3>
+                </div>
+              ) : services === "career" ? (
+                <div className="mb-12">
+                  <p>{contentFormData?.data?.[4]?.form_subtitle}</p>
+                  <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                    {contentFormData?.data?.[4]?.form_title}
+                  </h3>
+                </div>
+              ) : (
+                ""
+              )}
+
+              {services === "lcss services" ? (
                 <>
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p className="md:w-[50%]">
-                        {contactFormDefaultData?.data?.[0]
-                          ?.form_default_address || ""}
+                        {contentFormData?.data?.[1]?.form_address || ""}
                       </p>
                     </li>
                     <li>
                       <FaPhone />
                       <p>
-                        {contactFormLcssData?.data?.[0]?.form_lcss_telephone ||
-                          ""}
+                        {contentFormData?.data?.[1]?.form_accounting_no || ""}
                       </p>
                     </li>
                     <li>
                       <MdOutlinePhoneIphone />
-                      <p>
-                        {contactFormLcssData?.data?.[0]?.form_lcss_phone || ""}
-                      </p>
+                      <p>{contentFormData?.data?.[1]?.form_company_no || ""}</p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>{contentFormData?.data?.[1]?.form_web_no || ""}</p>
                     </li>
                     <li>
                       <div className="text-xs md:text-sm">
                         <div className="mb-4">
                           <h3 className="font-semibold">
-                            {contactFormLcssData?.data?.[0]
-                              ?.form_lcss_computer_title || ""}
+                            {contentFormData?.data?.[1]?.form_computer_role ||
+                              ""}
                           </h3>
                           <p>
-                            {contactFormLcssData?.data?.[0]
-                              ?.form_lcss_computer_name || ""}
+                            {contentFormData?.data?.[1]?.form_computer_name ||
+                              ""}
                           </p>
                           <p>
-                            {contactFormLcssData?.data?.[0]
-                              ?.form_lcss_computer_email || ""}
+                            {contentFormData?.data?.[1]?.form_computer_email ||
+                              ""}
                           </p>
                         </div>
                         <div className="mb-8">
                           <h3 className="font-semibold">
-                            {contactFormLcssData?.data?.[0]
-                              ?.form_lcss_accounting_title || ""}
+                            {contentFormData?.data?.[1]?.form_accounting_role ||
+                              ""}
                           </h3>
                           <p>
-                            {contactFormLcssData?.data?.[0]
-                              ?.form_lcss_accounting_name || ""}
+                            {contentFormData?.data?.[1]?.form_accounting_name ||
+                              ""}
                           </p>
                           <p>
-                            {contactFormLcssData?.data?.[0]
-                              ?.form_lcss_accounting_email || ""}
+                            {contentFormData?.data?.[1]
+                              ?.form_accounting_email || ""}
                           </p>
                         </div>
                       </div>
                     </li>
                   </ul>
                 </>
-              ) : thePageName === "career" ? (
+              ) : services === "career" ? (
                 <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
                   <li className="!items-start">
                     <IoMdPin />
                     <p className="md:w-[50%]">
-                      {contactFormDefaultData?.data?.[0]
-                        ?.form_default_address || ""}
+                      {contentFormData?.data?.[4]?.form_address || ""}
                     </p>
                   </li>
                   <li>
                     <FaPhone />
                     <p>
-                      {contactFormCareersData?.data?.[0]
-                        ?.form_careers_telephone || ""}
+                      {contentFormData?.data?.[4]?.form_accounting_no || ""}
                     </p>
                   </li>
                   <li>
                     <MdOutlinePhoneIphone />
-                    <p>
-                      {contactFormCareersData?.data?.[0]?.form_careers_phone ||
-                        ""}
-                    </p>
+                    <p>{contentFormData?.data?.[4]?.form_company_no || ""}</p>
+                  </li>
+                  <li>
+                    <MdOutlinePhoneIphone />
+                    <p>{contentFormData?.data?.[4]?.form_web_no || ""}</p>
                   </li>
                   <li>
                     <div className="text-xs md:text-sm">
                       <div className="mb-4">
                         <h3 className="font-semibold">
-                          {contactFormCareersData?.data?.[0]
-                            ?.form_careers_position_a || ""}
+                          {contentFormData?.data?.[4]?.form_hr_manager_role ||
+                            ""}
                         </h3>
                         <p>
-                          {contactFormCareersData?.data?.[0]
-                            ?.form_careers_name_a || ""}
+                          {contentFormData?.data?.[4]?.form_hr_manager_name ||
+                            ""}
                         </p>
                         <p>
-                          {contactFormCareersData?.data?.[0]
-                            ?.form_careers_email_a || ""}
+                          {contentFormData?.data?.[4]?.form_hr_manager_email ||
+                            ""}
                         </p>
                       </div>
                       <div className="mb-8">
                         <h3 className="font-semibold">
-                          {contactFormCareersData?.data?.[0]
-                            ?.form_careers_position_b || ""}
+                          {contentFormData?.data?.[4]?.form_hr_staff_role || ""}
                         </h3>
                         <p>
-                          {contactFormCareersData?.data?.[0]
-                            ?.form_careers_name_b || ""}
+                          {contentFormData?.data?.[4]?.form_hr_staff_name || ""}
                         </p>
                         <p>
-                          {contactFormCareersData?.data?.[0]
-                            ?.form_careers_email_b || ""}
+                          {contentFormData?.data?.[4]?.form_hr_staff_email ||
+                            ""}
                         </p>
                       </div>
                     </div>
                   </li>
                 </ul>
-              ) : thePageName === "Wordpress" ? (
+              ) : services === "web services" ? (
                 <>
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
                     <li className="!items-start">
                       <IoMdPin />
                       <p className="md:w-[50%]">
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_address
-                          ? contactFormDefaultData?.data[0].form_default_address
-                          : ""}
+                        {contentFormData?.data?.[3]?.form_address || ""}
                       </p>
                     </li>
                     <li>
                       <FaPhone />
-                      <p>Web Office - (049) 530-2112</p>
+                      <p>
+                        {contentFormData?.data?.[3]?.form_accounting_no || ""}
+                      </p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>{contentFormData?.data?.[3]?.form_company_no || ""}</p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>{contentFormData?.data?.[3]?.form_web_no || ""}</p>
                     </li>
                   </ul>
                   <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
@@ -343,10 +381,14 @@ const ModalContact = ({
                       <div className="text-xs md:text-sm">
                         <div className="mb-4">
                           <h3 className="font-semibold">
-                            Web Solutions Specialist
+                            {contentFormData?.data?.[3]?.form_web_role || ""}
                           </h3>
-                          <p>Jinuel Zymon Ramos</p>
-                          <p>jinuel.ramos@frontlinebusiness.com.ph</p>
+                          <p>
+                            {contentFormData?.data?.[3]?.form_web_name || ""}
+                          </p>
+                          <p>
+                            {contentFormData?.data?.[3]?.form_web_email || ""}
+                          </p>
                         </div>
                       </div>
                     </li>
@@ -358,29 +400,27 @@ const ModalContact = ({
                     <li className="!items-start">
                       <IoMdPin />
                       <p className="md:w-[50%]">
-                        {contactFormDefaultData?.data?.[0]
-                          ?.form_default_address || ""}
+                        {contentFormData?.data?.[0]?.form_address || ""}
                       </p>
                     </li>
                     <li>
                       <FaPhone />
                       <p>
-                        {contactFormDefaultData?.data?.[0]
-                          ?.form_default_telephone || ""}
+                        {contentFormData?.data?.[0]?.form_accounting_no || ""}
                       </p>
                     </li>
                     <li>
                       <MdOutlinePhoneIphone />
-                      <p>
-                        {contactFormDefaultData?.data?.[0]
-                          ?.form_default_phone || ""}
-                      </p>
+                      <p>{contentFormData?.data?.[0]?.form_company_no || ""}</p>
+                    </li>
+                    <li>
+                      <MdOutlinePhoneIphone />
+                      <p>{contentFormData?.data?.[0]?.form_web_no || ""}</p>
                     </li>
                     <li>
                       <IoMailSharp />
                       <p>
-                        {contactFormDefaultData?.data?.[0]
-                          ?.form_default_email || ""}
+                        {contentFormData?.data?.[0]?.form_default_email || ""}
                       </p>
                     </li>
                   </ul>
@@ -389,56 +429,56 @@ const ModalContact = ({
 
               <div className="mb-4">
                 <p>Follow Us:</p>
-                {contactFormDefaultData?.data?.length > 0 &&
+                {contentFormData?.data?.length > 0 &&
                   (() => {
-                    const item = contactFormDefaultData.data[0];
+                    const item = contentFormData.data[0];
 
                     return (
                       <ul className="flex gap-2 text-2xl">
-                        {item.form_default_facebook_link && (
+                        {item.form_facebook_link && (
                           <li>
                             <a
-                              href={item.form_default_facebook_link || "#"}
+                              href={item.form_facebook_link || "#"}
                               target="_blank"
                             >
                               <FaFacebookSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_linkedin_link && (
+                        {item.form_linkedin_link && (
                           <li>
                             <a
-                              href={item.form_default_linkedin_link || "#"}
+                              href={item.form_linkedin_link || "#"}
                               target="_blank"
                             >
                               <FaLinkedin />
                             </a>
                           </li>
                         )}
-                        {item.form_default_youtube_link && (
+                        {item.form_youtube_link && (
                           <li>
                             <a
-                              href={item.form_default_youtube_link || "#"}
+                              href={item.form_youtube_link || "#"}
                               target="_blank"
                             >
                               <FaYoutubeSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_instagram_link && (
+                        {item.form_instagram_link && (
                           <li>
                             <a
-                              href={item.form_default_instagram_link || "#"}
+                              href={item.form_instagram_link || "#"}
                               target="_blank"
                             >
                               <FaInstagramSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_tiktok_link && (
+                        {item.form_tiktok_link && (
                           <li>
                             <a
-                              href={item.form_default_tiktok_link || "#"}
+                              href={item.form_tiktok_link || "#"}
                               target="_blank"
                             >
                               <AiFillTikTok />

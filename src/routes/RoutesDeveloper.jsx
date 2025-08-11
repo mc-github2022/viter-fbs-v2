@@ -61,6 +61,7 @@ import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/
 import EventsAndActivities from "../components/pages/developer/why-fbs-page/events-and-activities/EventsAndActivities";
 import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
+import ContactFormView from "../components/pages/developer/contact-form-settings/ContactFormView";
 
 export const routesDeveloper = [
   {
@@ -501,6 +502,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <ContactFormSettings />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/contact-form/view`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <ContactFormView />
       </ProtectedRouteDeveloper>
     ),
   },

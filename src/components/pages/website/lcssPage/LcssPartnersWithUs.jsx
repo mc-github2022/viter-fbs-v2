@@ -12,7 +12,7 @@ import ModalContact from "../../../partials/ModalContact";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import LoadImages from "../../../partials/LoadImages";
 
-const LcssPartnersWithUs = ({ pageName }) => {
+const LcssPartnersWithUs = ({ pageName, services }) => {
   const [contactForm, setContactForm] = React.useState(false);
 
   const { data: ojtOverviewData } = useQueryData(
@@ -172,6 +172,7 @@ const LcssPartnersWithUs = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={contactForm}
           contactSubject={""}
+          services={services}
           notification_purpose={"partner-with-us-lcs"}
           emailSubject={"PARTNER WITH US / College On-The-Job Training - "}
         />

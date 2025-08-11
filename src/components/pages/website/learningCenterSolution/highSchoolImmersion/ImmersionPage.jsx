@@ -63,16 +63,16 @@ const ImmersionPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"lcss services"} />
       <ImmersionBanner pageName={pageName} />
-      <ImmersionPartners immersionTitlesData={immersionTitlesData}/>
+      <ImmersionPartners immersionTitlesData={immersionTitlesData} />
       <ImmersionPartnersWithUs pageName={pageName} />
       <ImmersionServices />
       <ImmersionApplyNow pageName={pageName} />
       <ImmersionTeam />
-      <ImmersionBatches immersionTitlesData={immersionTitlesData}/>
-      <ImmersionVidTestimonials immersionTitlesData={immersionTitlesData}/>
-      <ImmersionPartnersSay immersionTitlesData={immersionTitlesData}/>
+      <ImmersionBatches immersionTitlesData={immersionTitlesData} />
+      <ImmersionVidTestimonials immersionTitlesData={immersionTitlesData} />
+      <ImmersionPartnersSay immersionTitlesData={immersionTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

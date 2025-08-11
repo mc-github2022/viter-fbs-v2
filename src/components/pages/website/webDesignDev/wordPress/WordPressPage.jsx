@@ -61,7 +61,7 @@ const WordPressPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"web services"} />
       <WordPressBanner pageName={pageName} />
       <WordPressOverview pageName={pageName} />
       <WordPressScope

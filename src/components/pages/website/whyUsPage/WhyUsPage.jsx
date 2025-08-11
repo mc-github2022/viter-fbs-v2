@@ -34,7 +34,7 @@ const WhyUsPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"default"} />
       <WhyUsBanner pageName={pageName} />
       <WhyUsCompanyProfile pageName={pageName} />
       <MissionVission />

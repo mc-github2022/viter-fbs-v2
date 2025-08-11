@@ -563,6 +563,7 @@ const WebDesignPricing = ({ pageName, websiteTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          services={"web services"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Web Design (${contactSubject}) - `}
         />

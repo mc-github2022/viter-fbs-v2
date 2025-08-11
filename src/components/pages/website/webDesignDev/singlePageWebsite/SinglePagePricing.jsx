@@ -563,6 +563,7 @@ const SinglePagePricing = ({ pageName, singlepageTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          services={"web services"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Single Page Website (${contactSubject}) - `}
         />

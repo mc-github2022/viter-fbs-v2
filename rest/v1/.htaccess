@@ -11,9 +11,6 @@ RewriteRule ^upload-photo$ core/upload-photo.php [L]
 RewriteRule ^upload-multiple-photo$ core/upload-multiple-photo.php [L]
 RewriteRule ^upload-files$ core/upload-files.php [L]
 
-# CONTACT FORM - FORM
-RewriteRule ^contactForm$ controllers/developer/contact-form/form/form.php [L]
-RewriteRule ^contactForm/([0-9]+)$ controllers/developer/contact-form/form/form.php?formid=$1 [L]
 
 # HOME - BANNER
 RewriteRule ^banner$ controllers/developer/home/banner/banner.php [L]
@@ -53,6 +50,11 @@ RewriteRule ^contactLcss/([0-9]+)$ controllers/developer/contact-form-lcss/conta
 # CONTACT FORM CAREERS
 RewriteRule ^contactCareers$ controllers/developer/contact-form-careers/contactFormCareers.php [L]
 RewriteRule ^contactCareers/([0-9]+)$ controllers/developer/contact-form-careers/contactFormCareers.php?contact_form_careers_id=$1 [L]
+
+# CONTACT FORM
+RewriteRule ^contactForm$ controllers/developer/contact-form-settings/contact-form-settings.php [L]
+RewriteRule ^contactForm/([0-9]+)$ controllers/developer/contact-form-settings/contact-form-settings.php?contactformid=$1 [L]
+RewriteRule ^contactForm/read-contact-form$ controllers/developer/contact-form-settings/read-contact-form.php [L]
 
 # CONTACT FORM WORDPRESS
 RewriteRule ^contactWordpress$ controllers/developer/contact-form-wordpress/contactFormWordpress.php [L]

@@ -133,6 +133,7 @@ const ConStudPartnersWithUs = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={contactForm}
           contactSubject={""}
+          services={"lcss services"}
           notification_purpose={"partner-with-us-lcs"}
           emailSubject={"PARTNER WITH US / Continuing Studies - "}
         />

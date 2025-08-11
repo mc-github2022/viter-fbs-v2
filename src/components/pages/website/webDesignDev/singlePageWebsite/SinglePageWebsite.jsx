@@ -59,12 +59,18 @@ const SinglePageWebsite = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"web services"} />
       <SinglePageBanner pageName={pageName} />
       <SinglePageOverview pageName={pageName} />
-      <SinglePageScope pageName={pageName} singlepageTitlesData={singlepageTitlesData}/>
-      <SinglePagePricing pageName={pageName} singlepageTitlesData={singlepageTitlesData} />
-      <SinglePagePartners singlepageTitlesData={singlepageTitlesData}/>
+      <SinglePageScope
+        pageName={pageName}
+        singlepageTitlesData={singlepageTitlesData}
+      />
+      <SinglePagePricing
+        pageName={pageName}
+        singlepageTitlesData={singlepageTitlesData}
+      />
+      <SinglePagePartners singlepageTitlesData={singlepageTitlesData} />
       {/* <SinglePagePartnersSay /> */}
       <Footer />
       {store.success && <ModalSuccess />}

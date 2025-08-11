@@ -61,13 +61,16 @@ const VaResearchPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"default"} />
       <VaResearchBanner pageName={pageName} />
       <VaResearchOverview />
       <VaResearchServiceList pageName={pageName} />
-      <VaResearchPricing pageName={pageName} businessTitlesData={businessTitlesData} />
-      <VaResearchPartners businessTitlesData={businessTitlesData}/>
-      <VaResearchPartnersSay businessTitlesData={businessTitlesData}/>
+      <VaResearchPricing
+        pageName={pageName}
+        businessTitlesData={businessTitlesData}
+      />
+      <VaResearchPartners businessTitlesData={businessTitlesData} />
+      <VaResearchPartnersSay businessTitlesData={businessTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

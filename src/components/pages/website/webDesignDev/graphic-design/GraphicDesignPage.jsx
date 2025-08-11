@@ -61,10 +61,13 @@ const GraphicDesignPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"web services"} />
       <GraphicDesignBanner pageName={pageName} />
       <GraphicDesignOverview pageName={pageName} />
-      <GraphicDesignScope pageName={pageName} graphicTitlesData={graphicTitlesData} />
+      <GraphicDesignScope
+        pageName={pageName}
+        graphicTitlesData={graphicTitlesData}
+      />
       {/* <GraphicDesignPricing pageName={pageName} /> */}
       {/* <GraphicDesignPortfolio /> */}
       {/* <GraphicDesignPartners /> */}

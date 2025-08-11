@@ -565,6 +565,7 @@ const ServiceHrPricing = ({ pageName, hrisTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`CHOOSE PLAN / HR Information System (${contactSubject}) - `}
         />

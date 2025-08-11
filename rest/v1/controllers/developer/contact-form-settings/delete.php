@@ -3,18 +3,18 @@
 $conn = null;
 $conn = checkDbConnection();
 // make instance of classes
-$val = new Content($conn);
+$val = new ContactFormSettings($conn);
 // get $_GET data
 $body = file_get_contents("php://input");
 $data = json_decode($body, true);
-if (array_key_exists("formcontentid", $_GET)) {
+if (array_key_exists("contactformid", $_GET)) {
   // get data
   checkPayload($data);
 
-  $val->form_content_aid = $_GET['formcontentid'];
+  $val->form_aid = $_GET['contactformid'];
   $filesToDelete = $data['filesToDelete'];
 
-  checkId($val->form_content_aid);
+  checkId($val->form_aid);
   $query = checkDelete($val);
 
   // TO DELETE ALL FILES IN GOOGLE DRIVE API
@@ -27,7 +27,7 @@ if (array_key_exists("formcontentid", $_GET)) {
     checkDeleteGoogleDriveApiFiles($filesToDelete, $pendingDeleteFile);
   }
 
-  returnSuccess($val, "form content", $query);
+  returnSuccess($val, "contact form", $query);
 }
 
 // return 404 error if endpoint not available

@@ -85,6 +85,7 @@ const WebDesignBanner = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"web services"}
           notification_purpose={"default-receiver"}
           emailSubject={`${banner[0]?.bannerBtnText} / Web Design - `}
         />

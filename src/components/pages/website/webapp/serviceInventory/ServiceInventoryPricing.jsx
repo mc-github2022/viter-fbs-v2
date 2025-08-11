@@ -567,6 +567,7 @@ const ServiceInventoryPricing = ({ pageName, assetTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Asset Inventory System (${contactSubject}) - `}
         />

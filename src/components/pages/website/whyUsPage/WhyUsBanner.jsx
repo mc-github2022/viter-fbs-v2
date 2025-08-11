@@ -86,6 +86,7 @@ const WhyUsBanner = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`GET STARTED / Why Work With Us - `}
         />

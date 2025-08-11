@@ -47,6 +47,15 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
     dispatch
   );
 
+  const { data: contentFormData } = useQueryData(
+    `${apiVersion}/contactForm`, // endpoint
+    "get", // method
+    "contactForm", // key
+    {},
+    null,
+    true
+  );
+
   const { data: contactFormDefaultData } = useQueryData(
     `${apiVersion}/contactDefault`, // endpoint
     "get", // method
@@ -66,7 +75,7 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
   );
 
   const contactUsDefaultImage = getConvertStringToJSONparseData(
-    contactFormDefaultData?.data?.[0]?.form_default_img
+    contentFormData?.data?.[0]?.form_img
   );
 
   const mutation = useMutation({
@@ -148,64 +157,53 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
           <div className="flex flex-col justify-between">
             <div>
               <div className="mb-12">
-                <p>
-                  {contactFormCareersData?.data?.[0]?.form_careers_subtitle ||
-                    ""}
-                </p>
+                <p>{contentFormData?.data?.[4]?.form_subtitle}</p>
                 <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contactFormCareersData?.data?.[0]?.form_careers_title || ""}
+                  {contentFormData?.data?.[4]?.form_title}
                 </h3>
               </div>
               <ul className=" text-sm [&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2]">
                 <li className="!items-start">
                   <IoMdPin />
                   <p className="md:w-[50%]">
-                    {contactFormDefaultData?.data?.[0]?.form_default_address ||
-                      ""}
+                    {contentFormData?.data?.[4]?.form_address || ""}
                   </p>
                 </li>
                 <li>
                   <FaPhone />
-                  <p>
-                    {contactFormCareersData?.data?.[0]
-                      ?.form_careers_telephone || ""}
-                  </p>
+                  <p>{contentFormData?.data?.[4]?.form_accounting_no || ""}</p>
                 </li>
                 <li>
                   <MdOutlinePhoneIphone />
-                  <p>
-                    {contactFormCareersData?.data?.[0]?.form_careers_phone ||
-                      ""}
-                  </p>
+                  <p>{contentFormData?.data?.[4]?.form_company_no || ""}</p>
                 </li>
                 <li>
-                  <div className="text-xs md:text-sm  ">
+                  <MdOutlinePhoneIphone />
+                  <p>{contentFormData?.data?.[4]?.form_web_no || ""}</p>
+                </li>
+                <li>
+                  <div className="text-xs md:text-sm">
                     <div className="mb-4">
                       <h3 className="font-semibold">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_position_a || ""}
+                        {contentFormData?.data?.[4]?.form_hr_manager_role || ""}
                       </h3>
                       <p>
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_name_a || ""}
+                        {contentFormData?.data?.[4]?.form_hr_manager_name || ""}
                       </p>
-                      <p className="">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_email_a || ""}
+                      <p>
+                        {contentFormData?.data?.[4]?.form_hr_manager_email ||
+                          ""}
                       </p>
                     </div>
                     <div className="mb-8">
                       <h3 className="font-semibold">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_position_b || ""}
+                        {contentFormData?.data?.[4]?.form_hr_staff_role || ""}
                       </h3>
                       <p>
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_name_b || ""}
+                        {contentFormData?.data?.[4]?.form_hr_staff_name || ""}
                       </p>
-                      <p className="">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_email_b || ""}
+                      <p>
+                        {contentFormData?.data?.[4]?.form_hr_staff_email || ""}
                       </p>
                     </div>
                   </div>
@@ -213,56 +211,56 @@ const ModalJobApplication = ({ setModalJob, jobTitle, modalJob }) => {
               </ul>
               <div className="mb-4">
                 <p>Follow Us:</p>
-                {contactFormDefaultData?.data?.length > 0 &&
+                {contentFormData?.data?.length > 0 &&
                   (() => {
-                    const item = contactFormDefaultData.data[0];
+                    const item = contentFormData.data[0];
 
                     return (
                       <ul className="flex gap-2 text-2xl">
-                        {item.form_default_facebook_link && (
+                        {item.form_facebook_link && (
                           <li>
                             <a
-                              href={item.form_default_facebook_link || "#"}
+                              href={item.form_facebook_link || "#"}
                               target="_blank"
                             >
                               <FaFacebookSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_linkedin_link && (
+                        {item.form_linkedin_link && (
                           <li>
                             <a
-                              href={item.form_default_linkedin_link || "#"}
+                              href={item.form_linkedin_link || "#"}
                               target="_blank"
                             >
                               <FaLinkedin />
                             </a>
                           </li>
                         )}
-                        {item.form_default_youtube_link && (
+                        {item.form_youtube_link && (
                           <li>
                             <a
-                              href={item.form_default_youtube_link || "#"}
+                              href={item.form_youtube_link || "#"}
                               target="_blank"
                             >
                               <FaYoutubeSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_instagram_link && (
+                        {item.form_instagram_link && (
                           <li>
                             <a
-                              href={item.form_default_instagram_link || "#"}
+                              href={item.form_instagram_link || "#"}
                               target="_blank"
                             >
                               <FaInstagramSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_tiktok_link && (
+                        {item.form_tiktok_link && (
                           <li>
                             <a
-                              href={item.form_default_tiktok_link || "#"}
+                              href={item.form_tiktok_link || "#"}
                               target="_blank"
                             >
                               <AiFillTikTok />

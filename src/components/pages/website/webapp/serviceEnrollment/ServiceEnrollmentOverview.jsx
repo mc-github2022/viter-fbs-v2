@@ -175,6 +175,7 @@ const ServiceEnrollmentOverview = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`${webAppOverview[0]?.btnText} / School Enrollment System - `}
         />

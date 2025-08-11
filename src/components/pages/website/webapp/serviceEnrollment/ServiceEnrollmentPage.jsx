@@ -60,7 +60,7 @@ const ServiceEnrollmentPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} />
+      <Header pageName={pageName} services={"default"} />
       <ServiceEnrollmentBanner pageName={pageName} />
       <ServiceEnrollmentOverview pageName={pageName} />
       <ServiceEnrollmentScope
@@ -72,7 +72,9 @@ const ServiceEnrollmentPage = () => {
         enrollmentTitlesData={enrollmentTitlesData}
       />
       {/* <ServiceEnrollmentPartners /> */}
-      <ServiceEnrollmentPartnersSay  enrollmentTitlesData={enrollmentTitlesData}/>
+      <ServiceEnrollmentPartnersSay
+        enrollmentTitlesData={enrollmentTitlesData}
+      />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

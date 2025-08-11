@@ -186,6 +186,7 @@ const ServiceInventoryScope = ({ pageName, assetTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`CONTACT US / Asset Inventory System (${accordionItem}) - `}
         />

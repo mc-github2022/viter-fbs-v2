@@ -196,6 +196,7 @@ const WhyUsCompanyProfile = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`PARTNER WITH US / Why Work With Us - `}
         />

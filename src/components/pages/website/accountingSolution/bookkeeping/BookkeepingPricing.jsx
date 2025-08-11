@@ -675,6 +675,7 @@ const BookkeepingPricing = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`CHOOSE PLAN / Bookkeeping / Compliance (${contactSubject}) - `}
         />

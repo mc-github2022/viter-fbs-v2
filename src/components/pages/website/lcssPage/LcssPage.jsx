@@ -63,10 +63,18 @@ const LcssPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} contactSubject={contactSubject} />
+      <Header
+        pageName={pageName}
+        contactSubject={contactSubject}
+        services={"lcss services"}
+      />
       <LcssBanner pageName={pageName} contactSubject={contactSubject} />
       <LcssPartners ojtTitlesData={ojtTitlesData} />
-      <LcssPartnersWithUs pageName={pageName} contactSubject={contactSubject} />
+      <LcssPartnersWithUs
+        pageName={pageName}
+        contactSubject={contactSubject}
+        services={"lcss services"}
+      />
       <LcssServices />
       <LcssApplyNow pageName={pageName} contactSubject={contactSubject} />
       <LcssTeam />

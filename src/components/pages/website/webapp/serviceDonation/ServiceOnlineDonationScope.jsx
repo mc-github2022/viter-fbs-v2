@@ -185,6 +185,7 @@ const ServiceOnlineDonationScope = ({ pageName, donationTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`LEARN MORE / Online Donation System (${accordionItem}) - `}
         />

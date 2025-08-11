@@ -17,10 +17,7 @@ import TableLoading from "../../../../partials/spinners/TableLoading";
 import LoadImages from "../../../../partials/LoadImages";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 
-const ServiceEnrollmentScope = ({
-  pageName,
-  enrollmentTitlesData,
-}) => {
+const ServiceEnrollmentScope = ({ pageName, enrollmentTitlesData }) => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
   const [modalContact, setModalContact] = React.useState(false);
@@ -29,7 +26,7 @@ const ServiceEnrollmentScope = ({
     setContactForm(!contactForm);
   };
 
-   const {
+  const {
     isLoading: isLoadingScope,
     isFetching: isFetchingScope,
     data: enrollmentScopeData,
@@ -188,6 +185,7 @@ const ServiceEnrollmentScope = ({
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
+          services={"default"}
           notification_purpose={"default-receiver"}
           emailSubject={`LEARN MORE / School Enrollment System (${accordionItem}) - `}
         />
