@@ -8,34 +8,32 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import OjtBanner from "./ojt-banner/OjtBanner";
-import ModalUpdateOjtBanner from "./ojt-banner/ModalUpdateOjtBanner";
-import OjtPartners from "./ojt-partners/OjtPartners";
-import OjtOverview from "./ojt-overview/OjtOverview";
-import ModalUpdateOjtOverview from "./ojt-overview/ModalUpdateOjtOverview";
-import ModalUpdateOjtOverviewList from "./ojt-overview/ModalUpdateOjtOverviewList";
-import OjtServices from "./ojt-services/OjtServices";
-import ModalUpdateOjtServices from "./ojt-services/ModalUpdateOjtServices";
-import OjtApplyNow from "./ojt-apply-now/OjtApplyNow";
-import ModalUpdateApplyNow from "./ojt-apply-now/ModalUpdateApplyNow";
-import ModalUpdateContactFormDefaultLcss from "../../../contact-form-default/ModalUpdateContactFormDefaultLcss";
 import LcssTeams from "../lcss-team/LcssTeams";
 import ModalUpdateLcssTeams from "../lcss-team/ModalUpdateLcssTeams";
-import OjtBatches from "./ojt-batches/OjtBatches";
-import OjtVidTestimonial from "./ojt-vid-testimonial/OjtVidTestimonial";
-import OjtPartnerSays from "./ojt-partnersays/OjtPartnerSays";
 import ModalUpdateLcssTeamsTitle from "../lcss-team/ModalUpdateLcssTeamsTitle";
-import ModalUpdateOjtPartnersTitle from "./ojt-titles/ModalUpdateOjtPartnersTitle";
+import ModalUpdateApplyNow from "./ojt-apply-now/ModalUpdateApplyNow";
+import OjtApplyNow from "./ojt-apply-now/OjtApplyNow";
+import ModalUpdateOjtBanner from "./ojt-banner/ModalUpdateOjtBanner";
+import OjtBanner from "./ojt-banner/OjtBanner";
+import OjtBatches from "./ojt-batches/OjtBatches";
+import ModalUpdateOjtOverview from "./ojt-overview/ModalUpdateOjtOverview";
+import ModalUpdateOjtOverviewList from "./ojt-overview/ModalUpdateOjtOverviewList";
+import OjtOverview from "./ojt-overview/OjtOverview";
+import OjtPartners from "./ojt-partners/OjtPartners";
+import OjtPartnerSays from "./ojt-partnersays/OjtPartnerSays";
+import ModalUpdateOjtServices from "./ojt-services/ModalUpdateOjtServices";
+import OjtServices from "./ojt-services/OjtServices";
 import ModalUpdateOjtBatchesTitle from "./ojt-titles/ModalUpdateOjtBatchesTitle";
-import ModalUpdateOjtVidTestimonialTitle from "./ojt-titles/ModalUpdateOjtVidTestimonialTitle";
 import ModalUpdateOjtPartnerSaysTitle from "./ojt-titles/ModalUpdateOjtPartnerSaysTitle";
+import ModalUpdateOjtPartnersTitle from "./ojt-titles/ModalUpdateOjtPartnersTitle";
+import ModalUpdateOjtVidTestimonialTitle from "./ojt-titles/ModalUpdateOjtVidTestimonialTitle";
+import OjtVidTestimonial from "./ojt-vid-testimonial/OjtVidTestimonial";
 
 const CollegeOnTheJobTraining = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -92,18 +90,6 @@ const CollegeOnTheJobTraining = () => {
     `${apiVersion}/lcss-teams-title`, // endpoint
     "get", // method
     "lcss-teams-title" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
-  const { data: contactFormLcssData } = useQueryData(
-    `${apiVersion}/contactLcss`, // endpoint
-    "get", // method
-    "contactLcss" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -181,27 +167,9 @@ const CollegeOnTheJobTraining = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "header" }));
     setItemEdit("headerUpdate");
   };
-
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
-  const handleUpdateContactFormLcss = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "contact-form-lcss" }));
-    setItemEdit("contactFormLcssUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -231,6 +199,8 @@ const CollegeOnTheJobTraining = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"lcss services"}
+                page={"College On-The-Job Training"}
               />
               <OjtBanner
                 ojtData={ojtData}
@@ -245,10 +215,6 @@ const CollegeOnTheJobTraining = () => {
                 handleUpdateOjtOverview={handleUpdateOjtOverview}
                 handleUpdateOjtOverviewList={handleUpdateOjtOverviewList}
                 ojtOverviewData={ojtOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                contactFormLcssData={contactFormLcssData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
                 pageName={pageName}
               />
 
@@ -264,9 +230,6 @@ const CollegeOnTheJobTraining = () => {
               <OjtApplyNow
                 ojtApplyNowData={ojtApplyNowData}
                 handleUpdateOjtApplyNow={handleUpdateOjtApplyNow}
-                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-                contactFormDefaultData={contactFormDefaultData}
-                contactFormLcssData={contactFormLcssData}
                 pageName={pageName}
               />
 
@@ -302,9 +265,7 @@ const CollegeOnTheJobTraining = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -391,22 +352,6 @@ const CollegeOnTheJobTraining = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-lcss" && (
-          <ModalUpdateContactFormDefaultLcss
-            itemEdit={itemEdit}
-            contactFormLcssData={contactFormLcssData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

@@ -10,8 +10,6 @@ import ContactFormDefault from "../../../../contact-form-default/ContactFormDefa
 const BusinessBanner = ({
   businessData,
   handleUpdateBusinessBanner,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const businessBannerImage = getConvertStringToJSONparseData(
@@ -90,9 +88,9 @@ const BusinessBanner = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

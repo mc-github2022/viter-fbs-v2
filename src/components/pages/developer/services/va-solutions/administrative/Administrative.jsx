@@ -8,7 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -20,15 +19,15 @@ import ModalUpdateAdministrativeBanner from "./administrative-banner/ModalUpdate
 import AdministrativeOverview from "./administrative-overview/AdministrativeOverview";
 import ModalUpdateAdministrativeOverview from "./administrative-overview/ModalUpdateAdministrativeOverview";
 import ModalUpdateAdministrativeOverviewList from "./administrative-overview/ModalUpdateAdministrativeOverviewList";
+import AdministrativePartners from "./administrative-partners/AdministrativePartners";
+import AdministrativePartnerSays from "./administrative-partnersays/AdministrativePartnerSays";
+import AdministrativePricing from "./administrative-pricing/AdministrativePricing";
 import AdministrativeServices from "./administrative-services/AdministrativeServices";
 import ModalUpdateAdministrativeServicesList from "./administrative-services/ModalUpdateAdministrativeServicesList";
 import ModalUpdateAdministrativeServicesTitle from "./administrative-services/ModalUpdateAdministrativeServicesTitle";
-import AdministrativePricing from "./administrative-pricing/AdministrativePricing";
-import AdministrativePartners from "./administrative-partners/AdministrativePartners";
-import AdministrativePartnerSays from "./administrative-partnersays/AdministrativePartnerSays";
 import ModalUpdateAdministrativePackagesTitle from "./administrative-titles/ModalUpdateAdministrativePackagesTitle";
-import ModalUpdateAdministrativePartnersTitle from "./administrative-titles/ModalUpdateAdministrativePartnersTitle";
 import ModalUpdateAdministrativePartnerSaysTitle from "./administrative-titles/ModalUpdateAdministrativePartnerSaysTitle";
+import ModalUpdateAdministrativePartnersTitle from "./administrative-titles/ModalUpdateAdministrativePartnersTitle";
 
 const Administrative = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -68,12 +67,6 @@ const Administrative = () => {
     `${apiVersion}/administrative-titles`, // endpoint
     "get", // method
     "administrative-titles" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -167,22 +160,12 @@ const Administrative = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
 
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
   };
 
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
-  };
 
   const handleUpdateFooterQuicklinks = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-quicklinks" }));
@@ -211,14 +194,14 @@ const Administrative = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <AdministrativeBanner
                 administrativeData={administrativeData}
                 handleUpdateAdministrativeBanner={
                   handleUpdateAdministrativeBanner
                 }
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <AdministrativeOverview
                 handleUpdateAdministrativeOverview={
@@ -228,14 +211,10 @@ const Administrative = () => {
                   handleUpdateAdministrativeOverviewList
                 }
                 administrativeOverviewData={administrativeOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
               />
               <AdministrativeServices
                 pageName={pageName}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 handleUpdateAdministrativeServicesTitle={
                   handleUpdateAdministrativeServicesTitle
                 }
@@ -273,9 +252,7 @@ const Administrative = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -347,14 +324,6 @@ const Administrative = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

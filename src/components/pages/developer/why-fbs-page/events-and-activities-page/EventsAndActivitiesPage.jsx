@@ -1,4 +1,8 @@
 import React from "react";
+import { HiPencil } from "react-icons/hi";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { Link } from "react-router-dom";
+import Slider from "react-slick/lib/slider";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
@@ -12,17 +16,12 @@ import ModalError from "../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../footer/Footer";
 import ModalUpdateCopyright from "../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../footer/ModalUpdateQuickLinks";
 import Header from "../../header/Header";
 import ModalUpdateHeader from "../../header/ModalUpdateHeader";
-import { Link } from "react-router-dom";
-import Slider from "react-slick/lib/slider";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { HiPencil } from "react-icons/hi";
 import ModalUpdateEventsTitle from "./ModalUpdateEventsTitle";
 
 function SampleNextArrow(props) {
@@ -86,12 +85,6 @@ const EventsAndActivitiesPage = () => {
     "events-title" // key
   );
 
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
   const { isLoading, data: headerData } = useQueryData(
     `${apiVersion}/header`, // endpoint
     "get", // method
@@ -117,11 +110,6 @@ const EventsAndActivitiesPage = () => {
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -214,6 +202,8 @@ const EventsAndActivitiesPage = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <div className="EventsAndAct pt-28 pb-16 md:pt-20 md:pb-20">
                 <div className="customContainer">
@@ -406,9 +396,7 @@ const EventsAndActivitiesPage = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -426,14 +414,6 @@ const EventsAndActivitiesPage = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

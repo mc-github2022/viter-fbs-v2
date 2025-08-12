@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import * as AiIcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
 import { FiChevronsUp } from "react-icons/fi";
+import { HiPencil } from "react-icons/hi";
 import * as IoIcons from "react-icons/io";
 import * as LuIcons from "react-icons/lu";
 import * as PiIcons from "react-icons/pi";
@@ -19,17 +20,13 @@ import ModalError from "../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../contact-form-default/ModalUpdateContactFormDefault";
+import ContactFormCareers from "../../contact-form-careers/ContactFormCareers";
 import Footer from "../../footer/Footer";
 import ModalUpdateCopyright from "../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../footer/ModalUpdateQuickLinks";
 import Header from "../../header/Header";
 import ModalUpdateHeader from "../../header/ModalUpdateHeader";
-import { HiPencil } from "react-icons/hi";
-import ContactFormDefault from "../../contact-form-default/ContactFormDefault";
-import ContactFormCareers from "../../contact-form-careers/ContactFormCareers";
-import ModalUpdateContactFormCareers from "../../contact-form-default/ModalUpdateContactFormCareers";
 import ModalUpdateCareersTitle from "./ModalUpdateCareersTitle";
 
 const icons = {
@@ -58,18 +55,6 @@ const CareersPage = () => {
     "careers-title" // key
   );
 
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
-  const { data: contactFormCareersData } = useQueryData(
-    `${apiVersion}/contactCareers`, // endpoint
-    "get", // method
-    "contactCareers" // key
-  );
-
   const { isLoading, data: headerData } = useQueryData(
     `${apiVersion}/header`, // endpoint
     "get", // method
@@ -96,21 +81,9 @@ const CareersPage = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormCareers = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-careers" })
-    );
-    setItemEdit("contactFormCareersUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -185,6 +158,8 @@ const CareersPage = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"career"}
+                page={"Career"}
               />
               <section className="career pt-28 pb-16 md:pt-20 md:pb-20">
                 <div className="customContainer">
@@ -374,9 +349,7 @@ const CareersPage = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
 
@@ -384,11 +357,10 @@ const CareersPage = () => {
               <ContactFormCareers
                 thePageName={pageName}
                 setCareersForm={setCareersForm}
-                contactFormCareersData={contactFormCareersData}
-                handleUpdateContactFormCareers={handleUpdateContactFormCareers}
-                contactFormDefaultData={contactFormDefaultData}
                 jobTitle={jobTitle}
                 setModalJob={setModalJob}
+                services={"career"}
+                page={"Career"}
               />
             )}
           </div>
@@ -406,14 +378,6 @@ const CareersPage = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-careers" && (
-          <ModalUpdateContactFormCareers
-            itemEdit={itemEdit}
-            contactFormCareersData={contactFormCareersData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

@@ -7,7 +7,6 @@ import ModalError from "../../../partials/modals/ModalError";
 import ModalSuccess from "../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../footer/Footer";
 import ModalUpdateCopyright from "../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../footer/ModalUpdateLogoImg";
@@ -56,12 +55,6 @@ const Home = () => {
     `${apiVersion}/partnerWithUs`, // endpoint
     "get", // method
     "partnerWithUs" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { data: homeTitlesData } = useQueryData(
@@ -137,13 +130,6 @@ const Home = () => {
     setItemEdit("partnerWithUsUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateTestimonialTitle = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "testimonial-title" }));
     setItemEdit("testimonialTitleUpdate");
@@ -200,6 +186,8 @@ const Home = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <Banner />
               <Process
@@ -220,9 +208,7 @@ const Home = () => {
               />
               <PartnerWithUs
                 partnerWithUsData={partnerWithUsData}
-                contactFormDefaultData={contactFormDefaultData}
                 handleUpdatePartnerWithUs={handleUpdatePartnerWithUs}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <Testimonial
                 handleUpdateTestimonialTitle={handleUpdateTestimonialTitle}
@@ -240,9 +226,7 @@ const Home = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -318,14 +302,6 @@ const Home = () => {
           <ModalUpdatePartnerWithUs
             itemEdit={itemEdit}
             partnerWithUsData={partnerWithUsData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
           />
         )}
 

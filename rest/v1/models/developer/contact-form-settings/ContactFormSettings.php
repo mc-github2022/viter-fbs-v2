@@ -12,7 +12,11 @@ class ContactFormSettings
     public $form_web_no;
     public $form_services;
     public $form_img;
-    public $form_portfolio;
+    public $form_fbs_brochure;
+    public $form_ojt_proposal;
+    public $form_work_immersion;
+    public $form_website_design;
+    public $form_graphic_design;
     public $form_facebook_link;
     public $form_linkedin_link;
     public $form_youtube_link;
@@ -36,7 +40,6 @@ class ContactFormSettings
     public $form_hr_staff_role;
     public $form_hr_staff_name;
     public $form_hr_staff_email;
-    public $form_page_id;
     public $form_created;
     public $form_updated;
 
@@ -44,32 +47,15 @@ class ContactFormSettings
     public $lastInsertedId;
 
     public $tblContactFormSettings;
-    public $tblPackagesCategory;
 
     public function __construct($db)
     {
         $this->connection = $db;
         $this->tblContactFormSettings = "fbsv2_contact_form";
-        $this->tblPackagesCategory = "fbsv2_packages_category";
     }
+
 
     public function readAll()
-    {
-        try {
-            $sql = "select * ";
-            $sql .= "from ";
-            $sql .= "{$this->tblContactFormSettings} as contact, ";
-            $sql .= "{$this->tblPackagesCategory} as category ";
-            $sql .= "where contact.form_page_id = category.packages_category_aid ";
-            $sql .= "order by contact.form_aid asc ";
-            $query = $this->connection->query($sql);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
-
-    public function readAllContactForm()
     {
         try {
             $sql = "select * ";
@@ -88,11 +74,9 @@ class ContactFormSettings
     public function readById()
     {
         try {
-            $sql = "select * from {$this->tblContactFormSettings} as contact, ";
-            $sql .= "{$this->tblPackagesCategory} as category ";
-            $sql .= "where contact.form_page_id = category.packages_category_aid ";
-            $sql .= "and contact.form_aid = :form_aid ";
-            $sql .= "order by contact.form_aid asc ";
+            $sql = "select * from {$this->tblContactFormSettings} ";
+            $sql .= "where form_aid = :form_aid ";
+            $sql .= "order by form_aid asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "form_aid" => $this->form_aid,
@@ -116,7 +100,11 @@ class ContactFormSettings
             $sql .= "form_web_no, ";
             $sql .= "form_services, ";
             $sql .= "form_img, ";
-            $sql .= "form_portfolio, ";
+            $sql .= "form_fbs_brochure, ";
+            $sql .= "form_ojt_proposal, ";
+            $sql .= "form_work_immersion, ";
+            $sql .= "form_website_design, ";
+            $sql .= "form_graphic_design, ";
             $sql .= "form_facebook_link, ";
             $sql .= "form_linkedin_link, ";
             $sql .= "form_youtube_link, ";
@@ -140,7 +128,6 @@ class ContactFormSettings
             $sql .= "form_hr_staff_role, ";
             $sql .= "form_hr_staff_name, ";
             $sql .= "form_hr_staff_email, ";
-            $sql .= "form_page_id, ";
             $sql .= "form_created, ";
             $sql .= "form_updated ) values ( ";
             $sql .= ":form_name, ";
@@ -152,7 +139,11 @@ class ContactFormSettings
             $sql .= ":form_web_no, ";
             $sql .= ":form_services, ";
             $sql .= ":form_img, ";
-            $sql .= ":form_portfolio, ";
+            $sql .= ":form_fbs_brochure, ";
+            $sql .= ":form_ojt_proposal, ";
+            $sql .= ":form_work_immersion, ";
+            $sql .= ":form_website_design, ";
+            $sql .= ":form_graphic_design, ";
             $sql .= ":form_facebook_link, ";
             $sql .= ":form_linkedin_link, ";
             $sql .= ":form_youtube_link, ";
@@ -176,7 +167,6 @@ class ContactFormSettings
             $sql .= ":form_hr_staff_role, ";
             $sql .= ":form_hr_staff_name, ";
             $sql .= ":form_hr_staff_email, ";
-            $sql .= ":form_page_id, ";
             $sql .= ":form_created, ";
             $sql .= ":form_updated )";
             $query = $this->connection->prepare($sql);
@@ -190,7 +180,11 @@ class ContactFormSettings
                 "form_web_no" => $this->form_web_no,
                 "form_services" => $this->form_services,
                 "form_img" => $this->form_img,
-                "form_portfolio" => $this->form_portfolio,
+                "form_fbs_brochure" => $this->form_fbs_brochure,
+                "form_ojt_proposal" => $this->form_ojt_proposal,
+                "form_work_immersion" => $this->form_work_immersion,
+                "form_website_design" => $this->form_website_design,
+                "form_graphic_design" => $this->form_graphic_design,
                 "form_facebook_link" => $this->form_facebook_link,
                 "form_linkedin_link" => $this->form_linkedin_link,
                 "form_youtube_link" => $this->form_youtube_link,
@@ -214,7 +208,6 @@ class ContactFormSettings
                 "form_hr_staff_role" => $this->form_hr_staff_role,
                 "form_hr_staff_name" => $this->form_hr_staff_name,
                 "form_hr_staff_email" => $this->form_hr_staff_email,
-                "form_page_id" => $this->form_page_id,
                 "form_created" => $this->form_created,
                 "form_updated" => $this->form_updated,
             ]);
@@ -238,7 +231,11 @@ class ContactFormSettings
             $sql .= "form_web_no = :form_web_no, ";
             $sql .= "form_services = :form_services, ";
             $sql .= "form_img = :form_img, ";
-            $sql .= "form_portfolio = :form_portfolio, ";
+            $sql .= "form_fbs_brochure = :form_fbs_brochure, ";
+            $sql .= "form_ojt_proposal = :form_ojt_proposal, ";
+            $sql .= "form_work_immersion = :form_work_immersion, ";
+            $sql .= "form_website_design = :form_website_design, ";
+            $sql .= "form_graphic_design = :form_graphic_design, ";
             $sql .= "form_facebook_link = :form_facebook_link, ";
             $sql .= "form_linkedin_link = :form_linkedin_link, ";
             $sql .= "form_youtube_link = :form_youtube_link, ";
@@ -262,7 +259,6 @@ class ContactFormSettings
             $sql .= "form_hr_staff_role = :form_hr_staff_role, ";
             $sql .= "form_hr_staff_name = :form_hr_staff_name, ";
             $sql .= "form_hr_staff_email = :form_hr_staff_email, ";
-            $sql .= "form_page_id = :form_page_id, ";
             $sql .= "form_updated = :form_updated ";
             $sql .= "where form_aid = :form_aid ";
             $query = $this->connection->prepare($sql);
@@ -276,7 +272,11 @@ class ContactFormSettings
                 "form_web_no" => $this->form_web_no,
                 "form_services" => $this->form_services,
                 "form_img" => $this->form_img,
-                "form_portfolio" => $this->form_portfolio,
+                "form_fbs_brochure" => $this->form_fbs_brochure,
+                "form_ojt_proposal" => $this->form_ojt_proposal,
+                "form_work_immersion" => $this->form_work_immersion,
+                "form_website_design" => $this->form_website_design,
+                "form_graphic_design" => $this->form_graphic_design,
                 "form_facebook_link" => $this->form_facebook_link,
                 "form_linkedin_link" => $this->form_linkedin_link,
                 "form_youtube_link" => $this->form_youtube_link,
@@ -300,7 +300,6 @@ class ContactFormSettings
                 "form_hr_staff_role" => $this->form_hr_staff_role,
                 "form_hr_staff_name" => $this->form_hr_staff_name,
                 "form_hr_staff_email" => $this->form_hr_staff_email,
-                "form_page_id" => $this->form_page_id,
                 "form_updated" => $this->form_updated,
                 "form_aid" => $this->form_aid,
             ]);

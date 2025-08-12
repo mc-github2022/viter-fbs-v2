@@ -27,8 +27,7 @@ const DonationScope = ({
   setItemEdit,
   donationTitlesData,
   donationScopeData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
+
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
@@ -241,9 +240,9 @@ const DonationScope = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

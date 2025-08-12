@@ -7,12 +7,7 @@ import {
 import LoadImages from "../../../../../partials/LoadImages";
 import ContactFormDefault from "../../../contact-form-default/ContactFormDefault";
 
-const WorkBanner = ({
-  workData,
-  handleUpdateWorkBanner,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData,
-}) => {
+const WorkBanner = ({ workData, handleUpdateWorkBanner }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const workBannerImage = getConvertStringToJSONparseData(
     workData?.data?.[0]?.work_banner_img
@@ -89,8 +84,8 @@ const WorkBanner = ({
       {isContactDefaultOpen && (
         <ContactFormDefault
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
+          services={"default"}
+          page={"Home"}
         />
       )}
     </>

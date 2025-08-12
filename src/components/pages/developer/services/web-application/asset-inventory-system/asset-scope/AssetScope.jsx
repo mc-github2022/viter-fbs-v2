@@ -27,8 +27,6 @@ const AssetScope = ({
   setItemEdit,
   assetTitlesData,
   assetScopeData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
@@ -241,9 +239,9 @@ const AssetScope = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

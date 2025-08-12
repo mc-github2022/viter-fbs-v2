@@ -1,6 +1,7 @@
 import React from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
+  apiVersion,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   siteKey,
@@ -25,20 +26,24 @@ import { IoCloseCircle } from "react-icons/io5";
 import LoadImages from "../../../partials/LoadImages";
 import { Form, Formik } from "formik";
 import { HiPencil } from "react-icons/hi";
+import useQueryData from "../../../custom-hooks/useQueryData";
 
 const ContactFormCareers = ({
   thePageName,
-  contactFormDefaultData,
-  handleUpdateContactFormCareers,
-  contactFormCareersData,
-  setCareersForm,
+  page = null,
+  services = null,
   jobTitle,
   setModalJob,
 }) => {
   const recaptchaRef = React.useRef();
 
-  const contactUsDefaultImage = getConvertStringToJSONparseData(
-    contactFormDefaultData?.data?.[0]?.form_default_img
+  const { data: contentFormData } = useQueryData(
+    `${apiVersion}/contactForm`, // endpoint
+    "get", // method
+    "contactForm", // key
+    {},
+    null,
+    true
   );
 
   const handleClose = () => {
@@ -65,155 +70,143 @@ const ContactFormCareers = ({
               }}
             />
           </button>
-          <a
-            className="absolute cursor-pointer tooltip-btn left-[320px] top-8 "
-            data-tooltip="Edit contents"
-            onClick={handleUpdateContactFormCareers}
-          >
-            <HiPencil className=" bg-[#C7AC27] rounded-full  w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
-          </a>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            {contactFormDefaultData?.data?.length > 0 &&
-            contactUsDefaultImage?.length > 0 ? (
-              <>
-                {contactUsDefaultImage.map((img, index) => (
-                  <LoadImages
-                    url={`${googleHDViewLink}${img?.id}`}
-                    alt={`Contact Form Default ${index + 1}`}
-                    className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-                    key={index}
-                  />
-                ))}
-              </>
-            ) : (
-              <div className="w-full h-full object-cover object-top place-content-center place-items-center bg-gray-300 ">
-                <FaRegImages className="text-[200px] text-gray-400" />
-              </div>
-            )}
+            {contentFormData?.data
+              ?.filter((item) => item.form_services === services)
+              ?.map((item, index) => {
+                const image = getConvertStringToJSONparseData(item?.form_img);
+
+                return (
+                  <React.Fragment key={index}>
+                    {contentFormData?.data?.length > 0 && image?.length > 0 ? (
+                      <>
+                        {image.map((img, imgIndex) => (
+                          <LoadImages
+                            url={`${googleHDViewLink}${img?.id}`}
+                            alt={`${item.form_name} ${imgIndex + 1}`}
+                            className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
+                            key={imgIndex}
+                          />
+                        ))}
+                      </>
+                    ) : (
+                      <div className="w-full h-full object-cover object-top place-content-center place-items-center bg-gray-300">
+                        <FaRegImages className="text-[200px] text-gray-400" />
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
           </div>
           <div className="flex flex-col justify-between">
             <div>
-              <div className="mb-12">
-                <p>
-                  {contactFormCareersData?.data?.[0]?.form_careers_subtitle ||
-                    "Subtitle"}
-                </p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contactFormCareersData?.data?.[0]?.form_careers_title ||
-                    "Title"}
-                </h3>
-              </div>
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
-                <li className="!items-start">
-                  <IoMdPin />
-                  <p className="md:w-[50%]">
-                    {contactFormDefaultData?.data?.[0]?.form_default_address ||
-                      "Address"}
-                  </p>
-                </li>
-                <li>
-                  <FaPhone />
-                  <p>
-                    {contactFormCareersData?.data?.[0]
-                      ?.form_careers_telephone || "Telephone No."}
-                  </p>
-                </li>
-                <li>
-                  <MdOutlinePhoneIphone />
-                  <p>
-                    {contactFormCareersData?.data?.[0]?.form_careers_phone ||
-                      "Phone No."}
-                  </p>
-                </li>
-              </ul>
-
-              <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
-                <li>
-                  <div className="text-xs md:text-sm">
-                    <div className="mb-4">
-                      <h3 className="font-semibold">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_position_a || ""}
-                      </h3>
-                      <p>
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_name_a || ""}
-                      </p>
-                      <p className="">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_email_a || ""}
-                      </p>
-                    </div>
-                    <div className="mb-8">
-                      <h3 className="font-semibold">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_position_b || ""}
-                      </h3>
-                      <p>
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_name_b || ""}
-                      </p>
-                      <p className="">
-                        {contactFormCareersData?.data?.[0]
-                          ?.form_careers_email_b || ""}
-                      </p>
-                    </div>
+              {contentFormData?.data
+                ?.filter((item) => item.form_services === services)
+                ?.map((item, index) => (
+                  <div className="mb-12" key={index}>
+                    <p>{item.form_subtitle}</p>
+                    <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                      {item.form_title}
+                    </h3>
                   </div>
-                </li>
-              </ul>
-
+                ))}
+              {/* CAREER */}
+              {services === "career" &&
+                contentFormData?.data
+                  ?.filter((item) => item.form_services === "career")
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <div className="text-xs md:text-sm">
+                          <div className="mb-4">
+                            <h3 className="font-semibold">
+                              {item.form_hr_manager_role || ""}
+                            </h3>
+                            <p>{item.form_hr_manager_name || ""}</p>
+                            <p>{item.form_hr_manager_email || ""}</p>
+                          </div>
+                          <div className="mb-8">
+                            <h3 className="font-semibold">
+                              {item.form_hr_staff_role || ""}
+                            </h3>
+                            <p>{item.form_hr_staff_name || ""}</p>
+                            <p>{item.form_hr_staff_email || ""}</p>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  ))}
               <div className="mb-4">
                 <p>Follow Us:</p>
-                {contactFormDefaultData?.data?.length > 0 &&
+                {contentFormData?.data?.length > 0 &&
                   (() => {
-                    const item = contactFormDefaultData.data[0];
+                    const item = contentFormData.data[0];
 
                     return (
                       <ul className="flex gap-2 text-2xl">
-                        {item.form_default_facebook_link && (
+                        {item.form_facebook_link && (
                           <li>
                             <a
-                              href={item.form_default_facebook_link || "#"}
+                              href={item.form_facebook_link || "#"}
                               target="_blank"
                             >
                               <FaFacebookSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_linkedin_link && (
+                        {item.form_linkedin_link && (
                           <li>
                             <a
-                              href={item.form_default_linkedin_link || "#"}
+                              href={item.form_linkedin_link || "#"}
                               target="_blank"
                             >
                               <FaLinkedin />
                             </a>
                           </li>
                         )}
-                        {item.form_default_youtube_link && (
+                        {item.form_youtube_link && (
                           <li>
                             <a
-                              href={item.form_default_youtube_link || "#"}
+                              href={item.form_youtube_link || "#"}
                               target="_blank"
                             >
                               <FaYoutubeSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_instagram_link && (
+                        {item.form_instagram_link && (
                           <li>
                             <a
-                              href={item.form_default_instagram_link || "#"}
+                              href={item.form_instagram_link || "#"}
                               target="_blank"
                             >
                               <FaInstagramSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_tiktok_link && (
+                        {item.form_tiktok_link && (
                           <li>
                             <a
-                              href={item.form_default_tiktok_link || "#"}
+                              href={item.form_tiktok_link || "#"}
                               target="_blank"
                             >
                               <AiFillTikTok />
@@ -227,7 +220,7 @@ const ContactFormCareers = ({
             </div>
           </div>
 
-          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px]">
+          <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
             {jobTitle === "insight" ? (
               ""
             ) : (
@@ -273,9 +266,9 @@ const ContactFormCareers = ({
 
                       <div className="input-wrapper">
                         <span htmlFor="" className="text-xs">
-                          Upload Resume (PDF Only (8mb))
+                          Upload Resume (PDF Only (8mb)){" "}
                         </span>
-                        <InputFileUpload
+                        <input
                           type="file"
                           name="client_file"
                           accept="application/pdf"
@@ -284,12 +277,12 @@ const ContactFormCareers = ({
                         />
                       </div>
 
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper ">
                         <InputTextArea
                           label="Message"
                           type="text"
                           name="client_message"
-                          className="max-h-[200px]"
+                          className="h-[100px]"
                         />
                       </div>
 

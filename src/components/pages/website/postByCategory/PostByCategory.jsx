@@ -93,7 +93,8 @@ const PostByCategory = () => {
 
   return (
     <>
-      <Header />
+      <Header services={"default"}
+                page={"Home"}/>
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           <h4 className="text-lg mb-8">

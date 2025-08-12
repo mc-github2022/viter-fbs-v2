@@ -29,11 +29,7 @@ const WordpressScope = ({
   setItemEdit,
   wordpressTitlesData,
   wordpressScopeData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
   pageName,
-  contactFormWordpressData,
-  handleUpdateContactFormWordpress,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
@@ -251,10 +247,8 @@ const WordpressScope = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          contactFormWordpressData={contactFormWordpressData}
-          handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
+          services={"web services"}
+          page={"WordPress CMS Website"}
         />
       )}
     </>

@@ -15,10 +15,6 @@ const OjtOverview = ({
   handleUpdateOjtOverview,
   handleUpdateOjtOverviewList,
   ojtOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
-  handleUpdateContactFormLcss,
-  contactFormLcssData,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -166,12 +162,9 @@ const OjtOverview = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
-          thePageName={pageName}
+          services={"lcss services"}
+          page={"College On-The-Job Training"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-          contactFormLcssData={contactFormLcssData}
         />
       )}
     </>

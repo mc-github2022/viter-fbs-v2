@@ -13,8 +13,7 @@ const DonationOverview = ({
   handleUpdateDonationOverview,
   handleUpdateDonationOverviewList,
   donationOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
+
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -186,9 +185,9 @@ const DonationOverview = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

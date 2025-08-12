@@ -11,10 +11,6 @@ const GraphicBanner = ({
   pageName,
   graphicData,
   handleUpdateGraphicBanner,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData,
-  contactFormWordpressData,
-  handleUpdateContactFormWordpress,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const graphicBannerImage = getConvertStringToJSONparseData(
@@ -94,10 +90,8 @@ const GraphicBanner = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          contactFormWordpressData={contactFormWordpressData}
-          handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
+          services={"web services"}
+          page={"Graphic Design"}
         />
       )}
     </>

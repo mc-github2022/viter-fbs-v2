@@ -10,9 +10,6 @@ import ContactFormLcss from "../../../../contact-form-lcss/ContactFormLcss";
 const OjtApplyNow = ({
   ojtApplyNowData,
   handleUpdateOjtApplyNow,
-  handleUpdateContactFormLcss,
-  contactFormDefaultData,
-  contactFormLcssData,
   pageName,
 }) => {
   const [lcssForm, setLcssForm] = React.useState(false);
@@ -98,9 +95,8 @@ const OjtApplyNow = ({
         <ContactFormLcss
           thePageName={pageName}
           setLcssForm={setLcssForm}
-          contactFormDefaultData={contactFormDefaultData}
-          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-          contactFormLcssData={contactFormLcssData}
+          services={"lcss services"}
+          page={"College On-The-Job Training"}
         />
       )}
     </>

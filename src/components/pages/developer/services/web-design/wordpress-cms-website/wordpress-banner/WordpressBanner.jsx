@@ -11,10 +11,6 @@ const WordpressBanner = ({
   pageName,
   wordpressData,
   handleUpdateWordpressBanner,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData,
-  contactFormWordpressData,
-  handleUpdateContactFormWordpress
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const wordpressBannerImage = getConvertStringToJSONparseData(
@@ -95,10 +91,8 @@ const WordpressBanner = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          contactFormWordpressData={contactFormWordpressData}
-          handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
+          services={"web services"}
+          page={"WordPress CMS Website"}
         />
       )}
     </>

@@ -1,16 +1,14 @@
 import React, { useRef } from "react";
-import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 import { FaCheckCircle, FaRegThumbsUp } from "react-icons/fa";
-import { pricing } from "./data";
-import ModalContact from "../../../../partials/ModalContact";
 import {
   IoIosArrowBack,
   IoIosArrowForward,
   IoMdCloseCircle,
 } from "react-icons/io";
-import { apiVersion } from "../../../../helpers/functions-general";
-import useQueryData from "../../../../custom-hooks/useQueryData";
 import Slider from "react-slick";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import { apiVersion } from "../../../../helpers/functions-general";
+import ModalContact from "../../../../partials/ModalContact";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 
 function SampleNextArrow(props) {
@@ -565,7 +563,7 @@ const WordPressPricing = ({ pageName, wordpressTitlesData }) => {
           contactSubject={contactSubject}
           services={"web services"}
           page={"WordPress CMS Website"}
-          notification_purpose={"default-receiver"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`CONTACT US / WordPress CMS Website (${contactSubject}) - `}
         />
       )}

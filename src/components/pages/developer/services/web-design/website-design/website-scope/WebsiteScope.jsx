@@ -29,8 +29,6 @@ const WebsiteScope = ({
   setItemEdit,
   websiteTitlesData,
   websiteScopeData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
@@ -247,8 +245,8 @@ const WebsiteScope = ({
       {isContactDefaultOpen && (
         <ContactFormDefault
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
+          services={"web services"}
+          page={"Web Design"}
         />
       )}
     </>

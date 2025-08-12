@@ -8,24 +8,20 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import WordpressBanner from "./wordpress-banner/WordPressBanner";
 import ModalUpdateWordpressBanner from "./wordpress-banner/ModalUpdateWordpressBanner";
-import WordpressOverview from "./wordpress-overview/WordpressOverview";
+import WordpressBanner from "./wordpress-banner/WordPressBanner";
 import ModalUpdateWordpressOverview from "./wordpress-overview/ModalUpdateWordpressOverview";
 import ModalUpdateWordpressOverviewList from "./wordpress-overview/ModalUpdateWordpressOverviewList";
-import WordpressScope from "./wordpress-scope/WordpressScope";
-import ModalUpdateWordpressScope from "./wordpress-scope/ModalUpdateWordpressScope";
-import WordpressPricing from "./wordpress-pricing/WordpressPricing";
-import WordpressPortfolio from "./wordpress-portfolio/WordpressPortfolio";
+import WordpressOverview from "./wordpress-overview/WordpressOverview";
+import WordpressPartners from "./wordpress-partners/WordpressPartners";
+import WordpressPartnerSays from "./wordpress-partnersays/WordpressPartnerSays";
 import ModalUpdateWordpressPortfolioA from "./wordpress-portfolio/ModalUpdateWordpressPortfolioA";
-import ModalUpdateWordpressPortfolioTitle from "./wordpress-portfolio/ModalUpdateWordpressPortfolioTitle";
 import ModalUpdateWordpressPortfolioB from "./wordpress-portfolio/ModalUpdateWordpressPortfolioB";
 import ModalUpdateWordpressPortfolioC from "./wordpress-portfolio/ModalUpdateWordpressPortfolioC";
 import ModalUpdateWordpressPortfolioD from "./wordpress-portfolio/ModalUpdateWordpressPortfolioD";
@@ -33,13 +29,15 @@ import ModalUpdateWordpressPortfolioE from "./wordpress-portfolio/ModalUpdateWor
 import ModalUpdateWordpressPortfolioF from "./wordpress-portfolio/ModalUpdateWordpressPortfolioF";
 import ModalUpdateWordpressPortfolioG from "./wordpress-portfolio/ModalUpdateWordpressPortfolioG";
 import ModalUpdateWordpressPortfolioH from "./wordpress-portfolio/ModalUpdateWordpressPortfolioH";
-import WordpressPartners from "./wordpress-partners/WordpressPartners";
-import WordpressPartnerSays from "./wordpress-partnersays/WordpressPartnerSays";
-import ModalUpdateWordpressScopeTitle from "./wordpress-titles/ModalUpdateWordpressScopeTitle";
+import ModalUpdateWordpressPortfolioTitle from "./wordpress-portfolio/ModalUpdateWordpressPortfolioTitle";
+import WordpressPortfolio from "./wordpress-portfolio/WordpressPortfolio";
+import WordpressPricing from "./wordpress-pricing/WordpressPricing";
+import ModalUpdateWordpressScope from "./wordpress-scope/ModalUpdateWordpressScope";
+import WordpressScope from "./wordpress-scope/WordpressScope";
 import ModalUpdateWordpressPackagesTitle from "./wordpress-titles/ModalUpdateWordpressPackagesTitle";
-import ModalUpdateWordpressPartnersTitle from "./wordpress-titles/ModalUpdateWordpressPartnersTitle";
 import ModalUpdateWordpressPartnerSaysTitle from "./wordpress-titles/ModalUpdateWordpressPartnerSaysTitle";
-import ModalUpdateContactFormDefaultWordPress from "../../../contact-form-default/ModalUpdateContactFormDefaultWordPress";
+import ModalUpdateWordpressPartnersTitle from "./wordpress-titles/ModalUpdateWordpressPartnersTitle";
+import ModalUpdateWordpressScopeTitle from "./wordpress-titles/ModalUpdateWordpressScopeTitle";
 
 const WordPressCmsWebsite = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -84,18 +82,6 @@ const WordPressCmsWebsite = () => {
     `${apiVersion}/wordpress-titles`, // endpoint
     "get", // method
     "wordpress-titles" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
-  const { data: contactFormWordpressData } = useQueryData(
-    `${apiVersion}/contactWordpress`, // endpoint
-    "get", // method
-    "contactWordpress" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -231,26 +217,9 @@ const WordPressCmsWebsite = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
-  const handleUpdateContactFormWordpress = () => {
-      dispatch(setIsUpdateHome({ modal: true, modalCode: "contact-form-wordpress" }));
-      setItemEdit("contactFormWordpressUpdate");
-    };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -280,15 +249,13 @@ const WordPressCmsWebsite = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"web services"}
+                page={"WordPress CMS Website"}
               />
               <WordpressBanner
                 wordpressData={wordpressData}
                 handleUpdateWordpressBanner={handleUpdateWordpressBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
                 pageName={pageName}
-                contactFormWordpressData={contactFormWordpressData}
-                handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
               />
               <WordpressOverview
                 handleUpdateWordpressOverview={handleUpdateWordpressOverview}
@@ -296,11 +263,7 @@ const WordPressCmsWebsite = () => {
                   handleUpdateWordpressOverviewList
                 }
                 wordpressOverviewData={wordpressOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
-                contactFormWordpressData={contactFormWordpressData}
-                handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
               />
               <WordpressScope
                 handleUpdateWordpressScopeTitles={
@@ -313,11 +276,7 @@ const WordPressCmsWebsite = () => {
                 errorScope={errorScope}
                 wordpressTitlesData={wordpressTitlesData}
                 wordpressScopeData={wordpressScopeData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
-                contactFormWordpressData={contactFormWordpressData}
-                handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
               />
               <WordpressPricing
                 handleUpdateWordpressPackagesTitles={
@@ -374,9 +333,7 @@ const WordPressCmsWebsite = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -514,21 +471,6 @@ const WordPressCmsWebsite = () => {
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
         )}
 
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-wordpress" && (
-          <ModalUpdateContactFormDefaultWordPress
-            itemEdit={itemEdit}
-            contactFormWordpressData={contactFormWordpressData}
-          />
-        )}
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (

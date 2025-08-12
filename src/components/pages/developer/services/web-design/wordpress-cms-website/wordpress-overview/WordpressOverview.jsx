@@ -14,10 +14,6 @@ const WordpressOverview = ({
   handleUpdateWordpressOverview,
   handleUpdateWordpressOverviewList,
   wordpressOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
-  contactFormWordpressData,
-  handleUpdateContactFormWordpress,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -163,10 +159,8 @@ const WordpressOverview = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          contactFormWordpressData={contactFormWordpressData}
-          handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
+          services={"web services"}
+          page={"WordPress CMS Website"}
         />
       )}
     </>

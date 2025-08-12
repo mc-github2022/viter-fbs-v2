@@ -32,8 +32,6 @@ const icons = {
 };
 
 const MarketingServices = ({
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
   pageName,
   handleUpdateMarketingServicesTitle,
   handleUpdateMarketingServicesList,
@@ -185,10 +183,9 @@ const MarketingServices = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
-          thePageName={pageName}
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
 

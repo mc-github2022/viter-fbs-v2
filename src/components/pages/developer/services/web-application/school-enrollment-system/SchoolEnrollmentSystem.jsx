@@ -8,7 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -59,12 +58,6 @@ const SchoolEnrollmentSystem = () => {
     `${apiVersion}/enrollment-titles`, // endpoint
     "get", // method
     "enrollment-titles" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -139,21 +132,9 @@ const SchoolEnrollmentSystem = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -183,12 +164,12 @@ const SchoolEnrollmentSystem = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <EnrollmentBanner
                 enrollmentData={enrollmentData}
                 handleUpdateEnrollmentBanner={handleUpdateEnrollmentBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <EnrollmentOverview
                 handleUpdateEnrollmentOverview={handleUpdateEnrollmentOverview}
@@ -196,8 +177,6 @@ const SchoolEnrollmentSystem = () => {
                   handleUpdateEnrollmentOverviewList
                 }
                 enrollmentOverviewData={enrollmentOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
               />
               <EnrollmentScope
@@ -210,8 +189,6 @@ const SchoolEnrollmentSystem = () => {
                 isFetchingScope={isFetchingScope}
                 enrollmentTitlesData={enrollmentTitlesData}
                 enrollmentScopeData={enrollmentScopeData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <EnrollmentPricing
                 handleUpdateEnrollmentPackagesTitles={
@@ -235,9 +212,7 @@ const SchoolEnrollmentSystem = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -308,14 +283,6 @@ const SchoolEnrollmentSystem = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

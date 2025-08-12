@@ -59,7 +59,7 @@ const SinglePageWebsite = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"web services"} page={"WordPress CMS Website"}/>
+      <Header pageName={pageName} services={"web services"} page={"Single Page Website"}/>
       <SinglePageBanner pageName={pageName} />
       <SinglePageOverview pageName={pageName} />
       <SinglePageScope

@@ -7,8 +7,22 @@ import {
 } from "../../../helpers/functions-general";
 import LoadImages from "../../../partials/LoadImages";
 import FetchingSpinner from "../../../partials/spinners/FetchingSpinner";
+import React from "react";
+import ContactFormDefault from "../contact-form-default/ContactFormDefault";
 
-const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
+const Header = ({
+  handleUpdateHeader,
+  headerData,
+  isLoading,
+  services,
+  page,
+}) => {
+  const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setIsContactDefaultOpen(true);
+  };
+
   const headerLogoImg = getConvertStringToJSONparseData(
     headerData?.data?.[0]?.header_logo_img
   );
@@ -140,21 +154,24 @@ const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
                   ))}
                 </li>
                 <div className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
-                  <a
-                    href="#"
+                  <button
                     className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full  from-secondary to-secondary hover:to-primary uppercase"
+                    onClick={handleOpen}
                   >
                     {headerData?.data?.length > 0 &&
                     headerData.data[0]?.header_button_text
                       ? headerData?.data[0].header_button_text
                       : "Button"}
-                  </a>
+                  </button>
                 </div>
               </ul>
             </div>
 
             <div className="lg:w-[200px] lg:flex justify-center hidden md:block">
-              <button className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary uppercase">
+              <button
+                className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light my-5  lg:block rounded-full  from-secondary to-secondary hover:to-primary uppercase"
+                onClick={handleOpen}
+              >
                 {headerData?.data?.length > 0 &&
                 headerData.data[0]?.header_button_text
                   ? headerData?.data[0].header_button_text
@@ -174,6 +191,14 @@ const Header = ({ handleUpdateHeader, headerData, isLoading }) => {
           </div>
         </div>
       </section>
+
+      {isContactDefaultOpen && (
+        <ContactFormDefault
+          services={services}
+          page={page}
+          setIsContactDefaultOpen={setIsContactDefaultOpen}
+        />
+      )}
     </>
   );
 };

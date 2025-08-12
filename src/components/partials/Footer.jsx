@@ -25,15 +25,6 @@ const Footer = () => {
     setSubscribe(true);
   };
 
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault", // key
-    {},
-    null,
-    true
-  );
-
   const { data: footerData } = useQueryData(
     `${apiVersion}/footer`, // endpoint
     "get", // method

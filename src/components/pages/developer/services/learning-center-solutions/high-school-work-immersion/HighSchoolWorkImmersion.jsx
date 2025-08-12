@@ -8,8 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
-import ModalUpdateContactFormDefaultLcss from "../../../contact-form-default/ModalUpdateContactFormDefaultLcss";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -23,19 +21,19 @@ import ImmersionApplyNow from "./immersion-apply-now/ImmersionApplyNow";
 import ModalUpdateImmersionApplyNow from "./immersion-apply-now/ModalUpdateImmersionApplyNow";
 import ImmersionBanner from "./immersion-banner/ImmersionBanner";
 import ModalUpdateImmersionBanner from "./immersion-banner/ModalUpdateImmersionBanner";
+import ImmersionBatches from "./immersion-batches/ImmersionBatches";
 import ImmersionOverview from "./immersion-overview/ImmersionOverview";
 import ModalUpdateImmersionOverview from "./immersion-overview/ModalUpdateImmersionOverview";
 import ModalUpdateImmersionOverviewList from "./immersion-overview/ModalUpdateImmersionOverviewList";
 import ImmersionPartners from "./immersion-partners/ImmersionPartners";
+import ImmersionPartnerSays from "./immersion-partnersays/ImmersionPartnerSays";
 import ImmersionServices from "./immersion-services/ImmersionServices";
 import ModalUpdateImmersionServices from "./immersion-services/ModalUpdateImmersionServices";
-import ImmersionBatches from "./immersion-batches/ImmersionBatches";
-import ImmersionVidTestimonial from "./immersion-vid-testimonial/ImmersionVidTestimonial";
-import ImmersionPartnerSays from "./immersion-partnersays/ImmersionPartnerSays";
-import ModalUpdateImmersionPartnersTitle from "./immersion-titles/ModalUpdateImmersionPartnersTitle";
 import ModalUpdateImmersionBatchesTitle from "./immersion-titles/ModalUpdateImmersionBatchesTitle";
-import ModalUpdateImmersionVidTestimonialTitle from "./immersion-titles/ModalUpdateImmersionVidTestimonialTitle";
 import ModalUpdateImmersionPartnerSaysTitle from "./immersion-titles/ModalUpdateImmersionPartnerSaysTitle";
+import ModalUpdateImmersionPartnersTitle from "./immersion-titles/ModalUpdateImmersionPartnersTitle";
+import ModalUpdateImmersionVidTestimonialTitle from "./immersion-titles/ModalUpdateImmersionVidTestimonialTitle";
+import ImmersionVidTestimonial from "./immersion-vid-testimonial/ImmersionVidTestimonial";
 
 const HighSchoolWorkImmersion = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -92,18 +90,6 @@ const HighSchoolWorkImmersion = () => {
     `${apiVersion}/lcss-teams-title`, // endpoint
     "get", // method
     "lcss-teams-title" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
-  const { data: contactFormLcssData } = useQueryData(
-    `${apiVersion}/contactLcss`, // endpoint
-    "get", // method
-    "contactLcss" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -193,26 +179,9 @@ const HighSchoolWorkImmersion = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
-  const handleUpdateContactFormLcss = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "contact-form-lcss" }));
-    setItemEdit("contactFormLcssUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -242,6 +211,8 @@ const HighSchoolWorkImmersion = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"lcss services"}
+                page={"High School Work Immersion"}
               />
               <ImmersionBanner
                 immersionData={immersionData}
@@ -260,10 +231,6 @@ const HighSchoolWorkImmersion = () => {
                   handleUpdateImmersionOverviewList
                 }
                 immersionOverviewData={immersionOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                contactFormLcssData={contactFormLcssData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
                 pageName={pageName}
               />
 
@@ -279,9 +246,6 @@ const HighSchoolWorkImmersion = () => {
               <ImmersionApplyNow
                 immersionApplyNowData={immersionApplyNowData}
                 handleUpdateImmersionApplyNow={handleUpdateImmersionApplyNow}
-                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-                contactFormDefaultData={contactFormDefaultData}
-                contactFormLcssData={contactFormLcssData}
                 pageName={pageName}
               />
 
@@ -319,9 +283,7 @@ const HighSchoolWorkImmersion = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -411,22 +373,6 @@ const HighSchoolWorkImmersion = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-lcss" && (
-          <ModalUpdateContactFormDefaultLcss
-            itemEdit={itemEdit}
-            contactFormLcssData={contactFormLcssData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

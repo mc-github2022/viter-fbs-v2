@@ -67,55 +67,6 @@ const ModalContact = ({
     true
   );
 
-  console.log(contentFormData);
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault", // key
-    {},
-    null,
-    true
-  );
-
-  const { data: contactFormLcssData } = useQueryData(
-    `${apiVersion}/contactLcss`, // endpoint
-    "get", // method
-    "contactLcss", // key
-    {},
-    null,
-    true
-  );
-
-  const { data: contactFormWordpressData } = useQueryData(
-    `${apiVersion}/contactWordpress`, // endpoint
-    "get", // method
-    "contactWordpress", // key
-    {},
-    null,
-    true
-  );
-
-  const { data: contactFormCareersData } = useQueryData(
-    `${apiVersion}/contactCareers`, // endpoint
-    "get", // method
-    "contactCareers", // key
-    {},
-    null,
-    true
-  );
-
-  const portfolio = getConvertStringToJSONparseData(
-    contentFormData?.data?.[0]?.form_portfolio
-  );
-
-  const contactUsLcssFile = getConvertStringToJSONparseData(
-    contactFormLcssData?.data?.[0]?.form_lcss_file
-  );
-
-  const contactUsWordpressFile = getConvertStringToJSONparseData(
-    contactFormWordpressData?.data?.[0]?.form_wordpress_file
-  );
 
   const queryClient = useQueryClient();
 
@@ -187,11 +138,7 @@ const ModalContact = ({
           </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             {contentFormData?.data
-              ?.filter(
-                (item) =>
-                  item.form_services === services &&
-                  item.packages_category_name === page
-              )
+              ?.filter((item) => item.form_services === services)
               ?.map((item, index) => {
                 const image = getConvertStringToJSONparseData(item?.form_img);
 
@@ -222,11 +169,7 @@ const ModalContact = ({
               {/* {console.log(contentFormData?.data?.form_services === services)} */}
 
               {contentFormData?.data
-                ?.filter(
-                  (item) =>
-                    item.form_services === services &&
-                    item.packages_category_name === page
-                )
+                ?.filter((item) => item.form_services === services)
                 ?.map((item, index) => (
                   <div className="mb-12" key={index}>
                     <p>{item.form_subtitle}</p>
@@ -239,11 +182,7 @@ const ModalContact = ({
               {/* LCSS SERVICES */}
               {services === "lcss services" &&
                 contentFormData?.data
-                  ?.filter(
-                    (item) =>
-                      item.form_services === "lcss services" &&
-                      item.packages_category_name === page
-                  )
+                  ?.filter((item) => item.form_services === "lcss services")
                   ?.map((item, index) => (
                     <ul
                       key={index}
@@ -289,11 +228,7 @@ const ModalContact = ({
               {/* CAREER */}
               {services === "career" &&
                 contentFormData?.data
-                  ?.filter(
-                    (item) =>
-                      item.form_services === "career" &&
-                      item.packages_category_name === page
-                  )
+                  ?.filter((item) => item.form_services === "career")
                   ?.map((item, index) => (
                     <ul
                       key={index}
@@ -339,11 +274,7 @@ const ModalContact = ({
               {/* WEB SERVICES */}
               {services === "web services" &&
                 contentFormData?.data
-                  ?.filter(
-                    (item) =>
-                      item.form_services === "web services" &&
-                      item.packages_category_name === page
-                  )
+                  ?.filter((item) => item.form_services === "web services")
                   ?.map((item, index) => (
                     <React.Fragment key={index}>
                       <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
@@ -387,11 +318,7 @@ const ModalContact = ({
                 services !== "career" &&
                 services !== "web services" &&
                 contentFormData?.data
-                  ?.filter(
-                    (item) =>
-                      item.form_services === "default" &&
-                      item.packages_category_name === page
-                  )
+                  ?.filter((item) => item.form_services === "default")
                   ?.map((item, index) => (
                     <ul
                       key={index}
@@ -490,22 +417,17 @@ const ModalContact = ({
                 (() => {
                   // Find the content item that matches the current page + service
                   const contentItem = contentFormData?.data?.find(
-                    (item) =>
-                      item.packages_category_name === page &&
-                      item.form_services === services
+                    (item) => item.form_services === services
                   );
-
-                  // Parse portfolio from that matched item
-                  const portfolio = getConvertStringToJSONparseData(
-                    contentItem?.form_portfolio
+                  const ojtProposal = getConvertStringToJSONparseData(
+                    contentItem?.form_ojt_proposal
                   );
-
                   return (
                     <>
                       <p className="text-sm">
                         Learn more about our OJT program
                       </p>
-                      {portfolio?.map((file, index) => (
+                      {ojtProposal?.map((file, index) => (
                         <a
                           href={`${googleViewLink}${file?.id}`}
                           className="flex gap-2 items-center font-bold text-primary pointer"
@@ -520,24 +442,21 @@ const ModalContact = ({
                 })()}
 
               {/* WORK IMMERSION */}
-              {page === "Work Immersion" &&
+              {page === "High School Work Immersion" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) =>
-                      item.packages_category_name === page &&
-                      item.form_services === services
+                    (item) => item.form_services === services
                   );
 
-                  const portfolio = getConvertStringToJSONparseData(
-                    contentItem?.form_portfolio
+                  const workImmersion = getConvertStringToJSONparseData(
+                    contentItem?.form_work_immersion
                   );
-
                   return (
                     <>
                       <p className="text-sm">
                         Learn more about our immersion program
                       </p>
-                      {portfolio?.map((file, index) => (
+                      {workImmersion?.map((file, index) => (
                         <a
                           href={`${googleViewLink}${file?.id}`}
                           className="flex gap-2 items-center font-bold text-primary pointer"
@@ -554,17 +473,18 @@ const ModalContact = ({
               {/* CONTINUING STUDY */}
               {page === "Continuing Study" && <></>}
 
+              {/* SINGLE PAGE */}
+              {page === "Single Page Website" && <></>}
+
               {/* WORDPRESS */}
-              {page === "Wordpress" &&
+              {page === "WordPress CMS Website" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) =>
-                      item.packages_category_name === page &&
-                      item.form_services === services
+                    (item) => item.form_services === services
                   );
 
-                  const portfolio = getConvertStringToJSONparseData(
-                    contentItem?.form_portfolio
+                  const webDesign = getConvertStringToJSONparseData(
+                    contentItem?.form_website_design
                   );
 
                   return (
@@ -572,7 +492,67 @@ const ModalContact = ({
                       <p className="text-sm">
                         Learn more about our WordPress CMS Website program
                       </p>
-                      {portfolio?.map((file, index) => (
+                      {webDesign?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Portfolio <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* WEB DESIGN */}
+              {page === "Web Design" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+
+                  const webDesign = getConvertStringToJSONparseData(
+                    contentItem?.form_website_design
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our Web Design program
+                      </p>
+                      {webDesign?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Portfolio <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* GRAPHIC DESIGN */}
+              {page === "Graphic Design" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+
+                  const graphicDesign = getConvertStringToJSONparseData(
+                    contentItem?.form_graphic_design
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our Graphic Design program
+                      </p>
+                      {graphicDesign?.map((file, index) => (
                         <a
                           href={`${googleViewLink}${file?.id}`}
                           className="flex gap-2 items-center font-bold text-primary pointer"
@@ -588,24 +568,26 @@ const ModalContact = ({
 
               {/* DEFAULT */}
               {page !== "College On-The-Job Training" &&
-                page !== "Work Immersion" &&
+                page !== "High School Work Immersion" &&
                 page !== "Continuing Study" &&
-                page !== "Wordpress" &&
+                page !== "WordPress CMS Website" &&
+                page !== "Single Page Website" &&
+                page !== "Web Design" &&
+                page !== "Graphic Design" &&
+                page !== "Career" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) =>
-                      item.packages_category_name === page &&
-                      item.form_services === services
+                    (item) => item.form_services === services
                   );
 
-                  const portfolio = getConvertStringToJSONparseData(
-                    contentItem?.form_portfolio
+                  const fbsBrochure = getConvertStringToJSONparseData(
+                    contentItem?.form_fbs_brochure
                   );
 
                   return (
                     <>
                       <p className="text-sm">Learn more about our program</p>
-                      {portfolio?.map((file, index) => (
+                      {fbsBrochure?.map((file, index) => (
                         <a
                           href={`${googleViewLink}${file?.id}`}
                           className="flex gap-2 items-center font-bold text-primary pointer"

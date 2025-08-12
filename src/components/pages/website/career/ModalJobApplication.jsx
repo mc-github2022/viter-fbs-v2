@@ -62,9 +62,6 @@ const ModalJobApplication = ({
     true
   );
 
-  const contactUsDefaultImage = getConvertStringToJSONparseData(
-    contentFormData?.data?.[0]?.form_img
-  );
 
   const mutation = useMutation({
     mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
@@ -134,11 +131,7 @@ const ModalJobApplication = ({
           </button>
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
             {contentFormData?.data
-              ?.filter(
-                (item) =>
-                  item.form_services === services &&
-                  item.packages_category_name === page
-              )
+              ?.filter((item) => item.form_services === services)
               ?.map((item, index) => {
                 const image = getConvertStringToJSONparseData(item?.form_img);
 
@@ -166,20 +159,20 @@ const ModalJobApplication = ({
           </div>
           <div className="flex flex-col justify-between">
             <div>
-              <div className="mb-12">
-                <p>{contentFormData?.data?.[4]?.form_subtitle}</p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contentFormData?.data?.[4]?.form_title}
-                </h3>
-              </div>
+              {contentFormData?.data
+                ?.filter((item) => item.form_services === services)
+                ?.map((item, index) => (
+                  <div className="mb-12" key={index}>
+                    <p>{item.form_subtitle}</p>
+                    <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                      {item.form_title}
+                    </h3>
+                  </div>
+                ))}
               {/* CAREER */}
               {services === "career" &&
                 contentFormData?.data
-                  ?.filter(
-                    (item) =>
-                      item.form_services === "career" &&
-                      item.packages_category_name === page
-                  )
+                  ?.filter((item) => item.form_services === "career")
                   ?.map((item, index) => (
                     <ul
                       key={index}

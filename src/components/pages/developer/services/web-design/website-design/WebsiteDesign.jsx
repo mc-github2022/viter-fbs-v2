@@ -8,27 +8,26 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import WebsiteBanner from "./website-banner/WebsiteBanner";
 import ModalUpdateWebsiteBanner from "./website-banner/ModalUpdateWebsiteBanner";
-import WebsiteOverview from "./website-overview/WebsiteOverview";
+import WebsiteBanner from "./website-banner/WebsiteBanner";
 import ModalUpdateWebsiteOverview from "./website-overview/ModalUpdateWebsiteOverview";
 import ModalUpdateWebsiteOverviewList from "./website-overview/ModalUpdateWebsiteOverviewList";
-import ModalUpdateWebsiteScope from "./website-scope/ModalUpdateWebsiteScope";
-import WebsiteScope from "./website-scope/WebsiteScope";
-import WebsitePricing from "./website-pricing/WebsitePricing";
+import WebsiteOverview from "./website-overview/WebsiteOverview";
 import WebsitePartners from "./website-partners/WebsitePartners";
 import WebsitePartnerSays from "./website-partnersays/WebsitePartnerSays";
-import ModalUpdateWebsiteScopeTitle from "./website-titles/ModalUpdateWebsiteScopeTitle";
+import WebsitePricing from "./website-pricing/WebsitePricing";
+import ModalUpdateWebsiteScope from "./website-scope/ModalUpdateWebsiteScope";
+import WebsiteScope from "./website-scope/WebsiteScope";
 import ModalUpdateWebsitePackagesTitle from "./website-titles/ModalUpdateWebsitePackagesTitle";
-import ModalUpdateWebsitePartnersTitle from "./website-titles/ModalUpdateWebsitePartnersTitle";
 import ModalUpdateWebsitePartnerSaysTitle from "./website-titles/ModalUpdateWebsitePartnerSaysTitle";
+import ModalUpdateWebsitePartnersTitle from "./website-titles/ModalUpdateWebsitePartnersTitle";
+import ModalUpdateWebsiteScopeTitle from "./website-titles/ModalUpdateWebsiteScopeTitle";
 
 const WebsiteDesign = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -63,11 +62,6 @@ const WebsiteDesign = () => {
     "website-titles" // key
   );
 
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
 
   const { isLoading, data: headerData } = useQueryData(
     `${apiVersion}/header`, // endpoint
@@ -139,21 +133,9 @@ const WebsiteDesign = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -183,12 +165,12 @@ const WebsiteDesign = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"web services"}
+                page={"Web Design"}
               />
               <WebsiteBanner
                 websiteData={websiteData}
                 handleUpdateWebsiteBanner={handleUpdateWebsiteBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <WebsiteOverview
                 handleUpdateWebsiteOverview={handleUpdateWebsiteOverview}
@@ -196,8 +178,6 @@ const WebsiteDesign = () => {
                   handleUpdateWebsiteOverviewList
                 }
                 websiteOverviewData={websiteOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <WebsiteScope
                 handleUpdateWebsiteScopeTitles={handleUpdateWebsiteScopeTitles}
@@ -208,8 +188,6 @@ const WebsiteDesign = () => {
                 errorScope={errorScope}
                 websiteTitlesData={websiteTitlesData}
                 websiteScopeData={websiteScopeData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <WebsitePricing
                 handleUpdateWebsitePackagesTitles={
@@ -233,9 +211,7 @@ const WebsiteDesign = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -308,13 +284,6 @@ const WebsiteDesign = () => {
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
         )}
 
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
-        )}
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (

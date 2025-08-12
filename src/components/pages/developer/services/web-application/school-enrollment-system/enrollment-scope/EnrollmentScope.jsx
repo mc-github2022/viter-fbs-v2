@@ -27,8 +27,6 @@ const EnrollmentScope = ({
   setItemEdit,
   enrollmentTitlesData,
   enrollmentScopeData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
@@ -242,9 +240,9 @@ const EnrollmentScope = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

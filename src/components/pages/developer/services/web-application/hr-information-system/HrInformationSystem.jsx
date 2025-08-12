@@ -61,12 +61,6 @@ const HrInformationSystem = () => {
     "hris-titles" // key
   );
 
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
   const { isLoading, data: headerData } = useQueryData(
     `${apiVersion}/header`, // endpoint
     "get", // method
@@ -135,11 +129,6 @@ const HrInformationSystem = () => {
     setItemEdit("footerLogoImgUpdate");
   };
 
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
-  };
-
   const handleUpdateFooterQuicklinks = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-quicklinks" }));
     setItemEdit("footerQuicklinksUpdate");
@@ -167,6 +156,8 @@ const HrInformationSystem = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <HrisBanner
                 hrisData={hrisData}
@@ -206,9 +197,7 @@ const HrInformationSystem = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>

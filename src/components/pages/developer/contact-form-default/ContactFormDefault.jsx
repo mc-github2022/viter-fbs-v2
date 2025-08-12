@@ -1,6 +1,7 @@
 import React from "react";
 import { IoCloseCircle, IoMailSharp } from "react-icons/io5";
 import {
+  apiVersion,
   devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
@@ -24,39 +25,33 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { InputText, InputTextArea } from "../../../helpers/FormInputs";
 import LoadImages from "../../../partials/LoadImages";
 import { HiPencil } from "react-icons/hi";
+import useQueryData from "../../../custom-hooks/useQueryData";
 
 const ContactFormDefault = ({
   thePageName,
   setIsContactDefaultOpen,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData,
-  contactFormLcssData,
-  contactFormCareersData,
-  handleUpdateContactFormLcss,
-  contactUsDefaultimmersionFile,
-  contactFormWordpressData,
-  handleUpdateContactFormWordpress,
+  services = null,
+  page = null,
+  contactSubject = "",
 }) => {
+  const recaptchaRef = React.useRef();
   const handleClose = () => {
     setIsContactDefaultOpen(false);
   };
 
-  const contactUsDefaultImage = getConvertStringToJSONparseData(
-    contactFormDefaultData?.data?.[0]?.form_default_img
+  const { data: contentFormData } = useQueryData(
+    `${apiVersion}/contactForm`, // endpoint
+    "get", // method
+    "contactForm", // key
+    {},
+    null,
+    true
   );
 
-  const contactUsDefaultFile = getConvertStringToJSONparseData(
-    contactFormDefaultData?.data?.[0]?.form_default_file
-  );
-
-  const contactUsLcssFile = getConvertStringToJSONparseData(
-    contactFormLcssData?.data?.[0]?.form_lcss_file
-  );
-
-  const contactUsWordpressFile = getConvertStringToJSONparseData(
-    contactFormWordpressData?.data?.[0]?.form_wordpress_file
-  );
-
+  const handleChange = (value) => {
+    console.log(value);
+    // setCaptcha(value);
+  };
   return (
     <>
       <div
@@ -76,342 +71,269 @@ const ContactFormDefault = ({
             />
           </button>
 
-          {thePageName !== "Wordpress" ? (
-            thePageName !== "College OJT" &&
-            thePageName !== "Work Immersion" &&
-            thePageName !== "Continuing Study" ? (
-              <a
-                className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
-                data-tooltip="Edit contents"
-                onClick={handleUpdateContactFormDefault}
-              >
-                <FaRegImages className="bg-[#C7AC27] rounded-full w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
-              </a>
-            ) : (
-              <a
-                className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
-                data-tooltip="Edit contents"
-                onClick={handleUpdateContactFormLcss}
-              >
-                <HiPencil className="bg-[#C7AC27] rounded-full w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
-              </a>
-            )
-          ) : (
-            <a
-              className="absolute cursor-pointer tooltip-btn left-[320px] top-8"
-              data-tooltip="Edit contents"
-              onClick={handleUpdateContactFormWordpress}
-            >
-              <HiPencil className="bg-[#C7AC27] rounded-full w-[25px] h-[25px] p-[5px] border-[1px] text-black" />
-            </a>
-          )}
-
           <div className="absolute right-0 w-[30%] h-full hidden lg:block">
-            {contactFormDefaultData?.data?.length > 0 &&
-            contactUsDefaultImage?.length > 0 ? (
-              <>
-                {contactUsDefaultImage.map((img, index) => (
-                  <LoadImages
-                    url={`${googleHDViewLink}${img?.id}`}
-                    alt={`Contact Form Default ${index + 1}`}
-                    className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
-                    key={index}
-                  />
-                ))}
-              </>
-            ) : (
-              <div className="w-full h-full object-cover object-top place-content-center place-items-center bg-gray-300 ">
-                <FaRegImages className="text-[200px] text-gray-400" />
-              </div>
-            )}
+            {contentFormData?.data
+              ?.filter((item) => item.form_services === services)
+              ?.map((item, index) => {
+                const image = getConvertStringToJSONparseData(item?.form_img);
+
+                return (
+                  <React.Fragment key={index}>
+                    {contentFormData?.data?.length > 0 && image?.length > 0 ? (
+                      <>
+                        {image.map((img, imgIndex) => (
+                          <LoadImages
+                            url={`${googleHDViewLink}${img?.id}`}
+                            alt={`${item.form_name} ${imgIndex + 1}`}
+                            className="h-full object-cover rounded-tr-lg rounded-br-lg object-center"
+                            key={imgIndex}
+                          />
+                        ))}
+                      </>
+                    ) : (
+                      <div className="w-full h-full object-cover object-top place-content-center place-items-center bg-gray-300">
+                        <FaRegImages className="text-[200px] text-gray-400" />
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
           </div>
           <div className="flex flex-col justify-between">
             <div>
-              <div className="mb-12">
-                <p>
-                  {contactFormDefaultData?.data?.length > 0 &&
-                  contactFormDefaultData.data[0]?.form_default_subtitle
-                    ? contactFormDefaultData?.data[0].form_default_subtitle
-                    : "Subtitle"}
-                </p>
-                <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
-                  {contactFormDefaultData?.data?.length > 0 &&
-                  contactFormDefaultData.data[0]?.form_default_title
-                    ? contactFormDefaultData?.data[0].form_default_title
-                    : "Title"}
-                </h3>
-              </div>
+              {/* {console.log(contentFormData?.data?.form_services === services)} */}
 
-              {thePageName === "College OJT" ||
-              thePageName === "Work Immersion" ||
-              thePageName === "Continuing Study" ? (
-                <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-[12px]">
-                    <li className="!items-start">
-                      <IoMdPin />
-                      <p className="md:w-[50%]">
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_address
-                          ? contactFormDefaultData?.data[0].form_default_address
-                          : "Address"}
-                      </p>
-                    </li>
-                    <li>
-                      <FaPhone />
-                      <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_telephone
-                          ? contactFormLcssData?.data[0].form_lcss_telephone
-                          : "Telephone No."}
-                      </p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>
-                        {contactFormLcssData?.data?.length > 0 &&
-                        contactFormLcssData.data[0]?.form_lcss_phone
-                          ? contactFormLcssData?.data[0].form_lcss_phone
-                          : "Phone No."}
-                      </p>
-                    </li>
-                  </ul>
+              {contentFormData?.data
+                ?.filter((item) => item.form_services === services)
+                ?.map((item, index) => (
+                  <div className="mb-12" key={index}>
+                    <p>{item.form_subtitle}</p>
+                    <h3 className="text-[clamp(20px,7vw,30px)] font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] group-hover:text-light">
+                      {item.form_title}
+                    </h3>
+                  </div>
+                ))}
 
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
-                    <li>
-                      <div className="text-xs md:text-sm">
-                        <div className="mb-4">
-                          <h3 className="font-semibold">
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_computer_title
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_computer_title
-                              : "Computer Title"}
-                          </h3>
-                          <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]?.form_lcss_computer_name
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_computer_name
-                              : "Name"}
-                          </p>
-                          <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_computer_email
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_computer_email
-                              : "Email"}
-                          </p>
+              {/* LCSS SERVICES */}
+              {services === "lcss services" &&
+                contentFormData?.data
+                  ?.filter((item) => item.form_services === "lcss services")
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <div className="text-xs md:text-sm">
+                          <div className="mb-4">
+                            <h3 className="font-semibold">
+                              {item.form_computer_role || ""}
+                            </h3>
+                            <p>{item.form_computer_name || ""}</p>
+                            <p>{item.form_computer_email || ""}</p>
+                          </div>
+                          <div className="mb-8">
+                            <h3 className="font-semibold">
+                              {item.form_accounting_role || ""}
+                            </h3>
+                            <p>{item.form_accounting_name || ""}</p>
+                            <p>{item.form_accounting_email || ""}</p>
+                          </div>
                         </div>
-                        <div className="mb-8">
-                          <h3 className="font-semibold">
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_accounting_title
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_accounting_title
-                              : "Accounting Title"}
-                          </h3>
-                          <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_accounting_name
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_accounting_name
-                              : "Name"}
-                          </p>
-                          <p>
-                            {contactFormLcssData?.data?.length > 0 &&
-                            contactFormLcssData.data[0]
-                              ?.form_lcss_accounting_email
-                              ? contactFormLcssData?.data[0]
-                                  .form_lcss_accounting_email
-                              : "Email"}
-                          </p>
+                      </li>
+                    </ul>
+                  ))}
+
+              {/* CAREER */}
+              {services === "career" &&
+                contentFormData?.data
+                  ?.filter((item) => item.form_services === "career")
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <div className="text-xs md:text-sm">
+                          <div className="mb-4">
+                            <h3 className="font-semibold">
+                              {item.form_hr_manager_role || ""}
+                            </h3>
+                            <p>{item.form_hr_manager_name || ""}</p>
+                            <p>{item.form_hr_manager_email || ""}</p>
+                          </div>
+                          <div className="mb-8">
+                            <h3 className="font-semibold">
+                              {item.form_hr_staff_role || ""}
+                            </h3>
+                            <p>{item.form_hr_staff_name || ""}</p>
+                            <p>{item.form_hr_staff_email || ""}</p>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  </ul>
-                </>
-              ) : thePageName === "career" ? (
-                <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm md:text-sm">
-                  <li className="!items-start">
-                    <IoMdPin />
-                    <p className="md:w-[50%]">
-                      {contactFormDefaultData?.data?.length > 0 &&
-                      contactFormDefaultData.data[0]?.form_default_address
-                        ? contactFormDefaultData?.data[0].form_default_address
-                        : "Address"}
-                    </p>
-                  </li>
-                  <li>
-                    <FaPhone />
-                    <p>
-                      {contactFormCareersData?.data?.length > 0 &&
-                      contactFormCareersData.data[0]?.form_careers_telephone
-                        ? contactFormCareersData?.data[0].form_careers_telephone
-                        : "Telephone No."}
-                    </p>
-                  </li>
-                  <li>
-                    <MdOutlinePhoneIphone />
-                    <p>
-                      {contactFormCareersData?.data?.length > 0 &&
-                      contactFormCareersData.data[0]?.form_careers_phone
-                        ? contactFormCareersData?.data[0].form_careers_phone
-                        : "Phone No."}
-                    </p>
-                  </li>
-                  <li>
-                    <div className="text-xs md:text-sm">
-                      <div className="mb-4">
-                        <h3 className="font-semibold">
-                          {contactFormCareersData?.data?.length > 0 &&
-                          contactFormCareersData.data[0]
-                            ?.form_careers_position_a
-                            ? contactFormCareersData?.data[0]
-                                .form_careers_position_a
-                            : "Position"}
-                        </h3>
-                        <p>
-                          {contactFormCareersData?.data?.length > 0 &&
-                          contactFormCareersData.data[0]?.form_careers_name_a
-                            ? contactFormCareersData?.data[0]
-                                .form_careers_name_a
-                            : "Name"}
-                        </p>
-                        <p>
-                          {contactFormCareersData?.data?.length > 0 &&
-                          contactFormCareersData.data[0]?.form_careers_email_a
-                            ? contactFormCareersData?.data[0]
-                                .form_careers_email_a
-                            : "Email"}
-                        </p>
-                      </div>
-                      <div className="mb-8">
-                        <h3 className="font-semibold">
-                          {contactFormCareersData?.data?.length > 0 &&
-                          contactFormCareersData.data[0]
-                            ?.form_careers_position_b
-                            ? contactFormCareersData?.data[0]
-                                .form_careers_position_b
-                            : "Position"}
-                        </h3>
-                        <p>
-                          {contactFormCareersData?.data?.length > 0 &&
-                          contactFormCareersData.data[0]?.form_careers_name_b
-                            ? contactFormCareersData?.data[0]
-                                .form_careers_name_b
-                            : "Name"}
-                        </p>
-                        <p>
-                          {contactFormCareersData?.data?.length > 0 &&
-                          contactFormCareersData.data[0]?.form_careers_email_b
-                            ? contactFormCareersData?.data[0]
-                                .form_careers_email_b
-                            : "Email"}
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              ) : (
-                <>
-                  <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm">
-                    <li className="!items-start">
-                      <IoMdPin />
-                      <p className="md:w-[50%]">
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_address
-                          ? contactFormDefaultData?.data[0].form_default_address
-                          : "Address"}
-                      </p>
-                    </li>
-                    <li>
-                      <FaPhone />
-                      <p>
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_telephone
-                          ? contactFormDefaultData?.data[0]
-                              .form_default_telephone
-                          : "Telephone No."}
-                      </p>
-                    </li>
-                    <li>
-                      <MdOutlinePhoneIphone />
-                      <p>
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_phone
-                          ? contactFormDefaultData?.data[0].form_default_phone
-                          : "Phone No."}
-                      </p>
-                    </li>
-                    <li>
-                      <IoMailSharp />
-                      <p>
-                        {contactFormDefaultData?.data?.length > 0 &&
-                        contactFormDefaultData.data[0]?.form_default_email
-                          ? contactFormDefaultData?.data[0].form_default_email
-                          : "Email"}
-                      </p>
-                    </li>
-                  </ul>
-                </>
-              )}
+                      </li>
+                    </ul>
+                  ))}
+
+              {/* WEB SERVICES */}
+              {services === "web services" &&
+                contentFormData?.data
+                  ?.filter((item) => item.form_services === "web services")
+                  ?.map((item, index) => (
+                    <React.Fragment key={index}>
+                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                        <li className="!items-start">
+                          <IoMdPin />
+                          <p className="md:w-[50%]">
+                            {item.form_address || ""}
+                          </p>
+                        </li>
+                        <li>
+                          <FaPhone />
+                          <p>{item.form_accounting_no || ""}</p>
+                        </li>
+                        <li>
+                          <MdOutlinePhoneIphone />
+                          <p>{item.form_company_no || ""}</p>
+                        </li>
+                        <li>
+                          <MdOutlinePhoneIphone />
+                          <p>{item.form_web_no || ""}</p>
+                        </li>
+                      </ul>
+                      <ul className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-sm">
+                        <li>
+                          <div className="text-xs md:text-sm">
+                            <div className="mb-4">
+                              <h3 className="font-semibold">
+                                {item.form_web_role || ""}
+                              </h3>
+                              <p>{item.form_web_name || ""}</p>
+                              <p>{item.form_web_email || ""}</p>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </React.Fragment>
+                  ))}
+
+              {/* DEFAULT */}
+              {services !== "lcss services" &&
+                services !== "career" &&
+                services !== "web services" &&
+                contentFormData?.data
+                  ?.filter((item) => item.form_services === "default")
+                  ?.map((item, index) => (
+                    <ul
+                      key={index}
+                      className="[&>li]:flex [&>li]:items-center [&>li]:gap-2 [&>li]:mb-4 mb-6 md:mb-12 leading-[1.2] text-xs md:text-sm"
+                    >
+                      <li className="!items-start">
+                        <IoMdPin />
+                        <p className="md:w-[50%]">{item.form_address || ""}</p>
+                      </li>
+                      <li>
+                        <FaPhone />
+                        <p>{item.form_accounting_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_company_no || ""}</p>
+                      </li>
+                      <li>
+                        <MdOutlinePhoneIphone />
+                        <p>{item.form_web_no || ""}</p>
+                      </li>
+                      <li>
+                        <IoMailSharp />
+                        <p>{item.form_default_email || ""}</p>
+                      </li>
+                    </ul>
+                  ))}
 
               <div className="mb-4">
                 <p>Follow Us:</p>
-                {contactFormDefaultData?.data?.length > 0 &&
+                {contentFormData?.data?.length > 0 &&
                   (() => {
-                    const item = contactFormDefaultData.data[0];
+                    const item = contentFormData.data[0];
 
                     return (
                       <ul className="flex gap-2 text-2xl">
-                        {item.form_default_facebook_link && (
+                        {item.form_facebook_link && (
                           <li>
                             <a
-                              href={item.form_default_facebook_link || "#"}
+                              href={item.form_facebook_link || "#"}
                               target="_blank"
                             >
                               <FaFacebookSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_linkedin_link && (
+                        {item.form_linkedin_link && (
                           <li>
                             <a
-                              href={item.form_default_linkedin_link || "#"}
+                              href={item.form_linkedin_link || "#"}
                               target="_blank"
                             >
                               <FaLinkedin />
                             </a>
                           </li>
                         )}
-                        {item.form_default_youtube_link && (
+                        {item.form_youtube_link && (
                           <li>
                             <a
-                              href={item.form_default_youtube_link || "#"}
+                              href={item.form_youtube_link || "#"}
                               target="_blank"
                             >
                               <FaYoutubeSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_instagram_link && (
+                        {item.form_instagram_link && (
                           <li>
                             <a
-                              href={item.form_default_instagram_link || "#"}
+                              href={item.form_instagram_link || "#"}
                               target="_blank"
                             >
                               <FaInstagramSquare />
                             </a>
                           </li>
                         )}
-                        {item.form_default_tiktok_link && (
+                        {item.form_tiktok_link && (
                           <li>
                             <a
-                              href={item.form_default_tiktok_link || "#"}
+                              href={item.form_tiktok_link || "#"}
                               target="_blank"
                             >
                               <AiFillTikTok />
@@ -423,72 +345,208 @@ const ContactFormDefault = ({
                   })()}
               </div>
             </div>
+
             <div className="downloadProposal justify-end py-5 md:py-0">
-              {thePageName === "College OJT" ? (
-                <>
-                  <p className="text-sm">Learn more about our OJT program</p>
-                  {contactUsLcssFile.map((file, index) => (
-                    <a
-                      href={`${googleViewLink}${file?.id}`}
-                      className="flex gap-2 items-center font-bold text-primary pointer"
-                      target="_blank"
-                      key={index}
-                    >
-                      Download Proposal <FaFileDownload />
-                    </a>
-                  ))}
-                </>
-              ) : thePageName === "Work Immersion" ? (
-                <>
-                  <p className="text-sm">
-                    Learn more about our immersion program
-                  </p>
-                  {contactUsDefaultimmersionFile.map((file, index) => (
-                    <a
-                      href={`${googleViewLink}${file?.id}`}
-                      className="flex gap-2 items-center font-bold text-primary pointer"
-                      target="_blank"
-                      key={index}
-                    >
-                      Download Proposal <FaFileDownload />
-                    </a>
-                  ))}
-                </>
-              ) : thePageName === "Continuing Study" ? (
-                <></>
-              ) : thePageName === "Wordpress" ? (
-                <>
-                  <p className="text-sm">Learn more about our CMS program</p>
-                  {contactUsWordpressFile.map((file, index) => (
-                    <a
-                      href={`${googleViewLink}${file?.id}`}
-                      className="flex gap-2 items-center font-bold text-primary pointer"
-                      target="_blank"
-                      key={index}
-                    >
-                      Download Portfolio <FaFileDownload />
-                    </a>
-                  ))}
-                </>
-              ) : (
-                <>
-                  <p className="text-sm">Learn more about our program</p>
-                  {contactUsDefaultFile.map((file, index) => (
-                    <a
-                      href={`${googleViewLink}${file?.id}`}
-                      className="flex gap-2 items-center font-bold text-primary pointer"
-                      target="_blank"
-                      key={index}
-                    >
-                      Download Company Profile <FaFileDownload />
-                    </a>
-                  ))}
-                </>
-              )}
+              {/* COLLEGE OJT */}
+              {page === "College On-The-Job Training" &&
+                (() => {
+                  // Find the content item that matches the current page + service
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+                  const ojtProposal = getConvertStringToJSONparseData(
+                    contentItem?.form_ojt_proposal
+                  );
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our OJT program
+                      </p>
+                      {ojtProposal?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Proposal <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* WORK IMMERSION */}
+              {page === "High School Work Immersion" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+
+                  const workImmersion = getConvertStringToJSONparseData(
+                    contentItem?.form_work_immersion
+                  );
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our immersion program
+                      </p>
+                      {workImmersion?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Proposal <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* CONTINUING STUDY */}
+              {page === "Continuing Study" && <></>}
+
+              {/* SINGLE PAGE */}
+              {page === "Single Page Website" && <></>}
+
+              {/* WORDPRESS */}
+              {page === "WordPress CMS Website" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+
+                  const webDesign = getConvertStringToJSONparseData(
+                    contentItem?.form_website_design
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our WordPress CMS Website program
+                      </p>
+                      {webDesign?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Portfolio <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* WEB DESIGN */}
+              {page === "Web Design" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+
+                  const webDesign = getConvertStringToJSONparseData(
+                    contentItem?.form_website_design
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our Web Design program
+                      </p>
+                      {webDesign?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Portfolio <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* GRAPHIC DESIGN */}
+              {page === "Graphic Design" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+
+                  const graphicDesign = getConvertStringToJSONparseData(
+                    contentItem?.form_graphic_design
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">
+                        Learn more about our Graphic Design program
+                      </p>
+                      {graphicDesign?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Portfolio <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
+
+              {/* DEFAULT */}
+              {page !== "College On-The-Job Training" &&
+                page !== "High School Work Immersion" &&
+                page !== "Continuing Studies" &&
+                page !== "WordPress CMS Website" &&
+                page !== "Single Page Website" &&
+                page !== "Web Design" &&
+                page !== "Graphic Design" &&
+                page !== "Career" &&
+                (() => {
+                  const contentItem = contentFormData?.data?.find(
+                    (item) => item.form_services === services
+                  );
+
+                  const fbsBrochure = getConvertStringToJSONparseData(
+                    contentItem?.form_fbs_brochure
+                  );
+
+                  return (
+                    <>
+                      <p className="text-sm">Learn more about our program</p>
+                      {fbsBrochure?.map((file, index) => (
+                        <a
+                          href={`${googleViewLink}${file?.id}`}
+                          className="flex gap-2 items-center font-bold text-primary pointer"
+                          target="_blank"
+                          key={index}
+                        >
+                          Download Company Profile <FaFileDownload />
+                        </a>
+                      ))}
+                    </>
+                  );
+                })()}
             </div>
           </div>
 
           <div className="theForm  p-4 addShadow rounded-lg bg-light relative z-[1] w-full xl:w-[428px] ">
+            {contactSubject ? (
+              <p className="mb-2 text-sm md:text-lg uppercase">
+                {thePageName} : <b>{contactSubject}</b>
+              </p>
+            ) : (
+              <></>
+            )}
+
             <Formik>
               {(props) => {
                 return (
@@ -531,17 +589,18 @@ const ContactFormDefault = ({
                           name="client_message_subject"
                         />
                       </div>
-                      <div className="input-wrapper textAreaWrapper">
+                      <div className="input-wrapper ">
                         <InputTextArea
                           label="Message"
                           type="text"
                           name="client_message"
-                          className="h-[200px]"
+                          className="h-[150px]"
                         />
                       </div>
                       {siteKey ? (
                         <div className="input-wrapper reCaptcha">
                           <ReCAPTCHA
+                            ref={recaptchaRef}
                             sitekey={siteKey}
                             onChange={(e) => handleChange(e)}
                           />

@@ -8,25 +8,24 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import SinglepageBanner from "./single-banner/SinglepageBanner";
 import ModalUpdateSinglepageBanner from "./single-banner/ModalUpdateSinglepageBanner";
-import SinglepageOverview from "./single-overview/SinglepageOverview";
+import SinglepageBanner from "./single-banner/SinglepageBanner";
 import ModalUpdateSinglepageOverview from "./single-overview/ModalUpdateSinglepageOverview";
 import ModalUpdateSinglepageOverviewList from "./single-overview/ModalUpdateSinglepageOverviewList";
+import SinglepageOverview from "./single-overview/SinglepageOverview";
+import SinglepagePartners from "./single-partners/SinglepagePartners";
+import SinglepagePricing from "./single-pricing/SinglepagePricing";
 import ModalUpdateSinglepageScope from "./single-scope/ModalUpdateSinglepageScope";
 import SinglepageScope from "./single-scope/SinglepageScope";
-import SinglepagePricing from "./single-pricing/SinglepagePricing";
-import SinglepagePartners from "./single-partners/SinglepagePartners";
-import ModalUpdateSinglepageScopeTitle from "./single-titles/ModalUpdateSinglepageScopeTitle";
 import ModalUpdateSinglepagePackagesTitle from "./single-titles/ModalUpdateSinglepagePackagesTitle";
 import ModalUpdateSinglepagePartnersTitle from "./single-titles/ModalUpdateSinglepagePartnersTitle";
+import ModalUpdateSinglepageScopeTitle from "./single-titles/ModalUpdateSinglepageScopeTitle";
 
 const SinglePageWebsite = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -59,12 +58,6 @@ const SinglePageWebsite = () => {
     `${apiVersion}/singlepage-titles`, // endpoint
     "get", // method
     "singlepage-titles" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -129,21 +122,9 @@ const SinglePageWebsite = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -173,12 +154,12 @@ const SinglePageWebsite = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"web services"}
+                page={"Single Page Website"}
               />
               <SinglepageBanner
                 singlepageData={singlepageData}
                 handleUpdateSinglepageBanner={handleUpdateSinglepageBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <SinglepageOverview
                 handleUpdateSinglepageOverview={handleUpdateSinglepageOverview}
@@ -186,8 +167,6 @@ const SinglePageWebsite = () => {
                   handleUpdateSinglepageOverviewList
                 }
                 singlepageOverviewData={singlepageOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <SinglepageScope
                 handleUpdateSinglepageScopeTitles={
@@ -200,8 +179,6 @@ const SinglePageWebsite = () => {
                 errorScope={errorScope}
                 singlepageTitlesData={singlepageTitlesData}
                 singlepageScopeData={singlepageScopeData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <SinglepagePricing
                 handleUpdateSinglepagePackagesTitles={
@@ -219,9 +196,7 @@ const SinglePageWebsite = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -284,14 +259,6 @@ const SinglePageWebsite = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

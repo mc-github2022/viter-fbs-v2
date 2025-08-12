@@ -29,8 +29,6 @@ const SinglepageScope = ({
   setItemEdit,
   singlepageTitlesData,
   singlepageScopeData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
@@ -247,8 +245,8 @@ const SinglepageScope = ({
       {isContactDefaultOpen && (
         <ContactFormDefault
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
+          services={"web services"}
+          page={"Single Page Website"}
         />
       )}
     </>

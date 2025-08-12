@@ -3,6 +3,7 @@ import { Form, Formik } from "formik";
 import React from "react";
 import { FaCheckCircle, FaTrash } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
+import { IoMdCloseCircle } from "react-icons/io";
 import * as Yup from "yup";
 import useUploadMultiplePhoto from "../../../custom-hooks/useUploadMultiplePhoto";
 import {
@@ -22,13 +23,8 @@ import ModalAddWrapper from "../../../partials/dashboard/ModalAddWrapper";
 import LoadImages from "../../../partials/LoadImages";
 import ModalRemovedPhoto from "../../../partials/modals/ModalRemovedPhoto";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
-import { setError, setIsAdd, setMessage } from "../../../store/StoreAction";
+import { setError, setIsAdd, setMessage, setSuccess } from "../../../store/StoreAction";
 import { StoreContext } from "../../../store/StoreContext";
-import { IoMdCloseCircle } from "react-icons/io";
-import useQueryData from "../../../custom-hooks/useQueryData";
-import TableSpinner from "../../../partials/spinners/TableSpinner";
-import ServerError from "../../../partials/spinners/ServerError";
-import NoData from "../../../partials/spinners/NoData";
 
 const ModalAddContactFormSettings = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -46,15 +42,15 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
   const [isCheckPortfolio, setIsCheckPortfolio] = React.useState(false);
   const [selectedService, setSelectedService] = React.useState(false);
 
-  const [onFocusPackagesList, setOnFocusPackagesList] = React.useState(false);
-  const [propertyPackageListValue, setPropertyPackageListValue] =
-    React.useState(itemEdit ? `${itemEdit.packages_category_name}` : ""); // to get the data from table when update
-  const [packageList, setPackageList] = React.useState(
-    itemEdit ? itemEdit.packages_category_name : ""
-  );
-  const [packageListId, setPackageListId] = React.useState(
-    itemEdit ? itemEdit.form_page_id : ""
-  );
+  // const [onFocusPackagesList, setOnFocusPackagesList] = React.useState(false);
+  // const [propertyPackageListValue, setPropertyPackageListValue] =
+  //   React.useState(itemEdit ? `${itemEdit.packages_category_name}` : ""); // to get the data from table when update
+  // const [packageList, setPackageList] = React.useState(
+  //   itemEdit ? itemEdit.packages_category_name : ""
+  // );
+  // const [packageListId, setPackageListId] = React.useState(
+  //   itemEdit ? itemEdit.form_page_id : ""
+  // );
 
   const {
     uploadMultiplePhoto: uploadClientImages,
@@ -70,7 +66,35 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     photoArrayList: logoImages,
   } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
-  // handle for file upload Client
+  const {
+    uploadMultiplePhoto: uploadOJTProposalImages,
+    handleChangeMultiplePhoto: handleChangeOJTProposalImages,
+    setPhotoArrayList: setOJTProposalImages,
+    photoArrayList: ojtProposalImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const {
+    uploadMultiplePhoto: uploadWorkImmersionImages,
+    handleChangeMultiplePhoto: handleChangeWorkImmersionImages,
+    setPhotoArrayList: setWorkImmersionImages,
+    photoArrayList: workImmersionImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const {
+    uploadMultiplePhoto: uploadWebDesignImages,
+    handleChangeMultiplePhoto: handleChangeWebDesignImages,
+    setPhotoArrayList: setWebDesignImages,
+    photoArrayList: webDesignImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const {
+    uploadMultiplePhoto: uploadGraphicDesignImages,
+    handleChangeMultiplePhoto: handleChangeGraphicDesignImages,
+    setPhotoArrayList: setGraphicDesignImages,
+    photoArrayList: graphicDesignImages,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  // handle for file upload Image
   const handleChangeFileUploadClient = (
     e,
     props,
@@ -86,7 +110,7 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     setClientImages([...oldFiles, ...myFiles]);
   };
 
-  // handle for file upload Client
+  // handle for file upload FBS Brochure
   const handleChangeFileUploadLogo = (
     e,
     props,
@@ -100,6 +124,70 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     props.setFieldValue(fieldValue, myFiles);
     const oldFiles = logoImages?.length > 0 ? logoImages : [];
     setLogoImages([...oldFiles, ...myFiles]);
+  };
+
+  // handle for file upload OJT Proposal
+  const handleChangeFileUploadOJTProposal = (
+    e,
+    props,
+    setOJTProposalImages,
+    fieldValue = ""
+  ) => {
+    handleChangeOJTProposalImages(e, 20);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = ojtProposalImages?.length > 0 ? ojtProposalImages : [];
+    setOJTProposalImages([...oldFiles, ...myFiles]);
+  };
+
+  // handle for file upload Work Immersion
+  const handleChangeFileUploadWorkImmersion = (
+    e,
+    props,
+    setWorkImmersionImages,
+    fieldValue = ""
+  ) => {
+    handleChangeWorkImmersionImages(e, 20);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = workImmersionImages?.length > 0 ? workImmersionImages : [];
+    setWorkImmersionImages([...oldFiles, ...myFiles]);
+  };
+
+  // handle for file upload Web design
+  const handleChangeFileUploadWebDesign = (
+    e,
+    props,
+    setWebDesignImages,
+    fieldValue = ""
+  ) => {
+    handleChangeWebDesignImages(e, 20);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = webDesignImages?.length > 0 ? webDesignImages : [];
+    setWebDesignImages([...oldFiles, ...myFiles]);
+  };
+
+  // handle for file upload Graphic design
+  const handleChangeFileUploadGraphicDesign = (
+    e,
+    props,
+    setGraphicDesignImages,
+    fieldValue = ""
+  ) => {
+    handleChangeGraphicDesignImages(e, 20);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = graphicDesignImages?.length > 0 ? graphicDesignImages : [];
+    setGraphicDesignImages([...oldFiles, ...myFiles]);
   };
 
   const handleClickViewSlideshow = (photos, key) => {
@@ -130,71 +218,71 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     setIsCheckPortfolio(itemEdit ? itemEdit.form_is_upload_file : false);
   }, []);
 
-  const {
-    isFetching: packageListDataIsFetching,
-    error: packageListDataError,
-    data: packageListData,
-  } = useQueryData(
-    `${apiVersion}/packages-list/category-search`, // endpoint
-    "post", // method
-    "packages-list/category-search", // key
-    {
-      searchValue: packageList, // payload
-    },
-    {
-      searchValue: packageList, // id
-    },
-    true // refetchOnWindowFocus
-  );
+  // const {
+  //   isFetching: packageListDataIsFetching,
+  //   error: packageListDataError,
+  //   data: packageListData,
+  // } = useQueryData(
+  //   `${apiVersion}/packages-list/category-search`, // endpoint
+  //   "post", // method
+  //   "packages-list/category-search", // key
+  //   {
+  //     searchValue: packageList, // payload
+  //   },
+  //   {
+  //     searchValue: packageList, // id
+  //   },
+  //   true // refetchOnWindowFocus
+  // );
 
-  // console.log(packageList);
+  // // console.log(packageList);
 
-  const handleClickPackageList = (item) => {
-    setPackageList(item.packages_category_name);
-    setPropertyPackageListValue(`${item.packages_category_name}`);
-    setPackageListId(item.packages_category_aid);
-    setOnFocusPackagesList(false);
-  };
+  // const handleClickPackageList = (item) => {
+  //   setPackageList(item.packages_category_name);
+  //   setPropertyPackageListValue(`${item.packages_category_name}`);
+  //   setPackageListId(item.packages_category_aid);
+  //   setOnFocusPackagesList(false);
+  // };
 
-  const handleOnChangePackageList = (e) => {
-    setPropertyPackageListValue(e.target.value);
-    setLoading(true);
-    setPackageListId("");
-    if (e.target.value === "") {
-      setLoading(false);
-    }
+  // const handleOnChangePackageList = (e) => {
+  //   setPropertyPackageListValue(e.target.value);
+  //   setLoading(true);
+  //   setPackageListId("");
+  //   if (e.target.value === "") {
+  //     setLoading(false);
+  //   }
 
-    let timeOut;
+  //   let timeOut;
 
-    timeOut = setTimeout(() => {
-      clearTimeout(timeOut);
-      let val = e.target.value;
-      if (val === "") {
-        setPackageList(val);
-        return;
-      }
-      setPackageList(val);
-      setLoading(false);
-    }, 500); // debounce seconds to fetch
-  };
+  //   timeOut = setTimeout(() => {
+  //     clearTimeout(timeOut);
+  //     let val = e.target.value;
+  //     if (val === "") {
+  //       setPackageList(val);
+  //       return;
+  //     }
+  //     setPackageList(val);
+  //     setLoading(false);
+  //   }, 500); // debounce seconds to fetch
+  // };
 
-  // to close the modal when clicking outside for Property type
-  const refPackageList = React.useRef();
+  // // to close the modal when clicking outside for Property type
+  // const refPackageList = React.useRef();
 
-  const clickOutsideRefPackageList = (e) => {
-    if (
-      refPackageList.current !== undefined &&
-      refPackageList.current !== null &&
-      !refPackageList.current?.contains(e.target)
-    ) {
-      setOnFocusPackagesList(false);
-    }
-  };
+  // const clickOutsideRefPackageList = (e) => {
+  //   if (
+  //     refPackageList.current !== undefined &&
+  //     refPackageList.current !== null &&
+  //     !refPackageList.current?.contains(e.target)
+  //   ) {
+  //     setOnFocusPackagesList(false);
+  //   }
+  // };
 
-  React.useEffect(() => {
-    document.addEventListener("click", clickOutsideRefPackageList);
-    return () => document.addEventListener("click", clickOutsideRefPackageList);
-  }, []);
+  // React.useEffect(() => {
+  //   document.addEventListener("click", clickOutsideRefPackageList);
+  //   return () => document.addEventListener("click", clickOutsideRefPackageList);
+  // }, []);
 
   const queryClient = useQueryClient();
 
@@ -230,9 +318,33 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     }
     if (itemEdit) {
       const logoPhotos = getConvertStringToJSONparseData(
-        itemEdit.form_portfolio
+        itemEdit.form_fbs_brochure
       );
       setLogoImages(logoPhotos);
+    }
+    if (itemEdit) {
+      const ojtProposalPhotos = getConvertStringToJSONparseData(
+        itemEdit.form_ojt_proposal
+      );
+      setOJTProposalImages(ojtProposalPhotos);
+    }
+    if (itemEdit) {
+      const workImmersionPhotos = getConvertStringToJSONparseData(
+        itemEdit.form_work_immersion
+      );
+      setWorkImmersionImages(workImmersionPhotos);
+    }
+    if (itemEdit) {
+      const webDesignPhotos = getConvertStringToJSONparseData(
+        itemEdit.form_website_design
+      );
+      setWebDesignImages(webDesignPhotos);
+    }
+    if (itemEdit) {
+      const graphicDesignPhotos = getConvertStringToJSONparseData(
+        itemEdit.form_graphic_design
+      );
+      setGraphicDesignImages(graphicDesignPhotos);
     }
   }, []);
 
@@ -242,10 +354,12 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     }
   }, [itemEdit]);
 
-  console.log(packageListId);
-
   const initVal = {
-    form_portfolio: itemEdit ? itemEdit.form_portfolio : "",
+    form_fbs_brochure: itemEdit ? itemEdit.form_fbs_brochure : "",
+    form_ojt_proposal: itemEdit ? itemEdit.form_ojt_proposal : "",
+    form_work_immersion: itemEdit ? itemEdit.form_work_immersion : "",
+    form_website_design: itemEdit ? itemEdit.form_website_design : "",
+    form_graphic_design: itemEdit ? itemEdit.form_graphic_design : "",
     form_img: itemEdit ? itemEdit.form_img : "",
     form_name: itemEdit ? itemEdit.form_name : "",
     form_title: itemEdit ? itemEdit.form_title : "",
@@ -279,9 +393,12 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
     form_hr_staff_role: itemEdit ? itemEdit.form_hr_staff_role : "",
     form_hr_staff_name: itemEdit ? itemEdit.form_hr_staff_name : "",
     form_hr_staff_email: itemEdit ? itemEdit.form_hr_staff_email : "",
-    form_page_id: itemEdit ? itemEdit.form_page_id : "",
 
-    form_portfolio_old: itemEdit ? itemEdit.form_portfolio : "",
+    form_fbs_brochure_old: itemEdit ? itemEdit.form_fbs_brochure : "",
+    form_ojt_proposal_old: itemEdit ? itemEdit.form_ojt_proposal : "",
+    form_work_immersion_old: itemEdit ? itemEdit.form_work_immersion : "",
+    form_website_design_old: itemEdit ? itemEdit.form_website_design : "",
+    form_graphic_design_old: itemEdit ? itemEdit.form_graphic_design : "",
     form_img_old: itemEdit ? itemEdit.form_img : "",
     pendingDeleteFile: [],
   };
@@ -309,15 +426,9 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
             validationSchema={yupSchema}
             onSubmit={async (values) => {
               setLoading(true);
-              if (packageListId === "" || !packageListId) {
-                dispatch(setError(true));
-                dispatch(setMessage("Page is Required."));
-                return;
-              }
 
               const data = {
                 ...values,
-                form_page_id: packageListId,
                 form_is_upload_input: isCheck,
                 form_is_upload_file: isCheckPortfolio,
                 form_img: clientImages.map((item) =>
@@ -326,7 +437,31 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                     id: item?.id || "",
                   })
                 ),
-                form_portfolio: logoImages.map((item) =>
+                form_fbs_brochure: logoImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+                form_ojt_proposal: ojtProposalImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+                form_work_immersion: workImmersionImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+                form_website_design: webDesignImages.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+                form_graphic_design: graphicDesignImages.map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -337,8 +472,27 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
               // Upload separately
               const clientPhotoUpload = await uploadClientImages(clientImages);
               const logoPhotoUpload = await uploadLogoImages(logoImages);
+              const ojtProposalPhotoUpload = await uploadOJTProposalImages(
+                ojtProposalImages
+              );
+              const workImmersionPhotoUpload = await uploadWorkImmersionImages(
+                workImmersionImages
+              );
+              const webDesignPhotoUpload = await uploadWebDesignImages(
+                webDesignImages
+              );
+              const graphicDesignPhotoUpload = await uploadGraphicDesignImages(
+                graphicDesignImages
+              );
 
-              if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
+              if (
+                clientPhotoUpload?.success ||
+                logoPhotoUpload?.success ||
+                ojtProposalPhotoUpload?.success ||
+                workImmersionPhotoUpload?.success ||
+                webDesignPhotoUpload?.success ||
+                graphicDesignPhotoUpload?.success
+              ) {
                 setLoading(false);
               }
 
@@ -472,7 +626,7 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                         </ol>
                       </div>
                     </div>
-                    <div className=" input-wrapper">
+                    {/* <div className=" input-wrapper">
                       <InputText
                         label="*Page"
                         type="text"
@@ -509,7 +663,7 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                           )}
                         </div>
                       )}
-                    </div>
+                    </div> */}
                     <div className="input-wrapper">
                       <InputText
                         label="*Form Name"
@@ -777,12 +931,12 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                       />
                       {isCheck ? (
                         <p className="text-xs flex gap-2 items-center">
-                          Has upload file input
+                          Use uploading file
                           <FaCheckCircle className="text-primary" />
                         </p>
                       ) : (
                         <p className="text-xs flex gap-2 items-center text-gray-500">
-                          Has upload file input <IoMdCloseCircle />
+                          Use uploading file <IoMdCloseCircle />
                         </p>
                       )}
                     </div>
@@ -798,12 +952,12 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                       />
                       {isCheckPortfolio ? (
                         <p className="text-xs flex gap-2 items-center">
-                          Has file
+                          Use download file
                           <FaCheckCircle className="text-primary" />
                         </p>
                       ) : (
                         <p className="text-xs flex gap-2 items-center text-gray-500">
-                          Has file <IoMdCloseCircle />
+                          Use download file <IoMdCloseCircle />
                         </p>
                       )}
                     </div>
@@ -811,9 +965,10 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                     {isCheckPortfolio ? (
                       <>
                         <div className="flex flex-col gap-2 mt-1">
+                          {/* FBS Brochure */}
                           <div className="relative">
                             <label className=" top-[32px]  text-dark text-xs">
-                              Upload File
+                              Upload FBS Brochure
                             </label>
                             <div
                               className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
@@ -842,7 +997,7 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                                     e,
                                     props,
                                     setLogoImages,
-                                    "form_portfolio"
+                                    "form_fbs_brochure"
                                   )
                                 }
                                 onDrop={(e) =>
@@ -850,7 +1005,7 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                                     e,
                                     props,
                                     setLogoImages,
-                                    "form_portfolio"
+                                    "form_fbs_brochure"
                                   )
                                 }
                                 disabled={mutation.isPending || loading}
@@ -926,6 +1081,474 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
                               </ol>
                             </div>
                           </div>
+
+                          {/* OJT Proposal */}
+                          <div className="relative">
+                            <label className=" top-[32px]  text-dark text-xs">
+                              Upload OJT Proposal
+                            </label>
+                            <div
+                              className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
+                                withFile && "border-primary border-dashed"
+                              }`}
+                              onDragOver={() => setWithFile(true)}
+                              onDragLeave={() => setWithFile(false)}
+                            >
+                              <span className="min-h-16 flex items-center justify-center">
+                                <span className="text-dark mr-1">
+                                  Drag & Drop
+                                </span>{" "}
+                                Photo here or{" "}
+                                <span className="text-dark ml-1">Browse</span>
+                              </span>
+
+                              <InputFileUpload
+                                label="Upload Image"
+                                name="File"
+                                type="file"
+                                id="myFile"
+                                accept="*"
+                                title="Upload File"
+                                onChange={(e) =>
+                                  handleChangeFileUploadOJTProposal(
+                                    e,
+                                    props,
+                                    setOJTProposalImages,
+                                    "form_ojt_proposal"
+                                  )
+                                }
+                                onDrop={(e) =>
+                                  handleChangeFileUploadOJTProposal(
+                                    e,
+                                    props,
+                                    setOJTProposalImages,
+                                    "form_ojt_proposal"
+                                  )
+                                }
+                                disabled={mutation.isPending || loading}
+                                className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                              />
+                            </div>
+
+                            <div className="relative ">
+                              <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                                {ojtProposalImages.length > 0 &&
+                                  ojtProposalImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
+
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              ojtProposalImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
+
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
+                                              >
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      ojtProposalImages,
+                                                      key,
+                                                      props,
+                                                      "ojt proposal"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                              </ol>
+                            </div>
+                          </div>
+
+                          {/* Work Immersion */}
+                          <div className="relative">
+                            <label className=" top-[32px]  text-dark text-xs">
+                              Upload Work Immersion Proposal
+                            </label>
+                            <div
+                              className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
+                                withFile && "border-primary border-dashed"
+                              }`}
+                              onDragOver={() => setWithFile(true)}
+                              onDragLeave={() => setWithFile(false)}
+                            >
+                              <span className="min-h-16 flex items-center justify-center">
+                                <span className="text-dark mr-1">
+                                  Drag & Drop
+                                </span>{" "}
+                                Photo here or{" "}
+                                <span className="text-dark ml-1">Browse</span>
+                              </span>
+
+                              <InputFileUpload
+                                label="Upload Image"
+                                name="File"
+                                type="file"
+                                id="myFile"
+                                accept="*"
+                                title="Upload File"
+                                onChange={(e) =>
+                                  handleChangeFileUploadWorkImmersion(
+                                    e,
+                                    props,
+                                    setWorkImmersionImages,
+                                    "form_work_immersion"
+                                  )
+                                }
+                                onDrop={(e) =>
+                                  handleChangeFileUploadWorkImmersion(
+                                    e,
+                                    props,
+                                    setWorkImmersionImages,
+                                    "form_work_immersion"
+                                  )
+                                }
+                                disabled={mutation.isPending || loading}
+                                className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                              />
+                            </div>
+
+                            <div className="relative ">
+                              <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                                {workImmersionImages.length > 0 &&
+                                  workImmersionImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
+
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              workImmersionImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
+
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
+                                              >
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      workImmersionImages,
+                                                      key,
+                                                      props,
+                                                      "work immersion"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                              </ol>
+                            </div>
+                          </div>
+
+                          {/* Web Design */}
+                          <div className="relative">
+                            <label className=" top-[32px]  text-dark text-xs">
+                              Upload Web Design and Development Portfolio
+                            </label>
+                            <div
+                              className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
+                                withFile && "border-primary border-dashed"
+                              }`}
+                              onDragOver={() => setWithFile(true)}
+                              onDragLeave={() => setWithFile(false)}
+                            >
+                              <span className="min-h-16 flex items-center justify-center">
+                                <span className="text-dark mr-1">
+                                  Drag & Drop
+                                </span>{" "}
+                                Photo here or{" "}
+                                <span className="text-dark ml-1">Browse</span>
+                              </span>
+
+                              <InputFileUpload
+                                label="Upload Image"
+                                name="File"
+                                type="file"
+                                id="myFile"
+                                accept="*"
+                                title="Upload File"
+                                onChange={(e) =>
+                                  handleChangeFileUploadWebDesign(
+                                    e,
+                                    props,
+                                    setWebDesignImages,
+                                    "form_website_design"
+                                  )
+                                }
+                                onDrop={(e) =>
+                                  handleChangeFileUploadWebDesign(
+                                    e,
+                                    props,
+                                    setWebDesignImages,
+                                    "form_website_design"
+                                  )
+                                }
+                                disabled={mutation.isPending || loading}
+                                className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                              />
+                            </div>
+
+                            <div className="relative ">
+                              <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                                {webDesignImages.length > 0 &&
+                                  webDesignImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
+
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              webDesignImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
+
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
+                                              >
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      webDesignImages,
+                                                      key,
+                                                      props,
+                                                      "web design"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                              </ol>
+                            </div>
+                          </div>
+
+                          {/* Graphic Design */}
+                          <div className="relative">
+                            <label className=" top-[32px]  text-dark text-xs">
+                              Upload Graphic Design Portfolio
+                            </label>
+                            <div
+                              className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed text-xs ${
+                                withFile && "border-primary border-dashed"
+                              }`}
+                              onDragOver={() => setWithFile(true)}
+                              onDragLeave={() => setWithFile(false)}
+                            >
+                              <span className="min-h-16 flex items-center justify-center">
+                                <span className="text-dark mr-1">
+                                  Drag & Drop
+                                </span>{" "}
+                                Photo here or{" "}
+                                <span className="text-dark ml-1">Browse</span>
+                              </span>
+
+                              <InputFileUpload
+                                label="Upload Image"
+                                name="File"
+                                type="file"
+                                id="myFile"
+                                accept="*"
+                                title="Upload File"
+                                onChange={(e) =>
+                                  handleChangeFileUploadGraphicDesign(
+                                    e,
+                                    props,
+                                    setGraphicDesignImages,
+                                    "form_graphic_design"
+                                  )
+                                }
+                                onDrop={(e) =>
+                                  handleChangeFileUploadGraphicDesign(
+                                    e,
+                                    props,
+                                    setGraphicDesignImages,
+                                    "form_graphic_design"
+                                  )
+                                }
+                                disabled={mutation.isPending || loading}
+                                className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                              />
+                            </div>
+
+                            <div className="relative ">
+                              <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                                {graphicDesignImages.length > 0 &&
+                                  graphicDesignImages.map((item, key) => {
+                                    const fileLink =
+                                      item instanceof File ||
+                                      item instanceof Blob
+                                        ? URL.createObjectURL(item)
+                                        : `${googleHDViewLink}${item?.id}`;
+
+                                    return (
+                                      <React.Fragment key={key}>
+                                        <li
+                                          className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                          onClick={() =>
+                                            handleClickViewSlideshow(
+                                              graphicDesignImages,
+                                              key
+                                            )
+                                          }
+                                        >
+                                          <LoadImages
+                                            url={fileLink}
+                                            className="relative z-20 w-full h-full object-cover object-center"
+                                          />
+                                          {(!mutation.isPending ||
+                                            !loading) && (
+                                            <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                              <span>
+                                                Click to View <br />
+                                                {key + 1}. {item.name}
+                                              </span>
+
+                                              <div
+                                                className="absolute bottom-0 right-0 flex items-center gap-2"
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                }}
+                                              >
+                                                <button
+                                                  type="button"
+                                                  className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                                  data-tooltip={`Delete`}
+                                                  disabled={
+                                                    mutation.isPending ||
+                                                    loading
+                                                  }
+                                                  onClick={() =>
+                                                    handleRemovePhoto(
+                                                      graphicDesignImages,
+                                                      key,
+                                                      props,
+                                                      "graphic design"
+                                                    )
+                                                  }
+                                                >
+                                                  <FaTrash />
+                                                </button>
+                                              </div>
+                                            </div>
+                                          )}
+                                        </li>
+                                      </React.Fragment>
+                                    );
+                                  })}
+                              </ol>
+                            </div>
+                          </div>
                         </div>
                       </>
                     ) : (
@@ -965,7 +1588,17 @@ const ModalAddContactFormSettings = ({ itemEdit }) => {
           msg="Are you sure you want to remove this file?"
           setIsModalShow={setIsRemovedPhoto}
           setNewFile={
-            fileData.type === "client" ? setClientImages : setLogoImages
+            fileData.type === "client"
+              ? setClientImages
+              : fileData.type === "ojt proposal"
+              ? setOJTProposalImages
+              : fileData.type === "work immersion"
+              ? setWorkImmersionImages
+              : fileData.type === "web design"
+              ? setWebDesignImages
+              : fileData.type === "graphic design"
+              ? setGraphicDesignImages
+              : setLogoImages
           }
         />
       )}

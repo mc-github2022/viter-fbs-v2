@@ -1,16 +1,13 @@
 import React from "react";
-import { FaRegCircleCheck } from "react-icons/fa6";
-import { Link } from "react-router-dom";
-import { banner } from "./data";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
-  googleHDViewLink,
+  googleHDViewLink
 } from "../../../../helpers/functions-general";
-import ModalContact from "../../../../partials/ModalContact";
 import LoadImages from "../../../../partials/LoadImages";
-import useQueryData from "../../../../custom-hooks/useQueryData";
+import ModalContact from "../../../../partials/ModalContact";
+import { banner } from "./data";
 
 const GraphicDesignBanner = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
@@ -85,9 +82,9 @@ const GraphicDesignBanner = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"web services"}
-          page={"WordPress CMS Website"}
-          notification_purpose={"default-receiver"}
-          emailSubject={`${banner[0]?.bannerBtnText} / WordPress CMS Website - `}
+          page={"Graphic Design"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${banner[0]?.bannerBtnText} / Graphic Design - `}
         />
       )}
     </>

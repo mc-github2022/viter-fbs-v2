@@ -61,7 +61,7 @@ const GraphicDesignPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"web services"} page={"WordPress CMS Website"}/>
+      <Header pageName={pageName} services={"web services"} page={"Graphic Design"}/>
       <GraphicDesignBanner pageName={pageName} />
       <GraphicDesignOverview pageName={pageName} />
       <GraphicDesignScope

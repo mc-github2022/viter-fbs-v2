@@ -1,6 +1,6 @@
 import React from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   apiVersion,
   devNavUrl,
@@ -22,6 +22,24 @@ const Header = ({ pageName, services, page }) => {
   const [subjectNotif, setSubjectNotif] = React.useState("get-started-home");
   const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
+  const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
+
+  const navigate = useNavigate();
+
+  const handleGoToPage = (item) => {
+    navigate(
+      `${devNavUrl}/${item.packages_category_url}?id=${item.packages_category_aid}`
+    );
+  };
+
+  const { data: packagesCatgeoryData } = useQueryData(
+    `${apiVersion}/packages-category`, // endpoint
+    "get", // method
+    "packages-category", // key
+    {},
+    null,
+    true
+  );
 
   const {
     isLoading,
@@ -189,43 +207,25 @@ const Header = ({ pageName, services, page }) => {
                         : "hidden"
                     } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
                   >
-                    <li>
-                      <Link
-                        // className="!p-0 hover:text-primary"
-                        to={`${devNavUrl}/why-work-with-us`}
-                        className={`${
-                          pageName === "whyWorkWithUs"
-                            ? "!p-0 text-primary !cursor-default"
-                            : "!p-0 hover:text-primary"
-                        }`}
-                      >
-                        Why Work With Us
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to={`${devNavUrl}/events-and-activities`}
-                        className={`${
-                          pageName === "events&Activities"
-                            ? "!p-0 text-primary !cursor-default"
-                            : "!p-0 hover:text-primary"
-                        }`}
-                      >
-                        Events & Activities
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to={`${devNavUrl}/career`}
-                        className={`${
-                          pageName === "career"
-                            ? "!p-0 text-primary !cursor-default"
-                            : "!p-0 hover:text-primary"
-                        }`}
-                      >
-                        Career
-                      </Link>
-                    </li>
+                    {packagesCatgeoryData?.data.map((item, key) => {
+                      if (item.packages_category_list_name === "WHY FBS") {
+                        return (
+                          <li key={key}>
+                            <a
+                              to={`${devNavUrl}/${item.packages_category_url}`}
+                              className={`${
+                                currentPath === item.packages_category_url
+                                  ? "text-primary !cursor-default"
+                                  : ""
+                              }`}
+                              onClick={() => handleGoToPage(item)}
+                            >
+                              {item.packages_category_name}
+                            </a>
+                          </li>
+                        );
+                      }
+                    })}
                   </ul>
                 </li>
                 <li>

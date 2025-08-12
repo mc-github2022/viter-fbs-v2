@@ -10,9 +10,6 @@ import ContactFormLcss from "../../../../contact-form-lcss/ContactFormLcss";
 const ContinuingApplyNow = ({
   continuingApplyNowData,
   handleUpdateContinuingApplyNow,
-  handleUpdateContactFormLcss,
-  contactFormDefaultData,
-  contactFormLcssData,
   pageName,
 }) => {
   const [lcssForm, setLcssForm] = React.useState(false);
@@ -107,9 +104,8 @@ const ContinuingApplyNow = ({
         <ContactFormLcss
           thePageName={pageName}
           setLcssForm={setLcssForm}
-          contactFormDefaultData={contactFormDefaultData}
-          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-          contactFormLcssData={contactFormLcssData}
+          services={"lcss services"}
+          page={"Continuing Studies"}
         />
       )}
     </>

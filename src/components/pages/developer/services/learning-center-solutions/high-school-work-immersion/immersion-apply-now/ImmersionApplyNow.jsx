@@ -10,9 +10,6 @@ import ContactFormLcss from "../../../../contact-form-lcss/ContactFormLcss";
 const ImmersionApplyNow = ({
   immersionApplyNowData,
   handleUpdateImmersionApplyNow,
-  handleUpdateContactFormLcss,
-  contactFormDefaultData,
-  contactFormLcssData,
   pageName,
 }) => {
   const [lcssForm, setLcssForm] = React.useState(false);
@@ -101,9 +98,8 @@ const ImmersionApplyNow = ({
         <ContactFormLcss
           thePageName={pageName}
           setLcssForm={setLcssForm}
-          contactFormDefaultData={contactFormDefaultData}
-          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-          contactFormLcssData={contactFormLcssData}
+          services={"lcss services"}
+          page={"High School Work Immersion"}
         />
       )}
     </>

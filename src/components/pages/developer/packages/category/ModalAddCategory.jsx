@@ -112,6 +112,7 @@ const ModalAddCategory = ({ itemEdit }) => {
                           <option value="" disabled>
                             Select Category
                           </option>
+                          <option value="HOME">HOME</option>
                           <option value="WEB APPLICATIONS">
                             WEB APPLICATIONS
                           </option>
@@ -127,6 +128,7 @@ const ModalAddCategory = ({ itemEdit }) => {
                           <option value="WEB DESIGN AND DEVELOPMENT">
                             WEB DESIGN AND DEVELOPMENT
                           </option>
+                          <option value="WHY FBS">WHY FBS</option>
                         </InputSelect>
                       </div>
                       <div className="input-wrapper">

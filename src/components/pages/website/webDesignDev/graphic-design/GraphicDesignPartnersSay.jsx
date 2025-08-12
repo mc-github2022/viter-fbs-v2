@@ -123,7 +123,7 @@ const GraphicDesignPartnersSay = ({ graphicTitlesData }) => {
 
   return (
     <>
-      <section className="GraphicDesignPartnersSay pb-10 md:py-20">
+      <section className="GraphicDesignPartnersSay pb-10 md:pb-20">
         <div className="customContainer max-w-[90%]">
           {IndtestimonialData?.data.length > 0 && (
             <div className="">

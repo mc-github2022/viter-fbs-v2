@@ -10,8 +10,6 @@ import ContactFormDefault from "../../contact-form-default/ContactFormDefault";
 const PartnerWithUs = ({
   partnerWithUsData,
   handleUpdatePartnerWithUs,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const partnerWithUsImage = getConvertStringToJSONparseData(
@@ -89,11 +87,7 @@ const PartnerWithUs = ({
       </section>
 
       {isContactDefaultOpen && (
-        <ContactFormDefault
-          setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-        />
+        <ContactFormDefault services={"default"} page={"Home"} setIsContactDefaultOpen={setIsContactDefaultOpen} />
       )}
     </>
   );

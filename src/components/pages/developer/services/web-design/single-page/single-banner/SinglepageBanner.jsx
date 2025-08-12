@@ -7,12 +7,7 @@ import {
 import LoadImages from "../../../../../../partials/LoadImages";
 import ContactFormDefault from "../../../../contact-form-default/ContactFormDefault";
 
-const SinglepageBanner = ({
-  singlepageData,
-  handleUpdateSinglepageBanner,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData,
-}) => {
+const SinglepageBanner = ({ singlepageData, handleUpdateSinglepageBanner }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const singlepageBannerImage = getConvertStringToJSONparseData(
     singlepageData?.data?.[0]?.singlepage_banner_img
@@ -92,8 +87,8 @@ const SinglepageBanner = ({
       {isContactDefaultOpen && (
         <ContactFormDefault
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
+          services={"web services"}
+          page={"Single Page Website"}
         />
       )}
     </>

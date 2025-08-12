@@ -1,0 +1,49 @@
+
+DEVELOPER
+
+upload jsx
+
+        * CONTROLLERS
+            -> rest/v1/controllers/developer/contact-form-settings
+            -> rest/v1/controllers/developer/events-and-activities/search.php
+            Please Delete:
+                -> rest/v1/controllers/developer/contact-form-careers
+                -> rest/v1/controllers/developer/contact-form-default
+                -> rest/v1/controllers/developer/contact-form-lcss
+                -> rest/v1/controllers/developer/contact-form-wordpress
+
+        * CORE 
+            -> 
+
+
+        * MODELS
+            -> rest/v1/models/developer/contact-form-settings 
+            -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
+            Please Delete:
+                -> rest/v1/models/developer/contact-form-careers
+                -> rest/v1/models/developer/contact-form-default
+                -> rest/v1/models/developer/contact-form-lcss
+                -> rest/v1/models/developer/contact-form-wordpress
+
+
+        * HTACESS
+            -> # CONTACT FORM 
+            Deleted: 
+                -> # CONTACT FORM DEFAULT
+                -> # CONTACT FORM LCSS
+                -> # CONTACT FORM CAREERS
+                -> # CONTACT FORM WORDPRESS
+
+        * OTHER FILES
+            ->
+            -> 
+            -> 
+            -> 
+
+        * DB BACKUP
+            -> rest/db-backup/fbsv2_contact_form.sql 
+            Please Delete this table:
+                -> rest/db-backup/fbsv2_contact_form_careers.sql
+                -> rest/db-backup/fbsv2_contact_form_default.sql
+                -> rest/db-backup/fbsv2_contact_form_lcss.sql
+                -> rest/db-backup/fbsv2_contact_form_wordpress.sql

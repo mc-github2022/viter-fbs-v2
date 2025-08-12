@@ -15,8 +15,6 @@ const SinglepageOverview = ({
   handleUpdateSinglepageOverview,
   handleUpdateSinglepageOverviewList,
   singlepageOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -168,8 +166,8 @@ const SinglepageOverview = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
+          services={"web services"}
+          page={"Single Page Website"}
         />
       )}
     </>

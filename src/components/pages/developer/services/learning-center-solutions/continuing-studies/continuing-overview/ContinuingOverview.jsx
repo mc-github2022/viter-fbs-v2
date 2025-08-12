@@ -15,10 +15,6 @@ const ContinuingOverview = ({
   handleUpdateContinuingOverview,
   handleUpdateContinuingOverviewList,
   continuingOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
-  handleUpdateContactFormLcss,
-  contactFormLcssData,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -155,10 +151,8 @@ const ContinuingOverview = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-          contactFormLcssData={contactFormLcssData}
+          services={"lcss services"}
+          page={"Continuing Studies"}
         />
       )}
     </>

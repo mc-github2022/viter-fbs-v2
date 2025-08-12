@@ -144,8 +144,8 @@ const GraphicDesignOverview = ({ pageName }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"web services"}
-          page={"WordPress CMS Website"}
-          notification_purpose={"default-receiver"}
+          page={"Graphic Design"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${webAppOverview[0]?.btnText} / Graphic Design - `}
         />
       )}

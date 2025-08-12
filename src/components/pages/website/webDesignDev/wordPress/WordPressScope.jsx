@@ -1,21 +1,15 @@
-import React, { useEffect } from "react";
-import { FaRegFileAlt } from "react-icons/fa";
-import { FaBuildingUser } from "react-icons/fa6";
-import { HiOutlineMegaphone } from "react-icons/hi2";
+import React from "react";
 import { IoChevronDown } from "react-icons/io5";
-import { LuCalendarClock, LuClock } from "react-icons/lu";
-import { MdOutlineCalendarToday, MdOutlineDashboard } from "react-icons/md";
-import { scope } from "./data";
+import { MdOutlineDashboard } from "react-icons/md";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
-  googleHDViewLink,
+  googleHDViewLink
 } from "../../../../helpers/functions-general";
-import ModalContact from "../../../../partials/ModalContact";
-import useQueryData from "../../../../custom-hooks/useQueryData";
-import TableLoading from "../../../../partials/spinners/TableLoading";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalContact from "../../../../partials/ModalContact";
+import TableLoading from "../../../../partials/spinners/TableLoading";
 
 const WordPressScope = ({ pageName, wordpressTitlesData }) => {
   const [modalContact, setModalContact] = React.useState(false);
@@ -187,7 +181,7 @@ const WordPressScope = ({ pageName, wordpressTitlesData }) => {
           contactSubject={""}
           services={"web services"}
           page={"WordPress CMS Website"}
-          notification_purpose={"default-receiver"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`CONTACT US / WordPress CMS Website (${accordionItem}) - `}
         />
       )}

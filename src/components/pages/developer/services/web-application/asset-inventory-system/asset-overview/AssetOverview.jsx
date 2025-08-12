@@ -13,8 +13,6 @@ const AssetOverview = ({
   handleUpdateAssetOverview,
   handleUpdateAssetOverviewList,
   assetOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -182,9 +180,9 @@ const AssetOverview = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

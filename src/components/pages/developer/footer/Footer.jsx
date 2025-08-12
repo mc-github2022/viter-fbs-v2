@@ -21,9 +21,8 @@ const Footer = ({
   handleUpdateFooterQuicklinks,
   handleUpdateFooterCopyright,
   handleUpdateFooterLogoImg,
-  handleUpdateFooterContactUs,
   footerData,
-  contactFormDefaultData,
+
 }) => {
   const footerLogoImg = getConvertStringToJSONparseData(
     footerData?.data?.[0]?.footer_logo_img

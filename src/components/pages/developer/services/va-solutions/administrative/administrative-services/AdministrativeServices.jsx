@@ -32,8 +32,6 @@ const icons = {
 };
 
 const AdministrativeServices = ({
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
   pageName,
   handleUpdateAdministrativeServicesTitle,
   handleUpdateAdministrativeServicesList,
@@ -185,10 +183,9 @@ const AdministrativeServices = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
-          thePageName={pageName}
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
 

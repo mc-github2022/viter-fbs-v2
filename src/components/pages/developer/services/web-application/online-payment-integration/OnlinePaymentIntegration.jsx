@@ -8,7 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -56,12 +55,6 @@ const OnlinePaymentIntegration = () => {
     `${apiVersion}/payment-titles`, // endpoint
     "get", // method
     "payment-titles" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -134,21 +127,9 @@ const OnlinePaymentIntegration = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -178,12 +159,12 @@ const OnlinePaymentIntegration = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <PaymentBanner
                 paymentData={paymentData}
                 handleUpdatePaymentBanner={handleUpdatePaymentBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <PaymentOverview
                 handleUpdatePaymentOverview={handleUpdatePaymentOverview}
@@ -191,8 +172,6 @@ const OnlinePaymentIntegration = () => {
                   handleUpdatePaymentOverviewList
                 }
                 paymentOverviewData={paymentOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <PaymentScope
                 handleUpdatePaymentScopeTitles={handleUpdatePaymentScopeTitles}
@@ -202,8 +181,6 @@ const OnlinePaymentIntegration = () => {
                 isFetchingScope={isFetchingScope}
                 paymentTitlesData={paymentTitlesData}
                 paymentScopeData={paymentScopeData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
               />
               <PaymentPricing
                 handleUpdatePaymentPackagesTitles={
@@ -227,9 +204,7 @@ const OnlinePaymentIntegration = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -300,14 +275,6 @@ const OnlinePaymentIntegration = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

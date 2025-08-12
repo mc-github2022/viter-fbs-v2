@@ -39,26 +39,9 @@ RewriteRule ^services/([0-9]+)$ controllers/developer/home/services/homeServices
 RewriteRule ^partnerWithUs$ controllers/developer/home/partner-with-us/homePartnerWithUs.php [L]
 RewriteRule ^partnerWithUs/([0-9]+)$ controllers/developer/home/partner-with-us/homePartnerWithUs.php?home_partner_with_usid=$1 [L]
 
-# CONTACT FORM DEFAULT
-RewriteRule ^contactDefault$ controllers/developer/contact-form-default/contactFormDefault.php [L]
-RewriteRule ^contactDefault/([0-9]+)$ controllers/developer/contact-form-default/contactFormDefault.php?contact_form_default_id=$1 [L]
-
-# CONTACT FORM LCSS
-RewriteRule ^contactLcss$ controllers/developer/contact-form-lcss/contactFormLcss.php [L]
-RewriteRule ^contactLcss/([0-9]+)$ controllers/developer/contact-form-lcss/contactFormLcss.php?contact_form_lcss_id=$1 [L]
-
-# CONTACT FORM CAREERS
-RewriteRule ^contactCareers$ controllers/developer/contact-form-careers/contactFormCareers.php [L]
-RewriteRule ^contactCareers/([0-9]+)$ controllers/developer/contact-form-careers/contactFormCareers.php?contact_form_careers_id=$1 [L]
-
 # CONTACT FORM
 RewriteRule ^contactForm$ controllers/developer/contact-form-settings/contact-form-settings.php [L]
 RewriteRule ^contactForm/([0-9]+)$ controllers/developer/contact-form-settings/contact-form-settings.php?contactformid=$1 [L]
-RewriteRule ^contactForm/read-contact-form$ controllers/developer/contact-form-settings/read-contact-form.php [L]
-
-# CONTACT FORM WORDPRESS
-RewriteRule ^contactWordpress$ controllers/developer/contact-form-wordpress/contactFormWordpress.php [L]
-RewriteRule ^contactWordpress/([0-9]+)$ controllers/developer/contact-form-wordpress/contactFormWordpress.php?contact_form_wordpress_id=$1 [L]
 
 # HOME -TITLES
 RewriteRule ^homeTitles$ controllers/developer/home/home-titles/homeTitles.php [L]

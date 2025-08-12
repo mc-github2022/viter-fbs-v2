@@ -1,17 +1,14 @@
 import React from "react";
-import { FaFileDownload } from "react-icons/fa";
 import { FaRegCircleCheck } from "react-icons/fa6";
-import { webAppOverview } from "./data";
+import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
-  googleHDViewLink,
+  googleHDViewLink
 } from "../../../../helpers/functions-general";
-import ModalContact from "../../../../partials/ModalContact";
-import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
-import ModalContactWebAndDev from "../../../../partials/ModalContactWebAndDev";
+import ModalContact from "../../../../partials/ModalContact";
+import { webAppOverview } from "./data";
 
 const WordPressOverview = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
@@ -148,7 +145,7 @@ const WordPressOverview = ({ pageName }) => {
           contactSubject={""}
           services={"web services"}
           page={"WordPress CMS Website"}
-          notification_purpose={"default-receiver"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${webAppOverview[0]?.bannerBtnText} / WordPress CMS Website - `}
         />
       )}

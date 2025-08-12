@@ -44,24 +44,6 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     true
   );
 
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault", // key
-    {},
-    null,
-    true
-  );
-
-  const { data: contactFormLcssData } = useQueryData(
-    `${apiVersion}/contactLcss`, // endpoint
-    "get", // method
-    "contactLcss", // key
-    {},
-    null,
-    true
-  );
-
   const contactUsDefaultImage = getConvertStringToJSONparseData(
     contentFormData?.data?.[0]?.form_img
   );
@@ -158,8 +140,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
               {contentFormData?.data
                 ?.filter(
                   (item) =>
-                    item.form_services === services &&
-                    item.packages_category_name === page
+                    item.form_services === services 
                 )
                 ?.map((item, index) => (
                   <div className="mb-12" key={index}>
@@ -174,8 +155,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                 contentFormData?.data
                   ?.filter(
                     (item) =>
-                      item.form_services === "lcss services" &&
-                      item.packages_category_name === page
+                      item.form_services === "lcss services" 
                   )
                   ?.map((item, index) => (
                     <ul

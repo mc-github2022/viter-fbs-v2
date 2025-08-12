@@ -14,10 +14,6 @@ const GraphicOverview = ({
   handleUpdateGraphicOverview,
   handleUpdateGraphicOverviewList,
   graphicOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
-  contactFormWordpressData,
-  handleUpdateContactFormWordpress,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -167,10 +163,8 @@ const GraphicOverview = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          contactFormWordpressData={contactFormWordpressData}
-          handleUpdateContactFormWordpress={handleUpdateContactFormWordpress}
+          services={"web services"}
+          page={"Graphic Design"}
         />
       )}
     </>

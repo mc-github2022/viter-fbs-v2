@@ -8,8 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
-import ModalUpdateContactFormDefaultLcss from "../../../contact-form-default/ModalUpdateContactFormDefaultLcss";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -19,21 +17,21 @@ import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
 import LcssTeams from "../lcss-team/LcssTeams";
 import ModalUpdateLcssTeams from "../lcss-team/ModalUpdateLcssTeams";
 import ModalUpdateLcssTeamsTitle from "../lcss-team/ModalUpdateLcssTeamsTitle";
+import ContinuingApplyNow from "./continuing-apply-now/ContinuingApplyNow";
+import ModalUpdateContinuingApplyNow from "./continuing-apply-now/ModalUpdateContinuingApplyNow";
 import ContinuingBanner from "./continuing-banner/ContinuingBanner";
 import ModalUpdateContinuingBanner from "./continuing-banner/ModalUpdateContinuingBanner";
+import ContinuingBatches from "./continuing-batches/ContinuingBatches";
 import ContinuingOverview from "./continuing-overview/ContinuingOverview";
 import ModalUpdateContinuingOverview from "./continuing-overview/ModalUpdateContinuingOverview";
 import ModalUpdateContinuingOverviewList from "./continuing-overview/ModalUpdateContinuingOverviewList";
+import ContinuingPartnerSays from "./continuing-partnersays/ContinuingPartnerSays";
 import ContinuingServices from "./continuing-services/ContinuingServices";
 import ModalUpdateContinuingServices from "./continuing-services/ModalUpdateContinuingServices";
-import ContinuingApplyNow from "./continuing-apply-now/ContinuingApplyNow";
-import ModalUpdateContinuingApplyNow from "./continuing-apply-now/ModalUpdateContinuingApplyNow";
-import ContinuingBatches from "./continuing-batches/ContinuingBatches";
-import ContinuingVidTestimonial from "./continuing-vid-testimonial/ContinuingVidTestimonial";
-import ContinuingPartnerSays from "./continuing-partnersays/ContinuingPartnerSays";
 import ModalUpdateContinuingBatchesTitle from "./continuing-titles/ModalUpdateContinuingBatchesTitle";
-import ModalUpdateContinuingVidTestimonialTitle from "./continuing-titles/ModalUpdateContinuingVidTestimonialTitle";
 import ModalUpdateContinuingPartnerSaysTitle from "./continuing-titles/ModalUpdateContinuingPartnerSaysTitle";
+import ModalUpdateContinuingVidTestimonialTitle from "./continuing-titles/ModalUpdateContinuingVidTestimonialTitle";
+import ContinuingVidTestimonial from "./continuing-vid-testimonial/ContinuingVidTestimonial";
 
 const ContinuingStudies = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -90,18 +88,6 @@ const ContinuingStudies = () => {
     `${apiVersion}/lcss-teams-title`, // endpoint
     "get", // method
     "lcss-teams-title" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
-  const { data: contactFormLcssData } = useQueryData(
-    `${apiVersion}/contactLcss`, // endpoint
-    "get", // method
-    "contactLcss" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -198,26 +184,9 @@ const ContinuingStudies = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
-  const handleUpdateContactFormLcss = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "contact-form-lcss" }));
-    setItemEdit("contactFormLcssUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -247,6 +216,8 @@ const ContinuingStudies = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"lcss services"}
+                page={"Continuing Studies"}
               />
               <ContinuingBanner
                 continuingData={continuingData}
@@ -259,10 +230,6 @@ const ContinuingStudies = () => {
                   handleUpdateContinuingOverviewList
                 }
                 continuingOverviewData={continuingOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                contactFormLcssData={contactFormLcssData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
                 pageName={pageName}
               />
 
@@ -278,9 +245,6 @@ const ContinuingStudies = () => {
               <ContinuingApplyNow
                 continuingApplyNowData={continuingApplyNowData}
                 handleUpdateContinuingApplyNow={handleUpdateContinuingApplyNow}
-                handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-                contactFormDefaultData={contactFormDefaultData}
-                contactFormLcssData={contactFormLcssData}
                 pageName={pageName}
               />
 
@@ -318,9 +282,7 @@ const ContinuingStudies = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -402,22 +364,6 @@ const ContinuingStudies = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-lcss" && (
-          <ModalUpdateContactFormDefaultLcss
-            itemEdit={itemEdit}
-            contactFormLcssData={contactFormLcssData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

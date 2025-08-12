@@ -27,8 +27,7 @@ const PaymentScope = ({
   setItemEdit,
   paymentTitlesData,
   paymentScopeData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
+
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [isData, setIsData] = React.useState("");
@@ -241,9 +240,9 @@ const PaymentScope = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

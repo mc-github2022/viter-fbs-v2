@@ -15,10 +15,6 @@ const ImmersionOverview = ({
   handleUpdateImmersionOverview,
   handleUpdateImmersionOverviewList,
   immersionOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
-  handleUpdateContactFormLcss,
-  contactFormLcssData,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -168,13 +164,9 @@ const ImmersionOverview = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
-          thePageName={pageName}
+          services={"lcss services"}
+          page={"High School Work Immersion"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
-          handleUpdateContactFormLcss={handleUpdateContactFormLcss}
-          contactFormLcssData={contactFormLcssData}
-          contactUsDefaultimmersionFile={contactUsDefaultimmersionFile}
         />
       )}
     </>

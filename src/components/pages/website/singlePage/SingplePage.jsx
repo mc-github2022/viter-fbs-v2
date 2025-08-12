@@ -129,7 +129,7 @@ const SingplePage = () => {
 
   return (
     <>
-      <Header />
+      <Header services={"default"} page={"Home"} />
       <div>
         {post && (
           <Helmet>

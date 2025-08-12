@@ -8,7 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -20,12 +19,11 @@ import ModalUpdateGraphicBanner from "./graphic-banner/ModalUpdateGraphicBanner"
 import GraphicOverview from "./graphic-overview/GraphicOverview";
 import ModalUpdateGraphicOverview from "./graphic-overview/ModalUpdateGraphicOverview";
 import ModalUpdateGraphicOverviewList from "./graphic-overview/ModalUpdateGraphicOverviewList";
+import GraphicPartnerSays from "./graphic-partnersays/GraphicPartnerSays";
 import GraphicScope from "./graphic-scope/GraphicScope";
 import ModalUpdateGraphicScope from "./graphic-scope/ModalUpdateGraphicScope";
-import GraphicPartnerSays from "./graphic-partnersays/GraphicPartnerSays";
-import ModalUpdateGraphicScopeTitle from "./graphic-titles/ModalUpdateGraphicScopeTitle";
 import ModalUpdateGraphicPartnerSaysTitle from "./graphic-titles/ModalUpdateGraphicPartnerSaysTitle";
-import ModalUpdateContactFormDefaultWordPress from "../../../contact-form-default/ModalUpdateContactFormDefaultWordPress";
+import ModalUpdateGraphicScopeTitle from "./graphic-titles/ModalUpdateGraphicScopeTitle";
 
 const GraphicDesign = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -55,33 +53,10 @@ const GraphicDesign = () => {
     "graphic-scope" // key
   );
 
-  const {
-    isLoading: isLoadingPortfolio,
-    isFetching: isFetchingPortfolio,
-    error: errorPortfolio,
-    data: graphicPortfolioData,
-  } = useQueryData(
-    `${apiVersion}/graphic-portfolio`, // endpoint
-    "get", // method
-    "graphic-portfolio" // key
-  );
-
   const { data: graphicTitlesData } = useQueryData(
     `${apiVersion}/graphic-titles`, // endpoint
     "get", // method
     "graphic-titles" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
-  );
-
-  const { data: contactFormWordpressData } = useQueryData(
-    `${apiVersion}/contactWordpress`, // endpoint
-    "get", // method
-    "contactWordpress" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -125,20 +100,6 @@ const GraphicDesign = () => {
     setItemEdit("scopeTitleUpdate");
   };
 
-  const handleUpdateGraphicPackagesTitles = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "graphic-packages-title" })
-    );
-    setItemEdit("packagesTitleUpdate");
-  };
-
-  const handleUpdateGraphicPartnersTitles = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "graphic-partners-title" })
-    );
-    setItemEdit("partnersTitleUpdate");
-  };
-
   const handleUpdateGraphicTestimonialTitles = () => {
     dispatch(
       setIsUpdateHome({
@@ -154,28 +115,9 @@ const GraphicDesign = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
-  const handleUpdateContactFormWordpress = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-wordpress" })
-    );
-    setItemEdit("contactFormWordpressUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -205,17 +147,13 @@ const GraphicDesign = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"web services"}
+                page={"Graphic Design"}
               />
               <GraphicBanner
                 graphicData={graphicData}
                 handleUpdateGraphicBanner={handleUpdateGraphicBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
                 pageName={pageName}
-                contactFormWordpressData={contactFormWordpressData}
-                handleUpdateContactFormWordpress={
-                  handleUpdateContactFormWordpress
-                }
               />
               <GraphicOverview
                 handleUpdateGraphicOverview={handleUpdateGraphicOverview}
@@ -223,13 +161,7 @@ const GraphicDesign = () => {
                   handleUpdateGraphicOverviewList
                 }
                 graphicOverviewData={graphicOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
-                contactFormWordpressData={contactFormWordpressData}
-                handleUpdateContactFormWordpress={
-                  handleUpdateContactFormWordpress
-                }
               />
               <GraphicScope
                 handleUpdateGraphicScopeTitles={handleUpdateGraphicScopeTitles}
@@ -240,13 +172,7 @@ const GraphicDesign = () => {
                 errorScope={errorScope}
                 graphicTitlesData={graphicTitlesData}
                 graphicScopeData={graphicScopeData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
-                contactFormWordpressData={contactFormWordpressData}
-                handleUpdateContactFormWordpress={
-                  handleUpdateContactFormWordpress
-                }
               />
               {/* <WordpressPricing
                 handleUpdateGraphicPackagesTitles={
@@ -271,9 +197,7 @@ const GraphicDesign = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -346,22 +270,7 @@ const GraphicDesign = () => {
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
         )}
 
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-wordpress" && (
-          <ModalUpdateContactFormDefaultWordPress
-            itemEdit={itemEdit}
-            contactFormWordpressData={contactFormWordpressData}
-          />
-        )}
-
+     
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (
           <ModalUpdateLogoImg itemEdit={itemEdit} footerData={footerData} />

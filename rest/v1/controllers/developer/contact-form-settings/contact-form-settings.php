@@ -4,7 +4,7 @@ require '../../../core/header.php';
 // use needed functions
 require '../../../core/functions.php';
 require '../../../core/google-api.php';
-require 'functions.php';
+// require 'functions.php';
 // use needed classes
 require '../../../models/developer/contact-form-settings/ContactFormSettings.php';
 // get payload

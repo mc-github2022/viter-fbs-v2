@@ -14,8 +14,6 @@ const EnrollmentOverview = ({
   handleUpdateEnrollmentOverview,
   handleUpdateEnrollmentOverviewList,
   enrollmentOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -188,10 +186,9 @@ const EnrollmentOverview = ({
 
       {isContactDefaultOpen && (
         <ContactFormDefault
-          thePageName={pageName}
+          services={"default"}
+          page={"Home"}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
         />
       )}
     </>

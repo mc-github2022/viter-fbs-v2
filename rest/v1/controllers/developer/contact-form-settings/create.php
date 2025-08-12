@@ -41,20 +41,47 @@ $val->form_hr_manager_email = $data["form_hr_manager_email"];
 $val->form_hr_staff_role = $data["form_hr_staff_role"];
 $val->form_hr_staff_name = $data["form_hr_staff_name"];
 $val->form_hr_staff_email = $data["form_hr_staff_email"];
-$val->form_page_id = $data["form_page_id"];
 
-$val->form_portfolio = $data["form_portfolio"];
+$val->form_fbs_brochure = $data["form_fbs_brochure"];
+$val->form_ojt_proposal = $data["form_ojt_proposal"];
+$val->form_work_immersion = $data["form_work_immersion"];
+$val->form_website_design = $data["form_website_design"];
+$val->form_graphic_design = $data["form_graphic_design"];
 $val->form_img = $data["form_img"];
 $val->form_created = date("Y-m-d H:i:s");
 $val->form_updated = date("Y-m-d H:i:s");
 
-$form_portfolio_old = $data["form_portfolio_old"];
+$form_fbs_brochure_old = $data["form_fbs_brochure_old"];
+$form_ojt_proposal_old = $data["form_ojt_proposal_old"];
+$form_work_immersion_old = $data["form_work_immersion_old"];
+$form_website_design_old = $data["form_website_design_old"];
+$form_graphic_design_old = $data["form_graphic_design_old"];
 $form_img_old = $data["form_img_old"];
 
 // UPLOAD FILE TO GOOGLE DRIVE  
-$val->form_portfolio = checkToUploadGoogleDrive(
-    $val->form_portfolio, // FILES
-    $form_portfolio_old, // OLD FILES
+$val->form_fbs_brochure = checkToUploadGoogleDrive(
+    $val->form_fbs_brochure, // FILES
+    $form_fbs_brochure_old, // OLD FILES
+);
+// UPLOAD FILE TO GOOGLE DRIVE  
+$val->form_ojt_proposal = checkToUploadGoogleDrive(
+    $val->form_ojt_proposal, // FILES
+    $form_ojt_proposal_old, // OLD FILES
+);
+// UPLOAD FILE TO GOOGLE DRIVE  
+$val->form_work_immersion = checkToUploadGoogleDrive(
+    $val->form_work_immersion, // FILES
+    $form_work_immersion_old, // OLD FILES
+);
+// UPLOAD FILE TO GOOGLE DRIVE  
+$val->form_website_design = checkToUploadGoogleDrive(
+    $val->form_website_design, // FILES
+    $form_website_design_old, // OLD FILES
+);
+// UPLOAD FILE TO GOOGLE DRIVE  
+$val->form_graphic_design = checkToUploadGoogleDrive(
+    $val->form_graphic_design, // FILES
+    $form_graphic_design_old, // OLD FILES
 );
 // UPLOAD FILE TO GOOGLE DRIVE  
 $val->form_img = checkToUploadGoogleDrive(

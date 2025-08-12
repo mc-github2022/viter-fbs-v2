@@ -60,7 +60,7 @@ const WebDesignPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"web services"} page={"WordPress CMS Website"}/>
+      <Header pageName={pageName} services={"web services"} page={"Web Design"}/>
       <WebDesignBanner pageName={pageName} />
       <WebDesignOverview pageName={pageName} />
       <WebDesignScope pageName={pageName} websiteTitlesData={websiteTitlesData}/>

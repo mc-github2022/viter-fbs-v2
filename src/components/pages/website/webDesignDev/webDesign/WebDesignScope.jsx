@@ -184,8 +184,8 @@ const WebDesignScope = ({ pageName, websiteTitlesData }) => {
           modalContact={modalContact}
           contactSubject={""}
           services={"web services"}
-          page={"WordPress CMS Website"}
-          notification_purpose={"default-receiver"}
+          page={"Web Design"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`CONTACT US / Web Design (${accordionItem}) - `}
         />
       )}

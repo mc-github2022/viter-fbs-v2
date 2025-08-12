@@ -68,7 +68,6 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
               <th className="min-w-[6rem]">Title</th>
               <th className="min-w-[5rem]">Address</th>
               <th className="min-w-[6rem]">Services</th>
-              <th className="min-w-[6rem]">File</th>
               <th className="min-w-[6rem]">Image</th>
               <th className="text-right">Actions</th>
             </tr>
@@ -91,8 +90,6 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
             )}
 
             {contentFormData?.data.map((item, key) => {
-              const portfolio =
-                getConvertStringToJSONparseData(item.form_portfolio) || [];
               const image =
                 getConvertStringToJSONparseData(item.form_img) || [];
               return (
@@ -110,11 +107,7 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
                   <td className="place-content-start capitalize">
                     {item.form_services}
                   </td>
-                  <td className="place-content-start">
-                    {portfolio.map((img, index) => (
-                      <p key={index}>{img.name}</p>
-                    ))}
-                  </td>
+
                   <td className="place-content-start">
                     {image.map((img, index) => (
                       <p key={index}>{img.name}</p>

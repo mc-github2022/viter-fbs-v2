@@ -8,20 +8,19 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
 import ModalUpdateQuickLinks from "../../../footer/ModalUpdateQuickLinks";
 import Header from "../../../header/Header";
 import ModalUpdateHeader from "../../../header/ModalUpdateHeader";
-import RegistrationBanner from "./registration-banner/RegistrationBanner";
 import ModalUpdateRegistrationBanner from "./registration-banner/ModalUpdateRegistrationBanner";
-import RegistrationOverview from "./registration-overview/RegistrationOverview";
+import RegistrationBanner from "./registration-banner/RegistrationBanner";
 import ModalUpdateRegistrationOverview from "./registration-overview/ModalUpdateRegistrationOverview";
 import ModalUpdateRegistrationOverviewList from "./registration-overview/ModalUpdateRegistrationOverviewList";
-import RegistrationPricing from "./registration-pricing/RegistrationPricing";
+import RegistrationOverview from "./registration-overview/RegistrationOverview";
 import ModalUpdateRegistrationPackagesTitle from "./registration-pricing/ModalUpdateRegistrationPackagesTitle";
+import RegistrationPricing from "./registration-pricing/RegistrationPricing";
 
 const BusinessRegistration = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -43,12 +42,6 @@ const BusinessRegistration = () => {
     `${apiVersion}/registration-packages-title`, // endpoint
     "get", // method
     "registration-packages-title" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -96,21 +89,9 @@ const BusinessRegistration = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -140,12 +121,12 @@ const BusinessRegistration = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <RegistrationBanner
                 registrationData={registrationData}
                 handleUpdateRegistrationBanner={handleUpdateRegistrationBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <RegistrationOverview
                 handleUpdateRegistrationOverview={
@@ -166,9 +147,7 @@ const BusinessRegistration = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -210,14 +189,6 @@ const BusinessRegistration = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

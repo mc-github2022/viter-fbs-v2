@@ -8,7 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -21,8 +20,8 @@ import BookkeepingOverview from "./bookkeeping-overview/BookkeepingOverview";
 import ModalUpdateBookkeepingOverview from "./bookkeeping-overview/ModalUpdateBookkeepingOverview";
 import ModalUpdateBookkeepingOverviewList from "./bookkeeping-overview/ModalUpdateBookkeepingOverviewList";
 import BookkeepingPricing from "./bookkeeping-pricing/BookkeepingPricing";
-import ModalUpdateBookkeepingPackagesTitle from "./bookkeeping-pricing/ModalUpdateBookkeepingPackagesTitle";
 import ModalUpdateBookkeepingPackagesList from "./bookkeeping-pricing/ModalUpdateBookkeepingPackagesList";
+import ModalUpdateBookkeepingPackagesTitle from "./bookkeeping-pricing/ModalUpdateBookkeepingPackagesTitle";
 
 const BookkeepingAndCompliance = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -44,12 +43,6 @@ const BookkeepingAndCompliance = () => {
     `${apiVersion}/bookkeeping-packages-title`, // endpoint
     "get", // method
     "bookkeeping-packages-title" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -102,21 +95,9 @@ const BookkeepingAndCompliance = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
-  };
-
-  const handleUpdateFooterContactUs = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-contactus" }));
-    setItemEdit("footerContactUsUpdate");
   };
 
   const handleUpdateFooterQuicklinks = () => {
@@ -146,12 +127,12 @@ const BookkeepingAndCompliance = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <BookkeepingBanner
                 bookkeepingData={bookkeepingData}
                 handleUpdateBookkeepingBanner={handleUpdateBookkeepingBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <BookkeepingOverview
                 handleUpdateBookkeepingOverview={
@@ -177,9 +158,7 @@ const BookkeepingAndCompliance = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -229,14 +208,6 @@ const BookkeepingAndCompliance = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

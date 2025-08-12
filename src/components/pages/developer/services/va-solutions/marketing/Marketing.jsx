@@ -8,7 +8,6 @@ import ModalError from "../../../../../partials/modals/ModalError";
 import ModalSuccess from "../../../../../partials/modals/ModalSuccess";
 import { setIsUpdateHome } from "../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../store/StoreContext";
-import ModalUpdateContactFormDefault from "../../../contact-form-default/ModalUpdateContactFormDefault";
 import Footer from "../../../footer/Footer";
 import ModalUpdateCopyright from "../../../footer/ModalUpdateCopyright";
 import ModalUpdateLogoImg from "../../../footer/ModalUpdateLogoImg";
@@ -20,15 +19,15 @@ import ModalUpdateMarketingBanner from "./marketing-banner/ModalUpdateMarketingB
 import MarketingOverview from "./marketing-overview/MarketingOverview";
 import ModalUpdateMarketingOverview from "./marketing-overview/ModalUpdateMarketingOverview";
 import ModalUpdateMarketingOverviewList from "./marketing-overview/ModalUpdateMarketingOverviewList";
-import MarketingServices from "./marketing-services/MarketingServices";
-import ModalUpdateMarketingServicesTitle from "./marketing-services/ModalUpdateMarketingServicesTitle";
-import ModalUpdateMarketingServicesList from "./marketing-services/ModalUpdateMarketingServicesList";
-import MarketingPricing from "./marketing-pricing/MarketingPricing";
 import MarketingPartners from "./marketing-partners/MarketingPartners";
 import MarketingPartnerSays from "./marketing-partnersays/MarketingPartnerSays";
+import MarketingPricing from "./marketing-pricing/MarketingPricing";
+import MarketingServices from "./marketing-services/MarketingServices";
+import ModalUpdateMarketingServicesList from "./marketing-services/ModalUpdateMarketingServicesList";
+import ModalUpdateMarketingServicesTitle from "./marketing-services/ModalUpdateMarketingServicesTitle";
 import ModalUpdateMarketingPackagesTitle from "./marketing-titles/ModalUpdateMarketingPackagesTitle";
-import ModalUpdateMarketingPartnersTitle from "./marketing-titles/ModalUpdateMarketingPartnersTitle";
 import ModalUpdateMarketingPartnerSaysTitle from "./marketing-titles/ModalUpdateMarketingPartnerSaysTitle";
+import ModalUpdateMarketingPartnersTitle from "./marketing-titles/ModalUpdateMarketingPartnersTitle";
 
 const Marketing = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -68,12 +67,6 @@ const Marketing = () => {
     `${apiVersion}/marketing-titles`, // endpoint
     "get", // method
     "marketing-titles" // key
-  );
-
-  const { data: contactFormDefaultData } = useQueryData(
-    `${apiVersion}/contactDefault`, // endpoint
-    "get", // method
-    "contactDefault" // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
@@ -163,13 +156,6 @@ const Marketing = () => {
     setItemEdit("headerUpdate");
   };
 
-  const handleUpdateContactFormDefault = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "contact-form-default" })
-    );
-    setItemEdit("contactFormDefaultUpdate");
-  };
-
   const handleUpdateFooterLogoImg = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "footer-logoimg" }));
     setItemEdit("footerLogoImgUpdate");
@@ -193,7 +179,7 @@ const Marketing = () => {
   return (
     <>
       <section id="" className="bg-light">
-        <Navigation menu="services" submenu="marketing" />
+        <Navigation menu="services" submenu="virtual-assistant-solutions" />
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="py-5 flex  ">
@@ -207,12 +193,12 @@ const Marketing = () => {
                 headerData={headerData}
                 handleUpdateHeader={handleUpdateHeader}
                 isLoading={isLoading}
+                services={"default"}
+                page={"Home"}
               />
               <MarketingBanner
                 marketingData={marketingData}
                 handleUpdateMarketingBanner={handleUpdateMarketingBanner}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-                contactFormDefaultData={contactFormDefaultData}
               />
               <MarketingOverview
                 handleUpdateMarketingOverview={handleUpdateMarketingOverview}
@@ -220,14 +206,10 @@ const Marketing = () => {
                   handleUpdateMarketingOverviewList
                 }
                 marketingOverviewData={marketingOverviewData}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 pageName={pageName}
               />
               <MarketingServices
                 pageName={pageName}
-                contactFormDefaultData={contactFormDefaultData}
-                handleUpdateContactFormDefault={handleUpdateContactFormDefault}
                 handleUpdateMarketingServicesTitle={
                   handleUpdateMarketingServicesTitle
                 }
@@ -263,9 +245,7 @@ const Marketing = () => {
                 handleUpdateFooterQuicklinks={handleUpdateFooterQuicklinks}
                 handleUpdateFooterCopyright={handleUpdateFooterCopyright}
                 handleUpdateFooterLogoImg={handleUpdateFooterLogoImg}
-                handleUpdateFooterContactUs={handleUpdateFooterContactUs}
                 footerData={footerData}
-                contactFormDefaultData={contactFormDefaultData}
               />
             </div>
           </div>
@@ -336,14 +316,6 @@ const Marketing = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "contact-form-default" && (
-          <ModalUpdateContactFormDefault
-            itemEdit={itemEdit}
-            contactFormDefaultData={contactFormDefaultData}
-          />
         )}
 
       {store.isUpdateHome?.modal &&

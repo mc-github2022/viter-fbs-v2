@@ -15,8 +15,6 @@ const WorkCompanyProfile = ({
   handleUpdateWorkCompanyProfileDesc,
   handleUpdateWorkCompanyProfile,
   handleUpdateWorkCompanyProfileList,
-  handleUpdateContactFormDefault,
-  contactFormDefaultData,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
   const handleOpen = () => {
@@ -200,8 +198,8 @@ const WorkCompanyProfile = ({
       {isContactDefaultOpen && (
         <ContactFormDefault
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
+          services={"default"}
+          page={"Home"}
         />
       )}
     </>

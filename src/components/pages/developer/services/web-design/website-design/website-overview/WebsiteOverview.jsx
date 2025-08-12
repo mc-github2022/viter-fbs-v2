@@ -15,8 +15,6 @@ const WebsiteOverview = ({
   handleUpdateWebsiteOverview,
   handleUpdateWebsiteOverviewList,
   websiteOverviewData,
-  contactFormDefaultData,
-  handleUpdateContactFormDefault,
 }) => {
   const [isContactDefaultOpen, setIsContactDefaultOpen] = React.useState(false);
 
@@ -168,8 +166,8 @@ const WebsiteOverview = ({
         <ContactFormDefault
           thePageName={pageName}
           setIsContactDefaultOpen={setIsContactDefaultOpen}
-          handleUpdateContactFormDefault={handleUpdateContactFormDefault}
-          contactFormDefaultData={contactFormDefaultData}
+          services={"web services"}
+          page={"Web Design"}
         />
       )}
     </>
