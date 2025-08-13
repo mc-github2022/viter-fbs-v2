@@ -55,6 +55,8 @@ import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-w
 import EventsAndActivitiesPage from "../components/pages/developer/why-fbs-page/events-and-activities-page/EventsAndActivitiesPage";
 import CareersPage from "../components/pages/developer/why-fbs-page/careers-page/CareersPage";
 import GraphicDesign from "../components/pages/developer/services/web-design/graphic-design/GraphicDesign";
+import ContactFormSettings from "../components/pages/developer/contact-form-settings/ContactFormSettings";
+import ContactFormView from "../components/pages/developer/contact-form-settings/ContactFormView";
 
 export const routesAdmin = [
   {
@@ -426,7 +428,7 @@ export const routesAdmin = [
     ),
   },
   {
-    path: `${devNavUrl}/why-work-with-us`,
+    path: `${devNavUrl}/why-working-with-us`,
     element: (
       <ProtectedRouteOther>
         <WhyWorkWithUs />
@@ -470,6 +472,22 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <Details />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/contact-form`,
+    element: (
+      <ProtectedRouteOther>
+        <ContactFormSettings />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/contact-form/view`,
+    element: (
+      <ProtectedRouteOther>
+        <ContactFormView />
       </ProtectedRouteOther>
     ),
   },

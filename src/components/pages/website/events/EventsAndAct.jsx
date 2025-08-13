@@ -148,8 +148,7 @@ const EventsAndAct = () => {
   };
   return (
     <>
-      <Header pageName={pageName} services={"default"}
-                page={"Home"}/>
+      <Header pageName={pageName} services={"default"} page={"Home"} />
       <div className="EventsAndAct pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="theTitle mb-20">
@@ -244,7 +243,7 @@ const EventsAndAct = () => {
                               style={{
                                 backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
                               }}
-                              className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[340px] lg:w-[390px] flex items-end relative rounded-xl 
+                              className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[320px] lg:w-[330px] xl:w-[350px] 2xl:w-[390px] flex items-end relative rounded-xl 
                     grayscale hover:grayscale-0 transition-all group cursor-pointer"
                             >
                               <div>

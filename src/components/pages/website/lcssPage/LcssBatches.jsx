@@ -197,7 +197,7 @@ const LcssBatches = ({ ojtTitlesData }) => {
                           <a onClick={() => handleModalBatch(item)}>
                             {firstImage && (
                               <div
-                                className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[340px] lg:w-[390px] flex items-end relative rounded-xl 
+                                className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[320px] lg:w-[330px] xl:w-[350px] 2xl:w-[390px] flex items-end relative rounded-xl 
                     grayscale hover:grayscale-0 transition-all group cursor-pointer"
                                 style={{
                                   backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
@@ -252,9 +252,8 @@ const LcssBatches = ({ ojtTitlesData }) => {
                           <a onClick={() => handleModalBatch(item)}>
                             {firstImage && (
                               <div
-                                className="blogItem addShadow bg-center bg-cover h-[400px] 
-                              min-w-[280px] max-w-[280px] md:min-w-[350px] md:max-w-[350px] flex items-end relative rounded-xl 
-                              grayscale hover:grayscale-0 transition-all group cursor-pointer "
+                                className="blogItem lcssAlbums addShadow bg-center bg-cover h-[400px] w-[270px] md:w-[320px] lg:w-[330px] xl:w-[350px] 2xl:w-[390px] flex items-end relative rounded-xl 
+                    grayscale hover:grayscale-0 transition-all group cursor-pointer "
                                 style={{
                                   backgroundImage: `url(${googleHDViewLink}${firstImage.id})`,
                                 }}

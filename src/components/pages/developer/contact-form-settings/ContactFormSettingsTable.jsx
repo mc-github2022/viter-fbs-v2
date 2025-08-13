@@ -24,9 +24,12 @@ const ContactFormSettingsTable = ({ setItemEdit }) => {
   const navigate = useNavigate();
 
   const handleGoToPage = (item) => {
-    navigate(
-      `${devNavUrl}/${UrlDeveloper}/contact-form/view?contactformid=${item.form_aid}`
-    );
+    const url =
+      store.credentials.data.role_code === "role_is_developer"
+        ? `${devNavUrl}/${UrlDeveloper}/contact-form/view?contactformid=${item.form_aid}`
+        : `${devNavUrl}/contact-form/view?contactformid=${item.form_aid}`;
+
+    navigate(url);
   };
 
   const {

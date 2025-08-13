@@ -423,11 +423,11 @@ const Navigation = ({ menu, submenu }) => {
                   >
                     <Link
                       className="!p-0"
-                      to={`${devNavUrl}${link}/why-work-with-us`}
+                      to={`${devNavUrl}${link}/why-working-with-us`}
                     >
                       <li
                         className={`text-xs my-1 border-transparent hover:underline ${
-                          submenu === "why-work-with-us"
+                          submenu === "why-working-with-us"
                             ? "text-primary font-bold"
                             : "border-none text-dark"
                         }`}

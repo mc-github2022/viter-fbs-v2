@@ -208,7 +208,7 @@ const Insights = () => {
                                 style={{
                                   backgroundImage: `url(${googleHDViewLink}${image?.id})`,
                                 }}
-                                className="blogItem bg-center bg-cover md:w-[380px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                                className="blogItem bg-center bg-cover md:w-[365px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                                 key={index}
                               >
                                 <div>
@@ -251,7 +251,7 @@ const Insights = () => {
                                 style={{
                                   backgroundImage: `url(${googleHDViewLink}${image?.id})`,
                                 }}
-                                className="blogItem bg-center bg-cover md:w-[400px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
+                                className="blogItem bg-center bg-cover md:w-[365px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer"
                               >
                                 <div>
                                   <div className="blogExcerpt p-10 pb-6 relative z-[1]">
