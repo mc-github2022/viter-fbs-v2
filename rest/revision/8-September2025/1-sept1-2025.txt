@@ -11,3 +11,5 @@ DB BACKUP
     -> rest/db-backup/fbsv2_home_insights.sql
         NOTE: this column is added
             `home_insights_thumbnail` text NOT NULL,
+
+Uploaded to prod Sept 2 2025 7:29am
