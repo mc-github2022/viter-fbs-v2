@@ -214,7 +214,7 @@ const EventsAndAct = () => {
             </h2>
           )}
           {eventsAndActivitiesData?.data.filter(
-            (post) => post.events_activities_is_active === 1
+            (post) => post.events_activities_is_active === 1 
           ).length > 6 ? (
             <Slider {...EventsSliderSettings}>
               {eventsAndActivitiesData?.data
