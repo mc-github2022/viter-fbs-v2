@@ -1,42 +1,40 @@
 import React from "react";
 
-const BannerSliderLoader = () => {
-  return (
-    <>
+const BannerSliderLoader = ({
+  count = 1,
+  cols = 1,
+  className = "h-[7px]",
+  classNameGrid = "gap-1",
+}) => {
+  const box = [];
+  let i;
+
+  let innerBox = () => {
+    while (count % cols !== 0) {
+      count++;
+    }
+    return count;
+  };
+
+  for (i = 1; i <= innerBox(); i++) {
+    box.push(
       <div
-        className={`banner bg-cover  bg-center py-[30px] h-screen grid place-content-center`}
+        key={i}
+        className={`${className} bg-[#d1d5db] w-full rounded-md relative loading-bar overflow-hidden `}
+      ></div>
+    );
+  }
+
+  if (cols !== 0) {
+    return (
+      <div
+        className={`${classNameGrid} grid p-2 `}
+        style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
       >
-        <div>
-          <div className="animate-pulse space-y-2 mb-5">
-            <div className="h-2 w-[170px] md:w-[300px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[170px] md:w-[300px] bg-[#f5f3f3] rounded mx-auto"></div>
-          </div>
-          <div className="animate-pulse space-y-2 mb-5">
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-          </div>
-          <div className="animate-pulse space-y-2 mb-8">
-            <div className="h-2 w-[250px] md:w-[500px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[250px] md:w-[500px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[250px] md:w-[500px] bg-[#f5f3f3] rounded mx-auto"></div>
-          </div>
-          <div className="animate-pulse space-y-2 mb-12">
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[280px] md:w-[800px] bg-[#f5f3f3] rounded mx-auto"></div>
-          </div>
-          <div className="animate-pulse space-y-2 mb-8">
-            <div className="h-2 w-[250px] md:w-[500px] bg-[#f5f3f3] rounded mx-auto"></div>
-            <div className="h-2 w-[250px] md:w-[500px] bg-[#f5f3f3] rounded mx-auto"></div>
-          </div>
-        </div>
+        {box}
       </div>
-    </>
-  );
+    );
+  }
 };
 
 export default BannerSliderLoader;

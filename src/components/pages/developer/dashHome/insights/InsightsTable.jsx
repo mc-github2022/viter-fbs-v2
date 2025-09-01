@@ -175,10 +175,11 @@ const InsightsTable = ({ setItemEdit }) => {
               <th>Title</th>
               <th className="w-[8rem]">Slug</th>
               <th className="w-[8rem]">Date</th>
-              <th>Content</th>
+              <th className="min-w-[10rem]">Content</th>
               <th>CTA Enable</th>
               <th>Buttton Caption </th>
               <th>Form Selected</th>
+              <th className="w-[8rem]">Thumbnail</th>
               <th className="w-[8rem]">Image</th>
               <th className="text-right">Actions</th>
             </tr>
@@ -206,6 +207,10 @@ const InsightsTable = ({ setItemEdit }) => {
                   const insightsImages =
                     getConvertStringToJSONparseData(item.home_insights_img) ||
                     [];
+                  const insightsThumbnail =
+                    getConvertStringToJSONparseData(
+                      item.home_insights_thumbnail
+                    ) || [];
                   return (
                     <tr key={key} className="place-content-start text-[14px]">
                       <td className="pl-2 place-content-start">{counter++}</td>
@@ -220,20 +225,20 @@ const InsightsTable = ({ setItemEdit }) => {
                         {item.home_insights_category}
                       </td>
                       <td className="place-content-start">
-                        <p className="line-clamp-5">
+                        <p className="line-clamp-2">
                           {item.home_insights_title}
                         </p>
                       </td>
                       <td className="place-content-start">
-                        <p className="line-clamp-5">
+                        <p className="line-clamp-1">
                           {item.home_insights_slug}
                         </p>
                       </td>
                       <td className="place-content-start">
                         {formatDate(item.home_insights_date)}
                       </td>
-                      <td className="place-content-start">
-                        <p className="line-clamp-5">
+                      <td className="place-content-start max-w-[10rem]">
+                        <p className="line-clamp-1">
                           {item.home_insights_paragraph_a}
                         </p>
                       </td>
@@ -242,6 +247,11 @@ const InsightsTable = ({ setItemEdit }) => {
                       </td>
                       <td>{item.home_insights_cta_text}</td>
                       <td>{item.home_insights_form_selected}</td>
+                      <td className="place-content-start">
+                        {insightsThumbnail.map((img, index) => (
+                          <p key={index}>{img.name}</p>
+                        ))}
+                      </td>
                       <td className="place-content-start">
                         {insightsImages.map((img, index) => (
                           <p key={index}>{img.name}</p>

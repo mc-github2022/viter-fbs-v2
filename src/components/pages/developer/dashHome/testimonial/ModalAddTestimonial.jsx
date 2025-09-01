@@ -1,9 +1,10 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Form, Formik } from "formik";
 import React from "react";
+import { FaTrash } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 import * as Yup from "yup";
-import useUploadPhoto from "../../../../custom-hooks/useUploadPhoto";
+import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
 import {
   InputFileUpload,
   InputText,
@@ -11,13 +12,14 @@ import {
 } from "../../../../helpers/FormInputs";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
-  googleViewLink,
+  googleViewLink
 } from "../../../../helpers/functions-general";
 import { queryData } from "../../../../helpers/queryData";
 import ModalAddWrapper from "../../../../partials/dashboard/ModalAddWrapper";
+import LoadImages from "../../../../partials/LoadImages";
+import ModalRemovedPhoto from "../../../../partials/modals/ModalRemovedPhoto";
 import ButtonSpinner from "../../../../partials/spinners/ButtonSpinner";
 import {
   setError,
@@ -25,10 +27,6 @@ import {
   setSuccess,
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
-import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
-import ModalRemovedPhoto from "../../../../partials/modals/ModalRemovedPhoto";
-import { FaTrash } from "react-icons/fa";
-import LoadImages from "../../../../partials/LoadImages";
 
 const ModalAddTestimonial = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);

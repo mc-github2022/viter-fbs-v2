@@ -5,6 +5,7 @@ class Insights
     public $home_insights_aid;
     public $home_insights_is_active;
     public $home_insights_img;
+    public $home_insights_thumbnail;
     public $home_insights_category;
     public $home_insights_title;
     public $home_insights_slug;
@@ -94,6 +95,7 @@ class Insights
             $sql = "insert into {$this->tblInsights}";
             $sql .= "(home_insights_is_active, ";
             $sql .= "home_insights_img, ";
+            $sql .= "home_insights_thumbnail, ";
             $sql .= "home_insights_category, ";
             $sql .= "home_insights_title, ";
             $sql .= "home_insights_slug, ";
@@ -108,6 +110,7 @@ class Insights
             $sql .= "home_insights_datetime ) values ( ";
             $sql .= ":home_insights_is_active, ";
             $sql .= ":home_insights_img, ";
+            $sql .= ":home_insights_thumbnail, ";
             $sql .= ":home_insights_category, ";
             $sql .= ":home_insights_title, ";
             $sql .= ":home_insights_slug, ";
@@ -124,6 +127,7 @@ class Insights
             $query->execute([
                 "home_insights_is_active" => $this->home_insights_is_active,
                 "home_insights_img" => $this->home_insights_img,
+                "home_insights_thumbnail" => $this->home_insights_thumbnail,
                 "home_insights_category" => $this->home_insights_category,
                 "home_insights_title" => $this->home_insights_title,
                 "home_insights_slug" => $this->home_insights_slug,
@@ -150,6 +154,7 @@ class Insights
             $sql = "update {$this->tblInsights} set ";
             $sql .= "home_insights_is_active = :home_insights_is_active, ";
             $sql .= "home_insights_img = :home_insights_img, ";
+            $sql .= "home_insights_thumbnail = :home_insights_thumbnail, ";
             $sql .= "home_insights_category = :home_insights_category, ";
             $sql .= "home_insights_title = :home_insights_title, ";
             $sql .= "home_insights_slug = :home_insights_slug, ";
@@ -166,6 +171,7 @@ class Insights
             $query->execute([
                 "home_insights_is_active" => $this->home_insights_is_active,
                 "home_insights_img" => $this->home_insights_img,
+                "home_insights_thumbnail" => $this->home_insights_thumbnail,
                 "home_insights_category" => $this->home_insights_category,
                 "home_insights_title" => $this->home_insights_title,
                 "home_insights_slug" => $this->home_insights_slug,

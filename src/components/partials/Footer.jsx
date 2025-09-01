@@ -73,6 +73,7 @@ const Footer = () => {
                             <a
                               href={item.footer_logo_facebook_link || "#"}
                               target="_blank"
+                              aria-label="Frontline facebook"
                             >
                               <FaFacebookSquare />
                             </a>
@@ -83,6 +84,7 @@ const Footer = () => {
                             <a
                               href={item.footer_logo_linkedin_link || "#"}
                               target="_blank"
+                              aria-label="Frontline linkedin"
                             >
                               <FaLinkedin />
                             </a>
@@ -93,6 +95,7 @@ const Footer = () => {
                             <a
                               href={item.footer_logo_youtube_link || "#"}
                               target="_blank"
+                              aria-label="Frontline youtube"
                             >
                               <FaYoutubeSquare />
                             </a>
@@ -103,6 +106,7 @@ const Footer = () => {
                             <a
                               href={item.footer_logo_instagram_link || "#"}
                               target="_blank"
+                              aria-label="Frontline instagram"
                             >
                               <FaInstagramSquare />
                             </a>
@@ -113,6 +117,7 @@ const Footer = () => {
                             <a
                               href={item.footer_logo_tiktok_link || "#"}
                               target="_blank"
+                              aria-label="Frontline tiktok"
                             >
                               <AiFillTikTok />
                             </a>

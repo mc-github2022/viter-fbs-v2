@@ -142,6 +142,7 @@ const Testimonials = () => {
                   {testimonialData?.data.map((item, key) => (
                     <button
                       key={key}
+                      aria-label="testimonial button"
                       className={`${
                         displayTestimonial &&
                         testimonialItem ==

@@ -15,6 +15,7 @@ if (array_key_exists("home_insightsid", $_GET)) {
   $home_insights->home_insights_aid = $_GET['home_insightsid'];
   $home_insights->home_insights_is_active = $data["home_insights_is_active"];
   $home_insights->home_insights_img = $data["home_insights_img"];
+  $home_insights->home_insights_thumbnail = $data["home_insights_thumbnail"];
   $home_insights->home_insights_category = $data["home_insights_category"];
   $home_insights->home_insights_title = $data["home_insights_title"];
   $home_insights->home_insights_slug =  checkIndex($data, "home_insights_slug");
@@ -24,9 +25,9 @@ if (array_key_exists("home_insightsid", $_GET)) {
   $home_insights->home_insights_paragraph_c = $data["home_insights_paragraph_c"];
   $home_insights->home_insights_cta_is_active = $data["home_insights_cta_is_active"];
   $home_insights->home_insights_cta_text = $data["home_insights_cta_text"];
-  if($data["home_insights_form_selected"]===""){
+  if ($data["home_insights_form_selected"] === "") {
     $home_insights->home_insights_form_selected = "default-receiver";
-  }else{
+  } else {
     $home_insights->home_insights_form_selected = $data["home_insights_form_selected"];
   }
 
@@ -34,6 +35,8 @@ if (array_key_exists("home_insightsid", $_GET)) {
   checkId($home_insights->home_insights_aid);
 
   $home_insights_img_old = $data["home_insights_img_old"];
+  $home_insights_thumbnail_old = $data["home_insights_thumbnail_old"];
+
   $pendingDeleteFile = $data['pendingDeleteFile'];
   // UPLOAD FILE TO GOOGLDE DRIVE  
   $home_insights->home_insights_img = checkToUploadGoogleDrive(
@@ -43,6 +46,17 @@ if (array_key_exists("home_insightsid", $_GET)) {
   // IF DELETE ARRAY > 0 DELETE SOME FILE
   $home_insights->home_insights_img = checkDeleteGoogleDriveApiFiles(
     $home_insights->home_insights_img, // FILES
+    $pendingDeleteFile // TO DELETE FILES
+  );
+
+  // UPLOAD FILE TO GOOGLDE DRIVE  
+  $home_insights->home_insights_thumbnail = checkToUploadGoogleDrive(
+    $home_insights->home_insights_thumbnail, // FILES
+    $home_insights_thumbnail_old, // OLD FILES
+  );
+  // IF DELETE ARRAY > 0 DELETE SOME FILE
+  $home_insights->home_insights_thumbnail = checkDeleteGoogleDriveApiFiles(
+    $home_insights->home_insights_thumbnail, // FILES
     $pendingDeleteFile // TO DELETE FILES
   );
 

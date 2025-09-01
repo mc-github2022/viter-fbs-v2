@@ -12,6 +12,7 @@ import {
 import ModalContact from "../../../partials/ModalContact";
 import BannerSliderLoader from "./bannerSliderLoader";
 import LoadImages from "../../../partials/LoadImages";
+import TableLoading from "../../../partials/spinners/TableLoading";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -148,9 +149,7 @@ const BannerSlider = ({ pageName }) => {
 
   return (
     <>
-      {isLoading ? (
-        <BannerSliderLoader />
-      ) : (
+      <div className="lg:min-h-[80vh] ">
         <Slider ref={sliderRef} {...settings}>
           {bannerData?.data.map((item, key) => {
             // Parse images for the specific banner item
@@ -161,39 +160,83 @@ const BannerSlider = ({ pageName }) => {
               <div key={key}>
                 <div
                   id="banner"
-                  className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit relative`}
+                  className={`banner bg-cover bg-center py-[30px] h-svh place-content-center md:h-fit  relative`}
                 >
                   {bannerImages.map((image, index) => (
                     <LoadImages
                       url={`${googleHDViewLink}${image?.id}`}
                       className={`absolute top-0 w-full h-full object-cover`}
                       alt={`${item.home_banner_title}`}
-                      loading="lazy"
+                      // loading="lazy"
                       // onLoad={handleImageLoad}
                       style={{ transition: "opacity 0.1s ease-in" }}
                       key={index}
                     />
                   ))}
+
                   <div className={`customContainer h-fit `}>
                     <div className="wrapper flex place-items-center min-h-[350px] md:min-h-[80vh] transition-all w-full">
-                      <div className="mx-auto w-full md:w-[865px] text-center place-content-center z-1 relative">
-                        <p className="text-light lg:text-[28px] italic">
-                          {item.home_banner_sub_title}
-                        </p>
-                        <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
-                          {item.home_banner_title}
-                        </h1>
-                        <p className="text-light text-center mb-10 relative z-1">
-                          {item.home_banner_description}
-                        </p>
-                        <a
-                          href="#"
-                          className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0 "
-                          onClick={handleForm}
-                        >
-                          {item.home_banner_button_text}
-                        </a>
-                      </div>
+                      {isLoading || isFetching ? (
+                        <div className="mx-auto w-full md:w-[865px] text-center place-content-center relative z-[9999] ">
+                          <div className="pb-5 flex flex-col gap-2 ">
+                            <BannerSliderLoader
+                              cols={1}
+                              count={1}
+                              className={"h-7 rounded-xl max-w-96 mx-auto"}
+                            />
+                            <BannerSliderLoader
+                              cols={1}
+                              count={1}
+                              className={
+                                "h-10 rounded-xl max-w-[650px] mx-auto"
+                              }
+                            />
+                            <BannerSliderLoader
+                              cols={1}
+                              count={1}
+                              className={
+                                "h-10 rounded-xl max-w-[450px] mb-8 mx-auto"
+                              }
+                            />
+                            <TableLoading
+                              cols={1}
+                              count={4}
+                              classNameGrid={"gap-6"}
+                              lineWidth={[
+                                "w-80",
+                                "w-[30rem]",
+                                "w-60",
+                                "w-[33rem]",
+                              ]}
+                            />
+
+                            <BannerSliderLoader
+                              cols={1}
+                              count={1}
+                              className="h-10 max-w-32 pt-5 mx-auto"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="mx-auto w-full md:w-[865px] text-center place-content-center z-1 relative">
+                          <p className="text-light lg:text-[28px] italic">
+                            {item.home_banner_sub_title}
+                          </p>
+                          <h1 className="text-light leading-[1.2] md:leading-[1.2] text-center text-[clamp(30px,4vw,50px)] font-bold w-full mb-10 md:mb-10 drop-shadow-2xl">
+                            {item.home_banner_title}
+                          </h1>
+                          <p className="text-light text-center mb-10 relative z-1">
+                            {item.home_banner_description}
+                          </p>
+                          <a
+                            href="#"
+                            className="btn bg-transparent text-light font-semibold border-2 mb-6 md:mb-7 lg:mb-0 "
+                            onClick={handleForm}
+                          >
+                            {item.home_banner_button_text}
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -201,7 +244,7 @@ const BannerSlider = ({ pageName }) => {
             );
           })}
         </Slider>
-      )}
+      </div>
 
       {contactForm && (
         <ModalContact

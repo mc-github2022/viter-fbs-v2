@@ -16,6 +16,8 @@ import MegaMenu from "./MegaMenu";
 import useQueryData from "../custom-hooks/useQueryData";
 import LoadImages from "./LoadImages";
 import TableLoading from "./spinners/TableLoading";
+import FbsLogoLg from "../svg/FbsLogoLg";
+import FbsLogoMd from "../svg/FbsLogoMd";
 
 const Header = ({ pageName, services, page }) => {
   const [contactForm, setContactForm] = React.useState(false);
@@ -115,17 +117,12 @@ const Header = ({ pageName, services, page }) => {
         >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo relative">
-              {headerLogoImg.map((img, index) => (
-                <div key={index}>
-                  <Link to={`${devNavUrl}/`}>
-                    <LoadImages
-                      url={`${googleHDViewLink}${img?.id}`}
-                      alt="Frontline Business Solutions Logo"
-                      className="w-[80%] md:w-[90%] z-10"
-                    />
+                  <Link
+                    to={`${devNavUrl}/`}
+                    aria-label="Frontline Business Solutions logo"
+                  >
+                    <FbsLogoMd />
                   </Link>
-                </div>
-              ))}
             </div>
 
             <div
@@ -212,7 +209,7 @@ const Header = ({ pageName, services, page }) => {
                         return (
                           <li key={key}>
                             <a
-                              to={`${devNavUrl}/${item.packages_category_url}`}
+                              href={`${devNavUrl}/${item.packages_category_url}`}
                               className={`${
                                 currentPath === item.packages_category_url
                                   ? "text-primary !cursor-default"
@@ -243,21 +240,23 @@ const Header = ({ pageName, services, page }) => {
                     )}
                   </button>
                 </li>
-                <div className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
-                  {isLoading || isFetching ? (
-                    <div className="w-[100px]">
-                      <TableLoading cols={1} count={1} />
-                    </div>
-                  ) : (
-                    <a
-                      href="#"
-                      onClick={handleModalContact}
-                      className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full from-secondary to-secondary hover:to-primary uppercase"
-                    >
-                      {headerData?.data?.[0]?.header_button_text || ""}
-                    </a>
-                  )}
-                </div>
+                <li>
+                  <span className="w-[200px] justify-center mt-9 md:hidden mx-[44px]">
+                    {isLoading || isFetching ? (
+                      <div className="w-[100px]">
+                        <TableLoading cols={1} count={1} />
+                      </div>
+                    ) : (
+                      <a
+                        href="#"
+                        onClick={handleModalContact}
+                        className="btn bg-gradient-to-r hover:duration-500 hover:bg-gradient-to-r text-light rounded-full from-secondary to-secondary hover:to-primary uppercase"
+                      >
+                        {headerData?.data?.[0]?.header_button_text || ""}
+                      </a>
+                    )}
+                  </span>
+                </li>
               </ul>
             </div>
             <div className="lg:w-[200px] lg:flex justify-center hidden md:block">

@@ -35,7 +35,12 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const [isDraft, setIsDraft] = React.useState(false);
   const [withFile, setWithFile] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [fileData, setFileData] = React.useState(null);
+  const [fileData, setFileData] = React.useState({
+    images: [],
+    itemKey: null,
+    props: null,
+    type: "", // 'client' or 'logo'
+  });
   const [isRemovedPhoto, setIsRemovedPhoto] = React.useState(false);
   const [isCheck, setIsCheck] = React.useState(false);
   const [isCheckClick, setIsCheckClick] = useState(false);
@@ -56,26 +61,44 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
 
   // multiple files
   const {
-    uploadMultiplePhoto,
-    handleChangeMultiplePhoto,
-    setPhotoArrayList,
-    photoArrayList,
+    uploadMultiplePhoto: uploadThumbnail,
+    handleChangeMultiplePhoto: handleChangeThumbnail,
+    setPhotoArrayList: setThumbnail,
+    photoArrayList: thumbnail,
   } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
-  // handle for file upload
-  const handleChangeFileUpload = (
+  const {
+    uploadMultiplePhoto: uploadImage,
+    handleChangeMultiplePhoto: handleChangeImage,
+    setPhotoArrayList: setImage,
+    photoArrayList: image,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  // handle for file upload thumbnail
+  const handleChangeFileUploadThumbnail = (
     e,
     props,
-    setPhotoArrayList,
+    setThumbnail,
     fieldValue = ""
   ) => {
-    handleChangeMultiplePhoto(e, 1);
+    handleChangeThumbnail(e, 1);
     const files = e.target.files;
     if (files.length > 3) return e;
     let myFiles = Array.from(files);
     props.setFieldValue(fieldValue, myFiles);
-    const oldFiles = photoArrayList?.length > 0 ? photoArrayList : [];
-    setPhotoArrayList([...oldFiles, ...myFiles]);
+    const oldFiles = thumbnail?.length > 0 ? thumbnail : [];
+    setThumbnail([...oldFiles, ...myFiles]);
+  };
+
+  // handle for file upload image
+  const handleChangeFileUploadImage = (e, props, setImage, fieldValue = "") => {
+    handleChangeImage(e, 20);
+    const files = e.target.files;
+    if (files.length > 3) return e;
+    let myFiles = Array.from(files);
+    props.setFieldValue(fieldValue, myFiles);
+    const oldFiles = image?.length > 0 ? image : [];
+    setImage([...oldFiles, ...myFiles]);
   };
 
   const handleClickViewSlideshow = (photos, key) => {
@@ -88,9 +111,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   };
 
   // delete the file in the server (public)
-  const handleRemovePhoto = (photos, key, props) => {
+  const handleRemovePhoto = (photos, key, props, type) => {
     if (mutation.isPending || loading) return;
-    setFileData({ images: photos, itemKey: key, props });
+    setFileData({ images: photos, itemKey: key, props, type });
     setIsRemovedPhoto(true);
   };
 
@@ -135,10 +158,14 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   React.useEffect(() => {
     setAnimate("");
     if (itemEdit) {
-      const photos = getConvertStringToJSONparseData(
-        itemEdit.home_insights_img
+      const thumbnail = getConvertStringToJSONparseData(
+        itemEdit.home_insights_thumbnail
       );
-      setPhotoArrayList(photos);
+      setThumbnail(thumbnail);
+    }
+    if (itemEdit) {
+      const image = getConvertStringToJSONparseData(itemEdit.home_insights_img);
+      setImage(image);
     }
   }, []);
 
@@ -165,9 +192,13 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
       ? itemEdit.home_insights_form_selected
       : "",
     home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
+    home_insights_thumbnail: itemEdit ? itemEdit.home_insights_thumbnail : "",
     home_insights_is_active: itemEdit ? itemEdit.home_insights_is_active : "",
 
     home_insights_img_old: itemEdit ? itemEdit.home_insights_img : "",
+    home_insights_thumbnail_old: itemEdit
+      ? itemEdit.home_insights_thumbnail
+      : "",
     pendingDeleteFile: [],
   };
 
@@ -198,7 +229,13 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                 ...values,
                 home_insights_cta_is_active: isCheck,
                 home_insights_is_active: isDraft ? 0 : 1,
-                home_insights_img: Array.from(photoArrayList).map((item) =>
+                home_insights_thumbnail: thumbnail.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  })
+                ),
+                home_insights_img: image.map((item) =>
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
@@ -206,10 +243,14 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                 ),
               };
 
-              const photoUpload = await uploadMultiplePhoto();
-              if (photoUpload?.success || !photoUpload?.success) {
+              // Upload separately
+              const clientPhotoUpload = await uploadThumbnail(thumbnail);
+              const logoPhotoUpload = await uploadImage(image);
+
+              if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
                 setLoading(false);
               }
+
               if (!loading) console.log(data);
               mutation.mutate(data);
             }}
@@ -219,12 +260,10 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                 <Form className="modal-form">
                   <div className="form-input">
                     <div className=" relative">
-                      <div className="mt-5">
-                        <span className="top-20 px-2 text-dark text-xs">
-                          Image
-                        </span>
+                      <div className="relative">
+                        <label className=" text-dark text-xs">Thumbnail</label>
                         <div
-                          className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[300px] text-xs ${
+                          className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-full text-xs ${
                             withFile && "border-primary border-dashed"
                           }`}
                           onDragOver={() => setWithFile(true)}
@@ -237,26 +276,26 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           </span>
 
                           <InputFileUpload
-                            label="Upload Banner Image"
+                            label="Upload Image"
                             name="File"
                             type="file"
                             id="myFile"
                             accept="*"
-                            title="Upload File"
+                            title="Upload Image"
                             onChange={(e) =>
-                              handleChangeFileUpload(
+                              handleChangeFileUploadThumbnail(
                                 e,
                                 props,
-                                setPhotoArrayList,
-                                "home_insights_img"
+                                setThumbnail,
+                                "home_insights_thumbnail"
                               )
                             }
                             onDrop={(e) =>
-                              handleChangeFileUpload(
+                              handleChangeFileUploadThumbnail(
                                 e,
                                 props,
-                                setPhotoArrayList,
-                                "home_insights_img"
+                                setThumbnail,
+                                "home_insights_thumbnail"
                               )
                             }
                             disabled={mutation.isPending || loading}
@@ -264,10 +303,10 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           />
                         </div>
 
-                        <div className="relative mb-6 w-[300px] ">
+                        <div className="relative w-full ">
                           <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                            {photoArrayList?.length > 0 &&
-                              Array.from(photoArrayList).map((item, key) => {
+                            {thumbnail.length > 0 &&
+                              thumbnail.map((item, key) => {
                                 const fileLink =
                                   item instanceof File || item instanceof Blob
                                     ? URL.createObjectURL(item)
@@ -282,14 +321,14 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                       }`}
                                       onClick={() => {
                                         handleClickViewSlideshow(
-                                          photoArrayList,
+                                          thumbnail,
                                           key
                                         );
                                       }}
                                     >
                                       <LoadImages
                                         url={fileLink}
-                                        className={`relative z-20 w-full h-full object-cover object-center`}
+                                        className="relative z-20 w-full h-full object-cover object-center"
                                       />
                                       {(!mutation.isPending || !loading) && (
                                         <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
@@ -313,9 +352,10 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                               }
                                               onClick={() =>
                                                 handleRemovePhoto(
-                                                  photoArrayList,
+                                                  thumbnail,
                                                   key,
-                                                  props
+                                                  props,
+                                                  "thumbnail-image"
                                                 )
                                               }
                                             >
@@ -332,6 +372,111 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
 
+                      <div className="relative mb-3">
+                        <label className=" text-dark text-xs">Image</label>
+                        <div
+                          className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-full text-xs ${
+                            withFile && "border-primary border-dashed"
+                          }`}
+                          onDragOver={() => setWithFile(true)}
+                          onDragLeave={() => setWithFile(false)}
+                        >
+                          <span className="min-h-16 flex items-center justify-center">
+                            <span className="text-dark mr-1">Drag & Drop</span>{" "}
+                            Photo here or{" "}
+                            <span className="text-dark ml-1">Browse</span>
+                          </span>
+
+                          <InputFileUpload
+                            label="Upload Image"
+                            name="File"
+                            type="file"
+                            id="myFile"
+                            accept="*"
+                            title="Upload File"
+                            onChange={(e) =>
+                              handleChangeFileUploadImage(
+                                e,
+                                props,
+                                setImage,
+                                "home_insights_img"
+                              )
+                            }
+                            onDrop={(e) =>
+                              handleChangeFileUploadImage(
+                                e,
+                                props,
+                                setImage,
+                                "home_insights_img"
+                              )
+                            }
+                            disabled={mutation.isPending || loading}
+                            className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                          />
+                        </div>
+
+                        <div className="relative w-full ">
+                          <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                            {image.length > 0 &&
+                              image.map((item, key) => {
+                                const fileLink =
+                                  item instanceof File || item instanceof Blob
+                                    ? URL.createObjectURL(item)
+                                    : `${googleHDViewLink}${item?.id}`;
+
+                                return (
+                                  <React.Fragment key={key}>
+                                    <li
+                                      className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                      onClick={() =>
+                                        handleClickViewSlideshow(image, key)
+                                      }
+                                    >
+                                      <LoadImages
+                                        url={fileLink}
+                                        className="relative z-20 w-full h-full object-cover object-center"
+                                      />
+                                      {(!mutation.isPending || !loading) && (
+                                        <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                          <span>
+                                            Click to View <br />
+                                            {key + 1}. {item.name}
+                                          </span>
+
+                                          <div
+                                            className="absolute bottom-0 right-0 flex items-center gap-2"
+                                            onClick={(e) => {
+                                              e.stopPropagation();
+                                            }}
+                                          >
+                                            <button
+                                              type="button"
+                                              className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                              data-tooltip={`Delete`}
+                                              disabled={
+                                                mutation.isPending || loading
+                                              }
+                                              onClick={() =>
+                                                handleRemovePhoto(
+                                                  image,
+                                                  key,
+                                                  props,
+                                                  "images"
+                                                )
+                                              }
+                                            >
+                                              <FaTrash />
+                                            </button>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </li>
+                                  </React.Fragment>
+                                );
+                              })}
+                          </ol>
+                        </div>
+                      </div>
                       {itemEdit ? (
                         <div className="h-[30px]  relative w-full">
                           <div className="absolute">
@@ -347,7 +492,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                       ) : (
                         ""
                       )}
-                      
+
                       <div>
                         <div className="input-wrapper">
                           <InputText
@@ -444,6 +589,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                         type="submit"
                         disabled={
                           (mutation.isPending && !props.dirty && loading) ||
+                          (!thumbnail?.length && !image?.length) ||
                           (!isCheckClick && !props.dirty)
                         }
                         onClick={() => setIsDraft(true)}
@@ -480,7 +626,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           itemProps={fileData.props}
           msg="Are you sure you want to remove this file?"
           setIsModalShow={setIsRemovedPhoto}
-          setNewFile={setPhotoArrayList}
+          setNewFile={
+            fileData.type === "thumbnail-image" ? setThumbnail : setImage
+          }
         />
       )}
     </>

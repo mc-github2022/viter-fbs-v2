@@ -9,6 +9,7 @@ import {
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
+import LoadImages from "../../../partials/LoadImages";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -195,7 +196,7 @@ const Insights = () => {
                     .map((post, key) => {
                       const insightsImages =
                         getConvertStringToJSONparseData(
-                          post.home_insights_img
+                          post.home_insights_thumbnail
                         ) || [];
 
                       return (
@@ -205,12 +206,16 @@ const Insights = () => {
                           >
                             {insightsImages.map((image, index) => (
                               <div
-                                style={{
-                                  backgroundImage: `url(${googleHDViewLink}${image?.id})`,
-                                }}
                                 className="blogItem bg-center bg-cover md:w-[365px] h-[350px] flex items-end relative rounded-xl grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                                 key={index}
                               >
+                                <LoadImages
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  className={`absolute top-0 w-full h-full object-cover bg-center bg-cover rounded-xl`}
+                                  alt={`${image.home_insights_title}`}
+                                  loading="lazy"
+                                  style={{ transition: "opacity 0.1s ease-in" }}
+                                />
                                 <div>
                                   <div className="blogExcerpt p-10 pb-6 relative z-[1]">
                                     <p className="text-light font-bold text-lg">

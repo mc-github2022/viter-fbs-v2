@@ -11,6 +11,7 @@ checkPayload($data);
 // get data
 $home_insights->home_insights_is_active = $data["home_insights_is_active"];
 $home_insights->home_insights_img = $data["home_insights_img"];
+$home_insights->home_insights_thumbnail = $data["home_insights_thumbnail"];
 $home_insights->home_insights_category = $data["home_insights_category"];
 $home_insights->home_insights_title = $data["home_insights_title"];
 $home_insights->home_insights_slug =  checkIndex($data, "home_insights_slug");
@@ -21,20 +22,27 @@ $home_insights->home_insights_paragraph_c = $data["home_insights_paragraph_c"];
 $home_insights->home_insights_cta_is_active = $data["home_insights_cta_is_active"];
 $home_insights->home_insights_cta_text = $data["home_insights_cta_text"];
 // $home_insights->home_insights_form_selected = $data["home_insights_form_selected"];
-if($data["home_insights_form_selected"]===""){
-    $home_insights->home_insights_form_selected = "default-receiver";
-  }else{
-    $home_insights->home_insights_form_selected = $data["home_insights_form_selected"];
-  }
+if ($data["home_insights_form_selected"] === "") {
+  $home_insights->home_insights_form_selected = "default-receiver";
+} else {
+  $home_insights->home_insights_form_selected = $data["home_insights_form_selected"];
+}
 $home_insights->home_insights_created = date("Y-m-d H:i:s");
 $home_insights->home_insights_datetime = date("Y-m-d H:i:s");
 
 $home_insights_img_old = $data["home_insights_img_old"];
+$home_insights_thumbnail_old = $data["home_insights_thumbnail_old"];
 
 // UPLOAD FILE TO GOOGLE DRIVE  
 $home_insights->home_insights_img = checkToUploadGoogleDrive(
-    $home_insights->home_insights_img, // FILES
-    $home_insights_img_old, // OLD FILES
+  $home_insights->home_insights_img, // FILES
+  $home_insights_img_old, // OLD FILES
+);
+
+// UPLOAD FILE TO GOOGLE DRIVE  
+$home_insights->home_insights_thumbnail = checkToUploadGoogleDrive(
+  $home_insights->home_insights_thumbnail, // FILES
+  $home_insights_thumbnail_old, // OLD FILES
 );
 
 // //checks newly added data if it already exists

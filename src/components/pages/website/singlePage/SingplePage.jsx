@@ -1,28 +1,24 @@
 import { default as React, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { LuTag } from "react-icons/lu";
 import { MdOutlineCalendarToday } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
-import Footer from "../../../partials/Footer";
-import Header from "../../../partials/Header";
-import { insight } from "../home/data";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
-  devBaseImgUrl,
   devNavUrl,
   formatDate,
   getConvertStringToJSONparseData,
-  googleHDViewLink,
+  googleHDViewLink
 } from "../../../helpers/functions-general";
-import Subscribe from "../../../partials/Subscribe";
-import { StoreContext } from "../../../store/StoreContext";
-import ModalSuccess from "../../../partials/modals/ModalSuccess";
-import ModalError from "../../../partials/modals/ModalError";
+import Footer from "../../../partials/Footer";
+import Header from "../../../partials/Header";
 import LoadImages from "../../../partials/LoadImages";
 import ModalContact from "../../../partials/ModalContact";
 import ModalLcssForm from "../../../partials/ModalLcssForm";
+import Subscribe from "../../../partials/Subscribe";
+import { StoreContext } from "../../../store/StoreContext";
 import ModalJobApplication from "../career/ModalJobApplication";
-import { Helmet } from "react-helmet";
 
 const SingplePage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
