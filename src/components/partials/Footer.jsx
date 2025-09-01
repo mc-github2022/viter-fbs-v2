@@ -156,7 +156,7 @@ const Footer = () => {
                 <p className="font-semibold">QUICKLINKS</p>
                 <ul className="text-xs my-6 [&>li]:mb-1">
                   {footerData?.data.map((item, key) => (
-                    <div key={key}>
+                    <React.Fragment key={key}>
                       <li>
                         <a href={`${devNavUrl}${item.footer_quicklink_link_a}`}>
                           {item.footer_quicklink_a}
@@ -182,7 +182,7 @@ const Footer = () => {
                           {item.footer_quicklink_e}
                         </a>
                       </li>
-                    </div>
+                    </React.Fragment>
                   ))}
                 </ul>
               </div>
