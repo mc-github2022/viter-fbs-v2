@@ -18,6 +18,7 @@ $packages_list->packages_list_foreign_price = $data["packages_list_foreign_price
 $packages_list->packages_list_foreign_price_desc = $data["packages_list_foreign_price_desc"];
 $packages_list->packages_list_other_details = $data["packages_list_other_details"];
 $packages_list->packages_list_button_text = $data["packages_list_button_text"];
+$packages_list->packages_list_button_link = $data["packages_list_button_link"];
 $packages_list->packages_list_is_highlighted = $data["packages_list_is_highlighted"];
 $packages_list->packages_list_category_name_id = $data["packages_list_category_name_id"];
 $packages_list->packages_list_category_name = $data["packages_list_category_name"];

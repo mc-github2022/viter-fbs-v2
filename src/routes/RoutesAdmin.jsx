@@ -57,6 +57,7 @@ import CareersPage from "../components/pages/developer/why-fbs-page/careers-page
 import GraphicDesign from "../components/pages/developer/services/web-design/graphic-design/GraphicDesign";
 import ContactFormSettings from "../components/pages/developer/contact-form-settings/ContactFormSettings";
 import ContactFormView from "../components/pages/developer/contact-form-settings/ContactFormView";
+import SocialMediaManagement from "../components/pages/developer/services/va-solutions/social-media-management/SocialMediaManagement";
 
 export const routesAdmin = [
   {
@@ -384,6 +385,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <Marketing />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/virtual-assistant-solutions/social-media-management`,
+    element: (
+      <ProtectedRouteOther>
+        <SocialMediaManagement />
       </ProtectedRouteOther>
     ),
   },

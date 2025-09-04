@@ -16,6 +16,7 @@ import VaCreativeSupportPage from "../components/pages/website/virtualSolution/v
 import VaMarketingPage from "../components/pages/website/virtualSolution/vaMarketing/VaMarketingPage";
 import VaMiscellaneousPage from "../components/pages/website/virtualSolution/vaMiscellaneous/VaMiscellaneousPage";
 import VaResearchPage from "../components/pages/website/virtualSolution/vaResearch/VaResearchPage";
+import VaSocialMediaManagementPage from "../components/pages/website/virtualSolution/vaSocialMediaManagement/VaSocialMediaManagementPage";
 import VaTechSupportPage from "../components/pages/website/virtualSolution/vaTechSupport/VaTechSupportPage";
 import ServiceOnlineDonationPage from "../components/pages/website/webapp/serviceDonation/ServiceOnlineDonationPage";
 import ServiceEnrollmentPage from "../components/pages/website/webapp/serviceEnrollment/ServiceEnrollmentPage";
@@ -77,6 +78,10 @@ export const RoutesWebsite = [
   {
     path: `${devNavUrl}/va-miscellaneous`,
     element: <VaMiscellaneousPage />,
+  },
+  {
+    path: `${devNavUrl}/social-media-management`,
+    element: <VaSocialMediaManagementPage />,
   },
   {
     path: `${devNavUrl}/webapp-payroll`,

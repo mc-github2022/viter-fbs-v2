@@ -526,6 +526,9 @@ const ModalAddIndustryTestimonial = ({ setIsAdd, itemEdit }) => {
                             Business Support
                           </option>
                           <option value="Marketing">Marketing</option>
+                          <option value="Social Media Management">
+                            Social Media Management
+                          </option>
                           <option value="College On-the-job- Training">
                             College On-the-job- Training
                           </option>

@@ -12,6 +12,7 @@ class PackagesList
     public $packages_list_foreign_price_desc;
     public $packages_list_other_details;
     public $packages_list_button_text;
+    public $packages_list_button_link;
     public $packages_list_is_highlighted;
     public $packages_list_category_name_id;
     public $packages_list_category_name;
@@ -121,6 +122,7 @@ class PackagesList
             $sql .= "packages_list_foreign_price_desc, ";
             $sql .= "packages_list_other_details, ";
             $sql .= "packages_list_button_text, ";
+            $sql .= "packages_list_button_link, ";
             $sql .= "packages_list_is_highlighted, ";
             $sql .= "packages_list_created, ";
             $sql .= "packages_list_datetime ) values ( ";
@@ -135,6 +137,7 @@ class PackagesList
             $sql .= ":packages_list_foreign_price_desc, ";
             $sql .= ":packages_list_other_details, ";
             $sql .= ":packages_list_button_text, ";
+            $sql .= ":packages_list_button_link, ";
             $sql .= ":packages_list_is_highlighted, ";
             $sql .= ":packages_list_created, ";
             $sql .= ":packages_list_datetime )";
@@ -151,6 +154,7 @@ class PackagesList
                 "packages_list_foreign_price_desc" => $this->packages_list_foreign_price_desc,
                 "packages_list_other_details" => $this->packages_list_other_details,
                 "packages_list_button_text" => $this->packages_list_button_text,
+                "packages_list_button_link" => $this->packages_list_button_link,
                 "packages_list_is_highlighted" => $this->packages_list_is_highlighted,
                 "packages_list_created" => $this->packages_list_created,
                 "packages_list_datetime" => $this->packages_list_datetime,
@@ -176,6 +180,7 @@ class PackagesList
             $sql .= "packages_list_foreign_price_desc = :packages_list_foreign_price_desc, ";
             $sql .= "packages_list_other_details = :packages_list_other_details, ";
             $sql .= "packages_list_button_text = :packages_list_button_text, ";
+            $sql .= "packages_list_button_link = :packages_list_button_link, ";
             $sql .= "packages_list_is_highlighted = :packages_list_is_highlighted, ";
             $sql .= "packages_list_datetime = :packages_list_datetime ";
             $sql .= "where packages_list_aid = :packages_list_aid ";
@@ -191,6 +196,7 @@ class PackagesList
                 "packages_list_foreign_price_desc" => $this->packages_list_foreign_price_desc,
                 "packages_list_other_details" => $this->packages_list_other_details,
                 "packages_list_button_text" => $this->packages_list_button_text,
+                "packages_list_button_link" => $this->packages_list_button_link,
                 "packages_list_is_highlighted" => $this->packages_list_is_highlighted,
                 "packages_list_datetime" => $this->packages_list_datetime,
                 "packages_list_aid" => $this->packages_list_aid,

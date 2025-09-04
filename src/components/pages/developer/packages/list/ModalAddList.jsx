@@ -179,6 +179,9 @@ const ModalAddList = ({ itemEdit }) => {
     packages_list_button_text: itemEdit
       ? itemEdit.packages_list_button_text
       : "",
+    packages_list_button_link: itemEdit
+      ? itemEdit.packages_list_button_link
+      : "",
     packages_list_is_highlighted: itemEdit
       ? itemEdit.packages_list_is_highlighted
       : "",
@@ -332,6 +335,14 @@ const ModalAddList = ({ itemEdit }) => {
                           label="*Button"
                           type="text"
                           name="packages_list_button_text"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+                      <div className="input-wrapper">
+                        <InputText
+                          label="*Button Link"
+                          type="text"
+                          name="packages_list_button_link"
                           disabled={mutation.isPending}
                         />
                       </div>

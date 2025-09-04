@@ -1,11 +1,8 @@
-import React from "react";
-import { sectionPartnersLogos, sectionPartnersTitle } from "./data";
-import {
-  devBaseImgUrl,
-  getConvertStringToJSONparseData,
-  googleHDViewLink,
-} from "../../../../helpers/functions-general";
 import useQueryData from "../../../../custom-hooks/useQueryData";
+import {
+  getConvertStringToJSONparseData,
+  googleHDViewLink
+} from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
 
 const VaMarketingPartners = ({ marketingTitlesData }) => {

@@ -1,0 +1,31 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/packages/list/create.php
+    -> rest/v1/controllers/developer/packages/list/update.php
+    -> rest/v1/controllers/developer/services/va-solutions/social-media/social-banner
+    -> rest/v1/controllers/developer/services/va-solutions/social-media/social-overview
+    -> rest/v1/controllers/developer/services/va-solutions/social-media/social-scope
+    -> rest/v1/controllers/developer/services/va-solutions/social-media/social-titles
+
+MODELS
+    -> rest/v1/models/developer/packages/list/PackagesList.php
+    -> rest/v1/models/developer/services/va-solutions/social-media/SocialMediaBanner.php
+    -> rest/v1/models/developer/services/va-solutions/social-media/SocialMediaOverview.php
+    -> rest/v1/models/developer/services/va-solutions/social-media/SocialMediaScope.php
+    -> rest/v1/models/developer/services/va-solutions/social-media/SocialMediaTitles.php
+
+HTACCESS
+    -> # SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - BANNER
+    -> # SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - OVERVIEW
+    -> # SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - SCOPE
+    -> # SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - TITLES
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_packages_list.sql
+        NOTE: this column is added
+            `packages_list_button_link` varchar(100) NOT NULL,
+    -> rest/db-backup/fbsv2_services_social_banner.sql
+    -> rest/db-backup/fbsv2_services_social_overview.sql
+    -> rest/db-backup/fbsv2_services_social_scope.sql
+    -> rest/db-backup/fbsv2_services_social_titles.sql

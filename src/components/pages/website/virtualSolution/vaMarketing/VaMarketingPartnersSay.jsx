@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
-import { clientSays, clientSaysTitle } from "./data";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   devBaseImgUrl,

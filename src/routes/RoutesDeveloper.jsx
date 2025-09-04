@@ -62,6 +62,7 @@ import EventsAndActivities from "../components/pages/developer/why-fbs-page/even
 import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-with-us/WhyWorkWithUs";
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import ContactFormView from "../components/pages/developer/contact-form-settings/ContactFormView";
+import SocialMediaManagement from "../components/pages/developer/services/va-solutions/social-media-management/SocialMediaManagement";
 
 export const routesDeveloper = [
   {
@@ -405,6 +406,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <Marketing />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/virtual-assistant-solutions/social-media-management`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <SocialMediaManagement />
       </ProtectedRouteDeveloper>
     ),
   },

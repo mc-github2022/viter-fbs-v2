@@ -1,0 +1,60 @@
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import {
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
+
+const VaSocialMediaManagementPartners = ({ socialTitlesData }) => {
+  const { data: partnersData } = useQueryData(
+    "/v1/partners", // endpoint
+    "get", // method
+    "partners", // key
+    {},
+    null,
+    true
+  );
+  return (
+    <>
+      <section
+        className=" pb-16 md:py-20 -translate-y-1 bg-light"
+        id="VaSocialMediaManagementPartners"
+      >
+        <div className="customContainer">
+          <p>
+            {socialTitlesData?.data?.[0]?.social_titles_partners_subtitle || ""}
+          </p>
+          <h2 className="text-[clamp(20px,7vw,35px)] font-semibold text-primary leading-[1.1] mb-8">
+            {socialTitlesData?.data?.[0]?.social_titles_partners_title || ""}
+          </h2>
+
+          <ul className="flex flex-wrap mt-20 justify-center gap-10 md:gap-20 items-center">
+            {partnersData?.data
+              ?.filter(
+                (item) => item.partners_page === "Social Media Management"
+              )
+              ?.map((item) => {
+                const partnersImages =
+                  getConvertStringToJSONparseData(item.partners_img) || [];
+
+                return (
+                  <li key={item.id || item.partners_name} className="relative">
+                    {partnersImages.map((img, index) => (
+                      <LoadImages
+                        className="w-[150px] h-[150px] object-contain"
+                        url={`${googleHDViewLink}${img?.id}`}
+                        alt={item.partners_name}
+                        key={index}
+                      />
+                    ))}
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default VaSocialMediaManagementPartners;

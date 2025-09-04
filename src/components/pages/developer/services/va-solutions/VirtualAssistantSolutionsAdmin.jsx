@@ -52,6 +52,17 @@ const VirtualAssistantSolutionsAdmin = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
+                <div className="list-button border-l-4 border-transparent hover:border-l-4 pl-1 hover:border-primary hover:transition-all hover:ease-in-out ">
+                  <Link
+                    to={`${devNavUrl}/services/virtual-assistant-solutions/social-media-management`}
+                    className="flex items-center gap-2 py-3 "
+                  >
+                    <span className="flex items-center gap-2  text-xs font-bold">
+                      Social Media Management
+                    </span>
+                    <GoChevronRight className="text-sm" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
