@@ -16,7 +16,10 @@ import {
 } from "../../../../../../store/StoreAction";
 import { StoreContext } from "../../../../../../store/StoreContext";
 
-const ModalUpdateSocialMediaScopeTitle = ({ itemEdit, socialTitlesData }) => {
+const ModalUpdateSocialMediaServicesTitle = ({
+  itemEdit,
+  socialServicesTitleData,
+}) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
 
@@ -32,14 +35,16 @@ const ModalUpdateSocialMediaScopeTitle = ({ itemEdit, socialTitlesData }) => {
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        socialTitlesData?.data?.length
-          ? `${apiVersion}/social-titles/${socialTitlesData.data[0].social_titles_aid}` // update
-          : `${apiVersion}/social-titles`, // create
-        socialTitlesData?.data?.length ? "put" : "post",
+        socialServicesTitleData?.data?.length
+          ? `${apiVersion}/social-services-title/${socialServicesTitleData.data[0].social_services_title_aid}` // update
+          : `${apiVersion}/social-services-title`, // create
+        socialServicesTitleData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["social-titles"] });
+      queryClient.invalidateQueries({
+        queryKey: ["social-services-title"],
+      });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -59,11 +64,20 @@ const ModalUpdateSocialMediaScopeTitle = ({ itemEdit, socialTitlesData }) => {
   }, []);
 
   const initVal = {
-    isUpdateSocialTitle: itemEdit,
-    social_titles_overview_subtitle:
-      socialTitlesData?.data?.[0]?.social_titles_overview_subtitle ?? "",
-    social_titles_overview_title:
-      socialTitlesData?.data?.[0]?.social_titles_overview_title ?? "",
+    socialServicesTitleUpdate: itemEdit,
+    social_services_title_black_a:
+      socialServicesTitleData?.data?.[0]?.social_services_title_black_a ?? "",
+    social_services_title_highlighted:
+      socialServicesTitleData?.data?.[0]?.social_services_title_highlighted ??
+      "",
+    social_services_title_black_b:
+      socialServicesTitleData?.data?.[0]?.social_services_title_black_b ?? "",
+    social_services_title_description:
+      socialServicesTitleData?.data?.[0]?.social_services_title_description ??
+      "",
+    social_services_title_button_text:
+      socialServicesTitleData?.data?.[0]?.social_services_title_button_text ??
+      "",
   };
 
   const yupSchema = Yup.object({});
@@ -76,7 +90,7 @@ const ModalUpdateSocialMediaScopeTitle = ({ itemEdit, socialTitlesData }) => {
       >
         <div className="modal-title">
           <h2 className="text-sm">
-            {itemEdit ? "Edit" : "Add"} Social Media Management Overview Title
+            {itemEdit ? "Edit" : "Add"} Social Media Management Services Title
           </h2>
           <button onClick={handleClose}>
             <GrFormClose className="text-[25px]" />
@@ -99,17 +113,41 @@ const ModalUpdateSocialMediaScopeTitle = ({ itemEdit, socialTitlesData }) => {
                   <div className="form-input ">
                     <div className="input-wrapper">
                       <InputText
-                        label="Subtitle"
+                        label="Title Black"
                         type="text"
-                        name="social_titles_overview_subtitle"
+                        name="social_services_title_black_a"
                         disabled={mutation.isPending}
                       />
                     </div>
                     <div className="input-wrapper">
                       <InputText
-                        label="Title"
+                        label="Title Highlighted"
                         type="text"
-                        name="social_titles_overview_title"
+                        name="social_services_title_highlighted"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Title Black"
+                        type="text"
+                        name="social_services_title_black_b"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputTextArea
+                        label="Description"
+                        type="text"
+                        name="social_services_title_description"
+                        disabled={mutation.isPending}
+                      />
+                    </div>
+                    <div className="input-wrapper">
+                      <InputText
+                        label="Button"
+                        type="text"
+                        name="social_services_title_button_text"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -142,4 +180,4 @@ const ModalUpdateSocialMediaScopeTitle = ({ itemEdit, socialTitlesData }) => {
   );
 };
 
-export default ModalUpdateSocialMediaScopeTitle;
+export default ModalUpdateSocialMediaServicesTitle;

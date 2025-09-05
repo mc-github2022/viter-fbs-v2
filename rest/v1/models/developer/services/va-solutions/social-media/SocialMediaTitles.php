@@ -3,8 +3,6 @@
 class SocialMediaTitles
 {
     public $social_titles_aid;
-    public $social_titles_overview_subtitle;
-    public $social_titles_overview_title;
     public $social_titles_packages_subtitle;
     public $social_titles_packages_title;
     public $social_titles_partners_subtitle;
@@ -39,31 +37,6 @@ class SocialMediaTitles
         return $query;
     }
 
-public function create()
-    {
-        try {
-            $sql = "insert into {$this->tblSocialMediaTitles}";
-            $sql .= "(social_titles_overview_subtitle, ";
-            $sql .= "social_titles_overview_title, ";
-            $sql .= "social_titles_created, ";
-            $sql .= "social_titles_datetime ) values ( ";
-            $sql .= ":social_titles_overview_subtitle, ";
-            $sql .= ":social_titles_overview_title, ";
-            $sql .= ":social_titles_created, ";
-            $sql .= ":social_titles_datetime )";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "social_titles_overview_subtitle" => $this->social_titles_overview_subtitle,
-                "social_titles_overview_title" => $this->social_titles_overview_title,
-                "social_titles_created" => $this->social_titles_created,
-                "social_titles_datetime" => $this->social_titles_datetime,
-            ]);
-            $this->lastInsertedId = $this->connection->lastInsertId();
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
 
     public function createPackagesTitle()
     {
@@ -143,27 +116,6 @@ public function create()
         return $query;
     }
 
-
-    public function update()
-    {
-        try {
-            $sql = "update {$this->tblSocialMediaTitles} set ";
-            $sql .= "social_titles_overview_subtitle = :social_titles_overview_subtitle, ";
-            $sql .= "social_titles_overview_title = :social_titles_overview_title, ";
-            $sql .= "social_titles_datetime = :social_titles_datetime ";
-            $sql .= "where social_titles_aid = :social_titles_aid ";
-            $query = $this->connection->prepare($sql);
-            $query->execute([
-                "social_titles_overview_subtitle" => $this->social_titles_overview_subtitle,
-                "social_titles_overview_title" => $this->social_titles_overview_title,
-                "social_titles_datetime" => $this->social_titles_datetime,
-                "social_titles_aid" => $this->social_titles_aid,
-            ]);
-        } catch (PDOException $ex) {
-            $query = false;
-        }
-        return $query;
-    }
 
     public function updatePackagesTitle()
     {

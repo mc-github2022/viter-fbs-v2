@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2025 at 10:37 AM
+-- Generation Time: Sep 05, 2025 at 02:45 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,8 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `fbsv2_services_social_titles` (
   `social_titles_aid` int(11) NOT NULL,
-  `social_titles_overview_subtitle` varchar(100) NOT NULL,
-  `social_titles_overview_title` varchar(100) NOT NULL,
   `social_titles_packages_subtitle` varchar(100) NOT NULL,
   `social_titles_packages_title` varchar(100) NOT NULL,
   `social_titles_partners_subtitle` varchar(100) NOT NULL,
@@ -45,8 +43,8 @@ CREATE TABLE `fbsv2_services_social_titles` (
 -- Dumping data for table `fbsv2_services_social_titles`
 --
 
-INSERT INTO `fbsv2_services_social_titles` (`social_titles_aid`, `social_titles_overview_subtitle`, `social_titles_overview_title`, `social_titles_packages_subtitle`, `social_titles_packages_title`, `social_titles_partners_subtitle`, `social_titles_partners_title`, `social_titles_testimonial_subtitle`, `social_titles_testimonial_title`, `social_titles_created`, `social_titles_datetime`) VALUES
-(1, '', 'Why Choose Us?', 'Choose what\'s best for your needs', 'Our Packages', 'Clients Who Trusted Their', 'Growth With Us.', 'What Our', 'Clients Say', '2025-09-04 16:34:55', '2025-09-04 16:36:28');
+INSERT INTO `fbsv2_services_social_titles` (`social_titles_aid`, `social_titles_packages_subtitle`, `social_titles_packages_title`, `social_titles_partners_subtitle`, `social_titles_partners_title`, `social_titles_testimonial_subtitle`, `social_titles_testimonial_title`, `social_titles_created`, `social_titles_datetime`) VALUES
+(1, 'Choose what\'s best for your needs', 'Our Packages', 'Clients Who Trusted Their', 'Growth With Us.', 'What Our', 'Clients Say', '2025-09-04 16:34:55', '2025-09-05 08:45:22');
 
 --
 -- Indexes for dumped tables

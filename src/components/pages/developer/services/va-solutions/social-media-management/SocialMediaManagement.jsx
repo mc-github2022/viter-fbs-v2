@@ -22,12 +22,12 @@ import SocialMediaOverview from "./social-overview/SocialMediaOverview";
 import SocialMediaPartners from "./social-partners/SocialMediaPartners";
 import SocialMediaPartnerSays from "./social-partnersays/SocialMediaPartnerSays";
 import SocialMediaPricing from "./social-pricing/SocialMediaPricing";
-import ModalUpdateSocialMediaScope from "./social-scope/ModalUpdateSocialMediaScope";
-import SocialMediaScope from "./social-scope/SocialMediaScope";
+import ModalUpdateSocialMediaServicesList from "./social-services/ModalUpdateSocialMediaServicesList";
+import ModalUpdateSocialMediaServicesTitle from "./social-services/ModalUpdateSocialMediaServicesTitle";
+import SocialMediaServices from "./social-services/SocialMediaServices";
 import ModalUpdateSocialMediaPackagesTitle from "./social-titles/ModalUpdateSocialMediaPackagesTitle";
 import ModalUpdateSocialMediaPartnerSaysTitle from "./social-titles/ModalUpdateSocialMediaPartnerSaysTitle";
 import ModalUpdateSocialMediaPartnersTitle from "./social-titles/ModalUpdateSocialMediaPartnersTitle";
-import ModalUpdateSocialMediaScopeTitle from "./social-titles/ModalUpdateSocialMediaScopeTitle";
 
 const SocialMediaManagement = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -47,13 +47,20 @@ const SocialMediaManagement = () => {
   );
 
   const {
-    isLoading: isLoadingScope,
-    isFetching: isFetchingScope,
-    data: socialScopeData,
+    isFetchingServices,
+    isLoadingServices,
+    error,
+    data: socialServicesData,
   } = useQueryData(
-    `${apiVersion}/social-scope`, // endpoint
+    `${apiVersion}/social-services-list`, // endpoint
     "get", // method
-    "social-scope" // key
+    "social-services-list" // key
+  );
+
+  const { data: socialServicesTitleData } = useQueryData(
+    `${apiVersion}/social-services-title`, // endpoint
+    "get", // method
+    "social-services-title" // key
   );
 
   const { data: socialTitlesData } = useQueryData(
@@ -94,14 +101,24 @@ const SocialMediaManagement = () => {
     setItemEdit("socialOverviewListUpdate");
   };
 
-  const handleUpdateSocialScope = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "social-scope" }));
-    setItemEdit(null);
+  const handleUpdateSocialServicesTitle = () => {
+    dispatch(
+      setIsUpdateHome({
+        modal: true,
+        modalCode: "social-services-title",
+      })
+    );
+    setItemEdit("socialServicesUpdateTitle");
   };
 
-  const handleUpdateSocialScopeTitles = () => {
-    dispatch(setIsUpdateHome({ modal: true, modalCode: "social-scope-title" }));
-    setItemEdit("scopeTitleUpdate");
+  const handleUpdateSocialServicesList = () => {
+    dispatch(
+      setIsUpdateHome({
+        modal: true,
+        modalCode: "social-services-list",
+      })
+    );
+    setItemEdit(null);
   };
 
   const handleUpdateSocialPackagesTitles = () => {
@@ -183,14 +200,18 @@ const SocialMediaManagement = () => {
                 handleUpdateSocialOverviewList={handleUpdateSocialOverviewList}
                 socialOverviewData={socialOverviewData}
               />
-              <SocialMediaScope
-                handleUpdateSocialScopeTitles={handleUpdateSocialScopeTitles}
-                handleUpdateSocialScope={handleUpdateSocialScope}
+              <SocialMediaServices
+                pageName={pageName}
+                handleUpdateSocialServicesTitle={
+                  handleUpdateSocialServicesTitle
+                }
+                handleUpdateSocialServicesList={handleUpdateSocialServicesList}
+                socialServicesData={socialServicesData}
+                socialServicesTitleData={socialServicesTitleData}
+                isFetchingServices={isFetchingServices}
+                isLoadingServices={isLoadingServices}
+                error={error}
                 setItemEdit={setItemEdit}
-                isLoadingScope={isLoadingScope}
-                isFetchingScope={isFetchingScope}
-                socialTitlesData={socialTitlesData}
-                socialScopeData={socialScopeData}
               />
               <SocialMediaPricing
                 handleUpdateSocialPackagesTitles={
@@ -246,16 +267,16 @@ const SocialMediaManagement = () => {
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "social-scope" && (
-          <ModalUpdateSocialMediaScope itemEdit={itemEdit} />
+        store.isUpdateHome?.modalCode === "social-services-title" && (
+          <ModalUpdateSocialMediaServicesTitle
+            itemEdit={itemEdit}
+            socialServicesTitleData={socialServicesTitleData}
+          />
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "social-scope-title" && (
-          <ModalUpdateSocialMediaScopeTitle
-            itemEdit={itemEdit}
-            socialTitlesData={socialTitlesData}
-          />
+        store.isUpdateHome?.modalCode === "social-services-list" && (
+          <ModalUpdateSocialMediaServicesList itemEdit={itemEdit} />
         )}
 
       {store.isUpdateHome?.modal &&

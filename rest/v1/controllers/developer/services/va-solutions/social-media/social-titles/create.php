@@ -17,12 +17,6 @@ $title->social_titles_created = date("Y-m-d H:i:s");
 $title->social_titles_datetime = date("Y-m-d H:i:s");
 
 
-if ($isUpdateSocialTitle == "scopeTitleUpdate") {
-    $title->social_titles_overview_subtitle = $data["social_titles_overview_subtitle"];
-    $title->social_titles_overview_title = $data["social_titles_overview_title"];
-
-    $query = checkCreate($title);
-}
 if ($isUpdateSocialTitle == "packagesTitleUpdate") {
     $title->social_titles_packages_subtitle = $data["social_titles_packages_subtitle"];
     $title->social_titles_packages_title = $data["social_titles_packages_title"];

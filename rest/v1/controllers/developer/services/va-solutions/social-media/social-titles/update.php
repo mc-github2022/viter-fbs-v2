@@ -16,17 +16,6 @@ if (array_key_exists("social_titlesid", $_GET)) {
   $isUpdateSocialTitle = $data['isUpdateSocialTitle'];
 
 
-  if ($isUpdateSocialTitle == "scopeTitleUpdate") {
-    $title->social_titles_aid = $_GET['social_titlesid'];
-    $title->social_titles_overview_subtitle = $data["social_titles_overview_subtitle"];
-    $title->social_titles_overview_title = $data["social_titles_overview_title"];
-
-    $title->social_titles_datetime = date("Y-m-d H:i:s");
-    checkId($title->social_titles_aid);
-    // update
-    $query = checkUpdate($title);
-  }
-
   if ($isUpdateSocialTitle == "packagesTitleUpdate") {
     $title->social_titles_aid = $_GET['social_titlesid'];
     $title->social_titles_packages_subtitle = $data["social_titles_packages_subtitle"];

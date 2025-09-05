@@ -449,9 +449,13 @@ RewriteRule ^social/([0-9]+)$ controllers/developer/services/va-solutions/social
 RewriteRule ^social-overview$ controllers/developer/services/va-solutions/social-media/social-overview/socialOverview.php [L]
 RewriteRule ^social-overview/([0-9]+)$ controllers/developer/services/va-solutions/social-media/social-overview/socialOverview.php?social_overviewid=$1 [L]
 
-# SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - SCOPE
-RewriteRule ^social-scope$ controllers/developer/services/va-solutions/social-media/social-scope/socialScope.php [L]
-RewriteRule ^social-scope/([0-9]+)$ controllers/developer/services/va-solutions/social-media/social-scope/socialScope.php?social_scopeid=$1 [L]
+# SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - SERVICES TITLE
+RewriteRule ^social-services-title$ controllers/developer/services/va-solutions/social-media/social-services-title/socialServicesTitle.php [L]
+RewriteRule ^social-services-title/([0-9]+)$ controllers/developer/services/va-solutions/social-media/social-services-title/socialServicesTitle.php?social_services_titleid=$1 [L]
+
+# SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - SERVICES LIST
+RewriteRule ^social-services-list$ controllers/developer/services/va-solutions/social-media/social-services-list/socialServicesList.php [L]
+RewriteRule ^social-services-list/([0-9]+)$ controllers/developer/services/va-solutions/social-media/social-services-list/socialServicesList.php?social_services_listid=$1 [L]
 
 # SERVICES - VA SOLUTIONS - SOCIAL MEDIA MANAGEMENT - TITLES
 RewriteRule ^social-titles$ controllers/developer/services/va-solutions/social-media/social-titles/socialTitles.php [L]

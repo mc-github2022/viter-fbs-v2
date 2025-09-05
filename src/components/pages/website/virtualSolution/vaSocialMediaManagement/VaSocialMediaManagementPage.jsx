@@ -10,10 +10,10 @@ import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import { StoreContext } from "../../../../store/StoreContext";
 import VaSocialMediaManagementBanner from "./VaSocialMediaManagementBanner";
 import VaSocialMediaManagementOverview from "./VaSocialMediaManagementOverview";
-import VaSocialMediaManagementScope from "./VaSocialMediaManagementScope";
-import VaSocialMediaManagementPricing from "./VaSocialMediaManagementPricing";
 import VaSocialMediaManagementPartners from "./VaSocialMediaManagementPartners";
 import VaSocialMediaManagementPartnersSay from "./VaSocialMediaManagementPartnersSay";
+import VaSocialMediaManagementPricing from "./VaSocialMediaManagementPricing";
+import VaSocialMediaManagementServiceList from "./VaSocialMediaManagementServiceList";
 
 const VaSocialMediaManagementPage = () => {
   const [pageName, setPageName] = React.useState("social-media-management");
@@ -63,10 +63,7 @@ const VaSocialMediaManagementPage = () => {
       <Header pageName={pageName} services={"default"} page={"Home"} />
       <VaSocialMediaManagementBanner />
       <VaSocialMediaManagementOverview />
-      <VaSocialMediaManagementScope
-        pageName={pageName}
-        socialTitlesData={socialTitlesData}
-      />
+      <VaSocialMediaManagementServiceList pageName={pageName} />
       <VaSocialMediaManagementPricing socialTitlesData={socialTitlesData} />
       <VaSocialMediaManagementPartners socialTitlesData={socialTitlesData} />
       <VaSocialMediaManagementPartnersSay socialTitlesData={socialTitlesData} />
