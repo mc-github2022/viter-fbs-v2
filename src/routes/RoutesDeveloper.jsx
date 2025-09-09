@@ -458,7 +458,7 @@ export const routesDeveloper = [
     ),
   },
   {
-    path: `${devNavUrl}/${UrlDeveloper}/why-work-with-us`,
+    path: `${devNavUrl}/${UrlDeveloper}/why-working-with-us`,
     element: (
       <ProtectedRouteDeveloper>
         <WhyWorkWithUs />

@@ -13,7 +13,7 @@ const LearningCenterSolutionsAdmin = () => {
           <div className="mx-5 pt-2">
             <div className="py-5 flex justify-between ">
               <div className="text-sm text-[black] font-semibold">
-                <h2>Learning Center Solutions</h2>
+                <h2>Learning Solutions</h2>
               </div>
             </div>
             <div className=" pb-4 ">

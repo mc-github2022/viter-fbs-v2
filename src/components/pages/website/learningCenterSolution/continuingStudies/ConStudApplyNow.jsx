@@ -99,7 +99,7 @@ const ConStudApplyNow = ({ pageName }) => {
           thePageName={pageName}
           setLcssForm={setLcssForm}
           services={"lcss services"}
-          page={"High School Work Immersion"}
+          page={"Continuing Study"}
         />
       )}
     </>

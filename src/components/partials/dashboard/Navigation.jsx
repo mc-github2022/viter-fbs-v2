@@ -345,7 +345,7 @@ const Navigation = ({ menu, submenu }) => {
                             : "border-none text-dark"
                         }`}
                       >
-                        Learning Center Solutions
+                        Learning Solutions
                       </li>
                     </Link>
 

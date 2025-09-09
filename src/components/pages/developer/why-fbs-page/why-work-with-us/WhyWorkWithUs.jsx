@@ -209,7 +209,7 @@ const WhyWorkWithUs = () => {
   return (
     <>
       <section id="" className="bg-light">
-        <Navigation menu="whyFBS" submenu="why-work-with-us" />
+        <Navigation menu="whyFBS" submenu="why-working-with-us" />
         <Dashboard>
           <div className="mx-5 pt-2">
             <div className="text-sm text-[black] font-semibold py-5">

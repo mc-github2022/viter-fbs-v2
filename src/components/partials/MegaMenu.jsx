@@ -27,7 +27,6 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
   const [menuIdentifier, setMenuIdentifier] = React.useState("");
   const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
 
-
   const navigate = useNavigate();
 
   const handleGoToPage = (item) => {
@@ -476,7 +475,7 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
                     onClick={() => handleServiceDropdown("lcss")}
                   >
                     <GraduationCap />{" "}
-                    <span className="mx-2">LEARNING CENTER SOLUTIONS</span>
+                    <span className="mx-2">LEARNING SOLUTIONS</span>
                   </h2>
                   <ul
                     className={`${
