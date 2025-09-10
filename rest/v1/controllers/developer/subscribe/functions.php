@@ -35,8 +35,8 @@ function checkCreateSubscriber($object)
 // read audience
 function checkReadAudience($object)
 {
-    $query = $object->readAudience();
-    checkQuery($query, "Empty records. (read audience)");
+    $query = $object->readAudienceByClient();
+    checkQuery($query, "Empty records. (read by client audience)");
     return $query;
 }
 

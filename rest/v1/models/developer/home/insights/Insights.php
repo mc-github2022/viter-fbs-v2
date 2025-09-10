@@ -49,6 +49,25 @@ class Insights
         return $query;
     }
 
+    public function readById()
+    {
+        try {
+            $sql = "select ";
+            $sql .= "* ";
+            $sql .= "from {$this->tblInsights} ";
+            $sql .= "where home_insights_aid = :home_insights_aid ";
+            $sql .= "order by home_insights_is_active desc, ";
+            $sql .= "home_insights_date desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "home_insights_aid" => $this->home_insights_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
     public function readLimit()
     {
         try {

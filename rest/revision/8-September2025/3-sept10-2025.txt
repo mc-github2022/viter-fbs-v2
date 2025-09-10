@@ -1,0 +1,19 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/subscribe/functions.php
+    -> rest/v1/controllers/developer/subscribe/readClientAudience.php
+    -> rest/v1/controllers/developer/home/insights/read.php
+    -> 
+
+MODELS
+    -> rest/v1/models/developer/home/insights/Insights.php
+    -> rest/v1/models/developer/subscribe/Subscribe.php
+
+HTACCESS
+    -> # SUBSCRIBER
+        - RewriteRule ^subscribe/readClientAudience$ controllers/developer/subscribe/readClientAudience.php [L]
+
+DB BACKUP
+    -> 
+

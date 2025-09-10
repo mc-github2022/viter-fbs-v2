@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
-  devBaseImgUrl,
   devNavUrl,
   getConvertStringToJSONparseData,
-  googleHDViewLink,
+  googleHDViewLink
 } from "../../../helpers/functions-general";
 import LoadImages from "../../../partials/LoadImages";
 
@@ -202,7 +201,7 @@ const Insights = () => {
                       return (
                         <div key={key} className="md:px-0">
                           <Link
-                            to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                            to={`${devNavUrl}/insight/${post.home_insights_slug}?id=${post.home_insights_aid}`}
                           >
                             {insightsImages.map((image, index) => (
                               <div

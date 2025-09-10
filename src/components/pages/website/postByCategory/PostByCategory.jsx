@@ -93,8 +93,7 @@ const PostByCategory = () => {
 
   return (
     <>
-      <Header services={"default"}
-                page={"Home"}/>
+      <Header services={"default"} page={"Home"} />
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           <h4 className="text-lg mb-8">
@@ -121,7 +120,7 @@ const PostByCategory = () => {
                 </div>
               ))}
             </div>
-            <div className="order-1 mt-6 md:mt-0">
+            {/* <div className="order-1 mt-6 md:mt-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold mb-10 text-dark">
                   Recent Posts
@@ -199,7 +198,7 @@ const PostByCategory = () => {
                     })}
                 </ul>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

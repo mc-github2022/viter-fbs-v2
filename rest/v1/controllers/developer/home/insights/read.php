@@ -11,7 +11,7 @@ $returnData = [];
 if (array_key_exists("home_insightsid", $_GET)) {
   $home_insights->home_insights_aid = $_GET['home_insightsid'];
   checkId($home_insights->home_insights_aid);
-  $query = checkReadAll($home_insights);
+  $query = checkReadById($home_insights);
   http_response_code(200);
   getQueriedData($query);
 }

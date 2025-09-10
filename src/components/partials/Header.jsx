@@ -24,6 +24,9 @@ const Header = ({ pageName, services, page }) => {
   const [subjectNotif, setSubjectNotif] = React.useState("get-started-home");
   const { store, dispatch } = React.useContext(StoreContext);
   const [toggleNav, setToggleNav] = React.useState(false);
+  const [toggleWhyUs, setToggleWhyUs] = React.useState(false);
+  const [toggleMenu, setToggleMenu] = React.useState(false);
+  const [modalContact, setModalContact] = React.useState(false);
   const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
 
   const navigate = useNavigate();
@@ -40,7 +43,8 @@ const Header = ({ pageName, services, page }) => {
     "packages-category", // key
     {},
     null,
-    true
+    true,
+    toggleMenu || toggleWhyUs
   );
 
   const {
@@ -65,19 +69,16 @@ const Header = ({ pageName, services, page }) => {
     setToggleMenu(false);
   };
 
-  const [toggleWhyUs, setToggleWhyUs] = React.useState(false);
   const handdleWhyUs = () => {
     setToggleWhyUs(!toggleWhyUs);
     setToggleMenu(false);
   };
 
-  const [toggleMenu, setToggleMenu] = React.useState(false);
   const handleToggleMenu = () => {
     setToggleMenu(!toggleMenu);
     setToggleWhyUs(false);
   };
 
-  const [modalContact, setModalContact] = React.useState(false);
   const handleModalContact = () => {
     setModalContact(!modalContact);
   };
@@ -117,12 +118,12 @@ const Header = ({ pageName, services, page }) => {
         >
           <div className="wrapper flex justify-between items-center">
             <div className="theLogo relative">
-                  <Link
-                    to={`${devNavUrl}/`}
-                    aria-label="Frontline Business Solutions logo"
-                  >
-                    <FbsLogoMd />
-                  </Link>
+              <Link
+                to={`${devNavUrl}/`}
+                aria-label="Frontline Business Solutions logo"
+              >
+                <FbsLogoMd />
+              </Link>
             </div>
 
             <div

@@ -57,16 +57,14 @@ const Subscribe = ({ setSubscribe, notification_purpose = "subscribers" }) => {
     isLoading: roleIsLoading,
     isFetching: roleIsFetching,
     error: roleError,
-    data: audienceData,
+    data: audienceClientData,
   } = useQueryData(
-    `${apiVersion}/audience`, // endpoint
+    `${apiVersion}/subscribe/readClientAudience`, // endpoint
     "get", // method
     "audience" // key
   );
 
-  const defaultAudienceAid = audienceData?.data.filter(
-    (item) => item.audience_code === "audience_is_client"
-  )[0]["audience_aid"];
+  const defaultAudienceAid = audienceClientData?.data?.[0]?.audience_aid ?? "";
 
   const initVal = {
     subscriber_email: "",

@@ -60,7 +60,7 @@ class Subscribe
             $sql .= "where audience_is_active = 1 ";
             $sql .= "and audience_code != :audience_code ";
             $sql .= "order by audience_is_active desc, ";
-            $sql .= "role_name asc ";
+            $sql .= "subscriber_email asc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "audience_code" => $this->audience_code,
@@ -71,6 +71,24 @@ class Subscribe
         return $query;
     }
 
+    // read audience Client only
+    public function readAudienceByClient()
+    {
+        try {
+            $sql = "select audience_aid, audience_code ";
+            $sql .= "from ";
+            $sql .= "{$this->tblAudience} ";
+            $sql .= "WHERE audience_code = :code ";
+            $sql .= "and audience_is_active = 1 ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "code" => "audience_is_client",
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
 
     public function readLimit()
     {

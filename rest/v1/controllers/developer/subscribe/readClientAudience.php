@@ -16,10 +16,9 @@ $response = new Response();
 // validate api key
 if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkApiKey();
-    checkPayload($data);
 
-    $subscribe->audience_code = $data['audience_code'];
-    $query = checkReadAudience($subscribe);
+    $subscribe->audience_code = "audience_is_client";
+    $query = $subscribe->readAudienceByClient();
     http_response_code(200);
     getQueriedData($query);
     // return 404 error if endpoint not available

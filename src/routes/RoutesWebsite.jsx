@@ -4,6 +4,7 @@ import BusinessRegPage from "../components/pages/website/accountingSolution/Busi
 import CompliancePage from "../components/pages/website/accountingSolution/compliance/CompliancePage";
 import CareerPage from "../components/pages/website/career/CareerPage";
 import EventsAndAct from "../components/pages/website/events/EventsAndAct";
+import AllInsightsArticleList from "../components/pages/website/home/AllInsightsArticleList";
 import Home from "../components/pages/website/home/Home";
 import LcssPage from "../components/pages/website/lcssPage/LcssPage";
 import ConStudPage from "../components/pages/website/learningCenterSolution/continuingStudies/ConStudPage";
@@ -170,5 +171,9 @@ export const RoutesWebsite = [
   {
     path: `${devNavUrl}/payment`,
     element: <Payment />,
+  },
+  {
+    path: `${devNavUrl}/all-insights`,
+    element: <AllInsightsArticleList />,
   },
 ];
