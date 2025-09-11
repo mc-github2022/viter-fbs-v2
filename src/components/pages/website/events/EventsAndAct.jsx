@@ -2,154 +2,176 @@ import React from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Slider from "react-slick/lib/slider";
-import Footer from "../../../partials/Footer";
-import Header from "../../../partials/Header";
-import { eventsAndAct } from "./data";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
   apiVersion,
-  devBaseImgUrl,
   devNavUrl,
+  formatDate,
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
+import Footer from "../../../partials/Footer";
+import Header from "../../../partials/Header";
+import BannerSliderLoader from "../home/bannerSliderLoader";
+import LoadImages from "../../../partials/LoadImages";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
+import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      style={{
-        background: "#ac1e72",
-        position: "absolute",
-        color: "white",
-        top: "50%",
-        right: "-6%",
-        fontSize: "3rem",
-        cursor: "pointer",
-        borderRadius: "100%",
-        width: "48px",
-        height: "48px",
-        display: "grid",
-        placeItems: "center",
-      }}
-      onClick={onClick}
-    >
-      <IoIosArrowForward className="text-3xl" />
-    </div>
-  );
-}
+// function SampleNextArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       style={{
+//         background: "#ac1e72",
+//         position: "absolute",
+//         color: "white",
+//         top: "50%",
+//         right: "-6%",
+//         fontSize: "3rem",
+//         cursor: "pointer",
+//         borderRadius: "100%",
+//         width: "48px",
+//         height: "48px",
+//         display: "grid",
+//         placeItems: "center",
+//       }}
+//       onClick={onClick}
+//     >
+//       <IoIosArrowForward className="text-3xl" />
+//     </div>
+//   );
+// }
 
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      style={{
-        position: "absolute",
-        background: "#ac1e72",
-        color: "white",
-        top: "50%",
-        left: "-6%",
-        fontSize: "3rem",
-        zIndex: "1",
-        cursor: "pointer",
-        borderRadius: "100%",
-        width: "48px",
-        height: "48px",
-        display: "grid",
-        placeItems: "center",
-      }}
-      onClick={onClick}
-    >
-      <IoIosArrowBack className="text-3xl" />
-    </div>
-  );
-}
+// function SamplePrevArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       style={{
+//         position: "absolute",
+//         background: "#ac1e72",
+//         color: "white",
+//         top: "50%",
+//         left: "-6%",
+//         fontSize: "3rem",
+//         zIndex: "1",
+//         cursor: "pointer",
+//         borderRadius: "100%",
+//         width: "48px",
+//         height: "48px",
+//         display: "grid",
+//         placeItems: "center",
+//       }}
+//       onClick={onClick}
+//     >
+//       <IoIosArrowBack className="text-3xl" />
+//     </div>
+//   );
+// }
 
 const EventsAndAct = () => {
   const [pageName, setPageName] = React.useState("events&Activities");
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+  const [page, setPage] = React.useState(1);
+
+  // React.useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   const {
-    isFetching,
+    data: result,
     error,
-    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
     status,
-    data: eventsAndActivitiesData,
-  } = useQueryData(
-    "/v1/eventsAndAct", // endpoint
-    "get", // method
-    "eventsAndAct", // key
-    {},
-    null,
-    true
-  );
+  } = useInfiniteQuery({
+    queryKey: ["eventsAndAct"],
+    queryFn: async ({ pageParam = 1 }) =>
+      await queryDataInfinite(
+        `${apiVersion}/eventsAndAct/search`, // search endpoint
+        `${apiVersion}/eventsAndAct/page/${pageParam}` // list endpoint
+      ),
+    getNextPageParam: (lastPage) => {
+      const nextOffset = lastPage.page + lastPage.count;
+      return nextOffset < lastPage.total ? nextOffset : undefined;
+    },
+    refetchOnWindowFocus: false,
+  });
+
+  // const {
+  //   isFetching,
+  //   error,
+  //   isLoading,
+  //   status,
+  //   data: eventsAndActivitiesData,
+  // } = useQueryData(
+  //   "/v1/eventsAndAct", // endpoint
+  //   "get", // method
+  //   "eventsAndAct" // key
+  // );
 
   const { data: eventsTitleData } = useQueryData(
     `${apiVersion}/events-title`, // endpoint
     "get", // method
-    "events-title", // key
-    {},
-    null,
-    true
+    "events-title" // key
   );
 
-  var EventsSliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dotsClass: "slickNav slick-dots",
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-    appendDots: (dots) => (
-      <div
-        style={{
-          borderRadius: "10px",
-          padding: "10px",
-          bottom: "-5rem",
-        }}
-      >
-        <ul style={{ margin: "0px" }}> {dots} </ul>
-      </div>
-    ),
-    customPaging: (i) => (
-      <div
-        style={{
-          width: "20px",
-          height: "20px",
-          color: "blue",
-          background: "gray",
-          borderRadius: "50%",
-          opacity: "50%",
-        }}
-      ></div>
-    ),
-    responsive: [
-      {
-        breakpoint: 1230,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 850,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-    ],
-  };
+  // var EventsSliderSettings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3,
+  //   slidesToScroll: 1,
+  //   dotsClass: "slickNav slick-dots",
+  //   nextArrow: <SampleNextArrow />,
+  //   prevArrow: <SamplePrevArrow />,
+  //   appendDots: (dots) => (
+  //     <div
+  //       style={{
+  //         borderRadius: "10px",
+  //         padding: "10px",
+  //         bottom: "-5rem",
+  //       }}
+  //     >
+  //       <ul style={{ margin: "0px" }}> {dots} </ul>
+  //     </div>
+  //   ),
+  //   customPaging: (i) => (
+  //     <div
+  //       style={{
+  //         width: "20px",
+  //         height: "20px",
+  //         color: "blue",
+  //         background: "gray",
+  //         borderRadius: "50%",
+  //         opacity: "50%",
+  //       }}
+  //     ></div>
+  //   ),
+  //   responsive: [
+  //     {
+  //       breakpoint: 1230,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 1,
+  //         arrows: true,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 850,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //         arrows: true,
+  //       },
+  //     },
+  //   ],
+  // };
   return (
     <>
       <Header pageName={pageName} services={"default"} page={"Home"} />
-      <div className="EventsAndAct pt-28 pb-16 md:pt-40 md:pb-20">
+      {/* <div className="EventsAndAct pt-28 pb-16 md:pt-40 md:pb-20">
         <div className="customContainer">
           <div className="theTitle mb-20">
             <p>{eventsTitleData?.data?.[0]?.events_title_subtitle_a || ""}</p>
@@ -214,7 +236,7 @@ const EventsAndAct = () => {
             </h2>
           )}
           {eventsAndActivitiesData?.data.filter(
-            (post) => post.events_activities_is_active === 1 
+            (post) => post.events_activities_is_active === 1
           ).length > 6 ? (
             <Slider {...EventsSliderSettings}>
               {eventsAndActivitiesData?.data
@@ -313,6 +335,213 @@ const EventsAndAct = () => {
                   );
                 })}
             </div>
+          )}
+        </div>
+      </div> */}
+
+      <div className="customContainer pt-20 md:pt-40 mb-20">
+        {isFetching ? (
+          <div className="w-full relative ">
+            <div className="pb-5 flex flex-col gap-5 ">
+              <div className="pb-5 flex flex-col ">
+                <BannerSliderLoader
+                  cols={1}
+                  count={1}
+                  className={"h-4 min-w-[200px] lg:max-w-96 rounded-xl "}
+                />
+                <BannerSliderLoader
+                  cols={1}
+                  count={1}
+                  className={"h-7 min-w-[300px] lg:max-w-[350px] rounded-xl "}
+                />
+                <BannerSliderLoader
+                  cols={1}
+                  count={1}
+                  className={"h-4 min-w-[400px] lg:max-w-[500px] rounded-xl "}
+                />
+              </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <BannerSliderLoader
+                  cols={1}
+                  count={1}
+                  classNameGrid={"gap-6"}
+                  className={
+                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  }
+                />
+                <div className="flex flex-col gap-2">
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:min-w-[600px] "}
+                  />
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:max-w-[300px] "}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <BannerSliderLoader
+                  cols={1}
+                  count={1}
+                  classNameGrid={"gap-6"}
+                  className={
+                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  }
+                />
+                <div className="flex flex-col gap-2">
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:min-w-[600px] "}
+                  />
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:max-w-[300px] "}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <BannerSliderLoader
+                  cols={1}
+                  count={1}
+                  classNameGrid={"gap-6"}
+                  className={
+                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  }
+                />
+                <div className="flex flex-col gap-2">
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:min-w-[600px] "}
+                  />
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:max-w-[300px] "}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <BannerSliderLoader
+                  cols={1}
+                  count={1}
+                  classNameGrid={"gap-6"}
+                  className={
+                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  }
+                />
+                <div className="flex flex-col gap-2">
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:min-w-[600px] "}
+                  />
+                  <BannerSliderLoader
+                    cols={1}
+                    count={1}
+                    classNameGrid={"gap-6"}
+                    className={"h-6 rounded-xl min-w-[200px] lg:max-w-[300px] "}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col lg:flex-row justify-between">
+            <div className="mb-12">
+              <div className="theTitle mb-20">
+                <p>
+                  {eventsTitleData?.data?.[0]?.events_title_subtitle_a || ""}
+                </p>
+                <h2 className="text-[clamp(20px,7vw,30px)] font-semibold text-primary">
+                  {eventsTitleData?.data?.[0]?.events_title_title || ""}
+                </h2>
+                <p>
+                  {eventsTitleData?.data?.[0]?.events_title_subtitle_b || ""}
+                </p>
+              </div>
+              <div className="popularPostLinks lg:w-[80%]">
+                <ul className="[&>li]:my-8">
+                  {result?.pages.map((page, key) => (
+                    <React.Fragment key={key}>
+                      {page?.data
+                        .filter(
+                          (post) => post.events_activities_is_active === 1
+                        )
+                        .map((post, key) => {
+                          const eventImage =
+                            getConvertStringToJSONparseData(
+                              post.events_activities_img
+                            ) || [];
+                          return (
+                            <div key={key}>
+                              <li className="my-5">
+                                <Link
+                                  to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}?id=${post.events_activities_aid}`}
+                                >
+                                  <div className="flex flex-col md:flex-row gap-4">
+                                    <div className="min-w-[300px] max-w-[300px] h-[180px]">
+                                      {eventImage.map((image, index) => (
+                                        <LoadImages
+                                          url={`${googleHDViewLink}${image?.id}`}
+                                          alt={`${post.events_activities_title}`}
+                                          className="min-w-[300px] max-w-[300px] h-[180px] rounded-lg object-cover"
+                                          key={index}
+                                        />
+                                      ))}
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                      <p className="line-clamp-3 font-bold">
+                                        {post.events_activities_title}
+                                      </p>
+                                      <p>
+                                        {formatDate(
+                                          post.events_activities_date
+                                        )}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </Link>
+                              </li>
+                            </div>
+                          );
+                        })}
+                    </React.Fragment>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="mb-10">
+          {hasNextPage ? (
+            <button
+              type="button"
+              disabled={isFetchingNextPage}
+              onClick={() => {
+                setPage((prev) => prev + 1);
+                fetchNextPage();
+              }}
+              className="text-sm uppercase font-poppins underline hover:text-primary"
+            >
+              {isFetchingNextPage ? <ButtonSpinner /> : <span>Load more</span>}
+            </button>
+          ) : (
+            <p className="text-sm uppercase font-poppins text-gray-500">
+              No More Events & Activities
+            </p>
           )}
         </div>
       </div>

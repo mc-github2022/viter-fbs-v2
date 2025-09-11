@@ -4,11 +4,14 @@ CONTROLLERS
     -> rest/v1/controllers/developer/subscribe/functions.php
     -> rest/v1/controllers/developer/subscribe/readClientAudience.php
     -> rest/v1/controllers/developer/home/insights/read.php
-    -> 
+    -> rest/v1/controllers/developer/home/insights/page.php
+    -> rest/v1/controllers/developer/events-and-activities/page.php
+    -> rest/v1/controllers/developer/events-and-activities/read.php
 
 MODELS
     -> rest/v1/models/developer/home/insights/Insights.php
     -> rest/v1/models/developer/subscribe/Subscribe.php
+    -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
 
 HTACCESS
     -> # SUBSCRIBER

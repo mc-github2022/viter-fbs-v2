@@ -11,7 +11,7 @@ $returnData = [];
 if (array_key_exists("events_activitiesid", $_GET)) {
   $events_activities->events_activities_aid = $_GET['events_activitiesid'];
   checkId($events_activities->events_activities_aid);
-  $query = checkReadAll($events_activities);
+  $query = checkReadById($events_activities);
   http_response_code(200);
   getQueriedData($query);
 }

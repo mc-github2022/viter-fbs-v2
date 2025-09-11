@@ -43,7 +43,7 @@ const Header = ({ pageName, services, page }) => {
     "packages-category", // key
     {},
     null,
-    true,
+    false,
     toggleMenu || toggleWhyUs
   );
 
@@ -54,10 +54,7 @@ const Header = ({ pageName, services, page }) => {
   } = useQueryData(
     `${apiVersion}/header`, // endpoint
     "get", // method
-    "header", // key
-    {},
-    null,
-    true
+    "header" // key
   );
 
   const headerLogoImg = getConvertStringToJSONparseData(
@@ -216,7 +213,6 @@ const Header = ({ pageName, services, page }) => {
                                   ? "text-primary !cursor-default"
                                   : ""
                               }`}
-                              onClick={() => handleGoToPage(item)}
                             >
                               {item.packages_category_name}
                             </a>

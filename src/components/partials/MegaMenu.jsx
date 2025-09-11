@@ -35,7 +35,11 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
     );
   };
 
-  const { data: packagesCatgeoryData } = useQueryData(
+  const {
+    isFetching: isFetchingPackagesCategory,
+    isLoading: isLoadingPackagesCategory,
+    data: packagesCatgeoryData,
+  } = useQueryData(
     `${apiVersion}/packages-category`, // endpoint
     "get", // method
     "packages-category", // key
@@ -54,21 +58,6 @@ const MegaMenu = ({ toggleMenu, setToggleMenu, pageName }) => {
     `${apiVersion}/specialOffers`, // endpoint
     "get", // method
     "specialOffers", // key
-    {},
-    null,
-    true
-  );
-
-  const {
-    isFetching: isFetchingPackagesCategory,
-    error: errorPackagesCategory,
-    isLoading: isLoadingPackagesCategory,
-    status: statusPackagesCategory,
-    data: packagesCategoryData,
-  } = useQueryData(
-    "/v1/packages-list", // endpoint
-    "get", // method
-    "packages-list", // key
     {},
     null,
     true

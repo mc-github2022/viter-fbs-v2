@@ -11,10 +11,7 @@ const Services = () => {
   const { data: servicesData } = useQueryData(
     `${apiVersion}/services`, // endpoint
     "get", // method
-    "services", // key
-    {},
-    null,
-    true
+    "services" // key
   );
   return (
     <section className="services py-10 relative" id="services">
@@ -117,9 +114,7 @@ const Services = () => {
                       {item.services_title_d}
                     </h3>
                   </div>
-                  <p className="mb-12">
-                  {item.services_description_d}
-                  </p>
+                  <p className="mb-12">{item.services_description_d}</p>
                   <span className="flex items-center gap-3 font-normal lg:text-light text-xl lg:group-hover:opacity-100 lg:opacity-0 lg:translate-y-8 lg:group-hover:translate-y-0 lg:transition-all absolute bottom-0">
                     {item.services_button_text_d} <FaArrowRight />
                   </span>

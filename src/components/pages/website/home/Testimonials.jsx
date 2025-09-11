@@ -21,19 +21,13 @@ const Testimonials = () => {
   } = useQueryData(
     "/v1/testimonials", // endpoint
     "get", // method
-    "testimonials", // key
-    {},
-    null,
-    true
+    "testimonials" // key
   );
 
   const { data: homeTitlesData } = useQueryData(
     "/v1/homeTitles", // endpoint
     "get", // method
-    "homeTitles", // key
-    {},
-    null,
-    true
+    "homeTitles" // key
   );
 
   const handleTestimonial = (item) => {

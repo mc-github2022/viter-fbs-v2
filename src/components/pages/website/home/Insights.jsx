@@ -6,7 +6,7 @@ import useQueryData from "../../../custom-hooks/useQueryData";
 import {
   devNavUrl,
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../helpers/functions-general";
 import LoadImages from "../../../partials/LoadImages";
 
@@ -71,19 +71,13 @@ const Insights = () => {
   } = useQueryData(
     "/v1/insights", // endpoint
     "get", // method
-    "insights", // key
-    {},
-    null,
-    true
+    "insights" // key
   );
 
   const { data: homeTitlesData } = useQueryData(
     "/v1/homeTitles", // endpoint
     "get", // method
-    "homeTitles", // key
-    {},
-    null,
-    true
+    "homeTitles" // key
   );
 
   const sliderRef = useRef(null);

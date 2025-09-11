@@ -37,7 +37,7 @@ class Insights
     public function readAll()
     {
         try {
-            $sql = "select * ";
+            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_thumbnail ";
             $sql .= "from ";
             $sql .= "{$this->tblInsights} ";
             $sql .= "order by home_insights_is_active desc, ";
@@ -52,8 +52,7 @@ class Insights
     public function readById()
     {
         try {
-            $sql = "select ";
-            $sql .= "* ";
+            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected ";
             $sql .= "from {$this->tblInsights} ";
             $sql .= "where home_insights_aid = :home_insights_aid ";
             $sql .= "order by home_insights_is_active desc, ";
@@ -71,7 +70,7 @@ class Insights
     public function readLimit()
     {
         try {
-            $sql = "select * ";
+            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_thumbnail ";
             $sql .= "from ";
             $sql .= "{$this->tblInsights} ";
             $sql .= "order by home_insights_is_active desc, ";

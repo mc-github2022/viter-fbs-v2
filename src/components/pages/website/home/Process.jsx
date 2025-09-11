@@ -6,10 +6,7 @@ const Process = () => {
   const { data: processData } = useQueryData(
     "/v1/process", // endpoint
     "get", // method
-    "process", // key
-    {},
-    null,
-    true
+    "process" // key
   );
   return (
     <>

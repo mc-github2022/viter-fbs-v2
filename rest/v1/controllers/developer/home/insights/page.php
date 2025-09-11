@@ -22,7 +22,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         // get data
         // get task id from query string
         $home_insights->column_start = $_GET['start'];
-        $home_insights->column_total = 11;
+        $home_insights->column_total = 10;
         //check to see if task id in query string is not empty and is number, if not return json error
         checkLimitId($home_insights->column_start, $home_insights->column_total);
 

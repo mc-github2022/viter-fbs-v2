@@ -28,10 +28,7 @@ const Footer = () => {
   const { data: footerData } = useQueryData(
     `${apiVersion}/footer`, // endpoint
     "get", // method
-    "footer", // key
-    {},
-    null,
-    true
+    "footer" // key
   );
 
   const footerLogoImg = getConvertStringToJSONparseData(

@@ -31,7 +31,7 @@ class EventsAndActivities
     public function readAll()
     {
         try {
-            $sql = "select * ";
+            $sql = "select events_activities_aid, events_activities_is_active, events_activities_img, events_activities_img_list, events_activities_category, events_activities_title, events_activities_slug, events_activities_date, events_activities_description ";
             $sql .= "from ";
             $sql .= "{$this->tblEventsAndActivities} ";
             $sql .= "order by events_activities_is_active desc, ";
@@ -46,7 +46,7 @@ class EventsAndActivities
     public function readLimit()
     {
         try {
-            $sql = "select * ";
+            $sql = "select events_activities_aid, events_activities_is_active, events_activities_img, events_activities_img_list, events_activities_category, events_activities_title, events_activities_slug, events_activities_date, events_activities_description ";
             $sql .= "from ";
             $sql .= "{$this->tblEventsAndActivities} ";
             $sql .= "order by events_activities_is_active desc, ";
@@ -57,6 +57,24 @@ class EventsAndActivities
             $query->execute([
                 "start" => $this->events_activities_start - 1,
                 "total" => $this->events_activities_total,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readById()
+    {
+        try {
+            $sql = "select events_activities_aid, events_activities_is_active, events_activities_img, events_activities_img_list, events_activities_category, events_activities_title, events_activities_slug, events_activities_date, events_activities_description ";
+            $sql .= "from {$this->tblEventsAndActivities} ";
+            $sql .= "where events_activities_aid = :events_activities_aid ";
+            $sql .= "order by events_activities_is_active desc, ";
+            $sql .= "events_activities_date desc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "events_activities_aid" => $this->events_activities_aid,
             ]);
         } catch (PDOException $ex) {
             $query = false;

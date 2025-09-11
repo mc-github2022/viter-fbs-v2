@@ -268,10 +268,10 @@ const SingplePage = () => {
                 </div>
               </div>
               <Link
-                className="btn bg-gradient-to-r uppercase hover:duration-500 hover:bg-gradient-to-r text-light my-5 rounded-full  from-secondary to-secondary hover:to-primary "
+                className=" uppercase hover:duration-500 hover:text-primary underline "
                 to={`${devNavUrl}/all-insights`}
               >
-                Show All Insights
+                View All Insights
               </Link>
             </>
           )}

@@ -22,7 +22,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
         // get data
         // get task id from query string
         $events_activities->events_activities_start = $_GET['start'];
-        $events_activities->events_activities_total = 11;
+        $events_activities->events_activities_total = 10;
         //check to see if task id in query string is not empty and is number, if not return json error
         checkLimitId($events_activities->events_activities_start, $events_activities->events_activities_total);
 

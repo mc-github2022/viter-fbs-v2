@@ -11,6 +11,7 @@ import {
   devNavUrl,
   formatDate,
   getConvertStringToJSONparseData,
+  getUrlParam,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -72,6 +73,7 @@ function SamplePrevArrow(props) {
 const EventsSingplePage = () => {
   const [isEventsImg, setIsEventsImg] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState(null);
+  const eventsId = getUrlParam().get("id");
 
   const handleEventImg = (post, index) => {
     setIsEventsImg(true);
@@ -90,9 +92,9 @@ const EventsSingplePage = () => {
     status,
     data: eventsAndActivitiesData,
   } = useQueryData(
-    "/v1/eventsAndAct", // endpoint
+    `/v1/eventsAndAct/${eventsId}`, // endpoint
     "get", // method
-    "eventsAndAct", // key
+    ["eventsAndAct", eventsId], // key
     {},
     null,
     true
@@ -221,7 +223,7 @@ const EventsSingplePage = () => {
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           <div className="theTitle">
-            <h2 className="text-dark text-[clamp(30px,5vw,40px)] lg:w-[70%] leading-[1.3] mb-4 font-semibold">
+            <h2 className="text-dark text-[clamp(30px,5vw,40px)] leading-[1.3] mb-4 font-semibold">
               {post.events_activities_title}
             </h2>
           </div>
@@ -235,8 +237,8 @@ const EventsSingplePage = () => {
               <p>{formatDate(post.events_activities_date)}</p>
             </li>
           </ul>
-          <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12 gap-8">
-            <div className="postContent lg:min-w-[700px] lg:max-w-[890px] xl:max-w-[940px] relative">
+          <div className="wrapper mt-12 gap-8">
+            <div className="postContent relative">
               {eventImage.map((image, index) => (
                 <LoadImages
                   url={`${googleHDViewLink}${image?.id}`}
@@ -282,7 +284,13 @@ const EventsSingplePage = () => {
                 )}
               </div>
             </div>
-            <div className="order-1 mt-6 lg:mt-0">
+            <Link
+              className=" uppercase hover:duration-500 hover:text-primary underline "
+              to={`${devNavUrl}/events-and-activities`}
+            >
+              View All Events & Activities
+            </Link>
+            {/* <div className="order-1 mt-6 lg:mt-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold md:my-10 lg:mb-10 lg:my-0 text-dark">
                   Recent Activities
@@ -330,7 +338,7 @@ const EventsSingplePage = () => {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
