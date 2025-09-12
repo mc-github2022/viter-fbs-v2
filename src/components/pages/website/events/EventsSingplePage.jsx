@@ -234,17 +234,20 @@ const EventsSingplePage = () => {
           </ul>
           <div className="wrapper mt-12 gap-8">
             <div className="postContent">
-              <div className="relative w-full min-h-[200px] md:h-[500px]">
+              <div className="relative w-full min-h-[200px] md:max-h-[500px]">
                 {eventImage.map((image, index) => (
                   <LoadImages
                     url={`${googleHDViewLink}${image?.id}`}
                     alt={`${post.events_activities_title}`}
                     key={index}
-                    className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
+                    className="rounded-lg object-cover mb-8 w-full min-h-[200px] md:max-h-[500px] object-center"
                   />
                 ))}
               </div>
-              <div dangerouslySetInnerHTML={{ __html: html }}></div>
+              <div
+                dangerouslySetInnerHTML={{ __html: html }}
+                className="mt-8"
+              ></div>
               <div className="mx-auto mt-10 mb-16 max-w-[90%]">
                 {eventImageList.length > 1 ? (
                   <Slider {...SinglePageSettings}>

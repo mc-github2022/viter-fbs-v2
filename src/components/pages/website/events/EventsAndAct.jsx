@@ -1,7 +1,6 @@
+import { useInfiniteQuery } from "@tanstack/react-query";
 import React from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-import Slider from "react-slick/lib/slider";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
   apiVersion,
@@ -10,13 +9,12 @@ import {
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
+import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
-import BannerSliderLoader from "../home/bannerSliderLoader";
 import LoadImages from "../../../partials/LoadImages";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { queryDataInfinite } from "../../../helpers/queryDataInfinite";
 import ButtonSpinner from "../../../partials/spinners/ButtonSpinner";
+import BannerSliderLoader from "../home/bannerSliderLoader";
 
 // function SampleNextArrow(props) {
 //   const { className, style, onClick } = props;
@@ -116,6 +114,10 @@ const EventsAndAct = () => {
     "get", // method
     "events-title" // key
   );
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // var EventsSliderSettings = {
   //   dots: false,
@@ -357,7 +359,7 @@ const EventsAndAct = () => {
                 <BannerSliderLoader
                   cols={1}
                   count={1}
-                  className={"h-4 min-w-[400px] lg:max-w-[500px] rounded-xl "}
+                  className={"h-4 min-w-[300px] lg:max-w-[500px] rounded-xl "}
                 />
               </div>
               <div className="flex flex-col md:flex-row gap-4">

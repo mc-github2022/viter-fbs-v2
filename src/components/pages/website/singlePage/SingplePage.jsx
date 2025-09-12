@@ -222,12 +222,12 @@ const SingplePage = () => {
                 </ul>
                 <div className="wrapper gap-8 mt-12">
                   <div className="postContent">
-                    <div className="relative w-full min-h-[200px] md:h-[500px]">
+                    <div className="relative w-full min-h-[200px] md:max-h-[500px]">
                       {insightsImages.map((image, index) => (
                         <LoadImages
                           url={`${googleHDViewLink}${image?.id}`}
                           alt={`${post.home_insights_title}`}
-                          className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
+                          className="rounded-lg object-cover mb-8 w-full min-h-[200px] md:max-h-[500px] object-center"
                           key={index}
                         />
                       ))}

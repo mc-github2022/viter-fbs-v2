@@ -93,7 +93,7 @@ const AllInsightsArticleList = () => {
                 <BannerSliderLoader
                   cols={1}
                   count={1}
-                  className={"h-4 min-w-[400px] lg:max-w-[500px] rounded-xl "}
+                  className={"h-4 min-w-[300px] lg:min-w-[500px] rounded-xl "}
                 />
               </div>
               <div>
@@ -270,6 +270,29 @@ const AllInsightsArticleList = () => {
                   ))}
                 </ul>
               </div>
+              <div className="my-10 block lg:hidden">
+                {hasNextPage ? (
+                  <button
+                    type="button"
+                    disabled={isFetchingNextPage}
+                    onClick={() => {
+                      setPage((prev) => prev + 1);
+                      fetchNextPage();
+                    }}
+                    className="text-sm uppercase font-poppins underline hover:text-primary"
+                  >
+                    {isFetchingNextPage ? (
+                      <ButtonSpinner />
+                    ) : (
+                      <span>Load more</span>
+                    )}
+                  </button>
+                ) : (
+                  <p className="text-sm uppercase font-poppins text-gray-500">
+                    No More Insights
+                  </p>
+                )}
+              </div>
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-10 text-dark">
@@ -295,7 +318,7 @@ const AllInsightsArticleList = () => {
             </div>
           </div>
         )}
-        <div className="mb-10">
+        <div className="mb-10 hidden lg:block">
           {hasNextPage ? (
             <button
               type="button"
