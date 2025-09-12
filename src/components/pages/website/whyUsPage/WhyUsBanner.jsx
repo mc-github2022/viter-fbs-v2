@@ -1,13 +1,12 @@
 import React from "react";
+import useQueryData from "../../../custom-hooks/useQueryData";
 import {
   apiVersion,
-  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
-import ModalContact from "../../../partials/ModalContact";
-import useQueryData from "../../../custom-hooks/useQueryData";
 import LoadImages from "../../../partials/LoadImages";
+import ModalContact from "../../../partials/ModalContact";
 
 const WhyUsBanner = ({ pageName }) => {
   const [modalContact, setModalContact] = React.useState(false);
@@ -16,10 +15,7 @@ const WhyUsBanner = ({ pageName }) => {
   const { data: workData } = useQueryData(
     `${apiVersion}/work`, // endpoint
     "get", // method
-    "work", // key
-    {},
-    null,
-    true
+    "work" // key
   );
 
   const handleForm = () => {

@@ -19,10 +19,7 @@ const WhyUsPage = () => {
   const { data: workTitlesData } = useQueryData(
     `${apiVersion}/work-titles`, // endpoint
     "get", // method
-    "work-titles", // key
-    {},
-    null,
-    true
+    "work-titles" // key
   );
 
   React.useEffect(() => {

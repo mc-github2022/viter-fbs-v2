@@ -19,10 +19,7 @@ const WhyUsCompanyProfile = ({ pageName }) => {
   const { data: workCompanyProfileData } = useQueryData(
     `${apiVersion}/work-company-profile`, // endpoint
     "get", // method
-    "work-company-profile", // key
-    {},
-    null,
-    true
+    "work-company-profile" // key
   );
 
   const handleForm = () => {

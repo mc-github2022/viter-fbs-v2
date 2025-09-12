@@ -12,10 +12,7 @@ const WhyUsTheTeam = ({ workTitlesData }) => {
   const { data: workTeamsData } = useQueryData(
     `${apiVersion}/work-teams`, // endpoint
     "get", // method
-    "work-teams", // key
-    {},
-    null,
-    true
+    "work-teams" // key
   );
 
   const ceoImage = getConvertStringToJSONparseData(

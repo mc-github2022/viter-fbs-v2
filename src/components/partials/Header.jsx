@@ -1,23 +1,19 @@
 import React from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
+import useQueryData from "../custom-hooks/useQueryData";
 import {
   apiVersion,
   devNavUrl,
   getConvertStringToJSONparseData,
-  googleHDViewLink,
 } from "../helpers/functions-general";
-import ModalSuccess from "./modals/ModalSuccess";
-import ModalError from "./modals/ModalError";
 import { StoreContext } from "../store/StoreContext";
-import ModalContact from "./ModalContact";
-import logo from "/img/logo.png";
-import MegaMenu from "./MegaMenu";
-import useQueryData from "../custom-hooks/useQueryData";
-import LoadImages from "./LoadImages";
-import TableLoading from "./spinners/TableLoading";
-import FbsLogoLg from "../svg/FbsLogoLg";
 import FbsLogoMd from "../svg/FbsLogoMd";
+import MegaMenu from "./MegaMenu";
+import ModalContact from "./ModalContact";
+import ModalError from "./modals/ModalError";
+import ModalSuccess from "./modals/ModalSuccess";
+import TableLoading from "./spinners/TableLoading";
 
 const Header = ({ pageName, services, page }) => {
   const [contactForm, setContactForm] = React.useState(false);
@@ -28,6 +24,8 @@ const Header = ({ pageName, services, page }) => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
   const [modalContact, setModalContact] = React.useState(false);
   const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
+
+  console.log(currentPath);
 
   const navigate = useNavigate();
 
@@ -217,7 +215,7 @@ const Header = ({ pageName, services, page }) => {
                                   currentPath === item.packages_category_url
                                     ? "text-primary !cursor-default"
                                     : ""
-                                }`}
+                                } hover:text-primary`}
                               >
                                 {item.packages_category_name}
                               </a>

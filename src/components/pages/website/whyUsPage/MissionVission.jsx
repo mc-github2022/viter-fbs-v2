@@ -13,10 +13,7 @@ const MissionVission = () => {
   } = useQueryData(
     `${apiVersion}/work-vision-mission`, // endpoint
     "get", // method
-    "work-vision-mission", // key
-    {},
-    null,
-    true
+    "work-vision-mission" // key
   );
 
   return (
@@ -67,15 +64,13 @@ const MissionVission = () => {
                   {workVisionMissionData?.data?.[0]?.work_vision_core_title ||
                     ""}
                 </h2>
-                <p>
-                  <ul>
-                    {workVisionMissionData?.data?.[0]?.work_vision_core_list
-                      .split("\n") // Split by new lines
-                      .filter((list) => list.trim() !== "") // Remove empty lines
-                      .map((list, index) => <li key={index}>{list}</li>) ||
-                      "List"}
-                  </ul>
-                </p>
+                <ul>
+                  {workVisionMissionData?.data?.[0]?.work_vision_core_list
+                    .split("\n") // Split by new lines
+                    .filter((list) => list.trim() !== "") // Remove empty lines
+                    .map((list, index) => <li key={index}>{list}</li>) ||
+                    "List"}
+                </ul>
               </div>
             </div>
           </div>
