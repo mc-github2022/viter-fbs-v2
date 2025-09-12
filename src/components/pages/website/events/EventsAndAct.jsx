@@ -366,7 +366,7 @@ const EventsAndAct = () => {
                   count={1}
                   classNameGrid={"gap-6"}
                   className={
-                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                    "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                   }
                 />
                 <div className="flex flex-col gap-2">
@@ -390,7 +390,7 @@ const EventsAndAct = () => {
                   count={1}
                   classNameGrid={"gap-6"}
                   className={
-                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                    "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                   }
                 />
                 <div className="flex flex-col gap-2">
@@ -414,7 +414,7 @@ const EventsAndAct = () => {
                   count={1}
                   classNameGrid={"gap-6"}
                   className={
-                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                    "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                   }
                 />
                 <div className="flex flex-col gap-2">
@@ -438,7 +438,7 @@ const EventsAndAct = () => {
                   count={1}
                   classNameGrid={"gap-6"}
                   className={
-                    "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                    "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                   }
                 />
                 <div className="flex flex-col gap-2">
@@ -492,12 +492,12 @@ const EventsAndAct = () => {
                                   to={`${devNavUrl}/events-and-activities/${post.events_activities_slug}?id=${post.events_activities_aid}`}
                                 >
                                   <div className="flex flex-col md:flex-row gap-4">
-                                    <div className="min-w-[300px] max-w-[300px] h-[180px]">
+                                    <div className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] relative">
                                       {eventImage.map((image, index) => (
                                         <LoadImages
                                           url={`${googleHDViewLink}${image?.id}`}
                                           alt={`${post.events_activities_title}`}
-                                          className="min-w-[300px] max-w-[300px] h-[180px] rounded-lg object-cover"
+                                          className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] rounded-lg object-cover"
                                           key={index}
                                         />
                                       ))}

@@ -1,23 +1,21 @@
 import { default as React, useEffect } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { LuTag } from "react-icons/lu";
 import { MdOutlineCalendarToday } from "react-icons/md";
-import { Link, useParams } from "react-router-dom";
-import Footer from "../../../partials/Footer";
-import Header from "../../../partials/Header";
-import { eventsAndAct } from "./data";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Slider from "react-slick/lib/slider";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
-  devBaseImgUrl,
   devNavUrl,
   formatDate,
   getConvertStringToJSONparseData,
   getUrlParam,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import Slider from "react-slick/lib/slider";
-import EventsSliderPage from "./EventsSliderPage";
+import Footer from "../../../partials/Footer";
+import Header from "../../../partials/Header";
 import LoadImages from "../../../partials/LoadImages";
+import EventsSliderPage from "./EventsSliderPage";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -74,6 +72,12 @@ const EventsSingplePage = () => {
   const [isEventsImg, setIsEventsImg] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState(null);
   const eventsId = getUrlParam().get("id");
+  const navigate = useNavigate();
+
+  const { slug } = useParams();
+
+  const [html, setHtml] = React.useState("");
+  // Initial useEffect to set default html if eventsAndActivitiesData is available
 
   const handleEventImg = (post, index) => {
     setIsEventsImg(true);
@@ -99,6 +103,13 @@ const EventsSingplePage = () => {
     null,
     true
   );
+
+  // if slug exists but no id, redirect to events-and-activities
+  React.useEffect(() => {
+    if (slug && !eventsId) {
+      navigate("/events-and-activities", { replace: true });
+    }
+  }, [slug, eventsId, navigate]);
 
   var SinglePageSettings = {
     dots: false,
@@ -152,12 +163,6 @@ const EventsSingplePage = () => {
     ],
   };
 
-  const { slug } = useParams();
-
-  const [html, setHtml] = React.useState("");
-  // Initial useEffect to set default html if eventsAndActivitiesData is available
-  const [images, setImages] = React.useState([]);
-
   useEffect(() => {
     if (eventsAndActivitiesData?.data.length > 0) {
       setHtml(eventsAndActivitiesData?.data[0].events_activities_description);
@@ -175,16 +180,6 @@ const EventsSingplePage = () => {
 
     if (matchingInsight) {
       setHtml(matchingInsight.events_activities_description);
-
-      //   // Extract and split the images list into an array
-      //   const imgList = matchingInsight.events_activities_img_list
-      //     ?.split(",")
-      //     .map((img) => img.trim())
-      //     .filter(Boolean); // Remove empty strings
-      //   setImages(imgList || []);
-      // } else {
-      //   setHtml("");
-      //   setImages([]);
     }
   }, [slug, eventsAndActivitiesData]);
 
@@ -238,17 +233,19 @@ const EventsSingplePage = () => {
             </li>
           </ul>
           <div className="wrapper mt-12 gap-8">
-            <div className="postContent relative">
-              {eventImage.map((image, index) => (
-                <LoadImages
-                  url={`${googleHDViewLink}${image?.id}`}
-                  alt=""
-                  key={index}
-                  className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
-                />
-              ))}
+            <div className="postContent">
+              <div className="relative w-full min-h-[200px] md:h-[500px]">
+                {eventImage.map((image, index) => (
+                  <LoadImages
+                    url={`${googleHDViewLink}${image?.id}`}
+                    alt={`${post.events_activities_title}`}
+                    key={index}
+                    className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
+                  />
+                ))}
+              </div>
               <div dangerouslySetInnerHTML={{ __html: html }}></div>
-              <div className="mx-auto my-4 max-w-[90%]">
+              <div className="mx-auto mt-10 mb-16 max-w-[90%]">
                 {eventImageList.length > 1 ? (
                   <Slider {...SinglePageSettings}>
                     {eventImageList.map((image, index) => (
@@ -284,12 +281,7 @@ const EventsSingplePage = () => {
                 )}
               </div>
             </div>
-            <Link
-              className=" uppercase hover:duration-500 hover:text-primary underline "
-              to={`${devNavUrl}/events-and-activities`}
-            >
-              View All Events & Activities
-            </Link>
+
             {/* <div className="order-1 mt-6 lg:mt-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold md:my-10 lg:mb-10 lg:my-0 text-dark">
@@ -340,6 +332,12 @@ const EventsSingplePage = () => {
               </div>
             </div> */}
           </div>
+          <Link
+            className="mt-12 uppercase hover:duration-500 hover:text-primary underline "
+            to={`${devNavUrl}/events-and-activities`}
+          >
+            View All Events & Activities
+          </Link>
         </div>
       </section>
       {isEventsImg && (

@@ -37,15 +37,16 @@ const Header = ({ pageName, services, page }) => {
     );
   };
 
-  const { data: packagesCatgeoryData } = useQueryData(
-    `${apiVersion}/packages-category`, // endpoint
-    "get", // method
-    "packages-category", // key
-    {},
-    null,
-    false,
-    toggleMenu || toggleWhyUs
-  );
+  const { isFetching: isFetchingPackages, data: packagesCatgeoryData } =
+    useQueryData(
+      `${apiVersion}/packages-category`, // endpoint
+      "get", // method
+      "packages-category", // key
+      {},
+      null,
+      false,
+      toggleMenu || toggleWhyUs
+    );
 
   const {
     isLoading,
@@ -195,6 +196,7 @@ const Header = ({ pageName, services, page }) => {
                       </>
                     )}
                   </button>
+
                   <ul
                     className={`${
                       toggleWhyUs
@@ -202,24 +204,28 @@ const Header = ({ pageName, services, page }) => {
                         : "hidden"
                     } left-0  text-sm p-5 md:rounded-bl-xl md:rounded-br-xl`}
                   >
-                    {packagesCatgeoryData?.data.map((item, key) => {
-                      if (item.packages_category_list_name === "WHY FBS") {
-                        return (
-                          <li key={key}>
-                            <a
-                              href={`${devNavUrl}/${item.packages_category_url}`}
-                              className={`${
-                                currentPath === item.packages_category_url
-                                  ? "text-primary !cursor-default"
-                                  : ""
-                              }`}
-                            >
-                              {item.packages_category_name}
-                            </a>
-                          </li>
-                        );
-                      }
-                    })}
+                    {isFetchingPackages ? (
+                      <TableLoading cols={1} count={3} />
+                    ) : (
+                      packagesCatgeoryData?.data.map((item, key) => {
+                        if (item.packages_category_list_name === "WHY FBS") {
+                          return (
+                            <li key={key}>
+                              <a
+                                href={`${devNavUrl}/${item.packages_category_url}`}
+                                className={`${
+                                  currentPath === item.packages_category_url
+                                    ? "text-primary !cursor-default"
+                                    : ""
+                                }`}
+                              >
+                                {item.packages_category_name}
+                              </a>
+                            </li>
+                          );
+                        }
+                      })
+                    )}
                   </ul>
                 </li>
                 <li>

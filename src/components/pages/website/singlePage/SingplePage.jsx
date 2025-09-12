@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { BiSolidRightArrow } from "react-icons/bi";
 import { LuTag } from "react-icons/lu";
 import { MdOutlineCalendarToday } from "react-icons/md";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
   devNavUrl,
@@ -25,7 +25,17 @@ import TableLoading from "../../../partials/spinners/TableLoading";
 
 const SingplePage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
+  const [pageName, setPageName] = React.useState("home");
+  const [jobTitle, setJobTitle] = React.useState("insight");
+
+  const [lcssForm, setLcssForm] = React.useState(false);
+  const [modalJob, setModalJob] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+
+  const [modalContact, setModalContact] = React.useState(false);
   const insightId = getUrlParam().get("id");
+  const navigate = useNavigate();
+
   const [subscribe, setSubscribe] = React.useState(() => {
     return !window.sessionStorage.getItem("subscribed"); // true if not subscribed
   });
@@ -57,14 +67,12 @@ const SingplePage = () => {
     !!slug && !subscribe // enabled
   );
 
-  const [pageName, setPageName] = React.useState("home");
-  const [jobTitle, setJobTitle] = React.useState("insight");
-
-  const [lcssForm, setLcssForm] = React.useState(false);
-  const [modalJob, setModalJob] = React.useState(false);
-  const [contactForm, setContactForm] = React.useState(false);
-
-  const [modalContact, setModalContact] = React.useState(false);
+  // if slug exists but no id, redirect to all-insights
+  React.useEffect(() => {
+    if (slug && !insightId) {
+      navigate("/all-insights", { replace: true });
+    }
+  }, [slug, insightId, navigate]);
 
   const handleModalContact = () => {
     setModalContact(!modalContact);
@@ -214,15 +222,20 @@ const SingplePage = () => {
                 </ul>
                 <div className="wrapper gap-8 mt-12">
                   <div className="postContent">
-                    {insightsImages.map((image, index) => (
-                      <LoadImages
-                        url={`${googleHDViewLink}${image?.id}`}
-                        alt={`${post.home_insights_title}`}
-                        className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
-                        key={index}
-                      />
-                    ))}
-                    <div dangerouslySetInnerHTML={{ __html: html }}></div>
+                    <div className="relative w-full min-h-[200px] md:h-[500px]">
+                      {insightsImages.map((image, index) => (
+                        <LoadImages
+                          url={`${googleHDViewLink}${image?.id}`}
+                          alt={`${post.home_insights_title}`}
+                          className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
+                          key={index}
+                        />
+                      ))}
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: html }}
+                      className="mt-8"
+                    ></div>
                     {post.home_insights_cta_is_active ? (
                       post.home_insights_form_selected ===
                       "default-receiver" ? (

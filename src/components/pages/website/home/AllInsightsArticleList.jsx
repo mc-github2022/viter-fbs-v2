@@ -116,7 +116,7 @@ const AllInsightsArticleList = () => {
                 count={1}
                 classNameGrid={"gap-6"}
                 className={
-                  "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                 }
               />
               <div className="flex flex-col gap-2">
@@ -140,7 +140,7 @@ const AllInsightsArticleList = () => {
                 count={1}
                 classNameGrid={"gap-6"}
                 className={
-                  "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                 }
               />
               <div className="flex flex-col gap-2">
@@ -164,7 +164,7 @@ const AllInsightsArticleList = () => {
                 count={1}
                 classNameGrid={"gap-6"}
                 className={
-                  "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                 }
               />
               <div className="flex flex-col gap-2">
@@ -188,7 +188,7 @@ const AllInsightsArticleList = () => {
                 count={1}
                 classNameGrid={"gap-6"}
                 className={
-                  "h-[180px] rounded-xl min-w-[200px] lg:min-w-[300px] gap-6"
+                  "h-[190px] rounded-xl min-w-[200px] lg:min-w-[350px] gap-6"
                 }
               />
               <div className="flex flex-col gap-2">
@@ -217,7 +217,7 @@ const AllInsightsArticleList = () => {
                 </h2>
                 <p>section to help you grow your business and stay ahead.</p>
               </div>
-              <div className="popularPostLinks lg:w-[80%]">
+              <div className="popularPostLinks ">
                 <ul className="[&>li]:my-8">
                   {result?.pages.map((page, key) => (
                     <React.Fragment key={key}>
@@ -242,12 +242,12 @@ const AllInsightsArticleList = () => {
                                   to={`${devNavUrl}/insight/${popPost.home_insights_slug}?id=${popPost.home_insights_aid}`}
                                 >
                                   <div className="flex flex-col md:flex-row gap-4">
-                                    <div className="min-w-[300px] max-w-[300px] h-[180px]">
+                                    <div className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] relative">
                                       {insightsImages.map((image, index) => (
                                         <LoadImages
                                           url={`${googleHDViewLink}${image?.id}`}
                                           alt={`${popPost.home_insights_title}`}
-                                          className="min-w-[300px] max-w-[300px] h-[180px] rounded-lg object-cover"
+                                          className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] rounded-lg object-cover"
                                           key={index}
                                         />
                                       ))}
@@ -275,7 +275,7 @@ const AllInsightsArticleList = () => {
               <h3 className="text-2xl font-semibold mb-10 text-dark">
                 Categories
               </h3>
-              <ul className="lg:w-[300px] ">
+              <ul className="lg:w-[200px] ">
                 {allInsights
                   .map((cat) => cat.home_insights_category)
                   .filter((value, index, self) => self.indexOf(value) === index) // unique values

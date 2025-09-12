@@ -8,6 +8,7 @@ const LoadImages = ({
   isTableSpinner = false,
   isErrorUserImage = false,
   child = false,
+  alt = "",
 }) => {
   if (!url || url === "") return;
   const [isLoading, setIsLoading] = React.useState(true);
@@ -37,7 +38,7 @@ const LoadImages = ({
           setIsLoading(false);
           setIsImageError(true);
         }}
-        alt=""
+        alt={alt}
         className={className}
         referrerPolicy="no-referrer"
       />
