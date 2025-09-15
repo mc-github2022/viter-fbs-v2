@@ -1,0 +1,23 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/careers/page.php
+    -> rest/v1/controllers/developer/careers/readOngoingCareers.php
+    -> rest/v1/controllers/developer/careers/search.php
+    
+
+MODELS
+    -> rest/v1/models/developer/careers/Careers.php
+    
+
+HTACCESS
+    -> # Why FBS - CAREERS
+        - RewriteRule ^careers/page/([0-9]+)$ controllers/developer/careers/page.php?start=$1 [L]
+        - RewriteRule ^careers/search$ controllers/developer/careers/search.php [L]
+        - RewriteRule ^careers/readOngoingCareers$ controllers/developer/careers/readOngoingCareers.php [L]
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_services_social_services_title.sql
+        note: from varchar(20) to varchar(30) is updated
+        - `social_services_title_highlighted` varchar(30) NOT NULL,
+

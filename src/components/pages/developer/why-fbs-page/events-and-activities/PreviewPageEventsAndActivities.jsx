@@ -223,7 +223,7 @@ const PreviewPageEventsAndActivities = () => {
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           <div className="theTitle">
-            <h2 className="text-dark text-[clamp(30px,5vw,40px)] lg:w-[70%] leading-[1.3] mb-4 font-semibold">
+            <h2 className="text-dark text-[clamp(30px,5vw,40px)] leading-[1.3] mb-4 font-semibold">
               {post.events_activities_title}
             </h2>
           </div>
@@ -237,18 +237,23 @@ const PreviewPageEventsAndActivities = () => {
               <p>{formatDate(post.events_activities_date)}</p>
             </li>
           </ul>
-          <div className="wrapper lg:grid lg:grid-cols-[_3fr_1fr] mt-12 gap-8">
-            <div className="postContent lg:min-w-[700px] lg:max-w-[890px] xl:max-w-[940px] relative">
-              {eventImage.map((image, index) => (
-                <LoadImages
-                  url={`${googleHDViewLink}${image?.id}`}
-                  alt=""
-                  key={index}
-                  className="rounded-lg object-cover mb-8 w-full max-h-[500px] object-center"
-                />
-              ))}
-              <div dangerouslySetInnerHTML={{ __html: html }}></div>
-              <div className="mx-auto my-4 max-w-[90%]">
+          <div className="wrapper mt-12 gap-8">
+            <div className="postContent">
+              <div className="relative w-full min-h-[200px] md:max-h-[500px]">
+                {eventImage.map((image, index) => (
+                  <LoadImages
+                    url={`${googleHDViewLink}${image?.id}`}
+                    alt={`${post.events_activities_title}`}
+                    key={index}
+                    className="rounded-lg object-cover mb-8 w-full min-h-[200px] md:max-h-[500px] object-center"
+                  />
+                ))}
+              </div>
+              <div
+                dangerouslySetInnerHTML={{ __html: html }}
+                className="mt-8"
+              ></div>
+              <div className="mx-auto mt-10 mb-16 max-w-[90%]">
                 {eventImageList.length > 1 ? (
                   <Slider {...SinglePageSettings}>
                     {eventImageList.map((image, index) => (
@@ -259,7 +264,7 @@ const PreviewPageEventsAndActivities = () => {
                               backgroundImage: `url(${googleHDViewLink}${image?.id})`,
                             }}
                             className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[500px] sm:w-[320px] flex items-end relative rounded-xl 
-               hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                 hover:grayscale-0 transition-all group cursor-pointer place-self-center"
                           >
                             {/* <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div> */}
                           </div>
@@ -271,7 +276,7 @@ const PreviewPageEventsAndActivities = () => {
                   <a onClick={() => handleEventImg(post, 0)}>
                     <div
                       className=" h-[330px] w-[450px]
-              grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center relative rounded-xl"
+                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center relative rounded-xl"
                     >
                       <LoadImages
                         url={`${googleHDViewLink}${eventImageList[0].id}`}
@@ -284,7 +289,8 @@ const PreviewPageEventsAndActivities = () => {
                 )}
               </div>
             </div>
-            <div className="order-1 mt-6 lg:mt-0">
+
+            {/* <div className="order-1 mt-6 lg:mt-0">
               <div className="mb-12">
                 <h3 className="text-2xl font-semibold md:my-10 lg:mb-10 lg:my-0 text-dark">
                   Recent Activities
@@ -332,8 +338,14 @@ const PreviewPageEventsAndActivities = () => {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
+          <Link
+            className="mt-12 uppercase hover:duration-500 hover:text-primary underline "
+            to={`${devNavUrl}/events-and-activities`}
+          >
+            View All Events & Activities
+          </Link>
         </div>
       </section>
       {isEventsImg && (

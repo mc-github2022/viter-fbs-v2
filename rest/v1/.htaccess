@@ -69,6 +69,9 @@ RewriteRule ^eventsAndAct/search$ controllers/developer/events-and-activities/se
 # Why FBS - CAREERS
 RewriteRule ^careers$ controllers/developer/careers/careers.php [L]
 RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careersid=$1 [L]
+RewriteRule ^careers/page/([0-9]+)$ controllers/developer/careers/page.php?start=$1 [L]
+RewriteRule ^careers/search$ controllers/developer/careers/search.php [L]
+RewriteRule ^careers/readOngoingCareers$ controllers/developer/careers/readOngoingCareers.php [L]
 
 # LCSS BATCHES
 RewriteRule ^lcssBatches$ controllers/developer/lcss-batches/lcssBatches.php [L]

@@ -25,8 +25,6 @@ const Header = ({ pageName, services, page }) => {
   const [modalContact, setModalContact] = React.useState(false);
   const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
 
-  console.log(currentPath);
-
   const navigate = useNavigate();
 
   const handleGoToPage = (item) => {

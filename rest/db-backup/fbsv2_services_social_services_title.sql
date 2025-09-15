@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2025 at 02:46 AM
+-- Generation Time: Sep 15, 2025 at 03:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `fbsv2_services_social_services_title` (
   `social_services_title_aid` int(11) NOT NULL,
   `social_services_title_black_a` varchar(20) NOT NULL,
-  `social_services_title_highlighted` varchar(20) NOT NULL,
+  `social_services_title_highlighted` varchar(30) NOT NULL,
   `social_services_title_black_b` varchar(20) NOT NULL,
   `social_services_title_description` varchar(300) NOT NULL,
   `social_services_title_button_text` varchar(20) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `fbsv2_services_social_services_title` (
 --
 
 INSERT INTO `fbsv2_services_social_services_title` (`social_services_title_aid`, `social_services_title_black_a`, `social_services_title_highlighted`, `social_services_title_black_b`, `social_services_title_description`, `social_services_title_button_text`, `social_services_title_created`, `social_services_title_datetime`) VALUES
-(1, 'What', 'Social Media Managem', 'Can We Perform?', 'Our VA for Social Media Management offers comprehensive support to streamline your business operations.', 'Get Started', '2025-09-05 08:27:11', '2025-09-05 08:27:27');
+(1, 'What', 'Social Media Management', 'Can We Perform?', 'Our VA for Social Media Management offers comprehensive support to streamline your business operations.', 'Get Started', '2025-09-05 08:27:11', '2025-09-15 09:11:11');
 
 --
 -- Indexes for dumped tables

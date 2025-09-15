@@ -14,6 +14,10 @@ class Careers
     public $careers_created;
     public $careers_datetime;
 
+    public $careers_start;
+    public $careers_total;
+    public $careers_search;
+
     public $connection;
     public $lastInsertedId;
 
@@ -33,6 +37,44 @@ class Careers
             $sql .= "{$this->tblCareers} ";
             $sql .= "order by careers_job_status desc ";
             $query = $this->connection->query($sql);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readLimit()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblCareers} ";
+            $sql .= "order by careers_job_status desc ";
+            $sql .= "limit :start, ";
+            $sql .= ":total ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "start" => $this->careers_start - 1,
+                "total" => $this->careers_total,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function readOngoingCareers()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblCareers} ";
+            $sql .= "WHERE careers_job_status = :code ";
+            $sql .= "order by careers_created asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "code" => "Ongoing",
+            ]);
         } catch (PDOException $ex) {
             $query = false;
         }
@@ -109,6 +151,29 @@ class Careers
                 "careers_job_overview" => $this->careers_job_overview,
                 "careers_datetime" => $this->careers_datetime,
                 "careers_aid" => $this->careers_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function search()
+    {
+        try {
+            $sql = "select * ";
+            $sql .= "from ";
+            $sql .= "{$this->tblCareers} ";
+            $sql .= "where careers_job_title = careers_job_title ";
+            $sql .= "and (careers_job_title like :careers_job_title ";
+            $sql .= "or careers_job_classification like :careers_job_classification ";
+            $sql .= "or careers_job_status like :careers_job_status) ";
+            $sql .= "order by careers_job_title asc ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "careers_job_title" => "%{$this->careers_search}%",
+                "careers_job_classification" => "%{$this->careers_search}%",
+                "careers_job_status" => "%{$this->careers_search}%",
             ]);
         } catch (PDOException $ex) {
             $query = false;
