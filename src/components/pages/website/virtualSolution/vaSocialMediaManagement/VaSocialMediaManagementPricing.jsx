@@ -154,7 +154,7 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
         id="ourpackages"
       >
         <div className="footerGradientBlack absolute h-[1000px] w-full bottom-[-30%] right-[-30%]"></div>
-        <div className="absolute bg-light h-[180px] w-full bottom-0 z-[1]"></div>
+        <div className="absolute bg-light h-[180px] w-full bottom-0 z-[0]"></div>
         <div className="customContainer">
           <div className="mb-10 text-center relative z-[3]">
             <p className="text-light">
@@ -257,7 +257,7 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                           </div>
                         </div>
 
-                        <table className="prices my-5 min-h-[200px]">
+                        <table className="prices my-5 min-h-[330px]">
                           <tbody className="">
                             {packagesDetailsData?.data.map((info, key) => {
                               if (
@@ -342,8 +342,8 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                       <a
                         href={`${price.packages_list_button_link}`}
                         className="btn bg-primary text-light border-light
-                          border-2 mt-10 font-bold md:w-[220px] mx-auto
-                          hover:bg-light hover:text-primary hover:border-primary uppercase"
+                            border-2 mt-10 font-bold md:w-[220px] mx-auto
+                            hover:bg-light hover:text-primary hover:border-primary uppercase"
                         target="_blank"
                       >
                         {price.packages_list_button_text}
