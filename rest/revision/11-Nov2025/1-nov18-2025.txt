@@ -1,0 +1,11 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/events-and-activities/create.php
+    -> rest/v1/controllers/developer/events-and-activities/update.php
+
+MODELS
+    -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
+
+DB BACKUP
+    -> 

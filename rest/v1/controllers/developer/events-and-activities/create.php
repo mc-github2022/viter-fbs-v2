@@ -17,6 +17,8 @@ $events_activities->events_activities_title = $data["events_activities_title"];
 $events_activities->events_activities_slug =  checkIndex($data, "events_activities_slug");
 $events_activities->events_activities_date = $data["events_activities_date"];
 $events_activities->events_activities_description = $data["events_activities_description"];
+$events_activities->events_activities_meta_img_url = $data["events_activities_meta_img_url"];
+$events_activities->events_activities_meta_description = $data["events_activities_meta_description"];
 $events_activities->events_activities_created = date("Y-m-d H:i:s");
 $events_activities->events_activities_datetime = date("Y-m-d H:i:s");
 

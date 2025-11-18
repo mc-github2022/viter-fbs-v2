@@ -11,6 +11,8 @@ class EventsAndActivities
     public $events_activities_slug;
     public $events_activities_date;
     public $events_activities_description;
+    public $events_activities_meta_img_url;
+    public $events_activities_meta_description;
     public $events_activities_created;
     public $events_activities_datetime;
 
@@ -137,6 +139,8 @@ class EventsAndActivities
             $sql .= "events_activities_date, ";
             $sql .= "events_activities_description, ";
             $sql .= "events_activities_img_list, ";
+            $sql .= "events_activities_meta_img_url, ";
+            $sql .= "events_activities_meta_description, ";
             $sql .= "events_activities_created, ";
             $sql .= "events_activities_datetime ) values ( ";
             $sql .= ":events_activities_img, ";
@@ -147,6 +151,8 @@ class EventsAndActivities
             $sql .= ":events_activities_date, ";
             $sql .= ":events_activities_description, ";
             $sql .= ":events_activities_img_list, ";
+            $sql .= ":events_activities_meta_img_url, ";
+            $sql .= ":events_activities_meta_description, ";
             $sql .= ":events_activities_created, ";
             $sql .= ":events_activities_datetime )";
             $query = $this->connection->prepare($sql);
@@ -159,6 +165,8 @@ class EventsAndActivities
                 "events_activities_date" => $this->events_activities_date,
                 "events_activities_description" => $this->events_activities_description,
                 "events_activities_img_list" => $this->events_activities_img_list,
+                "events_activities_meta_img_url" => $this->events_activities_meta_img_url,
+                "events_activities_meta_description" => $this->events_activities_meta_description,
                 "events_activities_created" => $this->events_activities_created,
                 "events_activities_datetime" => $this->events_activities_datetime,
             ]);
@@ -181,6 +189,8 @@ class EventsAndActivities
             $sql .= "events_activities_date = :events_activities_date, ";
             $sql .= "events_activities_description = :events_activities_description, ";
             $sql .= "events_activities_img_list = :events_activities_img_list, ";
+            $sql .= "events_activities_meta_img_url = :events_activities_meta_img_url, ";
+            $sql .= "events_activities_meta_description = :events_activities_meta_description, ";
             $sql .= "events_activities_datetime = :events_activities_datetime ";
             $sql .= "where events_activities_aid = :events_activities_aid ";
             $query = $this->connection->prepare($sql);
@@ -193,6 +203,8 @@ class EventsAndActivities
                 "events_activities_date" => $this->events_activities_date,
                 "events_activities_description" => $this->events_activities_description,
                 "events_activities_img_list" => $this->events_activities_img_list,
+                "events_activities_meta_img_url" => $this->events_activities_meta_img_url,
+                "events_activities_meta_description" => $this->events_activities_meta_description,
                 "events_activities_datetime" => $this->events_activities_datetime,
                 "events_activities_aid" => $this->events_activities_aid,
             ]);

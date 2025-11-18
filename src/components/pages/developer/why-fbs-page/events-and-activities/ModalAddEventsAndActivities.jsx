@@ -207,6 +207,9 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     events_activities_is_active: itemEdit
       ? itemEdit.events_activities_is_active
       : "",
+    events_activities_meta_description: itemEdit
+      ? itemEdit.events_activities_meta_description
+      : "",
 
     events_activities_img_old: itemEdit ? itemEdit.events_activities_img : "",
     events_activities_img_list_old: itemEdit
@@ -413,6 +416,14 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                               label="Category"
                               type="text"
                               name="events_activities_category"
+                              disabled={mutation.isPending}
+                            />
+                          </div>
+                          <div className="input-wrapper">
+                            <InputTextArea
+                              label="Meta Description"
+                              type="text"
+                              name="events_activities_meta_description"
                               disabled={mutation.isPending}
                             />
                           </div>
