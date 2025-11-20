@@ -419,14 +419,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                               disabled={mutation.isPending}
                             />
                           </div>
-                          <div className="input-wrapper">
-                            <InputTextArea
-                              label="Meta Description"
-                              type="text"
-                              name="events_activities_meta_description"
-                              disabled={mutation.isPending}
-                            />
-                          </div>
+
                           <div className="input-wrapper">
                             <InputText
                               label="Title"
@@ -440,6 +433,14 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                               label="*Slug"
                               type="text"
                               name="events_activities_slug"
+                              disabled={mutation.isPending}
+                            />
+                          </div>
+                          <div className="input-wrapper">
+                            <InputTextArea
+                              label="Meta Description"
+                              type="text"
+                              name="events_activities_meta_description"
                               disabled={mutation.isPending}
                             />
                           </div>

@@ -16,6 +16,7 @@ import Footer from "../../../partials/Footer";
 import Header from "../../../partials/Header";
 import LoadImages from "../../../partials/LoadImages";
 import EventsSliderPage from "./EventsSliderPage";
+import MetaEventsAndAct from "./MetaEventsAndAct";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -350,6 +351,8 @@ const EventsSingplePage = () => {
         />
       )}
       <Footer />
+
+      {eventsAndActivitiesData && <MetaEventsAndAct eventsId={eventsId} />}
     </>
   );
 };

@@ -178,12 +178,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     home_insights_paragraph_a: itemEdit
       ? itemEdit.home_insights_paragraph_a
       : "",
-    home_insights_paragraph_b: itemEdit
-      ? itemEdit.home_insights_paragraph_b
-      : "",
-    home_insights_paragraph_c: itemEdit
-      ? itemEdit.home_insights_paragraph_c
-      : "",
     home_insights_cta_is_active: itemEdit
       ? itemEdit.home_insights_cta_is_active
       : "",
@@ -194,6 +188,9 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
     home_insights_thumbnail: itemEdit ? itemEdit.home_insights_thumbnail : "",
     home_insights_is_active: itemEdit ? itemEdit.home_insights_is_active : "",
+    home_insights_meta_description: itemEdit
+      ? itemEdit.home_insights_meta_description
+      : "",
 
     home_insights_img_old: itemEdit ? itemEdit.home_insights_img : "",
     home_insights_thumbnail_old: itemEdit
@@ -515,6 +512,14 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             label="*Slug"
                             type="text"
                             name="home_insights_slug"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                        <div className="input-wrapper">
+                          <InputTextArea
+                            label="Meta Description"
+                            type="text"
+                            name="home_insights_meta_description"
                             disabled={mutation.isPending}
                           />
                         </div>

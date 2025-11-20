@@ -22,6 +22,7 @@ import { StoreContext } from "../../../store/StoreContext";
 import ModalJobApplication from "../career/ModalJobApplication";
 import BannerSliderLoader from "../home/bannerSliderLoader";
 import TableLoading from "../../../partials/spinners/TableLoading";
+import MetaInsights from "../home/MetaInsights";
 
 const SingplePage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -146,33 +147,9 @@ const SingplePage = () => {
   const insightsImages =
     getConvertStringToJSONparseData(post.home_insights_img) || [];
 
-  const insightImgId = insightsImages.map((img) => img.id)[0];
-
-  const ogImage = `${googleHDViewLink}${insightImgId}`;
-  console.log(ogImage);
-
   return (
     <>
       <Header services={"default"} page={"Home"} />
-      <div>
-        {post && (
-          <Helmet>
-            <title>{post.home_insights_title}</title>
-            <meta property="og:title" content={post.home_insights_title} />
-            <meta property="og:description" content={post.meta_description} />
-            <meta property="og:image" content={ogImage} />
-            <meta property="og:image:secure_url" content={ogImage} />
-            <meta property="og:image:type" content="image/jpeg" />
-            <meta property="og:image:width" content="1080" />
-            <meta property="og:image:height" content="630" />
-            <meta
-              property="og:url"
-              content={`https://frontlinebusiness.com.ph/insight/${post.slug}`}
-            />
-            <meta property="og:type" content="article" />
-          </Helmet>
-        )}
-      </div>
       <section className="singlePost pt-20 md:pt-40 mb-20">
         <div className="customContainer">
           {isLoading || isFetching ? (
@@ -308,6 +285,8 @@ const SingplePage = () => {
           modalJob={modalJob}
         />
       )}
+
+      {insightData && <MetaInsights insightId={insightId} />}
     </>
   );
 };

@@ -1,0 +1,21 @@
+Upload JSX
+index.html is updated
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/events-and-activities/create.php
+    -> rest/v1/controllers/developer/events-and-activities/update.php
+    -> rest/v1/controllers/developer/home/insights/create.php
+    -> rest/v1/controllers/developer/home/insights/update.php
+
+MODELS
+    -> rest/v1/models/developer/events-and-activities/EventsAndActivities.php
+    -> rest/v1/models/developer/home/insights/Insights.php
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_home_insights.sql
+     note: 
+        -> this columns are drop : `home_insights_paragraph_b` text NOT NULL, `home_insights_paragraph_c` text NOT NULL,
+        -> this column is added : `home_insights_meta_description` varchar(500) NOT NULL,
+    -> rest/db-backup/fbsv2_events_activities.sql
+     note:
+        -> this column is added : `events_activities_meta_description` varchar(500) NOT NULL,
