@@ -32,7 +32,7 @@ class EventsAndActivities
     public function readAll()
     {
         try {
-            $sql = "select events_activities_aid, events_activities_is_active, events_activities_img, events_activities_img_list, events_activities_category, events_activities_title, events_activities_slug, events_activities_date, events_activities_description ";
+            $sql = "select events_activities_aid, events_activities_is_active, events_activities_img, events_activities_img_list, events_activities_category, events_activities_title, events_activities_slug, events_activities_date, events_activities_description, events_activities_meta_description ";
             $sql .= "from ";
             $sql .= "{$this->tblEventsAndActivities} ";
             $sql .= "order by events_activities_is_active desc, ";
