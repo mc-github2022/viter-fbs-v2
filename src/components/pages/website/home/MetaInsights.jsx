@@ -44,7 +44,7 @@ const MetaInsights = ({ insightId }) => {
     }
     const eventImgId = eventImage.map((img) => img.id)[0];
     const ogImage = eventImgId
-      ? `${googleHDViewLink}${eventImgId}`
+      ? `https://drive.google.com/uc?export=view&id=${eventImgId}`
       : defaultImage;
 
     const ogUrl = post
