@@ -48,7 +48,7 @@ const MetaInsights = ({ insightId }) => {
       : defaultImage;
 
     const ogUrl = post
-      ? `https://frontlinebusiness.com.ph/events/${post.home_insights_slug}`
+      ? `https://frontlinebusiness.com.ph/events/${post.home_insights_slug}?id=${insightId}`
       : defaultUrl;
 
     document.title = title;

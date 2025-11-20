@@ -48,7 +48,7 @@ const MetaEventsAndAct = ({ eventsId }) => {
       : defaultImage;
 
     const ogUrl = post
-      ? `https://frontlinebusiness.com.ph/events/${post.events_activities_slug}`
+      ? `https://frontlinebusiness.com.ph/events/${post.events_activities_slug}?id=${eventsId}`
       : defaultUrl;
 
     document.title = title;
