@@ -77,7 +77,7 @@ const MetaInsights = ({ insightId }) => {
     setMeta("og:title", title);
     setMeta("og:description", description);
     setMeta("og:image", ogImage);
-    setMeta("og:image:secure_url", ogImage);
+    // setMeta("og:image:secure_url", ogImage);
     setMeta("og:image:type", "image/jpeg");
     // setMeta("og:image:width", "1080");
     // setMeta("og:image:height", "630");

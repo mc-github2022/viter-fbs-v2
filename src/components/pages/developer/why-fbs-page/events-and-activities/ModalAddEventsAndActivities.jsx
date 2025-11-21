@@ -676,13 +676,14 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                         //   mutation.isPending ||
                         //   !props.dirty ||
                         //   loading ||
-                        //   (!clientImages?.length && !logoImages?.length)
+                        //   photoSingle === "" ||
+                        //   initVal.events_activities_img === photoSingle?.name
                         // }
                         disabled={
-                          mutation.isPending ||
-                          !props.dirty ||
-                          loading ||
-                          !logoImages?.length
+                          ((mutation.isPending || !props.dirty) &&
+                            photoSingle === null) ||
+                          photoSingle === "" ||
+                          initVal.events_activities_img === photoSingle?.name
                         }
                         onClick={() => setIsDraft(true)}
                       >
@@ -698,10 +699,10 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                         } btn-modal-submit`}
                         type="submit"
                         disabled={
-                          mutation.isPending ||
-                          !props.dirty ||
-                          loading ||
-                          !logoImages?.length
+                          ((mutation.isPending || !props.dirty) &&
+                            photoSingle === null) ||
+                          photoSingle === "" ||
+                          initVal.events_activities_img === photoSingle?.name
                         }
                         onClick={handleIsSubmitted}
                       >
