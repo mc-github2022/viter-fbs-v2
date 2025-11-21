@@ -7,11 +7,13 @@ import * as Yup from "yup";
 import useUploadMultiplePhoto from "../../../../custom-hooks/useUploadMultiplePhoto";
 import {
   InputFileUpload,
+  InputFileUploadSinglePhoto,
   InputText,
   InputTextArea,
 } from "../../../../helpers/FormInputs";
 import {
   apiVersion,
+  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
   googleViewLink,
@@ -28,6 +30,9 @@ import {
 } from "../../../../store/StoreAction";
 import { StoreContext } from "../../../../store/StoreContext";
 import { purposeValue } from "./cta-form";
+import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
+import { IoImageOutline } from "react-icons/io5";
+import { MdOutlineFileUpload } from "react-icons/md";
 
 const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -67,12 +72,15 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     photoArrayList: thumbnail,
   } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
-  const {
-    uploadMultiplePhoto: uploadImage,
-    handleChangeMultiplePhoto: handleChangeImage,
-    setPhotoArrayList: setImage,
-    photoArrayList: image,
-  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+  // const {
+  //   uploadMultiplePhoto: uploadImage,
+  //   handleChangeMultiplePhoto: handleChangeImage,
+  //   setPhotoArrayList: setImage,
+  //   photoArrayList: image,
+  // } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
+    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
   // handle for file upload thumbnail
   const handleChangeFileUploadThumbnail = (
@@ -163,10 +171,10 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
       );
       setThumbnail(thumbnail);
     }
-    if (itemEdit) {
-      const image = getConvertStringToJSONparseData(itemEdit.home_insights_img);
-      setImage(image);
-    }
+    // if (itemEdit) {
+    //   const image = getConvertStringToJSONparseData(itemEdit.home_insights_img);
+    //   setImage(image);
+    // }
   }, []);
 
   const initVal = {
@@ -192,7 +200,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
       ? itemEdit.home_insights_meta_description
       : "",
 
-    home_insights_img_old: itemEdit ? itemEdit.home_insights_img : "",
+    // home_insights_img_old: itemEdit ? itemEdit.home_insights_img : "",
     home_insights_thumbnail_old: itemEdit
       ? itemEdit.home_insights_thumbnail
       : "",
@@ -232,19 +240,25 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                     id: item?.id || "",
                   })
                 ),
-                home_insights_img: image.map((item) =>
-                  JSON.stringify({
-                    name: item.name,
-                    id: item?.id || "",
-                  })
-                ),
+                // home_insights_img: image.map((item) =>
+                //   JSON.stringify({
+                //     name: item.name,
+                //     id: item?.id || "",
+                //   })
+                // ),
+                home_insights_img: photoSingle
+                  ? photoSingle.name
+                  : itemEdit.home_insights_img,
               };
+              if (photoSingle) {
+                await singleUploadPhoto(); // to save the photo when submit
+              }
 
               // Upload separately
               const clientPhotoUpload = await uploadThumbnail(thumbnail);
-              const logoPhotoUpload = await uploadImage(image);
+              // const logoPhotoUpload = await uploadImage(image);
 
-              if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
+              if (clientPhotoUpload?.success ) {
                 setLoading(false);
               }
 
@@ -369,7 +383,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                         </div>
                       </div>
 
-                      <div className="relative mb-3">
+                      {/* <div className="relative mb-3">
                         <label className=" text-dark text-xs">Image</label>
                         <div
                           className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-full text-xs ${
@@ -473,7 +487,73 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                               })}
                           </ol>
                         </div>
+                      </div> */}
+
+                      <div className="relative mt-3">
+                        <label className=" text-dark text-xs">Image</label>
+                        <div className="relative w-full ">
+                          {(itemEdit === null && photoSingle === null) ||
+                          (photoSingle === "" && itemEdit === null) ? (
+                            <div
+                              className={`relative mt-4 mb-4 border border-gray-300 border-solid rounded-md hover:border-primary hover:border-dashed w-[300px] md:w-[344px] text-xs 
+                              `}
+                            >
+                              <span className="min-h-16 flex items-center justify-center">
+                                <span className="text-dark mr-1">
+                                  Drag & Drop
+                                </span>{" "}
+                                Photo here or{" "}
+                                <span className="text-dark ml-1">Browse</span>
+                              </span>
+                            </div>
+                          ) : (itemEdit &&
+                              !itemEdit.home_insights_img &&
+                              !photoSingle) ||
+                            (!itemEdit && !photoSingle) ? (
+                            <div className="hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
+                              <div>
+                                <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
+                                  Upload Image
+                                </h1>
+                              </div>
+                            </div>
+                          ) : (
+                            <img
+                              src={
+                                photoSingle
+                                  ? URL.createObjectURL(photoSingle) // preview
+                                  : devBaseImgUrl +
+                                    "/" +
+                                    itemEdit.home_insights_img // check db
+                              }
+                              alt="Photo"
+                              className="group-hover:opacity-20 duration-200 relative h-[127px]  object-contain object-[50%,50%] m-auto bg-gray-300 w-full mb-3"
+                            />
+                          )}
+
+                          <div className="btnImgUpload">
+                            <button>
+                              {/* <MdOutlineFileUpload className="text-gray-900 text-[30px]" /> */}
+                              <InputFileUploadSinglePhoto
+                                name="photo"
+                                type="file"
+                                id="myFile"
+                                accept="image/*"
+                                title="Upload Image"
+                                onChange={(e) =>
+                                  handleChangePhoto(
+                                    e,
+                                    initVal.home_insights_img
+                                  )
+                                }
+                                className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999] "
+                              />
+                            </button>
+                          </div>
+                        </div>
                       </div>
+
                       {itemEdit ? (
                         <div className="h-[30px]  relative w-full">
                           <div className="absolute">
@@ -522,6 +602,11 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                             name="home_insights_meta_description"
                             disabled={mutation.isPending}
                           />
+                        </div>
+                        <div className="my-1 mb-2">
+                          <p className="text-xs">
+                            Meta Description is maximum of 180 character
+                          </p>
                         </div>
                         <div className="input-wrapper mb-4">
                           <InputText
@@ -592,10 +677,18 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                       <button
                         className="btn-modal-submit bg-white text-primary"
                         type="submit"
+                        // disabled={
+                        //   (mutation.isPending && !props.dirty && loading) ||
+                        //   (!thumbnail?.length && !image?.length) ||
+                        //   (!isCheckClick && !props.dirty)
+                        // }
                         disabled={
-                          (mutation.isPending && !props.dirty && loading) ||
-                          (!thumbnail?.length && !image?.length) ||
-                          (!isCheckClick && !props.dirty)
+                          ((mutation.isPending || !props.dirty) &&
+                            photoSingle === null) ||
+                          !thumbnail?.length ||
+                          (!isCheckClick && !props.dirty) ||
+                          photoSingle === "" ||
+                          initVal.home_banner_img === photoSingle?.name
                         }
                         onClick={() => setIsDraft(true)}
                       >
@@ -631,9 +724,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           itemProps={fileData.props}
           msg="Are you sure you want to remove this file?"
           setIsModalShow={setIsRemovedPhoto}
-          setNewFile={
-            fileData.type === "thumbnail-image" ? setThumbnail : setImage
-          }
+          setNewFile={fileData.type === "thumbnail-image" ? setThumbnail : null}
         />
       )}
     </>

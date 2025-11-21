@@ -25,7 +25,7 @@ if (array_key_exists("events_activitiesid", $_GET)) {
 
   $events_activities->events_activities_datetime = date("Y-m-d H:i:s");
 
-  $events_activities_img_old = $data["events_activities_img_old"];
+  // $events_activities_img_old = $data["events_activities_img_old"];
   $events_activities_img_list_old = $data["events_activities_img_list_old"];
 
   checkId($events_activities->events_activities_aid);
@@ -33,15 +33,15 @@ if (array_key_exists("events_activitiesid", $_GET)) {
   $pendingDeleteFile = $data['pendingDeleteFile'];
 
   // UPLOAD FILE TO GOOGLDE DRIVE  
-  $events_activities->events_activities_img = checkToUploadGoogleDrive(
-    $events_activities->events_activities_img, // FILES
-    $events_activities_img_old, // OLD FILES
-  );
+  // $events_activities->events_activities_img = checkToUploadGoogleDrive(
+  //   $events_activities->events_activities_img, // FILES
+  //   $events_activities_img_old, // OLD FILES
+  // );
   // IF DELETE ARRAY > 0 DELETE SOME FILE
-  $events_activities->events_activities_img = checkDeleteGoogleDriveApiFiles(
-    $events_activities->events_activities_img, // FILES
-    $pendingDeleteFile // TO DELETE FILES
-  );
+  // $events_activities->events_activities_img = checkDeleteGoogleDriveApiFiles(
+  //   $events_activities->events_activities_img, // FILES
+  //   $pendingDeleteFile // TO DELETE FILES
+  // );
 
   // UPLOAD FILE TO GOOGLDE DRIVE  
   $events_activities->events_activities_img_list = checkToUploadGoogleDrive(

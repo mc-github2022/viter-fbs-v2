@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
   apiVersion,
+  devBaseImgUrl,
   devNavUrl,
   formatDate,
   getConvertStringToJSONparseData,
@@ -483,10 +484,10 @@ const EventsAndAct = () => {
                           (post) => post.events_activities_is_active === 1
                         )
                         .map((post, key) => {
-                          const eventImage =
-                            getConvertStringToJSONparseData(
-                              post.events_activities_img
-                            ) || [];
+                          // const eventImage =
+                          //   getConvertStringToJSONparseData(
+                          //     post.events_activities_img
+                          //   ) || [];
                           return (
                             <div key={key}>
                               <li className="my-5">
@@ -495,14 +496,19 @@ const EventsAndAct = () => {
                                 >
                                   <div className="flex flex-col md:flex-row gap-4">
                                     <div className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] relative">
-                                      {eventImage.map((image, index) => (
+                                      {/* {eventImage.map((image, index) => (
                                         <LoadImages
                                           url={`${googleHDViewLink}${image?.id}`}
                                           alt={`${post.events_activities_title}`}
                                           className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] rounded-lg object-cover"
                                           key={index}
                                         />
-                                      ))}
+                                      ))} */}
+                                      <img
+                                        src={`${devBaseImgUrl}/${post.events_activities_img}`}
+                                        alt={`${post.events_activities_title}`}
+                                        className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] rounded-lg object-cover"
+                                      />
                                     </div>
                                     <div className="flex flex-col gap-2">
                                       <p className="line-clamp-3 font-bold">

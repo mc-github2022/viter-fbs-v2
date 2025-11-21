@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Slider from "react-slick/lib/slider";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
+  devBaseImgUrl,
   devNavUrl,
   formatDate,
   getConvertStringToJSONparseData,
@@ -209,9 +210,9 @@ const EventsSingplePage = () => {
     ? getConvertStringToJSONparseData(post.events_activities_img_list)
     : [];
 
-  const eventImage = post?.events_activities_img
-    ? getConvertStringToJSONparseData(post.events_activities_img)
-    : [];
+  // const eventImage = post?.events_activities_img
+  //   ? getConvertStringToJSONparseData(post.events_activities_img)
+  //   : [];
 
   return (
     <>
@@ -236,14 +237,19 @@ const EventsSingplePage = () => {
           <div className="wrapper mt-12 gap-8">
             <div className="postContent">
               <div className="relative w-full min-h-[200px] md:max-h-[500px]">
-                {eventImage.map((image, index) => (
+                {/* {eventImage.map((image, index) => (
                   <LoadImages
                     url={`${googleHDViewLink}${image?.id}`}
                     alt={`${post.events_activities_title}`}
                     key={index}
                     className="rounded-lg object-cover mb-8 w-full min-h-[200px] md:max-h-[500px] object-center"
                   />
-                ))}
+                ))} */}
+                <img
+                  src={`${devBaseImgUrl}/${post.events_activities_img}`}
+                  alt={`${post.events_activities_title}`}
+                  className="rounded-lg object-cover mb-8 w-full min-h-[200px] md:max-h-[500px] object-center"
+                />
               </div>
               <div
                 dangerouslySetInnerHTML={{ __html: html }}

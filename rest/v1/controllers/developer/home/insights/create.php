@@ -29,14 +29,14 @@ if ($data["home_insights_form_selected"] === "") {
 $home_insights->home_insights_created = date("Y-m-d H:i:s");
 $home_insights->home_insights_datetime = date("Y-m-d H:i:s");
 
-$home_insights_img_old = $data["home_insights_img_old"];
+// $home_insights_img_old = $data["home_insights_img_old"];
 $home_insights_thumbnail_old = $data["home_insights_thumbnail_old"];
 
 // UPLOAD FILE TO GOOGLE DRIVE  
-$home_insights->home_insights_img = checkToUploadGoogleDrive(
-  $home_insights->home_insights_img, // FILES
-  $home_insights_img_old, // OLD FILES
-);
+// $home_insights->home_insights_img = checkToUploadGoogleDrive(
+//   $home_insights->home_insights_img, // FILES
+//   $home_insights_img_old, // OLD FILES
+// );
 
 // UPLOAD FILE TO GOOGLE DRIVE  
 $home_insights->home_insights_thumbnail = checkToUploadGoogleDrive(

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
+  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
@@ -38,20 +39,29 @@ const MetaEventsAndAct = ({ eventsId }) => {
     const description =
       post?.events_activities_meta_description || defaultDescription;
 
-    let eventImage = [];
-    if (post?.events_activities_img) {
-      eventImage = getConvertStringToJSONparseData(post.events_activities_img);
-    }
-    const eventImgId = eventImage.map((img) => img.id)[0];
-    const ogImage = eventImgId
-      ? `https://drive.google.com/uc?export=view&id=${eventImgId}`
+    // let eventImage = [];
+    // if (post?.events_activities_img) {
+    //   eventImage = getConvertStringToJSONparseData(post.events_activities_img);
+    // }
+    // const eventImgId = eventImage.map((img) => img.id)[0];
+    // const ogImage = eventImgId
+    //   ? `https://drive.google.com/uc?export=view&id=${eventImgId}`
+    //   : defaultImage;
+    const ogImage = post?.events_activities_img
+      ? `${devBaseImgUrl}/${post.events_activities_img}`
       : defaultImage;
 
     const ogUrl = post
       ? `https://frontlinebusiness.com.ph/events/${post.events_activities_slug}?id=${eventsId}`
       : defaultUrl;
 
+    // get title
     document.title = title;
+
+    // get the description
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", description);
 
     const setMeta = (property, content) => {
       let tag = document.querySelector(`meta[property='${property}']`);
@@ -68,8 +78,8 @@ const MetaEventsAndAct = ({ eventsId }) => {
     setMeta("og:image", ogImage);
     setMeta("og:image:secure_url", ogImage);
     setMeta("og:image:type", "image/jpeg");
-    setMeta("og:image:width", "1080");
-    setMeta("og:image:height", "630");
+    // setMeta("og:image:width", "1080");
+    // setMeta("og:image:height", "630");
     setMeta("og:url", ogUrl);
     setMeta("og:type", "article");
   }, [post]);

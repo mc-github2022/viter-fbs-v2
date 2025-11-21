@@ -206,10 +206,10 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => {
-                  const eventImage =
-                    getConvertStringToJSONparseData(
-                      item.events_activities_img
-                    ) || [];
+                  // const eventImage =
+                  //   getConvertStringToJSONparseData(
+                  //     item.events_activities_img
+                  //   ) || [];
                   const eventImageList =
                     getConvertStringToJSONparseData(
                       item.events_activities_img_list
@@ -247,9 +247,10 @@ const EventsAndActivitiesTable = ({ setItemEdit }) => {
                       </td>
                       <td className="place-content-start">
                         <div className="line-clamp-5">
-                          {eventImage.map((img, index) => (
+                          {/* {eventImage.map((img, index) => (
                             <p key={index}>{img.name}</p>
-                          ))}
+                          ))} */}
+                          {item.events_activities_img}
                         </div>
                       </td>
                       <td className="place-content-start">

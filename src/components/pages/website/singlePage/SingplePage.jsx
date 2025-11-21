@@ -6,6 +6,7 @@ import { MdOutlineCalendarToday } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
+  devBaseImgUrl,
   devNavUrl,
   formatDate,
   getConvertStringToJSONparseData,
@@ -144,8 +145,8 @@ const SingplePage = () => {
     return "";
   }
 
-  const insightsImages =
-    getConvertStringToJSONparseData(post.home_insights_img) || [];
+  // const insightsImages =
+  //   getConvertStringToJSONparseData(post.home_insights_img) || [];
 
   return (
     <>
@@ -200,14 +201,19 @@ const SingplePage = () => {
                 <div className="wrapper gap-8 mt-12">
                   <div className="postContent">
                     <div className="relative w-full min-h-[200px] md:max-h-[500px]">
-                      {insightsImages.map((image, index) => (
+                      {/* {insightsImages.map((image, index) => (
                         <LoadImages
                           url={`${googleHDViewLink}${image?.id}`}
                           alt={`${post.home_insights_title}`}
                           className="rounded-lg object-cover mb-8 w-full min-h-[200px] md:max-h-[500px] object-center"
                           key={index}
                         />
-                      ))}
+                      ))} */}
+                      <img
+                        src={`${devBaseImgUrl}/${post.home_insights_img}`}
+                        alt={`${post.home_insights_title}`}
+                        className="rounded-lg object-cover mb-8 w-full min-h-[200px] md:max-h-[500px] object-center"
+                      />
                     </div>
                     <div
                       dangerouslySetInnerHTML={{ __html: html }}

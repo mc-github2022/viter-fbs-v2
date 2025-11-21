@@ -4,6 +4,7 @@ import { BiSolidRightArrow } from "react-icons/bi";
 import { Link, useParams } from "react-router-dom";
 import {
   apiVersion,
+  devBaseImgUrl,
   devNavUrl,
   formatDate,
   getConvertStringToJSONparseData,
@@ -231,10 +232,10 @@ const AllInsightsArticleList = () => {
                               post?.home_insights_slug
                         )
                         .map((popPost, key) => {
-                          const insightsImages =
-                            getConvertStringToJSONparseData(
-                              popPost.home_insights_img
-                            ) || [];
+                          // const insightsImages =
+                          //   getConvertStringToJSONparseData(
+                          //     popPost.home_insights_img
+                          //   ) || [];
                           return (
                             <div key={key}>
                               <li className="my-5">
@@ -243,14 +244,19 @@ const AllInsightsArticleList = () => {
                                 >
                                   <div className="flex flex-col md:flex-row gap-4">
                                     <div className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] relative">
-                                      {insightsImages.map((image, index) => (
+                                      {/* {insightsImages.map((image, index) => (
                                         <LoadImages
                                           url={`${googleHDViewLink}${image?.id}`}
                                           alt={`${popPost.home_insights_title}`}
                                           className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] rounded-lg object-cover"
                                           key={index}
                                         />
-                                      ))}
+                                      ))} */}
+                                      <img
+                                        src={`${devBaseImgUrl}/${popPost.home_insights_img}`}
+                                        alt={`${popPost.home_insights_title}`}
+                                        className="min-w-[300px] max-w-[300px] md:min-w-[350px] md:max-w-[350px] h-[190px] rounded-lg object-cover"
+                                      />
                                     </div>
                                     <div className="flex flex-col gap-2">
                                       <p className="line-clamp-3 font-bold">

@@ -121,6 +121,26 @@ export const InputFileUpload = ({ label, ...props }) => {
   );
 };
 
+export const InputFileUploadSinglePhoto = ({ label, onChange = null, ...props }) => {
+  const [field, meta] = useField(props);
+  return (
+    <>
+      <input
+        {...field}
+        {...props}
+        onChange={(e) => {
+          onChange !== null && onChange(e);
+          field.onChange(e);
+        }}
+      />
+
+      {meta.touched && meta.error ? (
+        <span className="error-show">{meta.error}</span>
+      ) : null}
+    </>
+  );
+};
+
 export const InputTextArea = ({
   label,
   required = true,

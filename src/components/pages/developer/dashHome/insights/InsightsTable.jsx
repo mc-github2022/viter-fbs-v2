@@ -204,9 +204,9 @@ const InsightsTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => {
-                  const insightsImages =
-                    getConvertStringToJSONparseData(item.home_insights_img) ||
-                    [];
+                  // const insightsImages =
+                  //   getConvertStringToJSONparseData(item.home_insights_img) ||
+                  //   [];
                   const insightsThumbnail =
                     getConvertStringToJSONparseData(
                       item.home_insights_thumbnail
@@ -253,9 +253,10 @@ const InsightsTable = ({ setItemEdit }) => {
                         ))}
                       </td>
                       <td className="place-content-start">
-                        {insightsImages.map((img, index) => (
+                        {/* {insightsImages.map((img, index) => (
                           <p key={index}>{img.name}</p>
-                        ))}
+                        ))} */}
+                        {item.home_insights_img}
                       </td>
                       <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                         {item.home_insights_is_active ? (

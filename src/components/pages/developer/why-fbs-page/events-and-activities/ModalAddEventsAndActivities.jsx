@@ -8,6 +8,7 @@ import * as Yup from "yup";
 import useSingleUploadPhoto from "../../../../custom-hooks/useSingleUploadPhoto";
 import {
   InputFileUpload,
+  InputFileUploadSinglePhoto,
   InputPhotoUpload,
   InputText,
   InputTextArea,
@@ -56,12 +57,15 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
     setIsSubmitted(!isSubmitted);
   };
 
-  const {
-    uploadMultiplePhoto: uploadClientImages,
-    handleChangeMultiplePhoto: handleChangeClientImages,
-    setPhotoArrayList: setClientImages,
-    photoArrayList: clientImages,
-  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+  // const {
+  //   uploadMultiplePhoto: uploadClientImages,
+  //   handleChangeMultiplePhoto: handleChangeClientImages,
+  //   setPhotoArrayList: setClientImages,
+  //   photoArrayList: clientImages,
+  // } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+
+  const { singleUploadPhoto, handleChangePhoto, photoSingle } =
+    useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
 
   const {
     uploadMultiplePhoto: uploadLogoImages,
@@ -175,12 +179,12 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
 
   React.useEffect(() => {
     setAnimate("");
-    if (itemEdit) {
-      const clientPhotos = getConvertStringToJSONparseData(
-        itemEdit.events_activities_img
-      );
-      setClientImages(clientPhotos);
-    }
+    // if (itemEdit) {
+    //   const clientPhotos = getConvertStringToJSONparseData(
+    //     itemEdit.events_activities_img
+    //   );
+    //   setClientImages(clientPhotos);
+    // }
     if (itemEdit) {
       const logoPhotos = getConvertStringToJSONparseData(
         itemEdit.events_activities_img_list
@@ -211,7 +215,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
       ? itemEdit.events_activities_meta_description
       : "",
 
-    events_activities_img_old: itemEdit ? itemEdit.events_activities_img : "",
+    // events_activities_img_old: itemEdit ? itemEdit.events_activities_img : "",
     events_activities_img_list_old: itemEdit
       ? itemEdit.events_activities_img_list
       : "",
@@ -251,12 +255,16 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
               const data = {
                 ...values,
                 events_activities_is_active: isDraft ? 0 : 1,
-                events_activities_img: clientImages.map((item) =>
-                  JSON.stringify({
-                    name: item.name,
-                    id: item?.id || "",
-                  })
-                ),
+                // events_activities_img: clientImages.map((item) =>
+                //   JSON.stringify({
+                //     name: item.name,
+                //     id: item?.id || "",
+                //   })
+                // ),
+                events_activities_img: photoSingle
+                  ? photoSingle.name
+                  : itemEdit.events_activities_img,
+
                 events_activities_img_list: logoImages.map((item) =>
                   JSON.stringify({
                     name: item.name,
@@ -264,11 +272,14 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                   })
                 ),
               };
+              if (photoSingle) {
+                await singleUploadPhoto(); // to save the photo when submit
+              }
               // Upload separately
-              const clientPhotoUpload = await uploadClientImages(clientImages);
+              // const clientPhotoUpload = await uploadClientImages(clientImages);
               const logoPhotoUpload = await uploadLogoImages(logoImages);
 
-              if (clientPhotoUpload?.success || logoPhotoUpload?.success) {
+              if (logoPhotoUpload?.success) {
                 setLoading(false);
               }
 
@@ -282,7 +293,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                   <div className="form-input">
                     <div className="gap-4 relative overflow-hidden">
                       <div className=" relative">
-                        <div className="relative mb-6">
+                        {/* <div className="relative mb-6">
                           <label className=" text-dark text-xs">Image</label>
                           <div
                             className={`relative mt-9 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-[230px] text-xs ${
@@ -394,7 +405,73 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                                 })}
                             </ol>
                           </div>
+                        </div> */}
+
+                        <div className="relative mt-3">
+                          <label className=" text-dark text-xs">Image</label>
+                          <div className="relative w-full ">
+                            {(itemEdit === null && photoSingle === null) ||
+                            (photoSingle === "" && itemEdit === null) ? (
+                              <div
+                                className={`relative mt-4 mb-4 border border-gray-300 border-solid rounded-md hover:border-primary hover:border-dashed w-[300px] md:w-[344px] text-xs 
+                                                      `}
+                              >
+                                <span className="min-h-16 flex items-center justify-center">
+                                  <span className="text-dark mr-1">
+                                    Drag & Drop
+                                  </span>{" "}
+                                  Photo here or{" "}
+                                  <span className="text-dark ml-1">Browse</span>
+                                </span>
+                              </div>
+                            ) : (itemEdit &&
+                                !itemEdit.events_activities_img &&
+                                !photoSingle) ||
+                              (!itemEdit && !photoSingle) ? (
+                              <div className="hover:opacity-20 mb-4 grid place-items-center items-center gap-2 w-[200px] h-[100px] p-2 duration-200">
+                                <div>
+                                  <IoImageOutline className="text-[25px] text-[gray] mx-auto" />
+                                  <h1 className="mb-0 leading-tight grid place-items-center text-[gray] text-sm text-center">
+                                    Upload Image
+                                  </h1>
+                                </div>
+                              </div>
+                            ) : (
+                              <img
+                                src={
+                                  photoSingle
+                                    ? URL.createObjectURL(photoSingle) // preview
+                                    : devBaseImgUrl +
+                                      "/" +
+                                      itemEdit.events_activities_img // check db
+                                }
+                                alt="Photo"
+                                className="group-hover:opacity-20 duration-200 relative h-[127px]  object-contain object-[50%,50%] m-auto bg-gray-300 w-full mb-3"
+                              />
+                            )}
+
+                            <div className="btnImgUpload">
+                              <button>
+                                {/* <MdOutlineFileUpload className="text-gray-900 text-[30px]" /> */}
+                                <InputFileUploadSinglePhoto
+                                  name="photo"
+                                  type="file"
+                                  id="myFile"
+                                  accept="image/*"
+                                  title="Upload Image"
+                                  onChange={(e) =>
+                                    handleChangePhoto(
+                                      e,
+                                      initVal.events_activities_img
+                                    )
+                                  }
+                                  className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999] "
+                                />
+                              </button>
+                            </div>
+                          </div>
                         </div>
+
                         {itemEdit ? (
                           <div className="h-[30px]  relative w-full">
                             <div className="absolute">
@@ -443,6 +520,11 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                               name="events_activities_meta_description"
                               disabled={mutation.isPending}
                             />
+                          </div>
+                          <div className="my-1 mb-2">
+                            <p className="text-xs">
+                              Meta Description is maximum of 180 character
+                            </p>
                           </div>
 
                           <div className="input-wrapper">
@@ -590,11 +672,17 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                       <button
                         className="btn-modal-submit bg-white text-primary"
                         type="submit"
+                        // disabled={
+                        //   mutation.isPending ||
+                        //   !props.dirty ||
+                        //   loading ||
+                        //   (!clientImages?.length && !logoImages?.length)
+                        // }
                         disabled={
                           mutation.isPending ||
                           !props.dirty ||
                           loading ||
-                          (!clientImages?.length && !logoImages?.length)
+                          !logoImages?.length
                         }
                         onClick={() => setIsDraft(true)}
                       >
@@ -613,7 +701,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
                           mutation.isPending ||
                           !props.dirty ||
                           loading ||
-                          (!clientImages?.length && !logoImages?.length)
+                          !logoImages?.length
                         }
                         onClick={handleIsSubmitted}
                       >
@@ -635,9 +723,7 @@ const ModalAddEventsAndActivities = ({ setIsAdd, itemEdit }) => {
           itemProps={fileData.props}
           msg="Are you sure you want to remove this file?"
           setIsModalShow={setIsRemovedPhoto}
-          setNewFile={
-            fileData.type === "client" ? setClientImages : setLogoImages
-          }
+          setNewFile={fileData.type === "logo" ? setLogoImages : null}
         />
       )}
     </>

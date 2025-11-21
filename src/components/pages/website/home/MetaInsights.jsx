@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import {
+  devBaseImgUrl,
   getConvertStringToJSONparseData,
   googleHDViewLink,
 } from "../../../helpers/functions-general";
@@ -33,26 +34,36 @@ const MetaInsights = ({ insightId }) => {
     const defaultImage = "https://frontlinebusiness.com.ph/default.jpg";
     const defaultUrl = "https://frontlinebusiness.com.ph/";
 
-    // Decide what to set based on whether post exists
+    // get the title
     const title = post?.home_insights_title || defaultTitle;
     const description =
       post?.home_insights_meta_description || defaultDescription;
 
-    let eventImage = [];
-    if (post?.home_insights_img) {
-      eventImage = getConvertStringToJSONparseData(post.home_insights_img);
-    }
-    const eventImgId = eventImage.map((img) => img.id)[0];
-    const ogImage = eventImgId
-      ? `https://drive.google.com/uc?export=view&id=${eventImgId}`
+    // let eventImage = [];
+    // if (post?.home_insights_img) {
+    //   eventImage = getConvertStringToJSONparseData(post.home_insights_img);
+    // }
+    // const eventImgId = eventImage.map((img) => img.id)[0];
+    // const ogImage = eventImgId
+    //   ? `https://drive.google.com/uc?export=view&id=${eventImgId}`
+    //   : defaultImage;
+    const ogImage = post?.home_insights_img
+      ? `${devBaseImgUrl}/${post.home_insights_img}`
       : defaultImage;
 
     const ogUrl = post
       ? `https://frontlinebusiness.com.ph/events/${post.home_insights_slug}?id=${insightId}`
       : defaultUrl;
 
+    // get the title
     document.title = title;
 
+    // get the description
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", description);
+
+    // update the meta tags
     const setMeta = (property, content) => {
       let tag = document.querySelector(`meta[property='${property}']`);
       if (!tag) {
@@ -68,9 +79,10 @@ const MetaInsights = ({ insightId }) => {
     setMeta("og:image", ogImage);
     setMeta("og:image:secure_url", ogImage);
     setMeta("og:image:type", "image/jpeg");
-    setMeta("og:image:width", "1080");
-    setMeta("og:image:height", "630");
+    // setMeta("og:image:width", "1080");
+    // setMeta("og:image:height", "630");
     setMeta("og:url", ogUrl);
+    setMeta("og:image:alt", title);
     setMeta("og:type", "article");
   }, [post]);
 

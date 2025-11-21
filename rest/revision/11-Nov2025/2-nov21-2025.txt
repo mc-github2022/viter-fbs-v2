@@ -1,0 +1,19 @@
+Upload JSX
+index.html is updated
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/events-and-activities/create.php
+    -> rest/v1/controllers/developer/events-and-activities/update.php
+    -> rest/v1/controllers/developer/home/insights/create.php
+    -> rest/v1/controllers/developer/home/insights/update.php
+
+MODELS
+    -> 
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_events_activities.sql
+        note: data type length is changed to 180
+            `events_activities_meta_description` varchar(180) NOT NULL,
+    -> rest/db-backup/fbsv2_home_insights.sql
+        note: data type length is changed to 180
+            `home_insights_meta_description` varchar(180) NOT NULL,
