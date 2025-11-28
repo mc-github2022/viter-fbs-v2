@@ -22,6 +22,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     checkPayload($data);
 
     $fileName = $data["client_file"];
+    $course = $data["client_course"];
+    $school = $data["client_school"];
     $emailSubject = $data["email_subject"];
     $subject = $data["client_message_subject"];
 
@@ -62,7 +64,9 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             $mobileNumber,
             $message,
             $emailReceiver,
-            $fileName
+            $fileName,
+            $course,
+            $school
         );
     }
 

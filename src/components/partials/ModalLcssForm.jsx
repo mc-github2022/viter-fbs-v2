@@ -84,6 +84,8 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     client_message_subject: "",
     client_message: "",
     client_file: "",
+    client_course: "",
+    client_school: "",
     notification_purpose: "apply-now-lcs",
     email_subject: `APPLY NOW - ${thePageName} Application`,
   };
@@ -94,7 +96,20 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
-    // client_file: Yup.string().required("Required"),
+    client_course: Yup.string().required("Required"),
+    client_school: Yup.string().required("Required"),
+    client_file: Yup.mixed()
+      .required("Required")
+      .test(
+        "fileType",
+        "PDF only",
+        (value) => value && value.type === "application/pdf"
+      )
+      .test(
+        "fileSize",
+        "File must be less than 8MB",
+        (value) => value && value.size <= 8000000
+      ),
   });
 
   const handleChange = (value) => {
@@ -138,10 +153,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
           <div className="flex flex-col justify-between">
             <div>
               {contentFormData?.data
-                ?.filter(
-                  (item) =>
-                    item.form_services === services 
-                )
+                ?.filter((item) => item.form_services === services)
                 ?.map((item, index) => (
                   <div className="mb-12" key={index}>
                     <p>{item.form_subtitle}</p>
@@ -153,10 +165,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
 
               {services === "lcss services" &&
                 contentFormData?.data
-                  ?.filter(
-                    (item) =>
-                      item.form_services === "lcss services" 
-                  )
+                  ?.filter((item) => item.form_services === "lcss services")
                   ?.map((item, index) => (
                     <ul
                       key={index}
@@ -333,6 +342,47 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                           disabled={mutation.isPending}
                         />
                       </div>
+                      {thePageName === "College OJT" ||
+                      thePageName === "Continuing Study" ? (
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Course"
+                            type="text"
+                            name="client_course"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      ) : (
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Strand"
+                            type="text"
+                            name="client_course"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      )}
+
+                      {thePageName === "College OJT" ||
+                      thePageName === "Work Immersion" ? (
+                        <div className="input-wrapper">
+                          <InputText
+                            label="School"
+                            type="text"
+                            name="client_school"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      ) : (
+                        <div className="input-wrapper">
+                          <InputText
+                            label="School/Company"
+                            type="text"
+                            name="client_school"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      )}
 
                       <div className="input-wrapper">
                         <span htmlFor="" className="text-xs">
@@ -344,10 +394,24 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                           accept="application/pdf"
                           id="myFile"
                           disabled={mutation.isPending}
-                          onChange={(e) => handleChangeFiles(e)}
-                        />
-                      </div>
+                          onBlur={() =>
+                            props.setFieldTouched("client_file", true)
+                          }
+                          onChange={(e) => {
+                            const file = e.target.files[0] || null;
 
+                            props.setFieldValue("client_file", file); 
+                            handleChangeFiles(e); 
+                          }}
+                        />
+
+                        {props.touched.client_file &&
+                          props.errors.client_file && (
+                            <p className="text-[11px] absolute right-1 -bottom-5 text-[red] italic z-40">
+                              {props.errors.client_file}
+                            </p>
+                          )}
+                      </div>
                       <div className="input-wrapper ">
                         <InputTextArea
                           label="Message"
@@ -357,7 +421,6 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                           disabled={mutation.isPending}
                         />
                       </div>
-
                       {siteKey ? (
                         <div className="input-wrapper reCaptcha">
                           <ReCAPTCHA
@@ -371,7 +434,6 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                           There's a problem in loading reCAPTCHA.
                         </p>
                       )}
-
                       <div className="modal__action flex justify-end mt-6 gap-2">
                         <button
                           className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
