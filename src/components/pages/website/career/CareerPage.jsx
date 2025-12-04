@@ -42,7 +42,7 @@ const CareerPage = () => {
     isLoading,
     data: careersData,
   } = useQueryData(
-    "/v1/careers/readOngoingCareers", // endpoint
+    "/v1/careers", // endpoint
     "get", // method
     "careers" // key
   );
