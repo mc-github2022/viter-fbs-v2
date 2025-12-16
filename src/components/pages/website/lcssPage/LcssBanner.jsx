@@ -60,7 +60,7 @@ const LcssBanner = ({ pageName }) => {
                   ? ojtData?.data[0].ojt_banner_description
                   : ""}
               </p>
-              {ojtData?.data.map((item, key) => (
+              {/* {ojtData?.data.map((item, key) => (
                 <a
                   href={`${item.ojt_banner_button_link}`}
                   target="_blank"
@@ -69,7 +69,7 @@ const LcssBanner = ({ pageName }) => {
                 >
                   {item.ojt_banner_button_text}
                 </a>
-              ))}
+              ))} */}
             </div>
           </div>
         </div>

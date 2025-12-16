@@ -54,7 +54,7 @@ const ConStudBanner = () => {
               <p className="text-light mb-10">
                 {continuingData?.data?.[0]?.continuing_banner_description || ""}
               </p>
-              {continuingData?.data.map((item, key) => (
+              {/* {continuingData?.data.map((item, key) => (
                 <a
                   href={`${item.continuing_banner_button_link}`}
                   target="_blank"
@@ -63,7 +63,7 @@ const ConStudBanner = () => {
                 >
                   {item.continuing_banner_button_text}
                 </a>
-              ))}
+              ))} */}
             </div>
           </div>
         </div>

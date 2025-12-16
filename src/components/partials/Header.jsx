@@ -14,6 +14,7 @@ import ModalContact from "./ModalContact";
 import ModalError from "./modals/ModalError";
 import ModalSuccess from "./modals/ModalSuccess";
 import TableLoading from "./spinners/TableLoading";
+import ModalLcssForm from "./ModalLcssForm";
 
 const Header = ({ pageName, services, page }) => {
   const [contactForm, setContactForm] = React.useState(false);
@@ -23,6 +24,7 @@ const Header = ({ pageName, services, page }) => {
   const [toggleWhyUs, setToggleWhyUs] = React.useState(false);
   const [toggleMenu, setToggleMenu] = React.useState(false);
   const [modalContact, setModalContact] = React.useState(false);
+  const [lcssForm, setLcssForm] = React.useState(false);
   const currentPath = location.pathname.split("/").pop(); // to get the last segment or url for active state
 
   const navigate = useNavigate();
@@ -74,7 +76,17 @@ const Header = ({ pageName, services, page }) => {
   };
 
   const handleModalContact = () => {
-    setModalContact(!modalContact);
+    if (
+      pageName === "College OJT" ||
+      pageName === "Continuing Study" ||
+      pageName === "Work Immersion"
+    ) {
+      setLcssForm(true);
+      setModalContact(false);
+    } else {
+      setModalContact(true);
+      setLcssForm(false);
+    }
   };
 
   const ref = React.useRef();
@@ -323,6 +335,15 @@ const Header = ({ pageName, services, page }) => {
               ? "/ Wordpress"
               : ""
           } -  `}
+        />
+      )}
+
+      {lcssForm && (
+        <ModalLcssForm
+          thePageName={pageName}
+          setLcssForm={setLcssForm}
+          // page={"College On-The-Job Training"}
+          services={"lcss services"}
         />
       )}
 

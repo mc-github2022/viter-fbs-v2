@@ -11,9 +11,11 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import ModalContact from "../../../partials/ModalContact";
 import useQueryData from "../../../custom-hooks/useQueryData";
 import LoadImages from "../../../partials/LoadImages";
+import ModalLcssForm from "../../../partials/ModalLcssForm";
 
 const LcssPartnersWithUs = ({ pageName, services }) => {
   const [contactForm, setContactForm] = React.useState(false);
+  const [lcssForm, setLcssForm] = React.useState(false);
 
   const { data: ojtOverviewData } = useQueryData(
     `${apiVersion}/ojt-overview`, // endpoint
@@ -26,6 +28,10 @@ const LcssPartnersWithUs = ({ pageName, services }) => {
 
   const handleForm = () => {
     setContactForm(!contactForm);
+  };
+
+  const handleLcssForm = () => {
+    setLcssForm(!lcssForm);
   };
 
   const OjtOverviewImage = getConvertStringToJSONparseData(
@@ -67,7 +73,7 @@ const LcssPartnersWithUs = ({ pageName, services }) => {
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
-                    onClick={handleForm}
+                    onClick={handleLcssForm}
                     className="btn bg-primary text-light font-semibold uppercase"
                   >
                     {ojtOverviewData?.data?.length > 0 &&
@@ -164,7 +170,7 @@ const LcssPartnersWithUs = ({ pageName, services }) => {
         </div>
       </section>
 
-      {contactForm && (
+      {/* {contactForm && (
         <ModalContact
           setModalContact={setContactForm}
           thePageName={pageName}
@@ -176,6 +182,14 @@ const LcssPartnersWithUs = ({ pageName, services }) => {
           page={"College On-The-Job Training"}
           notification_purpose={"partner-with-us-lcs"}
           emailSubject={"PARTNER WITH US / College On-The-Job Training - "}
+        />
+      )} */}
+      {lcssForm && (
+        <ModalLcssForm
+          thePageName={pageName}
+          setLcssForm={setLcssForm}
+          page={"College On-The-Job Training"}
+          services={"lcss services"}
         />
       )}
     </>

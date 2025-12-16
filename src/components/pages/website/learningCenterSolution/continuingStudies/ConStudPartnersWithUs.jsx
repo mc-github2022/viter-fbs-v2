@@ -10,9 +10,11 @@ import {
 import ModalContact from "../../../../partials/ModalContact";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalLcssForm from "../../../../partials/ModalLcssForm";
 
 const ConStudPartnersWithUs = ({ pageName }) => {
   const [contactForm, setContactForm] = React.useState(false);
+  const [lcssForm, setLcssForm] = React.useState(false);
 
   const { data: continuingOverviewData } = useQueryData(
     `${apiVersion}/continuing-overview`, // endpoint
@@ -29,6 +31,10 @@ const ConStudPartnersWithUs = ({ pageName }) => {
 
   const handleForm = () => {
     setContactForm(!contactForm);
+  };
+
+  const handleLcssForm = () => {
+    setLcssForm(!lcssForm);
   };
 
   return (
@@ -58,7 +64,7 @@ const ConStudPartnersWithUs = ({ pageName }) => {
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   <button
-                    onClick={handleForm}
+                    onClick={handleLcssForm}
                     className="btn bg-primary text-light font-semibold uppercase"
                   >
                     {continuingOverviewData?.data?.[0]
@@ -125,7 +131,7 @@ const ConStudPartnersWithUs = ({ pageName }) => {
           </div>
         </div>
       </section>
-      {contactForm && (
+      {/* {contactForm && (
         <ModalContact
           setModalContact={setContactForm}
           thePageName={pageName}
@@ -137,6 +143,15 @@ const ConStudPartnersWithUs = ({ pageName }) => {
           page={"Continuing Study"}
           notification_purpose={"partner-with-us-lcs"}
           emailSubject={"PARTNER WITH US / Continuing Studies - "}
+        />
+      )} */}
+
+      {lcssForm && (
+        <ModalLcssForm
+          thePageName={pageName}
+          setLcssForm={setLcssForm}
+          services={"lcss services"}
+          page={"Continuing Study"}
         />
       )}
     </>

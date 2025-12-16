@@ -54,7 +54,7 @@ const ImmersionBanner = () => {
               <p className="text-light mb-10">
                 {immersionData?.data?.[0]?.immersion_banner_description || ""}
               </p>
-              {immersionData?.data.map((item, key) => (
+              {/* {immersionData?.data.map((item, key) => (
                 <a
                   href={`${item.immersion_banner_button_link}`}
                   target="_blank"
@@ -63,7 +63,7 @@ const ImmersionBanner = () => {
                 >
                   {item.immersion_banner_button_text}
                 </a>
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
