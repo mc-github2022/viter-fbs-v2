@@ -21,7 +21,8 @@ function sendEmail(
 	$emailReceiver,
 	$fileName,
 	$course,
-	$school
+	$school,
+	$numberOfHours
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -46,7 +47,8 @@ function sendEmail(
 			$mobileNumber,
 			$message,
 			$course,
-			$school
+			$school,
+			$numberOfHours
 		);
 
 		if ($fileName != "") {

@@ -6,7 +6,8 @@ function getHtmlSendMessage(
   $mobileNumber,
   $message,
   $course,
-	$school
+  $school,
+  $numberOfHours
 ) {
 
 
@@ -39,6 +40,7 @@ function getHtmlSendMessage(
         <p style="margin-bottom: 5px; margin-top: 5px"><b>Mobile Number:  </b>' . $mobileNumber . '</p>
         <p style="margin-bottom: 5px; margin-top: 5px"><b>Course:  </b>' . $course . '</p>
         <p style="margin-bottom: 5px; margin-top: 5px"><b>School:  </b>' . $school . '</p>
+        <p style="margin-bottom: 5px; margin-top: 5px"><b>Required Number of Hours:  </b>' . $numberOfHours . '</p>
         <div style="margin-bottom: 20px">
           <p style="margin-top: 5px"><b>Message: </b></p>
           <p>

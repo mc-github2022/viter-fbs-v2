@@ -24,6 +24,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $fileName = $data["client_file"];
     $course = $data["client_course"];
     $school = $data["client_school"];
+    $numberOfHours = $data["client_number_of_hours"];
     $emailSubject = $data["email_subject"];
     $subject = $data["client_message_subject"];
 
@@ -66,7 +67,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
             $emailReceiver,
             $fileName,
             $course,
-            $school
+            $school,
+            $numberOfHours
         );
     }
 

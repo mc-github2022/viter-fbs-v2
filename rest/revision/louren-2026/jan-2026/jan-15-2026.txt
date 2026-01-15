@@ -1,0 +1,14 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/sending-email/sending-email.php
+
+MODELS
+    ->
+
+DB BACKUP
+    ->
+
+OTHER FILES
+    -> rest/v1/notification/contact-form-message.php
+    -> rest/v1/notification/template/contact-form-message.php

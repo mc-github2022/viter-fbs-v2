@@ -86,6 +86,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     client_file: "",
     client_course: "",
     client_school: "",
+    client_number_of_hours: "",
     notification_purpose: "apply-now-lcs",
     email_subject: `APPLY NOW - ${thePageName} Application`,
   };
@@ -384,6 +385,19 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                         </div>
                       )}
 
+                      {thePageName === "College OJT" ||
+                      thePageName === "Work Immersion" ? (
+                        <div className="input-wrapper">
+                          <InputText
+                            label="Required Number of Hours"
+                            type="text"
+                            number="number"
+                            name="client_number_of_hours"
+                            disabled={mutation.isPending}
+                          />
+                        </div>
+                      ) : null}
+
                       <div className="input-wrapper">
                         <span htmlFor="" className="text-xs">
                           Upload Resume (PDF Only (8mb))
@@ -400,8 +414,8 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                           onChange={(e) => {
                             const file = e.target.files[0] || null;
 
-                            props.setFieldValue("client_file", file); 
-                            handleChangeFiles(e); 
+                            props.setFieldValue("client_file", file);
+                            handleChangeFiles(e);
                           }}
                         />
 
