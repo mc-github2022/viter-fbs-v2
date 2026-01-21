@@ -8,6 +8,11 @@ define("RESET_PASSWORD", "Reset Password");
 define("VERIFY_EMAIL", "Email Verification");
 define("DEFAULT_REPLY_TO", "jhonny.dichoso@frontlinebusiness.com.ph");
 
+// // Frontline
+define("HOST", "mail.frontlinebusiness.com.ph");
+define("PORT", 465);
+define("SMTPSECURE", "ssl");
+
 // local
 // define("ROOT_DOMAIN", "http://127.0.0.1:5173/newsite");
 // define("IMAGES_URL", "http://127.0.0.1:5173/public/img");

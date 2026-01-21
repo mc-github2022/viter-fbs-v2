@@ -44,7 +44,7 @@ const CareerPage = () => {
   } = useQueryData(
     "/v1/careers", // endpoint
     "get", // method
-    "careers" // key
+    "careers", // key
   );
 
   const [html, setHtml] = React.useState("");
@@ -53,7 +53,7 @@ const CareerPage = () => {
     if (careersData?.data.length > 0) {
       setHtml(
         careersData?.data[0].careers_job_description &&
-          careersData?.data[0].careers_job_overview
+          careersData?.data[0].careers_job_overview,
       );
     }
   }, [careersData]);
@@ -72,7 +72,7 @@ const CareerPage = () => {
   React.useEffect(() => {
     if (careersData?.data?.length > 0) {
       const firstOngoingJob = careersData.data.find(
-        (item) => item.careers_job_status === "Ongoing"
+        (item) => item.careers_job_status === "Ongoing",
       );
 
       if (firstOngoingJob) {
@@ -229,6 +229,7 @@ const CareerPage = () => {
                                 <p className="text-sm">
                                   {item.careers_job_classification}
                                 </p>
+                                <span>•</span>
                                 <p className="text-sm">
                                   {item.careers_job_mode}
                                 </p>

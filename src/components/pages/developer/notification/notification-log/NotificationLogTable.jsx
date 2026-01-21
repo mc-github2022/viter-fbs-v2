@@ -250,7 +250,7 @@ const NotificationLogTable = () => {
                       } )`}
                     </td>
                     <td className="">{item.notification_log_subject}</td>
-                    <td className="">{item.notification_log_message}</td>
+                    <td className=""><span className="line-clamp-3">{item.notification_log_message}</span></td>
                     <td className="">{item.notification_log_file}</td>
                     <td className="">{item.notification_log_receiver}</td>
                   </tr>

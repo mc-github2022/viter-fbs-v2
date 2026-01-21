@@ -50,7 +50,7 @@ const ModalJobApplication = ({
   };
   const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
     `${apiVersion}/upload-files`,
-    dispatch
+    dispatch,
   );
 
   const { data: contentFormData } = useQueryData(
@@ -59,9 +59,8 @@ const ModalJobApplication = ({
     "contactForm", // key
     {},
     null,
-    true
+    true,
   );
-
 
   const mutation = useMutation({
     mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
@@ -98,7 +97,18 @@ const ModalJobApplication = ({
     client_phone: Yup.string().required("Required"),
     // client_message_subject: Yup.string().required("Required"),
     client_message: Yup.string().required("Required"),
-    // client_file: Yup.string().required("Required"),
+    client_file: Yup.mixed()
+      .required("Required")
+      .test(
+        "fileType",
+        "PDF only",
+        (value) => value && value.type === "application/pdf",
+      )
+      .test(
+        "fileSize",
+        "File must be less than 8MB",
+        (value) => value && value.size <= 8000000,
+      ),
   });
 
   const handleChange = (value) => {
@@ -291,14 +301,17 @@ const ModalJobApplication = ({
               initialValues={initVal}
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
+                setSubmitting(true);
+
                 const captchaValue = recaptchaRef.current.getValue();
                 if (captchaValue === "") {
                   dispatch(setError(true));
                   dispatch(
                     setMessage(
-                      "Please verify that you are not a robot by completing the reCAPTCHA below."
-                    )
+                      "Please verify that you are not a robot by completing the reCAPTCHA below.",
+                    ),
                   );
+                  setSubmitting(false);
                   return;
                 }
 
@@ -364,8 +377,22 @@ const ModalJobApplication = ({
                           accept="application/pdf"
                           id="myFile"
                           disabled={mutation.isPending}
-                          onChange={(e) => handleChangeFiles(e)}
+                          onBlur={() =>
+                            props.setFieldTouched("client_file", true)
+                          }
+                          onChange={(e) => {
+                            const file = e.target.files[0] || null;
+
+                            props.setFieldValue("client_file", file);
+                            handleChangeFiles(e);
+                          }}
                         />
+                        {props.touched.client_file &&
+                          props.errors.client_file && (
+                            <p className="text-[11px] absolute right-1 -bottom-5 text-[red] italic z-40">
+                              {props.errors.client_file}
+                            </p>
+                          )}
                       </div>
 
                       <div className="input-wrapper ">
@@ -396,11 +423,16 @@ const ModalJobApplication = ({
                         <button
                           className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
                           type="submit"
-                          disabled={mutation.isPending || !props.dirty}
+                          disabled={
+                            mutation.isPending ||
+                            props.isSubmitting ||
+                            !props.dirty
+                          }
                         >
-                          {mutation.isPending ? (
+                          {mutation.isPending || props.isSubmitting ? (
                             <div className="flex items-center gap-2">
-                              <ButtonSpinner /> Send Message
+                              <ButtonSpinner />
+                              <span>Please wait...</span>
                             </div>
                           ) : (
                             "Send Message"

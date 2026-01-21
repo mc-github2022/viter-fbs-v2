@@ -1,0 +1,20 @@
+Upload JSX
+
+CONTROLLERS
+    -> 
+
+MODELS
+    ->
+
+DB BACKUP
+    ->
+
+OTHER FILES
+    -> rest/v1/notification/contact-form-message.php
+    -> rest/v1/notification/mail-config.php
+    -> rest/v1/notification/reset-password.php
+    -> rest/v1/notification/subscriber-message.php
+    -> rest/v1/notification/subscriber-newsletter.php
+    -> rest/v1/notification/subscriber-notification-message.php
+    -> rest/v1/notification/verify-account.php
+    -> rest/v1/notification/verify-email.php

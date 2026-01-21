@@ -2,10 +2,10 @@ import React from "react";
 import { StoreContext } from "../store/StoreContext";
 
 // local url
-export const urlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2";
-export const imgUrlPathFBSMarketingWebsite =
-  "http://localhost/react-vite/viter-fbs-v2/public/img";
+// export const urlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2";
+// export const imgUrlPathFBSMarketingWebsite =
+//   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 // // Online Demo url
 // export const urlPathFBSMarketingWebsite =
@@ -14,9 +14,9 @@ export const imgUrlPathFBSMarketingWebsite =
 //   "http://localhost/react-vite/viter-fbs-v2/public/img";
 
 //Online url
-// export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
-// export const imgUrlPathFBSMarketingWebsite =
-//   "http://frontlinebusiness.com.ph/img";
+export const urlPathFBSMarketingWebsite = "https://frontlinebusiness.com.ph";
+export const imgUrlPathFBSMarketingWebsite =
+  "http://frontlinebusiness.com.ph/img";
 
 export const devApiUrl = `${urlPathFBSMarketingWebsite}/rest`;
 export const devBaseUrl = `${urlPathFBSMarketingWebsite}`;
@@ -75,64 +75,64 @@ export const options = (format) => {
           day: "numeric",
         }
       : format === "timezone-name"
-      ? {
-          timeZoneName: "short",
-        }
-      : format === "weeks"
-      ? {
-          timeZone: setTimeZone,
-          weekday: "long",
-        }
-      : format === "no-year-with-weeks"
-      ? {
-          timeZone: setTimeZone,
-          weekday: "long",
-          month: "long",
-          day: "numeric",
-        }
-      : format === "no-year"
-      ? {
-          timeZone: setTimeZone,
-          month: "long",
-          day: "numeric",
-        }
-      : format === "date-time-with-weeks"
-      ? {
-          timeZone: setTimeZone,
-          weekday: "long",
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
-        }
-      : format === "plain-date"
-      ? {
-          timeZone: setTimeZone,
-        }
-      : format === "numeric-week"
-      ? {
-          timeZone: setTimeZone,
-          weekday: "numeric",
-        }
-      : format === "year"
-      ? {
-          timeZone: setTimeZone,
-          year: "numeric",
-        }
-      : format === "month-short-year"
-      ? {
-          timeZone: setTimeZone,
-          month: "short",
-          year: "numeric",
-        }
-      : {
-          timeZone: setTimeZone,
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        };
+        ? {
+            timeZoneName: "short",
+          }
+        : format === "weeks"
+          ? {
+              timeZone: setTimeZone,
+              weekday: "long",
+            }
+          : format === "no-year-with-weeks"
+            ? {
+                timeZone: setTimeZone,
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+              }
+            : format === "no-year"
+              ? {
+                  timeZone: setTimeZone,
+                  month: "long",
+                  day: "numeric",
+                }
+              : format === "date-time-with-weeks"
+                ? {
+                    timeZone: setTimeZone,
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                  }
+                : format === "plain-date"
+                  ? {
+                      timeZone: setTimeZone,
+                    }
+                  : format === "numeric-week"
+                    ? {
+                        timeZone: setTimeZone,
+                        weekday: "numeric",
+                      }
+                    : format === "year"
+                      ? {
+                          timeZone: setTimeZone,
+                          year: "numeric",
+                        }
+                      : format === "month-short-year"
+                        ? {
+                            timeZone: setTimeZone,
+                            month: "short",
+                            year: "numeric",
+                          }
+                        : {
+                            timeZone: setTimeZone,
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                          };
 
   return options;
 };

@@ -41,11 +41,11 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     "contactForm", // key
     {},
     null,
-    true
+    true,
   );
 
   const contactUsDefaultImage = getConvertStringToJSONparseData(
-    contentFormData?.data?.[0]?.form_img
+    contentFormData?.data?.[0]?.form_img,
   );
 
   const handleClose = () => {
@@ -54,7 +54,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
 
   const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
     `${apiVersion}/upload-files`,
-    dispatch
+    dispatch,
   );
 
   const queryClient = useQueryClient();
@@ -104,12 +104,12 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
       .test(
         "fileType",
         "PDF only",
-        (value) => value && value.type === "application/pdf"
+        (value) => value && value.type === "application/pdf",
       )
       .test(
         "fileSize",
         "File must be less than 8MB",
-        (value) => value && value.size <= 8000000
+        (value) => value && value.size <= 8000000,
       ),
   });
 
@@ -282,14 +282,17 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
               initialValues={initVal}
               validationSchema={yupSchema}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
+                setSubmitting(true);
+
                 const captchaValue = recaptchaRef.current.getValue();
                 if (captchaValue === "") {
                   dispatch(setError(true));
                   dispatch(
                     setMessage(
-                      "Please verify that you are not a robot by completing the reCAPTCHA below."
-                    )
+                      "Please verify that you are not a robot by completing the reCAPTCHA below.",
+                    ),
                   );
+                  setSubmitting(false);
                   return;
                 }
 
@@ -452,11 +455,16 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
                         <button
                           className="btn bg-primary text-light hover:text-light disabled:opacity-[0.5]"
                           type="submit"
-                          disabled={mutation.isPending || !props.dirty}
+                          disabled={
+                            mutation.isPending ||
+                            props.isSubmitting ||
+                            !props.dirty
+                          }
                         >
-                          {mutation.isPending ? (
+                          {mutation.isPending || props.isSubmitting ? (
                             <div className="flex items-center gap-2">
-                              <ButtonSpinner /> Send Message
+                              <ButtonSpinner />
+                              <span>Please wait...</span>
                             </div>
                           ) : (
                             "Send Message"
