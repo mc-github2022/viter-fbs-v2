@@ -63,6 +63,9 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     onSuccess: (data) => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["sending-email"] });
+      const errorMessage = [data.error, data.mail_error]
+        .filter(Boolean)
+        .join(" ");
 
       if (data.success) {
         setLcssForm(false);
@@ -72,7 +75,9 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
       // show error box
       if (!data.success) {
         dispatch(setError(true));
-        dispatch(setMessage(`${data.error} ${data.mail_error}`));
+        dispatch(
+          setMessage(errorMessage || "Something went wrong. Please try again later."),
+        );
       }
     },
   });
@@ -83,7 +88,7 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     client_phone: "",
     client_message_subject: "",
     client_message: "",
-    client_file: "",
+    client_file: null,
     client_course: "",
     client_school: "",
     client_number_of_hours: "",
@@ -100,16 +105,16 @@ const ModalLcssForm = ({ thePageName, setLcssForm, page, services = null }) => {
     client_course: Yup.string().required("Required"),
     client_school: Yup.string().required("Required"),
     client_file: Yup.mixed()
-      .required("Required")
+      .required("File is required")
       .test(
         "fileType",
         "PDF only",
-        (value) => value && value.type === "application/pdf",
+        (value) => !value || value.type === "application/pdf",
       )
       .test(
         "fileSize",
         "File must be less than 8MB",
-        (value) => value && value.size <= 8000000,
+        (value) => !value || value.size <= 8 * 1024 * 1024,
       ),
   });
 
