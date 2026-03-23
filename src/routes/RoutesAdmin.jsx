@@ -58,6 +58,7 @@ import GraphicDesign from "../components/pages/developer/services/web-design/gra
 import ContactFormSettings from "../components/pages/developer/contact-form-settings/ContactFormSettings";
 import ContactFormView from "../components/pages/developer/contact-form-settings/ContactFormView";
 import SocialMediaManagement from "../components/pages/developer/services/va-solutions/social-media-management/SocialMediaManagement";
+import OnlineBookingSystem from "../components/pages/developer/services/web-application/online-booking-system/OnlineBookingSystem";
 
 export const routesAdmin = [
   {
@@ -297,6 +298,14 @@ export const routesAdmin = [
     element: (
       <ProtectedRouteOther>
         <AssetInventorySystem />
+      </ProtectedRouteOther>
+    ),
+  },
+  {
+    path: `${devNavUrl}/services/web-application/online-booking-system`,
+    element: (
+      <ProtectedRouteOther>
+        <OnlineBookingSystem />
       </ProtectedRouteOther>
     ),
   },

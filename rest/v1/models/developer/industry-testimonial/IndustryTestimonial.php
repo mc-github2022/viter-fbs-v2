@@ -33,7 +33,7 @@ class IndustryTestimonial
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblIndustryTestimonial} ";
-            $sql .= "order by industry_testimonial_aid asc ";
+            $sql .= "order by industry_testimonial_created desc ";
             $query = $this->connection->query($sql);
         } catch (PDOException $ex) {
             $query = false;
@@ -47,7 +47,7 @@ class IndustryTestimonial
             $sql = "select * ";
             $sql .= "from ";
             $sql .= "{$this->tblIndustryTestimonial} ";
-            $sql .= "order by industry_testimonial_aid desc ";
+            $sql .= "order by industry_testimonial_created desc ";
             $sql .= "limit :start, ";
             $sql .= ":total ";
             $query = $this->connection->prepare($sql);
@@ -72,7 +72,7 @@ class IndustryTestimonial
             $sql .= "or industry_testimonial_position like :industry_testimonial_position ";
             $sql .= "or industry_testimonial_company like :industry_testimonial_company ";
             $sql .= "or industry_testimonial_category like :industry_testimonial_category) ";
-            $sql .= "order by industry_testimonial_aid desc ";
+            $sql .= "order by industry_testimonial_created desc ";
             $query = $this->connection->prepare($sql);
             $query->execute([
                 "industry_testimonial_name" => "%{$this->industry_testimonial_search}%",

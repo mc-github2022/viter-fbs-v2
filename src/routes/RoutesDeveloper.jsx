@@ -63,6 +63,7 @@ import WhyWorkWithUs from "../components/pages/developer/why-fbs-page/why-work-w
 import BusinessRegPageCopy from "../components/pages/website/for-pricing-only/BusinessRegPageCopy";
 import ContactFormView from "../components/pages/developer/contact-form-settings/ContactFormView";
 import SocialMediaManagement from "../components/pages/developer/services/va-solutions/social-media-management/SocialMediaManagement";
+import OnlineBookingSystem from "../components/pages/developer/services/web-application/online-booking-system/OnlineBookingSystem";
 
 export const routesDeveloper = [
   {
@@ -318,6 +319,14 @@ export const routesDeveloper = [
     element: (
       <ProtectedRouteDeveloper>
         <AssetInventorySystem />
+      </ProtectedRouteDeveloper>
+    ),
+  },
+  {
+    path: `${devNavUrl}/${UrlDeveloper}/services/web-application/online-booking-system`,
+    element: (
+      <ProtectedRouteDeveloper>
+        <OnlineBookingSystem />
       </ProtectedRouteDeveloper>
     ),
   },

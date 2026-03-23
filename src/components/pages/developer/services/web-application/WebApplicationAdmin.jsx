@@ -85,6 +85,17 @@ const WebApplicationAdmin = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
+                <div className="list-button border-dark/40 hover:border-l-4 hover:border-primary hover:transition-all hover:ease-in-out">
+                  <Link
+                    to={`${devNavUrl}/services/web-application/online-booking-system`}
+                    className="flex items-center gap-2 py-3 "
+                  >
+                    <span className="flex items-center gap-2 ml-2.5 text-xs font-bold">
+                      Online Booking System
+                    </span>
+                    <GoChevronRight className="text-sm" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

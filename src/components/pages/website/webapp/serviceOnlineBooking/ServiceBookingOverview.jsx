@@ -1,0 +1,185 @@
+import React from "react";
+import { FaRegCircleCheck } from "react-icons/fa6";
+import useQueryData from "../../../../custom-hooks/useQueryData";
+import {
+  apiVersion,
+  getConvertStringToJSONparseData,
+  googleHDViewLink
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
+import ModalContact from "../../../../partials/ModalContact";
+
+const ServiceBookingOverview = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+
+  const { data: bookingOverviewData } = useQueryData(
+    `${apiVersion}/booking-overview`, // endpoint
+    "get", // method
+    "booking-overview", // key
+    {},
+    null,
+    true,
+  );
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
+  const bookingOverviewImage = getConvertStringToJSONparseData(
+    bookingOverviewData?.data?.[0]?.booking_overview_img,
+  );
+
+  return (
+    <>
+      <section className="ServiceBookingOverview py-20 bg-customGray">
+        <div className="customContainer">
+          <p>
+            {bookingOverviewData?.data?.length > 0 &&
+            bookingOverviewData.data[0]?.booking_overview_subtitle
+              ? bookingOverviewData?.data[0].booking_overview_subtitle
+              : ""}
+          </p>
+          <h2 className="text-[clamp(20px,7vw,35px)] leading-[1.1] mb-12 text-light">
+            <span className="font-semibold text-primary">
+              {bookingOverviewData?.data?.length > 0 &&
+              bookingOverviewData.data[0]?.booking_overview_title
+                ? bookingOverviewData?.data[0].booking_overview_title
+                : ""}
+            </span>
+          </h2>
+          <div className="wrapper lg:grid lg:grid-cols-2 gap-12">
+            <div>
+              {bookingOverviewImage.map((img, index) => (
+                <LoadImages
+                  url={`${googleHDViewLink}${img?.id}`}
+                  className="mb-12 w-fit mx-auto"
+                  alt="booking Inventory System"
+                  key={index}
+                />
+              ))}
+
+              <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
+                <li>
+                  <button
+                    onClick={handleForm}
+                    className="btn bg-primary text-light font-semibold uppercase"
+                  >
+                    {bookingOverviewData?.data?.length > 0 &&
+                    bookingOverviewData.data[0]?.booking_overview_button_text
+                      ? bookingOverviewData?.data[0]
+                          .booking_overview_button_text
+                      : ""}
+                  </button>
+                </li>
+                {/* <li>
+                  <a
+                    href="#"
+                    className="flex items-center gap-2 font-bold text-primary"
+                  >
+                    {webAppOverview[0].btnDownloadText} <FaFileDownload />
+                  </a>
+                </li> */}
+              </ul>
+            </div>
+            <div className="mt-14 lg:mt-0">
+              <ul>
+                <li className="flex items-start gap-4 text-dark mb-6">
+                  <div className="flex gap-4 items-start">
+                    <div>
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                    </div>
+                    <div>
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
+                        {bookingOverviewData?.data?.length > 0 &&
+                        bookingOverviewData.data[0]
+                          ?.booking_overview_list_title_a
+                          ? bookingOverviewData?.data[0]
+                              .booking_overview_list_title_a
+                          : ""}
+                      </h3>
+                      <p className="text-justify">
+                        {bookingOverviewData?.data?.length > 0 &&
+                        bookingOverviewData.data[0]
+                          ?.booking_overview_list_description_a
+                          ? bookingOverviewData?.data[0]
+                              .booking_overview_list_description_a
+                          : ""}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 text-dark mb-6">
+                  <div className="flex gap-4 items-start">
+                    <div>
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                    </div>
+                    <div>
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
+                        {bookingOverviewData?.data?.length > 0 &&
+                        bookingOverviewData.data[0]
+                          ?.booking_overview_list_title_b
+                          ? bookingOverviewData?.data[0]
+                              .booking_overview_list_title_b
+                          : ""}
+                      </h3>
+                      <p className="text-justify">
+                        {bookingOverviewData?.data?.length > 0 &&
+                        bookingOverviewData.data[0]
+                          ?.booking_overview_list_description_b
+                          ? bookingOverviewData?.data[0]
+                              .booking_overview_list_description_b
+                          : ""}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 text-dark">
+                  <div className="flex gap-4 items-start">
+                    <div>
+                      <FaRegCircleCheck className="circleCheck text-primary text-[clamp(25px,5vw,30px)] bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent]" />
+                    </div>
+                    <div>
+                      <h3 className="text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-[transparent] text-[clamp(16px,5vw,24px)] mb-3">
+                        {bookingOverviewData?.data?.length > 0 &&
+                        bookingOverviewData.data[0]
+                          ?.booking_overview_list_title_c
+                          ? bookingOverviewData?.data[0]
+                              .booking_overview_list_title_c
+                          : ""}
+                      </h3>
+                      <p className="text-justify">
+                        {bookingOverviewData?.data?.length > 0 &&
+                        bookingOverviewData.data[0]
+                          ?.booking_overview_list_description_c
+                          ? bookingOverviewData?.data[0]
+                              .booking_overview_list_description_c
+                          : ""}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"default"}
+          page={"Home"}
+          notification_purpose={"default-receiver"}
+          emailSubject={`${bookingOverviewData[0]?.btnText} / Booking Inventory System - `}
+        />
+      )}
+    </>
+  );
+};
+
+export default ServiceBookingOverview;

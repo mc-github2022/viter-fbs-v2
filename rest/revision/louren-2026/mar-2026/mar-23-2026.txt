@@ -1,0 +1,29 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/services/web-application/online-booking-system/booking-banner
+    -> rest/v1/controllers/developer/services/web-application/online-booking-system/booking-overview
+    -> rest/v1/controllers/developer/services/web-application/online-booking-system/booking-scope
+    -> rest/v1/controllers/developer/services/web-application/online-booking-system/booking-titles
+
+MODELS
+    -> rest/v1/models/developer/industry-testimonial/IndustryTestimonial.php
+    -> rest/v1/models/developer/services/web-application/online-booking-system/BookingBanner.php
+    -> rest/v1/models/developer/services/web-application/online-booking-system/BookingOverview.php
+    -> rest/v1/models/developer/services/web-application/online-booking-system/BookingScope.php
+    -> rest/v1/models/developer/services/web-application/online-booking-system/BookingTitles.php
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_services_booking_banner.sql
+    -> rest/db-backup/fbsv2_services_booking_overview.sql
+    -> rest/db-backup/fbsv2_services_booking_scope.sql
+    -> rest/db-backup/fbsv2_services_booking_titles.sql
+
+HTACCESS
+    -> # SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - BANNER
+    -> # SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - OVERVIEW
+    -> # SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - SCOPE
+    -> # SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - TITLES
+
+OTHER FILES
+    -> 

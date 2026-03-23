@@ -292,6 +292,22 @@ RewriteRule ^asset-scope/([0-9]+)$ controllers/developer/services/web-applicatio
 RewriteRule ^asset-titles$ controllers/developer/services/web-application/asset-inventory-system/asset-titles/assetTitles.php [L]
 RewriteRule ^asset-titles/([0-9]+)$ controllers/developer/services/web-application/asset-inventory-system/asset-titles/assetTitles.php?asset_titlesid=$1 [L]
 
+# SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - BANNER
+RewriteRule ^booking$ controllers/developer/services/web-application/online-booking-system/booking-banner/bookingBanner.php [L]
+RewriteRule ^booking/([0-9]+)$ controllers/developer/services/web-application/online-booking-system/booking-banner/bookingBanner.php?booking_bannerid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - OVERVIEW
+RewriteRule ^booking-overview$ controllers/developer/services/web-application/online-booking-system/booking-overview/bookingOverview.php [L]
+RewriteRule ^booking-overview/([0-9]+)$ controllers/developer/services/web-application/online-booking-system/booking-overview/bookingOverview.php?booking_overviewid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - SCOPE
+RewriteRule ^booking-scope$ controllers/developer/services/web-application/online-booking-system/booking-scope/bookingScope.php [L]
+RewriteRule ^booking-scope/([0-9]+)$ controllers/developer/services/web-application/online-booking-system/booking-scope/bookingScope.php?booking_scopeid=$1 [L]
+
+# SERVICES - WEB APPLICATION - ONLINE BOOKING SYSTEM - TITLES
+RewriteRule ^booking-titles$ controllers/developer/services/web-application/online-booking-system/booking-titles/bookingTitles.php [L]
+RewriteRule ^booking-titles/([0-9]+)$ controllers/developer/services/web-application/online-booking-system/booking-titles/bookingTitles.php?booking_titlesid=$1 [L]
+
 # SERVICES - ACCOUNTING SOLUTIONS - BUSINESS REGISTRATION - BANNER
 RewriteRule ^registration$ controllers/developer/services/accounting-solutions/business-registration/registration-banner/registrationBanner.php [L]
 RewriteRule ^registration/([0-9]+)$ controllers/developer/services/accounting-solutions/business-registration/registration-banner/registrationBanner.php?registration_bannerid=$1 [L]

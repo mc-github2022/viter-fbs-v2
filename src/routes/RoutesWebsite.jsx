@@ -23,6 +23,7 @@ import ServiceOnlineDonationPage from "../components/pages/website/webapp/servic
 import ServiceEnrollmentPage from "../components/pages/website/webapp/serviceEnrollment/ServiceEnrollmentPage";
 import ServiceHrPage from "../components/pages/website/webapp/serviceHr/ServiceHrPage";
 import ServiceInventoryPage from "../components/pages/website/webapp/serviceInventory/ServiceInventoryPage";
+import ServiceBookingPage from "../components/pages/website/webapp/serviceOnlineBooking/ServiceBookingPage";
 import ServiceOnlinePayPage from "../components/pages/website/webapp/serviceOnlinePay/ServiceOnlinePayPage";
 import ServicePayrollPage from "../components/pages/website/webapp/servicePayroll/ServicePayrollPage";
 import GraphicDesignPage from "../components/pages/website/webDesignDev/graphic-design/GraphicDesignPage";
@@ -103,6 +104,10 @@ export const RoutesWebsite = [
   {
     path: `${devNavUrl}/webapp-asset-inventory`,
     element: <ServiceInventoryPage />,
+  },
+  {
+    path: `${devNavUrl}/webapp-online-booking`,
+    element: <ServiceBookingPage />,
   },
   {
     path: `${devNavUrl}/web-wordpress`,

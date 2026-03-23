@@ -85,6 +85,17 @@ const WebApplication = () => {
                     <GoChevronRight className="text-sm" />
                   </Link>
                 </div>
+                <div className="list-button border-l-4 border-transparent hover:border-l-4 pl-1 hover:border-primary hover:transition-all hover:ease-in-out">
+                  <Link
+                    to={`${devNavUrl}/${UrlDeveloper}/services/web-application/online-booking-system`}
+                    className="flex items-center gap-2 py-3 "
+                  >
+                    <span className="flex items-center gap-2  text-xs font-bold">
+                      Online Booking System
+                    </span>
+                    <GoChevronRight className="text-sm" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
