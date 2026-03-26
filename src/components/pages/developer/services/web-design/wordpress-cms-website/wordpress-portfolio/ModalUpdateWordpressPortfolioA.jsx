@@ -29,10 +29,7 @@ import LoadImages from "../../../../../../partials/LoadImages";
 import ButtonSpinner from "../../../../../../partials/spinners/ButtonSpinner";
 import ModalRemovedPhoto from "../../../../../../partials/modals/ModalRemovedPhoto";
 
-const ModalUpdateWordpressPortfolioA = ({
-  itemEdit,
-  wordpressPortfolioData,
-}) => {
+const ModalUpdateWordpressPortfolioA = ({ itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [withFile, setWithFile] = React.useState(false);
@@ -53,7 +50,7 @@ const ModalUpdateWordpressPortfolioA = ({
     e,
     props,
     setPhotoArrayList,
-    fieldValue = ""
+    fieldValue = "",
   ) => {
     handleChangeMultiplePhoto(e, 1);
     const files = e.target.files;
@@ -92,11 +89,11 @@ const ModalUpdateWordpressPortfolioA = ({
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        wordpressPortfolioData?.data?.length
-          ? `${apiVersion}/wordpress-portfolio/${wordpressPortfolioData.data[0].wordpress_portfolio_aid}` // update
+        itemEdit
+          ? `${apiVersion}/wordpress-portfolio/${itemEdit.wordpress_portfolio_aid}` // update
           : `${apiVersion}/wordpress-portfolio`, // create
-        wordpressPortfolioData?.data?.length ? "put" : "post",
-        values
+        itemEdit ? "put" : "post",
+        values,
       ),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["wordpress-portfolio"] });
@@ -116,9 +113,9 @@ const ModalUpdateWordpressPortfolioA = ({
 
   React.useEffect(() => {
     setAnimate("");
-    if (wordpressPortfolioData) {
+    if (itemEdit) {
       const photos = getConvertStringToJSONparseData(
-        wordpressPortfolioData?.data?.[0]?.wordpress_portfolio_img_a
+        itemEdit.wordpress_portfolio_img,
       );
       setPhotoArrayList(photos);
     }
@@ -126,15 +123,15 @@ const ModalUpdateWordpressPortfolioA = ({
 
   const initVal = {
     wordpressPortfolioUpdate: itemEdit,
-    wordpress_portfolio_website_a:
-      wordpressPortfolioData?.data?.[0]?.wordpress_portfolio_website_a ?? "",
-    wordpress_portfolio_url_a:
-      wordpressPortfolioData?.data?.[0]?.wordpress_portfolio_url_a ?? "",
-    wordpress_portfolio_img_a:
-      wordpressPortfolioData?.data?.[0]?.wordpress_portfolio_img_a ?? "",
+    wordpress_portfolio_website: itemEdit
+      ? itemEdit.wordpress_portfolio_website
+      : "",
+    wordpress_portfolio_url: itemEdit ? itemEdit.wordpress_portfolio_url : "",
+    wordpress_portfolio_img: itemEdit ? itemEdit.wordpress_portfolio_img : "",
 
-    wordpress_portfolio_img_a_old:
-      wordpressPortfolioData?.data?.[0]?.wordpress_portfolio_img_a ?? "",
+    wordpress_portfolio_img_old: itemEdit
+      ? itemEdit.wordpress_portfolio_img
+      : "",
     pendingDeleteFile: [],
   };
 
@@ -162,12 +159,12 @@ const ModalUpdateWordpressPortfolioA = ({
               setLoading(true);
               const data = {
                 ...values,
-                wordpress_portfolio_img_a: Array.from(photoArrayList).map(
+                wordpress_portfolio_img: Array.from(photoArrayList).map(
                   (item) =>
                     JSON.stringify({
                       name: item.name,
                       id: item?.id || "",
-                    })
+                    }),
                 ),
               };
               const photoUpload = await uploadMultiplePhoto();
@@ -211,7 +208,7 @@ const ModalUpdateWordpressPortfolioA = ({
                               e,
                               props,
                               setPhotoArrayList,
-                              "wordpress_portfolio_img_a"
+                              "wordpress_portfolio_img",
                             )
                           }
                           onDrop={(e) =>
@@ -219,7 +216,7 @@ const ModalUpdateWordpressPortfolioA = ({
                               e,
                               props,
                               setPhotoArrayList,
-                              "wordpress_portfolio_img_a"
+                              "wordpress_portfolio_img",
                             )
                           }
                           disabled={mutation.isPending || loading}
@@ -246,7 +243,7 @@ const ModalUpdateWordpressPortfolioA = ({
                                     onClick={() => {
                                       handleClickViewSlideshow(
                                         photoArrayList,
-                                        key
+                                        key,
                                       );
                                     }}
                                   >
@@ -278,7 +275,7 @@ const ModalUpdateWordpressPortfolioA = ({
                                               handleRemovePhoto(
                                                 photoArrayList,
                                                 key,
-                                                props
+                                                props,
                                               )
                                             }
                                           >
@@ -299,7 +296,7 @@ const ModalUpdateWordpressPortfolioA = ({
                       <InputText
                         label="Website"
                         type="text"
-                        name="wordpress_portfolio_website_a"
+                        name="wordpress_portfolio_website"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -307,7 +304,7 @@ const ModalUpdateWordpressPortfolioA = ({
                       <InputText
                         label="URL"
                         type="text"
-                        name="wordpress_portfolio_url_a"
+                        name="wordpress_portfolio_url"
                         disabled={mutation.isPending}
                       />
                     </div>

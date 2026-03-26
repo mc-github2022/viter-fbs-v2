@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2025 at 04:01 AM
+-- Generation Time: Mar 26, 2026 at 04:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,32 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `fbsv2_services_wordpress_portfolio` (
   `wordpress_portfolio_aid` int(11) NOT NULL,
-  `wordpress_portfolio_subtitle` varchar(100) NOT NULL,
-  `wordpress_portfolio_title` varchar(100) NOT NULL,
-  `wordpress_portfolio_url_a` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_a` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_a` text NOT NULL,
-  `wordpress_portfolio_url_b` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_b` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_b` text NOT NULL,
-  `wordpress_portfolio_url_c` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_c` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_c` text NOT NULL,
-  `wordpress_portfolio_url_d` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_d` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_d` text NOT NULL,
-  `wordpress_portfolio_url_e` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_e` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_e` text NOT NULL,
-  `wordpress_portfolio_url_f` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_f` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_f` text NOT NULL,
-  `wordpress_portfolio_url_g` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_g` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_g` text NOT NULL,
-  `wordpress_portfolio_url_h` varchar(100) NOT NULL,
-  `wordpress_portfolio_website_h` varchar(100) NOT NULL,
-  `wordpress_portfolio_img_h` text NOT NULL,
+  `wordpress_portfolio_url` varchar(100) NOT NULL,
+  `wordpress_portfolio_website` varchar(100) NOT NULL,
+  `wordpress_portfolio_img` text NOT NULL,
   `wordpress_portfolio_created` datetime NOT NULL,
   `wordpress_portfolio_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -63,8 +40,19 @@ CREATE TABLE `fbsv2_services_wordpress_portfolio` (
 -- Dumping data for table `fbsv2_services_wordpress_portfolio`
 --
 
-INSERT INTO `fbsv2_services_wordpress_portfolio` (`wordpress_portfolio_aid`, `wordpress_portfolio_subtitle`, `wordpress_portfolio_title`, `wordpress_portfolio_url_a`, `wordpress_portfolio_website_a`, `wordpress_portfolio_img_a`, `wordpress_portfolio_url_b`, `wordpress_portfolio_website_b`, `wordpress_portfolio_img_b`, `wordpress_portfolio_url_c`, `wordpress_portfolio_website_c`, `wordpress_portfolio_img_c`, `wordpress_portfolio_url_d`, `wordpress_portfolio_website_d`, `wordpress_portfolio_img_d`, `wordpress_portfolio_url_e`, `wordpress_portfolio_website_e`, `wordpress_portfolio_img_e`, `wordpress_portfolio_url_f`, `wordpress_portfolio_website_f`, `wordpress_portfolio_img_f`, `wordpress_portfolio_url_g`, `wordpress_portfolio_website_g`, `wordpress_portfolio_img_g`, `wordpress_portfolio_url_h`, `wordpress_portfolio_website_h`, `wordpress_portfolio_img_h`, `wordpress_portfolio_created`, `wordpress_portfolio_datetime`) VALUES
-(1, 'Seamless Performance and Stunning Design', 'Custom-built Website', 'https://www.gomissiontrip.com/', 'gomissiontrip.com', '[{\"name\":\"portfolio-gomission.png\",\"id\":\"1MSF_qKl5RXV2OGViJ8GqjITNY7LoVPwd\",\"datetime\":\"2025-06-19 09:42:50\"}]', 'https://tazamiacoffee.com/', 'tazamiacoffee.com', '[{\"name\":\"portfolio-tazamia.png\",\"id\":\"196PCD1CRrN2doqDggtIsLb7oqiMnXa6l\",\"datetime\":\"2025-06-19 09:43:45\"}]', 'https://www.overthetop.com/', 'overthetop.com', '[{\"name\":\"portfolio-ottm.png\",\"id\":\"1IPKfULiUCwadXPQ2ZjzSRQVqcVwKesSr\",\"datetime\":\"2025-06-19 09:44:29\"}]', 'https://facethechildren.org/', 'facethechildren.org', '[{\"name\":\"portfolio-ftc.png\",\"id\":\"1sTa-s_6FeRKfAZAvpxTH6o4HUGBwCbS2\",\"datetime\":\"2025-06-19 09:45:00\"}]', 'https://www.worldfocusinc.com/', 'worldfocusinc.com', '[{\"name\":\"portfolio-worldfocus.png\",\"id\":\"1tQpDr_55Fg6Pw90usuHxOuvKMXWMdbSp\",\"datetime\":\"2025-06-19 09:45:50\"}]', 'https://fca.edu.ph/', 'fca.edu.ph', '[{\"name\":\"portfolio-fca.png\",\"id\":\"187A7y80rBBo2tscc-OglIJJvkTaIdlER\",\"datetime\":\"2025-06-19 09:48:13\"}]', 'https://hiroisogawa.com/', 'hiroisogawa.com', '[{\"name\":\"portfolio-hiroisogawa.webp\",\"id\":\"1yV0KbgJeYPxn15n4P_SjwdVjziTbJgf2\",\"datetime\":\"2025-06-19 09:47:03\"}]', 'https://frontlineworshipcenter.org/', 'frontlineworshipcenter.org', '[{\"name\":\"portfolio-fwc.png\",\"id\":\"1g3TodyNDDxiigQyP5SlvWeeFi2Dc3TD0\",\"datetime\":\"2025-06-19 09:56:03\"}]', '2025-06-19 09:39:23', '2025-06-19 09:56:00');
+INSERT INTO `fbsv2_services_wordpress_portfolio` (`wordpress_portfolio_aid`, `wordpress_portfolio_url`, `wordpress_portfolio_website`, `wordpress_portfolio_img`, `wordpress_portfolio_created`, `wordpress_portfolio_datetime`) VALUES
+(1, 'https://www.gomissiontrip.com/', 'gomissiontrip.com', '[{\"name\":\"portfolio-gomission.png\",\"id\":\"1MSF_qKl5RXV2OGViJ8GqjITNY7LoVPwd\",\"datetime\":\"2025-06-19 09:42:50\"}]', '2025-06-19 09:39:23', '2026-03-26 10:07:42'),
+(2, 'https://tazamiacoffee.com/', 'tazamiacoffee.com', '[{\"name\":\"portfolio-tazamia.png\",\"id\":\"1rq3HdwbMnVJvfmyZaAd2E3YhVxh8ykQA\",\"datetime\":\"2026-03-26 10:34:34\"}]', '2026-03-26 10:13:33', '2026-03-26 10:34:29'),
+(3, 'https://www.overthetop.com/', 'overthetop.com', '[{\"name\":\"www.overthetop.com-short.webp\",\"id\":\"1e1wq0W63pfjgd8zUE193Xsz3hYnRwvCK\",\"datetime\":\"2026-03-26 10:59:04\"}]', '2026-03-26 10:35:14', '2026-03-26 10:59:00'),
+(4, 'https://facethechildren.org/', 'facethechildren.org', '[{\"name\":\"portfolio-ftc.png\",\"id\":\"1sL0MSSnUKEL0cG-LVVktggsTSLoXUDQ3\",\"datetime\":\"2026-03-26 10:35:44\"}]', '2026-03-26 10:35:41', '2026-03-26 10:35:41'),
+(5, 'https://worldfocusinc.com/wf2025/', 'worldfocusinc.com/wf2025/', '[{\"name\":\"worldfocus.webp\",\"id\":\"1YGUaB87mIQa9iRBsbGpMhLACOQMKKV_R\",\"datetime\":\"2026-03-26 11:30:14\"}]', '2026-03-26 10:36:12', '2026-03-26 11:30:00'),
+(6, 'https://fca.edu.ph/', 'fca.edu.ph', '[{\"name\":\"portfolio-fca.png\",\"id\":\"1H7d8pvU9-3tc4S1jdomuUFbYFYCcddFc\",\"datetime\":\"2026-03-26 10:39:06\"}]', '2026-03-26 10:37:26', '2026-03-26 10:39:03'),
+(7, 'https://hiroisogawa.com/', 'hiroisogawa.com', '[{\"name\":\"portfolio-hiroisogawa.jpg\",\"id\":\"1Vkxa1VBp_JmGMTH8oIkq33vgSWtwUzrY\",\"datetime\":\"2026-03-26 10:38:02\"}]', '2026-03-26 10:37:59', '2026-03-26 10:37:59'),
+(8, 'https://frontlineworshipcenter.org/', 'frontlineworshipcenter.org', '[{\"name\":\"portfolio-fwc.png\",\"id\":\"1-0AWUgqGvF_jl6DUzEopfFsEvWF1duW_\",\"datetime\":\"2026-03-26 10:39:34\"}]', '2026-03-26 10:38:38', '2026-03-26 10:39:31'),
+(11, 'https://awhai.org/', 'awhai.org', '[{\"name\":\"awhai (1).webp\",\"id\":\"1Ej5EghfuK9VP6oeL5nLn9KtR_5YMT5oW\",\"datetime\":\"2026-03-26 11:48:56\"}]', '2026-03-26 11:06:03', '2026-03-26 11:48:44'),
+(12, 'https://gmicph.com/', 'gmicph.com', '[{\"name\":\"gmic-2.webp\",\"id\":\"1O5mgYdEd99Ss7i5CKKSK4Fo71240gjjx\",\"datetime\":\"2026-03-26 11:47:13\"}]', '2026-03-26 11:08:11', '2026-03-26 11:47:10'),
+(13, 'https://malarayatruralbankinc.com/', 'malarayatruralbankinc.com', '[{\"name\":\"Malarayat-2.webp\",\"id\":\"1Wrw3UDCjzeI7kHHkWO1BR9RBatI_IS-h\",\"datetime\":\"2026-03-26 11:44:08\"}]', '2026-03-26 11:14:36', '2026-03-26 11:44:05'),
+(14, 'https://latricciasresort.com/', 'latricciasresort.com', '[{\"name\":\"latriccia.webp\",\"id\":\"16A0ok7Td7JgrlnXDmshrv5DKKLOzVFWY\",\"datetime\":\"2026-03-26 11:42:22\"}]', '2026-03-26 11:27:32', '2026-03-26 11:42:19');
 
 --
 -- Indexes for dumped tables
@@ -84,7 +72,7 @@ ALTER TABLE `fbsv2_services_wordpress_portfolio`
 -- AUTO_INCREMENT for table `fbsv2_services_wordpress_portfolio`
 --
 ALTER TABLE `fbsv2_services_wordpress_portfolio`
-  MODIFY `wordpress_portfolio_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `wordpress_portfolio_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

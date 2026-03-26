@@ -18,7 +18,7 @@ import { StoreContext } from "../../../../../../store/StoreContext";
 
 const ModalUpdateWordpressPortfolioTitle = ({
   itemEdit,
-  wordpressPortfolioData,
+  wordpressTitlesData,
 }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
@@ -35,14 +35,14 @@ const ModalUpdateWordpressPortfolioTitle = ({
   const mutation = useMutation({
     mutationFn: (values) =>
       queryData(
-        wordpressPortfolioData?.data?.length
-          ? `${apiVersion}/wordpress-portfolio/${wordpressPortfolioData.data[0].wordpress_portfolio_aid}` // update
-          : `${apiVersion}/wordpress-portfolio`, // create
-        wordpressPortfolioData?.data?.length ? "put" : "post",
+        wordpressTitlesData?.data?.length
+          ? `${apiVersion}/wordpress-titles/${wordpressTitlesData.data[0].wordpress_titles_aid}` // update
+          : `${apiVersion}/wordpress-titles`, // create
+        wordpressTitlesData?.data?.length ? "put" : "post",
         values
       ),
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["wordpress-portfolio"] });
+      queryClient.invalidateQueries({ queryKey: ["wordpress-titles"] });
       if (!data.success) {
         console.log("Error");
         dispatch(setError(true));
@@ -62,11 +62,11 @@ const ModalUpdateWordpressPortfolioTitle = ({
   }, []);
 
   const initVal = {
-    wordpressPortfolioUpdate: itemEdit,
-    wordpress_portfolio_subtitle:
-      wordpressPortfolioData?.data?.[0]?.wordpress_portfolio_subtitle ?? "",
-    wordpress_portfolio_title:
-      wordpressPortfolioData?.data?.[0]?.wordpress_portfolio_title ?? "",
+    isUpdateWordpressTitle: itemEdit,
+    wordpress_titles_portfolio_subtitle:
+      wordpressTitlesData?.data?.[0]?.wordpress_titles_portfolio_subtitle ?? "",
+    wordpress_titles_portfolio_title:
+      wordpressTitlesData?.data?.[0]?.wordpress_titles_portfolio_title ?? "",
   };
 
   const yupSchema = Yup.object({});
@@ -104,7 +104,7 @@ const ModalUpdateWordpressPortfolioTitle = ({
                       <InputText
                         label="Subtitle"
                         type="text"
-                        name="wordpress_portfolio_subtitle"
+                        name="wordpress_titles_portfolio_subtitle"
                         disabled={mutation.isPending}
                       />
                     </div>
@@ -112,7 +112,7 @@ const ModalUpdateWordpressPortfolioTitle = ({
                       <InputText
                         label="Title"
                         type="text"
-                        name="wordpress_portfolio_title"
+                        name="wordpress_titles_portfolio_title"
                         disabled={mutation.isPending}
                       />
                     </div>

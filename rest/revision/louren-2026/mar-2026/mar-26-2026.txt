@@ -1,0 +1,35 @@
+Upload JSX
+
+CONTROLLERS
+    -> note: please delete this FILE
+        - rest/v1/controllers/developer/services/web-design/wordpress/wordpress-portfolio/functions.php
+    -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-portfolio/create.php
+    -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-portfolio/update.php
+    -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-portfolio/wordpressPortfolio.php
+    -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-titles/create.php
+    -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-titles/functions.php
+    -> rest/v1/controllers/developer/services/web-design/wordpress/wordpress-titles/update.php
+
+MODELS
+    -> rest/v1/models/developer/services/web-design/wordpress/WordpressPortfolio.php
+    -> rest/v1/models/developer/services/web-design/wordpress/WordpressTitles.php
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_services_wordpress_titles.sql
+        note: columns is added
+            `wordpress_titles_portfolio_title` varchar(100) NOT NULL,
+            `wordpress_titles_portfolio_subtitle` varchar(100) NOT NULL,
+    -> rest/db-backup/fbsv2_services_wordpress_portfolio.sql
+        note: please delete the old columns and replace with this new columns
+            `wordpress_portfolio_aid` int(11) NOT NULL,
+            `wordpress_portfolio_url` varchar(100) NOT NULL,
+            `wordpress_portfolio_website` varchar(100) NOT NULL,
+            `wordpress_portfolio_img` text NOT NULL,
+            `wordpress_portfolio_created` datetime NOT NULL,
+            `wordpress_portfolio_datetime` datetime NOT NULL
+
+HTACCESS
+    ->
+
+OTHER FILES
+    -> 

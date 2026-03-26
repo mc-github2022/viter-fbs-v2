@@ -22,21 +22,14 @@ import WordpressOverview from "./wordpress-overview/WordpressOverview";
 import WordpressPartners from "./wordpress-partners/WordpressPartners";
 import WordpressPartnerSays from "./wordpress-partnersays/WordpressPartnerSays";
 import ModalUpdateWordpressPortfolioA from "./wordpress-portfolio/ModalUpdateWordpressPortfolioA";
-import ModalUpdateWordpressPortfolioB from "./wordpress-portfolio/ModalUpdateWordpressPortfolioB";
-import ModalUpdateWordpressPortfolioC from "./wordpress-portfolio/ModalUpdateWordpressPortfolioC";
-import ModalUpdateWordpressPortfolioD from "./wordpress-portfolio/ModalUpdateWordpressPortfolioD";
-import ModalUpdateWordpressPortfolioE from "./wordpress-portfolio/ModalUpdateWordpressPortfolioE";
-import ModalUpdateWordpressPortfolioF from "./wordpress-portfolio/ModalUpdateWordpressPortfolioF";
-import ModalUpdateWordpressPortfolioG from "./wordpress-portfolio/ModalUpdateWordpressPortfolioG";
-import ModalUpdateWordpressPortfolioH from "./wordpress-portfolio/ModalUpdateWordpressPortfolioH";
-import ModalUpdateWordpressPortfolioTitle from "./wordpress-portfolio/ModalUpdateWordpressPortfolioTitle";
-import WordpressPortfolio from "./wordpress-portfolio/WordpressPortfolio";
+import WordpressPortfolioNew from "./wordpress-portfolio/WordpressPortfolioNew";
 import WordpressPricing from "./wordpress-pricing/WordpressPricing";
 import ModalUpdateWordpressScope from "./wordpress-scope/ModalUpdateWordpressScope";
 import WordpressScope from "./wordpress-scope/WordpressScope";
 import ModalUpdateWordpressPackagesTitle from "./wordpress-titles/ModalUpdateWordpressPackagesTitle";
 import ModalUpdateWordpressPartnerSaysTitle from "./wordpress-titles/ModalUpdateWordpressPartnerSaysTitle";
 import ModalUpdateWordpressPartnersTitle from "./wordpress-titles/ModalUpdateWordpressPartnersTitle";
+import ModalUpdateWordpressPortfolioTitle from "./wordpress-titles/ModalUpdateWordpressPortfolioTitle";
 import ModalUpdateWordpressScopeTitle from "./wordpress-titles/ModalUpdateWordpressScopeTitle";
 
 const WordPressCmsWebsite = () => {
@@ -47,13 +40,13 @@ const WordPressCmsWebsite = () => {
   const { data: wordpressData } = useQueryData(
     `${apiVersion}/wordpress`, // endpoint
     "get", // method
-    "wordpress" // key
+    "wordpress", // key
   );
 
   const { data: wordpressOverviewData } = useQueryData(
     `${apiVersion}/wordpress-overview`, // endpoint
     "get", // method
-    "wordpress-overview" // key
+    "wordpress-overview", // key
   );
 
   const {
@@ -64,7 +57,7 @@ const WordPressCmsWebsite = () => {
   } = useQueryData(
     `${apiVersion}/wordpress-scope`, // endpoint
     "get", // method
-    "wordpress-scope" // key
+    "wordpress-scope", // key
   );
 
   const {
@@ -75,25 +68,25 @@ const WordPressCmsWebsite = () => {
   } = useQueryData(
     `${apiVersion}/wordpress-portfolio`, // endpoint
     "get", // method
-    "wordpress-portfolio" // key
+    "wordpress-portfolio", // key
   );
 
   const { data: wordpressTitlesData } = useQueryData(
     `${apiVersion}/wordpress-titles`, // endpoint
     "get", // method
-    "wordpress-titles" // key
+    "wordpress-titles", // key
   );
 
   const { isLoading, data: headerData } = useQueryData(
     `${apiVersion}/header`, // endpoint
     "get", // method
-    "header" // key
+    "header", // key
   );
 
   const { data: footerData } = useQueryData(
     `${apiVersion}/footer`, // endpoint
     "get", // method
-    "footer" // key
+    "footer", // key
   );
 
   const handleUpdateWordpressBanner = () => {
@@ -108,73 +101,25 @@ const WordPressCmsWebsite = () => {
 
   const handleUpdateWordpressOverviewList = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-overview-list" })
+      setIsUpdateHome({ modal: true, modalCode: "wordpress-overview-list" }),
     );
     setItemEdit("wordpressOverviewListUpdate");
   };
 
   const handleUpdateWordpressPortfolioTitle = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-title" })
+      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-title" }),
     );
     setItemEdit("portfolioTitleUpdate");
   };
 
-  const handleUpdateWordpressPortfolioListA = () => {
+  const handleUpdateWordpressPortfolio = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-a" })
+      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio" }),
     );
-    setItemEdit("portfolioListAUpdate");
+    setItemEdit(null);
   };
 
-  const handleUpdateWordpressPortfolioListB = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-b" })
-    );
-    setItemEdit("portfolioListBUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListC = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-c" })
-    );
-    setItemEdit("portfolioListCUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListD = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-d" })
-    );
-    setItemEdit("portfolioListDUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListE = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-e" })
-    );
-    setItemEdit("portfolioListEUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListF = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-f" })
-    );
-    setItemEdit("portfolioListFUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListG = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-g" })
-    );
-    setItemEdit("portfolioListGUpdate");
-  };
-
-  const handleUpdateWordpressPortfolioListH = () => {
-    dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-portfolio-list-h" })
-    );
-    setItemEdit("portfolioListHUpdate");
-  };
 
   const handleUpdateWordpressScope = () => {
     dispatch(setIsUpdateHome({ modal: true, modalCode: "wordpress-scope" }));
@@ -183,21 +128,21 @@ const WordPressCmsWebsite = () => {
 
   const handleUpdateWordpressScopeTitles = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-scope-title" })
+      setIsUpdateHome({ modal: true, modalCode: "wordpress-scope-title" }),
     );
     setItemEdit("scopeTitleUpdate");
   };
 
   const handleUpdateWordpressPackagesTitles = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-packages-title" })
+      setIsUpdateHome({ modal: true, modalCode: "wordpress-packages-title" }),
     );
     setItemEdit("packagesTitleUpdate");
   };
 
   const handleUpdateWordpressPartnersTitles = () => {
     dispatch(
-      setIsUpdateHome({ modal: true, modalCode: "wordpress-partners-title" })
+      setIsUpdateHome({ modal: true, modalCode: "wordpress-partners-title" }),
     );
     setItemEdit("partnersTitleUpdate");
   };
@@ -207,7 +152,7 @@ const WordPressCmsWebsite = () => {
       setIsUpdateHome({
         modal: true,
         modalCode: "wordpress-testimonial-title",
-      })
+      }),
     );
     setItemEdit("testimonialTitleUpdate");
   };
@@ -284,38 +229,17 @@ const WordPressCmsWebsite = () => {
                 }
                 wordpressTitlesData={wordpressTitlesData}
               />
-              <WordpressPortfolio
+              <WordpressPortfolioNew
                 wordpressPortfolioData={wordpressPortfolioData}
+                wordpressTitlesData={wordpressTitlesData}
                 isLoadingPortfolio={isLoadingPortfolio}
                 isFetchingPortfolio={isFetchingPortfolio}
                 errorPortfolio={errorPortfolio}
                 handleUpdateWordpressPortfolioTitle={
                   handleUpdateWordpressPortfolioTitle
                 }
-                handleUpdateWordpressPortfolioListA={
-                  handleUpdateWordpressPortfolioListA
-                }
-                handleUpdateWordpressPortfolioListB={
-                  handleUpdateWordpressPortfolioListB
-                }
-                handleUpdateWordpressPortfolioListC={
-                  handleUpdateWordpressPortfolioListC
-                }
-                handleUpdateWordpressPortfolioListD={
-                  handleUpdateWordpressPortfolioListD
-                }
-                handleUpdateWordpressPortfolioListE={
-                  handleUpdateWordpressPortfolioListE
-                }
-                handleUpdateWordpressPortfolioListF={
-                  handleUpdateWordpressPortfolioListF
-                }
-                handleUpdateWordpressPortfolioListG={
-                  handleUpdateWordpressPortfolioListG
-                }
-                handleUpdateWordpressPortfolioListH={
-                  handleUpdateWordpressPortfolioListH
-                }
+                handleUpdateWordpressPortfolio={handleUpdateWordpressPortfolio}
+                setItemEdit={setItemEdit}
               />
               <WordpressPartners
                 handleUpdateWordpressPartnersTitles={
@@ -370,68 +294,8 @@ const WordPressCmsWebsite = () => {
         )}
 
       {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-title" && (
-          <ModalUpdateWordpressPortfolioTitle
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-a" && (
-          <ModalUpdateWordpressPortfolioA
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-b" && (
-          <ModalUpdateWordpressPortfolioB
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-c" && (
-          <ModalUpdateWordpressPortfolioC
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-d" && (
-          <ModalUpdateWordpressPortfolioD
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-e" && (
-          <ModalUpdateWordpressPortfolioE
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-f" && (
-          <ModalUpdateWordpressPortfolioF
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-g" && (
-          <ModalUpdateWordpressPortfolioG
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
-        )}
-      {store.isUpdateHome?.modal &&
-        store.isUpdateHome?.modalCode === "wordpress-portfolio-list-h" && (
-          <ModalUpdateWordpressPortfolioH
-            itemEdit={itemEdit}
-            wordpressPortfolioData={wordpressPortfolioData}
-          />
+        store.isUpdateHome?.modalCode === "wordpress-portfolio" && (
+          <ModalUpdateWordpressPortfolioA itemEdit={itemEdit} />
         )}
 
       {store.isUpdateHome?.modal &&
@@ -445,6 +309,14 @@ const WordPressCmsWebsite = () => {
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "wordpress-packages-title" && (
           <ModalUpdateWordpressPackagesTitle
+            itemEdit={itemEdit}
+            wordpressTitlesData={wordpressTitlesData}
+          />
+        )}
+
+      {store.isUpdateHome?.modal &&
+        store.isUpdateHome?.modalCode === "wordpress-portfolio-title" && (
+          <ModalUpdateWordpressPortfolioTitle
             itemEdit={itemEdit}
             wordpressTitlesData={wordpressTitlesData}
           />
@@ -470,7 +342,6 @@ const WordPressCmsWebsite = () => {
         store.isUpdateHome?.modalCode === "header" && (
           <ModalUpdateHeader itemEdit={itemEdit} headerData={headerData} />
         )}
-
 
       {store.isUpdateHome?.modal &&
         store.isUpdateHome?.modalCode === "footer-logoimg" && (

@@ -35,6 +35,12 @@ if ($isUpdateWordpressTitle == "partnersTitleUpdate") {
 
     $query = checkCreatePartnersTitle($title);
 }
+if ($isUpdateWordpressTitle == "portfolioTitleUpdate") {
+    $title->wordpress_titles_portfolio_subtitle = $data["wordpress_titles_portfolio_subtitle"];
+    $title->wordpress_titles_portfolio_title = $data["wordpress_titles_partners_title"];
+
+    $query = checkCreatePortfolioTitle($title);
+}
 if ($isUpdateWordpressTitle == "testimonialTitleUpdate") {
     $title->wordpress_titles_testimonial_subtitle     = $data["wordpress_titles_testimonial_subtitle	"];
     $title->wordpress_titles_testimonial_title = $data["wordpress_titles_testimonial_title"];

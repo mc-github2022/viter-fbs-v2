@@ -33,6 +33,22 @@ function checkUpdatePartnersTitle($object)
     return $query;
 }
 
+// Create Partners title
+function checkCreatePortfolioTitle($object)
+{
+    $query = $object->createPortfolioTitle();
+    checkQuery($query, "There's a problem processing your request. (create Portfolio title)");
+    return $query;
+}
+
+// Update Portfolio title
+function checkUpdatePortfolioTitle($object)
+{
+    $query = $object->updatePortfolioTitle();
+    checkQuery($query, "There's a problem processing your request. (update Portfolio title)");
+    return $query;
+}
+
 // Create Testimonial title
 function checkCreateTestimonialTitle($object)
 {

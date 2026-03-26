@@ -47,6 +47,16 @@ if (array_key_exists("wordpress_titlesid", $_GET)) {
     // update
     $query = checkUpdatePartnersTitle($title);
   }
+  if ($isUpdateWordpressTitle == "portfolioTitleUpdate") {
+    $title->wordpress_titles_aid = $_GET['wordpress_titlesid'];
+    $title->wordpress_titles_portfolio_subtitle = $data["wordpress_titles_portfolio_subtitle"];
+    $title->wordpress_titles_portfolio_title = $data["wordpress_titles_portfolio_title"];
+
+    $title->wordpress_titles_datetime = date("Y-m-d H:i:s");
+    checkId($title->wordpress_titles_aid);
+    // update
+    $query = checkUpdatePortfolioTitle($title);
+  }
   if ($isUpdateWordpressTitle == "testimonialTitleUpdate") {
     $title->wordpress_titles_aid = $_GET['wordpress_titlesid'];
     $title->wordpress_titles_testimonial_subtitle = $data["wordpress_titles_testimonial_subtitle"];

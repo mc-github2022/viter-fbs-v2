@@ -11,6 +11,8 @@ class WordpressTitles
     public $wordpress_titles_partners_title;
     public $wordpress_titles_testimonial_subtitle;
     public $wordpress_titles_testimonial_title;
+    public $wordpress_titles_portfolio_title;
+    public $wordpress_titles_portfolio_subtitle;
     public $wordpress_titles_created;
     public $wordpress_titles_datetime;
 
@@ -143,6 +145,32 @@ class WordpressTitles
         return $query;
     }
 
+    public function createPortfolioTitle()
+    {
+        try {
+            $sql = "insert into {$this->tblWordpressTitles}";
+            $sql .= "(wordpress_titles_portfolio_subtitle, ";
+            $sql .= "wordpress_titles_portfolio_title, ";
+            $sql .= "wordpress_titles_created, ";
+            $sql .= "wordpress_titles_datetime ) values ( ";
+            $sql .= ":wordpress_titles_portfolio_subtitle, ";
+            $sql .= ":wordpress_titles_portfolio_title, ";
+            $sql .= ":wordpress_titles_created, ";
+            $sql .= ":wordpress_titles_datetime )";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "wordpress_titles_portfolio_subtitle" => $this->wordpress_titles_portfolio_subtitle,
+                "wordpress_titles_portfolio_title" => $this->wordpress_titles_portfolio_title,
+                "wordpress_titles_created" => $this->wordpress_titles_created,
+                "wordpress_titles_datetime" => $this->wordpress_titles_datetime,
+            ]);
+            $this->lastInsertedId = $this->connection->lastInsertId();
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
 
     public function update()
     {
@@ -198,6 +226,27 @@ class WordpressTitles
             $query->execute([
                 "wordpress_titles_partners_subtitle" => $this->wordpress_titles_partners_subtitle,
                 "wordpress_titles_partners_title" => $this->wordpress_titles_partners_title,
+                "wordpress_titles_datetime" => $this->wordpress_titles_datetime,
+                "wordpress_titles_aid" => $this->wordpress_titles_aid,
+            ]);
+        } catch (PDOException $ex) {
+            $query = false;
+        }
+        return $query;
+    }
+
+    public function updatePortfolioTitle()
+    {
+        try {
+            $sql = "update {$this->tblWordpressTitles} set ";
+            $sql .= "wordpress_titles_portfolio_subtitle = :wordpress_titles_portfolio_subtitle, ";
+            $sql .= "wordpress_titles_portfolio_title = :wordpress_titles_portfolio_title, ";
+            $sql .= "wordpress_titles_datetime = :wordpress_titles_datetime ";
+            $sql .= "where wordpress_titles_aid = :wordpress_titles_aid ";
+            $query = $this->connection->prepare($sql);
+            $query->execute([
+                "wordpress_titles_portfolio_subtitle" => $this->wordpress_titles_portfolio_subtitle,
+                "wordpress_titles_portfolio_title" => $this->wordpress_titles_portfolio_title,
                 "wordpress_titles_datetime" => $this->wordpress_titles_datetime,
                 "wordpress_titles_aid" => $this->wordpress_titles_aid,
             ]);

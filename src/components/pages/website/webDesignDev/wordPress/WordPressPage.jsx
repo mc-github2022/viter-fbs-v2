@@ -72,7 +72,7 @@ const WordPressPage = () => {
         pageName={pageName}
         wordpressTitlesData={wordpressTitlesData}
       />
-      <WordPressPortfolio />
+      <WordPressPortfolio wordpressTitlesData={wordpressTitlesData}/>
       <WordPressPartners wordpressTitlesData={wordpressTitlesData} />
       <WordPressPartnersSay wordpressTitlesData={wordpressTitlesData} />
       <Footer />

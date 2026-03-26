@@ -4,7 +4,6 @@ require '../../../../../../core/header.php';
 // use needed functions
 require '../../../../../../core/functions.php';
 require '../../../../../../core/google-api.php';
-require 'functions.php';
 // use needed classes
 require '../../../../../../models/developer/services/web-design/wordpress/WordpressPortfolio.php';
 // get payload
