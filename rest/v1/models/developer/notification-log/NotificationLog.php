@@ -12,6 +12,9 @@ class NotificationLog
     public $notification_log_file;
     public $notification_log_receiver;
     public $notification_log_email_subject;
+    public $notification_log_course;
+    public $notification_log_school;
+    public $notification_log_number_of_hours;
     public $notification_log_created;
 
     public $connection;

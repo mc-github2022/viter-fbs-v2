@@ -31,7 +31,7 @@ const ServiceInventoryScope = ({ pageName, assetTitlesData }) => {
     "asset-scope", // key
     {},
     null,
-    true
+    true,
   );
 
   const handleForm = () => {
@@ -41,11 +41,11 @@ const ServiceInventoryScope = ({ pageName, assetTitlesData }) => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
   const currentScope = assetScopeData?.data?.find(
-    (item) => item.asset_scope_aid === accordionItem
+    (item) => item.asset_scope_aid === accordionItem,
   );
 
   const assetScopeImage = getConvertStringToJSONparseData(
-    currentScope?.asset_scope_img
+    currentScope?.asset_scope_img,
   );
 
   React.useEffect(() => {
@@ -186,9 +186,9 @@ const ServiceInventoryScope = ({ pageName, assetTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Asset Inventory System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`CONTACT US / Asset Inventory System (${accordionItem}) - `}
         />
       )}

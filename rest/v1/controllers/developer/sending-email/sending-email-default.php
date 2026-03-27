@@ -2,7 +2,7 @@
 
 require '../../../models/developer/sending-email/SendingEmail.php';
 require '../../../core/header.php';
-require '../../../notification/contact-form-message.php';
+require '../../../notification/contact-form-default.php';
 require '../../../recaptcha/verify-recaptcha.php';
 require '../../../core/functions.php';
 
@@ -57,7 +57,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     $receiverList = implode(', ', $arrayNewReceiver);
 
     if (count($emailReceiver) > 0) {
-        $mail = sendEmail(
+        $mail = sendEmailDefault(
             $name,
             $email,
             $emailSubject,

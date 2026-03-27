@@ -17,9 +17,12 @@ import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import NoData from "../../../../partials/spinners/NoData";
 import TableLoading from "../../../../partials/spinners/TableLoading";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServicePayrollScope = ({ payrollTitlesData, payrollData }) => {
+const ServicePayrollScope = ({ payrollTitlesData, payrollData, pageName }) => {
   const [accordionItem, setAccordionItem] = React.useState("");
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
 
   const {
     isLoading: isLoadingScope,
@@ -28,15 +31,15 @@ const ServicePayrollScope = ({ payrollTitlesData, payrollData }) => {
   } = useQueryData(
     `${apiVersion}/payroll-scope`, // endpoint
     "get", // method
-    "payroll-scope" // key
+    "payroll-scope", // key
   );
 
   const currentScope = payrollScopeData?.data?.find(
-    (item) => item.payroll_scope_aid === accordionItem
+    (item) => item.payroll_scope_aid === accordionItem,
   );
 
   const PayrollScopeImage = getConvertStringToJSONparseData(
-    currentScope?.payroll_scope_img
+    currentScope?.payroll_scope_img,
   );
 
   React.useEffect(() => {
@@ -47,6 +50,10 @@ const ServicePayrollScope = ({ payrollTitlesData, payrollData }) => {
 
   const handleAccordion = (item) => {
     setAccordionItem(item);
+  };
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
   };
 
   return (
@@ -132,14 +139,13 @@ const ServicePayrollScope = ({ payrollTitlesData, payrollData }) => {
                          </a> */}
                         <p className="md:hidden py-6">
                           {payrollData?.data.map((item, key) => (
-                            <a
-                              href={`${item.payroll_banner_button_link}`}
-                              target="_blank"
+                            <button
+                              onClick={handleForm}
                               className="btn bg-primary text-light font-semibold uppercase"
                               key={key}
                             >
                               {item.payroll_banner_button_text}
-                            </a>
+                            </button>
                           ))}
                         </p>
                       </div>
@@ -169,14 +175,13 @@ const ServicePayrollScope = ({ payrollTitlesData, payrollData }) => {
 
                   <p className="hidden md:block mb-4 text-center pt-8 pb-8">
                     {payrollData?.data.map((item, key) => (
-                      <a
-                        href={`${item.payroll_banner_button_link}`}
-                        target="_blank"
+                      <button
+                        onClick={handleForm}
                         className="btn bg-primary text-light font-semibold uppercase"
                         key={key}
                       >
                         {item.payroll_banner_button_text}
-                      </a>
+                      </button>
                     ))}
                   </p>
                 </div>
@@ -185,6 +190,21 @@ const ServicePayrollScope = ({ payrollTitlesData, payrollData }) => {
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          page={"HR Information System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${payrollData?.data[0]?.payroll_banner_button_text} / HR Information System - `}
+        />
+      )}
     </>
   );
 };

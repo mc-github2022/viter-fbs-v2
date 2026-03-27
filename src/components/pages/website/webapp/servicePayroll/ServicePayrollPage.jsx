@@ -23,19 +23,19 @@ const ServicePayrollPage = () => {
   const { isLoading, data: packagesCategoryData } = useQueryData(
     `${apiVersion}/packages-category`, // endpoint
     "get", // method
-    "packages-category" // key
+    "packages-category", // key
   );
 
   const { data: payrollData } = useQueryData(
     `${apiVersion}/payroll`, // endpoint
     "get", // method
-    "payroll" // key
+    "payroll", // key
   );
 
   const { data: payrollTitlesData } = useQueryData(
     `${apiVersion}/payroll-titles`, // endpoint
     "get", // method
-    "payroll-titles" // key
+    "payroll-titles", // key
   );
 
   const categoryUrl = "webapp-payroll";
@@ -51,7 +51,7 @@ const ServicePayrollPage = () => {
   const matchingItem = packagesCategoryData?.data.find(
     (item) =>
       item.packages_category_url === categoryUrl &&
-      String(item.packages_category_aid) === String(id)
+      String(item.packages_category_aid) === String(id),
   );
 
   if (!matchingItem) {
@@ -60,13 +60,24 @@ const ServicePayrollPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} page={"Home"}/>
-      <ServicePayrollBanner payrollData={payrollData}/>
-      <ServicePayrollOverview payrollData={payrollData}/>
-      <ServicePayrollScope payrollTitlesData={payrollTitlesData} payrollData={payrollData}/>
-      <ServicePayrollPricing payrollTitlesData={payrollTitlesData} pageName={pageName} />
-      <ServicePayrollPartners payrollTitlesData={payrollTitlesData}/>
-      <ServicePayrollPartnersSay payrollTitlesData={payrollTitlesData}/>
+      <Header
+        pageName={pageName}
+        services={"web services"}
+        page={"Online Payroll System"}
+      />
+      <ServicePayrollBanner payrollData={payrollData} pageName={pageName} />
+      <ServicePayrollOverview payrollData={payrollData} pageName={pageName} />
+      <ServicePayrollScope
+        payrollTitlesData={payrollTitlesData}
+        payrollData={payrollData}
+        pageName={pageName}
+      />
+      <ServicePayrollPricing
+        payrollTitlesData={payrollTitlesData}
+        pageName={pageName}
+      />
+      <ServicePayrollPartners payrollTitlesData={payrollTitlesData} />
+      <ServicePayrollPartnersSay payrollTitlesData={payrollTitlesData} />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

@@ -9,9 +9,12 @@ import {
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
 import TableLoading from "../../../../partials/spinners/TableLoading";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
+const ServiceHrScope = ({ hrisData, hrisTitlesData, pageName }) => {
   const [accordionItem, setAccordionItem] = React.useState("");
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
 
   const {
     isLoading: isLoadingScope,
@@ -23,15 +26,15 @@ const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
     "hris-scope", // key
     {},
     null,
-    true
+    true,
   );
 
   const currentScope = hrisScopeData?.data?.find(
-    (item) => item.hris_scope_aid === accordionItem
+    (item) => item.hris_scope_aid === accordionItem,
   );
 
   const hrisScopeImage = getConvertStringToJSONparseData(
-    currentScope?.hris_scope_img
+    currentScope?.hris_scope_img,
   );
 
   React.useEffect(() => {
@@ -42,6 +45,10 @@ const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
 
   const handleAccordion = (item) => {
     setAccordionItem(item);
+  };
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
   };
 
   return (
@@ -116,14 +123,13 @@ const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
 
                         <p className="md:hidden py-6">
                           {hrisData?.data.map((item, key) => (
-                            <a
-                              href={`${item.hris_banner_button_link}`}
-                              target="_blank"
+                            <button
+                              onClick={handleForm}
                               className="btn bg-primary text-light font-semibold uppercase"
                               key={key}
                             >
                               {item.hris_banner_button_text}
-                            </a>
+                            </button>
                           ))}
                         </p>
                       </div>
@@ -154,14 +160,13 @@ const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
 
                   <p className="hidden md:block mb-4 text-center pt-8 pb-8">
                     {hrisData?.data.map((item, key) => (
-                      <a
-                        href={`${item.hris_banner_button_link}`}
-                        target="_blank"
+                      <button
+                        onClick={handleForm}
                         className="btn bg-primary text-light font-semibold uppercase"
                         key={key}
                       >
                         {item.hris_banner_button_text}
-                      </a>
+                      </button>
                     ))}
                   </p>
                 </div>
@@ -170,6 +175,21 @@ const ServiceHrScope = ({ hrisData, hrisTitlesData }) => {
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          page={"HR Information System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${hrisData?.data[0]?.hris_banner_button_text} / HR Information System - `}
+        />
+      )}
     </>
   );
 };

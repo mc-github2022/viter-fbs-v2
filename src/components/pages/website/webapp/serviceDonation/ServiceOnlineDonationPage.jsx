@@ -26,7 +26,7 @@ const ServiceOnlineDonationPage = () => {
     "packages-category", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: donationTitlesData } = useQueryData(
@@ -35,9 +35,8 @@ const ServiceOnlineDonationPage = () => {
     "donation-titles", // key
     {},
     null,
-    true
+    true,
   );
-
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,7 +51,7 @@ const ServiceOnlineDonationPage = () => {
   const matchingItem = packagesCategoryData.data.find(
     (item) =>
       item.packages_category_url === categoryUrl &&
-      String(item.packages_category_aid) === String(id)
+      String(item.packages_category_aid) === String(id),
   );
 
   if (!matchingItem) {
@@ -61,13 +60,25 @@ const ServiceOnlineDonationPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} page={"Home"}/>
+      <Header
+        pageName={pageName}
+        services={"web services"}
+        page={"Online Donation System"}
+      />
       <ServiceOnlineDonationBanner pageName={pageName} />
       <ServiceOnlineDonationOverview pageName={pageName} />
-      <ServiceOnlineDonationScope pageName={pageName} donationTitlesData={donationTitlesData}/>
-      <ServiceOnlineDonationPricing pageName={pageName} donationTitlesData={donationTitlesData}/>
+      <ServiceOnlineDonationScope
+        pageName={pageName}
+        donationTitlesData={donationTitlesData}
+      />
+      <ServiceOnlineDonationPricing
+        pageName={pageName}
+        donationTitlesData={donationTitlesData}
+      />
       {/* <ServiceOnlineDonationPartners /> */}
-      <ServiceOnlineDonationPartnersSay donationTitlesData={donationTitlesData}/>
+      <ServiceOnlineDonationPartnersSay
+        donationTitlesData={donationTitlesData}
+      />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}

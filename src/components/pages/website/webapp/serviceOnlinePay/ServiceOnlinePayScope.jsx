@@ -31,7 +31,7 @@ const ServiceOnlinePayScope = ({ pageName, paymentTitlesData }) => {
     "payment-scope", // key
     {},
     null,
-    true
+    true,
   );
 
   const handleForm = () => {
@@ -40,11 +40,11 @@ const ServiceOnlinePayScope = ({ pageName, paymentTitlesData }) => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
   const currentScope = paymentScopeData?.data?.find(
-    (item) => item.payment_scope_aid === accordionItem
+    (item) => item.payment_scope_aid === accordionItem,
   );
 
   const PaymentScopeImage = getConvertStringToJSONparseData(
-    currentScope?.payment_scope_img
+    currentScope?.payment_scope_img,
   );
 
   React.useEffect(() => {
@@ -184,9 +184,9 @@ const ServiceOnlinePayScope = ({ pageName, paymentTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Payment Integration"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`LEARN MORE / Online Payment Integration (${accordionItem}) - `}
         />
       )}

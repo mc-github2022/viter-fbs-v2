@@ -31,7 +31,7 @@ const ServiceOnlineDonationScope = ({ pageName, donationTitlesData }) => {
     "donation-scope", // key
     {},
     null,
-    true
+    true,
   );
 
   const handleForm = () => {
@@ -41,11 +41,11 @@ const ServiceOnlineDonationScope = ({ pageName, donationTitlesData }) => {
   const [accordionItem, setAccordionItem] = React.useState("");
 
   const currentScope = donationScopeData?.data?.find(
-    (item) => item.donation_scope_aid === accordionItem
+    (item) => item.donation_scope_aid === accordionItem,
   );
 
   const DonationScopeImage = getConvertStringToJSONparseData(
-    currentScope?.donation_scope_img
+    currentScope?.donation_scope_img,
   );
 
   React.useEffect(() => {
@@ -185,9 +185,9 @@ const ServiceOnlineDonationScope = ({ pageName, donationTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Donation System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`LEARN MORE / Online Donation System (${accordionItem}) - `}
         />
       )}

@@ -22,7 +22,7 @@ const ServiceInventoryOverview = ({ pageName }) => {
     "asset-overview", // key
     {},
     null,
-    true
+    true,
   );
 
   const handleForm = () => {
@@ -30,7 +30,7 @@ const ServiceInventoryOverview = ({ pageName }) => {
   };
 
   const assetOverviewImage = getConvertStringToJSONparseData(
-    assetOverviewData?.data?.[0]?.asset_overview_img
+    assetOverviewData?.data?.[0]?.asset_overview_img,
   );
 
   return (
@@ -171,9 +171,9 @@ const ServiceInventoryOverview = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Asset Inventory System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${webAppOverview[0]?.btnText} / Asset Inventory System - `}
         />
       )}

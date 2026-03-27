@@ -1,3 +1,4 @@
+import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
@@ -6,20 +7,28 @@ import {
   googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServiceHrOverview = ({ hrisData }) => {
+const ServiceHrOverview = ({ hrisData, pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+
   const { data: hrisOverviewData } = useQueryData(
     `${apiVersion}/hris-overview`, // endpoint
     "get", // method
     "hris-overview", // key
     {},
     null,
-    true
+    true,
   );
 
   const hrisOverviewImage = getConvertStringToJSONparseData(
-    hrisOverviewData?.data?.[0]?.hris_overview_img
+    hrisOverviewData?.data?.[0]?.hris_overview_img,
   );
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
 
   return (
     <>
@@ -52,14 +61,13 @@ const ServiceHrOverview = ({ hrisData }) => {
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   {hrisData?.data.map((item, key) => (
-                    <a
-                      href={`${item.hris_banner_button_link}`}
-                      target="_blank"
+                    <button
+                      onClick={handleForm}
                       className="btn bg-primary text-light font-semibold uppercase"
                       key={key}
                     >
                       {item.hris_banner_button_text}
-                    </a>
+                    </button>
                   ))}
                 </li>
                 {/* <li>
@@ -148,6 +156,21 @@ const ServiceHrOverview = ({ hrisData }) => {
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          page={"HR Information System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${hrisData?.data[0]?.hris_banner_button_text} / HR Information System - `}
+        />
+      )}
     </>
   );
 };

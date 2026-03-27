@@ -1,22 +1,32 @@
+import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServicePayrollOverview = ({ payrollData }) => {
+const ServicePayrollOverview = ({ payrollData, pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+
   const { data: payrollOverviewData } = useQueryData(
     `${apiVersion}/payroll-overview`, // endpoint
     "get", // method
-    "payroll-overview" // key
+    "payroll-overview", // key
   );
 
   const payrollOverviewImage = getConvertStringToJSONparseData(
-    payrollOverviewData?.data?.[0]?.payroll_overview_img
+    payrollOverviewData?.data?.[0]?.payroll_overview_img,
   );
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section className="ServicePayrollOverview py-20 bg-customGray">
@@ -48,14 +58,13 @@ const ServicePayrollOverview = ({ payrollData }) => {
               <ul className="flex flex-col md:flex md:flex-row items-center gap-12">
                 <li>
                   {payrollData?.data.map((item, key) => (
-                    <a
-                      href={`${item.payroll_banner_button_link}`}
-                      target="_blank"
+                    <button
+                      onClick={handleForm}
                       className="btn bg-primary text-light font-semibold uppercase"
                       key={key}
                     >
                       {item.payroll_banner_button_text}
-                    </a>
+                    </button>
                   ))}
                 </li>
                 {/* <li>
@@ -150,6 +159,21 @@ const ServicePayrollOverview = ({ payrollData }) => {
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          page={"HR Information System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${payrollData?.data[0]?.payroll_banner_button_text} / HR Information System - `}
+        />
+      )}
     </>
   );
 };

@@ -25,11 +25,11 @@ const ServiceOnlinePayBanner = ({ pageName }) => {
     "payment", // key
     {},
     null,
-    true
+    true,
   );
 
   const paymentBannerImage = getConvertStringToJSONparseData(
-    paymentData?.data?.[0]?.payment_banner_img
+    paymentData?.data?.[0]?.payment_banner_img,
   );
 
   return (
@@ -92,9 +92,9 @@ const ServiceOnlinePayBanner = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Payment Integration"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${banner[0]?.bannerBtnText} / Online Payment Integration - `}
         />
       )}

@@ -60,7 +60,7 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
     "packages-details", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: packagesListData } = useQueryData(
@@ -69,17 +69,17 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
     "packages-list", // key
     {},
     null,
-    true
+    true,
   );
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_url === "webapp-enrollment"
+      (item) => item.packages_category_url === "webapp-enrollment",
     )?.packages_category_url || "webapp-enrollment";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_category_url === selectedCategory
+      (item) => item.packages_category_url === selectedCategory,
     ) || [];
 
   var eventsSliderSettings = {
@@ -280,7 +280,7 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
                               ) {
                                 const isDetailHighlighted =
                                   Number(
-                                    info.packages_details_is_highlighted
+                                    info.packages_details_is_highlighted,
                                   ) === 1;
                                 const isPriceHighlighted =
                                   Number(price.packages_list_is_highlighted) ===
@@ -320,7 +320,7 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
                                     {info.packages_details_list
                                       ?.split("\n")
                                       .filter(
-                                        (details) => details.trim() !== ""
+                                        (details) => details.trim() !== "",
                                       )
                                       .map((details, idx) => (
                                         <p
@@ -467,11 +467,11 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
                                   ) {
                                     const isDetailHighlighted =
                                       Number(
-                                        info.packages_details_is_highlighted
+                                        info.packages_details_is_highlighted,
                                       ) === 1;
                                     const isPriceHighlighted =
                                       Number(
-                                        price.packages_list_is_highlighted
+                                        price.packages_list_is_highlighted,
                                       ) === 1;
 
                                     return (
@@ -506,7 +506,7 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
                                         {info.packages_details_list
                                           ?.split("\n")
                                           .filter(
-                                            (details) => details.trim() !== ""
+                                            (details) => details.trim() !== "",
                                           )
                                           .map((details, idx) => (
                                             <p
@@ -568,9 +568,9 @@ const ServiceEnrollmentPricing = ({ pageName, enrollmentTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"School Enrollment System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`CONTACT US / School Enrollment System (${contactSubject}) - `}
         />
       )}

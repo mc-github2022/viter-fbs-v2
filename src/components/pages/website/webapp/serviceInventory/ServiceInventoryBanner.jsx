@@ -13,18 +13,25 @@ import useQueryData from "../../../../custom-hooks/useQueryData";
 import LoadImages from "../../../../partials/LoadImages";
 
 const ServiceInventoryBanner = ({ pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+
   const { data: assetData } = useQueryData(
     `${apiVersion}/asset`, // endpoint
     "get", // method
     "asset", // key
     {},
     null,
-    true
+    true,
   );
 
   const assetBannerImage = getConvertStringToJSONparseData(
-    assetData?.data?.[0]?.asset_banner_img
+    assetData?.data?.[0]?.asset_banner_img,
   );
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
 
   return (
     <>
@@ -65,19 +72,33 @@ const ServiceInventoryBanner = ({ pageName }) => {
                   : ""}
               </p>
               {assetData?.data.map((item, key) => (
-                <a
-                  href={`${item.asset_banner_button_link}`}
-                  target="_blank"
+                <button
+                  onClick={handleForm}
                   className="btn bg-transparent text-light border-2 uppercase "
                   key={key}
                 >
                   {item.asset_banner_button_text}
-                </a>
+                </button>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          page={"Asset Inventory System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${assetData?.data[0]?.asset_banner_button_text} / Asset Inventory System - `}
+        />
+      )}
     </>
   );
 };

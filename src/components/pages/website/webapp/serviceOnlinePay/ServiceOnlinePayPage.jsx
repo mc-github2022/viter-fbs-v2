@@ -26,7 +26,7 @@ const ServiceOnlinePayPage = () => {
     "packages-category", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: paymentTitlesData } = useQueryData(
@@ -35,7 +35,7 @@ const ServiceOnlinePayPage = () => {
     "payment-titles", // key
     {},
     null,
-    true
+    true,
   );
 
   React.useEffect(() => {
@@ -51,7 +51,7 @@ const ServiceOnlinePayPage = () => {
   const matchingItem = packagesCategoryData.data.find(
     (item) =>
       item.packages_category_url === categoryUrl &&
-      String(item.packages_category_aid) === String(id)
+      String(item.packages_category_aid) === String(id),
   );
 
   if (!matchingItem) {
@@ -60,7 +60,11 @@ const ServiceOnlinePayPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} page={"Home"}/>
+      <Header
+        pageName={pageName}
+        services={"web services"}
+        page={"Online Payment Integration"}
+      />
       <ServiceOnlinePayBanner pageName={pageName} />
       <ServiceOnlinePayOverview pageName={pageName} />
       <ServiceOnlinePayScope

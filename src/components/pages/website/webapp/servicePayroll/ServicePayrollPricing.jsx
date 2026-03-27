@@ -57,23 +57,23 @@ const ServicePayrollPricing = ({ pageName, payrollTitlesData }) => {
   } = useQueryData(
     `${apiVersion}/packages-details`, // endpoint
     "get", // method
-    "packages-details" // key
+    "packages-details", // key
   );
 
   const { data: packagesListData } = useQueryData(
     `${apiVersion}/packages-list`, // endpoint
     "get", // method
-    "packages-list" // key
+    "packages-list", // key
   );
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_url === "webapp-payroll"
+      (item) => item.packages_category_url === "webapp-payroll",
     )?.packages_category_url || "webapp-payroll";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_category_url === selectedCategory
+      (item) => item.packages_category_url === selectedCategory,
     ) || [];
 
   var eventsSliderSettings = {
@@ -272,7 +272,7 @@ const ServicePayrollPricing = ({ pageName, payrollTitlesData }) => {
                               ) {
                                 const isDetailHighlighted =
                                   Number(
-                                    info.packages_details_is_highlighted
+                                    info.packages_details_is_highlighted,
                                   ) === 1;
                                 const isPriceHighlighted =
                                   Number(price.packages_list_is_highlighted) ===
@@ -312,7 +312,7 @@ const ServicePayrollPricing = ({ pageName, payrollTitlesData }) => {
                                     {info.packages_details_list
                                       ?.split("\n")
                                       .filter(
-                                        (details) => details.trim() !== ""
+                                        (details) => details.trim() !== "",
                                       )
                                       .map((details, idx) => (
                                         <p
@@ -459,11 +459,11 @@ const ServicePayrollPricing = ({ pageName, payrollTitlesData }) => {
                                   ) {
                                     const isDetailHighlighted =
                                       Number(
-                                        info.packages_details_is_highlighted
+                                        info.packages_details_is_highlighted,
                                       ) === 1;
                                     const isPriceHighlighted =
                                       Number(
-                                        price.packages_list_is_highlighted
+                                        price.packages_list_is_highlighted,
                                       ) === 1;
 
                                     return (
@@ -498,7 +498,7 @@ const ServicePayrollPricing = ({ pageName, payrollTitlesData }) => {
                                         {info.packages_details_list
                                           ?.split("\n")
                                           .filter(
-                                            (details) => details.trim() !== ""
+                                            (details) => details.trim() !== "",
                                           )
                                           .map((details, idx) => (
                                             <p
@@ -561,9 +561,9 @@ const ServicePayrollPricing = ({ pageName, payrollTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
-          notification_purpose={"default-receiver"}
-          services={"default"}
-          page={"Home"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          services={"web services"}
+          page={"Online Payroll System"}
           emailSubject={`LEARN MORE / Online Payroll System (${contactSubject}) - `}
         />
       )}

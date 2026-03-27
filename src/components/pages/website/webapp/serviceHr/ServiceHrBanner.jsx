@@ -1,15 +1,22 @@
+import React from "react";
 import {
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServiceHrBanner = ({hrisData}) => {
-  
+const ServiceHrBanner = ({ hrisData, pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
 
   const hrisBannerImage = getConvertStringToJSONparseData(
-    hrisData?.data?.[0]?.hris_banner_img
+    hrisData?.data?.[0]?.hris_banner_img,
   );
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
 
   return (
     <>
@@ -56,19 +63,33 @@ const ServiceHrBanner = ({hrisData}) => {
                   : "Description"}
               </p>
               {hrisData?.data.map((item, key) => (
-                <a
-                  href={`${item.hris_banner_button_link}`}
-                  target="_blank"
+                <button
+                  onClick={handleForm}
                   className="btn bg-transparent text-light border-2 uppercase"
                   key={key}
                 >
                   {item.hris_banner_button_text}
-                </a>
+                </button>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          page={"HR Information System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${hrisData?.data[0]?.hris_banner_button_text} / HR Information System - `}
+        />
+      )}
     </>
   );
 };

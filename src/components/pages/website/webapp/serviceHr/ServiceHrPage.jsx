@@ -26,7 +26,7 @@ const ServiceHrPage = () => {
     "packages-category", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: hrisData } = useQueryData(
@@ -35,7 +35,7 @@ const ServiceHrPage = () => {
     "hris", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: hrisTitlesData } = useQueryData(
@@ -44,7 +44,7 @@ const ServiceHrPage = () => {
     "hris-titles", // key
     {},
     null,
-    true
+    true,
   );
 
   React.useEffect(() => {
@@ -60,7 +60,7 @@ const ServiceHrPage = () => {
   const matchingItem = packagesCategoryData.data.find(
     (item) =>
       item.packages_category_url === categoryUrl &&
-      String(item.packages_category_aid) === String(id)
+      String(item.packages_category_aid) === String(id),
   );
 
   if (!matchingItem) {
@@ -69,10 +69,18 @@ const ServiceHrPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} page={"Home"}/>
-      <ServiceHrBanner hrisData={hrisData} />
-      <ServiceHrOverview hrisData={hrisData} />
-      <ServiceHrScope hrisData={hrisData} hrisTitlesData={hrisTitlesData} />
+      <Header
+        pageName={pageName}
+        services={"web services"}
+        page={"HR Information System"}
+      />
+      <ServiceHrBanner hrisData={hrisData} pageName={pageName} />
+      <ServiceHrOverview hrisData={hrisData} pageName={pageName} />
+      <ServiceHrScope
+        hrisData={hrisData}
+        hrisTitlesData={hrisTitlesData}
+        pageName={pageName}
+      />
       <ServiceHrPricing pageName={pageName} hrisTitlesData={hrisTitlesData} />
       <ServiceHrPartners hrisTitlesData={hrisTitlesData} />
       <ServiceHrPartnersSay hrisTitlesData={hrisTitlesData} />

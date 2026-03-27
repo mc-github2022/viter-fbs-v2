@@ -14,6 +14,9 @@ class SendingEmail
     public $notification_log_file;
     public $notification_log_receiver;
     public $notification_log_email_subject;
+    public $notification_log_course;
+    public $notification_log_school;
+    public $notification_log_number_of_hours;
     public $notification_log_created;
 
 
@@ -62,6 +65,9 @@ class SendingEmail
             $sql .= "notification_log_file, ";
             $sql .= "notification_log_receiver, ";
             $sql .= "notification_log_email_subject, ";
+            $sql .= "notification_log_course, ";
+            $sql .= "notification_log_school, ";
+            $sql .= "notification_log_number_of_hours, ";
             $sql .= "notification_log_created ) values ( ";
             $sql .= ":notification_log_name, ";
             $sql .= ":notification_log_email, ";
@@ -72,6 +78,9 @@ class SendingEmail
             $sql .= ":notification_log_file, ";
             $sql .= ":notification_log_receiver, ";
             $sql .= ":notification_log_email_subject, ";
+            $sql .= ":notification_log_course, ";
+            $sql .= ":notification_log_school, ";
+            $sql .= ":notification_log_number_of_hours, ";
             $sql .= ":notification_log_created ) ";
             $query = $this->connection->prepare($sql);
             $query->execute([
@@ -84,6 +93,9 @@ class SendingEmail
                 "notification_log_file" => $this->notification_log_file,
                 "notification_log_receiver" => $this->notification_log_receiver,
                 "notification_log_email_subject" => $this->notification_log_email_subject,
+                "notification_log_course" => $this->notification_log_course,
+                "notification_log_school" => $this->notification_log_school,
+                "notification_log_number_of_hours" => $this->notification_log_number_of_hours,
                 "notification_log_created" => $this->notification_log_created,
             ]);
             $this->lastInsertedId = $this->connection->lastInsertId();

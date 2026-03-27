@@ -1,13 +1,23 @@
+import React from "react";
 import {
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
+import ModalContact from "../../../../partials/ModalContact";
 
-const ServicePayrollBanner = ({ payrollData }) => {
+const ServicePayrollBanner = ({ payrollData, pageName }) => {
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+
   const payrollBannerImage = getConvertStringToJSONparseData(
-    payrollData?.data?.[0]?.payroll_banner_img
+    payrollData?.data?.[0]?.payroll_banner_img,
   );
+
+  const handleForm = () => {
+    setContactForm(!contactForm);
+  };
+
   return (
     <>
       <section
@@ -49,19 +59,33 @@ const ServicePayrollBanner = ({ payrollData }) => {
                   : ""}
               </p>
               {payrollData?.data.map((item, key) => (
-                <a
-                  href={`${item.payroll_banner_button_link}`}
-                  target="_blank"
+                <button
+                  onClick={handleForm}
                   className="btn bg-transparent text-light border-2 uppercase "
                   key={key}
                 >
                   {item.payroll_banner_button_text}
-                </a>
+                </button>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={""}
+          services={"web services"}
+          page={"Online Payroll System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${payrollData?.data[0]?.payroll_banner_button_text} / Online Payroll System - `}
+        />
+      )}
     </>
   );
 };

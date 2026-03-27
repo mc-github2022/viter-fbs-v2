@@ -36,15 +36,15 @@ const ServiceEnrollmentScope = ({ pageName, enrollmentTitlesData }) => {
     "enrollment-scope", // key
     {},
     null,
-    true
+    true,
   );
 
   const currentScope = enrollmentScopeData?.data?.find(
-    (item) => item.enrollment_scope_aid === accordionItem
+    (item) => item.enrollment_scope_aid === accordionItem,
   );
 
   const EnrollmentScopeImage = getConvertStringToJSONparseData(
-    currentScope?.enrollment_scope_img
+    currentScope?.enrollment_scope_img,
   );
 
   React.useEffect(() => {
@@ -185,9 +185,9 @@ const ServiceEnrollmentScope = ({ pageName, enrollmentTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"School Enrollment System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`LEARN MORE / School Enrollment System (${accordionItem}) - `}
         />
       )}

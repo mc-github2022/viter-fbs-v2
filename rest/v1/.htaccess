@@ -94,6 +94,9 @@ RewriteRule ^vid-testimonial/search$ controllers/developer/vid-testimonial/searc
 # SENDING EMAIL
 RewriteRule ^sending-email$ controllers/developer/sending-email/sending-email.php [L]
 
+# SENDING EMAIL - DEFAULT
+RewriteRule ^sending-email-default$ controllers/developer/sending-email/sending-email-default.php [L]
+
 # NOTIFICATIONS
 RewriteRule ^notification-email$ controllers/developer/notification/notification.php [L]
 RewriteRule ^notification-email/([0-9]+)$ controllers/developer/notification/notification.php?notificationId=$1 [L]

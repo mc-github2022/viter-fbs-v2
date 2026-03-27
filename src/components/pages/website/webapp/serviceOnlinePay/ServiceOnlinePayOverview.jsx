@@ -176,9 +176,9 @@ const ServiceOnlinePayOverview = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Payment Integration"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${webAppOverview[0]?.btnText} / Online Payment Integration - `}
         />
       )}

@@ -25,11 +25,11 @@ const ServiceOnlineDonationBanner = ({ pageName }) => {
     "donation", // key
     {},
     null,
-    true
+    true,
   );
 
   const donationBannerImage = getConvertStringToJSONparseData(
-    donationData?.data?.[0]?.donation_banner_img
+    donationData?.data?.[0]?.donation_banner_img,
   );
 
   return (
@@ -92,9 +92,9 @@ const ServiceOnlineDonationBanner = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Donation System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${banner[0]?.bannerBtnText} / Online Donation System - `}
         />
       )}

@@ -30,7 +30,7 @@ const ServiceEnrollmentPage = () => {
     "packages-category", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: enrollmentTitlesData } = useQueryData(
@@ -39,7 +39,7 @@ const ServiceEnrollmentPage = () => {
     "enrollment-titles", // key
     {},
     null,
-    true
+    true,
   );
 
   const categoryUrl = "webapp-enrollment";
@@ -51,7 +51,7 @@ const ServiceEnrollmentPage = () => {
   const matchingItem = packagesCategoryData.data.find(
     (item) =>
       item.packages_category_url === categoryUrl &&
-      String(item.packages_category_aid) === String(id)
+      String(item.packages_category_aid) === String(id),
   );
 
   if (!matchingItem) {
@@ -60,7 +60,11 @@ const ServiceEnrollmentPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} page={"Home"}/>
+      <Header
+        pageName={pageName}
+        services={"web services"}
+        page={"School Enrollment System"}
+      />
       <ServiceEnrollmentBanner pageName={pageName} />
       <ServiceEnrollmentOverview pageName={pageName} />
       <ServiceEnrollmentScope

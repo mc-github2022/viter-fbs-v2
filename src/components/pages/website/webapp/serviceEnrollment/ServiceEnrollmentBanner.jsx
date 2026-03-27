@@ -22,11 +22,11 @@ const ServiceEnrollmentBanner = ({ pageName }) => {
     "enrollment", // key
     {},
     null,
-    true
+    true,
   );
 
   const enrollmentBannerImage = getConvertStringToJSONparseData(
-    enrollmentData?.data?.[0]?.enrollment_banner_img
+    enrollmentData?.data?.[0]?.enrollment_banner_img,
   );
 
   return (
@@ -90,9 +90,9 @@ const ServiceEnrollmentBanner = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"School Enrollment System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${banner[0]?.bannerBtnText} / School Enrollment System  - `}
         />
       )}

@@ -58,7 +58,11 @@ const ServiceBookingPage = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"default"} page={"Home"} />
+      <Header
+        pageName={pageName}
+        services={"web services"}
+        page={"Online Booking System"}
+      />
       <ServiceBookingBanner pageName={pageName} />
       <ServiceBookingOverview pageName={pageName} />
       <ServiceBookingScope

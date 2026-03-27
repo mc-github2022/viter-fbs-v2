@@ -1,0 +1,22 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/sending-email/sending-email-default.php
+
+MODELS
+    -> rest/v1/models/developer/notification-log/NotificationLog.php
+    -> rest/v1/models/developer/sending-email/SendingEmail.php
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_notification_log.sql
+        note: this columns are added
+            `notification_log_course` varchar(100) NOT NULL,
+            `notification_log_school` varchar(100) NOT NULL,
+            `notification_log_number_of_hours` varchar(50) NOT NULL,
+
+HTACCESS
+    -> this is added # SENDING EMAIL - DEFAULT
+
+OTHER FILES
+    -> rest/v1/notification/contact-form-default.php
+    -> rest/v1/notification/template/contact-form-default.php

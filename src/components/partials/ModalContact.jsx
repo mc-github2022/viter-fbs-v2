@@ -64,17 +64,17 @@ const ModalContact = ({
     "contactForm", // key
     {},
     null,
-    true
+    true,
   );
-
 
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
+    mutationFn: (values) =>
+      queryData(`/v1/sending-email-default`, "post", values),
     onSuccess: (data) => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["sending-email"] });
+      queryClient.invalidateQueries({ queryKey: ["sending-email-default"] });
       if (data.success) {
         setModalContact(false);
         setContactForm(false);
@@ -96,6 +96,9 @@ const ModalContact = ({
     client_message_subject: "",
     client_message: "",
     client_file: "",
+    client_course: "",
+    client_school: "",
+    client_number_of_hours: "",
     notification_purpose,
     email_subject: emailSubject,
   };
@@ -417,10 +420,10 @@ const ModalContact = ({
                 (() => {
                   // Find the content item that matches the current page + service
                   const contentItem = contentFormData?.data?.find(
-                    (item) => item.form_services === services
+                    (item) => item.form_services === services,
                   );
                   const ojtProposal = getConvertStringToJSONparseData(
-                    contentItem?.form_ojt_proposal
+                    contentItem?.form_ojt_proposal,
                   );
                   return (
                     <>
@@ -445,11 +448,11 @@ const ModalContact = ({
               {page === "High School Work Immersion" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) => item.form_services === services
+                    (item) => item.form_services === services,
                   );
 
                   const workImmersion = getConvertStringToJSONparseData(
-                    contentItem?.form_work_immersion
+                    contentItem?.form_work_immersion,
                   );
                   return (
                     <>
@@ -480,11 +483,11 @@ const ModalContact = ({
               {page === "WordPress CMS Website" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) => item.form_services === services
+                    (item) => item.form_services === services,
                   );
 
                   const webDesign = getConvertStringToJSONparseData(
-                    contentItem?.form_website_design
+                    contentItem?.form_website_design,
                   );
 
                   return (
@@ -510,11 +513,11 @@ const ModalContact = ({
               {page === "Web Design" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) => item.form_services === services
+                    (item) => item.form_services === services,
                   );
 
                   const webDesign = getConvertStringToJSONparseData(
-                    contentItem?.form_website_design
+                    contentItem?.form_website_design,
                   );
 
                   return (
@@ -540,11 +543,11 @@ const ModalContact = ({
               {page === "Graphic Design" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) => item.form_services === services
+                    (item) => item.form_services === services,
                   );
 
                   const graphicDesign = getConvertStringToJSONparseData(
-                    contentItem?.form_graphic_design
+                    contentItem?.form_graphic_design,
                   );
 
                   return (
@@ -575,13 +578,20 @@ const ModalContact = ({
                 page !== "Web Design" &&
                 page !== "Graphic Design" &&
                 page !== "Career" &&
+                page !== "HR Information System" &&
+                page !== "Online Payroll System" &&
+                page !== "School Enrollment System" &&
+                page !== "Online Payment Integration" &&
+                page !== "Online Donation System" &&
+                page !== "Asset Inventory System" &&
+                page !== "Online Booking System" &&
                 (() => {
                   const contentItem = contentFormData?.data?.find(
-                    (item) => item.form_services === services
+                    (item) => item.form_services === services,
                   );
 
                   const fbsBrochure = getConvertStringToJSONparseData(
-                    contentItem?.form_fbs_brochure
+                    contentItem?.form_fbs_brochure,
                   );
 
                   return (
@@ -623,8 +633,8 @@ const ModalContact = ({
                   dispatch(setError(true));
                   dispatch(
                     setMessage(
-                      "Please verify that you are not a robot by completing the reCAPTCHA below."
-                    )
+                      "Please verify that you are not a robot by completing the reCAPTCHA below.",
+                    ),
                   );
                   return;
                 }

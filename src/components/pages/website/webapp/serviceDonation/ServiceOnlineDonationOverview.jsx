@@ -25,11 +25,11 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
     "donation-overview", // key
     {},
     null,
-    true
+    true,
   );
 
   const DonationOverviewImage = getConvertStringToJSONparseData(
-    donationOverviewData?.data?.[0]?.donation_overview_img
+    donationOverviewData?.data?.[0]?.donation_overview_img,
   );
 
   return (
@@ -173,9 +173,9 @@ const ServiceOnlineDonationOverview = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Donation System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${webAppOverview[0]?.btnText} / Online Donation System - `}
         />
       )}

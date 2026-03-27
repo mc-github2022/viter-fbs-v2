@@ -4,7 +4,7 @@ import useQueryData from "../../../../custom-hooks/useQueryData";
 import {
   apiVersion,
   getConvertStringToJSONparseData,
-  googleHDViewLink
+  googleHDViewLink,
 } from "../../../../helpers/functions-general";
 import LoadImages from "../../../../partials/LoadImages";
 import ModalContact from "../../../../partials/ModalContact";
@@ -172,10 +172,10 @@ const ServiceBookingOverview = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
-          emailSubject={`${bookingOverviewData[0]?.btnText} / Booking Inventory System - `}
+          services={"web services"}
+          page={"Online Booking System"}
+          notification_purpose={"learn-more-web-design-and-development"}
+          emailSubject={`${bookingOverviewData[0]?.booking_overview_button_text} / Online Booking System - `}
         />
       )}
     </>

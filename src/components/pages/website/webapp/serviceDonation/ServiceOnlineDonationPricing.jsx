@@ -60,7 +60,7 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
     "packages-details", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: packagesListData } = useQueryData(
@@ -69,17 +69,17 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
     "packages-list", // key
     {},
     null,
-    true
+    true,
   );
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_url === "webapp-onlinedonation"
+      (item) => item.packages_category_url === "webapp-onlinedonation",
     )?.packages_category_url || "webapp-onlinedonation";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_category_url === selectedCategory
+      (item) => item.packages_category_url === selectedCategory,
     ) || [];
 
   var eventsSliderSettings = {
@@ -279,7 +279,7 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
                               ) {
                                 const isDetailHighlighted =
                                   Number(
-                                    info.packages_details_is_highlighted
+                                    info.packages_details_is_highlighted,
                                   ) === 1;
                                 const isPriceHighlighted =
                                   Number(price.packages_list_is_highlighted) ===
@@ -319,7 +319,7 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
                                     {info.packages_details_list
                                       ?.split("\n")
                                       .filter(
-                                        (details) => details.trim() !== ""
+                                        (details) => details.trim() !== "",
                                       )
                                       .map((details, idx) => (
                                         <p
@@ -466,11 +466,11 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
                                   ) {
                                     const isDetailHighlighted =
                                       Number(
-                                        info.packages_details_is_highlighted
+                                        info.packages_details_is_highlighted,
                                       ) === 1;
                                     const isPriceHighlighted =
                                       Number(
-                                        price.packages_list_is_highlighted
+                                        price.packages_list_is_highlighted,
                                       ) === 1;
 
                                     return (
@@ -505,7 +505,7 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
                                         {info.packages_details_list
                                           ?.split("\n")
                                           .filter(
-                                            (details) => details.trim() !== ""
+                                            (details) => details.trim() !== "",
                                           )
                                           .map((details, idx) => (
                                             <p
@@ -567,9 +567,9 @@ const ServiceOnlineDonationPricing = ({ pageName, donationTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={contactSubject}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Donation System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`CONTACT US / Online Donation System (${contactSubject}) - `}
         />
       )}

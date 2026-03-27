@@ -25,11 +25,11 @@ const ServiceEnrollmentOverview = ({ pageName }) => {
     "enrollment-overview", // key
     {},
     null,
-    true
+    true,
   );
 
   const enrollmentOverviewImage = getConvertStringToJSONparseData(
-    enrollmentOverviewData?.data?.[0]?.enrollment_overview_img
+    enrollmentOverviewData?.data?.[0]?.enrollment_overview_img,
   );
 
   return (
@@ -175,9 +175,9 @@ const ServiceEnrollmentOverview = ({ pageName }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"School Enrollment System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`${webAppOverview[0]?.btnText} / School Enrollment System - `}
         />
       )}

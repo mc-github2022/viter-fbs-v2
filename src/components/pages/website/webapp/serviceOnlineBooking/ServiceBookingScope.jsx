@@ -187,9 +187,9 @@ const ServiceBookingScope = ({ pageName, bookingTitlesData }) => {
           setContactForm={setContactForm}
           modalContact={modalContact}
           contactSubject={""}
-          services={"default"}
-          page={"Home"}
-          notification_purpose={"default-receiver"}
+          services={"web services"}
+          page={"Online Booking System"}
+          notification_purpose={"learn-more-web-design-and-development"}
           emailSubject={`CONTACT US / Online Booking System (${accordionItem}) - `}
         />
       )}
