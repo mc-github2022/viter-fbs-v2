@@ -31,7 +31,7 @@ const Header = ({ pageName, services, page }) => {
 
   const handleGoToPage = (item) => {
     navigate(
-      `${devNavUrl}/${item.packages_category_url}?id=${item.packages_category_aid}`
+      `${devNavUrl}/${item.packages_category_url}?id=${item.packages_category_aid}`,
     );
   };
 
@@ -43,7 +43,7 @@ const Header = ({ pageName, services, page }) => {
       {},
       null,
       false,
-      toggleMenu || toggleWhyUs
+      toggleMenu || toggleWhyUs,
     );
 
   const {
@@ -53,11 +53,11 @@ const Header = ({ pageName, services, page }) => {
   } = useQueryData(
     `${apiVersion}/header`, // endpoint
     "get", // method
-    "header" // key
+    "header", // key
   );
 
   const headerLogoImg = getConvertStringToJSONparseData(
-    headerData?.data?.[0]?.header_logo_img
+    headerData?.data?.[0]?.header_logo_img,
   );
 
   const handdleToggle = () => {
@@ -98,6 +98,7 @@ const Header = ({ pageName, services, page }) => {
 
   React.useEffect(() => {
     let pathName = location.pathname.replaceAll(`${devNavUrl}/`, "");
+
     if (pathName === "career") {
       setSubjectNotif("get-started-careers");
     } else if (
@@ -106,11 +107,28 @@ const Header = ({ pageName, services, page }) => {
       pathName === "continuing-studies"
     ) {
       setSubjectNotif("get-started-lcs");
+    } else if (
+      pathName === "web-wordpress" ||
+      pathName === "web-design" ||
+      pathName === "web-singlepage" ||
+      pathName === "graphic-design" ||
+      pathName === "webapp-payroll" ||
+      pathName === "webapp-enrollment" ||
+      pathName === "webapp-onlinepayment" ||
+      pathName === "webapp-onlinedonation" ||
+      pathName === "webapp-asset-inventory" ||
+      pathName === "webapp-online-booking" ||
+      pathName === "webapp-hris"
+    ) {
+      setSubjectNotif("learn-more-web-design-and-development");
     } else {
       setSubjectNotif("default-receiver");
     }
+
     document.addEventListener("click", clickOutsideRef);
-    return () => document.addEventListener("click", clickOutsideRef);
+    return () => {
+      document.removeEventListener("click", clickOutsideRef);
+    };
   }, []);
 
   return (
@@ -326,14 +344,14 @@ const Header = ({ pageName, services, page }) => {
             pageName === "College OJT"
               ? "/ College On-The-Job Training"
               : "" || pageName === "Continuing Study"
-              ? "/ Continuing Studies"
-              : "" || pageName === "Work Immersion"
-              ? "/ High School Work Immersion"
-              : "" || pageName === "career"
-              ? "/ Career"
-              : "" || pageName === "wordpress"
-              ? "/ Wordpress"
-              : ""
+                ? "/ Continuing Studies"
+                : "" || pageName === "Work Immersion"
+                  ? "/ High School Work Immersion"
+                  : "" || pageName === "career"
+                    ? "/ Career"
+                    : "" || pageName === "wordpress"
+                      ? "/ Wordpress"
+                      : ""
           } -  `}
         />
       )}

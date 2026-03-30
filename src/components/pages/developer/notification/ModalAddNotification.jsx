@@ -16,7 +16,7 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [animate, setAnimate] = React.useState("translate-x-full");
   const [selectedValue, setSelectedValue] = React.useState(
-    itemEdit ? itemEdit.notification_purpose : ""
+    itemEdit ? itemEdit.notification_purpose : "",
   );
 
   const handleClose = () => {
@@ -39,7 +39,7 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
           ? `${apiVersion}/notification-email/${itemEdit.notification_aid}` // update
           : `${apiVersion}/notification-email`, // create
         itemEdit ? "put" : "post",
-        values
+        values,
       ),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["notification-email"] });
@@ -222,6 +222,13 @@ const ModalAddNotification = ({ setIsAdd, itemEdit }) => {
                               <span className="text-xs" key={key}>
                                 Note: This applies to the following pages.
                                 <ul className="ml-9">
+                                  <li>-HR Information System</li>
+                                  <li>-Online Payroll System</li>
+                                  <li>-School Enrollment System</li>
+                                  <li>-Online Payment Integration</li>
+                                  <li>-Online Donation System</li>
+                                  <li>-Asset Inventory System</li>
+                                  <li>-Online Booking System</li>
                                   <li>-WordPress CMS Website</li>
                                   <li>-Single Page Website</li>
                                   <li>-Accounting Solutions</li>

@@ -1,0 +1,14 @@
+Upload JSX
+
+CONTROLLERS
+    -> 
+
+MODELS
+    ->
+DB BACKUP
+    -> 
+HTACCESS
+    -> 
+OTHER FILES
+    -> rest/v1/google-api/google-key.json
+        note: we have new google api key

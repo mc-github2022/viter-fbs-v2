@@ -87,6 +87,9 @@ const ModalJobApplication = ({
     client_message: "",
     client_file: "",
     client_message_subject: "",
+    client_course: "",
+    client_school: "",
+    client_number_of_hours: "",
     notification_purpose: "apply-now-careers",
     email_subject: `APPLY NOW - ${jobTitle}`,
   };
