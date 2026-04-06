@@ -24,11 +24,67 @@ import ModalJobApplication from "../career/ModalJobApplication";
 import BannerSliderLoader from "../home/bannerSliderLoader";
 import TableLoading from "../../../partials/spinners/TableLoading";
 import MetaInsights from "../home/MetaInsights";
+import InsightsSliderPage from "./InsightsSliderPage";
+import Slider from "react-slick/lib/slider";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        background: "#ac1e72",
+        position: "absolute",
+        color: "white",
+        top: "50%",
+        right: "-6%",
+        fontSize: "3rem",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowForward className="text-3xl" />
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        background: "#ac1e72",
+        color: "white",
+        top: "50%",
+        left: "-6%",
+        fontSize: "3rem",
+        zIndex: "1",
+        cursor: "pointer",
+        borderRadius: "100%",
+        width: "48px",
+        height: "48px",
+        display: "grid",
+        placeItems: "center",
+      }}
+      onClick={onClick}
+    >
+      <IoIosArrowBack className="text-3xl" />
+    </div>
+  );
+}
 
 const SingplePage = () => {
   const { store, dispatch } = React.useContext(StoreContext);
   const [pageName, setPageName] = React.useState("home");
   const [jobTitle, setJobTitle] = React.useState("insight");
+  const [isInsightsImg, setIsInsightsImg] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState(null);
 
   const [lcssForm, setLcssForm] = React.useState(false);
   const [modalJob, setModalJob] = React.useState(false);
@@ -51,6 +107,12 @@ const SingplePage = () => {
     }
   }, []);
 
+  const handleInsightsImg = (post, index) => {
+    setIsInsightsImg(true);
+    setSelectedImage({ id: post.home_insights_aid, index });
+    document.body.classList.toggle("overflow-hidden");
+  };
+
   const { slug } = useParams();
 
   const {
@@ -66,7 +128,7 @@ const SingplePage = () => {
     {},
     null,
     false,
-    !!slug && !subscribe // enabled
+    !!slug && !subscribe, // enabled
   );
 
   // if slug exists but no id, redirect to all-insights
@@ -75,6 +137,58 @@ const SingplePage = () => {
       navigate("/all-insights", { replace: true });
     }
   }, [slug, insightId, navigate]);
+
+  var SinglePageSettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dotsClass: "slickNav slick-dots",
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    appendDots: (dots) => (
+      <div
+        style={{
+          borderRadius: "10px",
+          padding: "10px",
+          bottom: "-5rem",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "20px",
+          height: "20px",
+          color: "blue",
+          background: "gray",
+          borderRadius: "50%",
+          opacity: "50%",
+        }}
+      ></div>
+    ),
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+    ],
+  };
 
   const handleModalContact = () => {
     setModalContact(!modalContact);
@@ -107,7 +221,7 @@ const SingplePage = () => {
     const matchingInsight = insightData.data.find(
       (item) =>
         item.home_insights_slug?.trim().toLowerCase() ===
-        slug?.trim().toLowerCase()
+        slug?.trim().toLowerCase(),
     );
 
     if (matchingInsight) {
@@ -125,7 +239,7 @@ const SingplePage = () => {
     return insightData.data.find(
       (item) =>
         item.home_insights_slug?.trim().toLowerCase() ===
-        slug?.trim().toLowerCase()
+        slug?.trim().toLowerCase(),
     );
   };
 
@@ -145,8 +259,9 @@ const SingplePage = () => {
     return "";
   }
 
-  // const insightsImages =
-  //   getConvertStringToJSONparseData(post.home_insights_img) || [];
+  const insightsSliderImages = post?.home_insights_img_list
+    ? getConvertStringToJSONparseData(post.home_insights_img_list)
+    : [];
 
   return (
     <>
@@ -219,6 +334,41 @@ const SingplePage = () => {
                       dangerouslySetInnerHTML={{ __html: html }}
                       className="mt-8"
                     ></div>
+                    <div className="mx-auto mt-10 mb-16 max-w-[90%]">
+                      {insightsSliderImages.length > 1 ? (
+                        <Slider {...SinglePageSettings}>
+                          {insightsSliderImages.map((image, index) => (
+                            <div key={index}>
+                              <a onClick={() => handleInsightsImg(post, index)}>
+                                <div
+                                  style={{
+                                    backgroundImage: `url(${googleHDViewLink}${image?.id})`,
+                                  }}
+                                  className="blogItem bg-center bg-cover h-[400px] w-[270px] md:w-[500px] sm:w-[320px] flex items-end relative rounded-xl 
+                 hover:grayscale-0 transition-all group cursor-pointer place-self-center"
+                                >
+                                  {/* <div className="bottomGradient bg-gradient-to-t from-[#000] !to-[transparent] h-[200px] md:h-[300px] w-full absolute bottom-0 block rounded-bl-xl rounded-br-xl"></div> */}
+                                </div>
+                              </a>
+                            </div>
+                          ))}
+                        </Slider>
+                      ) : insightsSliderImages.length === 1 ? (
+                        <a onClick={() => handleInsightsImg(post, 0)}>
+                          <div
+                            className=" h-[330px] w-[450px]
+                grayscale hover:grayscale-0 transition-all group cursor-pointer place-self-center relative rounded-xl"
+                          >
+                            <LoadImages
+                              url={`${googleHDViewLink}${insightsSliderImages[0].id}`}
+                              alt="Successful, Industry-Ready Batches."
+                            />
+                          </div>
+                        </a>
+                      ) : (
+                        ""
+                      )}
+                    </div>
                     {post.home_insights_cta_is_active ? (
                       post.home_insights_form_selected ===
                       "default-receiver" ? (
@@ -273,6 +423,12 @@ const SingplePage = () => {
           )}
         </div>
       </section>
+      {isInsightsImg && (
+        <InsightsSliderPage
+          setIsInsightsImg={setIsInsightsImg}
+          selectedImage={selectedImage}
+        />
+      )}
       <Footer />
       {contactForm && (
         <ModalContact

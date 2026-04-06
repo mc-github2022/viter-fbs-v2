@@ -71,13 +71,13 @@ const Insights = () => {
   } = useQueryData(
     "/v1/insights", // endpoint
     "get", // method
-    "insights" // key
+    "insights", // key
   );
 
   const { data: homeTitlesData } = useQueryData(
     "/v1/homeTitles", // endpoint
     "get", // method
-    "homeTitles" // key
+    "homeTitles", // key
   );
 
   const sliderRef = useRef(null);
@@ -181,7 +181,7 @@ const Insights = () => {
           <div className="wrapper">
             <div className=" order-2 mb-12 lg:mb-0 ">
               {insightData?.data.filter(
-                (post) => post.home_insights_is_active === 1
+                (post) => post.home_insights_is_active === 1,
               ).length > 3 ? (
                 <Slider ref={sliderRef} {...settings}>
                   {insightData.data
@@ -189,7 +189,7 @@ const Insights = () => {
                     .map((post, key) => {
                       const insightsImages =
                         getConvertStringToJSONparseData(
-                          post.home_insights_thumbnail
+                          post.home_insights_thumbnail,
                         ) || [];
 
                       return (
@@ -236,13 +236,13 @@ const Insights = () => {
                     .map((post, key) => {
                       const insightsImages =
                         getConvertStringToJSONparseData(
-                          post.home_insights_img
+                          post.home_insights_thumbnail,
                         ) || [];
 
                       return (
                         <div key={key} className="md:px-0">
                           <Link
-                            to={`${devNavUrl}/insight/${post.home_insights_slug}`}
+                            to={`${devNavUrl}/insight/${post.home_insights_slug}?id=${post.home_insights_aid}`}
                           >
                             {insightsImages.map((image, index) => (
                               <div

@@ -63,7 +63,7 @@ function SamplePrevArrow(props) {
   );
 }
 
-const EventsSliderPage = ({ setIsEventsImg, selectedImage }) => {
+const InsightsSliderPage = ({ setIsInsightsImg, selectedImage }) => {
   var SinglePageSettings = {
     dots: false,
     infinite: true,
@@ -121,28 +121,28 @@ const EventsSliderPage = ({ setIsEventsImg, selectedImage }) => {
     error,
     isLoading,
     status,
-    data: eventsAndActivitiesData,
+    data: insightData,
   } = useQueryData(
-    "/v1/eventsAndAct", // endpoint
+    "/v1/insights", // endpoint
     "get", // method
-    "eventsAndAct", // key
+    "insights", // key
     {},
     null,
     true,
   );
 
   const handleClose = () => {
-    setIsEventsImg(false);
+    setIsInsightsImg(false);
     document.body.classList.remove("overflow-hidden");
   };
 
   // find the id and its matched index
-  const selectedItem = eventsAndActivitiesData?.data.find(
-    (item) => item.events_activities_aid === selectedImage?.id,
+  const selectedItem = insightData?.data.find(
+    (item) => item.home_insights_aid === selectedImage?.id,
   );
 
-  const images = selectedItem?.events_activities_img_list
-    ? JSON.parse(selectedItem.events_activities_img_list)
+  const images = selectedItem?.home_insights_img_list
+    ? JSON.parse(selectedItem.home_insights_img_list)
     : [];
 
   return (
@@ -184,4 +184,4 @@ const EventsSliderPage = ({ setIsEventsImg, selectedImage }) => {
   );
 };
 
-export default EventsSliderPage;
+export default InsightsSliderPage;

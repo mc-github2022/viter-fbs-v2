@@ -72,12 +72,12 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     photoArrayList: thumbnail,
   } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
-  // const {
-  //   uploadMultiplePhoto: uploadImage,
-  //   handleChangeMultiplePhoto: handleChangeImage,
-  //   setPhotoArrayList: setImage,
-  //   photoArrayList: image,
-  // } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
+  const {
+    uploadMultiplePhoto: uploadImage,
+    handleChangeMultiplePhoto: handleChangeImageSlider,
+    setPhotoArrayList: setSlider,
+    photoArrayList: slider,
+  } = useUploadMultiplePhoto(`${apiVersion}/upload-multiple-photo`, dispatch);
 
   const { singleUploadPhoto, handleChangePhoto, photoSingle } =
     useSingleUploadPhoto(`${apiVersion}/upload-photo`, dispatch);
@@ -87,7 +87,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     e,
     props,
     setThumbnail,
-    fieldValue = ""
+    fieldValue = "",
   ) => {
     handleChangeThumbnail(e, 1);
     const files = e.target.files;
@@ -99,14 +99,19 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
   };
 
   // handle for file upload image
-  const handleChangeFileUploadImage = (e, props, setImage, fieldValue = "") => {
-    handleChangeImage(e, 20);
+  const handleChangeFileUploadImageSlider = (
+    e,
+    props,
+    setSlider,
+    fieldValue = "",
+  ) => {
+    handleChangeImageSlider(e, 20);
     const files = e.target.files;
     if (files.length > 3) return e;
     let myFiles = Array.from(files);
     props.setFieldValue(fieldValue, myFiles);
-    const oldFiles = image?.length > 0 ? image : [];
-    setImage([...oldFiles, ...myFiles]);
+    const oldFiles = slider?.length > 0 ? slider : [];
+    setSlider([...oldFiles, ...myFiles]);
   };
 
   const handleClickViewSlideshow = (photos, key) => {
@@ -146,7 +151,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           ? `${apiVersion}/insights/${itemEdit.home_insights_aid}` // update
           : `${apiVersion}/insights`, // create
         itemEdit ? "put" : "post",
-        values
+        values,
       ),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["insights"] });
@@ -167,14 +172,16 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     setAnimate("");
     if (itemEdit) {
       const thumbnail = getConvertStringToJSONparseData(
-        itemEdit.home_insights_thumbnail
+        itemEdit.home_insights_thumbnail,
       );
       setThumbnail(thumbnail);
     }
-    // if (itemEdit) {
-    //   const image = getConvertStringToJSONparseData(itemEdit.home_insights_img);
-    //   setImage(image);
-    // }
+    if (itemEdit) {
+      const sliderImage = getConvertStringToJSONparseData(
+        itemEdit.home_insights_img_list,
+      );
+      setSlider(sliderImage);
+    }
   }, []);
 
   const initVal = {
@@ -194,6 +201,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
       ? itemEdit.home_insights_form_selected
       : "",
     home_insights_img: itemEdit ? itemEdit.home_insights_img : "",
+    home_insights_img_list: itemEdit ? itemEdit.home_insights_img_list : "",
     home_insights_thumbnail: itemEdit ? itemEdit.home_insights_thumbnail : "",
     home_insights_is_active: itemEdit ? itemEdit.home_insights_is_active : "",
     home_insights_meta_description: itemEdit
@@ -204,6 +212,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
     home_insights_thumbnail_old: itemEdit
       ? itemEdit.home_insights_thumbnail
       : "",
+    home_insights_img_list_old: itemEdit ? itemEdit.home_insights_img_list : "",
     pendingDeleteFile: [],
   };
 
@@ -238,14 +247,14 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                   JSON.stringify({
                     name: item.name,
                     id: item?.id || "",
-                  })
+                  }),
                 ),
-                // home_insights_img: image.map((item) =>
-                //   JSON.stringify({
-                //     name: item.name,
-                //     id: item?.id || "",
-                //   })
-                // ),
+                home_insights_img_list: slider.map((item) =>
+                  JSON.stringify({
+                    name: item.name,
+                    id: item?.id || "",
+                  }),
+                ),
                 home_insights_img: photoSingle
                   ? photoSingle.name
                   : itemEdit.home_insights_img,
@@ -256,9 +265,12 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
 
               // Upload separately
               const clientPhotoUpload = await uploadThumbnail(thumbnail);
-              // const logoPhotoUpload = await uploadImage(image);
+              const sliderPhotoUpload = await uploadImage(slider);
 
-              if (clientPhotoUpload?.success ) {
+              if (clientPhotoUpload?.success) {
+                setLoading(false);
+              }
+              if (sliderPhotoUpload?.success) {
                 setLoading(false);
               }
 
@@ -298,7 +310,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                 e,
                                 props,
                                 setThumbnail,
-                                "home_insights_thumbnail"
+                                "home_insights_thumbnail",
                               )
                             }
                             onDrop={(e) =>
@@ -306,7 +318,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                 e,
                                 props,
                                 setThumbnail,
-                                "home_insights_thumbnail"
+                                "home_insights_thumbnail",
                               )
                             }
                             disabled={mutation.isPending || loading}
@@ -333,7 +345,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                       onClick={() => {
                                         handleClickViewSlideshow(
                                           thumbnail,
-                                          key
+                                          key,
                                         );
                                       }}
                                     >
@@ -366,7 +378,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                                   thumbnail,
                                                   key,
                                                   props,
-                                                  "thumbnail-image"
+                                                  "thumbnail-image",
                                                 )
                                               }
                                             >
@@ -382,112 +394,6 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           </ol>
                         </div>
                       </div>
-
-                      {/* <div className="relative mb-3">
-                        <label className=" text-dark text-xs">Image</label>
-                        <div
-                          className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-full text-xs ${
-                            withFile && "border-primary border-dashed"
-                          }`}
-                          onDragOver={() => setWithFile(true)}
-                          onDragLeave={() => setWithFile(false)}
-                        >
-                          <span className="min-h-16 flex items-center justify-center">
-                            <span className="text-dark mr-1">Drag & Drop</span>{" "}
-                            Photo here or{" "}
-                            <span className="text-dark ml-1">Browse</span>
-                          </span>
-
-                          <InputFileUpload
-                            label="Upload Image"
-                            name="File"
-                            type="file"
-                            id="myFile"
-                            accept="*"
-                            title="Upload File"
-                            onChange={(e) =>
-                              handleChangeFileUploadImage(
-                                e,
-                                props,
-                                setImage,
-                                "home_insights_img"
-                              )
-                            }
-                            onDrop={(e) =>
-                              handleChangeFileUploadImage(
-                                e,
-                                props,
-                                setImage,
-                                "home_insights_img"
-                              )
-                            }
-                            disabled={mutation.isPending || loading}
-                            className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
-                          />
-                        </div>
-
-                        <div className="relative w-full ">
-                          <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
-                            {image.length > 0 &&
-                              image.map((item, key) => {
-                                const fileLink =
-                                  item instanceof File || item instanceof Blob
-                                    ? URL.createObjectURL(item)
-                                    : `${googleHDViewLink}${item?.id}`;
-
-                                return (
-                                  <React.Fragment key={key}>
-                                    <li
-                                      className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
-                                      onClick={() =>
-                                        handleClickViewSlideshow(image, key)
-                                      }
-                                    >
-                                      <LoadImages
-                                        url={fileLink}
-                                        className="relative z-20 w-full h-full object-cover object-center"
-                                      />
-                                      {(!mutation.isPending || !loading) && (
-                                        <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
-                                          <span>
-                                            Click to View <br />
-                                            {key + 1}. {item.name}
-                                          </span>
-
-                                          <div
-                                            className="absolute bottom-0 right-0 flex items-center gap-2"
-                                            onClick={(e) => {
-                                              e.stopPropagation();
-                                            }}
-                                          >
-                                            <button
-                                              type="button"
-                                              className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
-                                              data-tooltip={`Delete`}
-                                              disabled={
-                                                mutation.isPending || loading
-                                              }
-                                              onClick={() =>
-                                                handleRemovePhoto(
-                                                  image,
-                                                  key,
-                                                  props,
-                                                  "images"
-                                                )
-                                              }
-                                            >
-                                              <FaTrash />
-                                            </button>
-                                          </div>
-                                        </div>
-                                      )}
-                                    </li>
-                                  </React.Fragment>
-                                );
-                              })}
-                          </ol>
-                        </div>
-                      </div> */}
 
                       <div className="relative mt-3">
                         <label className=" text-dark text-xs">Image</label>
@@ -544,7 +450,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                                 onChange={(e) =>
                                   handleChangePhoto(
                                     e,
-                                    initVal.home_insights_img
+                                    initVal.home_insights_img,
                                   )
                                 }
                                 className="opacity-0 absolute right-0 top-0 h-full left-0 m-auto cursor-pointer z-[999] "
@@ -670,6 +576,115 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           </div>
                         </div>
                       </div>
+
+                      <div className="relative mb-3">
+                        <label className=" text-dark text-xs">
+                          Slider Images
+                        </label>
+                        <div
+                          className={`relative mt-4 mb-4 border border-gray-300 rounded-md hover:border-primary hover:border-dashed w-full text-xs ${
+                            withFile && "border-primary border-dashed"
+                          }`}
+                          onDragOver={() => setWithFile(true)}
+                          onDragLeave={() => setWithFile(false)}
+                        >
+                          <span className="min-h-16 flex items-center justify-center">
+                            <span className="text-dark mr-1">Drag & Drop</span>{" "}
+                            Photo here or{" "}
+                            <span className="text-dark ml-1">Browse</span>
+                          </span>
+
+                          <InputFileUpload
+                            label="Upload Image"
+                            name="File"
+                            type="file"
+                            id="myFile"
+                            accept="*"
+                            title="Upload Images"
+                            multiple
+                            onChange={(e) =>
+                              handleChangeFileUploadImageSlider(
+                                e,
+                                props,
+                                setSlider,
+                                "home_insights_img_list",
+                              )
+                            }
+                            onDrop={(e) =>
+                              handleChangeFileUploadImageSlider(
+                                e,
+                                props,
+                                setSlider,
+                                "home_insights_img_list",
+                              )
+                            }
+                            disabled={mutation.isPending || loading}
+                            className="opacity-0 absolute right-0 bottom-0 left-0 m-auto cursor-pointer h-full z-20"
+                          />
+                        </div>
+
+                        <div className="relative w-full ">
+                          <ol className="flex flex-wrap gap-5 justify-center bg-gray-300 ">
+                            {slider.length > 0 &&
+                              slider.map((item, key) => {
+                                const fileLink =
+                                  item instanceof File || item instanceof Blob
+                                    ? URL.createObjectURL(item)
+                                    : `${googleHDViewLink}${item?.id}`;
+
+                                return (
+                                  <React.Fragment key={key}>
+                                    <li
+                                      className="relative z-10 h-32 w-48 group cursor-pointer overflow-hidden"
+                                      onClick={() =>
+                                        handleClickViewSlideshow(slider, key)
+                                      }
+                                    >
+                                      <LoadImages
+                                        url={fileLink}
+                                        className="relative z-20 w-full h-full object-cover object-center"
+                                      />
+                                      {(!mutation.isPending || !loading) && (
+                                        <div className="hidden group-hover:inline-flex absolute top-0 z-30 w-full h-full bg-black/40 items-center justify-center text-white text-center text-xs">
+                                          <span>
+                                            Click to View <br />
+                                            {key + 1}. {item.name}
+                                          </span>
+
+                                          <div
+                                            className="absolute bottom-0 right-0 flex items-center gap-2"
+                                            onClick={(e) => {
+                                              e.stopPropagation();
+                                            }}
+                                          >
+                                            <button
+                                              type="button"
+                                              className="text-red-600 p-20 mr-2 tooltip-action-table text-lg disabled:bg-transparent disabled:cursor-not-allowed disabled:text-red-400"
+                                              data-tooltip={`Delete`}
+                                              disabled={
+                                                mutation.isPending || loading
+                                              }
+                                              onClick={() =>
+                                                handleRemovePhoto(
+                                                  slider,
+                                                  key,
+                                                  props,
+                                                  "slider-images",
+                                                )
+                                              }
+                                            >
+                                              <FaTrash />
+                                            </button>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </li>
+                                  </React.Fragment>
+                                );
+                              })}
+                          </ol>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="form-action mb-1">
@@ -688,7 +703,7 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
                           !thumbnail?.length ||
                           (!isCheckClick && !props.dirty) ||
                           photoSingle === "" ||
-                          initVal.home_banner_img === photoSingle?.name
+                          initVal.home_insights_img === photoSingle?.name
                         }
                         onClick={() => setIsDraft(true)}
                       >
@@ -724,7 +739,13 @@ const ModalAddInsights = ({ setIsAdd, itemEdit }) => {
           itemProps={fileData.props}
           msg="Are you sure you want to remove this file?"
           setIsModalShow={setIsRemovedPhoto}
-          setNewFile={fileData.type === "thumbnail-image" ? setThumbnail : null}
+          setNewFile={
+            fileData.type === "thumbnail-image"
+              ? setThumbnail
+              : fileData.type === "slider-images"
+                ? setSlider
+                : null
+          }
         />
       )}
     </>

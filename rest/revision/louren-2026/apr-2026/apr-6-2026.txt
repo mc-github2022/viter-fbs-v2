@@ -1,0 +1,18 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/home/insights/create.php
+    -> rest/v1/controllers/developer/home/insights/update.php
+
+MODELS
+    -> rest/v1/models/developer/home/insights/Insights.php
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_home_insights.sql
+        note: this column is added
+            `home_insights_img_list` text NOT NULL,
+    
+HTACCESS
+    -> 
+OTHER FILES
+    -> 

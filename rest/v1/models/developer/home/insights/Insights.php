@@ -5,6 +5,7 @@ class Insights
     public $home_insights_aid;
     public $home_insights_is_active;
     public $home_insights_img;
+    public $home_insights_img_list;
     public $home_insights_thumbnail;
     public $home_insights_category;
     public $home_insights_title;
@@ -36,7 +37,7 @@ class Insights
     public function readAll()
     {
         try {
-            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_thumbnail, home_insights_meta_description ";
+            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_thumbnail, home_insights_meta_description, home_insights_img_list ";
             $sql .= "from ";
             $sql .= "{$this->tblInsights} ";
             $sql .= "order by home_insights_is_active desc, ";
@@ -51,7 +52,7 @@ class Insights
     public function readById()
     {
         try {
-            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_meta_description ";
+            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_meta_description, home_insights_img_list ";
             $sql .= "from {$this->tblInsights} ";
             $sql .= "where home_insights_aid = :home_insights_aid ";
             $sql .= "order by home_insights_is_active desc, ";
@@ -69,7 +70,7 @@ class Insights
     public function readLimit()
     {
         try {
-            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_thumbnail, home_insights_meta_description ";
+            $sql = "select home_insights_aid, home_insights_img, home_insights_is_active, home_insights_category, home_insights_title, home_insights_slug, home_insights_date, home_insights_paragraph_a, home_insights_cta_is_active, home_insights_cta_text, home_insights_form_selected, home_insights_thumbnail, home_insights_meta_description, home_insights_img_list ";
             $sql .= "from ";
             $sql .= "{$this->tblInsights} ";
             $sql .= "order by home_insights_is_active desc, ";
@@ -112,6 +113,7 @@ class Insights
             $sql = "insert into {$this->tblInsights}";
             $sql .= "(home_insights_is_active, ";
             $sql .= "home_insights_img, ";
+            $sql .= "home_insights_img_list, ";
             $sql .= "home_insights_thumbnail, ";
             $sql .= "home_insights_category, ";
             $sql .= "home_insights_title, ";
@@ -126,6 +128,7 @@ class Insights
             $sql .= "home_insights_datetime ) values ( ";
             $sql .= ":home_insights_is_active, ";
             $sql .= ":home_insights_img, ";
+            $sql .= ":home_insights_img_list, ";
             $sql .= ":home_insights_thumbnail, ";
             $sql .= ":home_insights_category, ";
             $sql .= ":home_insights_title, ";
@@ -142,6 +145,7 @@ class Insights
             $query->execute([
                 "home_insights_is_active" => $this->home_insights_is_active,
                 "home_insights_img" => $this->home_insights_img,
+                "home_insights_img_list" => $this->home_insights_img_list,
                 "home_insights_thumbnail" => $this->home_insights_thumbnail,
                 "home_insights_category" => $this->home_insights_category,
                 "home_insights_title" => $this->home_insights_title,
@@ -168,6 +172,7 @@ class Insights
             $sql = "update {$this->tblInsights} set ";
             $sql .= "home_insights_is_active = :home_insights_is_active, ";
             $sql .= "home_insights_img = :home_insights_img, ";
+            $sql .= "home_insights_img_list = :home_insights_img_list, ";
             $sql .= "home_insights_thumbnail = :home_insights_thumbnail, ";
             $sql .= "home_insights_category = :home_insights_category, ";
             $sql .= "home_insights_title = :home_insights_title, ";
@@ -184,6 +189,7 @@ class Insights
             $query->execute([
                 "home_insights_is_active" => $this->home_insights_is_active,
                 "home_insights_img" => $this->home_insights_img,
+                "home_insights_img_list" => $this->home_insights_img_list,
                 "home_insights_thumbnail" => $this->home_insights_thumbnail,
                 "home_insights_category" => $this->home_insights_category,
                 "home_insights_title" => $this->home_insights_title,

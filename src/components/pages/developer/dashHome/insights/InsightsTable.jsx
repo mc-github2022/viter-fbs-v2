@@ -65,7 +65,7 @@ const InsightsTable = ({ setItemEdit }) => {
           is_active: filterData,
           searchValue: search.current.value,
           id: "",
-        } // search value
+        }, // search value
       ),
     getNextPageParam: (lastPage) => {
       if (lastPage.page < lastPage.total) {
@@ -134,10 +134,10 @@ const InsightsTable = ({ setItemEdit }) => {
               {result?.loading === "error"
                 ? "0"
                 : isFetching || result?.loading === "pending"
-                ? "loading"
-                : store.isSearch || isFilter
-                ? result?.pages[0]?.count
-                : result?.pages[0]?.total}
+                  ? "loading"
+                  : store.isSearch || isFilter
+                    ? result?.pages[0]?.count
+                    : result?.pages[0]?.total}
             </span>
             {(store.isSearch || isFilter) && (
               <span
@@ -181,6 +181,7 @@ const InsightsTable = ({ setItemEdit }) => {
               <th>Form Selected</th>
               <th className="w-[8rem]">Thumbnail</th>
               <th className="w-[8rem]">Image</th>
+              <th>Gallery</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
@@ -204,12 +205,13 @@ const InsightsTable = ({ setItemEdit }) => {
             {result?.pages.map((page, key) => (
               <React.Fragment key={key}>
                 {page?.data.map((item, key) => {
-                  // const insightsImages =
-                  //   getConvertStringToJSONparseData(item.home_insights_img) ||
-                  //   [];
+                  const insightsSliderImages =
+                    getConvertStringToJSONparseData(
+                      item.home_insights_img_list,
+                    ) || [];
                   const insightsThumbnail =
                     getConvertStringToJSONparseData(
-                      item.home_insights_thumbnail
+                      item.home_insights_thumbnail,
                     ) || [];
                   return (
                     <tr key={key} className="place-content-start text-[14px]">
@@ -257,6 +259,13 @@ const InsightsTable = ({ setItemEdit }) => {
                           <p key={index}>{img.name}</p>
                         ))} */}
                         {item.home_insights_img}
+                      </td>
+                      <td className="place-content-start">
+                        <div className="line-clamp-5">
+                          {insightsSliderImages.map((img, index) => (
+                            <p key={index}>{img.name}</p>
+                          ))}
+                        </div>
                       </td>
                       <td className="flex items-center gap-3 justify-end mt-2 lg:mt-0">
                         {item.home_insights_is_active ? (
