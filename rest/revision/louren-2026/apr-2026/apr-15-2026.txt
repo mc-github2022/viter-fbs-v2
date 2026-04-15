@@ -1,4 +1,11 @@
 
+CONTROLLERS
+    -> rest/v1/controllers/developer/sending-email/sending-email-default.php
+    -> rest/v1/controllers/developer/sending-email/sending-email.php
+
+MODELS
+    -> rest/v1/models/developer/notification-log/NotificationLog.php
+    -> rest/v1/models/developer/sending-email/SendingEmail.php
 
 DB BACKUP
     -> rest/db-backup/fbsv2_notification_log.sql
