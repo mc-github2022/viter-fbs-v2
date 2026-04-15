@@ -1,0 +1,9 @@
+
+
+DB BACKUP
+    -> rest/db-backup/fbsv2_notification_log.sql
+        note: this column are added
+            `notification_log_course` varchar(100) NOT NULL,
+            `notification_log_school` varchar(100) NOT NULL,
+            `notification_log_number_of_hours` varchar(50) NOT NULL,
+    
