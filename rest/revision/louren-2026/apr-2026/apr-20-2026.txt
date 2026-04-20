@@ -1,0 +1,19 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/careers/careers-notification.php
+    -> 
+
+MODELS
+    -> 
+
+DB BACKUP
+    ->
+    
+HTACCESS
+    -> in the # Why FBS - CAREERS this is added :
+        RewriteRule ^careers/notif$ controllers/developer/careers/careers-notification.php [L]
+
+OTHER FILES
+    -> rest/v1/notification/careers-notification-message.php
+    -> rest/v1/notification/template/careers-notification-message.php

@@ -72,6 +72,7 @@ RewriteRule ^careers/([0-9]+)$ controllers/developer/careers/careers.php?careers
 RewriteRule ^careers/page/([0-9]+)$ controllers/developer/careers/page.php?start=$1 [L]
 RewriteRule ^careers/search$ controllers/developer/careers/search.php [L]
 RewriteRule ^careers/readOngoingCareers$ controllers/developer/careers/readOngoingCareers.php [L]
+RewriteRule ^careers/notif$ controllers/developer/careers/careers-notification.php [L]
 
 # LCSS BATCHES
 RewriteRule ^lcssBatches$ controllers/developer/lcss-batches/lcssBatches.php [L]
@@ -578,6 +579,7 @@ RewriteRule ^events-title/([0-9]+)$ controllers/developer/events-and-activities-
 # CAREERS PAGE - TITLE
 RewriteRule ^careers-title$ controllers/developer/careers-title/careersTitle.php [L]
 RewriteRule ^careers-title/([0-9]+)$ controllers/developer/careers-title/careersTitle.php?careers_titleid=$1 [L]
+
 
 # PACKAGES - CATEGORY
 RewriteRule ^packages-category$ controllers/developer/packages/category/packages-category.php [L]

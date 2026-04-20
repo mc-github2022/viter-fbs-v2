@@ -62,20 +62,47 @@ const ModalJobApplication = ({
     true,
   );
 
+  // const mutation = useMutation({
+  //   mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
+  //   onSuccess: (data) => {
+  //     // Invalidate and refetch
+  //     queryClient.invalidateQueries({ queryKey: ["sending-email"] });
+  //     if (data.success) {
+  //       setModalJob(false);
+  //       dispatch(setSuccess(true));
+  //       dispatch(setMessage(`Message Sent Successfully!`));
+  //     }
+  //     // show error box
+  //     if (!data.success) {
+  //       dispatch(setError(true));
+  //       dispatch(setMessage(data.error));
+  //     }
+  //   },
+  // });
+
   const mutation = useMutation({
-    mutationFn: (values) => queryData(`/v1/sending-email`, "post", values),
-    onSuccess: (data) => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["sending-email"] });
-      if (data.success) {
+    mutationFn: (values) =>
+      Promise.all(
+        [
+          `${apiVersion}/sending-email-default`,
+          `${apiVersion}/careers/notif`,
+        ].map((endpoint) => queryData(endpoint, "post", values)),
+      ),
+
+    onSuccess: (results) => {
+      queryClient.invalidateQueries({ queryKey: ["sending-email-default"] });
+
+      if (results.every((result) => result.success)) {
         setModalJob(false);
         dispatch(setSuccess(true));
-        dispatch(setMessage(`Message Sent Successfully!`));
-      }
-      // show error box
-      if (!data.success) {
+        dispatch(setMessage("Application Sent Successfully!"));
+      } else {
+        const errorMessage =
+          results.find((result) => !result.success)?.error ||
+          "An error occurred.";
         dispatch(setError(true));
-        dispatch(setMessage(data.error));
+        dispatch(setMessage(errorMessage));
+        dispatch(setSuccess(false));
       }
     },
   });
