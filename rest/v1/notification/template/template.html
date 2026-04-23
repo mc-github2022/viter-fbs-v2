@@ -1,14 +1,11 @@
-<?php
-
-function getHtmlSendMessage(
-  $name,
-  $email,
-  $jobTitle
-) {
-
-
-  $html = '
-  <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <style>
   @import url("https://fonts.cdnfonts.com/css/Helvetica Neue-neue-9");
   * {
     padding: 0;
@@ -20,7 +17,7 @@ function getHtmlSendMessage(
     font-size: 14px;
   }
 </style>
- <body>
+<body>
     <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
   
 
@@ -68,6 +65,4 @@ function getHtmlSendMessage(
 
 </div>
   </body>
-';
-  return $html;
-}
+</html>

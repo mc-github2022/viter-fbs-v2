@@ -13,7 +13,8 @@ include_once("template/careers-notification-message.php");
 
 function sendEmailCareersNotif(
 	$name,
-	$email
+	$email,
+	$jobTitle
 ) {
 	//trigger exception in a "try" block
 	try {
@@ -34,7 +35,8 @@ function sendEmailCareersNotif(
 		$mail->isHTML(true);
 		$mail->Body = getHtmlSendMessage(
 			$name,
-			$email
+			$email,
+			$jobTitle
 		);
 		$mail->addAddress($email);
 

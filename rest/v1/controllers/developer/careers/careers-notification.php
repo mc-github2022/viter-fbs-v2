@@ -23,6 +23,7 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     $name = checkIndex($data, "client_name");
     $email = checkIndex($data, "client_email");
+    $jobTitle = checkIndex($data, "job_title");
     // Check email existence
     $emailReceiver = checkIndex($data, "client_email");
 
@@ -38,7 +39,8 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     if (($emailReceiver) > 0) {
         $mail = sendEmailCareersNotif(
             $name,
-            $email
+            $email,
+            $jobTitle
         );
     }
 

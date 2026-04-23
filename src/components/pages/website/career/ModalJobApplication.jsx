@@ -119,6 +119,7 @@ const ModalJobApplication = ({
     client_number_of_hours: "",
     notification_purpose: "apply-now-careers",
     email_subject: `APPLY NOW - ${jobTitle}`,
+    job_title: jobTitle,
   };
 
   const yupSchema = Yup.object({
