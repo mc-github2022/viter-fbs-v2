@@ -64,7 +64,10 @@ const VaSocialMediaManagementPage = () => {
       <VaSocialMediaManagementBanner />
       <VaSocialMediaManagementOverview />
       <VaSocialMediaManagementServiceList pageName={pageName} />
-      <VaSocialMediaManagementPricing socialTitlesData={socialTitlesData} />
+      <VaSocialMediaManagementPricing
+        socialTitlesData={socialTitlesData}
+        pageName={pageName}
+      />
       <VaSocialMediaManagementPartners socialTitlesData={socialTitlesData} />
       <VaSocialMediaManagementPartnersSay socialTitlesData={socialTitlesData} />
       <Footer />

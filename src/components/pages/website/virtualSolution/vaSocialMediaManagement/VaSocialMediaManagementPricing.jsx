@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import { apiVersion } from "../../../../helpers/functions-general";
 import TableLoading from "../../../../partials/spinners/TableLoading";
+import ModalContact from "../../../../partials/ModalContact";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -36,7 +37,15 @@ function SamplePrevArrow(props) {
   );
 }
 
-const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
+const VaSocialMediaManagementPricing = ({ socialTitlesData, pageName }) => {
+  const [contactSubject, setContactSubject] = React.useState("");
+  const [modalContact, setModalContact] = React.useState(false);
+  const [contactForm, setContactForm] = React.useState(false);
+  const handleForm = (item) => {
+    setContactForm(!contactForm);
+    setContactSubject(item);
+  };
+
   const {
     isFetching,
     error,
@@ -49,7 +58,7 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
     "packages-details", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: packagesListData } = useQueryData(
@@ -58,17 +67,17 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
     "packages-list", // key
     {},
     null,
-    true
+    true,
   );
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_url === "social-media-management"
+      (item) => item.packages_category_url === "social-media-management",
     )?.packages_category_url || "social-media-management";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_category_url === selectedCategory
+      (item) => item.packages_category_url === selectedCategory,
     ) || [];
 
   var eventsSliderSettings = {
@@ -266,7 +275,7 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                               ) {
                                 const isDetailHighlighted =
                                   Number(
-                                    info.packages_details_is_highlighted
+                                    info.packages_details_is_highlighted,
                                   ) === 1;
                                 const isPriceHighlighted =
                                   Number(price.packages_list_is_highlighted) ===
@@ -306,7 +315,7 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                                     {info.packages_details_list
                                       ?.split("\n")
                                       .filter(
-                                        (details) => details.trim() !== ""
+                                        (details) => details.trim() !== "",
                                       )
                                       .map((details, idx) => (
                                         <p
@@ -339,15 +348,29 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                         </table>
                       </div>
 
-                      <a
-                        href={`${price.packages_list_button_link}`}
-                        className="btn bg-primary text-light border-light
-                            border-2 mt-10 font-bold md:w-[220px] mx-auto
-                            hover:bg-light hover:text-primary hover:border-primary uppercase"
-                        target="_blank"
-                      >
-                        {price.packages_list_button_text}
-                      </a>
+                      {["Lite", "Kickstart", "Growth", "Pro Bizz"].includes(
+                        price.packages_list_title,
+                      ) ? (
+                        <a
+                          href={price.packages_list_button_link}
+                          className="btn bg-primary text-light border-light
+      border-2 mt-10 font-bold md:w-[220px] mx-auto
+      hover:bg-light hover:text-primary hover:border-primary uppercase"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {price.packages_list_button_text}
+                        </a>
+                      ) : (
+                        <button
+                          onClick={() => handleForm(price.packages_list_title)}
+                          className="btn bg-primary text-light border-light
+      border-2 mt-10 font-bold md:w-[220px] mx-auto
+      hover:bg-light hover:text-primary hover:border-primary uppercase"
+                        >
+                          {price.packages_list_button_text}
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -454,11 +477,11 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                                   ) {
                                     const isDetailHighlighted =
                                       Number(
-                                        info.packages_details_is_highlighted
+                                        info.packages_details_is_highlighted,
                                       ) === 1;
                                     const isPriceHighlighted =
                                       Number(
-                                        price.packages_list_is_highlighted
+                                        price.packages_list_is_highlighted,
                                       ) === 1;
 
                                     return (
@@ -493,7 +516,7 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                                         {info.packages_details_list
                                           ?.split("\n")
                                           .filter(
-                                            (details) => details.trim() !== ""
+                                            (details) => details.trim() !== "",
                                           )
                                           .map((details, idx) => (
                                             <p
@@ -527,15 +550,31 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
                             </table>
                           </div>
 
-                          <a
-                            href={`${price.packages_list_button_link}`}
-                            className="btn bg-primary text-light border-light
-                            border-2 mt-10 font-bold md:w-[220px] mx-auto
-                            hover:bg-light hover:text-primary hover:border-primary uppercase"
-                            target="_blank"
-                          >
-                            {price.packages_list_button_text}
-                          </a>
+                          {["Lite", "Kickstart", "Growth", "Pro Bizz"].includes(
+                            price.packages_list_title,
+                          ) ? (
+                            <a
+                              href={price.packages_list_button_link}
+                              className="btn bg-primary text-light border-light
+      border-2 mt-10 font-bold md:w-[220px] mx-auto
+      hover:bg-light hover:text-primary hover:border-primary uppercase"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {price.packages_list_button_text}
+                            </a>
+                          ) : (
+                            <button
+                              onClick={() =>
+                                handleForm(price.packages_list_title)
+                              }
+                              className="btn bg-primary text-light border-light
+      border-2 mt-10 font-bold md:w-[220px] mx-auto
+      hover:bg-light hover:text-primary hover:border-primary uppercase"
+                            >
+                              {price.packages_list_button_text}
+                            </button>
+                          )}
                         </div>
                       </div>
                     ))}
@@ -546,6 +585,20 @@ const VaSocialMediaManagementPricing = ({ socialTitlesData }) => {
           </div>
         </div>
       </section>
+      {contactForm && (
+        <ModalContact
+          setModalContact={setModalContact}
+          thePageName={pageName}
+          contactForm={contactForm}
+          setContactForm={setContactForm}
+          modalContact={modalContact}
+          contactSubject={contactSubject}
+          services={"default"}
+          page={"Home"}
+          notification_purpose={"default-receiver"}
+          emailSubject={`CHOOSE PACKAGE / Social Media (${contactSubject}) - `}
+        />
+      )}
     </>
   );
 };
