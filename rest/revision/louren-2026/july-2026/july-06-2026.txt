@@ -1,0 +1,15 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/careers/careers-notification.php
+
+MODELS
+    -> 
+
+DB BACKUP
+    ->
+    
+HTACCESS
+  
+
+OTHER FILES

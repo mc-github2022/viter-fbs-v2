@@ -23,19 +23,18 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
 
     $name = checkIndex($data, "client_name");
     $email = checkIndex($data, "client_email");
-    // Check email existence
-    $emailReceiver = checkIndex($data, "client_email");
+    
 
-    if (empty($name) || empty($emailReceiver)) {
+    if (empty($name) || empty($email)) {
     returnError("Name and email are required.");
 }
 
     // Validate email receiver
-    if (($emailReceiver) == 0) {
+    if (($email) == 0) {
         returnError("Something went wrong, Please try again later.");
     }
 
-    if (($emailReceiver) > 0) {
+    if (($email) > 0) {
         $mail = sendEmailCareersNotif(
             $name,
             $email
