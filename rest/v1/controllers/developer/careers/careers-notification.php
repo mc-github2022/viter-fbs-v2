@@ -29,17 +29,12 @@ if (isset($_SERVER['HTTP_AUTHORIZATION'])) {
     returnError("Name and email are required.");
 }
 
-    // Validate email receiver
-    if (($email) == 0) {
-        returnError("Something went wrong, Please try again later.");
-    }
-
-    if (($email) > 0) {
+    
         $mail = sendEmailCareersNotif(
             $name,
             $email
         );
-    }
+
 
     if ($mail["mail_success"] == true) {
         $returnData["data"] = $mail;
