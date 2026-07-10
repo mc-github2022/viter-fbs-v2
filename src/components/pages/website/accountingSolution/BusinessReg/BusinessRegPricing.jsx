@@ -60,7 +60,7 @@ const BusinessRegPricing = ({ pageName }) => {
     "packages-details", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: packagesListData } = useQueryData(
@@ -69,7 +69,7 @@ const BusinessRegPricing = ({ pageName }) => {
     "packages-list", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: registrationPackagesTitleData } = useQueryData(
@@ -78,19 +78,37 @@ const BusinessRegPricing = ({ pageName }) => {
     "registration-packages-title", // key
     {},
     null,
-    true
+    true,
   );
 
   const selectedCategory =
     packagesListData?.data?.find(
       (item) =>
-        item.packages_category_url === "accounting-business-registration"
+        item.packages_category_url === "accounting-business-registration",
     )?.packages_category_url || "accounting-business-registration";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_category_url === selectedCategory
+      (item) => item.packages_category_url === selectedCategory,
     ) || [];
+
+  const highlightPrice = (text) => {
+    const regex =
+      /(\₱\s?\d[\d,]*(?:\.\d+)?|\$\s?\d[\d,]*(?:\.\d+)?|€\s?\d[\d,]*(?:\.\d+)?|£\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:PHP|USD|EUR|GBP))/g;
+
+    return text.split(regex).map((part, index) => {
+      if (regex.test(part)) {
+        regex.lastIndex = 0; // Reset regex state
+        return (
+          <span key={index} className="text-primary font-semibold">
+            {part}
+          </span>
+        );
+      }
+      regex.lastIndex = 0;
+      return part;
+    });
+  };
 
   var eventsSliderSettings = {
     dots: false,
@@ -199,8 +217,8 @@ const BusinessRegPricing = ({ pageName }) => {
                   {filteredItems.map((price, key) => (
                     <div
                       key={key}
-                      className={`priceItem mb-5 relative z-[1] text-center p-10 md:h-[750px]
-                      rounded-lg h-[700px] max-w-[400px] md:w-[400px] ${
+                      className={`priceItem mb-5 relative z-[1] text-center p-10 md:min-h-[850px]
+                      rounded-lg h-full max-w-[400px] md:w-[400px] ${
                         price.packages_list_is_highlighted === 1
                           ? "bg-primary"
                           : "bg-customGray !text-dark"
@@ -306,11 +324,11 @@ const BusinessRegPricing = ({ pageName }) => {
                                 ) {
                                   const isDetailHighlighted =
                                     Number(
-                                      info.packages_details_is_highlighted
+                                      info.packages_details_is_highlighted,
                                     ) === 1;
                                   const isPriceHighlighted =
                                     Number(
-                                      price.packages_list_is_highlighted
+                                      price.packages_list_is_highlighted,
                                     ) === 1;
 
                                   return (
@@ -341,13 +359,15 @@ const BusinessRegPricing = ({ pageName }) => {
                                               : "text-[#a3a3a3]"
                                           }`}
                                         >
-                                          {info.packages_details_title}
+                                          {highlightPrice(
+                                            info.packages_details_title,
+                                          )}
                                         </td>
                                       </tr>
                                       {info.packages_details_list
                                         ?.split("\n")
                                         .filter(
-                                          (details) => details.trim() !== ""
+                                          (details) => details.trim() !== "",
                                         )
                                         .map((details, idx) => (
                                           <p
@@ -371,9 +391,11 @@ const BusinessRegPricing = ({ pageName }) => {
                                     price.packages_list_is_highlighted === 1
                                       ? "text-light"
                                       : ""
-                                  }  text-base text-center mt-6 `}
+                                  } text-base text-center mt-6 whitespace-pre-line`}
                                 >
-                                  {price.packages_list_other_details}
+                                  {highlightPrice(
+                                    price.packages_list_other_details,
+                                  )}
                                 </p>
                               )}
                             </tbody>
@@ -390,7 +412,7 @@ const BusinessRegPricing = ({ pageName }) => {
                       {filteredItems.map((price, key) => (
                         <div
                           key={key}
-                          className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] min-h-[500px]  ${
+                          className={`priceItem mb-5 lg:mb-0 relative z-[1] text-light text-center p-10 rounded-lg addShadow md:w-[400px] md:min-h-[850px]  ${
                             price.packages_list_is_highlighted === 1
                               ? "bg-primary"
                               : "bg-customGray !text-dark"
@@ -486,16 +508,16 @@ const BusinessRegPricing = ({ pageName }) => {
                                     (info, key) => {
                                       if (
                                         Number(
-                                          info.packages_details_list_id
+                                          info.packages_details_list_id,
                                         ) === price.packages_list_aid
                                       ) {
                                         const isDetailHighlighted =
                                           Number(
-                                            info.packages_details_is_highlighted
+                                            info.packages_details_is_highlighted,
                                           ) === 1;
                                         const isPriceHighlighted =
                                           Number(
-                                            price.packages_list_is_highlighted
+                                            price.packages_list_is_highlighted,
                                           ) === 1;
 
                                         return (
@@ -531,7 +553,7 @@ const BusinessRegPricing = ({ pageName }) => {
                                               ?.split("\n")
                                               .filter(
                                                 (details) =>
-                                                  details.trim() !== ""
+                                                  details.trim() !== "",
                                               )
                                               .map((details, idx) => (
                                                 <p
@@ -548,7 +570,7 @@ const BusinessRegPricing = ({ pageName }) => {
                                           </React.Fragment>
                                         );
                                       }
-                                    }
+                                    },
                                   )}
 
                                   {price.packages_list_other_details !== "" && (
@@ -557,7 +579,7 @@ const BusinessRegPricing = ({ pageName }) => {
                                         price.packages_list_is_highlighted === 1
                                           ? "text-light"
                                           : ""
-                                      }  text-base text-center mt-6 `}
+                                      }  text-base text-center mt-6 whitespace-pre-line`}
                                     >
                                       {price.packages_list_other_details}
                                     </p>

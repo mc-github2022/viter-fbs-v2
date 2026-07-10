@@ -60,7 +60,7 @@ const BookkeepingPricing = ({ pageName }) => {
     "packages-details", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: packagesListData } = useQueryData(
@@ -69,7 +69,7 @@ const BookkeepingPricing = ({ pageName }) => {
     "packages-list", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: bookkeepingPackagesTitleData } = useQueryData(
@@ -78,18 +78,36 @@ const BookkeepingPricing = ({ pageName }) => {
     "bookkeeping-packages-title", // key
     {},
     null,
-    true
+    true,
   );
 
   const selectedCategory =
     packagesListData?.data?.find(
-      (item) => item.packages_category_url === "accounting-bookkeeping"
+      (item) => item.packages_category_url === "accounting-bookkeeping",
     )?.packages_category_url || "accounting-bookkeeping";
 
   const filteredItems =
     packagesListData?.data?.filter(
-      (item) => item.packages_category_url === selectedCategory
+      (item) => item.packages_category_url === selectedCategory,
     ) || [];
+
+  const highlightPrice = (text) => {
+    const regex =
+      /(\₱\s?\d[\d,]*(?:\.\d+)?|\$\s?\d[\d,]*(?:\.\d+)?|€\s?\d[\d,]*(?:\.\d+)?|£\s?\d[\d,]*(?:\.\d+)?|\d[\d,]*(?:\.\d+)?\s?(?:PHP|USD|EUR|GBP))/g;
+
+    return text.split(regex).map((part, index) => {
+      if (regex.test(part)) {
+        regex.lastIndex = 0; // Reset regex state
+        return (
+          <span key={index} className="text-primary font-semibold">
+            {part}
+          </span>
+        );
+      }
+      regex.lastIndex = 0;
+      return part;
+    });
+  };
 
   var bookkeepingSliderSettings = {
     dots: false,
@@ -189,88 +207,97 @@ const BookkeepingPricing = ({ pageName }) => {
                 : ""}
             </h3>
             <div className="grid place-items-center text-light">
-              <h2 className="mb-8 text-primary font-semibold uppercase">
-                {bookkeepingPackagesTitleData?.data?.length > 0 &&
-                bookkeepingPackagesTitleData.data[0]?.bookkeeping_scope_title
-                  ? bookkeepingPackagesTitleData?.data[0]
-                      .bookkeeping_scope_title
-                  : "Scope Title"}
-              </h2>
-              <p className="uppercase">
-                {bookkeepingPackagesTitleData?.data?.length > 0 &&
+              {bookkeepingPackagesTitleData?.data?.length > 0 &&
                 bookkeepingPackagesTitleData.data[0]
-                  ?.bookkeeping_services_title_a
-                  ? bookkeepingPackagesTitleData?.data[0]
+                  ?.bookkeeping_scope_title && (
+                  <h2 className="mb-8 text-primary font-semibold uppercase">
+                    {
+                      bookkeepingPackagesTitleData.data[0]
+                        .bookkeeping_scope_title
+                    }
+                  </h2>
+                )}
+              {bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_title_a?.trim() && (
+                <p className="uppercase">
+                  {
+                    bookkeepingPackagesTitleData.data[0]
                       .bookkeeping_services_title_a
-                  : ""}
-              </p>
-              <table className="prices mt-5 md:max-w-sm md:mx-auto">
-                <tbody>
-                  <tr className="flex flex-col items-start gap-3">
-                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_a
-                      .split("\n") // Split by new lines
-                      .filter((list) => list.trim() !== "") // Remove empty lines
-                      .map((list, index) => (
-                        <td key={index} className="text-sm flex gap-4 ">
-                          <span>
-                            <FaCheckCircle className="text-light" />
-                          </span>
-                          {list}
-                        </td>
-                      ))}
-                  </tr>
-                </tbody>
-              </table>
-              <p className="uppercase mt-10">
-                {bookkeepingPackagesTitleData?.data?.length > 0 &&
-                bookkeepingPackagesTitleData.data[0]
-                  ?.bookkeeping_services_title_b
-                  ? bookkeepingPackagesTitleData?.data[0]
+                  }
+                </p>
+              )}
+              {bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_list_a?.trim() && (
+                <table className="prices mt-5 md:max-w-sm md:mx-auto">
+                  <tbody>
+                    <tr className="flex flex-col items-start gap-3">
+                      {bookkeepingPackagesTitleData.data[0].bookkeeping_services_list_a
+                        .split("\n")
+                        .filter((list) => list.trim() !== "")
+                        .map((list, index) => (
+                          <td key={index} className="text-sm flex gap-4">
+                            <span>
+                              <FaCheckCircle className="text-light" />
+                            </span>
+                            {list}
+                          </td>
+                        ))}
+                    </tr>
+                  </tbody>
+                </table>
+              )}
+              {bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_title_b?.trim() && (
+                <p className="uppercase mt-10">
+                  {
+                    bookkeepingPackagesTitleData.data[0]
                       .bookkeeping_services_title_b
-                  : ""}
-              </p>
-              <table className="prices mt-5  md:max-w-sm md:mx-auto">
-                <tbody>
-                  <tr className="flex flex-col items-start gap-3">
-                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_b
-                      .split("\n") // Split by new lines
-                      .filter((list) => list.trim() !== "") // Remove empty lines
-                      .map((list, index) => (
-                        <td key={index} className="text-sm flex gap-4 ">
-                          <span>
-                            <FaCheckCircle className="text-light" />
-                          </span>
-                          {list}
-                        </td>
-                      ))}
-                  </tr>
-                </tbody>
-              </table>
-              <p className="uppercase  mt-10">
-                {bookkeepingPackagesTitleData?.data?.length > 0 &&
-                bookkeepingPackagesTitleData.data[0]
-                  ?.bookkeeping_services_title_c
-                  ? bookkeepingPackagesTitleData?.data[0]
+                  }
+                </p>
+              )}
+              {bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_list_a?.trim() && (
+                <table className="prices mt-5 md:max-w-sm md:mx-auto">
+                  <tbody>
+                    <tr className="flex flex-col items-start gap-3">
+                      {bookkeepingPackagesTitleData.data[0].bookkeeping_services_list_a
+                        .split("\n")
+                        .filter((list) => list.trim() !== "")
+                        .map((list, index) => (
+                          <td key={index} className="text-sm flex gap-4">
+                            <span>
+                              <FaCheckCircle className="text-light" />
+                            </span>
+                            {list}
+                          </td>
+                        ))}
+                    </tr>
+                  </tbody>
+                </table>
+              )}
+              {bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_title_c?.trim() && (
+                <p className="uppercase mt-10">
+                  {
+                    bookkeepingPackagesTitleData.data[0]
                       .bookkeeping_services_title_c
-                  : ""}
-              </p>
-              <table className="prices mt-5  md:max-w-sm md:mx-auto">
-                <tbody>
-                  <tr className="flex flex-col items-start gap-3">
-                    {bookkeepingPackagesTitleData?.data[0].bookkeeping_services_list_c
-                      .split("\n") // Split by new lines
-                      .filter((list) => list.trim() !== "") // Remove empty lines
-                      .map((list, index) => (
-                        <td key={index} className="text-sm flex gap-4 ">
-                          <span>
-                            <FaCheckCircle className="text-light" />
-                          </span>
-                          {list}
-                        </td>
-                      ))}
-                  </tr>
-                </tbody>
-              </table>
+                  }
+                </p>
+              )}
+              {bookkeepingPackagesTitleData?.data?.[0]?.bookkeeping_services_list_c?.trim() && (
+                <table className="prices mt-5 md:max-w-sm md:mx-auto">
+                  <tbody>
+                    <tr className="flex flex-col items-start gap-3">
+                      {bookkeepingPackagesTitleData.data[0].bookkeeping_services_list_c
+                        .split("\n")
+                        .filter((list) => list.trim() !== "")
+                        .map((list, index) => (
+                          <td key={index} className="text-sm flex gap-4">
+                            <span>
+                              <FaCheckCircle className="text-light" />
+                            </span>
+                            {list}
+                          </td>
+                        ))}
+                    </tr>
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
           <div className="">
@@ -322,7 +349,7 @@ const BookkeepingPricing = ({ pageName }) => {
                                       : "text-primary"
                                   } text-2xl  font-bold text-light`}
                                 >
-                                  {price.packages_list_price}
+                                  {highlightPrice(price.packages_list_price)}
                                 </p>
 
                                 {price.packages_list_price_desc !== "" && (
@@ -359,7 +386,9 @@ const BookkeepingPricing = ({ pageName }) => {
                                         : "text-primary"
                                     } text-light text-lg italic`}
                                   >
-                                    {price.packages_list_foreign_price_desc}
+                                    {highlightPrice(
+                                      price.packages_list_foreign_price_desc,
+                                    )}
                                   </p>
                                 )}
                               </div>
@@ -386,11 +415,11 @@ const BookkeepingPricing = ({ pageName }) => {
                                 ) {
                                   const isDetailHighlighted =
                                     Number(
-                                      info.packages_details_is_highlighted
+                                      info.packages_details_is_highlighted,
                                     ) === 1;
                                   const isPriceHighlighted =
                                     Number(
-                                      price.packages_list_is_highlighted
+                                      price.packages_list_is_highlighted,
                                     ) === 1;
 
                                   return (
@@ -421,13 +450,15 @@ const BookkeepingPricing = ({ pageName }) => {
                                               : "text-[#a3a3a3]"
                                           }`}
                                         >
-                                          {info.packages_details_title}
+                                          {highlightPrice(
+                                            info.packages_details_title,
+                                          )}
                                         </td>
                                       </tr>
                                       {info.packages_details_list
                                         ?.split("\n")
                                         .filter(
-                                          (details) => details.trim() !== ""
+                                          (details) => details.trim() !== "",
                                         )
                                         .map((details, idx) => (
                                           <p
@@ -512,7 +543,9 @@ const BookkeepingPricing = ({ pageName }) => {
                                           : "text-primary"
                                       } text-2xl  font-bold text-light`}
                                     >
-                                      {price.packages_list_price}
+                                      {highlightPrice(
+                                        price.packages_list_price,
+                                      )}
                                     </p>
 
                                     {price.packages_list_price_desc !== "" && (
@@ -566,16 +599,16 @@ const BookkeepingPricing = ({ pageName }) => {
                                     (info, key) => {
                                       if (
                                         Number(
-                                          info.packages_details_list_id
+                                          info.packages_details_list_id,
                                         ) === price.packages_list_aid
                                       ) {
                                         const isDetailHighlighted =
                                           Number(
-                                            info.packages_details_is_highlighted
+                                            info.packages_details_is_highlighted,
                                           ) === 1;
                                         const isPriceHighlighted =
                                           Number(
-                                            price.packages_list_is_highlighted
+                                            price.packages_list_is_highlighted,
                                           ) === 1;
 
                                         return (
@@ -604,14 +637,16 @@ const BookkeepingPricing = ({ pageName }) => {
                                                     : "text-[#a3a3a3]"
                                                 }`}
                                               >
-                                                {info.packages_details_title}
+                                                {highlightPrice(
+                                                  info.packages_details_title,
+                                                )}
                                               </td>
                                             </tr>
                                             {info.packages_details_list
                                               ?.split("\n")
                                               .filter(
                                                 (details) =>
-                                                  details.trim() !== ""
+                                                  details.trim() !== "",
                                               )
                                               .map((details, idx) => (
                                                 <p
@@ -628,7 +663,7 @@ const BookkeepingPricing = ({ pageName }) => {
                                           </React.Fragment>
                                         );
                                       }
-                                    }
+                                    },
                                   )}
 
                                   {price.packages_list_other_details !== "" && (
@@ -639,7 +674,9 @@ const BookkeepingPricing = ({ pageName }) => {
                                           : ""
                                       }  text-base text-center mt-6 `}
                                     >
-                                      {price.packages_list_other_details}
+                                      {highlightPrice(
+                                        price.packages_list_other_details,
+                                      )}
                                     </p>
                                   )}
                                 </tbody>
