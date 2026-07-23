@@ -1,0 +1,17 @@
+Upload JSX
+
+CONTROLLERS
+    -> rest/v1/controllers/developer/sending-newsletter/sending-newsletter.php
+
+MODELS
+    -> 
+
+DB BACKUP
+    ->
+    
+HTACCESS
+  
+
+OTHER FILES
+    -> rest/v1/notification/mail-config.php
+    -> rest/v1/notification/subscriber-newsletter.php

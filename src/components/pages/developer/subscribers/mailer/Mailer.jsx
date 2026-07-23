@@ -35,21 +35,22 @@ const Mailer = ({ itemEdit }) => {
   const [queryStatus, setQueryStatus] = React.useState(null);
 
   const [mailType, setMailType] = React.useState("Draft");
+  const [sender, setSender] = React.useState("admin");
 
   const [onFocusNewsletter, setOnFocusNewsletter] = React.useState(false);
   const [propertyNewsletterValue, setPropertyNewsletterValue] = React.useState(
-    itemEdit ? `${itemEdit.newsletter_subject}` : ""
+    itemEdit ? `${itemEdit.newsletter_subject}` : "",
   ); // to get the data from table when update
   const [newsletter, setNewsletter] = React.useState(
-    itemEdit ? itemEdit.newsletter_subject : ""
+    itemEdit ? itemEdit.newsletter_subject : "",
   );
   const [newsletterContent, setNewsletterContent] = React.useState(
-    itemEdit ? itemEdit.newsletter : ""
+    itemEdit ? itemEdit.newsletter : "",
   );
 
   const { uploadFiles, handleChangeFiles, newfile } = useUploadFiles(
     `${apiVersion}/upload-files`,
-    dispatch
+    dispatch,
   );
 
   // let queryCount = 0;
@@ -67,7 +68,7 @@ const Mailer = ({ itemEdit }) => {
     {
       searchValue: subscriber, // id
     },
-    true // refetchOnWindowFocus
+    true, // refetchOnWindowFocus
   );
 
   const {
@@ -78,7 +79,7 @@ const Mailer = ({ itemEdit }) => {
   } = useQueryData(
     `${apiVersion}/audience`, // endpoint
     "get", // method
-    "audience" // key
+    "audience", // key
   );
 
   const {
@@ -95,7 +96,7 @@ const Mailer = ({ itemEdit }) => {
     {
       searchValue: newsletter, // id
     },
-    true // refetchOnWindowFocus
+    true, // refetchOnWindowFocus
   );
 
   const firstnameProfile = store.credentials.data.first_name;
@@ -104,7 +105,7 @@ const Mailer = ({ itemEdit }) => {
   // Join subscriberData with audienceData to get audience_name
   const enrichedSubscribers = subscriberData?.data?.map((subscriber) => {
     const matchingAudience = audienceData?.data?.find(
-      (audience) => audience.audience_aid === subscriber.subscriber_audience_id
+      (audience) => audience.audience_aid === subscriber.subscriber_audience_id,
     );
     return {
       ...subscriber,
@@ -122,7 +123,7 @@ const Mailer = ({ itemEdit }) => {
           subscriber_audience_id: sub.subscriber_audience_id,
           audience_name: sub.audience_name,
         },
-      ])
+      ]),
     ).values(),
   ];
 
@@ -269,6 +270,7 @@ const Mailer = ({ itemEdit }) => {
     newsletter_subject: "",
     subscriber_email: "",
     sending_email_log_file: "",
+    sender: "admin",
     firstname: firstnameProfile,
     role: role,
   };
@@ -280,7 +282,7 @@ const Mailer = ({ itemEdit }) => {
       .test(
         "isValidRecipient",
         "Required",
-        (value) => value === "All Recipients" || Boolean(value?.trim())
+        (value) => value === "All Recipients" || Boolean(value?.trim()),
       )
       .required("Required"),
   });
@@ -321,16 +323,43 @@ const Mailer = ({ itemEdit }) => {
                             <div className="text-sm text-[black] font-semibold">
                               <h2>Newsletter Mailer</h2>
                             </div>
-                            <select
-                              value={mailType}
-                              onChange={(e) => setMailType(e.target.value)}
-                              className="w-[200px] h-[35px]"
-                            >
-                              <option value="Draft">Draft</option>
-                              <option value="Newsletter List">
-                                Newsletter List
-                              </option>
-                            </select>
+                            <div className="flex gap-3 items-end">
+                              {/* Mail Type */}
+                              <div className="flex flex-col gap-1 relative">
+                                <label className="text-xs">Mail Type</label>
+                                <select
+                                  value={mailType}
+                                  onChange={(e) => setMailType(e.target.value)}
+                                  className="w-[200px] h-[35px]"
+                                >
+                                  <option value="Draft">Draft</option>
+                                  <option value="Newsletter List">
+                                    Newsletter List
+                                  </option>
+                                </select>
+                              </div>
+
+                              {/* Sender */}
+                              <div className="flex flex-col gap-1 relative">
+                                <label className="text-xs">Sender</label>
+                                <select
+                                  value={values.sender}
+                                  onChange={(e) =>
+                                    setFieldValue("sender", e.target.value)
+                                  }
+                                  className="w-[280px] h-[35px]"
+                                  disabled={isSendingLoading}
+                                >
+                                  <option value="admin">
+                                    admin@frontlinebusiness.com.ph
+                                  </option>
+
+                                  <option value="zymon">
+                                    jinuel.ramos@frontlinebusiness.com.ph
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
                           </div>
                           <div className="input-wrapper">
                             <InputText
@@ -361,7 +390,7 @@ const Mailer = ({ itemEdit }) => {
                                         handleClickRecipient(
                                           "All Recipients",
                                           setFieldValue,
-                                          "all"
+                                          "all",
                                         )
                                       }
                                     >
@@ -381,13 +410,13 @@ const Mailer = ({ itemEdit }) => {
                                               handleClickRecipient(
                                                 category.audience_name,
                                                 setFieldValue,
-                                                category.subscriber_audience_id
+                                                category.subscriber_audience_id,
                                               )
                                             }
                                           >
                                             {category.audience_name}
                                           </div>
-                                        )
+                                        ),
                                       )}
                                     </div>
 
@@ -403,7 +432,7 @@ const Mailer = ({ itemEdit }) => {
                                             handleClickRecipient(
                                               item.subscriber_email,
                                               setFieldValue,
-                                              "by-email"
+                                              "by-email",
                                             )
                                           }
                                         >
@@ -420,7 +449,7 @@ const Mailer = ({ itemEdit }) => {
                                       handleClickRecipient(
                                         "All Recipients",
                                         setFieldValue,
-                                        "all"
+                                        "all",
                                       )
                                     }
                                   >
@@ -474,7 +503,7 @@ const Mailer = ({ itemEdit }) => {
                                         onClick={() =>
                                           handleClickNewsletterList(
                                             item,
-                                            setFieldValue
+                                            setFieldValue,
                                           )
                                         }
                                       >

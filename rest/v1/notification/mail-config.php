@@ -8,6 +8,14 @@ define("RESET_PASSWORD", "Reset Password");
 define("VERIFY_EMAIL", "Email Verification");
 define("DEFAULT_REPLY_TO", "jhonny.dichoso@frontlinebusiness.com.ph");
 
+// Zymon 
+define("ZYMON_USERNAME", "jinuel.ramos@frontlinebusiness.com.ph");
+define("ZYMON_PASSWORD", "oqrr cfwq hlch ngmj");
+define("ZYMON_REPLY_TO", "jinuel.ramos@frontlinebusiness.com.ph");
+define("ZYMON_HOST", "smtp.gmail.com");
+define("ZYMON_PORT", 587);
+define("ZYMON_SMTPSECURE", "tls");
+
 // // Frontline
 define("HOST", "mail.frontlinebusiness.com.ph");
 define("PORT", 465);

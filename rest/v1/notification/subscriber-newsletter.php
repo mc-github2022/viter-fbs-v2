@@ -18,10 +18,33 @@ function sendNewsletter(
 	$subscriberEmail,
 	$subscriberKey,
 	$subscriberReplyTo,
-	$sending_email_log_file
+	$sending_email_log_file,
+	$sender = "admin"
 ) {
+
+// Selected Sender Configuration
+if ($sender === "zymon") {
+		// Zymon / Gmail
+		$smtpHost = ZYMON_HOST;
+		$smtpPort = ZYMON_PORT;
+		$smtpSecure = ZYMON_SMTPSECURE;
+		$smtpUsername = ZYMON_USERNAME;
+		$smtpPassword = ZYMON_PASSWORD;
+		$fromEmail = ZYMON_USERNAME;
+		$defaultReplyTo = ZYMON_REPLY_TO;
+	} else {
+		// Default Admin
+		$smtpHost = HOST;
+		$smtpPort = PORT;
+		$smtpSecure = SMTPSECURE;
+		$smtpUsername = USERNAME;
+		$smtpPassword = PASSWORD;
+		$fromEmail = USERNAME;
+		$defaultReplyTo = DEFAULT_REPLY_TO;
+	}
+
 	if ($subscriberReplyTo == "") {
-		$subscriberReplyTo = DEFAULT_REPLY_TO;
+		$subscriberReplyTo = $defaultReplyTo;
 	}
 
 	//trigger exception in a "try" block
@@ -29,19 +52,17 @@ function sendNewsletter(
 		$mail = new PHPMailer(true);
 		$mail->CharSet = "UTF-8";
 		$mail->isSMTP();
-		$mail->Host = HOST;
-		$mail->Port = PORT;
-		$mail->SMTPSecure = SMTPSECURE;
-		// $mail->Host = 'smtp.gmail.com'; // if gmail use smtp.gmail.com
-		// $mail->Port = 587;
-		// $mail->SMTPSecure = "tls";
-		$mail->addReplyTo("{$subscriberReplyTo}", FROM);
-		// $mail->addReplyTo(REPLY_TO_NL, FROM);
+		$mail->Host = $smtpHost;
+		$mail->Port = $smtpPort;
+		$mail->SMTPSecure = $smtpSecure;
+
 		$mail->SMTPAuth = true;
-		$mail->Username = USERNAME; // if gmail use your gmail email
-		$mail->Password = PASSWORD; // if gmail use your email password
+		$mail->Username = $smtpUsername;
+		$mail->Password = $smtpPassword;
+
 		$mail->Subject = "{$newsletterSubject}";
-		$mail->setFrom(USERNAME, FROM);
+		$mail->setFrom($fromEmail,FROM);
+		$mail->addReplyTo($subscriberReplyTo,FROM);
 		$mail->isHTML(true);
 		$mail->Body = getHtmlSendMessage(
 			$unsubscribe_link,

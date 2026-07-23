@@ -49,7 +49,8 @@ const ModalSend = ({
         sending_email_log_file: newfile?.name || "",
         firstname: item.firstname,
         role: item.role,
-      }
+        sender: item.sender,
+      },
     );
 
     if (newfile) {
@@ -75,6 +76,7 @@ const ModalSend = ({
           recipientList: recipientList,
           audience_notification_email: recipientReplyTo,
           sending_email_log_file: newfile?.name || "",
+          sender: item.sender,
         });
 
         // increment count whenever there's a successful query
