@@ -25,18 +25,18 @@ function sendNewsletter(
 // Selected Sender Configuration
 if ($sender === "zymon") {
 		// Zymon / Gmail
-		$smtpHost = ZYMON_HOST;
-		$smtpPort = ZYMON_PORT;
-		$smtpSecure = ZYMON_SMTPSECURE;
+		// $smtpHost = ZYMON_HOST;
+		// $smtpPort = ZYMON_PORT;
+		// $smtpSecure = ZYMON_SMTPSECURE;
 		$smtpUsername = ZYMON_USERNAME;
 		$smtpPassword = ZYMON_PASSWORD;
 		$fromEmail = ZYMON_USERNAME;
 		$defaultReplyTo = ZYMON_REPLY_TO;
 	} else {
 		// Default Admin
-		$smtpHost = HOST;
-		$smtpPort = PORT;
-		$smtpSecure = SMTPSECURE;
+		// $smtpHost = HOST;
+		// $smtpPort = PORT;
+		// $smtpSecure = SMTPSECURE;
 		$smtpUsername = USERNAME;
 		$smtpPassword = PASSWORD;
 		$fromEmail = USERNAME;
@@ -52,9 +52,12 @@ if ($sender === "zymon") {
 		$mail = new PHPMailer(true);
 		$mail->CharSet = "UTF-8";
 		$mail->isSMTP();
-		$mail->Host = $smtpHost;
-		$mail->Port = $smtpPort;
-		$mail->SMTPSecure = $smtpSecure;
+		// $mail->Host = $smtpHost;
+		$mail->Host = HOST;
+		// $mail->Port = $smtpPort;
+		$mail->Port = PORT;
+		// $mail->SMTPSecure = $smtpSecure;
+		$mail->SMTPSecure = SMTPSECURE;
 
 		$mail->SMTPAuth = true;
 		$mail->Username = $smtpUsername;
