@@ -4,7 +4,12 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { clientSays, clientSaysTitle } from "./data";
 import useQueryData from "../../../../custom-hooks/useQueryData";
-import { devBaseImgUrl } from "../../../../helpers/functions-general";
+import {
+  devBaseImgUrl,
+  getConvertStringToJSONparseData,
+  googleHDViewLink,
+} from "../../../../helpers/functions-general";
+import LoadImages from "../../../../partials/LoadImages";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -43,7 +48,7 @@ const SinglePagePartnersSay = () => {
     "indTestimonial", // key
     {},
     null,
-    true
+    true,
   );
 
   var partnerSaysSettings = {
@@ -130,36 +135,47 @@ const SinglePagePartnersSay = () => {
           <div className="wrapper ">
             {IndtestimonialData?.data.filter(
               (item) =>
-                item.industry_testimonial_category === "Single Page Website"
+                item.industry_testimonial_category === "Single Page Website",
             ).length > 1 ? (
               <Slider ref={sliderRef} {...partnerSaysSettings}>
                 {IndtestimonialData?.data.map((item, key) => {
+                  const industryTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_img,
+                    ) || [];
+                  const industryTestimonialsLogo =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_logo,
+                    ) || [];
                   if (
                     item.industry_testimonial_category === "Single Page Website"
                   ) {
                     return (
                       <div key={key} className="md:min-h-fit min-h-[70vh]">
                         <div className="testimonialItem bg-customGray lg:grid lg:grid-cols-[_2fr_1fr] items-center md:top-[50%] py-10 px-10 md:px-20 md:pt-[70px] pb-9 mb-5 rounded-xl md:w-[80%] lg:pt-32 mx-auto relative ">
-                          <div className="theMessage  relative">
+                          <div className="theMessage  relative ">
                             <div className="absolute top-[-30px] left-[-40px]">
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt="Testimonial quote"
+                                alt="Testimonials quote"
                               />
                             </div>
-                            <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
+                            <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full ">
                               {item.industry_testimonial_message}
                             </p>
                             <div
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="Client's Company logo"
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -174,11 +190,14 @@ const SinglePagePartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
-                              alt="Client's Image"
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>
@@ -189,6 +208,14 @@ const SinglePagePartnersSay = () => {
             ) : (
               <div>
                 {IndtestimonialData?.data.map((item, key) => {
+                  const industryTestimonialsImages =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_img,
+                    ) || [];
+                  const industryTestimonialsLogo =
+                    getConvertStringToJSONparseData(
+                      item.industry_testimonial_logo,
+                    ) || [];
                   if (
                     item.industry_testimonial_category === "Single Page Website"
                   ) {
@@ -203,7 +230,7 @@ const SinglePagePartnersSay = () => {
                               <img
                                 src={`${devBaseImgUrl}/quote-white.png`}
                                 className="w-[80px]"
-                                alt="Testimonial quote"
+                                alt="Testimonials quote"
                               />
                             </div>
                             <p className="relative z-10 italic mb-8 md:min-h-0 min-h-[100px] max-h-[300px] overflow-auto lg:max-h-full">
@@ -213,11 +240,14 @@ const SinglePagePartnersSay = () => {
                               className="logoAndName flex flex-col text-center items-center gap-3
                             md:flex-row md:text-left"
                             >
-                              <img
-                                className="w-[80px]"
-                                src={`${devBaseImgUrl}/${item.industry_testimonial_logo}`}
-                                alt="Client's Company logo"
-                              />
+                              {industryTestimonialsLogo.map((image, index) => (
+                                <LoadImages
+                                  className="w-[80px]"
+                                  url={`${googleHDViewLink}${image?.id}`}
+                                  alt={`${item.industry_testimonial_name}`}
+                                  key={index}
+                                />
+                              ))}
                               <div className="leading-[1] italic">
                                 <p>{item.industry_testimonial_name}</p>
                                 <p className="text-sm">
@@ -232,11 +262,14 @@ const SinglePagePartnersSay = () => {
                             </div>
                           </div>
                           <div className="hidden lg:block">
-                            <img
-                              src={`${devBaseImgUrl}/${item.industry_testimonial_img}`}
-                              className="absolute bottom-0 w-[300px] right-0"
-                              alt="Client's Image"
-                            />
+                            {industryTestimonialsImages.map((image, index) => (
+                              <LoadImages
+                                url={`${googleHDViewLink}${image?.id}`}
+                                className="absolute bottom-0 w-[300px] right-0 rounded-br-xl"
+                                alt={`${item.industry_testimonial_name}`}
+                                key={index}
+                              />
+                            ))}
                           </div>
                         </div>
                       </div>

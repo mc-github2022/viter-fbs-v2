@@ -13,6 +13,7 @@ import { apiVersion, getUrlParam } from "../../../../helpers/functions-general";
 import useQueryData from "../../../../custom-hooks/useQueryData";
 import FetchingSpinner from "../../../../partials/spinners/FetchingSpinner";
 import PageNotFound from "../../../../partials/PageNotFound";
+import SinglePagePartnersSay from "./SinglePagePartnersSay";
 
 const SinglePageWebsite = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -25,7 +26,7 @@ const SinglePageWebsite = () => {
     "packages-category", // key
     {},
     null,
-    true
+    true,
   );
 
   const { data: singlepageTitlesData } = useQueryData(
@@ -34,7 +35,7 @@ const SinglePageWebsite = () => {
     "singlepage-titles", // key
     {},
     null,
-    true
+    true,
   );
 
   React.useEffect(() => {
@@ -50,7 +51,7 @@ const SinglePageWebsite = () => {
   const matchingItem = packagesCategoryData.data.find(
     (item) =>
       item.packages_category_url === categoryUrl &&
-      String(item.packages_category_aid) === String(id)
+      String(item.packages_category_aid) === String(id),
   );
 
   if (!matchingItem) {
@@ -59,7 +60,11 @@ const SinglePageWebsite = () => {
 
   return (
     <>
-      <Header pageName={pageName} services={"web services"} page={"Single Page Website"}/>
+      <Header
+        pageName={pageName}
+        services={"web services"}
+        page={"Single Page Website"}
+      />
       <SinglePageBanner pageName={pageName} />
       <SinglePageOverview pageName={pageName} />
       <SinglePageScope
@@ -71,7 +76,7 @@ const SinglePageWebsite = () => {
         singlepageTitlesData={singlepageTitlesData}
       />
       <SinglePagePartners singlepageTitlesData={singlepageTitlesData} />
-      {/* <SinglePagePartnersSay /> */}
+      <SinglePagePartnersSay />
       <Footer />
       {store.success && <ModalSuccess />}
       {store.error && <ModalError />}
